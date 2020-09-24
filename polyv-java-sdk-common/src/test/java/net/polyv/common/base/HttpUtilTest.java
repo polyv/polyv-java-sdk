@@ -47,30 +47,30 @@ public class HttpUtilTest {
         System.out.println("--初始化完成--");
     }
     
-    @Test
-    public void testHttpPool() throws Exception {
-        for (int i = 0; i < 500; i++) {
-            new Thread() {
-                @Override
-                public void run() {
-                    String url = "https://www.w3school.com.cn/index.html";
-                    url = "http://47.115.173.234:8001/get";
-                    String encoding = "utf-8";
-                    String data = null;
-                    try {
-                        data = HttpUtil.sendGetData(url, encoding);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Assert.assertNotNull(data);
-                    System.out.println(data);
-                }
-            }.start();
-            
-        }
-        System.in.read();
-        
-    }
+//    @Test
+//    public void testHttpPool() throws Exception {
+//        for (int i = 0; i < 500; i++) {
+//            new Thread() {
+//                @Override
+//                public void run() {
+//                    String url = "https://www.w3school.com.cn/index.html";
+//                    url = "http://47.115.173.234:8001/get";
+//                    String encoding = "utf-8";
+//                    String data = null;
+//                    try {
+//                        data = HttpUtil.sendGetData(url, encoding);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    Assert.assertNotNull(data);
+//                    System.out.println(data);
+//                }
+//            }.start();
+//
+//        }
+//        System.in.read();
+//
+//    }
     
     
     @Test

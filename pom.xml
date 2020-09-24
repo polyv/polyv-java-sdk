@@ -15,7 +15,7 @@
 
     <packaging>pom</packaging>
     <name>polyv-java-sdk</name>
-    <description>保利威视频云后台接入SDK</description>
+    <description>保利威视频云JAVA接入SDK</description>
     <url>https://www.polyv.net/</url>
 
 
@@ -74,7 +74,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>5.1.0.Final</version>
+            <version>6.0.0.Final</version>
         </dependency>
         <dependency>
             <groupId>javax.el</groupId>

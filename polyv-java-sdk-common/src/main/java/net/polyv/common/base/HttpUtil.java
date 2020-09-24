@@ -1,8 +1,8 @@
 package net.polyv.common.base;
 
+
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -24,7 +24,6 @@ import org.apache.http.util.EntityUtils;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.constant.Constant;
-
 
 /**
  * HTTP请求工具类
@@ -264,7 +263,7 @@ public class HttpUtil {
      * @param fileMap
      * @param encoding
      * @return
-     * @throws UnsupportedEncodingException
+     * @throws IOException
      */
     public static String sendUploadFile(String url, Map<String, String> params, Map<String, String> fileMap,
             String encoding) throws IOException {

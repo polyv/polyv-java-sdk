@@ -1,5 +1,7 @@
 package net.polyv.live.entity.channel;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +17,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ApiModel("直播频道基本信息")
 public class LiveChannelResponse {
   
     /**
@@ -24,6 +27,8 @@ public class LiveChannelResponse {
      * 类型：int(11)
      * </pre>
      */
+    
+    @ApiModelProperty(name="channelId",value = "直播频道ID", dataType = "String", required = false)
     protected int channelId;
     
     /**
@@ -33,6 +38,7 @@ public class LiveChannelResponse {
      * 类型：String(64)
      * </pre>
      */
+    @ApiModelProperty(name = "直播用户ID", dataType = "String", required = false)
     protected String userId;
     
     /**
@@ -42,6 +48,7 @@ public class LiveChannelResponse {
      * 类型：String(64)
      * </pre>
      */
+    @ApiModelProperty(name = "直播频道名称", dataType = "String", required = false)
     protected String name;
     
     /**
@@ -51,6 +58,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "直播频道描述", dataType = "String", required = false)
     protected String description;
     
     /**
@@ -60,6 +68,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "直播推流地址", dataType = "String", required = false)
     protected String url;
     
     /**
@@ -69,6 +78,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "直播流名称", dataType = "String", required = false)
     protected String stream;
     
     /**
@@ -78,6 +88,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "播放器logo", dataType = "String", required = false)
     protected String logoImage;
     
     /**
@@ -87,6 +98,7 @@ public class LiveChannelResponse {
      * 类型：Int
      * </pre>
      */
+    @ApiModelProperty(name = "Logo不透明度，1表示完全不透明", dataType = "String", required = false)
     protected int logoOpacity;
     
     /**
@@ -96,6 +108,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "Logo位置", dataType = "String", required = false)
     protected String logoPosition;
     
     /**
@@ -105,6 +118,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "Logo的跳转链接", dataType = "String", required = false)
     protected String logoHref;
     
     /**
@@ -114,6 +128,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "播放前显示的封面图", dataType = "String", required = false)
     protected String coverImage;
     
     /**
@@ -123,6 +138,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "封面图的跳转链接", dataType = "String", required = false)
     protected String coverHref;
     
     /**
@@ -132,6 +148,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "等待推流时的显示图片", dataType = "String", required = false)
     protected String waitImage;
     
     /**
@@ -141,6 +158,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "等待推流时显示图片的跳转链接", dataType = "String", required = false)
     protected String waitHref;
     
     /**
@@ -150,6 +168,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "切断流时的显示图片", dataType = "String", required = false)
     protected String cutoffImage;
     
     /**
@@ -159,6 +178,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "切断流时显示图片的跳转链接", dataType = "String", required = false)
     protected String cutoffHref;
     
     /**
@@ -168,6 +188,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "广告类型", dataType = "String", required = false)
     protected String advertType;
     
     /**
@@ -177,6 +198,7 @@ public class LiveChannelResponse {
      * 类型：Int
      * </pre>
      */
+    @ApiModelProperty(name = "广告时长", dataType = "String", required = false)
     protected int advertDuration;
     
     /**
@@ -186,6 +208,7 @@ public class LiveChannelResponse {
      * 类型：Int
      * </pre>
      */
+    @ApiModelProperty(name = "广告区域宽度", dataType = "String", required = false)
     protected int advertWidth;
     
     /**
@@ -195,6 +218,7 @@ public class LiveChannelResponse {
      * 类型：Int
      * </pre>
      */
+    @ApiModelProperty(name = "广告区域高度", dataType = "String", required = false)
     protected int advertHeight;
     
     /**
@@ -204,6 +228,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "图片广告", dataType = "String", required = false)
     protected String advertImage;
     
     /**
@@ -213,6 +238,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "广告的跳转链接", dataType = "String", required = false)
     protected String advertHref;
     
     /**
@@ -222,6 +248,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "视频广告ID", dataType = "String", required = false)
     protected String advertFlvVid;
     
     /**
@@ -231,6 +258,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    @ApiModelProperty(name = "视频广告链接", dataType = "String", required = false)
     protected String advertFlvUrl;
     
     /**
@@ -240,6 +268,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+  
     protected String playerColor;
     
     /**
@@ -249,6 +278,7 @@ public class LiveChannelResponse {
      * 类型：boolean
      * </pre>
      */
+    
     protected boolean autoPlay;
     
     /**
@@ -258,6 +288,7 @@ public class LiveChannelResponse {
      * 类型：String
      * </pre>
      */
+    
     protected String warmUpFlv;
     
     /**

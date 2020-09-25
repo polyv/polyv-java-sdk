@@ -20,8 +20,7 @@
 
 * 常用功能
 
-  * [全局配置](/global_config)
-  * [频道分类](channel/channelManager)
+  * [频道管理](channel/channelManager)
   * [用户信息]()
   * [通知管理]()
   * [安全管理]()

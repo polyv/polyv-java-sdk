@@ -29,7 +29,7 @@ public class ChannelAction {
      * @return
      * @throws IOException
      */
-    @ApiOperation(value = "创建一个直播频道，成功创建返回该频道的基本信息",notes = "调用示例：参考polyv-java-live-sdk单元测试ChannelTest.testCreateChannel()方法。<a target=\"_blank\"  href=\"http://47.115.173.234:3000/#/?id=_25-%e6%94%af%e6%8c%81%e5%a4%9a%e5%b9%b3%e5%8f%b0%e7%9b%b4%e6%92%ad\">ChannelTest.testCreateChannel()</a>    ")
+    @ApiOperation(value = "创建一个直播频道，成功创建返回该频道的基本信息",notes = "调用示例：参考polyv-java-live-sdk单元测试ChannelTest.testCreateChannel()方法。<a target=\"_blank\"  href=\"http://47.115.173.234:3000/#/channel/channelManager?id=sdk%e9%a2%91%e9%81%93%e6%93%8d%e4%bd%9c\">频道创建</a>    ")
     @PostMapping("/createChannel")
     @ResponseBody
     public LiveChannelResponse createChannel(LiveChannelRequest liveChannelRequest) throws IOException {

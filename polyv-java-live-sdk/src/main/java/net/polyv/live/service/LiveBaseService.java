@@ -27,7 +27,8 @@ import net.polyv.live.util.ValidationUtil;
 public class LiveBaseService {
     
     
-    protected <T, E extends LiveCommonRequest> T baseGet(String url, E e, Class<T> tClass) throws IOException {
+    protected <T, E extends LiveCommonRequest> T baseGet(String url, E e, Class<T> tClass)
+            throws IOException {
         T t = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(LiveSignUtil.generateUUID());
@@ -71,13 +72,16 @@ public class LiveBaseService {
         }
     }
     
-    protected <T, E extends LiveCommonRequest> T basePost(String url, E e, Class<T> tClass) throws IOException {
+    protected <T, E extends LiveCommonRequest> T basePost(String url, E e, Class<T> tClass)
+            throws IOException   {
         T t = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(LiveSignUtil.generateUUID());
         }
         e.setAppId(LiveGlobalConfig.APP_ID);
-        e.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        if (StringUtils.isBlank(e.getTimestamp())) {
+            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        }
         Map<String, String> paramMap = MapUtil.objectToMap(e);
         String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.APP_ID, LiveGlobalConfig.APP_SECRET);
         e.setSign(sign);

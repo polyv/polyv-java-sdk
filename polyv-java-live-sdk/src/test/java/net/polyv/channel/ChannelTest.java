@@ -16,7 +16,6 @@ import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
  * @author: niaonao
  * @date: 2020/9/18
  **/
-
 public class ChannelTest extends BaseTest {
     
     
@@ -24,8 +23,7 @@ public class ChannelTest extends BaseTest {
     public void testCreateChannel() throws IOException {
         ILiveChannelService liveChannelService = new LiveChannelServiceImpl();
         LiveChannelRequest liveChannelRequest =  new  LiveChannelRequest();
-        liveChannelRequest.setName( "API测试1").setLinkMicLimit(3).setChannelPasswd("123456");
-//        liveChannelRequest.setChannelPasswd("123456");
+        liveChannelRequest.setName( "API测试1").setChannelPasswd("123456").setRequestId("2860257a405447e1bbbe9161da2dee72");
         LiveChannelResponse liveChannelResponse = liveChannelService.createChannel(liveChannelRequest);
         Assert.assertNotNull(liveChannelResponse);
         System.out.println(JSON.toJSON(liveChannelResponse));

@@ -76,11 +76,13 @@ public class LiveSignUtil {
     public static String md5Hex(String text) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            byte[] inputByteArray = text.getBytes();
+            byte[] inputByteArray = text.getBytes("UTF-8");
             messageDigest.update(inputByteArray);
             byte[] resultByteArray = messageDigest.digest();
             return byteArrayToHex(resultByteArray).toLowerCase();
-        } catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            log.error("生成签名错误",e);
+            e.printStackTrace();
             return null;
         }
     }

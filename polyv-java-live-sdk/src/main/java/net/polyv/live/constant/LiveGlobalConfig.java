@@ -3,6 +3,7 @@ package net.polyv.live.constant;
 import net.polyv.common.base.HttpClientUtil;
 
 /**
+ * 直播全局配置类
  * @author: thomas
  * @date: 2020/9/22
  **/

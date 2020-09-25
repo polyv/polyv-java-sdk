@@ -17,6 +17,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
+ * swagger 启动配置入口类
  * @author: thomas
  * @date: 2020/9/24
  **/
@@ -31,7 +32,7 @@ public class SwaggeConfiguration {
         Docket docket=new Docket(DocumentationType.SWAGGER_12)
                 .apiInfo(apiInfo())
                 //分组名称
-//                .groupName("直播SDK")
+                .groupName("直播SDK")
                 .select()
                 //这里指定Controller扫描包路径
                 .apis(RequestHandlerSelectors.basePackage("net.polyv.live"))
@@ -40,20 +41,12 @@ public class SwaggeConfiguration {
         return docket;
     }
     
-//    @Bean
-//    public Docket docket(){
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .apiInfo(apiInfo())
-//                .select()
-//                .apis(RequestHandlerSelectors.basePackage("net.polyv.live"))
-//                .paths(PathSelectors.any())
-//                .build();
-//    }
+ 
  
     public ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("保利威直播SDK快速接入测试示例")
-                .description("SDK功能测试，对接示例")
+                .title("保利威直播SDK快速接入测试DEMO")
+                .description("SDK功能测试，对接DEMO")
                 .termsOfServiceUrl("")
                 .contact(new Contact("wujie","https://www.polyv.net/","wujie@polyv.net"))
                 .version("1.0")

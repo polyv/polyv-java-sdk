@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.BusinessException;
 
 /**
+ * 统一异常处理逻辑
  * @author: thomas
  * @date: 2020/9/24
  **/
@@ -19,6 +20,11 @@ import net.polyv.common.exception.BusinessException;
 @Slf4j
 public class ExceptionHandlerAction {
     
+    /**
+     * 简单的统一异常错误原因输出
+     * @param exce
+     * @return
+     */
     @ExceptionHandler(value = Exception.class)
     public String handlerException(Exception exce){
         log.error("",exce);

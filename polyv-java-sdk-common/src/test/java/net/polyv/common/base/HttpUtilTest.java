@@ -17,7 +17,7 @@ import com.alibaba.fastjson.JSON;
  **/
 
 public class HttpUtilTest {
-    
+
 //    public HttpUtilTest() {
 //        new Timer("timer - check ").schedule(new TimerTask() {
 //
@@ -49,7 +49,7 @@ public class HttpUtilTest {
     
 //    @Test
 //    public void testHttpPool() throws Exception {
-//        for (int i = 0; i < 500; i++) {
+//        for (int i = 0; i < 100; i++) {
 //            new Thread() {
 //                @Override
 //                public void run() {
@@ -68,7 +68,7 @@ public class HttpUtilTest {
 //            }.start();
 //
 //        }
-//        System.in.read();
+//        Thread.sleep(40000);
 //
 //    }
     
@@ -111,22 +111,22 @@ public class HttpUtilTest {
         String data = HttpUtil.sendPostDataByJson(url, JSON.toJSONString(list), "utf-8");
         System.out.println(data);
     }
-    
-    /**
-     * 请求json数据
-     */
-    @Test
-    public void testUploadFile() throws IOException {
-        String url = "http://localhost:8001/file";
-        Map<String, String> fileMap = new HashMap<String, String>();
-        String fileKey = "fileList";
-        fileMap.put(fileKey, "D:\\a\\b.pdf");
-        fileMap.put(fileKey, "D:\\a\\测试题.pdf");
-        Map<String, String> params = new HashMap<>();
-        params.put("id", "23");
-        String data = HttpUtil.sendUploadFile(url, params, fileMap, "utf-8");
-        System.out.println(data);
-    }
+
+//    /**
+//     * 请求json数据
+//     */
+//    @Test
+//    public void testUploadFile() throws IOException {
+//        String url = "http://localhost:8001/file";
+//        Map<String, String> fileMap = new HashMap<String, String>();
+//        String fileKey = "fileList";
+//        fileMap.put(fileKey, "D:\\a\\b.pdf");
+//        fileMap.put(fileKey, "D:\\a\\测试题.pdf");
+//        Map<String, String> params = new HashMap<>();
+//        params.put("id", "23");
+//        String data = HttpUtil.sendUploadFile(url, params, fileMap, "utf-8");
+//        System.out.println(data);
+//    }
     
     
 }

@@ -1,6 +1,7 @@
 package net.polyv.live.constant;
 
 /**
+ * 直播相关URL
  * @author: thomas
  * @date: 2020/9/22
  **/

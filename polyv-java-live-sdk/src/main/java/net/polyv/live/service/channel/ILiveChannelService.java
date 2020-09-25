@@ -10,7 +10,7 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
  * @date: 2020/9/22
  **/
 public interface ILiveChannelService {
-
-    LiveChannelResponse createChannel(LiveChannelRequest liveChannelRequest ) throws IOException;
-
+    
+    LiveChannelResponse createChannel(LiveChannelRequest liveChannelRequest) throws IOException;
+    
 }

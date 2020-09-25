@@ -82,7 +82,6 @@ public class LiveSignUtil {
             return byteArrayToHex(resultByteArray).toLowerCase();
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             log.error("生成签名错误",e);
-            e.printStackTrace();
             return null;
         }
     }

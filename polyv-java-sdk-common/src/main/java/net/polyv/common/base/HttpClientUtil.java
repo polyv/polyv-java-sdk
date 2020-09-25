@@ -32,13 +32,19 @@ import net.polyv.common.constant.Constant;
 import net.polyv.common.exception.BusinessException;
 
 /**
+ * HTTP 链接池初始化
  * @author thomas
  * @description http连接池工具类
  */
 @Slf4j
 public class HttpClientUtil {
-    
+    /**
+     * HTTP 链接池管理工具类
+     */
     private static PoolingHttpClientConnectionManager manager = null;
+    /**
+     * HTTP 链接池
+     */
     private static CloseableHttpClient httpClient = null;
     //读写超时时间设置，默认5S
     private static int TIME_OUT = 5000;
@@ -71,7 +77,7 @@ public class HttpClientUtil {
     
     
     /**
-     * 获取HTTP 链接池的状态
+     * 获取HTTP 链接池的状态，用于整体监控
      * @return
      */
     public static PoolStats getPoolState() {
@@ -83,6 +89,10 @@ public class HttpClientUtil {
         return manager;
     }
     
+    /**
+     * 以线程安全的方式获取线程池
+     * @return CloseableHttpClient
+     */
     public synchronized static  CloseableHttpClient getHttpClient() {
         if (httpClient == null) {
             BusinessException exception = new BusinessException(Constant.BUSINESS_ERROR_CODE,"HTTP连接池未初始化，请调用初始化方法");
@@ -93,7 +103,7 @@ public class HttpClientUtil {
     }
     
     /**
-     * 以线程安全的方式获取线程池
+     * HTTP 链接池初始化类
      * @return
      */
     public static synchronized CloseableHttpClient init() {
@@ -176,7 +186,7 @@ public class HttpClientUtil {
                     //连接池不是共享模式
                     .setConnectionManagerShared(false)
                     //定期回收空闲连接，避免客户端线程池爆掉
-                    .evictIdleConnections(60, TimeUnit.SECONDS)
+                    .evictIdleConnections(120, TimeUnit.SECONDS)
                     // 定期回收过期连接
                     .evictExpiredConnections()
                     //连接存活时间，如果不设置，则根据长连接信息决定

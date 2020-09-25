@@ -8,6 +8,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -21,7 +22,9 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+
 import com.alibaba.fastjson.JSON;
+
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.constant.Constant;
 
@@ -32,15 +35,14 @@ import net.polyv.common.constant.Constant;
  **/
 @Slf4j
 public class HttpUtil {
-    
-    
+ 
     /**
-     * HTTP POST 请求处理逻辑
-     * @param url
-     * @param pathVariable
-     * @param params
-     * @param encoding
-     * @return
+     * HTTP POST 请求处理逻辑，参数提交方式为form表单形式
+     * @param url  请求地址
+     * @param pathVariable  对于restful请求，指定一个路径参数
+     * @param params  请求参数
+     * @param encoding 编码字符集， 默认为 utf-8
+     * @return HTTP 返回的内容
      * @throws IOException
      */
     public static String sendPostDataByMap(String url, String pathVariable, Map<String, String> params, String encoding)
@@ -52,15 +54,18 @@ public class HttpUtil {
     }
     
     /**
-     * HTTP POST 请求处理逻辑
-     * @param url 请求地址
-     * @param params 传递的参数
-     * @param encoding 参数编码
-     * @return
+     * HTTP POST 请求处理逻辑，参数提交方式为form表单形式
+     * @param url  请求地址
+     * @param params  请求参数
+     * @param encoding 编码字符集， 默认为 utf-8
+     * @return HTTP 返回的内容
      * @throws IOException
      */
     public static String sendPostDataByMap(String url, Map<String, String> params, String encoding) throws IOException {
         log.debug("http 请求 url: " + url + " , 请求参数: " + JSON.toJSON(params));
+        if(StringUtils.isBlank(encoding)){
+            encoding = "UTF-8";
+        }
         String result = null;
         CloseableHttpResponse response = null;
         // 创建httpclient对象
@@ -100,13 +105,14 @@ public class HttpUtil {
     }
     
     
+ 
     /**
-     * HTTP POST 请求处理逻辑
-     * @param url
-     * @param pathVariable
-     * @param json
-     * @param encoding
-     * @return
+     * HTTP POST 请求处理逻辑，参数提交方式为json形式
+     * @param url  请求地址
+     * @param pathVariable  对于restful请求，指定一个路径参数
+     * @param json  需要提交的json
+     * @param encoding 编码字符集， 默认为 utf-8
+     * @return HTTP 返回的内容
      * @throws IOException
      */
     public static String sendPostDataByJson(String url, String pathVariable, String json, String encoding)
@@ -118,15 +124,18 @@ public class HttpUtil {
     }
     
     /**
-     * HTTP POST 请求处理逻辑
-     * @param url 请求地址
-     * @param json 传递的参数
-     * @param encoding 参数编码
-     * @return
+     * HTTP POST 请求处理逻辑，参数提交方式为json形式
+     * @param url  请求地址
+     * @param json  需要提交的json
+     * @param encoding 编码字符集， 默认为 utf-8
+     * @return HTTP 返回的内容
      * @throws IOException
      */
     public static String sendPostDataByJson(String url, String json, String encoding) throws IOException {
         log.debug("http 请求 url: " + url + " , 请求参数: " + json);
+        if(StringUtils.isBlank(encoding)){
+            encoding = "UTF-8";
+        }
         String result = null;
         // 创建httpclient对象
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
@@ -157,13 +166,14 @@ public class HttpUtil {
     }
     
     
+   
     /**
      * HTTP GET 请求处理逻辑
-     * @param url 请求的URL
-     * @param encoding 内容编码字符集
-     * @return
+     * @param url  请求地址
+     * @param pathVariable  对于restful请求，指定一个路径参数
+     * @param encoding 编码字符集， 默认为 utf-8
+     * @return HTTP 返回的内容
      * @throws IOException
-     * @throws Exception
      */
     public static String sendGetData(String url, String pathVariable, String encoding) throws IOException {
         if (StringUtils.isNotBlank(pathVariable)) {
@@ -173,12 +183,13 @@ public class HttpUtil {
     }
     
     /**
-     * HTTP GET 请求处理逻辑
-     * @param url 请求的URL
-     * @param encoding 内容编码字符集
+     * HTTP POST 请求处理逻辑，参数提交方式为json形式
+     * @param url  请求地址
+     * @param params  请求参数,最终转换为key=value&key=value的查询字符串
+     * @param encoding 编码字符集， 默认为 utf-8
+     * @return HTTP 返回的内容
      * @return
      * @throws IOException
-     * @throws Exception
      */
     public static String sendGetData(String url, Map<String, Object> params, String encoding) throws IOException {
         String paramStr = null;
@@ -194,16 +205,16 @@ public class HttpUtil {
     }
     
     /**
-     * HTTP GET 请求处理逻辑
-     * @param url 请求的URL
-     * @param encoding 内容编码字符集
-     * @return
+     * HTTP POST 请求处理逻辑，参数提交方式为json形式
+     * @param url  请求地址
+     * @param pathVariable  对于restful请求，指定一个路径参数
+     * @param params  请求参数,最终转换为key=value&key=value的查询字符串
+     * @param encoding 编码字符集， 默认为 utf-8
+     * @return HTTP 返回的内容
      * @throws IOException
-     * @throws Exception
      */
     public static String sendGetData(String url, String pathVariable, Map<String, Object> params, String encoding)
             throws IOException {
-        
         if (StringUtils.isNotBlank(pathVariable)) {
             url = String.format(url, pathVariable);
         }
@@ -220,15 +231,17 @@ public class HttpUtil {
     }
     
     /**
-     * HTTP GET 请求处理逻辑
-     * @param url 请求的URL
-     * @param encoding 内容编码字符集
-     * @return
+     * HTTP POST 请求处理逻辑，参数提交方式为json形式
+     * @param url  请求地址
+     * @param encoding 编码字符集， 默认为 utf-8
+     * @return HTTP 返回的内容
      * @throws IOException
-     * @throws Exception
      */
     public static String sendGetData(String url, String encoding) throws IOException {
         log.debug("http 请求 url: " + url);
+        if(StringUtils.isBlank(encoding)){
+            encoding = "UTF-8";
+        }
         String result = null;
         // 创建httpclient对象
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
@@ -255,19 +268,23 @@ public class HttpUtil {
     }
     
     
+    
     /**
      * HTTP 传输文件 需要和服务器端联调测试
      * todo：待联调测试
-     * @param url
-     * @param params
-     * @param fileMap
-     * @param encoding
-     * @return
+     * @param url  服务器地址
+     * @param params 需要同步上传的参数
+     * @param fileMap 文件列表
+     * @param encoding 字符集编码，默认UTF-8
+     * @return  HTTP 返回的内容
      * @throws IOException
      */
-    public static String sendUploadFile(String url, Map<String, String> params, Map<String, String> fileMap,
+    private static String sendUploadFile(String url, Map<String, String> params, Map<String, String> fileMap,
             String encoding) throws IOException {
         log.debug("http 请求 url: " + url + " , 请求参数: " + JSON.toJSONString(params));
+        if(StringUtils.isBlank(encoding)){
+            encoding = "UTF-8";
+        }
         String result = null;
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         HttpPost post = new HttpPost(url);

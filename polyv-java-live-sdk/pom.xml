@@ -11,6 +11,9 @@
 
     <artifactId>polyv-java-live-sdk</artifactId>
 
+    <properties>
+        <slf4j.version>1.7.30</slf4j.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>net.polyv</groupId>
@@ -21,7 +24,16 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
             <version>1.5.22</version>
-            <scope>compile</scope>
         </dependency>
+
+
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+
     </dependencies>
 </project>

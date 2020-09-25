@@ -40,8 +40,10 @@ public class HttpUtilTest {
 //        }, 0, 1000);
 //    }
     
+    /**
+     * 全局初始化工作
+     */
     public HttpUtilTest() {
-        
         HttpClientUtil.setTimeOut(10000);
         HttpClientUtil.init();
         System.out.println("--初始化完成--");
@@ -72,7 +74,10 @@ public class HttpUtilTest {
 //
 //    }
     
-    
+    /**
+     * 测试 http 个体请求
+     * @throws Exception
+     */
     @Test
     public void testHttpGet() throws Exception {
         String url = "https://www.w3school.com.cn/index.html";
@@ -85,7 +90,7 @@ public class HttpUtilTest {
     
     
     /**
-     * 模拟表单提交
+     * 测试post 表单提交
      */
     @Test
     public void testPostByMap() throws IOException {
@@ -99,7 +104,7 @@ public class HttpUtilTest {
     }
     
     /**
-     * 请求json数据
+     * 测试 json post 请求
      */
     @Test
     public void testPostByJson() throws IOException {
@@ -112,21 +117,6 @@ public class HttpUtilTest {
         System.out.println(data);
     }
 
-//    /**
-//     * 请求json数据
-//     */
-//    @Test
-//    public void testUploadFile() throws IOException {
-//        String url = "http://localhost:8001/file";
-//        Map<String, String> fileMap = new HashMap<String, String>();
-//        String fileKey = "fileList";
-//        fileMap.put(fileKey, "D:\\a\\b.pdf");
-//        fileMap.put(fileKey, "D:\\a\\测试题.pdf");
-//        Map<String, String> params = new HashMap<>();
-//        params.put("id", "23");
-//        String data = HttpUtil.sendUploadFile(url, params, fileMap, "utf-8");
-//        System.out.println(data);
-//    }
-    
+ 
     
 }

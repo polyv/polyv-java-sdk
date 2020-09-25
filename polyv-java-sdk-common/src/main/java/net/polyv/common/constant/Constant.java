@@ -1,6 +1,7 @@
 package net.polyv.common.constant;
 
 /**
+ * 公共常量定义类
  * @author: thomas
  * @date: 2020/9/21
  **/

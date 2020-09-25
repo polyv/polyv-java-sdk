@@ -1,6 +1,7 @@
 package net.polyv.common.exception;
 
 /**
+ * 自定义异常
  * @author: thomas
  * @date: 2020/9/22
  **/

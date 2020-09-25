@@ -26,7 +26,7 @@ public class LiveChannelResponse {
      */
     
     @ApiModelProperty(name = "channelId", value = "直播频道ID")
-    protected int channelId;
+    protected Integer channelId;
     
     /**
      * 用户Id
@@ -68,7 +68,7 @@ public class LiveChannelResponse {
      * LOGO透明度
      */
     @ApiModelProperty(name = "logoOpacity", value = "Logo不透明度，1表示完全不透明")
-    protected int logoOpacity;
+    protected Integer logoOpacity;
     
     /**
      * LOGO位置
@@ -128,19 +128,19 @@ public class LiveChannelResponse {
      * 广告时长
      */
     @ApiModelProperty(name = "advertDuration", value = "广告时长")
-    protected int advertDuration;
+    protected Integer advertDuration;
     
     /**
      * 广告区域宽度
      */
     @ApiModelProperty(name = "advertWidth", value = "广告区域宽度")
-    protected int advertWidth;
+    protected Integer advertWidth;
     
     /**
      * 广告区域高度
      */
     @ApiModelProperty(name = "advertHeight", value = "广告区域高度")
-    protected int advertHeight;
+    protected Integer advertHeight;
     
     /**
      * 图片广告
@@ -242,5 +242,5 @@ public class LiveChannelResponse {
      * 连麦人数
      */
     @ApiModelProperty(name = "linkMicLimit", value = "连麦人数")
-    private int linkMicLimit;
+    private Integer linkMicLimit;
 }

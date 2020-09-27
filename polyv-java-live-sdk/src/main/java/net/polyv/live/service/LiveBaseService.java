@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.base.HttpUtil;
 import net.polyv.common.exception.BusinessException;
 import net.polyv.live.constant.LiveConstant;
-import net.polyv.live.constant.LiveGlobalConfig;
+import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.LiveCommonResponse;
 import net.polyv.live.util.LiveSignUtil;

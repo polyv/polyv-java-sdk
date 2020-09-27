@@ -1,6 +1,7 @@
-package net.polyv.live.constant;
+package net.polyv.live.config;
 
 import net.polyv.common.base.HttpClientUtil;
+import net.polyv.common.exception.GlobalUncaughtExceptionHandler;
 
 /**
  * 直播全局配置类
@@ -23,6 +24,8 @@ public class LiveGlobalConfig {
         LiveGlobalConfig.USER_ID = userId;
         LiveGlobalConfig.APP_SECRET = appSecret;
         HttpClientUtil.init();
+        //全局异常和错误处理配置
+        Thread.setDefaultUncaughtExceptionHandler(new GlobalUncaughtExceptionHandler());
     }
     
     public static void  init(String appId,String userId,String appSecret,Integer timeOut ,Integer maxClientNum){

@@ -3,7 +3,7 @@ package net.polyv.live.service.channel.impl;
 import java.io.IOException;
 
 import lombok.extern.slf4j.Slf4j;
-import net.polyv.live.constant.LiveGlobalConfig;
+import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;

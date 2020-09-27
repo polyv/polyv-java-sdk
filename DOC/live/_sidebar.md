@@ -2,8 +2,8 @@
 
   * [简介](/)
   * [名词解释](/basic_concept )
-  * [经典案例](/classic_case) 
   * [接入流程](/join_flow)  
+  * [经典案例](/classic_case) 
   * [快速接入](/quick_start)
   * [功能索引](/function_index)
 

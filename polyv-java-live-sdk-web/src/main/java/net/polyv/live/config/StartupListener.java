@@ -6,7 +6,6 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
-import net.polyv.live.constant.LiveGlobalConfig;
 
 /**
  * 默认启动配置类

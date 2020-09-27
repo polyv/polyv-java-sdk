@@ -4,12 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <pre>
- *  SDK Version
- * </pre>
- *
- * @author HuangYF
- */
+ * App入口程序
+ * @author: thomas
+ * @date: 2020/9/23
+ **/
 public class App {
 
     private static final Logger LOG = LoggerFactory.getLogger(App.class);

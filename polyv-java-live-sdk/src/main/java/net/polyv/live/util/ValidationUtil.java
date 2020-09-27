@@ -9,6 +9,7 @@ import javax.validation.Validator;
 import org.hibernate.validator.HibernateValidator;
 import lombok.Data;
 /**
+ * hibernate-validator 参数校验工具类
  * @author: thomas
  * @date: 2020/9/23
  **/

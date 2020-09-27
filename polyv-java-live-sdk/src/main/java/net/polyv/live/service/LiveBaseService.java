@@ -20,13 +20,23 @@ import net.polyv.live.util.MapUtil;
 import net.polyv.live.util.ValidationUtil;
 
 /**
+ * 直播公共服务类
  * @author: thomas
  * @date: 2020/9/23
  **/
 @Slf4j
 public class LiveBaseService {
     
-    
+    /**
+     * HTTP GET 公共请求
+     * @param url  请求URL
+     * @param e  请求参数对象
+     * @param tClass 返回对象class类型
+     * @param <T>  返回对象泛型
+     * @param <E>  请求参数泛型
+     * @return  HTTP response 数据封装对象
+     * @throws IOException
+     */
     protected <T, E extends LiveCommonRequest> T baseGet(String url, E e, Class<T> tClass)
             throws IOException {
         T t = null;
@@ -61,6 +71,11 @@ public class LiveBaseService {
         return t;
     }
     
+    /**
+     * 采用hibernate-validator校验入参
+     * @param e 入参
+     * @param <E> 入参泛型
+     */
     private <E extends LiveCommonRequest> void validateBean(E e) {
         ValidationUtil.ValidResult validResult = ValidationUtil.validateBean(e);
         if (validResult.hasErrors()) {
@@ -72,6 +87,16 @@ public class LiveBaseService {
         }
     }
     
+    /**
+     * HTTP POST 公共请求
+     * @param url  请求URL
+     * @param e  请求参数对象
+     * @param tClass 返回对象class类型
+     * @param <T>  返回对象泛型
+     * @param <E>  请求参数泛型
+     * @return  HTTP response 数据封装对象
+     * @throws IOException
+     */
     protected <T, E extends LiveCommonRequest> T basePost(String url, E e, Class<T> tClass)
             throws IOException   {
         T t = null;

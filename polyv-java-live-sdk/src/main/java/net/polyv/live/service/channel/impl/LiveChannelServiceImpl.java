@@ -11,11 +11,18 @@ import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelService;
 
 /**
+ * 直播频道管理
  * @author: thomas
  * @date: 2020/9/22
  **/
 @Slf4j
 public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChannelService {
+    /**
+     * 直播频道创建
+     * @param liveChannelRequest  直播频道请求实体
+     * @return
+     * @throws IOException
+     */
     @Override
     public LiveChannelResponse createChannel( LiveChannelRequest liveChannelRequest  ) throws IOException {
         liveChannelRequest.setUserId(LiveGlobalConfig.USER_ID);

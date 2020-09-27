@@ -17,12 +17,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <pre>
- *  map操作工具类
- * </pre>
- *
- * @author HuangYF
- */
+ * MAP对象和HTTP参数 互相转换对象
+ * @author: thomas
+ * @date: 2020/9/22
+ **/
 public class MapUtil {
 
 	private static final Logger LOG = LoggerFactory.getLogger(MapUtil.class);
@@ -37,7 +35,6 @@ public class MapUtil {
 	public static Map<String,String> order(Map<String, String> map){
 		HashMap<String, String> tempMap = new LinkedHashMap<String, String>();
 		List<Map.Entry<String, String>> infoIds = new ArrayList<Map.Entry<String, String>>(map.entrySet());
-
 		Collections.sort(infoIds, new Comparator<Map.Entry<String, String>>() {
 			@Override
             public int compare(Map.Entry<String, String> o1, Map.Entry<String, String> o2) {
@@ -106,7 +103,7 @@ public class MapUtil {
 	}
 
 	/**
-	 * url 参数串连
+	 * url 参数串连(key=value&key=value)
 	 * @param map map
 	 * @param keyLower keyLower
 	 * @param valueUrlEncode valueUrlEncode
@@ -138,7 +135,7 @@ public class MapUtil {
 	}
 
 	/**
-	 * url 参数串连但是不进行参数Encode
+	 * url 参数串连但是不进行参数Encode(key=value&key=value)
 	 * @param map map
 	 * @return string
 	 */

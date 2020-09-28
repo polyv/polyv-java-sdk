@@ -18,9 +18,9 @@ public class StartupListener implements ApplicationContextAware   {
     
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        String appId = "fqs60f693j";
-        String appSecret = "ed96a87e486c4c9a9591cf2a61d72a67";
-        String userId = "152de5237d";
+        String appId = "frlr1zazn3";
+        String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
+        String userId = "1b448be323";
         LiveGlobalConfig.init(appId,userId,appSecret);
         log.info("--初始化完成--");
     }

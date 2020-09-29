@@ -10,11 +10,11 @@ import org.slf4j.LoggerFactory;
  **/
 public class App {
 
-    private static final Logger LOG = LoggerFactory.getLogger(App.class);
+    private static final Logger log = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) {
-        LOG.info("Polyv Live Sdk Version --info 1.4.0");
-        LOG.debug("Polyv Live Sdk Version --debug 1.4.0");
+        log.info("Polyv Live Sdk Version --info 1.4.0");
+        log.debug("Polyv Live Sdk Version --debug 1.4.0");
     }
 
 }

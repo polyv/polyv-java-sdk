@@ -201,6 +201,11 @@ public class LiveURL {
      * 更新频道信息，可选频道的设置参数
      */
     public static final String CHANNEL_BASIC_UPDATE_URL = BASE_URI + "v3/channel/basic/update";
+
+    /**
+     * 设置频道详情
+     */
+    public static final String CHANNEL_DETAIL_SET_URL = BASE_URI + "v3/channel/detail/update";
     
     /**
      * 频道禁流接口

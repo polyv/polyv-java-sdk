@@ -2,6 +2,7 @@ package net.polyv.live.action;
 
 import java.io.IOException;
 
+import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,11 @@ public class ChannelAction {
         LiveChannelResponse liveChannelResponse =  new LiveChannelServiceImpl().createChannel(liveChannelRequest);
         return  liveChannelResponse;
     }
-    
-    
+
+    @ApiOperation(value = "设置频道详情，成功时为true，错误时为\"\"",notes = "调用示例：参考polyv-java-live-sdk单元测试ChannelTest.testCreateChannel()方法。<a target=\"_blank\"  href=\"http://47.115.173.234:3000/#/channel/channelManager?id=sdk%e9%a2%91%e9%81%93%e6%93%8d%e4%bd%9c\">频道创建</a>    ")
+    @PostMapping("/updateChannelDetail")
+    @ResponseBody
+    public String updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest) throws IOException {
+        return new LiveChannelServiceImpl().updateChannelDetail(liveChannelDetailRequest);
+    }
 }

@@ -5,6 +5,7 @@ import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.service.LiveBaseService;
@@ -30,10 +31,25 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         LiveChannelResponse liveChannelResponse = this.basePost(url, liveChannelRequest, LiveChannelResponse.class);
         return liveChannelResponse;
     }
-    
-    
-    
-    
+
+    /**
+     * 设置频道详情
+     * 注意：设置前，请确认您的套餐是否包含对应场景
+     * @param liveChannelDetailRequest 设置频道详情请求实体
+     * @return
+     * @throws IOException
+     */
+    @Override
+    public String updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest) throws IOException {
+        //此处password字段与channelPasswd都表示频道密码，先做兼容
+        if("channelPasswd".equals(liveChannelDetailRequest.getField())){
+            liveChannelDetailRequest.setField("password");
+        }
+        String url = LiveURL.CHANNEL_DETAIL_SET_URL;
+        return this.basePost(url, liveChannelDetailRequest, String.class);
+    }
+
+
 //    @Override
 //    public LiveChannelResponse createChannel(LiveChannelRequest liveChannelRequest) throws IOException {
 //        liveChannelRequest.setUserId(LiveGlobalConfig.USER_ID);

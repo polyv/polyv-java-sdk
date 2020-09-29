@@ -1,6 +1,8 @@
 package net.polyv.channel;
 
 import java.io.IOException;
+
+import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import org.junit.Assert;
 import org.junit.Test;
 import com.alibaba.fastjson.JSON;
@@ -40,10 +42,74 @@ public class ChannelTest {
         LiveChannelResponse liveChannelResponse = new LiveChannelServiceImpl().createChannel(liveChannelRequest);
         Assert.assertNotNull(liveChannelResponse);
         if (liveChannelResponse != null) {
-            //todo something ......
+            //to do something ......
             log.debug("频道创建成功" + JSON.toJSONString(liveChannelResponse));
         }
     }
-    
+
+    /**
+     * 测试设置频道详情：修改密码功能
+     * @throws IOException
+     */
+    @Test
+    public void testUpdateChannelPassword() throws IOException {
+        Integer channelId = 1938888;
+        String newPassword = "1234567";
+        LiveChannelDetailRequest liveChannelDetailRequest = new LiveChannelDetailRequest();
+        liveChannelDetailRequest.setChannelId(channelId)
+                .setField("channelPasswd")
+                .setValue(newPassword)
+                .setRequestId("2860257a405447e1bbbe9161da2dee73");
+        String liveChannelDetailResponse = new LiveChannelServiceImpl().updateChannelDetail(liveChannelDetailRequest);
+        Assert.assertNotNull(liveChannelDetailResponse);
+        if("true".equals(liveChannelDetailResponse)){
+            //to do something ......
+            log.debug(String.format("频道%s修改密码为%s成功%s",channelId,newPassword,liveChannelDetailResponse));
+        }
+    }
+
+    /**
+     * TODO 频道号动态获取，scene写成枚举类型
+     * 测试设置频道详情：修改scene字段
+     * @throws IOException
+     */
+    @Test
+    public void testUpdateChannelScene() throws IOException {
+        Integer channelId = 1938888;
+        String value = "alone";
+        LiveChannelDetailRequest liveChannelDetailRequest = new LiveChannelDetailRequest();
+        liveChannelDetailRequest.setChannelId(channelId)
+                .setField("scene")
+                .setValue(value)
+                .setRequestId("2860257a405447e1bbbe9161da2dee74");
+        String liveChannelDetailResponse = new LiveChannelServiceImpl().updateChannelDetail(liveChannelDetailRequest);
+        Assert.assertNotNull(liveChannelDetailResponse);
+        if("true".equals(liveChannelDetailResponse)){
+            //to do something ......
+            log.debug(String.format("频道%s修改scene为%s成功%s",channelId,value,liveChannelDetailResponse));
+        }
+    }
+
+    /**
+     * TODO 频道号动态获取
+     * 测试设置频道详情：设置最大同时观看人数
+     * @throws IOException
+     */
+    @Test
+    public void testUpdateChannel() throws IOException {
+        Integer channelId = 1938888;
+        String value = "2147483647";
+        LiveChannelDetailRequest liveChannelDetailRequest = new LiveChannelDetailRequest();
+        liveChannelDetailRequest.setChannelId(channelId)
+                .setField("maxViewer")
+                .setValue(value)
+                .setRequestId("2860257a405447e1bbbe9161da2dee75");
+        String liveChannelDetailResponse = new LiveChannelServiceImpl().updateChannelDetail(liveChannelDetailRequest);
+        Assert.assertNotNull(liveChannelDetailResponse);
+        if("true".equals(liveChannelDetailResponse)){
+            //to do something ......
+            log.debug(String.format("频道%s修改maxViewer为%s成功%s",channelId,value,liveChannelDetailResponse));
+        }
+    }
     
 }

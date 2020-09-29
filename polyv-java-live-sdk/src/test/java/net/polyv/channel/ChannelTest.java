@@ -23,6 +23,7 @@ public class ChannelTest {
      */
     public ChannelTest() {
 
+
         String appId = "frlr1zazn3";
         String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
         String userId = "1b448be323";

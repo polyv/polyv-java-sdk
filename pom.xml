@@ -146,28 +146,28 @@
                         </executions>
                     </plugin>
                     <!-- 生成javadoc文档包的插件 -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.2.0</version>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <charset>UTF-8</charset>
-                            <locale>zh_CN</locale>
-                        </configuration>
-                    </plugin>
+<!--                    <plugin>-->
+<!--                        <groupId>org.apache.maven.plugins</groupId>-->
+<!--                        <artifactId>maven-javadoc-plugin</artifactId>-->
+<!--                        <version>3.2.0</version>-->
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <id>attach-javadocs</id>-->
+<!--                                <goals>-->
+<!--                                    <goal>jar</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                        <configuration>-->
+<!--                            <charset>UTF-8</charset>-->
+<!--                            <locale>zh_CN</locale>-->
+<!--                        </configuration>-->
+<!--                    </plugin>-->
                     <!-- Gpg Signature -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
+                        <version>1.0</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>

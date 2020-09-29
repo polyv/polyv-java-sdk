@@ -43,7 +43,7 @@ public class HttpUtil {
      * @param params  请求参数
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
-     * @throws IOException
+     * @throws IOException 客户端和服务器读写通讯异常  
      */
     public static String sendPostDataByMap(String url, String pathVariable, Map<String, String> params, String encoding)
             throws IOException {
@@ -59,7 +59,7 @@ public class HttpUtil {
      * @param params  请求参数
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
-     * @throws IOException
+     * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendPostDataByMap(String url, Map<String, String> params, String encoding) throws IOException {
         log.debug("http 请求 url: " + url + " , 请求参数: " + JSON.toJSON(params));
@@ -113,7 +113,7 @@ public class HttpUtil {
      * @param json  需要提交的json
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
-     * @throws IOException
+     * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendPostDataByJson(String url, String pathVariable, String json, String encoding)
             throws IOException {
@@ -129,7 +129,7 @@ public class HttpUtil {
      * @param json  需要提交的json
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
-     * @throws IOException
+     * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendPostDataByJson(String url, String json, String encoding) throws IOException {
         log.debug("http 请求 url: " + url + " , 请求参数: " + json);
@@ -173,7 +173,7 @@ public class HttpUtil {
      * @param pathVariable  对于restful请求，指定一个路径参数
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
-     * @throws IOException
+     * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendGetData(String url, String pathVariable, String encoding) throws IOException {
         if (StringUtils.isNotBlank(pathVariable)) {
@@ -189,7 +189,7 @@ public class HttpUtil {
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
      * @return
-     * @throws IOException
+     * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendGetData(String url, Map<String, Object> params, String encoding) throws IOException {
         String paramStr = null;
@@ -211,7 +211,7 @@ public class HttpUtil {
      * @param params  请求参数,最终转换为key=value&key=value的查询字符串
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
-     * @throws IOException
+     * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendGetData(String url, String pathVariable, Map<String, Object> params, String encoding)
             throws IOException {
@@ -235,7 +235,7 @@ public class HttpUtil {
      * @param url  请求地址
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
-     * @throws IOException
+     * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendGetData(String url, String encoding) throws IOException {
         log.debug("http 请求 url: " + url);
@@ -277,7 +277,7 @@ public class HttpUtil {
      * @param fileMap 文件列表
      * @param encoding 字符集编码，默认UTF-8
      * @return  HTTP 返回的内容
-     * @throws IOException
+     * @throws IOException 客户端和服务器读写通讯异常
      */
     private static String sendUploadFile(String url, Map<String, String> params, Map<String, String> fileMap,
             String encoding) throws IOException {

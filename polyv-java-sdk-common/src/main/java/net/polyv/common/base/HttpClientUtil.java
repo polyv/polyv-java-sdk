@@ -34,7 +34,6 @@ import net.polyv.common.exception.BusinessException;
 /**
  * HTTP 链接池初始化
  * @author thomas
- * @description http连接池工具类
  */
 @Slf4j
 public class HttpClientUtil {
@@ -49,7 +48,7 @@ public class HttpClientUtil {
     //读写超时时间设置，默认5S
     private static int TIME_OUT = 5000;
     //默认线程数
-    private static int MAX_CLIENT_NUM = 300;
+    private static int MAX_CLIENT_NUM = 60;
     
     public static int getMaxClientNum() {
         return MAX_CLIENT_NUM;
@@ -57,10 +56,10 @@ public class HttpClientUtil {
     
     /**
      * httpClient 初始化后，设置无效
-     * @param maxClientNum
+     * @param maxClientNum HTTP 链接池最大并发连接数
      */
     public static void setMaxClientNum(int maxClientNum) {
-        MAX_CLIENT_NUM = maxClientNum;
+        MAX_CLIENT_NUM = maxClientNum < 300 ? maxClientNum : MAX_CLIENT_NUM;
     }
     
     public static int getTimeOut() {
@@ -69,7 +68,7 @@ public class HttpClientUtil {
     
     /**
      * httpClient 初始化后，设置无效
-     * @param timeOut
+     * @param timeOut HTTP 连接超时时间
      */
     public static void setTimeOut(int timeOut) {
         TIME_OUT = timeOut;
@@ -78,9 +77,9 @@ public class HttpClientUtil {
     
     /**
      * 获取HTTP 链接池的状态，用于整体监控
-     * @return
+     * @return http 链接池状态
      */
-    public static PoolStats getPoolState() {
+    protected static PoolStats getPoolState() {
         PoolStats poolStats = manager.getTotalStats();
         return poolStats;
     }
@@ -91,12 +90,12 @@ public class HttpClientUtil {
     
     /**
      * 以线程安全的方式获取线程池
-     * @return CloseableHttpClient
+     * @return CloseableHttpClient  Http client
      */
-    public synchronized static  CloseableHttpClient getHttpClient() {
+    public synchronized static CloseableHttpClient getHttpClient() {
         if (httpClient == null) {
-            BusinessException exception = new BusinessException(Constant.BUSINESS_ERROR_CODE,"HTTP连接池未初始化，请调用初始化方法");
-            log.error(exception.getMessage(),exception);
+            BusinessException exception = new BusinessException(Constant.BUSINESS_ERROR_CODE, "HTTP连接池未初始化，请调用初始化方法");
+            log.error(exception.getMessage(), exception);
             throw exception;
         }
         return httpClient;
@@ -104,7 +103,7 @@ public class HttpClientUtil {
     
     /**
      * HTTP 链接池初始化类
-     * @return
+     * @return   CloseableHttpClient  Http client
      */
     public static synchronized CloseableHttpClient init() {
         if (httpClient == null) {

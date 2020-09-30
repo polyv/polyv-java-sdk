@@ -13,6 +13,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.LiveCommonRequest;
 
 /**
@@ -116,4 +117,8 @@ public class LiveChannelRequest extends LiveCommonRequest {
     @ApiModelProperty(name = "receiveChannelIds", value = "接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效" +
             "(注：需要开启频道转播功能该参数才生效)")
     private String receiveChannelIds;
+    
+    public static void main(String[] args) {
+        System.out.println("SceneType.main="+ LiveConstant.SceneType.PPT.getDesc());
+    }
 }

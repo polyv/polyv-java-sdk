@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * App入口程序
  * @author: thomas
- * @date: 2020/9/23
+ 
  **/
 public class App {
 

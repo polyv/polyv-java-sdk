@@ -18,7 +18,7 @@ import net.polyv.live.entity.LiveCommonRequest;
 /**
  * 直播频道请求实体
  * @author: thomas
- * @date: 2020/9/22
+ 
  **/
 @Data
 @Accessors(chain = true)

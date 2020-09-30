@@ -3,7 +3,7 @@ package net.polyv.live.constant;
 /**
  * 频道场景，待修改为枚举
  * @author: thomas
- * @date: 2020/9/22
+ 
  **/
 public class SceneType {
     

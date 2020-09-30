@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 /**
  * 直播频道返回实体
  * @author: thomas
- * @date: 2020/9/22
+ 
  **/
 @Data
 @Accessors(chain = true)

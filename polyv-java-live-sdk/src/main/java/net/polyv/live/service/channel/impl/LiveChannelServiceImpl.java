@@ -14,15 +14,15 @@ import net.polyv.live.service.channel.ILiveChannelService;
 /**
  * 直播频道管理
  * @author: thomas
- * @date: 2020/9/22
+ 
  **/
 @Slf4j
 public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChannelService {
     /**
      * 直播频道创建
      * @param liveChannelRequest  直播频道请求实体
-     * @return
-     * @throws IOException
+     * @return 频道数据
+     * @throws IOException 客户端和服务器读写异常
      */
     @Override
     public LiveChannelResponse createChannel( LiveChannelRequest liveChannelRequest  ) throws IOException {
@@ -36,8 +36,8 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
      * 设置频道详情
      * 注意：设置前，请确认您的套餐是否包含对应场景
      * @param liveChannelDetailRequest 设置频道详情请求实体
-     * @return
-     * @throws IOException
+     * @return  频道详情
+     * @throws IOException 异常
      */
     @Override
     public String updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest) throws IOException {

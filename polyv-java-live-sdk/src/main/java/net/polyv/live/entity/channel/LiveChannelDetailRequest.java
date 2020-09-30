@@ -1,5 +1,7 @@
 package net.polyv.live.entity.channel;
 
+import javax.validation.constraints.NotNull;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -9,12 +11,10 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
-import javax.validation.constraints.NotNull;
-
 /**
  * 设置频道详情请求实体
  * @author: sadboy
- * @date: 2020/9/28
+ 
  **/
 @Data
 @Accessors(chain = true)

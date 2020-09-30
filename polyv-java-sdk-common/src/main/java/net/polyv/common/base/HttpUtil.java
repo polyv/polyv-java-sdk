@@ -31,7 +31,7 @@ import net.polyv.common.constant.Constant;
 /**
  * HTTP请求工具类
  * @author: thomas
- * @date: 2020/9/21
+ 
  **/
 @Slf4j
 public class HttpUtil {
@@ -185,10 +185,9 @@ public class HttpUtil {
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为json形式
      * @param url  请求地址
-     * @param params  请求参数,最终转换为key=value&key=value的查询字符串
+     * @param params  请求参数
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
-     * @return
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendGetData(String url, Map<String, Object> params, String encoding) throws IOException {
@@ -208,7 +207,7 @@ public class HttpUtil {
      * HTTP POST 请求处理逻辑，参数提交方式为json形式
      * @param url  请求地址
      * @param pathVariable  对于restful请求，指定一个路径参数
-     * @param params  请求参数,最终转换为key=value&key=value的查询字符串
+     * @param params  请求参数
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常

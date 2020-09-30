@@ -1,6 +1,6 @@
-#### 配置测试账号
+#### 系统初始化
 
-在执行测试代码之前，需要您先配置自己的测试账号信息，包括UserId \ AppId \ AppSecret , 如没有以上信息，请参考本文[前提条件](/quick_start?id=前提条件)部分获取，下面用系统默认测试账号
+在执行业务代码之前，需要您先配置自己的测试账号信息，包括UserId \ AppId \ AppSecret , 如没有以上信息，请参考[前提条件](/quick_start?id=前提条件)部分获取，下面用系统默认测试账号
 
 ````java
   public void init(){
@@ -12,7 +12,7 @@
     }
 ````
 
-以上代码一般配置于随系统启动执行一次，如用spring框架，可以参考如下：
+以上代码一般配置于随系统启动执行一次的全局初始化中，如用spring框架，可以参考如下：
 
 ````java
 package net.polyv.live.config;
@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 默认启动配置类
  * @author: thomas
- * @date: 2020/9/24
+ 
  **/
 @Slf4j
 @Component
@@ -45,4 +45,3 @@ public class StartupListener implements ApplicationContextAware   {
 }
 ````
 
-#### 

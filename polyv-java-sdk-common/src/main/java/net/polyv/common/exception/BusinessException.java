@@ -3,7 +3,7 @@ package net.polyv.common.exception;
 /**
  * 自定义异常
  * @author: thomas
- * @date: 2020/9/22
+ 
  **/
 public class BusinessException extends  RuntimeException {
     static final long serialVersionUID = -7034234234266939L;

@@ -16,7 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 /**
  *  polyv 直播签名工具类
  * @author: thomas
- * @date: 2020/9/22
  **/
 @Slf4j
 public class LiveSignUtil {
@@ -36,6 +35,13 @@ public class LiveSignUtil {
     
     /**
      * 获取加密串
+     */
+    /**
+     *
+     * @param params
+     * @param appId
+     * @param appSecret
+     * @return
      */
     public static String getSign(Map<String, String> params, String appId, String appSecret) {
         params.put("appId", appId);

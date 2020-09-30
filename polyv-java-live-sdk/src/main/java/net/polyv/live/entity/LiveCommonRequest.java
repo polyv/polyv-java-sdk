@@ -10,7 +10,7 @@ import net.polyv.common.entity.CommonReqeust;
 /**
  * 直播公共请求实体
  * @author: thomas
- * @date: 2020/9/22
+ 
  **/
 @Data
 @Accessors(chain = true)

@@ -2,7 +2,6 @@ package net.polyv.live.action;
 
 import java.io.IOException;
 
-import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
@@ -17,7 +17,6 @@ import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
 /**
  * 渠道管理测试类接入DEMO
  * @author: thomas
- * @date: 2020/9/24
  **/
 @Controller
 @RequestMapping("/channel")

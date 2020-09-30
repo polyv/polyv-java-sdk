@@ -5,7 +5,7 @@ import net.polyv.live.config.LiveGlobalConfig;
 
 /**
  * @author: thomas
- * @date: 2020/9/23
+ 
  **/
 public class BaseTest {
     BaseTest(){

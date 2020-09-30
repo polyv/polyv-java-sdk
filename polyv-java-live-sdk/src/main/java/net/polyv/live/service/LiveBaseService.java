@@ -22,7 +22,7 @@ import net.polyv.live.util.ValidationUtil;
 /**
  * 直播公共服务类
  * @author: thomas
- * @date: 2020/9/23
+ 
  **/
 @Slf4j
 public class LiveBaseService {
@@ -95,7 +95,7 @@ public class LiveBaseService {
      * @param <T>  返回对象泛型
      * @param <E>  请求参数泛型
      * @return  HTTP response 数据封装对象
-     * @throws IOException
+     * @throws IOException 客户端和服务器读写异常
      */
     protected <T, E extends LiveCommonRequest> T basePost(String url, E e, Class<T> tClass)
             throws IOException   {

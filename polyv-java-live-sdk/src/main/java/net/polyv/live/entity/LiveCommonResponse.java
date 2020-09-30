@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
 /**
  * 直播公共返回数据实体
  * @author: thomas
- * @date: 2020/9/22
+ 
  **/
 @Data
 @Accessors(chain = true)

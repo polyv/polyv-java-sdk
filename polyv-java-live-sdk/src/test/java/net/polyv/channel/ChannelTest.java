@@ -14,7 +14,7 @@ import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
 
 /**
  * @author: thomas
- * @date: 2020/9/18
+ 
  **/
 @Slf4j
 public class ChannelTest {

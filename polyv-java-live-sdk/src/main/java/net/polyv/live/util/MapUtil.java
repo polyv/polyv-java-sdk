@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 /**
  * MAP对象和HTTP参数 互相转换对象
  * @author: thomas
- * @date: 2020/9/22
+ 
  **/
 public class MapUtil {
 

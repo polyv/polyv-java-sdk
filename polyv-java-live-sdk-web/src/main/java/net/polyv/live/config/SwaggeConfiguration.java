@@ -19,7 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * swagger 启动配置入口
  * @author: thomas
- * @date: 2020/9/24
+ 
  **/
 @Configuration
 @EnableSwagger2

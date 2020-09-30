@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author: thomas
- * @date: 2020/9/27
+ 
  **/
 @Slf4j
 public class GlobalUncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {

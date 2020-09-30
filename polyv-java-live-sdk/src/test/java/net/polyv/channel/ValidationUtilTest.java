@@ -6,7 +6,7 @@ import net.polyv.live.entity.channel.LiveChannelRequest;
 
 /**
  * @author: thomas
- * @date: 2020/9/23
+ 
  **/
 public class ValidationUtilTest {
     

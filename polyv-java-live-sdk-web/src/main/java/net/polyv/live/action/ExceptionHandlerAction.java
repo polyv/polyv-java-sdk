@@ -14,7 +14,7 @@ import net.polyv.common.exception.BusinessException;
 /**
  * 统一异常全局处理类
  * @author: thomas
- * @date: 2020/9/24
+ 
  **/
 @ControllerAdvice
 @Slf4j

@@ -10,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 默认启动配置类
  * @author: thomas
- * @date: 2020/9/24
  **/
 @Slf4j
 @Component

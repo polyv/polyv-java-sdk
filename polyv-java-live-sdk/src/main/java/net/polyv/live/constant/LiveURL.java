@@ -227,7 +227,13 @@ public class LiveURL {
      */
     public static final String CHANNEL_ACCOUNTS_GET_URL = BASE_URI
             + "v2/channelAccount/" + PARAM_REPLACE_CHAR + "/accounts";
-    
+
+    /**
+     * 查询账号下所有频道详细信息
+     */
+    public static final String ACCOUNT_LIST_CHANNEL_DETAIL_URL = BASE_URI
+            + "v3/channel/management/list-detail";
+
     /**
      * 异步合并接口
      */

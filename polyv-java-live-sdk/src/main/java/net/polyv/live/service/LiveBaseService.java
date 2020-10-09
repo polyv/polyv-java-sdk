@@ -35,7 +35,7 @@ public class LiveBaseService {
      * @param <T>  返回对象泛型
      * @param <E>  请求参数泛型
      * @return  HTTP response 数据封装对象
-     * @throws IOException
+     * @throws IOException 异常
      */
     protected <T, E extends LiveCommonRequest> T baseGet(String url, E e, Class<T> tClass)
             throws IOException {

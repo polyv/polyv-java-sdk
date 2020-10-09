@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 /**
  * MAP对象和HTTP参数 互相转换对象
  * @author: thomas
- 
  **/
 public class MapUtil {
 
@@ -103,7 +102,7 @@ public class MapUtil {
 	}
 
 	/**
-	 * url 参数串连(key=value&key=value)
+	 * url 参数串连
 	 * @param map map
 	 * @param keyLower keyLower
 	 * @param valueUrlEncode valueUrlEncode
@@ -135,7 +134,7 @@ public class MapUtil {
 	}
 
 	/**
-	 * url 参数串连但是不进行参数Encode(key=value&key=value)
+	 * url 参数串连但是不进行参数Encode
 	 * @param map map
 	 * @return string
 	 */

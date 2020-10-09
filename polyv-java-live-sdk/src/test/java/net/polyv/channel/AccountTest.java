@@ -19,11 +19,11 @@ import java.io.IOException;
 
 /**
  * @author: sadboy
- * @date: 2020/9/29
  **/
 @Slf4j
 public class AccountTest {
 
+ 
     public AccountTest(){
         String appId = "frlr1zazn3";
         String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";

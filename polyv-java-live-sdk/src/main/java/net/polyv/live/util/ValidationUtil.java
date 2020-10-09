@@ -11,7 +11,6 @@ import lombok.Data;
 /**
  * hibernate-validator 参数校验工具类
  * @author: thomas
- 
  **/
 public class ValidationUtil {
     /**
@@ -23,6 +22,7 @@ public class ValidationUtil {
      *
      * @param t bean
      * @param groups 校验组
+     * @param <T> 限制返回值类型
      * @return ValidResult
      */
     public static <T> ValidResult validateBean(T t,Class<?>...groups) {
@@ -42,6 +42,7 @@ public class ValidationUtil {
      *
      * @param obj          bean
      * @param propertyName 属性名称
+     * @param <T> 限制返回值类型
      * @return ValidResult
      */
     public static <T> ValidResult validateProperty(T obj, String propertyName) {

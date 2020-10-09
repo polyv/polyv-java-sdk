@@ -12,7 +12,6 @@ import net.polyv.live.constant.LiveConstant;
 /**
  * 查询课件重制任务列表返回信息
  * @author: sadboy
- * @date: 2020/10/9
  **/
 @Data
 @Accessors(chain = true)

@@ -15,7 +15,6 @@ import net.polyv.live.entity.dto.LivePPTRecordDTO;
 /**
  * 查询课件重制任务列表返回实体
  * @author: sadboy
- * @date: 2020/10/9
  **/
 @Data
 @Accessors(chain = true)

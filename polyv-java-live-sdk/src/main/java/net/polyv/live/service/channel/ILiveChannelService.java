@@ -33,9 +33,9 @@ public interface ILiveChannelService {
     
     /**
      * 查询课件重制任务列表
-     * @param liveListChannelPPTRecordRequest
-     * @return
-     * @throws IOException
+     * @param liveListChannelPPTRecordRequest 查询课件重制任务列表请求实体
+     * @return 查询课件重制任务列表返回实体
+     * @throws IOException 异常
      */
     LiveListChannelPPTRecordResponse listPPTRecord(LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest) throws IOException;
     

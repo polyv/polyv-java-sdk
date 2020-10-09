@@ -12,7 +12,6 @@ import java.util.List;
 /**
  * 直播频道详情信息
  * @author: sadboy
- * @date: 2020/9/29
  **/
 @Data
 @Accessors(chain = true)

@@ -16,7 +16,6 @@ import java.util.List;
 /**
  * 查询账号下所有频道详细信息返回实体
  * @author: sadboy
- * @date: 2020/9/29
  **/
 @Data
 @Accessors(chain = true)

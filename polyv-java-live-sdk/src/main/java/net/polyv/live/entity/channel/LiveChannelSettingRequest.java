@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 /**
  * 频道相关设置请求实体
  * @author: sadboy
- * @date: 2020/9/28
  **/
 @Data
 @Accessors(chain = true)

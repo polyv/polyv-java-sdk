@@ -12,7 +12,6 @@ import net.polyv.live.entity.LivePageCommonRequest;
 /**
  * 查询所有频道详细信息请求实体
  * @author: sadboy
- * @date: 2020/9/29
  **/
 @Data
 @Accessors(chain = true)

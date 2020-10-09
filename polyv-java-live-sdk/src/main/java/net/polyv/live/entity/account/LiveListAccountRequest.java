@@ -14,7 +14,6 @@ import net.polyv.live.entity.LiveCommonRequest;
 /**
  * 查询账号下的频道列表请求实体
  * @author: sadboy
- * @date: 2020/10/9
  **/
 @Data
 @Accessors(chain = true)

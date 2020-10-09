@@ -10,7 +10,6 @@ import java.io.IOException;
 /**
  *  直播账号级管理
  * @author: sadboy
- * @date: 2020/9/29
  **/
 public interface ILiveAccountService {
 

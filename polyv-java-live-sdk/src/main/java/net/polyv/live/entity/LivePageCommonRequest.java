@@ -7,7 +7,6 @@ import lombok.experimental.Accessors;
 /**
  * 直播分页公共请求实体
  * @author: sadboy
- * @date: 2020/9/29
  **/
 @Data
 @Accessors(chain = true)

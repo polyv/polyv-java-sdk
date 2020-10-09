@@ -12,7 +12,6 @@ import org.hibernate.validator.constraints.Length;
 /**
  * 直播权限设置数据传输对象
  * @author: sadboy
- * @date: 2020/9/29
  **/
 @Data
 @Accessors(chain = true)

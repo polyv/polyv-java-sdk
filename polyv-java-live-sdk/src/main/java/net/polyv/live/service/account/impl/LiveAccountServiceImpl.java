@@ -15,7 +15,6 @@ import java.io.IOException;
 /**
  * 直播账号级管理
  * @author: sadboy
- * @date: 2020/9/29
  **/
 public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAccountService {
 
@@ -23,7 +22,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
      * 查询账号下所有频道详细信息
      * @param liveListAccountDetailRequest 查询所有频道详细信息请求实体
      * @return 账号下所有频道详细信息返回实体
-     * @throws IOException
+     * @throws IOException 异常
      */
     @Override
     public LiveListAccountDetailResponse listAccountDetail(LiveListAccountDetailRequest liveListAccountDetailRequest) throws IOException {
@@ -34,9 +33,9 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     
     /**
      * 查询账号下的频道列表(返回频道号列表)
-     * @param liveListAccountRequest
-     * @return
-     * @throws IOException
+     * @param liveListAccountRequest 查询账号下的频道列表请求实体
+     * @return 查询账号下的频道列表返回实体
+     * @throws IOException 异常
      */
     @Override
     public LiveListAccountResponse listAccount(LiveListAccountRequest liveListAccountRequest) throws IOException {

@@ -15,7 +15,6 @@ import net.polyv.live.entity.LivePageCommonRequest;
 /**
  * 查询课件重制任务列表请求实体
  * @author: sadboy
- * @date: 2020/10/9
  **/
 @Data
 @Accessors(chain = true)

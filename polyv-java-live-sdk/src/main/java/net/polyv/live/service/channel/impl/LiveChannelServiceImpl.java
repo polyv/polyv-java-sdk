@@ -8,6 +8,8 @@ import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
+import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
+import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelService;
 
@@ -47,6 +49,19 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         }
         String url = LiveURL.CHANNEL_DETAIL_SET_URL;
         return this.basePost(url, liveChannelDetailRequest, String.class);
+    }
+    
+    /**
+     * 查询课件重制任务列表
+     * @param liveListChannelPPTRecordRequest 查询课件重制任务列表请求体
+     * @return 课件重制任务列表返回体
+     * @throws IOException 异常
+     */
+    @Override
+    public LiveListChannelPPTRecordResponse listPPTRecord(
+            LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest) throws IOException {
+        String url = LiveURL.CHANNEL_LIST_PPTRECORD_URL;
+        return this.baseGet(url, liveListChannelPPTRecordRequest, LiveListChannelPPTRecordResponse.class);
     }
 
 

@@ -5,7 +5,13 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
+import net.polyv.live.entity.account.LiveListAccountRequest;
+import net.polyv.live.entity.account.LiveListAccountResponse;
+import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
+import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.service.account.impl.LiveAccountServiceImpl;
+import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -31,7 +37,7 @@ public class AccountTest {
      * @throws IOException
      */
     @Test
-    public void listAccountDetail() throws IOException {
+    public void testListAccountDetail() throws IOException {
         LiveListAccountDetailRequest liveListAccountDetailRequest = new LiveListAccountDetailRequest();
         liveListAccountDetailRequest.setPage(1);
         LiveListAccountDetailResponse liveListAccountDetailResponse = new LiveAccountServiceImpl().listAccountDetail(liveListAccountDetailRequest);
@@ -39,6 +45,38 @@ public class AccountTest {
         if(liveListAccountDetailResponse != null){
             //to do something ......
             log.debug("分页查询账号下所有频道详细信息成功" + JSON.toJSONString(liveListAccountDetailResponse));
+        }
+    }
+    
+    /**
+     * 查询账号下的频道列表(频道号列表)
+     * TODO 等待api端修改后再写
+     * @throws IOException
+     */
+    @Test
+    public void testListAccount() throws IOException {
+//        LiveListAccountRequest liveListAccountRequest = new LiveListAccountRequest();
+//        LiveListAccountResponse liveListAccountResponse = new LiveAccountServiceImpl().listAccount(liveListAccountRequest);
+//        Assert.assertNotNull(liveListAccountDetailResponse);
+//        if(liveListAccountDetailResponse != null){
+//            //to do something ......
+//            log.debug("分页查询账号下所有频道详细信息成功" + JSON.toJSONString(liveListAccountDetailResponse));
+//        }
+    }
+    
+    /**
+     * 查询课件重制任务列表
+     * @throws IOException
+     */
+    @Test
+    public void testListPPTRecord() throws IOException {
+        LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest = new LiveListChannelPPTRecordRequest();
+        liveListChannelPPTRecordRequest.setChannelId(1940343).setPage(1);
+        LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse = new LiveChannelServiceImpl().listPPTRecord(liveListChannelPPTRecordRequest);
+        Assert.assertNotNull(liveListChannelPPTRecordResponse);
+        if(liveListChannelPPTRecordResponse != null){
+            //to do something ......
+            log.debug("查询课件重制任务列表信息成功" + JSON.toJSONString(liveListChannelPPTRecordResponse));
         }
     }
 }

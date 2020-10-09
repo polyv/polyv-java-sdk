@@ -233,7 +233,19 @@ public class LiveURL {
      */
     public static final String ACCOUNT_LIST_CHANNEL_DETAIL_URL = BASE_URI
             + "v3/channel/management/list-detail";
-
+    
+    /**
+     * 查询账号下的频道列表（频道号列表）
+     */
+    public static final String ACCOUNT_LIST_CHANNEL_URL = BASE_URI
+            + "v1/users/"+PARAM_REPLACE_CHAR+"/channels";
+    
+    /**
+     * 查询账号下的频道列表（频道号列表）
+     */
+    public static final String CHANNEL_LIST_PPTRECORD_URL = BASE_URI
+            + "v3/channel/pptRecord/list";
+    
     /**
      * 异步合并接口
      */

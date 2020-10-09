@@ -112,3 +112,8 @@
 | m3u8Url3          | string    | 直播拉流（播放）m3u8地址3                |
 | currentTimeMillis | timestamp | 服务器返回的时间戳（毫秒）               |
 | linkMicLimit      | int       | 连麦人数                                 |
+
+## 直播频道修改
+
+
+

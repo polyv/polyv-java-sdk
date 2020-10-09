@@ -1,5 +1,7 @@
 package net.polyv.live.entity.account;
 
+import javax.validation.constraints.NotNull;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -7,20 +9,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import net.polyv.live.entity.LivePageCommonRequest;
+import net.polyv.live.entity.LiveCommonRequest;
 
 /**
- * 查询所有频道详细信息请求实体
+ * 查询账号下的频道列表请求实体
  * @author: sadboy
- * @date: 2020/9/29
+ * @date: 2020/10/9
  **/
 @Data
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel("查询所有频道详细信息请求实体")
-public class LiveListAccountDetailRequest extends LivePageCommonRequest {
+@ApiModel("查询账号下的频道列表请求实体")
+public class LiveListAccountRequest extends LiveCommonRequest {
     
     /**
      * TODO 链接分类id
@@ -28,14 +30,6 @@ public class LiveListAccountDetailRequest extends LivePageCommonRequest {
      */
     @ApiModelProperty(name = "categoryId", value = "所属分类id", dataType = "Integer", example = "340182")
     private Integer categoryId;
-    
-    /**
-     * TODO 枚举使用
-     * 观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始
-     */
-    @ApiModelProperty(name = "watchStatus", value = "观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始", dataType =
-            "String", example = "waiting")
-    private String watchStatus;
     
     /**
      * 频道名称，模糊查询

@@ -35,5 +35,39 @@ public class LiveConstant {
         }
     }
     
+    public enum PPTStatus{
+        /**
+         * 课件重置状态值：等待处理
+         */
+        WAITING("waiting"),
+        /**
+         * 课件重置状态值：处理中
+         */
+        PROCESS("process"),
+        /**
+         * 课件重置状态值：重制成功
+         */
+        SUCCESS("success"),
+        /**
+         * 课件重置状态值：重制失败
+         */
+        FAIL("fail"),
+        /**
+         * 课件重置状态值：上传点播成功
+         */
+        UPLOADED("uploaded"),
+        /**
+         * 课件重置状态值：上传点播失败
+         */
+        UPLOADFAILED("uploadFailed");
+        
+        private String desc;
+        
+        private PPTStatus(String desc){this.desc = desc;}
+    
+        public String getDesc() {
+            return desc;
+        }
+    }
 
 }

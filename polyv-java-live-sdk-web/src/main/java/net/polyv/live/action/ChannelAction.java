@@ -12,6 +12,8 @@ import io.swagger.annotations.ApiOperation;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
+import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
+import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
 
 /**
@@ -42,5 +44,12 @@ public class ChannelAction {
     @ResponseBody
     public String updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest) throws IOException {
         return new LiveChannelServiceImpl().updateChannelDetail(liveChannelDetailRequest);
+    }
+    
+    @ApiOperation(value = "查询课件重制任务列表，成功时返回分页的课件重制任务列表",notes = "调用示例：参考polyv-java-live-sdk单元测试ChannelTest.testListPPTRecord()方法。<a target=\"_blank\"  href=\"http://47.115.173.234:3000/#/channel/channelManager?id=sdk%e9%a2%91%e9%81%93%e6%93%8d%e4%bd%9c\">频道创建</a>    ")
+    @PostMapping("/listPPTRecord")
+    @ResponseBody
+    public LiveListChannelPPTRecordResponse listPPTRecord(LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest) throws IOException {
+        return new LiveChannelServiceImpl().listPPTRecord(liveListChannelPPTRecordRequest);
     }
 }

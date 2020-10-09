@@ -113,7 +113,90 @@
 | currentTimeMillis | timestamp | 服务器返回的时间戳（毫秒）               |
 | linkMicLimit      | int       | 连麦人数                                 |
 
-## 直播频道修改
+### 直播频道修改
 
 
 
+### 查询课件重制任务列表
+
+#### 描述
+接口用于查询课件重制任务列表
+
+#### 调用约束
+无
+#### 代码示例
+```java
+@Test
+    public void testListPPTRecord() throws IOException {
+        LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest = new LiveListChannelPPTRecordRequest();
+        liveListChannelPPTRecordRequest.setChannelId(1940343).setPage(1);
+        LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse = new LiveChannelServiceImpl().listPPTRecord(liveListChannelPPTRecordRequest);
+        Assert.assertNotNull(liveListChannelPPTRecordResponse);
+        if(liveListChannelPPTRecordResponse != null){
+            //to do something ......
+            log.debug("查询课件重制任务列表信息成功" + JSON.toJSONString(liveListChannelPPTRecordResponse));
+        }
+    }
+```
+#### 单元测试流程
+
+[swagger 程序接入-查询课件重制任务列表](http://47.115.173.234:8002/doc.html#/直播SDK/直播频道管理/listPPTRecordUsingPOST)
+
+#### 请求入参描述[LiveListChannelPPTRecordRequest]
+
+| 参数名    | 必选 | 类型   | 说明 |
+| :-------- | :--- | :----- | :----------------------------------------------------------- |
+| appId     | 是   | string | 从API设置中获取，在直播系统登记的appId                       |
+| timestamp | 是   | string | 当前时间的毫秒级时间戳（13位）|
+| sign      | 是   | string | 签名，为32位大写的MD5值 |
+|channelId    |是|integer|	频道号 |
+|requestId|否|string|每次请求的业务流水号，便于客户端/服务器端排查问题 |
+|endTime|否|string|直播开始时间结束区间,格式为yyyyMMddHHmmss |
+|page|否|integer|页数，默认为1 |
+|pageSize|否|integer|每页显示的数据条数，默认每页显示20条数据 |
+|sessionId|否|string|场次id |
+|startTime|否|string|直播开始时间开始区间,格式为yyyyMMddHHmmss |
+|status|否|string|课件重置状态值 |
+#### 返回对象描述[LiveListChannelPPTRecordResponse]
+| 参数名    | 类型   | 说明 |
+| :-------- |:----- | :----------------------------------------------------------- |
+|totalPages|integer|总页数|
+|totalItems|integer|记录的总数|
+|startRow|integer|当前页第一条记录在总结果集中的位置，序号从1开始|
+|endRow|integer|当前页最后一个记录在总记录中的位置，序号从1开始|
+|prePageNumber|integer|上一页编号|
+|pageSize|integer|	每页显示的数据条数，默认每页显示20条数据|
+|pageNumber|integer|当前页|
+|nextPageNumber|integer|下一页编号|
+|limit|integer|当前页纪录数|
+|lastPage|boolean|	是否为最后一页，值为：true/false|
+|firstPage|boolean|是否为第一页，值为：true/false|
+|contents|array|课件重制任务列表，见contents列表[点击查看](#contents列表)|
+
+contents列表
+| 参数名    | 类型   | 说明 |
+| :-------- |:----- | :----------------------------------------------------------- |
+|channelId|string|直播频道ID|
+|duration|integer|重制的视频时长，单位秒|
+|remainDay|integer|重制剩余的过期时间，过期后将无法访问和下载|
+|sessionId|string|场次id|
+|startTime|string|	对应回放的直播开始时间,格式为yyyyMMddhhmmss|
+|status|string|状态值，分类可见LiveConstant.PPTStatus|
+|title|string|对应回放的名称|
+|url|string|重制mp4下载地址，有24小时的防盗链超时时间|
+
+### 查询课件重制任务列表
+
+#### 描述
+
+#### 调用约束
+
+#### 代码示例
+```java
+
+```
+#### 单元测试流程
+
+#### 请求入参描述[LiveChannelRequest]
+
+#### 返回对象描述[LiveChannelResponse]

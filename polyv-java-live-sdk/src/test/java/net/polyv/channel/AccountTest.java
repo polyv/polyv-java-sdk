@@ -64,19 +64,5 @@ public class AccountTest {
 //        }
     }
     
-    /**
-     * 查询课件重制任务列表
-     * @throws IOException
-     */
-    @Test
-    public void testListPPTRecord() throws IOException {
-        LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest = new LiveListChannelPPTRecordRequest();
-        liveListChannelPPTRecordRequest.setChannelId(1940343).setPage(1);
-        LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse = new LiveChannelServiceImpl().listPPTRecord(liveListChannelPPTRecordRequest);
-        Assert.assertNotNull(liveListChannelPPTRecordResponse);
-        if(liveListChannelPPTRecordResponse != null){
-            //to do something ......
-            log.debug("查询课件重制任务列表信息成功" + JSON.toJSONString(liveListChannelPPTRecordResponse));
-        }
-    }
+    
 }

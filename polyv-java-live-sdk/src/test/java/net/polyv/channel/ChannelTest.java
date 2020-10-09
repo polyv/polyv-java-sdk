@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
+import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
+import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
 
 /**
@@ -114,4 +116,19 @@ public class ChannelTest {
         }
     }
     
+    /**
+     * 查询课件重制任务列表
+     * @throws IOException
+     */
+    @Test
+    public void testListPPTRecord() throws IOException {
+        LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest = new LiveListChannelPPTRecordRequest();
+        liveListChannelPPTRecordRequest.setChannelId(1940343).setPage(1);
+        LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse = new LiveChannelServiceImpl().listPPTRecord(liveListChannelPPTRecordRequest);
+        Assert.assertNotNull(liveListChannelPPTRecordResponse);
+        if(liveListChannelPPTRecordResponse != null){
+            //to do something ......
+            log.debug("查询课件重制任务列表信息成功" + JSON.toJSONString(liveListChannelPPTRecordResponse));
+        }
+    }
 }

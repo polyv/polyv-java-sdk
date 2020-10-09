@@ -36,14 +36,14 @@ public class LiveListChannelPPTRecordRequest extends LivePageCommonRequest {
      * TODO 写明场次id从哪里获取
      * 场次id
      */
-    @ApiModelProperty(name = "channelId", value = "频道号", required = false, example = "")
+    @ApiModelProperty(name = "sessionId", value = "场次id", required = false, example = "")
     private String sessionId;
     
     /**
      * @see LiveConstant.PPTStatus
      * 课件重置状态值
      */
-    @ApiModelProperty(name = "status", value = "课件重置状态值", required = false, example = "LiveConstant.PPTStatus.SUCCESS")
+    @ApiModelProperty(name = "status", value = "课件重置状态值", required = false, example = "success")
     private String status;
     
     /**

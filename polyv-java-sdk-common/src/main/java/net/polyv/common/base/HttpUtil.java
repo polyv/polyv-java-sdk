@@ -90,10 +90,10 @@ public class HttpUtil {
         // 获取结果实体
         // 判断网络连接状态码是否正常(0--200都数正常)
         int statusCode = response.getStatusLine().getStatusCode();
-        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
+//        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
             result = EntityUtils.toString(response.getEntity(), encoding);
             log.debug("http 请求结果: " + result);
-        }
+//        }
         try {
             if (null != response) {
                 response.close();
@@ -151,10 +151,10 @@ public class HttpUtil {
         // 获取结果实体
         // 判断网络连接状态码是否正常(0--200都数正常)
         int statusCode = response.getStatusLine().getStatusCode();
-        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
+//        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
             result = EntityUtils.toString(response.getEntity(), encoding);
             log.debug("http 请求结果: " + result);
-        }
+//        }
         try {
             if (null != response) {
                 response.close();
@@ -252,10 +252,10 @@ public class HttpUtil {
         // 获取结果实体
         // 判断网络连接状态码是否正常(0--200都数正常)
         int statusCode = response.getStatusLine().getStatusCode();
-        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
+//        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
             result = EntityUtils.toString(response.getEntity(), encoding);
             log.debug("http 请求结果: " + result);
-        }
+//        }
         try {
             if (null != response) {
                 response.close();
@@ -305,10 +305,10 @@ public class HttpUtil {
         post.setEntity(entity);
         CloseableHttpResponse response = httpClient.execute(post);
         int statusCode = response.getStatusLine().getStatusCode();
-        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
+//        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
             result = EntityUtils.toString(response.getEntity(), encoding);
             log.debug("http 请求结果: " + result);
-        }
+//        }
         try {
             if (null != response) {
                 response.close();

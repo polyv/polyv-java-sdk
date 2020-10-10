@@ -3,6 +3,7 @@ package net.polyv.channel;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
+import net.polyv.live.entity.LivePageCommonResponse;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
@@ -16,21 +17,25 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * @author: sadboy
  **/
 @Slf4j
-public class AccountTest {
-
- 
-    public AccountTest(){
-        String appId = "frlr1zazn3";
-        String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
-        String userId = "1b448be323";
-        LiveGlobalConfig.init(appId, userId, appSecret);
-        System.out.println("--初始化完成--");
-    }
+public class AccountTest extends  BaseTest{
+   
+  @Test
+  public void testJson(){
+      LiveListAccountResponse liveListAccountResponse = new LiveListAccountResponse();
+      ArrayList<String> channelList = new ArrayList<>();
+      channelList.add("2");
+      channelList.add("3");
+      channelList.add("4");
+      channelList.add("5");
+      System.out.println( JSON.toJSONString( liveListAccountResponse.setChannelList(channelList)));
+      System.out.println(JSON.parseObject("{\"result\":[\"2\",\"3\",\"4\",\"5\"]}", LiveListAccountResponse.class).getChannelList());
+  }
 
     /**
      * 分页查询账号下所有频道详细信息成功

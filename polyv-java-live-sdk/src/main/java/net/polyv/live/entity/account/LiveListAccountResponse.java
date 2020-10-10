@@ -2,6 +2,8 @@ package net.polyv.live.entity.account;
 
 import java.util.List;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -22,7 +24,8 @@ import lombok.experimental.Accessors;
 @ApiModel("查询账号下的频道列表返回实体")
 public class LiveListAccountResponse {
     
-    @ApiModelProperty(name = "result", value = "频道号列表")
-    private List<String> result;
-
+    
+    @ApiModelProperty(name = "channelList", value = "频道号列表")
+    @JSONField(name="result")
+    private List<String> channelList;
 }

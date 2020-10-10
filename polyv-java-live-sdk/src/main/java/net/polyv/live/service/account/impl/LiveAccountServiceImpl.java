@@ -11,6 +11,7 @@ import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.account.ILiveAccountService;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * 直播账号级管理
@@ -25,7 +26,8 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
      * @throws IOException 异常
      */
     @Override
-    public LiveListAccountDetailResponse listAccountDetail(LiveListAccountDetailRequest liveListAccountDetailRequest) throws IOException {
+    public LiveListAccountDetailResponse listAccountDetail(LiveListAccountDetailRequest liveListAccountDetailRequest)
+            throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_LIST_CHANNEL_DETAIL_URL;
         LiveListAccountDetailResponse liveListAccountDetailResponse = this.basePost(url, liveListAccountDetailRequest, LiveListAccountDetailResponse.class);
         return liveListAccountDetailResponse;
@@ -38,7 +40,8 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
      * @throws IOException 异常
      */
     @Override
-    public LiveListAccountResponse listAccount(LiveListAccountRequest liveListAccountRequest) throws IOException {
+    public LiveListAccountResponse listAccount(LiveListAccountRequest liveListAccountRequest)
+            throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_LIST_CHANNEL_URL, LiveGlobalConfig.USER_ID);
         this.basePost(url, liveListAccountRequest, LiveListAccountResponse.class);
         return null;

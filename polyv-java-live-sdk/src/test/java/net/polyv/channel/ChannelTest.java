@@ -1,6 +1,7 @@
 package net.polyv.channel;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class ChannelTest {
      * @throws IOException
      */
     @Test
-    public void testCreateChannel() throws IOException {
+    public void testCreateChannel() throws IOException, NoSuchAlgorithmException {
         LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
         liveChannelRequest.setName("Spring 知识精讲")
                 .setChannelPasswd("666888")
@@ -379,7 +380,7 @@ public class ChannelTest {
         Assert.assertNull(liveChannelSettingResponse);
         if (liveChannelSettingResponse == null) {
             //to do something ......
-            log.debug("测试修改频道的相关设置成功" + JSON.toJSONString(liveChannelSettingResponse));
+            log.debug("测试修改频道的相关设置成功");
         }
     }
     
@@ -388,7 +389,7 @@ public class ChannelTest {
      * @throws IOException
      */
     @Test
-    public void testCreateChannelList() throws IOException {
+    public void testCreateChannelList() throws IOException, NoSuchAlgorithmException {
         LiveCreateChannelListRequest liveCreateChannelListRequest = new LiveCreateChannelListRequest();
         List<LiveChannelBasicDTO> channels = new ArrayList<>();
         for (int i = 0; i <= 2; i++) {
@@ -417,7 +418,7 @@ public class ChannelTest {
      * @throws IOException
      */
     @Test
-    public void testUpdateChannelPassword() throws IOException {
+    public void testUpdateChannelPassword() throws IOException, NoSuchAlgorithmException {
         Integer channelId = 1938888;
         String newPassword = "1234567";
         LiveChannelDetailRequest liveChannelDetailRequest = new LiveChannelDetailRequest();
@@ -439,7 +440,7 @@ public class ChannelTest {
      * @throws IOException
      */
     @Test
-    public void testUpdateChannelScene() throws IOException {
+    public void testUpdateChannelScene() throws IOException, NoSuchAlgorithmException {
         Integer channelId = 1938888;
         String value = "alone";
         LiveChannelDetailRequest liveChannelDetailRequest = new LiveChannelDetailRequest();
@@ -461,7 +462,7 @@ public class ChannelTest {
      * @throws IOException
      */
     @Test
-    public void testUpdateChannel() throws IOException {
+    public void testUpdateChannel() throws IOException, NoSuchAlgorithmException {
         Integer channelId = 1938888;
         String value = "2147483647";
         LiveChannelDetailRequest liveChannelDetailRequest = new LiveChannelDetailRequest();
@@ -482,7 +483,7 @@ public class ChannelTest {
      * @throws IOException
      */
     @Test
-    public void testListPPTRecord() throws IOException {
+    public void testListPPTRecord() throws IOException, NoSuchAlgorithmException {
         LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest = new LiveListChannelPPTRecordRequest();
         liveListChannelPPTRecordRequest.setChannelId(1940343).setPage(1);
         LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse = new LiveChannelServiceImpl().listPPTRecord(

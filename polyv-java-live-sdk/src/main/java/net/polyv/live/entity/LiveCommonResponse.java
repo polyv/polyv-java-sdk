@@ -15,33 +15,27 @@ import lombok.experimental.Accessors;
 
 public class LiveCommonResponse  {
     
+ 
     /**
-     * <pre>
-     * 字段名：响应码
-     * 变量名：code
-     * 类型：int(11)
-     * </pre>
+     * 响应码
      */
     protected int code;
     
+ 
     /**
-     * <pre>
-     * 字段名：请求状态
-     * 变量名：status
-     * 类型：String(64)
-     * </pre>
+     * 请求状态
      */
     protected String status;
     
+   
     /**
-     * <pre>
-     * 字段名：错误信息
-     * 变量名：message
-     * 类型：String(64)
-     * </pre>
+     * 错误信息
      */
     protected String message;
     
+    /**
+     * 实际返回数据
+     */
     protected String data;
     
     

@@ -31,7 +31,7 @@ public class LiveURL {
     /**
      * 直播批量创建频道
      */
-    public static final String CHANNEL_List_CREATE_URL = BASE_URI + "v3/channel/basic/batch-create";
+    public static final String CHANNEL_LIST_CREATE_URL = BASE_URI + "v3/channel/basic/batch-create";
     
     /**
      * 修改频道名称URL

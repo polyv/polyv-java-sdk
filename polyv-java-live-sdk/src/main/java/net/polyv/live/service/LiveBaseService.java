@@ -1,7 +1,7 @@
 package net.polyv.live.service;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -12,13 +12,13 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.base.HttpUtil;
 import net.polyv.common.exception.BusinessException;
+import net.polyv.common.util.ValidationUtil;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.LiveCommonResponse;
 import net.polyv.live.util.LiveSignUtil;
 import net.polyv.live.util.MapUtil;
-import net.polyv.live.util.ValidationUtil;
 
 /**
  * 直播公共服务类
@@ -39,7 +39,7 @@ public class LiveBaseService {
      * @throws IOException 异常
      */
     protected <T, E extends LiveCommonRequest> T baseGet(String url, E e, Class<T> tClass)
-            throws IOException {
+            throws IOException, NoSuchAlgorithmException {
         T t = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(LiveSignUtil.generateUUID());
@@ -99,7 +99,7 @@ public class LiveBaseService {
      * @throws IOException 客户端和服务器读写异常
      */
     protected <T, E extends LiveCommonRequest> T basePost(String url, E e, Class<T> tClass)
-            throws IOException   {
+            throws IOException, NoSuchAlgorithmException {
         T t = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(LiveSignUtil.generateUUID());
@@ -143,6 +143,7 @@ public class LiveBaseService {
      * @throws IOException 客户端和服务器读写异常
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url, E e, Class<T> tClass)
+<<<<<<< HEAD
             throws IOException   {
         Map<String, String> signMap = MapUtil.getSignMap(MapUtil.objectToMap(e));
         return basePostJson(url,signMap,e,tClass);
@@ -161,6 +162,9 @@ public class LiveBaseService {
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url,Map<String,String> signMap, E e, Class<T> tClass)
             throws IOException   {
+=======
+            throws IOException, NoSuchAlgorithmException {
+>>>>>>> 39234fddd2f70ed133142718bda4420075a66e48
         T t = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(LiveSignUtil.generateUUID());

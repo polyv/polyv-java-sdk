@@ -12,12 +12,26 @@
     <artifactId>polyv-java-vod-sdk</artifactId>
     <properties>
         <slf4j.version>1.7.30</slf4j.version>
+        <swagger.version>1.5.22</swagger.version>
+        <polyv.common.version>1.0.0</polyv.common.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.polyv</groupId>
+            <artifactId>polyv-java-sdk-common</artifactId>
+            <version>${polyv.common.version}</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
+
 </project>

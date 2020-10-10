@@ -2,6 +2,7 @@ package net.polyv.live.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class LiveSignUtil {
     /**
      * 获取加密串
      */
-    public static String setLiveSign(Map<String, String> params, String appId, String appSecret) {
+    public static String setLiveSign(Map<String, String> params, String appId, String appSecret)
+            throws NoSuchAlgorithmException {
         String sign = getSign(params, appId, appSecret);
         params.put("sign", sign);
         return sign;
@@ -43,7 +45,8 @@ public class LiveSignUtil {
      * @param appSecret
      * @return
      */
-    public static String getSign(Map<String, String> params, String appId, String appSecret) {
+    public static String getSign(Map<String, String> params, String appId, String appSecret)
+            throws NoSuchAlgorithmException {
         params.put("appId", appId);
         // 处理参数，计算MD5哈希值
         log.debug("参与签名参数：" + JSON.toJSONString(params));
@@ -81,17 +84,14 @@ public class LiveSignUtil {
      * @param text 待加密的字符串。
      * @return 加密后的字符串。
      */
-    public static String md5Hex(String text) {
-        try {
+    public static String md5Hex(String text) throws NoSuchAlgorithmException {
+         
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            byte[] inputByteArray = text.getBytes("UTF-8");
+            byte[] inputByteArray = text.getBytes(StandardCharsets.UTF_8);
             messageDigest.update(inputByteArray);
             byte[] resultByteArray = messageDigest.digest();
             return byteArrayToHex(resultByteArray).toLowerCase();
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-            log.error("生成签名错误",e);
-            return null;
-        }
+         
     }
     
     /**

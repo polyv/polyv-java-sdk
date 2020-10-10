@@ -1,4 +1,4 @@
-package net.polyv.live.entity;
+package net.polyv.vod.entity;
 
 import com.alibaba.fastjson.JSON;
 
@@ -13,21 +13,21 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 
-public class LiveCommonResponse  {
+public class VodCommonResponse {
     
- 
+    
     /**
      * 响应码
      */
     protected int code;
     
- 
+    
     /**
      * 请求状态
      */
     protected String status;
     
-   
+    
     /**
      * 错误信息
      */

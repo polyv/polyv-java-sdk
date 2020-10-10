@@ -1,6 +1,7 @@
 package net.polyv.live.service.channel;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
@@ -23,7 +24,8 @@ public interface ILiveChannelService {
      * @return 频道数据
      * @throws IOException 客户端和服务器读写异常
      */
-    LiveChannelResponse createChannel(LiveChannelRequest liveChannelRequest) throws IOException;
+    LiveChannelResponse createChannel(LiveChannelRequest liveChannelRequest)
+            throws IOException, NoSuchAlgorithmException;
     
     /**
      * 批量创建频道
@@ -31,7 +33,8 @@ public interface ILiveChannelService {
      * @return 批量创建频道返回体
      * @throws IOException 异常
      */
-    LiveCreateChannelListResponse createChannelList(LiveCreateChannelListRequest liveCreateChannelListRequest) throws IOException;
+    LiveCreateChannelListResponse createChannelList(LiveCreateChannelListRequest liveCreateChannelListRequest)
+            throws IOException, NoSuchAlgorithmException;
 
     /**
      * 设置直播频道详情
@@ -39,7 +42,8 @@ public interface ILiveChannelService {
      * @return  频道详情
      * @throws IOException 异常
      */
-    String updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest) throws IOException;
+    String updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest)
+            throws IOException, NoSuchAlgorithmException;
     
     /**
      * 查询课件重制任务列表
@@ -47,6 +51,7 @@ public interface ILiveChannelService {
      * @return 查询课件重制任务列表返回实体
      * @throws IOException 异常
      */
-    LiveListChannelPPTRecordResponse listPPTRecord(LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest) throws IOException;
+    LiveListChannelPPTRecordResponse listPPTRecord(LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest)
+            throws IOException, NoSuchAlgorithmException;
     
 }

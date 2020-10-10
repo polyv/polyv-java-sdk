@@ -16,7 +16,7 @@ public class LiveGlobalConfig {
     
     //重试策略
     public static Boolean RETRY_FLAG =  false;
-//    public static String RETRY_ = "";
+ 
     
     /**
      *  系统全局初始化

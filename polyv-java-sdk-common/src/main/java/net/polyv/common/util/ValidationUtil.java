@@ -1,4 +1,4 @@
-package net.polyv.vod.util;
+package net.polyv.common.util;
 
 import java.util.ArrayList;
 import java.util.List;

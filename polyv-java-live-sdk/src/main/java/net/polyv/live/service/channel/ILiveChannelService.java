@@ -5,6 +5,8 @@ import java.io.IOException;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
+import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
+import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 
@@ -22,6 +24,14 @@ public interface ILiveChannelService {
      * @throws IOException 客户端和服务器读写异常
      */
     LiveChannelResponse createChannel(LiveChannelRequest liveChannelRequest) throws IOException;
+    
+    /**
+     * 批量创建频道
+     * @param liveCreateChannelListRequest 批量创建频道请求体
+     * @return 批量创建频道返回体
+     * @throws IOException 异常
+     */
+    LiveCreateChannelListResponse createChannelList(LiveCreateChannelListRequest liveCreateChannelListRequest) throws IOException;
 
     /**
      * 设置直播频道详情

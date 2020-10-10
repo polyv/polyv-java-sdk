@@ -1,6 +1,7 @@
 package net.polyv.live.service;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -112,6 +113,51 @@ public class LiveBaseService {
         e.setSign(sign);
         validateBean(e);
         String response = HttpUtil.sendPostDataByMap(url, paramMap, Consts.UTF_8.toString());
+        if (StringUtils.isNotBlank(response)) {
+            LiveCommonResponse liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
+            if (liveCommonResponse.getCode() != 200) {
+                String message = "保利威请求返回数据错误，请求流水号：" + e.getRequestId() + " ,错误原因： " + liveCommonResponse.getMessage();
+                BusinessException exception = new BusinessException(liveCommonResponse.getCode(), message);
+                log.error(message, exception);
+                throw exception;
+            } else {
+                t = liveCommonResponse.parseData(tClass);
+            }
+        } else {
+            String message = "保利威HTTP错误，请求流水号：" + e.getRequestId() + " ,错误原因： 服务器接口未返回任何数据";
+            BusinessException exception = new BusinessException(LiveConstant.ERROR_CODE, message);
+            log.error(message, exception);
+            throw exception;
+        }
+        return t;
+    }
+    
+    /**
+     * HTTP POST 请求发送json
+     * @param url  请求URL
+     * @param e  请求参数对象
+     * @param tClass 返回对象class类型
+     * @param <T>  返回对象泛型
+     * @param <E>  请求参数泛型
+     * @return  HTTP response 数据封装对象
+     * @throws IOException 客户端和服务器读写异常
+     */
+    protected <T, E extends LiveCommonRequest> T basePostJson(String url, E e, Class<T> tClass)
+            throws IOException   {
+        T t = null;
+        if (StringUtils.isBlank(e.getRequestId())) {
+            e.setRequestId(LiveSignUtil.generateUUID());
+        }
+        e.setAppId(LiveGlobalConfig.APP_ID);
+        if (StringUtils.isBlank(e.getTimestamp())) {
+            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        }
+        Map<String, String> paramMap = MapUtil.getSignMap(MapUtil.objectToMap(e));
+        String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.APP_ID, LiveGlobalConfig.APP_SECRET);
+        e.setSign(sign);
+        validateBean(e);
+        url = url+"?"+ MapUtil.mapJoinNotEncode(paramMap);
+        String response = HttpUtil.sendPostDataByJson(url, JSON.toJSONString(e), Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             LiveCommonResponse liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
             if (liveCommonResponse.getCode() != 200) {

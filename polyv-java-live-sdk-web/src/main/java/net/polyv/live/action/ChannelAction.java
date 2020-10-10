@@ -12,6 +12,8 @@ import io.swagger.annotations.ApiOperation;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
+import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
+import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
@@ -38,6 +40,22 @@ public class ChannelAction {
         LiveChannelResponse liveChannelResponse =  new LiveChannelServiceImpl().createChannel(liveChannelRequest);
         return  liveChannelResponse;
     }
+    
+    /**
+     * 批量创建频道demo
+     * @param liveCreateChannelListRequest
+     * @return
+     * @throws IOException
+     */
+    @ApiOperation(value = "批量创建直播频道，成功创建返回所创建频道的基本信息。留意，如果响应失败，则表示全部频道都失败，不会有部份成功、部份失败的结果",notes = "调用示例：参考polyv-java-live-sdk单元测试ChannelTest.testCreateChannelList()方法。<a target=\"_blank\"  href=\"http://47.115.173.234:3000/#/channel/channelManager?id=sdk%e9%a2%91%e9%81%93%e6%93%8d%e4%bd%9c\">频道创建</a>    ")
+    @PostMapping("/createChannelList")
+    @ResponseBody
+    public LiveCreateChannelListResponse createChannelList(LiveCreateChannelListRequest liveCreateChannelListRequest) throws IOException {
+        LiveCreateChannelListResponse liveCreateChannelListResponse =  new LiveChannelServiceImpl().createChannelList(liveCreateChannelListRequest);
+        return  liveCreateChannelListResponse;
+    }
+    
+    
 
     @ApiOperation(value = "设置频道详情，成功时为true，错误时为\"\"",notes = "调用示例：参考polyv-java-live-sdk单元测试ChannelTest.testCreateChannel()方法。<a target=\"_blank\"  href=\"http://47.115.173.234:3000/#/channel/channelManager?id=sdk%e9%a2%91%e9%81%93%e6%93%8d%e4%bd%9c\">频道创建</a>    ")
     @PostMapping("/updateChannelDetail")

@@ -8,6 +8,8 @@ import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
+import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
+import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.service.LiveBaseService;
@@ -33,7 +35,21 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         LiveChannelResponse liveChannelResponse = this.basePost(url, liveChannelRequest, LiveChannelResponse.class);
         return liveChannelResponse;
     }
-
+    
+    /**
+     * 批量创建频道
+     * @param liveCreateChannelListRequest 批量创建频道请求体
+     * @return 批量创建频道返回体
+     * @throws IOException 异常
+     */
+    @Override
+    public LiveCreateChannelListResponse createChannelList(LiveCreateChannelListRequest liveCreateChannelListRequest)
+            throws IOException {
+        String url = LiveURL.CHANNEL_List_CREATE_URL;
+        LiveCreateChannelListResponse liveCreateChannelListResponse = this.basePostJson(url, liveCreateChannelListRequest, LiveCreateChannelListResponse.class);
+        return liveCreateChannelListResponse;
+    }
+    
     /**
      * 设置频道详情
      * 注意：设置前，请确认您的套餐是否包含对应场景

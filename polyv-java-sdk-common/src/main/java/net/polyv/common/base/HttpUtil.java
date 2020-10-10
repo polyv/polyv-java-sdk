@@ -105,6 +105,37 @@ public class HttpUtil {
     }
     
     
+    /**
+     * HTTP POST 请求处理逻辑，参数提交方式为json形式
+     * @param url  请求地址
+     * @param pathVariable  对于restful请求，指定一个路径参数
+     * @param params  请求参数Map
+     * @param encoding 编码字符集， 默认为 utf-8
+     * @return HTTP 返回的内容
+     * @throws IOException 客户端和服务器读写通讯异常
+     */
+    public static String sendPostDataByJson(String url, String pathVariable, Map<String,String> params, String encoding)
+            throws IOException {
+        if (StringUtils.isNotBlank(pathVariable)) {
+            url = String.format(url, pathVariable);
+        }
+        return sendPostDataByJson(url, JSON.toJSONString(params), encoding);
+    }
+    
+    /**
+     * HTTP POST 请求处理逻辑，参数提交方式为json形式
+     * @param url  请求地址
+     * @param params  请求参数Map
+     * @param encoding 编码字符集， 默认为 utf-8
+     * @return HTTP 返回的内容
+     * @throws IOException 客户端和服务器读写通讯异常
+     */
+    public static String sendPostDataByJson(String url, Map<String,String> params, String encoding)
+            throws IOException {
+        return sendPostDataByJson(url, JSON.toJSONString(params), encoding);
+    }
+    
+    
  
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为json形式

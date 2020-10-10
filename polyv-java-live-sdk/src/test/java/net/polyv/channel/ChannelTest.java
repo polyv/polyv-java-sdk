@@ -14,8 +14,12 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
+import net.polyv.live.entity.channel.LiveChannelInitRequest;
+import net.polyv.live.entity.channel.LiveChannelInitRequest.AuthSettings;
+import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
+import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
@@ -60,6 +64,326 @@ public class ChannelTest {
     }
     
     /**
+     * 测试创建并初始化频道 验证码观看
+     * @throws IOException 异常
+     */
+    @Test
+    public void testCreateChannelInitCode() throws IOException {
+        LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
+        LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
+                "创建并初始化频道-验证码观看")
+                .setChannelPasswd("123321")
+                .setAutoPlay(1)
+                .setPlayerColor("#666666")
+                .setScene(LiveConstant.SceneType.ALONE.getDesc())
+                .setCategoryId(340019)
+                .setMaxViewer(0)
+                .setStartTime(1602306535000l)
+                .setDesc("这是一个描述")
+                .setPublisher("sadboy主讲")
+                .setLinkMicLimit(-1)
+                .setPureRtcEnabled("N")
+                .setReceiveChannelIds("213");
+        liveChannelInitRequest.setBasicSetting(basicSetting);
+        //验证码观看
+        LiveChannelInitRequest.AuthSettings codeAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+                .setAuthType(LiveConstant.AuthType.CODE.getDesc())
+                .setEnabled("Y")
+                .setAuthCode("123456")
+                .setQcodeTips("提示文案")
+                .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
+        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        authSettings.add(codeAuthSettings);
+        liveChannelInitRequest.setAuthSettings(authSettings);
+        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+                liveChannelInitRequest);
+        Assert.assertNotNull(liveChannelInitResponse);
+        if (liveChannelInitResponse != null) {
+            //to do something ......
+            log.debug("测试创建并初始化频道 验证码观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+        }
+    }
+    
+    /**
+     * 测试创建并初始化频道 付费观看  TODO 未通过测试
+     * @throws IOException 异常
+     */
+    @Test
+    public void testCreateChannelInitPay() throws IOException {
+        LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
+        LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
+                "创建并初始化频道-付费观看")
+                .setChannelPasswd("123321")
+                .setAutoPlay(1)
+                .setPlayerColor("#666666")
+                .setScene(LiveConstant.SceneType.ALONE.getDesc())
+                .setCategoryId(340019)
+                .setMaxViewer(0)
+                .setStartTime(1602306535000l)
+                .setDesc("这是一个描述")
+                .setPublisher("sadboy主讲")
+                .setLinkMicLimit(-1)
+                .setPureRtcEnabled("N")
+                .setReceiveChannelIds("213");
+        liveChannelInitRequest.setBasicSetting(basicSetting);
+        //付费观看
+        LiveChannelInitRequest.AuthSettings payAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+                .setAuthType(LiveConstant.AuthType.PAY.getDesc())
+                .setPayAuthTips("欢迎使用POLYV直播平台")
+                .setPrice(0.01f)
+                .setWatchEndTime("2022-01-01 00:00:00")
+                .setValidTimePeriod(720)
+                .setEnabled("Y");
+        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        authSettings.add(payAuthSettings);
+        liveChannelInitRequest.setAuthSettings(authSettings);
+        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+                liveChannelInitRequest);
+        Assert.assertNotNull(liveChannelInitResponse);
+        if (liveChannelInitResponse != null) {
+            //to do something ......
+            log.debug("测试创建并初始化频道 付费观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+        }
+    }
+    
+    /**
+     * 测试创建并初始化频道 白名单观看   TODO 未通过测试
+     * @throws IOException 异常
+     */
+    @Test
+    public void testCreateChannelInitPhone() throws IOException {
+        LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
+        LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
+                "创建并初始化频道-白名单观看")
+                .setChannelPasswd("123321")
+                .setAutoPlay(1)
+                .setPlayerColor("#666666")
+                .setScene(LiveConstant.SceneType.ALONE.getDesc())
+                .setCategoryId(340019)
+                .setMaxViewer(0)
+                .setStartTime(1602306535000l)
+                .setDesc("这是一个描述")
+                .setPublisher("sadboy主讲")
+                .setLinkMicLimit(-1)
+                .setPureRtcEnabled("N")
+                .setReceiveChannelIds("213");
+        liveChannelInitRequest.setBasicSetting(basicSetting);
+        //白名单观看,设置观看条件为白名单观看时，必须已经存在白名单数据
+        LiveChannelInitRequest.AuthSettings phoneAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(2)
+                .setAuthType(LiveConstant.AuthType.PHONE.getDesc())
+                .setEnabled("Y")
+                .setAuthTips("这是提示文案");
+        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        authSettings.add(phoneAuthSettings);
+        liveChannelInitRequest.setAuthSettings(authSettings);
+        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+                liveChannelInitRequest);
+        Assert.assertNotNull(liveChannelInitResponse);
+        if (liveChannelInitResponse != null) {
+            //to do something ......
+            log.debug("测试创建并初始化频道 白名单观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+        }
+    }
+    
+    /**
+     * 测试创建并初始化频道 登记观看
+     * @throws IOException 异常
+     */
+    @Test
+    public void testCreateChannelInitInfo() throws IOException {
+        LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
+        LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
+                "创建并初始化频道-登记观看")
+                .setChannelPasswd("123321")
+                .setAutoPlay(1)
+                .setPlayerColor("#666666")
+                .setScene(LiveConstant.SceneType.ALONE.getDesc())
+                .setCategoryId(340019)
+                .setMaxViewer(0)
+                .setStartTime(1602306535000l)
+                .setDesc("这是一个描述")
+                .setPublisher("sadboy主讲")
+                .setLinkMicLimit(-1)
+                .setPureRtcEnabled("N")
+                .setReceiveChannelIds("213");
+        liveChannelInitRequest.setBasicSetting(basicSetting);
+        //登记观看
+        LiveChannelInitRequest.InfoField nameInfo = liveChannelInitRequest.new InfoField().setName("姓名")
+                .setType("name")
+                .setPlaceholder("请输入姓名")
+                .setSms("N");
+        LiveChannelInitRequest.InfoField sexInfo = liveChannelInitRequest.new InfoField().setName("姓名")
+                .setType("option")
+                .setPlaceholder("请选择性别")
+                .setOptions("男,女")
+                .setSms("N");
+        List<LiveChannelInitRequest.InfoField> infoFields = new ArrayList<>();
+        infoFields.add(nameInfo);
+        infoFields.add(sexInfo);
+        LiveChannelInitRequest.AuthSettings infoAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+                .setAuthType(LiveConstant.AuthType.INFO.getDesc())
+                .setEnabled("Y")
+                .setInfoFields(infoFields);
+        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        authSettings.add(infoAuthSettings);
+        liveChannelInitRequest.setAuthSettings(authSettings);
+        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+                liveChannelInitRequest);
+        Assert.assertNotNull(liveChannelInitResponse);
+        if (liveChannelInitResponse != null) {
+            //to do something ......
+            log.debug("测试创建并初始化频道 登记观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+        }
+    }
+    
+    /**
+     * 测试创建并初始化频道 自定义授权观看
+     * @throws IOException 异常
+     */
+    @Test
+    public void testCreateChannelInitCustom() throws IOException {
+        LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
+        LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
+                "创建并初始化频道-自定义授权观看")
+                .setChannelPasswd("123321")
+                .setAutoPlay(1)
+                .setPlayerColor("#666666")
+                .setScene(LiveConstant.SceneType.ALONE.getDesc())
+                .setCategoryId(340019)
+                .setMaxViewer(0)
+                .setStartTime(1602306535000l)
+                .setDesc("这是一个描述")
+                .setPublisher("sadboy主讲")
+                .setLinkMicLimit(-1)
+                .setPureRtcEnabled("N")
+                .setReceiveChannelIds("213");
+        liveChannelInitRequest.setBasicSetting(basicSetting);
+        //自定义授权观看
+        LiveChannelInitRequest.AuthSettings infoAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+                .setAuthType(LiveConstant.AuthType.CUSTOM.getDesc())
+                .setEnabled("Y")
+                .setCustomKey("ttttt")
+                .setCustomUri("http://www.polyv.net");
+        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        authSettings.add(infoAuthSettings);
+        liveChannelInitRequest.setAuthSettings(authSettings);
+        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+                liveChannelInitRequest);
+        Assert.assertNotNull(liveChannelInitResponse);
+        if (liveChannelInitResponse != null) {
+            //to do something ......
+            log.debug("测试创建并初始化频道 自定义授权观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+        }
+    }
+    
+    /**
+     * 测试创建并初始化频道 外部授权观看
+     * @throws IOException 异常
+     */
+    @Test
+    public void testCreateChannelInitExternal() throws IOException {
+        LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
+        LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
+                "创建并初始化频道-外部授权观看")
+                .setChannelPasswd("123321")
+                .setAutoPlay(1)
+                .setPlayerColor("#666666")
+                .setScene(LiveConstant.SceneType.ALONE.getDesc())
+                .setCategoryId(340019)
+                .setMaxViewer(0)
+                .setStartTime(1602306535000l)
+                .setDesc("这是一个描述")
+                .setPublisher("sadboy主讲")
+                .setLinkMicLimit(-1)
+                .setPureRtcEnabled("N")
+                .setReceiveChannelIds("213");
+        liveChannelInitRequest.setBasicSetting(basicSetting);
+        //自定义授权观看
+        LiveChannelInitRequest.AuthSettings infoAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+                .setAuthType(LiveConstant.AuthType.EXTERNAL.getDesc())
+                .setEnabled("Y")
+                .setExternalKey("externalKey")
+                .setExternalUri("http://www.baidu.com")
+                .setExternalRedirectUri("http://www.polyv.net");
+        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        authSettings.add(infoAuthSettings);
+        liveChannelInitRequest.setAuthSettings(authSettings);
+        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+                liveChannelInitRequest);
+        Assert.assertNotNull(liveChannelInitResponse);
+        if (liveChannelInitResponse != null) {
+            //to do something ......
+            log.debug("测试创建并初始化频道 外部授权观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+        }
+    }
+    
+    /**
+     * 测试创建并初始化频道 直接授权观看
+     * @throws IOException 异常
+     */
+    @Test
+    public void testCreateChannelInitDirect() throws IOException {
+        LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
+        LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
+                "创建并初始化频道-直接授权观看")
+                .setChannelPasswd("123321")
+                .setAutoPlay(1)
+                .setPlayerColor("#666666")
+                .setScene(LiveConstant.SceneType.ALONE.getDesc())
+                .setCategoryId(340019)
+                .setMaxViewer(0)
+                .setStartTime(1602306535000l)
+                .setDesc("这是一个描述")
+                .setPublisher("sadboy主讲")
+                .setLinkMicLimit(-1)
+                .setPureRtcEnabled("N")
+                .setReceiveChannelIds("213");
+        liveChannelInitRequest.setBasicSetting(basicSetting);
+        //自定义授权观看
+        LiveChannelInitRequest.AuthSettings infoAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+                .setAuthType(LiveConstant.AuthType.DIRECT.getDesc())
+                .setEnabled("Y")
+                .setDirectKey("directKey");
+        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        authSettings.add(infoAuthSettings);
+        liveChannelInitRequest.setAuthSettings(authSettings);
+        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+                liveChannelInitRequest);
+        Assert.assertNotNull(liveChannelInitResponse);
+        if (liveChannelInitResponse != null) {
+            //to do something ......
+            log.debug("测试创建并初始化频道 直接授权观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+        }
+    }
+    
+    /**
+     * 测试修改频道的相关设置 TODO 完善junit字段
+     */
+    @Test
+    public void testUpdateChannelSetting() throws IOException {
+        LiveChannelSettingRequest liveChannelSettingRequest = new LiveChannelSettingRequest();
+        LiveChannelSettingRequest.BasicSetting basicSetting = liveChannelSettingRequest.new BasicSetting().setName(
+                "9999999999").setChannelPasswd("123321")
+                .setCategoryId(340019)
+                .setMaxViewer(0)
+                .setPageView(1000)
+                .setLikes(2000)
+                .setCoverImg("https://www.polyv.net/")
+                .setStartTime(1602306535000l)
+                .setDesc("这是一个描述")
+                .setPublisher("sadboy主讲")
+                .setLinkMicLimit(-1)
+                .setReceiveChannelIds("213");
+        liveChannelSettingRequest.setChannelId(1940343).setBasicSetting(basicSetting);
+        String liveChannelSettingResponse = new LiveChannelServiceImpl().updateChannelSetting(liveChannelSettingRequest);
+        Assert.assertNull(liveChannelSettingResponse);
+        if (liveChannelSettingResponse == null) {
+            //to do something ......
+            log.debug("测试修改频道的相关设置成功" + JSON.toJSONString(liveChannelSettingResponse));
+        }
+    }
+    
+    /**
      * 测试批量创建频道
      * @throws IOException
      */
@@ -79,7 +403,8 @@ public class ChannelTest {
             channels.add(liveChannel);
         }
         liveCreateChannelListRequest.setChannels(channels).setRequestId("123456");
-        LiveCreateChannelListResponse liveCreateChannelListResponse = new LiveChannelServiceImpl().createChannelList(liveCreateChannelListRequest);
+        LiveCreateChannelListResponse liveCreateChannelListResponse = new LiveChannelServiceImpl().createChannelList(
+                liveCreateChannelListRequest);
         Assert.assertNotNull(liveCreateChannelListResponse);
         if (liveCreateChannelListResponse != null) {
             //to do something ......

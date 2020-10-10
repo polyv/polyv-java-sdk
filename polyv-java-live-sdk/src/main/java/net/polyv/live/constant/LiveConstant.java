@@ -69,5 +69,44 @@ public class LiveConstant {
             return desc;
         }
     }
+    
+    public enum AuthType{
+        /**
+         * 观看条件：付费观看
+         */
+        PAY("pay"),
+        /**
+         * 观看条件：验证码观看
+         */
+        CODE("code"),
+        /**
+         * 观看条件：白名单观看
+         */
+        PHONE("phone"),
+        /**
+         * 观看条件：登记观看
+         */
+        INFO("info"),
+        /**
+         * 观看条件：自定义授权观看
+         */
+        CUSTOM("custom"),
+        /**
+         * 观看条件：外部授权
+         */
+        EXTERNAL("external"),
+        /**
+         * 观看条件：直接授权
+         */
+        DIRECT("direct");
+        
+        private String desc;
+    
+        private AuthType(String desc){this.desc = desc;}
+    
+        public String getDesc() {
+            return desc;
+        }
+    }
 
 }

@@ -16,6 +16,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.polyv.live.config.LiveGlobalConfig;
+import net.polyv.live.entity.LiveCommonRequest;
+
 /**
  * MAP对象和HTTP参数 互相转换对象
  * @author: thomas
@@ -160,7 +163,7 @@ public class MapUtil {
 	/**
 	 * 获取签名字段，appId，timestamp，sign，requestId的 map 集合
 	 * @param map map
-	 * @return string
+	 * @return map
 	 */
 	public static Map<String, String> getSignMap(Map<String, String> map) {
 		Map<String,String> tempMap = new HashMap<>();
@@ -168,6 +171,28 @@ public class MapUtil {
 		tempMap.put("timestamp",map.get("timestamp"));
 		tempMap.put("sign",map.get("sign"));
 		tempMap.put("requestId",map.get("requestId"));
+		return tempMap;
+	}
+	
+	/**
+	 * 获取签名字段，appId，timestamp，sign，requestId的 map 集合
+	 * @param t 请求体
+	 * @param <T> LiveCommonRequest
+	 * @return map
+	 */
+	public static <T extends LiveCommonRequest> Map<String, String> getSignMap(T t) {
+		if (StringUtils.isBlank(t.getRequestId())) {
+			t.setRequestId(LiveSignUtil.generateUUID());
+		}
+		t.setAppId(LiveGlobalConfig.APP_ID);
+		if (StringUtils.isBlank(t.getTimestamp())) {
+			t.setTimestamp(String.valueOf(System.currentTimeMillis()));
+		}
+		Map<String,String> tempMap = new HashMap<>();
+		tempMap.put("appId",t.getAppId());
+		tempMap.put("timestamp",t.getTimestamp());
+		tempMap.put("sign",t.getSign());
+		tempMap.put("requestId",t.getRequestId());
 		return tempMap;
 	}
 	

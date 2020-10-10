@@ -1,19 +1,26 @@
 package net.polyv.live.service.channel.impl;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
+import net.polyv.live.entity.channel.LiveChannelInitRequest;
+import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
+import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelService;
+import net.polyv.live.util.LiveSignUtil;
+import net.polyv.live.util.MapUtil;
 
 /**
  * 直播频道管理
@@ -37,6 +44,19 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     }
     
     /**
+     * 创建并初始化频道
+     * @param liveChannelInitRequest 请求体
+     * @return 响应体
+     * @throws IOException 异常
+     */
+    @Override
+    public LiveChannelInitResponse createChannelInit(LiveChannelInitRequest liveChannelInitRequest) throws IOException {
+        String url = LiveURL.CHANNEL_BASIC_CREATE_URL;
+        LiveChannelInitResponse liveChannelInitResponse = this.basePostJson(url,liveChannelInitRequest,LiveChannelInitResponse.class);
+        return liveChannelInitResponse;
+    }
+    
+    /**
      * 批量创建频道
      * @param liveCreateChannelListRequest 批量创建频道请求体
      * @return 批量创建频道返回体
@@ -48,6 +68,20 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         String url = LiveURL.CHANNEL_List_CREATE_URL;
         LiveCreateChannelListResponse liveCreateChannelListResponse = this.basePostJson(url, liveCreateChannelListRequest, LiveCreateChannelListResponse.class);
         return liveCreateChannelListResponse;
+    }
+    
+    /**
+     * 修改频道的相关设置
+     * @param liveChannelSettingRequest 修改频道的相关设置请求体
+     * @return 修改频道的相关设置返回体
+     * @throws IOException 异常
+     */
+    @Override
+    public String updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest) throws IOException {
+        String url = LiveURL.CHANNEL_BASIC_UPDATE_URL;
+        Map<String,String> signMap = MapUtil.getSignMap(liveChannelSettingRequest);
+        signMap.put("channelId",liveChannelSettingRequest.getChannelId()+"");
+        return this.basePostJson(url,signMap,liveChannelSettingRequest,String.class);
     }
     
     /**

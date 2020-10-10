@@ -4,12 +4,15 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
+import net.polyv.live.entity.channel.LiveChannelInitRequest;
+import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
@@ -55,8 +58,20 @@ public class ChannelAction {
         return  liveCreateChannelListResponse;
     }
     
+    /**
+     * 创建并初始化频道demo
+     * @param liveChannelInitRequest
+     * @return
+     * @throws IOException
+     */
+    @ApiOperation(value = "创建并初始化频道，用于创建频道并进行相关设置。创建成功返回频道信息。",notes = "调用示例：参考polyv-java-live-sdk单元测试ChannelTest.testCreateChannelInitCode()等方法，可设置不同的观看条件。<a target=\"_blank\"  href=\"http://47.115.173.234:3000/#/channel/channelManager?id=sdk%e9%a2%91%e9%81%93%e6%93%8d%e4%bd%9c\">创建并初始化频道</a>    ")
+    @PostMapping("/createChannelInit")
+    @ResponseBody
+    public LiveChannelInitResponse createChannelInit(@RequestBody LiveChannelInitRequest liveChannelInitRequest) throws IOException {
+        LiveChannelInitResponse liveChannelInitResponse =  new LiveChannelServiceImpl().createChannelInit(liveChannelInitRequest);
+        return  liveChannelInitResponse;
+    }
     
-
     @ApiOperation(value = "设置频道详情，成功时为true，错误时为\"\"",notes = "调用示例：参考polyv-java-live-sdk单元测试ChannelTest.testCreateChannel()方法。<a target=\"_blank\"  href=\"http://47.115.173.234:3000/#/channel/channelManager?id=sdk%e9%a2%91%e9%81%93%e6%93%8d%e4%bd%9c\">频道创建</a>    ")
     @PostMapping("/updateChannelDetail")
     @ResponseBody

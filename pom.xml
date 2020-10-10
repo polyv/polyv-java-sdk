@@ -11,6 +11,7 @@
         <module>polyv-java-vod-sdk</module>
         <module>polyv-java-live-sdk</module>
         <module>polyv-java-sdk-common</module>
+        <module>polyv-java-vod-sdk-web</module>
     </modules>
 
     <packaging>pom</packaging>

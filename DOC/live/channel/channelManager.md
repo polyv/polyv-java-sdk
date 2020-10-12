@@ -352,4 +352,54 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
 
 #### 请求入参描述[LiveChannelRequest]
 
+| 参数名     | 必选 | 类型      | 说明                              |
+| ---------- | ---- | --------- | --------------------------------- |
+| channelIds | 是   | Integer[] | 频道ID列表，每次最多删除100个频道 |
+
+
 #### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 请求结果 |
+
+### 设置频道单点登陆token
+
+#### 描述
+设置频道单点登陆token;该接口在单点登录后台使用场景中配合使用，点击查看具体[单点登录文档](http://dev.polyv.net/2020/liveproduct/l-api/zhsz/sso/)
+
+#### 调用约束
+无
+
+#### 代码示例
+```java
+@Test
+    public void testCreateChannelToken() throws IOException, NoSuchAlgorithmException {
+        LiveCreateChannelTokenRequest liveCreateChannelTokenRequest = new LiveCreateChannelTokenRequest();
+        liveCreateChannelTokenRequest.setChannelId(1939188).setToken("testToken");
+        String liveCreateChannelTokenResponse = new LiveChannelServiceImpl().createChannelToken(liveCreateChannelTokenRequest);
+        Assert.assertNotNull(liveCreateChannelTokenResponse);
+        if ("success".equals(liveCreateChannelTokenResponse)) {
+            //to do something ......
+            log.debug("设置频道单点登陆token成功" + JSON.toJSONString(liveCreateChannelTokenResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置频道单点登陆token](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否设置频道单点登陆token成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明         |
+| --------- | ---- | ------ | ------------ |
+| channelId | 是   | int    | 频道ID       |
+| token     | 是   | string | 唯一的字符串 |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 请求结果 |

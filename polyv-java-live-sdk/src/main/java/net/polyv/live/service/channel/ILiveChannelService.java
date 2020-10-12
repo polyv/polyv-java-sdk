@@ -12,6 +12,7 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
+import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
@@ -100,7 +101,8 @@ public interface ILiveChannelService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String deleteChannel(LiveDeleteChannelRequest liveDeleteChannelRequest) throws IOException,NoSuchAlgorithmException;
+    String deleteChannel(LiveDeleteChannelRequest liveDeleteChannelRequest)
+            throws IOException, NoSuchAlgorithmException;
     
     /**
      * 批量删除频道
@@ -109,6 +111,16 @@ public interface ILiveChannelService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String deleteChannelList(LiveDeleteChannelListRequest liveDeleteChannelListRequest) throws IOException,NoSuchAlgorithmException;
+    String deleteChannelList(LiveDeleteChannelListRequest liveDeleteChannelListRequest)
+            throws IOException, NoSuchAlgorithmException;
     
+    /**
+     * 设置频道单点登陆token
+     * @param liveCreateChannelTokenRequest 设置频道单点登陆token请求体
+     * @return 设置频道单点登陆token返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String createChannelToken(LiveCreateChannelTokenRequest liveCreateChannelTokenRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

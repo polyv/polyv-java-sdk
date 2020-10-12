@@ -24,6 +24,7 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
+import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
@@ -552,11 +553,27 @@ public class ChannelTest {
     public void testDeleteChannelList() throws IOException, NoSuchAlgorithmException {
         LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChannelListRequest();
         liveDeleteChannelListRequest.setChannelIds(new Integer[]{1938719, 1938888});
-        String liveDeleteChannelListResponse = new LiveChannelServiceImpl().deleteChannelList(liveDeleteChannelListRequest);
+        String liveDeleteChannelListResponse = new LiveChannelServiceImpl().deleteChannelList(
+                liveDeleteChannelListRequest);
         Assert.assertNotNull(liveDeleteChannelListResponse);
         if ("true".equals(liveDeleteChannelListResponse)) {
             //to do something ......
             log.debug("批量删除频道成功" + JSON.toJSONString(liveDeleteChannelListResponse));
+        }
+    }
+    
+    /**
+     * 测试设置频道单点登陆token
+     */
+    @Test
+    public void testCreateChannelToken() throws IOException, NoSuchAlgorithmException {
+        LiveCreateChannelTokenRequest liveCreateChannelTokenRequest = new LiveCreateChannelTokenRequest();
+        liveCreateChannelTokenRequest.setChannelId(1939188).setToken("testToken");
+        String liveCreateChannelTokenResponse = new LiveChannelServiceImpl().createChannelToken(liveCreateChannelTokenRequest);
+        Assert.assertNotNull(liveCreateChannelTokenResponse);
+        if ("success".equals(liveCreateChannelTokenResponse)) {
+            //to do something ......
+            log.debug("设置频道单点登陆token成功" + JSON.toJSONString(liveCreateChannelTokenResponse));
         }
     }
 }

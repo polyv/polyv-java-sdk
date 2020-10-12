@@ -18,6 +18,7 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
+import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
@@ -167,6 +168,20 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIST_DELETE_URL;
         return this.basePostJson(url, liveDeleteChannelListRequest, String.class);
+    }
+    
+    /**
+     * 设置频道单点登陆token
+     * @param liveCreateChannelTokenRequest 设置频道单点登陆token请求体
+     * @return 设置频道单点登陆token返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String createChannelToken(LiveCreateChannelTokenRequest liveCreateChannelTokenRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_TOKEN_CREATE_URL,liveCreateChannelTokenRequest.getChannelId());
+        return this.basePost(url,liveCreateChannelTokenRequest,String.class);
     }
     
     

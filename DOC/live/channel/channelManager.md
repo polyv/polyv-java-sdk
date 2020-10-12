@@ -486,3 +486,91 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
 | categoryId        | string    | 所属分类Id                                            |
 | categoryName      | string    | 所属分类名称                                          |
 | channelPasswd     | string    | 频道密码                                              |
+
+### 查询频道基本信息
+
+#### 描述
+接口用于查询频道基本信息
+
+#### 调用约束
+无
+
+#### 代码示例
+```java
+@Test
+    public void testChannelBasicInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
+        liveChannelBasicInfoRequest.setChannelId(1939188);
+        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = new LiveChannelServiceImpl().channelBasicInfo(
+                liveChannelBasicInfoRequest);
+        Assert.assertNotNull(liveChannelBasicInfoResponse);
+        if (liveChannelBasicInfoResponse != null) {
+            //to do something ......
+            log.debug("查询频道基本信息成功" + JSON.toJSONString(liveChannelBasicInfoResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道基本信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否与查询数据一致](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+| 参数名    | 必选 | 类型   | 说明   |
+| --------- | ---- | ------ | ------ |
+| channelId | 是   | string | 频道ID |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名                | 类型                | 说明                                                         |
+| --------------------- | ------------------- | ------------------------------------------------------------ |
+| channelId             | int                 | 频道号                                                       |
+| name                  | string              | 频道名称                                                     |
+| channelPasswd         | string              | 频道密码                                                     |
+| publisher             | string              | 主持人名称                                                   |
+| startTime             | long                | 直播开始时间，关闭时为0，开启时为13位毫秒级时间戳            |
+| pageView              | int                 | 页面累计观看数                                               |
+| likes                 | int                 | 观看页点赞数                                                 |
+| coverImg              | string              | 频道图标url                                                  |
+| splashImg             | string              | 频道引导图url                                                |
+| splashEnabled         | string（取值为Y/N） | 引导页开关                                                   |
+| desc                  | string              | 直播介绍                                                     |
+| consultingMenuEnabled | string（取值为Y/N） | 咨询提问开关                                                 |
+| maxViewerRestrict     | string（取值为Y/N） | 限制最大在线观看人数开关                                     |
+| maxViewer             | int                 | 最大在线观看人数                                             |
+| watchStatus           | string              | 频道的观看页状态，取值为： 频道状态,取值：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） |
+| watchStatusText       | string              | 观看页状态描述，直播中，回放中，已结束，未开始               |
+| userCategory          | Object              | 频道所属分类的信息，具体字段见UserCategory                   |
+| authSettings          | list                | 直播观看条件列表,具体字段见AuthSetting                       |
+
+UserCategory对象描述
+
+| 参数名       | 类型   | 说明                                                         |
+| ------------ | ------ | ------------------------------------------------------------ |
+| categoryId   | int    | 分类ID                                                       |
+| categoryName | string | 分类名称                                                     |
+| rank         | int    | 分类的排序值                                                 |
+| userId       | string | POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置） |
+
+AuthSetting参数描述
+
+| 参数名               | 类型   | 说明                                                         |
+| -------------------- | ------ | ------------------------------------------------------------ |
+| userId               | string | 用户ID                                                       |
+| rank                 | int    | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） |
+| globalSettingEnabled | string | 是否开启全局设置（Y/N）                                      |
+| enabled              | string | 是否开启观看条件(Y/N)                                        |
+| authType             | string | 观看条件类型(1. 无限制  none  2. 验证码观看 code    3.  付费观看 pay   4. 白名单观看 phone   5. 登记观看 info   6. 分享观看 wxshare   7. 自定义授权观看 custom   8. 外部授权观看  external) |
+| authTips             | string | 白名单观看提示信息                                           |
+| payAuthTips          | string | 付费观看提示信息                                             |
+| authCode             | string | 验证码观看的验证码                                           |
+| qcodeTips            | string | 验证码观看的二维码提示                                       |
+| qcodeImg             | string | 验证码观看的二维码图片                                       |
+| price                | int    | 付费观看的价格                                               |
+| watchEndTime         | string | 付费观看，截止时间，为null表示：一次付费，永久有效           |
+| validTimePeriod      | int    | 付费观看的截止时长 （天）                                    |
+| customKey            | string | 自定义授权观看的key                                          |
+| customUri            | string | 自定义授权观看的接口地址                                     |
+| externalKey          | string | 外部授权观看的key                                            |
+| externalUri          | string | 外部授权观看的接口地址                                       |
+| externalRedirectUri  | string | 外部授权观看，用户直接访问观看页时的跳转地址                 |

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.entity.channel.LiveChannelBasicInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 
 import org.junit.Assert;
@@ -598,6 +600,22 @@ public class ChannelTest {
         }
     }
     
-    
+    /**
+     * 测试查询频道基本信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelBasicInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
+        liveChannelBasicInfoRequest.setChannelId(1939188);
+        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = new LiveChannelServiceImpl().channelBasicInfo(
+                liveChannelBasicInfoRequest);
+        Assert.assertNotNull(liveChannelBasicInfoResponse);
+        if (liveChannelBasicInfoResponse != null) {
+            //to do something ......
+            log.debug("查询频道基本信息成功" + JSON.toJSONString(liveChannelBasicInfoResponse));
+        }
+    }
     
 }

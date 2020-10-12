@@ -103,6 +103,11 @@ public class LiveURL {
     public static final String CHANNEL_GET_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/get";
     
     /**
+     * 获取频道信息的接口
+     */
+    public static final String CHANNEL_BASIC_INFO_URL = BASE_URI + "v3/channel/basic/get";
+    
+    /**
      * 获取频道录制视频信息接口
      */
     public static final String CHANNEL_RECORD_FILES_URL =

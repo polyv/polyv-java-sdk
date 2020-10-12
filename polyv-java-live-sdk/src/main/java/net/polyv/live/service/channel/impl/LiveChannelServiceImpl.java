@@ -9,6 +9,8 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.channel.LiveChannelBasicInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelInfoResponse;
@@ -200,6 +202,22 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         LiveChannelInfoResponse liveChannelInfoResponse = this.baseGet(url, liveChannelInfoRequest,
                 LiveChannelInfoResponse.class);
         return liveChannelInfoResponse;
+    }
+    
+    /**
+     * 查询频道基本信息
+     * @param liveChannelBasicInfoRequest 查询频道基本信息请求体
+     * @return 查询频道基本信息返回提
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelBasicInfoResponse channelBasicInfo(LiveChannelBasicInfoRequest liveChannelBasicInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_BASIC_INFO_URL;
+        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = this.basePost(url, liveChannelBasicInfoRequest,
+                LiveChannelBasicInfoResponse.class);
+        return liveChannelBasicInfoResponse;
     }
     
     

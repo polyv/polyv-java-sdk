@@ -358,13 +358,14 @@ public class ChannelTest {
     }
     
     /**
-     * 测试修改频道的相关设置 TODO 完善junit字段
+     * 测试修改频道的相关设置
      */
     @Test
     public void testUpdateChannelSetting() throws IOException {
         LiveChannelSettingRequest liveChannelSettingRequest = new LiveChannelSettingRequest();
         LiveChannelSettingRequest.BasicSetting basicSetting = liveChannelSettingRequest.new BasicSetting().setName(
-                "9999999999").setChannelPasswd("123321")
+                "9999999999")
+                .setChannelPasswd("123321")
                 .setCategoryId(340019)
                 .setMaxViewer(0)
                 .setPageView(1000)
@@ -375,8 +376,18 @@ public class ChannelTest {
                 .setPublisher("sadboy主讲")
                 .setLinkMicLimit(-1)
                 .setReceiveChannelIds("213");
-        liveChannelSettingRequest.setChannelId(1940343).setBasicSetting(basicSetting);
-        String liveChannelSettingResponse = new LiveChannelServiceImpl().updateChannelSetting(liveChannelSettingRequest);
+        LiveChannelSettingRequest.AuthSettings authSetting = liveChannelSettingRequest.new AuthSettings().setAuthType(
+                LiveConstant.AuthType.CODE.getDesc())
+                .setRank(1)
+                .setEnabled("Y")
+                .setAuthCode("123456")
+                .setQcodeTips("提示文案")
+                .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
+        List<LiveChannelSettingRequest.AuthSettings> authSettings = new ArrayList<>();
+        authSettings.add(authSetting);
+        liveChannelSettingRequest.setChannelId(1940343).setBasicSetting(basicSetting).setAuthSettings(authSettings);
+        String liveChannelSettingResponse = new LiveChannelServiceImpl().updateChannelSetting(
+                liveChannelSettingRequest);
         Assert.assertNull(liveChannelSettingResponse);
         if (liveChannelSettingResponse == null) {
             //to do something ......

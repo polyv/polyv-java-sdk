@@ -403,3 +403,86 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 请求结果 |
+
+### 查询频道信息
+
+#### 描述
+查询直播频道信息
+
+#### 调用约束
+无
+
+#### 代码示例
+```java
+@Test
+    public void testChannelInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelInfoRequest liveChannelInfoRequest = new LiveChannelInfoRequest();
+        liveChannelInfoRequest.setChannelId(1939188);
+        LiveChannelInfoResponse liveChannelInfoResponse = new LiveChannelServiceImpl().channelInfo(
+                liveChannelInfoRequest);
+        Assert.assertNotNull(liveChannelInfoResponse);
+        if (liveChannelInfoResponse != null) {
+            //to do something ......
+            log.debug("查询频道信息成功" + JSON.toJSONString(liveChannelInfoResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看信息是否一致](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型 | 说明   |
+| --------- | ---- | ---- | ------ |
+| channelId | 是   | int  | 频道ID |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名            | 类型      | 说明                                                  |
+| ----------------- | --------- | ----------------------------------------------------- |
+| channelId         | string    | 直播频道ID                                            |
+| userId            | string    | 直播用户ID                                            |
+| name              | string    | 直播频道名称                                          |
+| description       | string    | 直播频道描述                                          |
+| url               | string    | 直播推流地址                                          |
+| stream            | string    | 直播流名称                                            |
+| logoImage         | string    | 播放器logo                                            |
+| logoOpacity       | int       | Logo不透明度，1表示完全不透明                         |
+| logoPosition      | string    | Logo位置                                              |
+| logoHref          | string    | Logo的跳转链接                                        |
+| coverImage        | string    | 播放前显示的封面图                                    |
+| coverHref         | string    | 封面图的跳转链接                                      |
+| waitImage         | string    | 等待推流时的显示图片                                  |
+| waitHref          | string    | 等待推流时显示图片的跳转链接                          |
+| cutoffImage       | string    | 切断流时的显示图片                                    |
+| cutoffHref        | string    | 切断流时显示图片的跳转链接                            |
+| advertType        | string    | 广告类型                                              |
+| advertDuration    | string    | 广告时长                                              |
+| advertWidth       | string    | 广告区域宽度                                          |
+| advertHeight      | string    | 广告区域高度                                          |
+| advertImage       | string    | 图片广告                                              |
+| advertHref        | string    | 广告的跳转链接                                        |
+| advertFlvVid      | string    | 视频广告ID                                            |
+| advertFlvUrl      | string    | 视频广告链接                                          |
+| playerColor       | string    | 播放器控制栏颜色                                      |
+| autoPlay          | boolean   | 自动播放                                              |
+| warmUpFlv         | string    | 一开始的暖场视频                                      |
+| passwdRestrict    | boolean   | 观看密码限制，需要输入观看密码才能播放流              |
+| passwdEncrypted   | string    | 观看密码加密后的密文                                  |
+| isOnlyAudio       | string    | 仅推音频流                                            |
+| isLowLatency      | string    | 低延迟                                                |
+| m3u8Url           | string    | 直播拉流（播放）m3u8地址                              |
+| m3u8Url1          | string    | 直播拉流（播放）m3u8地址1                             |
+| m3u8Url2          | string    | 直播拉流（播放）m3u8地址2                             |
+| m3u8Url3          | string    | 直播拉流（播放）m3u8地址3                             |
+| currentTimeMillis | timestamp | 服务器返回的时间戳（毫秒）                            |
+| channelLogoImage  | string    | 频道的图标                                            |
+| code              | string    | 异常错误代码                                          |
+| msg               | string    | 异常消息                                              |
+| publisher         | string    | 主持人姓名                                            |
+| scene             | string    | 直播场景：alone 活动直播, topclass 大班课, ppt 三分屏 |
+| categoryId        | string    | 所属分类Id                                            |
+| categoryName      | string    | 所属分类名称                                          |
+| channelPasswd     | string    | 频道密码                                              |

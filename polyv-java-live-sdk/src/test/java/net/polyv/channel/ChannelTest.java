@@ -15,6 +15,8 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
+import net.polyv.live.entity.channel.LiveChannelInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitRequest.AuthSettings;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
@@ -569,11 +571,31 @@ public class ChannelTest {
     public void testCreateChannelToken() throws IOException, NoSuchAlgorithmException {
         LiveCreateChannelTokenRequest liveCreateChannelTokenRequest = new LiveCreateChannelTokenRequest();
         liveCreateChannelTokenRequest.setChannelId(1939188).setToken("testToken");
-        String liveCreateChannelTokenResponse = new LiveChannelServiceImpl().createChannelToken(liveCreateChannelTokenRequest);
+        String liveCreateChannelTokenResponse = new LiveChannelServiceImpl().createChannelToken(
+                liveCreateChannelTokenRequest);
         Assert.assertNotNull(liveCreateChannelTokenResponse);
         if ("success".equals(liveCreateChannelTokenResponse)) {
             //to do something ......
             log.debug("设置频道单点登陆token成功" + JSON.toJSONString(liveCreateChannelTokenResponse));
         }
     }
+    
+    /**
+     * 测试查询频道信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelInfoRequest liveChannelInfoRequest = new LiveChannelInfoRequest();
+        liveChannelInfoRequest.setChannelId(1939188);
+        LiveChannelInfoResponse liveChannelInfoResponse = new LiveChannelServiceImpl().channelInfo(
+                liveChannelInfoRequest);
+        Assert.assertNotNull(liveChannelInfoResponse);
+        if (liveChannelInfoResponse != null) {
+            //to do something ......
+            log.debug("查询频道信息成功" + JSON.toJSONString(liveChannelInfoResponse));
+        }
+    }
+    
 }

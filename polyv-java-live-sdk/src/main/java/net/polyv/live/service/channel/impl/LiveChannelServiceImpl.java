@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
+import net.polyv.live.entity.channel.LiveChannelInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
@@ -180,8 +182,24 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     @Override
     public String createChannelToken(LiveCreateChannelTokenRequest liveCreateChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_TOKEN_CREATE_URL,liveCreateChannelTokenRequest.getChannelId());
-        return this.basePost(url,liveCreateChannelTokenRequest,String.class);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_TOKEN_CREATE_URL, liveCreateChannelTokenRequest.getChannelId());
+        return this.basePost(url, liveCreateChannelTokenRequest, String.class);
+    }
+    
+    /**
+     * 查询频道信息
+     * @param liveChannelInfoRequest 查询频道信息请求体
+     * @return 查询频道信息返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelInfoResponse channelInfo(LiveChannelInfoRequest liveChannelInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_GET_URL, liveChannelInfoRequest.getChannelId());
+        LiveChannelInfoResponse liveChannelInfoResponse = this.baseGet(url, liveChannelInfoRequest,
+                LiveChannelInfoResponse.class);
+        return liveChannelInfoResponse;
     }
     
     

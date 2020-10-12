@@ -3,7 +3,11 @@ package net.polyv.live.service.channel;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
+import net.polyv.live.entity.channel.LiveChannelInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
@@ -123,4 +127,14 @@ public interface ILiveChannelService {
      */
     String createChannelToken(LiveCreateChannelTokenRequest liveCreateChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道信息
+     * @param liveChannelInfoRequest 查询频道信息请求体
+     * @return 查询频道信息返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelInfoResponse channelInfo(LiveChannelInfoRequest liveChannelInfoRequest) throws IOException,NoSuchAlgorithmException;
+    
 }

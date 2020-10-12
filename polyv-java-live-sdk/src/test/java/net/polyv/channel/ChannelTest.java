@@ -18,6 +18,7 @@ import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitRequest.AuthSettings;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
+import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
@@ -27,6 +28,7 @@ import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.dto.LiveChannelBasicDTO;
 import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
+import net.polyv.live.util.JsonUtil;
 
 /**
  * @author: thomas
@@ -429,7 +431,7 @@ public class ChannelTest {
      * @throws IOException
      */
     @Test
-    public void testUpdateChannelPassword() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelDetailPassword() throws IOException, NoSuchAlgorithmException {
         Integer channelId = 1938888;
         String newPassword = "1234567";
         LiveChannelDetailRequest liveChannelDetailRequest = new LiveChannelDetailRequest();
@@ -503,6 +505,24 @@ public class ChannelTest {
         if (liveListChannelPPTRecordResponse != null) {
             //to do something ......
             log.debug("查询课件重制任务列表信息成功" + JSON.toJSONString(liveListChannelPPTRecordResponse));
+        }
+    }
+    
+    /**
+     * 设置频道密码
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelPassword() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest = new LiveChannelPasswordSettingRequest();
+        liveChannelPasswordSettingRequest.setChannelId(1940343).setPasswd("987654");
+        log.debug(JsonUtil.toJSONString(liveChannelPasswordSettingRequest));
+        String updateChannelPasswordResponse = new LiveChannelServiceImpl().updateChannelPassword(
+                liveChannelPasswordSettingRequest);
+        Assert.assertNotNull(updateChannelPasswordResponse);
+        if ("true".equals(updateChannelPasswordResponse)) {
+            log.debug("设置频道密码成功" + JSON.toJSONString(updateChannelPasswordResponse));
         }
     }
 }

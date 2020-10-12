@@ -21,6 +21,8 @@ import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
+import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
@@ -154,12 +156,22 @@ public interface ILiveChannelService {
     
     /**
      * 查询授权和连麦的token
-     * @param liveCreateChannelTokenRequest
-     * @return
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
+     * @param liveCreateChannelTokenRequest 查询授权和连麦的token请求体
+     * @return 查询授权和连麦的token返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
      */
     LiveChannelAuthTokenResponse channelAuthToken(LiveChannelAuthTokenRequest liveCreateChannelTokenRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 创建子频道
+     * @param liveCreateSonChannelRequest 创建子频道请求体
+     * @return 创建子频道返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveCreateSonChannelResponse createSonChannel(LiveCreateSonChannelRequest liveCreateSonChannelRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

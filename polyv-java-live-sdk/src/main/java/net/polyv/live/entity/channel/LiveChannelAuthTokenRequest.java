@@ -45,9 +45,9 @@ public class LiveChannelAuthTokenRequest extends LiveCommonRequest {
     private String role;
     
     /**
-     * 观看来源
+     * 观看来源,可以有web,client,app等
      */
-    @ApiModelProperty(name = "origin", value = "观看来源", required = false)
+    @ApiModelProperty(name = "origin", value = "观看来源,可以有web,client,app等", required = false)
     private String origin;
 
 }

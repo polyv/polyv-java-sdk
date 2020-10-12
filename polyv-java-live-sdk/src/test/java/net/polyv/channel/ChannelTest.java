@@ -31,6 +31,8 @@ import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
+import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
@@ -635,6 +637,28 @@ public class ChannelTest {
         if (liveChannelAuthTokenResponse != null) {
             //to do something ......
             log.debug("查询授权和连麦的token成功" + JSON.toJSONString(liveChannelAuthTokenResponse));
+        }
+    }
+    
+    /**
+     * 测试创建子频道 TODO 测试未通过
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testCreateSonChannel() throws IOException, NoSuchAlgorithmException {
+        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
+        liveCreateSonChannelRequest.setChannelId(1939188)
+                .setRole("Guest")
+                .setNickname("sadboy")
+                .setActor("教授")
+                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
+        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelServiceImpl().createSonChannel(
+                liveCreateSonChannelRequest);
+        Assert.assertNotNull(liveCreateSonChannelResponse);
+        if (liveCreateSonChannelResponse != null) {
+            //to do something ......
+            log.debug("创建子频道成功" + JSON.toJSONString(liveCreateSonChannelResponse));
         }
     }
     

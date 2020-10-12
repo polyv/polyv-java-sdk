@@ -517,7 +517,6 @@ public class ChannelTest {
     public void testUpdateChannelPassword() throws IOException, NoSuchAlgorithmException {
         LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest = new LiveChannelPasswordSettingRequest();
         liveChannelPasswordSettingRequest.setChannelId(1940343).setPasswd("987654");
-        log.debug(JsonUtil.toJSONString(liveChannelPasswordSettingRequest));
         String updateChannelPasswordResponse = new LiveChannelServiceImpl().updateChannelPassword(
                 liveChannelPasswordSettingRequest);
         Assert.assertNotNull(updateChannelPasswordResponse);

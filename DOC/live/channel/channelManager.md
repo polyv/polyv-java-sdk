@@ -113,9 +113,6 @@
 | currentTimeMillis | timestamp | 服务器返回的时间戳（毫秒）               |
 | linkMicLimit      | int       | 连麦人数                                 |
 
-### 直播频道修改
-
-
 
 ### 查询课件重制任务列表
 
@@ -185,19 +182,108 @@ contents列表
 |title|string|对应回放的名称|
 |url|string|重制mp4下载地址，有24小时的防盗链超时时间|
 
-### 查询课件重制任务列表
+### 批量创建频道
 
 #### 描述
 
+作用：批量创建直播频道
+
 #### 调用约束
+
+留意，如果响应失败，则表示全部频道都失败，不会有部份成功、部份失败的结果
 
 #### 代码示例
 ```java
-
+    @Test
+    public void testCreateChannelList() throws IOException {
+        LiveCreateChannelListRequest liveCreateChannelListRequest = new LiveCreateChannelListRequest();
+        List<LiveChannelBasicDTO> channels = new ArrayList<>();
+        for (int i = 0; i <= 2; i++) {
+            LiveChannelBasicDTO liveChannel = new LiveChannelBasicDTO();
+            liveChannel.setName("批量创建" + i)
+                    .setChannelPasswd("123456" + i)
+                    .setCourseId("c" + i)
+                    .setAutoPlay(1)
+                    .setPlayerColor("#666666")
+                    .setScene(LiveConstant.SceneType.ALONE.getDesc())
+                    .setCategoryId(340019);
+            channels.add(liveChannel);
+        }
+        liveCreateChannelListRequest.setChannels(channels).setRequestId("123456");
+        LiveCreateChannelListResponse liveCreateChannelListResponse = new LiveChannelServiceImpl().createChannelList(liveCreateChannelListRequest);
+        Assert.assertNotNull(liveCreateChannelListResponse);
+        if (liveCreateChannelListResponse != null) {
+            //to do something ......
+            log.debug("频道批量创建成功" + JSON.toJSONString(liveCreateChannelListResponse));
+        }
+    }
 ```
 #### 单元测试流程
+[swagger 程序接入-批量创建频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否批量创建成功](http://live.polyv.net/#/channel)
 
 #### 请求入参描述[LiveChannelRequest]
 
+| 参数名    | 必选 | 类型   | 说明                                                   |
+| --------- | ---- | ------ | ------------------------------------------------------ |
+| appId     | 是   | string | 从API设置中获取，在直播系统登记的appId                 |
+| timestamp | 是   | string | 当前时间的秒级时间戳（13位）                           |
+| sign      | 是   | string | 签名，为32位大写的MD5值                                |
+| channels  | 是   | json   | 频道列表，每次最多创建100个频道， **必须放在请求体中** |
+
+
 #### 返回对象描述[LiveChannelResponse]
+
+| 参数名        | 必选 | 类型   | 说明                                                         |
+| ------------- | ---- | ------ | ------------------------------------------------------------ |
+| name          | 是   | string | 频道名称                                                     |
+| channelPasswd | 是   | string | 频道密码                                                     |
+| courseId      | 否   | string | 课程号                                                       |
+| autoPlay      | 否   | int    | 是否自动播放，0/1，默认1  **注意，如果该值为空，则该频道会使用全局的“功能开关设置”。 如果非空，则会使用频道的“功能开关设置”。** |
+| playerColor   | 否   | string | 播放器控制栏颜色，默认：#666666                              |
+| scene         | 否   | string | 直播场景： alone 活动拍摄  ppt 三分屏  topclass  大班课      |
+| categoryId    | 否   | int    | 新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） |
+
+### 设置频道密码
+
+#### 描述
+设置频道密码
+
+#### 调用约束
+请留意，如果 channelId 参数为空，会对该用户所有的频道进行修改
+
+#### 代码示例
+```java
+@Test
+    public void testUpdateChannelPassword() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest = new LiveChannelPasswordSettingRequest();
+        liveChannelPasswordSettingRequest.setChannelId(1940343).setPasswd("987654");
+        String updateChannelPasswordResponse = new LiveChannelServiceImpl().updateChannelPassword(
+                liveChannelPasswordSettingRequest);
+        Assert.assertNotNull(updateChannelPasswordResponse);
+        if ("true".equals(updateChannelPasswordResponse)) {
+            log.debug("设置频道密码成功" + JSON.toJSONString(updateChannelPasswordResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置频道密码](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看密码是否修改成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+| 参数名    | 必选 | 类型 | 说明                                                         |
+| --------- | ---- | ---- | ------------------------------------------------------------ |
+| channelId | 否   | int  | 频道ID，请留意，如果该参数为空，会对该用户所有的频道进行修改 |
+|passwd |	是 |	string| 	修改的密码|
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名  | 说明         |
+| ------- | ------------ |
+| code    | 响应状态码   |
+| status  | 响应状态     |
+| message | 异常错误信息 |
+| data    | 异常错误数据 |
 

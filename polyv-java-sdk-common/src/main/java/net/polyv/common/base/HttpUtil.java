@@ -62,7 +62,7 @@ public class HttpUtil {
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendPostDataByMap(String url, Map<String, String> params, String encoding) throws IOException {
-        log.debug("http 请求 url: " + url + " , 请求参数: " + JSON.toJSON(params));
+        log.debug("http 请求 url: " + url + " , 请求参数: " + JSON.toJSONString(params));
         if(StringUtils.isBlank(encoding)){
             encoding = "UTF-8";
         }

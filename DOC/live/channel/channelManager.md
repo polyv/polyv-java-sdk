@@ -325,3 +325,31 @@ contents列表
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 请求结果 |
+
+### 批量删除频道
+
+#### 描述
+批量删除直播频道
+
+#### 调用约束
+无
+
+#### 代码示例
+```java
+LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChannelListRequest();
+        liveDeleteChannelListRequest.setChannelIds(new Integer[]{1938719, 1938888});
+        String liveDeleteChannelListResponse = new LiveChannelServiceImpl().deleteChannelList(liveDeleteChannelListRequest);
+        Assert.assertNotNull(liveDeleteChannelListResponse);
+        if ("true".equals(liveDeleteChannelListResponse)) {
+            //to do something ......
+            log.debug("批量删除频道成功" + JSON.toJSONString(liveDeleteChannelListResponse));
+        }
+```
+#### 单元测试流程
+[swagger 程序接入-批量删除频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否批量删除频道成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+#### 返回对象描述[LiveChannelResponse]

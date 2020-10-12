@@ -24,6 +24,7 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
+import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
@@ -539,6 +540,23 @@ public class ChannelTest {
         if ("true".equals(liveDeleteChannelResponse)) {
             //to do something ......
             log.debug("删除直播频道成功" + JSON.toJSONString(liveDeleteChannelResponse));
+        }
+    }
+    
+    /**
+     * 批量删除频道
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testDeleteChannelList() throws IOException, NoSuchAlgorithmException {
+        LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChannelListRequest();
+        liveDeleteChannelListRequest.setChannelIds(new Integer[]{1938719, 1938888});
+        String liveDeleteChannelListResponse = new LiveChannelServiceImpl().deleteChannelList(liveDeleteChannelListRequest);
+        Assert.assertNotNull(liveDeleteChannelListResponse);
+        if ("true".equals(liveDeleteChannelListResponse)) {
+            //to do something ......
+            log.debug("批量删除频道成功" + JSON.toJSONString(liveDeleteChannelListResponse));
         }
     }
 }

@@ -18,6 +18,7 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
+import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
@@ -135,7 +136,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     public String updateChannelPassword(LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest)
             throws IOException, NoSuchAlgorithmException {
         liveChannelPasswordSettingRequest.setUserId(LiveGlobalConfig.USER_ID);
-        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PWD_SET_URL,liveChannelPasswordSettingRequest.getUserId());
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PWD_SET_URL, liveChannelPasswordSettingRequest.getUserId());
         return this.basePost(url, liveChannelPasswordSettingRequest, String.class);
     }
     
@@ -150,8 +151,22 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     public String deleteChannel(LiveDeleteChannelRequest liveDeleteChannelRequest)
             throws IOException, NoSuchAlgorithmException {
         liveDeleteChannelRequest.setUserId(LiveGlobalConfig.USER_ID);
-        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_DELETE_URL,liveDeleteChannelRequest.getChannelId());
-        return this.basePost(url,liveDeleteChannelRequest,String.class);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_DELETE_URL, liveDeleteChannelRequest.getChannelId());
+        return this.basePost(url, liveDeleteChannelRequest, String.class);
+    }
+    
+    /**
+     * 批量删除频道
+     * @param liveDeleteChannelListRequest 批量删除频道请求体
+     * @return 批量删除频道返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String deleteChannelList(LiveDeleteChannelListRequest liveDeleteChannelListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_LIST_DELETE_URL;
+        return this.basePostJson(url, liveDeleteChannelListRequest, String.class);
     }
     
     

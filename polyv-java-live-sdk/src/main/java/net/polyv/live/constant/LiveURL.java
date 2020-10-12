@@ -83,6 +83,11 @@ public class LiveURL {
     public static final String CHANNEL_DELETE_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/delete";
     
     /**
+     * 批量删除频道
+     */
+    public static final String CHANNEL_LIST_DELETE_URL = BASE_URI + "v3/channel/basic/batch-delete";
+    
+    /**
      * 设置最大在线人数
      */
     public static final String CHANNEL_MAX_VIEWER_SET_URL = BASE_URI

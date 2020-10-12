@@ -9,6 +9,8 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.channel.LiveChannelAuthTokenRequest;
+import net.polyv.live.entity.channel.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.LiveChannelBasicInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
@@ -220,5 +222,21 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         return liveChannelBasicInfoResponse;
     }
     
+    /**
+     * 查询授权和连麦的token
+     * @param liveCreateChannelTokenRequest 查询授权和连麦的token请求体
+     * @return 查询授权和连麦的token返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelAuthTokenResponse channelAuthToken(LiveChannelAuthTokenRequest liveCreateChannelTokenRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_AUTH_TOKEN_URL;
+        liveCreateChannelTokenRequest.setUserId(LiveGlobalConfig.USER_ID);
+        LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = this.basePost(url, liveCreateChannelTokenRequest,
+                LiveChannelAuthTokenResponse.class);
+        return liveChannelAuthTokenResponse;
+    }
     
 }

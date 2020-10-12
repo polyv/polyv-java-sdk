@@ -5,6 +5,8 @@ import java.security.NoSuchAlgorithmException;
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
+import net.polyv.live.entity.channel.LiveChannelAuthTokenRequest;
+import net.polyv.live.entity.channel.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.LiveChannelBasicInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
@@ -148,6 +150,16 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveChannelBasicInfoResponse channelBasicInfo(LiveChannelBasicInfoRequest liveChannelBasicInfoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询授权和连麦的token
+     * @param liveCreateChannelTokenRequest
+     * @return
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    LiveChannelAuthTokenResponse channelAuthToken(LiveChannelAuthTokenRequest liveCreateChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

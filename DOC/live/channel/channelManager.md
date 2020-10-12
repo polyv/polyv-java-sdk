@@ -574,3 +574,46 @@ AuthSetting参数描述
 | externalKey          | string | 外部授权观看的key                                            |
 | externalUri          | string | 外部授权观看的接口地址                                       |
 | externalRedirectUri  | string | 外部授权观看，用户直接访问观看页时的跳转地址                 |
+
+### 查询授权和连麦的token
+
+#### 描述
+接口用于获取授权和连麦的token
+
+#### 调用约束
+无
+
+#### 代码示例
+```java
+@Test
+    public void testChannelAuthToken() throws IOException, NoSuchAlgorithmException {
+        LiveChannelAuthTokenRequest liveChannelAuthTokenRequest = new LiveChannelAuthTokenRequest();
+        liveChannelAuthTokenRequest.setChannelId(1939188).setRole(LiveConstant.Role.ADMIN.getDesc()).setOrigin(null);
+        LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = new LiveChannelServiceImpl().channelAuthToken(
+                liveChannelAuthTokenRequest);
+        Assert.assertNotNull(liveChannelAuthTokenResponse);
+        if (liveChannelAuthTokenResponse != null) {
+            //to do something ......
+            log.debug("查询授权和连麦的token成功" + JSON.toJSONString(liveChannelAuthTokenResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询授权和连麦的token](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否与系统展示相符](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                               |
+| --------- | ---- | ------ | -------------------------------------------------- |
+| channelId | 是   | int    | 频道Id                                             |
+| role      | 是   | String | 角色，值有：teacher admin guest assistant viewer等 |
+| origin    | 否   | String | 观看来源                                           |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名          | 类型   | 说明                  |
+| --------------- | ------ | --------------------- |
+| token           | string | 链接接口需要的token值 |
+| mediaChannelKey | string | 连麦需要的key         |

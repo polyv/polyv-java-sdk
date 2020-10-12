@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.entity.channel.LiveChannelAuthTokenRequest;
+import net.polyv.live.entity.channel.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.LiveChannelBasicInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
@@ -615,6 +617,24 @@ public class ChannelTest {
         if (liveChannelBasicInfoResponse != null) {
             //to do something ......
             log.debug("查询频道基本信息成功" + JSON.toJSONString(liveChannelBasicInfoResponse));
+        }
+    }
+    
+    /**
+     * 测试查询授权和连麦的token
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelAuthToken() throws IOException, NoSuchAlgorithmException {
+        LiveChannelAuthTokenRequest liveChannelAuthTokenRequest = new LiveChannelAuthTokenRequest();
+        liveChannelAuthTokenRequest.setChannelId(1939188).setRole(LiveConstant.Role.ADMIN.getDesc()).setOrigin(null);
+        LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = new LiveChannelServiceImpl().channelAuthToken(
+                liveChannelAuthTokenRequest);
+        Assert.assertNotNull(liveChannelAuthTokenResponse);
+        if (liveChannelAuthTokenResponse != null) {
+            //to do something ......
+            log.debug("查询授权和连麦的token成功" + JSON.toJSONString(liveChannelAuthTokenResponse));
         }
     }
     

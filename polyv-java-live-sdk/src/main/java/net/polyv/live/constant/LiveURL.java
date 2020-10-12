@@ -92,6 +92,11 @@ public class LiveURL {
     public static final String CHANNEL_TOKEN_CREATE_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/set-token";
     
     /**
+     * 查询授权和连麦的token
+     */
+    public static final String CHANNEL_AUTH_TOKEN_URL = BASE_URI + "v3/channel/common/get-chat-token";
+    
+    /**
      * 设置最大在线人数
      */
     public static final String CHANNEL_MAX_VIEWER_SET_URL =

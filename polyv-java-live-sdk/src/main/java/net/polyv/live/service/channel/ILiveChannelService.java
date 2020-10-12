@@ -36,7 +36,8 @@ public interface ILiveChannelService {
      * @return 响应体
      * @throws IOException 异常
      */
-    LiveChannelInitResponse createChannelInit(LiveChannelInitRequest liveChannelInitRequest) throws IOException;
+    LiveChannelInitResponse createChannelInit(LiveChannelInitRequest liveChannelInitRequest)
+            throws IOException, NoSuchAlgorithmException;
     
     /**
      * 批量创建频道

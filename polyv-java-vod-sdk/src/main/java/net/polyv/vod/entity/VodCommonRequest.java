@@ -2,6 +2,8 @@ package net.polyv.vod.entity;
 
 import javax.validation.constraints.NotNull;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -26,6 +28,7 @@ public class VodCommonRequest extends CommonReqeust {
      */
     @ApiModelProperty(hidden = true )
     @NotNull(message = "属性timestamp不能为空")
+    @JSONField(name="ptime")
     private String timestamp;
     /**
      * 数据MD5签名，系统自动生成

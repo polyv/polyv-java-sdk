@@ -69,7 +69,7 @@ public class ChannelTest {
      * @throws IOException 异常
      */
     @Test
-    public void testCreateChannelInitCode() throws IOException {
+    public void testCreateChannelInitCode() throws IOException, NoSuchAlgorithmException {
         LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
         LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
                 "创建并初始化频道-验证码观看")
@@ -110,7 +110,7 @@ public class ChannelTest {
      * @throws IOException 异常
      */
     @Test
-    public void testCreateChannelInitPay() throws IOException {
+    public void testCreateChannelInitPay() throws IOException, NoSuchAlgorithmException {
         LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
         LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
                 "创建并初始化频道-付费观看")
@@ -152,7 +152,7 @@ public class ChannelTest {
      * @throws IOException 异常
      */
     @Test
-    public void testCreateChannelInitPhone() throws IOException {
+    public void testCreateChannelInitPhone() throws IOException, NoSuchAlgorithmException {
         LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
         LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
                 "创建并初始化频道-白名单观看")
@@ -191,7 +191,7 @@ public class ChannelTest {
      * @throws IOException 异常
      */
     @Test
-    public void testCreateChannelInitInfo() throws IOException {
+    public void testCreateChannelInitInfo() throws IOException, NoSuchAlgorithmException {
         LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
         LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
                 "创建并初始化频道-登记观看")
@@ -242,7 +242,7 @@ public class ChannelTest {
      * @throws IOException 异常
      */
     @Test
-    public void testCreateChannelInitCustom() throws IOException {
+    public void testCreateChannelInitCustom() throws IOException, NoSuchAlgorithmException {
         LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
         LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
                 "创建并初始化频道-自定义授权观看")
@@ -282,7 +282,7 @@ public class ChannelTest {
      * @throws IOException 异常
      */
     @Test
-    public void testCreateChannelInitExternal() throws IOException {
+    public void testCreateChannelInitExternal() throws IOException, NoSuchAlgorithmException {
         LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
         LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
                 "创建并初始化频道-外部授权观看")
@@ -323,7 +323,7 @@ public class ChannelTest {
      * @throws IOException 异常
      */
     @Test
-    public void testCreateChannelInitDirect() throws IOException {
+    public void testCreateChannelInitDirect() throws IOException, NoSuchAlgorithmException {
         LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
         LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
                 "创建并初始化频道-直接授权观看")

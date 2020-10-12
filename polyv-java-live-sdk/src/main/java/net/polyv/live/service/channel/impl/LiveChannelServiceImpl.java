@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.security.NoSuchAlgorithmException;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
@@ -52,7 +53,8 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
      * @throws IOException 异常
      */
     @Override
-    public LiveChannelInitResponse createChannelInit(LiveChannelInitRequest liveChannelInitRequest) throws IOException {
+    public LiveChannelInitResponse createChannelInit(LiveChannelInitRequest liveChannelInitRequest)
+            throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_BASIC_CREATE_URL;
         LiveChannelInitResponse liveChannelInitResponse = this.basePostJson(url,liveChannelInitRequest,LiveChannelInitResponse.class);
         return liveChannelInitResponse;
@@ -78,6 +80,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
      * @return 修改频道的相关设置返回体
      * @throws IOException 异常
      */
+    @SneakyThrows
     @Override
     public String updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest) throws IOException {
         String url = LiveURL.CHANNEL_BASIC_UPDATE_URL;

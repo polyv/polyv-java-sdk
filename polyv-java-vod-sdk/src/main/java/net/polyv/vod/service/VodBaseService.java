@@ -23,7 +23,6 @@ import net.polyv.vod.util.VodSignUtil;
 /**
  * 点播公共服务类
  * @author: thomas
- 
  **/
 @Slf4j
 public class VodBaseService {
@@ -44,7 +43,6 @@ public class VodBaseService {
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(VodSignUtil.generateUUID());
         }
-        
         e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         Map<String, String> paramMap = MapUtil.objectToMap(e);
         String sign = VodSignUtil.setVodSign(paramMap,  VodGlobalConfig.SECRET_KEY);

@@ -143,8 +143,7 @@ public class LiveBaseService {
      * @throws IOException 客户端和服务器读写异常
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url, E e, Class<T> tClass)
-<<<<<<< HEAD
-            throws IOException   {
+            throws IOException, NoSuchAlgorithmException {
         Map<String, String> signMap = MapUtil.getSignMap(MapUtil.objectToMap(e));
         return basePostJson(url,signMap,e,tClass);
     }
@@ -161,10 +160,7 @@ public class LiveBaseService {
      * @throws IOException 客户端和服务器读写异常
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url,Map<String,String> signMap, E e, Class<T> tClass)
-            throws IOException   {
-=======
             throws IOException, NoSuchAlgorithmException {
->>>>>>> 39234fddd2f70ed133142718bda4420075a66e48
         T t = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(LiveSignUtil.generateUUID());

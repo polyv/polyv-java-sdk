@@ -12,6 +12,7 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
+import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 
@@ -91,4 +92,12 @@ public interface ILiveChannelService {
     String updateChannelPassword(LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest)
             throws IOException, NoSuchAlgorithmException;
     
+    /**
+     * 删除直播频道
+     * @param liveDeleteChannelRequest 删除直播频道请求体
+     * @return 删除直播频道返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String deleteChannel(LiveDeleteChannelRequest liveDeleteChannelRequest) throws IOException,NoSuchAlgorithmException;
 }

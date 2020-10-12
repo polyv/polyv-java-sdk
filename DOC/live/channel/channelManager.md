@@ -287,3 +287,41 @@ contents列表
 | message | 异常错误信息 |
 | data    | 异常错误数据 |
 
+### 删除直播频道
+
+#### 描述
+删除直播频道
+
+#### 调用约束
+无
+
+#### 代码示例
+```java
+@Test
+    public void testDeleteChannel() throws IOException, NoSuchAlgorithmException {
+        LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest();
+        liveDeleteChannelRequest.setChannelId(1938236);
+        String liveDeleteChannelResponse = new LiveChannelServiceImpl().deleteChannel(liveDeleteChannelRequest);
+        Assert.assertNotNull(liveDeleteChannelResponse);
+        if ("true".equals(liveDeleteChannelResponse)) {
+            //to do something ......
+            log.debug("删除直播频道成功" + JSON.toJSONString(liveDeleteChannelResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-删除直播频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看直播频道是否删除成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明   |
+| --------- | ---- | ------ | ------ |
+| channelId | 是   | string | 频道ID |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 请求结果 |

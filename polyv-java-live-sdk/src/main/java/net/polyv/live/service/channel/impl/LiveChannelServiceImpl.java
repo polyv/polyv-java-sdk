@@ -18,6 +18,7 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
+import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.service.LiveBaseService;
@@ -136,6 +137,21 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         liveChannelPasswordSettingRequest.setUserId(LiveGlobalConfig.USER_ID);
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PWD_SET_URL,liveChannelPasswordSettingRequest.getUserId());
         return this.basePost(url, liveChannelPasswordSettingRequest, String.class);
+    }
+    
+    /**
+     * 删除直播频道
+     * @param liveDeleteChannelRequest 删除直播频道请求体
+     * @return 删除直播频道返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String deleteChannel(LiveDeleteChannelRequest liveDeleteChannelRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveDeleteChannelRequest.setUserId(LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_DELETE_URL,liveDeleteChannelRequest.getChannelId());
+        return this.basePost(url,liveDeleteChannelRequest,String.class);
     }
     
     

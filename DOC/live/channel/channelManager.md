@@ -609,7 +609,7 @@ AuthSetting参数描述
 | --------- | ---- | ------ | -------------------------------------------------- |
 | channelId | 是   | int    | 频道Id                                             |
 | role      | 是   | String | 角色，值有：teacher admin guest assistant viewer等 |
-| origin    | 否   | String | 观看来源                                           |
+| origin    | 否   | String | 观看来源,可以有web,client,app等                    |
 
 #### 返回对象描述[LiveChannelResponse]
 
@@ -617,3 +617,66 @@ AuthSetting参数描述
 | --------------- | ------ | --------------------- |
 | token           | string | 链接接口需要的token值 |
 | mediaChannelKey | string | 连麦需要的key         |
+
+
+
+### 创建子频道
+
+#### 描述
+创建子频道
+#### 调用约束
+无
+#### 代码示例
+```java
+@Test
+    public void testCreateSonChannel() throws IOException, NoSuchAlgorithmException {
+        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
+        liveCreateSonChannelRequest.setChannelId(1939188)
+                .setRole("Guest")
+                .setNickname("sadboy")
+                .setActor("教授")
+                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
+        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelServiceImpl().createSonChannel(
+                liveCreateSonChannelRequest);
+        Assert.assertNotNull(liveCreateSonChannelResponse);
+        if (liveCreateSonChannelResponse != null) {
+            //to do something ......
+            log.debug("创建子频道成功" + JSON.toJSONString(liveCreateSonChannelResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-创建子频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否创建子频道成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                                    |
+| --------- | ---- | ------ | ------------------------------------------------------- |
+| channelId | 是   | int    | 频道id                                                  |
+| role      | 否   | string | 默认不传为助教，传Guest为嘉宾（只支持三分屏场景的频道） |
+| nickname  | 否   | string | 创建的助教或嘉宾昵称                                    |
+| actor     | 否   | string | 创建的助教或嘉宾头衔                                    |
+| avatar    | 否   | string | 创建的助教或嘉宾头像                                    |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名          | 说明                           |
+| --------------- | ------------------------------ |
+| account         | 助教ID                         |
+| userId          | 用户ID                         |
+| channelId       | 频道ID                         |
+| passwd          | 助教密码                       |
+| nickname        | 助教名称                       |
+| stream          | 助教流名（单独使用无效）       |
+| status          | 助教状态                       |
+| createdTime     | 创建助教时间，13位时间戳       |
+| lastModified    | 助教最后修改时间，13位时间戳   |
+| sort            | 频道中所有助教序号             |
+| avatar          | 助教头像                       |
+| pageTurnEnabled | 助教翻页权限（只能一个助教有） |
+| notifyEnabled   | 发布公告权限                   |
+| checkinEnabled  | 开启签到权限                   |
+| voteEnabled     | 发起投票                       |
+| role            | 子频道角色                     |

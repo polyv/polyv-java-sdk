@@ -18,7 +18,7 @@ import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.entity.channel.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
-import net.polyv.live.entity.channel.LiveChannelInitRequest.AuthSettings;
+import net.polyv.live.entity.channel.LiveChannelInitRequest.AuthSetting;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
@@ -94,13 +94,13 @@ public class ChannelTest {
                 .setReceiveChannelIds("213");
         liveChannelInitRequest.setBasicSetting(basicSetting);
         //验证码观看
-        LiveChannelInitRequest.AuthSettings codeAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+        LiveChannelInitRequest.AuthSetting codeAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
                 .setAuthType(LiveConstant.AuthType.CODE.getDesc())
                 .setEnabled("Y")
                 .setAuthCode("123456")
                 .setQcodeTips("提示文案")
                 .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(codeAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -135,14 +135,14 @@ public class ChannelTest {
                 .setReceiveChannelIds("213");
         liveChannelInitRequest.setBasicSetting(basicSetting);
         //付费观看
-        LiveChannelInitRequest.AuthSettings payAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+        LiveChannelInitRequest.AuthSetting payAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
                 .setAuthType(LiveConstant.AuthType.PAY.getDesc())
                 .setPayAuthTips("欢迎使用POLYV直播平台")
                 .setPrice(0.01f)
                 .setWatchEndTime("2022-01-01 00:00:00")
                 .setValidTimePeriod(720)
                 .setEnabled("Y");
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(payAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -177,11 +177,11 @@ public class ChannelTest {
                 .setReceiveChannelIds("213");
         liveChannelInitRequest.setBasicSetting(basicSetting);
         //白名单观看,设置观看条件为白名单观看时，必须已经存在白名单数据
-        LiveChannelInitRequest.AuthSettings phoneAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(2)
+        LiveChannelInitRequest.AuthSetting phoneAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(2)
                 .setAuthType(LiveConstant.AuthType.PHONE.getDesc())
                 .setEnabled("Y")
                 .setAuthTips("这是提示文案");
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(phoneAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -228,11 +228,11 @@ public class ChannelTest {
         List<LiveChannelInitRequest.InfoField> infoFields = new ArrayList<>();
         infoFields.add(nameInfo);
         infoFields.add(sexInfo);
-        LiveChannelInitRequest.AuthSettings infoAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+        LiveChannelInitRequest.AuthSetting infoAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
                 .setAuthType(LiveConstant.AuthType.INFO.getDesc())
                 .setEnabled("Y")
                 .setInfoFields(infoFields);
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(infoAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -267,12 +267,12 @@ public class ChannelTest {
                 .setReceiveChannelIds("213");
         liveChannelInitRequest.setBasicSetting(basicSetting);
         //自定义授权观看
-        LiveChannelInitRequest.AuthSettings infoAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+        LiveChannelInitRequest.AuthSetting infoAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
                 .setAuthType(LiveConstant.AuthType.CUSTOM.getDesc())
                 .setEnabled("Y")
                 .setCustomKey("ttttt")
                 .setCustomUri("http://www.polyv.net");
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(infoAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -307,13 +307,13 @@ public class ChannelTest {
                 .setReceiveChannelIds("213");
         liveChannelInitRequest.setBasicSetting(basicSetting);
         //自定义授权观看
-        LiveChannelInitRequest.AuthSettings infoAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+        LiveChannelInitRequest.AuthSetting infoAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
                 .setAuthType(LiveConstant.AuthType.EXTERNAL.getDesc())
                 .setEnabled("Y")
                 .setExternalKey("externalKey")
                 .setExternalUri("http://www.baidu.com")
                 .setExternalRedirectUri("http://www.polyv.net");
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(infoAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -348,11 +348,11 @@ public class ChannelTest {
                 .setReceiveChannelIds("213");
         liveChannelInitRequest.setBasicSetting(basicSetting);
         //自定义授权观看
-        LiveChannelInitRequest.AuthSettings infoAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+        LiveChannelInitRequest.AuthSetting infoAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
                 .setAuthType(LiveConstant.AuthType.DIRECT.getDesc())
                 .setEnabled("Y")
                 .setDirectKey("directKey");
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(infoAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -383,14 +383,14 @@ public class ChannelTest {
                 .setPublisher("sadboy主讲")
                 .setLinkMicLimit(-1)
                 .setReceiveChannelIds("213");
-        LiveChannelSettingRequest.AuthSettings authSetting = liveChannelSettingRequest.new AuthSettings().setAuthType(
+        LiveChannelSettingRequest.AuthSetting authSetting = liveChannelSettingRequest.new AuthSetting().setAuthType(
                 LiveConstant.AuthType.CODE.getDesc())
                 .setRank(1)
                 .setEnabled("Y")
                 .setAuthCode("123456")
                 .setQcodeTips("提示文案")
                 .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-        List<LiveChannelSettingRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(authSetting);
         liveChannelSettingRequest.setChannelId(1940343).setBasicSetting(basicSetting).setAuthSettings(authSettings);
         String liveChannelSettingResponse = new LiveChannelServiceImpl().updateChannelSetting(
@@ -597,5 +597,7 @@ public class ChannelTest {
             log.debug("查询频道信息成功" + JSON.toJSONString(liveChannelInfoResponse));
         }
     }
+    
+    
     
 }

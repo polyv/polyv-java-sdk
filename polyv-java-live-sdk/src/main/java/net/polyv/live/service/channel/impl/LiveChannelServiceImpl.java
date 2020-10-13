@@ -1,7 +1,6 @@
 package net.polyv.live.service.channel.impl;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.security.NoSuchAlgorithmException;
 
@@ -37,7 +36,6 @@ import net.polyv.live.entity.channel.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelService;
-import net.polyv.live.util.LiveSignUtil;
 import net.polyv.live.util.MapUtil;
 
 /**

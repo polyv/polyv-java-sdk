@@ -777,3 +777,41 @@ AuthSetting参数描述
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 请求结果 |
+
+### 查询子频道信息
+
+#### 描述
+查询某个子频道的具体信息
+
+#### 调用约束
+(接口调用有频率限制，详细请查看)
+
+#### 代码示例
+```java
+@Test
+    public void testSonChannelInfo() throws IOException, NoSuchAlgorithmException {
+        LiveSonChannelInfoRequest liveSonChannelInfoRequest = new LiveSonChannelInfoRequest();
+        liveSonChannelInfoRequest.setAccount(sonChannelId).setChannelId(channelId);
+        LiveSonChannelInfoResponse liveSonChannelInfoResponse = new LiveChannelServiceImpl().sonChannelInfo(
+                liveSonChannelInfoRequest);
+        Assert.assertNotNull(liveSonChannelInfoResponse);
+        if (liveSonChannelInfoResponse != null) {
+            //to do something ......
+            log.debug("测试查询子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询子频道信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看查询子频道信息是否相符](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                               |
+| --------- | ---- | ------ | -------------------------------------------------- |
+| channelId | 是   | int    | 频道ID                                             |
+| account   | 是   | string | 子频道ID(不能以数字类型提交，否则可能去掉ID前的00) |
+
+
+#### 返回对象描述[LiveChannelResponse]

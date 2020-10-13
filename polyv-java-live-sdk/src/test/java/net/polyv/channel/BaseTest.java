@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import org.junit.Assert;
 
 import net.polyv.live.config.LiveGlobalConfig;
+import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
@@ -41,6 +42,18 @@ public class BaseTest {
     }
     
     /**
+     * 创建channel并返回channelId
+     * @return 频道id
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    protected Integer createChannel() throws IOException, NoSuchAlgorithmException {
+        LiveChannelRequest liveChannelRequest = new LiveChannelRequest().setName("test直播频道")
+                .setChannelPasswd("666888").setScene(LiveConstant.SceneType.PPT.getDesc());
+        return createChannel(liveChannelRequest);
+    }
+    
+    /**
      * 删除频道，删除失败则断言出错
      * @param channelId 频道号
      * @throws IOException 异常
@@ -65,6 +78,23 @@ public class BaseTest {
                 liveCreateSonChannelRequest);
         Assert.assertNotNull(liveCreateSonChannelResponse);
         return liveCreateSonChannelResponse.getAccount();
+    }
+    
+    /**
+     * 创建子频道并返回子频道id
+     * @param channelId 频道id
+     * @return
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    protected String createSonChannel(Integer channelId)
+            throws IOException, NoSuchAlgorithmException {
+        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest().setChannelId(channelId)
+                .setRole("Guest")
+                .setNickname("sadboy")
+                .setActor("教授")
+                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
+        return createSonChannel(liveCreateSonChannelRequest);
     }
     
 }

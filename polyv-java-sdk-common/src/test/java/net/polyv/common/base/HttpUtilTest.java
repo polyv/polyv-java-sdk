@@ -13,7 +13,6 @@ import com.alibaba.fastjson.JSON;
 
 /**
  * @author: thomas
- 
  **/
 
 public class HttpUtilTest {

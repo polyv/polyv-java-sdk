@@ -3,8 +3,6 @@ package net.polyv.live.service.channel;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import net.polyv.live.entity.channel.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.LiveChannelBasicInfoRequest;

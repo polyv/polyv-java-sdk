@@ -22,14 +22,14 @@ public class VodCommonRequest extends CommonReqeust {
      */
     @ApiModelProperty(hidden = true )
     @NotNull(message = "属性appId不能为空")
-    private String appId;
+    private String userid;
     /**
      * 请求发送当时的时间戳（ms)，系统自动生成
      */
     @ApiModelProperty(hidden = true )
     @NotNull(message = "属性timestamp不能为空")
     @JSONField(name="ptime")
-    private String timestamp;
+    private String ptime;
     /**
      * 数据MD5签名，系统自动生成
      */

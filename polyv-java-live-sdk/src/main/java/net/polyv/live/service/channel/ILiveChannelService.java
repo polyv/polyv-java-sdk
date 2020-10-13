@@ -3,7 +3,6 @@ package net.polyv.live.service.channel;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
-
 import net.polyv.live.entity.channel.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.LiveChannelBasicInfoRequest;
@@ -22,7 +21,6 @@ import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
-import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;

@@ -734,3 +734,46 @@ AuthSetting参数描述
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 请求结果 |
+
+### 设置子频道单点登陆token
+
+#### 描述
+设置子频道单点登陆的token
+
+#### 调用约束
+(接口调用有频率限制，详细请查看)
+
+#### 代码示例
+```java
+@Test
+    public void testCreateSonChannelToken() throws IOException, NoSuchAlgorithmException {
+        LiveCreateSonChannelTokenRequest liveCreateSonChannelTokenRequest =
+                new LiveCreateSonChannelTokenRequest().setAccount(
+                sonChannelId).setToken("token");
+        String liveCreateSonChannelTokenResponse = new LiveChannelServiceImpl().createSonChannelToken(
+                liveCreateSonChannelTokenRequest);
+        Assert.assertNotNull(liveCreateSonChannelTokenResponse);
+        if ("success".equals(liveCreateSonChannelTokenResponse)) {
+            //to do something ......
+            log.debug("设置子频道单点登陆token成功" + liveCreateSonChannelTokenResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置子频道单点登陆token](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看设置子频道单点登陆token是否成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名  | 必选 | 类型   | 说明         |
+| ------- | ---- | ------ | ------------ |
+| account | 是   | string | 子频道id     |
+| token   | 是   | string | 唯一的字符串 |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 请求结果 |

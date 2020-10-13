@@ -185,4 +185,13 @@ public interface ILiveChannelService {
     String updateSonChannelInfo(LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
+    /**
+     * 设置子频道单点登陆token
+     * @param liveCreateSonChannelTokenRequest 设置子频道单点登陆token请求体
+     * @return 设置子频道单点登陆token返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String createSonChannelToken(LiveCreateSonChannelTokenRequest liveCreateSonChannelTokenRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

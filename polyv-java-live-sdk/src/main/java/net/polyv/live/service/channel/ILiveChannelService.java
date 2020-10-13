@@ -26,6 +26,7 @@ import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveUpdateSonChannelInfoRequest;
@@ -204,6 +205,16 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveSonChannelInfoResponse sonChannelInfo(LiveSonChannelInfoRequest liveSonChannelInfoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道号下所有子频道信息
+     * @param liveSonChannelInfoListRequest 查询频道号下所有子频道信息请求体
+     * @return 查询频道号下所有子频道信息返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveSonChannelInfoResponse[] sonChannelInfoList(LiveSonChannelInfoListRequest liveSonChannelInfoListRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

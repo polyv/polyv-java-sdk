@@ -24,6 +24,13 @@ import net.polyv.live.entity.LiveCommonRequest;
 public class LiveListAccountRequest extends LiveCommonRequest {
     
     /**
+     * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
+     */
+    @ApiModelProperty(hidden = true)
+    @NotNull(message = "属性userId不能为空")
+    private String userId;
+    
+    /**
      * TODO 链接分类id
      * 所属分类id
      */

@@ -40,6 +40,9 @@ public class LiveCommonResponse  {
     
     
     public  <T> T parseData(Class<T> dataClass) {
+        if(dataClass == String.class){
+            return (T) this.data.toString();
+        }
         return JSON.parseObject(this.data , dataClass);
     }
    

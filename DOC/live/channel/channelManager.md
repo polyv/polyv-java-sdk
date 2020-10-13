@@ -815,3 +815,79 @@ AuthSetting参数描述
 
 
 #### 返回对象描述[LiveChannelResponse]
+
+| 参数名          | 说明                                             |
+| --------------- | ------------------------------------------------ |
+| account         | 子频道ID                                         |
+| userId          | 用户ID                                           |
+| channelId       | 频道ID                                           |
+| passwd          | 子频道密码                                       |
+| nickname        | 子频道名称                                       |
+| stream          | 子频道流名（单独使用无效）                       |
+| status          | 子频道状态                                       |
+| createdTime     | 创建子频道时间                                   |
+| lastModified    | 子频道最后修改时间                               |
+| sort            | 频道中所有子频道序号                             |
+| avatar          | 子频道头像                                       |
+| pageTurnEnabled | 子频道翻页权限（只能一个子频道有）               |
+| notifyEnabled   | 发布公告权限                                     |
+| checkinEnabled  | 开启签到权限                                     |
+| voteEnabled     | 发起投票                                         |
+| role            | 子频道角色                                       |
+| pushUrl         | 子频道推流地址（子频道推流请参考后台导播台使用） |
+
+### 查询频道号下所有子频道信息
+
+#### 描述
+查询频道下所有子频道的具体信息
+
+#### 调用约束
+(接口调用有频率限制，详细请查看)
+
+#### 代码示例
+```java
+	@Test
+    public void testSonChannelInfoList() throws IOException, NoSuchAlgorithmException {
+        LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
+        liveSonChannelInfoListRequest.setChannelId(channelId);
+        LiveSonChannelInfoResponse[] liveSonChannelInfoResponses = new LiveChannelServiceImpl().sonChannelInfoList(
+                liveSonChannelInfoListRequest);
+        Assert.assertNotNull(liveSonChannelInfoResponses);
+        if (liveSonChannelInfoResponses != null) {
+            //to do something ......
+            log.debug("测试查询子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponses));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道号下所有子频道信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看查询频道号下所有子频道信息是否相符](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明   |
+| --------- | ---- | ------ | ------ |
+| channelId | 是   | string | 频道ID |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名          | 说明                                             |
+| --------------- | ------------------------------------------------ |
+| account         | 子频道ID                                         |
+| userId          | 用户ID                                           |
+| channelId       | 频道ID                                           |
+| passwd          | 子频道密码                                       |
+| nickname        | 子频道名称                                       |
+| stream          | 子频道流名（单独使用无效）                       |
+| status          | 子频道状态                                       |
+| createdTime     | 创建子频道时间                                   |
+| lastModified    | 子频道最后修改时间                               |
+| sort            | 频道中所有子频道序号                             |
+| avatar          | 子频道头像                                       |
+| pageTurnEnabled | 子频道翻页权限（只能一个子频道有）               |
+| notifyEnabled   | 发布公告权限                                     |
+| checkinEnabled  | 开启签到权限                                     |
+| voteEnabled     | 发起投票                                         |
+| role            | 子频道角色                                       |
+| pushUrl         | 子频道推流地址（子频道推流请参考后台导播台使用） |

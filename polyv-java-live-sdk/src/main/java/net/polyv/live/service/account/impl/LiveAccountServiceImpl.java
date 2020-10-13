@@ -18,7 +18,7 @@ import java.security.NoSuchAlgorithmException;
  * @author: sadboy
  **/
 public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAccountService {
-
+    
     /**
      * 查询账号下所有频道详细信息
      * @param liveListAccountDetailRequest 查询所有频道详细信息请求实体
@@ -29,7 +29,8 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveListAccountDetailResponse listAccountDetail(LiveListAccountDetailRequest liveListAccountDetailRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_LIST_CHANNEL_DETAIL_URL;
-        LiveListAccountDetailResponse liveListAccountDetailResponse = this.basePost(url, liveListAccountDetailRequest, LiveListAccountDetailResponse.class);
+        LiveListAccountDetailResponse liveListAccountDetailResponse = this.basePost(url, liveListAccountDetailRequest,
+                LiveListAccountDetailResponse.class);
         return liveListAccountDetailResponse;
     }
     
@@ -42,9 +43,11 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     @Override
     public LiveListAccountResponse listAccount(LiveListAccountRequest liveListAccountRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_LIST_CHANNEL_URL, LiveGlobalConfig.USER_ID);
-        this.basePost(url, liveListAccountRequest, LiveListAccountResponse.class);
-        return null;
+        liveListAccountRequest.setUserId(LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_LIST_CHANNEL_URL, liveListAccountRequest.getUserId());
+        LiveListAccountResponse liveListAccountResponse = this.basePost(url, liveListAccountRequest,
+                LiveListAccountResponse.class);
+        return liveListAccountResponse;
     }
     
 }

@@ -1,8 +1,6 @@
-package net.polyv.live.entity.account;
+package net.polyv.live.entity.channel;
 
 import java.util.List;
-
-import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -13,7 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
- * 查询账号下的频道列表返回实体
+ * 查询频道号下所有子频道信息返回体
  * @author: sadboy
  **/
 @Data
@@ -21,11 +19,10 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel("查询账号下的频道列表返回实体")
-public class LiveListAccountResponse {
+@ApiModel("查询频道号下所有子频道信息返回体")
+public class LiveSonChannelInfoListResponse {
     
+    @ApiModelProperty(name = "sonChannelInfos", value = "子频道信息", required = false)
+    private List<LiveSonChannelInfoResponse> sonChannelInfos;
     
-    @ApiModelProperty(name = "channelList", value = "频道号列表")
-    @JSONField(name="result")
-    private List<Integer> channelList;
 }

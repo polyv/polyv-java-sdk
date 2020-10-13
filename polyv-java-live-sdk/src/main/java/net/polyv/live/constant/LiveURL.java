@@ -102,6 +102,19 @@ public class LiveURL {
     public static final String SON_CHANNEL_CREATE_URL = BASE_URI + "v2/channelAccount/" + PARAM_REPLACE_CHAR + "/add";
     
     /**
+     * 设置子频道信息
+     */
+    public static final String SON_CHANNEL_INFO_UPDATE_URL =
+            BASE_URI + "v2/channelAccount/" + PARAM_REPLACE_CHAR + "/update";
+    
+    /**
+     *
+     * 设置子频道单点登陆token
+     */
+    public static final String SON_CHANNEL_TOKEN_CREATE_URL =
+            BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/set-account-token";
+    
+    /**
      * 设置最大在线人数
      */
     public static final String CHANNEL_MAX_VIEWER_SET_URL =
@@ -258,6 +271,12 @@ public class LiveURL {
             BASE_URI + "v2/channelAccount/" + PARAM_REPLACE_CHAR + "/accounts";
     
     /**
+     * 查询子频道信息
+     */
+    public static final String SON_CHANNEL_INFO_GET_URL =
+            BASE_URI + "v2/channelAccount/" + PARAM_REPLACE_CHAR + "/account";
+    
+    /**
      * 查询账号下所有频道详细信息
      */
     public static final String ACCOUNT_LIST_CHANNEL_DETAIL_URL = BASE_URI + "v3/channel/management/list-detail";
@@ -268,7 +287,7 @@ public class LiveURL {
     public static final String ACCOUNT_LIST_CHANNEL_URL = BASE_URI + "v1/users/" + PARAM_REPLACE_CHAR + "/channels";
     
     /**
-     * 查询账号下的频道列表（频道号列表）
+     * 查询课件重制任务列表
      */
     public static final String CHANNEL_LIST_PPTRECORD_URL = BASE_URI + "v3/channel/pptRecord/list";
     

@@ -38,6 +38,7 @@ import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveUpdateSonChannelInfoRequest;
@@ -764,6 +765,28 @@ public class ChannelTest extends BaseTest {
             log.debug("测试查询子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponse));
         }
         
+        //删除测试数据
+        deleteChannel(channelId);
+    }
+    
+    /**
+     * 测试查询频道号下所有子频道信息
+     */
+    @Test
+    public void testSonChannelInfoList() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        
+        LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
+        liveSonChannelInfoListRequest.setChannelId(channelId);
+        LiveSonChannelInfoResponse[] liveSonChannelInfoResponses = new LiveChannelServiceImpl().sonChannelInfoList(
+                liveSonChannelInfoListRequest);
+        Assert.assertNotNull(liveSonChannelInfoResponses);
+        if (liveSonChannelInfoResponses != null) {
+            //to do something ......
+            log.debug("测试查询子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponses));
+        }
+    
         //删除测试数据
         deleteChannel(channelId);
     }

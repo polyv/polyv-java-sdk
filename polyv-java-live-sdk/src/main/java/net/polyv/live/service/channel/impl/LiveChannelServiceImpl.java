@@ -1,12 +1,15 @@
 package net.polyv.live.service.channel.impl;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.exception.BusinessException;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.channel.LiveChannelAuthTokenRequest;
@@ -32,12 +35,13 @@ import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
+import net.polyv.live.entity.channel.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelService;
-import net.polyv.live.util.LiveSignUtil;
 import net.polyv.live.util.MapUtil;
 
 /**
@@ -306,6 +310,27 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         LiveSonChannelInfoResponse liveSonChannelInfoResponse = this.baseGet(url, liveSonChannelInfoRequest,
                 LiveSonChannelInfoResponse.class);
         return liveSonChannelInfoResponse;
+    }
+    
+    /**
+     * 查询频道号下所有子频道信息
+     * @param liveSonChannelInfoListRequest 查询频道号下所有子频道信息请求体
+     * @return 查询频道号下所有子频道信息返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveSonChannelInfoResponse[] sonChannelInfoList(LiveSonChannelInfoListRequest liveSonChannelInfoListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_ACCOUNTS_GET_URL, liveSonChannelInfoListRequest.getChannelId());
+        LiveSonChannelInfoResponse[] liveSonChannelInfoResponses = this.baseGet(url, liveSonChannelInfoListRequest,
+                LiveSonChannelInfoResponse[].class);
+        if(liveSonChannelInfoResponses == null){
+            liveSonChannelInfoResponses = new LiveSonChannelInfoResponse[]{};
+        }
+        LiveSonChannelInfoListResponse liveSonChannelInfoListResponse = new LiveSonChannelInfoListResponse();
+        liveSonChannelInfoListResponse.setSonChannelInfos(Arrays.asList(liveSonChannelInfoResponses));
+        return liveSonChannelInfoResponses;
     }
     
 }

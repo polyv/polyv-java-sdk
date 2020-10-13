@@ -12,9 +12,10 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.base.HttpUtil;
 import net.polyv.common.exception.BusinessException;
+
 import net.polyv.common.util.ValidationUtil;
-import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.config.LiveGlobalConfig;
+import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.LiveCommonResponse;
 import net.polyv.live.util.LiveSignUtil;
@@ -23,19 +24,18 @@ import net.polyv.live.util.MapUtil;
 /**
  * 直播公共服务类
  * @author: thomas
- 
  **/
 @Slf4j
 public class LiveBaseService {
     
     /**
      * HTTP GET 公共请求
-     * @param url  请求URL
-     * @param e  请求参数对象
+     * @param url 请求URL
+     * @param e 请求参数对象
      * @param tClass 返回对象class类型
-     * @param <T>  返回对象泛型
-     * @param <E>  请求参数泛型
-     * @return  HTTP response 数据封装对象
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
      * @throws IOException 异常
      */
     protected <T, E extends LiveCommonRequest> T baseGet(String url, E e, Class<T> tClass)
@@ -45,8 +45,11 @@ public class LiveBaseService {
             e.setRequestId(LiveSignUtil.generateUUID());
         }
         e.setAppId(LiveGlobalConfig.APP_ID);
-        e.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        if (StringUtils.isNotBlank(e.getTimestamp())) {
+            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        }
         Map<String, String> paramMap = MapUtil.objectToMap(e);
+        paramMap = MapUtil.filterNullValue(paramMap);
         String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.APP_ID, LiveGlobalConfig.APP_SECRET);
         e.setSign(sign);
         validateBean(e);
@@ -90,12 +93,12 @@ public class LiveBaseService {
     
     /**
      * HTTP POST 公共请求
-     * @param url  请求URL
-     * @param e  请求参数对象
+     * @param url 请求URL
+     * @param e 请求参数对象
      * @param tClass 返回对象class类型
-     * @param <T>  返回对象泛型
-     * @param <E>  请求参数泛型
-     * @return  HTTP response 数据封装对象
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
      */
     protected <T, E extends LiveCommonRequest> T basePost(String url, E e, Class<T> tClass)
@@ -109,6 +112,7 @@ public class LiveBaseService {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
         Map<String, String> paramMap = MapUtil.objectToMap(e);
+        paramMap = MapUtil.filterNullValue(paramMap);
         String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.APP_ID, LiveGlobalConfig.APP_SECRET);
         e.setSign(sign);
         validateBean(e);
@@ -134,33 +138,33 @@ public class LiveBaseService {
     
     /**
      * HTTP POST 请求发送json，默认使用appId，timestamp，sign，requestId的 map 集合进行签名
-     * @param url  请求URL
-     * @param e  请求参数对象
+     * @param url 请求URL
+     * @param e 请求参数对象
      * @param tClass 返回对象class类型
-     * @param <T>  返回对象泛型
-     * @param <E>  请求参数泛型
-     * @return  HTTP response 数据封装对象
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
         Map<String, String> signMap = MapUtil.getSignMap(e);
-        return basePostJson(url,signMap,e,tClass);
+        return basePostJson(url, signMap, e, tClass);
     }
     
     /**
      * HTTP POST 请求发送json
-     * @param url  请求URL
+     * @param url 请求URL
      * @param signMap 需要签名的map
-     * @param e  请求参数对象
+     * @param e 请求参数对象
      * @param tClass 返回对象class类型
-     * @param <T>  返回对象泛型
-     * @param <E>  请求参数泛型
-     * @return  HTTP response 数据封装对象
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
      */
-    protected <T, E extends LiveCommonRequest> T basePostJson(String url,Map<String,String> signMap, E e, Class<T> tClass)
-            throws IOException, NoSuchAlgorithmException {
+    protected <T, E extends LiveCommonRequest> T basePostJson(String url, Map<String, String> signMap, E e,
+            Class<T> tClass) throws IOException, NoSuchAlgorithmException {
         T t = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(LiveSignUtil.generateUUID());
@@ -172,7 +176,7 @@ public class LiveBaseService {
         String sign = LiveSignUtil.setLiveSign(signMap, LiveGlobalConfig.APP_ID, LiveGlobalConfig.APP_SECRET);
         e.setSign(sign);
         validateBean(e);
-        url = url+"?"+ MapUtil.mapJoinNotEncode(signMap);
+        url = url + "?" + MapUtil.mapJoinNotEncode(signMap);
         String response = HttpUtil.sendPostDataByJson(url, JSON.toJSONString(e), Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             LiveCommonResponse liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);

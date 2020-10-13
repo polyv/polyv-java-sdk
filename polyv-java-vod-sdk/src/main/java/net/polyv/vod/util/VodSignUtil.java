@@ -45,8 +45,6 @@ public class VodSignUtil {
      * @throws NoSuchAlgorithmException 异常异常
      */
     public static String getSign(Map<String, String> params, String secretKey) throws NoSuchAlgorithmException {
-        Long ptime = System.currentTimeMillis();
-        params.put("ptime", ptime.toString());
         log.debug("参与签名参数：" + JSON.toJSONString(params));
         List<String> keys = new ArrayList<>(params.keySet());
         List<String> tmp = new ArrayList<>();

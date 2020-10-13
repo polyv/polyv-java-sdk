@@ -29,27 +29,41 @@ public class VodBaseService {
     
     /**
      * HTTP GET 公共请求
-     * @param url  请求URL
-     * @param e  请求参数对象
+     * @param url 请求URL
+     * @param e 请求参数对象
      * @param tClass 返回对象class类型
-     * @param <T>  返回对象泛型
-     * @param <E>  请求参数泛型
-     * @return  HTTP response 数据封装对象
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
      * @throws IOException 异常
      */
     protected <T, E extends VodCommonRequest> T baseGet(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
         T t = null;
+        Map<String, String> paramMap = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(VodSignUtil.generateUUID());
         }
-        e.setTimestamp(String.valueOf(System.currentTimeMillis()));
-        Map<String, String> paramMap = MapUtil.objectToMap(e);
-        String sign = VodSignUtil.setVodSign(paramMap,  VodGlobalConfig.SECRET_KEY);
-        e.setSign(sign);
+        url = url.trim();
+        if (url.startsWith("http://api.polyv.net")) {
+            if (StringUtils.isNotBlank(e.getPtime())) {
+                e.setPtime(String.valueOf(System.currentTimeMillis()));
+            }
+            e.setUserid(VodGlobalConfig.USER_ID);
+            paramMap = MapUtil.objectToMap(e);
+            String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.SECRET_KEY);
+            e.setSign(sign);
+        } else {
+            /**
+             * 以 http://v.polyv.net开始的URL地址，对象参数不做任何处理直接转换MAP传输
+             */
+            paramMap = MapUtil.objectToMap(e);
+        }
+        paramMap = MapUtil.filterNullValue(paramMap);
         validateBean(e);
         String queryStr = MapUtil.mapJoinNotEncode(paramMap);
         url += "?" + queryStr;
+        log.debug("请求地址：%s", url);
         String response = HttpUtil.sendGetData(url, Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             VodCommonResponse VodCommonResponse = JSON.parseObject(response, VodCommonResponse.class);
@@ -88,27 +102,37 @@ public class VodBaseService {
     
     /**
      * HTTP POST 公共请求
-     * @param url  请求URL
-     * @param e  请求参数对象
+     * @param url 请求URL
+     * @param e 请求参数对象
      * @param tClass 返回对象class类型
-     * @param <T>  返回对象泛型
-     * @param <E>  请求参数泛型
-     * @return  HTTP response 数据封装对象
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
      */
     protected <T, E extends VodCommonRequest> T basePost(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
         T t = null;
+        Map<String, String> paramMap = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(VodSignUtil.generateUUID());
         }
-       
-        if (StringUtils.isBlank(e.getTimestamp())) {
-            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        url = url.trim();
+        if (url.startsWith("http://api.polyv.net")) {
+            e.setUserid(VodGlobalConfig.USER_ID);
+            if (StringUtils.isBlank(e.getPtime())) {
+                e.setPtime(String.valueOf(System.currentTimeMillis()));
+            }
+            paramMap = MapUtil.objectToMap(e);
+            String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.SECRET_KEY);
+            e.setSign(sign);
+        } else {
+            /**
+             * 以 http://v.polyv.net开始的URL地址，对象参数不做任何处理直接转换MAP传输
+             */
+            paramMap = MapUtil.objectToMap(e);
         }
-        Map<String, String> paramMap = MapUtil.objectToMap(e);
-        String sign = VodSignUtil.setVodSign(paramMap,  VodGlobalConfig.SECRET_KEY);
-        e.setSign(sign);
+        paramMap = MapUtil.filterNullValue(paramMap);
         validateBean(e);
         String response = HttpUtil.sendPostDataByMap(url, paramMap, Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
@@ -132,29 +156,39 @@ public class VodBaseService {
     
     /**
      * HTTP POST 请求发送json
-     * @param url  请求URL
-     * @param e  请求参数对象
+     * @param url 请求URL
+     * @param e 请求参数对象
      * @param tClass 返回对象class类型
-     * @param <T>  返回对象泛型
-     * @param <E>  请求参数泛型
-     * @return  HTTP response 数据封装对象
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
      */
     protected <T, E extends VodCommonRequest> T basePostJson(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
         T t = null;
+        Map<String, String> paramMap = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(VodSignUtil.generateUUID());
         }
-        
-        if (StringUtils.isBlank(e.getTimestamp())) {
-            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        url = url.trim();
+        if (url.startsWith("http://api.polyv.net")) {
+            e.setUserid(VodGlobalConfig.USER_ID);
+            if (StringUtils.isBlank(e.getPtime())) {
+                e.setPtime(String.valueOf(System.currentTimeMillis()));
+            }
+            paramMap = MapUtil.objectToMap(e);
+            String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.SECRET_KEY);
+            e.setSign(sign);
+        } else {
+            /**
+             * 以 http://v.polyv.net开始的URL地址，对象参数不做任何处理直接转换MAP传输
+             */
+            paramMap = MapUtil.objectToMap(e);
         }
-        Map<String, String> paramMap = MapUtil.objectToMap(e);
-        String sign = VodSignUtil.setVodSign(paramMap,  VodGlobalConfig.SECRET_KEY);
-        e.setSign(sign);
+        paramMap = MapUtil.filterNullValue(paramMap);
         validateBean(e);
-        url = url+"?"+ MapUtil.mapJoinNotEncode(paramMap);
+        url = url + "?" + MapUtil.mapJoinNotEncode(paramMap);
         String response = HttpUtil.sendPostDataByJson(url, JSON.toJSONString(e), Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             VodCommonResponse VodCommonResponse = JSON.parseObject(response, VodCommonResponse.class);

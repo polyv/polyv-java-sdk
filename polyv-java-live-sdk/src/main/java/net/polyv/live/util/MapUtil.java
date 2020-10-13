@@ -196,4 +196,24 @@ public class MapUtil {
 		return tempMap;
 	}
 	
+	/**
+	 * 过滤值为NULL的key
+	 * @param sourceMap 源MAP
+	 * @return 目标MAP
+	 */
+	public static Map<String, String>  filterNullValue (Map<String, String> sourceMap) {
+		Map<String, String> destMap = new HashMap<String, String>();
+		
+		for (Map.Entry<String, String> entry : sourceMap.entrySet()) {
+			String key = entry.getKey();
+			String value = entry.getValue();
+			if (StringUtils.isBlank(value)) {
+				continue;
+			}
+			 destMap.put(key,value);
+		}
+		return destMap;
+	}
+	
+	
 }

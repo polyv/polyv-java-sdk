@@ -38,6 +38,8 @@ import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveSonChannelInfoRequest;
+import net.polyv.live.entity.channel.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.entity.dto.LiveChannelBasicDTO;
 import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
@@ -47,7 +49,7 @@ import net.polyv.live.util.JsonUtil;
  * @author: thomas
  **/
 @Slf4j
-public class ChannelTest extends BaseTest{
+public class ChannelTest extends BaseTest {
     /**
      * 系统账号密钥配置
      */
@@ -694,7 +696,7 @@ public class ChannelTest extends BaseTest{
         //准备测试数据
         Integer channelId = createChannel();
         String sonChannelId = createSonChannel(channelId);
-
+        
         LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest = new LiveUpdateSonChannelInfoRequest();
         liveUpdateSonChannelInfoRequest.setChannelId(channelId)
                 .setAccount(sonChannelId)
@@ -704,7 +706,8 @@ public class ChannelTest extends BaseTest{
                 .setActor("教授")
                 .setPageTurnEnabled("Y")
                 .setNotifyEnabled("Y");
-        String updateSonChannelInfoResponse = new LiveChannelServiceImpl().updateSonChannelInfo(liveUpdateSonChannelInfoRequest);
+        String updateSonChannelInfoResponse = new LiveChannelServiceImpl().updateSonChannelInfo(
+                liveUpdateSonChannelInfoRequest);
         Assert.assertNotNull(updateSonChannelInfoResponse);
         if ("success".equals(updateSonChannelInfoResponse)) {
             //to do something ......
@@ -728,13 +731,39 @@ public class ChannelTest extends BaseTest{
         
         LiveCreateSonChannelTokenRequest liveCreateSonChannelTokenRequest = new LiveCreateSonChannelTokenRequest();
         liveCreateSonChannelTokenRequest.setAccount(sonChannelId).setToken("sonChannelLogintoken");
-        String liveCreateSonChannelTokenResponse = new LiveChannelServiceImpl().createSonChannelToken(liveCreateSonChannelTokenRequest);
+        String liveCreateSonChannelTokenResponse = new LiveChannelServiceImpl().createSonChannelToken(
+                liveCreateSonChannelTokenRequest);
         Assert.assertNotNull(liveCreateSonChannelTokenResponse);
         if ("success".equals(liveCreateSonChannelTokenResponse)) {
             //to do something ......
             log.debug("设置子频道单点登陆token成功" + liveCreateSonChannelTokenResponse);
         }
+        
+        //删除测试数据
+        deleteChannel(channelId);
+    }
     
+    /**
+     * 测试查询子频道信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testSonChannelInfo() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        String sonChannelId = createSonChannel(channelId);
+        
+        LiveSonChannelInfoRequest liveSonChannelInfoRequest = new LiveSonChannelInfoRequest();
+        liveSonChannelInfoRequest.setAccount(sonChannelId).setChannelId(channelId);
+        LiveSonChannelInfoResponse liveSonChannelInfoResponse = new LiveChannelServiceImpl().sonChannelInfo(
+                liveSonChannelInfoRequest);
+        Assert.assertNotNull(liveSonChannelInfoResponse);
+        if (liveSonChannelInfoResponse != null) {
+            //to do something ......
+            log.debug("测试查询子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponse));
+        }
+        
         //删除测试数据
         deleteChannel(channelId);
     }

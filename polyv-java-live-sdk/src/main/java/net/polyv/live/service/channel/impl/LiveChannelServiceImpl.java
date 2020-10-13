@@ -271,7 +271,8 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     @Override
     public String updateSonChannelInfo(LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_INFO_UPDATE_URL, liveUpdateSonChannelInfoRequest.getChannelId());
+        String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_INFO_UPDATE_URL,
+                liveUpdateSonChannelInfoRequest.getChannelId());
         return this.basePost(url, liveUpdateSonChannelInfoRequest, String.class);
     }
     
@@ -285,9 +286,26 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     @Override
     public String createSonChannelToken(LiveCreateSonChannelTokenRequest liveCreateSonChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_TOKEN_CREATE_URL,liveCreateSonChannelTokenRequest.getAccount());
+        String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_TOKEN_CREATE_URL,
+                liveCreateSonChannelTokenRequest.getAccount());
         String liveCreateSonChannelTokenResponse = this.basePost(url, liveCreateSonChannelTokenRequest, String.class);
         return liveCreateSonChannelTokenResponse;
+    }
+    
+    /**
+     * 查询子频道信息
+     * @param liveSonChannelInfoRequest 查询子频道信息请求体
+     * @return 查询子频道信息返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveSonChannelInfoResponse sonChannelInfo(LiveSonChannelInfoRequest liveSonChannelInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_INFO_GET_URL, liveSonChannelInfoRequest.getChannelId());
+        LiveSonChannelInfoResponse liveSonChannelInfoResponse = this.baseGet(url, liveSonChannelInfoRequest,
+                LiveSonChannelInfoResponse.class);
+        return liveSonChannelInfoResponse;
     }
     
 }

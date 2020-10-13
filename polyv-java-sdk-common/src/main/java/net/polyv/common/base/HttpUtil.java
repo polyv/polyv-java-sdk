@@ -211,10 +211,7 @@ public class HttpUtil {
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendGetData(String url, String pathVariable, String encoding) throws IOException {
-        if (StringUtils.isNotBlank(pathVariable)) {
-            url = String.format(url, pathVariable);
-        }
-        return sendGetData(url, encoding);
+        return sendGetData(url,pathVariable,null, encoding);
     }
     
     /**
@@ -226,16 +223,7 @@ public class HttpUtil {
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendGetData(String url, Map<String, Object> params, String encoding) throws IOException {
-        String paramStr = null;
-        if (null != params) {
-            for (String key : params.keySet()) {
-                paramStr = paramStr + key + "=" + params.get(key) + "&";
-            }
-        }
-        if (StringUtils.isNotBlank(paramStr)) {
-            url = url + "?" + paramStr.substring(0, paramStr.length() - 1);
-        }
-        return sendGetData(url, encoding);
+        return sendGetData(url,null,params, encoding);
     }
     
     /**

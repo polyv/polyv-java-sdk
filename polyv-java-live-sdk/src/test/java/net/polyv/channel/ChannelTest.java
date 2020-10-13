@@ -641,15 +641,37 @@ public class ChannelTest {
     }
     
     /**
-     * 测试创建子频道 TODO 测试未通过
+     * 测试创建子频道-三分屏添加Guest
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCreateSonChannel() throws IOException, NoSuchAlgorithmException {
+    public void testCreateSonChannelGuest() throws IOException, NoSuchAlgorithmException {
+        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
+        liveCreateSonChannelRequest.setChannelId(1948514)
+                .setRole("Guest")
+                .setNickname("sadboy")
+                .setActor("教授")
+                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
+        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelServiceImpl().createSonChannel(
+                liveCreateSonChannelRequest);
+        Assert.assertNotNull(liveCreateSonChannelResponse);
+        if (liveCreateSonChannelResponse != null) {
+            //to do something ......
+            log.debug("创建子频道成功" + JSON.toJSONString(liveCreateSonChannelResponse));
+        }
+    }
+    
+    /**
+     * 测试创建子频道-非三分屏添加助教
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testCreateSonChannelAssistant() throws IOException, NoSuchAlgorithmException {
         LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
         liveCreateSonChannelRequest.setChannelId(1939188)
-                .setRole("Guest")
+//                .setRole("")
                 .setNickname("sadboy")
                 .setActor("教授")
                 .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");

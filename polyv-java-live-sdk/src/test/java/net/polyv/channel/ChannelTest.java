@@ -5,13 +5,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.polyv.live.constant.LiveConstant;
-import net.polyv.live.entity.channel.LiveChannelAuthTokenRequest;
-import net.polyv.live.entity.channel.LiveChannelAuthTokenResponse;
-import net.polyv.live.entity.channel.LiveChannelBasicInfoRequest;
-import net.polyv.live.entity.channel.LiveChannelBasicInfoResponse;
-import net.polyv.live.entity.channel.LiveChannelDetailRequest;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -19,6 +12,12 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
+import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.entity.channel.LiveChannelAuthTokenRequest;
+import net.polyv.live.entity.channel.LiveChannelAuthTokenResponse;
+import net.polyv.live.entity.channel.LiveChannelBasicInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelBasicInfoResponse;
+import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
@@ -941,5 +940,5 @@ public class ChannelTest extends BaseTest {
         //删除测试数据
         deleteChannel(channelId);
     }
-    
+
 }

@@ -38,6 +38,7 @@ import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
+import net.polyv.live.entity.channel.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveUpdateSonChannelInfoRequest;
@@ -777,12 +778,12 @@ public class ChannelTest extends BaseTest {
         
         LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
         liveSonChannelInfoListRequest.setChannelId(channelId);
-        LiveSonChannelInfoResponse[] liveSonChannelInfoResponses = new LiveChannelServiceImpl().sonChannelInfoList(
+        LiveSonChannelInfoListResponse liveSonChannelInfoResponse = new LiveChannelServiceImpl().sonChannelInfoList(
                 liveSonChannelInfoListRequest);
-        Assert.assertNotNull(liveSonChannelInfoResponses);
-        if (liveSonChannelInfoResponses != null) {
+        Assert.assertNotNull(liveSonChannelInfoResponse);
+        if (liveSonChannelInfoResponse != null) {
             //to do something ......
-            log.debug("测试查询子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponses));
+            log.debug("测试查询子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponse));
         }
     
         //删除测试数据

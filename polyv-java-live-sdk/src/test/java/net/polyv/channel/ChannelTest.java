@@ -35,6 +35,7 @@ import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
+import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
@@ -783,9 +784,32 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveSonChannelInfoResponse);
         if (liveSonChannelInfoResponse != null) {
             //to do something ......
-            log.debug("测试查询子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponse));
+            log.debug("查询频道号下所有子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(channelId);
+    }
     
+    /**
+     * 测试删除子频道
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testDeleteSonChannel() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        String sonChannelId = createSonChannel(channelId);
+        
+        LiveDeleteSonChannelRequest liveDeleteSonChannelRequest = new LiveDeleteSonChannelRequest();
+        liveDeleteSonChannelRequest.setChannelId(channelId).setAccount(sonChannelId);
+        String liveDeleteSonChannelRespose = new LiveChannelServiceImpl().deleteSonChannel(liveDeleteSonChannelRequest);
+        if ("true".equals(liveDeleteSonChannelRespose)) {
+            //to do something ......
+            log.debug("测试删除子频道成功" + liveDeleteSonChannelRespose);
+        }
+        
         //删除测试数据
         deleteChannel(channelId);
     }

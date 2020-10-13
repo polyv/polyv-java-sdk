@@ -277,6 +277,12 @@ public class LiveURL {
             BASE_URI + "v2/channelAccount/" + PARAM_REPLACE_CHAR + "/account";
     
     /**
+     * 删除子频道
+     */
+    public static final String SON_CHANNEL_DELETE_URL =
+            BASE_URI + "v2/channelAccount/" + PARAM_REPLACE_CHAR + "/delete";
+    
+    /**
      * 查询账号下所有频道详细信息
      */
     public static final String ACCOUNT_LIST_CHANNEL_DETAIL_URL = BASE_URI + "v3/channel/management/list-detail";

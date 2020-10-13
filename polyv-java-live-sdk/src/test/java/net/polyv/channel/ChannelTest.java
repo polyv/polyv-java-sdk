@@ -33,6 +33,7 @@ import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
+import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
@@ -691,15 +692,8 @@ public class ChannelTest extends BaseTest{
     @Test
     public void testUpdateSonChannelInfo() throws IOException, NoSuchAlgorithmException {
         //准备测试数据
-        LiveChannelRequest liveChannelRequest = new LiveChannelRequest().setName("test直播频道")
-                .setChannelPasswd("666888").setScene(LiveConstant.SceneType.PPT.getDesc());
-        Integer channelId = createChannel(liveChannelRequest);
-        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest().setChannelId(channelId)
-                .setRole("Guest")
-                .setNickname("sadboy")
-                .setActor("教授")
-                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
-        String sonChannelId = createSonChannel(liveCreateSonChannelRequest);
+        Integer channelId = createChannel();
+        String sonChannelId = createSonChannel(channelId);
 
         LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest = new LiveUpdateSonChannelInfoRequest();
         liveUpdateSonChannelInfoRequest.setChannelId(channelId)
@@ -717,6 +711,30 @@ public class ChannelTest extends BaseTest{
             log.debug("设置子频道信息成功" + updateSonChannelInfoResponse);
         }
         
+        //删除测试数据
+        deleteChannel(channelId);
+    }
+    
+    /**
+     * 测试设置子频道单点登陆token
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testCreateSonChannelToken() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        String sonChannelId = createSonChannel(channelId);
+        
+        LiveCreateSonChannelTokenRequest liveCreateSonChannelTokenRequest = new LiveCreateSonChannelTokenRequest();
+        liveCreateSonChannelTokenRequest.setAccount(sonChannelId).setToken("sonChannelLogintoken");
+        String liveCreateSonChannelTokenResponse = new LiveChannelServiceImpl().createSonChannelToken(liveCreateSonChannelTokenRequest);
+        Assert.assertNotNull(liveCreateSonChannelTokenResponse);
+        if ("success".equals(liveCreateSonChannelTokenResponse)) {
+            //to do something ......
+            log.debug("设置子频道单点登陆token成功" + liveCreateSonChannelTokenResponse);
+        }
+    
         //删除测试数据
         deleteChannel(channelId);
     }

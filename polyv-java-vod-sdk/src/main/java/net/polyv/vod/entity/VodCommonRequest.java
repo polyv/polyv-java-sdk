@@ -21,13 +21,13 @@ public class VodCommonRequest extends CommonReqeust {
      * POLYV用户APP_ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
      */
     @ApiModelProperty(hidden = true )
-    @NotNull(message = "属性appId不能为空")
+    @NotNull(message = "属性userid不能为空，如没有，请从官网获取")
     private String userid;
     /**
      * 请求发送当时的时间戳（ms)，系统自动生成
      */
     @ApiModelProperty(hidden = true )
-    @NotNull(message = "属性timestamp不能为空")
+    @NotNull(message = "属性ptime不能为空，当前时间的毫秒级时间戳（13位），3分钟内有效")
     @JSONField(name="ptime")
     private String ptime;
     /**

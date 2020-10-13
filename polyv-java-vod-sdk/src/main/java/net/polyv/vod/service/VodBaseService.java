@@ -15,6 +15,7 @@ import net.polyv.common.exception.BusinessException;
 import net.polyv.common.util.ValidationUtil;
 import net.polyv.vod.config.VodGlobalConfig;
 import net.polyv.vod.constant.VodConstant;
+import net.polyv.vod.constant.VodURL;
 import net.polyv.vod.entity.VodCommonRequest;
 import net.polyv.vod.entity.VodCommonResponse;
 import net.polyv.vod.util.MapUtil;
@@ -39,14 +40,30 @@ public class VodBaseService {
      */
     protected <T, E extends VodCommonRequest> T baseGet(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
+        return baseGet(url, null, e, tClass);
+    }
+    
+    /**
+     * HTTP GET 公共请求
+     * @param url 请求URL
+     * @param e 请求参数对象
+     * @param tClass 返回对象class类型
+     * @param pathVariable 路径参数
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 异常
+     */
+    protected <T, E extends VodCommonRequest> T baseGet(String url, String pathVariable, E e, Class<T> tClass)
+            throws IOException, NoSuchAlgorithmException {
         T t = null;
         Map<String, String> paramMap = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(VodSignUtil.generateUUID());
         }
         url = url.trim();
-        if (url.startsWith("http://api.polyv.net")) {
-            if (StringUtils.isNotBlank(e.getPtime())) {
+        if (url.startsWith(VodURL.BASE_URI)) {
+            if (StringUtils.isBlank(e.getPtime())) {
                 e.setPtime(String.valueOf(System.currentTimeMillis()));
             }
             e.setUserid(VodGlobalConfig.USER_ID);
@@ -63,8 +80,7 @@ public class VodBaseService {
         validateBean(e);
         String queryStr = MapUtil.mapJoinNotEncode(paramMap);
         url += "?" + queryStr;
-        log.debug("请求地址：%s", url);
-        String response = HttpUtil.sendGetData(url, Consts.UTF_8.toString());
+        String response = HttpUtil.sendGetData(url, pathVariable, Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             VodCommonResponse VodCommonResponse = JSON.parseObject(response, VodCommonResponse.class);
             if (VodCommonResponse.getCode() != 200) {
@@ -112,13 +128,29 @@ public class VodBaseService {
      */
     protected <T, E extends VodCommonRequest> T basePost(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
+        return this.baseGet(url, null, e, tClass);
+    }
+    
+    /**
+     * HTTP POST 公共请求
+     * @param url 请求URL
+     * @param e 请求参数对象
+     * @param tClass 返回对象class类型
+     * @param pathVariable 路径参数
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 客户端和服务器读写异常
+     */
+    protected <T, E extends VodCommonRequest> T basePost(String url, String pathVariable, E e, Class<T> tClass)
+            throws IOException, NoSuchAlgorithmException {
         T t = null;
         Map<String, String> paramMap = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(VodSignUtil.generateUUID());
         }
         url = url.trim();
-        if (url.startsWith("http://api.polyv.net")) {
+        if (url.startsWith(VodURL.BASE_URI)) {
             e.setUserid(VodGlobalConfig.USER_ID);
             if (StringUtils.isBlank(e.getPtime())) {
                 e.setPtime(String.valueOf(System.currentTimeMillis()));
@@ -134,7 +166,7 @@ public class VodBaseService {
         }
         paramMap = MapUtil.filterNullValue(paramMap);
         validateBean(e);
-        String response = HttpUtil.sendPostDataByMap(url, paramMap, Consts.UTF_8.toString());
+        String response = HttpUtil.sendPostDataByMap(url, pathVariable, paramMap, Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             VodCommonResponse VodCommonResponse = JSON.parseObject(response, VodCommonResponse.class);
             if (VodCommonResponse.getCode() != 200) {
@@ -166,13 +198,29 @@ public class VodBaseService {
      */
     protected <T, E extends VodCommonRequest> T basePostJson(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
+        return this.basePostJson(url, null, e, tClass);
+    }
+    
+    /**
+     * HTTP POST 请求发送json
+     * @param url 请求URL
+     * @param e 请求参数对象
+     * @param tClass 返回对象class类型
+     * @param pathVariable 路径参数
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 客户端和服务器读写异常
+     */
+    protected <T, E extends VodCommonRequest> T basePostJson(String url, String pathVariable, E e, Class<T> tClass)
+            throws IOException, NoSuchAlgorithmException {
         T t = null;
         Map<String, String> paramMap = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(VodSignUtil.generateUUID());
         }
         url = url.trim();
-        if (url.startsWith("http://api.polyv.net")) {
+        if (url.startsWith(VodURL.BASE_URI)) {
             e.setUserid(VodGlobalConfig.USER_ID);
             if (StringUtils.isBlank(e.getPtime())) {
                 e.setPtime(String.valueOf(System.currentTimeMillis()));
@@ -189,7 +237,7 @@ public class VodBaseService {
         paramMap = MapUtil.filterNullValue(paramMap);
         validateBean(e);
         url = url + "?" + MapUtil.mapJoinNotEncode(paramMap);
-        String response = HttpUtil.sendPostDataByJson(url, JSON.toJSONString(e), Consts.UTF_8.toString());
+        String response = HttpUtil.sendPostDataByJson(url, pathVariable, JSON.toJSONString(e), Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             VodCommonResponse VodCommonResponse = JSON.parseObject(response, VodCommonResponse.class);
             if (VodCommonResponse.getCode() != 200) {

@@ -929,3 +929,40 @@ AuthSetting参数描述
 | 参数名 | 说明              |
 | ------ | ----------------- |
 | data   | 请求结果,true成功 |
+
+### 恢复直播频道推流
+
+#### 描述
+恢复频道号推流
+
+#### 调用约束
+(接口调用有频率限制，详细请查看)
+
+#### 代码示例
+```java
+    @Test
+    public void testResumeChannelStream() throws IOException, NoSuchAlgorithmException {
+        LiveResumeChannelStreamRequest liveResumeChannelStreamRequest = new LiveResumeChannelStreamRequest();
+        liveResumeChannelStreamRequest.setChannelId(channelId);
+        String liveResumeChannelStreamResponse = new LiveChannelServiceImpl().resumeChannelStream(liveResumeChannelStreamRequest);
+        Assert.assertNotNull(liveResumeChannelStreamResponse);
+        if ("success".equals(liveResumeChannelStreamResponse)) {
+            //to do something ......
+            log.debug("恢复直播频道推流成功" + liveResumeChannelStreamResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-恢复直播频道推流](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否恢复直播频道推流成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+| 参数名    | 必选 | 类型   | 说明                                               |
+| --------- | ---- | ------ | -------------------------------------------------- |
+| channelId | 是   | int    | 频道ID                                             |
+
+#### 返回对象描述[LiveChannelResponse]
+| 参数名 | 说明              |
+| ------ | ----------------- |
+| data   | 请求结果,success成功 |

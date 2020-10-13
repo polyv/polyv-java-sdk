@@ -38,6 +38,7 @@ import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.LiveSonChannelInfoRequest;
@@ -805,9 +806,33 @@ public class ChannelTest extends BaseTest {
         LiveDeleteSonChannelRequest liveDeleteSonChannelRequest = new LiveDeleteSonChannelRequest();
         liveDeleteSonChannelRequest.setChannelId(channelId).setAccount(sonChannelId);
         String liveDeleteSonChannelRespose = new LiveChannelServiceImpl().deleteSonChannel(liveDeleteSonChannelRequest);
+        Assert.assertNotNull(liveDeleteSonChannelRespose);
         if ("true".equals(liveDeleteSonChannelRespose)) {
             //to do something ......
             log.debug("测试删除子频道成功" + liveDeleteSonChannelRespose);
+        }
+        
+        //删除测试数据
+        deleteChannel(channelId);
+    }
+    
+    /**
+     * 测试恢复直播频道推流
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testResumeChannelStream() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+    
+        LiveResumeChannelStreamRequest liveResumeChannelStreamRequest = new LiveResumeChannelStreamRequest();
+        liveResumeChannelStreamRequest.setChannelId(channelId);
+        String liveResumeChannelStreamResponse = new LiveChannelServiceImpl().resumeChannelStream(liveResumeChannelStreamRequest);
+        Assert.assertNotNull(liveResumeChannelStreamResponse);
+        if ("success".equals(liveResumeChannelStreamResponse)) {
+            //to do something ......
+            log.debug("恢复直播频道推流成功" + liveResumeChannelStreamResponse);
         }
         
         //删除测试数据

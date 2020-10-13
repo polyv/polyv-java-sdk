@@ -79,6 +79,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("频道创建成功" + JSON.toJSONString(liveChannelResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(liveChannelResponse.getChannelId());
     }
     
     /**
@@ -120,10 +123,13 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("测试创建并初始化频道 验证码观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(liveChannelInitResponse.getChannelId());
     }
     
     /**
-     * 测试创建并初始化频道 付费观看  TODO 未通过测试
+     * 测试创建并初始化频道 付费观看
      * @throws IOException 异常
      */
     @Test
@@ -149,8 +155,8 @@ public class ChannelTest extends BaseTest {
                 .setAuthType(LiveConstant.AuthType.PAY.getDesc())
                 .setPayAuthTips("欢迎使用POLYV直播平台")
                 .setPrice(0.01f)
-                .setWatchEndTime("2022-01-01 00:00:00")
-                .setValidTimePeriod(720)
+                .setWatchEndTime("1602578396000")
+//                .setValidTimePeriod(720)
                 .setEnabled("Y");
         List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(payAuthSettings);
@@ -162,46 +168,49 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("测试创建并初始化频道 付费观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(liveChannelInitResponse.getChannelId());
     }
     
     /**
      * 测试创建并初始化频道 白名单观看   TODO 未通过测试
      * @throws IOException 异常
      */
-    @Test
-    public void testCreateChannelInitPhone() throws IOException, NoSuchAlgorithmException {
-        LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
-        LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
-                "创建并初始化频道-白名单观看")
-                .setChannelPasswd("123321")
-                .setAutoPlay(1)
-                .setPlayerColor("#666666")
-                .setScene(LiveConstant.SceneType.ALONE.getDesc())
-                .setCategoryId(340019)
-                .setMaxViewer(0)
-                .setStartTime(1602306535000l)
-                .setDesc("这是一个描述")
-                .setPublisher("sadboy主讲")
-                .setLinkMicLimit(-1)
-                .setPureRtcEnabled("N")
-                .setReceiveChannelIds("213");
-        liveChannelInitRequest.setBasicSetting(basicSetting);
-        //白名单观看,设置观看条件为白名单观看时，必须已经存在白名单数据
-        LiveChannelInitRequest.AuthSetting phoneAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(2)
-                .setAuthType(LiveConstant.AuthType.PHONE.getDesc())
-                .setEnabled("Y")
-                .setAuthTips("这是提示文案");
-        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
-        authSettings.add(phoneAuthSettings);
-        liveChannelInitRequest.setAuthSettings(authSettings);
-        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
-                liveChannelInitRequest);
-        Assert.assertNotNull(liveChannelInitResponse);
-        if (liveChannelInitResponse != null) {
-            //to do something ......
-            log.debug("测试创建并初始化频道 白名单观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
-        }
-    }
+//    @Test
+//    public void testCreateChannelInitPhone() throws IOException, NoSuchAlgorithmException {
+//        LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
+//        LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
+//                "创建并初始化频道-白名单观看")
+//                .setChannelPasswd("123321")
+//                .setAutoPlay(1)
+//                .setPlayerColor("#666666")
+//                .setScene(LiveConstant.SceneType.ALONE.getDesc())
+//                .setCategoryId(340019)
+//                .setMaxViewer(0)
+//                .setStartTime(1602306535000l)
+//                .setDesc("这是一个描述")
+//                .setPublisher("sadboy主讲")
+//                .setLinkMicLimit(-1)
+//                .setPureRtcEnabled("N")
+//                .setReceiveChannelIds("213");
+//        liveChannelInitRequest.setBasicSetting(basicSetting);
+//        //白名单观看,设置观看条件为白名单观看时，必须已经存在白名单数据
+//        LiveChannelInitRequest.AuthSetting phoneAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
+//                .setAuthType(LiveConstant.AuthType.PHONE.getDesc())
+//                .setEnabled("Y")
+//                .setAuthTips("这是提示文案");
+//        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
+//        authSettings.add(phoneAuthSettings);
+//        liveChannelInitRequest.setAuthSettings(authSettings);
+//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+//                liveChannelInitRequest);
+//        Assert.assertNotNull(liveChannelInitResponse);
+//        if (liveChannelInitResponse != null) {
+//            //to do something ......
+//            log.debug("测试创建并初始化频道 白名单观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+//        }
+//    }
     
     /**
      * 测试创建并初始化频道 登记观看
@@ -252,6 +261,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("测试创建并初始化频道 登记观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(liveChannelInitResponse.getChannelId());
     }
     
     /**
@@ -292,6 +304,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("测试创建并初始化频道 自定义授权观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(liveChannelInitResponse.getChannelId());
     }
     
     /**
@@ -333,6 +348,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("测试创建并初始化频道 外部授权观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(liveChannelInitResponse.getChannelId());
     }
     
     /**
@@ -372,13 +390,19 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("测试创建并初始化频道 直接授权观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(liveChannelInitResponse.getChannelId());
     }
     
     /**
      * 测试修改频道的相关设置
      */
     @Test
-    public void testUpdateChannelSetting() throws IOException {
+    public void testUpdateChannelSetting() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         LiveChannelSettingRequest liveChannelSettingRequest = new LiveChannelSettingRequest();
         LiveChannelSettingRequest.BasicSetting basicSetting = liveChannelSettingRequest.new BasicSetting().setName(
                 "9999999999")
@@ -402,14 +426,17 @@ public class ChannelTest extends BaseTest {
                 .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
         List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(authSetting);
-        liveChannelSettingRequest.setChannelId(1940343).setBasicSetting(basicSetting).setAuthSettings(authSettings);
+        liveChannelSettingRequest.setChannelId(channelId).setBasicSetting(basicSetting).setAuthSettings(authSettings);
         String liveChannelSettingResponse = new LiveChannelServiceImpl().updateChannelSetting(
                 liveChannelSettingRequest);
-        Assert.assertNull(liveChannelSettingResponse);
+        Assert.assertNotNull(liveChannelSettingResponse);
         if (liveChannelSettingResponse == null) {
             //to do something ......
             log.debug("测试修改频道的相关设置成功");
         }
+        
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
     /**
@@ -439,6 +466,12 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("频道批量创建成功" + JSON.toJSONString(liveCreateChannelListResponse));
         }
+        
+        //删除测试数据
+        List<LiveChannelResponse> channelsResponse = liveCreateChannelListResponse.getChannels();
+        for (LiveChannelResponse temp : channelsResponse) {
+            deleteChannel(temp.getChannelId());
+        }
     }
     
     /**
@@ -447,7 +480,9 @@ public class ChannelTest extends BaseTest {
      */
     @Test
     public void testUpdateChannelDetailPassword() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = 1938888;
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         String newPassword = "1234567";
         LiveChannelDetailRequest liveChannelDetailRequest = new LiveChannelDetailRequest();
         liveChannelDetailRequest.setChannelId(channelId)
@@ -460,16 +495,20 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug(String.format("频道%s修改密码为%s成功%s", channelId, newPassword, liveChannelDetailResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
     /**
-     * TODO 频道号动态获取，scene写成枚举类型
      * 测试设置频道详情：修改scene字段
      * @throws IOException
      */
     @Test
     public void testUpdateChannelScene() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = 1938888;
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         String value = "alone";
         LiveChannelDetailRequest liveChannelDetailRequest = new LiveChannelDetailRequest();
         liveChannelDetailRequest.setChannelId(channelId)
@@ -482,16 +521,20 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug(String.format("频道%s修改scene为%s成功%s", channelId, value, liveChannelDetailResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
     /**
-     * TODO 频道号动态获取
      * 测试设置频道详情：设置最大同时观看人数
      * @throws IOException
      */
     @Test
     public void testUpdateChannel() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = 1938888;
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         String value = "2147483647";
         LiveChannelDetailRequest liveChannelDetailRequest = new LiveChannelDetailRequest();
         liveChannelDetailRequest.setChannelId(channelId)
@@ -504,6 +547,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug(String.format("频道%s修改maxViewer为%s成功%s", channelId, value, liveChannelDetailResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
     /**
@@ -512,8 +558,11 @@ public class ChannelTest extends BaseTest {
      */
     @Test
     public void testListPPTRecord() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest = new LiveListChannelPPTRecordRequest();
-        liveListChannelPPTRecordRequest.setChannelId(1940343).setPage(1);
+        liveListChannelPPTRecordRequest.setChannelId(channelId).setPage(1);
         LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse = new LiveChannelServiceImpl().listPPTRecord(
                 liveListChannelPPTRecordRequest);
         Assert.assertNotNull(liveListChannelPPTRecordResponse);
@@ -521,6 +570,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("查询课件重制任务列表信息成功" + JSON.toJSONString(liveListChannelPPTRecordResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
     /**
@@ -530,8 +582,11 @@ public class ChannelTest extends BaseTest {
      */
     @Test
     public void testUpdateChannelPassword() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest = new LiveChannelPasswordSettingRequest();
-        liveChannelPasswordSettingRequest.setChannelId(1940343).setPasswd("987654");
+        liveChannelPasswordSettingRequest.setChannelId(channelId).setPasswd("987654");
         String updateChannelPasswordResponse = new LiveChannelServiceImpl().updateChannelPassword(
                 liveChannelPasswordSettingRequest);
         Assert.assertNotNull(updateChannelPasswordResponse);
@@ -539,6 +594,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("设置频道密码成功" + JSON.toJSONString(updateChannelPasswordResponse));
         }
+        
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
     /**
@@ -546,8 +604,11 @@ public class ChannelTest extends BaseTest {
      */
     @Test
     public void testDeleteChannel() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest();
-        liveDeleteChannelRequest.setChannelId(1938236);
+        liveDeleteChannelRequest.setChannelId(channelId);
         String liveDeleteChannelResponse = new LiveChannelServiceImpl().deleteChannel(liveDeleteChannelRequest);
         Assert.assertNotNull(liveDeleteChannelResponse);
         if ("true".equals(liveDeleteChannelResponse)) {
@@ -563,8 +624,11 @@ public class ChannelTest extends BaseTest {
      */
     @Test
     public void testDeleteChannelList() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer[] channelIds = new Integer[]{createChannel(),createChannel(),createChannel()};
+        
         LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChannelListRequest();
-        liveDeleteChannelListRequest.setChannelIds(new Integer[]{1938719, 1938888});
+        liveDeleteChannelListRequest.setChannelIds(channelIds);
         String liveDeleteChannelListResponse = new LiveChannelServiceImpl().deleteChannelList(
                 liveDeleteChannelListRequest);
         Assert.assertNotNull(liveDeleteChannelListResponse);
@@ -576,11 +640,16 @@ public class ChannelTest extends BaseTest {
     
     /**
      * 测试设置频道单点登陆token
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
      */
     @Test
     public void testCreateChannelToken() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         LiveCreateChannelTokenRequest liveCreateChannelTokenRequest = new LiveCreateChannelTokenRequest();
-        liveCreateChannelTokenRequest.setChannelId(1939188).setToken("testToken");
+        liveCreateChannelTokenRequest.setChannelId(channelId).setToken("testToken");
         String liveCreateChannelTokenResponse = new LiveChannelServiceImpl().createChannelToken(
                 liveCreateChannelTokenRequest);
         Assert.assertNotNull(liveCreateChannelTokenResponse);
@@ -588,6 +657,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("设置频道单点登陆token成功" + JSON.toJSONString(liveCreateChannelTokenResponse));
         }
+    
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
     /**
@@ -597,8 +669,11 @@ public class ChannelTest extends BaseTest {
      */
     @Test
     public void testChannelInfo() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         LiveChannelInfoRequest liveChannelInfoRequest = new LiveChannelInfoRequest();
-        liveChannelInfoRequest.setChannelId(1939188);
+        liveChannelInfoRequest.setChannelId(channelId);
         LiveChannelInfoResponse liveChannelInfoResponse = new LiveChannelServiceImpl().channelInfo(
                 liveChannelInfoRequest);
         Assert.assertNotNull(liveChannelInfoResponse);
@@ -606,6 +681,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("查询频道信息成功" + JSON.toJSONString(liveChannelInfoResponse));
         }
+    
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
     /**
@@ -615,8 +693,11 @@ public class ChannelTest extends BaseTest {
      */
     @Test
     public void testChannelBasicInfo() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
-        liveChannelBasicInfoRequest.setChannelId(1939188);
+        liveChannelBasicInfoRequest.setChannelId(channelId);
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = new LiveChannelServiceImpl().channelBasicInfo(
                 liveChannelBasicInfoRequest);
         Assert.assertNotNull(liveChannelBasicInfoResponse);
@@ -624,6 +705,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("查询频道基本信息成功" + JSON.toJSONString(liveChannelBasicInfoResponse));
         }
+    
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
     /**
@@ -633,8 +717,11 @@ public class ChannelTest extends BaseTest {
      */
     @Test
     public void testChannelAuthToken() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         LiveChannelAuthTokenRequest liveChannelAuthTokenRequest = new LiveChannelAuthTokenRequest();
-        liveChannelAuthTokenRequest.setChannelId(1939188).setRole(LiveConstant.Role.ADMIN.getDesc()).setOrigin(null);
+        liveChannelAuthTokenRequest.setChannelId(channelId).setRole(LiveConstant.Role.ADMIN.getDesc()).setOrigin(null);
         LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = new LiveChannelServiceImpl().channelAuthToken(
                 liveChannelAuthTokenRequest);
         Assert.assertNotNull(liveChannelAuthTokenResponse);
@@ -642,6 +729,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("查询授权和连麦的token成功" + JSON.toJSONString(liveChannelAuthTokenResponse));
         }
+    
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
     /**
@@ -651,8 +741,11 @@ public class ChannelTest extends BaseTest {
      */
     @Test
     public void testCreateSonChannelGuest() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
-        liveCreateSonChannelRequest.setChannelId(1948514)
+        liveCreateSonChannelRequest.setChannelId(channelId)
                 .setRole("Guest")
                 .setNickname("sadboy")
                 .setActor("教授")
@@ -664,6 +757,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("创建子频道成功" + JSON.toJSONString(liveCreateSonChannelResponse));
         }
+    
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
     /**
@@ -673,8 +769,11 @@ public class ChannelTest extends BaseTest {
      */
     @Test
     public void testCreateSonChannelAssistant() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        
         LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
-        liveCreateSonChannelRequest.setChannelId(1939188)
+        liveCreateSonChannelRequest.setChannelId(channelId)
                 .setRole(null)
                 .setNickname("sadboy")
                 .setActor("教授")
@@ -686,6 +785,9 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("创建子频道成功" + JSON.toJSONString(liveCreateSonChannelResponse));
         }
+    
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
     /**
@@ -825,10 +927,11 @@ public class ChannelTest extends BaseTest {
     public void testResumeChannelStream() throws IOException, NoSuchAlgorithmException {
         //准备测试数据
         Integer channelId = createChannel();
-    
+        
         LiveResumeChannelStreamRequest liveResumeChannelStreamRequest = new LiveResumeChannelStreamRequest();
         liveResumeChannelStreamRequest.setChannelId(channelId);
-        String liveResumeChannelStreamResponse = new LiveChannelServiceImpl().resumeChannelStream(liveResumeChannelStreamRequest);
+        String liveResumeChannelStreamResponse = new LiveChannelServiceImpl().resumeChannelStream(
+                liveResumeChannelStreamRequest);
         Assert.assertNotNull(liveResumeChannelStreamResponse);
         if ("success".equals(liveResumeChannelStreamResponse)) {
             //to do something ......

@@ -108,7 +108,6 @@ public class LiveURL {
             BASE_URI + "v2/channelAccount/" + PARAM_REPLACE_CHAR + "/update";
     
     /**
-     *
      * 设置子频道单点登陆token
      */
     public static final String SON_CHANNEL_TOKEN_CREATE_URL =
@@ -306,6 +305,11 @@ public class LiveURL {
      * 异步转存接口
      */
     public static final String CHANNEL_RECORD_CONVERT_URL = BASE_URI + "v3/channel/record/convert";
+    
+    /**
+     * 添加单个白名单
+     */
+    public static final String CHANNEL_WRITE_LIST_ADD_URL = BASE_URI + "v3/channel/auth/add-white-list";
     
     /**
      * 400错误码

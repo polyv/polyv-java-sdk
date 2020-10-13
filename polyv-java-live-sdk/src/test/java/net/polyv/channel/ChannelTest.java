@@ -37,6 +37,7 @@ import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.entity.dto.LiveChannelBasicDTO;
 import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
 import net.polyv.live.util.JsonUtil;
@@ -45,13 +46,11 @@ import net.polyv.live.util.JsonUtil;
  * @author: thomas
  **/
 @Slf4j
-public class ChannelTest {
+public class ChannelTest extends BaseTest{
     /**
      * 系统账号密钥配置
      */
     public ChannelTest() {
-        
-        
         String appId = "frlr1zazn3";
         String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
         String userId = "1b448be323";
@@ -671,7 +670,7 @@ public class ChannelTest {
     public void testCreateSonChannelAssistant() throws IOException, NoSuchAlgorithmException {
         LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
         liveCreateSonChannelRequest.setChannelId(1939188)
-//                .setRole("")
+                .setRole(null)
                 .setNickname("sadboy")
                 .setActor("教授")
                 .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
@@ -682,6 +681,44 @@ public class ChannelTest {
             //to do something ......
             log.debug("创建子频道成功" + JSON.toJSONString(liveCreateSonChannelResponse));
         }
+    }
+    
+    /**
+     * 测试设置子频道信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateSonChannelInfo() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        LiveChannelRequest liveChannelRequest = new LiveChannelRequest().setName("test直播频道")
+                .setChannelPasswd("666888").setScene(LiveConstant.SceneType.PPT.getDesc());
+        Integer channelId = createChannel(liveChannelRequest);
+        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest().setChannelId(channelId)
+                .setRole("Guest")
+                .setNickname("sadboy")
+                .setActor("教授")
+                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
+        String sonChannelId = createSonChannel(liveCreateSonChannelRequest);
+
+        LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest = new LiveUpdateSonChannelInfoRequest();
+        liveUpdateSonChannelInfoRequest.setChannelId(channelId)
+                .setAccount(sonChannelId)
+                .setNickname("sadboy")
+                .setPassword("137890")
+                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0")
+                .setActor("教授")
+                .setPageTurnEnabled("Y")
+                .setNotifyEnabled("Y");
+        String updateSonChannelInfoResponse = new LiveChannelServiceImpl().updateSonChannelInfo(liveUpdateSonChannelInfoRequest);
+        Assert.assertNotNull(updateSonChannelInfoResponse);
+        if ("success".equals(updateSonChannelInfoResponse)) {
+            //to do something ......
+            log.debug("设置子频道信息成功" + updateSonChannelInfoResponse);
+        }
+        
+        //删除测试数据
+        deleteChannel(channelId);
     }
     
 }

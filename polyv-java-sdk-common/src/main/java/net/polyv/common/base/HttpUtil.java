@@ -76,7 +76,11 @@ public class HttpUtil {
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         if (params != null) {
             for (Map.Entry<String, String> entry : params.entrySet()) {
-                nameValuePairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+                String value = entry.getValue();
+                //去掉如下判断会造成String类型的value为null时
+                if(value != null){
+                    nameValuePairs.add(new BasicNameValuePair(entry.getKey(), value));
+                }
             }
         }
         // 设置参数到请求对象中

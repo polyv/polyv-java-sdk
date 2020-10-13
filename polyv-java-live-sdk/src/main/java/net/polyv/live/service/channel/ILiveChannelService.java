@@ -3,7 +3,6 @@ package net.polyv.live.service.channel;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 import net.polyv.live.entity.channel.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.LiveChannelAuthTokenResponse;
@@ -23,10 +22,12 @@ import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
+import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveUpdateSonChannelInfoRequest;
 
 /**
  * 直播频道管理
@@ -172,6 +173,16 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveCreateSonChannelResponse createSonChannel(LiveCreateSonChannelRequest liveCreateSonChannelRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置子频道信息
+     * @param liveUpdateSonChannelInfoRequest 设置子频道信息请求体
+     * @return 设置子频道信息返回体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String updateSonChannelInfo(LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

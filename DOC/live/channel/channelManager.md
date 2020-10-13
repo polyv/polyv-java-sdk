@@ -113,9 +113,6 @@
 | currentTimeMillis | timestamp | 服务器返回的时间戳（毫秒）               |
 | linkMicLimit      | int       | 连麦人数                                 |
 
-### 直播频道修改
-
-
 
 ### 查询课件重制任务列表
 
@@ -185,19 +182,501 @@ contents列表
 |title|string|对应回放的名称|
 |url|string|重制mp4下载地址，有24小时的防盗链超时时间|
 
-### 查询课件重制任务列表
+### 批量创建频道
 
 #### 描述
 
+作用：批量创建直播频道
+
 #### 调用约束
+
+留意，如果响应失败，则表示全部频道都失败，不会有部份成功、部份失败的结果
 
 #### 代码示例
 ```java
-
+    @Test
+    public void testCreateChannelList() throws IOException {
+        LiveCreateChannelListRequest liveCreateChannelListRequest = new LiveCreateChannelListRequest();
+        List<LiveChannelBasicDTO> channels = new ArrayList<>();
+        for (int i = 0; i <= 2; i++) {
+            LiveChannelBasicDTO liveChannel = new LiveChannelBasicDTO();
+            liveChannel.setName("批量创建" + i)
+                    .setChannelPasswd("123456" + i)
+                    .setCourseId("c" + i)
+                    .setAutoPlay(1)
+                    .setPlayerColor("#666666")
+                    .setScene(LiveConstant.SceneType.ALONE.getDesc())
+                    .setCategoryId(340019);
+            channels.add(liveChannel);
+        }
+        liveCreateChannelListRequest.setChannels(channels).setRequestId("123456");
+        LiveCreateChannelListResponse liveCreateChannelListResponse = new LiveChannelServiceImpl().createChannelList(liveCreateChannelListRequest);
+        Assert.assertNotNull(liveCreateChannelListResponse);
+        if (liveCreateChannelListResponse != null) {
+            //to do something ......
+            log.debug("频道批量创建成功" + JSON.toJSONString(liveCreateChannelListResponse));
+        }
+    }
 ```
 #### 单元测试流程
+[swagger 程序接入-批量创建频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否批量创建成功](http://live.polyv.net/#/channel)
 
 #### 请求入参描述[LiveChannelRequest]
 
+| 参数名    | 必选 | 类型   | 说明                                                   |
+| --------- | ---- | ------ | ------------------------------------------------------ |
+| appId     | 是   | string | 从API设置中获取，在直播系统登记的appId                 |
+| timestamp | 是   | string | 当前时间的秒级时间戳（13位）                           |
+| sign      | 是   | string | 签名，为32位大写的MD5值                                |
+| channels  | 是   | json   | 频道列表，每次最多创建100个频道， **必须放在请求体中** |
+
+
 #### 返回对象描述[LiveChannelResponse]
 
+| 参数名        | 必选 | 类型   | 说明                                                         |
+| ------------- | ---- | ------ | ------------------------------------------------------------ |
+| name          | 是   | string | 频道名称                                                     |
+| channelPasswd | 是   | string | 频道密码                                                     |
+| courseId      | 否   | string | 课程号                                                       |
+| autoPlay      | 否   | int    | 是否自动播放，0/1，默认1  **注意，如果该值为空，则该频道会使用全局的“功能开关设置”。 如果非空，则会使用频道的“功能开关设置”。** |
+| playerColor   | 否   | string | 播放器控制栏颜色，默认：#666666                              |
+| scene         | 否   | string | 直播场景： alone 活动拍摄  ppt 三分屏  topclass  大班课      |
+| categoryId    | 否   | int    | 新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） |
+
+### 设置频道密码
+
+#### 描述
+设置频道密码
+
+#### 调用约束
+请留意，如果 channelId 参数为空，会对该用户所有的频道进行修改
+
+#### 代码示例
+```java
+@Test
+    public void testUpdateChannelPassword() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest = new LiveChannelPasswordSettingRequest();
+        liveChannelPasswordSettingRequest.setChannelId(1940343).setPasswd("987654");
+        String updateChannelPasswordResponse = new LiveChannelServiceImpl().updateChannelPassword(
+                liveChannelPasswordSettingRequest);
+        Assert.assertNotNull(updateChannelPasswordResponse);
+        if ("true".equals(updateChannelPasswordResponse)) {
+            log.debug("设置频道密码成功" + JSON.toJSONString(updateChannelPasswordResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置频道密码](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看密码是否修改成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+| 参数名    | 必选 | 类型 | 说明                                                         |
+| --------- | ---- | ---- | ------------------------------------------------------------ |
+| channelId | 否   | int  | 频道ID，请留意，如果该参数为空，会对该用户所有的频道进行修改 |
+|passwd |	是 |	string| 	修改的密码|
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名  | 说明         |
+| ------- | ------------ |
+| code    | 响应状态码   |
+| status  | 响应状态     |
+| message | 异常错误信息 |
+| data    | 异常错误数据 |
+
+### 删除直播频道
+
+#### 描述
+删除直播频道
+
+#### 调用约束
+无
+
+#### 代码示例
+```java
+@Test
+    public void testDeleteChannel() throws IOException, NoSuchAlgorithmException {
+        LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest();
+        liveDeleteChannelRequest.setChannelId(1938236);
+        String liveDeleteChannelResponse = new LiveChannelServiceImpl().deleteChannel(liveDeleteChannelRequest);
+        Assert.assertNotNull(liveDeleteChannelResponse);
+        if ("true".equals(liveDeleteChannelResponse)) {
+            //to do something ......
+            log.debug("删除直播频道成功" + JSON.toJSONString(liveDeleteChannelResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-删除直播频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看直播频道是否删除成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明   |
+| --------- | ---- | ------ | ------ |
+| channelId | 是   | string | 频道ID |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 请求结果 |
+
+### 批量删除频道
+
+#### 描述
+批量删除直播频道
+
+#### 调用约束
+无
+
+#### 代码示例
+```java
+LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChannelListRequest();
+        liveDeleteChannelListRequest.setChannelIds(new Integer[]{1938719, 1938888});
+        String liveDeleteChannelListResponse = new LiveChannelServiceImpl().deleteChannelList(liveDeleteChannelListRequest);
+        Assert.assertNotNull(liveDeleteChannelListResponse);
+        if ("true".equals(liveDeleteChannelListResponse)) {
+            //to do something ......
+            log.debug("批量删除频道成功" + JSON.toJSONString(liveDeleteChannelListResponse));
+        }
+```
+#### 单元测试流程
+[swagger 程序接入-批量删除频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否批量删除频道成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名     | 必选 | 类型      | 说明                              |
+| ---------- | ---- | --------- | --------------------------------- |
+| channelIds | 是   | Integer[] | 频道ID列表，每次最多删除100个频道 |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 请求结果 |
+
+### 设置频道单点登陆token
+
+#### 描述
+设置频道单点登陆token;该接口在单点登录后台使用场景中配合使用，点击查看具体[单点登录文档](http://dev.polyv.net/2020/liveproduct/l-api/zhsz/sso/)
+
+#### 调用约束
+无
+
+#### 代码示例
+```java
+@Test
+    public void testCreateChannelToken() throws IOException, NoSuchAlgorithmException {
+        LiveCreateChannelTokenRequest liveCreateChannelTokenRequest = new LiveCreateChannelTokenRequest();
+        liveCreateChannelTokenRequest.setChannelId(1939188).setToken("testToken");
+        String liveCreateChannelTokenResponse = new LiveChannelServiceImpl().createChannelToken(liveCreateChannelTokenRequest);
+        Assert.assertNotNull(liveCreateChannelTokenResponse);
+        if ("success".equals(liveCreateChannelTokenResponse)) {
+            //to do something ......
+            log.debug("设置频道单点登陆token成功" + JSON.toJSONString(liveCreateChannelTokenResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置频道单点登陆token](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否设置频道单点登陆token成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明         |
+| --------- | ---- | ------ | ------------ |
+| channelId | 是   | int    | 频道ID       |
+| token     | 是   | string | 唯一的字符串 |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 请求结果 |
+
+### 查询频道信息
+
+#### 描述
+查询直播频道信息
+
+#### 调用约束
+无
+
+#### 代码示例
+```java
+@Test
+    public void testChannelInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelInfoRequest liveChannelInfoRequest = new LiveChannelInfoRequest();
+        liveChannelInfoRequest.setChannelId(1939188);
+        LiveChannelInfoResponse liveChannelInfoResponse = new LiveChannelServiceImpl().channelInfo(
+                liveChannelInfoRequest);
+        Assert.assertNotNull(liveChannelInfoResponse);
+        if (liveChannelInfoResponse != null) {
+            //to do something ......
+            log.debug("查询频道信息成功" + JSON.toJSONString(liveChannelInfoResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看信息是否一致](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型 | 说明   |
+| --------- | ---- | ---- | ------ |
+| channelId | 是   | int  | 频道ID |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名            | 类型      | 说明                                                  |
+| ----------------- | --------- | ----------------------------------------------------- |
+| channelId         | string    | 直播频道ID                                            |
+| userId            | string    | 直播用户ID                                            |
+| name              | string    | 直播频道名称                                          |
+| description       | string    | 直播频道描述                                          |
+| url               | string    | 直播推流地址                                          |
+| stream            | string    | 直播流名称                                            |
+| logoImage         | string    | 播放器logo                                            |
+| logoOpacity       | int       | Logo不透明度，1表示完全不透明                         |
+| logoPosition      | string    | Logo位置                                              |
+| logoHref          | string    | Logo的跳转链接                                        |
+| coverImage        | string    | 播放前显示的封面图                                    |
+| coverHref         | string    | 封面图的跳转链接                                      |
+| waitImage         | string    | 等待推流时的显示图片                                  |
+| waitHref          | string    | 等待推流时显示图片的跳转链接                          |
+| cutoffImage       | string    | 切断流时的显示图片                                    |
+| cutoffHref        | string    | 切断流时显示图片的跳转链接                            |
+| advertType        | string    | 广告类型                                              |
+| advertDuration    | string    | 广告时长                                              |
+| advertWidth       | string    | 广告区域宽度                                          |
+| advertHeight      | string    | 广告区域高度                                          |
+| advertImage       | string    | 图片广告                                              |
+| advertHref        | string    | 广告的跳转链接                                        |
+| advertFlvVid      | string    | 视频广告ID                                            |
+| advertFlvUrl      | string    | 视频广告链接                                          |
+| playerColor       | string    | 播放器控制栏颜色                                      |
+| autoPlay          | boolean   | 自动播放                                              |
+| warmUpFlv         | string    | 一开始的暖场视频                                      |
+| passwdRestrict    | boolean   | 观看密码限制，需要输入观看密码才能播放流              |
+| passwdEncrypted   | string    | 观看密码加密后的密文                                  |
+| isOnlyAudio       | string    | 仅推音频流                                            |
+| isLowLatency      | string    | 低延迟                                                |
+| m3u8Url           | string    | 直播拉流（播放）m3u8地址                              |
+| m3u8Url1          | string    | 直播拉流（播放）m3u8地址1                             |
+| m3u8Url2          | string    | 直播拉流（播放）m3u8地址2                             |
+| m3u8Url3          | string    | 直播拉流（播放）m3u8地址3                             |
+| currentTimeMillis | timestamp | 服务器返回的时间戳（毫秒）                            |
+| channelLogoImage  | string    | 频道的图标                                            |
+| code              | string    | 异常错误代码                                          |
+| msg               | string    | 异常消息                                              |
+| publisher         | string    | 主持人姓名                                            |
+| scene             | string    | 直播场景：alone 活动直播, topclass 大班课, ppt 三分屏 |
+| categoryId        | string    | 所属分类Id                                            |
+| categoryName      | string    | 所属分类名称                                          |
+| channelPasswd     | string    | 频道密码                                              |
+
+### 查询频道基本信息
+
+#### 描述
+接口用于查询频道基本信息
+
+#### 调用约束
+无
+
+#### 代码示例
+```java
+@Test
+    public void testChannelBasicInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
+        liveChannelBasicInfoRequest.setChannelId(1939188);
+        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = new LiveChannelServiceImpl().channelBasicInfo(
+                liveChannelBasicInfoRequest);
+        Assert.assertNotNull(liveChannelBasicInfoResponse);
+        if (liveChannelBasicInfoResponse != null) {
+            //to do something ......
+            log.debug("查询频道基本信息成功" + JSON.toJSONString(liveChannelBasicInfoResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道基本信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否与查询数据一致](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+| 参数名    | 必选 | 类型   | 说明   |
+| --------- | ---- | ------ | ------ |
+| channelId | 是   | string | 频道ID |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名                | 类型                | 说明                                                         |
+| --------------------- | ------------------- | ------------------------------------------------------------ |
+| channelId             | int                 | 频道号                                                       |
+| name                  | string              | 频道名称                                                     |
+| channelPasswd         | string              | 频道密码                                                     |
+| publisher             | string              | 主持人名称                                                   |
+| startTime             | long                | 直播开始时间，关闭时为0，开启时为13位毫秒级时间戳            |
+| pageView              | int                 | 页面累计观看数                                               |
+| likes                 | int                 | 观看页点赞数                                                 |
+| coverImg              | string              | 频道图标url                                                  |
+| splashImg             | string              | 频道引导图url                                                |
+| splashEnabled         | string（取值为Y/N） | 引导页开关                                                   |
+| desc                  | string              | 直播介绍                                                     |
+| consultingMenuEnabled | string（取值为Y/N） | 咨询提问开关                                                 |
+| maxViewerRestrict     | string（取值为Y/N） | 限制最大在线观看人数开关                                     |
+| maxViewer             | int                 | 最大在线观看人数                                             |
+| watchStatus           | string              | 频道的观看页状态，取值为： 频道状态,取值：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） |
+| watchStatusText       | string              | 观看页状态描述，直播中，回放中，已结束，未开始               |
+| userCategory          | Object              | 频道所属分类的信息，具体字段见UserCategory                   |
+| authSettings          | list                | 直播观看条件列表,具体字段见AuthSetting                       |
+
+UserCategory对象描述
+
+| 参数名       | 类型   | 说明                                                         |
+| ------------ | ------ | ------------------------------------------------------------ |
+| categoryId   | int    | 分类ID                                                       |
+| categoryName | string | 分类名称                                                     |
+| rank         | int    | 分类的排序值                                                 |
+| userId       | string | POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置） |
+
+AuthSetting参数描述
+
+| 参数名               | 类型   | 说明                                                         |
+| -------------------- | ------ | ------------------------------------------------------------ |
+| userId               | string | 用户ID                                                       |
+| rank                 | int    | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） |
+| globalSettingEnabled | string | 是否开启全局设置（Y/N）                                      |
+| enabled              | string | 是否开启观看条件(Y/N)                                        |
+| authType             | string | 观看条件类型(1. 无限制  none  2. 验证码观看 code    3.  付费观看 pay   4. 白名单观看 phone   5. 登记观看 info   6. 分享观看 wxshare   7. 自定义授权观看 custom   8. 外部授权观看  external) |
+| authTips             | string | 白名单观看提示信息                                           |
+| payAuthTips          | string | 付费观看提示信息                                             |
+| authCode             | string | 验证码观看的验证码                                           |
+| qcodeTips            | string | 验证码观看的二维码提示                                       |
+| qcodeImg             | string | 验证码观看的二维码图片                                       |
+| price                | int    | 付费观看的价格                                               |
+| watchEndTime         | string | 付费观看，截止时间，为null表示：一次付费，永久有效           |
+| validTimePeriod      | int    | 付费观看的截止时长 （天）                                    |
+| customKey            | string | 自定义授权观看的key                                          |
+| customUri            | string | 自定义授权观看的接口地址                                     |
+| externalKey          | string | 外部授权观看的key                                            |
+| externalUri          | string | 外部授权观看的接口地址                                       |
+| externalRedirectUri  | string | 外部授权观看，用户直接访问观看页时的跳转地址                 |
+
+### 查询授权和连麦的token
+
+#### 描述
+接口用于获取授权和连麦的token
+
+#### 调用约束
+无
+
+#### 代码示例
+```java
+@Test
+    public void testChannelAuthToken() throws IOException, NoSuchAlgorithmException {
+        LiveChannelAuthTokenRequest liveChannelAuthTokenRequest = new LiveChannelAuthTokenRequest();
+        liveChannelAuthTokenRequest.setChannelId(1939188).setRole(LiveConstant.Role.ADMIN.getDesc()).setOrigin(null);
+        LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = new LiveChannelServiceImpl().channelAuthToken(
+                liveChannelAuthTokenRequest);
+        Assert.assertNotNull(liveChannelAuthTokenResponse);
+        if (liveChannelAuthTokenResponse != null) {
+            //to do something ......
+            log.debug("查询授权和连麦的token成功" + JSON.toJSONString(liveChannelAuthTokenResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询授权和连麦的token](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否与系统展示相符](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                               |
+| --------- | ---- | ------ | -------------------------------------------------- |
+| channelId | 是   | int    | 频道Id                                             |
+| role      | 是   | String | 角色，值有：teacher admin guest assistant viewer等 |
+| origin    | 否   | String | 观看来源,可以有web,client,app等                    |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名          | 类型   | 说明                  |
+| --------------- | ------ | --------------------- |
+| token           | string | 链接接口需要的token值 |
+| mediaChannelKey | string | 连麦需要的key         |
+
+
+
+### 创建子频道
+
+#### 描述
+创建子频道
+#### 调用约束
+无
+#### 代码示例
+```java
+@Test
+    public void testCreateSonChannel() throws IOException, NoSuchAlgorithmException {
+        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
+        liveCreateSonChannelRequest.setChannelId(1939188)
+                .setRole("Guest")
+                .setNickname("sadboy")
+                .setActor("教授")
+                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
+        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelServiceImpl().createSonChannel(
+                liveCreateSonChannelRequest);
+        Assert.assertNotNull(liveCreateSonChannelResponse);
+        if (liveCreateSonChannelResponse != null) {
+            //to do something ......
+            log.debug("创建子频道成功" + JSON.toJSONString(liveCreateSonChannelResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-创建子频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否创建子频道成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                                    |
+| --------- | ---- | ------ | ------------------------------------------------------- |
+| channelId | 是   | int    | 频道id                                                  |
+| role      | 否   | string | 默认不传为助教，传Guest为嘉宾（只支持三分屏场景的频道） |
+| nickname  | 否   | string | 创建的助教或嘉宾昵称                                    |
+| actor     | 否   | string | 创建的助教或嘉宾头衔                                    |
+| avatar    | 否   | string | 创建的助教或嘉宾头像                                    |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名          | 说明                           |
+| --------------- | ------------------------------ |
+| account         | 助教ID                         |
+| userId          | 用户ID                         |
+| channelId       | 频道ID                         |
+| passwd          | 助教密码                       |
+| nickname        | 助教名称                       |
+| stream          | 助教流名（单独使用无效）       |
+| status          | 助教状态                       |
+| createdTime     | 创建助教时间，13位时间戳       |
+| lastModified    | 助教最后修改时间，13位时间戳   |
+| sort            | 频道中所有助教序号             |
+| avatar          | 助教头像                       |
+| pageTurnEnabled | 助教翻页权限（只能一个助教有） |
+| notifyEnabled   | 发布公告权限                   |
+| checkinEnabled  | 开启签到权限                   |
+| voteEnabled     | 发起投票                       |
+| role            | 子频道角色                     |

@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.entity.channel.LiveChannelAuthTokenRequest;
+import net.polyv.live.entity.channel.LiveChannelAuthTokenResponse;
+import net.polyv.live.entity.channel.LiveChannelBasicInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelDetailRequest;
 
 import org.junit.Assert;
@@ -15,18 +19,27 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
+import net.polyv.live.entity.channel.LiveChannelInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
-import net.polyv.live.entity.channel.LiveChannelInitRequest.AuthSettings;
+import net.polyv.live.entity.channel.LiveChannelInitRequest.AuthSetting;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
+import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
+import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
+import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
+import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
+import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.dto.LiveChannelBasicDTO;
 import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
+import net.polyv.live.util.JsonUtil;
 
 /**
  * @author: thomas
@@ -87,13 +100,13 @@ public class ChannelTest {
                 .setReceiveChannelIds("213");
         liveChannelInitRequest.setBasicSetting(basicSetting);
         //验证码观看
-        LiveChannelInitRequest.AuthSettings codeAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+        LiveChannelInitRequest.AuthSetting codeAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
                 .setAuthType(LiveConstant.AuthType.CODE.getDesc())
                 .setEnabled("Y")
                 .setAuthCode("123456")
                 .setQcodeTips("提示文案")
                 .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(codeAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -128,14 +141,14 @@ public class ChannelTest {
                 .setReceiveChannelIds("213");
         liveChannelInitRequest.setBasicSetting(basicSetting);
         //付费观看
-        LiveChannelInitRequest.AuthSettings payAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+        LiveChannelInitRequest.AuthSetting payAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
                 .setAuthType(LiveConstant.AuthType.PAY.getDesc())
                 .setPayAuthTips("欢迎使用POLYV直播平台")
                 .setPrice(0.01f)
                 .setWatchEndTime("2022-01-01 00:00:00")
                 .setValidTimePeriod(720)
                 .setEnabled("Y");
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(payAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -170,11 +183,11 @@ public class ChannelTest {
                 .setReceiveChannelIds("213");
         liveChannelInitRequest.setBasicSetting(basicSetting);
         //白名单观看,设置观看条件为白名单观看时，必须已经存在白名单数据
-        LiveChannelInitRequest.AuthSettings phoneAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(2)
+        LiveChannelInitRequest.AuthSetting phoneAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(2)
                 .setAuthType(LiveConstant.AuthType.PHONE.getDesc())
                 .setEnabled("Y")
                 .setAuthTips("这是提示文案");
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(phoneAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -221,11 +234,11 @@ public class ChannelTest {
         List<LiveChannelInitRequest.InfoField> infoFields = new ArrayList<>();
         infoFields.add(nameInfo);
         infoFields.add(sexInfo);
-        LiveChannelInitRequest.AuthSettings infoAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+        LiveChannelInitRequest.AuthSetting infoAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
                 .setAuthType(LiveConstant.AuthType.INFO.getDesc())
                 .setEnabled("Y")
                 .setInfoFields(infoFields);
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(infoAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -260,12 +273,12 @@ public class ChannelTest {
                 .setReceiveChannelIds("213");
         liveChannelInitRequest.setBasicSetting(basicSetting);
         //自定义授权观看
-        LiveChannelInitRequest.AuthSettings infoAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+        LiveChannelInitRequest.AuthSetting infoAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
                 .setAuthType(LiveConstant.AuthType.CUSTOM.getDesc())
                 .setEnabled("Y")
                 .setCustomKey("ttttt")
                 .setCustomUri("http://www.polyv.net");
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(infoAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -300,13 +313,13 @@ public class ChannelTest {
                 .setReceiveChannelIds("213");
         liveChannelInitRequest.setBasicSetting(basicSetting);
         //自定义授权观看
-        LiveChannelInitRequest.AuthSettings infoAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+        LiveChannelInitRequest.AuthSetting infoAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
                 .setAuthType(LiveConstant.AuthType.EXTERNAL.getDesc())
                 .setEnabled("Y")
                 .setExternalKey("externalKey")
                 .setExternalUri("http://www.baidu.com")
                 .setExternalRedirectUri("http://www.polyv.net");
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(infoAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -341,11 +354,11 @@ public class ChannelTest {
                 .setReceiveChannelIds("213");
         liveChannelInitRequest.setBasicSetting(basicSetting);
         //自定义授权观看
-        LiveChannelInitRequest.AuthSettings infoAuthSettings = liveChannelInitRequest.new AuthSettings().setRank(1)
+        LiveChannelInitRequest.AuthSetting infoAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
                 .setAuthType(LiveConstant.AuthType.DIRECT.getDesc())
                 .setEnabled("Y")
                 .setDirectKey("directKey");
-        List<LiveChannelInitRequest.AuthSettings> authSettings = new ArrayList<>();
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(infoAuthSettings);
         liveChannelInitRequest.setAuthSettings(authSettings);
         LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
@@ -358,13 +371,14 @@ public class ChannelTest {
     }
     
     /**
-     * 测试修改频道的相关设置 TODO 完善junit字段
+     * 测试修改频道的相关设置
      */
     @Test
     public void testUpdateChannelSetting() throws IOException {
         LiveChannelSettingRequest liveChannelSettingRequest = new LiveChannelSettingRequest();
         LiveChannelSettingRequest.BasicSetting basicSetting = liveChannelSettingRequest.new BasicSetting().setName(
-                "9999999999").setChannelPasswd("123321")
+                "9999999999")
+                .setChannelPasswd("123321")
                 .setCategoryId(340019)
                 .setMaxViewer(0)
                 .setPageView(1000)
@@ -375,8 +389,18 @@ public class ChannelTest {
                 .setPublisher("sadboy主讲")
                 .setLinkMicLimit(-1)
                 .setReceiveChannelIds("213");
-        liveChannelSettingRequest.setChannelId(1940343).setBasicSetting(basicSetting);
-        String liveChannelSettingResponse = new LiveChannelServiceImpl().updateChannelSetting(liveChannelSettingRequest);
+        LiveChannelSettingRequest.AuthSetting authSetting = liveChannelSettingRequest.new AuthSetting().setAuthType(
+                LiveConstant.AuthType.CODE.getDesc())
+                .setRank(1)
+                .setEnabled("Y")
+                .setAuthCode("123456")
+                .setQcodeTips("提示文案")
+                .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
+        List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
+        authSettings.add(authSetting);
+        liveChannelSettingRequest.setChannelId(1940343).setBasicSetting(basicSetting).setAuthSettings(authSettings);
+        String liveChannelSettingResponse = new LiveChannelServiceImpl().updateChannelSetting(
+                liveChannelSettingRequest);
         Assert.assertNull(liveChannelSettingResponse);
         if (liveChannelSettingResponse == null) {
             //to do something ......
@@ -418,7 +442,7 @@ public class ChannelTest {
      * @throws IOException
      */
     @Test
-    public void testUpdateChannelPassword() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelDetailPassword() throws IOException, NoSuchAlgorithmException {
         Integer channelId = 1938888;
         String newPassword = "1234567";
         LiveChannelDetailRequest liveChannelDetailRequest = new LiveChannelDetailRequest();
@@ -494,4 +518,148 @@ public class ChannelTest {
             log.debug("查询课件重制任务列表信息成功" + JSON.toJSONString(liveListChannelPPTRecordResponse));
         }
     }
+    
+    /**
+     * 设置频道密码
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelPassword() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest = new LiveChannelPasswordSettingRequest();
+        liveChannelPasswordSettingRequest.setChannelId(1940343).setPasswd("987654");
+        String updateChannelPasswordResponse = new LiveChannelServiceImpl().updateChannelPassword(
+                liveChannelPasswordSettingRequest);
+        Assert.assertNotNull(updateChannelPasswordResponse);
+        if ("true".equals(updateChannelPasswordResponse)) {
+            //to do something ......
+            log.debug("设置频道密码成功" + JSON.toJSONString(updateChannelPasswordResponse));
+        }
+    }
+    
+    /**
+     * 删除直播频道
+     */
+    @Test
+    public void testDeleteChannel() throws IOException, NoSuchAlgorithmException {
+        LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest();
+        liveDeleteChannelRequest.setChannelId(1938236);
+        String liveDeleteChannelResponse = new LiveChannelServiceImpl().deleteChannel(liveDeleteChannelRequest);
+        Assert.assertNotNull(liveDeleteChannelResponse);
+        if ("true".equals(liveDeleteChannelResponse)) {
+            //to do something ......
+            log.debug("删除直播频道成功" + JSON.toJSONString(liveDeleteChannelResponse));
+        }
+    }
+    
+    /**
+     * 批量删除频道
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testDeleteChannelList() throws IOException, NoSuchAlgorithmException {
+        LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChannelListRequest();
+        liveDeleteChannelListRequest.setChannelIds(new Integer[]{1938719, 1938888});
+        String liveDeleteChannelListResponse = new LiveChannelServiceImpl().deleteChannelList(
+                liveDeleteChannelListRequest);
+        Assert.assertNotNull(liveDeleteChannelListResponse);
+        if ("true".equals(liveDeleteChannelListResponse)) {
+            //to do something ......
+            log.debug("批量删除频道成功" + JSON.toJSONString(liveDeleteChannelListResponse));
+        }
+    }
+    
+    /**
+     * 测试设置频道单点登陆token
+     */
+    @Test
+    public void testCreateChannelToken() throws IOException, NoSuchAlgorithmException {
+        LiveCreateChannelTokenRequest liveCreateChannelTokenRequest = new LiveCreateChannelTokenRequest();
+        liveCreateChannelTokenRequest.setChannelId(1939188).setToken("testToken");
+        String liveCreateChannelTokenResponse = new LiveChannelServiceImpl().createChannelToken(
+                liveCreateChannelTokenRequest);
+        Assert.assertNotNull(liveCreateChannelTokenResponse);
+        if ("success".equals(liveCreateChannelTokenResponse)) {
+            //to do something ......
+            log.debug("设置频道单点登陆token成功" + JSON.toJSONString(liveCreateChannelTokenResponse));
+        }
+    }
+    
+    /**
+     * 测试查询频道信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelInfoRequest liveChannelInfoRequest = new LiveChannelInfoRequest();
+        liveChannelInfoRequest.setChannelId(1939188);
+        LiveChannelInfoResponse liveChannelInfoResponse = new LiveChannelServiceImpl().channelInfo(
+                liveChannelInfoRequest);
+        Assert.assertNotNull(liveChannelInfoResponse);
+        if (liveChannelInfoResponse != null) {
+            //to do something ......
+            log.debug("查询频道信息成功" + JSON.toJSONString(liveChannelInfoResponse));
+        }
+    }
+    
+    /**
+     * 测试查询频道基本信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelBasicInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
+        liveChannelBasicInfoRequest.setChannelId(1939188);
+        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = new LiveChannelServiceImpl().channelBasicInfo(
+                liveChannelBasicInfoRequest);
+        Assert.assertNotNull(liveChannelBasicInfoResponse);
+        if (liveChannelBasicInfoResponse != null) {
+            //to do something ......
+            log.debug("查询频道基本信息成功" + JSON.toJSONString(liveChannelBasicInfoResponse));
+        }
+    }
+    
+    /**
+     * 测试查询授权和连麦的token
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelAuthToken() throws IOException, NoSuchAlgorithmException {
+        LiveChannelAuthTokenRequest liveChannelAuthTokenRequest = new LiveChannelAuthTokenRequest();
+        liveChannelAuthTokenRequest.setChannelId(1939188).setRole(LiveConstant.Role.ADMIN.getDesc()).setOrigin(null);
+        LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = new LiveChannelServiceImpl().channelAuthToken(
+                liveChannelAuthTokenRequest);
+        Assert.assertNotNull(liveChannelAuthTokenResponse);
+        if (liveChannelAuthTokenResponse != null) {
+            //to do something ......
+            log.debug("查询授权和连麦的token成功" + JSON.toJSONString(liveChannelAuthTokenResponse));
+        }
+    }
+    
+    /**
+     * 测试创建子频道 TODO 测试未通过
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testCreateSonChannel() throws IOException, NoSuchAlgorithmException {
+        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
+        liveCreateSonChannelRequest.setChannelId(1939188)
+                .setRole("Guest")
+                .setNickname("sadboy")
+                .setActor("教授")
+                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
+        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelServiceImpl().createSonChannel(
+                liveCreateSonChannelRequest);
+        Assert.assertNotNull(liveCreateSonChannelResponse);
+        if (liveCreateSonChannelResponse != null) {
+            //to do something ......
+            log.debug("创建子频道成功" + JSON.toJSONString(liveCreateSonChannelResponse));
+        }
+    }
+    
 }

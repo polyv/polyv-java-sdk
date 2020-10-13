@@ -29,7 +29,7 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
     private BasicSetting basicSetting;
     
     @ApiModelProperty(name = "authSettings", value = "观看条件设置", required = false)
-    private List<AuthSettings> authSettings;
+    private List<AuthSetting> authSettings;
     
     @Data
     @Accessors(chain = true)
@@ -135,7 +135,7 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
     @NoArgsConstructor
     //@Builder
     @ApiModel("观看条件设置")
-    public class AuthSettings {
+    public class AuthSetting {
         /**
          * 通用参数：主要观看条件为1，次要观看条件为2
          */

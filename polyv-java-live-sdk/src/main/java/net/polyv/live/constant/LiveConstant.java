@@ -3,31 +3,30 @@ package net.polyv.live.constant;
 /**
  * 直播常量类
  * @author: thomas
- 
  **/
 public class LiveConstant {
-
+    
     public static Integer ERROR_CODE = 400;
     
     
-    public enum SceneType{
+    public enum SceneType {
         /**
          * 频道场景：三分屏
          */
-        PPT("ppt") ,
+        PPT("ppt"),
         /**
          * 频道场景：普通直播
          */
-        ALONE("alone") ,
+        ALONE("alone"),
         /**
          * 频道场景：大班课
          */
         TOPCLASS("topclass");
         
         private String desc;
-    
-        private SceneType(String desc){
-            this.desc=desc;
+        
+        private SceneType(String desc) {
+            this.desc = desc;
         }
         
         public String getDesc() {
@@ -35,7 +34,7 @@ public class LiveConstant {
         }
     }
     
-    public enum PPTStatus{
+    public enum PPTStatus {
         /**
          * 课件重置状态值：等待处理
          */
@@ -63,14 +62,16 @@ public class LiveConstant {
         
         private String desc;
         
-        private PPTStatus(String desc){this.desc = desc;}
-    
+        private PPTStatus(String desc) {
+            this.desc = desc;
+        }
+        
         public String getDesc() {
             return desc;
         }
     }
     
-    public enum AuthType{
+    public enum AuthType {
         /**
          * 观看条件：付费观看
          */
@@ -101,12 +102,47 @@ public class LiveConstant {
         DIRECT("direct");
         
         private String desc;
-    
-        private AuthType(String desc){this.desc = desc;}
-    
+        
+        private AuthType(String desc) {
+            this.desc = desc;
+        }
+        
         public String getDesc() {
             return desc;
         }
     }
-
+    
+    public enum Role {
+        /**
+         * 角色：teacher
+         */
+        TEACHER("teacher"),
+        /**
+         * 角色：admin
+         */
+        ADMIN("admin"),
+        /**
+         * 角色：guest
+         */
+        GUEST("guest"),
+        /**
+         * 角色：assistant
+         */
+        ASSISTANT("assistant"),
+        /**
+         * 角色：viewer
+         */
+        VIEWER("viewer");
+        
+        private String desc;
+        
+        private Role(String desc) {
+            this.desc = desc;
+        }
+        
+        public String getDesc() {
+            return desc;
+        }
+    }
+    
 }

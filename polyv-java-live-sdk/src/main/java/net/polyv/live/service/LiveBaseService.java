@@ -144,7 +144,7 @@ public class LiveBaseService {
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> signMap = MapUtil.getSignMap(MapUtil.objectToMap(e));
+        Map<String, String> signMap = MapUtil.getSignMap(e);
         return basePostJson(url,signMap,e,tClass);
     }
     

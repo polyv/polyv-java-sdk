@@ -625,7 +625,7 @@ AuthSetting参数描述
 #### 描述
 创建子频道
 #### 调用约束
-无
+注意：role参数为Guest只支持三分屏场景的频道
 #### 代码示例
 ```java
 @Test
@@ -680,3 +680,57 @@ AuthSetting参数描述
 | checkinEnabled  | 开启签到权限                   |
 | voteEnabled     | 发起投票                       |
 | role            | 子频道角色                     |
+
+### 设置子频道信息
+
+#### 描述
+通过接口可以设置子频道的昵称、密码、角色、头像、翻页权限、公告权限等
+
+#### 调用约束
+(接口调用有频率限制，详细请查看)
+
+#### 代码示例
+```java
+@Test
+    public void testUpdateSonChannelInfo() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest = new LiveUpdateSonChannelInfoRequest();
+        liveUpdateSonChannelInfoRequest.setChannelId(channelId)
+                .setAccount(sonChannelId)
+                .setNickname("sadboy")
+                .setPassword("137890")
+                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0")
+                .setActor("教授")
+                .setPageTurnEnabled("Y")
+                .setNotifyEnabled("Y");
+        String updateSonChannelInfoResponse = new LiveChannelServiceImpl().updateSonChannelInfo(liveUpdateSonChannelInfoRequest);
+        Assert.assertNotNull(updateSonChannelInfoResponse);
+        if ("success".equals(updateSonChannelInfoResponse)) {
+            //to do something ......
+            log.debug("设置子频道信息成功" + updateSonChannelInfoResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置子频道信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看设置子频道信息是否成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名          | 必选 | 类型   | 说明                                               |
+| --------------- | ---- | ------ | -------------------------------------------------- |
+| channelId       | 是   | int    | 频道id                                             |
+| account         | 是   | string | 子频道ID(不能以数字类型提交，否则可能去掉ID前的00) |
+| nickname        | 否   | string | 昵称                                               |
+| password        | 否   | string | 子频道密码                                         |
+| avatar          | 否   | string | 头像                                               |
+| actor           | 否   | string | 子频道头衔                                         |
+| pageTurnEnabled | 否   | string | 子频道翻页权限,值为Y或N，Y为开启，N为关闭          |
+| notifyEnabled   | 否   | string | 子频道公告权限,值为Y或N，Y为开启，N为关闭          |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 请求结果 |

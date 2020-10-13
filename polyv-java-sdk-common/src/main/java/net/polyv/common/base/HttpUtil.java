@@ -62,7 +62,7 @@ public class HttpUtil {
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendPostDataByMap(String url, Map<String, String> params, String encoding) throws IOException {
-        log.debug("http 请求 url: " + url + " , 请求参数: " + JSON.toJSONString(params));
+        log.debug("http 请求 url: " + url + " , 请求参数: " + JSON.toJSON(params));
         if(StringUtils.isBlank(encoding)){
             encoding = "UTF-8";
         }
@@ -76,7 +76,11 @@ public class HttpUtil {
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         if (params != null) {
             for (Map.Entry<String, String> entry : params.entrySet()) {
-                nameValuePairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
+                String value = entry.getValue();
+                //去掉如下判断会造成String类型的value为null时
+                if(value != null){
+                    nameValuePairs.add(new BasicNameValuePair(entry.getKey(), value));
+                }
             }
         }
         // 设置参数到请求对象中

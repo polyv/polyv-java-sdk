@@ -48,7 +48,7 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
         /**
          * 频道密码,长度不能超过16位
          */
-        @ApiModelProperty(name = "channelPasswd", value = "频道密码,长度不能超过16位", required = true,example = "123321")
+        @ApiModelProperty(name = "channelPasswd", value = "频道密码,长度不能超过16位", required = true, example = "123321")
         @NotNull(message = "channelPasswd不能为空")
         private String channelPasswd;
         
@@ -169,10 +169,10 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
         private Float price;
         
         /**
-         * 付费观看参数：付费有效截止日期，格式为yyyy-MM-dd HH:mm。当watchEndTime和validTimePeriod都为空时，表示付费永久有效
+         * 付费观看参数：付费有效截止日期，格式为13位时间戳。watchEndTime和validTimePeriod只能设置一个，当watchEndTime和validTimePeriod都为空时，表示付费永久有效
          */
-        @ApiModelProperty(name = "watchEndTime", value = "付费观看参数：付费有效截止日期，格式为yyyy-MM-dd " +
-                "HH:mm。当watchEndTime和validTimePeriod都为空时，表示付费永久有效", required = false)
+        @ApiModelProperty(name = "watchEndTime", value = "付费观看参数：付费有效截止日期，格式为13位时间戳。watchEndTime和validTimePeriod" +
+                "只能设置一个，当watchEndTime和validTimePeriod都为空时，表示付费永久有效", required = false)
         private String watchEndTime;
         
         /**

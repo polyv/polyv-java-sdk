@@ -45,7 +45,7 @@ public class LiveBaseService {
             e.setRequestId(LiveSignUtil.generateUUID());
         }
         e.setAppId(LiveGlobalConfig.APP_ID);
-        if (StringUtils.isNotBlank(e.getTimestamp())) {
+        if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
         Map<String, String> paramMap = MapUtil.objectToMap(e);

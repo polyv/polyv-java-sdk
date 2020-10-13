@@ -850,12 +850,12 @@ AuthSetting参数描述
     public void testSonChannelInfoList() throws IOException, NoSuchAlgorithmException {
         LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
         liveSonChannelInfoListRequest.setChannelId(channelId);
-        LiveSonChannelInfoResponse[] liveSonChannelInfoResponses = new LiveChannelServiceImpl().sonChannelInfoList(
+        LiveSonChannelInfoListResponse liveSonChannelInfoResponse = new LiveChannelServiceImpl().sonChannelInfoList(
                 liveSonChannelInfoListRequest);
-        Assert.assertNotNull(liveSonChannelInfoResponses);
-        if (liveSonChannelInfoResponses != null) {
+        Assert.assertNotNull(liveSonChannelInfoResponse);
+        if (liveSonChannelInfoResponse != null) {
             //to do something ......
-            log.debug("测试查询子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponses));
+            log.debug("测试查询子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponse));
         }
     }
 ```
@@ -891,3 +891,78 @@ AuthSetting参数描述
 | voteEnabled     | 发起投票                                         |
 | role            | 子频道角色                                       |
 | pushUrl         | 子频道推流地址（子频道推流请参考后台导播台使用） |
+
+### 删除子频道
+
+#### 描述
+删除某个子频道
+
+#### 调用约束
+(接口调用有频率限制，详细请查看)
+
+#### 代码示例
+```java
+    @Test
+    public void testDeleteSonChannel() throws IOException, NoSuchAlgorithmException {
+        LiveDeleteSonChannelRequest liveDeleteSonChannelRequest = new LiveDeleteSonChannelRequest(); liveDeleteSonChannelRequest.setChannelId(channelId).setAccount(sonChannelId);
+        String liveDeleteSonChannelRespose = new LiveChannelServiceImpl().deleteSonChannel(liveDeleteSonChannelRequest);
+        if ("true".equals(liveDeleteSonChannelRespose)) {
+            //to do something ......
+            log.debug("测试删除子频道成功" + liveDeleteSonChannelRespose);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-删除子频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否删除子频道成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                               |
+| --------- | ---- | ------ | -------------------------------------------------- |
+| channelId | 是   | int    | 频道ID                                             |
+| account   | 是   | string | 子频道ID(不能以数字类型提交，否则可能去掉ID前的00) |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明              |
+| ------ | ----------------- |
+| data   | 请求结果,true成功 |
+
+### 恢复直播频道推流
+
+#### 描述
+恢复频道号推流
+
+#### 调用约束
+(接口调用有频率限制，详细请查看)
+
+#### 代码示例
+```java
+    @Test
+    public void testResumeChannelStream() throws IOException, NoSuchAlgorithmException {
+        LiveResumeChannelStreamRequest liveResumeChannelStreamRequest = new LiveResumeChannelStreamRequest();
+        liveResumeChannelStreamRequest.setChannelId(channelId);
+        String liveResumeChannelStreamResponse = new LiveChannelServiceImpl().resumeChannelStream(liveResumeChannelStreamRequest);
+        Assert.assertNotNull(liveResumeChannelStreamResponse);
+        if ("success".equals(liveResumeChannelStreamResponse)) {
+            //to do something ......
+            log.debug("恢复直播频道推流成功" + liveResumeChannelStreamResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-恢复直播频道推流](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否恢复直播频道推流成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+| 参数名    | 必选 | 类型   | 说明                                               |
+| --------- | ---- | ------ | -------------------------------------------------- |
+| channelId | 是   | int    | 频道ID                                             |
+
+#### 返回对象描述[LiveChannelResponse]
+| 参数名 | 说明              |
+| ------ | ----------------- |
+| data   | 请求结果,success成功 |

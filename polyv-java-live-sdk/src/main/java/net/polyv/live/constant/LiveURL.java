@@ -108,7 +108,6 @@ public class LiveURL {
             BASE_URI + "v2/channelAccount/" + PARAM_REPLACE_CHAR + "/update";
     
     /**
-     *
      * 设置子频道单点登陆token
      */
     public static final String SON_CHANNEL_TOKEN_CREATE_URL =
@@ -277,6 +276,12 @@ public class LiveURL {
             BASE_URI + "v2/channelAccount/" + PARAM_REPLACE_CHAR + "/account";
     
     /**
+     * 删除子频道
+     */
+    public static final String SON_CHANNEL_DELETE_URL =
+            BASE_URI + "v2/channelAccount/" + PARAM_REPLACE_CHAR + "/delete";
+    
+    /**
      * 查询账号下所有频道详细信息
      */
     public static final String ACCOUNT_LIST_CHANNEL_DETAIL_URL = BASE_URI + "v3/channel/management/list-detail";
@@ -300,6 +305,11 @@ public class LiveURL {
      * 异步转存接口
      */
     public static final String CHANNEL_RECORD_CONVERT_URL = BASE_URI + "v3/channel/record/convert";
+    
+    /**
+     * 添加单个白名单
+     */
+    public static final String CHANNEL_WRITE_LIST_ADD_URL = BASE_URI + "v3/channel/auth/add-white-list";
     
     /**
      * 400错误码

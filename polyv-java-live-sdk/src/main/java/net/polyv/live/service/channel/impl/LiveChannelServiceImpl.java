@@ -31,8 +31,10 @@ import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
+import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.LiveSonChannelInfoRequest;
@@ -330,6 +332,37 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         LiveSonChannelInfoListResponse liveSonChannelInfoListResponse = new LiveSonChannelInfoListResponse();
         liveSonChannelInfoListResponse.setSonChannelInfos(Arrays.asList(liveSonChannelInfoResponses));
         return liveSonChannelInfoListResponse;
+    }
+    
+    /**
+     * 删除子频道
+     * @param liveDeleteSonChannelRequest 删除子频道请求体
+     * @return 删除子频道返回体 true为删除成功，空字符串为删除失败
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String deleteSonChannel(LiveDeleteSonChannelRequest liveDeleteSonChannelRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_DELETE_URL,liveDeleteSonChannelRequest.getChannelId());
+        String liveDeleteSonChannelResponse = this.basePost(url, liveDeleteSonChannelRequest, String.class);
+        return liveDeleteSonChannelResponse;
+    }
+    
+    /**
+     * 恢复直播频道推流
+     * @param liveResumeChannelStreamRequest 恢复直播频道推流请求体
+     * @return 恢复直播频道推流返回体，success为成功
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String resumeChannelStream(LiveResumeChannelStreamRequest liveResumeChannelStreamRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveResumeChannelStreamRequest.setUserId(LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_RESUME_URL,liveResumeChannelStreamRequest.getChannelId());
+        String liveResumeChannelStreamResponse = this.basePost(url, liveResumeChannelStreamRequest, String.class);
+        return liveResumeChannelStreamResponse;
     }
     
 }

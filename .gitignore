@@ -43,3 +43,4 @@ images/
 **/.springBeans
 **/log
 *.log
+/polyv-java-sdk-common/allure-results/

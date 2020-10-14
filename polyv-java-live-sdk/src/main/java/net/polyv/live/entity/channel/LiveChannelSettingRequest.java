@@ -48,7 +48,6 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
-    //@Builder
     @ApiModel("基础设置")
     public class BasicSetting {
         /**
@@ -160,7 +159,6 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
-    //@Builder
     @ApiModel("观看条件设置")
     public class AuthSetting {
         /**

@@ -2,6 +2,10 @@ package net.polyv.live.util;
 
 import com.alibaba.fastjson.JSON;
 
+/**
+ * JSON 工具类
+ * @author thomas
+ */
 public class JsonUtil {
 
 	private JsonUtil(){}

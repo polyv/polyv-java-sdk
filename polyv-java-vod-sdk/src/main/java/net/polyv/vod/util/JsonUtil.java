@@ -1,7 +1,10 @@
 package net.polyv.vod.util;
 
 import com.alibaba.fastjson.JSON;
-
+/**
+ * JSON 工具类
+ * @author thomas
+ */
 public class JsonUtil {
 
 	private JsonUtil(){}

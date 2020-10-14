@@ -6,12 +6,10 @@ import java.security.NoSuchAlgorithmException;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.alibaba.fastjson.JSON;
-
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.entity.webView.LiveCreateChannelWriteListRequest;
-import net.polyv.live.service.webView.impl.LiveWebViewServiceImpl;
+import net.polyv.live.service.webview.impl.LiveWebViewServiceImpl;
 
 /**
  * Web观看页测试用例

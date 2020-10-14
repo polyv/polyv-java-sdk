@@ -26,6 +26,8 @@ import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelStreamInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -995,5 +997,24 @@ public class ChannelTest extends BaseTest {
         deleteChannel(channelId0);
         deleteChannel(channelId1);
     }
+    
+    /**
+     * 测试查询频道实时推流信息（讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常）
+     * 该测试类必须在开启直播中才能测试，先注释掉
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+//    public void testchannelStreamInfo() throws IOException, NoSuchAlgorithmException {
+//        LiveChannelStreamInfoRequest liveChannelStreamInfoRequest = new LiveChannelStreamInfoRequest();
+//        liveChannelStreamInfoRequest.setChannelId(1951952);
+//        LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = new LiveChannelServiceImpl().channelStreamInfo(
+//                liveChannelStreamInfoRequest);
+//        Assert.assertNotNull(liveChannelStreamInfoResponse);
+//        if (liveChannelStreamInfoResponse != null) {
+//            //to do something ......
+//            log.debug(String.format("批量查询频道直播流状态成功%s",JSON.toJSONString(liveChannelStreamInfoResponse)));
+//        }
+//    }
     
 }

@@ -302,6 +302,11 @@ public class LiveURL {
     public static final String CHANNEL_LIVE_STREAM_STATUS_LIST_URL = BASE_URI + "v2/channels/live-status";
     
     /**
+     * 查询频道实时推流信息
+     */
+    public static final String CHANNEL_LIVE_STREAM_INFO_URL = BASE_URI + "v3/channel/monitor/get-stream-info";
+    
+    /**
      * 异步合并接口
      */
     public static final String CHANNEL_RECORD_MERGE_URL = BASE_URI + "v3/channel/record/merge";

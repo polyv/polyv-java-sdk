@@ -22,6 +22,8 @@ import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelStreamInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
@@ -406,6 +408,22 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         LiveListChannelStreamStatusResponse liveListChannelStreamStatusResponse = new LiveListChannelStreamStatusResponse();
         liveListChannelStreamStatusResponse.setChannelInfo(Arrays.asList(liveChannelStreamStatusResponses));
         return liveListChannelStreamStatusResponse;
+    }
+    
+    /**
+     * 查询频道实时推流信息(讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常)，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/hqzbxx/get-stream-info/
+     * @param liveChannelStreamInfoRequest 查询频道实时推流信息请求实体
+     * @return 查询频道实时推流信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelStreamInfoResponse channelStreamInfo(LiveChannelStreamInfoRequest liveChannelStreamInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_LIVE_STREAM_INFO_URL;
+        LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = this.baseGet(url, liveChannelStreamInfoRequest,
+                LiveChannelStreamInfoResponse.class);
+        return liveChannelStreamInfoResponse;
     }
     
 }

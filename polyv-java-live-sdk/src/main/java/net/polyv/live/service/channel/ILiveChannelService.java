@@ -16,6 +16,8 @@ import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelStreamInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -262,6 +264,16 @@ public interface ILiveChannelService {
      */
     LiveListChannelStreamStatusResponse listChannelLiveStream(
             LiveListChannelStreamStatusRequest liveListChannelStreamStatusRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道实时推流信息，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/hqzbxx/get-stream-info/
+     * @param liveChannelStreamInfoRequest 查询频道实时推流信息请求实体
+     * @return 查询频道实时推流信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelStreamInfoResponse channelStreamInfo(LiveChannelStreamInfoRequest liveChannelStreamInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

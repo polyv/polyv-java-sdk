@@ -32,10 +32,10 @@ public class SwaggeConfiguration {
         Docket docket=new Docket(DocumentationType.SWAGGER_12)
                 .apiInfo(apiInfo())
                 //分组名称
-                .groupName("直播SDK")
+                .groupName("点播SDK")
                 .select()
                 //这里指定Controller扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("net.polyv.live"))
+                .apis(RequestHandlerSelectors.basePackage("net.polyv.vod"))
                 .paths(PathSelectors.any())
                 .build();
         return docket;
@@ -45,7 +45,7 @@ public class SwaggeConfiguration {
  
     public ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("保利威直播SDK快速接入测试DEMO")
+                .title("保利威点播SDK快速接入测试DEMO")
                 .description("SDK功能测试，对接DEMO")
                 .termsOfServiceUrl("")
                 .contact(new Contact("wujie","https://www.polyv.net/","wujie@polyv.net"))

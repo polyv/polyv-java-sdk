@@ -21,6 +21,8 @@ import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackRequest;
+import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
@@ -273,6 +275,17 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveChannelStreamInfoResponse channelStreamInfo(LiveChannelStreamInfoRequest liveChannelStreamInfoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 将点播中的视频添加到视频库
+     * @param liveCreateChannelVideoPlaybackRequest 将点播中的视频添加到视频库请求实体
+     * @return 将点播中的视频添加到视频库返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveCreateChannelVideoPlaybackResponse addChannelVideoPlayback(
+            LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -28,6 +28,8 @@ import net.polyv.live.entity.channel.LiveChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackRequest;
+import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
@@ -48,6 +50,7 @@ import net.polyv.live.entity.channel.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelService;
 import net.polyv.live.util.MapUtil;
+
 /**
  * 直播频道管理
  * @author: thomas
@@ -397,20 +400,20 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
             LiveListChannelStreamStatusRequest liveListChannelStreamStatusRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIVE_STREAM_STATUS_LIST_URL;
-        LiveChannelStreamStatusResponse[] liveChannelStreamStatusResponses =
-                this.basePost(
-                url, liveListChannelStreamStatusRequest,
-                        LiveChannelStreamStatusResponse[].class);
-        if(liveChannelStreamStatusResponses == null){
+        LiveChannelStreamStatusResponse[] liveChannelStreamStatusResponses = this.basePost(url,
+                liveListChannelStreamStatusRequest, LiveChannelStreamStatusResponse[].class);
+        if (liveChannelStreamStatusResponses == null) {
             liveChannelStreamStatusResponses = new LiveChannelStreamStatusResponse[]{};
         }
-        LiveListChannelStreamStatusResponse liveListChannelStreamStatusResponse = new LiveListChannelStreamStatusResponse();
+        LiveListChannelStreamStatusResponse liveListChannelStreamStatusResponse =
+                new LiveListChannelStreamStatusResponse();
         liveListChannelStreamStatusResponse.setChannelInfo(Arrays.asList(liveChannelStreamStatusResponses));
         return liveListChannelStreamStatusResponse;
     }
     
     /**
-     * 查询频道实时推流信息(讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常)，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/hqzbxx/get-stream-info/
+     * 查询频道实时推流信息(讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常)，API地址：https://dev.polyv
+     * .net/2019/liveproduct/l-api/zbglgn/hqzbxx/get-stream-info/
      * @param liveChannelStreamInfoRequest 查询频道实时推流信息请求实体
      * @return 查询频道实时推流信息返回实体
      * @throws IOException 异常
@@ -423,6 +426,23 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = this.baseGet(url, liveChannelStreamInfoRequest,
                 LiveChannelStreamInfoResponse.class);
         return liveChannelStreamInfoResponse;
+    }
+    
+    /**
+     * 将点播中的视频添加到视频库
+     * @param liveCreateChannelVideoPlaybackRequest 将点播中的视频添加到视频库请求实体
+     * @return 将点播中的视频添加到视频库返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveCreateChannelVideoPlaybackResponse addChannelVideoPlayback(
+            LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_VIDEO_PLAYBACK_ADD_URL;
+        LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse = this.basePost(url,
+                liveCreateChannelVideoPlaybackRequest, LiveCreateChannelVideoPlaybackResponse.class);
+        return liveCreateChannelVideoPlaybackResponse;
     }
     
 }

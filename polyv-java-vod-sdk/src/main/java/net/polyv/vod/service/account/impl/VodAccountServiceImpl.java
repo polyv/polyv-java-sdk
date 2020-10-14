@@ -15,7 +15,7 @@ import net.polyv.vod.service.account.IVodAccountService;
  **/
 public class VodAccountServiceImpl extends VodBaseService implements IVodAccountService {
     /**
-     * 获取用户空间及流量情况
+     * 获取用户空间及流量情况 , API地址：https://dev.polyv.net/2013/videoproduct/v-api/v-api-main/getspaceandflow/
      * @param vodAccountSpaceDataRequest 获取用户空间及流量情况请求实体
      * @return 获取用户空间及流量详细数据
      * @throws IOException IO异常

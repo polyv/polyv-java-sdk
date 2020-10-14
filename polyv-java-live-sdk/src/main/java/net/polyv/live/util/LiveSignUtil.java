@@ -26,7 +26,12 @@ public class LiveSignUtil {
     }
     
     /**
-     * 获取加密串
+     * 获取直播加密字符串，并且假如到参数params中
+     * @param params 加密参数
+     * @param appId  保利威用户ID
+     * @param appSecret 保利威用户签名密钥
+     * @return  MD5签名字符串
+     * @throws NoSuchAlgorithmException 签名异常
      */
     public static String setLiveSign(Map<String, String> params, String appId, String appSecret)
             throws NoSuchAlgorithmException {
@@ -36,14 +41,12 @@ public class LiveSignUtil {
     }
     
     /**
-     * 获取加密串
-     */
-    /**
-     *
-     * @param params
-     * @param appId
-     * @param appSecret
-     * @return
+     * 获取直播加密字符串，并且假如到参数params中
+     * @param params 加密参数
+     * @param appId  保利威用户ID
+     * @param appSecret 保利威用户签名密钥
+     * @return  MD5签名字符串
+     * @throws NoSuchAlgorithmException 签名异常
      */
     public static String getSign(Map<String, String> params, String appId, String appSecret)
             throws NoSuchAlgorithmException {
@@ -83,6 +86,7 @@ public class LiveSignUtil {
      * 对字符串做MD5加密，返回加密后的字符串。
      * @param text 待加密的字符串。
      * @return 加密后的字符串。
+     * @throws NoSuchAlgorithmException 签名异常
      */
     public static String md5Hex(String text) throws NoSuchAlgorithmException {
          
@@ -144,6 +148,7 @@ public class LiveSignUtil {
      * @param keyLower keyLower
      * @param valueUrlEncode valueUrlEncode
      * @return string
+     * @throws UnsupportedEncodingException 编码异常
      */
     public static String mapJoinEncode(Map<String, String> map, boolean keyLower, boolean valueUrlEncode)
             throws UnsupportedEncodingException {

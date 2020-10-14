@@ -51,10 +51,6 @@
 
 | 参数名            | 必选   | 类型       | 说明                                                         |
 | :---------------- | :----- | :--------- | :----------------------------------------------------------- |
-| appId             | 是     | string     | 从API设置中获取，在直播系统登记的appId                       |
-| timestamp         | 是     | string     | 当前时间的毫秒级时间戳（13位）                               |
-| sign              | 是     | string     | 签名，为32位大写的MD5值                                      |
-| userId            | 是     | string     | 直播账号ID                                                   |
 | name              | 是     | string     | 频道名称                                                     |
 | channelPasswd     | 是     | string     | 频道密码,长度不能超过16位                                    |
 | ~~courseId~~      | ~~否~~ | ~~string~~ | 课程号（参数已废弃，不推荐使用 ）                            |
@@ -143,9 +139,6 @@
 
 | 参数名    | 必选 | 类型   | 说明 |
 | :-------- | :--- | :----- | :----------------------------------------------------------- |
-| appId     | 是   | string | 从API设置中获取，在直播系统登记的appId                       |
-| timestamp | 是   | string | 当前时间的毫秒级时间戳（13位）|
-| sign      | 是   | string | 签名，为32位大写的MD5值 |
 |channelId    |是|integer|	频道号 |
 |requestId|否|string|每次请求的业务流水号，便于客户端/服务器端排查问题 |
 |endTime|否|string|直播开始时间结束区间,格式为yyyyMMddHHmmss |
@@ -965,4 +958,44 @@ AuthSetting参数描述
 #### 返回对象描述[LiveChannelResponse]
 | 参数名 | 说明              |
 | ------ | ----------------- |
+| data   | 请求结果,success成功 |
+
+### 禁止直播频道推流
+
+#### 描述
+禁止频道号推流（禁止有效期为24小时，24小时后会恢复频道）
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../notice.md)
+
+#### 代码示例
+```java
+	@Test
+    public void testCutoffChannelStream() throws IOException, NoSuchAlgorithmException {
+        LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest = new LiveCutoffChannelStreamRequest();
+        liveCutoffChannelStreamRequest.setChannelId(channelId);
+        String liveCutoffChannelStreamResponse = new LiveChannelServiceImpl().cutoffChannelStream(liveCutoffChannelStreamRequest);
+        Assert.assertNotNull(liveCutoffChannelStreamResponse);
+        if ("success".equals(liveCutoffChannelStreamResponse)) {
+            //to do something ......
+            log.debug("禁止直播频道推流成功" + liveCutoffChannelStreamResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-禁止直播频道推流](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否禁止直播频道推流成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型 | 说明   |
+| --------- | ---- | ---- | ------ |
+| channelId | 是   | int  | 频道ID |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明                 |
+| ------ | -------------------- |
 | data   | 请求结果,success成功 |

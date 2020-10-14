@@ -37,6 +37,7 @@ public class VodBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 异常
+     *  @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends VodCommonRequest> T baseGet(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
@@ -53,6 +54,7 @@ public class VodBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 异常
+     *  @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends VodCommonRequest> T baseGet(String url, String pathVariable, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
@@ -71,9 +73,7 @@ public class VodBaseService {
             String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.SECRET_KEY);
             e.setSign(sign);
         } else {
-            /**
-             * 以 http://v.polyv.net开始的URL地址，对象参数不做任何处理直接转换MAP传输
-             */
+            // 以 http://v.polyv.net开始的URL地址，对象参数不做任何处理直接转换MAP传输
             paramMap = MapUtil.objectToMap(e);
         }
         paramMap = MapUtil.filterNullValue(paramMap);
@@ -125,6 +125,7 @@ public class VodBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
+     *  @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends VodCommonRequest> T basePost(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
@@ -141,6 +142,7 @@ public class VodBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
+     *  @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends VodCommonRequest> T basePost(String url, String pathVariable, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
@@ -159,9 +161,7 @@ public class VodBaseService {
             String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.SECRET_KEY);
             e.setSign(sign);
         } else {
-            /**
-             * 以 http://v.polyv.net开始的URL地址，对象参数不做任何处理直接转换MAP传输
-             */
+             // 以 http://v.polyv.net开始的URL地址，对象参数不做任何处理直接转换MAP传输
             paramMap = MapUtil.objectToMap(e);
         }
         paramMap = MapUtil.filterNullValue(paramMap);
@@ -195,6 +195,7 @@ public class VodBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
+     *  @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends VodCommonRequest> T basePostJson(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
@@ -211,6 +212,7 @@ public class VodBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
+     *  @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends VodCommonRequest> T basePostJson(String url, String pathVariable, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
@@ -229,9 +231,7 @@ public class VodBaseService {
             String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.SECRET_KEY);
             e.setSign(sign);
         } else {
-            /**
-             * 以 http://v.polyv.net开始的URL地址，对象参数不做任何处理直接转换MAP传输
-             */
+            // 以 http://v.polyv.net开始的URL地址，对象参数不做任何处理直接转换MAP传输
             paramMap = MapUtil.objectToMap(e);
         }
         paramMap = MapUtil.filterNullValue(paramMap);

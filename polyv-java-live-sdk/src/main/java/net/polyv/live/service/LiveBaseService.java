@@ -37,6 +37,7 @@ public class LiveBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 异常
+     *  @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends LiveCommonRequest> T baseGet(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
@@ -100,6 +101,7 @@ public class LiveBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
+     *  @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends LiveCommonRequest> T basePost(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
@@ -145,6 +147,7 @@ public class LiveBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
+     *  @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
@@ -162,6 +165,7 @@ public class LiveBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
+     *  @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url, Map<String, String> signMap, E e,
             Class<T> tClass) throws IOException, NoSuchAlgorithmException {

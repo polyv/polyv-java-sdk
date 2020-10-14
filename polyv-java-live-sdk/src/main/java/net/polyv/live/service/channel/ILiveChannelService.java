@@ -22,6 +22,7 @@ import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
+import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
@@ -237,6 +238,16 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     String resumeChannelStream(LiveResumeChannelStreamRequest liveResumeChannelStreamRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 禁止直播频道推流
+     * @param liveCutoffChannelStreamRequest 禁止直播频道推流请求实体
+     * @return 禁止直播频道推流返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String cutoffChannelStream(LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -32,6 +32,7 @@ import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
+import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
@@ -937,6 +938,29 @@ public class ChannelTest extends BaseTest {
             log.debug("恢复直播频道推流成功" + liveResumeChannelStreamResponse);
         }
         
+        //删除测试数据
+        deleteChannel(channelId);
+    }
+    
+    /**
+     * 禁止直播频道推流
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testCutoffChannelStream() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId = createChannel();
+        
+        LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest = new LiveCutoffChannelStreamRequest();
+        liveCutoffChannelStreamRequest.setChannelId(channelId);
+        String liveCutoffChannelStreamResponse = new LiveChannelServiceImpl().cutoffChannelStream(liveCutoffChannelStreamRequest);
+        Assert.assertNotNull(liveCutoffChannelStreamResponse);
+        if ("success".equals(liveCutoffChannelStreamResponse)) {
+            //to do something ......
+            log.debug("禁止直播频道推流成功" + liveCutoffChannelStreamResponse);
+        }
+    
         //删除测试数据
         deleteChannel(channelId);
     }

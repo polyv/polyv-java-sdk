@@ -26,6 +26,8 @@ import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
+import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
@@ -249,6 +251,17 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     String cutoffChannelStream(LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 批量查询频道直播流状态，API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/hqzbxx/live-status/
+     * @param liveListChannelStreamStatusRequest 批量查询频道直播流状态请求实体
+     * @return 批量查询频道直播流状态返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListChannelStreamStatusResponse listChannelLiveStream(
+            LiveListChannelStreamStatusRequest liveListChannelStreamStatusRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

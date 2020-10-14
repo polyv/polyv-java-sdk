@@ -2,7 +2,6 @@ package net.polyv.live.service.channel.impl;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 import java.security.NoSuchAlgorithmException;
 
@@ -23,6 +22,7 @@ import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -33,6 +33,8 @@ import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
+import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
@@ -43,7 +45,6 @@ import net.polyv.live.entity.channel.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelService;
-import net.polyv.live.util.LiveSignUtil;
 import net.polyv.live.util.MapUtil;
 
 /**
@@ -381,6 +382,30 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_CUTOFF_URL,
                 liveCutoffChannelStreamRequest.getChannelId());
         return this.basePost(url, liveCutoffChannelStreamRequest, String.class);
+    }
+    
+    /**
+     * 批量查询频道直播流状态
+     * @param liveListChannelStreamStatusRequest 批量查询频道直播流状态请求实体
+     * @return 批量查询频道直播流状态返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelStreamStatusResponse listChannelLiveStream(
+            LiveListChannelStreamStatusRequest liveListChannelStreamStatusRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_LIVE_STREAM_STATUS_LIST_URL;
+        LiveChannelStreamStatusResponse[] liveChannelStreamStatusResponses =
+                this.basePost(
+                url, liveListChannelStreamStatusRequest,
+                        LiveChannelStreamStatusResponse[].class);
+        if(liveChannelStreamStatusResponses == null){
+            liveChannelStreamStatusResponses = new LiveChannelStreamStatusResponse[]{};
+        }
+        LiveListChannelStreamStatusResponse liveListChannelStreamStatusResponse = new LiveListChannelStreamStatusResponse();
+        liveListChannelStreamStatusResponse.setChannelInfo(Arrays.asList(liveChannelStreamStatusResponses));
+        return liveListChannelStreamStatusResponse;
     }
     
 }

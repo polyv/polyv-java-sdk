@@ -297,6 +297,11 @@ public class LiveURL {
     public static final String CHANNEL_LIST_PPTRECORD_URL = BASE_URI + "v3/channel/pptRecord/list";
     
     /**
+     * 批量查询频道直播流状态
+     */
+    public static final String CHANNEL_LIVE_STREAM_STATUS_LIST_URL = BASE_URI + "v2/channels/live-status";
+    
+    /**
      * 异步合并接口
      */
     public static final String CHANNEL_RECORD_MERGE_URL = BASE_URI + "v3/channel/record/merge";

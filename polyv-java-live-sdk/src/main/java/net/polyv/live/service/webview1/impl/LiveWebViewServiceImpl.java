@@ -1,4 +1,4 @@
-package net.polyv.live.service.webview.impl;
+package net.polyv.live.service.webview1.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -6,8 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.webview.LiveCreateChannelWriteListRequest;
 import net.polyv.live.service.LiveBaseService;
-import net.polyv.live.service.webview.ILiveWebViewService;
-
+import net.polyv.live.service.webview1.ILiveWebViewService;
 /**
  * 直播Web观看页管理
  * @author: sadboy

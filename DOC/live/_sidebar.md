@@ -4,6 +4,7 @@
   * [经典案例](/case)
   * [快速接入](/quick_start)
   * [场景分析](/sence_flow)
+  * [全局约束](/limit)
 * 常用功能
 
   * [初始化](/init)

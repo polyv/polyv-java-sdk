@@ -1,4 +1,4 @@
-package net.polyv.live.entity.webView;
+package net.polyv.live.entity.webview;
 
 import javax.validation.constraints.NotNull;
 

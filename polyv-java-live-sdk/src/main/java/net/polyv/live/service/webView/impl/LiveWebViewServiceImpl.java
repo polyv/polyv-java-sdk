@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.webview.LiveCreateChannelWriteListRequest;
 import net.polyv.live.service.LiveBaseService;
-import net.polyv.live.service.webView.ILiveWebViewService;
+import net.polyv.live.service.webview.ILiveWebViewService;
 
 /**
  * 直播Web观看页管理

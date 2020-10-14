@@ -16,6 +16,8 @@ import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelStreamInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -26,6 +28,8 @@ import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
+import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
@@ -248,6 +252,27 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     String cutoffChannelStream(LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 批量查询频道直播流状态，API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/hqzbxx/live-status/
+     * @param liveListChannelStreamStatusRequest 批量查询频道直播流状态请求实体
+     * @return 批量查询频道直播流状态返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListChannelStreamStatusResponse listChannelLiveStream(
+            LiveListChannelStreamStatusRequest liveListChannelStreamStatusRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道实时推流信息，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/hqzbxx/get-stream-info/
+     * @param liveChannelStreamInfoRequest 查询频道实时推流信息请求实体
+     * @return 查询频道实时推流信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelStreamInfoResponse channelStreamInfo(LiveChannelStreamInfoRequest liveChannelStreamInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

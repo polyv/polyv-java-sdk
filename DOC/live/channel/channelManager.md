@@ -397,7 +397,7 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
 | ------ | -------- |
 | data   | 请求结果 |
 
-### 查询频道信息
+<h3 id="查询频道信息">查询频道信息</h3>
 
 #### 描述
 查询直播频道信息
@@ -999,3 +999,92 @@ AuthSetting参数描述
 | 参数名 | 说明                 |
 | ------ | -------------------- |
 | data   | 请求结果,success成功 |
+
+### 批量查询频道直播流状态
+
+#### 描述
+批量获取频道直播状态接口
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../notice.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testListChannelLiveStream() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelStreamStatusRequest liveListChannelStreamStatusRequest =
+                new LiveListChannelStreamStatusRequest();
+        liveListChannelStreamStatusRequest.setChannelIds(String.format("%s,%s", channelId0, channelId1));
+        LiveListChannelStreamStatusResponse liveListChannelStreamStatusResponse =
+                new LiveChannelServiceImpl().listChannelLiveStream(
+                liveListChannelStreamStatusRequest);
+        Assert.assertNotNull(liveListChannelStreamStatusResponse);
+        if (liveListChannelStreamStatusResponse != null) {
+            //to do something ......
+            log.debug(String.format("批量查询频道直播流状态成功%s",JSON.toJSONString(liveListChannelStreamStatusResponse)));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-批量查询频道直播流状态](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否批量查询频道直播流状态是否相符](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名     | 必选 | 类型   | 说明                                          |
+| ---------- | ---- | ------ | --------------------------------------------- |
+| channelIds | 是   | string | 用逗号隔开的频道ID，如：10000,100001 最多20个 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名      | 说明                                     |
+| ----------- | ---------------------------------------- |
+| channelInfo | 频道状态相关信息                         |
+| channelId   | 频道ID，整型                             |
+| status      | 频道的直播状态，字符串，值包括：live end |
+
+### 查询频道实时推流信息
+
+#### 描述
+接口用于获取频道的实时推流信息
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../notice.md)
+讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常
+deployAddress、inAddress、lfr信息可能无法获取，返回值为null
+
+#### 代码示例
+```java
+@Test
+    public void testchannelStreamInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelStreamInfoRequest liveChannelStreamInfoRequest = new LiveChannelStreamInfoRequest();
+        liveChannelStreamInfoRequest.setChannelId(channelId);
+        LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = new LiveChannelServiceImpl().channelStreamInfo(
+                liveChannelStreamInfoRequest);
+        Assert.assertNotNull(liveChannelStreamInfoResponse);
+        if (liveChannelStreamInfoResponse != null) {
+            //to do something ......
+            log.debug(String.format("批量查询频道直播流状态成功%s",JSON.toJSONString(liveChannelStreamInfoResponse)));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道实时推流信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名     | 必选 | 类型   | 说明                                          |
+| ---------- | ---- | ------ | --------------------------------------------- |
+| channelId | 是   | int | 频道ID |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名        | 类型   | 说明                          |
+| ------------- | ------ | ----------------------------- |
+| deployAddress | string | 推送的CDN节点IP，可能会为null |
+| inAddress     | string | 推流出口ip，可能会为null      |
+| streamName    | string | 流名，可能会为null            |
+| fps           | string | 推流帧率，可能会为null        |
+| lfr           | string | 推流丢帧率，可能会为null      |
+| inBandWidth   | string | 推流码率，可能会为null        |

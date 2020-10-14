@@ -26,6 +26,8 @@ import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelStreamInfoRequest;
+import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -36,6 +38,8 @@ import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
+import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
@@ -625,7 +629,7 @@ public class ChannelTest extends BaseTest {
     @Test
     public void testDeleteChannelList() throws IOException, NoSuchAlgorithmException {
         //准备测试数据
-        Integer[] channelIds = new Integer[]{createChannel(),createChannel(),createChannel()};
+        Integer[] channelIds = new Integer[]{createChannel(), createChannel(), createChannel()};
         
         LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChannelListRequest();
         liveDeleteChannelListRequest.setChannelIds(channelIds);
@@ -657,7 +661,7 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("设置频道单点登陆token成功" + JSON.toJSONString(liveCreateChannelTokenResponse));
         }
-    
+        
         //删除测试数据
         deleteChannel(channelId);
     }
@@ -681,7 +685,7 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("查询频道信息成功" + JSON.toJSONString(liveChannelInfoResponse));
         }
-    
+        
         //删除测试数据
         deleteChannel(channelId);
     }
@@ -705,7 +709,7 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("查询频道基本信息成功" + JSON.toJSONString(liveChannelBasicInfoResponse));
         }
-    
+        
         //删除测试数据
         deleteChannel(channelId);
     }
@@ -729,7 +733,7 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("查询授权和连麦的token成功" + JSON.toJSONString(liveChannelAuthTokenResponse));
         }
-    
+        
         //删除测试数据
         deleteChannel(channelId);
     }
@@ -757,7 +761,7 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("创建子频道成功" + JSON.toJSONString(liveCreateSonChannelResponse));
         }
-    
+        
         //删除测试数据
         deleteChannel(channelId);
     }
@@ -785,7 +789,7 @@ public class ChannelTest extends BaseTest {
             //to do something ......
             log.debug("创建子频道成功" + JSON.toJSONString(liveCreateSonChannelResponse));
         }
-    
+        
         //删除测试数据
         deleteChannel(channelId);
     }
@@ -954,15 +958,63 @@ public class ChannelTest extends BaseTest {
         
         LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest = new LiveCutoffChannelStreamRequest();
         liveCutoffChannelStreamRequest.setChannelId(channelId);
-        String liveCutoffChannelStreamResponse = new LiveChannelServiceImpl().cutoffChannelStream(liveCutoffChannelStreamRequest);
+        String liveCutoffChannelStreamResponse = new LiveChannelServiceImpl().cutoffChannelStream(
+                liveCutoffChannelStreamRequest);
         Assert.assertNotNull(liveCutoffChannelStreamResponse);
         if ("success".equals(liveCutoffChannelStreamResponse)) {
             //to do something ......
             log.debug("禁止直播频道推流成功" + liveCutoffChannelStreamResponse);
         }
-    
+        
         //删除测试数据
         deleteChannel(channelId);
     }
-
+    
+    /**
+     * 批量查询频道直播流状态
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelLiveStream() throws IOException, NoSuchAlgorithmException {
+        //准备测试数据
+        Integer channelId0 = createChannel();
+        Integer channelId1 = createChannel();
+        
+        LiveListChannelStreamStatusRequest liveListChannelStreamStatusRequest =
+                new LiveListChannelStreamStatusRequest();
+        liveListChannelStreamStatusRequest.setChannelIds(String.format("%s,%s", channelId0, channelId1));
+        LiveListChannelStreamStatusResponse liveListChannelStreamStatusResponse =
+                new LiveChannelServiceImpl().listChannelLiveStream(
+                liveListChannelStreamStatusRequest);
+        Assert.assertNotNull(liveListChannelStreamStatusResponse);
+        if (liveListChannelStreamStatusResponse != null) {
+            //to do something ......
+            log.debug(String.format("批量查询频道直播流状态成功%s",JSON.toJSONString(liveListChannelStreamStatusResponse)));
+        }
+        
+        //删除测试数据
+        deleteChannel(channelId0);
+        deleteChannel(channelId1);
+    }
+    
+    /**
+     * 测试查询频道实时推流信息（讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常）
+     * 该测试类必须在开启直播中才能测试，先注释掉
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+//    public void testchannelStreamInfo() throws IOException, NoSuchAlgorithmException {
+//        LiveChannelStreamInfoRequest liveChannelStreamInfoRequest = new LiveChannelStreamInfoRequest();
+//        liveChannelStreamInfoRequest.setChannelId(1951952);
+//        LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = new LiveChannelServiceImpl().channelStreamInfo(
+//                liveChannelStreamInfoRequest);
+//        Assert.assertNotNull(liveChannelStreamInfoResponse);
+//        if (liveChannelStreamInfoResponse != null) {
+//            //to do something ......
+//            log.debug(String.format("批量查询频道直播流状态成功%s",JSON.toJSONString(liveChannelStreamInfoResponse)));
+//        }
+//    }
+    
 }

@@ -1,4 +1,4 @@
-package net.polyv.live.service.webview1;
+package net.polyv.live.service.webview;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;

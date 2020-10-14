@@ -31,6 +31,8 @@ import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackRequest;
+import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
@@ -990,7 +992,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveListChannelStreamStatusResponse);
         if (liveListChannelStreamStatusResponse != null) {
             //to do something ......
-            log.debug(String.format("批量查询频道直播流状态成功%s",JSON.toJSONString(liveListChannelStreamStatusResponse)));
+            log.debug(String.format("批量查询频道直播流状态成功%s", JSON.toJSONString(liveListChannelStreamStatusResponse)));
         }
         
         //删除测试数据
@@ -1014,6 +1016,27 @@ public class ChannelTest extends BaseTest {
 //        if (liveChannelStreamInfoResponse != null) {
 //            //to do something ......
 //            log.debug(String.format("批量查询频道直播流状态成功%s",JSON.toJSONString(liveChannelStreamInfoResponse)));
+//        }
+//    }
+    
+    /**
+     * 测试将点播中的视频添加到视频库
+     * TODO 该测试用例字段vid不知从何处设置，需后台开发提供支持
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+//    public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
+//        LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest =
+//                new LiveCreateChannelVideoPlaybackRequest();
+//        liveCreateChannelVideoPlaybackRequest.setChannelId(1).setVid("").setSetAsDefault("N").setListType("playback");
+//        LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse =
+//                new LiveChannelServiceImpl().addChannelVideoPlayback(
+//                liveCreateChannelVideoPlaybackRequest);
+//        Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
+//        if (liveCreateChannelVideoPlaybackResponse != null) {
+//            //to do something ......
+//            log.debug(String.format("批量查询频道直播流状态成功%s", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse)));
 //        }
 //    }
     

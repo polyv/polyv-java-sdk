@@ -322,6 +322,11 @@ public class LiveURL {
     public static final String CHANNEL_WRITE_LIST_ADD_URL = BASE_URI + "v3/channel/auth/add-white-list";
     
     /**
+     * 将点播中的视频添加到视频库
+     */
+    public static final String CHANNEL_VIDEO_PLAYBACK_ADD_URL = BASE_URI + "v3/channel/playback/add";
+    
+    /**
      * 400错误码
      */
     public static final int CODE_400 = 400;

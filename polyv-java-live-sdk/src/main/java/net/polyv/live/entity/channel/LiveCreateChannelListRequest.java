@@ -30,7 +30,6 @@ public class LiveCreateChannelListRequest extends LiveCommonRequest {
      * 频道列表
      */
     @ApiModelProperty(name = "channels", value = "频道列表", required = true)
-//    @NotNull(message = "channels不能为空")
     private List<LiveChannelBasicDTO> channels;
 
 }

@@ -14,10 +14,6 @@ public class LiveGlobalConfig {
     public static String USER_ID = "";
     public static String APP_SECRET = "";
     
-    //重试策略
-    public static Boolean RETRY_FLAG =  false;
- 
-    
     /**
      *  系统全局初始化
      * @param appId appId
@@ -49,26 +45,6 @@ public class LiveGlobalConfig {
         HttpClientUtil.setMaxClientNum(maxClientNum);
         HttpClientUtil.init();
     }
-    
-    /**
-     *  系统全局初始化
-     * @param appId appId
-     * @param userId userId
-     * @param appSecret appSecret
-     * @param timeOut timeOut
-     * @param maxClientNum maxClientNum
-     * @param retryFlag retryFlag
-     */
-    private static void  init(String appId,String userId,String appSecret,Integer timeOut ,Integer maxClientNum,Boolean retryFlag){
-        LiveGlobalConfig.APP_ID = appId;
-        LiveGlobalConfig.USER_ID = userId;
-        LiveGlobalConfig.APP_SECRET = appSecret;
-        LiveGlobalConfig.RETRY_FLAG = retryFlag;
-        HttpClientUtil.setTimeOut(timeOut);
-        HttpClientUtil.setMaxClientNum(maxClientNum);
-        HttpClientUtil.init();
-    }
-    
     
     
 }

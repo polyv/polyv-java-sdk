@@ -1,9 +1,9 @@
 package net.polyv.live.service.channel.impl;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Map;
-import java.security.NoSuchAlgorithmException;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -48,7 +48,6 @@ import net.polyv.live.entity.channel.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelService;
 import net.polyv.live.util.MapUtil;
-
 /**
  * 直播频道管理
  * @author: thomas

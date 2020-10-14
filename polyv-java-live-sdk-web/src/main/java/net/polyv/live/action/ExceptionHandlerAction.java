@@ -27,7 +27,7 @@ public class ExceptionHandlerAction {
      */
     @ExceptionHandler(value = Exception.class)
     public String handlerException(Exception exce){
-        log.error("",exce);
+        log.error("SDK调用错误",exce);
         Map<String,String> result  = new HashMap<>();
         if(exce instanceof BusinessException){
              result.put(((BusinessException) exce).getCode().toString(), exce.getMessage());

@@ -45,9 +45,15 @@ public class HttpClientUtil {
      * HTTP 链接池
      */
     private static CloseableHttpClient httpClient = null;
-    //读写超时时间设置，默认5S
+    
+    /**
+     * 读写超时时间设置，默认5S
+     */
     private static int TIME_OUT = 5000;
-    //默认线程数
+    
+    /**
+     * 默认线程数
+     */
     private static int MAX_CLIENT_NUM = 60;
     
     public static int getMaxClientNum() {
@@ -62,6 +68,7 @@ public class HttpClientUtil {
         MAX_CLIENT_NUM = maxClientNum < 300 ? maxClientNum : MAX_CLIENT_NUM;
     }
     
+   
     public static int getTimeOut() {
         return TIME_OUT;
     }

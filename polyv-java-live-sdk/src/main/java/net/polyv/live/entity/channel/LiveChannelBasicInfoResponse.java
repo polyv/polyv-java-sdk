@@ -129,7 +129,6 @@ public class LiveChannelBasicInfoResponse {
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
-//    @Builder
     @ApiModel("频道所属分类的信息")
     public class UserCategory {
         
@@ -163,7 +162,6 @@ public class LiveChannelBasicInfoResponse {
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
-//    @Builder
     @ApiModel("直播观看条件列表")
     public class AuthSetting {
         

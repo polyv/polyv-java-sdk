@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
-import net.polyv.live.entity.webView.LiveCreateChannelWriteListRequest;
+import net.polyv.live.entity.webview.LiveCreateChannelWriteListRequest;
 import net.polyv.live.service.webview.impl.LiveWebViewServiceImpl;
 
 /**

@@ -1,10 +1,10 @@
-package net.polyv.live.service.webView.impl;
+package net.polyv.live.service.webview.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import net.polyv.live.constant.LiveURL;
-import net.polyv.live.entity.webView.LiveCreateChannelWriteListRequest;
+import net.polyv.live.entity.webview.LiveCreateChannelWriteListRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.webView.ILiveWebViewService;
 

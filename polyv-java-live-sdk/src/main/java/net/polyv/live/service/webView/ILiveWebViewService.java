@@ -1,9 +1,9 @@
-package net.polyv.live.service.webView;
+package net.polyv.live.service.webview;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
-import net.polyv.live.entity.webView.LiveCreateChannelWriteListRequest;
+import net.polyv.live.entity.webview.LiveCreateChannelWriteListRequest;
 
 /**
  * 直播Web观看页管理

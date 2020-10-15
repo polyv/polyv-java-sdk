@@ -21,7 +21,7 @@ import net.polyv.live.entity.LiveCommonRequest;
 @NoArgsConstructor
 @Builder
 @ApiModel("异步批量转存录制文件到点播请求实体")
-public class LiveConvertChannelVideoRequest extends LiveCommonRequest {
+public class LiveConvertChannelVideoListAsyncRequest extends LiveCommonRequest {
     
     /**
      * 频道ID

@@ -27,7 +27,7 @@ import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
-import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
+import net.polyv.live.entity.channel.LiveConvertChannelVideoListAsyncRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -487,16 +487,16 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     /**
      * 异步批量转存录制文件到点播
      * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/lzhf/async-convert/
-     * @param liveConvertChannelVideoRequest 异步批量转存录制文件到点播晴天实体
+     * @param liveConvertChannelVideoListAsyncRequest 异步批量转存录制文件到点播晴天实体
      * @return 异步批量转存录制文件到点播返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String convertChannelVideo(LiveConvertChannelVideoRequest liveConvertChannelVideoRequest)
+    public String convertChannelVideo(LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_RECORD_CONVERT_URL;
-        String liveConvertChannelVideoResponse = this.basePost(url, liveConvertChannelVideoRequest, String.class);
+        String liveConvertChannelVideoResponse = this.basePost(url, liveConvertChannelVideoListAsyncRequest, String.class);
         return liveConvertChannelVideoResponse;
     }
     

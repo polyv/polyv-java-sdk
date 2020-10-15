@@ -26,16 +26,12 @@ import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
-import net.polyv.live.entity.channel.LiveChannelStreamInfoRequest;
-import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
-import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
+import net.polyv.live.entity.channel.LiveConvertChannelVideoListAsyncRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
-import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackRequest;
-import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
@@ -47,8 +43,6 @@ import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
-import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
-import net.polyv.live.entity.channel.LiveMergeChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListResponse;
@@ -1076,22 +1070,22 @@ public class ChannelTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
-//    public void testConvertChannelVideo() throws IOException, NoSuchAlgorithmException {
-//        LiveConvertChannelVideoRequest liveConvertChannelVideoRequest = new LiveConvertChannelVideoRequest();
-//        liveConvertChannelVideoRequest.setChannelId(1951952)
-//                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
-//                .setFileName("删除-直播录制转点播")
-//                .setCataId(null)
-//                .setCallbackUrl(null);
-//        String liveConvertChannelVideoResponse = new LiveChannelServiceImpl().convertChannelVideo
-//        (liveConvertChannelVideoRequest);
-//        Assert.assertNotNull(liveConvertChannelVideoResponse);
-//        if ("submit success".equals(liveConvertChannelVideoResponse)) {
-//            //to do something ......
-//            log.debug(String.format("测试异步批量转存录制文件到点播,具体是否成功以回调为准%s", liveConvertChannelVideoResponse));
-//        }
-//    }
+    @Test
+    public void testConvertChannelVideo() throws IOException, NoSuchAlgorithmException {
+        LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest = new LiveConvertChannelVideoListAsyncRequest();
+        liveConvertChannelVideoListAsyncRequest.setChannelId(1951952)
+                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+                .setFileName("删除-直播录制转点播")
+                .setCataId(null)
+                .setCallbackUrl(null);
+        String liveConvertChannelVideoResponse = new LiveChannelServiceImpl().convertChannelVideo
+        (liveConvertChannelVideoListAsyncRequest);
+        Assert.assertNotNull(liveConvertChannelVideoResponse);
+        if ("submit success".equals(liveConvertChannelVideoResponse)) {
+            //to do something ......
+            log.debug(String.format("测试异步批量转存录制文件到点播,具体是否成功以回调为准%s", liveConvertChannelVideoResponse));
+        }
+    }
     
     /**
      * 测试查询频道录制视频信息
@@ -1113,5 +1107,7 @@ public class ChannelTest extends BaseTest {
             log.debug(String.format("查询频道录制视频信息成功%s", JSON.toJSONString(liveChannelVideoListResponse)));
         }
     }
+    
+    
     
 }

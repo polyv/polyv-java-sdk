@@ -43,6 +43,8 @@ import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
+import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
+import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListResponse;
@@ -1123,7 +1125,8 @@ public class ChannelTest extends BaseTest {
 //                .setType("single")
 //                .setOrigin("playback")
 //                .setVideoId(null);
-//        String liveChannelPlaybackSettingResponse = new LiveChannelServiceImpl().channelPlaybackSetting(liveChannelPlaybackSettingRequest);
+//        String liveChannelPlaybackSettingResponse = new LiveChannelServiceImpl().channelPlaybackSetting
+//        (liveChannelPlaybackSettingRequest);
 //        Assert.assertNotNull(liveChannelPlaybackSettingResponse);
 //        if (liveChannelPlaybackSettingResponse != null) {
 //            //to do something ......
@@ -1140,11 +1143,32 @@ public class ChannelTest extends BaseTest {
     public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
         LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
         liveChannelPlaybackEnabledRequest.setChannelId(1951952).setPlayBackEnabled("Y");
-        Integer liveChannelPlaybackEnabledResponse = new LiveChannelServiceImpl().channelPlayBackEnabledSetting(liveChannelPlaybackEnabledRequest);
+        Integer liveChannelPlaybackEnabledResponse = new LiveChannelServiceImpl().channelPlayBackEnabledSetting(
+                liveChannelPlaybackEnabledRequest);
         Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
         if (liveChannelPlaybackEnabledResponse != null) {
             //to do something ......
             log.debug(String.format("测试设置后台回放开关成功%s", liveChannelPlaybackEnabledResponse));
+        }
+    }
+    
+    /**
+     * 测试查询视频库列表
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelVideoLibrary() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
+                new LiveListChannelVideoLibraryRequest();
+        liveListChannelVideoLibraryRequest.setChannelId(1951952).setListType("playback");
+        LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse =
+                new LiveChannelServiceImpl().listChannelVideoLibrary(
+                liveListChannelVideoLibraryRequest);
+        Assert.assertNotNull(liveListChannelVideoLibraryResponse);
+        if (liveListChannelVideoLibraryResponse != null) {
+            //to do something ......
+            log.debug(String.format("测试查询视频库列表成功%s", JSON.toJSONString(liveListChannelVideoLibraryResponse)));
         }
     }
     

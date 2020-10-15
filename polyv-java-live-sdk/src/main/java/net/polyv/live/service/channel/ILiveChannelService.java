@@ -40,6 +40,8 @@ import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
+import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
@@ -371,4 +373,15 @@ public interface ILiveChannelService {
     Integer channelPlayBackEnabledSetting(LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest)
             throws IOException, NoSuchAlgorithmException;
     
+    /**
+     * 查询视频库列表
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/getplaybacklist/
+     * @param liveListChannelVideoLibraryRequest 查询视频库列表请求实体
+     * @return 查询视频库列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListChannelVideoLibraryResponse listChannelVideoLibrary(
+            LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

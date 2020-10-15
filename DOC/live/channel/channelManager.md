@@ -1386,3 +1386,63 @@ channelId不设置表示所有频道执行该操作
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 响应结果 |
+
+### 查询视频库列表
+
+#### 描述
+```
+查询回放视频的视频列表信息
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testListChannelVideoLibrary() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
+                new LiveListChannelVideoLibraryRequest();
+        liveListChannelVideoLibraryRequest.setChannelId(channelId).setListType("playback");
+        LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse =
+                new LiveChannelServiceImpl().listChannelVideoLibrary(
+                liveListChannelVideoLibraryRequest);
+        Assert.assertNotNull(liveListChannelVideoLibraryResponse);
+        if (liveListChannelVideoLibraryResponse != null) {
+            //to do something ......
+            log.debug(String.format("测试查询视频库列表成功%s", JSON.toJSONString(liveListChannelVideoLibraryResponse)));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询视频库列表](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+
+#### 请求入参描述[LiveChannelRequest]
+| 参数名          | 必选 | 类型   | 说明                                                         |
+| --------------- | ---- | ------ | ------------------------------------------------------------ |
+| channelId       | 是   | int    | 频道ID |
+|listType |	否 	|string 	|playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback|
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名           | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| videoId          | 直播系统生成的id                                             |
+| videoPoolId      | 点播视频vid                                                  |
+| userId           | 点播后台用户id                                               |
+| channelId        | 回放视频对应的直播频道id                                     |
+| title            | 视频标题                                                     |
+| firstImage       | 视频首图                                                     |
+| duration         | 视频长度                                                     |
+| myBr             | 默认视频的播放清晰度，1为流畅，2为高清，3为超清              |
+| qid              | 访客信息收集id                                               |
+| seed             | 视频加密状态，1表示为加密状态，0为非加密                     |
+| createdTime      | 添加为回放视频的日期                                         |
+| lastModified     | 视频最后修改日期                                             |
+| asDefault        | 是否为默认播放视频，值为Y/N                                  |
+| url              | 视频播放地址，注：如果视频为加密视频，则此地址无法访问       |
+| channelSessionId | 用于PPT请求数据，与PPT直播的回放相关，普通直播回放值为null   |
+| mergeInfo        | 视频合并信息，后续补充                                       |
+| startTime        | 直播开始时间                                                 |
+| liveType         | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |

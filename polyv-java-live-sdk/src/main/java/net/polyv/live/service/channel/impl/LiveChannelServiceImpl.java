@@ -47,6 +47,8 @@ import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
+import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
@@ -565,7 +567,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
      * 设置后台回放开关
      * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/setplaybackenabled/
      * @param liveChannelPlaybackEnabledRequest 设置后台回放开关请求实体
-     * @return 设置后台回放开关返回实体,成功返回频道id
+     * @return 设置后台回放开关返回实体, 成功返回频道id
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -573,8 +575,28 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     public Integer channelPlayBackEnabledSetting(LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest)
             throws IOException, NoSuchAlgorithmException {
         liveChannelPlaybackEnabledRequest.setUserId(LiveGlobalConfig.USER_ID);
-        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PLAYBACK_SET_URL,liveChannelPlaybackEnabledRequest.getUserId());
-        return this.basePost(url,liveChannelPlaybackEnabledRequest,Integer.class);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PLAYBACK_SET_URL,
+                liveChannelPlaybackEnabledRequest.getUserId());
+        return this.basePost(url, liveChannelPlaybackEnabledRequest, Integer.class);
+    }
+    
+    /**
+     * 查询视频库列表
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/getplaybacklist/
+     * @param liveListChannelVideoLibraryRequest 查询视频库列表请求实体
+     * @return 查询视频库列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelVideoLibraryResponse listChannelVideoLibrary(
+            LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PLAYBACK_LIST_URL,
+                liveListChannelVideoLibraryRequest.getChannelId());
+        LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse = this.baseGet(url,
+                liveListChannelVideoLibraryRequest, LiveListChannelVideoLibraryResponse.class);
+        return liveListChannelVideoLibraryResponse;
     }
     
 }

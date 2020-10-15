@@ -3,11 +3,11 @@
   * [简介](/)
   * [经典案例](/case)
   * [快速接入](/quick_start)
-  * [场景分析](/sence_flow)
+  * [全局约束](/limit)
 * 常用功能
 
   * [初始化](/init)
-  * [频道管理](channel/channelManager)
+  * [账户管理](account/account)
   * [用户信息]()
   * [通知管理]()
   * [安全管理]()

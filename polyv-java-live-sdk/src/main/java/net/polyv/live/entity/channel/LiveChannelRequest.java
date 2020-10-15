@@ -11,17 +11,19 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.LiveCommonRequest;
 
+
 /**
  * 直播频道请求实体
  * @author: thomas
- 
  **/
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -118,7 +120,4 @@ public class LiveChannelRequest extends LiveCommonRequest {
             "(注：需要开启频道转播功能该参数才生效)")
     private String receiveChannelIds;
     
-    public static void main(String[] args) {
-        System.out.println("SceneType.main="+ LiveConstant.SceneType.PPT.getDesc());
-    }
 }

@@ -102,7 +102,6 @@ public class ValidationUtil {
         public String getErrors(){
             StringBuilder sb = new StringBuilder();
             for (ErrorMessage error : errors) {
-//                sb.append(error.getPropertyPath()).append(" ").append(error.getMessage()).append(" /n/r ");
                 sb.append(error.getMessage()).append(" / ");
             }
             return sb.toString();
@@ -114,7 +113,7 @@ public class ValidationUtil {
     }
     
     @Data
-    public class ErrorMessage {
+    public static class ErrorMessage {
         
         private String propertyPath;
         

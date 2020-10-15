@@ -1,18 +1,14 @@
-package net.polyv.channel;
+package net.polyv.live.service;
 
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
-import net.polyv.live.entity.LivePageCommonResponse;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
 import net.polyv.live.entity.account.LiveListAccountResponse;
-import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
-import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.service.account.impl.LiveAccountServiceImpl;
-import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
 
 import org.junit.Assert;
 import org.junit.Test;

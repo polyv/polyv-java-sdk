@@ -1,4 +1,4 @@
-package net.polyv.channel;
+package net.polyv.live.service;
 
 import org.junit.Test;
 

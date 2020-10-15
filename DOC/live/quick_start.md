@@ -2,11 +2,11 @@
 
 
 
-您可以通过直接添加Maven依赖或下载POLYV SDK for Java的jar包的方式安装POLYV SDK for Java。 
+您可以通过直接添加Maven依赖的方式安装POLYV SDK for Java的直播功能。 
 
 ## 前提条件
 
-在安装和使用POLYV SDK for Java前，确保您已经：
+在安装和使用POLYV SDK for Java 直播功能前，确保您已经：
 
 - 安装Java环境。
 
@@ -16,7 +16,13 @@
 
   > 注意：<font color=#FF0000 >本系统默认演示账号的登录名为：sdk-demo\@polyv.net   ,   密码为：sdk2345</font>  
   >
-  > ​             <font color=#FF0000 >本系统默认演示账号的UserId为  1b448be323 ，AppId为  frlr1zazn3  ， AppSecret为  5d5ade8f71f24bb9a2d1176cd607dd17  。   </font>
+  > ​             <font color=#FF0000 >本系统默认演示账号：
+  >
+  > UserId=  1b448be323
+  >
+  > AppId=  frlr1zazn3
+  >
+  > AppSecret=  5d5ade8f71f24bb9a2d1176cd607dd17</font>
   
   
   
@@ -24,17 +30,21 @@
   
   ![image-20200928151700375](img/image-20200928151700375.png)
 
-## 1.添加项目依赖
+## 1.添加Maven依赖  
 
-### 方法一：添加Maven依赖 （强烈推荐）
-
-如果您使用Maven管理Java项目，可以通过在pom.xml文件中添加Maven依赖安装POLYV SDK for Java。SDK产品的Maven依赖信息如下： 
+如果您使用Maven管理Java项目，可以通过在pom.xml文件中添加Maven依赖安装POLYV SDK for Java的直播模块。SDK产品的Maven依赖信息如下： 
 
 ```xml
 <dependency>
     <groupId>net.polyv</groupId>
     <artifactId>polyv-java-live-sdk</artifactId>
     <version>1.0.0</version>
+</dependency>
+ <dependency>
+     <groupId>junit</groupId>
+     <artifactId>junit</artifactId>
+     <version>4.12</version>
+     <scope>test</scope>
 </dependency>
 ```
 
@@ -47,17 +57,6 @@
     <version>1.18.10</version>
 </dependency>
 ```
-
-### 方法二：在集成开发环境中导入JAR文件
-
-无论您使用Eclipse还是IntelliJ作为集成开发环境，都可以通过导入JAR文件的方式安装POLYV SDK for Java。具体步骤如下：
-
-1.下载GIT源码，git地址为[]
-2.进入<font color=#FF0000 >polyv-java-live-sdk</font>项目，在命令行下执行 [  mvn clean install -Dmaven.test.skip=true  ] ，打印如下表示执行成功：
-
-![image-20200928160314512](img/image-20200928160314512.png)
-
-3. 进入<font color=#FF0000 >polyv-java-live-sdk</font>项目的target目录，获取<font color=#FF0000 >polyv-java-live-sdk-x.x.x.jar</font> 加入到自己工程；
 
 ## 2.初始化系统
 
@@ -106,14 +105,12 @@ public class StartupListener implements ApplicationContextAware   {
 }
 ````
 
-
-
 ## 3.执行测试代码
 
 测试创建一个直播频道，单元测试代码如下：
 
 ```java
-package net.polyv.channel;
+package net.polyv.live.service;
 
 import java.io.IOException;
 import org.junit.Assert;
@@ -147,7 +144,7 @@ public class ChannelTest {
      * @throws IOException
      */
     @Test
-    public void testCreateChannel() throws IOException {
+    public void testCreateChannel() throws IOException, NoSuchAlgorithmException {
         LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
         liveChannelRequest.setName("Spring 知识精讲")
                 .setChannelPasswd("666888")
@@ -158,19 +155,34 @@ public class ChannelTest {
             //todo something ......
             log.debug("频道创建成功" + JSON.toJSONString(liveChannelResponse));
         }
-    }
-    
-    
-}
-
-
+    } 
+} 
 ```
 
-执行单元测试后，官网登录验证创建是否成功；![image-20200928163452748](img/image-20200928163452748.png)
+执行单元测试后，控制台应有如下关键输出，表示整合完成：
+
+```json
+[main] INFO net.polyv.common.base.HttpClientUtil - ---init HTTP POOL httpClient ----
+--初始化完成--
+
+[main] DEBUG net.polyv.live.util.LiveSignUtil - 参与签名参数：{"requestId":"2860257a405447e1bbbe9161da2dee72","appId":"frlr1zazn3","name":"Spring 知识精讲","channelPasswd":"666888","userId":"1b448be323","timestamp":"1602749899519"}
+[main] DEBUG net.polyv.live.util.LiveSignUtil - 签名原始字符串：5d5ade8f71f24bb9a2d1176cd607dd17appIdfrlr1zazn3channelPasswd666888nameSpring 知识精讲requestId2860257a405447e1bbbe9161da2dee72timestamp1602749899519userId1b448be3235d5ade8f71f24bb9a2d1176cd607dd17
+[main] DEBUG net.polyv.live.util.LiveSignUtil - 签名结果：3B062B164F62F73EAEA211BFBFF2DACA
+十月 15, 2020 4:18:19 下午 org.hibernate.validator.internal.util.Version <clinit>
+INFO: HV000001: Hibernate Validator 5.0.0.Final
+[main] DEBUG net.polyv.common.base.HttpUtil - http 请求 url: https://api.polyv.net/live/v2/channels/ , 请求参数: {"requestId":"2860257a405447e1bbbe9161da2dee72","appId":"frlr1zazn3","name":"Spring 知识精讲","sign":"3B062B164F62F73EAEA211BFBFF2DACA","channelPasswd":"666888","userId":"1b448be323","timestamp":"1602749899519"}
+[main] DEBUG net.polyv.common.base.HttpUtil - http 请求结果: {"code":200,"status":"success","message":"","data":{"channelId":1955969,"userId":"1b448be323","name":"Spring 知识精讲","publisher":"主持人","description":"","url":"rtmp://push-d1.videocc.net/recordf/1b448be3231602749952790f88a?auth_key=1602751753-0-0-21e4604b758b7845340a92f13b8c417a","stream":"1b448be3231602749952790f88a","logoImage":"","logoOpacity":1.0,"logoPosition":"tr","logoHref":"","coverImage":"","coverHref":"","waitImage":"","waitHref":"","cutoffImage":"","cutoffHref":"","advertType":"NONE","advertDuration":0,"advertWidth":0,"advertHeight":0,"advertImage":"","advertHref":"","advertFlvVid":"","advertFlvUrl":"","playerColor":"#666666","autoPlay":true,"warmUpFlv":"","passwdRestrict":false,"passwdEncrypted":"","isOnlyAudio":"N","isLowLatency":"N","m3u8Url":"http://pull-d1.videocc.net/recordf/1b448be3231602749952790f88a.m3u8?auth_key=1602749953-0-0-268203aa905b5843008d9dc1abf1b8c8","m3u8Url1":"","m3u8Url2":"","m3u8Url3":"","channelLogoImage":"http://liveimages.videocc.net/assets/wimages/pc_images/logo.png","scene":"alone","channelViewerPasswd":null,"channelPasswd":"666888","linkMicLimit":0,"streamType":"client","pureRtcEnabled":"N","type":"transmit","currentTimeMillis":1602749953113}}
+[main] DEBUG net.polyv.live.service.ChannelTest - 频道创建成功{"advertDuration":0,"advertFlvUrl":"","advertFlvVid":"","advertHeight":0,"advertHref":"","advertImage":"","advertType":"NONE","advertWidth":0,"autoPlay":true,"channelId":1955969,"coverHref":"","coverImage":"","currentTimeMillis":1602749953113,"cutoffHref":"","cutoffImage":"","description":"","isLowLatency":"N","isOnlyAudio":"N","linkMicLimit":0,"logoHref":"","logoImage":"","logoOpacity":1,"logoPosition":"tr","m3u8Url":"http://pull-d1.videocc.net/recordf/1b448be3231602749952790f88a.m3u8?auth_key=1602749953-0-0-268203aa905b5843008d9dc1abf1b8c8","m3u8Url1":"","m3u8Url2":"","m3u8Url3":"","name":"Spring 知识精讲","passwdEncrypted":"","passwdRestrict":false,"playerColor":"#666666","stream":"1b448be3231602749952790f88a","url":"rtmp://push-d1.videocc.net/recordf/1b448be3231602749952790f88a?auth_key=1602751753-0-0-21e4604b758b7845340a92f13b8c417a","userId":"1b448be323","waitHref":"","waitImage":"","warmUpFlv":""}
+
+
+[Thread-1] INFO net.polyv.common.base.HttpClientUtil - -----destroy HTTP POOL httpClient------
+```
+
+还可以官网登录验证创建是否成功；![image-20200928163452748](img/image-20200928163452748.png)
 
 
 
-至此，您已经完成SDK基本配置，可以使用SDK进行其他功能开发和测试，如您接入过程有任何问题，可以通过以下方式反馈：
+至此，您已经完成直播SDK基本配置，可以使用直播SDK进行其他功能开发和测试，如您接入过程有任何问题，可以通过以下方式反馈：
 
 1.发邮件反馈，wujie@polyv.net ；
 

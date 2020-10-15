@@ -1150,3 +1150,239 @@ liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSet
 | mergeInfo        | 视频合并信息                                               |
 | startTime        | 直播开始时间                                               |
 | liveType         | 回放视频的场景类型                                         |
+
+### 异步合并直播录制文件
+
+#### 描述
+```
+异步合并直播录制文件
+```
+#### 调用约束
+
+接口调用有频率限制，[详细请查看](../limit.md)
+
+```
+1.该接口为异步处理，如果当前提交的文件如果正在处理，会返回 data: processing
+```
+
+#### 代码示例
+```java
+	@Test
+    public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
+        LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
+        liveMergeChannelVideoAsyncRequest.setChannelId(channelId)
+                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+                .setFileName("测试合并-可删除")
+                .setCallbackUrl(null)
+                .setAutoConvert("Y")
+                .setMergeMp4("Y");
+        String liveMergeChannelVideoAsyncResponse = new LiveChannelServiceImpl().mergeChannelVideoAsync(
+                liveMergeChannelVideoAsyncRequest);
+        Assert.assertNotNull(liveMergeChannelVideoAsyncResponse);
+        if ("submit success".equals(liveMergeChannelVideoAsyncResponse)) {
+            //to do something ......
+            log.debug(String.format("测试异步合并直播录制文件,具体是否成功以回调为准%s", liveMergeChannelVideoAsyncResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-异步合并直播录制文件](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+如果设置了callbackUrl，需要在对应地址中处理回调结果，回调Json如下(参数描述见回调对象描述)：
+```
+
+```
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名      | 必选 | 类型   | 说明                                                  |
+| ----------- | ---- | ------ | ----------------------------------------------------- |
+| channelId   | 是   | int    | 频道ID                                                |
+| fileIds     | 是   | string | 要合并的录制视频文件ID，多个id用英文逗号, 分隔        |
+| fileName    | 否   | String | 合并后的视频的文件名                                  |
+| callbackUrl | 否   | string | 合并成功或失败回调的url，可以带上自定义参数           |
+| autoConvert | 否   | string | 传入Y，自动转存到对应点播分类下(直播回放-频道号-场次) |
+| mergeMp4    | 否   | string | 传Y合并MP4文件，传N或者不传合并m3u8文件               |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| data   | 成功响应时为相关的信息 "processing." 合并任务正在处理中  "submit success." 合并任务提交成功 |
+
+#### 回调对象描述
+
+| 参数     | 说明                                                         |
+| -------- | ------------------------------------------------------------ |
+| status   | 接口处理结果，取值：success（成功），error（出错）           |
+| fileId   | 合并后的文件ID，成功时返回                                   |
+| fileIds  | 合并前的文件ID                                               |
+| fileUrl  | 合并后的m3u8的地址，成功时返回                               |
+| fileName | 合并后的文件名称，成功时返回                                 |
+| sign     | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 |
+
+### 异步批量转存录制文件到点播
+
+#### 描述
+```
+用于批量转存直播录制文件到回放列表
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../notice.md)
+
+#### 代码示例
+```java
+@Test
+    public void testConvertChannelVideo() throws IOException, NoSuchAlgorithmException {
+        LiveConvertChannelVideoRequest liveConvertChannelVideoRequest = new LiveConvertChannelVideoRequest();
+        liveConvertChannelVideoRequest.setChannelId(channelId)
+                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+                .setFileName("删除-直播录制转点播")
+                .setCataId(null)
+                .setCallbackUrl(null);
+        String liveConvertChannelVideoResponse = new LiveChannelServiceImpl().convertChannelVideo(liveConvertChannelVideoRequest);
+        Assert.assertNotNull(liveConvertChannelVideoResponse);
+        if ("submit success".equals(liveConvertChannelVideoResponse)) {
+            //to do something ......
+            log.debug(String.format("测试异步批量转存录制文件到点播,具体是否成功以回调为准%s", liveConvertChannelVideoResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-异步批量转存录制文件到点播](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+如果设置了callbackUrl，需要在对应地址中处理回调结果，回调Json如下(参数描述见回调对象描述)：
+```
+
+```
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名      | 必选 | 类型   | 说明                                            |
+| ----------- | ---- | ------ | ----------------------------------------------- |
+| channelId   | 是   | string | 频道ID                                          |
+| fileIds     | 是   | string | 要转存的录制视频文件ID，多个id用英文逗号, 分隔  |
+| fileName    | 否   | String | 转存后的文件名，目前暂不支持传多个文件名        |
+| cataId      | 否   | long   | 转存到点播的目录ID, 默认为点播的根目录ID        |
+| callbackUrl | 否   | string | 转存成功时候回调通知的url，通知的相关参数见附录 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| data   | 成功响应时为相关的信息 "processing." 合并任务正在处理中  "submit success." 合并任务提交成功 |
+
+#### 回调对象描述
+
+| 参数      | 说明                                                         |
+| --------- | ------------------------------------------------------------ |
+| status    | 接口处理结果，取值：success（成功），error（出错）           |
+| code      | 错误码,userExpired-用户已过期；spaceOverSize-点播空间不足；unknown-未知异常 |
+| userId    | 用户id                                                       |
+| channelId | 频道号                                                       |
+| fileId    | 转存的文件ID                                                 |
+| sign      | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 |
+| timestamp | 13位时间戳                                                   |
+
+### 查询频道录制视频信息
+
+#### 描述
+```
+查询频道录制视频信息
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+ @Test
+    public void testLiseChannelVideo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
+        liveChannelVideoListRequest.setChannelId(1951952)
+                .setStartDate("2020-01-01")
+                .setEndDate("2020-10-14")
+                .setSessionId(null);
+        LiveChannelVideoListResponse liveChannelVideoListResponse = new LiveChannelServiceImpl().listChannelVideo(
+                liveChannelVideoListRequest);
+        Assert.assertNotNull(liveChannelVideoListResponse);
+        if (liveChannelVideoListResponse != null) {
+            //to do something ......
+            log.debug(String.format("查询频道录制视频信息成功%s", liveChannelVideoListResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道录制视频信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否与后台数](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                           |
+| --------- | ---- | ------ | ---------------------------------------------- |
+| channelId | 是   | int    | 频道号                                         |
+| userId    | 是   | string | 直播账号ID                                     |
+| startDate | 否   | string | 开始日期（录制生成的日期），格式为：yyyy-MM-dd |
+| endDate   | 否   | string | 结束日期，格式为：yyyy-MM-dd                   |
+| sessionId | 否   | string | 直播的场次ID                                   |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名           | 说明                                           |
+| ---------------- | ---------------------------------------------- |
+| fileId           | 录制文件id                                     |
+| channelId        | 频道号                                         |
+| url              | 录制文件地址，优先返回mp4，若没有MP4会返回m3u8 |
+| startTime        | 开始录制时间                                   |
+| endTime          | 结束录制时间                                   |
+| fileSize         | 录制文件大小（单位：字节）                     |
+| duration         | 时长（单位：秒）                               |
+| bitrate          | 录制文件码率（单位：字节）                     |
+| resolution       | 分辨率                                         |
+| channelSessionId | 直播的场次ID                                   |
+| fileName         | 录制文件名称                                   |
+
+### 设置后台回放开关
+
+#### 描述
+```
+能够控制单个/全部频道的回放开关，开启以及关闭。
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+channelId不设置表示所有频道执行该操作
+#### 代码示例
+```java
+@Test
+    public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
+        liveChannelPlaybackEnabledRequest.setChannelId(channelId).setPlayBackEnabled("Y");
+        Integer liveChannelPlaybackEnabledResponse = new LiveChannelServiceImpl().channelPlayBackEnabledSetting(liveChannelPlaybackEnabledRequest);
+        Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
+        if (liveChannelPlaybackEnabledResponse != null) {
+            //to do something ......
+            log.debug(String.format("测试设置后台回放开关成功%s", liveChannelPlaybackEnabledResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置后台回放开关](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否设置后台回放开关成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名          | 必选 | 类型   | 说明                                                         |
+| --------------- | ---- | ------ | ------------------------------------------------------------ |
+| playBackEnabled | 是   | string | 回放开关是开/关的状态，值为Y/N，必填                         |
+| channelId       | 否   | int    | 频道ID，非必填，不填添加该用户的所有频道ID的回放开关都设置为开/关 |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 响应结果 |

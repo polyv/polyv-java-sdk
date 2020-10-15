@@ -166,6 +166,12 @@ public class LiveURL {
             BASE_URI + "v2/channel/recordFile/" + PARAM_REPLACE_CHAR + "/merge";
     
     /**
+     * 异步合并直播录制文件
+     */
+    public static final String CHANNEL_RECORD_FILE_MERGE_ASYNC_URL =
+            BASE_URI + "v3/channel/record/merge";
+    
+    /**
      * 频道某段时间的直播统计数据
      */
     public static final String CHANNEL_DAILY_SUMMARY_URL =
@@ -325,6 +331,11 @@ public class LiveURL {
      * 将点播中的视频添加到视频库
      */
     public static final String CHANNEL_VIDEO_PLAYBACK_ADD_URL = BASE_URI + "v3/channel/playback/add";
+    
+    /**
+     * 设置频道回放设置
+     */
+    public static final String CHANNEL_PLAYBACK_SETTING_URL = BASE_URI + "v3/channel/playback/set-setting";
     
     /**
      * 400错误码

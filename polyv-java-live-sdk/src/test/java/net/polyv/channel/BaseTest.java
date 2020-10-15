@@ -3,13 +3,18 @@ package net.polyv.channel;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import org.junit.Assert;
+
+import com.alibaba.fastjson.JSON;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
+import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
+import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
@@ -95,6 +100,29 @@ public class BaseTest {
                 .setActor("教授")
                 .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
         return createSonChannel(liveCreateSonChannelRequest);
+    }
+    
+    /**
+     * 查询channelId对应视频库的一个视频url
+     * @param channelId
+     * @return
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    protected String getChannelVideoFileUrl(Integer channelId) throws IOException, NoSuchAlgorithmException {
+        LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
+        liveChannelVideoListRequest.setChannelId(1951952)
+                .setStartDate("2020-01-01")
+                .setEndDate("2020-10-14")
+                .setSessionId(null);
+        LiveChannelVideoListResponse liveChannelVideoListResponse = new LiveChannelServiceImpl().listChannelVideo(
+                liveChannelVideoListRequest);
+        Assert.assertNotNull(liveChannelVideoListResponse);
+        List<LiveChannelVideoListResponse.ChannelVedioInfo> channelVedioInfos =
+                liveChannelVideoListResponse.getChannelVedioInfos();
+        Assert.assertNotNull(channelVedioInfos);
+        Assert.assertTrue(channelVedioInfos.size() > 0);
+        return channelVedioInfos.get(0).getUrl();
     }
     
 }

@@ -13,11 +13,17 @@ import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledRequest;
+import net.polyv.live.entity.channel.LiveChannelPlaybackSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelStreamInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
+import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
+import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
+import net.polyv.live.entity.channel.LiveConvertChannelVideoListAsyncRequest;
+import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -34,6 +40,8 @@ import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
+import net.polyv.live.entity.channel.LiveMergeChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListResponse;
@@ -286,6 +294,81 @@ public interface ILiveChannelService {
      */
     LiveCreateChannelVideoPlaybackResponse addChannelVideoPlayback(
             LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 合并录制文件
+     * @param liveMergeChannelVideoRequest 合并录制文件请求实体
+     * @return 合并录制文件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String mergeChannelVideo(LiveMergeChannelVideoRequest liveMergeChannelVideoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 异步合并直播录制文件
+     * @param liveMergeChannelVideoAsyncRequest 异步合并直播录制文件请求实体
+     * @return 异步合并直播录制文件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String mergeChannelVideoAsync(LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 异步批量转存录制文件到点播
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/lzhf/async-convert/
+     * @param liveConvertChannelVideoListAsyncRequest 异步批量转存录制文件到点播晴天实体
+     * @return 异步批量转存录制文件到点播返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String convertChannelVideoListAsync(LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道录制视频信息
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/recordfilesinfo/#fileUrl
+     * @param liveChannelVideoListRequest 查询频道录制视频信息请求实体
+     * @return 查询频道录制视频信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelVideoListResponse listChannelVideo(LiveChannelVideoListRequest liveChannelVideoListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 同步转存录制文件到点播
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/livetovod/
+     * @param liveConvertChannelVideoRequest 同步转存录制文件到点播请求实体
+     * @return 同步转存录制文件到点播返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String convertChannelVideo(LiveConvertChannelVideoRequest liveConvertChannelVideoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置频道回放设置
+     * API地址：http://api.polyv.net/live/v3/channel/playback/set-setting
+     * @param liveChannelPlaybackSettingRequest 设置频道回放设置请求实体
+     * @return 设置频道回放设置返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String channelPlaybackSetting(LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置后台回放开关
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/setplaybackenabled/
+     * @param liveChannelPlaybackEnabledRequest 设置后台回放开关请求实体
+     * @return 设置后台回放开关返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Integer channelPlayBackEnabledSetting(LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

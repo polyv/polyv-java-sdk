@@ -41,6 +41,7 @@ import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveMergeChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListResponse;
@@ -412,8 +413,8 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     }
     
     /**
-     * 查询频道实时推流信息(讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常)，API地址：https://dev.polyv
-     * .net/2019/liveproduct/l-api/zbglgn/hqzbxx/get-stream-info/
+     * 查询频道实时推流信息(讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常)，
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/hqzbxx/get-stream-info/
      * @param liveChannelStreamInfoRequest 查询频道实时推流信息请求实体
      * @return 查询频道实时推流信息返回实体
      * @throws IOException 异常
@@ -443,6 +444,24 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse = this.basePost(url,
                 liveCreateChannelVideoPlaybackRequest, LiveCreateChannelVideoPlaybackResponse.class);
         return liveCreateChannelVideoPlaybackResponse;
+    }
+    
+    /**
+     * 合并录制文件(由于同步上传影响性能，暂时不对外提供)
+     * 注意：urls 和 fileIds 参数不能同时不传；两个参数都传时，urls生效。
+     * API地址：
+     * @param liveMergeChannelVideoRequest 合并录制文件请求实体
+     * @return 合并录制文件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String mergeChannelVideo(LiveMergeChannelVideoRequest liveMergeChannelVideoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_RECORD_FILE_MERGE_URL,
+                liveMergeChannelVideoRequest.getChannelId());
+        String liveMergeChannelVideoResponse = this.basePost(url, liveMergeChannelVideoRequest, String.class);
+        return liveMergeChannelVideoResponse;
     }
     
 }

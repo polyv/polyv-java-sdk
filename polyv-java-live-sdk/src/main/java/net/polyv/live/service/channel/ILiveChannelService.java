@@ -321,7 +321,7 @@ public interface ILiveChannelService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String convertChannelVideo(LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest)
+    String convertChannelVideoListAsync(LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

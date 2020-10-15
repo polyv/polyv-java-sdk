@@ -493,7 +493,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String convertChannelVideo(LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest)
+    public String convertChannelVideoListAsync(LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_RECORD_CONVERT_URL;
         String liveConvertChannelVideoResponse = this.basePost(url, liveConvertChannelVideoListAsyncRequest, String.class);

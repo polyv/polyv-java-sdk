@@ -1070,22 +1070,23 @@ public class ChannelTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    @Test
-    public void testConvertChannelVideo() throws IOException, NoSuchAlgorithmException {
-        LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest = new LiveConvertChannelVideoListAsyncRequest();
-        liveConvertChannelVideoListAsyncRequest.setChannelId(1951952)
-                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
-                .setFileName("删除-直播录制转点播")
-                .setCataId(null)
-                .setCallbackUrl(null);
-        String liveConvertChannelVideoResponse = new LiveChannelServiceImpl().convertChannelVideo
-        (liveConvertChannelVideoListAsyncRequest);
-        Assert.assertNotNull(liveConvertChannelVideoResponse);
-        if ("submit success".equals(liveConvertChannelVideoResponse)) {
-            //to do something ......
-            log.debug(String.format("测试异步批量转存录制文件到点播,具体是否成功以回调为准%s", liveConvertChannelVideoResponse));
-        }
-    }
+//    @Test
+//    public void testConvertChannelVideoListAsync() throws IOException, NoSuchAlgorithmException {
+//        LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest =
+//                new LiveConvertChannelVideoListAsyncRequest();
+//        liveConvertChannelVideoListAsyncRequest.setChannelId(1951952)
+//                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+//                .setFileName("删除-直播录制转点播")
+//                .setCataId(null)
+//                .setCallbackUrl(null);
+//        String liveConvertChannelVideoResponse = new LiveChannelServiceImpl().convertChannelVideoListAsync(
+//                liveConvertChannelVideoListAsyncRequest);
+//        Assert.assertNotNull(liveConvertChannelVideoResponse);
+//        if ("submit success".equals(liveConvertChannelVideoResponse)) {
+//            //to do something ......
+//            log.debug(String.format("测试异步批量转存录制文件到点播,具体是否成功以回调为准%s", liveConvertChannelVideoResponse));
+//        }
+//    }
     
     /**
      * 测试查询频道录制视频信息
@@ -1107,7 +1108,5 @@ public class ChannelTest extends BaseTest {
             log.debug(String.format("查询频道录制视频信息成功%s", JSON.toJSONString(liveChannelVideoListResponse)));
         }
     }
-    
-    
     
 }

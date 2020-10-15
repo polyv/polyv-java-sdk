@@ -1343,3 +1343,46 @@ liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSet
 | resolution       | 分辨率                                         |
 | channelSessionId | 直播的场次ID                                   |
 | fileName         | 录制文件名称                                   |
+
+### 设置后台回放开关
+
+#### 描述
+```
+能够控制单个/全部频道的回放开关，开启以及关闭。
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+channelId不设置表示所有频道执行该操作
+#### 代码示例
+```java
+@Test
+    public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
+        liveChannelPlaybackEnabledRequest.setChannelId(channelId).setPlayBackEnabled("Y");
+        Integer liveChannelPlaybackEnabledResponse = new LiveChannelServiceImpl().channelPlayBackEnabledSetting(liveChannelPlaybackEnabledRequest);
+        Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
+        if (liveChannelPlaybackEnabledResponse != null) {
+            //to do something ......
+            log.debug(String.format("测试设置后台回放开关成功%s", liveChannelPlaybackEnabledResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置后台回放开关](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否设置后台回放开关成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名          | 必选 | 类型   | 说明                                                         |
+| --------------- | ---- | ------ | ------------------------------------------------------------ |
+| playBackEnabled | 是   | string | 回放开关是开/关的状态，值为Y/N，必填                         |
+| channelId       | 否   | int    | 频道ID，非必填，不填添加该用户的所有频道ID的回放开关都设置为开/关 |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 响应结果 |

@@ -1,4 +1,4 @@
-package net.polyv.service;
+package net.polyv.vod.service;
 
 import net.polyv.vod.config.VodGlobalConfig;
 

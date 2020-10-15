@@ -18,6 +18,7 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelStreamInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
+import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -310,4 +311,14 @@ public interface ILiveChannelService {
     String mergeChannelVideoAsync(LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest)
             throws IOException, NoSuchAlgorithmException;
     
+    /**
+     * 异步批量转存录制文件到点播
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/lzhf/async-convert/
+     * @param liveConvertChannelVideoRequest 异步批量转存录制文件到点播晴天实体
+     * @return 异步批量转存录制文件到点播返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String convertChannelVideo(LiveConvertChannelVideoRequest liveConvertChannelVideoRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

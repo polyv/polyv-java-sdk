@@ -1154,7 +1154,9 @@ liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSet
 ### 异步合并直播录制文件
 
 #### 描述
+```
 异步合并直播录制文件
+```
 #### 调用约束
 
 接口调用有频率限制，[详细请查看](../limit.md)
@@ -1218,3 +1220,67 @@ liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSet
 | fileUrl  | 合并后的m3u8的地址，成功时返回                               |
 | fileName | 合并后的文件名称，成功时返回                                 |
 | sign     | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 |
+
+### 异步批量转存录制文件到点播
+
+#### 描述
+```
+用于批量转存直播录制文件到回放列表
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../notice.md)
+
+#### 代码示例
+```java
+@Test
+    public void testConvertChannelVideo() throws IOException, NoSuchAlgorithmException {
+        LiveConvertChannelVideoRequest liveConvertChannelVideoRequest = new LiveConvertChannelVideoRequest();
+        liveConvertChannelVideoRequest.setChannelId(channelId)
+                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+                .setFileName("删除-直播录制转点播")
+                .setCataId(null)
+                .setCallbackUrl(null);
+        String liveConvertChannelVideoResponse = new LiveChannelServiceImpl().convertChannelVideo(liveConvertChannelVideoRequest);
+        Assert.assertNotNull(liveConvertChannelVideoResponse);
+        if ("submit success".equals(liveConvertChannelVideoResponse)) {
+            //to do something ......
+            log.debug(String.format("测试异步批量转存录制文件到点播,具体是否成功以回调为准%s", liveConvertChannelVideoResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-异步批量转存录制文件到点播](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+如果设置了callbackUrl，需要在对应地址中处理回调结果，回调Json如下(参数描述见回调对象描述)：
+```
+
+```
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名      | 必选 | 类型   | 说明                                            |
+| ----------- | ---- | ------ | ----------------------------------------------- |
+| channelId   | 是   | string | 频道ID                                          |
+| fileIds     | 是   | string | 要转存的录制视频文件ID，多个id用英文逗号, 分隔  |
+| fileName    | 否   | String | 转存后的文件名，目前暂不支持传多个文件名        |
+| cataId      | 否   | long   | 转存到点播的目录ID, 默认为点播的根目录ID        |
+| callbackUrl | 否   | string | 转存成功时候回调通知的url，通知的相关参数见附录 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| data   | 成功响应时为相关的信息 "processing." 合并任务正在处理中  "submit success." 合并任务提交成功 |
+
+#### 回调对象描述
+
+| 参数      | 说明                                                         |
+| --------- | ------------------------------------------------------------ |
+| status    | 接口处理结果，取值：success（成功），error（出错）           |
+| code      | 错误码,userExpired-用户已过期；spaceOverSize-点播空间不足；unknown-未知异常 |
+| userId    | 用户id                                                       |
+| channelId | 频道号                                                       |
+| fileId    | 转存的文件ID                                                 |
+| sign      | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 |
+| timestamp | 13位时间戳                                                   |

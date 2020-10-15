@@ -28,6 +28,7 @@ import net.polyv.live.entity.channel.LiveChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoListAsyncRequest;
+import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -520,6 +521,23 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         LiveChannelVideoListResponse liveChannelVideoListResponse = new LiveChannelVideoListResponse();
         liveChannelVideoListResponse.setChannelVedioInfos(Arrays.asList(channelVedioInfos));
         return liveChannelVideoListResponse;
+    }
+    
+    /**
+     * 同步转存录制文件到点播，已经转存的视频再次调用会提示record already convert
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/livetovod/
+     * @param liveConvertChannelVideoRequest 同步转存录制文件到点播请求实体
+     * @return 同步转存录制文件到点播返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String convertChannelVideo(LiveConvertChannelVideoRequest liveConvertChannelVideoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveConvertChannelVideoRequest.setUserId(LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_RECORD_FILE_CONVERT_URL,liveConvertChannelVideoRequest.getChannelId());
+        String liveConvertChannelVideoResponse = this.basePost(url, liveConvertChannelVideoRequest, String.class);
+        return liveConvertChannelVideoResponse;
     }
     
 }

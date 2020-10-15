@@ -19,6 +19,7 @@ import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
@@ -558,6 +559,22 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         String url = LiveURL.CHANNEL_PLAYBACK_SETTING_URL;
         String liveChannelPlaybackSettingResponse = this.basePost(url, liveChannelPlaybackSettingRequest, String.class);
         return liveChannelPlaybackSettingResponse;
+    }
+    
+    /**
+     * 设置后台回放开关
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/setplaybackenabled/
+     * @param liveChannelPlaybackEnabledRequest 设置后台回放开关请求实体
+     * @return 设置后台回放开关返回实体,成功返回频道id
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Integer channelPlayBackEnabledSetting(LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveChannelPlaybackEnabledRequest.setUserId(LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PLAYBACK_SET_URL,liveChannelPlaybackEnabledRequest.getUserId());
+        return this.basePost(url,liveChannelPlaybackEnabledRequest,Integer.class);
     }
     
 }

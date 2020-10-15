@@ -23,7 +23,7 @@ import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
-import net.polyv.live.entity.channel.LiveChannelPlaybackSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
@@ -1130,5 +1130,22 @@ public class ChannelTest extends BaseTest {
 //            log.debug(String.format("设置频道回放设置成功%s", JSON.toJSONString(liveChannelPlaybackSettingResponse)));
 //        }
 //    }
+    
+    /**
+     * 测试设置后台回放开关
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
+        liveChannelPlaybackEnabledRequest.setChannelId(1951952).setPlayBackEnabled("Y");
+        Integer liveChannelPlaybackEnabledResponse = new LiveChannelServiceImpl().channelPlayBackEnabledSetting(liveChannelPlaybackEnabledRequest);
+        Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
+        if (liveChannelPlaybackEnabledResponse != null) {
+            //to do something ......
+            log.debug(String.format("测试设置后台回放开关成功%s", liveChannelPlaybackEnabledResponse));
+        }
+    }
     
 }

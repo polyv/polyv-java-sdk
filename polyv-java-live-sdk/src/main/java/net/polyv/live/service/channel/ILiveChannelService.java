@@ -34,6 +34,7 @@ import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
@@ -297,6 +298,16 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     String mergeChannelVideo(LiveMergeChannelVideoRequest liveMergeChannelVideoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 异步合并直播录制文件
+     * @param liveMergeChannelVideoAsyncRequest 异步合并直播录制文件请求实体
+     * @return 异步合并直播录制文件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String mergeChannelVideoAsync(LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

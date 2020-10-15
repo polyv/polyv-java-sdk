@@ -44,6 +44,8 @@ import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
+import net.polyv.live.entity.channel.LiveMergeChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListResponse;
@@ -65,7 +67,7 @@ public class ChannelTest extends BaseTest {
         String appId = "frlr1zazn3";
         String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
         String userId = "1b448be323";
-        LiveGlobalConfig.init(appId, userId, appSecret);
+        LiveGlobalConfig.init(appId, userId, appSecret, 60 * 10000, 60);
         System.out.println("--初始化完成--");
     }
     
@@ -1036,8 +1038,34 @@ public class ChannelTest extends BaseTest {
 //        Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
 //        if (liveCreateChannelVideoPlaybackResponse != null) {
 //            //to do something ......
-//            log.debug(String.format("批量查询频道直播流状态成功%s", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse)));
+//            log.debug(String.format("测试将点播中的视频添加到视频库成功%s", JSON.toJSONString
+//            (liveCreateChannelVideoPlaybackResponse)));
 //        }
 //    }
+    
+    //
+    
+    /**
+     * 测试异步合并直播录制文件
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
+        LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
+        liveMergeChannelVideoAsyncRequest.setChannelId(1951952)
+                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+                .setFileName("测试合并-可删除")
+                .setCallbackUrl(null)
+                .setAutoConvert("Y")
+                .setMergeMp4("Y");
+        String liveMergeChannelVideoAsyncResponse = new LiveChannelServiceImpl().mergeChannelVideoAsync(
+                liveMergeChannelVideoAsyncRequest);
+        Assert.assertNotNull(liveMergeChannelVideoAsyncResponse);
+        if ("submit success".equals(liveMergeChannelVideoAsyncResponse)) {
+            //to do something ......
+            log.debug(String.format("测试异步合并直播录制文件,具体是否成功以回调为准%s", liveMergeChannelVideoAsyncResponse));
+        }
+    }
     
 }

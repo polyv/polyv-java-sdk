@@ -1150,3 +1150,71 @@ liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSet
 | mergeInfo        | 视频合并信息                                               |
 | startTime        | 直播开始时间                                               |
 | liveType         | 回放视频的场景类型                                         |
+
+### 异步合并直播录制文件
+
+#### 描述
+异步合并直播录制文件
+#### 调用约束
+
+接口调用有频率限制，[详细请查看](../limit.md)
+
+```
+1.该接口为异步处理，如果当前提交的文件如果正在处理，会返回 data: processing
+```
+
+#### 代码示例
+```java
+	@Test
+    public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
+        LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
+        liveMergeChannelVideoAsyncRequest.setChannelId(channelId)
+                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+                .setFileName("测试合并-可删除")
+                .setCallbackUrl(null)
+                .setAutoConvert("Y")
+                .setMergeMp4("Y");
+        String liveMergeChannelVideoAsyncResponse = new LiveChannelServiceImpl().mergeChannelVideoAsync(
+                liveMergeChannelVideoAsyncRequest);
+        Assert.assertNotNull(liveMergeChannelVideoAsyncResponse);
+        if ("submit success".equals(liveMergeChannelVideoAsyncResponse)) {
+            //to do something ......
+            log.debug(String.format("测试异步合并直播录制文件,具体是否成功以回调为准%s", liveMergeChannelVideoAsyncResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-异步合并直播录制文件](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+如果设置了callbackUrl，需要在对应地址中处理回调结果，回调Json如下(参数描述见回调对象描述)：
+```
+
+```
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名      | 必选 | 类型   | 说明                                                  |
+| ----------- | ---- | ------ | ----------------------------------------------------- |
+| channelId   | 是   | int    | 频道ID                                                |
+| fileIds     | 是   | string | 要合并的录制视频文件ID，多个id用英文逗号, 分隔        |
+| fileName    | 否   | String | 合并后的视频的文件名                                  |
+| callbackUrl | 否   | string | 合并成功或失败回调的url，可以带上自定义参数           |
+| autoConvert | 否   | string | 传入Y，自动转存到对应点播分类下(直播回放-频道号-场次) |
+| mergeMp4    | 否   | string | 传Y合并MP4文件，传N或者不传合并m3u8文件               |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| data   | 成功响应时为相关的信息 "processing." 合并任务正在处理中  "submit success." 合并任务提交成功 |
+
+#### 回调对象描述
+
+| 参数     | 说明                                                         |
+| -------- | ------------------------------------------------------------ |
+| status   | 接口处理结果，取值：success（成功），error（出错）           |
+| fileId   | 合并后的文件ID，成功时返回                                   |
+| fileIds  | 合并前的文件ID                                               |
+| fileUrl  | 合并后的m3u8的地址，成功时返回                               |
+| fileName | 合并后的文件名称，成功时返回                                 |
+| sign     | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 |

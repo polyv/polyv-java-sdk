@@ -166,6 +166,12 @@ public class LiveURL {
             BASE_URI + "v2/channel/recordFile/" + PARAM_REPLACE_CHAR + "/merge";
     
     /**
+     * 异步合并直播录制文件
+     */
+    public static final String CHANNEL_RECORD_FILE_MERGE_ASYNC_URL =
+            BASE_URI + "v3/channel/record/merge";
+    
+    /**
      * 频道某段时间的直播统计数据
      */
     public static final String CHANNEL_DAILY_SUMMARY_URL =

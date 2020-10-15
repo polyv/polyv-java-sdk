@@ -41,6 +41,7 @@ import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
@@ -449,7 +450,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     /**
      * 合并录制文件(由于同步上传影响性能，暂时不对外提供)
      * 注意：urls 和 fileIds 参数不能同时不传；两个参数都传时，urls生效。
-     * API地址：
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/lzhf/recordfile-merge/
      * @param liveMergeChannelVideoRequest 合并录制文件请求实体
      * @return 合并录制文件返回实体
      * @throws IOException 异常
@@ -462,6 +463,22 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
                 liveMergeChannelVideoRequest.getChannelId());
         String liveMergeChannelVideoResponse = this.basePost(url, liveMergeChannelVideoRequest, String.class);
         return liveMergeChannelVideoResponse;
+    }
+    
+    /**
+     * 异步合并直播录制文件
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/lzhf/async-merge/
+     * @param liveMergeChannelVideoAsyncRequest 异步合并直播录制文件请求实体
+     * @return 异步合并直播录制文件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String mergeChannelVideoAsync(LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_RECORD_FILE_MERGE_ASYNC_URL;
+        String liveMergeChannelVideoAsyncResponse = this.basePost(url, liveMergeChannelVideoAsyncRequest, String.class);
+        return liveMergeChannelVideoAsyncResponse;
     }
     
 }

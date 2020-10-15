@@ -333,6 +333,11 @@ public class LiveURL {
     public static final String CHANNEL_VIDEO_PLAYBACK_ADD_URL = BASE_URI + "v3/channel/playback/add";
     
     /**
+     * 设置频道回放设置
+     */
+    public static final String CHANNEL_PLAYBACK_SETTING_URL = BASE_URI + "v3/channel/playback/set-setting";
+    
+    /**
      * 400错误码
      */
     public static final int CODE_400 = 400;

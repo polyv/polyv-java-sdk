@@ -23,12 +23,12 @@ import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelPlaybackSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
-import net.polyv.live.entity.channel.LiveConvertChannelVideoListAsyncRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -39,10 +39,10 @@ import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
-import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
-import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
+import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListResponse;
@@ -1108,5 +1108,27 @@ public class ChannelTest extends BaseTest {
             log.debug(String.format("查询频道录制视频信息成功%s", JSON.toJSONString(liveChannelVideoListResponse)));
         }
     }
+    
+    /**
+     * 测试设置频道回放设置
+     * TODO 未通过测试
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+//    public void testChannelPlaybackSetting() throws IOException, NoSuchAlgorithmException {
+//        LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest = new LiveChannelPlaybackSettingRequest();
+//        liveChannelPlaybackSettingRequest.setChannelId(1951952)
+//                .setPlaybackEnabled("Y")
+//                .setType("single")
+//                .setOrigin("playback")
+//                .setVideoId(null);
+//        String liveChannelPlaybackSettingResponse = new LiveChannelServiceImpl().channelPlaybackSetting(liveChannelPlaybackSettingRequest);
+//        Assert.assertNotNull(liveChannelPlaybackSettingResponse);
+//        if (liveChannelPlaybackSettingResponse != null) {
+//            //to do something ......
+//            log.debug(String.format("设置频道回放设置成功%s", JSON.toJSONString(liveChannelPlaybackSettingResponse)));
+//        }
+//    }
     
 }

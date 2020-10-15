@@ -19,6 +19,7 @@ import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelPlaybackSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
@@ -494,10 +495,12 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String convertChannelVideoListAsync(LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest)
+    public String convertChannelVideoListAsync(
+            LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_RECORD_CONVERT_URL;
-        String liveConvertChannelVideoResponse = this.basePost(url, liveConvertChannelVideoListAsyncRequest, String.class);
+        String liveConvertChannelVideoResponse = this.basePost(url, liveConvertChannelVideoListAsyncRequest,
+                String.class);
         return liveConvertChannelVideoResponse;
     }
     
@@ -535,9 +538,26 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     public String convertChannelVideo(LiveConvertChannelVideoRequest liveConvertChannelVideoRequest)
             throws IOException, NoSuchAlgorithmException {
         liveConvertChannelVideoRequest.setUserId(LiveGlobalConfig.USER_ID);
-        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_RECORD_FILE_CONVERT_URL,liveConvertChannelVideoRequest.getChannelId());
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_RECORD_FILE_CONVERT_URL,
+                liveConvertChannelVideoRequest.getChannelId());
         String liveConvertChannelVideoResponse = this.basePost(url, liveConvertChannelVideoRequest, String.class);
         return liveConvertChannelVideoResponse;
+    }
+    
+    /**
+     * 设置频道回放设置
+     * API地址：http://api.polyv.net/live/v3/channel/playback/set-setting
+     * @param liveChannelPlaybackSettingRequest 设置频道回放设置请求实体
+     * @return 设置频道回放设置返回实体，true为成功
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String channelPlaybackSetting(LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_PLAYBACK_SETTING_URL;
+        String liveChannelPlaybackSettingResponse = this.basePost(url, liveChannelPlaybackSettingRequest, String.class);
+        return liveChannelPlaybackSettingResponse;
     }
     
 }

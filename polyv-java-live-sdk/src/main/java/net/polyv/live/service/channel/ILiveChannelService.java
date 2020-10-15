@@ -13,6 +13,7 @@ import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelPlaybackSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
@@ -346,4 +347,16 @@ public interface ILiveChannelService {
      */
     String convertChannelVideo(LiveConvertChannelVideoRequest liveConvertChannelVideoRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置频道回放设置
+     * API地址：http://api.polyv.net/live/v3/channel/playback/set-setting
+     * @param liveChannelPlaybackSettingRequest 设置频道回放设置请求实体
+     * @return 设置频道回放设置返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String channelPlaybackSetting(LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
 }

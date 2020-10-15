@@ -25,6 +25,8 @@ import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelStreamInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelStreamStatusResponse;
+import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
+import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
@@ -496,6 +498,28 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         String url = LiveURL.CHANNEL_RECORD_CONVERT_URL;
         String liveConvertChannelVideoResponse = this.basePost(url, liveConvertChannelVideoRequest, String.class);
         return liveConvertChannelVideoResponse;
+    }
+    
+    /**
+     * 查询频道录制视频信息
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/recordfilesinfo/#fileUrl
+     * @param liveChannelVideoListRequest 查询频道录制视频信息请求实体
+     * @return 查询频道录制视频信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelVideoListResponse listChannelVideo(LiveChannelVideoListRequest liveChannelVideoListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveChannelVideoListRequest.setUserId(LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_RECORD_FILES_URL, liveChannelVideoListRequest.getChannelId());
+        LiveChannelVideoListResponse.ChannelVedioInfo[] channelVedioInfos = this.baseGet(url,
+                liveChannelVideoListRequest, LiveChannelVideoListResponse.ChannelVedioInfo[].class);
+        channelVedioInfos =
+                channelVedioInfos == null ? new LiveChannelVideoListResponse.ChannelVedioInfo[]{} : channelVedioInfos;
+        LiveChannelVideoListResponse liveChannelVideoListResponse = new LiveChannelVideoListResponse();
+        liveChannelVideoListResponse.setChannelVedioInfos(Arrays.asList(channelVedioInfos));
+        return liveChannelVideoListResponse;
     }
     
 }

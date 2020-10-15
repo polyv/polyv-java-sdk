@@ -18,6 +18,8 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelStreamInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
+import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
+import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
@@ -320,5 +322,16 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     String convertChannelVideo(LiveConvertChannelVideoRequest liveConvertChannelVideoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道录制视频信息
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/recordfilesinfo/#fileUrl
+     * @param liveChannelVideoListRequest 查询频道录制视频信息请求实体
+     * @return 查询频道录制视频信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelVideoListResponse listChannelVideo(LiveChannelVideoListRequest liveChannelVideoListRequest)
             throws IOException, NoSuchAlgorithmException;
 }

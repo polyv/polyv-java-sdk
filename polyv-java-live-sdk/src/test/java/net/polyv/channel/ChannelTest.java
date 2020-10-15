@@ -28,6 +28,8 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelStreamInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
+import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
+import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
@@ -1044,31 +1046,29 @@ public class ChannelTest extends BaseTest {
 //        }
 //    }
     
-    //
-    
     /**
      * 测试异步合并直播录制文件
      * TODO 删除生成的视频
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    @Test
-    public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
-        LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
-        liveMergeChannelVideoAsyncRequest.setChannelId(1951952)
-                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
-                .setFileName("测试合并-可删除")
-                .setCallbackUrl(null)
-                .setAutoConvert("Y")
-                .setMergeMp4("Y");
-        String liveMergeChannelVideoAsyncResponse = new LiveChannelServiceImpl().mergeChannelVideoAsync(
-                liveMergeChannelVideoAsyncRequest);
-        Assert.assertNotNull(liveMergeChannelVideoAsyncResponse);
-        if ("submit success".equals(liveMergeChannelVideoAsyncResponse)) {
-            //to do something ......
-            log.debug(String.format("测试异步合并直播录制文件,具体是否成功以回调为准%s", liveMergeChannelVideoAsyncResponse));
-        }
-    }
+//    @Test
+//    public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
+//        LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
+//        liveMergeChannelVideoAsyncRequest.setChannelId(1951952)
+//                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+//                .setFileName("测试合并-可删除")
+//                .setCallbackUrl(null)
+//                .setAutoConvert("Y")
+//                .setMergeMp4("Y");
+//        String liveMergeChannelVideoAsyncResponse = new LiveChannelServiceImpl().mergeChannelVideoAsync(
+//                liveMergeChannelVideoAsyncRequest);
+//        Assert.assertNotNull(liveMergeChannelVideoAsyncResponse);
+//        if ("submit success".equals(liveMergeChannelVideoAsyncResponse)) {
+//            //to do something ......
+//            log.debug(String.format("测试异步合并直播录制文件,具体是否成功以回调为准%s", liveMergeChannelVideoAsyncResponse));
+//        }
+//    }
     
     /**
      * 测试异步批量转存录制文件到点播
@@ -1076,22 +1076,42 @@ public class ChannelTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
+//    @Test
+//    public void testConvertChannelVideo() throws IOException, NoSuchAlgorithmException {
+//        LiveConvertChannelVideoRequest liveConvertChannelVideoRequest = new LiveConvertChannelVideoRequest();
+//        liveConvertChannelVideoRequest.setChannelId(1951952)
+//                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+//                .setFileName("删除-直播录制转点播")
+//                .setCataId(null)
+//                .setCallbackUrl(null);
+//        String liveConvertChannelVideoResponse = new LiveChannelServiceImpl().convertChannelVideo
+//        (liveConvertChannelVideoRequest);
+//        Assert.assertNotNull(liveConvertChannelVideoResponse);
+//        if ("submit success".equals(liveConvertChannelVideoResponse)) {
+//            //to do something ......
+//            log.debug(String.format("测试异步批量转存录制文件到点播,具体是否成功以回调为准%s", liveConvertChannelVideoResponse));
+//        }
+//    }
+    
+    /**
+     * 测试查询频道录制视频信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
     @Test
-    public void testConvertChannelVideo() throws IOException, NoSuchAlgorithmException {
-        LiveConvertChannelVideoRequest liveConvertChannelVideoRequest = new LiveConvertChannelVideoRequest();
-        liveConvertChannelVideoRequest.setChannelId(1951952)
-                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
-                .setFileName("删除-直播录制转点播")
-                .setCataId(null)
-                .setCallbackUrl(null);
-        String liveConvertChannelVideoResponse = new LiveChannelServiceImpl().convertChannelVideo(liveConvertChannelVideoRequest);
-        Assert.assertNotNull(liveConvertChannelVideoResponse);
-        if ("submit success".equals(liveConvertChannelVideoResponse)) {
+    public void testListChannelVideo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
+        liveChannelVideoListRequest.setChannelId(1951952)
+                .setStartDate("2020-01-01")
+                .setEndDate("2020-10-14")
+                .setSessionId(null);
+        LiveChannelVideoListResponse liveChannelVideoListResponse = new LiveChannelServiceImpl().listChannelVideo(
+                liveChannelVideoListRequest);
+        Assert.assertNotNull(liveChannelVideoListResponse);
+        if (liveChannelVideoListResponse != null) {
             //to do something ......
-            log.debug(String.format("测试异步批量转存录制文件到点播,具体是否成功以回调为准%s", liveConvertChannelVideoResponse));
+            log.debug(String.format("查询频道录制视频信息成功%s", JSON.toJSONString(liveChannelVideoListResponse)));
         }
     }
-    
-    
     
 }

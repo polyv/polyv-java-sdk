@@ -1284,3 +1284,62 @@ liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSet
 | fileId    | 转存的文件ID                                                 |
 | sign      | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 |
 | timestamp | 13位时间戳                                                   |
+
+### 查询频道录制视频信息
+
+#### 描述
+```
+查询频道录制视频信息
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+ @Test
+    public void testLiseChannelVideo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
+        liveChannelVideoListRequest.setChannelId(1951952)
+                .setStartDate("2020-01-01")
+                .setEndDate("2020-10-14")
+                .setSessionId(null);
+        LiveChannelVideoListResponse liveChannelVideoListResponse = new LiveChannelServiceImpl().listChannelVideo(
+                liveChannelVideoListRequest);
+        Assert.assertNotNull(liveChannelVideoListResponse);
+        if (liveChannelVideoListResponse != null) {
+            //to do something ......
+            log.debug(String.format("查询频道录制视频信息成功%s", liveChannelVideoListResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道录制视频信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否与后台数](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                           |
+| --------- | ---- | ------ | ---------------------------------------------- |
+| channelId | 是   | int    | 频道号                                         |
+| userId    | 是   | string | 直播账号ID                                     |
+| startDate | 否   | string | 开始日期（录制生成的日期），格式为：yyyy-MM-dd |
+| endDate   | 否   | string | 结束日期，格式为：yyyy-MM-dd                   |
+| sessionId | 否   | string | 直播的场次ID                                   |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名           | 说明                                           |
+| ---------------- | ---------------------------------------------- |
+| fileId           | 录制文件id                                     |
+| channelId        | 频道号                                         |
+| url              | 录制文件地址，优先返回mp4，若没有MP4会返回m3u8 |
+| startTime        | 开始录制时间                                   |
+| endTime          | 结束录制时间                                   |
+| fileSize         | 录制文件大小（单位：字节）                     |
+| duration         | 时长（单位：秒）                               |
+| bitrate          | 录制文件码率（单位：字节）                     |
+| resolution       | 分辨率                                         |
+| channelSessionId | 直播的场次ID                                   |
+| fileName         | 录制文件名称                                   |

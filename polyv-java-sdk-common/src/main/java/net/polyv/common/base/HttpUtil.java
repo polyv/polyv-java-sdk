@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -31,19 +32,18 @@ import net.polyv.common.constant.Constant;
 /**
  * HTTP请求工具类
  * @author: thomas
- 
  **/
 @Slf4j
 public class HttpUtil {
- 
+    
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为form表单形式
-     * @param url  请求地址
-     * @param pathVariable  对于restful请求，指定一个路径参数
-     * @param params  请求参数
+     * @param url 请求地址
+     * @param pathVariable 对于restful请求，指定一个路径参数
+     * @param params 请求参数
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
-     * @throws IOException 客户端和服务器读写通讯异常  
+     * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendPostDataByMap(String url, String pathVariable, Map<String, String> params, String encoding)
             throws IOException {
@@ -55,15 +55,15 @@ public class HttpUtil {
     
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为form表单形式
-     * @param url  请求地址
-     * @param params  请求参数
+     * @param url 请求地址
+     * @param params 请求参数
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendPostDataByMap(String url, Map<String, String> params, String encoding) throws IOException {
-        log.debug("http 请求 url: " + url + " , 请求参数: " + JSON.toJSON(params));
-        if(StringUtils.isBlank(encoding)){
+        log.debug(String.format("http 请求 url: %s , 请求参数: %s", url, JSON.toJSON(params)));
+        if (StringUtils.isBlank(encoding)) {
             encoding = "UTF-8";
         }
         String result = null;
@@ -78,7 +78,7 @@ public class HttpUtil {
             for (Map.Entry<String, String> entry : params.entrySet()) {
                 String value = entry.getValue();
                 //去掉如下判断会造成String类型的value为null时
-                if(value != null){
+                if (value != null) {
                     nameValuePairs.add(new BasicNameValuePair(entry.getKey(), value));
                 }
             }
@@ -93,10 +93,10 @@ public class HttpUtil {
         response = httpClient.execute(httpPost);
         // 获取结果实体
         // 判断网络连接状态码是否正常(0--200都数正常)
-        int statusCode = response.getStatusLine().getStatusCode();
+//        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
-            result = EntityUtils.toString(response.getEntity(), encoding);
-            log.debug("http 请求结果: " + result);
+        result = EntityUtils.toString(response.getEntity(), encoding);
+        log.debug(String.format("http 请求结果: %s", result));
 //        }
         try {
             if (null != response) {
@@ -111,15 +111,15 @@ public class HttpUtil {
     
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为json形式
-     * @param url  请求地址
-     * @param pathVariable  对于restful请求，指定一个路径参数
-     * @param params  请求参数Map
+     * @param url 请求地址
+     * @param pathVariable 对于restful请求，指定一个路径参数
+     * @param params 请求参数Map
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
      */
-    public static String sendPostDataByJson(String url, String pathVariable, Map<String,String> params, String encoding)
-            throws IOException {
+    public static String sendPostDataByJson(String url, String pathVariable, Map<String, String> params,
+            String encoding) throws IOException {
         if (StringUtils.isNotBlank(pathVariable)) {
             url = String.format(url, pathVariable);
         }
@@ -128,24 +128,23 @@ public class HttpUtil {
     
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为json形式
-     * @param url  请求地址
-     * @param params  请求参数Map
+     * @param url 请求地址
+     * @param params 请求参数Map
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
      */
-    public static String sendPostDataByJson(String url, Map<String,String> params, String encoding)
+    public static String sendPostDataByJson(String url, Map<String, String> params, String encoding)
             throws IOException {
         return sendPostDataByJson(url, JSON.toJSONString(params), encoding);
     }
     
     
- 
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为json形式
-     * @param url  请求地址
-     * @param pathVariable  对于restful请求，指定一个路径参数
-     * @param json  需要提交的json
+     * @param url 请求地址
+     * @param pathVariable 对于restful请求，指定一个路径参数
+     * @param json 需要提交的json
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
@@ -160,15 +159,15 @@ public class HttpUtil {
     
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为json形式
-     * @param url  请求地址
-     * @param json  需要提交的json
+     * @param url 请求地址
+     * @param json 需要提交的json
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendPostDataByJson(String url, String json, String encoding) throws IOException {
-        log.debug("http 请求 url: " + url + " , 请求参数: " + json);
-        if(StringUtils.isBlank(encoding)){
+        log.debug(String.format("http 请求 url: %s , 请求参数: %s", url, json));
+        if (StringUtils.isBlank(encoding)) {
             encoding = "UTF-8";
         }
         String result = null;
@@ -185,10 +184,10 @@ public class HttpUtil {
         CloseableHttpResponse response = httpClient.execute(httpPost);
         // 获取结果实体
         // 判断网络连接状态码是否正常(0--200都数正常)
-        int statusCode = response.getStatusLine().getStatusCode();
+//        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
-            result = EntityUtils.toString(response.getEntity(), encoding);
-            log.debug("http 请求结果: " + result);
+        result = EntityUtils.toString(response.getEntity(), encoding);
+        log.debug(String.format("http 请求结果: %s", result));
 //        }
         try {
             if (null != response) {
@@ -201,36 +200,35 @@ public class HttpUtil {
     }
     
     
-   
     /**
      * HTTP GET 请求处理逻辑
-     * @param url  请求地址
-     * @param pathVariable  对于restful请求，指定一个路径参数
+     * @param url 请求地址
+     * @param pathVariable 对于restful请求，指定一个路径参数
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendGetData(String url, String pathVariable, String encoding) throws IOException {
-        return sendGetData(url,pathVariable,null, encoding);
+        return sendGetData(url, pathVariable, null, encoding);
     }
     
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为json形式
-     * @param url  请求地址
-     * @param params  请求参数
+     * @param url 请求地址
+     * @param params 请求参数
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendGetData(String url, Map<String, Object> params, String encoding) throws IOException {
-        return sendGetData(url,null,params, encoding);
+        return sendGetData(url, null, params, encoding);
     }
     
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为json形式
-     * @param url  请求地址
-     * @param pathVariable  对于restful请求，指定一个路径参数
-     * @param params  请求参数
+     * @param url 请求地址
+     * @param pathVariable 对于restful请求，指定一个路径参数
+     * @param params 请求参数
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
@@ -240,28 +238,31 @@ public class HttpUtil {
         if (StringUtils.isNotBlank(pathVariable)) {
             url = String.format(url, pathVariable);
         }
-        String paramStr = null;
+        StringBuffer paramStringBuffer = new StringBuffer();
         if (null != params) {
-            for (String key : params.keySet()) {
-                paramStr = paramStr + key + "=" + params.get(key) + "&";
+            Iterator<Map.Entry<String, Object>> mapIterator = params.entrySet().iterator();
+            while (mapIterator.hasNext()) {
+                Map.Entry<String, Object> next = mapIterator.next();
+                paramStringBuffer.append(next.getKey()).append("=").append(next.getValue()).append("&");
             }
         }
+        String paramStr = paramStringBuffer.toString();
         if (StringUtils.isNotBlank(paramStr)) {
-            url = url + "?" + paramStr.substring(0, paramStr.length() - 1);
+            url += "?" + paramStr.substring(0, paramStr.length() - 1);
         }
         return sendGetData(url, encoding);
     }
     
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为json形式
-     * @param url  请求地址
+     * @param url 请求地址
      * @param encoding 编码字符集， 默认为 utf-8
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendGetData(String url, String encoding) throws IOException {
-        log.debug("http 请求 url: " + url);
-        if(StringUtils.isBlank(encoding)){
+        log.debug(String.format("http 请求 url: %s", url));
+        if (StringUtils.isBlank(encoding)) {
             encoding = "UTF-8";
         }
         String result = null;
@@ -274,10 +275,10 @@ public class HttpUtil {
         CloseableHttpResponse response = httpClient.execute(httpGet);
         // 获取结果实体
         // 判断网络连接状态码是否正常(0--200都数正常)
-        int statusCode = response.getStatusLine().getStatusCode();
+//        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
-            result = EntityUtils.toString(response.getEntity(), encoding);
-            log.debug("http 请求结果: " + result);
+        result = EntityUtils.toString(response.getEntity(), encoding);
+        log.debug(String.format("http 请求结果: %s", result));
 //        }
         try {
             if (null != response) {
@@ -290,21 +291,20 @@ public class HttpUtil {
     }
     
     
-    
     /**
      * HTTP 传输文件 需要和服务器端联调测试
      * todo：待联调测试
-     * @param url  服务器地址
+     * @param url 服务器地址
      * @param params 需要同步上传的参数
      * @param fileMap 文件列表
      * @param encoding 字符集编码，默认UTF-8
-     * @return  HTTP 返回的内容
+     * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
      */
     private static String sendUploadFile(String url, Map<String, String> params, Map<String, String> fileMap,
             String encoding) throws IOException {
-        log.debug("http 请求 url: " + url + " , 请求参数: " + JSON.toJSONString(params));
-        if(StringUtils.isBlank(encoding)){
+        log.debug(String.format("http 请求 url: %s , 请求参数: %s", url, JSON.toJSONString(params)));
+        if (StringUtils.isBlank(encoding)) {
             encoding = "UTF-8";
         }
         String result = null;
@@ -327,10 +327,10 @@ public class HttpUtil {
         HttpEntity entity = entityBuilder.build();
         post.setEntity(entity);
         CloseableHttpResponse response = httpClient.execute(post);
-        int statusCode = response.getStatusLine().getStatusCode();
+//        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
-            result = EntityUtils.toString(response.getEntity(), encoding);
-            log.debug("http 请求结果: " + result);
+        result = EntityUtils.toString(response.getEntity(), encoding);
+        log.debug(String.format("http 请求结果: %s" , result));
 //        }
         try {
             if (null != response) {

@@ -20,7 +20,7 @@ public class LivePageCommonRequest extends LiveCommonRequest{
     /**
      * 页数，默认为1
      */
-    @ApiModelProperty(name="page",value  ="页数，默认为1",dataType = "Integer" ,example = "1" )
+    @ApiModelProperty(name="currentPage",value  ="页数，默认为1",dataType = "Integer" ,example = "1" )
     @JSONField(name="page")
     private Integer currentPage;
 

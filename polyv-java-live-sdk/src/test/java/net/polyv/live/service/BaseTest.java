@@ -128,14 +128,15 @@ public class BaseTest {
     
     /**
      * 获取回放videoIds
+     * @param channelId 频道id
      * @return
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    protected List<String> listChannelVideoIds() throws IOException, NoSuchAlgorithmException {
+    protected List<String> listChannelVideoIds(Integer channelId) throws IOException, NoSuchAlgorithmException {
         LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
                 new LiveListChannelVideoLibraryRequest();
-        liveListChannelVideoLibraryRequest.setChannelId(1951952).setListType("playback");
+        liveListChannelVideoLibraryRequest.setChannelId(channelId).setListType("playback");
         LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse =
                 new LiveChannelServiceImpl().listChannelVideoLibrary(
                 liveListChannelVideoLibraryRequest);

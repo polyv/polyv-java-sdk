@@ -25,6 +25,7 @@ import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledRequest;
+import net.polyv.live.entity.channel.LiveChannelPlaybackSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
@@ -34,6 +35,8 @@ import net.polyv.live.entity.channel.LiveChannelVideoSortRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackRequest;
+import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
@@ -1032,15 +1035,17 @@ public class ChannelTest extends BaseTest {
 //    public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
 //        LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest =
 //                new LiveCreateChannelVideoPlaybackRequest();
-//        liveCreateChannelVideoPlaybackRequest.setChannelId(1).setVid("").setSetAsDefault("N").setListType("playback");
+//        liveCreateChannelVideoPlaybackRequest.setChannelId(1958888)
+//                .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
+//                .setSetAsDefault("N")
+//                .setListType("playback");
 //        LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse =
 //                new LiveChannelServiceImpl().addChannelVideoPlayback(
 //                liveCreateChannelVideoPlaybackRequest);
 //        Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
 //        if (liveCreateChannelVideoPlaybackResponse != null) {
 //            //to do something ......
-//            log.debug("测试将点播中的视频添加到视频库成功{}", JSON.toJSONString
-//            (liveCreateChannelVideoPlaybackResponse));
+//            log.debug("测试将点播中的视频添加到视频库成功{}", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse));
 //        }
 //    }
     
@@ -1115,26 +1120,27 @@ public class ChannelTest extends BaseTest {
     
     /**
      * 测试设置频道回放设置
-     * TODO 未通过测试
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
-//    public void testChannelPlaybackSetting() throws IOException, NoSuchAlgorithmException {
-//        LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest = new LiveChannelPlaybackSettingRequest();
-//        liveChannelPlaybackSettingRequest.setChannelId(1951952)
-//                .setPlaybackEnabled("Y")
-//                .setType("single")
-//                .setOrigin("playback")
-//                .setVideoId(null);
-//        String liveChannelPlaybackSettingResponse = new LiveChannelServiceImpl().channelPlaybackSetting
-//        (liveChannelPlaybackSettingRequest);
-//        Assert.assertNotNull(liveChannelPlaybackSettingResponse);
-//        if (liveChannelPlaybackSettingResponse != null) {
-//            //to do something ......
-//            log.debug("设置频道回放设置成功{}", JSON.toJSONString(liveChannelPlaybackSettingResponse));
-//        }
-//    }
+    @Test
+    public void testChannelPlaybackSetting() throws IOException, NoSuchAlgorithmException {
+        int channelId = 1951952;
+        List<String> videoIds = listChannelVideoIds(channelId);
+        LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest = new LiveChannelPlaybackSettingRequest();
+        liveChannelPlaybackSettingRequest.setChannelId(channelId)
+                .setPlaybackEnabled("Y")
+                .setType("single")
+                .setOrigin("playback")
+                .setVideoId(videoIds.get(0));
+        String liveChannelPlaybackSettingResponse = new LiveChannelServiceImpl().channelPlaybackSetting(
+                liveChannelPlaybackSettingRequest);
+        Assert.assertNotNull(liveChannelPlaybackSettingResponse);
+        if (liveChannelPlaybackSettingResponse != null) {
+            //to do something ......
+            log.debug("设置频道回放设置成功{}", JSON.toJSONString(liveChannelPlaybackSettingResponse));
+        }
+    }
     
     /**
      * 测试设置后台回放开关

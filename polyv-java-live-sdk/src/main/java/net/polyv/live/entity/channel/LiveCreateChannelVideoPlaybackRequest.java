@@ -37,13 +37,6 @@ public class LiveCreateChannelVideoPlaybackRequest extends LiveCommonRequest {
     private String vid;
     
     /**
-     * 签名，32位大写MD5值
-     */
-    @ApiModelProperty(name = "sign", value = "签名，32位大写MD5值", required = true)
-    @NotNull(message = "sign不能为空")
-    private String sign;
-    
-    /**
      * 添加到回放列表中的位置，Y
      */
     @ApiModelProperty(name = "setAsDefault", value = "添加到回放列表中的位置，Y", required = false)

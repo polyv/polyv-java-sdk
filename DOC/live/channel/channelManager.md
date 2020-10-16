@@ -1285,7 +1285,7 @@ liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSet
 | sign      | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 |
 | timestamp | 13位时间戳                                                   |
 
-### 查询频道录制视频信息
+<h3 id="查询频道录制视频信息">查询频道录制视频信息</h3>
 
 #### 描述
 ```
@@ -1619,3 +1619,91 @@ videoIds可通过查询视频库列表获取，代码如下：
 | startTime        | 开始时间     |
 | userId           | 用户ID       |
 | width            | 宽           |
+
+### 查询频道的回放开关状态
+
+#### 描述
+```
+用于获取频道的回放开关
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+@Test
+    public void testChannelPlayBackEnabledInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest =
+                new LiveChannelPlaybackEnabledInfoRequest();
+        liveChannelPlaybackEnabledInfoRequest.setChannelId(1951952);
+        String liveChannelPlaybackEnabledInfoResponse = new LiveChannelServiceImpl().channelPlayBackEnabledInfo(
+                liveChannelPlaybackEnabledInfoRequest);
+        Assert.assertNotNull(liveChannelPlaybackEnabledInfoResponse);
+        if (liveChannelPlaybackEnabledInfoResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道直播场次信息成功{}", liveChannelPlaybackEnabledInfoResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道的回放开关状态](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型 | 说明   |
+| --------- | ---- | ---- | ------ |
+| channelId | 是   | int  | 频道号 |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明                                     |
+| ------ | ---------------------------------------- |
+| data   | 成功响应时为回放开关，Y（开启）、N(关闭) |
+
+### 删除直播暂存中的录制文件
+
+#### 描述
+```
+根据开始录制时间删除频道下对应的的录制视频
+提交的开始录制时间参数（startTime）格式与
+【获取频道录制视频信息】接口中获取的返回结果的时间格式一致，为 yyyyMMddHHmmss，如：20180126174943
+sessionId和startTime不能同时为空，可单独提交某一参数。
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testDeleteChannelVideo() throws IOException, NoSuchAlgorithmException {
+        LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest = new LiveDeleteChannelVideoRequest();
+        liveDeleteChannelVideoRequest.setChannelId(1951952).setStartTime("20201016111234");
+        String liveDeleteChannelVideoResponse = new LiveChannelServiceImpl().deleteChannelVideo(
+                liveDeleteChannelVideoRequest);
+        Assert.assertNotNull(liveDeleteChannelVideoResponse);
+        if (liveDeleteChannelVideoResponse != null) {
+            //to do something ......
+            log.debug("测试删除直播暂存中的录制文件");
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-删除直播暂存中的录制文件](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                                         |
+| --------- | ---- | ------ | ------------------------------------------------------------ |
+| channelId | 是   | string | 签名，32位大写MD5值                                          |
+| sessionId | 否   | string | 录制视频的场次ID                                             |
+| startTime | 否   | string | 录制视频的开始录制时间，可从  [`获取频道录制信息`](#查询频道录制视频信息)接口中获取 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 暂无作用 |
+

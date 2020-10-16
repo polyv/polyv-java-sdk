@@ -51,7 +51,7 @@ public class AccountTest extends BaseTest {
     @Test
     public void testListAccountDetail() throws IOException, NoSuchAlgorithmException {
         LiveListAccountDetailRequest liveListAccountDetailRequest = new LiveListAccountDetailRequest();
-        liveListAccountDetailRequest.setPage(1);
+        liveListAccountDetailRequest.setCurrentPage(1);
         LiveListAccountDetailResponse liveListAccountDetailResponse = new LiveAccountServiceImpl().listAccountDetail(
                 liveListAccountDetailRequest);
         Assert.assertNotNull(liveListAccountDetailResponse);

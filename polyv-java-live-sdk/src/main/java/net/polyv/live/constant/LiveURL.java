@@ -338,6 +338,11 @@ public class LiveURL {
     public static final String CHANNEL_PLAYBACK_SETTING_URL = BASE_URI + "v3/channel/playback/set-setting";
     
     /**
+     * 设置视频库列表排序
+     */
+    public static final String CHANNEL_VIDEO_SORT_URL = BASE_URI + "v3/channel/playback/sort";
+    
+    /**
      * 400错误码
      */
     public static final int CODE_400 = 400;

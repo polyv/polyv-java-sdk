@@ -29,6 +29,7 @@ import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
+import net.polyv.live.entity.channel.LiveChannelVideoSortRequest;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoListAsyncRequest;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
@@ -599,4 +600,22 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         return liveListChannelVideoLibraryResponse;
     }
     
+    /**
+     * 设置视频库列表排序
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/lzhf/sort-playback/
+     * @param liveChannelVideoSortRequest 设置视频库列表排序请求体
+     * @return 设置视频库列表排序返回实体，""为成功
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String channelVideoSort(LiveChannelVideoSortRequest liveChannelVideoSortRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_VIDEO_SORT_URL;
+        Map<String, String> signMap = MapUtil.getSignMap(liveChannelVideoSortRequest);
+        signMap.put("channelId",liveChannelVideoSortRequest.getChannelId().toString());
+        String liveListChannelVideoLibraryResponse = this.basePostJson(url,signMap,liveChannelVideoSortRequest,String.class);
+//        String liveListChannelVideoLibraryResponse = this.basePost(url, liveChannelVideoSortRequest, String.class);
+        return liveListChannelVideoLibraryResponse;
+    }
 }

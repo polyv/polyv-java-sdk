@@ -1446,3 +1446,69 @@ channelId不设置表示所有频道执行该操作
 | mergeInfo        | 视频合并信息，后续补充                                       |
 | startTime        | 直播开始时间                                                 |
 | liveType         | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
+
+### 设置视频库列表排序
+
+#### 描述
+```
+用于排序回放列表。
+videoIds可通过查询视频库列表获取，代码如下：
+```
+<details>
+<summary>查看代码</summary>
+<pre>
+@Test
+    public void testListChannelVideoLibrary() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
+                new LiveListChannelVideoLibraryRequest();
+        liveListChannelVideoLibraryRequest.setChannelId(1951952).setListType("playback");
+        LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse =
+                new LiveChannelServiceImpl().listChannelVideoLibrary(
+                liveListChannelVideoLibraryRequest);
+        Assert.assertNotNull(liveListChannelVideoLibraryResponse);
+        if (liveListChannelVideoLibraryResponse != null) {
+            //to do something ......
+            log.debug("测试查询视频库列表成功{}", JSON.toJSONString(liveListChannelVideoLibraryResponse));
+        }
+    }
+</pre>
+</details>
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+@Test
+    public void testChannelVideoSort() throws IOException, NoSuchAlgorithmException {
+        LiveChannelVideoSortRequest liveChannelVideoSortRequest = new LiveChannelVideoSortRequest();
+        liveChannelVideoSortRequest.setChannelId(1951952)
+                .setVideoIds(videoIdList.toArray(new String[]{}))
+                .setListType("playback");
+        String liveChannelVideoSortResponse = new LiveChannelServiceImpl().channelVideoSort(
+                liveChannelVideoSortRequest);
+        Assert.assertNotNull(liveChannelVideoSortResponse);
+        if ("".equals(liveChannelVideoSortResponse)) {
+            //to do something ......
+            log.debug("测试设置视频库列表排序成功{}", JSON.toJSONString(liveChannelVideoSortResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置视频库列表排序](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否设置视频库列表排序成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型       | 说明                                                         |
+| --------- | ---- | ---------- | ------------------------------------------------------------ |
+| channelId | 是   | int        | 频道号                                                       |
+| videoIds  | 是   | string数组 | 完整回放视频ID列表,存放在请求体中,请求视频ID数量必须和回放列表数量一致，且不能少或者缺或者多 |
+| listType  | 否   | string     | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 响应结果 |
+

@@ -3,13 +3,11 @@ package net.polyv.live.service;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
 
-import com.alibaba.fastjson.JSON;
-
-import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
@@ -18,11 +16,12 @@ import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
+import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
 
 /**
  * @author: thomas
- 
  **/
 public class BaseTest {
 //    BaseTest(){
@@ -40,7 +39,8 @@ public class BaseTest {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    protected Integer createChannel(LiveChannelRequest liveChannelRequest) throws IOException, NoSuchAlgorithmException {
+    protected Integer createChannel(LiveChannelRequest liveChannelRequest)
+            throws IOException, NoSuchAlgorithmException {
         LiveChannelResponse liveChannelResponse = new LiveChannelServiceImpl().createChannel(liveChannelRequest);
         Assert.assertNotNull(liveChannelResponse);
         return liveChannelResponse.getChannelId();
@@ -54,7 +54,8 @@ public class BaseTest {
      */
     protected Integer createChannel() throws IOException, NoSuchAlgorithmException {
         LiveChannelRequest liveChannelRequest = new LiveChannelRequest().setName("test直播频道")
-                .setChannelPasswd("666888").setScene(LiveConstant.SceneType.PPT.getDesc());
+                .setChannelPasswd("666888")
+                .setScene(LiveConstant.SceneType.PPT.getDesc());
         return createChannel(liveChannelRequest);
     }
     
@@ -92,9 +93,9 @@ public class BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    protected String createSonChannel(Integer channelId)
-            throws IOException, NoSuchAlgorithmException {
-        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest().setChannelId(channelId)
+    protected String createSonChannel(Integer channelId) throws IOException, NoSuchAlgorithmException {
+        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest().setChannelId(
+                channelId)
                 .setRole("Guest")
                 .setNickname("sadboy")
                 .setActor("教授")
@@ -123,6 +124,31 @@ public class BaseTest {
         Assert.assertNotNull(channelVedioInfos);
         Assert.assertTrue(channelVedioInfos.size() > 0);
         return channelVedioInfos.get(0).getUrl();
+    }
+    
+    /**
+     * 获取回放videoIds
+     * @return
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    protected List<String> listChannelVideoIds() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
+                new LiveListChannelVideoLibraryRequest();
+        liveListChannelVideoLibraryRequest.setChannelId(1951952).setListType("playback");
+        LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse =
+                new LiveChannelServiceImpl().listChannelVideoLibrary(
+                liveListChannelVideoLibraryRequest);
+        Assert.assertNotNull(liveListChannelVideoLibraryResponse);
+        List<LiveListChannelVideoLibraryResponse.ChannelVideoLibrary> contents =
+                liveListChannelVideoLibraryResponse.getContents();
+        int size = contents.size();
+        Assert.assertTrue(size > 0);
+        List<String> videoIds = new ArrayList<>(size);
+        for (LiveListChannelVideoLibraryResponse.ChannelVideoLibrary temp : contents) {
+            videoIds.add(temp.getVideoId());
+        }
+        return videoIds;
     }
     
 }

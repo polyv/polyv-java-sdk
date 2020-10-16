@@ -3,6 +3,7 @@ package net.polyv.live.service;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Assert;
@@ -29,6 +30,7 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
+import net.polyv.live.entity.channel.LiveChannelVideoSortRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -84,7 +86,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelResponse);
         if (liveChannelResponse != null) {
             //to do something ......
-            log.debug("频道创建成功" + JSON.toJSONString(liveChannelResponse));
+            log.debug("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
         }
         
         //删除测试数据
@@ -128,7 +130,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelInitResponse);
         if (liveChannelInitResponse != null) {
             //to do something ......
-            log.debug("测试创建并初始化频道 验证码观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+            log.debug("测试创建并初始化频道 验证码观看创建成功{}", JSON.toJSONString(liveChannelInitResponse));
         }
         
         //删除测试数据
@@ -173,7 +175,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelInitResponse);
         if (liveChannelInitResponse != null) {
             //to do something ......
-            log.debug("测试创建并初始化频道 付费观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+            log.debug("测试创建并初始化频道 付费观看创建成功{}", JSON.toJSONString(liveChannelInitResponse));
         }
         
         //删除测试数据
@@ -215,7 +217,7 @@ public class ChannelTest extends BaseTest {
 //        Assert.assertNotNull(liveChannelInitResponse);
 //        if (liveChannelInitResponse != null) {
 //            //to do something ......
-//            log.debug("测试创建并初始化频道 白名单观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+//            log.debug("测试创建并初始化频道 白名单观看创建成功{}" , JSON.toJSONString(liveChannelInitResponse));
 //        }
 //    }
     
@@ -266,7 +268,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelInitResponse);
         if (liveChannelInitResponse != null) {
             //to do something ......
-            log.debug("测试创建并初始化频道 登记观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+            log.debug("测试创建并初始化频道 登记观看创建成功{}", JSON.toJSONString(liveChannelInitResponse));
         }
         
         //删除测试数据
@@ -309,7 +311,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelInitResponse);
         if (liveChannelInitResponse != null) {
             //to do something ......
-            log.debug("测试创建并初始化频道 自定义授权观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+            log.debug("测试创建并初始化频道 自定义授权观看创建成功{}", JSON.toJSONString(liveChannelInitResponse));
         }
         
         //删除测试数据
@@ -353,7 +355,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelInitResponse);
         if (liveChannelInitResponse != null) {
             //to do something ......
-            log.debug("测试创建并初始化频道 外部授权观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+            log.debug("测试创建并初始化频道 外部授权观看创建成功{}", JSON.toJSONString(liveChannelInitResponse));
         }
         
         //删除测试数据
@@ -395,7 +397,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelInitResponse);
         if (liveChannelInitResponse != null) {
             //to do something ......
-            log.debug("测试创建并初始化频道 直接授权观看创建成功" + JSON.toJSONString(liveChannelInitResponse));
+            log.debug("测试创建并初始化频道 直接授权观看创建成功{}", JSON.toJSONString(liveChannelInitResponse));
         }
         
         //删除测试数据
@@ -471,7 +473,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveCreateChannelListResponse);
         if (liveCreateChannelListResponse != null) {
             //to do something ......
-            log.debug("频道批量创建成功" + JSON.toJSONString(liveCreateChannelListResponse));
+            log.debug("频道批量创建成功{}", JSON.toJSONString(liveCreateChannelListResponse));
         }
         
         //删除测试数据
@@ -500,7 +502,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelDetailResponse);
         if ("true".equals(liveChannelDetailResponse)) {
             //to do something ......
-            log.debug(String.format("频道%s修改密码为%s成功%s", channelId, newPassword, liveChannelDetailResponse));
+            log.debug("频道{}修改密码为{}成功{}", channelId, newPassword, liveChannelDetailResponse);
         }
         
         //删除测试数据
@@ -526,7 +528,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelDetailResponse);
         if ("true".equals(liveChannelDetailResponse)) {
             //to do something ......
-            log.debug(String.format("频道%s修改scene为%s成功%s", channelId, value, liveChannelDetailResponse));
+            log.debug("频道{}修改scene为{}成功{}", channelId, value, liveChannelDetailResponse);
         }
         
         //删除测试数据
@@ -552,7 +554,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelDetailResponse);
         if ("true".equals(liveChannelDetailResponse)) {
             //to do something ......
-            log.debug(String.format("频道%s修改maxViewer为%s成功%s", channelId, value, liveChannelDetailResponse));
+            log.debug("频道{}修改maxViewer为{}成功{}", channelId, value, liveChannelDetailResponse);
         }
         
         //删除测试数据
@@ -575,7 +577,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveListChannelPPTRecordResponse);
         if (liveListChannelPPTRecordResponse != null) {
             //to do something ......
-            log.debug("查询课件重制任务列表信息成功" + JSON.toJSONString(liveListChannelPPTRecordResponse));
+            log.debug("查询课件重制任务列表信息成功{}", JSON.toJSONString(liveListChannelPPTRecordResponse));
         }
         
         //删除测试数据
@@ -599,7 +601,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(updateChannelPasswordResponse);
         if ("true".equals(updateChannelPasswordResponse)) {
             //to do something ......
-            log.debug("设置频道密码成功" + JSON.toJSONString(updateChannelPasswordResponse));
+            log.debug("设置频道密码成功{}", JSON.toJSONString(updateChannelPasswordResponse));
         }
         
         //删除测试数据
@@ -620,7 +622,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveDeleteChannelResponse);
         if ("true".equals(liveDeleteChannelResponse)) {
             //to do something ......
-            log.debug("删除直播频道成功" + JSON.toJSONString(liveDeleteChannelResponse));
+            log.debug("删除直播频道成功{}", JSON.toJSONString(liveDeleteChannelResponse));
         }
     }
     
@@ -641,7 +643,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveDeleteChannelListResponse);
         if ("true".equals(liveDeleteChannelListResponse)) {
             //to do something ......
-            log.debug("批量删除频道成功" + JSON.toJSONString(liveDeleteChannelListResponse));
+            log.debug("批量删除频道成功{}", JSON.toJSONString(liveDeleteChannelListResponse));
         }
     }
     
@@ -662,7 +664,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveCreateChannelTokenResponse);
         if ("success".equals(liveCreateChannelTokenResponse)) {
             //to do something ......
-            log.debug("设置频道单点登陆token成功" + JSON.toJSONString(liveCreateChannelTokenResponse));
+            log.debug("设置频道单点登陆token成功{}", JSON.toJSONString(liveCreateChannelTokenResponse));
         }
         
         //删除测试数据
@@ -686,7 +688,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelInfoResponse);
         if (liveChannelInfoResponse != null) {
             //to do something ......
-            log.debug("查询频道信息成功" + JSON.toJSONString(liveChannelInfoResponse));
+            log.debug("查询频道信息成功{}", JSON.toJSONString(liveChannelInfoResponse));
         }
         
         //删除测试数据
@@ -710,7 +712,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelBasicInfoResponse);
         if (liveChannelBasicInfoResponse != null) {
             //to do something ......
-            log.debug("查询频道基本信息成功" + JSON.toJSONString(liveChannelBasicInfoResponse));
+            log.debug("查询频道基本信息成功{}", JSON.toJSONString(liveChannelBasicInfoResponse));
         }
         
         //删除测试数据
@@ -734,7 +736,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelAuthTokenResponse);
         if (liveChannelAuthTokenResponse != null) {
             //to do something ......
-            log.debug("查询授权和连麦的token成功" + JSON.toJSONString(liveChannelAuthTokenResponse));
+            log.debug("查询授权和连麦的token成功{}", JSON.toJSONString(liveChannelAuthTokenResponse));
         }
         
         //删除测试数据
@@ -762,7 +764,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveCreateSonChannelResponse);
         if (liveCreateSonChannelResponse != null) {
             //to do something ......
-            log.debug("创建子频道成功" + JSON.toJSONString(liveCreateSonChannelResponse));
+            log.debug("创建子频道成功{}", JSON.toJSONString(liveCreateSonChannelResponse));
         }
         
         //删除测试数据
@@ -790,7 +792,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveCreateSonChannelResponse);
         if (liveCreateSonChannelResponse != null) {
             //to do something ......
-            log.debug("创建子频道成功" + JSON.toJSONString(liveCreateSonChannelResponse));
+            log.debug("创建子频道成功{}", JSON.toJSONString(liveCreateSonChannelResponse));
         }
         
         //删除测试数据
@@ -822,7 +824,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(updateSonChannelInfoResponse);
         if ("success".equals(updateSonChannelInfoResponse)) {
             //to do something ......
-            log.debug("设置子频道信息成功" + updateSonChannelInfoResponse);
+            log.debug("设置子频道信息成功{}", updateSonChannelInfoResponse);
         }
         
         //删除测试数据
@@ -847,7 +849,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveCreateSonChannelTokenResponse);
         if ("success".equals(liveCreateSonChannelTokenResponse)) {
             //to do something ......
-            log.debug("设置子频道单点登陆token成功" + liveCreateSonChannelTokenResponse);
+            log.debug("设置子频道单点登陆token成功{}", liveCreateSonChannelTokenResponse);
         }
         
         //删除测试数据
@@ -872,7 +874,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveSonChannelInfoResponse);
         if (liveSonChannelInfoResponse != null) {
             //to do something ......
-            log.debug("测试查询子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponse));
+            log.debug("测试查询子频道信息成功{}", JSON.toJSONString(liveSonChannelInfoResponse));
         }
         
         //删除测试数据
@@ -894,7 +896,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveSonChannelInfoResponse);
         if (liveSonChannelInfoResponse != null) {
             //to do something ......
-            log.debug("查询频道号下所有子频道信息成功" + JSON.toJSONString(liveSonChannelInfoResponse));
+            log.debug("查询频道号下所有子频道信息成功{}", JSON.toJSONString(liveSonChannelInfoResponse));
         }
         
         //删除测试数据
@@ -918,7 +920,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveDeleteSonChannelRespose);
         if ("true".equals(liveDeleteSonChannelRespose)) {
             //to do something ......
-            log.debug("测试删除子频道成功" + liveDeleteSonChannelRespose);
+            log.debug("测试删除子频道成功{}", liveDeleteSonChannelRespose);
         }
         
         //删除测试数据
@@ -942,7 +944,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveResumeChannelStreamResponse);
         if ("success".equals(liveResumeChannelStreamResponse)) {
             //to do something ......
-            log.debug("恢复直播频道推流成功" + liveResumeChannelStreamResponse);
+            log.debug("恢复直播频道推流成功{}", liveResumeChannelStreamResponse);
         }
         
         //删除测试数据
@@ -966,7 +968,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveCutoffChannelStreamResponse);
         if ("success".equals(liveCutoffChannelStreamResponse)) {
             //to do something ......
-            log.debug("禁止直播频道推流成功" + liveCutoffChannelStreamResponse);
+            log.debug("禁止直播频道推流成功{}", liveCutoffChannelStreamResponse);
         }
         
         //删除测试数据
@@ -993,7 +995,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveListChannelStreamStatusResponse);
         if (liveListChannelStreamStatusResponse != null) {
             //to do something ......
-            log.debug(String.format("批量查询频道直播流状态成功%s", JSON.toJSONString(liveListChannelStreamStatusResponse)));
+            log.debug("批量查询频道直播流状态成功{}", JSON.toJSONString(liveListChannelStreamStatusResponse));
         }
         
         //删除测试数据
@@ -1016,7 +1018,7 @@ public class ChannelTest extends BaseTest {
 //        Assert.assertNotNull(liveChannelStreamInfoResponse);
 //        if (liveChannelStreamInfoResponse != null) {
 //            //to do something ......
-//            log.debug(String.format("批量查询频道直播流状态成功%s",JSON.toJSONString(liveChannelStreamInfoResponse)));
+//            log.debug("批量查询频道直播流状态成功{}",JSON.toJSONString(liveChannelStreamInfoResponse));
 //        }
 //    }
     
@@ -1037,8 +1039,8 @@ public class ChannelTest extends BaseTest {
 //        Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
 //        if (liveCreateChannelVideoPlaybackResponse != null) {
 //            //to do something ......
-//            log.debug(String.format("测试将点播中的视频添加到视频库成功%s", JSON.toJSONString
-//            (liveCreateChannelVideoPlaybackResponse)));
+//            log.debug("测试将点播中的视频添加到视频库成功{}", JSON.toJSONString
+//            (liveCreateChannelVideoPlaybackResponse));
 //        }
 //    }
     
@@ -1062,7 +1064,7 @@ public class ChannelTest extends BaseTest {
 //        Assert.assertNotNull(liveMergeChannelVideoAsyncResponse);
 //        if ("submit success".equals(liveMergeChannelVideoAsyncResponse)) {
 //            //to do something ......
-//            log.debug(String.format("测试异步合并直播录制文件,具体是否成功以回调为准%s", liveMergeChannelVideoAsyncResponse));
+//            log.debug("测试异步合并直播录制文件,具体是否成功以回调为准{}", liveMergeChannelVideoAsyncResponse);
 //        }
 //    }
     
@@ -1086,7 +1088,7 @@ public class ChannelTest extends BaseTest {
 //        Assert.assertNotNull(liveConvertChannelVideoResponse);
 //        if ("submit success".equals(liveConvertChannelVideoResponse)) {
 //            //to do something ......
-//            log.debug(String.format("测试异步批量转存录制文件到点播,具体是否成功以回调为准%s", liveConvertChannelVideoResponse));
+//            log.debug("测试异步批量转存录制文件到点播,具体是否成功以回调为准{}", liveConvertChannelVideoResponse);
 //        }
 //    }
     
@@ -1107,7 +1109,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelVideoListResponse);
         if (liveChannelVideoListResponse != null) {
             //to do something ......
-            log.debug(String.format("查询频道录制视频信息成功%s", JSON.toJSONString(liveChannelVideoListResponse)));
+            log.debug("查询频道录制视频信息成功{}", JSON.toJSONString(liveChannelVideoListResponse));
         }
     }
     
@@ -1130,7 +1132,7 @@ public class ChannelTest extends BaseTest {
 //        Assert.assertNotNull(liveChannelPlaybackSettingResponse);
 //        if (liveChannelPlaybackSettingResponse != null) {
 //            //to do something ......
-//            log.debug(String.format("设置频道回放设置成功%s", JSON.toJSONString(liveChannelPlaybackSettingResponse)));
+//            log.debug("设置频道回放设置成功{}", JSON.toJSONString(liveChannelPlaybackSettingResponse));
 //        }
 //    }
     
@@ -1148,7 +1150,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
         if (liveChannelPlaybackEnabledResponse != null) {
             //to do something ......
-            log.debug(String.format("测试设置后台回放开关成功%s", liveChannelPlaybackEnabledResponse));
+            log.debug("测试设置后台回放开关成功{}", liveChannelPlaybackEnabledResponse);
         }
     }
     
@@ -1168,8 +1170,31 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveListChannelVideoLibraryResponse);
         if (liveListChannelVideoLibraryResponse != null) {
             //to do something ......
-            log.debug(String.format("测试查询视频库列表成功%s", JSON.toJSONString(liveListChannelVideoLibraryResponse)));
+            log.debug("测试查询视频库列表成功{}", JSON.toJSONString(liveListChannelVideoLibraryResponse));
         }
     }
+    
+    /**
+     * 测试设置视频库列表排序
+     * TODO 对接未通过，暂时注释
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+//    public void testChannelVideoSort() throws IOException, NoSuchAlgorithmException {
+//        List<String> videoIdList = listChannelVideoIds();
+//        Collections.shuffle(videoIdList);
+//        LiveChannelVideoSortRequest liveChannelVideoSortRequest = new LiveChannelVideoSortRequest();
+//        liveChannelVideoSortRequest.setChannelId(1951952)
+//                .setVideoIds(videoIdList.toArray(new String[]{}))
+//                .setListType("playback");
+//        String liveChannelVideoSortResponse = new LiveChannelServiceImpl().channelVideoSort(
+//                liveChannelVideoSortRequest);
+//        Assert.assertNotNull(liveChannelVideoSortResponse);
+//        if ("".equals(liveChannelVideoSortResponse)) {
+//            //to do something ......
+//            log.debug("测试设置视频库列表排序成功{}", JSON.toJSONString(liveChannelVideoSortResponse));
+//        }
+//    }
     
 }

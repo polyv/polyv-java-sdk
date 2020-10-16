@@ -22,6 +22,7 @@ import net.polyv.live.entity.channel.LiveChannelStreamInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
+import net.polyv.live.entity.channel.LiveChannelVideoSortRequest;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoListAsyncRequest;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
@@ -36,10 +37,10 @@ import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
-import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
-import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
+import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
@@ -384,4 +385,16 @@ public interface ILiveChannelService {
     LiveListChannelVideoLibraryResponse listChannelVideoLibrary(
             LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置视频库列表排序
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/lzhf/sort-playback/
+     * @param liveChannelVideoSortRequest 设置视频库列表排序请求体
+     * @return 设置视频库列表排序返回实体，""为成功
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String channelVideoSort(LiveChannelVideoSortRequest liveChannelVideoSortRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
 }

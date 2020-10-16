@@ -31,6 +31,8 @@ import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.entity.channel.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
+import net.polyv.live.entity.channel.LiveChannelVideoOnlyRequest;
+import net.polyv.live.entity.channel.LiveChannelVideoOnlyResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoSortRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
@@ -1224,6 +1226,26 @@ public class ChannelTest extends BaseTest {
         if (liveListChannelSessionInfoResponse != null) {
             //to do something ......
             log.debug("测试查询频道直播场次信息成功{}", JSON.toJSONString(liveListChannelSessionInfoResponse));
+        }
+    }
+    
+    /**
+     * 测试查询指定文件ID的录制文件信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelVideoOnly() throws IOException, NoSuchAlgorithmException {
+        int channelId = 1951952;
+        String fileId = listChannelFileIds(channelId).get(0);
+        LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest = new LiveChannelVideoOnlyRequest();
+        liveChannelVideoOnlyRequest.setChannelId(1951952).setFileId(fileId);
+        LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse = new LiveChannelServiceImpl().channelVideoOnly(
+                liveChannelVideoOnlyRequest);
+        Assert.assertNotNull(liveChannelVideoOnlyResponse);
+        if (liveChannelVideoOnlyResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道直播场次信息成功{}", JSON.toJSONString(liveChannelVideoOnlyResponse));
         }
     }
     

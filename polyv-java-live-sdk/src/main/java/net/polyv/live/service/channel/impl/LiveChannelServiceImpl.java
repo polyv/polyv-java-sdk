@@ -29,6 +29,8 @@ import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
+import net.polyv.live.entity.channel.LiveChannelVideoOnlyRequest;
+import net.polyv.live.entity.channel.LiveChannelVideoOnlyResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoSortRequest;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoListAsyncRequest;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
@@ -638,5 +640,22 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse = this.baseGet(url,
                 liveListChannelSessionInfoRequest, LiveListChannelSessionInfoResponse.class);
         return liveListChannelSessionInfoResponse;
+    }
+    
+    /**
+     * 查询指定文件ID的录制文件信息
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/lzhf/get-record-file/
+     * @param liveChannelVideoOnlyRequest 查询指定文件ID的录制文件信息请求实体
+     * @return 查询指定文件ID的录制文件信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelVideoOnlyResponse channelVideoOnly(LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_RECORD_GET_URL;
+        LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse = this.baseGet(url, liveChannelVideoOnlyRequest,
+                LiveChannelVideoOnlyResponse.class);
+        return liveChannelVideoOnlyResponse;
     }
 }

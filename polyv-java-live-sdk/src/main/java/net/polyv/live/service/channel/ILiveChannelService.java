@@ -13,6 +13,7 @@ import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
@@ -422,6 +423,17 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveChannelVideoOnlyResponse channelVideoOnly(LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道的回放开关状态
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/lzhf/get-playback-enbaled/
+     * @param liveChannelPlaybackEnabledInfoRequest 查询频道的回放开关状态请求实体
+     * @return 查询频道的回放开关状态返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String channelPlayBackEnabledInfo(LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -24,6 +24,7 @@ import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
@@ -1246,6 +1247,25 @@ public class ChannelTest extends BaseTest {
         if (liveChannelVideoOnlyResponse != null) {
             //to do something ......
             log.debug("测试查询频道直播场次信息成功{}", JSON.toJSONString(liveChannelVideoOnlyResponse));
+        }
+    }
+    
+    /**
+     * 测试查询频道的回放开关状态
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelPlayBackEnabledInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest =
+                new LiveChannelPlaybackEnabledInfoRequest();
+        liveChannelPlaybackEnabledInfoRequest.setChannelId(1951952);
+        String liveChannelPlaybackEnabledInfoResponse = new LiveChannelServiceImpl().channelPlayBackEnabledInfo(
+                liveChannelPlaybackEnabledInfoRequest);
+        Assert.assertNotNull(liveChannelPlaybackEnabledInfoResponse);
+        if (liveChannelPlaybackEnabledInfoResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道直播场次信息成功{}", liveChannelPlaybackEnabledInfoResponse);
         }
     }
     

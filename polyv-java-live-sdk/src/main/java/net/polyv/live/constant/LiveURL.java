@@ -348,6 +348,11 @@ public class LiveURL {
     public static final String CHANNEL_SESSION_INFO_LIST_URL = BASE_URI + "v3/channel/session/list";
     
     /**
+     * 查询频道的回放开关状态
+     */
+    public static final String CHANNEL_PLAYBACK_ENABLED_INFO_URL = BASE_URI + "v3/channel/playback/get-enabled";
+    
+    /**
      * 400错误码
      */
     public static final int CODE_400 = 400;

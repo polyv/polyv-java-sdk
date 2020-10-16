@@ -37,7 +37,7 @@ public class LiveChannelPasswordSettingRequest extends LiveCommonRequest {
     private Integer channelId;
     
     /**
-     * 修改的密码
+     * 修改的密码  
      */
     @ApiModelProperty(name = "passwd", value = "修改的密码", required = true)
     @NotNull(message = "passwd不能为空")

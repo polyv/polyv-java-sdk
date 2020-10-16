@@ -46,6 +46,8 @@ import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
+import net.polyv.live.entity.channel.LiveListChannelSessionInfoResponse;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
@@ -574,7 +576,7 @@ public class ChannelTest extends BaseTest {
         Integer channelId = createChannel();
         
         LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest = new LiveListChannelPPTRecordRequest();
-        liveListChannelPPTRecordRequest.setChannelId(channelId).setPage(1);
+        liveListChannelPPTRecordRequest.setChannelId(channelId).setCurrentPage(1);
         LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse = new LiveChannelServiceImpl().listPPTRecord(
                 liveListChannelPPTRecordRequest);
         Assert.assertNotNull(liveListChannelPPTRecordResponse);
@@ -1202,5 +1204,27 @@ public class ChannelTest extends BaseTest {
 //            log.debug("测试设置视频库列表排序成功{}", JSON.toJSONString(liveChannelVideoSortResponse));
 //        }
 //    }
+    
+    /**
+     * 测试查询频道直播场次信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelSessionInfo() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelSessionInfoRequest liveListChannelSessionInfoRequest = new LiveListChannelSessionInfoRequest();
+        liveListChannelSessionInfoRequest.setChannelId(1951952)
+                .setStartDate("2020-10-01")
+                .setEndDate("2020-10-24")
+                .setCurrentPage(1);
+        LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse =
+                new LiveChannelServiceImpl().listChannelSessionInfo(
+                liveListChannelSessionInfoRequest);
+        Assert.assertNotNull(liveListChannelSessionInfoResponse);
+        if (liveListChannelSessionInfoResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道直播场次信息成功{}", JSON.toJSONString(liveListChannelSessionInfoResponse));
+        }
+    }
     
 }

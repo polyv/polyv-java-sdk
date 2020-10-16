@@ -44,6 +44,8 @@ import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
+import net.polyv.live.entity.channel.LiveListChannelSessionInfoResponse;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
@@ -613,9 +615,28 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_VIDEO_SORT_URL;
         Map<String, String> signMap = MapUtil.getSignMap(liveChannelVideoSortRequest);
-        signMap.put("channelId",liveChannelVideoSortRequest.getChannelId().toString());
-        String liveListChannelVideoLibraryResponse = this.basePostJson(url,signMap,liveChannelVideoSortRequest,String.class);
+        signMap.put("channelId", liveChannelVideoSortRequest.getChannelId().toString());
+        String liveListChannelVideoLibraryResponse = this.basePostJson(url, signMap, liveChannelVideoSortRequest,
+                String.class);
 //        String liveListChannelVideoLibraryResponse = this.basePost(url, liveChannelVideoSortRequest, String.class);
         return liveListChannelVideoLibraryResponse;
+    }
+    
+    /**
+     * 查询频道直播场次信息
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/lzhf/get-channel-sessions/
+     * @param liveListChannelSessionInfoRequest 查询频道直播场次信息请求实体
+     * @return 查询频道直播场次信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelSessionInfoResponse listChannelSessionInfo(
+            LiveListChannelSessionInfoRequest liveListChannelSessionInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_SESSION_INFO_LIST_URL;
+        LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse = this.baseGet(url,
+                liveListChannelSessionInfoRequest, LiveListChannelSessionInfoResponse.class);
+        return liveListChannelSessionInfoResponse;
     }
 }

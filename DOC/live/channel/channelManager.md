@@ -1512,3 +1512,53 @@ videoIds可通过查询视频库列表获取，代码如下：
 | ------ | -------- |
 | data   | 响应结果 |
 
+### 查询频道直播场次信息
+
+#### 描述
+```
+用于分页查询频道直播场次信息
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+[分页公共参数描述](../page.md)
+
+#### 代码示例
+```java
+@Test
+    public void testListChannelSessionInfo() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelSessionInfoRequest liveListChannelSessionInfoRequest = new LiveListChannelSessionInfoRequest();
+        liveListChannelSessionInfoRequest.setChannelId(1951952)
+                .setStartDate("2020-10-01")
+                .setEndDate("2020-10-24")
+                .setCurrentPage(1);
+        LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse =
+                new LiveChannelServiceImpl().listChannelSessionInfo(
+                liveListChannelSessionInfoRequest);
+        Assert.assertNotNull(liveListChannelSessionInfoResponse);
+        if (liveListChannelSessionInfoResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道直播场次信息成功{}", JSON.toJSONString(liveListChannelSessionInfoResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道直播场次信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                     |
+| --------- | ---- | ------ | ------------------------ |
+| channelId | 是   | string | 频道ID                   |
+| startDate | 否   | String | 开始日期，格式YYYY-MM-DD |
+| endDate   | 否   | String | 结束日期，格式YYYY-MM-DD |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名    | 说明                     |
+| --------- | ------------------------ |
+| channelId | 频道ID                   |
+| sessionId | 场次ID                   |
+| startTime | 直播开始时间，13位时间戳 |
+| endTime   | 直播结束时间，13位时间戳 |

@@ -175,6 +175,49 @@ contents列表
 |title|string|对应回放的名称|
 |url|string|重制mp4下载地址，有24小时的防盗链超时时间|
 
+### 创建重制课件任务
+
+#### 描述
+```
+用于创建重制课件任务, 需等候任务队列执行完成，不是实时重制
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+@Test
+    public void testCreateChannelPPTRecordTask() throws IOException, NoSuchAlgorithmException {
+        LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest = new LiveCreateChannelPPTRecordRequest();
+        liveCreateChannelPPTRecordRequest.setChannelId(1951952).setVideoId("07f5bbeb67");
+        String liveCreateChannelPPTRecordResponse = new LiveChannelServiceImpl().createChannelPPTRecordTask(
+                liveCreateChannelPPTRecordRequest);
+        Assert.assertNotNull(liveCreateChannelPPTRecordResponse);
+        if (liveCreateChannelPPTRecordResponse != null) {
+            //to do something ......
+            log.debug("测试创建重制课件任务成功{}", liveCreateChannelPPTRecordResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-创建重制课件任务](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否创建重制课件任务成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明       |
+| --------- | ---- | ------ | ---------- |
+| channelId | 是   | int    | 频道号     |
+| videoId   | 是   | string | 回放视频id |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明     |
+| ------ | -------- |
+| data   | 暂无作用 |
+
 ### 批量创建频道
 
 #### 描述

@@ -3,7 +3,6 @@ package net.polyv.live.service;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.junit.Assert;
@@ -34,19 +33,16 @@ import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyResponse;
-import net.polyv.live.entity.channel.LiveChannelVideoSortRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
+import net.polyv.live.entity.channel.LiveCreateChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
-import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackRequest;
-import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
-import net.polyv.live.entity.channel.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
@@ -1271,6 +1267,24 @@ public class ChannelTest extends BaseTest {
     }
     
     /**
+     * 测试创建重制课件任务
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+//    public void testCreateChannelPPTRecordTask() throws IOException, NoSuchAlgorithmException {
+//        LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest = new LiveCreateChannelPPTRecordRequest();
+//        liveCreateChannelPPTRecordRequest.setChannelId(1951952).setVideoId("07f5bbeb67");
+//        String liveCreateChannelPPTRecordResponse = new LiveChannelServiceImpl().createChannelPPTRecordTask(
+//                liveCreateChannelPPTRecordRequest);
+//        Assert.assertNotNull(liveCreateChannelPPTRecordResponse);
+//        if (liveCreateChannelPPTRecordResponse != null) {
+//            //to do something ......
+//            log.debug("测试创建重制课件任务成功{}", liveCreateChannelPPTRecordResponse);
+//        }
+//    }
+    
+    /**
      * 测试删除直播暂存中的录制文件
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -1287,5 +1301,5 @@ public class ChannelTest extends BaseTest {
 //            log.debug("测试删除直播暂存中的录制文件");
 //        }
 //    }
-    
+
 }

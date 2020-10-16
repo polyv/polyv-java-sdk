@@ -37,6 +37,7 @@ import net.polyv.live.entity.channel.LiveConvertChannelVideoListAsyncRequest;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
+import net.polyv.live.entity.channel.LiveCreateChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackResponse;
@@ -677,6 +678,22 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         String liveChannelPlaybackEnabledInfoResponse = this.baseGet(url, liveChannelPlaybackEnabledInfoRequest,
                 String.class);
         return liveChannelPlaybackEnabledInfoResponse;
+    }
+    
+    /**
+     * 创建重制课件任务
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/add-record-task/
+     * @param liveCreateChannelPPTRecordRequest 创建重制课件任务请求实体
+     * @return 创建重制课件任务返回实体，成功返回""
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String createChannelPPTRecordTask(LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_PPTRECORD_CREATE__URL;
+        String liveCreateChannelPPTRecordResponse = this.basePost(url, liveCreateChannelPPTRecordRequest, String.class);
+        return liveCreateChannelPPTRecordResponse;
     }
     
     /**

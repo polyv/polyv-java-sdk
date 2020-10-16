@@ -46,6 +46,7 @@ import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
+import net.polyv.live.entity.channel.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
@@ -1246,7 +1247,7 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelVideoOnlyResponse);
         if (liveChannelVideoOnlyResponse != null) {
             //to do something ......
-            log.debug("测试查询频道直播场次信息成功{}", JSON.toJSONString(liveChannelVideoOnlyResponse));
+            log.debug("测试查询指定文件ID的录制文件信息成功{}", JSON.toJSONString(liveChannelVideoOnlyResponse));
         }
     }
     
@@ -1265,8 +1266,26 @@ public class ChannelTest extends BaseTest {
         Assert.assertNotNull(liveChannelPlaybackEnabledInfoResponse);
         if (liveChannelPlaybackEnabledInfoResponse != null) {
             //to do something ......
-            log.debug("测试查询频道直播场次信息成功{}", liveChannelPlaybackEnabledInfoResponse);
+            log.debug("测试查询频道的回放开关状态成功{}", liveChannelPlaybackEnabledInfoResponse);
         }
     }
+    
+    /**
+     * 测试删除直播暂存中的录制文件
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+//    public void testDeleteChannelVideo() throws IOException, NoSuchAlgorithmException {
+//        LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest = new LiveDeleteChannelVideoRequest();
+//        liveDeleteChannelVideoRequest.setChannelId(1951952).setStartTime("20201016111234");
+//        String liveDeleteChannelVideoResponse = new LiveChannelServiceImpl().deleteChannelVideo(
+//                liveDeleteChannelVideoRequest);
+//        Assert.assertNotNull(liveDeleteChannelVideoResponse);
+//        if (liveDeleteChannelVideoResponse != null) {
+//            //to do something ......
+//            log.debug("测试删除直播暂存中的录制文件");
+//        }
+//    }
     
 }

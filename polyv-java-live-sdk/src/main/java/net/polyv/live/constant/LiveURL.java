@@ -168,8 +168,7 @@ public class LiveURL {
     /**
      * 异步合并直播录制文件
      */
-    public static final String CHANNEL_RECORD_FILE_MERGE_ASYNC_URL =
-            BASE_URI + "v3/channel/record/merge";
+    public static final String CHANNEL_RECORD_FILE_MERGE_ASYNC_URL = BASE_URI + "v3/channel/record/merge";
     
     /**
      * 频道某段时间的直播统计数据
@@ -351,6 +350,12 @@ public class LiveURL {
      * 查询频道的回放开关状态
      */
     public static final String CHANNEL_PLAYBACK_ENABLED_INFO_URL = BASE_URI + "v3/channel/playback/get-enabled";
+    
+    /**
+     * 删除直播暂存中的录制文件
+     */
+    public static final String CHANNEL_VIDEO_DELETE_URL =
+            BASE_URI + "v2/channel/recordFile/" + PARAM_REPLACE_CHAR + "/delete-record";
     
     /**
      * 400错误码

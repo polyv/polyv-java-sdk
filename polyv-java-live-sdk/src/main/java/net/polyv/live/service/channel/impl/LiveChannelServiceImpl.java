@@ -46,6 +46,7 @@ import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
+import net.polyv.live.entity.channel.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoResponse;
@@ -676,6 +677,22 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         String liveChannelPlaybackEnabledInfoResponse = this.baseGet(url, liveChannelPlaybackEnabledInfoRequest,
                 String.class);
         return liveChannelPlaybackEnabledInfoResponse;
+    }
+    
+    /**
+     * 删除直播暂存中的录制文件,sessionId和startTime不能同时为空，可单独提交某一参数。
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/lzhf/delete-record/
+     * @param liveDeleteChannelVideoRequest 删除直播暂存中的录制文件请求实体
+     * @return 删除直播暂存中的录制文件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String deleteChannelVideo(LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_VIDEO_DELETE_URL,liveDeleteChannelVideoRequest.getChannelId());
+        String liveDeleteChannelVideoResponse = this.basePost(url, liveDeleteChannelVideoRequest, String.class);
+        return liveDeleteChannelVideoResponse;
     }
     
 }

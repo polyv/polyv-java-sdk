@@ -39,6 +39,7 @@ import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
+import net.polyv.live.entity.channel.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
@@ -434,6 +435,17 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     String channelPlayBackEnabledInfo(LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 删除直播暂存中的录制文件
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/lzhf/delete-record/
+     * @param liveDeleteChannelVideoRequest 删除直播暂存中的录制文件请求实体
+     * @return 删除直播暂存中的录制文件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String deleteChannelVideo(LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

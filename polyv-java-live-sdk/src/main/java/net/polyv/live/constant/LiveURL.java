@@ -363,6 +363,22 @@ public class LiveURL {
     
     
     /**
+     *  查询频道问卷详情
+     */
+    public static final String CHANNEL_QUESTION_DETAIL_URL = BASE_URI + "v3/channel/questionnaire/detail";
+    
+    /**
+     *  查询频道问卷列表
+     */
+    public static final String CHANNEL_QUESTION_LIST_URL = BASE_URI + "v3/channel/questionnaire/list";
+    
+    /**
+     *  查询频道问卷结果
+     */
+    public static final String CHANNEL_QUESTION_RESULT_URL = BASE_URI + "v3/channel/questionnaire/answer-records";
+    
+    
+    /**
      * 400错误码
      */
     public static final int CODE_400 = 400;

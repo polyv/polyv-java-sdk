@@ -12,6 +12,7 @@ import net.polyv.live.entity.channel.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
+import net.polyv.live.entity.channel.LiveChannelMaxHistoryConcurrentRequest;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledRequest;
@@ -470,6 +471,17 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     String deleteChannelPlaybackVideo(LiveDeleteChannelPlaybackVideoRequest liveDeleteChannelPlaybackVideoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取频道一定时间范围之内的历史最高并发人数
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/gksj/get-max-history-concurrent/
+     * @param liveChannelMaxHistoryConcurrentRequest 获取频道一定时间范围之内的历史最高并发人数请求实体
+     * @return 获取频道一定时间范围之内的历史最高并发人数返回实体，返回并发人数，如：100
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Integer maxChannelHistoryConcurrent(LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

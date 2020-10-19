@@ -1781,8 +1781,6 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
 #### 单元测试流程
 [swagger 程序接入-删除视频库列表中的视频](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-[登录保利威官网后台直播列表页面查看是否批量创建成功](http://live.polyv.net/#/channel)
-
 #### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                                         |
@@ -1796,3 +1794,52 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
 | 参数名 | 说明              |
 | ------ | ----------------- |
 | data   | success为删除成功 |
+
+### 获取频道一定时间范围之内的历史最高并发人数
+
+#### 描述
+```
+获取频道一定时间范围之内的历史最高并发人数，粒度可以支持到分钟
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testMaxChannelHistoryConcurrent() throws IOException, NoSuchAlgorithmException {
+        int channelId = 1951952;
+        long nowTime = System.currentTimeMillis();
+        LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest =
+                new LiveChannelMaxHistoryConcurrentRequest();
+        long startTime = nowTime - 30 * 24 * 60 * 60 * 1000l;
+        liveChannelMaxHistoryConcurrentRequest.setChannelId(channelId)
+                .setStartTime(startTime)
+                .setEndTime(nowTime);
+        Integer liveChannelMaxHistoryConcurrentResponse = new LiveChannelServiceImpl().maxChannelHistoryConcurrent(
+                liveChannelMaxHistoryConcurrentRequest);
+        Assert.assertNotNull(liveChannelMaxHistoryConcurrentResponse);
+        if (liveChannelMaxHistoryConcurrentResponse != null) {
+            //to do something ......
+            log.debug("测试获取频道一定时间范围之内的历史最高并发人数成功，并发人数为：{}", liveChannelMaxHistoryConcurrentResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-获取频道一定时间范围之内的历史最高并发人数](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型 | 说明                     |
+| --------- | ---- | ---- | ------------------------ |
+| channelId | 是   | int  | 频道号                   |
+| startTime | 是   | long | 开始时间13位毫秒级时间戳 |
+| endTime   | 是   | long | 结束时间13位毫秒级时间戳 |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明                          |
+| ------ | ----------------------------- |
+| data   | 时间区间内最高并发人数，如：1 |

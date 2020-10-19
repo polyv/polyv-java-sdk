@@ -350,11 +350,18 @@ public class LiveURL {
      * 查询频道的回放开关状态
      */
     public static final String CHANNEL_PLAYBACK_ENABLED_INFO_URL = BASE_URI + "v3/channel/playback/get-enabled";
+    
     /**
      * 删除直播暂存中的录制文件
      */
     public static final String CHANNEL_VIDEO_DELETE_URL =
             BASE_URI + "v2/channel/recordFile/" + PARAM_REPLACE_CHAR + "/delete-record";
+    
+    /**
+     * 获取频道一定时间范围之内的历史最高并发人数
+     */
+    public static final String CHANNEL_MAX_HISTORY_CONCURRENT_URL =
+            BASE_URI + "v3/channel/statistics/get-max-history-concurrent";
     
     /**
      * 创建重制课件任务
@@ -363,17 +370,17 @@ public class LiveURL {
     
     
     /**
-     *  查询频道问卷详情
+     * 查询频道问卷详情
      */
     public static final String CHANNEL_QUESTION_DETAIL_URL = BASE_URI + "v3/channel/questionnaire/detail";
     
     /**
-     *  查询频道问卷列表
+     * 查询频道问卷列表
      */
     public static final String CHANNEL_QUESTION_LIST_URL = BASE_URI + "v3/channel/questionnaire/list";
     
     /**
-     *  查询频道问卷结果
+     * 查询频道问卷结果
      */
     public static final String CHANNEL_QUESTION_RESULT_URL = BASE_URI + "v3/channel/questionnaire/answer-records";
     

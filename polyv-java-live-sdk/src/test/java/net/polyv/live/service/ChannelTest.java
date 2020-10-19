@@ -22,6 +22,7 @@ import net.polyv.live.entity.channel.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
+import net.polyv.live.entity.channel.LiveChannelMaxHistoryConcurrentRequest;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledRequest;
@@ -1313,12 +1314,37 @@ public class ChannelTest extends BaseTest {
 //        LiveDeleteChannelPlaybackVideoRequest liveDeleteChannelPlaybackVideoRequest =
 //                new LiveDeleteChannelPlaybackVideoRequest();
 //        liveDeleteChannelPlaybackVideoRequest.setChannelId(channelId).setVideoId(videoId).setListType("playback");
-//        String liveDeleteChannelPlaybackVideoResponse = new LiveChannelServiceImpl().deleteChannelPlaybackVideo(liveDeleteChannelPlaybackVideoRequest);
+//        String liveDeleteChannelPlaybackVideoResponse = new LiveChannelServiceImpl().deleteChannelPlaybackVideo
+//        (liveDeleteChannelPlaybackVideoRequest);
 //                Assert.assertNotNull(liveDeleteChannelPlaybackVideoResponse);
 //        if ("success".equals(liveDeleteChannelPlaybackVideoResponse)) {
 //            //to do something ......
 //            log.debug("测试删除视频库列表中的视频成功");
 //        }
 //    }
+    
+    /**
+     * 测试获取频道一定时间范围之内的历史最高并发人数,粒度可以支持到分钟
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testMaxChannelHistoryConcurrent() throws IOException, NoSuchAlgorithmException {
+        int channelId = 1951952;
+        long nowTime = System.currentTimeMillis();
+        long startTime = nowTime - 30 * 24 * 60 * 60 * 1000l;
+        LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest =
+                new LiveChannelMaxHistoryConcurrentRequest();
+        liveChannelMaxHistoryConcurrentRequest.setChannelId(channelId)
+                .setStartTime(startTime)
+                .setEndTime(nowTime);
+        Integer liveChannelMaxHistoryConcurrentResponse = new LiveChannelServiceImpl().maxChannelHistoryConcurrent(
+                liveChannelMaxHistoryConcurrentRequest);
+        Assert.assertNotNull(liveChannelMaxHistoryConcurrentResponse);
+        if (liveChannelMaxHistoryConcurrentResponse != null) {
+            //to do something ......
+            log.debug("测试获取频道一定时间范围之内的历史最高并发人数成功，并发人数为：{}", liveChannelMaxHistoryConcurrentResponse);
+        }
+    }
     
 }

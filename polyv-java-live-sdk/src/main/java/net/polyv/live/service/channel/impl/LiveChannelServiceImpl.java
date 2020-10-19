@@ -18,6 +18,7 @@ import net.polyv.live.entity.channel.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
+import net.polyv.live.entity.channel.LiveChannelMaxHistoryConcurrentRequest;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledRequest;
@@ -50,12 +51,12 @@ import net.polyv.live.entity.channel.LiveDeleteChannelPlaybackVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
+import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoResponse;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
-import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
-import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
@@ -727,8 +728,27 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PLAYBACK_DELETE_URL,
                 liveDeleteChannelPlaybackVideoRequest.getChannelId());
-        String liveDeleteChannelPlaybackVideoResponse = this.basePost(url, liveDeleteChannelPlaybackVideoRequest, String.class);
+        String liveDeleteChannelPlaybackVideoResponse = this.basePost(url, liveDeleteChannelPlaybackVideoRequest,
+                String.class);
         return liveDeleteChannelPlaybackVideoResponse;
+    }
+    
+    /**
+     * 获取频道一定时间范围之内的历史最高并发人数,粒度可以支持到分钟
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/gksj/get-max-history-concurrent/
+     * @param liveChannelMaxHistoryConcurrentRequest 获取频道一定时间范围之内的历史最高并发人数请求实体
+     * @return 获取频道一定时间范围之内的历史最高并发人数返回实体，返回并发人数，如：100
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Integer maxChannelHistoryConcurrent(
+            LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_MAX_HISTORY_CONCURRENT_URL;
+        Integer liveChannelMaxHistoryConcurrentResponse = (Integer) this.baseGet(url,
+                liveChannelMaxHistoryConcurrentRequest, Integer.class);
+        return liveChannelMaxHistoryConcurrentResponse;
     }
     
 }

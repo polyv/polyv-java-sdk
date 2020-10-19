@@ -34,6 +34,7 @@ import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyResponse;
+import net.polyv.live.entity.channel.LiveChannelViewerCountRequest;
 import net.polyv.live.entity.channel.LiveChannelViewlogRequest;
 import net.polyv.live.entity.channel.LiveChannelViewlogResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
@@ -58,6 +59,8 @@ import net.polyv.live.entity.channel.LiveListChannelSummaryRequest;
 import net.polyv.live.entity.channel.LiveListChannelSummaryResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
+import net.polyv.live.entity.channel.LiveListChannelViewerCountRequest;
+import net.polyv.live.entity.channel.LiveListChannelViewerCountResponse;
 import net.polyv.live.entity.channel.LiveListChannelViewlogRequest;
 import net.polyv.live.entity.channel.LiveListChannelViewlogResponse;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
@@ -1406,6 +1409,25 @@ public class ChannelTest extends BaseTest {
         if (liveListChannelSummaryResponse != null) {
             //to do something ......
             log.debug("测试查询多个频道汇总的统计数据成功，{}", JSON.toJSONString(liveListChannelSummaryResponse));
+        }
+    }
+    
+    /**
+     * 测试查询多个频道的实时在线人数
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelViewerCount() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelViewerCountRequest liveListChannelViewerCountRequest = new LiveListChannelViewerCountRequest();
+        liveListChannelViewerCountRequest.setChannelIds("1951952,1958888");
+        LiveListChannelViewerCountResponse liveListChannelViewerCountResponse =
+                new LiveChannelServiceImpl().listChannelViewerCount(
+                liveListChannelViewerCountRequest);
+        Assert.assertNotNull(liveListChannelViewerCountResponse);
+        if (liveListChannelViewerCountResponse != null) {
+            //to do something ......
+            log.debug("测试查询多个频道的实时在线人数成功，{}", JSON.toJSONString(liveListChannelViewerCountResponse));
         }
     }
     

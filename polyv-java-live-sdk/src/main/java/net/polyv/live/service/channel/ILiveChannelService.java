@@ -56,6 +56,8 @@ import net.polyv.live.entity.channel.LiveListChannelSummaryRequest;
 import net.polyv.live.entity.channel.LiveListChannelSummaryResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
+import net.polyv.live.entity.channel.LiveListChannelViewerCountRequest;
+import net.polyv.live.entity.channel.LiveListChannelViewerCountResponse;
 import net.polyv.live.entity.channel.LiveListChannelViewlogRequest;
 import net.polyv.live.entity.channel.LiveListChannelViewlogResponse;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
@@ -521,6 +523,18 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveListChannelSummaryResponse listChannelSummary(LiveListChannelSummaryRequest liveListChannelSummaryRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询多个频道的实时在线人数
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/gksj/get-realtime-viewers/
+     * @param liveListChannelViewerCountRequest 查询多个频道的实时在线人数请求实体
+     * @return 查询多个频道的实时在线人数返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListChannelViewerCountResponse listChannelViewerCount(
+            LiveListChannelViewerCountRequest liveListChannelViewerCountRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -15,7 +15,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @AllArgsConstructor
 //@NoArgsConstructor
-@Builder
 @ApiModel("查询频道问卷结果响应实体")
 public class LiveQuestionResultResponse {
 }

@@ -19,7 +19,6 @@ import net.polyv.live.entity.LiveCommonRequest;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("查询频道问卷结果请求实体")
 public class LiveQuestionResultRequest extends LiveCommonRequest {
    

@@ -1843,3 +1843,54 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
 | 参数名 | 说明                          |
 | ------ | ----------------------------- |
 | data   | 时间区间内最高并发人数，如：1 |
+
+### 分页获取连麦情况使用详情
+
+#### 描述
+```
+分页获取连麦详情数据
+支持账号、批量频道获取详情数据
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testListChannelMic() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelMicRequest liveListChannelMicRequest = new LiveListChannelMicRequest();
+        liveListChannelMicRequest.setChannelIds("1951952,1958888").setStartDay("2020-01-01").setEndDay("2020-11-11");
+        LiveListChannelMicResponse liveListChannelMicResponse = new LiveChannelServiceImpl().listChannelMic(
+                liveListChannelMicRequest);
+        Assert.assertNotNull(liveListChannelMicResponse);
+        if (liveListChannelMicResponse != null) {
+            //to do something ......
+            log.debug("测试分页获取连麦情况使用详情成功，{}", JSON.toJSONString(liveListChannelMicResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-分页获取连麦情况使用详情](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+[分页请求参数查看](../page.md)
+
+| 参数名     | 必选 | 类型   | 说明                                        |
+| ---------- | ---- | ------ | ------------------------------------------- |
+| channelIds | 否   | string | 频道号，使用英文逗号分开，如：100000,100001 |
+| startDay   | 否   | string | 开始时间，格式：yyyy-MM-dd                  |
+| endDay     | 否   | string | 结束时间，格式：yyyy-MM-dd                  |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+[分页返回参数查看](../page.md)
+
+| 参数名     | 类型   | 说明                       |
+| ---------- | ------ | -------------------------- |
+| userId     | string | 用户userId                 |
+| channelId  | int    | 频道号                     |
+| currentDay | string | 当天，如：2019-10-25       |
+| history    | int    | 使用连麦分钟数，单位：分钟 |

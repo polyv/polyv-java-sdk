@@ -51,6 +51,8 @@ import net.polyv.live.entity.channel.LiveDeleteChannelPlaybackVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelMicRequest;
+import net.polyv.live.entity.channel.LiveListChannelMicResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
@@ -749,6 +751,23 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         Integer liveChannelMaxHistoryConcurrentResponse = (Integer) this.baseGet(url,
                 liveChannelMaxHistoryConcurrentRequest, Integer.class);
         return liveChannelMaxHistoryConcurrentResponse;
+    }
+    
+    /**
+     * 分页获取连麦情况使用详情
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/gksj/mic-detail-list/
+     * @param liveListChannelMicRequest 分页获取连麦情况使用详情请求实体
+     * @return 分页获取连麦情况使用详情返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelMicResponse listChannelMic(LiveListChannelMicRequest liveListChannelMicRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_MIC_LIST_URL;
+        LiveListChannelMicResponse liveListChannelMicResponse = this.baseGet(url, liveListChannelMicRequest,
+                LiveListChannelMicResponse.class);
+        return liveListChannelMicResponse;
     }
     
 }

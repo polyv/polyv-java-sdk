@@ -44,6 +44,8 @@ import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelMicRequest;
+import net.polyv.live.entity.channel.LiveListChannelMicResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
@@ -1335,15 +1337,31 @@ public class ChannelTest extends BaseTest {
         long startTime = nowTime - 30 * 24 * 60 * 60 * 1000l;
         LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest =
                 new LiveChannelMaxHistoryConcurrentRequest();
-        liveChannelMaxHistoryConcurrentRequest.setChannelId(channelId)
-                .setStartTime(startTime)
-                .setEndTime(nowTime);
+        liveChannelMaxHistoryConcurrentRequest.setChannelId(channelId).setStartTime(startTime).setEndTime(nowTime);
         Integer liveChannelMaxHistoryConcurrentResponse = new LiveChannelServiceImpl().maxChannelHistoryConcurrent(
                 liveChannelMaxHistoryConcurrentRequest);
         Assert.assertNotNull(liveChannelMaxHistoryConcurrentResponse);
         if (liveChannelMaxHistoryConcurrentResponse != null) {
             //to do something ......
             log.debug("测试获取频道一定时间范围之内的历史最高并发人数成功，并发人数为：{}", liveChannelMaxHistoryConcurrentResponse);
+        }
+    }
+    
+    /**
+     * 测试分页获取连麦情况使用详情
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelMic() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelMicRequest liveListChannelMicRequest = new LiveListChannelMicRequest();
+        liveListChannelMicRequest.setChannelIds("1951952,1958888").setStartDay("2020-01-01").setEndDay("2020-11-11");
+        LiveListChannelMicResponse liveListChannelMicResponse = new LiveChannelServiceImpl().listChannelMic(
+                liveListChannelMicRequest);
+        Assert.assertNotNull(liveListChannelMicResponse);
+        if (liveListChannelMicResponse != null) {
+            //to do something ......
+            log.debug("测试分页获取连麦情况使用详情成功，{}", JSON.toJSONString(liveListChannelMicResponse));
         }
     }
     

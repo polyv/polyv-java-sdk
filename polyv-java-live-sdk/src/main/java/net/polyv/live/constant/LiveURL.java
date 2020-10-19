@@ -168,8 +168,7 @@ public class LiveURL {
     /**
      * 异步合并直播录制文件
      */
-    public static final String CHANNEL_RECORD_FILE_MERGE_ASYNC_URL =
-            BASE_URI + "v3/channel/record/merge";
+    public static final String CHANNEL_RECORD_FILE_MERGE_ASYNC_URL = BASE_URI + "v3/channel/record/merge";
     
     /**
      * 频道某段时间的直播统计数据
@@ -341,6 +340,27 @@ public class LiveURL {
      * 设置视频库列表排序
      */
     public static final String CHANNEL_VIDEO_SORT_URL = BASE_URI + "v3/channel/playback/sort";
+    
+    /**
+     * 查询频道直播场次信息
+     */
+    public static final String CHANNEL_SESSION_INFO_LIST_URL = BASE_URI + "v3/channel/session/list";
+    
+    /**
+     * 查询频道的回放开关状态
+     */
+    public static final String CHANNEL_PLAYBACK_ENABLED_INFO_URL = BASE_URI + "v3/channel/playback/get-enabled";
+    /**
+     * 删除直播暂存中的录制文件
+     */
+    public static final String CHANNEL_VIDEO_DELETE_URL =
+            BASE_URI + "v2/channel/recordFile/" + PARAM_REPLACE_CHAR + "/delete-record";
+    
+    /**
+     * 创建重制课件任务
+     */
+    public static final String CHANNEL_PPTRECORD_CREATE__URL = BASE_URI + "v3/channel/pptRecord/addRecordTask";
+    
     
     /**
      * 400错误码

@@ -19,6 +19,7 @@ import net.polyv.live.entity.channel.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.LiveChannelPasswordSettingRequest;
+import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledInfoRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackEnabledRequest;
 import net.polyv.live.entity.channel.LiveChannelPlaybackSettingRequest;
 import net.polyv.live.entity.channel.LiveChannelRequest;
@@ -29,11 +30,14 @@ import net.polyv.live.entity.channel.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.LiveChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
+import net.polyv.live.entity.channel.LiveChannelVideoOnlyRequest;
+import net.polyv.live.entity.channel.LiveChannelVideoOnlyResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoSortRequest;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoListAsyncRequest;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
+import net.polyv.live.entity.channel.LiveCreateChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelVideoPlaybackResponse;
@@ -43,7 +47,10 @@ import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
+import net.polyv.live.entity.channel.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
+import net.polyv.live.entity.channel.LiveListChannelSessionInfoResponse;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
@@ -613,9 +620,96 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_VIDEO_SORT_URL;
         Map<String, String> signMap = MapUtil.getSignMap(liveChannelVideoSortRequest);
-        signMap.put("channelId",liveChannelVideoSortRequest.getChannelId().toString());
-        String liveListChannelVideoLibraryResponse = this.basePostJson(url,signMap,liveChannelVideoSortRequest,String.class);
+        signMap.put("channelId", liveChannelVideoSortRequest.getChannelId().toString());
+        String liveListChannelVideoLibraryResponse = this.basePostJson(url, signMap, liveChannelVideoSortRequest,
+                String.class);
 //        String liveListChannelVideoLibraryResponse = this.basePost(url, liveChannelVideoSortRequest, String.class);
         return liveListChannelVideoLibraryResponse;
     }
+    
+    /**
+     * 查询频道直播场次信息
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/lzhf/get-channel-sessions/
+     * @param liveListChannelSessionInfoRequest 查询频道直播场次信息请求实体
+     * @return 查询频道直播场次信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelSessionInfoResponse listChannelSessionInfo(
+            LiveListChannelSessionInfoRequest liveListChannelSessionInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_SESSION_INFO_LIST_URL;
+        LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse = this.baseGet(url,
+                liveListChannelSessionInfoRequest, LiveListChannelSessionInfoResponse.class);
+        return liveListChannelSessionInfoResponse;
+    }
+    
+    /**
+     * 查询指定文件ID的录制文件信息
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/lzhf/get-record-file/
+     * @param liveChannelVideoOnlyRequest 查询指定文件ID的录制文件信息请求实体
+     * @return 查询指定文件ID的录制文件信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelVideoOnlyResponse channelVideoOnly(LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_RECORD_GET_URL;
+        LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse = this.baseGet(url, liveChannelVideoOnlyRequest,
+                LiveChannelVideoOnlyResponse.class);
+        return liveChannelVideoOnlyResponse;
+    }
+    
+    /**
+     * 查询频道的回放开关状态
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/lzhf/get-playback-enbaled/
+     * @param liveChannelPlaybackEnabledInfoRequest 查询频道的回放开关状态请求实体
+     * @return 查询频道的回放开关状态返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String channelPlayBackEnabledInfo(
+            LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_PLAYBACK_ENABLED_INFO_URL;
+        String liveChannelPlaybackEnabledInfoResponse = this.baseGet(url, liveChannelPlaybackEnabledInfoRequest,
+                String.class);
+        return liveChannelPlaybackEnabledInfoResponse;
+    }
+    
+    /**
+     * 创建重制课件任务
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/add-record-task/
+     * @param liveCreateChannelPPTRecordRequest 创建重制课件任务请求实体
+     * @return 创建重制课件任务返回实体，成功返回""
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String createChannelPPTRecordTask(LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_PPTRECORD_CREATE__URL;
+        String liveCreateChannelPPTRecordResponse = this.basePost(url, liveCreateChannelPPTRecordRequest, String.class);
+        return liveCreateChannelPPTRecordResponse;
+    }
+    
+    /**
+     * 删除直播暂存中的录制文件,sessionId和startTime不能同时为空，可单独提交某一参数。
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/lzhf/delete-record/
+     * @param liveDeleteChannelVideoRequest 删除直播暂存中的录制文件请求实体
+     * @return 删除直播暂存中的录制文件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String deleteChannelVideo(LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_VIDEO_DELETE_URL,liveDeleteChannelVideoRequest.getChannelId());
+        String liveDeleteChannelVideoResponse = this.basePost(url, liveDeleteChannelVideoRequest, String.class);
+        return liveDeleteChannelVideoResponse;
+    }
+    
 }

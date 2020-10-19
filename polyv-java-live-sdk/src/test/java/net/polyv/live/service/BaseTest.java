@@ -152,4 +152,31 @@ public class BaseTest {
         return videoIds;
     }
     
+    /**
+     * 获取频道视频fileIds
+     * @param channelId 频道id
+     * @return
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    protected List<String> listChannelFileIds(Integer channelId) throws IOException, NoSuchAlgorithmException {
+        LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
+        liveChannelVideoListRequest.setChannelId(channelId)
+                .setStartDate("2020-01-01")
+                .setEndDate("2020-10-14")
+                .setSessionId(null);
+        LiveChannelVideoListResponse liveChannelVideoListResponse = new LiveChannelServiceImpl().listChannelVideo(
+                liveChannelVideoListRequest);
+        Assert.assertNotNull(liveChannelVideoListResponse);
+        List<LiveChannelVideoListResponse.ChannelVedioInfo> channelVedioInfos =
+                liveChannelVideoListResponse.getChannelVedioInfos();
+        int size = channelVedioInfos.size();
+        Assert.assertTrue(size > 0);
+        List<String> fileIds = new ArrayList<>(size);
+        for(LiveChannelVideoListResponse.ChannelVedioInfo temp:channelVedioInfos){
+            fileIds.add(temp.getFileId());
+        }
+        return fileIds;
+    }
+    
 }

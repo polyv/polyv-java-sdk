@@ -22,6 +22,7 @@ import net.polyv.live.entity.LiveCommonRequest;
 @Builder
 @ApiModel("创建重制课件任务请求体")
 public class LiveCreateChannelPPTRecordRequest extends LiveCommonRequest {
+    
     /**
      * 频道号
      */
@@ -30,10 +31,10 @@ public class LiveCreateChannelPPTRecordRequest extends LiveCommonRequest {
     private Integer channelId;
     
     /**
-     * TODO 链接查询视频库列表的方法
-     *  回放视频id,从查询视频库列表获取
+     * 回放视频id,从查询视频库列表获取{@link net.polyv.live.service.ChannelTest#testListChannelVideoLibrary()}
      */
     @ApiModelProperty(name = "videoId", value = "回放视频id", required = true, example = "6ce905500b")
     @NotNull(message = "频道号不能为空")
     private String videoId;
+    
 }

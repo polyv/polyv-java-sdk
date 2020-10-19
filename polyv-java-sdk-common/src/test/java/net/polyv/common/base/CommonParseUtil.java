@@ -88,6 +88,7 @@ public class CommonParseUtil {
             case "long":
                 return "Long";
             case "timestamp":
+            case "date":
                 if(isRequest)
                     return "Long";
                 else

@@ -8,11 +8,9 @@ import lombok.experimental.Accessors;
 /**
  * 直播公共返回数据实体
  * @author: thomas
- 
  **/
 @Data
 @Accessors(chain = true)
-
 public class LiveCommonResponse  {
     
  

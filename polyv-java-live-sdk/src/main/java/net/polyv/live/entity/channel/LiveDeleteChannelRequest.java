@@ -28,9 +28,9 @@ public class LiveDeleteChannelRequest extends LiveCommonRequest {
     private String userId;
     
     /**
-     * 频道ID，请留意，如果该参数为空，会对该用户所有的频道进行修改
+     * 频道ID
      */
-    @ApiModelProperty(name = "channelId", value = "频道ID，请留意，如果该参数为空，会对该用户所有的频道进行修改", required = false)
+    @ApiModelProperty(name = "channelId", value = "频道ID", required = false)
     @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     

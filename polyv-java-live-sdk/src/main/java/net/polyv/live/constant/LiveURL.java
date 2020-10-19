@@ -71,6 +71,12 @@ public class LiveURL {
     public static final String CHANNEL_REAL_TIME_VIEWERS_GET_URL = BASE_URI + "v2/statistics/get-realtime-viewers";
     
     /**
+     * 查询频道观看日志
+     */
+    public static final String CHANNEL_VIEW_LOGS_LIST_URL =
+            BASE_URI + "v1/statistics/" + PARAM_REPLACE_CHAR + "/viewlog";
+    
+    /**
      * 分页获取频道观看日志
      */
     public static final String CHANNEL_VIEW_LOGS_GET_URL =

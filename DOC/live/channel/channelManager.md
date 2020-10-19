@@ -1843,3 +1843,235 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
 | 参数名 | 说明                          |
 | ------ | ----------------------------- |
 | data   | 时间区间内最高并发人数，如：1 |
+
+### 分页获取连麦情况使用详情
+
+#### 描述
+```
+分页获取连麦详情数据
+支持账号、批量频道获取详情数据
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testListChannelMic() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelMicRequest liveListChannelMicRequest = new LiveListChannelMicRequest();
+        liveListChannelMicRequest.setChannelIds("1951952,1958888").setStartDay("2020-01-01").setEndDay("2020-11-11");
+        LiveListChannelMicResponse liveListChannelMicResponse = new LiveChannelServiceImpl().listChannelMic(
+                liveListChannelMicRequest);
+        Assert.assertNotNull(liveListChannelMicResponse);
+        if (liveListChannelMicResponse != null) {
+            //to do something ......
+            log.debug("测试分页获取连麦情况使用详情成功，{}", JSON.toJSONString(liveListChannelMicResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-分页获取连麦情况使用详情](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+[分页请求参数查看](../page.md)
+
+| 参数名     | 必选 | 类型   | 说明                                        |
+| ---------- | ---- | ------ | ------------------------------------------- |
+| channelIds | 否   | string | 频道号，使用英文逗号分开，如：100000,100001 |
+| startDay   | 否   | string | 开始时间，格式：yyyy-MM-dd                  |
+| endDay     | 否   | string | 结束时间，格式：yyyy-MM-dd                  |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+[分页返回参数查看](../page.md)
+
+| 参数名     | 类型   | 说明                       |
+| ---------- | ------ | -------------------------- |
+| userId     | string | 用户userId                 |
+| channelId  | int    | 频道号                     |
+| currentDay | string | 当天，如：2019-10-25       |
+| history    | int    | 使用连麦分钟数，单位：分钟 |
+
+### 分页查询频道观看日志
+
+#### 描述
+```
+分页获取频道的观看日志
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+**注意**：
+
+如果查询一段时间的记录，可以传：startTime、endTime （startTime和endTime 必须在同一个月），如果查询某天的记录，则传currentDay；
+
+startTime、endTime 和 currentDay不能都不传；
+
+currentDay与startTime、endTime 同时传将使用currentDay的值。
+
+#### 代码示例
+```java
+    @Test
+    public void testListChannelViewlog() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
+        liveListChannelViewlogRequest.setChannelId(1951952).setCurrentDay("2020-10-14");
+        LiveListChannelViewlogResponse liveListChannelViewlogResponse = new LiveChannelServiceImpl().listChannelViewlog(
+                liveListChannelViewlogRequest);
+        Assert.assertNotNull(liveListChannelViewlogResponse);
+        if (liveListChannelViewlogResponse != null) {
+            //to do something ......
+            log.debug("测试分页查询频道观看日志成功，{}", JSON.toJSONString(liveListChannelViewlogResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-分页查询频道观看日志](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+[分页请求参数查看](../page.md)
+
+| 参数名     | 必选             | 类型   | 说明                                                   |
+| ---------- | ---------------- | ------ | ------------------------------------------------------ |
+| currentDay | 请查看下方注意点 | string | 查询日期，格式：yyyy-MM-dd                             |
+| startTime  | 请查看下方注意点 | string | 查询开始时间，为13位毫秒级时间戳                       |
+| endTime    | 请查看下方注意点 | string | 查询结束时间，13位毫秒级时间戳                         |
+| viewerId   | 否               | string | 观看用户ID                                             |
+| viewerName | 否               | string | 观看用户昵称                                           |
+| logType    | 否               | string | 观看日志类型，取值 vod 表示观看回放，取值live 表示直播 |
+
+#### 返回对象描述[LiveChannelResponse]
+[分页返回参数查看](../page.md)
+| 字段            | 说明                                |
+| --------------- | ----------------------------------- |
+| playId          | 表示此次播放动作的ID                |
+| userId          | 用户ID                              |
+| channelId       | 频道号                              |
+| playDuration    | 播放时长，单位：秒                  |
+| stayDuration    | 停留时长，单位：秒                  |
+| flowSize        | 流量大小                            |
+| sessionId       | 直播的场次ID                        |
+| viewerId  | 观众id                       |
+| viewerName | 观众名称                       |
+| logType  | 观看类型：取值vod 表示观看回放，取值live 表示直播                       |
+| ipAddress       | IP地址                              |
+| country         | 国家                                |
+| province        | 省份                                |
+| city            | 城市                                |
+| isp             | ISP运营商                           |
+| referer         | 播放视频页面地址                    |
+| userAgent       | 用户设备                            |
+| operatingSystem | 操作系统                            |
+| browser         | 浏览器                              |
+| isMobile        | 是否为移动端                        |
+| currentDay      | 日志查询日期   (格式为：yyyy-MM-dd) |
+| createdTime     | 日志创建日期   (13位时间戳)         |
+| lastModified    | 日志更新日期   (13位时间戳)         |
+
+### 查询多个频道汇总的统计数据
+
+#### 描述
+```
+查询多个频道汇总的统计数据
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+根据是否提交channelIds来获取全部频道/某个频道查询时间内的播放数据
+
+#### 代码示例
+```java
+ @Test
+    public void testListChannelSummary() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelSummaryRequest liveListChannelSummaryRequest = new LiveListChannelSummaryRequest();
+        liveListChannelSummaryRequest.setStartDate("2020-01-01")
+                .setEndDate("2020-11-11")
+                .setChannelIds("1951952,1958888");
+        LiveListChannelSummaryResponse liveListChannelSummaryResponse = new LiveChannelServiceImpl().listChannelSummary(
+                liveListChannelSummaryRequest);
+        Assert.assertNotNull(liveListChannelSummaryResponse);
+        if (liveListChannelSummaryResponse != null) {
+            //to do something ......
+            log.debug("测试查询多个频道汇总的统计数据成功，{}", JSON.toJSONString(liveListChannelSummaryResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询多个频道汇总的统计数据](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名     | 必选 | 类型   | 说明                                                         |
+| ---------- | ---- | ------ | ------------------------------------------------------------ |
+| startDate  | 是   | string | 查询的开始日期 格式为yyyy-MM-dd                              |
+| endDate    | 是   | string | 查询的结束日期 格式为yyyy-MM-dd                              |
+| channelIds | 否   | string | 要查询的频道号，不提交默认为查询所有频道，多个频道号以英文逗号“,”分开，如：105420,104400 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名                     | 说明                            |
+| -------------------------- | ------------------------------- |
+| channelId                  | 频道Id                          |
+| name                       | 频道名称                        |
+| pcPlayDuration             | pc端播放时长，单位：分钟        |
+| pcFlowSize                 | pc端播放流量，单位为Byte        |
+| pcVideoView                | pc视频播放量                    |
+| pcUniqueViewer             | pc端唯一观众数                  |
+| mobilePlayDuration         | 移动端播放时长，单位：分钟      |
+| mobileFlowSize             | 移动端播放流量，单位为Byte      |
+| mobileVideoView            | 移动端播放量                    |
+| mobileUniqueViewer         | 移动端唯一观众数                |
+| livePcPlayDuration         | PC直播播放时长，单位为分钟      |
+| playbackPcPlayDuration     | PC回放播放时长，单位为分钟      |
+| liveMobilePlayDuration     | 移动端直播播放时长，单位为分钟  |
+| playbackMobilePlayDuration | 移动端回放播放时长，单位为分钟  |
+| unknownPcPlayDuration      | pc 其他 播放时长，单位为分钟    |
+| unknownMobilePlayDuration  | 移动端其他 播放时长，单位为分钟 |
+
+### 查询多个频道的实时在线人数
+
+#### 描述
+```
+获取多个频道实时在线人数
+每个频道返回最近2分半钟（10秒一个点，15条数据）的实时在线人数信息。每个频道的结果列表按照时间降序排序。
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testListChannelViewerCount() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelViewerCountRequest liveListChannelViewerCountRequest = new LiveListChannelViewerCountRequest();
+        liveListChannelViewerCountRequest.setChannelIds("1951952,1958888");
+        LiveListChannelViewerCountResponse liveListChannelViewerCountResponse =
+                new LiveChannelServiceImpl().listChannelViewerCount(
+                liveListChannelViewerCountRequest);
+        Assert.assertNotNull(liveListChannelViewerCountResponse);
+        if (liveListChannelViewerCountResponse != null) {
+            //to do something ......
+            log.debug("测试查询多个频道的实时在线人数成功，{}", JSON.toJSONString(liveListChannelViewerCountResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询多个频道的实时在线人数](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveListChannelViewerCountRequest]
+
+| 参数名     | 必选 | 类型   | 说明                   |
+| ---------- | ---- | ------ | ---------------------- |
+| channelIds | 是   | string | 多个频道ID，用逗号隔开 |
+
+#### 返回对象描述[LiveListChannelViewerCountResponse]
+
+| 参数名    | 说明                       |
+| --------- | -------------------------- |
+| channelId | 频道ID                     |
+| account   | 数字格式，在线人数         |
+| time      | 统计的时间，格式：HH:mm:ss |

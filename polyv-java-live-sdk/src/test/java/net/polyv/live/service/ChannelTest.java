@@ -34,6 +34,9 @@ import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyResponse;
+import net.polyv.live.entity.channel.LiveChannelViewerCountRequest;
+import net.polyv.live.entity.channel.LiveChannelViewlogRequest;
+import net.polyv.live.entity.channel.LiveChannelViewlogResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -44,14 +47,22 @@ import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelMicRequest;
+import net.polyv.live.entity.channel.LiveListChannelMicResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoResponse;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
+import net.polyv.live.entity.channel.LiveListChannelSummaryRequest;
+import net.polyv.live.entity.channel.LiveListChannelSummaryResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
+import net.polyv.live.entity.channel.LiveListChannelViewerCountRequest;
+import net.polyv.live.entity.channel.LiveListChannelViewerCountResponse;
+import net.polyv.live.entity.channel.LiveListChannelViewlogRequest;
+import net.polyv.live.entity.channel.LiveListChannelViewlogResponse;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListResponse;
@@ -1335,15 +1346,88 @@ public class ChannelTest extends BaseTest {
         long startTime = nowTime - 30 * 24 * 60 * 60 * 1000l;
         LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest =
                 new LiveChannelMaxHistoryConcurrentRequest();
-        liveChannelMaxHistoryConcurrentRequest.setChannelId(channelId)
-                .setStartTime(startTime)
-                .setEndTime(nowTime);
+        liveChannelMaxHistoryConcurrentRequest.setChannelId(channelId).setStartTime(startTime).setEndTime(nowTime);
         Integer liveChannelMaxHistoryConcurrentResponse = new LiveChannelServiceImpl().maxChannelHistoryConcurrent(
                 liveChannelMaxHistoryConcurrentRequest);
         Assert.assertNotNull(liveChannelMaxHistoryConcurrentResponse);
         if (liveChannelMaxHistoryConcurrentResponse != null) {
             //to do something ......
             log.debug("测试获取频道一定时间范围之内的历史最高并发人数成功，并发人数为：{}", liveChannelMaxHistoryConcurrentResponse);
+        }
+    }
+    
+    /**
+     * 测试分页获取连麦情况使用详情
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelMic() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelMicRequest liveListChannelMicRequest = new LiveListChannelMicRequest();
+        liveListChannelMicRequest.setChannelIds("1951952,1958888").setStartDay("2020-01-01").setEndDay("2020-11-11");
+        LiveListChannelMicResponse liveListChannelMicResponse = new LiveChannelServiceImpl().listChannelMic(
+                liveListChannelMicRequest);
+        Assert.assertNotNull(liveListChannelMicResponse);
+        if (liveListChannelMicResponse != null) {
+            //to do something ......
+            log.debug("测试分页获取连麦情况使用详情成功，{}", JSON.toJSONString(liveListChannelMicResponse));
+        }
+    }
+    
+    /**
+     * 测试分页查询频道观看日志
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelViewlog() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
+        liveListChannelViewlogRequest.setChannelId(1951952).setCurrentDay("2020-10-14");
+        LiveListChannelViewlogResponse liveListChannelViewlogResponse = new LiveChannelServiceImpl().listChannelViewlog(
+                liveListChannelViewlogRequest);
+        Assert.assertNotNull(liveListChannelViewlogResponse);
+        if (liveListChannelViewlogResponse != null) {
+            //to do something ......
+            log.debug("测试分页查询频道观看日志成功，{}", JSON.toJSONString(liveListChannelViewlogResponse));
+        }
+    }
+    
+    /**
+     * 测试查询多个频道汇总的统计数据
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelSummary() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelSummaryRequest liveListChannelSummaryRequest = new LiveListChannelSummaryRequest();
+        liveListChannelSummaryRequest.setStartDate("2020-01-01")
+                .setEndDate("2020-11-11")
+                .setChannelIds("1951952,1958888");
+        LiveListChannelSummaryResponse liveListChannelSummaryResponse = new LiveChannelServiceImpl().listChannelSummary(
+                liveListChannelSummaryRequest);
+        Assert.assertNotNull(liveListChannelSummaryResponse);
+        if (liveListChannelSummaryResponse != null) {
+            //to do something ......
+            log.debug("测试查询多个频道汇总的统计数据成功，{}", JSON.toJSONString(liveListChannelSummaryResponse));
+        }
+    }
+    
+    /**
+     * 测试查询多个频道的实时在线人数
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelViewerCount() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelViewerCountRequest liveListChannelViewerCountRequest = new LiveListChannelViewerCountRequest();
+        liveListChannelViewerCountRequest.setChannelIds("1951952,1958888");
+        LiveListChannelViewerCountResponse liveListChannelViewerCountResponse =
+                new LiveChannelServiceImpl().listChannelViewerCount(
+                liveListChannelViewerCountRequest);
+        Assert.assertNotNull(liveListChannelViewerCountResponse);
+        if (liveListChannelViewerCountResponse != null) {
+            //to do something ......
+            log.debug("测试查询多个频道的实时在线人数成功，{}", JSON.toJSONString(liveListChannelViewerCountResponse));
         }
     }
     

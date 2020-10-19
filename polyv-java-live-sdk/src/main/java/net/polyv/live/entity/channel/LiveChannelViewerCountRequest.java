@@ -11,15 +11,16 @@ import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
 /**
- * 删除直播频道请求体
+ * 查询频道实时在线人数请求实体
  * @author: sadboy
  **/
 @Data
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel("删除直播频道请求体")
-public class LiveDeleteChannelRequest extends LiveCommonRequest {
+@ApiModel("查询频道实时在线人数请求实体")
+public class LiveChannelViewerCountRequest extends LiveCommonRequest {
+    
     /**
      * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
      */
@@ -28,10 +29,10 @@ public class LiveDeleteChannelRequest extends LiveCommonRequest {
     private String userId;
     
     /**
-     * 频道ID
+     * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "频道ID", required = false)
-    @NotNull(message = "属性channelId不能为空")
+    @ApiModelProperty(name = "channelId", value = "频道号", required = true)
+    @NotNull(message = "channelId不能为空")
     private Integer channelId;
     
 }

@@ -51,14 +51,22 @@ import net.polyv.live.entity.channel.LiveDeleteChannelPlaybackVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelMicRequest;
+import net.polyv.live.entity.channel.LiveListChannelMicResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoResponse;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
+import net.polyv.live.entity.channel.LiveListChannelSummaryRequest;
+import net.polyv.live.entity.channel.LiveListChannelSummaryResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
+import net.polyv.live.entity.channel.LiveListChannelViewerCountRequest;
+import net.polyv.live.entity.channel.LiveListChannelViewerCountResponse;
+import net.polyv.live.entity.channel.LiveListChannelViewlogRequest;
+import net.polyv.live.entity.channel.LiveListChannelViewlogResponse;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
@@ -77,11 +85,14 @@ import net.polyv.live.util.MapUtil;
  **/
 @Slf4j
 public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChannelService {
+    
     /**
-     * 直播频道创建
+     * 创建直播频道
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/pdcz/create-channel/
      * @param liveChannelRequest 直播频道请求实体
      * @return 频道数据
-     * @throws IOException 客户端和服务器读写异常
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
      */
     @Override
     public LiveChannelResponse createChannel(LiveChannelRequest liveChannelRequest)
@@ -94,9 +105,11 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 创建并初始化频道
-     * @param liveChannelInitRequest 请求体
-     * @return 响应体
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/pdcz/basic-create/
+     * @param liveChannelInitRequest 创建并初始化频道请求体
+     * @return 创建并初始化频道返回实体
      * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
      */
     @Override
     public LiveChannelInitResponse createChannelInit(LiveChannelInitRequest liveChannelInitRequest)
@@ -109,9 +122,11 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 批量创建频道
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/batch-create-channels/
      * @param liveCreateChannelListRequest 批量创建频道请求体
      * @return 批量创建频道返回体
      * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
      */
     @Override
     public LiveCreateChannelListResponse createChannelList(LiveCreateChannelListRequest liveCreateChannelListRequest)
@@ -124,9 +139,11 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 修改频道的相关设置
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/pdcz/update-channel-detail-setting/
      * @param liveChannelSettingRequest 修改频道的相关设置请求体
      * @return 修改频道的相关设置返回体
      * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
      */
     @SneakyThrows
     @Override
@@ -140,9 +157,11 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     /**
      * 设置频道详情
      * 注意：设置前，请确认您的套餐是否包含对应场景
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/detail-update/
      * @param liveChannelDetailRequest 设置频道详情请求实体
      * @return 频道详情
      * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
      */
     @Override
     public String updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest)
@@ -157,9 +176,11 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 查询课件重制任务列表
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/pptrecord-list/
      * @param liveListChannelPPTRecordRequest 查询课件重制任务列表请求体
      * @return 课件重制任务列表返回体
      * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
      */
     @Override
     public LiveListChannelPPTRecordResponse listPPTRecord(
@@ -171,6 +192,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 设置频道密码
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/pdcz/updatepasswd/
      * @param liveChannelPasswordSettingRequest 设置频道密码请求体
      * @return 设置频道密码返回体
      * @throws IOException 异常
@@ -186,6 +208,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 删除直播频道
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/deletechannel/
      * @param liveDeleteChannelRequest 删除直播频道请求体
      * @return 删除直播频道返回体
      * @throws IOException 异常
@@ -201,6 +224,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 批量删除频道
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/batch-delete-channels/
      * @param liveDeleteChannelListRequest 批量删除频道请求体
      * @return 批量删除频道返回体
      * @throws IOException 异常
@@ -215,6 +239,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 设置频道单点登陆token
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/set-token-1/
      * @param liveCreateChannelTokenRequest 设置频道单点登陆token请求体
      * @return 设置频道单点登陆token返回体
      * @throws IOException 异常
@@ -229,6 +254,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 查询频道信息
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/pdcz/getchannelid-2/
      * @param liveChannelInfoRequest 查询频道信息请求体
      * @return 查询频道信息返回体
      * @throws IOException 异常
@@ -245,6 +271,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 查询频道基本信息
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/pdcz/get-detail-setting/
      * @param liveChannelBasicInfoRequest 查询频道基本信息请求体
      * @return 查询频道基本信息返回提
      * @throws IOException 异常
@@ -261,6 +288,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 查询授权和连麦的token
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/pdcz/get-chat-token/
      * @param liveCreateChannelTokenRequest 查询授权和连麦的token请求体
      * @return 查询授权和连麦的token返回体
      * @throws IOException 异常
@@ -278,6 +306,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 创建子频道
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/add-account/
      * @param liveCreateSonChannelRequest 创建子频道请求体
      * @return 创建子频道返回体
      * @throws IOException 异常
@@ -294,6 +323,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 设置子频道信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/update-account/
      * @param liveUpdateSonChannelInfoRequest 设置子频道信息请求体
      * @return 设置子频道信息返回体
      * @throws IOException 异常
@@ -309,6 +339,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 设置子频道单点登陆token
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/set-account-token/
      * @param liveCreateSonChannelTokenRequest 设置子频道单点登陆token请求体
      * @return 设置子频道单点登陆token返回体
      * @throws IOException 异常
@@ -325,6 +356,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 查询子频道信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/get-account/
      * @param liveSonChannelInfoRequest 查询子频道信息请求体
      * @return 查询子频道信息返回体
      * @throws IOException 异常
@@ -341,6 +373,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 查询频道号下所有子频道信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/get-accounts/
      * @param liveSonChannelInfoListRequest 查询频道号下所有子频道信息请求体
      * @return 查询频道号下所有子频道信息返回体
      * @throws IOException 异常
@@ -362,6 +395,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 删除子频道
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/delete-account/
      * @param liveDeleteSonChannelRequest 删除子频道请求体
      * @return 删除子频道返回体 true为删除成功，空字符串为删除失败
      * @throws IOException 异常
@@ -377,6 +411,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 恢复直播频道推流
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/hqzbxx/resume/
      * @param liveResumeChannelStreamRequest 恢复直播频道推流请求体
      * @return 恢复直播频道推流返回体，success为成功
      * @throws IOException 异常
@@ -394,6 +429,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 禁止直播频道推流
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/hqzbxx/banpush/
      * @param liveCutoffChannelStreamRequest 禁止直播频道推流请求实体
      * @return 禁止直播频道推流返回实体
      * @throws IOException 异常
@@ -410,6 +446,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 批量查询频道直播流状态
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/hqzbxx/live-status/
      * @param liveListChannelStreamStatusRequest 批量查询频道直播流状态请求实体
      * @return 批量查询频道直播流状态返回实体
      * @throws IOException 异常
@@ -450,6 +487,7 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     
     /**
      * 将点播中的视频添加到视频库
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/lzhf/add-vod-playback/
      * @param liveCreateChannelVideoPlaybackRequest 将点播中的视频添加到视频库请求实体
      * @return 将点播中的视频添加到视频库返回实体
      * @throws IOException 异常
@@ -625,7 +663,6 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         signMap.put("channelId", liveChannelVideoSortRequest.getChannelId().toString());
         String liveListChannelVideoLibraryResponse = this.basePostJson(url, signMap, liveChannelVideoSortRequest,
                 String.class);
-//        String liveListChannelVideoLibraryResponse = this.basePost(url, liveChannelVideoSortRequest, String.class);
         return liveListChannelVideoLibraryResponse;
     }
     
@@ -749,6 +786,90 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         Integer liveChannelMaxHistoryConcurrentResponse = (Integer) this.baseGet(url,
                 liveChannelMaxHistoryConcurrentRequest, Integer.class);
         return liveChannelMaxHistoryConcurrentResponse;
+    }
+    
+    /**
+     * 分页获取连麦情况使用详情
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/gksj/mic-detail-list/
+     * @param liveListChannelMicRequest 分页获取连麦情况使用详情请求实体
+     * @return 分页获取连麦情况使用详情返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelMicResponse listChannelMic(LiveListChannelMicRequest liveListChannelMicRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_MIC_LIST_URL;
+        LiveListChannelMicResponse liveListChannelMicResponse = this.baseGet(url, liveListChannelMicRequest,
+                LiveListChannelMicResponse.class);
+        return liveListChannelMicResponse;
+    }
+    
+    /**
+     * 分页查询频道观看日志
+     * 1. 如果查询一段时间的记录，可以传：startTime、endTime （startTime和endTime 必须在同一个月），如果查询某天的记录，则传currentDay；
+     * 2. startTime、endTime 和 currentDay不能都不传；
+     * 3. currentDay与startTime、endTime 同时传将使用currentDay的值。
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/gksj/viewlog-page/
+     * @param liveChannelViewlogRequest 分页查询频道观看日志请求实体
+     * @return 分页查询频道观看日志返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelViewlogResponse listChannelViewlog(LiveListChannelViewlogRequest liveChannelViewlogRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_VIEW_LOGS_GET_URL, liveChannelViewlogRequest.getChannelId());
+        LiveListChannelViewlogResponse liveListChannelViewlogResponse = this.baseGet(url, liveChannelViewlogRequest,
+                LiveListChannelViewlogResponse.class);
+        return liveListChannelViewlogResponse;
+    }
+    
+    /**
+     * 查询多个频道汇总的统计数据
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/gksj/channel_play_summary/
+     * @param liveListChannelSummaryRequest 查询多个频道汇总的统计数据请求实体
+     * @return 查询多个频道汇总的统计数据返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelSummaryResponse listChannelSummary(
+            LiveListChannelSummaryRequest liveListChannelSummaryRequest) throws IOException, NoSuchAlgorithmException {
+        liveListChannelSummaryRequest.setUserId(LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SUMMARY_LIST_GET_URL,
+                liveListChannelSummaryRequest.getUserId());
+        LiveListChannelSummaryResponse.ChannelSummary[] channelSummaries = this.basePost(url,
+                liveListChannelSummaryRequest, LiveListChannelSummaryResponse.ChannelSummary[].class);
+        channelSummaries =
+                channelSummaries == null ? new LiveListChannelSummaryResponse.ChannelSummary[]{} : channelSummaries;
+        LiveListChannelSummaryResponse liveListChannelSummaryResponse = new LiveListChannelSummaryResponse();
+        liveListChannelSummaryResponse.setChannelSummarys(Arrays.asList(channelSummaries));
+        return liveListChannelSummaryResponse;
+    }
+    
+    /**
+     * 查询多个频道的实时在线人数
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/gksj/get-realtime-viewers/
+     * @param liveListChannelViewerCountRequest 查询多个频道的实时在线人数请求实体
+     * @return 查询多个频道的实时在线人数返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelViewerCountResponse listChannelViewerCount(
+            LiveListChannelViewerCountRequest liveListChannelViewerCountRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_REAL_TIME_VIEWERS_GET_URL;
+        LiveListChannelViewerCountResponse.ChannelViewerCount[] channelViewerCounts = this.baseGet(url,
+                liveListChannelViewerCountRequest, LiveListChannelViewerCountResponse.ChannelViewerCount[].class);
+        channelViewerCounts = channelViewerCounts == null ?
+                channelViewerCounts = new LiveListChannelViewerCountResponse.ChannelViewerCount[]{} :
+                channelViewerCounts;
+        LiveListChannelViewerCountResponse liveListChannelViewerCountResponse =
+                new LiveListChannelViewerCountResponse();
+        liveListChannelViewerCountResponse.setChannelViewerCounts(Arrays.asList(channelViewerCounts));
+        return liveListChannelViewerCountResponse;
     }
     
 }

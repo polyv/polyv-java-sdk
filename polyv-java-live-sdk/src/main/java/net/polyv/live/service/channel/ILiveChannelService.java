@@ -44,14 +44,22 @@ import net.polyv.live.entity.channel.LiveDeleteChannelPlaybackVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelMicRequest;
+import net.polyv.live.entity.channel.LiveListChannelMicResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoResponse;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
+import net.polyv.live.entity.channel.LiveListChannelSummaryRequest;
+import net.polyv.live.entity.channel.LiveListChannelSummaryResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
+import net.polyv.live.entity.channel.LiveListChannelViewerCountRequest;
+import net.polyv.live.entity.channel.LiveListChannelViewerCountResponse;
+import net.polyv.live.entity.channel.LiveListChannelViewlogRequest;
+import net.polyv.live.entity.channel.LiveListChannelViewlogResponse;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
@@ -482,6 +490,51 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     Integer maxChannelHistoryConcurrent(LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 分页获取连麦情况使用详情
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/gksj/mic-detail-list/
+     * @param liveListChannelMicRequest 分页获取连麦情况使用详情请求实体
+     * @return 分页获取连麦情况使用详情返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListChannelMicResponse listChannelMic(LiveListChannelMicRequest liveListChannelMicRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 分页查询频道观看日志
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/gksj/viewlog-page/
+     * @param liveChannelViewlogRequest 分页查询频道观看日志请求实体
+     * @return 分页查询频道观看日志返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListChannelViewlogResponse listChannelViewlog(LiveListChannelViewlogRequest liveChannelViewlogRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询多个频道汇总的统计数据
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/gksj/channel_play_summary/
+     * @param liveListChannelSummaryRequest 查询多个频道汇总的统计数据请求实体
+     * @return 查询多个频道汇总的统计数据返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListChannelSummaryResponse listChannelSummary(LiveListChannelSummaryRequest liveListChannelSummaryRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询多个频道的实时在线人数
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/gksj/get-realtime-viewers/
+     * @param liveListChannelViewerCountRequest 查询多个频道的实时在线人数请求实体
+     * @return 查询多个频道的实时在线人数返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListChannelViewerCountResponse listChannelViewerCount(
+            LiveListChannelViewerCountRequest liveListChannelViewerCountRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

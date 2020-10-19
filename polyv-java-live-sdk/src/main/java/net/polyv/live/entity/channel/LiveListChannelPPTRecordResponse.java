@@ -5,7 +5,6 @@ import java.util.List;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -20,7 +19,6 @@ import net.polyv.live.entity.dto.LivePPTRecordDTO;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("查询课件重制任务列表返回实体")
 public class LiveListChannelPPTRecordResponse extends LivePageCommonResponse {
     

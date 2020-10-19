@@ -5,13 +5,13 @@ import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
 /**
+ * TODO 未完成功能
  * 查询频道直播状态请求实体
  * @author: sadboy
  **/
@@ -19,7 +19,6 @@ import net.polyv.live.entity.LiveCommonRequest;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("查询频道直播状态请求实体")
 public class LiveChannelStreamStatusRequest extends LiveCommonRequest {
     

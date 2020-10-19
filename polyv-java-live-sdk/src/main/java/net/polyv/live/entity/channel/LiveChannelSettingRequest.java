@@ -2,16 +2,15 @@ package net.polyv.live.entity.channel;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
-
-import javax.validation.constraints.NotNull;
 
 /**
  * 修改频道的相关设置请求实体
@@ -21,7 +20,6 @@ import javax.validation.constraints.NotNull;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("频道相关设置请求基本信息")
 public class LiveChannelSettingRequest extends LiveCommonRequest {
     

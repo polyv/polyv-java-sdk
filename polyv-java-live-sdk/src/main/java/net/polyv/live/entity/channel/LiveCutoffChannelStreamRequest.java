@@ -5,7 +5,6 @@ import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -19,7 +18,6 @@ import net.polyv.live.entity.LiveCommonRequest;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("禁止直播频道推流请求实体")
 public class LiveCutoffChannelStreamRequest extends LiveCommonRequest {
     

@@ -5,11 +5,9 @@ import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.LivePageCommonRequest;
 
 /**
@@ -20,7 +18,6 @@ import net.polyv.live.entity.LivePageCommonRequest;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("查询视频库列表请求实体")
 public class LiveListChannelVideoLibraryRequest extends LivePageCommonRequest {
     

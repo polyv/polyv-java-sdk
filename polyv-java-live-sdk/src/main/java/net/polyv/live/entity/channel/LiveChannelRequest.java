@@ -9,12 +9,10 @@ import org.hibernate.validator.constraints.Length;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.LiveCommonRequest;
 
 
@@ -27,7 +25,6 @@ import net.polyv.live.entity.LiveCommonRequest;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("直播频道请求基本信息")
 public class LiveChannelRequest extends LiveCommonRequest {
     

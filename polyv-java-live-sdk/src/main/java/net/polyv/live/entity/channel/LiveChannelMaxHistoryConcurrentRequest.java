@@ -3,7 +3,6 @@ package net.polyv.live.entity.channel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -17,7 +16,6 @@ import net.polyv.live.entity.LiveCommonRequest;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("获取频道一定时间范围之内的历史最高并发人数请求实体")
 public class LiveChannelMaxHistoryConcurrentRequest extends LiveCommonRequest {
     

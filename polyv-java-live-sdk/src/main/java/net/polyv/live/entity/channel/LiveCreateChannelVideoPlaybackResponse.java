@@ -3,7 +3,6 @@ package net.polyv.live.entity.channel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -16,7 +15,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("将点播中的视频添加到视频库返回实体")
 public class LiveCreateChannelVideoPlaybackResponse {
     

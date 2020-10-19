@@ -33,6 +33,7 @@ public class LiveCommonRequest extends CommonReqeust {
     @ApiModelProperty(hidden = true )
     @NotNull(message = "属性sign不能为空")
     private String sign;
+    
     /**
      * 每次请求的业务流水号，便于客户端/服务器端排查问题
      */

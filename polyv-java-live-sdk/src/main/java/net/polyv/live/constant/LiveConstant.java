@@ -1,5 +1,9 @@
 package net.polyv.live.constant;
 
+import javax.validation.constraints.NotNull;
+
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * 直播常量类
  * @author: thomas
@@ -142,6 +146,43 @@ public class LiveConstant {
         
         public String getDesc() {
             return desc;
+        }
+    }
+    
+    
+    /**
+     * 问卷答题类型
+     */
+    public enum QuestionType {
+        //"题目类型,R为单选，C为多选，Q为问答
+        RADIO("R"), CHECK("C"), QUESTION("Q");
+        
+        private String type;
+        
+        private QuestionType(String type) {
+            this.type = type;
+        }
+        
+        public String getType() {
+            return type;
+        }
+    }
+    
+    /**
+     * 通用条件判断
+     */
+    public enum Flag {
+        //Y=YES , N=NO
+        YES("Y"), NO("N");
+        
+        private String flag;
+        
+        private Flag(String flag) {
+            this.flag = flag;
+        }
+        
+        public String getFlag() {
+            return flag;
         }
     }
     

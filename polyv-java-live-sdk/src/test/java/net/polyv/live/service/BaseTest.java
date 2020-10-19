@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.Assert;
 
+import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.channel.LiveChannelRequest;
 import net.polyv.live.entity.channel.LiveChannelResponse;
@@ -24,13 +25,13 @@ import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
  * @author: thomas
  **/
 public class BaseTest {
-//    BaseTest(){
-//        String appId = "frlr1zazn3";
-//        String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
-//        String userId = "1b448be323";
-//        LiveGlobalConfig.init(appId,userId,appSecret);
-//        System.out.println("--初始化完成--");
-//    }
+    BaseTest(){
+        String appId = "frlr1zazn3";
+        String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
+        String userId = "1b448be323";
+        LiveGlobalConfig.init(appId,userId,appSecret);
+        System.out.println("--初始化完成--");
+    }
     
     /**
      * 创建channel并返回channelId
@@ -53,10 +54,12 @@ public class BaseTest {
      * @throws NoSuchAlgorithmException 异常
      */
     protected Integer createChannel() throws IOException, NoSuchAlgorithmException {
-        LiveChannelRequest liveChannelRequest = new LiveChannelRequest().setName("test直播频道")
-                .setChannelPasswd("666888")
-                .setScene(LiveConstant.SceneType.PPT.getDesc());
-        return createChannel(liveChannelRequest);
+        Integer channelId = 	1951952;
+        return channelId;
+//        LiveChannelRequest liveChannelRequest = new LiveChannelRequest().setName("test直播频道")
+//                .setChannelPasswd("666888")
+//                .setScene(LiveConstant.SceneType.PPT.getDesc());
+//        return createChannel(liveChannelRequest);
     }
     
     /**

@@ -52,6 +52,8 @@ import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoResponse;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
+import net.polyv.live.entity.channel.LiveListChannelSummaryRequest;
+import net.polyv.live.entity.channel.LiveListChannelSummaryResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.LiveListChannelViewlogRequest;
@@ -508,6 +510,17 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveListChannelViewlogResponse listChannelViewlog(LiveListChannelViewlogRequest liveChannelViewlogRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询多个频道汇总的统计数据
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/gksj/channel_play_summary/
+     * @param liveListChannelSummaryRequest 查询多个频道汇总的统计数据请求实体
+     * @return 查询多个频道汇总的统计数据返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListChannelSummaryResponse listChannelSummary(LiveListChannelSummaryRequest liveListChannelSummaryRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -54,6 +54,8 @@ import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoResponse;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
+import net.polyv.live.entity.channel.LiveListChannelSummaryRequest;
+import net.polyv.live.entity.channel.LiveListChannelSummaryResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.LiveListChannelViewlogRequest;
@@ -1387,5 +1389,24 @@ public class ChannelTest extends BaseTest {
         }
     }
     
+    /**
+     * 测试查询多个频道汇总的统计数据
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelSummary() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelSummaryRequest liveListChannelSummaryRequest = new LiveListChannelSummaryRequest();
+        liveListChannelSummaryRequest.setStartDate("2020-01-01")
+                .setEndDate("2020-11-11")
+                .setChannelIds("1951952,1958888");
+        LiveListChannelSummaryResponse liveListChannelSummaryResponse = new LiveChannelServiceImpl().listChannelSummary(
+                liveListChannelSummaryRequest);
+        Assert.assertNotNull(liveListChannelSummaryResponse);
+        if (liveListChannelSummaryResponse != null) {
+            //to do something ......
+            log.debug("测试查询多个频道汇总的统计数据成功，{}", JSON.toJSONString(liveListChannelSummaryResponse));
+        }
+    }
     
 }

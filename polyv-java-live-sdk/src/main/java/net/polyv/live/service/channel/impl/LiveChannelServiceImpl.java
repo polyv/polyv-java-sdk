@@ -59,6 +59,8 @@ import net.polyv.live.entity.channel.LiveListChannelSessionInfoRequest;
 import net.polyv.live.entity.channel.LiveListChannelSessionInfoResponse;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
+import net.polyv.live.entity.channel.LiveListChannelSummaryRequest;
+import net.polyv.live.entity.channel.LiveListChannelSummaryResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.LiveListChannelViewlogRequest;
@@ -786,10 +788,33 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     @Override
     public LiveListChannelViewlogResponse listChannelViewlog(LiveListChannelViewlogRequest liveChannelViewlogRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_VIEW_LOGS_GET_URL,liveChannelViewlogRequest.getChannelId());
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_VIEW_LOGS_GET_URL, liveChannelViewlogRequest.getChannelId());
         LiveListChannelViewlogResponse liveListChannelViewlogResponse = this.baseGet(url, liveChannelViewlogRequest,
                 LiveListChannelViewlogResponse.class);
         return liveListChannelViewlogResponse;
+    }
+    
+    /**
+     * 查询多个频道汇总的统计数据
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/gksj/channel_play_summary/
+     * @param liveListChannelSummaryRequest 查询多个频道汇总的统计数据请求实体
+     * @return 查询多个频道汇总的统计数据返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelSummaryResponse listChannelSummary(
+            LiveListChannelSummaryRequest liveListChannelSummaryRequest) throws IOException, NoSuchAlgorithmException {
+        liveListChannelSummaryRequest.setUserId(LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SUMMARY_LIST_GET_URL,
+                liveListChannelSummaryRequest.getUserId());
+        LiveListChannelSummaryResponse.ChannelSummary[] channelSummaries = this.basePost(url,
+                liveListChannelSummaryRequest, LiveListChannelSummaryResponse.ChannelSummary[].class);
+        channelSummaries =
+                channelSummaries == null ? new LiveListChannelSummaryResponse.ChannelSummary[]{} : channelSummaries;
+        LiveListChannelSummaryResponse liveListChannelSummaryResponse = new LiveListChannelSummaryResponse();
+        liveListChannelSummaryResponse.setChannelSummarys(Arrays.asList(channelSummaries));
+        return liveListChannelSummaryResponse;
     }
     
 }

@@ -61,6 +61,8 @@ import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
+import net.polyv.live.entity.channel.LiveListChannelViewlogRequest;
+import net.polyv.live.entity.channel.LiveListChannelViewlogResponse;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
@@ -768,6 +770,26 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
         LiveListChannelMicResponse liveListChannelMicResponse = this.baseGet(url, liveListChannelMicRequest,
                 LiveListChannelMicResponse.class);
         return liveListChannelMicResponse;
+    }
+    
+    /**
+     * 分页查询频道观看日志
+     * 1. 如果查询一段时间的记录，可以传：startTime、endTime （startTime和endTime 必须在同一个月），如果查询某天的记录，则传currentDay；
+     * 2. startTime、endTime 和 currentDay不能都不传；
+     * 3. currentDay与startTime、endTime 同时传将使用currentDay的值。
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/gksj/viewlog-page/
+     * @param liveChannelViewlogRequest 分页查询频道观看日志请求实体
+     * @return 分页查询频道观看日志返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelViewlogResponse listChannelViewlog(LiveListChannelViewlogRequest liveChannelViewlogRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_VIEW_LOGS_GET_URL,liveChannelViewlogRequest.getChannelId());
+        LiveListChannelViewlogResponse liveListChannelViewlogResponse = this.baseGet(url, liveChannelViewlogRequest,
+                LiveListChannelViewlogResponse.class);
+        return liveListChannelViewlogResponse;
     }
     
 }

@@ -34,6 +34,8 @@ import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyResponse;
+import net.polyv.live.entity.channel.LiveChannelViewlogRequest;
+import net.polyv.live.entity.channel.LiveChannelViewlogResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
@@ -54,6 +56,8 @@ import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
+import net.polyv.live.entity.channel.LiveListChannelViewlogRequest;
+import net.polyv.live.entity.channel.LiveListChannelViewlogResponse;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.LiveSonChannelInfoListResponse;
@@ -1364,5 +1368,24 @@ public class ChannelTest extends BaseTest {
             log.debug("测试分页获取连麦情况使用详情成功，{}", JSON.toJSONString(liveListChannelMicResponse));
         }
     }
+    
+    /**
+     * 测试分页查询频道观看日志
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelViewlog() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
+        liveListChannelViewlogRequest.setChannelId(1951952).setCurrentDay("2020-10-14");
+        LiveListChannelViewlogResponse liveListChannelViewlogResponse = new LiveChannelServiceImpl().listChannelViewlog(
+                liveListChannelViewlogRequest);
+        Assert.assertNotNull(liveListChannelViewlogResponse);
+        if (liveListChannelViewlogResponse != null) {
+            //to do something ......
+            log.debug("测试分页查询频道观看日志成功，{}", JSON.toJSONString(liveListChannelViewlogResponse));
+        }
+    }
+    
     
 }

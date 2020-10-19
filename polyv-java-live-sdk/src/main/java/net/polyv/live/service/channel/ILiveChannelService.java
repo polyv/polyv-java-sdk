@@ -54,6 +54,8 @@ import net.polyv.live.entity.channel.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.LiveListChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
+import net.polyv.live.entity.channel.LiveListChannelViewlogRequest;
+import net.polyv.live.entity.channel.LiveListChannelViewlogResponse;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.LiveMergeChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveResumeChannelStreamRequest;
@@ -495,6 +497,17 @@ public interface ILiveChannelService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveListChannelMicResponse listChannelMic(LiveListChannelMicRequest liveListChannelMicRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 分页查询频道观看日志
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/gksj/viewlog-page/
+     * @param liveChannelViewlogRequest 分页查询频道观看日志请求实体
+     * @return 分页查询频道观看日志返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListChannelViewlogResponse listChannelViewlog(LiveListChannelViewlogRequest liveChannelViewlogRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -179,7 +179,7 @@ public class MapUtil {
     }
     
     /**
-     * 获取签名字段，appId，timestamp，sign，requestId的 map 集合
+     * 获取签名字段，appId，timestamp，requestId的 map 集合,本方法不参与具体签名方法和sign字段设置
      * @param t 请求体
      * @param <T> LiveCommonRequest
      * @return map
@@ -195,7 +195,6 @@ public class MapUtil {
         Map<String, String> tempMap = new HashMap<>();
         tempMap.put("appId", t.getAppId());
         tempMap.put("timestamp", t.getTimestamp());
-        tempMap.put("sign", t.getSign());
         tempMap.put("requestId", t.getRequestId());
         return tempMap;
     }

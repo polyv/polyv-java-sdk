@@ -79,10 +79,11 @@ public class LiveChannelViewlogDTO {
     private String viewerName;
     
     /**
-     * 观看类型：取值
+     * 观看类型：取值vod 表示观看回放，取值live 表示直播
      */
-    @ApiModelProperty(name = "param3", value = "观看类型：取值", required = false)
-    private String param3;
+    @ApiModelProperty(name = "logType", value = "观看类型：取值vod 表示观看回放，取值live 表示直播", required = false)
+    @JSONField(name = "param3")
+    private String logType;
     
     /**
      * IP地址

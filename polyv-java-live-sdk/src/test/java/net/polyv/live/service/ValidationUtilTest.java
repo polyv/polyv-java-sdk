@@ -13,7 +13,7 @@ public class ValidationUtilTest {
     @Test
     public void testValidationUtil() {
         javax.el.ExpressionFactory factory = null;
-        LiveChannelRequest liveChannelRequest = LiveChannelRequest.builder().userId("kskskskssksksk").build();
+        LiveChannelRequest liveChannelRequest = new LiveChannelRequest().setUserId("kskskskssksksk");
         ValidationUtil.ValidResult validResult =  ValidationUtil.validateBean(
                 liveChannelRequest);
         if (validResult.hasErrors()) {

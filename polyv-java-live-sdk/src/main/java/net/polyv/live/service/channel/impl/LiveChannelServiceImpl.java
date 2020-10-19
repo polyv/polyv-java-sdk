@@ -46,6 +46,7 @@ import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
+import net.polyv.live.entity.channel.LiveDeleteChannelPlaybackVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
@@ -707,9 +708,27 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
     @Override
     public String deleteChannelVideo(LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_VIDEO_DELETE_URL,liveDeleteChannelVideoRequest.getChannelId());
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_VIDEO_DELETE_URL, liveDeleteChannelVideoRequest.getChannelId());
         String liveDeleteChannelVideoResponse = this.basePost(url, liveDeleteChannelVideoRequest, String.class);
         return liveDeleteChannelVideoResponse;
+    }
+    
+    /**
+     * 删除视频库列表中的视频
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/deleteplaybackvideo/
+     * @param liveDeleteChannelPlaybackVideoRequest 删除视频库列表中的视频请求实体
+     * @return 删除视频库列表中的视频返回实体，success为删除成功
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String deleteChannelPlaybackVideo(
+            LiveDeleteChannelPlaybackVideoRequest liveDeleteChannelPlaybackVideoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PLAYBACK_DELETE_URL,
+                liveDeleteChannelPlaybackVideoRequest.getChannelId());
+        String liveDeleteChannelPlaybackVideoResponse = this.basePost(url, liveDeleteChannelPlaybackVideoRequest, String.class);
+        return liveDeleteChannelPlaybackVideoResponse;
     }
     
 }

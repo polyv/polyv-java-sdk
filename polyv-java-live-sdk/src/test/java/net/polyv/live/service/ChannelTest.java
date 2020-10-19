@@ -35,7 +35,6 @@ import net.polyv.live.entity.channel.LiveChannelVideoOnlyRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyResponse;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
-import net.polyv.live.entity.channel.LiveCreateChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
@@ -1301,5 +1300,25 @@ public class ChannelTest extends BaseTest {
 //            log.debug("测试删除直播暂存中的录制文件");
 //        }
 //    }
-
+    
+    /**
+     * 测试删除视频库列表中的视频
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+//    public void testDeleteChannelPlaybackVideo() throws IOException, NoSuchAlgorithmException {
+//        int channelId = 1951952;
+//        String videoId = "07f5bbeb67";
+//        LiveDeleteChannelPlaybackVideoRequest liveDeleteChannelPlaybackVideoRequest =
+//                new LiveDeleteChannelPlaybackVideoRequest();
+//        liveDeleteChannelPlaybackVideoRequest.setChannelId(channelId).setVideoId(videoId).setListType("playback");
+//        String liveDeleteChannelPlaybackVideoResponse = new LiveChannelServiceImpl().deleteChannelPlaybackVideo(liveDeleteChannelPlaybackVideoRequest);
+//                Assert.assertNotNull(liveDeleteChannelPlaybackVideoResponse);
+//        if ("success".equals(liveDeleteChannelPlaybackVideoResponse)) {
+//            //to do something ......
+//            log.debug("测试删除视频库列表中的视频成功");
+//        }
+//    }
+    
 }

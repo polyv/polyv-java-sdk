@@ -1750,3 +1750,49 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
 | ------ | -------- |
 | data   | 暂无作用 |
 
+### 删除视频库列表中的视频
+
+#### 描述
+```
+删除回放列表中某个视频
+只是在回放列表删除，点播后台中视频依然存在。
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testDeleteChannelPlaybackVideo() throws IOException, NoSuchAlgorithmException {
+        int channelId = 1951952;
+        String videoId = "07f5bbeb67";
+        LiveDeleteChannelPlaybackVideoRequest liveDeleteChannelPlaybackVideoRequest =
+                new LiveDeleteChannelPlaybackVideoRequest();
+        liveDeleteChannelPlaybackVideoRequest.setChannelId(channelId).setVideoId(videoId).setListType("playback");
+        String liveDeleteChannelPlaybackVideoResponse = new LiveChannelServiceImpl().deleteChannelPlaybackVideo(liveDeleteChannelPlaybackVideoRequest);
+                Assert.assertNotNull(liveDeleteChannelPlaybackVideoResponse);
+        if ("success".equals(liveDeleteChannelPlaybackVideoResponse)) {
+            //to do something ......
+            log.debug("测试删除视频库列表中的视频成功");
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-删除视频库列表中的视频](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否批量创建成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                                         |
+| --------- | ---- | ------ | ------------------------------------------------------------ |
+| channelId | 是   | int    | 频道ID                                                       |
+| videoId   | 是   | string | 直播系统生成的id，可在回放列表接口的返回数据获取             |
+| listType  | 否   | string | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明              |
+| ------ | ----------------- |
+| data   | success为删除成功 |

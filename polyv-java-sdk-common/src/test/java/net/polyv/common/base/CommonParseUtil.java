@@ -5,10 +5,20 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.annotation.JSONField;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 /**
  * @author: thomas
@@ -20,15 +30,15 @@ public class CommonParseUtil {
     
     public static void testCreateFields() {
         Boolean req = null;//判断是生成请求还是响应
-        String fieldsStr = "userid\t是\tstring\tPOLYV用户ID， http://api.polyv.net/v2/user/{userid}/main中的{userid}需要替换为POLYV用户ID的值\n" +
-                "ptime\t是\tstring\t当前时间的毫秒级时间戳（13位），3分钟内有效\n" + "date\t否\tstring\t要查询的日期，格式 ：yyyy-MM-dd\n" +
-                "sign\t是\tstring\t签名，为40位大写的SHA1值";//readFileString("C:\\Users\\T460\\Desktop\\fields.txt");
-        fieldsStr = readFileString("C:\\Users\\T460\\Desktop\\fields.txt");
+        String fieldsStr = "code\t\t\t响应代码，成功为200，失败为400，签名错误为403，异常错误500";
+
+//        fieldsStr = readFileString("C:\\Users\\T460\\Desktop\\fields.txt");
+        
         String[] lineStr = fieldsStr.split("\n");
         for (String temp : lineStr) {
             ///System.out.println(temp);
             temp = temp.trim();
-            temp = temp.replaceAll("\\s+","\t");
+            temp = temp.replaceAll("\\s+", "\t");
             String[] lineArr = temp.split("\t");
             if (req == null) {
                 req = lineArr.length == 4;
@@ -45,7 +55,7 @@ public class CommonParseUtil {
                 descript = lineArr[2].trim();
             }
             
-            String reallyType = getReallyType(fieldType);
+            String reallyType = getReallyType(fieldType , req);
             
             System.out.println("/**");
             System.out.println("* " + descript);
@@ -57,13 +67,16 @@ public class CommonParseUtil {
             if ("string".equals(fieldType) && "true".equals(mustSelect)) {
                 System.out.println("@NotNull(message = \"" + fieldName + "不能为空\")");
             }
+            if ("timestamp".equals(fieldType) ) {
+                System.out.print("@JSONField(format = \"yyyy-MM-dd hh:mm:ss\")");
+            }
             System.out.print("private " + reallyType + " " + fieldName + ";");
             System.out.println("");
             System.out.println("");
         }
     }
     
-    private static String getReallyType(String fieldType) {
+    private static String getReallyType(String fieldType,boolean isRequest) {
         switch (fieldType.toLowerCase()) {
             case "integer":
             case "int":
@@ -73,8 +86,12 @@ public class CommonParseUtil {
             case "boolean":
                 return "Boolean";
             case "long":
-            case "timestamp":
                 return "Long";
+            case "timestamp":
+                if(isRequest)
+                    return "Long";
+                else
+                    return "Date";
             case "float":
                 return "Float";
             default:
@@ -102,5 +119,7 @@ public class CommonParseUtil {
         return stringBuffer.toString();
     }
     
+    
+  
     
 }

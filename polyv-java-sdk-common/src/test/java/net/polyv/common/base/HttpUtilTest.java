@@ -77,7 +77,7 @@ public class HttpUtilTest {
      * 测试 http 个体请求
      * @throws Exception
      */
-    @Test
+   
     public void testHttpGet() throws Exception {
         String url = "https://www.w3school.com.cn/index.html";
         url = "http://47.115.173.234:8001/get";
@@ -91,7 +91,7 @@ public class HttpUtilTest {
     /**
      * 测试post 表单提交
      */
-    @Test
+     
     public void testPostByMap() throws IOException {
         String url = "http://47.115.173.234:8001/post";
         Map<String, String> param = new HashMap<String, String>();
@@ -105,7 +105,7 @@ public class HttpUtilTest {
     /**
      * 测试 json post 请求
      */
-    @Test
+   
     public void testPostByJson() throws IOException {
         String url = "http://47.115.173.234:8001/post2";
         List<String> list = new ArrayList<>();

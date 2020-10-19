@@ -574,7 +574,7 @@ public class ChannelTest extends BaseTest {
         Integer channelId = createChannel();
         
         LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest = new LiveListChannelPPTRecordRequest();
-        liveListChannelPPTRecordRequest.setChannelId(channelId).setPage(1);
+        liveListChannelPPTRecordRequest.setChannelId(channelId).setCurrentPage(1);
         LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse = new LiveChannelServiceImpl().listPPTRecord(
                 liveListChannelPPTRecordRequest);
         Assert.assertNotNull(liveListChannelPPTRecordResponse);

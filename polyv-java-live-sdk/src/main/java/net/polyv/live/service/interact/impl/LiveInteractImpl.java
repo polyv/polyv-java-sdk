@@ -92,6 +92,7 @@ public class LiveInteractImpl extends LiveBaseService implements ILiveInteractSe
         if (StringUtils.isBlank(liveQuestionnaireDetailSetRequest.getRequestId())) {
             liveQuestionnaireDetailSetRequest.setRequestId(LiveSignUtil.generateUUID());
         }
+        
         liveQuestionnaireDetailSetRequest.setAppId(LiveGlobalConfig.APP_ID);
         if (StringUtils.isBlank(liveQuestionnaireDetailSetRequest.getTimestamp())) {
             liveQuestionnaireDetailSetRequest.setTimestamp(String.valueOf(System.currentTimeMillis()));

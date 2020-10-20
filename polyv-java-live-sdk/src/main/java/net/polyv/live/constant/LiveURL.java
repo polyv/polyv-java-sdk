@@ -400,6 +400,11 @@ public class LiveURL {
     public static final String ACCOUNT_MIC_DURATION_URL = BASE_URI + "v3/channel/statistics/mic/get-duration";
     
     /**
+     * 设置功能开关状态
+     */
+    public static final String ACCOUNT_SWITCH_UPDATE_URL = BASE_URI + "v3/channel/switch/update";
+    
+    /**
      * 分页获取连麦情况使用详情
      */
     public static final String CHANNEL_MIC_LIST_URL = BASE_URI + "v3/channel/statistics/mic/list";

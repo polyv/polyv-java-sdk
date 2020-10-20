@@ -432,6 +432,10 @@ public class LiveURL {
      * 查询指定直播场次sessionId的签到场次记录
      */
     public static final String CHANNEL_CHECKIN_METADATA_BY_SESSIONID_URL = BASE_URI + "v3/channel/chat/checkin-by-sessionId";
+    /**
+     * 查询频道答题卡答题结果
+     */
+    public static final String CHANNEL_QUESTION_ANSWER_RECORD_URL = BASE_URI + "v3/channel/chat/checkin-by-sessionId";
     
     /**
      * 400错误码

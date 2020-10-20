@@ -16,7 +16,7 @@ import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
 
 /**
- * 直播频道管理
+ * 直播互动管理
  * @author: thomas
  **/
 public interface ILiveInteractService {

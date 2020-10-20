@@ -10,14 +10,14 @@ import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.LivePageCommonRequest;
 
 /**
- * 查询频道问卷结果请求实体
+ * 分页查询频道问卷结果请求实体
  * @author: thomas
  **/
 @Data
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel("查询频道问卷结果请求实体")
+@ApiModel("分页查询频道问卷结果请求实体")
 public class LiveQuestionnaireResultPageRequest extends LivePageCommonRequest {
    
     

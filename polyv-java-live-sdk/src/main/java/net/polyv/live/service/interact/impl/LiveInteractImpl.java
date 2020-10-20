@@ -27,7 +27,7 @@ import net.polyv.live.service.interact.ILiveInteractService;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
- * 直播频道管理
+ * 直播互动管理
  * @author: thomas
  **/
 @Slf4j

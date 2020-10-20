@@ -418,6 +418,10 @@ public class LiveURL {
      */
     public static final String CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_PAGE_URL = BASE_URI + "v3/channel/questionnaire/list-answer-records";
     
+    /**
+     * 分页查询频道问卷结果
+     */
+    public static final String CHANNEL_CHECKIN_LIST_URL = BASE_URI + "v3/channel/checkin/list";
     
     /**
      * 400错误码

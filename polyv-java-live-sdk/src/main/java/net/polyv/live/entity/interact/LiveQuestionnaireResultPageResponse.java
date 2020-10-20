@@ -12,14 +12,14 @@ import lombok.experimental.Accessors;
 import net.polyv.live.entity.LivePageCommonResponse;
 
 /**
- * 查询频道问卷结果响应实体
+ * 分页查询频道问卷结果响应实体
  * @author: thomas
  **/
 @Data
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel("查询频道问卷结果响应实体")
+@ApiModel("分页查询频道问卷结果响应实体")
 public class LiveQuestionnaireResultPageResponse extends LivePageCommonResponse {
     
     /**

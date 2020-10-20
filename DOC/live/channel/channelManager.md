@@ -2256,3 +2256,46 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | --------- | ---- | ------------------------------ |
 | available | int  | 可用连麦分钟数，单位分钟       |
 | history   | int  | 历史已使用连麦分钟数，单位分钟 |
+
+### 设置功能开关状态
+
+#### 描述
+```
+用于修改功能开关设置，可修改全局开关设置或频道开关设置
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+注：isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;closeChaterList当enabled值为Y时，表示的是关闭在线列表
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdateAccountSwitch() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest = new LiveUpdateAccountSwitchRequest();
+        liveUpdateAccountSwitchRequest.setType(LiveConstant.ChannelSwitch.AUTO_PLAY.getDesc()).setEnabled("N");
+        String liveUpdateAccountSwitchResponse = new LiveAccountServiceImpl().updateAccountSwitch(
+                liveUpdateAccountSwitchRequest);
+        Assert.assertNotNull(liveUpdateAccountSwitchResponse);
+        if (liveUpdateAccountSwitchResponse != null) {
+            //to do something ......
+            log.debug("设置功能开关状态成功,{}", liveUpdateAccountSwitchResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置功能开关状态](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                                         |
+| --------- | ---- | ------ | ------------------------------------------------------------ |
+| channelId | 否   | int    | 频道号，不传该参数则表示修改全局设置                         |
+| type      | 是   | string | 开关类型，具体取值可见net.polyv.live.constant.LiveConstant.ChannelSwitch |
+| enabled   | 是   | string | 开关值，Y或N                                                 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 名称 | 类型   | 说明                    |
+| ---- | ------ | ----------------------- |
+| data | string | 成功响应数据,成功为true |

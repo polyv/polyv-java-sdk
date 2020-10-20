@@ -10,6 +10,8 @@ import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireListRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireListResponse;
+import net.polyv.live.entity.interact.LiveQuestionnaireResultPageRequest;
+import net.polyv.live.entity.interact.LiveQuestionnaireResultPageResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
 
@@ -61,5 +63,14 @@ public interface ILiveInteractService {
             LiveQuestionnaireResultRequest liveQuestionnaireResultRequest)
             throws IOException, NoSuchAlgorithmException;
     
-    
+    /**
+     * 分页查询频道问卷结果，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/list-questionnaire-by-page/
+     * @param liveQuestionnaireResultPageRequest 分页查询频道问卷结果请求实体
+     * @return 分页查询频道问卷结果响应实体
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 算法异常
+     */
+    LiveQuestionnaireResultPageResponse getQuestionnaireResultPageInfo(
+            LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

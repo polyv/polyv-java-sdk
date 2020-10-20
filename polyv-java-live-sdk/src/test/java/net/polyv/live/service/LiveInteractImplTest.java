@@ -19,6 +19,8 @@ import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireListRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireListResponse;
+import net.polyv.live.entity.interact.LiveQuestionnaireResultPageRequest;
+import net.polyv.live.entity.interact.LiveQuestionnaireResultPageResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
 import net.polyv.live.service.interact.impl.LiveInteractImpl;
@@ -220,4 +222,22 @@ public class LiveInteractImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 分页查询频道问卷结果
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetQuestionnaireResultPageInfo() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest = new LiveQuestionnaireResultPageRequest();
+        liveQuestionnaireResultPageRequest.setChannelId(channelId).setPageSize(20).setCurrentPage(1).setRequestId(LiveSignUtil.generateUUID());
+        LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = new LiveInteractImpl().getQuestionnaireResultPageInfo(
+                liveQuestionnaireResultPageRequest);
+        Assert.assertNotNull(liveQuestionnaireResultPageRequest);
+        if (liveQuestionnaireResultPageResponse != null) {
+            //to do something ......
+            log.debug("测试分页查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultPageResponse));
+        }
+    }
 }

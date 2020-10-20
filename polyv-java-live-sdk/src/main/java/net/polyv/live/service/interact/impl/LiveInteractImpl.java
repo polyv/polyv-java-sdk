@@ -18,6 +18,8 @@ import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireListRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireListResponse;
+import net.polyv.live.entity.interact.LiveQuestionnaireResultPageRequest;
+import net.polyv.live.entity.interact.LiveQuestionnaireResultPageResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
 import net.polyv.live.service.LiveBaseService;
@@ -120,6 +122,23 @@ public class LiveInteractImpl extends LiveBaseService implements ILiveInteractSe
         List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = this.baseGet(url,
                 liveQuestionnaireResultRequest, List.class);
         return liveQuestionnaireResultResponse;
+    }
+    
+    /**
+     * 分页查询频道问卷结果，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/list-questionnaire-by-page/
+     * @param liveQuestionnaireResultPageRequest 分页查询频道问卷结果请求实体
+     * @return 分页查询频道问卷结果响应实体
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 算法异常
+     */
+    @Override
+    public LiveQuestionnaireResultPageResponse getQuestionnaireResultPageInfo(
+            LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_PAGE_URL;
+        LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = this.baseGet(url,
+                liveQuestionnaireResultPageRequest, LiveQuestionnaireResultPageResponse.class);
+        return liveQuestionnaireResultPageResponse;
     }
     
     

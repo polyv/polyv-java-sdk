@@ -20,7 +20,7 @@ import net.polyv.live.entity.LiveCommonRequest;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel("查询频道问卷结果请求实体")
-public class LiveQuestionResultRequest extends LiveCommonRequest {
+public class LiveQuestionnaireResultRequest extends LiveCommonRequest {
    
     
     /**

@@ -398,6 +398,13 @@ public class LiveURL {
      * 设置频道问卷信息
      */
     public static final String CHANNEL_QUESTIONNAIRE_DETAIL_SET_URL = BASE_URI + "v3/channel/questionnaire/add-edit-questionnaire";
+    
+    /**
+     * 查询频道问卷结果
+     */
+    public static final String CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_URL = BASE_URI + "v3/channel/questionnaire/answer-records";
+    
+    
     /**
      * 400错误码
      */

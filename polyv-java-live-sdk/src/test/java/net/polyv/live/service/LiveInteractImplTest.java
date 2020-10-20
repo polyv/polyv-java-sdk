@@ -3,6 +3,7 @@ package net.polyv.live.service;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,6 +19,8 @@ import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireListRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireListResponse;
+import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
+import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
 import net.polyv.live.service.interact.impl.LiveInteractImpl;
 import net.polyv.live.util.LiveSignUtil;
 
@@ -60,7 +63,7 @@ public class LiveInteractImplTest extends BaseTest {
         LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest = new LiveQuestionnaireDetailSetRequest();
         liveQuestionnaireDetailSetRequest.setChannelId(channelId).setCustomQuestionnaireId(LiveSignUtil.generateUUID())
 //                .setQuestionnaireId(LiveSignUtil.generateUUID())
-                .setQuestionnaireTitle("测试试卷，明天会更好调查2").setRequestId(LiveSignUtil.generateUUID());
+                .setQuestionnaireTitle("测试试卷，明天会更好调查1").setRequestId(LiveSignUtil.generateUUID());
         
         //封装问卷题目
         LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail =
@@ -144,7 +147,7 @@ public class LiveInteractImplTest extends BaseTest {
         //封装问卷请求对象
         LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest = new LiveQuestionnaireDetailSetRequest();
         liveQuestionnaireDetailSetRequest.setChannelId(channelId).setCustomQuestionnaireId(LiveSignUtil.generateUUID())
-//                .setQuestionnaireId(LiveSignUtil.generateUUID())
+//                .setQuestionnaireId("fs9skpv22f")
                 .setQuestionnaireTitle("测试试卷，明天会更好调查2").setRequestId(LiveSignUtil.generateUUID());
         
         //封装问卷题目
@@ -152,10 +155,10 @@ public class LiveInteractImplTest extends BaseTest {
                 liveQuestionnaireDetailSetRequest.new QuestionDetail();
         questionDetail.setQuestionId(LiveSignUtil.generateUUID())
                 .setName("您的兴趣爱好？")
-                .setAnswer("AB")
+                .setAnswer("A")
                 .setScoreEnabled(LiveConstant.Flag.YES.getFlag())
                 .setRequired(LiveConstant.Flag.YES.getFlag())
-                .setOptions(Arrays.asList(new String[]{"篮球", "足球", "排球", "跑步"}))
+                .setOptions(Arrays.asList(new String[]{"篮球", "足球", "排球", "跑步","羽毛球"}))
                 .setScore(20)
                 .setType(LiveConstant.QuestionType.CHECK.getType());
         
@@ -176,7 +179,7 @@ public class LiveInteractImplTest extends BaseTest {
                 .setRequired(LiveConstant.Flag.YES.getFlag())
                 .setType(LiveConstant.QuestionType.QUESTION.getType());
         
-        
+        //将问卷题目和问卷关联
         liveQuestionnaireDetailSetRequest.setQuestions(Arrays.asList(
                 new LiveQuestionnaireDetailSetRequest.QuestionDetail[]{questionDetail, questionDetail1,
                         questionDetail2}));
@@ -195,5 +198,26 @@ public class LiveInteractImplTest extends BaseTest {
         
     }
     
+    
+    
+    /**
+     * 查询频道问卷结果
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetQuestionnaireResultInfo() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveQuestionnaireResultRequest liveQuestionnaireResultRequest = new LiveQuestionnaireResultRequest();
+        liveQuestionnaireResultRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+//        liveQuestionnaireResultRequest.setQuestionnaireId("fs9skpv22f");
+        List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = new LiveInteractImpl().getQuestionnaireResultInfo(
+                liveQuestionnaireResultRequest);
+        Assert.assertNotNull(liveQuestionnaireResultResponse);
+        if (liveQuestionnaireResultResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultResponse));
+        }
+    }
     
 }

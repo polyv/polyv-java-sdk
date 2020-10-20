@@ -25,11 +25,11 @@ import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
  * @author: thomas
  **/
 public class BaseTest {
-    BaseTest(){
+    BaseTest() {
         String appId = "frlr1zazn3";
         String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
         String userId = "1b448be323";
-        LiveGlobalConfig.init(appId,userId,appSecret);
+        LiveGlobalConfig.init(appId, userId, appSecret);
         System.out.println("--初始化完成--");
     }
     
@@ -54,7 +54,7 @@ public class BaseTest {
      * @throws NoSuchAlgorithmException 异常
      */
     protected Integer createChannel() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = 	1951952;
+        Integer channelId = 1965681;
         return channelId;
 //        LiveChannelRequest liveChannelRequest = new LiveChannelRequest().setName("test直播频道")
 //                .setChannelPasswd("666888")
@@ -176,7 +176,7 @@ public class BaseTest {
         int size = channelVedioInfos.size();
         Assert.assertTrue(size > 0);
         List<String> fileIds = new ArrayList<>(size);
-        for(LiveChannelVideoListResponse.ChannelVedioInfo temp:channelVedioInfos){
+        for (LiveChannelVideoListResponse.ChannelVedioInfo temp : channelVedioInfos) {
             fileIds.add(temp.getFileId());
         }
         return fileIds;

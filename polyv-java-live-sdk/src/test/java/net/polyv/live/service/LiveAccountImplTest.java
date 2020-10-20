@@ -1,35 +1,28 @@
 package net.polyv.live.service;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+
+import org.junit.Assert;
+import org.junit.Test;
+
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
-import net.polyv.live.config.LiveGlobalConfig;
+import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
+import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
 import net.polyv.live.entity.account.LiveListAccountResponse;
 import net.polyv.live.service.account.impl.LiveAccountServiceImpl;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-
 /**
  * @author: sadboy
  **/
 @Slf4j
-public class LiveAccountServiceImplTest extends BaseTest {
-    
-    LiveAccountServiceImplTest() {
-        String appId = "frlr1zazn3";
-        String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
-        String userId = "1b448be323";
-        LiveGlobalConfig.init(appId, userId, appSecret);
-        System.out.println("--初始化完成--");
-    }
+public class LiveAccountImplTest extends BaseTest {
     
     @Test
     public void testJson() {
@@ -39,7 +32,7 @@ public class LiveAccountServiceImplTest extends BaseTest {
         channelList.add(3);
         channelList.add(4);
         channelList.add(5);
-        System.out.println(JSON.toJSONString(liveListAccountResponse.setChannelList(channelList)));
+        log.debug(JSON.toJSONString(liveListAccountResponse.setChannelList(channelList)));
         System.out.println(JSON.parseObject("{\"result\":[\"2\",\"3\",\"4\",\"5\"]}", LiveListAccountResponse.class)
                 .getChannelList());
     }
@@ -57,7 +50,7 @@ public class LiveAccountServiceImplTest extends BaseTest {
         Assert.assertNotNull(liveListAccountDetailResponse);
         if (liveListAccountDetailResponse != null) {
             //to do something ......
-            log.debug("分页查询账号下所有频道详细信息成功" + JSON.toJSONString(liveListAccountDetailResponse));
+            log.debug("分页查询账号下所有频道详细信息成功,{}", JSON.toJSONString(liveListAccountDetailResponse));
         }
     }
     
@@ -79,9 +72,25 @@ public class LiveAccountServiceImplTest extends BaseTest {
         Assert.assertNotNull(liveListAccountResponse);
         if (liveListAccountResponse != null) {
             //to do something ......
-            log.debug("分页查询账号下所有频道详细信息成功" + JSON.toJSONString(liveListAccountResponse));
+            log.debug("分页查询账号下所有频道详细信息成功,{}", JSON.toJSONString(liveListAccountResponse));
         }
     }
     
+    /**
+     * 测试获取账号连麦分钟数使用量与剩余量
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testMicDuration() throws IOException, NoSuchAlgorithmException {
+        LiveAccountMicDurationRequest liveAccountMicDurationRequest = new LiveAccountMicDurationRequest();
+        LiveAccountMicDurationResponse liveAccountMicDurationResponse = new LiveAccountServiceImpl().micDuration(
+                liveAccountMicDurationRequest);
+        Assert.assertNotNull(liveAccountMicDurationResponse);
+        if (liveAccountMicDurationResponse != null) {
+            //to do something ......
+            log.debug("测试获取账号连麦分钟数使用量与剩余量成功,{}", JSON.toJSONString(liveAccountMicDurationResponse));
+        }
+    }
     
 }

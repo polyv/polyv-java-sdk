@@ -390,6 +390,11 @@ public class LiveURL {
     public static final String CHANNEL_DOC_STATUS_URL = BASE_URI + "v3/channel/document/status/get";
     
     /**
+     * 删除频道文档
+     */
+    public static final String CHANNEL_DOC_DELETE_URL = BASE_URI + "v3/channel/document/delete";
+    
+    /**
      * 分页获取连麦情况使用详情
      */
     public static final String CHANNEL_MIC_LIST_URL = BASE_URI + "v3/channel/statistics/mic/list";
@@ -412,16 +417,19 @@ public class LiveURL {
     /**
      * 设置频道问卷信息
      */
-    public static final String CHANNEL_QUESTIONNAIRE_DETAIL_SET_URL = BASE_URI + "v3/channel/questionnaire/add-edit-questionnaire";
+    public static final String CHANNEL_QUESTIONNAIRE_DETAIL_SET_URL =
+            BASE_URI + "v3/channel/questionnaire/add-edit-questionnaire";
     
     /**
      * 查询频道问卷结果
      */
-    public static final String CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_URL = BASE_URI + "v3/channel/questionnaire/answer-records";
+    public static final String CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_URL =
+            BASE_URI + "v3/channel/questionnaire/answer-records";
     /**
      * 分页查询频道问卷结果
      */
-    public static final String CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_PAGE_URL = BASE_URI + "v3/channel/questionnaire/list-answer-records";
+    public static final String CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_PAGE_URL =
+            BASE_URI + "v3/channel/questionnaire/list-answer-records";
     
     /**
      * 查询签到结果
@@ -436,7 +444,8 @@ public class LiveURL {
     /**
      * 查询指定直播场次sessionId的签到场次记录
      */
-    public static final String CHANNEL_CHECKIN_METADATA_BY_SESSIONID_URL = BASE_URI + "v3/channel/chat/checkin-by-sessionId";
+    public static final String CHANNEL_CHECKIN_METADATA_BY_SESSIONID_URL =
+            BASE_URI + "v3/channel/chat/checkin-by-sessionId";
     /**
      * 查询频道答题卡答题结果
      */

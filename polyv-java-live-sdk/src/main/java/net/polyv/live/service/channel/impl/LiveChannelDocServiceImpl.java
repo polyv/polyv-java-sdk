@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.channel.doc.LiveChannelDocStatusRequest;
 import net.polyv.live.entity.channel.doc.LiveChannelDocStatusResponse;
+import net.polyv.live.entity.channel.doc.LiveDeleteChannelDocRequest;
 import net.polyv.live.entity.channel.doc.LiveListChannelDocRequest;
 import net.polyv.live.entity.channel.doc.LiveListChannelDocResponse;
 import net.polyv.live.service.LiveBaseService;
@@ -48,6 +49,22 @@ public class LiveChannelDocServiceImpl extends LiveBaseService implements ILiveC
         String url = LiveURL.CHANNEL_DOC_STATUS_URL;
         String liveChannelDocStatusResponse = this.baseGet(url, liveChannelDocStatusRequest, String.class);
         return null;
+    }
+    
+    /**
+     * 删除频道文档
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/wdgl/delete-document/
+     * @param liveDeleteChannelDocRequest 删除频道文档请求实体
+     * @return 删除频道文档返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String deleteChannelDoc(LiveDeleteChannelDocRequest liveDeleteChannelDocRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_DOC_DELETE_URL;
+        String liveDeleteChannelDocResponse = this.basePost(url, liveDeleteChannelDocRequest, String.class);
+        return liveDeleteChannelDocResponse;
     }
     
 }

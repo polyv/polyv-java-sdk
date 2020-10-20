@@ -30,31 +30,15 @@ public class CommonParseUtil {
     
     public static void testCreateFields() {
         Boolean req = null;//判断是生成请求还是响应
-        String fieldsStr =
-                "code\tint\t响应代码，成功为200，失败为400，签名错误为403，异常错误500\n" + "status\tstring\t成功为success，失败为error\n" +
-                        "message\tstring\t错误时为错误提示消息\n" + "questionnaireId\tint\t问卷ID\n" +
-                        "customQuestionnaireId\tint\t用户自定义问卷ID\n" + "channelId\tint\t频道ID\n" + "userId\tint\t用户ID\n" +
-                        "name\tstring\t问卷名称\n" + "status\tstring\t问卷状态\n" + "createdTime\tdate\t问卷创建时间\n" +
-                        "endTime\tdate\t停止问卷时间\n" + "questions\tstring\t问卷问题列表\n" + " \n" + "questionId\tint\t问题ID\n" +
-                        "name\tstring\t问题题目\n" + "type\tstring\t问题类型，取值：R 单选；C 多选；S 评星题；Q 问答\n" +
-                        "option1~10\tstring\t选项A~G 的内容\n" + "createdTime\tdate\t创建时间\n" +
-                        "lastModified\tdate\t最后修改时间\n" + "scoreEnabled\tstring\t是否计分，取值Y、N\n" + "score\tint\t题目分值\n" +
-                        "required\tstring\t是否必填，取值Y、N\n" + "answer\tstring\t问题答案";
+        String fieldsStr="";
+        fieldsStr = "questionId\tstring\t题目ID\n" + "times\tint\t第几次发送题目，用于区分相同题目重复发送的情况\n" + "answer\tstring\t题目的答案\n" +
+                "total\tint\t答题人数\n" + "options\tarray\t题目选项信息列表\n" + "title\tstring\t选项标题\n" +
+                "count\tint\t选择该选项的人数\n" + "percent\tstring\t选择该选项的人数百分比\n" + "records\tarray\t答题的用户列表\n" +
+                "viewerId\tstring\t答题的用户ID\n" + "nickname\tstring\t答题的用户昵称\n" + "answer\tstring\t答题的用户提交的答案\n" +
+                "corrent\tboolean\t答题的用户提交的答案是否正确：false不正确，true正确\n" + "submitTime\ttimestamp\t答题的用户提交时间，13位毫秒级时间戳\n" +
+                "type\tstring\t题目类型：R为单选，C为多选，Q为问答\n" + "itemType\tint\t答题类型：1表示问答，0表示答题卡";
         
-        fieldsStr = "contents\tstring\t查询的结果列表\n" + "questionnaireId\tstring\t问卷ID\n" + "channelId\tint\t频道ID\n" +
-                "userId\tint\t用户ID\n" + "name\tstring\t问卷名称\n" +
-                "status\tstring\t问卷状态，取值：saved(已保存)，published （已发布），forbidden （问卷已完成填写）\n" +
-                "createdTime\tlong\t问卷创建时间\n" + "lastModified\tlong\t问卷最后修改时间\n" + "endTime\tlong\t停止提交问卷时间\n" +
-                "customQuestionnaireId\tstring\t用户自定义问卷ID";
-        
-        fieldsStr = "\n" + "\n" + "channelId\t是\tstring\t频道号\n" + "questionnaireId\t否\tstring\t问卷id,修改问卷时需要\n" +
-                "customQuestionnaireId\t否\tstring\t客户自定义问卷id\n" + "questionnaireTitle\t是\tstring\t问卷标题\n" +
-                "questions\t是\tarray\t题目数组\n" + "questionId\t否\tstring\t题目id，修改问卷时需要传\n" + "name\t是\tstring\t题目\n" +
-                "type\t是\tstring\t题目类型,R为单选，C为多选，Q为问答\n" + "scoreEnabled\t否\tstring\t题目是否需要评分，Y为需要，N为不需要\n" +
-                "answer\t否\tstring\t需要评分的选择题才有答案，填入对应选项序号，如：A或AB\n" + "required\t否\tstring\t题目是否为必答，Y为必答，N为非必答\n" +
-                "options\t否\tarray\t题目为单选题或多选题为必填，选项数组下标0-9对应答案A-J\n" + "options[]\t否\tstring\t选项描述\n" + "\n" + " ";
-        
-        fieldsStr = "questionnaireId\tstring\t问卷id\n" + "questionIds[]\tarray\t题目的id数组";
+ 
         //        fieldsStr = readFileString("C:\\Users\\T460\\Desktop\\fields.txt");
         
         String[] lineStr = fieldsStr.split("\n");

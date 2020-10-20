@@ -424,9 +424,23 @@ public class LiveURL {
     public static final String CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_PAGE_URL = BASE_URI + "v3/channel/questionnaire/list-answer-records";
     
     /**
-     * 分页查询频道问卷结果
+     * 查询签到结果
      */
     public static final String CHANNEL_CHECKIN_LIST_URL = BASE_URI + "v3/channel/checkin/list";
+    
+    /**
+     * 查询指定签到ID的签到记录
+     */
+    public static final String CHANNEL_CHECKIN_BY_ID_URL = BASE_URI + "v3/channel/chat/get-checkins";
+    
+    /**
+     * 查询指定直播场次sessionId的签到场次记录
+     */
+    public static final String CHANNEL_CHECKIN_METADATA_BY_SESSIONID_URL = BASE_URI + "v3/channel/chat/checkin-by-sessionId";
+    /**
+     * 查询频道答题卡答题结果
+     */
+    public static final String CHANNEL_QUESTION_ANSWER_RECORD_URL = BASE_URI + "v3/channel/chat/checkin-by-sessionId";
     
     /**
      * 400错误码

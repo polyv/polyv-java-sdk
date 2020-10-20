@@ -3,7 +3,7 @@ package net.polyv.live.service;
 import org.junit.Test;
 
 import net.polyv.common.util.ValidationUtil;
-import net.polyv.live.entity.channel.LiveChannelRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 
 /**
  * @author: thomas

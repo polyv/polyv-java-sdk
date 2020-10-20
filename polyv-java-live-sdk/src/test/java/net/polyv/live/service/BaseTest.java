@@ -9,16 +9,14 @@ import java.util.List;
 import org.junit.Assert;
 
 import net.polyv.live.config.LiveGlobalConfig;
-import net.polyv.live.constant.LiveConstant;
-import net.polyv.live.entity.channel.LiveChannelRequest;
-import net.polyv.live.entity.channel.LiveChannelResponse;
-import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
-import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
-import net.polyv.live.entity.channel.LiveCreateSonChannelRequest;
-import net.polyv.live.entity.channel.LiveCreateSonChannelResponse;
-import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
-import net.polyv.live.entity.channel.LiveListChannelVideoLibraryRequest;
-import net.polyv.live.entity.channel.LiveListChannelVideoLibraryResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelResponse;
+import net.polyv.live.entity.channel.playback.LiveChannelVideoListRequest;
+import net.polyv.live.entity.channel.playback.LiveChannelVideoListResponse;
+import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
+import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
+import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest;
+import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
 
 /**

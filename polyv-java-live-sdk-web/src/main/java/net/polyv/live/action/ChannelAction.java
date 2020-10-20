@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import net.polyv.live.entity.channel.LiveChannelDetailRequest;
-import net.polyv.live.entity.channel.LiveChannelInitRequest;
-import net.polyv.live.entity.channel.LiveChannelInitResponse;
-import net.polyv.live.entity.channel.LiveChannelRequest;
-import net.polyv.live.entity.channel.LiveChannelResponse;
-import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
-import net.polyv.live.entity.channel.LiveCreateChannelListResponse;
-import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
-import net.polyv.live.entity.channel.LiveListChannelPPTRecordResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelDetailRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelInitRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelInitResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelResponse;
+import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
+import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
+import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordRequest;
+import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordResponse;
 import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
 
 /**

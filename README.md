@@ -123,7 +123,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
-import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
+import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
 
 /**
  * @author: thomas

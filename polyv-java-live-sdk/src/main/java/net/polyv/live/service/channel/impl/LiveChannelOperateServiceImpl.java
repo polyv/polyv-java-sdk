@@ -80,15 +80,15 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.LiveBaseService;
-import net.polyv.live.service.channel.ILiveChannelService;
+import net.polyv.live.service.channel.ILiveChannelOperateService;
 import net.polyv.live.util.MapUtil;
 
 /**
- * 直播频道管理
+ * 直播频道操作实现类
  * @author: thomas
  **/
 @Slf4j
-public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChannelService {
+public class LiveChannelOperateServiceImpl extends LiveBaseService implements ILiveChannelOperateService {
     
     /**
      * 创建直播频道

@@ -62,17 +62,17 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
-import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
+import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
 
 /**
  * @author: thomas
  **/
 @Slf4j
-public class ChannelTest extends BaseTest {
+public class ChannelOperateTest extends BaseTest {
     /**
      * 系统账号密钥配置
      */
-    public ChannelTest() {
+    public ChannelOperateTest() {
         String appId = "frlr1zazn3";
         String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
         String userId = "1b448be323";
@@ -444,7 +444,7 @@ public class ChannelTest extends BaseTest {
         List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(authSetting);
         liveChannelSettingRequest.setChannelId(channelId).setBasicSetting(basicSetting).setAuthSettings(authSettings);
-        String liveChannelSettingResponse = new LiveChannelServiceImpl().updateChannelSetting(
+        String liveChannelSettingResponse = new LiveChannelOperateServiceImpl().updateChannelSetting(
                 liveChannelSettingRequest);
         Assert.assertNotNull(liveChannelSettingResponse);
         if (liveChannelSettingResponse == null) {
@@ -506,7 +506,7 @@ public class ChannelTest extends BaseTest {
                 .setField("channelPasswd")
                 .setValue(newPassword)
                 .setRequestId("2860257a405447e1bbbe9161da2dee73");
-        String liveChannelDetailResponse = new LiveChannelServiceImpl().updateChannelDetail(liveChannelDetailRequest);
+        String liveChannelDetailResponse = new LiveChannelOperateServiceImpl().updateChannelDetail(liveChannelDetailRequest);
         Assert.assertNotNull(liveChannelDetailResponse);
         if ("true".equals(liveChannelDetailResponse)) {
             //to do something ......
@@ -532,7 +532,7 @@ public class ChannelTest extends BaseTest {
                 .setField("scene")
                 .setValue(value)
                 .setRequestId("2860257a405447e1bbbe9161da2dee74");
-        String liveChannelDetailResponse = new LiveChannelServiceImpl().updateChannelDetail(liveChannelDetailRequest);
+        String liveChannelDetailResponse = new LiveChannelOperateServiceImpl().updateChannelDetail(liveChannelDetailRequest);
         Assert.assertNotNull(liveChannelDetailResponse);
         if ("true".equals(liveChannelDetailResponse)) {
             //to do something ......
@@ -558,7 +558,7 @@ public class ChannelTest extends BaseTest {
                 .setField("maxViewer")
                 .setValue(value)
                 .setRequestId("2860257a405447e1bbbe9161da2dee75");
-        String liveChannelDetailResponse = new LiveChannelServiceImpl().updateChannelDetail(liveChannelDetailRequest);
+        String liveChannelDetailResponse = new LiveChannelOperateServiceImpl().updateChannelDetail(liveChannelDetailRequest);
         Assert.assertNotNull(liveChannelDetailResponse);
         if ("true".equals(liveChannelDetailResponse)) {
             //to do something ......
@@ -580,7 +580,7 @@ public class ChannelTest extends BaseTest {
         
         LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest = new LiveListChannelPPTRecordRequest();
         liveListChannelPPTRecordRequest.setChannelId(channelId).setCurrentPage(1);
-        LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse = new LiveChannelServiceImpl().listPPTRecord(
+        LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse = new LiveChannelOperateServiceImpl().listPPTRecord(
                 liveListChannelPPTRecordRequest);
         Assert.assertNotNull(liveListChannelPPTRecordResponse);
         if (liveListChannelPPTRecordResponse != null) {
@@ -604,7 +604,7 @@ public class ChannelTest extends BaseTest {
         
         LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest = new LiveChannelPasswordSettingRequest();
         liveChannelPasswordSettingRequest.setChannelId(channelId).setPasswd("987654");
-        String updateChannelPasswordResponse = new LiveChannelServiceImpl().updateChannelPassword(
+        String updateChannelPasswordResponse = new LiveChannelOperateServiceImpl().updateChannelPassword(
                 liveChannelPasswordSettingRequest);
         Assert.assertNotNull(updateChannelPasswordResponse);
         if ("true".equals(updateChannelPasswordResponse)) {
@@ -667,7 +667,7 @@ public class ChannelTest extends BaseTest {
         
         LiveCreateChannelTokenRequest liveCreateChannelTokenRequest = new LiveCreateChannelTokenRequest();
         liveCreateChannelTokenRequest.setChannelId(channelId).setToken("testToken");
-        String liveCreateChannelTokenResponse = new LiveChannelServiceImpl().createChannelToken(
+        String liveCreateChannelTokenResponse = new LiveChannelOperateServiceImpl().createChannelToken(
                 liveCreateChannelTokenRequest);
         Assert.assertNotNull(liveCreateChannelTokenResponse);
         if ("success".equals(liveCreateChannelTokenResponse)) {
@@ -691,7 +691,7 @@ public class ChannelTest extends BaseTest {
         
         LiveChannelInfoRequest liveChannelInfoRequest = new LiveChannelInfoRequest();
         liveChannelInfoRequest.setChannelId(channelId);
-        LiveChannelInfoResponse liveChannelInfoResponse = new LiveChannelServiceImpl().channelInfo(
+        LiveChannelInfoResponse liveChannelInfoResponse = new LiveChannelOperateServiceImpl().channelInfo(
                 liveChannelInfoRequest);
         Assert.assertNotNull(liveChannelInfoResponse);
         if (liveChannelInfoResponse != null) {
@@ -715,7 +715,7 @@ public class ChannelTest extends BaseTest {
         
         LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
         liveChannelBasicInfoRequest.setChannelId(channelId);
-        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = new LiveChannelServiceImpl().channelBasicInfo(
+        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().channelBasicInfo(
                 liveChannelBasicInfoRequest);
         Assert.assertNotNull(liveChannelBasicInfoResponse);
         if (liveChannelBasicInfoResponse != null) {
@@ -739,7 +739,7 @@ public class ChannelTest extends BaseTest {
         
         LiveChannelAuthTokenRequest liveChannelAuthTokenRequest = new LiveChannelAuthTokenRequest();
         liveChannelAuthTokenRequest.setChannelId(channelId).setRole(LiveConstant.Role.ADMIN.getDesc()).setOrigin(null);
-        LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = new LiveChannelServiceImpl().channelAuthToken(
+        LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = new LiveChannelOperateServiceImpl().channelAuthToken(
                 liveChannelAuthTokenRequest);
         Assert.assertNotNull(liveChannelAuthTokenResponse);
         if (liveChannelAuthTokenResponse != null) {
@@ -767,7 +767,7 @@ public class ChannelTest extends BaseTest {
                 .setNickname("sadboy")
                 .setActor("教授")
                 .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
-        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelServiceImpl().createSonChannel(
+        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelOperateServiceImpl().createSonChannel(
                 liveCreateSonChannelRequest);
         Assert.assertNotNull(liveCreateSonChannelResponse);
         if (liveCreateSonChannelResponse != null) {
@@ -795,7 +795,7 @@ public class ChannelTest extends BaseTest {
                 .setNickname("sadboy")
                 .setActor("教授")
                 .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
-        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelServiceImpl().createSonChannel(
+        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelOperateServiceImpl().createSonChannel(
                 liveCreateSonChannelRequest);
         Assert.assertNotNull(liveCreateSonChannelResponse);
         if (liveCreateSonChannelResponse != null) {
@@ -827,7 +827,7 @@ public class ChannelTest extends BaseTest {
                 .setActor("教授")
                 .setPageTurnEnabled("Y")
                 .setNotifyEnabled("Y");
-        String updateSonChannelInfoResponse = new LiveChannelServiceImpl().updateSonChannelInfo(
+        String updateSonChannelInfoResponse = new LiveChannelOperateServiceImpl().updateSonChannelInfo(
                 liveUpdateSonChannelInfoRequest);
         Assert.assertNotNull(updateSonChannelInfoResponse);
         if ("success".equals(updateSonChannelInfoResponse)) {
@@ -852,7 +852,7 @@ public class ChannelTest extends BaseTest {
         
         LiveCreateSonChannelTokenRequest liveCreateSonChannelTokenRequest = new LiveCreateSonChannelTokenRequest();
         liveCreateSonChannelTokenRequest.setAccount(sonChannelId).setToken("sonChannelLogintoken");
-        String liveCreateSonChannelTokenResponse = new LiveChannelServiceImpl().createSonChannelToken(
+        String liveCreateSonChannelTokenResponse = new LiveChannelOperateServiceImpl().createSonChannelToken(
                 liveCreateSonChannelTokenRequest);
         Assert.assertNotNull(liveCreateSonChannelTokenResponse);
         if ("success".equals(liveCreateSonChannelTokenResponse)) {
@@ -877,7 +877,7 @@ public class ChannelTest extends BaseTest {
         
         LiveSonChannelInfoRequest liveSonChannelInfoRequest = new LiveSonChannelInfoRequest();
         liveSonChannelInfoRequest.setAccount(sonChannelId).setChannelId(channelId);
-        LiveSonChannelInfoResponse liveSonChannelInfoResponse = new LiveChannelServiceImpl().sonChannelInfo(
+        LiveSonChannelInfoResponse liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().sonChannelInfo(
                 liveSonChannelInfoRequest);
         Assert.assertNotNull(liveSonChannelInfoResponse);
         if (liveSonChannelInfoResponse != null) {
@@ -899,7 +899,7 @@ public class ChannelTest extends BaseTest {
         
         LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
         liveSonChannelInfoListRequest.setChannelId(channelId);
-        LiveSonChannelInfoListResponse liveSonChannelInfoResponse = new LiveChannelServiceImpl().sonChannelInfoList(
+        LiveSonChannelInfoListResponse liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().sonChannelInfoList(
                 liveSonChannelInfoListRequest);
         Assert.assertNotNull(liveSonChannelInfoResponse);
         if (liveSonChannelInfoResponse != null) {
@@ -924,7 +924,7 @@ public class ChannelTest extends BaseTest {
         
         LiveDeleteSonChannelRequest liveDeleteSonChannelRequest = new LiveDeleteSonChannelRequest();
         liveDeleteSonChannelRequest.setChannelId(channelId).setAccount(sonChannelId);
-        String liveDeleteSonChannelRespose = new LiveChannelServiceImpl().deleteSonChannel(liveDeleteSonChannelRequest);
+        String liveDeleteSonChannelRespose = new LiveChannelOperateServiceImpl().deleteSonChannel(liveDeleteSonChannelRequest);
         Assert.assertNotNull(liveDeleteSonChannelRespose);
         if ("true".equals(liveDeleteSonChannelRespose)) {
             //to do something ......
@@ -947,7 +947,7 @@ public class ChannelTest extends BaseTest {
         
         LiveResumeChannelStreamRequest liveResumeChannelStreamRequest = new LiveResumeChannelStreamRequest();
         liveResumeChannelStreamRequest.setChannelId(channelId);
-        String liveResumeChannelStreamResponse = new LiveChannelServiceImpl().resumeChannelStream(
+        String liveResumeChannelStreamResponse = new LiveChannelOperateServiceImpl().resumeChannelStream(
                 liveResumeChannelStreamRequest);
         Assert.assertNotNull(liveResumeChannelStreamResponse);
         if ("success".equals(liveResumeChannelStreamResponse)) {
@@ -971,7 +971,7 @@ public class ChannelTest extends BaseTest {
         
         LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest = new LiveCutoffChannelStreamRequest();
         liveCutoffChannelStreamRequest.setChannelId(channelId);
-        String liveCutoffChannelStreamResponse = new LiveChannelServiceImpl().cutoffChannelStream(
+        String liveCutoffChannelStreamResponse = new LiveChannelOperateServiceImpl().cutoffChannelStream(
                 liveCutoffChannelStreamRequest);
         Assert.assertNotNull(liveCutoffChannelStreamResponse);
         if ("success".equals(liveCutoffChannelStreamResponse)) {
@@ -998,7 +998,7 @@ public class ChannelTest extends BaseTest {
                 new LiveListChannelStreamStatusRequest();
         liveListChannelStreamStatusRequest.setChannelIds(String.format("%s,%s", channelId0, channelId1));
         LiveListChannelStreamStatusResponse liveListChannelStreamStatusResponse =
-                new LiveChannelServiceImpl().listChannelLiveStream(
+                new LiveChannelOperateServiceImpl().listChannelLiveStream(
                 liveListChannelStreamStatusRequest);
         Assert.assertNotNull(liveListChannelStreamStatusResponse);
         if (liveListChannelStreamStatusResponse != null) {
@@ -1114,7 +1114,7 @@ public class ChannelTest extends BaseTest {
                 .setStartDate("2020-01-01")
                 .setEndDate("2020-10-14")
                 .setSessionId(null);
-        LiveChannelVideoListResponse liveChannelVideoListResponse = new LiveChannelServiceImpl().listChannelVideo(
+        LiveChannelVideoListResponse liveChannelVideoListResponse = new LiveChannelOperateServiceImpl().listChannelVideo(
                 liveChannelVideoListRequest);
         Assert.assertNotNull(liveChannelVideoListResponse);
         if (liveChannelVideoListResponse != null) {
@@ -1138,7 +1138,7 @@ public class ChannelTest extends BaseTest {
                 .setType("single")
                 .setOrigin("playback")
                 .setVideoId(videoIds.get(0));
-        String liveChannelPlaybackSettingResponse = new LiveChannelServiceImpl().channelPlaybackSetting(
+        String liveChannelPlaybackSettingResponse = new LiveChannelOperateServiceImpl().channelPlaybackSetting(
                 liveChannelPlaybackSettingRequest);
         Assert.assertNotNull(liveChannelPlaybackSettingResponse);
         if (liveChannelPlaybackSettingResponse != null) {
@@ -1156,7 +1156,7 @@ public class ChannelTest extends BaseTest {
     public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
         LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
         liveChannelPlaybackEnabledRequest.setChannelId(1951952).setPlayBackEnabled("Y");
-        Integer liveChannelPlaybackEnabledResponse = new LiveChannelServiceImpl().channelPlayBackEnabledSetting(
+        Integer liveChannelPlaybackEnabledResponse = new LiveChannelOperateServiceImpl().channelPlayBackEnabledSetting(
                 liveChannelPlaybackEnabledRequest);
         Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
         if (liveChannelPlaybackEnabledResponse != null) {
@@ -1176,7 +1176,7 @@ public class ChannelTest extends BaseTest {
                 new LiveListChannelVideoLibraryRequest();
         liveListChannelVideoLibraryRequest.setChannelId(1951952).setListType("playback");
         LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse =
-                new LiveChannelServiceImpl().listChannelVideoLibrary(
+                new LiveChannelOperateServiceImpl().listChannelVideoLibrary(
                 liveListChannelVideoLibraryRequest);
         Assert.assertNotNull(liveListChannelVideoLibraryResponse);
         if (liveListChannelVideoLibraryResponse != null) {
@@ -1221,7 +1221,7 @@ public class ChannelTest extends BaseTest {
                 .setEndDate("2020-10-24")
                 .setCurrentPage(1);
         LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse =
-                new LiveChannelServiceImpl().listChannelSessionInfo(
+                new LiveChannelOperateServiceImpl().listChannelSessionInfo(
                 liveListChannelSessionInfoRequest);
         Assert.assertNotNull(liveListChannelSessionInfoResponse);
         if (liveListChannelSessionInfoResponse != null) {
@@ -1241,7 +1241,7 @@ public class ChannelTest extends BaseTest {
         String fileId = listChannelFileIds(channelId).get(0);
         LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest = new LiveChannelVideoOnlyRequest();
         liveChannelVideoOnlyRequest.setChannelId(1951952).setFileId(fileId);
-        LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse = new LiveChannelServiceImpl().channelVideoOnly(
+        LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse = new LiveChannelOperateServiceImpl().channelVideoOnly(
                 liveChannelVideoOnlyRequest);
         Assert.assertNotNull(liveChannelVideoOnlyResponse);
         if (liveChannelVideoOnlyResponse != null) {
@@ -1260,7 +1260,7 @@ public class ChannelTest extends BaseTest {
         LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest =
                 new LiveChannelPlaybackEnabledInfoRequest();
         liveChannelPlaybackEnabledInfoRequest.setChannelId(1951952);
-        String liveChannelPlaybackEnabledInfoResponse = new LiveChannelServiceImpl().channelPlayBackEnabledInfo(
+        String liveChannelPlaybackEnabledInfoResponse = new LiveChannelOperateServiceImpl().channelPlayBackEnabledInfo(
                 liveChannelPlaybackEnabledInfoRequest);
         Assert.assertNotNull(liveChannelPlaybackEnabledInfoResponse);
         if (liveChannelPlaybackEnabledInfoResponse != null) {
@@ -1339,7 +1339,7 @@ public class ChannelTest extends BaseTest {
         LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest =
                 new LiveChannelMaxHistoryConcurrentRequest();
         liveChannelMaxHistoryConcurrentRequest.setChannelId(channelId).setStartTime(startTime).setEndTime(nowTime);
-        Integer liveChannelMaxHistoryConcurrentResponse = new LiveChannelServiceImpl().maxChannelHistoryConcurrent(
+        Integer liveChannelMaxHistoryConcurrentResponse = new LiveChannelOperateServiceImpl().maxChannelHistoryConcurrent(
                 liveChannelMaxHistoryConcurrentRequest);
         Assert.assertNotNull(liveChannelMaxHistoryConcurrentResponse);
         if (liveChannelMaxHistoryConcurrentResponse != null) {
@@ -1357,7 +1357,7 @@ public class ChannelTest extends BaseTest {
     public void testListChannelMic() throws IOException, NoSuchAlgorithmException {
         LiveListChannelMicRequest liveListChannelMicRequest = new LiveListChannelMicRequest();
         liveListChannelMicRequest.setChannelIds("1951952,1958888").setStartDay("2020-01-01").setEndDay("2020-11-11");
-        LiveListChannelMicResponse liveListChannelMicResponse = new LiveChannelServiceImpl().listChannelMic(
+        LiveListChannelMicResponse liveListChannelMicResponse = new LiveChannelOperateServiceImpl().listChannelMic(
                 liveListChannelMicRequest);
         Assert.assertNotNull(liveListChannelMicResponse);
         if (liveListChannelMicResponse != null) {
@@ -1375,7 +1375,7 @@ public class ChannelTest extends BaseTest {
     public void testListChannelViewlog() throws IOException, NoSuchAlgorithmException {
         LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
         liveListChannelViewlogRequest.setChannelId(1951952).setCurrentDay("2020-10-14");
-        LiveListChannelViewlogResponse liveListChannelViewlogResponse = new LiveChannelServiceImpl().listChannelViewlog(
+        LiveListChannelViewlogResponse liveListChannelViewlogResponse = new LiveChannelOperateServiceImpl().listChannelViewlog(
                 liveListChannelViewlogRequest);
         Assert.assertNotNull(liveListChannelViewlogResponse);
         if (liveListChannelViewlogResponse != null) {
@@ -1395,7 +1395,7 @@ public class ChannelTest extends BaseTest {
         liveListChannelSummaryRequest.setStartDate("2020-01-01")
                 .setEndDate("2020-11-11")
                 .setChannelIds("1951952,1958888");
-        LiveListChannelSummaryResponse liveListChannelSummaryResponse = new LiveChannelServiceImpl().listChannelSummary(
+        LiveListChannelSummaryResponse liveListChannelSummaryResponse = new LiveChannelOperateServiceImpl().listChannelSummary(
                 liveListChannelSummaryRequest);
         Assert.assertNotNull(liveListChannelSummaryResponse);
         if (liveListChannelSummaryResponse != null) {
@@ -1414,7 +1414,7 @@ public class ChannelTest extends BaseTest {
         LiveListChannelViewerCountRequest liveListChannelViewerCountRequest = new LiveListChannelViewerCountRequest();
         liveListChannelViewerCountRequest.setChannelIds("1951952,1958888");
         LiveListChannelViewerCountResponse liveListChannelViewerCountResponse =
-                new LiveChannelServiceImpl().listChannelViewerCount(
+                new LiveChannelOperateServiceImpl().listChannelViewerCount(
                 liveListChannelViewerCountRequest);
         Assert.assertNotNull(liveListChannelViewerCountResponse);
         if (liveListChannelViewerCountResponse != null) {
@@ -1435,7 +1435,7 @@ public class ChannelTest extends BaseTest {
                 new LiveChannelViewerConcurrenceRequest();
         liveChannelViewerConcurrenceRequest.setChannelId(channelId).setStartDate("2020-10-01").setEndDate("2020-11-11");
         LiveChannelViewerConcurrenceResponse liveChannelViewerConcurrenceResponse =
-                new LiveChannelServiceImpl().channelViewerConcurrence(
+                new LiveChannelOperateServiceImpl().channelViewerConcurrence(
                 liveChannelViewerConcurrenceRequest);
         Assert.assertNotNull(liveChannelViewerConcurrenceResponse);
         if (liveChannelViewerConcurrenceResponse != null) {
@@ -1454,7 +1454,7 @@ public class ChannelTest extends BaseTest {
         Integer channelId = createChannel();
         LiveListChannelDocRequest liveListChannelDocRequest = new LiveListChannelDocRequest();
         liveListChannelDocRequest.setChannelId(channelId).setStatus(null);
-        LiveListChannelDocResponse liveListChannelDocResponse = new LiveChannelServiceImpl().listChannelDoc(
+        LiveListChannelDocResponse liveListChannelDocResponse = new LiveChannelOperateServiceImpl().listChannelDoc(
                 liveListChannelDocRequest);
         Assert.assertNotNull(liveListChannelDocResponse);
         if (liveListChannelDocResponse != null) {

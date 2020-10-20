@@ -74,10 +74,10 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 
 /**
- * 直播频道管理
+ * 直播频道操作接口
  * @author: thomas
  **/
-public interface ILiveChannelService {
+public interface ILiveChannelOperateService {
     
     /**
      * 直播频道创建

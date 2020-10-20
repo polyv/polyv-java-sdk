@@ -2175,3 +2175,47 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | convertType  | 转换类型（"common"："普通PPT"，"animate"： "动画PPT"）       |
 | type         | 类型，区分旧版PPT还是新版PPT，新版值为“new”，旧版值为“old”   |
 | previewImage | ppt预览小图地址                                              |
+
+### 删除频道文档
+
+#### 描述
+```
+删除频道文档
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testDeleteChannelDoc() throws IOException, NoSuchAlgorithmException {
+        LiveDeleteChannelDocRequest liveDeleteChannelDocRequest = new LiveDeleteChannelDocRequest();
+        liveDeleteChannelDocRequest.setChannelId(channelId)
+                .setFileId("d2925eab9ac71da4d27d93bd8b3d0e821965681common")
+                .setType("new");
+        String liveDeleteChannelDocResponse = new LiveChannelDocServiceImpl().deleteChannelDoc(
+                liveDeleteChannelDocRequest);
+        Assert.assertNotNull(liveDeleteChannelDocResponse);
+        if (liveDeleteChannelDocResponse != null) {
+            //to do something ......
+            log.debug("测试删除频道文档，{}", liveDeleteChannelDocResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-删除频道文档](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                                         |
+| --------- | ---- | ------ | ------------------------------------------------------------ |
+| channelId | 是   | int    | 频道号                                                       |
+| fileId    | 是   | string | 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串)         |
+| type      | 是   | string | 新旧版文件类型，“old”：旧版， “new”：  新版【这个值可以从文档列表接口返回数据的type（类型）中获得】【多个文件需要删除，请按照fileId顺序对应ppt新旧类型，用英文逗号隔开拼接成字符串)，type中的类型数量必须跟fileId中的包含的ID数量一致】 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 名称 | 类型   | 说明                  |
+| ---- | ------ | --------------------- |
+| data | string | 成功响应数据,成功为"" |

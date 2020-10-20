@@ -2219,3 +2219,40 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | 名称 | 类型   | 说明                  |
 | ---- | ------ | --------------------- |
 | data | string | 成功响应数据,成功为"" |
+### 获取账号连麦分钟数使用量与剩余量
+
+#### 描述
+```
+获取账号连麦分钟数使用量与剩余量
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testMicDuration() throws IOException, NoSuchAlgorithmException {
+        LiveAccountMicDurationRequest liveAccountMicDurationRequest = new LiveAccountMicDurationRequest();
+        LiveAccountMicDurationResponse liveAccountMicDurationResponse = new LiveAccountServiceImpl().micDuration(
+                liveAccountMicDurationRequest);
+        Assert.assertNotNull(liveAccountMicDurationResponse);
+        if (liveAccountMicDurationResponse != null) {
+            //to do something ......
+            log.debug("测试获取账号连麦分钟数使用量与剩余量成功,{}", JSON.toJSONString(liveAccountMicDurationResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-获取账号连麦分钟数使用量与剩余量](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+无
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名    | 类型 | 说明                           |
+| --------- | ---- | ------------------------------ |
+| available | int  | 可用连麦分钟数，单位分钟       |
+| history   | int  | 历史已使用连麦分钟数，单位分钟 |

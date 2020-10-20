@@ -2075,3 +2075,50 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | channelId | 频道ID                     |
 | account   | 数字格式，在线人数         |
 | time      | 统计的时间，格式：HH:mm:ss |
+
+### 查询频道的历史并发人数
+
+#### 描述
+```
+用于获取频道在某个日期区间并发人数(按照时间升序排序)
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+开始日期和结束日期的时间跨度：最多查两个月内的数据
+
+#### 代码示例
+```java
+    @Test
+    public void testChannelViewerConcurrence() throws IOException, NoSuchAlgorithmException {
+        LiveChannelViewerConcurrenceRequest liveChannelViewerConcurrenceRequest =
+                new LiveChannelViewerConcurrenceRequest();
+        liveChannelViewerConcurrenceRequest.setChannelId(channelId).setStartDate("2020-10-01").setEndDate("2020-11-11");
+        LiveChannelViewerConcurrenceResponse liveChannelViewerConcurrenceResponse =
+                new LiveChannelServiceImpl().channelViewerConcurrence(
+                liveChannelViewerConcurrenceRequest);
+        Assert.assertNotNull(liveChannelViewerConcurrenceResponse);
+        if (liveChannelViewerConcurrenceResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道的历史并发人数成功，{}", JSON.toJSONString(liveChannelViewerConcurrenceResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道的历史并发人数](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                     |
+| --------- | ---- | ------ | ------------------------ |
+| channelId | 是   | int    | 频道号                   |
+| startDate | 是   | string | 开始日期格式，yyyy-MM-dd |
+| endDate   | 是   | string | 结束日期格式，yyyy-MM-dd |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名  | 必选 | 类型   | 说明                                              |
+| ------- | ---- | ------ | ------------------------------------------------- |
+| day     | 是   | date   | 统计的日期（时间格式：yyyy-MM-dd,例：2019-04-10） |
+| minute  | 是   | string | 统计的时间点（时间格式：12H，例：10:30）          |
+| viewers | 是   | string | 某个时间点实时观看人数                            |

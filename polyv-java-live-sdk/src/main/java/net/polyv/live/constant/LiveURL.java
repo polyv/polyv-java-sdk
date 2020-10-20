@@ -375,6 +375,11 @@ public class LiveURL {
     public static final String CHANNEL_PPTRECORD_CREATE__URL = BASE_URI + "v3/channel/pptRecord/addRecordTask";
     
     /**
+     * 查询频道的历史并发人数
+     */
+    public static final String CHANNEL_VIEWER_CONCURRENCE_URL = BASE_URI + "v3/channel/statistics/concurrence";
+    
+    /**
      * 分页获取连麦情况使用详情
      */
     public static final String CHANNEL_MIC_LIST_URL = BASE_URI + "v3/channel/statistics/mic/list";
@@ -398,6 +403,7 @@ public class LiveURL {
      * 设置频道问卷信息
      */
     public static final String CHANNEL_QUESTIONNAIRE_DETAIL_SET_URL = BASE_URI + "v3/channel/questionnaire/add-edit-questionnaire";
+    
     /**
      * 400错误码
      */

@@ -34,6 +34,8 @@ import net.polyv.live.entity.channel.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyResponse;
+import net.polyv.live.entity.channel.LiveChannelViewerConcurrenceRequest;
+import net.polyv.live.entity.channel.LiveChannelViewerConcurrenceResponse;
 import net.polyv.live.entity.channel.LiveChannelViewerCountRequest;
 import net.polyv.live.entity.channel.LiveChannelViewlogRequest;
 import net.polyv.live.entity.channel.LiveChannelViewlogResponse;
@@ -1428,6 +1430,27 @@ public class ChannelTest extends BaseTest {
         if (liveListChannelViewerCountResponse != null) {
             //to do something ......
             log.debug("测试查询多个频道的实时在线人数成功，{}", JSON.toJSONString(liveListChannelViewerCountResponse));
+        }
+    }
+    
+    /**
+     * 测试查询频道的历史并发人数
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelViewerConcurrence() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = createChannel();
+        LiveChannelViewerConcurrenceRequest liveChannelViewerConcurrenceRequest =
+                new LiveChannelViewerConcurrenceRequest();
+        liveChannelViewerConcurrenceRequest.setChannelId(channelId).setStartDate("2020-10-01").setEndDate("2020-11-11");
+        LiveChannelViewerConcurrenceResponse liveChannelViewerConcurrenceResponse =
+                new LiveChannelServiceImpl().channelViewerConcurrence(
+                liveChannelViewerConcurrenceRequest);
+        Assert.assertNotNull(liveChannelViewerConcurrenceResponse);
+        if (liveChannelViewerConcurrenceResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道的历史并发人数成功，{}", JSON.toJSONString(liveChannelViewerConcurrenceResponse));
         }
     }
     

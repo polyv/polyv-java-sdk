@@ -118,8 +118,8 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
-import net.polyv.live.entity.channel.LiveChannelRequest;
-import net.polyv.live.entity.channel.LiveChannelResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
 
 /**

@@ -6,7 +6,6 @@ import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
 import net.polyv.live.entity.account.LiveListAccountResponse;
-import net.polyv.live.entity.channel.LiveChannelResponse;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.account.ILiveAccountService;
 

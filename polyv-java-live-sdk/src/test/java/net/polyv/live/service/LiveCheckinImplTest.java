@@ -14,6 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.interact.LiveCheckinListRequest;
 import net.polyv.live.entity.interact.LiveCheckinListResponse;
+import net.polyv.live.entity.interact.LiveCheckinMetadataBySessionIdRequest;
+import net.polyv.live.entity.interact.LiveCheckinMetadataBySessionIdResponse;
 import net.polyv.live.entity.interact.LiveCheckinRequest;
 import net.polyv.live.entity.interact.LiveCheckinResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
@@ -65,12 +67,31 @@ public class LiveCheckinImplTest extends BaseTest {
     public void testGetCheckinInfoById() throws IOException, NoSuchAlgorithmException {
         Integer channelId = super.createChannel();
         LiveCheckinRequest liveCheckinRequest = new LiveCheckinRequest();
-        liveCheckinRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-        LiveCheckinResponse liveCheckinResponse = new LiveCheckinImpl().getCheckinInfoById(liveCheckinRequest);
+        liveCheckinRequest.setChannelId(channelId).setCheckinId("d91a7c60-1299-11eb-8c65-c70c1c").setRequestId(LiveSignUtil.generateUUID());
+        List<LiveCheckinResponse> liveCheckinResponse = new LiveCheckinImpl().getCheckinInfoById(liveCheckinRequest);
         Assert.assertNotNull(liveCheckinResponse);
         if (liveCheckinResponse != null) {
             //to do something ......
             log.debug("测试查询指定签到ID的签到记录成功{}", JSON.toJSONString(liveCheckinResponse));
+        }
+    }
+    
+   
+    /**
+     * 依据指定直播场次sessionId查询签到场次信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetCheckinMetadataBySessionId() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveCheckinMetadataBySessionIdRequest liveCheckinMetadataBySessionIdRequest = new LiveCheckinMetadataBySessionIdRequest();
+        liveCheckinMetadataBySessionIdRequest.setChannelId(channelId).setSessionId("fs9v9y4nxf").setRequestId(LiveSignUtil.generateUUID());
+        List<LiveCheckinMetadataBySessionIdResponse>  liveCheckinResponse = new LiveCheckinImpl().getCheckinMetadataBySessionId(liveCheckinMetadataBySessionIdRequest);
+        Assert.assertNotNull(liveCheckinResponse);
+        if (liveCheckinResponse != null) {
+            //to do something ......
+            log.debug("测试依据指定直播场次sessionId查询签到场次信息成功{}", JSON.toJSONString(liveCheckinResponse));
         }
     }
     

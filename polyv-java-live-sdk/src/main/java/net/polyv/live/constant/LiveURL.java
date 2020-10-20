@@ -429,6 +429,11 @@ public class LiveURL {
     public static final String CHANNEL_CHECKIN_BY_ID_URL = BASE_URI + "v3/channel/chat/get-checkins";
     
     /**
+     * 查询指定直播场次sessionId的签到场次记录
+     */
+    public static final String CHANNEL_CHECKIN_METADATA_BY_SESSIONID_URL = BASE_URI + "v3/channel/chat/checkin-by-sessionId";
+    
+    /**
      * 400错误码
      */
     public static final int CODE_400 = 400;

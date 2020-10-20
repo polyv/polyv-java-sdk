@@ -127,11 +127,11 @@ import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
  
  **/
 @Slf4j
-public class ChannelTest {
+public class LiveChannelOperateTest {
     /**
      * 系统账号密钥配置
      */
-    public ChannelTest() {
+    public LiveChannelOperateTest() {
         String appId = "frlr1zazn3";
         String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
         String userId = "1b448be323";
@@ -172,7 +172,7 @@ public class ChannelTest {
 INFO: HV000001: Hibernate Validator 5.0.0.Final
 [main] DEBUG net.polyv.common.base.HttpUtil - http 请求 url: https://api.polyv.net/live/v2/channels/ , 请求参数: {"requestId":"2860257a405447e1bbbe9161da2dee72","appId":"frlr1zazn3","name":"Spring 知识精讲","sign":"3B062B164F62F73EAEA211BFBFF2DACA","channelPasswd":"666888","userId":"1b448be323","timestamp":"1602749899519"}
 [main] DEBUG net.polyv.common.base.HttpUtil - http 请求结果: {"code":200,"status":"success","message":"","data":{"channelId":1955969,"userId":"1b448be323","name":"Spring 知识精讲","publisher":"主持人","description":"","url":"rtmp://push-d1.videocc.net/recordf/1b448be3231602749952790f88a?auth_key=1602751753-0-0-21e4604b758b7845340a92f13b8c417a","stream":"1b448be3231602749952790f88a","logoImage":"","logoOpacity":1.0,"logoPosition":"tr","logoHref":"","coverImage":"","coverHref":"","waitImage":"","waitHref":"","cutoffImage":"","cutoffHref":"","advertType":"NONE","advertDuration":0,"advertWidth":0,"advertHeight":0,"advertImage":"","advertHref":"","advertFlvVid":"","advertFlvUrl":"","playerColor":"#666666","autoPlay":true,"warmUpFlv":"","passwdRestrict":false,"passwdEncrypted":"","isOnlyAudio":"N","isLowLatency":"N","m3u8Url":"http://pull-d1.videocc.net/recordf/1b448be3231602749952790f88a.m3u8?auth_key=1602749953-0-0-268203aa905b5843008d9dc1abf1b8c8","m3u8Url1":"","m3u8Url2":"","m3u8Url3":"","channelLogoImage":"http://liveimages.videocc.net/assets/wimages/pc_images/logo.png","scene":"alone","channelViewerPasswd":null,"channelPasswd":"666888","linkMicLimit":0,"streamType":"client","pureRtcEnabled":"N","type":"transmit","currentTimeMillis":1602749953113}}
-[main] DEBUG net.polyv.live.service.ChannelOperateTest - 频道创建成功{"advertDuration":0,"advertFlvUrl":"","advertFlvVid":"","advertHeight":0,"advertHref":"","advertImage":"","advertType":"NONE","advertWidth":0,"autoPlay":true,"channelId":1955969,"coverHref":"","coverImage":"","currentTimeMillis":1602749953113,"cutoffHref":"","cutoffImage":"","description":"","isLowLatency":"N","isOnlyAudio":"N","linkMicLimit":0,"logoHref":"","logoImage":"","logoOpacity":1,"logoPosition":"tr","m3u8Url":"http://pull-d1.videocc.net/recordf/1b448be3231602749952790f88a.m3u8?auth_key=1602749953-0-0-268203aa905b5843008d9dc1abf1b8c8","m3u8Url1":"","m3u8Url2":"","m3u8Url3":"","name":"Spring 知识精讲","passwdEncrypted":"","passwdRestrict":false,"playerColor":"#666666","stream":"1b448be3231602749952790f88a","url":"rtmp://push-d1.videocc.net/recordf/1b448be3231602749952790f88a?auth_key=1602751753-0-0-21e4604b758b7845340a92f13b8c417a","userId":"1b448be323","waitHref":"","waitImage":"","warmUpFlv":""}
+[main] DEBUG net.polyv.live.service.LiveChannelOperateTest - 频道创建成功{"advertDuration":0,"advertFlvUrl":"","advertFlvVid":"","advertHeight":0,"advertHref":"","advertImage":"","advertType":"NONE","advertWidth":0,"autoPlay":true,"channelId":1955969,"coverHref":"","coverImage":"","currentTimeMillis":1602749953113,"cutoffHref":"","cutoffImage":"","description":"","isLowLatency":"N","isOnlyAudio":"N","linkMicLimit":0,"logoHref":"","logoImage":"","logoOpacity":1,"logoPosition":"tr","m3u8Url":"http://pull-d1.videocc.net/recordf/1b448be3231602749952790f88a.m3u8?auth_key=1602749953-0-0-268203aa905b5843008d9dc1abf1b8c8","m3u8Url1":"","m3u8Url2":"","m3u8Url3":"","name":"Spring 知识精讲","passwdEncrypted":"","passwdRestrict":false,"playerColor":"#666666","stream":"1b448be3231602749952790f88a","url":"rtmp://push-d1.videocc.net/recordf/1b448be3231602749952790f88a?auth_key=1602751753-0-0-21e4604b758b7845340a92f13b8c417a","userId":"1b448be323","waitHref":"","waitImage":"","warmUpFlv":""}
 
 
 [Thread-1] INFO net.polyv.common.base.HttpClientUtil - -----destroy HTTP POOL httpClient------

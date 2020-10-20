@@ -2122,3 +2122,56 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | day     | 是   | date   | 统计的日期（时间格式：yyyy-MM-dd,例：2019-04-10） |
 | minute  | 是   | string | 统计的时间点（时间格式：12H，例：10:30）          |
 | viewers | 是   | string | 某个时间点实时观看人数                            |
+
+### 获取频道文档列表
+
+#### 描述
+```
+用于频道文档列表接口
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testListChannelDoc() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = createChannel();
+        LiveListChannelDocRequest liveListChannelDocRequest = new LiveListChannelDocRequest();
+        liveListChannelDocRequest.setChannelId(channelId).setStatus(null);
+        LiveListChannelDocResponse liveListChannelDocResponse = new LiveChannelServiceImpl().listChannelDoc(
+                liveListChannelDocRequest);
+        Assert.assertNotNull(liveListChannelDocResponse);
+        if (liveListChannelDocResponse != null) {
+            //to do something ......
+            log.debug("测试获取频道文档列表成功，{}", JSON.toJSONString(liveListChannelDocResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-获取频道文档列表](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                                         |
+| --------- | ---- | ------ | ------------------------------------------------------------ |
+| channelId | 是   | int    | 频道号                                                       |
+| status    | 否   | String | 文档状态，不传查询所有（“normal” ：正常，“waitUpload”：等待上传,“failUpload”：上传失败，"waitConvert":转换PPT中,"failConvert":转换PPT失败） |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名       | 说明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| autoId       | 文档ID                                                       |
+| fileId       | 文件ID                                                       |
+| fileName     | 文件名                                                       |
+| fileUrl      | 文件url(isShowUrl为'Y'的时候返回文件地址)                    |
+| fileType     | 文件类型                                                     |
+| totalPage    | PPT总页数                                                    |
+| channelId    | 频道ID                                                       |
+| status       | ppt转换状态（“normal” ：正常，“waitUpload”：等待上传,“failUpload”：上传失败，"waitConvert":转换PPT中,"failConvert":转换PPT失败） |
+| createTime   | 创建时间                                                     |
+| convertType  | 转换类型（"common"："普通PPT"，"animate"： "动画PPT"）       |
+| type         | 类型，区分旧版PPT还是新版PPT，新版值为“new”，旧版值为“old”   |
+| previewImage | ppt预览小图地址                                              |

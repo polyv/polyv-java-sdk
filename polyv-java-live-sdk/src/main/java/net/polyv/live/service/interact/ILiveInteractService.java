@@ -2,6 +2,7 @@ package net.polyv.live.service.interact;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailResponse;
@@ -9,6 +10,8 @@ import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireListRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireListResponse;
+import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
+import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
 
 /**
  * 直播频道管理
@@ -46,5 +49,17 @@ public interface ILiveInteractService {
      */
     LiveQuestionnaireDetailSetResponse setQuestionnaireDetailInfo(LiveQuestionnaireDetailSetRequest liveQuestionDetailSetRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道问卷结果，API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbhd/questionnaire/
+     * @param liveQuestionnaireResultRequest 查询频道问卷结果请求实体
+     * @return 查询频道问卷结果响应实体
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 算法异常
+     */
+    List<LiveQuestionnaireResultResponse> getQuestionnaireResultInfo(
+            LiveQuestionnaireResultRequest liveQuestionnaireResultRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
     
 }

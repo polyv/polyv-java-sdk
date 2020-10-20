@@ -410,6 +410,12 @@ public class LiveURL {
     public static final String CHANNEL_QUESTIONNAIRE_DETAIL_SET_URL = BASE_URI + "v3/channel/questionnaire/add-edit-questionnaire";
     
     /**
+     * 查询频道问卷结果
+     */
+    public static final String CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_URL = BASE_URI + "v3/channel/questionnaire/answer-records";
+    
+    
+    /**
      * 400错误码
      */
     public static final int CODE_400 = 400;

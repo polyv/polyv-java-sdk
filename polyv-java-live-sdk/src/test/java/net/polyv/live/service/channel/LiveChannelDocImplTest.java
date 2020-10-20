@@ -9,6 +9,7 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.entity.channel.doc.LiveChannelDocStatusRequest;
 import net.polyv.live.entity.channel.doc.LiveListChannelDocRequest;
 import net.polyv.live.entity.channel.doc.LiveListChannelDocResponse;
 import net.polyv.live.service.BaseTest;
@@ -37,6 +38,20 @@ public class LiveChannelDocImplTest extends BaseTest {
             //to do something ......
             log.debug("测试获取频道文档列表成功，{}", JSON.toJSONString(liveListChannelDocResponse));
         }
+    }
+    
+    /**
+     * 测试查询频道文档转换状态
+     * TODO 由于smallImages、images字段为数组类型，与后台讨论是否有必要后再开发
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelDocStatus() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = createChannel();
+        LiveChannelDocStatusRequest liveChannelDocStatusRequest = new LiveChannelDocStatusRequest();
+        liveChannelDocStatusRequest.setChannelId(channelId).setFileId("c2d585857870f4eff024976e3a265c0b1965681common,6e0603f6c8ec6113b87f69a7191d22021965681common");
+        new LiveChannelDocServiceImpl().channelDocStatus(liveChannelDocStatusRequest);
     }
     
 }

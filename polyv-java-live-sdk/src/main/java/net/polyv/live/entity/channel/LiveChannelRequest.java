@@ -17,7 +17,7 @@ import net.polyv.live.entity.LiveCommonRequest;
 
 
 /**
- * 直播频道请求实体
+ * 创建直播频道请求实体
  * @author: thomas
  **/
 @Data
@@ -25,7 +25,7 @@ import net.polyv.live.entity.LiveCommonRequest;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel("直播频道请求基本信息")
+@ApiModel("创建直播频道请求实体")
 public class LiveChannelRequest extends LiveCommonRequest {
     
     /**

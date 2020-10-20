@@ -8,15 +8,14 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
- * 直播频道返回实体
+ * 创建直播频道返回实体
  * @author: thomas
- 
  **/
 @Data
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel("直播频道返回基本信息")
+@ApiModel("创建直播频道返回实体")
 public class LiveChannelResponse {
     
     /**

@@ -22,7 +22,7 @@ import net.polyv.live.entity.LiveCommonResponse;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel("查询频道问卷结果响应实体")
-public class LiveQuestionnaireResultResponse extends LiveCommonResponse {
+public class LiveQuestionnaireResultResponse {
     
     /**
      * 问卷ID

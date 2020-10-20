@@ -9,27 +9,14 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
-import edu.emory.mathcs.backport.java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
-import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.interact.LiveCheckinListRequest;
 import net.polyv.live.entity.interact.LiveCheckinListResponse;
 import net.polyv.live.entity.interact.LiveCheckinMetadataBySessionIdRequest;
 import net.polyv.live.entity.interact.LiveCheckinMetadataBySessionIdResponse;
 import net.polyv.live.entity.interact.LiveCheckinRequest;
 import net.polyv.live.entity.interact.LiveCheckinResponse;
-import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
-import net.polyv.live.entity.interact.LiveQuestionnaireDetailResponse;
-import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
-import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetResponse;
-import net.polyv.live.entity.interact.LiveQuestionnaireListRequest;
-import net.polyv.live.entity.interact.LiveQuestionnaireListResponse;
-import net.polyv.live.entity.interact.LiveQuestionnaireResultPageRequest;
-import net.polyv.live.entity.interact.LiveQuestionnaireResultPageResponse;
-import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
-import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
 import net.polyv.live.service.interact.impl.LiveCheckinImpl;
-import net.polyv.live.service.interact.impl.LiveInteractImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**

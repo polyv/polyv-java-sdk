@@ -21,7 +21,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel("查询频道答题卡答题结果响应实体响应实体")
-public class LiveQuestionAnswerRecordsResponse {
+public class LiveQuestionAnswerRecordResponse {
     /**
      * 题目ID
      */

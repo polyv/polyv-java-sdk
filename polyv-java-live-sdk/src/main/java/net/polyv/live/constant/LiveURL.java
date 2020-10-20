@@ -440,7 +440,7 @@ public class LiveURL {
     /**
      * 查询频道答题卡答题结果
      */
-    public static final String CHANNEL_QUESTION_ANSWER_RECORD_URL = BASE_URI + "v3/channel/chat/checkin-by-sessionId";
+    public static final String CHANNEL_QUESTION_ANSWER_RECORD_URL = BASE_URI + "v3/channel/question/answer-records";
     
     /**
      * 400错误码

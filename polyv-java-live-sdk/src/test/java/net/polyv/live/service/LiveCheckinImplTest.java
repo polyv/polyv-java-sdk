@@ -14,6 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.interact.LiveCheckinListRequest;
 import net.polyv.live.entity.interact.LiveCheckinListResponse;
+import net.polyv.live.entity.interact.LiveCheckinRequest;
+import net.polyv.live.entity.interact.LiveCheckinResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
@@ -45,11 +47,31 @@ public class LiveCheckinImplTest extends BaseTest {
         Integer channelId = super.createChannel();
         LiveCheckinListRequest liveCheckinListRequest = new LiveCheckinListRequest();
         liveCheckinListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+//        liveCheckinListRequest.setDate("2020-10-20").setSessionId("fs9v9y4nxf");
         LiveCheckinListResponse checkinListInfo = new LiveCheckinImpl().getCheckinListInfo(liveCheckinListRequest);
         Assert.assertNotNull(checkinListInfo);
         if (checkinListInfo != null) {
             //to do something ......
-            log.debug("测试查询频道问卷详情成功{}", JSON.toJSONString(checkinListInfo));
+            log.debug("测试查询签到结果成功{}", JSON.toJSONString(checkinListInfo));
         }
     }
+    
+    /**
+     * 查询指定签到ID的签到记录
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetCheckinInfoById() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveCheckinRequest liveCheckinRequest = new LiveCheckinRequest();
+        liveCheckinRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+        LiveCheckinResponse liveCheckinResponse = new LiveCheckinImpl().getCheckinInfoById(liveCheckinRequest);
+        Assert.assertNotNull(liveCheckinResponse);
+        if (liveCheckinResponse != null) {
+            //to do something ......
+            log.debug("测试查询指定签到ID的签到记录成功{}", JSON.toJSONString(liveCheckinResponse));
+        }
+    }
+    
 }

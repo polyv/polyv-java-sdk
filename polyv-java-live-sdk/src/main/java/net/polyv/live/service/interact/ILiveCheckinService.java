@@ -5,6 +5,8 @@ import java.security.NoSuchAlgorithmException;
 
 import net.polyv.live.entity.interact.LiveCheckinListResponse;
 import net.polyv.live.entity.interact.LiveCheckinListRequest;
+import net.polyv.live.entity.interact.LiveCheckinRequest;
+import net.polyv.live.entity.interact.LiveCheckinResponse;
 
 /**
  * 直播签到管理
@@ -21,5 +23,16 @@ public interface ILiveCheckinService {
      */
     LiveCheckinListResponse getCheckinListInfo(LiveCheckinListRequest liveCheckinListRequest)
             throws IOException, NoSuchAlgorithmException;
-     
+    
+    /**
+     * 查询指定签到ID的签到记录，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/get-checkin/
+     * @param liveCheckinRequest 查询指定签到ID的签到记录请求实体
+     * @return 响应实体
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveCheckinResponse getCheckinInfoById(LiveCheckinRequest liveCheckinRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    
 }

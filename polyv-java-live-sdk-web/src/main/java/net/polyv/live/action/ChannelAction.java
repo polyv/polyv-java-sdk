@@ -20,7 +20,7 @@ import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordResponse;
-import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
+import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
 
 /**
  * 渠道管理测试类接入DEMO
@@ -42,7 +42,7 @@ public class ChannelAction {
     @ResponseBody
     public LiveChannelResponse createChannel(LiveChannelRequest liveChannelRequest)
             throws IOException, NoSuchAlgorithmException {
-        LiveChannelResponse liveChannelResponse =  new LiveChannelServiceImpl().createChannel(liveChannelRequest);
+        LiveChannelResponse liveChannelResponse =  new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         return  liveChannelResponse;
     }
     
@@ -57,7 +57,7 @@ public class ChannelAction {
     @ResponseBody
     public LiveCreateChannelListResponse createChannelList(LiveCreateChannelListRequest liveCreateChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
-        LiveCreateChannelListResponse liveCreateChannelListResponse =  new LiveChannelServiceImpl().createChannelList(liveCreateChannelListRequest);
+        LiveCreateChannelListResponse liveCreateChannelListResponse =  new LiveChannelOperateServiceImpl().createChannelList(liveCreateChannelListRequest);
         return  liveCreateChannelListResponse;
     }
     
@@ -72,7 +72,7 @@ public class ChannelAction {
     @ResponseBody
     public LiveChannelInitResponse createChannelInit(@RequestBody LiveChannelInitRequest liveChannelInitRequest)
             throws IOException, NoSuchAlgorithmException {
-        LiveChannelInitResponse liveChannelInitResponse =  new LiveChannelServiceImpl().createChannelInit(liveChannelInitRequest);
+        LiveChannelInitResponse liveChannelInitResponse =  new LiveChannelOperateServiceImpl().createChannelInit(liveChannelInitRequest);
         return  liveChannelInitResponse;
     }
     
@@ -81,7 +81,7 @@ public class ChannelAction {
     @ResponseBody
     public String updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest)
             throws IOException, NoSuchAlgorithmException {
-        return new LiveChannelServiceImpl().updateChannelDetail(liveChannelDetailRequest);
+        return new LiveChannelOperateServiceImpl().updateChannelDetail(liveChannelDetailRequest);
     }
     
     @ApiOperation(value = "查询课件重制任务列表，成功时返回分页的课件重制任务列表",notes = "调用示例：参考polyv-java-live-sdk单元测试ChannelTest.testListPPTRecord()方法。<a target=\"_blank\"  href=\"http://47.115.173.234:3000/#/channel/channelManager?id=sdk%e9%a2%91%e9%81%93%e6%93%8d%e4%bd%9c\">频道创建</a>    ")
@@ -89,6 +89,6 @@ public class ChannelAction {
     @ResponseBody
     public LiveListChannelPPTRecordResponse listPPTRecord(LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest)
             throws IOException, NoSuchAlgorithmException {
-        return new LiveChannelServiceImpl().listPPTRecord(liveListChannelPPTRecordRequest);
+        return new LiveChannelOperateServiceImpl().listPPTRecord(liveListChannelPPTRecordRequest);
     }
 }

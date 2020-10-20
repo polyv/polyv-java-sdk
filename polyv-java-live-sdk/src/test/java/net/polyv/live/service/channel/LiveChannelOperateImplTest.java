@@ -1,4 +1,4 @@
-package net.polyv.live.service;
+package net.polyv.live.service.channel;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -11,8 +11,9 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
-import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.entity.channel.doc.LiveListChannelDocRequest;
+import net.polyv.live.entity.channel.doc.LiveListChannelDocResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
@@ -20,65 +21,41 @@ import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoResponse;
-import net.polyv.live.entity.channel.viewdata.LiveChannelMaxHistoryConcurrentRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelPasswordSettingRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelPlaybackEnabledInfoRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelPlaybackEnabledRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelPlaybackSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoListRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoListResponse;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyResponse;
-import net.polyv.live.entity.channel.viewdata.LiveChannelViewerConcurrenceRequest;
-import net.polyv.live.entity.channel.viewdata.LiveChannelViewerConcurrenceResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelTokenRequest;
-import net.polyv.live.entity.channel.state.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteSonChannelRequest;
-import net.polyv.live.entity.channel.doc.LiveListChannelDocRequest;
-import net.polyv.live.entity.channel.doc.LiveListChannelDocResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelMicRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelMicResponse;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordResponse;
-import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoRequest;
-import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoResponse;
-import net.polyv.live.entity.channel.state.LiveListChannelStreamStatusRequest;
-import net.polyv.live.entity.channel.state.LiveListChannelStreamStatusResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelSummaryRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelSummaryResponse;
-import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest;
-import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewerCountRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewerCountResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewlogRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewlogResponse;
-import net.polyv.live.entity.channel.state.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
-import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
+import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyRequest;
+import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyResponse;
+import net.polyv.live.entity.channel.viewdata.LiveChannelMaxHistoryConcurrentRequest;
+import net.polyv.live.entity.channel.viewdata.LiveChannelViewerConcurrenceRequest;
+import net.polyv.live.entity.channel.viewdata.LiveChannelViewerConcurrenceResponse;
+import net.polyv.live.entity.channel.viewdata.LiveListChannelMicRequest;
+import net.polyv.live.entity.channel.viewdata.LiveListChannelMicResponse;
+import net.polyv.live.entity.channel.viewdata.LiveListChannelSummaryRequest;
+import net.polyv.live.entity.channel.viewdata.LiveListChannelSummaryResponse;
+import net.polyv.live.entity.channel.viewdata.LiveListChannelViewerCountRequest;
+import net.polyv.live.entity.channel.viewdata.LiveListChannelViewerCountResponse;
+import net.polyv.live.entity.channel.viewdata.LiveListChannelViewlogRequest;
+import net.polyv.live.entity.channel.viewdata.LiveListChannelViewlogResponse;
+import net.polyv.live.service.BaseTest;
+import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
 
 /**
  * @author: thomas
  **/
 @Slf4j
-public class ChannelTest extends BaseTest {
-    /**
-     * 系统账号密钥配置
-     */
-    public ChannelTest() {
-        String appId = "frlr1zazn3";
-        String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
-        String userId = "1b448be323";
-        LiveGlobalConfig.init(appId, userId, appSecret, 60 * 10000, 60);
-        System.out.println("--初始化完成--");
-    }
+public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试创建频道,注释避免频繁创建
@@ -444,7 +421,7 @@ public class ChannelTest extends BaseTest {
         List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(authSetting);
         liveChannelSettingRequest.setChannelId(channelId).setBasicSetting(basicSetting).setAuthSettings(authSettings);
-        String liveChannelSettingResponse = new LiveChannelServiceImpl().updateChannelSetting(
+        String liveChannelSettingResponse = new LiveChannelOperateServiceImpl().updateChannelSetting(
                 liveChannelSettingRequest);
         Assert.assertNotNull(liveChannelSettingResponse);
         if (liveChannelSettingResponse == null) {
@@ -506,7 +483,7 @@ public class ChannelTest extends BaseTest {
                 .setField("channelPasswd")
                 .setValue(newPassword)
                 .setRequestId("2860257a405447e1bbbe9161da2dee73");
-        String liveChannelDetailResponse = new LiveChannelServiceImpl().updateChannelDetail(liveChannelDetailRequest);
+        String liveChannelDetailResponse = new LiveChannelOperateServiceImpl().updateChannelDetail(liveChannelDetailRequest);
         Assert.assertNotNull(liveChannelDetailResponse);
         if ("true".equals(liveChannelDetailResponse)) {
             //to do something ......
@@ -532,7 +509,7 @@ public class ChannelTest extends BaseTest {
                 .setField("scene")
                 .setValue(value)
                 .setRequestId("2860257a405447e1bbbe9161da2dee74");
-        String liveChannelDetailResponse = new LiveChannelServiceImpl().updateChannelDetail(liveChannelDetailRequest);
+        String liveChannelDetailResponse = new LiveChannelOperateServiceImpl().updateChannelDetail(liveChannelDetailRequest);
         Assert.assertNotNull(liveChannelDetailResponse);
         if ("true".equals(liveChannelDetailResponse)) {
             //to do something ......
@@ -558,7 +535,7 @@ public class ChannelTest extends BaseTest {
                 .setField("maxViewer")
                 .setValue(value)
                 .setRequestId("2860257a405447e1bbbe9161da2dee75");
-        String liveChannelDetailResponse = new LiveChannelServiceImpl().updateChannelDetail(liveChannelDetailRequest);
+        String liveChannelDetailResponse = new LiveChannelOperateServiceImpl().updateChannelDetail(liveChannelDetailRequest);
         Assert.assertNotNull(liveChannelDetailResponse);
         if ("true".equals(liveChannelDetailResponse)) {
             //to do something ......
@@ -580,7 +557,7 @@ public class ChannelTest extends BaseTest {
         
         LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest = new LiveListChannelPPTRecordRequest();
         liveListChannelPPTRecordRequest.setChannelId(channelId).setCurrentPage(1);
-        LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse = new LiveChannelServiceImpl().listPPTRecord(
+        LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse = new LiveChannelOperateServiceImpl().listPPTRecord(
                 liveListChannelPPTRecordRequest);
         Assert.assertNotNull(liveListChannelPPTRecordResponse);
         if (liveListChannelPPTRecordResponse != null) {
@@ -604,7 +581,7 @@ public class ChannelTest extends BaseTest {
         
         LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest = new LiveChannelPasswordSettingRequest();
         liveChannelPasswordSettingRequest.setChannelId(channelId).setPasswd("987654");
-        String updateChannelPasswordResponse = new LiveChannelServiceImpl().updateChannelPassword(
+        String updateChannelPasswordResponse = new LiveChannelOperateServiceImpl().updateChannelPassword(
                 liveChannelPasswordSettingRequest);
         Assert.assertNotNull(updateChannelPasswordResponse);
         if ("true".equals(updateChannelPasswordResponse)) {
@@ -667,7 +644,7 @@ public class ChannelTest extends BaseTest {
         
         LiveCreateChannelTokenRequest liveCreateChannelTokenRequest = new LiveCreateChannelTokenRequest();
         liveCreateChannelTokenRequest.setChannelId(channelId).setToken("testToken");
-        String liveCreateChannelTokenResponse = new LiveChannelServiceImpl().createChannelToken(
+        String liveCreateChannelTokenResponse = new LiveChannelOperateServiceImpl().createChannelToken(
                 liveCreateChannelTokenRequest);
         Assert.assertNotNull(liveCreateChannelTokenResponse);
         if ("success".equals(liveCreateChannelTokenResponse)) {
@@ -691,7 +668,7 @@ public class ChannelTest extends BaseTest {
         
         LiveChannelInfoRequest liveChannelInfoRequest = new LiveChannelInfoRequest();
         liveChannelInfoRequest.setChannelId(channelId);
-        LiveChannelInfoResponse liveChannelInfoResponse = new LiveChannelServiceImpl().channelInfo(
+        LiveChannelInfoResponse liveChannelInfoResponse = new LiveChannelOperateServiceImpl().channelInfo(
                 liveChannelInfoRequest);
         Assert.assertNotNull(liveChannelInfoResponse);
         if (liveChannelInfoResponse != null) {
@@ -715,7 +692,7 @@ public class ChannelTest extends BaseTest {
         
         LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
         liveChannelBasicInfoRequest.setChannelId(channelId);
-        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = new LiveChannelServiceImpl().channelBasicInfo(
+        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().channelBasicInfo(
                 liveChannelBasicInfoRequest);
         Assert.assertNotNull(liveChannelBasicInfoResponse);
         if (liveChannelBasicInfoResponse != null) {
@@ -739,7 +716,7 @@ public class ChannelTest extends BaseTest {
         
         LiveChannelAuthTokenRequest liveChannelAuthTokenRequest = new LiveChannelAuthTokenRequest();
         liveChannelAuthTokenRequest.setChannelId(channelId).setRole(LiveConstant.Role.ADMIN.getDesc()).setOrigin(null);
-        LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = new LiveChannelServiceImpl().channelAuthToken(
+        LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = new LiveChannelOperateServiceImpl().channelAuthToken(
                 liveChannelAuthTokenRequest);
         Assert.assertNotNull(liveChannelAuthTokenResponse);
         if (liveChannelAuthTokenResponse != null) {
@@ -767,7 +744,7 @@ public class ChannelTest extends BaseTest {
                 .setNickname("sadboy")
                 .setActor("教授")
                 .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
-        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelServiceImpl().createSonChannel(
+        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelOperateServiceImpl().createSonChannel(
                 liveCreateSonChannelRequest);
         Assert.assertNotNull(liveCreateSonChannelResponse);
         if (liveCreateSonChannelResponse != null) {
@@ -795,7 +772,7 @@ public class ChannelTest extends BaseTest {
                 .setNickname("sadboy")
                 .setActor("教授")
                 .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
-        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelServiceImpl().createSonChannel(
+        LiveCreateSonChannelResponse liveCreateSonChannelResponse = new LiveChannelOperateServiceImpl().createSonChannel(
                 liveCreateSonChannelRequest);
         Assert.assertNotNull(liveCreateSonChannelResponse);
         if (liveCreateSonChannelResponse != null) {
@@ -827,7 +804,7 @@ public class ChannelTest extends BaseTest {
                 .setActor("教授")
                 .setPageTurnEnabled("Y")
                 .setNotifyEnabled("Y");
-        String updateSonChannelInfoResponse = new LiveChannelServiceImpl().updateSonChannelInfo(
+        String updateSonChannelInfoResponse = new LiveChannelOperateServiceImpl().updateSonChannelInfo(
                 liveUpdateSonChannelInfoRequest);
         Assert.assertNotNull(updateSonChannelInfoResponse);
         if ("success".equals(updateSonChannelInfoResponse)) {
@@ -852,7 +829,7 @@ public class ChannelTest extends BaseTest {
         
         LiveCreateSonChannelTokenRequest liveCreateSonChannelTokenRequest = new LiveCreateSonChannelTokenRequest();
         liveCreateSonChannelTokenRequest.setAccount(sonChannelId).setToken("sonChannelLogintoken");
-        String liveCreateSonChannelTokenResponse = new LiveChannelServiceImpl().createSonChannelToken(
+        String liveCreateSonChannelTokenResponse = new LiveChannelOperateServiceImpl().createSonChannelToken(
                 liveCreateSonChannelTokenRequest);
         Assert.assertNotNull(liveCreateSonChannelTokenResponse);
         if ("success".equals(liveCreateSonChannelTokenResponse)) {
@@ -877,7 +854,7 @@ public class ChannelTest extends BaseTest {
         
         LiveSonChannelInfoRequest liveSonChannelInfoRequest = new LiveSonChannelInfoRequest();
         liveSonChannelInfoRequest.setAccount(sonChannelId).setChannelId(channelId);
-        LiveSonChannelInfoResponse liveSonChannelInfoResponse = new LiveChannelServiceImpl().sonChannelInfo(
+        LiveSonChannelInfoResponse liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().sonChannelInfo(
                 liveSonChannelInfoRequest);
         Assert.assertNotNull(liveSonChannelInfoResponse);
         if (liveSonChannelInfoResponse != null) {
@@ -899,7 +876,7 @@ public class ChannelTest extends BaseTest {
         
         LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
         liveSonChannelInfoListRequest.setChannelId(channelId);
-        LiveSonChannelInfoListResponse liveSonChannelInfoResponse = new LiveChannelServiceImpl().sonChannelInfoList(
+        LiveSonChannelInfoListResponse liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().sonChannelInfoList(
                 liveSonChannelInfoListRequest);
         Assert.assertNotNull(liveSonChannelInfoResponse);
         if (liveSonChannelInfoResponse != null) {
@@ -924,7 +901,7 @@ public class ChannelTest extends BaseTest {
         
         LiveDeleteSonChannelRequest liveDeleteSonChannelRequest = new LiveDeleteSonChannelRequest();
         liveDeleteSonChannelRequest.setChannelId(channelId).setAccount(sonChannelId);
-        String liveDeleteSonChannelRespose = new LiveChannelServiceImpl().deleteSonChannel(liveDeleteSonChannelRequest);
+        String liveDeleteSonChannelRespose = new LiveChannelOperateServiceImpl().deleteSonChannel(liveDeleteSonChannelRequest);
         Assert.assertNotNull(liveDeleteSonChannelRespose);
         if ("true".equals(liveDeleteSonChannelRespose)) {
             //to do something ......
@@ -935,81 +912,9 @@ public class ChannelTest extends BaseTest {
         deleteChannel(channelId);
     }
     
-    /**
-     * 测试恢复直播频道推流
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testResumeChannelStream() throws IOException, NoSuchAlgorithmException {
-        //准备测试数据
-        Integer channelId = createChannel();
-        
-        LiveResumeChannelStreamRequest liveResumeChannelStreamRequest = new LiveResumeChannelStreamRequest();
-        liveResumeChannelStreamRequest.setChannelId(channelId);
-        String liveResumeChannelStreamResponse = new LiveChannelServiceImpl().resumeChannelStream(
-                liveResumeChannelStreamRequest);
-        Assert.assertNotNull(liveResumeChannelStreamResponse);
-        if ("success".equals(liveResumeChannelStreamResponse)) {
-            //to do something ......
-            log.debug("恢复直播频道推流成功{}", liveResumeChannelStreamResponse);
-        }
-        
-        //删除测试数据
-        deleteChannel(channelId);
-    }
+
     
-    /**
-     * 禁止直播频道推流
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testCutoffChannelStream() throws IOException, NoSuchAlgorithmException {
-        //准备测试数据
-        Integer channelId = createChannel();
-        
-        LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest = new LiveCutoffChannelStreamRequest();
-        liveCutoffChannelStreamRequest.setChannelId(channelId);
-        String liveCutoffChannelStreamResponse = new LiveChannelServiceImpl().cutoffChannelStream(
-                liveCutoffChannelStreamRequest);
-        Assert.assertNotNull(liveCutoffChannelStreamResponse);
-        if ("success".equals(liveCutoffChannelStreamResponse)) {
-            //to do something ......
-            log.debug("禁止直播频道推流成功{}", liveCutoffChannelStreamResponse);
-        }
-        
-        //删除测试数据
-        deleteChannel(channelId);
-    }
-    
-    /**
-     * 批量查询频道直播流状态
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testListChannelLiveStream() throws IOException, NoSuchAlgorithmException {
-        //准备测试数据
-        Integer channelId0 = createChannel();
-        Integer channelId1 = createChannel();
-        
-        LiveListChannelStreamStatusRequest liveListChannelStreamStatusRequest =
-                new LiveListChannelStreamStatusRequest();
-        liveListChannelStreamStatusRequest.setChannelIds(String.format("%s,%s", channelId0, channelId1));
-        LiveListChannelStreamStatusResponse liveListChannelStreamStatusResponse =
-                new LiveChannelServiceImpl().listChannelLiveStream(
-                liveListChannelStreamStatusRequest);
-        Assert.assertNotNull(liveListChannelStreamStatusResponse);
-        if (liveListChannelStreamStatusResponse != null) {
-            //to do something ......
-            log.debug("批量查询频道直播流状态成功{}", JSON.toJSONString(liveListChannelStreamStatusResponse));
-        }
-        
-        //删除测试数据
-        deleteChannel(channelId0);
-        deleteChannel(channelId1);
-    }
+
     
     /**
      * 测试查询频道实时推流信息（讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常）
@@ -1102,88 +1007,11 @@ public class ChannelTest extends BaseTest {
 //        }
 //    }
     
-    /**
-     * 测试查询频道录制视频信息
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testListChannelVideo() throws IOException, NoSuchAlgorithmException {
-        LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
-        liveChannelVideoListRequest.setChannelId(1951952)
-                .setStartDate("2020-01-01")
-                .setEndDate("2020-10-14")
-                .setSessionId(null);
-        LiveChannelVideoListResponse liveChannelVideoListResponse = new LiveChannelServiceImpl().listChannelVideo(
-                liveChannelVideoListRequest);
-        Assert.assertNotNull(liveChannelVideoListResponse);
-        if (liveChannelVideoListResponse != null) {
-            //to do something ......
-            log.debug("查询频道录制视频信息成功{}", JSON.toJSONString(liveChannelVideoListResponse));
-        }
-    }
+
     
-    /**
-     * 测试设置频道回放设置
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testChannelPlaybackSetting() throws IOException, NoSuchAlgorithmException {
-        int channelId = 1951952;
-        List<String> videoIds = listChannelVideoIds(channelId);
-        LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest = new LiveChannelPlaybackSettingRequest();
-        liveChannelPlaybackSettingRequest.setChannelId(channelId)
-                .setPlaybackEnabled("Y")
-                .setType("single")
-                .setOrigin("playback")
-                .setVideoId(videoIds.get(0));
-        String liveChannelPlaybackSettingResponse = new LiveChannelServiceImpl().channelPlaybackSetting(
-                liveChannelPlaybackSettingRequest);
-        Assert.assertNotNull(liveChannelPlaybackSettingResponse);
-        if (liveChannelPlaybackSettingResponse != null) {
-            //to do something ......
-            log.debug("设置频道回放设置成功{}", JSON.toJSONString(liveChannelPlaybackSettingResponse));
-        }
-    }
+
     
-    /**
-     * 测试设置后台回放开关
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
-        LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
-        liveChannelPlaybackEnabledRequest.setChannelId(1951952).setPlayBackEnabled("Y");
-        Integer liveChannelPlaybackEnabledResponse = new LiveChannelServiceImpl().channelPlayBackEnabledSetting(
-                liveChannelPlaybackEnabledRequest);
-        Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
-        if (liveChannelPlaybackEnabledResponse != null) {
-            //to do something ......
-            log.debug("测试设置后台回放开关成功{}", liveChannelPlaybackEnabledResponse);
-        }
-    }
-    
-    /**
-     * 测试查询视频库列表
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testListChannelVideoLibrary() throws IOException, NoSuchAlgorithmException {
-        LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
-                new LiveListChannelVideoLibraryRequest();
-        liveListChannelVideoLibraryRequest.setChannelId(1951952).setListType("playback");
-        LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse =
-                new LiveChannelServiceImpl().listChannelVideoLibrary(
-                liveListChannelVideoLibraryRequest);
-        Assert.assertNotNull(liveListChannelVideoLibraryResponse);
-        if (liveListChannelVideoLibraryResponse != null) {
-            //to do something ......
-            log.debug("测试查询视频库列表成功{}", JSON.toJSONString(liveListChannelVideoLibraryResponse));
-        }
-    }
+
     
     /**
      * 测试设置视频库列表排序
@@ -1208,66 +1036,7 @@ public class ChannelTest extends BaseTest {
 //        }
 //    }
     
-    /**
-     * 测试查询频道直播场次信息
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testListChannelSessionInfo() throws IOException, NoSuchAlgorithmException {
-        LiveListChannelSessionInfoRequest liveListChannelSessionInfoRequest = new LiveListChannelSessionInfoRequest();
-        liveListChannelSessionInfoRequest.setChannelId(1951952)
-                .setStartDate("2020-10-01")
-                .setEndDate("2020-10-24")
-                .setCurrentPage(1);
-        LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse =
-                new LiveChannelServiceImpl().listChannelSessionInfo(
-                liveListChannelSessionInfoRequest);
-        Assert.assertNotNull(liveListChannelSessionInfoResponse);
-        if (liveListChannelSessionInfoResponse != null) {
-            //to do something ......
-            log.debug("测试查询频道直播场次信息成功{}", JSON.toJSONString(liveListChannelSessionInfoResponse));
-        }
-    }
-    
-    /**
-     * 测试查询指定文件ID的录制文件信息
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testChannelVideoOnly() throws IOException, NoSuchAlgorithmException {
-        int channelId = 1951952;
-        String fileId = listChannelFileIds(channelId).get(0);
-        LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest = new LiveChannelVideoOnlyRequest();
-        liveChannelVideoOnlyRequest.setChannelId(1951952).setFileId(fileId);
-        LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse = new LiveChannelServiceImpl().channelVideoOnly(
-                liveChannelVideoOnlyRequest);
-        Assert.assertNotNull(liveChannelVideoOnlyResponse);
-        if (liveChannelVideoOnlyResponse != null) {
-            //to do something ......
-            log.debug("测试查询指定文件ID的录制文件信息成功{}", JSON.toJSONString(liveChannelVideoOnlyResponse));
-        }
-    }
-    
-    /**
-     * 测试查询频道的回放开关状态
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testChannelPlayBackEnabledInfo() throws IOException, NoSuchAlgorithmException {
-        LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest =
-                new LiveChannelPlaybackEnabledInfoRequest();
-        liveChannelPlaybackEnabledInfoRequest.setChannelId(1951952);
-        String liveChannelPlaybackEnabledInfoResponse = new LiveChannelServiceImpl().channelPlayBackEnabledInfo(
-                liveChannelPlaybackEnabledInfoRequest);
-        Assert.assertNotNull(liveChannelPlaybackEnabledInfoResponse);
-        if (liveChannelPlaybackEnabledInfoResponse != null) {
-            //to do something ......
-            log.debug("测试查询频道的回放开关状态成功{}", liveChannelPlaybackEnabledInfoResponse);
-        }
-    }
+
     
     /**
      * 测试创建重制课件任务
@@ -1326,141 +1095,10 @@ public class ChannelTest extends BaseTest {
 //        }
 //    }
     
-    /**
-     * 测试获取频道一定时间范围之内的历史最高并发人数,粒度可以支持到分钟
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testMaxChannelHistoryConcurrent() throws IOException, NoSuchAlgorithmException {
-        int channelId = 1951952;
-        long nowTime = System.currentTimeMillis();
-        long startTime = nowTime - 30 * 24 * 60 * 60 * 1000l;
-        LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest =
-                new LiveChannelMaxHistoryConcurrentRequest();
-        liveChannelMaxHistoryConcurrentRequest.setChannelId(channelId).setStartTime(startTime).setEndTime(nowTime);
-        Integer liveChannelMaxHistoryConcurrentResponse = new LiveChannelServiceImpl().maxChannelHistoryConcurrent(
-                liveChannelMaxHistoryConcurrentRequest);
-        Assert.assertNotNull(liveChannelMaxHistoryConcurrentResponse);
-        if (liveChannelMaxHistoryConcurrentResponse != null) {
-            //to do something ......
-            log.debug("测试获取频道一定时间范围之内的历史最高并发人数成功，并发人数为：{}", liveChannelMaxHistoryConcurrentResponse);
-        }
-    }
+
     
-    /**
-     * 测试分页获取连麦情况使用详情
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testListChannelMic() throws IOException, NoSuchAlgorithmException {
-        LiveListChannelMicRequest liveListChannelMicRequest = new LiveListChannelMicRequest();
-        liveListChannelMicRequest.setChannelIds("1951952,1958888").setStartDay("2020-01-01").setEndDay("2020-11-11");
-        LiveListChannelMicResponse liveListChannelMicResponse = new LiveChannelServiceImpl().listChannelMic(
-                liveListChannelMicRequest);
-        Assert.assertNotNull(liveListChannelMicResponse);
-        if (liveListChannelMicResponse != null) {
-            //to do something ......
-            log.debug("测试分页获取连麦情况使用详情成功，{}", JSON.toJSONString(liveListChannelMicResponse));
-        }
-    }
     
-    /**
-     * 测试分页查询频道观看日志
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testListChannelViewlog() throws IOException, NoSuchAlgorithmException {
-        LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
-        liveListChannelViewlogRequest.setChannelId(1951952).setCurrentDay("2020-10-14");
-        LiveListChannelViewlogResponse liveListChannelViewlogResponse = new LiveChannelServiceImpl().listChannelViewlog(
-                liveListChannelViewlogRequest);
-        Assert.assertNotNull(liveListChannelViewlogResponse);
-        if (liveListChannelViewlogResponse != null) {
-            //to do something ......
-            log.debug("测试分页查询频道观看日志成功，{}", JSON.toJSONString(liveListChannelViewlogResponse));
-        }
-    }
     
-    /**
-     * 测试查询多个频道汇总的统计数据
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testListChannelSummary() throws IOException, NoSuchAlgorithmException {
-        LiveListChannelSummaryRequest liveListChannelSummaryRequest = new LiveListChannelSummaryRequest();
-        liveListChannelSummaryRequest.setStartDate("2020-01-01")
-                .setEndDate("2020-11-11")
-                .setChannelIds("1951952,1958888");
-        LiveListChannelSummaryResponse liveListChannelSummaryResponse = new LiveChannelServiceImpl().listChannelSummary(
-                liveListChannelSummaryRequest);
-        Assert.assertNotNull(liveListChannelSummaryResponse);
-        if (liveListChannelSummaryResponse != null) {
-            //to do something ......
-            log.debug("测试查询多个频道汇总的统计数据成功，{}", JSON.toJSONString(liveListChannelSummaryResponse));
-        }
-    }
-    
-    /**
-     * 测试查询多个频道的实时在线人数
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testListChannelViewerCount() throws IOException, NoSuchAlgorithmException {
-        LiveListChannelViewerCountRequest liveListChannelViewerCountRequest = new LiveListChannelViewerCountRequest();
-        liveListChannelViewerCountRequest.setChannelIds("1951952,1958888");
-        LiveListChannelViewerCountResponse liveListChannelViewerCountResponse =
-                new LiveChannelServiceImpl().listChannelViewerCount(
-                liveListChannelViewerCountRequest);
-        Assert.assertNotNull(liveListChannelViewerCountResponse);
-        if (liveListChannelViewerCountResponse != null) {
-            //to do something ......
-            log.debug("测试查询多个频道的实时在线人数成功，{}", JSON.toJSONString(liveListChannelViewerCountResponse));
-        }
-    }
-    
-    /**
-     * 测试查询频道的历史并发人数
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testChannelViewerConcurrence() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = createChannel();
-        LiveChannelViewerConcurrenceRequest liveChannelViewerConcurrenceRequest =
-                new LiveChannelViewerConcurrenceRequest();
-        liveChannelViewerConcurrenceRequest.setChannelId(channelId).setStartDate("2020-10-01").setEndDate("2020-11-11");
-        LiveChannelViewerConcurrenceResponse liveChannelViewerConcurrenceResponse =
-                new LiveChannelServiceImpl().channelViewerConcurrence(
-                liveChannelViewerConcurrenceRequest);
-        Assert.assertNotNull(liveChannelViewerConcurrenceResponse);
-        if (liveChannelViewerConcurrenceResponse != null) {
-            //to do something ......
-            log.debug("测试查询频道的历史并发人数成功，{}", JSON.toJSONString(liveChannelViewerConcurrenceResponse));
-        }
-    }
-    
-    /**
-     * 测试获取频道文档列表
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testListChannelDoc() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = createChannel();
-        LiveListChannelDocRequest liveListChannelDocRequest = new LiveListChannelDocRequest();
-        liveListChannelDocRequest.setChannelId(channelId).setStatus(null);
-        LiveListChannelDocResponse liveListChannelDocResponse = new LiveChannelServiceImpl().listChannelDoc(
-                liveListChannelDocRequest);
-        Assert.assertNotNull(liveListChannelDocResponse);
-        if (liveListChannelDocResponse != null) {
-            //to do something ......
-            log.debug("测试获取频道文档列表成功，{}", JSON.toJSONString(liveListChannelDocResponse));
-        }
-    }
+
     
 }

@@ -123,18 +123,18 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
-import net.polyv.live.service.channel.impl.LiveChannelServiceImpl;
+import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
 
 /**
  * @author: thomas
  
  **/
 @Slf4j
-public class ChannelTest {
+public class LiveChannelOperateTest {
     /**
      * 系统账号密钥配置
      */
-    public ChannelTest() {
+    public LiveChannelOperateTest() {
         String appId = "frlr1zazn3";
         String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
         String userId = "1b448be323";

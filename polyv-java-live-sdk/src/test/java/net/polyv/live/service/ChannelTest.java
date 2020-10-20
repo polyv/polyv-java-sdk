@@ -49,6 +49,8 @@ import net.polyv.live.entity.channel.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelDocRequest;
+import net.polyv.live.entity.channel.LiveListChannelDocResponse;
 import net.polyv.live.entity.channel.LiveListChannelMicRequest;
 import net.polyv.live.entity.channel.LiveListChannelMicResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
@@ -1451,6 +1453,25 @@ public class ChannelTest extends BaseTest {
         if (liveChannelViewerConcurrenceResponse != null) {
             //to do something ......
             log.debug("测试查询频道的历史并发人数成功，{}", JSON.toJSONString(liveChannelViewerConcurrenceResponse));
+        }
+    }
+    
+    /**
+     * 测试获取频道文档列表
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelDoc() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = createChannel();
+        LiveListChannelDocRequest liveListChannelDocRequest = new LiveListChannelDocRequest();
+        liveListChannelDocRequest.setChannelId(channelId).setStatus(null);
+        LiveListChannelDocResponse liveListChannelDocResponse = new LiveChannelServiceImpl().listChannelDoc(
+                liveListChannelDocRequest);
+        Assert.assertNotNull(liveListChannelDocResponse);
+        if (liveListChannelDocResponse != null) {
+            //to do something ......
+            log.debug("测试获取频道文档列表成功，{}", JSON.toJSONString(liveListChannelDocResponse));
         }
     }
     

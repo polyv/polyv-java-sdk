@@ -34,6 +34,8 @@ import net.polyv.live.entity.channel.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyRequest;
 import net.polyv.live.entity.channel.LiveChannelVideoOnlyResponse;
 import net.polyv.live.entity.channel.LiveChannelVideoSortRequest;
+import net.polyv.live.entity.channel.LiveChannelViewerConcurrenceRequest;
+import net.polyv.live.entity.channel.LiveChannelViewerConcurrenceResponse;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoListAsyncRequest;
 import net.polyv.live.entity.channel.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveCreateChannelListRequest;
@@ -51,6 +53,8 @@ import net.polyv.live.entity.channel.LiveDeleteChannelPlaybackVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.LiveListChannelDocRequest;
+import net.polyv.live.entity.channel.LiveListChannelDocResponse;
 import net.polyv.live.entity.channel.LiveListChannelMicRequest;
 import net.polyv.live.entity.channel.LiveListChannelMicResponse;
 import net.polyv.live.entity.channel.LiveListChannelPPTRecordRequest;
@@ -870,6 +874,47 @@ public class LiveChannelServiceImpl extends LiveBaseService implements ILiveChan
                 new LiveListChannelViewerCountResponse();
         liveListChannelViewerCountResponse.setChannelViewerCounts(Arrays.asList(channelViewerCounts));
         return liveListChannelViewerCountResponse;
+    }
+    
+    /**
+     * 查询频道的历史并发人数
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/gksj/concurrency/
+     * @param liveChannelViewerConcurrenceRequest 查询频道的历史并发人数请求实体
+     * @return 查询频道的历史并发人数返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelViewerConcurrenceResponse channelViewerConcurrence(
+            LiveChannelViewerConcurrenceRequest liveChannelViewerConcurrenceRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_VIEWER_CONCURRENCE_URL;
+        LiveChannelViewerConcurrenceResponse.ChannelViewerConcurrence[] channelViewerConcurrences = this.baseGet(url,
+                liveChannelViewerConcurrenceRequest,
+                LiveChannelViewerConcurrenceResponse.ChannelViewerConcurrence[].class);
+        channelViewerConcurrences = channelViewerConcurrences == null ?
+                new LiveChannelViewerConcurrenceResponse.ChannelViewerConcurrence[]{} : channelViewerConcurrences;
+        LiveChannelViewerConcurrenceResponse liveChannelViewerConcurrenceResponse =
+                new LiveChannelViewerConcurrenceResponse();
+        liveChannelViewerConcurrenceResponse.setChannelViewerConcurrences(Arrays.asList(channelViewerConcurrences));
+        return liveChannelViewerConcurrenceResponse;
+    }
+    
+    /**
+     * 获取频道文档列表
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/wdgl/get-ppt-list/
+     * @param liveListChannelDocRequest 获取频道文档列表请求实体
+     * @return 获取频道文档列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelDocResponse listChannelDoc(LiveListChannelDocRequest liveListChannelDocRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_DOC_LIST_URL;
+        LiveListChannelDocResponse liveListChannelDocResponse = this.baseGet(url, liveListChannelDocRequest,
+                LiveListChannelDocResponse.class);
+        return liveListChannelDocResponse;
     }
     
 }

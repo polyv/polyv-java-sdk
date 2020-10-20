@@ -69,9 +69,9 @@ public class BaseTest {
      * @throws NoSuchAlgorithmException 异常
      */
     protected void deleteChannel(Integer channelId) throws IOException, NoSuchAlgorithmException {
-        LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest().setChannelId(channelId);
-        String deleteChannel = new LiveChannelServiceImpl().deleteChannel(liveDeleteChannelRequest);
-        Assert.assertTrue("true".equals(deleteChannel));
+//        LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest().setChannelId(channelId);
+//        String deleteChannel = new LiveChannelServiceImpl().deleteChannel(liveDeleteChannelRequest);
+//        Assert.assertTrue("true".equals(deleteChannel));
     }
     
     /**

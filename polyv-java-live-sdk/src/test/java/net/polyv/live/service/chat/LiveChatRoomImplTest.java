@@ -1,4 +1,4 @@
-package net.polyv.live.service;
+package net.polyv.live.service.chat;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -14,6 +14,7 @@ import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.interact.LiveCheckinRequest;
 import net.polyv.live.entity.interact.LiveCheckinResponse;
+import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.chat.impl.LiveChatRoomImpl;
 import net.polyv.live.service.interact.impl.LiveCheckinImpl;
 import net.polyv.live.util.LiveSignUtil;

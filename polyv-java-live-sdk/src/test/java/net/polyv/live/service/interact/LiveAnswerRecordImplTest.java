@@ -1,4 +1,4 @@
-package net.polyv.live.service;
+package net.polyv.live.service.interact;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -16,6 +16,7 @@ import net.polyv.live.entity.interact.LiveCheckinRequest;
 import net.polyv.live.entity.interact.LiveCheckinResponse;
 import net.polyv.live.entity.interact.LiveQuestionAnswerRecordRequest;
 import net.polyv.live.entity.interact.LiveQuestionAnswerRecordResponse;
+import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.interact.ILiveAnswerRecordService;
 import net.polyv.live.service.interact.impl.LiveAnswerRecordImpl;
 import net.polyv.live.service.interact.impl.LiveCheckinImpl;

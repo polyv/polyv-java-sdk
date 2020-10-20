@@ -11,7 +11,6 @@ import org.apache.commons.lang3.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
-import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
@@ -23,7 +22,7 @@ import net.polyv.live.entity.interact.LiveQuestionnaireResultPageResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
 import net.polyv.live.service.LiveBaseService;
-import net.polyv.live.service.interact.ILiveInteractService;
+import net.polyv.live.service.interact.ILiveQuestionnaireService;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
@@ -31,7 +30,7 @@ import net.polyv.live.util.LiveSignUtil;
  * @author: thomas
  **/
 @Slf4j
-public class LiveInteractImpl extends LiveBaseService implements ILiveInteractService {
+public class LiveQuestionnaireImpl extends LiveBaseService implements ILiveQuestionnaireService {
     
     /**
      * 查询频道问卷详情，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/get-questionnaire-detail/

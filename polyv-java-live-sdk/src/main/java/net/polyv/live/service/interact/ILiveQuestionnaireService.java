@@ -19,7 +19,7 @@ import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
  * 直播互动管理
  * @author: thomas
  **/
-public interface ILiveInteractService {
+public interface ILiveQuestionnaireService {
     
     /**
      * 查询频道问卷详情，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/get-questionnaire-detail/

@@ -8,6 +8,7 @@ import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
 import net.polyv.live.entity.account.LiveListAccountResponse;
+import net.polyv.live.entity.account.LiveUpdateAccountSwitchRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.account.ILiveAccountService;
 
@@ -69,6 +70,22 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         LiveAccountMicDurationResponse liveAccountMicDurationResponse = this.baseGet(url, liveAccountMicDurationRequest,
                 LiveAccountMicDurationResponse.class);
         return liveAccountMicDurationResponse;
+    }
+    
+    /**
+     * 设置功能开关状态
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zhsz/switch-update/
+     * @param liveUpdateAccountSwitchRequest 设置功能开关状态请求实体
+     * @return 设置功能开关状态返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String updateAccountSwitch(LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.ACCOUNT_SWITCH_UPDATE_URL;
+        String liveUpdateAccountSwitchResponse = this.basePost(url, liveUpdateAccountSwitchRequest, String.class);
+        return liveUpdateAccountSwitchResponse;
     }
     
 }

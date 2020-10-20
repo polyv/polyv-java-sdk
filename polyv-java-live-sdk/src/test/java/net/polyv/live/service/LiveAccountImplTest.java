@@ -10,12 +10,14 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
 import net.polyv.live.entity.account.LiveListAccountResponse;
+import net.polyv.live.entity.account.LiveUpdateAccountSwitchRequest;
 import net.polyv.live.service.account.impl.LiveAccountServiceImpl;
 
 /**
@@ -90,6 +92,24 @@ public class LiveAccountImplTest extends BaseTest {
         if (liveAccountMicDurationResponse != null) {
             //to do something ......
             log.debug("测试获取账号连麦分钟数使用量与剩余量成功,{}", JSON.toJSONString(liveAccountMicDurationResponse));
+        }
+    }
+    
+    /**
+     * 测试设置功能开关状态
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateAccountSwitch() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest = new LiveUpdateAccountSwitchRequest();
+        liveUpdateAccountSwitchRequest.setType(LiveConstant.ChannelSwitch.AUTO_PLAY.getDesc()).setEnabled("N");
+        String liveUpdateAccountSwitchResponse = new LiveAccountServiceImpl().updateAccountSwitch(
+                liveUpdateAccountSwitchRequest);
+        Assert.assertNotNull(liveUpdateAccountSwitchResponse);
+        if ("true".equals(liveUpdateAccountSwitchResponse)) {
+            //to do something ......
+            log.debug("设置功能开关状态成功,{}", liveUpdateAccountSwitchResponse);
         }
     }
     

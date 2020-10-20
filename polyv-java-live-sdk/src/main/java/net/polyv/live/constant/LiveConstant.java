@@ -186,4 +186,76 @@ public class LiveConstant {
         }
     }
     
+    /**
+     * 功能开关类型
+     */
+    public enum ChannelSwitch {
+        /**
+         * 是否关闭系统观看页，Y时表示关闭
+         */
+        IS_CLOSE_PREVIEW("isClosePreview")
+        /**
+         * 是否开启移动端系统观看页
+         */
+        ,MOBILE_WATCH("mobileWatch")
+        /**
+         * 是否开启移动端音视频切换
+         */
+        ,MOBILE_AUDIO("mobileAudio")
+        /**
+         * 是否开启播放器自动播放功能
+         */
+        ,AUTO_PLAY("autoPlay")
+        /**
+         * 是否开启预约功能
+         */
+        ,BOOKING("booking")
+        /**
+         * 是否开启红包功能
+         */
+        ,RED_PACK("redPack")
+        /**
+         * 是否开启分享功能
+         */
+        ,SHARE_BTN_ENABLED("shareBtnEnabled")
+        /**
+         * 是否开启聊天室
+         */
+        ,CHAT("chat")
+        /**
+         * 是否关闭在线列表，Y时表示关闭
+         */
+        ,CLOSE_CHATER_LIST("closeChaterList")
+        /**
+         * 是否开启咨询提问
+         */
+        ,CONSULTING_MENU("consultingMenu")
+        /**
+         * 是否关闭弹幕功能，Y时表示关闭
+         */
+        ,CLOSE_DANMU("closeDanmu")
+        /**
+         * 是否开启点赞语功能
+         */
+        ,PRAISE("praise")
+        /**
+         * 是否开启欢迎语功能
+         */
+        ,WELCOME("welcome")
+        /**
+         * 是否开启观众发送图片
+         */
+        ,VIEWER_SEND_IMG_ENABLED("viewerSendImgEnabled");
+        
+        private String desc;
+        
+        private ChannelSwitch(String desc) {
+            this.desc = desc;
+        }
+        
+        public String getDesc() {
+            return desc;
+        }
+    }
+    
 }

@@ -9,6 +9,7 @@ import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
 import net.polyv.live.entity.account.LiveListAccountResponse;
+import net.polyv.live.entity.account.LiveUpdateAccountSwitchRequest;
 
 /**
  * 直播账号级管理
@@ -46,6 +47,17 @@ public interface ILiveAccountService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveAccountMicDurationResponse micDuration(LiveAccountMicDurationRequest liveAccountMicDurationRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置功能开关状态
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zhsz/switch-update/
+     * @param liveUpdateAccountSwitchRequest 设置功能开关状态请求实体
+     * @return 设置功能开关状态返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String updateAccountSwitch(LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

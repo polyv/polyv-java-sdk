@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.Assert;
 
+import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
@@ -23,16 +24,21 @@ import net.polyv.live.service.channel.impl.LiveChannelPlaybackServiceImpl;
 /**
  * @author: thomas
  **/
+@Slf4j
 public class BaseTest {
     /**
      * 系统账号密钥配置
      */
     public BaseTest() {
+        initPolyvLive();
+    }
+    
+    public static void initPolyvLive(){
         String appId = "frlr1zazn3";
         String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
         String userId = "1b448be323";
         LiveGlobalConfig.init(appId, userId, appSecret);
-        System.out.println("--初始化完成--");
+        log.debug("--初始化完成--");
     }
     
     /**

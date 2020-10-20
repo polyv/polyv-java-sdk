@@ -18,16 +18,7 @@ import net.polyv.live.service.webview.impl.LiveWebViewServiceImpl;
 @Slf4j
 public class WebViewTest extends BaseTest{
     
-    /**
-     * 系统账号密钥配置
-     */
-    public WebViewTest() {
-        String appId = "frlr1zazn3";
-        String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
-        String userId = "1b448be323";
-        LiveGlobalConfig.init(appId, userId, appSecret);
-        System.out.println("--初始化完成--");
-    }
+    
     
     /**
      * 测试添加单个白名单-全局白名单

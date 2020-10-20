@@ -2,7 +2,6 @@ package net.polyv.live.service;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -23,14 +22,14 @@ import net.polyv.live.entity.interact.LiveQuestionnaireResultPageRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultPageResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
-import net.polyv.live.service.interact.impl.LiveInteractImpl;
+import net.polyv.live.service.interact.impl.LiveQuestionnaireImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
  * @author: thomas
  **/
 @Slf4j
-public class LiveInteractImplTest extends BaseTest {
+public class LiveQuestionnaireImplTest extends BaseTest {
     
     /**
      * 查询频道问卷详情
@@ -49,7 +48,7 @@ public class LiveInteractImplTest extends BaseTest {
                 .setQuestionnaireId(liveQuestionnaireDetailSetResponse.getQuestionnaireId())
                 .setRequestId(LiveSignUtil.generateUUID());
         LiveQuestionnaireDetailResponse liveQuestionnaireDetailResponse =
-                new LiveInteractImpl().getQuestionnaireDetailInfo(
+                new LiveQuestionnaireImpl().getQuestionnaireDetailInfo(
                 liveQuestionnaireDetailRequest);
         Assert.assertNotNull(liveQuestionnaireDetailResponse);
         if (liveQuestionnaireDetailResponse != null) {
@@ -103,7 +102,7 @@ public class LiveInteractImplTest extends BaseTest {
         
         //发送请求
         LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse =
-                new LiveInteractImpl().setQuestionnaireDetailInfo(
+                new LiveQuestionnaireImpl().setQuestionnaireDetailInfo(
                 liveQuestionnaireDetailSetRequest);
         
         //判断结果
@@ -128,7 +127,7 @@ public class LiveInteractImplTest extends BaseTest {
         
         LiveQuestionnaireListRequest liveQuestionnaireListRequest = new LiveQuestionnaireListRequest();
         liveQuestionnaireListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-        LiveQuestionnaireListResponse liveQuestionnaireListResponse = new LiveInteractImpl().getQuestionnaireListInfo(
+        LiveQuestionnaireListResponse liveQuestionnaireListResponse = new LiveQuestionnaireImpl().getQuestionnaireListInfo(
                 liveQuestionnaireListRequest);
         Assert.assertNotNull(liveQuestionnaireListResponse);
         if (liveQuestionnaireListResponse != null) {
@@ -188,7 +187,7 @@ public class LiveInteractImplTest extends BaseTest {
         
         //发送请求
         LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse =
-                new LiveInteractImpl().setQuestionnaireDetailInfo(
+                new LiveQuestionnaireImpl().setQuestionnaireDetailInfo(
                 liveQuestionnaireDetailSetRequest);
         
         //判断结果
@@ -213,7 +212,7 @@ public class LiveInteractImplTest extends BaseTest {
         LiveQuestionnaireResultRequest liveQuestionnaireResultRequest = new LiveQuestionnaireResultRequest();
         liveQuestionnaireResultRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
 //        liveQuestionnaireResultRequest.setQuestionnaireId("fs9skpv22f");
-        List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = new LiveInteractImpl().getQuestionnaireResultInfo(
+        List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = new LiveQuestionnaireImpl().getQuestionnaireResultInfo(
                 liveQuestionnaireResultRequest);
         Assert.assertNotNull(liveQuestionnaireResultResponse);
         if (liveQuestionnaireResultResponse != null) {
@@ -232,7 +231,7 @@ public class LiveInteractImplTest extends BaseTest {
         Integer channelId = super.createChannel();
         LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest = new LiveQuestionnaireResultPageRequest();
         liveQuestionnaireResultPageRequest.setChannelId(channelId).setPageSize(20).setCurrentPage(1).setRequestId(LiveSignUtil.generateUUID());
-        LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = new LiveInteractImpl().getQuestionnaireResultPageInfo(
+        LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = new LiveQuestionnaireImpl().getQuestionnaireResultPageInfo(
                 liveQuestionnaireResultPageRequest);
         Assert.assertNotNull(liveQuestionnaireResultPageRequest);
         if (liveQuestionnaireResultPageResponse != null) {

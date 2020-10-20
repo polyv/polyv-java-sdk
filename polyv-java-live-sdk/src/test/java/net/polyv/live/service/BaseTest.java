@@ -55,7 +55,7 @@ public class BaseTest {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    protected Integer createChannel() throws IOException, NoSuchAlgorithmException {
+    protected Integer createChannel()   {
         Integer channelId = 1965681;
         return channelId;
 //        LiveChannelRequest liveChannelRequest = new LiveChannelRequest().setName("test直播频道")

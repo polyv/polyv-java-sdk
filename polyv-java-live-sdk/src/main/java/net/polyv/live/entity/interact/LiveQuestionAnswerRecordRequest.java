@@ -19,7 +19,7 @@ import net.polyv.live.entity.LivePageCommonRequest;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel("查询频道答题卡答题结果请求实体")
-public class LiveQuestionAnswerRecordsRequest extends LivePageCommonRequest {
+public class LiveQuestionAnswerRecordRequest extends LivePageCommonRequest {
     /**
      * 频道号
      */

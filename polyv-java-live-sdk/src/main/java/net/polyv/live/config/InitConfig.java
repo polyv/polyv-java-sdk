@@ -12,9 +12,9 @@ public class InitConfig {
      * 初始化配置
      */
     public static void initPolyvLive(){
-        String appId = "frlr1zazn3";
-        String appSecret = "3a7cd25d068442f080adcb337c701fc3";
-        String userId = "1b448be323";
+        String appId = "xxxxx";
+        String appSecret = "xxxxx";
+        String userId = "xxx";
         log.debug("--初始化完成--");
     }
     

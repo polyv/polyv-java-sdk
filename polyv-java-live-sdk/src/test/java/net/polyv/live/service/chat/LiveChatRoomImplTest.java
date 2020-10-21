@@ -13,6 +13,7 @@ import edu.emory.mathcs.backport.java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
@@ -109,7 +110,8 @@ public class LiveChatRoomImplTest extends BaseTest {
     public void testAddBadWord() throws IOException, NoSuchAlgorithmException {
         Integer channelId = super.createChannel();
         LiveBadWordRequest liveBadWordRequest = new LiveBadWordRequest();
-        liveBadWordRequest.setChannelId(channelId)
+        liveBadWordRequest
+//                .setChannelId(channelId)
                 .setWords(Arrays.asList(new String[]{"你好1", "逗逼1", "傻子"}))
                 .setRequestId(LiveSignUtil.generateUUID());
         LiveBadWordResponse liveBadWordResponse = new LiveChatRoomImpl().addBadWord(liveBadWordRequest);
@@ -199,6 +201,24 @@ public class LiveChatRoomImplTest extends BaseTest {
         if (result != null) {
             //to do something ......
             log.debug("测试查询频道严禁词/禁言IP列表成功{}", JSON.toJSONString(result));
+        }
+    }
+    
+    
+    /**
+     * 查询账号严禁词列表
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetAccountBadworkList() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveCommonRequest liveCommonRequest = new LiveCommonRequest();
+        List<String> result = new LiveChatRoomImpl().getAccountBadworkList(liveCommonRequest);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试查询账号严禁词列表成功{}", JSON.toJSONString(result));
         }
     }
     

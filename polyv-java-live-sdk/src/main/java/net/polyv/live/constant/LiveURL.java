@@ -534,6 +534,12 @@ public class LiveURL {
     public static final String CHAT_GET_BAKWORD_WORD_IP_URL = BASE_URI + "v3/channel/badword/list";
     
     /**
+     * 查询账号严禁词列表
+     */
+    public static final String CHAT_GET_ACCOUNT_BAKWORD_WORD_URL = BASE_URI + "v3/user/badword/list";
+    
+    
+    /**
      * 400错误码
      */
     public static final int CODE_400 = 400;

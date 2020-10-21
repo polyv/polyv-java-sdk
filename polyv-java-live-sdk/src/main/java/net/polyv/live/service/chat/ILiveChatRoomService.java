@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
@@ -101,6 +102,16 @@ public interface ILiveChatRoomService {
      * @throws NoSuchAlgorithmException 异常
      */
     List<String>  getBadworkList(LiveGetBadwordIPRequest liveGetBadwordIPRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询账号严禁词列表，API地址：https://dev.polyv.net/2019/liveproduct/zblts/user-badword-list/
+     * @param liveCommonRequest 查询账号严禁词列表
+     * @return   禁言词列表
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    List<String>  getAccountBadworkList(LiveCommonRequest liveCommonRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

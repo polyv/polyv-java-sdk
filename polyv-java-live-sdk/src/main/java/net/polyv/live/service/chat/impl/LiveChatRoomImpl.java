@@ -8,6 +8,7 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
@@ -137,5 +138,19 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
             throws IOException, NoSuchAlgorithmException {
         String url =LiveURL.CHAT_GET_BAKWORD_WORD_IP_URL;
         return  super.basePost(url, liveGetBadwordIPRequest, List.class);
+    }
+    
+    /**
+     * 查询账号严禁词列表，API地址：https://dev.polyv.net/2019/liveproduct/zblts/user-badword-list/
+     * @param liveCommonRequest 查询账号严禁词列表
+     * @return   禁言词列表
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<String> getAccountBadworkList(LiveCommonRequest liveCommonRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url =LiveURL.CHAT_GET_ACCOUNT_BAKWORD_WORD_URL;
+        return  super.baseGet(url, liveCommonRequest, List.class);
     }
 }

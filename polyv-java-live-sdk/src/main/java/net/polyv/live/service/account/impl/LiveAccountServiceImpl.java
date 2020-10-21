@@ -59,9 +59,8 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     @Override
     public LiveListAccountResponse listAccount(LiveListAccountRequest liveListAccountRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveListAccountRequest.setUserId(LiveGlobalConfig.USER_ID);
-        String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_LIST_CHANNEL_URL, liveListAccountRequest.getUserId());
-        LiveListAccountResponse liveListAccountResponse = this.basePost(url, liveListAccountRequest,
+        String url = LiveURL.ACCOUNT_LIST_CHANNEL_URL;
+        LiveListAccountResponse liveListAccountResponse = this.baseGet(url, liveListAccountRequest,
                 LiveListAccountResponse.class);
         return liveListAccountResponse;
     }

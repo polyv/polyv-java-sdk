@@ -300,7 +300,7 @@ public class LiveURL {
     /**
      * 查询账号下的频道列表（频道号列表）
      */
-    public static final String ACCOUNT_LIST_CHANNEL_URL = BASE_URI + "v1/users/" + PARAM_REPLACE_CHAR + "/channels";
+    public static final String ACCOUNT_LIST_CHANNEL_URL = BASE_URI + "v3/user/channels";
     
     /**
      * 查询课件重制任务列表

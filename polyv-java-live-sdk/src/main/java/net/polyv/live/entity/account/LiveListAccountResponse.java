@@ -24,8 +24,7 @@ import lombok.experimental.Accessors;
 @ApiModel("查询账号下的频道列表返回实体")
 public class LiveListAccountResponse {
     
+    @ApiModelProperty(name = "channels", value = "频道号列表")
+    private List<Integer> channels;
     
-    @ApiModelProperty(name = "channelList", value = "频道号列表")
-    @JSONField(name="result")
-    private List<Integer> channelList;
 }

@@ -109,6 +109,42 @@
 | currentTimeMillis | timestamp | 服务器返回的时间戳（毫秒）               |
 | linkMicLimit      | int       | 连麦人数                                 |
 
+### 查询账号下的频道列表
+
+#### 描述
+```
+查询账号下的频道列表
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testListAccount() throws IOException, NoSuchAlgorithmException {
+        LiveListAccountRequest liveListAccountRequest = new LiveListAccountRequest();
+        LiveListAccountResponse liveListAccountResponse = new LiveAccountServiceImpl().listAccount(
+                liveListAccountRequest);
+        Assert.assertNotNull(liveListAccountResponse);
+        if (liveListAccountResponse != null) {
+            //to do something ......
+            log.debug("测试查询账号下的频道列表成功,{}", JSON.toJSONString(liveListAccountResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询账号下的频道列表](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+无
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名   | 说明       |
+| -------- | ---------- |
+| channels | 频道ID列表 |
 
 ### 查询课件重制任务列表
 

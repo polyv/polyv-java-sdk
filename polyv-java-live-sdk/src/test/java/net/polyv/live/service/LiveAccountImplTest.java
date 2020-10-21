@@ -44,9 +44,9 @@ public class LiveAccountImplTest extends BaseTest {
         channelList.add(3);
         channelList.add(4);
         channelList.add(5);
-        log.debug(JSON.toJSONString(liveListAccountResponse.setChannelList(channelList)));
+        log.debug(JSON.toJSONString(liveListAccountResponse.setChannels(channelList)));
         System.out.println(JSON.parseObject("{\"result\":[\"2\",\"3\",\"4\",\"5\"]}", LiveListAccountResponse.class)
-                .getChannelList());
+                .getChannels());
     }
     
     /**
@@ -67,11 +67,6 @@ public class LiveAccountImplTest extends BaseTest {
     }
     
     /**
-     * 查询账号下的频道列表(频道号列表)
-     * TODO 等待api端修改后再写
-     * @throws IOException
-     */
-    /**
      * 测试查询账号下的频道列表(频道号列表)
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -84,7 +79,7 @@ public class LiveAccountImplTest extends BaseTest {
         Assert.assertNotNull(liveListAccountResponse);
         if (liveListAccountResponse != null) {
             //to do something ......
-            log.debug("分页查询账号下所有频道详细信息成功,{}", JSON.toJSONString(liveListAccountResponse));
+            log.debug("测试查询账号下的频道列表成功,{}", JSON.toJSONString(liveListAccountResponse));
         }
     }
     

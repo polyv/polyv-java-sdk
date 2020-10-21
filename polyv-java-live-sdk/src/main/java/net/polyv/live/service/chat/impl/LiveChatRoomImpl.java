@@ -2,14 +2,18 @@ package net.polyv.live.service.chat.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
+import net.polyv.live.entity.chat.LiveChatBannedIPResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.chat.ILiveChatRoomService;
+import net.polyv.live.util.LiveSignUtil;
 
 /**
  * 直播签到管理
@@ -45,5 +49,19 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_SET_TEACHER_URL;
         return super.basePost(url, liveSetTeacherDataRequest, String.class);
+    }
+    
+    /**
+     * 设置聊天室禁言ip，API地址：https://dev.polyv.net/2017/liveproduct/zblts/addbannedip/
+     * @param liveChatBannedIPRequest 设置聊天室禁言ip请求实体
+     * @return 当前账号下所有禁言IP列表
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<String> addBannedIP(LiveChatBannedIPRequest liveChatBannedIPRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_BANNED_IP_URL, liveChatBannedIPRequest.getChannelId());
+        return super.basePost(url, liveChatBannedIPRequest, List.class);
     }
 }

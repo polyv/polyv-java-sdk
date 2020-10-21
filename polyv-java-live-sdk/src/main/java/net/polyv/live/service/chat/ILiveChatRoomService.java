@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
+import net.polyv.live.entity.chat.LiveChatBannedIPResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
@@ -38,6 +40,17 @@ public interface ILiveChatRoomService {
      * @throws NoSuchAlgorithmException 异常
      */
     String sendChatMsg(LiveSetTeacherDataRequest liveSetTeacherDataRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    
+    /**
+     * 设置聊天室禁言ip，API地址：https://dev.polyv.net/2017/liveproduct/zblts/addbannedip/
+     * @param liveChatBannedIPRequest 设置聊天室禁言ip请求实体
+     * @return 当前账号下所有禁言IP列表
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    List<String>  addBannedIP(LiveChatBannedIPRequest liveChatBannedIPRequest)
             throws IOException, NoSuchAlgorithmException;
     
     

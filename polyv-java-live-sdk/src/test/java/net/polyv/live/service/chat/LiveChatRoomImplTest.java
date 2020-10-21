@@ -9,7 +9,11 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
+import edu.emory.mathcs.backport.java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
+import net.polyv.live.entity.chat.LiveChatBannedIPResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
@@ -62,6 +66,24 @@ public class LiveChatRoomImplTest extends BaseTest {
         if (result != null) {
             //to do something ......
             log.debug("测试设置讲师信息成功{}", JSON.toJSONString(result));
+        }
+    }
+    
+    /**
+     * 设置聊天室禁言ip
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testAddBannedIP() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveChatBannedIPRequest liveChatBannedIPRequest = new LiveChatBannedIPRequest();
+        liveChatBannedIPRequest.setIp("192.168.1.3").setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+        List<String> bannedIPList = new LiveChatRoomImpl().addBannedIP(liveChatBannedIPRequest);
+        Assert.assertNotNull(bannedIPList);
+        if (bannedIPList != null) {
+            //to do something ......
+            log.debug("测试设置聊天室禁言ip成功{}", JSON.toJSONString(bannedIPList));
         }
     }
     

@@ -523,6 +523,10 @@ public class LiveURL {
     public static final String CHAT_LIST_KICKED_URL = BASE_URI + "v3/channel/chat/list-kicked";
     
     
+    /**
+     * 删除禁言IP/严禁词
+     */
+    public static final String CHAT_DEL_BANNED_URL = BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/delBanned";
     
     
     /**

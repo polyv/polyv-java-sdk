@@ -7,6 +7,7 @@ import java.util.List;
 import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
+import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
@@ -80,4 +81,16 @@ public interface ILiveChatRoomService {
      */
     List<LiveKickedListResponse>  getKickedList(LiveKickedListRequest liveKickedListRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 删除禁言IP/严禁词，API地址：https://dev.polyv.net/2017/liveproduct/zblts/delbanned/
+     * @param liveDelBannedDataRequest 删除禁言IP/严禁词请求实体
+     * @return 当前账号下所有禁言IP列表
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String  delBanned(LiveDelBannedDataRequest liveDelBannedDataRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    
 }

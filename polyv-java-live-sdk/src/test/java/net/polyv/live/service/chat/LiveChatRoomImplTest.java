@@ -214,6 +214,7 @@ public class LiveChatRoomImplTest extends BaseTest {
     public void testGetAccountBadworkList() throws IOException, NoSuchAlgorithmException {
         Integer channelId = super.createChannel();
         LiveCommonRequest liveCommonRequest = new LiveCommonRequest();
+        liveCommonRequest.setRequestId(LiveSignUtil.generateUUID());
         List<String> result = new LiveChatRoomImpl().getAccountBadworkList(liveCommonRequest);
         Assert.assertNotNull(result);
         if (result != null) {

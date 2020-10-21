@@ -17,6 +17,8 @@ import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
+import net.polyv.live.entity.chat.LiveKickedListRequest;
+import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
@@ -120,6 +122,25 @@ public class LiveChatRoomImplTest extends BaseTest {
         if (result != null) {
             //to do something ......
             log.debug("测试查询频道禁言列表成功{}", JSON.toJSONString(result));
+        }
+    }
+    
+ 
+    /**
+     * 查询频道踢人列表
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetKickedList() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveKickedListRequest liveKickedListRequest= new LiveKickedListRequest();
+        liveKickedListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+        List<LiveKickedListResponse> result = new LiveChatRoomImpl().getKickedList(liveKickedListRequest);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试查询频道踢人列表成功{}", JSON.toJSONString(result));
         }
     }
     

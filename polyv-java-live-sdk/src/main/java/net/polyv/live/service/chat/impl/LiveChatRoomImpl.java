@@ -11,6 +11,8 @@ import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
+import net.polyv.live.entity.chat.LiveKickedListRequest;
+import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
@@ -92,5 +94,18 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_GET_CHANNEL_BANNED_LIST_URL;
         return super.baseGet(url, liveGetBannedListRequest, List.class);
+    }
+    /**
+     * 查询频道踢人列表，API地址：https://dev.polyv.net/2019/liveproduct/zblts/list-kicked/
+     * @param liveKickedListRequest 查询频道踢人列表请求实体
+     * @return 当前账号下所有禁言IP列表
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<LiveKickedListResponse> getKickedList(LiveKickedListRequest liveKickedListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHAT_LIST_KICKED_URL;
+        return super.basePost(url, liveKickedListRequest, List.class);
     }
 }

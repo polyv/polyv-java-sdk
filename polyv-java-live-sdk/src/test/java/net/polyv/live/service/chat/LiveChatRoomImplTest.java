@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
+import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.entity.interact.LiveCheckinRequest;
 import net.polyv.live.entity.interact.LiveCheckinResponse;
 import net.polyv.live.service.BaseTest;
@@ -42,4 +43,28 @@ public class LiveChatRoomImplTest extends BaseTest {
             log.debug("测试通过HTTP接口发送聊天消息成功{}", JSON.toJSONString(liveSendChatMsgResponse));
         }
     }
+    
+ 
+    
+    
+    /**
+     * 设置讲师信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testSendChatMsg() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
+        liveSetTeacherDataRequest.setChannelId(channelId).setNickname("thomas-gogo").setActor("大师").setPasswd("34523423432432432532543524324324324324324324326789").setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740,3965499425&fm=26&gp=0.jpg").setRequestId(LiveSignUtil.generateUUID());
+        String result = new LiveChatRoomImpl().sendChatMsg(liveSetTeacherDataRequest);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试设置讲师信息成功{}", JSON.toJSONString(result));
+        }
+    }
+    
+    
+    
 }

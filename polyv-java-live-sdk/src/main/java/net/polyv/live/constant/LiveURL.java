@@ -461,6 +461,8 @@ public class LiveURL {
      */
     public static final String CHANNEL_CHECKIN_METADATA_BY_SESSIONID_URL =
             BASE_URI + "v3/channel/chat/checkin-by-sessionId";
+     
+    
     /**
      * 查询频道答题卡答题结果
      */
@@ -468,7 +470,29 @@ public class LiveURL {
     /**
      * 查询频道答题卡答题结果
      */
-    public static final String CHANNEL_CHAT_SEND_MSG_URL = BASE_URI + "v3/channel/chat/send-admin-msg";
+    public static final String  CHAT_SEND_MSG_URL = BASE_URI + "v3/channel/chat/send-admin-msg";
+    
+    /**
+     * 设置聊天室禁言ip
+     */
+    public static final String CHAT_BANNED_IP_URL =
+            BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/addBannedIP";
+    
+    
+    
+    /**
+     * 批量导入频道严禁词
+     */
+    public static final String CHAT_SET_BAD_WORD_URL =
+            BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/addBadWords";
+    
+    /**
+     * 设置讲师信息
+     */
+    public static final String CHAT_SET_TEACHER_URL =
+            BASE_URI + "v3/channel/account/updateTeacher";
+    
+    
     
     /**
      * 400错误码

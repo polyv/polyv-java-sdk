@@ -8,6 +8,8 @@ import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
 import net.polyv.live.entity.account.LiveAccountPlaybackCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountRecordCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
+import net.polyv.live.entity.account.LiveAccountSwitchRequest;
+import net.polyv.live.entity.account.LiveAccountSwitchResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
@@ -106,6 +108,17 @@ public interface ILiveAccountService {
      * @throws NoSuchAlgorithmException 异常
      */
     String updateRecordCallbackUrl(LiveAccountRecordCallbackRequest liveAccountRecordCallbackRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询功能开关状态接口
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zhsz/switch-get/
+     * @param liveAccountSwitchRequest 查询功能开关状态接口请求实体
+     * @return 查询功能开关状态接口返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveAccountSwitchResponse accountSwitch(LiveAccountSwitchRequest liveAccountSwitchRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

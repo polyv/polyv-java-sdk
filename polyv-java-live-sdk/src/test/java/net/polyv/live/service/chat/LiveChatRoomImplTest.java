@@ -20,6 +20,7 @@ import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
 import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
 import net.polyv.live.entity.chat.LiveGetBadwordIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
+import net.polyv.live.entity.chat.LiveGetChatAdminResponse;
 import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
@@ -213,13 +214,50 @@ public class LiveChatRoomImplTest extends BaseTest {
     @Test
     public void testGetAccountBadworkList() throws IOException, NoSuchAlgorithmException {
         Integer channelId = super.createChannel();
-        LiveCommonRequest liveCommonRequest = new LiveCommonRequest();
-        liveCommonRequest.setRequestId(LiveSignUtil.generateUUID());
-        List<String> result = new LiveChatRoomImpl().getAccountBadworkList(liveCommonRequest);
+        List<String> result = new LiveChatRoomImpl().getAccountBadworkList(LiveSignUtil.generateUUID());
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
             log.debug("测试查询账号严禁词列表成功{}", JSON.toJSONString(result));
+        }
+    }
+    
+    
+    
+//    /**
+//     * 删除频道聊天记录
+//     * @throws IOException
+//     * @throws NoSuchAlgorithmException
+//     */
+//    @Test
+//    public void testCleanChannelAllMsg() throws IOException, NoSuchAlgorithmException {
+//        Integer channelId = super.createChannel();
+//        String requestId = LiveSignUtil.generateUUID();
+//        String result = new LiveChatRoomImpl().cleanChannelAllMsg(channelId,requestId);
+//        Assert.assertNotNull(result);
+//        if (result != null) {
+//            //to do something ......
+//            log.debug("测试删除频道聊天记录成功{}", JSON.toJSONString(result));
+//        }
+//    }
+    
+    
+    
+    
+    /**
+     * 查询聊天室管理员信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetChatAdminData() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        String requestId = LiveSignUtil.generateUUID();
+        LiveGetChatAdminResponse liveGetChatAdminResponse = new LiveChatRoomImpl().getChatAdminData(channelId,requestId);
+        Assert.assertNotNull(liveGetChatAdminResponse);
+        if (liveGetChatAdminResponse != null) {
+            //to do something ......
+            log.debug("测试查询聊天室管理员信息成功{}", JSON.toJSONString(liveGetChatAdminResponse));
         }
     }
     

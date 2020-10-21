@@ -538,6 +538,17 @@ public class LiveURL {
      */
     public static final String CHAT_GET_ACCOUNT_BAKWORD_WORD_URL = BASE_URI + "v3/user/badword/list";
     
+    /**
+     * 删除频道聊天记录
+     */
+    public static final String CHAT_CLEAN_CHANNEL_MSG_URL = BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/cleanChat";
+    
+    /**
+     * 查询聊天室管理员信息
+     */
+    public static final String CHAT_GET_ADMIN_URL = BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/get-chat-admin";
+    
+    
     
     /**
      * 400错误码

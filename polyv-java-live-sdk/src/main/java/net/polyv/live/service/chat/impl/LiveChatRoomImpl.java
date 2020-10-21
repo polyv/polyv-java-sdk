@@ -15,6 +15,7 @@ import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
 import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
 import net.polyv.live.entity.chat.LiveGetBadwordIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
+import net.polyv.live.entity.chat.LiveGetChatAdminResponse;
 import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
@@ -76,7 +77,7 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
     /**
      * 批量导入频道严禁词，API地址：https://dev.polyv.net/2017/liveproduct/zblts/addforbiddenwords/
      * @param liveBadWordRequest 批量导入频道严禁词请求实体
-     * @return  响应实体
+     * @return 响应实体
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -86,6 +87,7 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
         String url = LiveURL.getRealUrl(LiveURL.CHAT_SET_BAD_WORD_URL, LiveGlobalConfig.USER_ID);
         return super.basePost(url, liveBadWordRequest, LiveBadWordResponse.class);
     }
+    
     /**
      * 查询频道禁言列表，API地址：https://dev.polyv.net/2019/liveproduct/zblts/get-banned-list/
      * @param liveGetBannedListRequest 查询频道禁言列表请求实体
@@ -99,6 +101,7 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
         String url = LiveURL.CHAT_GET_CHANNEL_BANNED_LIST_URL;
         return super.baseGet(url, liveGetBannedListRequest, List.class);
     }
+    
     /**
      * 查询频道踢人列表，API地址：https://dev.polyv.net/2019/liveproduct/zblts/list-kicked/
      * @param liveKickedListRequest 查询频道踢人列表请求实体
@@ -112,6 +115,7 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
         String url = LiveURL.CHAT_LIST_KICKED_URL;
         return super.basePost(url, liveKickedListRequest, List.class);
     }
+    
     /**
      * 删除禁言IP/严禁词，API地址：https://dev.polyv.net/2017/liveproduct/zblts/delbanned/
      * @param liveDelBannedDataRequest 删除禁言IP/严禁词请求实体
@@ -122,8 +126,8 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
     @Override
     public String delBanned(LiveDelBannedDataRequest liveDelBannedDataRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHAT_DEL_BANNED_URL,liveDelBannedDataRequest.getChannelId());
-        return  super.basePost(url, liveDelBannedDataRequest, String.class);
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_DEL_BANNED_URL, liveDelBannedDataRequest.getChannelId());
+        return super.basePost(url, liveDelBannedDataRequest, String.class);
     }
     
     /**
@@ -136,21 +140,54 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
     @Override
     public List<String> getBadworkList(LiveGetBadwordIPRequest liveGetBadwordIPRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url =LiveURL.CHAT_GET_BAKWORD_WORD_IP_URL;
-        return  super.basePost(url, liveGetBadwordIPRequest, List.class);
+        String url = LiveURL.CHAT_GET_BAKWORD_WORD_IP_URL;
+        return super.basePost(url, liveGetBadwordIPRequest, List.class);
     }
     
     /**
      * 查询账号严禁词列表，API地址：https://dev.polyv.net/2019/liveproduct/zblts/user-badword-list/
-     * @param liveCommonRequest 查询账号严禁词列表
-     * @return   禁言词列表
+     * @param requestId 查询账号严禁词列表
+     * @return 禁言词列表
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public List<String> getAccountBadworkList(LiveCommonRequest liveCommonRequest)
+    public List<String> getAccountBadworkList(String requestId) throws IOException, NoSuchAlgorithmException {
+        LiveCommonRequest liveCommonRequest = new LiveCommonRequest();
+        liveCommonRequest.setRequestId(requestId);
+        String url = LiveURL.CHAT_GET_ACCOUNT_BAKWORD_WORD_URL;
+        return super.baseGet(url, liveCommonRequest, List.class);
+    }
+    
+//    /**
+//     * 删除频道聊天记录，API地址：https://dev.polyv.net/2017/liveproduct/zblts/cleanchat/
+//     * @param channelId 需要删除聊天信息的频道ID
+//     * @param requestId 请求序列号
+//     * @return 频道号
+//     * @throws IOException 客户端和服务器读写异常
+//     * @throws NoSuchAlgorithmException 签名异常
+//     */
+//    @Override
+//    public String cleanChannelAllMsg(Integer channelId, String requestId) throws IOException, NoSuchAlgorithmException {
+//        LiveCommonRequest liveCommonRequest = new LiveCommonRequest();
+//        liveCommonRequest.setRequestId(requestId);
+//        String url = LiveURL.getRealUrl(LiveURL.CHAT_CLEAN_CHANNEL_MSG_URL, String.valueOf(channelId));
+//        return super.baseGet(url, liveCommonRequest, String.class);
+//    }
+    /**
+     * 查询聊天室管理员信息，API地址：https://dev.polyv.net/2017/liveproduct/zblts/get-chat-admin/
+     * @param channelId 频道ID
+     * @param requestId 请求序列号
+     * @return  频道号
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    @Override
+    public LiveGetChatAdminResponse getChatAdminData(Integer channelId, String requestId)
             throws IOException, NoSuchAlgorithmException {
-        String url =LiveURL.CHAT_GET_ACCOUNT_BAKWORD_WORD_URL;
-        return  super.baseGet(url, liveCommonRequest, List.class);
+        LiveCommonRequest liveCommonRequest = new LiveCommonRequest();
+        liveCommonRequest.setRequestId(requestId);
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_ADMIN_URL, String.valueOf(channelId));
+        return super.baseGet(url, liveCommonRequest, LiveGetChatAdminResponse.class);
     }
 }

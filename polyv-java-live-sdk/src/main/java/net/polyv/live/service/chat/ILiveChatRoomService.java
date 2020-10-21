@@ -11,6 +11,7 @@ import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
 import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
 import net.polyv.live.entity.chat.LiveGetBadwordIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
+import net.polyv.live.entity.chat.LiveGetChatAdminResponse;
 import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
@@ -106,12 +107,39 @@ public interface ILiveChatRoomService {
     
     /**
      * 查询账号严禁词列表，API地址：https://dev.polyv.net/2019/liveproduct/zblts/user-badword-list/
-     * @param liveCommonRequest 查询账号严禁词列表
+     * @param requestId 请求序列号
      * @return   禁言词列表
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
-    List<String>  getAccountBadworkList(LiveCommonRequest liveCommonRequest)
+    List<String>  getAccountBadworkList(String requestId)
             throws IOException, NoSuchAlgorithmException;
+     
+    
+//    /**
+//     * 删除频道聊天记录，API地址：https://dev.polyv.net/2017/liveproduct/zblts/cleanchat/
+//     * @param channelId 需要删除聊天信息的频道ID
+//     * @param requestId 请求序列号
+//     * @return  频道号
+//     * @throws IOException 客户端和服务器读写异常
+//     * @throws NoSuchAlgorithmException 签名异常
+//     */
+//    String  cleanChannelAllMsg(Integer channelId ,String requestId)
+//            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询聊天室管理员信息，API地址：https://dev.polyv.net/2017/liveproduct/zblts/get-chat-admin/
+     * @param channelId 频道ID
+     * @param requestId 请求序列号
+     * @return  频道号
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    LiveGetChatAdminResponse  getChatAdminData(Integer channelId ,String requestId)
+            throws IOException, NoSuchAlgorithmException;
+    
+    
+    
+    
     
 }

@@ -11,6 +11,8 @@ import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountSwitchRequest;
 import net.polyv.live.entity.account.LiveAccountSwitchResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
+import net.polyv.live.entity.account.LiveListAccountChannelBasicRequest;
+import net.polyv.live.entity.account.LiveListAccountChannelBasicResponse;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
@@ -121,4 +123,15 @@ public interface ILiveAccountService {
     LiveAccountSwitchResponse accountSwitch(LiveAccountSwitchRequest liveAccountSwitchRequest)
             throws IOException, NoSuchAlgorithmException;
     
+    /**
+     * 查询账号下所有频道缩略信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zhsz/get-simple-channel-list/
+     * @param liveListAccountChannelBasicRequest 查询账号下所有频道缩略信息请求实体
+     * @return 查询账号下所有频道缩略信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListAccountChannelBasicResponse listChannelBasic(
+            LiveListAccountChannelBasicRequest liveListAccountChannelBasicRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

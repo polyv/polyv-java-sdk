@@ -1,6 +1,7 @@
 package net.polyv.vod.service;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.vod.config.InitConfig;
 import net.polyv.vod.config.VodGlobalConfig;
 
 /**
@@ -12,18 +13,10 @@ public class BaseTest {
      * 系统默认初始化
      */
     BaseTest() {
-        initVodPolyv();
+        InitConfig.initVodPolyv();
     }
     
-    private void initVodPolyv(){
-        String userId = "1b448be323";
-        String writeToken = "s2GUm9YXzWpU1Z6-Uagx0rs3oG0QNZQq";
-        String readToken = "WmBI70idfN-4Sb9qfRot7-gqkkzWcCRG";
-        String secretKey = "GyqkTJckCT";
-    
-        VodGlobalConfig.init(userId, writeToken, readToken, secretKey);
-        log.debug("--初始化完成--");
-    }
+   
     
     
 }

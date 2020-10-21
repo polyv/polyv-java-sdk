@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.Assert;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.config.InitConfig;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
@@ -30,15 +31,7 @@ public class BaseTest {
      * 系统账号密钥配置
      */
     public BaseTest() {
-        initPolyvLive();
-    }
-    
-    public static void initPolyvLive(){
-        String appId = "frlr1zazn3";
-        String appSecret = "3a7cd25d068442f080adcb337c701fc3";
-        String userId = "1b448be323";
-        LiveGlobalConfig.init(appId, userId, appSecret);
-        log.debug("--初始化完成--");
+        InitConfig.initPolyvLive();
     }
     
     /**

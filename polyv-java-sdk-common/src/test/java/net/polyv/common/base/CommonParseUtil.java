@@ -39,7 +39,7 @@ public class CommonParseUtil {
                 "type\tstring\t题目类型：R为单选，C为多选，Q为问答\n" + "itemType\tint\t答题类型：1表示问答，0表示答题卡";
         
  
-        //        fieldsStr = readFileString("C:\\Users\\T460\\Desktop\\fields.txt");
+                fieldsStr = readFileString("C:\\Users\\T460\\Desktop\\fields.txt");
         
         String[] lineStr = fieldsStr.split("\n");
         for (String temp : lineStr) {

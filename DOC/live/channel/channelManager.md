@@ -1146,14 +1146,16 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
     public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
         LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest =
                 new LiveCreateChannelVideoPlaybackRequest();
-liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSetAsDefault("N").setListType("playback");
+        liveCreateChannelVideoPlaybackRequest.setChannelId(1958888)
+                .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
+                .setListType("vod");
         LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse =
-                new LiveChannelServiceImpl().addChannelVideoPlayback(
-                liveCreateChannelVideoPlaybackRequest);
+                new LiveChannelPlaybackServiceImpl().addChannelVideoPlayback(
+                        liveCreateChannelVideoPlaybackRequest);
         Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
         if (liveCreateChannelVideoPlaybackResponse != null) {
             //to do something ......
-            log.debug(String.format("批量查询频道直播流状态成功%s", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse)));
+            log.debug("测试将点播中的视频添加到视频库成功{}", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse));
         }
     }
 ```
@@ -1164,12 +1166,11 @@ liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSet
 
 #### 请求入参描述[LiveChannelRequest]
 
-| 参数名       | 必选 | 类型   | 说明                                                         |
-| ------------ | ---- | ------ | ------------------------------------------------------------ |
-| channelId    | 是   | int    | 频道号                                                       |
-| vid          | 是   | string | 要添加为回放的的点播视频                                     |
-| setAsDefault | 否   | string | 添加到回放列表中的位置，Y （回放列表中置顶），N 回放列表中置底，不传默认为 N |
-| listType     | 否   | string | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
+| 参数名    | 必选 | 类型   | 说明                                                         |
+| --------- | ---- | ------ | ------------------------------------------------------------ |
+| channelId | 是   | int    | 频道号                                                       |
+| vid       | 是   | string | 要添加为回放的的点播视频                                     |
+| listType  | 否   | string | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
 
 
 #### 返回对象描述[LiveChannelResponse]
@@ -1204,9 +1205,7 @@ liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSet
 
 接口调用有频率限制，[详细请查看](../limit.md)
 
-```
 1.该接口为异步处理，如果当前提交的文件如果正在处理，会返回 data: processing
-```
 
 #### 代码示例
 ```java

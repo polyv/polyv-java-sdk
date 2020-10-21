@@ -35,12 +35,6 @@ public class LiveCreateChannelVideoPlaybackRequest extends LiveCommonRequest {
     private String vid;
     
     /**
-     * 添加到回放列表中的位置，Y
-     */
-    @ApiModelProperty(name = "setAsDefault", value = "添加到回放列表中的位置，Y", required = false)
-    private String setAsDefault;
-    
-    /**
      * playback-回放列表，vod-点播列表;
      */
     @ApiModelProperty(name = "listType", value = "playback-回放列表，vod-点播列表;", required = false)

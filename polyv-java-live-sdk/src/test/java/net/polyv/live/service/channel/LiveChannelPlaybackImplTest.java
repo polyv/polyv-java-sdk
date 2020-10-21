@@ -17,6 +17,8 @@ import net.polyv.live.entity.channel.playback.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyResponse;
+import net.polyv.live.entity.channel.playback.LiveCreateChannelVideoPlaybackRequest;
+import net.polyv.live.entity.channel.playback.LiveCreateChannelVideoPlaybackResponse;
 import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoRequest;
 import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoResponse;
 import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest;
@@ -173,6 +175,30 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         if (liveChannelVideoOnlyResponse != null) {
             //to do something ......
             log.debug("测试查询指定文件ID的录制文件信息成功{}", JSON.toJSONString(liveChannelVideoOnlyResponse));
+        }
+    }
+    
+    
+    /**
+     * 测试将点播中的视频添加到视频库
+     * 注：点播视频得设置标签为频道号，多个用英文逗号分隔
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
+        LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest =
+                new LiveCreateChannelVideoPlaybackRequest();
+        liveCreateChannelVideoPlaybackRequest.setChannelId(1958888)
+                .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
+                .setListType("vod");
+        LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse =
+                new LiveChannelPlaybackServiceImpl().addChannelVideoPlayback(
+                        liveCreateChannelVideoPlaybackRequest);
+        Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
+        if (liveCreateChannelVideoPlaybackResponse != null) {
+            //to do something ......
+            log.debug("测试将点播中的视频添加到视频库成功{}", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse));
         }
     }
     

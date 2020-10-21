@@ -11,10 +11,12 @@ import com.alibaba.fastjson.JSON;
 
 import edu.emory.mathcs.backport.java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
+import net.polyv.live.entity.chat.LiveGetBannedListRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
@@ -100,6 +102,24 @@ public class LiveChatRoomImplTest extends BaseTest {
         if (liveBadWordResponse != null) {
             //to do something ......
             log.debug("测试批量导入频道严禁词成功{}", JSON.toJSONString(liveBadWordResponse));
+        }
+    }
+    
+    /**
+     * 查询频道禁言列表
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetBannedList() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveGetBannedListRequest liveGetBannedListRequest = new LiveGetBannedListRequest();
+        liveGetBannedListRequest.setChannelId(channelId).setType(LiveConstant.BannedType.USER_ID.getType()).setRequestId(LiveSignUtil.generateUUID());
+        List<String> result = new LiveChatRoomImpl().getBannedList(liveGetBannedListRequest);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试查询频道禁言列表成功{}", JSON.toJSONString(result));
         }
     }
     

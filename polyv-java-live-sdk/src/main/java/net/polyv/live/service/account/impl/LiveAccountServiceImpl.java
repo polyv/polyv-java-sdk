@@ -13,6 +13,8 @@ import net.polyv.live.entity.account.LiveAccountRecordCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountSwitchRequest;
 import net.polyv.live.entity.account.LiveAccountSwitchResponse;
+import net.polyv.live.entity.account.LiveAccountUserDurationsRequest;
+import net.polyv.live.entity.account.LiveAccountUserDurationsResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicRequest;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicResponse;
@@ -207,5 +209,23 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
                 liveListAccountChannelBasicRequest, LiveListAccountChannelBasicResponse.class);
         return liveListAccountChannelBasicResponse;
     }
+    
+    /**
+     * 查询账户分钟数
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zhsz/get-user-durations/
+     * @return 查询账户分钟数返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveAccountUserDurationsResponse userDurations(
+            LiveAccountUserDurationsRequest liveAccountUserDurationsRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.USER_DURATION_GET_URL;
+        LiveAccountUserDurationsResponse liveAccountUserDurationsResponse = this.basePost(url,
+                liveAccountUserDurationsRequest, LiveAccountUserDurationsResponse.class);
+        return liveAccountUserDurationsResponse;
+    }
+    
     
 }

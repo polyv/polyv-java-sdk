@@ -18,6 +18,8 @@ import net.polyv.live.entity.account.LiveAccountRecordCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountSwitchRequest;
 import net.polyv.live.entity.account.LiveAccountSwitchResponse;
+import net.polyv.live.entity.account.LiveAccountUserDurationsRequest;
+import net.polyv.live.entity.account.LiveAccountUserDurationsResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicRequest;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicResponse;
@@ -228,11 +230,28 @@ public class LiveAccountImplTest extends BaseTest {
                 .setCurrentPage(1);
         LiveListAccountChannelBasicResponse liveListAccountChannelBasicResponse =
                 new LiveAccountServiceImpl().listChannelBasic(
-                liveListAccountChannelBasicRequest);
+                        liveListAccountChannelBasicRequest);
         Assert.assertNotNull(liveListAccountChannelBasicResponse);
         if (liveListAccountChannelBasicResponse != null) {
             //to do something ......
             log.debug("测试查询账号下所有频道缩略信息成功,{}", JSON.toJSONString(liveListAccountChannelBasicResponse));
+        }
+    }
+    
+    /**
+     * 测试查询账户分钟数
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUserDurations() throws IOException, NoSuchAlgorithmException {
+        LiveAccountUserDurationsRequest liveAccountUserDurationsRequest = new LiveAccountUserDurationsRequest();
+        LiveAccountUserDurationsResponse liveAccountUserDurationsResponse = new LiveAccountServiceImpl().userDurations(
+                liveAccountUserDurationsRequest);
+        Assert.assertNotNull(liveAccountUserDurationsResponse);
+        if (liveAccountUserDurationsResponse != null) {
+            //to do something ......
+            log.debug("测试查询账户分钟数成功,{}", JSON.toJSONString(liveAccountUserDurationsResponse));
         }
     }
     

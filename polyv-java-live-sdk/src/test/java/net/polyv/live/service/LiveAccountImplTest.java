@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
+import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
@@ -129,6 +130,24 @@ public class LiveAccountImplTest extends BaseTest {
         if ("success".equals(liveCreateAccountTokenResponse)) {
             //to do something ......
             log.debug("测试设置账号单点登录的token成功,{}", liveCreateAccountTokenResponse);
+        }
+    }
+    
+    /**
+     * 测试设置直播状态回调通知url
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateStreamCallbackUrl() throws IOException, NoSuchAlgorithmException {
+        LiveAccountStreamCallbackRequest liveAccountStreamCallbackRequest = new LiveAccountStreamCallbackRequest();
+        liveAccountStreamCallbackRequest.setUrl("http://www.abc.com/callback");
+        String liveAccountStreamCallbackResponse = new LiveAccountServiceImpl().updateStreamCallbackUrl(
+                liveAccountStreamCallbackRequest);
+        Assert.assertNotNull(liveAccountStreamCallbackResponse);
+        if (liveAccountStreamCallbackResponse != null) {
+            //to do something ......
+            log.debug("测试设置直播状态回调通知url成功,{}", liveAccountStreamCallbackResponse);
         }
     }
     

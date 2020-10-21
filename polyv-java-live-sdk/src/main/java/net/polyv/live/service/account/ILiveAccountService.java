@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
+import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
@@ -70,6 +71,16 @@ public interface ILiveAccountService {
      * @throws NoSuchAlgorithmException 异常
      */
     String createAccountToken(LiveCreateAccountTokenRequest liveCreateAccountTokenRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置直播状态回调通知url
+     * @param liveAccountStreamCallbackRequest 设置直播状态回调通知url请求体
+     * @return 设置直播状态回调通知url返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String updateStreamCallbackUrl(LiveAccountStreamCallbackRequest liveAccountStreamCallbackRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

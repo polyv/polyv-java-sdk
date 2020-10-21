@@ -1,9 +1,13 @@
 package net.polyv.live.service.account.impl;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
+import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
@@ -12,9 +16,6 @@ import net.polyv.live.entity.account.LiveListAccountResponse;
 import net.polyv.live.entity.account.LiveUpdateAccountSwitchRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.account.ILiveAccountService;
-
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * 直播账号级管理
@@ -103,6 +104,23 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         String url = LiveURL.ACCOUNT_TOKEN_CREATE_URL;
         String liveCreateAccountTokenResponse = this.basePost(url, liveCreateAccountTokenRequest, String.class);
         return liveCreateAccountTokenResponse;
+    }
+    
+    /**
+     * 设置直播状态回调通知url
+     * @param liveAccountStreamCallbackRequest 设置直播状态回调通知url请求体
+     * @return 设置直播状态回调通知url返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String updateStreamCallbackUrl(LiveAccountStreamCallbackRequest liveAccountStreamCallbackRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveAccountStreamCallbackRequest.setUserId(LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_STREAM_CALLBACK_URL,
+                liveAccountStreamCallbackRequest.getUserId());
+        String liveAccountStreamCallbackResponse = this.basePost(url, liveAccountStreamCallbackRequest, String.class);
+        return liveAccountStreamCallbackResponse;
     }
     
 }

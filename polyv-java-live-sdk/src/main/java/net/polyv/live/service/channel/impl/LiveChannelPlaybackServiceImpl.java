@@ -211,11 +211,8 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
     public String channelVideoSort(LiveChannelVideoSortRequest liveChannelVideoSortRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_VIDEO_SORT_URL;
-        Map<String, String> signMap = MapUtil.getSignMap(liveChannelVideoSortRequest);
-        signMap.put("channelId", liveChannelVideoSortRequest.getChannelId().toString());
-        String liveListChannelVideoLibraryResponse = this.basePostJson(url, signMap, liveChannelVideoSortRequest,
-                String.class);
-        return liveListChannelVideoLibraryResponse;
+        String liveChannelVideoSortResponse = this.basePost(url, liveChannelVideoSortRequest, String.class);
+        return liveChannelVideoSortResponse;
     }
     
     /**

@@ -1,5 +1,7 @@
 package net.polyv.live.entity.channel.playback;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
@@ -33,7 +35,7 @@ public class LiveChannelVideoSortRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "videoIds", value = "完整回放视频ID列表,存放在请求体中,请求视频ID数量必须和回放列表数量一致，且不能少或者缺或者多", required = true)
     @NotNull(message = "videoIds不能为空")
-    private String[] videoIds;
+    private List<String> videoIds;
     
     /**
      * playback-回放列表，vod-点播列表;

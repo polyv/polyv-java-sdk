@@ -2,6 +2,7 @@ package net.polyv.live.service.channel;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Assert;
@@ -17,6 +18,7 @@ import net.polyv.live.entity.channel.playback.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyResponse;
+import net.polyv.live.entity.channel.playback.LiveChannelVideoSortRequest;
 import net.polyv.live.entity.channel.playback.LiveCreateChannelVideoPlaybackRequest;
 import net.polyv.live.entity.channel.playback.LiveCreateChannelVideoPlaybackResponse;
 import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoRequest;
@@ -193,13 +195,36 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
                 .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
                 .setListType("vod");
         LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse =
-                new LiveChannelPlaybackServiceImpl().addChannelVideoPlayback(
-                        liveCreateChannelVideoPlaybackRequest);
+                new LiveChannelPlaybackServiceImpl()
+                .addChannelVideoPlayback(liveCreateChannelVideoPlaybackRequest);
         Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
         if (liveCreateChannelVideoPlaybackResponse != null) {
             //to do something ......
             log.debug("测试将点播中的视频添加到视频库成功{}", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse));
         }
     }
+    
+    /**
+     * 测试设置视频库列表排序
+     * TODO 对接未通过，暂时注释
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+//    public void testChannelVideoSort() throws IOException, NoSuchAlgorithmException {
+//        List<String> videoIdList = listChannelVideoIds(1965681);//992d36fa40,f1574595e1
+//        Collections.shuffle(videoIdList);
+//        LiveChannelVideoSortRequest liveChannelVideoSortRequest = new LiveChannelVideoSortRequest();
+//        liveChannelVideoSortRequest.setChannelId(1965681)
+//                .setVideoIds(videoIdList)
+//                .setListType("playback");
+//        String liveChannelVideoSortResponse = new LiveChannelPlaybackServiceImpl().channelVideoSort(
+//                liveChannelVideoSortRequest);
+//        Assert.assertNotNull(liveChannelVideoSortResponse);
+//        if ("".equals(liveChannelVideoSortResponse)) {
+//            //to do something ......
+//            log.debug("测试设置视频库列表排序成功{}", JSON.toJSONString(liveChannelVideoSortResponse));
+//        }
+//    }
     
 }

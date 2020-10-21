@@ -22,7 +22,7 @@ public class StartupListener implements ApplicationContextAware {
     
     public void initPolyvLive() {
         String appId = "frlr1zazn3";
-        String appSecret = "5d5ade8f71f24bb9a2d1176cd607dd17";
+        String appSecret = "3a7cd25d068442f080adcb337c701fc3";
         String userId = "1b448be323";
         LiveGlobalConfig.init(appId, userId, appSecret);
         log.debug("--初始化完成--");

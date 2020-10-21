@@ -2582,3 +2582,42 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | watchStatus   | 观看页状态，live-直播中，playback-回放中，end-已结束，waiting-未开始 |
 | watchStatus   | 观看页状态描述，直播中，回放中，已结束，未开始               |
 | watchUrl      | 观看页链接                                                   |
+
+### 查询账户分钟数
+
+#### 描述
+```
+获取用户历史已经使用的分钟数及当前可用的分钟数
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testUserDurations() throws IOException, NoSuchAlgorithmException {
+        LiveAccountUserDurationsRequest liveAccountUserDurationsRequest = new LiveAccountUserDurationsRequest();
+        LiveAccountUserDurationsResponse liveAccountUserDurationsResponse = new LiveAccountServiceImpl().userDurations(
+                liveAccountUserDurationsRequest);
+        Assert.assertNotNull(liveAccountUserDurationsResponse);
+        if (liveAccountUserDurationsResponse != null) {
+            //to do something ......
+            log.debug("测试查询账户分钟数成功,{}", JSON.toJSONString(liveAccountUserDurationsResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询账户分钟数](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+无
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名    | 说明                         |
+| --------- | ---------------------------- |
+| userId    | 用户ID，字符串               |
+| available | 当前可用的分钟数，长整型     |
+| used      | 历史已经使用的分钟数，长整型 |

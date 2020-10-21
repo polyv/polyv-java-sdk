@@ -187,6 +187,25 @@ public class LiveConstant {
     }
     
     /**
+     * 禁言类型
+     */
+    public enum BannedType {
+        //禁言类型,ip/userId
+       IP("ip"),USER_ID("userId");
+    
+        private String type;
+    
+        private BannedType(String type) {
+            this.type = type;
+        }
+    
+        public String getType() {
+            return type;
+        }
+    }
+    
+    
+    /**
      * 功能开关类型
      */
     public enum ChannelSwitch {

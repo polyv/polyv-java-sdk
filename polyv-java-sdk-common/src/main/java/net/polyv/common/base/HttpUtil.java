@@ -48,7 +48,7 @@ public class HttpUtil {
     public static String sendPostDataByMap(String url, String pathVariable, Map<String, String> params, String encoding)
             throws IOException {
         if (StringUtils.isNotBlank(pathVariable)) {
-            url = String.format(url, pathVariable);
+            url =String.format( url, pathVariable);
         }
         return sendPostDataByMap(url, params, encoding);
     }
@@ -62,7 +62,7 @@ public class HttpUtil {
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendPostDataByMap(String url, Map<String, String> params, String encoding) throws IOException {
-        log.debug(String.format("http 请求 url: %s , 请求参数: %s", url, JSON.toJSON(params)));
+        log.debug("http 请求 url: {} , 请求参数: {}", url, JSON.toJSONString(params));
         if (StringUtils.isBlank(encoding)) {
             encoding = "UTF-8";
         }
@@ -96,7 +96,7 @@ public class HttpUtil {
 //        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
         result = EntityUtils.toString(response.getEntity(), encoding);
-        log.debug(String.format("http 请求结果: %s", result));
+        log.debug("http 请求结果: {}", result);
 //        }
         try {
             if (null != response) {
@@ -121,7 +121,7 @@ public class HttpUtil {
     public static String sendPostDataByJson(String url, String pathVariable, Map<String, String> params,
             String encoding) throws IOException {
         if (StringUtils.isNotBlank(pathVariable)) {
-            url = String.format(url, pathVariable);
+            url =String.format( url, pathVariable);
         }
         return sendPostDataByJson(url, JSON.toJSONString(params), encoding);
     }
@@ -152,7 +152,7 @@ public class HttpUtil {
     public static String sendPostDataByJson(String url, String pathVariable, String json, String encoding)
             throws IOException {
         if (StringUtils.isNotBlank(pathVariable)) {
-            url = String.format(url, pathVariable);
+            url =String.format( url, pathVariable);
         }
         return sendPostDataByJson(url, json, encoding);
     }
@@ -166,7 +166,7 @@ public class HttpUtil {
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendPostDataByJson(String url, String json, String encoding) throws IOException {
-        log.debug(String.format("http 请求 url: %s , 请求参数: %s", url, json));
+        log.debug("http 请求 url: {} , 请求参数: {}", url, json);
         if (StringUtils.isBlank(encoding)) {
             encoding = "UTF-8";
         }
@@ -187,7 +187,7 @@ public class HttpUtil {
 //        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
         result = EntityUtils.toString(response.getEntity(), encoding);
-        log.debug(String.format("http 请求结果: %s", result));
+        log.debug("http 请求结果: {}", result);
 //        }
         try {
             if (null != response) {
@@ -261,7 +261,7 @@ public class HttpUtil {
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendGetData(String url, String encoding) throws IOException {
-        log.debug(String.format("http 请求 url: %s", url));
+        log.debug("http 请求 url: {}", url);
         if (StringUtils.isBlank(encoding)) {
             encoding = "UTF-8";
         }
@@ -278,7 +278,7 @@ public class HttpUtil {
 //        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
         result = EntityUtils.toString(response.getEntity(), encoding);
-        log.debug(String.format("http 请求结果: %s", result));
+        log.debug("http 请求结果: {}", result);
 //        }
         try {
             if (null != response) {
@@ -303,7 +303,7 @@ public class HttpUtil {
      */
     private static String sendUploadFile(String url, Map<String, String> params, Map<String, String> fileMap,
             String encoding) throws IOException {
-        log.debug(String.format("http 请求 url: %s , 请求参数: %s", url, JSON.toJSONString(params)));
+        log.debug("http 请求 url: {} , 请求参数: {}", url, JSON.toJSONString(params));
         if (StringUtils.isBlank(encoding)) {
             encoding = "UTF-8";
         }
@@ -330,7 +330,7 @@ public class HttpUtil {
 //        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
         result = EntityUtils.toString(response.getEntity(), encoding);
-        log.debug(String.format("http 请求结果: %s" , result));
+        log.debug("http 请求结果: {}" , result);
 //        }
         try {
             if (null != response) {

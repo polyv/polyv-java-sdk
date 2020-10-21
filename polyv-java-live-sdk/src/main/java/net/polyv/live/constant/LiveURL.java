@@ -513,6 +513,14 @@ public class LiveURL {
     
     
     /**
+     * 设置讲师信息
+     */
+    public static final String CHAT_GET_CHANNEL_BANNED_LIST_URL = BASE_URI + "v3/channel/chat/get-banned-list";
+    
+    
+    
+    
+    /**
      * 400错误码
      */
     public static final int CODE_400 = 400;

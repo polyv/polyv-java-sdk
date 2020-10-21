@@ -21,7 +21,7 @@ import net.polyv.live.entity.LiveCommonRequest;
 public class LiveSendChatMsgResponse  {
     
     /**
-     * 频道号
+     * 发送消息ID
      */
     @ApiModelProperty(name = "msgId", value = "发送消息ID", required = false)
     private String msgId;

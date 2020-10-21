@@ -9,15 +9,19 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
+import edu.emory.mathcs.backport.java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.chat.LiveBadWordRequest;
+import net.polyv.live.entity.chat.LiveBadWordResponse;
+import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
+import net.polyv.live.entity.chat.LiveGetBannedListRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
-import net.polyv.live.entity.interact.LiveCheckinRequest;
-import net.polyv.live.entity.interact.LiveCheckinResponse;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.chat.impl.LiveChatRoomImpl;
-import net.polyv.live.service.interact.impl.LiveCheckinImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
@@ -56,7 +60,7 @@ public class LiveChatRoomImplTest extends BaseTest {
     public void testSendChatMsg() throws IOException, NoSuchAlgorithmException {
         Integer channelId = super.createChannel();
         LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
-        liveSetTeacherDataRequest.setChannelId(channelId).setNickname("thomas-gogo").setActor("大师").setPasswd("34523423432432432532543524324324324324324324326789").setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740,3965499425&fm=26&gp=0.jpg").setRequestId(LiveSignUtil.generateUUID());
+        liveSetTeacherDataRequest.setChannelId(channelId).setNickname("thomas-gogo").setActor("大师").setPasswd("123456").setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740,3965499425&fm=26&gp=0.jpg").setRequestId(LiveSignUtil.generateUUID());
         String result = new LiveChatRoomImpl().sendChatMsg(liveSetTeacherDataRequest);
         Assert.assertNotNull(result);
         if (result != null) {
@@ -65,6 +69,59 @@ public class LiveChatRoomImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 设置聊天室禁言ip
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testAddBannedIP() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveChatBannedIPRequest liveChatBannedIPRequest = new LiveChatBannedIPRequest();
+        liveChatBannedIPRequest.setIp("192.168.1.3").setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+        List<String> bannedIPList = new LiveChatRoomImpl().addBannedIP(liveChatBannedIPRequest);
+        Assert.assertNotNull(bannedIPList);
+        if (bannedIPList != null) {
+            //to do something ......
+            log.debug("测试设置聊天室禁言ip成功{}", JSON.toJSONString(bannedIPList));
+        }
+    }
+    
+    /**
+     * 批量导入频道严禁词
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testAddBadWord() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveBadWordRequest liveBadWordRequest = new LiveBadWordRequest();
+        liveBadWordRequest.setChannelId(channelId).setWords(Arrays.asList(new String[]{"你好1","逗逼1","傻子"})).setRequestId(LiveSignUtil.generateUUID());
+        LiveBadWordResponse liveBadWordResponse = new LiveChatRoomImpl().addBadWord(liveBadWordRequest);
+        Assert.assertNotNull(liveBadWordResponse);
+        if (liveBadWordResponse != null) {
+            //to do something ......
+            log.debug("测试批量导入频道严禁词成功{}", JSON.toJSONString(liveBadWordResponse));
+        }
+    }
+    
+    /**
+     * 查询频道禁言列表
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetBannedList() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveGetBannedListRequest liveGetBannedListRequest = new LiveGetBannedListRequest();
+        liveGetBannedListRequest.setChannelId(channelId).setType(LiveConstant.BannedType.USER_ID.getType()).setRequestId(LiveSignUtil.generateUUID());
+        List<String> result = new LiveChatRoomImpl().getBannedList(liveGetBannedListRequest);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试查询频道禁言列表成功{}", JSON.toJSONString(result));
+        }
+    }
     
     
 }

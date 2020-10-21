@@ -2431,3 +2431,48 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | 参数名 | 说明           |
 | ------ | -------------- |
 | data   | 成功时候返回"" |
+### 设置录制回调通知url
+
+#### 描述
+```
+设置账号下录制视频通知回调地址的接口
+```
+
+回调参数见：[录制生成回调](../callback.md)
+
+#### 调用约束
+
+接口调用有频率限制，[详细请查看](../limit.md)
+回调地址为空，表示关闭回调功能，如果要提交的地址参数url，必须以 http:// 或者 https:// 开头
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdateRecordCallbackUrl() throws IOException, NoSuchAlgorithmException {
+        LiveAccountRecordCallbackRequest liveAccountRecordCallbackRequest = new LiveAccountRecordCallbackRequest();
+        liveAccountRecordCallbackRequest.setUrl("http://www.abc.com/callback");
+        String liveAccountRecordCallbackResponse = new LiveAccountServiceImpl().updateRecordCallbackUrl(
+                liveAccountRecordCallbackRequest);
+        Assert.assertNotNull(liveAccountRecordCallbackResponse);
+        if (liveAccountRecordCallbackResponse != null) {
+            //to do something ......
+            log.debug("测试设置录制回调通知url成功,{}", liveAccountRecordCallbackResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置录制回调通知url](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否设置录制回调通知url成功](https://live.polyv.net/#/develop/callbackSetting)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名 | 必选 | 类型   | 说明                                                         |
+| ------ | ---- | ------ | ------------------------------------------------------------ |
+| url    | 否   | string | 回调地址url，不提交表示关闭回调功能，如果提交，必须以 http:// 或者 https:// 开头 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明           |
+| ------ | -------------- |
+| data   | 成功时候返回"" |

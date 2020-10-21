@@ -3,10 +3,10 @@ package net.polyv.live.service.channel.impl;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
-import java.util.Map;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.channel.playback.LiveChannelDefaultVideoRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelPlaybackEnabledInfoRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelPlaybackEnabledRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelPlaybackSettingRequest;
@@ -29,7 +29,6 @@ import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelPlaybackService;
-import net.polyv.live.util.MapUtil;
 
 /**
  * 直播录制回放实现类
@@ -301,6 +300,23 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
         String liveDeleteChannelPlaybackVideoResponse = this.basePost(url, liveDeleteChannelPlaybackVideoRequest,
                 String.class);
         return liveDeleteChannelPlaybackVideoResponse;
+    }
+    
+    /**
+     * 设置视频库列表的默认视频
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/setdefault/
+     * @param liveChannelDefaultVideoRequest 设置视频库列表的默认视频请求实体
+     * @return 设置视频库列表的默认视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String channelDefaultVideo(LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PLAYBACK_SET_DEFAULT_URL,
+                liveChannelDefaultVideoRequest.getChannelId());
+        String liveChannelDefaultVideoResponse = this.basePost(url, liveChannelDefaultVideoRequest, String.class);
+        return liveChannelDefaultVideoResponse;
     }
     
 }

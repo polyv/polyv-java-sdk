@@ -20,20 +20,9 @@ import net.polyv.vod.service.account.impl.VodAccountServiceImpl;
  **/
 @Epic("点播账户相关操作")
 @Feature("点播账户相关操作1")
-public class VodAccountServiceImplTest   {
+public class VodAccountServiceImplTest  extends BaseTest {
     
-    /**
-     * 初始化全局配置
-     */
-    public VodAccountServiceImplTest(){
-        String userId = "1b448be323";
-        String writeToken = "f9810825-7512-476d-95ec-9ff2968df5de";
-        String readToken = "6e26de86-57f1-436d-8b3f-95ff69c971f7";
-        String secretKey = "8eVs9NVrNm";
-        String secretKeyBak = "VjmWPuCTpE";
-        VodGlobalConfig.init(userId, writeToken, readToken, secretKey);
-        System.out.println("--初始化完成--");
-    }
+    
     /**
      * 获取用户空间及流量情况
      */

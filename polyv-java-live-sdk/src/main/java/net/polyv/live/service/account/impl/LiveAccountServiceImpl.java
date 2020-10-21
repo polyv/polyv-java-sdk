@@ -4,6 +4,7 @@ import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
+import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
@@ -86,6 +87,22 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         String url = LiveURL.ACCOUNT_SWITCH_UPDATE_URL;
         String liveUpdateAccountSwitchResponse = this.basePost(url, liveUpdateAccountSwitchRequest, String.class);
         return liveUpdateAccountSwitchResponse;
+    }
+    
+    /**
+     * 设置账号单点登录的token
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zhsz/set-user-login-token/
+     * @param liveCreateAccountTokenRequest 设置账号单点登录的token请求实体
+     * @return 设置账号单点登录的token返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String createAccountToken(LiveCreateAccountTokenRequest liveCreateAccountTokenRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.ACCOUNT_TOKEN_CREATE_URL;
+        String liveCreateAccountTokenResponse = this.basePost(url, liveCreateAccountTokenRequest, String.class);
+        return liveCreateAccountTokenResponse;
     }
     
 }

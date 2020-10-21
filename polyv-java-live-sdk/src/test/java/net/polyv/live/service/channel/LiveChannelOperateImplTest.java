@@ -968,37 +968,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //        }
 //    }
     
-
-    
-
-    
-
-    
-    /**
-     * 测试设置视频库列表排序
-     * TODO 对接未通过，暂时注释
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-//    @Test
-//    public void testChannelVideoSort() throws IOException, NoSuchAlgorithmException {
-//        List<String> videoIdList = listChannelVideoIds();
-//        Collections.shuffle(videoIdList);
-//        LiveChannelVideoSortRequest liveChannelVideoSortRequest = new LiveChannelVideoSortRequest();
-//        liveChannelVideoSortRequest.setChannelId(1951952)
-//                .setVideoIds(videoIdList.toArray(new String[]{}))
-//                .setListType("playback");
-//        String liveChannelVideoSortResponse = new LiveChannelServiceImpl().channelVideoSort(
-//                liveChannelVideoSortRequest);
-//        Assert.assertNotNull(liveChannelVideoSortResponse);
-//        if ("".equals(liveChannelVideoSortResponse)) {
-//            //to do something ......
-//            log.debug("测试设置视频库列表排序成功{}", JSON.toJSONString(liveChannelVideoSortResponse));
-//        }
-//    }
-    
-
-    
     /**
      * 测试创建重制课件任务
      * @throws IOException

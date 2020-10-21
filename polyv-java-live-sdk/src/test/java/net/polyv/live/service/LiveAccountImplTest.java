@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
+import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
@@ -110,6 +111,24 @@ public class LiveAccountImplTest extends BaseTest {
         if ("true".equals(liveUpdateAccountSwitchResponse)) {
             //to do something ......
             log.debug("设置功能开关状态成功,{}", liveUpdateAccountSwitchResponse);
+        }
+    }
+    
+    /**
+     * 测试设置账号单点登录的token
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testCreateAccountToken() throws IOException, NoSuchAlgorithmException {
+        LiveCreateAccountTokenRequest liveCreateAccountTokenRequest = new LiveCreateAccountTokenRequest();
+        liveCreateAccountTokenRequest.setToken("5ZiQIhN0izj3NIMp");
+        String liveCreateAccountTokenResponse = new LiveAccountServiceImpl().createAccountToken(
+                liveCreateAccountTokenRequest);
+        Assert.assertNotNull(liveCreateAccountTokenResponse);
+        if ("success".equals(liveCreateAccountTokenResponse)) {
+            //to do something ......
+            log.debug("测试设置账号单点登录的token成功,{}", liveCreateAccountTokenResponse);
         }
     }
     

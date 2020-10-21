@@ -2299,3 +2299,45 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | 名称 | 类型   | 说明                    |
 | ---- | ------ | ----------------------- |
 | data | string | 成功响应数据,成功为true |
+
+### 设置账号单点登录的token
+
+#### 描述
+```
+设置账号单点登陆的token
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+token 参数请勿过于简单，建议使用16位随机字符串
+token设置后需要10秒内及时使用，使用请参考后台单点登录
+
+#### 代码示例
+```java
+    @Test
+    public void testCreateAccountToken() throws IOException, NoSuchAlgorithmException {
+        LiveCreateAccountTokenRequest liveCreateAccountTokenRequest = new LiveCreateAccountTokenRequest();
+        liveCreateAccountTokenRequest.setToken("5ZiQIhN0izj3NIMp");
+        String liveCreateAccountTokenResponse = new LiveAccountServiceImpl().createAccountToken(
+                liveCreateAccountTokenRequest);
+        Assert.assertNotNull(liveCreateAccountTokenResponse);
+        if ("success".equals(liveCreateAccountTokenResponse)) {
+            //to do something ......
+            log.debug("测试设置账号单点登录的token成功,{}", liveCreateAccountTokenResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置账号单点登录的token](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名 | 必选 | 类型   | 说明         |
+| ------ | ---- | ------ | ------------ |
+| token  | 是   | string | 唯一的字符串 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明                  |
+| ------ | --------------------- |
+| data   | 成功时候返回，success |

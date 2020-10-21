@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
+import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
@@ -58,6 +59,17 @@ public interface ILiveAccountService {
      * @throws NoSuchAlgorithmException 异常
      */
     String updateAccountSwitch(LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置账号单点登录的token
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zhsz/set-user-login-token/
+     * @param liveCreateAccountTokenRequest 设置账号单点登录的token请求实体
+     * @return 设置账号单点登录的token返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String createAccountToken(LiveCreateAccountTokenRequest liveCreateAccountTokenRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

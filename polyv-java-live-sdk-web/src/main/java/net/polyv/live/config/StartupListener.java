@@ -17,15 +17,7 @@ public class StartupListener implements ApplicationContextAware {
     
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        initPolyvLive();
-    }
-    
-    public void initPolyvLive() {
-        String appId = "frlr1zazn3";
-        String appSecret = "3a7cd25d068442f080adcb337c701fc3";
-        String userId = "1b448be323";
-        LiveGlobalConfig.init(appId, userId, appSecret);
-        log.debug("--初始化完成--");
+        InitConfig.initPolyvLive();
     }
     
     

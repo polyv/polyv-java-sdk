@@ -76,3 +76,44 @@
 方法2：通过接口设置
 
 [设置转存成功回调通知url](  )
+
+## 2.录制生成回调
+
+### 作用
+
+录制视频成功生成后，会对所设置的接口地址进行回调通知。
+
+### 注意事项
+
+该回调不支持重试机制
+
+### 描述
+
+设置接口地址后，如果账号有开通录制功能，账号下各频道在推流结束，生成m3u8录制视频后，直播系统会将参数channelId（频道号）和fileUrl（录制文件地址）以GET方式提交到给用户自定义的回调接口进行通知，如：http://abc.com/test.do?channelId=104400&fileUrl=http://rflive.videocc.net/i6ro0hxj0020150529112242035/recordf.i6ro0hxj0020150529112242035_20170120184803.m3u8&origin=auto&fileId=072c36138cfbd3e546cda227dc273951&timestamp=1557976774000&sign=xxxxxxxxxx
+
+| 参数名       | 类型   | 说明                                                         |
+| ------------ | ------ | ------------------------------------------------------------ |
+| channelId    | int    | 频道ID                                                       |
+| fileUrl      | string | 录制文件地址                                                 |
+| format       | string | 文件类型，m3u8或者mp4                                        |
+| timestamp    | long   | 13位的时间戳                                                 |
+| sign         | String | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 |
+| fileId       | String | 录制唯一的id                                                 |
+| origin       | String | 录制来源。manual-云录制，auto-自动录制，merge-合并，clip-裁剪 |
+| hasRtcRecord | String | （该字段只对开启云录制功能有用），值为 'Y'，表示该场直播录制同时存在云录制和自动录制，值为"N"，该场直播只有自动录制 |
+
+### 如何设置？
+
+方法1：通过后台设置
+
+前提条件：账号已开通录制功能，可在频道详情处查看是否开通，如果未开通回放功能，则【回放回放视频】处显示，未开通录制功能。
+
+![image-20201021114857614](C:\project\IdeaProject\polyv-java-sdk\DOC\live\img\image-20201021114857614.png)
+
+在直播后台中，点击【开发设置】，然后点击【回调设置】，在此进行设置
+
+![image-20201021101815391](C:\project\IdeaProject\polyv-java-sdk\DOC\live\img\image-20201021101815391.png)
+
+方法2：通过接口设置
+
+[设置录制回调通知url](  )

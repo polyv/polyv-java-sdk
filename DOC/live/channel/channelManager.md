@@ -2476,3 +2476,47 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | 参数名 | 说明           |
 | ------ | -------------- |
 | data   | 成功时候返回"" |
+
+### 查询功能开关状态接口
+
+#### 描述
+```
+用于获取开关设置，可获取全局开关设置或频道开关设置
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+注：isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;closeChaterList当enabled值为Y时，表示的是关闭在线列表
+
+#### 代码示例
+```java
+    @Test
+    public void testAccountSwitch() throws IOException, NoSuchAlgorithmException {
+        LiveAccountSwitchRequest liveAccountSwitchRequest = new LiveAccountSwitchRequest();
+        liveAccountSwitchRequest.setChannelId(null);
+        LiveAccountSwitchResponse liveAccountSwitchResponse = new LiveAccountServiceImpl().accountSwitch(
+                liveAccountSwitchRequest);
+        Assert.assertNotNull(liveAccountSwitchResponse);
+        if (liveAccountSwitchResponse != null) {
+            //to do something ......
+            log.debug("测试查询功能开关状态接口成功,{}", JSON.toJSONString(liveAccountSwitchResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-批量创建频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否相同](https://live.polyv.net/#/setting/functionalSwitch)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型 | 说明                             |
+| --------- | ---- | ---- | -------------------------------- |
+| channelId | 否   | int  | 频道号，不传该参数为获取全局设置 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名  | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| type    | 开关类型，具体类型见net.polyv.live.constant.LiveConstant.ChannelSwitch |
+| enabled | 是否已打开开关                                               |

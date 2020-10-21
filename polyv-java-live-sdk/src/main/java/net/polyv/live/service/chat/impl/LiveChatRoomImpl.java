@@ -12,6 +12,7 @@ import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
 import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
+import net.polyv.live.entity.chat.LiveGetBadwordIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
@@ -122,5 +123,19 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_DEL_BANNED_URL,liveDelBannedDataRequest.getChannelId());
         return  super.basePost(url, liveDelBannedDataRequest, String.class);
+    }
+    
+    /**
+     * 查询频道严禁词/禁言IP列表，API地址：https://dev.polyv.net/2019/liveproduct/zblts/get-channel-badwords/
+     * @param liveGetBadwordIPRequest 查询频道严禁词/禁言IP列表请求实体
+     * @return 禁言IP 或者 禁言词
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<String> getBadworkList(LiveGetBadwordIPRequest liveGetBadwordIPRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url =LiveURL.CHAT_GET_BAKWORD_WORD_IP_URL;
+        return  super.basePost(url, liveGetBadwordIPRequest, List.class);
     }
 }

@@ -1,7 +1,5 @@
 package net.polyv.live.entity.chat;
 
-import java.util.List;
-
 import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
@@ -13,15 +11,15 @@ import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
 /**
- * 查询频道禁言列表请求实体
+ * 查询频道严禁词/禁言IP列表请求实体
  * @author: thomas
  **/
 @Data
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel("查询频道禁言列表请求实体")
-public class LiveGetBannedListRequest extends LiveCommonRequest {
+@ApiModel("查询频道严禁词/禁言IP列表请求实体")
+public class LiveGetBadwordIPRequest extends LiveCommonRequest {
     /**
      * 频道号
      */
@@ -32,13 +30,8 @@ public class LiveGetBannedListRequest extends LiveCommonRequest {
     /**
      * 禁言类型,ip/userId
      */
-    @ApiModelProperty(name = "type", value = "查询禁言类型,ip / userId", required = false)
+    @ApiModelProperty(name = "type", value = "查询类型： ip=禁言ip，badword=严禁词，不传默认为badword", required = false)
     private String type;
     
-    /**
-     * 是否获取子频道，0：不获取，1：获取
-     */
-    @ApiModelProperty(name = "toGetSubRooms", value = "是否获取子频道，0：不获取，1：获取", required = false)
-    private Integer toGetSubRooms;
     
 }

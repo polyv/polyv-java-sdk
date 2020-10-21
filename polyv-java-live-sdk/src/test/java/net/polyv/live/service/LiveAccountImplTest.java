@@ -16,6 +16,8 @@ import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
 import net.polyv.live.entity.account.LiveAccountPlaybackCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountRecordCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
+import net.polyv.live.entity.account.LiveAccountSwitchRequest;
+import net.polyv.live.entity.account.LiveAccountSwitchResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
@@ -187,6 +189,24 @@ public class LiveAccountImplTest extends BaseTest {
         if (liveAccountRecordCallbackResponse != null) {
             //to do something ......
             log.debug("测试设置录制回调通知url成功,{}", liveAccountRecordCallbackResponse);
+        }
+    }
+    
+    /**
+     * 测试查询功能开关状态接口
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testAccountSwitch() throws IOException, NoSuchAlgorithmException {
+        LiveAccountSwitchRequest liveAccountSwitchRequest = new LiveAccountSwitchRequest();
+        liveAccountSwitchRequest.setChannelId(null);
+        LiveAccountSwitchResponse liveAccountSwitchResponse = new LiveAccountServiceImpl().accountSwitch(
+                liveAccountSwitchRequest);
+        Assert.assertNotNull(liveAccountSwitchResponse);
+        if (liveAccountSwitchResponse != null) {
+            //to do something ......
+            log.debug("测试查询功能开关状态接口成功,{}", JSON.toJSONString(liveAccountSwitchResponse));
         }
     }
     

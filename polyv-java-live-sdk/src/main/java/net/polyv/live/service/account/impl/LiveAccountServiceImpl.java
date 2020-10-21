@@ -2,6 +2,7 @@ package net.polyv.live.service.account.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
@@ -10,6 +11,8 @@ import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
 import net.polyv.live.entity.account.LiveAccountPlaybackCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountRecordCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
+import net.polyv.live.entity.account.LiveAccountSwitchRequest;
+import net.polyv.live.entity.account.LiveAccountSwitchResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
@@ -161,6 +164,27 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
                 liveAccountRecordCallbackRequest.getUserId());
         String liveAccountRecordCallbackResponse = this.basePost(url, liveAccountRecordCallbackRequest, String.class);
         return liveAccountRecordCallbackResponse;
+    }
+    
+    /**
+     * 查询功能开关状态接口
+     * 注：isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;closeChaterList当enabled值为Y时，表示的是关闭在线列表
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zhsz/switch-get/
+     * @param liveAccountSwitchRequest 查询功能开关状态接口请求实体
+     * @return 查询功能开关状态接口返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveAccountSwitchResponse accountSwitch(LiveAccountSwitchRequest liveAccountSwitchRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.ACCOUNT_SWITCH_URL;
+        LiveAccountSwitchResponse.ChannelSwitch[] channelSwitches = this.baseGet(url, liveAccountSwitchRequest,
+                LiveAccountSwitchResponse.ChannelSwitch[].class);
+        channelSwitches = channelSwitches == null ? new LiveAccountSwitchResponse.ChannelSwitch[]{} : channelSwitches;
+        LiveAccountSwitchResponse liveAccountSwitchResponse = new LiveAccountSwitchResponse().setChannelSwitches(
+                Arrays.asList(channelSwitches));
+        return liveAccountSwitchResponse;
     }
     
 }

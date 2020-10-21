@@ -12,8 +12,6 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveConstant;
-import net.polyv.live.entity.channel.doc.LiveListChannelDocRequest;
-import net.polyv.live.entity.channel.doc.LiveListChannelDocResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
@@ -35,19 +33,6 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyResponse;
-import net.polyv.live.entity.channel.viewdata.LiveChannelMaxHistoryConcurrentRequest;
-import net.polyv.live.entity.channel.viewdata.LiveChannelViewerConcurrenceRequest;
-import net.polyv.live.entity.channel.viewdata.LiveChannelViewerConcurrenceResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelMicRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelMicResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelSummaryRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelSummaryResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewerCountRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewerCountResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewlogRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewlogResponse;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
 
@@ -932,30 +917,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //        if (liveChannelStreamInfoResponse != null) {
 //            //to do something ......
 //            log.debug("批量查询频道直播流状态成功{}",JSON.toJSONString(liveChannelStreamInfoResponse));
-//        }
-//    }
-    
-    /**
-     * 测试将点播中的视频添加到视频库
-     * TODO 该测试用例字段vid不知从何处设置，需后台开发提供支持
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-//    @Test
-//    public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
-//        LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest =
-//                new LiveCreateChannelVideoPlaybackRequest();
-//        liveCreateChannelVideoPlaybackRequest.setChannelId(1958888)
-//                .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
-//                .setSetAsDefault("N")
-//                .setListType("playback");
-//        LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse =
-//                new LiveChannelServiceImpl().addChannelVideoPlayback(
-//                liveCreateChannelVideoPlaybackRequest);
-//        Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
-//        if (liveCreateChannelVideoPlaybackResponse != null) {
-//            //to do something ......
-//            log.debug("测试将点播中的视频添加到视频库成功{}", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse));
 //        }
 //    }
     

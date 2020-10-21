@@ -523,7 +523,7 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
 | categoryName      | string    | 所属分类名称                                          |
 | channelPasswd     | string    | 频道密码                                              |
 
-### 查询频道基本信息
+<h3 id="查询频道基本信息">查询频道基本信息</h3>
 
 #### 描述
 接口用于查询频道基本信息
@@ -1146,14 +1146,16 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
     public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
         LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest =
                 new LiveCreateChannelVideoPlaybackRequest();
-liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSetAsDefault("N").setListType("playback");
+        liveCreateChannelVideoPlaybackRequest.setChannelId(1958888)
+                .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
+                .setListType("vod");
         LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse =
-                new LiveChannelServiceImpl().addChannelVideoPlayback(
-                liveCreateChannelVideoPlaybackRequest);
+                new LiveChannelPlaybackServiceImpl().addChannelVideoPlayback(
+                        liveCreateChannelVideoPlaybackRequest);
         Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
         if (liveCreateChannelVideoPlaybackResponse != null) {
             //to do something ......
-            log.debug(String.format("批量查询频道直播流状态成功%s", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse)));
+            log.debug("测试将点播中的视频添加到视频库成功{}", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse));
         }
     }
 ```
@@ -1164,12 +1166,11 @@ liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSet
 
 #### 请求入参描述[LiveChannelRequest]
 
-| 参数名       | 必选 | 类型   | 说明                                                         |
-| ------------ | ---- | ------ | ------------------------------------------------------------ |
-| channelId    | 是   | int    | 频道号                                                       |
-| vid          | 是   | string | 要添加为回放的的点播视频                                     |
-| setAsDefault | 否   | string | 添加到回放列表中的位置，Y （回放列表中置顶），N 回放列表中置底，不传默认为 N |
-| listType     | 否   | string | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
+| 参数名    | 必选 | 类型   | 说明                                                         |
+| --------- | ---- | ------ | ------------------------------------------------------------ |
+| channelId | 是   | int    | 频道号                                                       |
+| vid       | 是   | string | 要添加为回放的的点播视频                                     |
+| listType  | 否   | string | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
 
 
 #### 返回对象描述[LiveChannelResponse]
@@ -1204,9 +1205,7 @@ liveCreateChannelVideoPlaybackRequest.setChannelId(channelId).setVid(vid).setSet
 
 接口调用有频率限制，[详细请查看](../limit.md)
 
-```
 1.该接口为异步处理，如果当前提交的文件如果正在处理，会返回 data: processing
-```
 
 #### 代码示例
 ```java
@@ -2520,3 +2519,104 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | ------- | ------------------------------------------------------------ |
 | type    | 开关类型，具体类型见net.polyv.live.constant.LiveConstant.ChannelSwitch |
 | enabled | 是否已打开开关                                               |
+
+### 查询账号下所有频道缩略信息
+
+#### 描述
+```
+获取账号下所有的频道简单信息列表
+```
+
+如需频道具体信息，请使用[查询频道基本信息](#查询频道基本信息)
+
+#### 调用约束
+
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testListChannelBasic() throws IOException, NoSuchAlgorithmException {
+        LiveListAccountChannelBasicRequest liveListAccountChannelBasicRequest =
+                new LiveListAccountChannelBasicRequest();
+        liveListAccountChannelBasicRequest.setCategoryId(null)
+                .setWatchStatus("end")
+                .setKeyword("勿删")
+                .setPageSize(null)
+                .setCurrentPage(1);
+        LiveListAccountChannelBasicResponse liveListAccountChannelBasicResponse =
+                new LiveAccountServiceImpl().listChannelBasic(
+                liveListAccountChannelBasicRequest);
+        Assert.assertNotNull(liveListAccountChannelBasicResponse);
+        if (liveListAccountChannelBasicResponse != null) {
+            //to do something ......
+            log.debug("测试查询账号下所有频道缩略信息成功,{}", JSON.toJSONString(liveListAccountChannelBasicResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询账号下所有频道缩略信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+[分页请求参数查看](../page.md)
+
+| 参数名      | 必选 | 类型   | 说明                                                         |
+| ----------- | ---- | ------ | ------------------------------------------------------------ |
+| categoryId  | 否   | int    | 所属分类id                                                   |
+| watchStatus | 否   | string | 观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始 |
+| keyword     | 否   | string | 频道名称，模糊查询                                           |
+
+#### 返回对象描述[LiveChannelResponse]
+
+[分页返回参数查看](../page.md)
+
+| 参数名        | 说明                                                         |
+| ------------- | ------------------------------------------------------------ |
+| channelId     | 频道号                                                       |
+| name          | 频道名称                                                     |
+| channelPasswd | 频道密码                                                     |
+| scene         | 场景，alone-活动直播，ppt-三分屏，topclass-大班课            |
+| sceneText     | 场景描述                                                     |
+| watchStatus   | 观看页状态，live-直播中，playback-回放中，end-已结束，waiting-未开始 |
+| watchStatus   | 观看页状态描述，直播中，回放中，已结束，未开始               |
+| watchUrl      | 观看页链接                                                   |
+
+### 查询账户分钟数
+
+#### 描述
+```
+获取用户历史已经使用的分钟数及当前可用的分钟数
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testUserDurations() throws IOException, NoSuchAlgorithmException {
+        LiveAccountUserDurationsRequest liveAccountUserDurationsRequest = new LiveAccountUserDurationsRequest();
+        LiveAccountUserDurationsResponse liveAccountUserDurationsResponse = new LiveAccountServiceImpl().userDurations(
+                liveAccountUserDurationsRequest);
+        Assert.assertNotNull(liveAccountUserDurationsResponse);
+        if (liveAccountUserDurationsResponse != null) {
+            //to do something ......
+            log.debug("测试查询账户分钟数成功,{}", JSON.toJSONString(liveAccountUserDurationsResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询账户分钟数](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+无
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名    | 说明                         |
+| --------- | ---------------------------- |
+| userId    | 用户ID，字符串               |
+| available | 当前可用的分钟数，长整型     |
+| used      | 历史已经使用的分钟数，长整型 |

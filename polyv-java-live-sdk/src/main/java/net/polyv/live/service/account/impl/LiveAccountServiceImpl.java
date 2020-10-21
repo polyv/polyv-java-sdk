@@ -7,6 +7,7 @@ import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
+import net.polyv.live.entity.account.LiveAccountPlaybackCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
@@ -108,6 +109,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     
     /**
      * 设置直播状态回调通知url
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zhsz/set-stream-callback/
      * @param liveAccountStreamCallbackRequest 设置直播状态回调通知url请求体
      * @return 设置直播状态回调通知url返回实体
      * @throws IOException 异常
@@ -121,6 +123,25 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
                 liveAccountStreamCallbackRequest.getUserId());
         String liveAccountStreamCallbackResponse = this.basePost(url, liveAccountStreamCallbackRequest, String.class);
         return liveAccountStreamCallbackResponse;
+    }
+    
+    /**
+     * 设置转存成功回调通知url
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zhsz/set-playback-callback/
+     * @param liveAccountPlaybackCallbackRequest 设置转存成功回调通知url请求实体
+     * @return 设置转存成功回调通知url返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String updatePlaybackCallbackUrl(LiveAccountPlaybackCallbackRequest liveAccountPlaybackCallbackRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveAccountPlaybackCallbackRequest.setUserId(LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_PLAYBACK_CALLBACK_URL,
+                liveAccountPlaybackCallbackRequest.getUserId());
+        String liveAccountPlaybackCallbackResponse = this.basePost(url, liveAccountPlaybackCallbackRequest,
+                String.class);
+        return liveAccountPlaybackCallbackResponse;
     }
     
 }

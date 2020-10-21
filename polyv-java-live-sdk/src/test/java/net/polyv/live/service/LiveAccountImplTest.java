@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
+import net.polyv.live.entity.account.LiveAccountPlaybackCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
@@ -145,9 +146,28 @@ public class LiveAccountImplTest extends BaseTest {
         String liveAccountStreamCallbackResponse = new LiveAccountServiceImpl().updateStreamCallbackUrl(
                 liveAccountStreamCallbackRequest);
         Assert.assertNotNull(liveAccountStreamCallbackResponse);
-        if (liveAccountStreamCallbackResponse != null) {
+        if ("success".equals(liveAccountStreamCallbackResponse)) {
             //to do something ......
             log.debug("测试设置直播状态回调通知url成功,{}", liveAccountStreamCallbackResponse);
+        }
+    }
+    
+    /**
+     * 测试设置转存成功回调通知url
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdatePlaybackCallbackUrl() throws IOException, NoSuchAlgorithmException {
+        LiveAccountPlaybackCallbackRequest liveAccountPlaybackCallbackRequest =
+                new LiveAccountPlaybackCallbackRequest();
+        liveAccountPlaybackCallbackRequest.setUrl("http://www.abc.com/callback");
+        String liveAccountPlaybackCallbackResponse = new LiveAccountServiceImpl().updatePlaybackCallbackUrl(
+                liveAccountPlaybackCallbackRequest);
+        Assert.assertNotNull(liveAccountPlaybackCallbackResponse);
+        if (liveAccountPlaybackCallbackResponse != null) {
+            //to do something ......
+            log.debug("测试设置转存成功回调通知url成功,{}", liveAccountPlaybackCallbackResponse);
         }
     }
     

@@ -5,15 +5,16 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.chat.LiveBadWordRequest;
+import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
-import net.polyv.live.entity.chat.LiveChatBannedIPResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.chat.ILiveChatRoomService;
-import net.polyv.live.util.LiveSignUtil;
 
 /**
  * 直播签到管理
@@ -63,5 +64,19 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_BANNED_IP_URL, liveChatBannedIPRequest.getChannelId());
         return super.basePost(url, liveChatBannedIPRequest, List.class);
+    }
+    
+    /**
+     * 批量导入频道严禁词，API地址：https://dev.polyv.net/2017/liveproduct/zblts/addforbiddenwords/
+     * @param liveBadWordRequest 批量导入频道严禁词请求实体
+     * @return  响应实体
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveBadWordResponse addBadWord(LiveBadWordRequest liveBadWordRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_SET_BAD_WORD_URL, LiveGlobalConfig.USER_ID);
+        return super.basePost(url, liveBadWordRequest, LiveBadWordResponse.class);
     }
 }

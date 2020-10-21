@@ -16,6 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
 
 import net.polyv.live.config.LiveGlobalConfig;
@@ -74,7 +75,11 @@ public class MapUtil {
                     Object o = f.get(obj);
                     JSONField jsonField = f.getAnnotation(JSONField.class);
                     String key = jsonField != null ? jsonField.name() : fields[i].getName();
-                    reMap.put(key, (null == o) ? null : o.toString());
+                    String value = null;
+                    if (o != null) {
+                        value = o instanceof List ? JSON.toJSONString(o) : o.toString();
+                    }
+                    reMap.put(key, (null == o) ? null : value);
                 }
                 objClass = objClass.getSuperclass();
             }

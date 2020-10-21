@@ -1,4 +1,5 @@
 package net.polyv.live.entity.chat;
+
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -12,15 +13,15 @@ import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
 /**
- * 设置聊天室禁言ip请求实体
+ * 批量导入频道严禁词请求实体
  * @author: thomas
  **/
 @Data
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel("设置聊天室禁言ip请求实体")
-public class LiveChatBannedIPRequest extends LiveCommonRequest {
+@ApiModel("批量导入频道严禁词请求实体")
+public class LiveBadWordRequest extends LiveCommonRequest {
     
     /**
      * 频道号
@@ -29,11 +30,13 @@ public class LiveChatBannedIPRequest extends LiveCommonRequest {
     @NotNull(message = "channelId不能为空")
     private Integer channelId;
     
+ 
+    
     /**
      * 禁言IP列表
      */
-    @ApiModelProperty(name = "ip", value = "禁言IP", required = true)
-    @NotNull(message = "ip不能为空")
-    private String ip;
+    @ApiModelProperty(name = "words", value = "严禁词列表", required = true)
+    @NotNull(message = "words不能为空")
+    private List<String> words;
     
 }

@@ -528,6 +528,10 @@ public class LiveURL {
      */
     public static final String CHAT_DEL_BANNED_URL = BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/delBanned";
     
+    /**
+     * 查询频道严禁词/禁言IP列表
+     */
+    public static final String CHAT_GET_BAKWORD_WORD_IP_URL = BASE_URI + "v3/channel/badword/list";
     
     /**
      * 400错误码

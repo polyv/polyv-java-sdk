@@ -17,6 +17,7 @@ import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
 import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
+import net.polyv.live.entity.chat.LiveGetBadwordIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
@@ -177,6 +178,27 @@ public class LiveChatRoomImplTest extends BaseTest {
         if (result != null) {
             //to do something ......
             log.debug("测试删除禁言IP/严禁词成功{}", JSON.toJSONString(result));
+        }
+    }
+    
+    
+    
+    
+    /**
+     * 查询频道严禁词/禁言IP列表
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetBadworkList() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveGetBadwordIPRequest liveGetBadwordIPRequest = new LiveGetBadwordIPRequest();
+        liveGetBadwordIPRequest.setChannelId(channelId).setType(LiveConstant.BannedType.BADWORD.getType()).setRequestId(LiveSignUtil.generateUUID());
+        List<String> result = new LiveChatRoomImpl().getBadworkList(liveGetBadwordIPRequest);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试查询频道严禁词/禁言IP列表成功{}", JSON.toJSONString(result));
         }
     }
     

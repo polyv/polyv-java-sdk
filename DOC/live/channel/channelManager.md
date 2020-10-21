@@ -2341,3 +2341,93 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | 参数名 | 说明                  |
 | ------ | --------------------- |
 | data   | 成功时候返回，success |
+
+<h3 id="streamCallback">设置直播状态回调通知url</h3>
+
+#### 描述
+```
+设置账号下频道直播状态改变通知回调地址的接口
+```
+回调参数见：[直播状态回调](../callback.md)
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+回调地址为空，表示关闭回调功能，如果要提交的地址参数url，必须以 http:// 或者 https:// 开头
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdateStreamCallbackUrl() throws IOException, NoSuchAlgorithmException {
+        LiveAccountStreamCallbackRequest liveAccountStreamCallbackRequest = new LiveAccountStreamCallbackRequest();
+        liveAccountStreamCallbackRequest.setUrl("http://www.abc.com/callback");
+        String liveAccountStreamCallbackResponse = new LiveAccountServiceImpl().updateStreamCallbackUrl(
+                liveAccountStreamCallbackRequest);
+        Assert.assertNotNull(liveAccountStreamCallbackResponse);
+        if (liveAccountStreamCallbackResponse != null) {
+            //to do something ......
+            log.debug("测试设置直播状态回调通知url成功,{}", liveAccountStreamCallbackResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置直播状态回调通知url](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否设置直播状态回调通知url成功](https://live.polyv.net/#/develop/callbackSetting)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名 | 必选 | 类型   | 说明                                                         |
+| ------ | ---- | ------ | ------------------------------------------------------------ |
+| url    | 否   | string | 回调地址url，不提交表示关闭回调功能，如果提交，必须以 http:// 或者 https:// 开头 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明                  |
+| ------ | --------------------- |
+| data   | 成功时候返回，success |
+
+### 设置转存成功回调通知url
+
+#### 描述
+```
+设置账号下转存回放视频成功通知回调地址的接口
+```
+
+回调参数见：[转存成功回调](../callback.md)
+
+#### 调用约束
+
+接口调用有频率限制，[详细请查看](../limit.md)
+回调地址为空，表示关闭回调功能，如果要提交的地址参数url，必须以 http:// 或者 https:// 开头
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdatePlaybackCallbackUrl() throws IOException, NoSuchAlgorithmException {
+        LiveAccountPlaybackCallbackRequest liveAccountPlaybackCallbackRequest =
+                new LiveAccountPlaybackCallbackRequest();
+        liveAccountPlaybackCallbackRequest.setUrl("http://www.abc.com/callback");
+        String liveAccountPlaybackCallbackResponse = new LiveAccountServiceImpl().updatePlaybackCallbackUrl(
+                liveAccountPlaybackCallbackRequest);
+        Assert.assertNotNull(liveAccountPlaybackCallbackResponse);
+        if (liveAccountPlaybackCallbackResponse != null) {
+            //to do something ......
+            log.debug("测试设置转存成功回调通知url成功,{}", liveAccountPlaybackCallbackResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置转存成功回调通知url](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否设置转存成功回调通知url成功](https://live.polyv.net/#/develop/callbackSetting)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名 | 必选 | 类型   | 说明                                                         |
+| ------ | ---- | ------ | ------------------------------------------------------------ |
+| url    | 否   | string | 回调地址url，不提交表示关闭回调功能，如果提交，必须以 http:// 或者 https:// 开头 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名 | 说明           |
+| ------ | -------------- |
+| data   | 成功时候返回"" |

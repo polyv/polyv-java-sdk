@@ -191,7 +191,7 @@ public class LiveConstant {
      */
     public enum BannedType {
         //禁言类型,ip/userId
-       IP("ip"),USER_ID("userId");
+       IP("ip"),USER_ID("userId"),BADWORK("badwork");
     
         private String type;
     
@@ -203,6 +203,7 @@ public class LiveConstant {
             return type;
         }
     }
+    
     
     
     /**

@@ -513,11 +513,20 @@ public class LiveURL {
     
     
     /**
-     * 设置讲师信息
+     * 查询频道禁言列表
      */
     public static final String CHAT_GET_CHANNEL_BANNED_LIST_URL = BASE_URI + "v3/channel/chat/get-banned-list";
     
+    /**
+     * 查询频道踢人列表
+     */
+    public static final String CHAT_LIST_KICKED_URL = BASE_URI + "v3/channel/chat/list-kicked";
     
+    
+    /**
+     * 删除禁言IP/严禁词
+     */
+    public static final String CHAT_DEL_BANNED_URL = BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/delBanned";
     
     
     /**

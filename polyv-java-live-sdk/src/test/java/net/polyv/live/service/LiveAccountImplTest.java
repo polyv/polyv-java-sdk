@@ -14,6 +14,7 @@ import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
 import net.polyv.live.entity.account.LiveAccountPlaybackCallbackRequest;
+import net.polyv.live.entity.account.LiveAccountRecordCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
@@ -168,6 +169,24 @@ public class LiveAccountImplTest extends BaseTest {
         if (liveAccountPlaybackCallbackResponse != null) {
             //to do something ......
             log.debug("测试设置转存成功回调通知url成功,{}", liveAccountPlaybackCallbackResponse);
+        }
+    }
+    
+    /**
+     * 测试设置录制回调通知url
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateRecordCallbackUrl() throws IOException, NoSuchAlgorithmException {
+        LiveAccountRecordCallbackRequest liveAccountRecordCallbackRequest = new LiveAccountRecordCallbackRequest();
+        liveAccountRecordCallbackRequest.setUrl("http://www.abc.com/callback");
+        String liveAccountRecordCallbackResponse = new LiveAccountServiceImpl().updateRecordCallbackUrl(
+                liveAccountRecordCallbackRequest);
+        Assert.assertNotNull(liveAccountRecordCallbackResponse);
+        if (liveAccountRecordCallbackResponse != null) {
+            //to do something ......
+            log.debug("测试设置录制回调通知url成功,{}", liveAccountRecordCallbackResponse);
         }
     }
     

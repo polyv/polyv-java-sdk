@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
 import net.polyv.live.entity.account.LiveAccountPlaybackCallbackRequest;
+import net.polyv.live.entity.account.LiveAccountRecordCallbackRequest;
 import net.polyv.live.entity.account.LiveAccountStreamCallbackRequest;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
@@ -94,6 +95,17 @@ public interface ILiveAccountService {
      * @throws NoSuchAlgorithmException 异常
      */
     String updatePlaybackCallbackUrl(LiveAccountPlaybackCallbackRequest liveAccountPlaybackCallbackRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置录制回调通知url
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zhsz/set-record-callback/
+     * @param liveAccountRecordCallbackRequest 设置录制回调通知url请求实体
+     * @return 设置录制回调通知url返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String updateRecordCallbackUrl(LiveAccountRecordCallbackRequest liveAccountRecordCallbackRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

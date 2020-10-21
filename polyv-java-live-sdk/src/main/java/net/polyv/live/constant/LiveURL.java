@@ -422,6 +422,12 @@ public class LiveURL {
             BASE_URI + "v2/user/" + PARAM_REPLACE_CHAR + "/set-playback-callback";
     
     /**
+     * 设置录制回调通知url
+     */
+    public static final String ACCOUNT_RECORD_CALLBACK_URL =
+            BASE_URI + "v2/user/" + PARAM_REPLACE_CHAR + "/set-record-callback";
+    
+    /**
      * 分页获取连麦情况使用详情
      */
     public static final String CHANNEL_MIC_LIST_URL = BASE_URI + "v3/channel/statistics/mic/list";

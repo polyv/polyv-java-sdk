@@ -56,6 +56,12 @@ public class LiveURL {
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/get-countdown";
     
     /**
+     * 设置频道图标
+     */
+    public static final String CHANNEL_LOGO_SET_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/setCoverImg";
+    
+    /**
      * 设置频道号密码
      */
     public static final String CHANNEL_PWD_SET_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/passwdSetting";

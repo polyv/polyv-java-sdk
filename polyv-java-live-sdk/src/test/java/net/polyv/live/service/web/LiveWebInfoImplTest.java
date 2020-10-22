@@ -1,5 +1,6 @@
 package net.polyv.live.service.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
@@ -17,6 +18,7 @@ import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
 import net.polyv.live.entity.web.info.LiveUpdateChannelCountDownRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
+import net.polyv.live.entity.web.info.LiveUpdateChannelLogoRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
 import net.polyv.live.service.BaseTest;
@@ -153,6 +155,24 @@ public class LiveWebInfoImplTest extends BaseTest {
         if (liveChannelCountDownResponse != null) {
             //to do something ......
             log.debug("测试查询频道直播倒计时信息成功,{}", JSON.toJSONString(liveChannelCountDownResponse));
+        }
+    }
+    
+    /**
+     * 测试设置频道图标
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
+        String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+        liveUpdateChannelLogoRequest.setChannelId(1965681).setImgfile(new File(path));
+        String liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(liveUpdateChannelLogoRequest);
+        Assert.assertNotNull(liveUpdateChannelLogoResponse);
+        if (liveUpdateChannelLogoResponse != null) {
+            //to do something ......
+            log.debug("测试设置频道图标成功,{}", liveUpdateChannelLogoResponse);
         }
     }
     

@@ -3013,3 +3013,43 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 | -------------- | ------ | ----------------------------------- |
 | bookingEnabled | string | 预约观看开关，Y或 N                 |
 | startTime      | date   | 直播开始时间,为空则没有直播开始时间 |
+
+### 设置频道图标
+
+#### 描述
+```
+设置频道图标
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+上传的图片为不大于2MB的本地图片（格式只能为JPG、JPEG、PNG）
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
+        String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+        liveUpdateChannelLogoRequest.setChannelId(1965681).setImgfile(new File(path));
+        String liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(liveUpdateChannelLogoRequest);
+        Assert.assertNotNull(liveUpdateChannelLogoResponse);
+        if (liveUpdateChannelLogoResponse != null) {
+            //to do something ......
+            log.debug("测试设置频道图标成功,{}", liveUpdateChannelLogoResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置频道图标](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型 | 说明                                                      |
+| --------- | ---- | ---- | --------------------------------------------------------- |
+| channelId | 是   | int  | 频道ID                                                    |
+| imgfile   | 是   | file | 图片文件，不大于2MB的本地图片（格式只能为JPG、JPEG、PNG） |
+
+#### 返回对象描述[LiveChannelResponse]
+
+返回值是上传成功后的图片地址

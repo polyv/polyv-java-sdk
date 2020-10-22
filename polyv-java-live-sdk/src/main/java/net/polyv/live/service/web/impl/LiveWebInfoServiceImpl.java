@@ -1,8 +1,11 @@
 package net.polyv.live.service.web.impl;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
@@ -14,6 +17,7 @@ import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
 import net.polyv.live.entity.web.info.LiveUpdateChannelCountDownRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
+import net.polyv.live.entity.web.info.LiveUpdateChannelLogoRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
 import net.polyv.live.service.LiveBaseService;
@@ -142,6 +146,25 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
         LiveChannelCountDownResponse liveChannelCountDownResponse = this.basePost(url, liveChannelCountDownRequest,
                 LiveChannelCountDownResponse.class);
         return liveChannelCountDownResponse;
+    }
+    
+    /**
+     * 设置频道图标
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/szgkygg/ymxxsz/updatechannellogo/
+     * @param liveUpdateChannelLogoRequest 设置频道图标请求实体
+     * @return 设置频道图标返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String updateChannelLogo(LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_LOGO_SET_URL, liveUpdateChannelLogoRequest.getChannelId());
+        Map<String, File> fileMap = new HashMap<>();
+        fileMap.put("imgfile", liveUpdateChannelLogoRequest.getImgfile());
+        String liveUpdateChannelLogoResponse = this.baseUploadFile(url, liveUpdateChannelLogoRequest, fileMap,
+                String.class);
+        return liveUpdateChannelLogoResponse;
     }
     
 }

@@ -2,11 +2,15 @@ package net.polyv.live.service.web.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.web.info.LiveChannelLikesRequest;
+import net.polyv.live.entity.web.info.LiveChannelLikesResponse;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
+import net.polyv.live.entity.web.info.LiveUpdateChannelCountDownRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
@@ -83,6 +87,41 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
         String url =LiveURL.getRealUrl(LiveURL.CHANNEL_LIKES_UPDATE_URL,liveUpdateChannelLikesRequest.getChannelId());
         String liveUpdateChannelLikesResponse = this.basePost(url,liveUpdateChannelLikesRequest,String.class);
         return liveUpdateChannelLikesResponse;
+    }
+    
+    /**
+     * 查询频道点赞数和观众热度值
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/szgkygg/ymxxsz/live-likes/
+     * @param liveChannelLikesRequest 查询频道点赞数和观众热度值请求实体
+     * @return 查询频道点赞数和观众热度值返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelLikesResponse channelLikes(LiveChannelLikesRequest liveChannelLikesRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_LIKES_GET_URL;
+        List<LiveChannelLikesResponse.ChannelLikes> channelLikes = this.basePostReturnArray(url,
+                liveChannelLikesRequest, LiveChannelLikesResponse.ChannelLikes.class);
+        LiveChannelLikesResponse liveChannelLikesResponse = new LiveChannelLikesResponse();
+        liveChannelLikesResponse.setChannelLikes(channelLikes);
+        return liveChannelLikesResponse;
+    }
+    
+    /**
+     * 设置频道直播倒计时信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymxxsz/set-countdown/
+     * @param liveUpdateChannelCountDownRequest 设置频道直播倒计时信息请求实体
+     * @return 设置频道直播倒计时信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String updateChannelCountDown(LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_COUNT_DOWN_URL,liveUpdateChannelCountDownRequest.getChannelId());
+        String liveUpdateChannelCountDownResponse = this.basePost(url, liveUpdateChannelCountDownRequest, String.class);
+        return liveUpdateChannelCountDownResponse;
     }
     
 }

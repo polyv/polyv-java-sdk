@@ -42,7 +42,7 @@ public class LiveURL {
      */
     public static final String CHANNEL_PUBLISHER_SET_URL =
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/setPublisher";
-        
+    
     /**
      * 查询直播引导图开关状态及URL
      */
@@ -70,6 +70,12 @@ public class LiveURL {
      * 获取频道直播状态
      */
     public static final String CHANNEL_LIVE_STATUS_GET_URL = "http://api.polyv.net/live_status/query?stream=";
+    
+    /**
+     * 设置频道直播倒计时信息
+     */
+    public static final String CHANNEL_COUNT_DOWN_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/set-countdown";
     
     /**
      * 获取多个频道的实时在线人数
@@ -557,7 +563,8 @@ public class LiveURL {
     /**
      * 查询聊天室管理员信息
      */
-    public static final String CHAT_GET_ADMIN_URL = BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/get-chat-admin";
+    public static final String CHAT_GET_ADMIN_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/get-chat-admin";
     
     
     /**

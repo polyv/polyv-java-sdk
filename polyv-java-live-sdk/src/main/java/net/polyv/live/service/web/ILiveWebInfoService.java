@@ -3,8 +3,11 @@ package net.polyv.live.service.web;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.live.entity.web.info.LiveChannelLikesRequest;
+import net.polyv.live.entity.web.info.LiveChannelLikesResponse;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
+import net.polyv.live.entity.web.info.LiveUpdateChannelCountDownRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
@@ -57,6 +60,28 @@ public interface ILiveWebInfoService {
      * @throws NoSuchAlgorithmException 异常
      */
     String updateChannelLikes(LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道点赞数和观众热度值
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/szgkygg/ymxxsz/live-likes/
+     * @param liveChannelLikesRequest 查询频道点赞数和观众热度值请求实体
+     * @return 查询频道点赞数和观众热度值返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelLikesResponse channelLikes(LiveChannelLikesRequest liveChannelLikesRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置频道直播倒计时信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymxxsz/set-countdown/
+     * @param liveUpdateChannelCountDownRequest 设置频道直播倒计时信息请求实体
+     * @return 设置频道直播倒计时信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String updateChannelCountDown(LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

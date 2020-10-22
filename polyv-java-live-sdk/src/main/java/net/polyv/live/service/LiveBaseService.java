@@ -43,7 +43,7 @@ public class LiveBaseService {
      */
     protected <T, E extends LiveCommonRequest> T baseGet(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
-        return this.basePost(url, e).parseData(tClass);
+        return this.baseGet(url, e).parseData(tClass);
         
     }
     
@@ -60,7 +60,7 @@ public class LiveBaseService {
      */
     protected <T, E extends LiveCommonRequest> List<T> baseGetReturnArray(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
-        return this.basePost(url, e).parseArray(tClass);
+        return this.baseGet(url, e).parseArray(tClass);
         
     }
     
@@ -231,7 +231,7 @@ public class LiveBaseService {
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url, Map<String, String> signMap, E e,
             Class<T> tClass) throws IOException, NoSuchAlgorithmException {
-        return this.basePost(url, e).parseData(tClass);
+        return this.basePostJson(url, signMap, e).parseData(tClass);
         
     }
     
@@ -249,7 +249,7 @@ public class LiveBaseService {
      */
     protected <T, E extends LiveCommonRequest> List<T> basePostJsonReturnArray(String url, Map<String, String> signMap,
             E e, Class<T> tClass) throws IOException, NoSuchAlgorithmException {
-        return this.basePost(url, e).parseArray(tClass);
+        return this.basePostJson(url, signMap, e).parseArray(tClass);
     }
     
     /**

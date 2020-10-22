@@ -6,6 +6,8 @@ import java.util.List;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.web.info.LiveChannelCountDownRequest;
+import net.polyv.live.entity.web.info.LiveChannelCountDownResponse;
 import net.polyv.live.entity.web.info.LiveChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveChannelLikesResponse;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
@@ -84,8 +86,8 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     @Override
     public String updateChannelLikes(LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url =LiveURL.getRealUrl(LiveURL.CHANNEL_LIKES_UPDATE_URL,liveUpdateChannelLikesRequest.getChannelId());
-        String liveUpdateChannelLikesResponse = this.basePost(url,liveUpdateChannelLikesRequest,String.class);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_LIKES_UPDATE_URL, liveUpdateChannelLikesRequest.getChannelId());
+        String liveUpdateChannelLikesResponse = this.basePost(url, liveUpdateChannelLikesRequest, String.class);
         return liveUpdateChannelLikesResponse;
     }
     
@@ -119,9 +121,27 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     @Override
     public String updateChannelCountDown(LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_COUNT_DOWN_URL,liveUpdateChannelCountDownRequest.getChannelId());
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_UPDATE_COUNT_DOWN_URL,
+                liveUpdateChannelCountDownRequest.getChannelId());
         String liveUpdateChannelCountDownResponse = this.basePost(url, liveUpdateChannelCountDownRequest, String.class);
         return liveUpdateChannelCountDownResponse;
+    }
+    
+    /**
+     * 查询频道直播倒计时信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymxxsz/get-countdown/
+     * @param liveChannelCountDownRequest 查询频道直播倒计时信息请求实体
+     * @return 查询频道直播倒计时信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelCountDownResponse channelCountDown(LiveChannelCountDownRequest liveChannelCountDownRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_COUNT_DOWN_URL, liveChannelCountDownRequest.getChannelId());
+        LiveChannelCountDownResponse liveChannelCountDownResponse = this.basePost(url, liveChannelCountDownRequest,
+                LiveChannelCountDownResponse.class);
+        return liveChannelCountDownResponse;
     }
     
 }

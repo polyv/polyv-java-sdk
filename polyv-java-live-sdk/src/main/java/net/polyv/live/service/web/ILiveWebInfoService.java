@@ -3,6 +3,8 @@ package net.polyv.live.service.web;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.live.entity.web.info.LiveChannelCountDownRequest;
+import net.polyv.live.entity.web.info.LiveChannelCountDownResponse;
 import net.polyv.live.entity.web.info.LiveChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveChannelLikesResponse;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
@@ -82,6 +84,17 @@ public interface ILiveWebInfoService {
      * @throws NoSuchAlgorithmException 异常
      */
     String updateChannelCountDown(LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道直播倒计时信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymxxsz/get-countdown/
+     * @param liveChannelCountDownRequest 查询频道直播倒计时信息请求实体
+     * @return 查询频道直播倒计时信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelCountDownResponse channelCountDown(LiveChannelCountDownRequest liveChannelCountDownRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

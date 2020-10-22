@@ -9,6 +9,8 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.entity.web.info.LiveChannelCountDownRequest;
+import net.polyv.live.entity.web.info.LiveChannelCountDownResponse;
 import net.polyv.live.entity.web.info.LiveChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveChannelLikesResponse;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
@@ -127,11 +129,30 @@ public class LiveWebInfoImplTest extends BaseTest {
         liveUpdateChannelCountDownRequest.setChannelId(1965681)
                 .setBookingEnabled("Y")
                 .setStartTime("2020-11-11 11:11:11");
-        String liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(liveUpdateChannelCountDownRequest);
+        String liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(
+                liveUpdateChannelCountDownRequest);
         Assert.assertNotNull(liveUpdateChannelCountDownResponse);
         if (liveUpdateChannelCountDownResponse != null) {
             //to do something ......
             log.debug("测试设置频道直播倒计时信息成功,{}", liveUpdateChannelCountDownResponse);
+        }
+    }
+    
+    /**
+     * 测试查询频道直播倒计时信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelCountDown() throws IOException, NoSuchAlgorithmException {
+        LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
+        liveChannelCountDownRequest.setChannelId(1965681);
+        LiveChannelCountDownResponse liveChannelCountDownResponse = new LiveWebInfoServiceImpl().channelCountDown(
+                liveChannelCountDownRequest);
+        Assert.assertNotNull(liveChannelCountDownResponse);
+        if (liveChannelCountDownResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道直播倒计时信息成功,{}", JSON.toJSONString(liveChannelCountDownResponse));
         }
     }
     

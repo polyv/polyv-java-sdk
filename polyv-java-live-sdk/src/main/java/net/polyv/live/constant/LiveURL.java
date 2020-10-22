@@ -50,6 +50,12 @@ public class LiveURL {
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/getSplash";
     
     /**
+     * 查询频道直播倒计时信息
+     */
+    public static final String CHANNEL_COUNT_DOWN_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/get-countdown";
+    
+    /**
      * 设置频道号密码
      */
     public static final String CHANNEL_PWD_SET_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/passwdSetting";
@@ -74,7 +80,7 @@ public class LiveURL {
     /**
      * 设置频道直播倒计时信息
      */
-    public static final String CHANNEL_COUNT_DOWN_URL =
+    public static final String CHANNEL_UPDATE_COUNT_DOWN_URL =
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/set-countdown";
     
     /**

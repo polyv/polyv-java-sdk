@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
+import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
 import net.polyv.live.entity.web.setting.LiveChannelGlobalSwitchRequest;
 
 /**
@@ -20,6 +21,17 @@ public interface ILiveWebInfoService {
      * @throws NoSuchAlgorithmException 异常
      */
     String updateChannelName(LiveUpdateChannelNameRequest liveUpdateChannelNameRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置主持人姓名
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/szgkygg/ymxxsz/setpublisher/
+     * @param liveUpdateChannelPublisherRequest 设置主持人姓名请求实体
+     * @return 设置主持人姓名返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String updateChannelPublisher(LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -3,8 +3,10 @@ package net.polyv.live.service.web.impl;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
+import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.web.ILiveWebInfoService;
 
@@ -27,6 +29,23 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_NAME_SET_URL, liveUpdateChannelNameRequest.getChannelId());
         String liveUpdateChannelNameResponse = this.basePost(url, liveUpdateChannelNameRequest, String.class);
         return liveUpdateChannelNameResponse;
+    }
+    
+    /**
+     * 设置主持人姓名
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/szgkygg/ymxxsz/setpublisher/
+     * @param liveUpdateChannelPublisherRequest 设置主持人姓名请求实体
+     * @return 设置主持人姓名返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String updateChannelPublisher(LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveUpdateChannelPublisherRequest.setUserId(LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PUBLISHER_SET_URL,liveUpdateChannelPublisherRequest.getUserId());
+        String liveUpdateChannelPublisherResponse = this.basePost(url,liveUpdateChannelPublisherRequest,String.class);
+        return liveUpdateChannelPublisherResponse;
     }
     
 }

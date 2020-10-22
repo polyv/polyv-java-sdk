@@ -583,6 +583,12 @@ public class LiveURL {
     public static final String CHAT_SET_ADMIN_DATA_URL = BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/set-chat-admin";
     
     /**
+     * 查询咨询提问记录
+     */
+    public static final String CHAT_GET_CONSULTING_RECORD_URL = BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/getQuestion";
+    
+    
+    /**
      * 400错误码
      */
     public static final int CODE_400 = 400;

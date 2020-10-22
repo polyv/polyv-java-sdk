@@ -42,6 +42,12 @@ public class LiveURL {
      */
     public static final String CHANNEL_PUBLISHER_SET_URL =
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/setPublisher";
+        
+    /**
+     * 查询直播引导图开关状态及URL
+     */
+    public static final String CHANNEL_SPLASH_GET_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/getSplash";
     
     /**
      * 设置频道号密码

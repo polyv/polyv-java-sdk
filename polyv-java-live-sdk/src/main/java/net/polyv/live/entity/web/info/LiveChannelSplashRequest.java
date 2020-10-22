@@ -11,15 +11,15 @@ import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
 /**
- * 设置频道名称请求实体
+ * 查询直播引导图开关状态及URL请求实体
  * @author: sadboy
  **/
 @Data
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel("设置频道名称请求实体")
-public class LiveUpdateChannelNameRequest extends LiveCommonRequest {
+@ApiModel("查询直播引导图开关状态及URL请求实体")
+public class LiveChannelSplashRequest extends LiveCommonRequest {
     
     /**
      * 频道号
@@ -27,12 +27,5 @@ public class LiveUpdateChannelNameRequest extends LiveCommonRequest {
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "channelId不能为空")
     private Integer channelId;
-    
-    /**
-     * 修改后的频道名称
-     */
-    @ApiModelProperty(name = "name", value = "修改后的频道名称", required = true)
-    @NotNull(message = "name不能为空")
-    private String name;
-    
+
 }

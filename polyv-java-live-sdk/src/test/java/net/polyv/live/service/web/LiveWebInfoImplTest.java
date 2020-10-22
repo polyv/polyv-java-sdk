@@ -6,7 +6,11 @@ import java.security.NoSuchAlgorithmException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
+import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
 import net.polyv.live.service.BaseTest;
@@ -51,6 +55,24 @@ public class LiveWebInfoImplTest extends BaseTest {
         if ("true".equals(liveUpdateChannelPublisherResponse)) {
             //to do something ......
             log.debug("测试设置主持人姓名成功,{}", liveUpdateChannelPublisherResponse);
+        }
+    }
+    
+    /**
+     * 测试查询直播引导图开关状态及URL
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelSplash() throws IOException, NoSuchAlgorithmException {
+        LiveChannelSplashRequest liveChannelSplashRequest = new LiveChannelSplashRequest();
+        liveChannelSplashRequest.setChannelId(1965681);
+        LiveChannelSplashResponse liveChannelSplashResponse = new LiveWebInfoServiceImpl().channelSplash(
+                liveChannelSplashRequest);
+        Assert.assertNotNull(liveChannelSplashResponse);
+        if (liveChannelSplashResponse != null) {
+            //to do something ......
+            log.debug("测试查询直播引导图开关状态及URL成功,{}", JSON.toJSONString(liveChannelSplashResponse));
         }
     }
     

@@ -47,6 +47,6 @@ public class LiveAnswerRecordImpl extends LiveBaseService implements ILiveAnswer
             LiveQuestionAnswerRecordRequest liveQuestionAnswerRecordRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_QUESTION_ANSWER_RECORD_URL;
-        return super.baseGet(url,liveQuestionAnswerRecordRequest,List.class);
+        return super.baseGetReturnArray(url,liveQuestionAnswerRecordRequest,LiveQuestionAnswerRecordResponse.class);
     }
 }

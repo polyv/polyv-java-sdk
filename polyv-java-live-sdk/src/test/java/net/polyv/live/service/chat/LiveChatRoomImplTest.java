@@ -115,8 +115,7 @@ public class LiveChatRoomImplTest extends BaseTest {
         LiveBadWordRequest liveBadWordRequest = new LiveBadWordRequest();
         liveBadWordRequest
 //                .setChannelId(channelId)
-                .setWords(Arrays.asList(new String[]{"你好1", "逗逼1", "傻子"}))
-                .setRequestId(LiveSignUtil.generateUUID());
+                .setWords(Arrays.asList(new String[]{"你好1", "逗逼1", "傻子"})).setRequestId(LiveSignUtil.generateUUID());
         LiveBadWordResponse liveBadWordResponse = new LiveChatRoomImpl().addBadWord(liveBadWordRequest);
         Assert.assertNotNull(liveBadWordResponse);
         if (liveBadWordResponse != null) {
@@ -156,12 +155,13 @@ public class LiveChatRoomImplTest extends BaseTest {
         Integer channelId = super.createChannel();
         LiveKickedListRequest liveKickedListRequest = new LiveKickedListRequest();
         liveKickedListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-        List<LiveKickedListResponse> liveKickedListResponsesList = new LiveChatRoomImpl().getKickedList(liveKickedListRequest);
+        List<LiveKickedListResponse> liveKickedListResponsesList = new LiveChatRoomImpl().getKickedList(
+                liveKickedListRequest);
         Assert.assertNotNull(liveKickedListResponsesList);
         if (liveKickedListResponsesList != null) {
             //to do something ......
             Integer channelId1 = liveKickedListResponsesList.get(0).getChannelId();
-            log.debug("取第一个信息渠道 {}",channelId1);
+            log.debug("取第一个信息频道 {}", channelId1);
             log.debug("测试查询频道踢人列表成功{}", JSON.toJSONString(liveKickedListResponsesList));
         }
     }
@@ -189,8 +189,6 @@ public class LiveChatRoomImplTest extends BaseTest {
     }
     
     
-    
-    
     /**
      * 查询频道严禁词/禁言IP列表
      * @throws IOException
@@ -200,7 +198,9 @@ public class LiveChatRoomImplTest extends BaseTest {
     public void testGetBadworkList() throws IOException, NoSuchAlgorithmException {
         Integer channelId = super.createChannel();
         LiveGetBadwordIPRequest liveGetBadwordIPRequest = new LiveGetBadwordIPRequest();
-        liveGetBadwordIPRequest.setChannelId(channelId).setType(LiveConstant.BannedType.BADWORD.getType()).setRequestId(LiveSignUtil.generateUUID());
+        liveGetBadwordIPRequest.setChannelId(channelId)
+                .setType(LiveConstant.BannedType.BADWORD.getType())
+                .setRequestId(LiveSignUtil.generateUUID());
         List<String> result = new LiveChatRoomImpl().getBadworkList(liveGetBadwordIPRequest);
         Assert.assertNotNull(result);
         if (result != null) {
@@ -227,7 +227,6 @@ public class LiveChatRoomImplTest extends BaseTest {
     }
     
     
-    
     /**
      * 删除频道聊天记录
      * @throws IOException
@@ -237,15 +236,13 @@ public class LiveChatRoomImplTest extends BaseTest {
     public void testCleanChannelAllMsg() throws IOException, NoSuchAlgorithmException {
         Integer channelId = super.createChannel();
         String requestId = LiveSignUtil.generateUUID();
-        Boolean result = new LiveChatRoomImpl().cleanChannelAllMsg(channelId,requestId);
+        Boolean result = new LiveChatRoomImpl().cleanChannelAllMsg(channelId, requestId);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
             log.debug("测试删除频道聊天记录成功{}", JSON.toJSONString(result));
         }
     }
-    
-    
     
     
     /**
@@ -257,7 +254,8 @@ public class LiveChatRoomImplTest extends BaseTest {
     public void testGetChatAdminData() throws IOException, NoSuchAlgorithmException {
         Integer channelId = super.createChannel();
         String requestId = LiveSignUtil.generateUUID();
-        LiveGetChatAdminResponse liveGetChatAdminResponse = new LiveChatRoomImpl().getChatAdminData(channelId,requestId);
+        LiveGetChatAdminResponse liveGetChatAdminResponse = new LiveChatRoomImpl().getChatAdminData(channelId,
+                requestId);
         Assert.assertNotNull(liveGetChatAdminResponse);
         if (liveGetChatAdminResponse != null) {
             //to do something ......
@@ -265,8 +263,6 @@ public class LiveChatRoomImplTest extends BaseTest {
         }
     }
     
-    
-   
     
     /**
      * 查询历史聊天信息，API地址：https://dev.polyv.net/2019/liveproduct/zblts/get-channel-badwords/
@@ -277,14 +273,18 @@ public class LiveChatRoomImplTest extends BaseTest {
     public void testGetHistroyChatMsg() throws IOException, NoSuchAlgorithmException {
         Integer channelId = super.createChannel();
         LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest = new LiveGetHistoryChatMsgRequest();
-        liveGetHistoryChatMsgRequest.setChannelId(channelId).setStartDay("2020-10-1").setEndDay("2020-12-12").setRequestId(LiveSignUtil.generateUUID());
-        List<LiveGetHistoryChatMsgResponse> liveGetHistoryChatMsgResponsesList = new LiveChatRoomImpl().getHistroyChatMsg(liveGetHistoryChatMsgRequest);
+        liveGetHistoryChatMsgRequest.setChannelId(channelId)
+                .setStartDay("2020-10-1")
+                .setEndDay("2020-12-12")
+                .setRequestId(LiveSignUtil.generateUUID());
+        List<LiveGetHistoryChatMsgResponse> liveGetHistoryChatMsgResponsesList =
+                new LiveChatRoomImpl().getHistroyChatMsg(
+                liveGetHistoryChatMsgRequest);
         Assert.assertNotNull(liveGetHistoryChatMsgResponsesList);
         if (liveGetHistoryChatMsgResponsesList != null) {
             //to do something ......
-            Integer channelId1 = liveGetHistoryChatMsgResponsesList.get(0).getChannelId();
-            log.debug("取第一个信息渠道 {}",channelId1);
-            log.debug("测试查询历史聊天信息成功{},{}", JSON.toJSONString(liveGetHistoryChatMsgResponsesList),channelId1);
+            log.debug("测试查询历史聊天信息成功{}", JSON.toJSONString(liveGetHistoryChatMsgResponsesList));
+            log.debug("第一个元素 {} ",liveGetHistoryChatMsgResponsesList.get(0));
         }
     }
 }

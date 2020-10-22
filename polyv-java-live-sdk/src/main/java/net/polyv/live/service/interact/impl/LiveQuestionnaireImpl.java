@@ -118,8 +118,8 @@ public class LiveQuestionnaireImpl extends LiveBaseService implements ILiveQuest
             LiveQuestionnaireResultRequest liveQuestionnaireResultRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_URL;
-        List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = this.baseGet(url,
-                liveQuestionnaireResultRequest, List.class);
+        List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = this.baseGetReturnArray(url,
+                liveQuestionnaireResultRequest, LiveQuestionnaireResultResponse.class);
         return liveQuestionnaireResultResponse;
     }
     

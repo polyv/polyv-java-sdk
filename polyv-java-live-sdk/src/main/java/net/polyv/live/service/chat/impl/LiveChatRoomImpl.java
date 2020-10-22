@@ -73,7 +73,7 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
     public List<String> addBannedIP(LiveChatBannedIPRequest liveChatBannedIPRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_BANNED_IP_URL, liveChatBannedIPRequest.getChannelId());
-        return super.basePost(url, liveChatBannedIPRequest, List.class);
+        return super.basePostReturnArray(url, liveChatBannedIPRequest, String.class);
     }
     
     /**
@@ -101,7 +101,7 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
     public List<String> getBannedList(LiveGetBannedListRequest liveGetBannedListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_GET_CHANNEL_BANNED_LIST_URL;
-        return super.baseGet(url, liveGetBannedListRequest, List.class);
+        return super.baseGetReturnArray(url, liveGetBannedListRequest, String.class);
     }
     
     /**
@@ -143,7 +143,7 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
     public List<String> getBadworkList(LiveGetBadwordIPRequest liveGetBadwordIPRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_GET_BAKWORD_WORD_IP_URL;
-        return super.basePost(url, liveGetBadwordIPRequest, List.class);
+        return super.basePostReturnArray(url, liveGetBadwordIPRequest, String.class);
     }
     
     /**
@@ -158,7 +158,7 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
         LiveCommonRequest liveCommonRequest = new LiveCommonRequest();
         liveCommonRequest.setRequestId(requestId);
         String url = LiveURL.CHAT_GET_ACCOUNT_BAKWORD_WORD_URL;
-        return super.baseGet(url, liveCommonRequest, List.class);
+        return super.baseGetReturnArray(url, liveCommonRequest, String.class);
     }
     
     /**

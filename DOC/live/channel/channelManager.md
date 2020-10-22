@@ -2740,3 +2740,44 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 #### 返回对象描述[LiveChannelResponse]
 
 成功为"true"
+
+### 设置频道名称
+
+#### 描述
+```
+设置频道名称
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdateChannelName() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelNameRequest liveUpdateChannelNameRequest = new LiveUpdateChannelNameRequest();
+        liveUpdateChannelNameRequest.setChannelId(1965681).setName("Junit测试(勿删)");
+        String liveUpdateChannelNameResponse = new LiveWebInfoServiceImpl().updateChannelName(
+                liveUpdateChannelNameRequest);
+        Assert.assertNotNull(liveUpdateChannelNameResponse);
+        if ("true".equals(liveUpdateChannelNameResponse)) {
+            //to do something ......
+            log.debug("测试设置频道名称成功,{}", liveUpdateChannelNameResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置频道名称](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否修改成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名 | 必选 | 类型   | 说明             |
+| ------ | ---- | ------ | ---------------- |
+| name   | 是   | string | 修改后的频道名称 |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+成功为"true"

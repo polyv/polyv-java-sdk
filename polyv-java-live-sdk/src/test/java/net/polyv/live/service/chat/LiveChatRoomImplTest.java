@@ -21,6 +21,8 @@ import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
 import net.polyv.live.entity.chat.LiveGetBadwordIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
 import net.polyv.live.entity.chat.LiveGetChatAdminResponse;
+import net.polyv.live.entity.chat.LiveGetHistoryChatMsgRequest;
+import net.polyv.live.entity.chat.LiveGetHistoryChatMsgResponse;
 import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
@@ -154,11 +156,13 @@ public class LiveChatRoomImplTest extends BaseTest {
         Integer channelId = super.createChannel();
         LiveKickedListRequest liveKickedListRequest = new LiveKickedListRequest();
         liveKickedListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-        List<LiveKickedListResponse> result = new LiveChatRoomImpl().getKickedList(liveKickedListRequest);
-        Assert.assertNotNull(result);
-        if (result != null) {
+        List<LiveKickedListResponse> liveKickedListResponsesList = new LiveChatRoomImpl().getKickedList(liveKickedListRequest);
+        Assert.assertNotNull(liveKickedListResponsesList);
+        if (liveKickedListResponsesList != null) {
             //to do something ......
-            log.debug("测试查询频道踢人列表成功{}", JSON.toJSONString(result));
+            Integer channelId1 = liveKickedListResponsesList.get(0).getChannelId();
+            
+            log.debug("测试查询频道踢人列表成功{}", JSON.toJSONString(liveKickedListResponsesList));
         }
     }
     
@@ -261,4 +265,26 @@ public class LiveChatRoomImplTest extends BaseTest {
         }
     }
     
+    
+   
+    
+    /**
+     * 查询历史聊天信息，API地址：https://dev.polyv.net/2019/liveproduct/zblts/get-channel-badwords/
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetHistroyChatMsg() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest = new LiveGetHistoryChatMsgRequest();
+        liveGetHistoryChatMsgRequest.setChannelId(channelId).setStartDay("2020-10-1").setEndDay("2020-12-12").setRequestId(LiveSignUtil.generateUUID());
+        List<LiveGetHistoryChatMsgResponse> liveGetHistoryChatMsgResponsesList = new LiveChatRoomImpl().getHistroyChatMsg(liveGetHistoryChatMsgRequest);
+        Assert.assertNotNull(liveGetHistoryChatMsgResponsesList);
+        if (liveGetHistoryChatMsgResponsesList != null) {
+            //to do something ......
+            Integer channelId1 = liveGetHistoryChatMsgResponsesList.get(0).getChannelId();
+            
+            log.debug("测试查询历史聊天信息成功{},{}", JSON.toJSONString(liveGetHistoryChatMsgResponsesList),channelId1);
+        }
+    }
 }

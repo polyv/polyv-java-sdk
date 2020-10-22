@@ -12,6 +12,8 @@ import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
 import net.polyv.live.entity.chat.LiveGetBadwordIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
 import net.polyv.live.entity.chat.LiveGetChatAdminResponse;
+import net.polyv.live.entity.chat.LiveGetHistoryChatMsgRequest;
+import net.polyv.live.entity.chat.LiveGetHistoryChatMsgResponse;
 import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
@@ -139,7 +141,15 @@ public interface ILiveChatRoomService {
             throws IOException, NoSuchAlgorithmException;
     
     
-    
+    /**
+     * 查询历史聊天信息，API地址：https://dev.polyv.net/2019/liveproduct/zblts/get-channel-badwords/
+     * @param liveGetHistoryChatMsgRequest 查询历史聊天信息请求实体
+     * @return  想要实体列表
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    List<LiveGetHistoryChatMsgResponse>  getHistroyChatMsg(LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest)
+            throws IOException, NoSuchAlgorithmException;
     
     
 }

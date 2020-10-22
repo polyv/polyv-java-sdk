@@ -3053,3 +3053,45 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 #### 返回对象描述[LiveChannelResponse]
 
 返回值是上传成功后的图片地址
+
+### 设置引导开关以及引导图片
+
+#### 描述
+```
+设置引导开关以及引导图片
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+引导图要求：只能为jpg、jpeg、png三种格式，大小不能超过4Mb。
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
+        String path = "C:\\Users\\T460\\Desktop\\fields.txt";
+        LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
+        liveUpdateChannelSplashRequest.setChannelId(1965681).setSplashEnabled("N").setImgfile(new File(path));
+        String liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
+                liveUpdateChannelSplashRequest);
+        Assert.assertNotNull(liveUpdateChannelSplashResponse);
+        if(liveUpdateChannelSplashResponse != null){
+            log.debug("设置引导开关以及引导图片成功,{}", liveUpdateChannelSplashResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置引导开关以及引导图片](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名        | 必选 | 类型   | 说明                                        |
+| ------------- | ---- | ------ | ------------------------------------------- |
+| splashEnabled | 是   | string | 设置开启或关闭引导页，Y或N                  |
+| imgfile       | 是   | file   | 支持jpg、jpeg、png三种格式，大小不能超过4Mb |
+| channelId     | 是   | int    | 频道ID                                      |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+返回值是上传成功后的图片地址

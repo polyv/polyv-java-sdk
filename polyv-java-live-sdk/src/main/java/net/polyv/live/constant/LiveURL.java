@@ -60,6 +60,12 @@ public class LiveURL {
      */
     public static final String CHANNEL_LOGO_SET_URL =
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/setCoverImg";
+     
+    /**
+     * 设置引导开关以及引导图片
+     */
+    public static final String CHANNEL_SPLASH_SET_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/setSplash";
     
     /**
      * 设置频道号密码

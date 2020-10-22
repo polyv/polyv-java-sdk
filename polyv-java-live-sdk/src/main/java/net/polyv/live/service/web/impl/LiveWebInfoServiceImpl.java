@@ -20,6 +20,7 @@ import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLogoRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
+import net.polyv.live.entity.web.info.LiveUpdateChannelSplashRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.web.ILiveWebInfoService;
 
@@ -165,6 +166,25 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
         String liveUpdateChannelLogoResponse = this.baseUploadFile(url, liveUpdateChannelLogoRequest, fileMap,
                 String.class);
         return liveUpdateChannelLogoResponse;
+    }
+    
+    /**
+     * 设置引导开关以及引导图片
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/szgkygg/ymxxsz/setsplash/
+     * @param liveUpdateChannelSplashRequest 设置引导开关以及引导图片请求实体
+     * @return 设置引导开关以及引导图片返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String updateChannelSplash(LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SPLASH_SET_URL, liveUpdateChannelSplashRequest.getChannelId());
+        Map<String, File> fileMap = new HashMap<>();
+        fileMap.put("imgfile", liveUpdateChannelSplashRequest.getImgfile());
+        String liveUpdateChannelSplashResponse = this.baseUploadFile(url, liveUpdateChannelSplashRequest, fileMap,
+                String.class);
+        return liveUpdateChannelSplashResponse;
     }
     
 }

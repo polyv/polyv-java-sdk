@@ -14,6 +14,7 @@ import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLogoRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
+import net.polyv.live.entity.web.info.LiveUpdateChannelSplashRequest;
 import net.polyv.live.entity.web.setting.LiveChannelGlobalSwitchRequest;
 
 /**
@@ -107,6 +108,17 @@ public interface ILiveWebInfoService {
      * @throws NoSuchAlgorithmException 异常
      */
     String updateChannelLogo(LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置引导开关以及引导图片
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/szgkygg/ymxxsz/setsplash/
+     * @param liveUpdateChannelSplashRequest 设置引导开关以及引导图片请求实体
+     * @return 设置引导开关以及引导图片返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String updateChannelSplash(LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

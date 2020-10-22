@@ -21,6 +21,7 @@ import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLogoRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
+import net.polyv.live.entity.web.info.LiveUpdateChannelSplashRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebInfoServiceImpl;
 
@@ -168,11 +169,30 @@ public class LiveWebInfoImplTest extends BaseTest {
 //        LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
 //        String path = "C:\\Users\\T460\\Desktop\\elephant.png";
 //        liveUpdateChannelLogoRequest.setChannelId(1965681).setImgfile(new File(path));
-//        String liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(liveUpdateChannelLogoRequest);
+//        String liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo
+//        (liveUpdateChannelLogoRequest);
 //        Assert.assertNotNull(liveUpdateChannelLogoResponse);
 //        if (liveUpdateChannelLogoResponse != null) {
 //            //to do something ......
 //            log.debug("测试设置频道图标成功,{}", liveUpdateChannelLogoResponse);
+//        }
+//    }
+    
+    /**
+     * 测试设置引导开关以及引导图片
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+//    public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
+//        String path = "C:\\Users\\T460\\Desktop\\fields.txt";
+//        LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
+//        liveUpdateChannelSplashRequest.setChannelId(1965681).setSplashEnabled("N").setImgfile(new File(path));
+//        String liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
+//                liveUpdateChannelSplashRequest);
+//        Assert.assertNotNull(liveUpdateChannelSplashResponse);
+//        if(liveUpdateChannelSplashResponse != null){
+//            log.debug("设置引导开关以及引导图片成功,{}", liveUpdateChannelSplashResponse);
 //        }
 //    }
     

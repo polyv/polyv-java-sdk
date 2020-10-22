@@ -1,15 +1,15 @@
-package net.polyv.live.service.webview;
+package net.polyv.live.service.web;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
-import net.polyv.live.entity.webview.LiveCreateChannelWriteListRequest;
+import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 
 /**
  * 直播Web观看页管理
  * @author: sadboy
  **/
-public interface ILiveWebViewService {
+public interface ILiveWebAuthService {
     
     /**
      * 添加单个白名单

@@ -1,4 +1,4 @@
-package net.polyv.live.entity.webview;
+package net.polyv.live.entity.web.auth;
 
 import javax.validation.constraints.NotNull;
 

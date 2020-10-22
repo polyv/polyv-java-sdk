@@ -46,7 +46,7 @@ public class LiveCommonResponse {
         return JSON.parseObject(this.data, dataClass);
     }
     
-    public <T> List<T> parseData1(Class<T> dataClass) {
+    public  <T> List<T> parseArray(Class<T> dataClass) {
         return JSON.parseArray(this.data, dataClass);
         
     }

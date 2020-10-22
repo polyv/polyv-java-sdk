@@ -161,7 +161,7 @@ public class LiveChatRoomImplTest extends BaseTest {
         if (liveKickedListResponsesList != null) {
             //to do something ......
             Integer channelId1 = liveKickedListResponsesList.get(0).getChannelId();
-            
+            log.debug("取第一个信息渠道 {}",channelId1);
             log.debug("测试查询频道踢人列表成功{}", JSON.toJSONString(liveKickedListResponsesList));
         }
     }
@@ -283,7 +283,7 @@ public class LiveChatRoomImplTest extends BaseTest {
         if (liveGetHistoryChatMsgResponsesList != null) {
             //to do something ......
             Integer channelId1 = liveGetHistoryChatMsgResponsesList.get(0).getChannelId();
-            
+            log.debug("取第一个信息渠道 {}",channelId1);
             log.debug("测试查询历史聊天信息成功{},{}", JSON.toJSONString(liveGetHistoryChatMsgResponsesList),channelId1);
         }
     }

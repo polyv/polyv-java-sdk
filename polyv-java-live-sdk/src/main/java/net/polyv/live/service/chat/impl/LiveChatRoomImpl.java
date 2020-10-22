@@ -115,7 +115,7 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
     public List<LiveKickedListResponse> getKickedList(LiveKickedListRequest liveKickedListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_LIST_KICKED_URL;
-        return super.basePost(url, liveKickedListRequest, List.class);
+        return super.basePostReturnArray(url, liveKickedListRequest, LiveKickedListResponse.class);
     }
     
     /**
@@ -204,7 +204,7 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
     public List<LiveGetHistoryChatMsgResponse> getHistroyChatMsg(
             LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest) throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_HISTORY_MSG_URL, liveGetHistoryChatMsgRequest.getChannelId());
-        return super.basePost(url, liveGetHistoryChatMsgRequest, List.class);
+        return super.basePostReturnArray(url, liveGetHistoryChatMsgRequest, LiveGetHistoryChatMsgResponse.class);
     }
     
     

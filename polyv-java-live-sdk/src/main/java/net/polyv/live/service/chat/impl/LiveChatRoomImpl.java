@@ -1,9 +1,12 @@
 package net.polyv.live.service.chat.impl;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
@@ -23,6 +26,7 @@ import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
+import net.polyv.live.entity.chat.LiveSetChatAdminDataRequest;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.chat.ILiveChatRoomService;
@@ -221,7 +225,21 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
         return "success".equalsIgnoreCase(super.baseGet(url, liveChatDelSingleMsgRequest, String.class));
     }
     
-    
+    /**
+     * 设置聊天室管理员信息，API地址：https://dev.polyv.net/2017/liveproduct/zblts/set-chat-admin/
+     * @param liveSetChatAdminDataRequest 设置聊天室管理员信息请求实体
+     * @return  是否成功
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    @Override
+    public Boolean setChatAdminData(LiveSetChatAdminDataRequest liveSetChatAdminDataRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_SET_ADMIN_DATA_URL, liveSetChatAdminDataRequest.getChannelId());
+        Map<String, File> fileMap = new HashMap<>();
+        fileMap.put("avatar",liveSetChatAdminDataRequest.getAvatar());
+        return "修改成功".equalsIgnoreCase(super.baseUploadFile(url, liveSetChatAdminDataRequest, fileMap, String.class));
+    }
     
     
 }

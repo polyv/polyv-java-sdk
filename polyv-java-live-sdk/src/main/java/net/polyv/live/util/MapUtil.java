@@ -1,5 +1,6 @@
 package net.polyv.live.util;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.net.URLEncoder;
@@ -73,6 +74,9 @@ public class MapUtil {
                     Field f = objClass.getDeclaredField(fields[i].getName());
                     f.setAccessible(true);
                     Object o = f.get(obj);
+                    if(o instanceof File){
+                        continue;
+                    }
                     JSONField jsonField = f.getAnnotation(JSONField.class);
                     String key = jsonField != null ? jsonField.name() : fields[i].getName();
                     String value = null;

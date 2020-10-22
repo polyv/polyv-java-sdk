@@ -163,17 +163,17 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    @Test
-    public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
-        LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
-        String path = "C:\\Users\\T460\\Desktop\\elephant.png";
-        liveUpdateChannelLogoRequest.setChannelId(1965681).setImgfile(new File(path));
-        String liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(liveUpdateChannelLogoRequest);
-        Assert.assertNotNull(liveUpdateChannelLogoResponse);
-        if (liveUpdateChannelLogoResponse != null) {
-            //to do something ......
-            log.debug("测试设置频道图标成功,{}", liveUpdateChannelLogoResponse);
-        }
-    }
+//    @Test
+//    public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
+//        LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
+//        String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+//        liveUpdateChannelLogoRequest.setChannelId(1965681).setImgfile(new File(path));
+//        String liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(liveUpdateChannelLogoRequest);
+//        Assert.assertNotNull(liveUpdateChannelLogoResponse);
+//        if (liveUpdateChannelLogoResponse != null) {
+//            //to do something ......
+//            log.debug("测试设置频道图标成功,{}", liveUpdateChannelLogoResponse);
+//        }
+//    }
     
 }

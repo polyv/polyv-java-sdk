@@ -159,21 +159,21 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
         return super.baseGet(url, liveCommonRequest, List.class);
     }
     
-//    /**
-//     * 删除频道聊天记录，API地址：https://dev.polyv.net/2017/liveproduct/zblts/cleanchat/
-//     * @param channelId 需要删除聊天信息的频道ID
-//     * @param requestId 请求序列号
-//     * @return 频道号
-//     * @throws IOException 客户端和服务器读写异常
-//     * @throws NoSuchAlgorithmException 签名异常
-//     */
-//    @Override
-//    public String cleanChannelAllMsg(Integer channelId, String requestId) throws IOException, NoSuchAlgorithmException {
-//        LiveCommonRequest liveCommonRequest = new LiveCommonRequest();
-//        liveCommonRequest.setRequestId(requestId);
-//        String url = LiveURL.getRealUrl(LiveURL.CHAT_CLEAN_CHANNEL_MSG_URL, String.valueOf(channelId));
-//        return super.baseGet(url, liveCommonRequest, String.class);
-//    }
+    /**
+     * 删除频道聊天记录，API地址：https://dev.polyv.net/2017/liveproduct/zblts/cleanchat/
+     * @param channelId 需要删除聊天信息的频道ID
+     * @param requestId 请求序列号
+     * @return 频道号
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    @Override
+    public Boolean cleanChannelAllMsg(Integer channelId, String requestId) throws IOException, NoSuchAlgorithmException {
+        LiveCommonRequest liveCommonRequest = new LiveCommonRequest();
+        liveCommonRequest.setRequestId(requestId);
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_CLEAN_CHANNEL_MSG_URL, String.valueOf(channelId));
+        return super.baseGet(url, liveCommonRequest, Boolean.class);
+    }
     /**
      * 查询聊天室管理员信息，API地址：https://dev.polyv.net/2017/liveproduct/zblts/get-chat-admin/
      * @param channelId 频道ID
@@ -188,6 +188,6 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
         LiveCommonRequest liveCommonRequest = new LiveCommonRequest();
         liveCommonRequest.setRequestId(requestId);
         String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_ADMIN_URL, String.valueOf(channelId));
-        return super.baseGet(url, liveCommonRequest, LiveGetChatAdminResponse.class);
+        return super.basePost(url, liveCommonRequest, LiveGetChatAdminResponse.class);
     }
 }

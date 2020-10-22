@@ -116,16 +116,16 @@ public interface ILiveChatRoomService {
             throws IOException, NoSuchAlgorithmException;
      
     
-//    /**
-//     * 删除频道聊天记录，API地址：https://dev.polyv.net/2017/liveproduct/zblts/cleanchat/
-//     * @param channelId 需要删除聊天信息的频道ID
-//     * @param requestId 请求序列号
-//     * @return  频道号
-//     * @throws IOException 客户端和服务器读写异常
-//     * @throws NoSuchAlgorithmException 签名异常
-//     */
-//    String  cleanChannelAllMsg(Integer channelId ,String requestId)
-//            throws IOException, NoSuchAlgorithmException;
+    /**
+     * 删除频道聊天记录，API地址：https://dev.polyv.net/2017/liveproduct/zblts/cleanchat/
+     * @param channelId 需要删除聊天信息的频道ID
+     * @param requestId 请求序列号
+     * @return  频道号
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    Boolean  cleanChannelAllMsg(Integer channelId ,String requestId)
+            throws IOException, NoSuchAlgorithmException;
     
     /**
      * 查询聊天室管理员信息，API地址：https://dev.polyv.net/2017/liveproduct/zblts/get-chat-admin/

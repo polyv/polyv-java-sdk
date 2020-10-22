@@ -224,22 +224,22 @@ public class LiveChatRoomImplTest extends BaseTest {
     
     
     
-//    /**
-//     * 删除频道聊天记录
-//     * @throws IOException
-//     * @throws NoSuchAlgorithmException
-//     */
-//    @Test
-//    public void testCleanChannelAllMsg() throws IOException, NoSuchAlgorithmException {
-//        Integer channelId = super.createChannel();
-//        String requestId = LiveSignUtil.generateUUID();
-//        String result = new LiveChatRoomImpl().cleanChannelAllMsg(channelId,requestId);
-//        Assert.assertNotNull(result);
-//        if (result != null) {
-//            //to do something ......
-//            log.debug("测试删除频道聊天记录成功{}", JSON.toJSONString(result));
-//        }
-//    }
+    /**
+     * 删除频道聊天记录
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testCleanChannelAllMsg() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        String requestId = LiveSignUtil.generateUUID();
+        Boolean result = new LiveChatRoomImpl().cleanChannelAllMsg(channelId,requestId);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试删除频道聊天记录成功{}", JSON.toJSONString(result));
+        }
+    }
     
     
     

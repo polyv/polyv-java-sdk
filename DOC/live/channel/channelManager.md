@@ -2850,3 +2850,44 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | ------------- | ------------ |
 | splashImg     | 引导图片url  |
 | splashEnabled | 引导功能开关 |
+
+### 设置频道点赞数和观看热度值
+
+#### 描述
+```
+设置频道的点赞数和观看热度
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+likes跟viewers可以同时传，也可以只传其中一个，不能都不传
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdateChannelLikes() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest = new LiveUpdateChannelLikesRequest();
+        liveUpdateChannelLikesRequest.setChannelId(1965681).setLikes(9999).setViewers(9999);
+        String liveUpdateChannelLikesResponse = new LiveWebInfoServiceImpl().updateChannelLikes(
+                liveUpdateChannelLikesRequest);
+        Assert.assertNotNull(liveUpdateChannelLikesResponse);
+        if ("success".equals(liveUpdateChannelLikesResponse)) {
+            //to do something ......
+            log.debug("测试设置频道点赞数和观看热度值成功,{}", liveUpdateChannelLikesResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置频道点赞数和观看热度值](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选             | 类型 | 说明     |
+| --------- | ---------------- | ---- | -------- |
+| channelId | 是               | int  | 频道ID   |
+| likes     | 请查看下方注意点 | int  | 点赞数   |
+| viewers   | 请查看下方注意点 | int  | 观看热度 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+请求成功时为success，请求错误时为空

@@ -2820,3 +2820,33 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 #### 返回对象描述[LiveChannelResponse]
 
 成功为"true"
+
+### 查询直播引导图开关状态及URL
+
+#### 描述
+```
+
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+获取用户频道号引导图开关的状态，以及具体引导图的url。
+```
+#### 单元测试流程
+[swagger 程序接入-查询直播引导图开关状态及URL](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型 | 说明   |
+| --------- | ---- | ---- | ------ |
+| channelId | 是   | int  | 频道ID |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名        | 说明         |
+| ------------- | ------------ |
+| splashImg     | 引导图片url  |
+| splashEnabled | 引导功能开关 |

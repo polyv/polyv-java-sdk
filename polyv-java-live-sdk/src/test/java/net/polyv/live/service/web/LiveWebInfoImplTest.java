@@ -13,6 +13,7 @@ import net.polyv.live.entity.web.info.LiveChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveChannelLikesResponse;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
+import net.polyv.live.entity.web.info.LiveUpdateChannelCountDownRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
@@ -112,6 +113,25 @@ public class LiveWebInfoImplTest extends BaseTest {
         if (liveChannelLikesResponse != null) {
             //to do something ......
             log.debug("测试查询频道点赞数和观众热度值成功,{}", JSON.toJSONString(liveChannelLikesResponse));
+        }
+    }
+    
+    /**
+     * 测试设置频道直播倒计时信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelCountDown() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest = new LiveUpdateChannelCountDownRequest();
+        liveUpdateChannelCountDownRequest.setChannelId(1965681)
+                .setBookingEnabled("Y")
+                .setStartTime("2020-11-11 11:11:11");
+        String liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(liveUpdateChannelCountDownRequest);
+        Assert.assertNotNull(liveUpdateChannelCountDownResponse);
+        if (liveUpdateChannelCountDownResponse != null) {
+            //to do something ......
+            log.debug("测试设置频道直播倒计时信息成功,{}", liveUpdateChannelCountDownResponse);
         }
     }
     

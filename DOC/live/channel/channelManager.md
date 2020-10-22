@@ -2974,3 +2974,42 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 #### 返回对象描述[LiveChannelResponse]
 
 无
+
+### 查询频道直播倒计时信息
+
+#### 描述
+```
+可以获取倒计时设置的相关信息
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testChannelCountDown() throws IOException, NoSuchAlgorithmException {
+        LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
+        liveChannelCountDownRequest.setChannelId(1965681);
+        LiveChannelCountDownResponse liveChannelCountDownResponse = new LiveWebInfoServiceImpl().channelCountDown(
+                liveChannelCountDownRequest);
+        Assert.assertNotNull(liveChannelCountDownResponse);
+        if (liveChannelCountDownResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道直播倒计时信息成功,{}", JSON.toJSONString(liveChannelCountDownResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道直播倒计时信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+| 参数名         | 必选 | 类型   | 说明                                                         |
+| -------------- | ---- | ------ | ------------------------------------------------------------ |
+| channelId      | 是   | int    | 频道ID     |
+
+#### 返回对象描述[LiveChannelResponse]
+| 参数名         | 类型   | 说明                                |
+| -------------- | ------ | ----------------------------------- |
+| bookingEnabled | string | 预约观看开关，Y或 N                 |
+| startTime      | date   | 直播开始时间,为空则没有直播开始时间 |

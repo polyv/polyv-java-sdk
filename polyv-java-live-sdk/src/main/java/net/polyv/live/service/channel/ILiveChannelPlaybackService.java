@@ -3,6 +3,7 @@ package net.polyv.live.service.channel;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.live.entity.channel.playback.LiveChannelDefaultVideoRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelPlaybackEnabledInfoRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelPlaybackEnabledRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelPlaybackSettingRequest;
@@ -193,6 +194,17 @@ public interface ILiveChannelPlaybackService {
      * @throws NoSuchAlgorithmException 异常
      */
     String deleteChannelPlaybackVideo(LiveDeleteChannelPlaybackVideoRequest liveDeleteChannelPlaybackVideoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置视频库列表的默认视频
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/setdefault/
+     * @param liveChannelDefaultVideoRequest 设置视频库列表的默认视频请求实体
+     * @return 设置视频库列表的默认视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String channelDefaultVideo(LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

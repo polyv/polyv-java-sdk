@@ -2656,3 +2656,45 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | userId    | 用户ID，字符串               |
 | available | 当前可用的分钟数，长整型     |
 | used      | 历史已经使用的分钟数，长整型 |
+
+### 设置视频库列表的默认视频
+
+#### 描述
+```
+将回放列表中的某个视频设置为默认回放视频
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+一个频道只能设置一个默认回放视频。
+
+#### 代码示例
+```java
+    @Test
+    public void testChannelDefaultVideo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest = new LiveChannelDefaultVideoRequest();
+        liveChannelDefaultVideoRequest.setChannelId(1965681).setVideoId("f1574595e1").setListType("playback");
+        String liveChannelDefaultVideoResponse = new LiveChannelPlaybackServiceImpl().channelDefaultVideo(
+                liveChannelDefaultVideoRequest);
+        Assert.assertNotNull(liveChannelDefaultVideoResponse);
+        if ("success".equals(liveChannelDefaultVideoResponse)) {
+            //to do something ......
+            log.debug("测试设置视频库列表的默认视频成功{}", liveChannelDefaultVideoResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置视频库列表的默认视频](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                                                         |
+| --------- | ---- | ------ | ------------------------------------------------------------ |
+| channelId | 是   | int    | 频道ID                                                       |
+| videoId   | 是   | string | 直播系统生成的id，可在回放列表接口的返回数据获取             |
+| listType  | 否   | string | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+成功为"success"

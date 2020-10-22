@@ -25,6 +25,7 @@ public class LiveConvertChannelVideoListAsyncRequest extends LiveCommonRequest {
      * 频道ID
      */
     @ApiModelProperty(name = "channelId", value = "频道ID", required = true)
+    @NotNull(message = "channelId不能为空")
     private Integer channelId;
     
     /**

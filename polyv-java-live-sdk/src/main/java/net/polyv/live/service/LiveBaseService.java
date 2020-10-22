@@ -1,5 +1,6 @@
 package net.polyv.live.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -73,7 +74,7 @@ public class LiveBaseService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    protected <E extends LiveCommonRequest> LiveCommonResponse baseGet(String url, E e)
+    private <E extends LiveCommonRequest> LiveCommonResponse baseGet(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
         if (StringUtils.isBlank(e.getRequestId())) {
@@ -166,7 +167,7 @@ public class LiveBaseService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    protected <E extends LiveCommonRequest> LiveCommonResponse basePost(String url, E e)
+    private <E extends LiveCommonRequest> LiveCommonResponse basePost(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
         if (StringUtils.isBlank(e.getRequestId())) {
@@ -262,8 +263,8 @@ public class LiveBaseService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    protected <E extends LiveCommonRequest> LiveCommonResponse basePostJson(String url, Map<String, String> signMap,
-            E e) throws IOException, NoSuchAlgorithmException {
+    private <E extends LiveCommonRequest> LiveCommonResponse basePostJson(String url, Map<String, String> signMap, E e)
+            throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(LiveSignUtil.generateUUID());
@@ -293,5 +294,67 @@ public class LiveBaseService {
         }
         return liveCommonResponse;
     }
+    
+    
+    /**
+     * HTTP POST 上传文件公共请求
+     * @param url 请求URL
+     * @param fileMap 文件MAP，key为服务器接收的名字，value 为File对象
+     * @param e 请求参数对象
+     * @param tClass 返回对象class类型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    protected <T, E extends LiveCommonRequest> T baseUploadFile(String url, E e, Map<String, File> fileMap,
+            Class<T> tClass) throws IOException, NoSuchAlgorithmException {
+        return this.baseUploadFile(url, e, fileMap).parseData(tClass);
+    }
+    
+    
+    /**
+     * HTTP POST 上传文件公共请求
+     * @param url 请求URL
+     * @param fileMap 文件MAP，key为服务器接收的名字，value 为File对象
+     * @param e 请求参数对象
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    private <E extends LiveCommonRequest> LiveCommonResponse baseUploadFile(String url, E e, Map<String, File> fileMap)
+            throws IOException, NoSuchAlgorithmException {
+        LiveCommonResponse liveCommonResponse = null;
+        if (StringUtils.isBlank(e.getRequestId())) {
+            e.setRequestId(LiveSignUtil.generateUUID());
+        }
+        e.setAppId(LiveGlobalConfig.APP_ID);
+        if (StringUtils.isBlank(e.getTimestamp())) {
+            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        }
+        Map<String, String> paramMap = MapUtil.objectToMap(e);
+        paramMap = MapUtil.filterNullValue(paramMap);
+        String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.APP_ID, LiveGlobalConfig.APP_SECRET);
+        e.setSign(sign);
+        validateBean(e);
+        String response = HttpUtil.sendUploadFile(url, paramMap, fileMap, Consts.UTF_8.toString());
+        if (StringUtils.isNotBlank(response)) {
+            liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
+            if (liveCommonResponse.getCode() != 200) {
+                String message = "保利威请求返回数据错误，请求流水号：" + e.getRequestId() + " ,错误原因： " + liveCommonResponse.getMessage();
+                BusinessException exception = new BusinessException(liveCommonResponse.getCode(), message);
+                log.error(message, exception);
+                throw exception;
+            }
+        } else {
+            String message = "保利威HTTP错误，请求流水号：" + e.getRequestId() + " ,错误原因： 服务器接口未返回任何数据";
+            BusinessException exception = new BusinessException(LiveConstant.ERROR_CODE, message);
+            log.error(message, exception);
+            throw exception;
+        }
+        return liveCommonResponse;
+    }
+    
     
 }

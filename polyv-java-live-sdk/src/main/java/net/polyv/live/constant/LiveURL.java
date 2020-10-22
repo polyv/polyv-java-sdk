@@ -578,6 +578,15 @@ public class LiveURL {
      */
     public static final String CHAT_GET_HISTORY_MSG_URL = BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/getHistory";
     
+    /**
+     * 删除单条聊天记录
+     */
+    public static final String CHAT_DEL_CHANNEL_SINGLE_MSG_URL = BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/delChat";
+    
+    /**
+     * 设置聊天室管理员信息
+     */
+    public static final String CHAT_SET_ADMIN_DATA_URL = BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/set-chat-admin";
     
     /**
      * 400错误码

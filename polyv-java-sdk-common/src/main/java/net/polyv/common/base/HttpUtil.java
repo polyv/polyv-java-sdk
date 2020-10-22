@@ -301,7 +301,7 @@ public class HttpUtil {
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
      */
-    private static String sendUploadFile(String url, Map<String, String> params, Map<String, String> fileMap,
+    public static String sendUploadFile(String url, Map<String, String> params, Map<String, File> fileMap,
             String encoding) throws IOException {
         log.debug("http 请求 url: {} , 请求参数: {}", url, JSON.toJSONString(params));
         if (StringUtils.isBlank(encoding)) {
@@ -312,10 +312,9 @@ public class HttpUtil {
         HttpPost post = new HttpPost(url);
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
         if (fileMap != null) {
-            for (Map.Entry<String, String> entry : fileMap.entrySet()) {
-                File file = new File(entry.getValue());
-                entityBuilder.addBinaryBody(entry.getKey(), file, ContentType.DEFAULT_BINARY,
-                        URLEncoder.encode(file.getName(), encoding));
+            for (Map.Entry<String, File> entry : fileMap.entrySet()) {
+                File file = entry.getValue();
+                entityBuilder.addBinaryBody(entry.getKey(), file);
             }
         }
         ContentType contentType = ContentType.create("text/plain", Charset.forName(encoding));

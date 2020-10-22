@@ -8,6 +8,7 @@ import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
+import net.polyv.live.entity.chat.LiveChatDelSingleMsgRequest;
 import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
 import net.polyv.live.entity.chat.LiveGetBadwordIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
@@ -18,6 +19,7 @@ import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
+import net.polyv.live.entity.chat.LiveSetChatAdminDataRequest;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
 
 /**
@@ -152,4 +154,29 @@ public interface ILiveChatRoomService {
             throws IOException, NoSuchAlgorithmException;
     
     
+    /**
+     * 删除单条聊天记录，API地址：https://dev.polyv.net/2017/liveproduct/zblts/delchat/
+     * @param liveChatDelSingleMsgRequest 删除单条聊天记录请求实体
+     * @return  是否成功
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    Boolean  delChatSingleMsg(LiveChatDelSingleMsgRequest liveChatDelSingleMsgRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    
+    
+    /**
+     * 设置聊天室管理员信息，API地址：https://dev.polyv.net/2017/liveproduct/zblts/set-chat-admin/
+     * @param liveSetChatAdminDataRequest 设置聊天室管理员信息请求实体
+     * @return  是否成功
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    Boolean  setChatAdminData(LiveSetChatAdminDataRequest liveSetChatAdminDataRequest)
+            throws IOException, NoSuchAlgorithmException;
+ 
+
+
+
 }

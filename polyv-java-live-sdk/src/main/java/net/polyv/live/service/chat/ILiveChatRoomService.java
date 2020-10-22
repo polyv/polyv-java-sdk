@@ -17,6 +17,8 @@ import net.polyv.live.entity.chat.LiveGetConsultingRecordRequest;
 import net.polyv.live.entity.chat.LiveGetConsultingRecordResponse;
 import net.polyv.live.entity.chat.LiveGetHistoryChatMsgRequest;
 import net.polyv.live.entity.chat.LiveGetHistoryChatMsgResponse;
+import net.polyv.live.entity.chat.LiveGetQuestionStatisticalRequest;
+import net.polyv.live.entity.chat.LiveGetQuestionStatisticalResponse;
 import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
@@ -190,5 +192,18 @@ public interface ILiveChatRoomService {
      */
     List<LiveGetConsultingRecordResponse>  getConsultingRecord(LiveGetConsultingRecordRequest liveGetConsultingRecordRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    
+    /**
+     * 查询频道的问答统计结果，API地址：https://dev.polyv.net/2018/liveproduct/zblts/get-question-result/
+     * @param liveGetQuestionStatisticalRequest 查询频道的问答统计结果请求实体
+     * @return  想要实体列表
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    List<LiveGetQuestionStatisticalResponse>  getQuestionStatistical(
+            LiveGetQuestionStatisticalRequest liveGetQuestionStatisticalRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
     
 }

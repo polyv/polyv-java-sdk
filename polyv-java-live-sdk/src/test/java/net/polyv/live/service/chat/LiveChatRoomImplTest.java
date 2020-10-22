@@ -30,6 +30,8 @@ import net.polyv.live.entity.chat.LiveGetConsultingRecordRequest;
 import net.polyv.live.entity.chat.LiveGetConsultingRecordResponse;
 import net.polyv.live.entity.chat.LiveGetHistoryChatMsgRequest;
 import net.polyv.live.entity.chat.LiveGetHistoryChatMsgResponse;
+import net.polyv.live.entity.chat.LiveGetQuestionStatisticalRequest;
+import net.polyv.live.entity.chat.LiveGetQuestionStatisticalResponse;
 import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
@@ -367,6 +369,33 @@ public class LiveChatRoomImplTest extends BaseTest {
             log.debug("测试查询咨询提问记录成功{}", JSON.toJSONString(responses));
             
             log.debug("第一个元素 {} ", responses.get(0).getUserId());
+            BusinessException exception = new BusinessException(400,"todo  带后台完善相关返回数据  ");
+            throw  exception;
+        }
+    }
+    
+    
+    
+    /**
+     * 查询频道的问答统计结果，API地址：https://dev.polyv.net/2018/liveproduct/zblts/get-question-result/
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetQuestionStatistical() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveGetQuestionStatisticalRequest liveGetQuestionStatisticalRequest = new LiveGetQuestionStatisticalRequest();
+        liveGetQuestionStatisticalRequest.setChannelId(channelId)
+//                .setStartTime("2020-10-1 00:00:00")
+//                .setEndTime("2020-10-30 12:20:20")
+                .setRequestId(LiveSignUtil.generateUUID());
+        List<LiveGetQuestionStatisticalResponse> result = new LiveChatRoomImpl().getQuestionStatistical(
+                liveGetQuestionStatisticalRequest);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试查询咨询提问记录成功{}", JSON.toJSONString(result));
+            log.debug("第一个元素 {} ", result.get(0));
             BusinessException exception = new BusinessException(400,"todo  带后台完善相关返回数据  ");
             throw  exception;
         }

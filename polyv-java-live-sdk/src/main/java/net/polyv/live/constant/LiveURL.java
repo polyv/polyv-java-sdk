@@ -587,6 +587,11 @@ public class LiveURL {
      */
     public static final String CHAT_GET_CONSULTING_RECORD_URL = BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/getQuestion";
     
+    /**
+     * 查询频道的问答统计结果statistical
+     */
+    public static final String CHAT_GET_QUERSTION_STATISTICAL_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/get-question-result";
+    
     
     /**
      * 400错误码

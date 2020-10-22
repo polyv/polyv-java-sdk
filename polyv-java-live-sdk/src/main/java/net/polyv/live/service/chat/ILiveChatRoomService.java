@@ -8,6 +8,7 @@ import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
+import net.polyv.live.entity.chat.LiveChatDelSingleMsgRequest;
 import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
 import net.polyv.live.entity.chat.LiveGetBadwordIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
@@ -152,4 +153,13 @@ public interface ILiveChatRoomService {
             throws IOException, NoSuchAlgorithmException;
     
     
+    /**
+     * 删除单条聊天记录，API地址：https://dev.polyv.net/2017/liveproduct/zblts/delchat/
+     * @param liveChatDelSingleMsgRequest 删除单条聊天记录请求实体
+     * @return  是否成功
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    Boolean  delChatSingleMsg(LiveChatDelSingleMsgRequest liveChatDelSingleMsgRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

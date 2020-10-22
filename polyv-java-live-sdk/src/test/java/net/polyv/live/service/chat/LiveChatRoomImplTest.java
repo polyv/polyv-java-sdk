@@ -17,6 +17,7 @@ import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
+import net.polyv.live.entity.chat.LiveChatDelSingleMsgRequest;
 import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
 import net.polyv.live.entity.chat.LiveGetBadwordIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
@@ -287,4 +288,27 @@ public class LiveChatRoomImplTest extends BaseTest {
             log.debug("第一个元素 {} ",liveGetHistoryChatMsgResponsesList.get(0));
         }
     }
+    
+    
+    
+    
+    /**
+     * 删除单条聊天记录，API地址：https://dev.polyv.net/2017/liveproduct/zblts/delchat/
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testDelChatSingleMsg() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        LiveChatDelSingleMsgRequest liveChatDelSingleMsgRequest  = new LiveChatDelSingleMsgRequest();
+        liveChatDelSingleMsgRequest.setId("70af2450-12bc-11eb-896b-75b7b28cd5db").setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+        Boolean result = new LiveChatRoomImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试删除单条聊天记录成功{}", JSON.toJSONString(result));
+        }
+    }
+    
+    
 }

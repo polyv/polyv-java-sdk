@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
+import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
 import net.polyv.live.service.BaseTest;
@@ -73,6 +74,24 @@ public class LiveWebInfoImplTest extends BaseTest {
         if (liveChannelSplashResponse != null) {
             //to do something ......
             log.debug("测试查询直播引导图开关状态及URL成功,{}", JSON.toJSONString(liveChannelSplashResponse));
+        }
+    }
+    
+    /**
+     * 测试设置频道点赞数和观看热度值
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelLikes() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest = new LiveUpdateChannelLikesRequest();
+        liveUpdateChannelLikesRequest.setChannelId(1965681).setLikes(9999).setViewers(9999);
+        String liveUpdateChannelLikesResponse = new LiveWebInfoServiceImpl().updateChannelLikes(
+                liveUpdateChannelLikesRequest);
+        Assert.assertNotNull(liveUpdateChannelLikesResponse);
+        if ("success".equals(liveUpdateChannelLikesResponse)) {
+            //to do something ......
+            log.debug("测试设置频道点赞数和观看热度值成功,{}", liveUpdateChannelLikesResponse);
         }
     }
     

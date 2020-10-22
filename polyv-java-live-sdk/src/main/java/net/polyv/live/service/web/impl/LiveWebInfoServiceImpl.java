@@ -7,6 +7,7 @@ import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
+import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
 import net.polyv.live.service.LiveBaseService;
@@ -66,6 +67,22 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
         LiveChannelSplashResponse liveChannelSplashResponse = this.basePost(url, liveChannelSplashRequest,
                 LiveChannelSplashResponse.class);
         return liveChannelSplashResponse;
+    }
+    
+    /**
+     * 设置频道点赞数和观看热度值
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymxxsz/update-likes/
+     * @param liveUpdateChannelLikesRequest 设置频道点赞数和观看热度值请求实体
+     * @return 设置频道点赞数和观看热度值返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String updateChannelLikes(LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url =LiveURL.getRealUrl(LiveURL.CHANNEL_LIKES_UPDATE_URL,liveUpdateChannelLikesRequest.getChannelId());
+        String liveUpdateChannelLikesResponse = this.basePost(url,liveUpdateChannelLikesRequest,String.class);
+        return liveUpdateChannelLikesResponse;
     }
     
 }

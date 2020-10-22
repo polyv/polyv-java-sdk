@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
+import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
 import net.polyv.live.entity.web.setting.LiveChannelGlobalSwitchRequest;
@@ -45,6 +46,17 @@ public interface ILiveWebInfoService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveChannelSplashResponse channelSplash(LiveChannelSplashRequest liveChannelSplashRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置频道点赞数和观看热度值
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymxxsz/update-likes/
+     * @param liveUpdateChannelLikesRequest 设置频道点赞数和观看热度值请求实体
+     * @return 设置频道点赞数和观看热度值返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String updateChannelLikes(LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

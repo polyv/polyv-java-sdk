@@ -2891,3 +2891,45 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 #### 返回对象描述[LiveChannelResponse]
 
 请求成功时为success，请求错误时为空
+
+### 查询频道点赞数和观众热度值
+
+#### 描述
+```
+批量获取频道点赞数和观看热度
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testChannelLikes() throws IOException, NoSuchAlgorithmException {
+        LiveChannelLikesRequest liveChannelLikesRequest = new LiveChannelLikesRequest();
+        liveChannelLikesRequest.setChannelIds("1965681");
+        LiveChannelLikesResponse liveChannelLikesResponse = new LiveWebInfoServiceImpl().channelLikes(
+                liveChannelLikesRequest);
+        Assert.assertNotNull(liveChannelLikesResponse);
+        if (liveChannelLikesResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道点赞数和观众热度值成功,{}", JSON.toJSONString(liveChannelLikesResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道点赞数和观众热度值](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名     | 必选 | 类型   | 说明                                          |
+| ---------- | ---- | ------ | --------------------------------------------- |
+| channelIds | 是   | string | 用逗号隔开的频道ID，如：10000,100001 最多20个 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+| 参数名    | 说明               |
+| --------- | ------------------ |
+| channelId | 频道ID，整型       |
+| likes     | 频道点赞数，整型   |
+| viewers   | 频道观看热度，整型 |

@@ -9,6 +9,8 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.entity.web.info.LiveChannelLikesRequest;
+import net.polyv.live.entity.web.info.LiveChannelLikesResponse;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
@@ -92,6 +94,24 @@ public class LiveWebInfoImplTest extends BaseTest {
         if ("success".equals(liveUpdateChannelLikesResponse)) {
             //to do something ......
             log.debug("测试设置频道点赞数和观看热度值成功,{}", liveUpdateChannelLikesResponse);
+        }
+    }
+    
+    /**
+     * 测试查询频道点赞数和观众热度值
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelLikes() throws IOException, NoSuchAlgorithmException {
+        LiveChannelLikesRequest liveChannelLikesRequest = new LiveChannelLikesRequest();
+        liveChannelLikesRequest.setChannelIds("1965681");
+        LiveChannelLikesResponse liveChannelLikesResponse = new LiveWebInfoServiceImpl().channelLikes(
+                liveChannelLikesRequest);
+        Assert.assertNotNull(liveChannelLikesResponse);
+        if (liveChannelLikesResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道点赞数和观众热度值成功,{}", JSON.toJSONString(liveChannelLikesResponse));
         }
     }
     

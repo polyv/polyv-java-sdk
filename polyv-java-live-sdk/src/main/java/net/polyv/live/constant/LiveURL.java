@@ -42,6 +42,12 @@ public class LiveURL {
      */
     public static final String CHANNEL_PUBLISHER_SET_URL =
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/setPublisher";
+        
+    /**
+     * 查询直播引导图开关状态及URL
+     */
+    public static final String CHANNEL_SPLASH_GET_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/getSplash";
     
     /**
      * 设置频道号密码
@@ -431,6 +437,11 @@ public class LiveURL {
      * 查询功能开关状态接口
      */
     public static final String ACCOUNT_SWITCH_URL = BASE_URI + "v3/channel/switch/get";
+    
+    /**
+     * 设置频道默认项开关
+     */
+    public static final String CHANNEL_GLOBAL_SWITCH_URL = BASE_URI + "v3/channel/common/update-global-enabled";
     
     /**
      * 分页获取连麦情况使用详情

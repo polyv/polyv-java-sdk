@@ -2698,3 +2698,125 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 #### 返回对象描述[LiveChannelResponse]
 
 成功为"success"
+
+### 设置频道默认项开关
+
+#### 描述
+```
+用于设置〔是否应用默认设置〕，包括的功能有打赏设置，广告设置，观看条件设置，跑马灯，功能开关，播放限制
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testChannelGlobalSwitch() throws IOException, NoSuchAlgorithmException {
+        LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest = new LiveChannelGlobalSwitchRequest();
+        liveChannelGlobalSwitchRequest.setChannelId(1965681)
+                .setGlobalEnabledType(LiveConstant.GlobalEnabledType.CALLBACK.getDesc())
+                .setEnabled("N");
+        String liveChannelGlobalSwitchResponse = new LiveWebSettingServiceImpl().channelGlobalSwitch(
+                liveChannelGlobalSwitchRequest);
+        Assert.assertNotNull(liveChannelGlobalSwitchResponse);
+        if ("true".equals(liveChannelGlobalSwitchResponse)) {
+            //to do something ......
+            log.debug("测试设置频道默认项开关成功{}", liveChannelGlobalSwitchResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置频道默认项开关](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名            | 必选 | 类型   | 说明               |
+| ----------------- | ---- | ------ | ------------------ |
+| channelId         | 是   | int    | 频道号             |
+| globalEnabledType | 是   | string | 功能类型           |
+| enabled           | 是   | string | Y或N，Y开启，N关闭 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+成功为"true"
+
+### 设置频道名称
+
+#### 描述
+```
+设置频道名称
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdateChannelName() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelNameRequest liveUpdateChannelNameRequest = new LiveUpdateChannelNameRequest();
+        liveUpdateChannelNameRequest.setChannelId(1965681).setName("Junit测试(勿删)");
+        String liveUpdateChannelNameResponse = new LiveWebInfoServiceImpl().updateChannelName(
+                liveUpdateChannelNameRequest);
+        Assert.assertNotNull(liveUpdateChannelNameResponse);
+        if ("true".equals(liveUpdateChannelNameResponse)) {
+            //to do something ......
+            log.debug("测试设置频道名称成功,{}", liveUpdateChannelNameResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置频道名称](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+[登录保利威官网后台直播列表页面查看是否修改成功](http://live.polyv.net/#/channel)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名 | 必选 | 类型   | 说明             |
+| ------ | ---- | ------ | ---------------- |
+| name   | 是   | string | 修改后的频道名称 |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+成功为"true"
+
+### 设置主持人姓名
+
+#### 描述
+```
+设置主持人姓名
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdateChannelPublisher() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest = new LiveUpdateChannelPublisherRequest();
+        liveUpdateChannelPublisherRequest.setChannelId(1965681).setPublisher("主讲人sadboy");
+        String liveUpdateChannelPublisherResponse = new LiveWebInfoServiceImpl().updateChannelPublisher(
+                liveUpdateChannelPublisherRequest);
+        Assert.assertNotNull(liveUpdateChannelPublisherResponse);
+        if ("true".equals(liveUpdateChannelPublisherResponse)) {
+            //to do something ......
+            log.debug("测试设置主持人姓名成功,{}", liveUpdateChannelPublisherResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置主持人姓名](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型   | 说明                             |
+| --------- | ---- | ------ | -------------------------------- |
+| publisher | 是   | string | 主持人姓名，不超过20个字符       |
+| channelId | 是   | int    | 频道ID，修改该频道ID的主持人姓名 |
+
+#### 返回对象描述[LiveChannelResponse]
+
+成功为"true"

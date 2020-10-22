@@ -1,4 +1,4 @@
-package net.polyv.live.service;
+package net.polyv.live.service.account;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -28,6 +28,7 @@ import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
 import net.polyv.live.entity.account.LiveListAccountResponse;
 import net.polyv.live.entity.account.LiveUpdateAccountSwitchRequest;
+import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.account.impl.LiveAccountServiceImpl;
 
 /**
@@ -225,7 +226,7 @@ public class LiveAccountImplTest extends BaseTest {
                 .setCurrentPage(1);
         LiveListAccountChannelBasicResponse liveListAccountChannelBasicResponse =
                 new LiveAccountServiceImpl().listChannelBasic(
-                        liveListAccountChannelBasicRequest);
+                liveListAccountChannelBasicRequest);
         Assert.assertNotNull(liveListAccountChannelBasicResponse);
         if (liveListAccountChannelBasicResponse != null) {
             //to do something ......

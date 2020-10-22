@@ -1,17 +1,18 @@
-package net.polyv.live.service.webview.impl;
+package net.polyv.live.service.web.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import net.polyv.live.constant.LiveURL;
-import net.polyv.live.entity.webview.LiveCreateChannelWriteListRequest;
+import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.service.LiveBaseService;
-import net.polyv.live.service.webview.ILiveWebViewService;
+import net.polyv.live.service.web.ILiveWebAuthService;
+
 /**
  * 直播Web观看页管理
  * @author: sadboy
  **/
-public class LiveWebViewServiceImpl extends LiveBaseService implements ILiveWebViewService {
+public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebAuthService {
     
     /**
      * 添加单个白名单

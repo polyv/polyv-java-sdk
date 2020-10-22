@@ -2,6 +2,7 @@ package net.polyv.live.service;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -28,6 +29,7 @@ import net.polyv.live.util.MapUtil;
 @Slf4j
 public class LiveBaseService {
     
+    
     /**
      * HTTP GET 公共请求
      * @param url 请求URL
@@ -37,11 +39,43 @@ public class LiveBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 异常
-     *  @throws NoSuchAlgorithmException 签名异常
+     * @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends LiveCommonRequest> T baseGet(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
-        T t = null;
+        return this.basePost(url, e).parseData(tClass);
+        
+    }
+    
+    /**
+     * HTTP GET 公共请求
+     * @param url 请求URL
+     * @param e 请求参数对象
+     * @param tClass 返回对象class类型
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    protected <T, E extends LiveCommonRequest> List<T> baseGetReturnArray(String url, E e, Class<T> tClass)
+            throws IOException, NoSuchAlgorithmException {
+        return this.basePost(url, e).parseArray(tClass);
+        
+    }
+    
+    /**
+     * HTTP GET 公共请求
+     * @param url 请求URL
+     * @param e 请求参数对象
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    protected <E extends LiveCommonRequest> LiveCommonResponse baseGet(String url, E e)
+            throws IOException, NoSuchAlgorithmException {
+        LiveCommonResponse liveCommonResponse = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(LiveSignUtil.generateUUID());
         }
@@ -58,14 +92,12 @@ public class LiveBaseService {
         url += "?" + queryStr;
         String response = HttpUtil.sendGetData(url, Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
-            LiveCommonResponse liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
+            liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
             if (liveCommonResponse.getCode() != 200) {
                 String message = "保利威HTTP错误，请求流水号：" + e.getRequestId() + " ,错误原因： " + liveCommonResponse.getMessage();
                 BusinessException exception = new BusinessException(liveCommonResponse.getCode(), message);
                 log.error(message, exception);
                 throw exception;
-            } else {
-                t = liveCommonResponse.parseData(tClass);
             }
         } else {
             String message = "保利威HTTP错误，请求流水号：" + e.getRequestId() + " ,错误原因： 服务器接口未返回任何数据";
@@ -73,7 +105,7 @@ public class LiveBaseService {
             log.error(message, exception);
             throw exception;
         }
-        return t;
+        return liveCommonResponse;
     }
     
     /**
@@ -99,13 +131,44 @@ public class LiveBaseService {
      * @param tClass 返回对象class类型
      * @param <T> 返回对象泛型
      * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装List对象
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    protected <T, E extends LiveCommonRequest> List<T> basePostReturnArray(String url, E e, Class<T> tClass)
+            throws IOException, NoSuchAlgorithmException {
+        return this.basePost(url, e).parseArray(tClass);
+    }
+    
+    /**
+     * HTTP POST 公共请求
+     * @param url 请求URL
+     * @param e 请求参数对象
+     * @param tClass 返回对象class类型
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
-     *  @throws NoSuchAlgorithmException 签名异常
+     * @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends LiveCommonRequest> T basePost(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
-        T t = null;
+        return this.basePost(url, e).parseData(tClass);
+    }
+    
+    
+    /**
+     * HTTP POST 公共请求
+     * @param url 请求URL
+     * @param e 请求参数对象
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    protected <E extends LiveCommonRequest> LiveCommonResponse basePost(String url, E e)
+            throws IOException, NoSuchAlgorithmException {
+        LiveCommonResponse liveCommonResponse = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(LiveSignUtil.generateUUID());
         }
@@ -120,14 +183,12 @@ public class LiveBaseService {
         validateBean(e);
         String response = HttpUtil.sendPostDataByMap(url, paramMap, Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
-            LiveCommonResponse liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
+            liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
             if (liveCommonResponse.getCode() != 200) {
                 String message = "保利威请求返回数据错误，请求流水号：" + e.getRequestId() + " ,错误原因： " + liveCommonResponse.getMessage();
                 BusinessException exception = new BusinessException(liveCommonResponse.getCode(), message);
                 log.error(message, exception);
                 throw exception;
-            } else {
-                t = liveCommonResponse.parseData(tClass);
             }
         } else {
             String message = "保利威HTTP错误，请求流水号：" + e.getRequestId() + " ,错误原因： 服务器接口未返回任何数据";
@@ -135,8 +196,9 @@ public class LiveBaseService {
             log.error(message, exception);
             throw exception;
         }
-        return t;
+        return liveCommonResponse;
     }
+    
     
     /**
      * HTTP POST 请求发送json，默认使用appId，timestamp，sign，requestId的 map 集合进行签名
@@ -147,7 +209,7 @@ public class LiveBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
-     *  @throws NoSuchAlgorithmException 签名异常
+     * @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url, E e, Class<T> tClass)
             throws IOException, NoSuchAlgorithmException {
@@ -165,11 +227,44 @@ public class LiveBaseService {
      * @param <E> 请求参数泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
-     *  @throws NoSuchAlgorithmException 签名异常
+     * @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url, Map<String, String> signMap, E e,
             Class<T> tClass) throws IOException, NoSuchAlgorithmException {
-        T t = null;
+        return this.basePost(url, e).parseData(tClass);
+        
+    }
+    
+    /**
+     * HTTP POST 请求发送json
+     * @param url 请求URL
+     * @param signMap 需要签名的map
+     * @param e 请求参数对象
+     * @param tClass 返回对象class类型
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    protected <T, E extends LiveCommonRequest> List<T> basePostJsonReturnArray(String url, Map<String, String> signMap,
+            E e, Class<T> tClass) throws IOException, NoSuchAlgorithmException {
+        return this.basePost(url, e).parseArray(tClass);
+    }
+    
+    /**
+     * HTTP POST 请求发送json
+     * @param url 请求URL
+     * @param signMap 需要签名的map
+     * @param e 请求参数对象
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    protected <E extends LiveCommonRequest> LiveCommonResponse basePostJson(String url, Map<String, String> signMap,
+            E e) throws IOException, NoSuchAlgorithmException {
+        LiveCommonResponse liveCommonResponse = null;
         if (StringUtils.isBlank(e.getRequestId())) {
             e.setRequestId(LiveSignUtil.generateUUID());
         }
@@ -183,14 +278,12 @@ public class LiveBaseService {
         url = url + "?" + MapUtil.mapJoinNotEncode(signMap);
         String response = HttpUtil.sendPostDataByJson(url, JSON.toJSONString(e), Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
-            LiveCommonResponse liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
+            liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
             if (liveCommonResponse.getCode() != 200) {
                 String message = "保利威请求返回数据错误，请求流水号：" + e.getRequestId() + " ,错误原因： " + liveCommonResponse.getMessage();
                 BusinessException exception = new BusinessException(liveCommonResponse.getCode(), message);
                 log.error(message, exception);
                 throw exception;
-            } else {
-                t = liveCommonResponse.parseData(tClass);
             }
         } else {
             String message = "保利威HTTP错误，请求流水号：" + e.getRequestId() + " ,错误原因： 服务器接口未返回任何数据";
@@ -198,7 +291,7 @@ public class LiveBaseService {
             log.error(message, exception);
             throw exception;
         }
-        return t;
+        return liveCommonResponse;
     }
     
 }

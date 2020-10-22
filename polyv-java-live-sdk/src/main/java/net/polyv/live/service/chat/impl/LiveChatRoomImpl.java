@@ -16,6 +16,8 @@ import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
 import net.polyv.live.entity.chat.LiveGetBadwordIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
 import net.polyv.live.entity.chat.LiveGetChatAdminResponse;
+import net.polyv.live.entity.chat.LiveGetHistoryChatMsgRequest;
+import net.polyv.live.entity.chat.LiveGetHistoryChatMsgResponse;
 import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
@@ -113,7 +115,7 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
     public List<LiveKickedListResponse> getKickedList(LiveKickedListRequest liveKickedListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_LIST_KICKED_URL;
-        return super.basePost(url, liveKickedListRequest, List.class);
+        return super.basePostReturnArray(url, liveKickedListRequest, LiveKickedListResponse.class);
     }
     
     /**
@@ -190,4 +192,20 @@ public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomSe
         String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_ADMIN_URL, String.valueOf(channelId));
         return super.basePost(url, liveCommonRequest, LiveGetChatAdminResponse.class);
     }
+    
+    /**
+     * 查询历史聊天信息，API地址：https://dev.polyv.net/2019/liveproduct/zblts/get-channel-badwords/
+     * @param liveGetHistoryChatMsgRequest 查询历史聊天信息请求实体
+     * @return  想要实体列表
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<LiveGetHistoryChatMsgResponse> getHistroyChatMsg(
+            LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest) throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_HISTORY_MSG_URL, liveGetHistoryChatMsgRequest.getChannelId());
+        return super.basePostReturnArray(url, liveGetHistoryChatMsgRequest, LiveGetHistoryChatMsgResponse.class);
+    }
+    
+    
 }

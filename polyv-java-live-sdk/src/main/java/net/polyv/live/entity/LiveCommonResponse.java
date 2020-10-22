@@ -1,5 +1,7 @@
 package net.polyv.live.entity;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSON;
 
 import lombok.Data;
@@ -11,21 +13,21 @@ import lombok.experimental.Accessors;
  **/
 @Data
 @Accessors(chain = true)
-public class LiveCommonResponse  {
+public class LiveCommonResponse {
     
- 
+    
     /**
      * 响应码
      */
     protected int code;
     
- 
+    
     /**
      * 请求状态
      */
     protected String status;
     
-   
+    
     /**
      * 错误信息
      */
@@ -37,13 +39,19 @@ public class LiveCommonResponse  {
     protected String data;
     
     
-    public  <T> T parseData(Class<T> dataClass) {
-        if(dataClass == String.class){
+    public <T> T parseData(Class<T> dataClass) {
+        if (dataClass == String.class) {
             return (T) this.data.toString();
         }
-        return JSON.parseObject(this.data , dataClass);
+        return JSON.parseObject(this.data, dataClass);
     }
-   
+    
+    public  <T> List<T> parseArray(Class<T> dataClass) {
+        return JSON.parseArray(this.data, dataClass);
+        
+    }
+    
+    
     /**
      * 判断请求是否成功
      * @return true/false

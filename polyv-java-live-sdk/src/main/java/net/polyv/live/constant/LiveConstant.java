@@ -204,8 +204,6 @@ public class LiveConstant {
         }
     }
     
-    
-    
     /**
      * 功能开关类型
      */
@@ -278,4 +276,47 @@ public class LiveConstant {
         }
     }
     
+    /**
+     * 频道通用开关类型
+     */
+    public enum GlobalEnabledType {
+        /**
+         * 观看条件设置;观看页管理-观看条件
+         */
+        AUTH("auth")
+        /**
+         * 功能开关设置;直播间管理-功能开关
+         */
+        ,SWITCH("switch")
+        /**
+         * 跑马灯设置;播放器管理-防录屏跑马灯
+         */
+        ,MARQUEE("marquee")
+        /**
+         * 播放限制设置;播放器管理-播放限制
+         */
+        ,RESTRICT("restrict")
+        /**
+         * 打赏设置;观看页管理-打赏设置
+         */
+        ,DONATE("donate")
+        /**
+         * 广告设置;观看也管理-营销设置-广告
+         */
+        ,ADVERT("advert")
+        /**
+         * 回调设置;
+         */
+        ,CALLBACK("callback");
+    
+        private String desc;
+    
+        private GlobalEnabledType(String desc) {
+            this.desc = desc;
+        }
+    
+        public String getDesc() {
+            return desc;
+        }
+    }
 }

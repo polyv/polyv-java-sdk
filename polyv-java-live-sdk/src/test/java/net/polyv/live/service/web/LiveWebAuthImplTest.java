@@ -32,7 +32,7 @@ public class LiveWebAuthImplTest extends BaseTest {
         Assert.assertNotNull(liveCreateChannelWriteListResponse);
         if ("success".equals(liveCreateChannelWriteListResponse)) {
             //to do something ......
-            log.debug("测试添加单个白名单-全局白名单成功" + liveCreateChannelWriteListResponse);
+            log.debug("测试添加单个白名单-全局白名单成功,{}", liveCreateChannelWriteListResponse);
         }
     }
     

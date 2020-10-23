@@ -109,6 +109,12 @@
 | currentTimeMillis | timestamp | 服务器返回的时间戳（毫秒）               |
 | linkMicLimit      | int       | 连麦人数                                 |
 
+----------------
+
+
+
+
+
 ### 查询账号下的频道列表
 
 #### 描述

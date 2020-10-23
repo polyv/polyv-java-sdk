@@ -19,7 +19,11 @@ import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelInitRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelInitResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelPasswordSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
@@ -43,69 +47,64 @@ import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
 public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
-     * 测试创建频道,注释避免频繁创建
+     * 测试创建频道
      * @throws IOException
      */
 //    @Test
-//    public void testCreateChannel() throws IOException, NoSuchAlgorithmException {
-//        LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
-//        liveChannelRequest.setName("Spring 知识精讲")
-//                .setChannelPasswd("666888")
-//                .setRequestId("2860257a405447e1bbbe9161da2dee72");
-//        LiveChannelResponse liveChannelResponse = new LiveChannelServiceImpl().createChannel(liveChannelRequest);
-//        Assert.assertNotNull(liveChannelResponse);
-//        if (liveChannelResponse != null) {
-//            //to do something ......
-//            log.debug("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
-//        }
-//
-//        //删除测试数据
-//        deleteChannel(liveChannelResponse.getChannelId());
-//    }
+    public void testCreateChannel() throws IOException, NoSuchAlgorithmException {
+        LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
+        liveChannelRequest.setName("Spring 知识精讲")
+                .setChannelPasswd("666888")
+                .setRequestId("2860257a405447e1bbbe9161da2dee72");
+        LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
+        Assert.assertNotNull(liveChannelResponse);
+        if (liveChannelResponse != null) {
+            //to do something ......
+            log.debug("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
+        }
+
+    }
     
     /**
-     * 测试创建并初始化频道 验证码观看，注释避免频繁创建
+     * 测试创建并初始化频道 验证码观看
      * @throws IOException 异常
      */
 //    @Test
-//    public void testCreateChannelInitCode() throws IOException, NoSuchAlgorithmException {
-//        LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
-//        LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
-//                "创建并初始化频道-验证码观看")
-//                .setChannelPasswd("123321")
-//                .setAutoPlay(1)
-//                .setPlayerColor("#666666")
-//                .setScene(LiveConstant.SceneType.ALONE.getDesc())
-//                .setCategoryId(340019)
-//                .setMaxViewer(0)
-//                .setStartTime(1602306535000l)
-//                .setDesc("这是一个描述")
-//                .setPublisher("sadboy主讲")
-//                .setLinkMicLimit(-1)
-//                .setPureRtcEnabled("N")
-//                .setReceiveChannelIds("213");
-//        liveChannelInitRequest.setBasicSetting(basicSetting);
-//        //验证码观看
-//        LiveChannelInitRequest.AuthSetting codeAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
-//                .setAuthType(LiveConstant.AuthType.CODE.getDesc())
-//                .setEnabled("Y")
-//                .setAuthCode("123456")
-//                .setQcodeTips("提示文案")
-//                .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-//        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
-//        authSettings.add(codeAuthSettings);
-//        liveChannelInitRequest.setAuthSettings(authSettings);
-//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
-//                liveChannelInitRequest);
-//        Assert.assertNotNull(liveChannelInitResponse);
-//        if (liveChannelInitResponse != null) {
-//            //to do something ......
-//            log.debug("测试创建并初始化频道 验证码观看创建成功{}", JSON.toJSONString(liveChannelInitResponse));
-//        }
-//
-//        //删除测试数据
-//        deleteChannel(liveChannelInitResponse.getChannelId());
-//    }
+    public void testCreateChannelInitCode() throws IOException, NoSuchAlgorithmException {
+        LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
+        LiveChannelInitRequest.BasicSetting basicSetting = liveChannelInitRequest.new BasicSetting().setName(
+                "创建并初始化频道-验证码观看")
+                .setChannelPasswd("123321")
+                .setAutoPlay(1)
+                .setPlayerColor("#666666")
+                .setScene(LiveConstant.SceneType.ALONE.getDesc())
+                .setCategoryId(340019)
+                .setMaxViewer(0)
+                .setStartTime(1602306535000l)
+                .setDesc("这是一个描述")
+                .setPublisher("sadboy主讲")
+                .setLinkMicLimit(-1)
+                .setPureRtcEnabled("N")
+                .setReceiveChannelIds("213");
+        liveChannelInitRequest.setBasicSetting(basicSetting);
+        //验证码观看
+        LiveChannelInitRequest.AuthSetting codeAuthSettings = liveChannelInitRequest.new AuthSetting().setRank(1)
+                .setAuthType(LiveConstant.AuthType.CODE.getDesc())
+                .setEnabled("Y")
+                .setAuthCode("123456")
+                .setQcodeTips("提示文案")
+                .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
+        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
+        authSettings.add(codeAuthSettings);
+        liveChannelInitRequest.setAuthSettings(authSettings);
+        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelOperateServiceImpl().createChannelInit(
+                liveChannelInitRequest);
+        Assert.assertNotNull(liveChannelInitResponse);
+        if (liveChannelInitResponse != null) {
+            //to do something ......
+            log.debug("测试创建并初始化频道 验证码观看创建成功{}", JSON.toJSONString(liveChannelInitResponse));
+        }
+    }
     
     /**
      * 测试创建并初始化频道 付费观看，注释避免频繁创建
@@ -140,7 +139,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
 //        authSettings.add(payAuthSettings);
 //        liveChannelInitRequest.setAuthSettings(authSettings);
-//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelOperateServiceImpl().createChannelInit(
 //                liveChannelInitRequest);
 //        Assert.assertNotNull(liveChannelInitResponse);
 //        if (liveChannelInitResponse != null) {
@@ -182,7 +181,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
 //        authSettings.add(phoneAuthSettings);
 //        liveChannelInitRequest.setAuthSettings(authSettings);
-//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelOperateServiceImpl().createChannelInit(
 //                liveChannelInitRequest);
 //        Assert.assertNotNull(liveChannelInitResponse);
 //        if (liveChannelInitResponse != null) {
@@ -233,7 +232,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
 //        authSettings.add(infoAuthSettings);
 //        liveChannelInitRequest.setAuthSettings(authSettings);
-//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelOperateServiceImpl().createChannelInit(
 //                liveChannelInitRequest);
 //        Assert.assertNotNull(liveChannelInitResponse);
 //        if (liveChannelInitResponse != null) {
@@ -276,7 +275,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
 //        authSettings.add(infoAuthSettings);
 //        liveChannelInitRequest.setAuthSettings(authSettings);
-//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelOperateServiceImpl().createChannelInit(
 //                liveChannelInitRequest);
 //        Assert.assertNotNull(liveChannelInitResponse);
 //        if (liveChannelInitResponse != null) {
@@ -320,7 +319,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
 //        authSettings.add(infoAuthSettings);
 //        liveChannelInitRequest.setAuthSettings(authSettings);
-//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelOperateServiceImpl().createChannelInit(
 //                liveChannelInitRequest);
 //        Assert.assertNotNull(liveChannelInitResponse);
 //        if (liveChannelInitResponse != null) {
@@ -362,7 +361,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //        List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
 //        authSettings.add(infoAuthSettings);
 //        liveChannelInitRequest.setAuthSettings(authSettings);
-//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelServiceImpl().createChannelInit(
+//        LiveChannelInitResponse liveChannelInitResponse = new LiveChannelOperateServiceImpl().createChannelInit(
 //                liveChannelInitRequest);
 //        Assert.assertNotNull(liveChannelInitResponse);
 //        if (liveChannelInitResponse != null) {
@@ -438,7 +437,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //            channels.add(liveChannel);
 //        }
 //        liveCreateChannelListRequest.setChannels(channels).setRequestId("123456");
-//        LiveCreateChannelListResponse liveCreateChannelListResponse = new LiveChannelServiceImpl().createChannelList(
+//        LiveCreateChannelListResponse liveCreateChannelListResponse = new LiveChannelOperateServiceImpl().createChannelList(
 //                liveCreateChannelListRequest);
 //        Assert.assertNotNull(liveCreateChannelListResponse);
 //        if (liveCreateChannelListResponse != null) {
@@ -588,7 +587,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //
 //        LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest();
 //        liveDeleteChannelRequest.setChannelId(channelId);
-//        String liveDeleteChannelResponse = new LiveChannelServiceImpl().deleteChannel(liveDeleteChannelRequest);
+//        String liveDeleteChannelResponse = new LiveChannelOperateServiceImpl().deleteChannel(liveDeleteChannelRequest);
 //        Assert.assertNotNull(liveDeleteChannelResponse);
 //        if ("true".equals(liveDeleteChannelResponse)) {
 //            //to do something ......
@@ -608,7 +607,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //
 //        LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChannelListRequest();
 //        liveDeleteChannelListRequest.setChannelIds(channelIds);
-//        String liveDeleteChannelListResponse = new LiveChannelServiceImpl().deleteChannelList(
+//        String liveDeleteChannelListResponse = new LiveChannelOperateServiceImpl().deleteChannelList(
 //                liveDeleteChannelListRequest);
 //        Assert.assertNotNull(liveDeleteChannelListResponse);
 //        if ("true".equals(liveDeleteChannelListResponse)) {
@@ -911,7 +910,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //    public void testchannelStreamInfo() throws IOException, NoSuchAlgorithmException {
 //        LiveChannelStreamInfoRequest liveChannelStreamInfoRequest = new LiveChannelStreamInfoRequest();
 //        liveChannelStreamInfoRequest.setChannelId(1951952);
-//        LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = new LiveChannelServiceImpl().channelStreamInfo(
+//        LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = new LiveChannelOperateServiceImpl().channelStreamInfo(
 //                liveChannelStreamInfoRequest);
 //        Assert.assertNotNull(liveChannelStreamInfoResponse);
 //        if (liveChannelStreamInfoResponse != null) {
@@ -935,7 +934,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //                .setCallbackUrl(null)
 //                .setAutoConvert("Y")
 //                .setMergeMp4("Y");
-//        String liveMergeChannelVideoAsyncResponse = new LiveChannelServiceImpl().mergeChannelVideoAsync(
+//        String liveMergeChannelVideoAsyncResponse = new LiveChannelOperateServiceImpl().mergeChannelVideoAsync(
 //                liveMergeChannelVideoAsyncRequest);
 //        Assert.assertNotNull(liveMergeChannelVideoAsyncResponse);
 //        if ("submit success".equals(liveMergeChannelVideoAsyncResponse)) {
@@ -959,7 +958,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //                .setFileName("删除-直播录制转点播")
 //                .setCataId(null)
 //                .setCallbackUrl(null);
-//        String liveConvertChannelVideoResponse = new LiveChannelServiceImpl().convertChannelVideoListAsync(
+//        String liveConvertChannelVideoResponse = new LiveChannelOperateServiceImpl().convertChannelVideoListAsync(
 //                liveConvertChannelVideoListAsyncRequest);
 //        Assert.assertNotNull(liveConvertChannelVideoResponse);
 //        if ("submit success".equals(liveConvertChannelVideoResponse)) {
@@ -977,7 +976,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //    public void testCreateChannelPPTRecordTask() throws IOException, NoSuchAlgorithmException {
 //        LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest = new LiveCreateChannelPPTRecordRequest();
 //        liveCreateChannelPPTRecordRequest.setChannelId(1951952).setVideoId("07f5bbeb67");
-//        String liveCreateChannelPPTRecordResponse = new LiveChannelServiceImpl().createChannelPPTRecordTask(
+//        String liveCreateChannelPPTRecordResponse = new LiveChannelOperateServiceImpl().createChannelPPTRecordTask(
 //                liveCreateChannelPPTRecordRequest);
 //        Assert.assertNotNull(liveCreateChannelPPTRecordResponse);
 //        if (liveCreateChannelPPTRecordResponse != null) {
@@ -995,7 +994,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //    public void testDeleteChannelVideo() throws IOException, NoSuchAlgorithmException {
 //        LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest = new LiveDeleteChannelVideoRequest();
 //        liveDeleteChannelVideoRequest.setChannelId(1951952).setStartTime("20201016111234");
-//        String liveDeleteChannelVideoResponse = new LiveChannelServiceImpl().deleteChannelVideo(
+//        String liveDeleteChannelVideoResponse = new LiveChannelOperateServiceImpl().deleteChannelVideo(
 //                liveDeleteChannelVideoRequest);
 //        Assert.assertNotNull(liveDeleteChannelVideoResponse);
 //        if (liveDeleteChannelVideoResponse != null) {
@@ -1016,7 +1015,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
 //        LiveDeleteChannelPlaybackVideoRequest liveDeleteChannelPlaybackVideoRequest =
 //                new LiveDeleteChannelPlaybackVideoRequest();
 //        liveDeleteChannelPlaybackVideoRequest.setChannelId(channelId).setVideoId(videoId).setListType("playback");
-//        String liveDeleteChannelPlaybackVideoResponse = new LiveChannelServiceImpl().deleteChannelPlaybackVideo
+//        String liveDeleteChannelPlaybackVideoResponse = new LiveChannelOperateServiceImpl().deleteChannelPlaybackVideo
 //        (liveDeleteChannelPlaybackVideoRequest);
 //                Assert.assertNotNull(liveDeleteChannelPlaybackVideoResponse);
 //        if ("success".equals(liveDeleteChannelPlaybackVideoResponse)) {

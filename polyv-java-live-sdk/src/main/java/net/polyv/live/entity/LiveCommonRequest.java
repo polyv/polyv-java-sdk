@@ -37,7 +37,7 @@ public class LiveCommonRequest extends CommonReqeust {
     /**
      * 每次请求的业务流水号，便于客户端/服务器端排查问题
      */
-    @ApiModelProperty(name="requestId",value  ="每次请求的业务流水号，便于客户端/服务器端排查问题",dataType = "String" ,required = true,example = "1234567" )
+    @ApiModelProperty(name="requestId",value  ="每次请求的业务流水号，便于客户端/服务器端排查问题",dataType = "String" ,required = true )
     @NotNull(message = "属性requestId不能为空")
     private String requestId;
     

@@ -1,10 +1,7 @@
 package net.polyv.live.service.web;
 
-import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,21 +9,16 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
-import net.polyv.live.constant.LiveConstant;
-import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
 import net.polyv.live.entity.web.info.LiveChannelCountDownRequest;
 import net.polyv.live.entity.web.info.LiveChannelCountDownResponse;
 import net.polyv.live.entity.web.info.LiveChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveChannelLikesResponse;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
-import net.polyv.live.entity.web.info.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelCountDownRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
-import net.polyv.live.entity.web.info.LiveUpdateChannelLogoRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
-import net.polyv.live.entity.web.info.LiveUpdateChannelSplashRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebInfoServiceImpl;
 

@@ -1,4 +1,4 @@
-package net.polyv.live.entity.web.info;
+package net.polyv.live.entity.web.auth;
 
 import java.util.List;
 

@@ -16,10 +16,9 @@ import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
-import net.polyv.live.entity.web.info.LiveUpdateChannelAuthRequest;
+import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebAuthServiceImpl;
-import net.polyv.live.service.web.impl.LiveWebInfoServiceImpl;
 
 /**
  * Web观看页-页面观看条件测试用例

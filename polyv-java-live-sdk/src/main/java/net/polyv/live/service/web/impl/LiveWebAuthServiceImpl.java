@@ -10,7 +10,7 @@ import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
-import net.polyv.live.entity.web.info.LiveUpdateChannelAuthRequest;
+import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.web.ILiveWebAuthService;
 import net.polyv.live.util.MapUtil;

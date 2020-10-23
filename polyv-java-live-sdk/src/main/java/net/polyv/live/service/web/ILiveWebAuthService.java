@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
-import net.polyv.live.entity.web.info.LiveUpdateChannelAuthRequest;
+import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 
 /**
  * 直播Web观看页管理

@@ -11,6 +11,7 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthCustomRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthCustomResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
+import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.service.LiveBaseService;
@@ -99,6 +100,22 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
         LiveChannelAuthCustomResponse liveChannelAuthCustomResponse = new LiveChannelAuthCustomResponse();
         liveChannelAuthCustomResponse.setChannelAuthExternals(channelAuthExternals);
         return liveChannelAuthCustomResponse;
+    }
+    
+    /**
+     * 设置授权观看类型
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/szgkygg/ymgktj/set-auth-type/
+     * @param liveChannelAuthTypeRequest 设置授权观看类型请求实体
+     * @return 设置授权观看类型返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateChannelAuthType(LiveChannelAuthTypeRequest liveChannelAuthTypeRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_AUTH_TYPE_URL,liveChannelAuthTypeRequest.getChannelId());
+        String liveChannelAuthTypeResponse = this.basePost(url, liveChannelAuthTypeRequest, String.class);
+        return "修改成功".equals(liveChannelAuthTypeResponse);
     }
     
 }

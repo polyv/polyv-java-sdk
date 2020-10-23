@@ -17,6 +17,7 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthCustomRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthCustomResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
+import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.service.BaseTest;
@@ -109,6 +110,23 @@ public class LiveWebAuthImplTest extends BaseTest {
         if (liveChannelAuthCustomResponse != null) {
             //to do something ......
             log.debug("测试设置自定义授权地址成功,{}", JSON.toJSONString(liveChannelAuthCustomResponse));
+        }
+    }
+    
+    /**
+     * 测试设置授权观看类型
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelAuthType() throws IOException, NoSuchAlgorithmException {
+        LiveChannelAuthTypeRequest liveChannelAuthTypeRequest = new LiveChannelAuthTypeRequest();
+        liveChannelAuthTypeRequest.setChannelId(1965681).setAuthType(LiveConstant.AuthType.INFO.getDesc());
+        Boolean liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(liveChannelAuthTypeRequest);
+        Assert.assertNotNull(liveChannelAuthTypeResponse);
+        if (liveChannelAuthTypeResponse != null) {
+            //to do something ......
+            log.debug("测试设置授权观看类型成功,{}", JSON.toJSONString(liveChannelAuthTypeResponse));
         }
     }
     

@@ -148,7 +148,9 @@ public class LiveChannelDemo {
 [main] DEBUG net.polyv.live.service.channel.LiveChannelDemo - 频道创建成功{"advertDuration":0,"advertFlvUrl":"","advertFlvVid":"","advertHeight":0,"advertHref":"","advertImage":"","advertType":"NONE","advertWidth":0,"autoPlay":false,"channelId":1972796,"coverHref":"","coverImage":"","currentTimeMillis":1603435207694,"cutoffHref":"","cutoffImage":"","description":"","isLowLatency":"N","isOnlyAudio":"N","linkMicLimit":0,"logoHref":"","logoImage":"","logoOpacity":1,"logoPosition":"tr","m3u8Url":"http://pull-d1.videocc.net/recordf/1b448be3231603435207373ea0f.m3u8?auth_key=1603435207-0-0-56b60df63374403e22821f79a681989f","m3u8Url1":"","m3u8Url2":"","m3u8Url3":"","name":"Spring 知识精讲","passwdEncrypted":"","passwdRestrict":false,"playerColor":"#666666","stream":"1b448be3231603435207373ea0f","url":"rtmp://push-d1.videocc.net/recordf/1b448be3231603435207373ea0f?auth_key=1603437007-0-0-bdbbb7f070573d80424a69c99c52ed0a","userId":"1b448be323","waitHref":"","waitImage":"","warmUpFlv":""}
 ```
 
-还可以官网登录验证创建是否成功；![image-20200928163452748](../img/image-20200928163452748.png)
+还可以官网登录验证创建是否成功；
+
+![image-20200928163452748](../img/image-20200928163452748.png)
 
 
 

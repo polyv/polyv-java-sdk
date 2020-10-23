@@ -173,7 +173,7 @@ public class LiveConstant {
      */
     public enum Flag {
         //Y=YES , N=NO
-        YES("Y"), NO("N");
+        YES("Y"), NO("N"),AOTU_PLAY("1"),MANUAL_PLAY("0");
         
         private String flag;
         
@@ -185,6 +185,43 @@ public class LiveConstant {
             return flag;
         }
     }
+    /**
+     * 	是否自动播放，0/1，默认1
+     */
+    public enum AutoPlay {
+        //	是否自动播放，0/1，默认1
+       AOTU_PLAY(1),MANUAL_PLAY(0);
+        
+        private Integer flag;
+        
+        private AutoPlay(Integer flag) {
+            this.flag = flag;
+        }
+        
+        public Integer getFlag() {
+            return flag;
+        }
+    }
+    
+    /**
+     * 	三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt 文档为主，video 视频为主
+     */
+    public enum WatchLayout {
+        //	三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt 文档为主，video 视频为主
+        PPT("ppt"),VIDEO("video");
+        
+        private String flag;
+        
+        private WatchLayout(String flag) {
+            this.flag = flag;
+        }
+        
+        public String getFlag() {
+            return flag;
+        }
+    }
+    
+    
     
     /**
      * 禁言类型

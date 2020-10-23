@@ -39,6 +39,7 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
+import net.polyv.live.util.LiveSignUtil;
 
 /**
  * @author: thomas
@@ -55,7 +56,14 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
         liveChannelRequest.setName("Spring 知识精讲")
                 .setChannelPasswd("666888")
-                .setRequestId("2860257a405447e1bbbe9161da2dee72");
+                .setAutoPlay(LiveConstant.AutoPlay.AOTU_PLAY.getFlag())
+                .setScene(LiveConstant.SceneType.PPT.getDesc())
+                .setMaxViewer(300)
+                .setWatchLayout(LiveConstant.WatchLayout.PPT.getFlag())
+//                .setLinkMicLimit(2)
+//                .setPureRtcEnabled(LiveConstant.Flag.YES.getFlag())
+                .setReceive(LiveConstant.Flag.YES.getFlag())
+                .setRequestId(LiveSignUtil.generateUUID());
         LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         Assert.assertNotNull(liveChannelResponse);
         if (liveChannelResponse != null) {

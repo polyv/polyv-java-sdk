@@ -1,73 +1,74 @@
-## 定义
+## 频道定义
 
 ​		频道在保利威系统里面可以理解一个直播间、一课堂、一场会议，多个C端用户可以在同一个频道观看主播端的直播视频，如多个学生可以观看老师的教学，频道包含频道名称、进入频道密码、频道ID、观看频道的条件设置等级别信息；
 
 ​		频道管理可以进入官网云直播->我的直播页面查看。具体页面如下：
 
-![avatar](..\img\image-20200925164735119.png)
+![image-20200928163452748](../../img/image-20200928163452748.png)
 
 
+## 创建频道
 
-## 直播频道操作
-
-### 创建频道
-
-#### 描述
+### 描述
 
 创建一个直播频道，返回直播频道相关的基础信息。
 
-#### 调用约束
+### 调用约束
 
-```
-1.频道名称、频道密码、请求流水号必填，其余参数依据实际需要填写；
-2.连麦人数不能大于16，设置连麦人数参数，必须先通知系统管理管开通连麦功能开关并设置账号级连麦人数；
-```
+接口调用有频率限制，[详细请查看](/limit.md)
 
-#### 代码示例
+连麦人数不能大于16，连麦和无延时直播参数设置前，必须先通知超管开通连麦和无延时直播开关；
+
+### 代码示例
 
 ```java
-   @Test
-    public void testCreateChannel() throws IOException {
-        LiveChannelRequest liveChannelRequest =  new  LiveChannelRequest();
-        liveChannelRequest.setName( "Spring 知识精讲")
+    /**
+     * 测试创建频道
+     * @throws IOException
+     */
+    @Test
+    public void testCreateChannel() throws IOException, NoSuchAlgorithmException {
+        LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
+        liveChannelRequest.setName("Spring 知识精讲")
                 .setChannelPasswd("666888")
-                .setRequestId("2860257a405447e1bbbe9161da2dee72");
-        LiveChannelResponse liveChannelResponse = new LiveChannelServiceImpl().createChannel(liveChannelRequest);
+                .setAutoPlay(LiveConstant.AutoPlay.AOTU_PLAY.getFlag())
+                .setScene(LiveConstant.SceneType.PPT.getDesc())
+                .setMaxViewer(300)
+                .setWatchLayout(LiveConstant.WatchLayout.PPT.getFlag())
+//                .setLinkMicLimit(2)
+//                .setPureRtcEnabled(LiveConstant.Flag.YES.getFlag())
+                .setReceive(LiveConstant.Flag.YES.getFlag())
+                .setRequestId(LiveSignUtil.generateUUID());
+        LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         Assert.assertNotNull(liveChannelResponse);
-        if(liveChannelResponse != null  ){
-            //todo something ......
-           log.debug("频道创建成功"+JSON.toJSONString(liveChannelResponse));
+        if (liveChannelResponse != null) {
+            //to do something ......
+            log.debug("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
         }
+
     }
 ```
 
-#### 单元测试流程
+### 请求入参描述 
 
-[swagger 程序接入-频道创建](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
-
-[登录保利威官网后台直播列表页面查看是否创建成功](http://live.polyv.net/#/channel)
-
-#### 请求入参描述[LiveChannelRequest]
-
-| 参数名            | 必选   | 类型       | 说明                                                         |
-| :---------------- | :----- | :--------- | :----------------------------------------------------------- |
-| name              | 是     | string     | 频道名称                                                     |
-| channelPasswd     | 是     | string     | 频道密码,长度不能超过16位                                    |
-| ~~courseId~~      | ~~否~~ | ~~string~~ | 课程号（参数已废弃，不推荐使用 ）                            |
-| autoPlay          | 否     | int        | 是否自动播放，0/1，默认1                                     |
-| playerColor       | 否     | string     | 播放器控制栏颜色，默认：#666666                              |
-| scene             | 否     | string     | 直播场景： alone 直播助手 ppt 云课堂 topclass 大班课         |
-| categoryId        | 否     | int        | 新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） |
-| maxViewer         | 否     | int        | 频道的最大在线人数观看限制的人数                             |
-| watchLayout       | 否     | string     | 三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt 文档为主，video 视频为主 |
-| linkMicLimit      | 否     | int        | 连麦人数; -1：使用账号的连麦人数，范围>=-1，<=账号的连麦人数，最大16人 |
-| pureRtcEnabled    | 否     | string     | 是否为无延时直播，Y 表示开启，默认为N                        |
-| receive           | 否     | string     | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) |
-| receiveChannelIds | 否     | string     | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) |
+| 参数名            | 必选 | 类型   | 说明                                                         |
+| :---------------- | :--- | :----- | :----------------------------------------------------------- |
+| name              | 是   | string | 频道名称                                                     |
+| channelPasswd     | 是   | string | 频道密码,长度不能超过16位                                    |
+| autoPlay          | 否   | int    | 是否自动播放，取值：0 - 手动播放，1 - 自动播放，默认1        |
+| playerColor       | 否   | string | 播放器控制栏颜色，默认：#666666(灰色)                        |
+| scene             | 否   | string | 直播场景： alone - 直播助手，  ppt- 云课堂 ， topclass -大班课 |
+| categoryId        | 否   | int    | 新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） |
+| maxViewer         | 否   | int    | 频道的最大在线人数观看限制的人数                             |
+| watchLayout       | 否   | string | 三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt-文档为主，video-视频为主 |
+| linkMicLimit      | 否   | int    | 连麦人数： 0-16，最多16人连麦，-1：使用账号级别的默认连麦人数配置 |
+| pureRtcEnabled    | 否   | string | 是否为无延时直播，Y 表示开启，N为不开启，默认为N             |
+| receive           | 否   | string | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) |
+| receiveChannelIds | 否   | string | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) |
 
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述
 
 | 参数名            | 类型      | 说明                                     |
 | :---------------- | :-------- | :--------------------------------------- |
@@ -114,18 +115,17 @@
 
 
 
+## 查询账号下的频道列表
 
-### 查询账号下的频道列表
-
-#### 描述
+### 描述
 ```
 查询账号下的频道列表
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testListAccount() throws IOException, NoSuchAlgorithmException {
@@ -139,27 +139,27 @@
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询账号下的频道列表](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 无
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名   | 说明       |
 | -------- | ---------- |
 | channels | 频道ID列表 |
 
-### 查询课件重制任务列表
+## 查询课件重制任务列表
 
-#### 描述
+### 描述
 接口用于查询课件重制任务列表
 
-#### 调用约束
+### 调用约束
 无
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testListPPTRecord() throws IOException {
@@ -173,11 +173,11 @@
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 
 [swagger 程序接入-查询课件重制任务列表](http://47.115.173.234:8002/doc.html#/直播SDK/直播频道管理/listPPTRecordUsingPOST)
 
-#### 请求入参描述[LiveListChannelPPTRecordRequest]
+### 请求入参描述[LiveListChannelPPTRecordRequest]
 
 | 参数名    | 必选 | 类型   | 说明 |
 | :-------- | :--- | :----- | :----------------------------------------------------------- |
@@ -189,7 +189,7 @@
 |sessionId|否|string|场次id |
 |startTime|否|string|直播开始时间开始区间,格式为yyyyMMddHHmmss |
 |status|否|string|课件重置状态值 |
-#### 返回对象描述[LiveListChannelPPTRecordResponse]
+### 返回对象描述[LiveListChannelPPTRecordResponse]
 | 参数名    | 类型   | 说明 |
 | :-------- |:----- | :----------------------------------------------------------- |
 |totalPages|integer|总页数|
@@ -217,17 +217,17 @@ contents列表
 |title|string|对应回放的名称|
 |url|string|重制mp4下载地址，有24小时的防盗链超时时间|
 
-### 创建重制课件任务
+## 创建重制课件任务
 
-#### 描述
+### 描述
 ```
 用于创建重制课件任务, 需等候任务队列执行完成，不是实时重制
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testCreateChannelPPTRecordTask() throws IOException, NoSuchAlgorithmException {
@@ -242,35 +242,35 @@ contents列表
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-创建重制课件任务](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否创建重制课件任务成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明       |
 | --------- | ---- | ------ | ---------- |
 | channelId | 是   | int    | 频道号     |
 | videoId   | 是   | string | 回放视频id |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 暂无作用 |
 
-### 批量创建频道
+## 批量创建频道
 
-#### 描述
+### 描述
 
 作用：批量创建直播频道
 
-#### 调用约束
+### 调用约束
 
 留意，如果响应失败，则表示全部频道都失败，不会有部份成功、部份失败的结果
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testCreateChannelList() throws IOException {
@@ -296,12 +296,12 @@ contents列表
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-批量创建频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否批量创建成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                                   |
 | --------- | ---- | ------ | ------------------------------------------------------ |
@@ -311,7 +311,7 @@ contents列表
 | channels  | 是   | json   | 频道列表，每次最多创建100个频道， **必须放在请求体中** |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名        | 必选 | 类型   | 说明                                                         |
 | ------------- | ---- | ------ | ------------------------------------------------------------ |
@@ -323,15 +323,15 @@ contents列表
 | scene         | 否   | string | 直播场景： alone 活动拍摄  ppt 三分屏  topclass  大班课      |
 | categoryId    | 否   | int    | 新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） |
 
-### 设置频道密码
+## 设置频道密码
 
-#### 描述
+### 描述
 设置频道密码
 
-#### 调用约束
+### 调用约束
 请留意，如果 channelId 参数为空，会对该用户所有的频道进行修改
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testUpdateChannelPassword() throws IOException, NoSuchAlgorithmException {
@@ -345,18 +345,18 @@ contents列表
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置频道密码](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看密码是否修改成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 | 参数名    | 必选 | 类型 | 说明                                                         |
 | --------- | ---- | ---- | ------------------------------------------------------------ |
 | channelId | 否   | int  | 频道ID，请留意，如果该参数为空，会对该用户所有的频道进行修改 |
 |passwd |	是 |	string| 	修改的密码|
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名  | 说明         |
 | ------- | ------------ |
@@ -365,15 +365,15 @@ contents列表
 | message | 异常错误信息 |
 | data    | 异常错误数据 |
 
-### 删除直播频道
+## 删除直播频道
 
-#### 描述
+### 描述
 删除直播频道
 
-#### 调用约束
+### 调用约束
 无
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testDeleteChannel() throws IOException, NoSuchAlgorithmException {
@@ -387,32 +387,32 @@ contents列表
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-删除直播频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看直播频道是否删除成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明   |
 | --------- | ---- | ------ | ------ |
 | channelId | 是   | string | 频道ID |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 请求结果 |
 
-### 批量删除频道
+## 批量删除频道
 
-#### 描述
+### 描述
 批量删除直播频道
 
-#### 调用约束
+### 调用约束
 无
 
-#### 代码示例
+### 代码示例
 ```java
 LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChannelListRequest();
         liveDeleteChannelListRequest.setChannelIds(new Integer[]{1938719, 1938888});
@@ -423,33 +423,33 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
             log.debug("批量删除频道成功" + JSON.toJSONString(liveDeleteChannelListResponse));
         }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-批量删除频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否批量删除频道成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名     | 必选 | 类型      | 说明                              |
 | ---------- | ---- | --------- | --------------------------------- |
 | channelIds | 是   | Integer[] | 频道ID列表，每次最多删除100个频道 |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 请求结果 |
 
-### 设置频道单点登陆token
+## 设置频道单点登陆token
 
-#### 描述
+### 描述
 设置频道单点登陆token;该接口在单点登录后台使用场景中配合使用，点击查看具体[单点登录文档](http://dev.polyv.net/2020/liveproduct/l-api/zhsz/sso/)
 
-#### 调用约束
+### 调用约束
 无
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testCreateChannelToken() throws IOException, NoSuchAlgorithmException {
@@ -463,12 +463,12 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置频道单点登陆token](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否设置频道单点登陆token成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明         |
 | --------- | ---- | ------ | ------------ |
@@ -476,7 +476,7 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
 | token     | 是   | string | 唯一的字符串 |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明     |
 | ------ | -------- |
@@ -484,13 +484,13 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
 
 <h3 id="查询频道信息">查询频道信息</h3>
 
-#### 描述
+### 描述
 查询直播频道信息
 
-#### 调用约束
+### 调用约束
 无
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testChannelInfo() throws IOException, NoSuchAlgorithmException {
@@ -505,18 +505,18 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询频道信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看信息是否一致](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型 | 说明   |
 | --------- | ---- | ---- | ------ |
 | channelId | 是   | int  | 频道ID |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名            | 类型      | 说明                                                  |
 | ----------------- | --------- | ----------------------------------------------------- |
@@ -567,13 +567,13 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
 
 <h3 id="查询频道基本信息">查询频道基本信息</h3>
 
-#### 描述
+### 描述
 接口用于查询频道基本信息
 
-#### 调用约束
+### 调用约束
 无
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testChannelBasicInfo() throws IOException, NoSuchAlgorithmException {
@@ -588,17 +588,17 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询频道基本信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否与查询数据一致](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 | 参数名    | 必选 | 类型   | 说明   |
 | --------- | ---- | ------ | ------ |
 | channelId | 是   | string | 频道ID |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名                | 类型                | 说明                                                         |
 | --------------------- | ------------------- | ------------------------------------------------------------ |
@@ -653,15 +653,15 @@ AuthSetting参数描述
 | externalUri          | string | 外部授权观看的接口地址                                       |
 | externalRedirectUri  | string | 外部授权观看，用户直接访问观看页时的跳转地址                 |
 
-### 查询授权和连麦的token
+## 查询授权和连麦的token
 
-#### 描述
+### 描述
 接口用于获取授权和连麦的token
 
-#### 调用约束
+### 调用约束
 无
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testChannelAuthToken() throws IOException, NoSuchAlgorithmException {
@@ -676,12 +676,12 @@ AuthSetting参数描述
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询授权和连麦的token](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否与系统展示相符](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                               |
 | --------- | ---- | ------ | -------------------------------------------------- |
@@ -689,7 +689,7 @@ AuthSetting参数描述
 | role      | 是   | String | 角色，值有：teacher admin guest assistant viewer等 |
 | origin    | 否   | String | 观看来源,可以有web,client,app等                    |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名          | 类型   | 说明                  |
 | --------------- | ------ | --------------------- |
@@ -698,13 +698,13 @@ AuthSetting参数描述
 
 
 
-### 创建子频道
+## 创建子频道
 
-#### 描述
+### 描述
 创建子频道
-#### 调用约束
+### 调用约束
 注意：role参数为Guest只支持三分屏场景的频道
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testCreateSonChannel() throws IOException, NoSuchAlgorithmException {
@@ -723,12 +723,12 @@ AuthSetting参数描述
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-创建子频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否创建子频道成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                                    |
 | --------- | ---- | ------ | ------------------------------------------------------- |
@@ -738,7 +738,7 @@ AuthSetting参数描述
 | actor     | 否   | string | 创建的助教或嘉宾头衔                                    |
 | avatar    | 否   | string | 创建的助教或嘉宾头像                                    |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名          | 说明                           |
 | --------------- | ------------------------------ |
@@ -759,15 +759,15 @@ AuthSetting参数描述
 | voteEnabled     | 发起投票                       |
 | role            | 子频道角色                     |
 
-### 设置子频道信息
+## 设置子频道信息
 
-#### 描述
+### 描述
 通过接口可以设置子频道的昵称、密码、角色、头像、翻页权限、公告权限等
 
-#### 调用约束
+### 调用约束
 (接口调用有频率限制，详细请查看)
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testUpdateSonChannelInfo() throws IOException, NoSuchAlgorithmException {
@@ -788,12 +788,12 @@ AuthSetting参数描述
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置子频道信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看设置子频道信息是否成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名          | 必选 | 类型   | 说明                                               |
 | --------------- | ---- | ------ | -------------------------------------------------- |
@@ -807,21 +807,21 @@ AuthSetting参数描述
 | notifyEnabled   | 否   | string | 子频道公告权限,值为Y或N，Y为开启，N为关闭          |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 请求结果 |
 
-### 设置子频道单点登陆token
+## 设置子频道单点登陆token
 
-#### 描述
+### 描述
 设置子频道单点登陆的token
 
-#### 调用约束
+### 调用约束
 (接口调用有频率限制，详细请查看)
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testCreateSonChannelToken() throws IOException, NoSuchAlgorithmException {
@@ -837,12 +837,12 @@ AuthSetting参数描述
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置子频道单点登陆token](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看设置子频道单点登陆token是否成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名  | 必选 | 类型   | 说明         |
 | ------- | ---- | ------ | ------------ |
@@ -850,21 +850,21 @@ AuthSetting参数描述
 | token   | 是   | string | 唯一的字符串 |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 请求结果 |
 
-### 查询子频道信息
+## 查询子频道信息
 
-#### 描述
+### 描述
 查询某个子频道的具体信息
 
-#### 调用约束
+### 调用约束
 (接口调用有频率限制，详细请查看)
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testSonChannelInfo() throws IOException, NoSuchAlgorithmException {
@@ -879,12 +879,12 @@ AuthSetting参数描述
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询子频道信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看查询子频道信息是否相符](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                               |
 | --------- | ---- | ------ | -------------------------------------------------- |
@@ -892,7 +892,7 @@ AuthSetting参数描述
 | account   | 是   | string | 子频道ID(不能以数字类型提交，否则可能去掉ID前的00) |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名          | 说明                                             |
 | --------------- | ------------------------------------------------ |
@@ -914,15 +914,15 @@ AuthSetting参数描述
 | role            | 子频道角色                                       |
 | pushUrl         | 子频道推流地址（子频道推流请参考后台导播台使用） |
 
-### 查询频道号下所有子频道信息
+## 查询频道号下所有子频道信息
 
-#### 描述
+### 描述
 查询频道下所有子频道的具体信息
 
-#### 调用约束
+### 调用约束
 (接口调用有频率限制，详细请查看)
 
-#### 代码示例
+### 代码示例
 ```java
 	@Test
     public void testSonChannelInfoList() throws IOException, NoSuchAlgorithmException {
@@ -937,18 +937,18 @@ AuthSetting参数描述
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询频道号下所有子频道信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看查询频道号下所有子频道信息是否相符](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明   |
 | --------- | ---- | ------ | ------ |
 | channelId | 是   | string | 频道ID |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名          | 说明                                             |
 | --------------- | ------------------------------------------------ |
@@ -970,15 +970,15 @@ AuthSetting参数描述
 | role            | 子频道角色                                       |
 | pushUrl         | 子频道推流地址（子频道推流请参考后台导播台使用） |
 
-### 删除子频道
+## 删除子频道
 
-#### 描述
+### 描述
 删除某个子频道
 
-#### 调用约束
+### 调用约束
 (接口调用有频率限制，详细请查看)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testDeleteSonChannel() throws IOException, NoSuchAlgorithmException {
@@ -990,33 +990,33 @@ AuthSetting参数描述
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-删除子频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否删除子频道成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                               |
 | --------- | ---- | ------ | -------------------------------------------------- |
 | channelId | 是   | int    | 频道ID                                             |
 | account   | 是   | string | 子频道ID(不能以数字类型提交，否则可能去掉ID前的00) |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明              |
 | ------ | ----------------- |
 | data   | 请求结果,true成功 |
 
-### 恢复直播频道推流
+## 恢复直播频道推流
 
-#### 描述
+### 描述
 恢复频道号推流
 
-#### 调用约束
+### 调用约束
 (接口调用有频率限制，详细请查看)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testResumeChannelStream() throws IOException, NoSuchAlgorithmException {
@@ -1030,30 +1030,30 @@ AuthSetting参数描述
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-恢复直播频道推流](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否恢复直播频道推流成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 | 参数名    | 必选 | 类型   | 说明                                               |
 | --------- | ---- | ------ | -------------------------------------------------- |
 | channelId | 是   | int    | 频道ID                                             |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 | 参数名 | 说明              |
 | ------ | ----------------- |
 | data   | 请求结果,success成功 |
 
-### 禁止直播频道推流
+## 禁止直播频道推流
 
-#### 描述
+### 描述
 禁止频道号推流（禁止有效期为24小时，24小时后会恢复频道）
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../notice.md)
 
-#### 代码示例
+### 代码示例
 ```java
 	@Test
     public void testCutoffChannelStream() throws IOException, NoSuchAlgorithmException {
@@ -1067,33 +1067,33 @@ AuthSetting参数描述
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-禁止直播频道推流](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否禁止直播频道推流成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型 | 说明   |
 | --------- | ---- | ---- | ------ |
 | channelId | 是   | int  | 频道ID |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明                 |
 | ------ | -------------------- |
 | data   | 请求结果,success成功 |
 
-### 批量查询频道直播流状态
+## 批量查询频道直播流状态
 
-#### 描述
+### 描述
 批量获取频道直播状态接口
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../notice.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testListChannelLiveStream() throws IOException, NoSuchAlgorithmException {
@@ -1110,18 +1110,18 @@ AuthSetting参数描述
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-批量查询频道直播流状态](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否批量查询频道直播流状态是否相符](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名     | 必选 | 类型   | 说明                                          |
 | ---------- | ---- | ------ | --------------------------------------------- |
 | channelIds | 是   | string | 用逗号隔开的频道ID，如：10000,100001 最多20个 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名      | 说明                                     |
 | ----------- | ---------------------------------------- |
@@ -1129,17 +1129,17 @@ AuthSetting参数描述
 | channelId   | 频道ID，整型                             |
 | status      | 频道的直播状态，字符串，值包括：live end |
 
-### 查询频道实时推流信息
+## 查询频道实时推流信息
 
-#### 描述
+### 描述
 接口用于获取频道的实时推流信息
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../notice.md)
 讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常
 deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testchannelStreamInfo() throws IOException, NoSuchAlgorithmException {
@@ -1154,16 +1154,16 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询频道实时推流信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名     | 必选 | 类型   | 说明                                          |
 | ---------- | ---- | ------ | --------------------------------------------- |
 | channelId | 是   | int | 频道ID |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名        | 类型   | 说明                          |
 | ------------- | ------ | ----------------------------- |
@@ -1174,15 +1174,15 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 | lfr           | string | 推流丢帧率，可能会为null      |
 | inBandWidth   | string | 推流码率，可能会为null        |
 
-### 将点播中的视频添加到视频库
+## 将点播中的视频添加到视频库
 
-#### 描述
+### 描述
 添加账号对应的点播视频作为直播频道下的回放视频。
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../notice.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
@@ -1201,12 +1201,12 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-将点播中的视频添加到视频库](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否添加视频库成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                                         |
 | --------- | ---- | ------ | ------------------------------------------------------------ |
@@ -1215,7 +1215,7 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 | listType  | 否   | string | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名           | 说明                                                       |
 | ---------------- | ---------------------------------------------------------- |
@@ -1237,19 +1237,19 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 | startTime        | 直播开始时间                                               |
 | liveType         | 回放视频的场景类型                                         |
 
-### 异步合并直播录制文件
+## 异步合并直播录制文件
 
-#### 描述
+### 描述
 ```
 异步合并直播录制文件
 ```
-#### 调用约束
+### 调用约束
 
 接口调用有频率限制，[详细请查看](../limit.md)
 
 1.该接口为异步处理，如果当前提交的文件如果正在处理，会返回 data: processing
 
-#### 代码示例
+### 代码示例
 ```java
 	@Test
     public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
@@ -1269,7 +1269,7 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-异步合并直播录制文件](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 如果设置了callbackUrl，需要在对应地址中处理回调结果，回调Json如下(参数描述见回调对象描述)：
@@ -1277,7 +1277,7 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 
 ```
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名      | 必选 | 类型   | 说明                                                  |
 | ----------- | ---- | ------ | ----------------------------------------------------- |
@@ -1288,13 +1288,13 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 | autoConvert | 否   | string | 传入Y，自动转存到对应点播分类下(直播回放-频道号-场次) |
 | mergeMp4    | 否   | string | 传Y合并MP4文件，传N或者不传合并m3u8文件               |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
 | data   | 成功响应时为相关的信息 "processing." 合并任务正在处理中  "submit success." 合并任务提交成功 |
 
-#### 回调对象描述
+### 回调对象描述
 
 | 参数     | 说明                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -1305,17 +1305,17 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 | fileName | 合并后的文件名称，成功时返回                                 |
 | sign     | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 |
 
-### 异步批量转存录制文件到点播
+## 异步批量转存录制文件到点播
 
-#### 描述
+### 描述
 ```
 用于批量转存直播录制文件到回放列表
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../notice.md)
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testConvertChannelVideo() throws IOException, NoSuchAlgorithmException {
@@ -1333,7 +1333,7 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-异步批量转存录制文件到点播](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 如果设置了callbackUrl，需要在对应地址中处理回调结果，回调Json如下(参数描述见回调对象描述)：
@@ -1341,7 +1341,7 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 
 ```
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名      | 必选 | 类型   | 说明                                            |
 | ----------- | ---- | ------ | ----------------------------------------------- |
@@ -1351,13 +1351,13 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 | cataId      | 否   | long   | 转存到点播的目录ID, 默认为点播的根目录ID        |
 | callbackUrl | 否   | string | 转存成功时候回调通知的url，通知的相关参数见附录 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
 | data   | 成功响应时为相关的信息 "processing." 合并任务正在处理中  "submit success." 合并任务提交成功 |
 
-#### 回调对象描述
+### 回调对象描述
 
 | 参数      | 说明                                                         |
 | --------- | ------------------------------------------------------------ |
@@ -1371,15 +1371,15 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 
 <h3 id="查询频道录制视频信息">查询频道录制视频信息</h3>
 
-#### 描述
+### 描述
 ```
 查询频道录制视频信息
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
  @Test
     public void testLiseChannelVideo() throws IOException, NoSuchAlgorithmException {
@@ -1397,12 +1397,12 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询频道录制视频信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否与后台数](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                           |
 | --------- | ---- | ------ | ---------------------------------------------- |
@@ -1412,7 +1412,7 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 | endDate   | 否   | string | 结束日期，格式为：yyyy-MM-dd                   |
 | sessionId | 否   | string | 直播的场次ID                                   |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名           | 说明                                           |
 | ---------------- | ---------------------------------------------- |
@@ -1428,17 +1428,17 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 | channelSessionId | 直播的场次ID                                   |
 | fileName         | 录制文件名称                                   |
 
-### 设置后台回放开关
+## 设置后台回放开关
 
-#### 描述
+### 描述
 ```
 能够控制单个/全部频道的回放开关，开启以及关闭。
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 channelId不设置表示所有频道执行该操作
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
@@ -1452,12 +1452,12 @@ channelId不设置表示所有频道执行该操作
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置后台回放开关](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否设置后台回放开关成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名          | 必选 | 类型   | 说明                                                         |
 | --------------- | ---- | ------ | ------------------------------------------------------------ |
@@ -1465,23 +1465,23 @@ channelId不设置表示所有频道执行该操作
 | channelId       | 否   | int    | 频道ID，非必填，不填添加该用户的所有频道ID的回放开关都设置为开/关 |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 响应结果 |
 
-### 查询视频库列表
+## 查询视频库列表
 
-#### 描述
+### 描述
 ```
 查询回放视频的视频列表信息
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testListChannelVideoLibrary() throws IOException, NoSuchAlgorithmException {
@@ -1498,17 +1498,17 @@ channelId不设置表示所有频道执行该操作
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询视频库列表](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 | 参数名          | 必选 | 类型   | 说明                                                         |
 | --------------- | ---- | ------ | ------------------------------------------------------------ |
 | channelId       | 是   | int    | 频道ID |
 |listType |	否 	|string 	|playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback|
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名           | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
@@ -1531,9 +1531,9 @@ channelId不设置表示所有频道执行该操作
 | startTime        | 直播开始时间                                                 |
 | liveType         | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
 
-### 设置视频库列表排序
+## 设置视频库列表排序
 
-#### 描述
+### 描述
 ```
 用于排序回放列表。
 videoIds可通过查询视频库列表获取，代码如下：
@@ -1557,10 +1557,10 @@ videoIds可通过查询视频库列表获取，代码如下：
     }
 </pre>
 </details>
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testChannelVideoSort() throws IOException, NoSuchAlgorithmException {
@@ -1577,12 +1577,12 @@ videoIds可通过查询视频库列表获取，代码如下：
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置视频库列表排序](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否设置视频库列表排序成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型       | 说明                                                         |
 | --------- | ---- | ---------- | ------------------------------------------------------------ |
@@ -1590,25 +1590,25 @@ videoIds可通过查询视频库列表获取，代码如下：
 | videoIds  | 是   | string数组 | 完整回放视频ID列表,存放在请求体中,请求视频ID数量必须和回放列表数量一致，且不能少或者缺或者多 |
 | listType  | 否   | string     | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 响应结果 |
 
-### 查询频道直播场次信息
+## 查询频道直播场次信息
 
-#### 描述
+### 描述
 ```
 用于分页查询频道直播场次信息
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
 [分页公共参数描述](../page.md)
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testListChannelSessionInfo() throws IOException, NoSuchAlgorithmException {
@@ -1627,10 +1627,10 @@ videoIds可通过查询视频库列表获取，代码如下：
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询频道直播场次信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                     |
 | --------- | ---- | ------ | ------------------------ |
@@ -1638,7 +1638,7 @@ videoIds可通过查询视频库列表获取，代码如下：
 | startDate | 否   | String | 开始日期，格式YYYY-MM-DD |
 | endDate   | 否   | String | 结束日期，格式YYYY-MM-DD |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名    | 说明                     |
 | --------- | ------------------------ |
@@ -1647,17 +1647,17 @@ videoIds可通过查询视频库列表获取，代码如下：
 | startTime | 直播开始时间，13位时间戳 |
 | endTime   | 直播结束时间，13位时间戳 |
 
-### 查询指定文件ID的录制文件信息
+## 查询指定文件ID的录制文件信息
 
-#### 描述
+### 描述
 ```
 用于通过文件ID查询录制文件信息
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testChannelVideoOnly() throws IOException, NoSuchAlgorithmException {
@@ -1673,17 +1673,17 @@ videoIds可通过查询视频库列表获取，代码如下：
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询指定文件ID的录制文件信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明   |
 | --------- | ---- | ------ | ------ |
 | channelId | 是   | string | 频道号 |
 | fileId    | 是   | string | 文件ID |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名           | 说明         |
 | ---------------- | ------------ |
@@ -1704,17 +1704,17 @@ videoIds可通过查询视频库列表获取，代码如下：
 | userId           | 用户ID       |
 | width            | 宽           |
 
-### 查询频道的回放开关状态
+## 查询频道的回放开关状态
 
-#### 描述
+### 描述
 ```
 用于获取频道的回放开关
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
 @Test
     public void testChannelPlayBackEnabledInfo() throws IOException, NoSuchAlgorithmException {
@@ -1730,25 +1730,25 @@ videoIds可通过查询视频库列表获取，代码如下：
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询频道的回放开关状态](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型 | 说明   |
 | --------- | ---- | ---- | ------ |
 | channelId | 是   | int  | 频道号 |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明                                     |
 | ------ | ---------------------------------------- |
 | data   | 成功响应时为回放开关，Y（开启）、N(关闭) |
 
-### 删除直播暂存中的录制文件
+## 删除直播暂存中的录制文件
 
-#### 描述
+### 描述
 ```
 根据开始录制时间删除频道下对应的的录制视频
 提交的开始录制时间参数（startTime）格式与
@@ -1756,10 +1756,10 @@ videoIds可通过查询视频库列表获取，代码如下：
 sessionId和startTime不能同时为空，可单独提交某一参数。
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testDeleteChannelVideo() throws IOException, NoSuchAlgorithmException {
@@ -1774,10 +1774,10 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-删除直播暂存中的录制文件](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                                         |
 | --------- | ---- | ------ | ------------------------------------------------------------ |
@@ -1785,24 +1785,24 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
 | sessionId | 否   | string | 录制视频的场次ID                                             |
 | startTime | 否   | string | 录制视频的开始录制时间，可从  [`获取频道录制信息`](#查询频道录制视频信息)接口中获取 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明     |
 | ------ | -------- |
 | data   | 暂无作用 |
 
-### 删除视频库列表中的视频
+## 删除视频库列表中的视频
 
-#### 描述
+### 描述
 ```
 删除回放列表中某个视频
 只是在回放列表删除，点播后台中视频依然存在。
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testDeleteChannelPlaybackVideo() throws IOException, NoSuchAlgorithmException {
@@ -1819,10 +1819,10 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-删除视频库列表中的视频](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                                         |
 | --------- | ---- | ------ | ------------------------------------------------------------ |
@@ -1830,23 +1830,23 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
 | videoId   | 是   | string | 直播系统生成的id，可在回放列表接口的返回数据获取             |
 | listType  | 否   | string | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明              |
 | ------ | ----------------- |
 | data   | success为删除成功 |
 
-### 获取频道一定时间范围之内的历史最高并发人数
+## 获取频道一定时间范围之内的历史最高并发人数
 
-#### 描述
+### 描述
 ```
 获取频道一定时间范围之内的历史最高并发人数，粒度可以支持到分钟
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testMaxChannelHistoryConcurrent() throws IOException, NoSuchAlgorithmException {
@@ -1867,10 +1867,10 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-获取频道一定时间范围之内的历史最高并发人数](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型 | 说明                     |
 | --------- | ---- | ---- | ------------------------ |
@@ -1879,24 +1879,24 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
 | endTime   | 是   | long | 结束时间13位毫秒级时间戳 |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明                          |
 | ------ | ----------------------------- |
 | data   | 时间区间内最高并发人数，如：1 |
 
-### 分页获取连麦情况使用详情
+## 分页获取连麦情况使用详情
 
-#### 描述
+### 描述
 ```
 分页获取连麦详情数据
 支持账号、批量频道获取详情数据
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testListChannelMic() throws IOException, NoSuchAlgorithmException {
@@ -1911,10 +1911,10 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-分页获取连麦情况使用详情](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 [分页请求参数查看](../page.md)
 
@@ -1925,7 +1925,7 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
 | endDay     | 否   | string | 结束时间，格式：yyyy-MM-dd                  |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 [分页返回参数查看](../page.md)
 
@@ -1936,14 +1936,14 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
 | currentDay | string | 当天，如：2019-10-25       |
 | history    | int    | 使用连麦分钟数，单位：分钟 |
 
-### 分页查询频道观看日志
+## 分页查询频道观看日志
 
-#### 描述
+### 描述
 ```
 分页获取频道的观看日志
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
 **注意**：
@@ -1954,7 +1954,7 @@ startTime、endTime 和 currentDay不能都不传；
 
 currentDay与startTime、endTime 同时传将使用currentDay的值。
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testListChannelViewlog() throws IOException, NoSuchAlgorithmException {
@@ -1969,10 +1969,10 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-分页查询频道观看日志](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 [分页请求参数查看](../page.md)
 
@@ -1985,7 +1985,7 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | viewerName | 否               | string | 观看用户昵称                                           |
 | logType    | 否               | string | 观看日志类型，取值 vod 表示观看回放，取值live 表示直播 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 [分页返回参数查看](../page.md)
 | 字段            | 说明                                |
 | --------------- | ----------------------------------- |
@@ -2013,18 +2013,18 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | createdTime     | 日志创建日期   (13位时间戳)         |
 | lastModified    | 日志更新日期   (13位时间戳)         |
 
-### 查询多个频道汇总的统计数据
+## 查询多个频道汇总的统计数据
 
-#### 描述
+### 描述
 ```
 查询多个频道汇总的统计数据
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 根据是否提交channelIds来获取全部频道/某个频道查询时间内的播放数据
 
-#### 代码示例
+### 代码示例
 ```java
  @Test
     public void testListChannelSummary() throws IOException, NoSuchAlgorithmException {
@@ -2041,10 +2041,10 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询多个频道汇总的统计数据](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名     | 必选 | 类型   | 说明                                                         |
 | ---------- | ---- | ------ | ------------------------------------------------------------ |
@@ -2052,7 +2052,7 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | endDate    | 是   | string | 查询的结束日期 格式为yyyy-MM-dd                              |
 | channelIds | 否   | string | 要查询的频道号，不提交默认为查询所有频道，多个频道号以英文逗号“,”分开，如：105420,104400 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名                     | 说明                            |
 | -------------------------- | ------------------------------- |
@@ -2073,18 +2073,18 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | unknownPcPlayDuration      | pc 其他 播放时长，单位为分钟    |
 | unknownMobilePlayDuration  | 移动端其他 播放时长，单位为分钟 |
 
-### 查询多个频道的实时在线人数
+## 查询多个频道的实时在线人数
 
-#### 描述
+### 描述
 ```
 获取多个频道实时在线人数
 每个频道返回最近2分半钟（10秒一个点，15条数据）的实时在线人数信息。每个频道的结果列表按照时间降序排序。
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testListChannelViewerCount() throws IOException, NoSuchAlgorithmException {
@@ -2100,16 +2100,16 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询多个频道的实时在线人数](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveListChannelViewerCountRequest]
+### 请求入参描述[LiveListChannelViewerCountRequest]
 
 | 参数名     | 必选 | 类型   | 说明                   |
 | ---------- | ---- | ------ | ---------------------- |
 | channelIds | 是   | string | 多个频道ID，用逗号隔开 |
 
-#### 返回对象描述[LiveListChannelViewerCountResponse]
+### 返回对象描述[LiveListChannelViewerCountResponse]
 
 | 参数名    | 说明                       |
 | --------- | -------------------------- |
@@ -2117,18 +2117,18 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | account   | 数字格式，在线人数         |
 | time      | 统计的时间，格式：HH:mm:ss |
 
-### 查询频道的历史并发人数
+## 查询频道的历史并发人数
 
-#### 描述
+### 描述
 ```
 用于获取频道在某个日期区间并发人数(按照时间升序排序)
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 开始日期和结束日期的时间跨度：最多查两个月内的数据
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testChannelViewerConcurrence() throws IOException, NoSuchAlgorithmException {
@@ -2145,10 +2145,10 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询频道的历史并发人数](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                     |
 | --------- | ---- | ------ | ------------------------ |
@@ -2156,7 +2156,7 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | startDate | 是   | string | 开始日期格式，yyyy-MM-dd |
 | endDate   | 是   | string | 结束日期格式，yyyy-MM-dd |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名  | 必选 | 类型   | 说明                                              |
 | ------- | ---- | ------ | ------------------------------------------------- |
@@ -2164,17 +2164,17 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | minute  | 是   | string | 统计的时间点（时间格式：12H，例：10:30）          |
 | viewers | 是   | string | 某个时间点实时观看人数                            |
 
-### 获取频道文档列表
+## 获取频道文档列表
 
-#### 描述
+### 描述
 ```
 用于频道文档列表接口
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testListChannelDoc() throws IOException, NoSuchAlgorithmException {
@@ -2190,17 +2190,17 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-获取频道文档列表](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                                         |
 | --------- | ---- | ------ | ------------------------------------------------------------ |
 | channelId | 是   | int    | 频道号                                                       |
 | status    | 否   | String | 文档状态，不传查询所有（“normal” ：正常，“waitUpload”：等待上传,“failUpload”：上传失败，"waitConvert":转换PPT中,"failConvert":转换PPT失败） |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名       | 说明                                                         |
 | ------------ | ------------------------------------------------------------ |
@@ -2217,17 +2217,17 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | type         | 类型，区分旧版PPT还是新版PPT，新版值为“new”，旧版值为“old”   |
 | previewImage | ppt预览小图地址                                              |
 
-### 删除频道文档
+## 删除频道文档
 
-#### 描述
+### 描述
 ```
 删除频道文档
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testDeleteChannelDoc() throws IOException, NoSuchAlgorithmException {
@@ -2244,10 +2244,10 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-删除频道文档](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                                         |
 | --------- | ---- | ------ | ------------------------------------------------------------ |
@@ -2255,22 +2255,22 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | fileId    | 是   | string | 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串)         |
 | type      | 是   | string | 新旧版文件类型，“old”：旧版， “new”：  新版【这个值可以从文档列表接口返回数据的type（类型）中获得】【多个文件需要删除，请按照fileId顺序对应ppt新旧类型，用英文逗号隔开拼接成字符串)，type中的类型数量必须跟fileId中的包含的ID数量一致】 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 名称 | 类型   | 说明                  |
 | ---- | ------ | --------------------- |
 | data | string | 成功响应数据,成功为"" |
-### 获取账号连麦分钟数使用量与剩余量
+## 获取账号连麦分钟数使用量与剩余量
 
-#### 描述
+### 描述
 ```
 获取账号连麦分钟数使用量与剩余量
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testMicDuration() throws IOException, NoSuchAlgorithmException {
@@ -2284,32 +2284,32 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-获取账号连麦分钟数使用量与剩余量](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 无
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名    | 类型 | 说明                           |
 | --------- | ---- | ------------------------------ |
 | available | int  | 可用连麦分钟数，单位分钟       |
 | history   | int  | 历史已使用连麦分钟数，单位分钟 |
 
-### 设置功能开关状态
+## 设置功能开关状态
 
-#### 描述
+### 描述
 ```
 用于修改功能开关设置，可修改全局开关设置或频道开关设置
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 注：isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;closeChaterList当enabled值为Y时，表示的是关闭在线列表
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testUpdateAccountSwitch() throws IOException, NoSuchAlgorithmException {
@@ -2324,10 +2324,10 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置功能开关状态](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                                         |
 | --------- | ---- | ------ | ------------------------------------------------------------ |
@@ -2335,25 +2335,25 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | type      | 是   | string | 开关类型，具体取值可见net.polyv.live.constant.LiveConstant.ChannelSwitch |
 | enabled   | 是   | string | 开关值，Y或N                                                 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 名称 | 类型   | 说明                    |
 | ---- | ------ | ----------------------- |
 | data | string | 成功响应数据,成功为true |
 
-### 设置账号单点登录的token
+## 设置账号单点登录的token
 
-#### 描述
+### 描述
 ```
 设置账号单点登陆的token
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 token 参数请勿过于简单，建议使用16位随机字符串
 token设置后需要10秒内及时使用，使用请参考后台单点登录
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testCreateAccountToken() throws IOException, NoSuchAlgorithmException {
@@ -2368,16 +2368,16 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置账号单点登录的token](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名 | 必选 | 类型   | 说明         |
 | ------ | ---- | ------ | ------------ |
 | token  | 是   | string | 唯一的字符串 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明                  |
 | ------ | --------------------- |
@@ -2385,16 +2385,16 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 
 <h3 id="streamCallback">设置直播状态回调通知url</h3>
 
-#### 描述
+### 描述
 ```
 设置账号下频道直播状态改变通知回调地址的接口
 ```
 回调参数见：[直播状态回调](../callback.md)
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 回调地址为空，表示关闭回调功能，如果要提交的地址参数url，必须以 http:// 或者 https:// 开头
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testUpdateStreamCallbackUrl() throws IOException, NoSuchAlgorithmException {
@@ -2409,38 +2409,38 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置直播状态回调通知url](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否设置直播状态回调通知url成功](https://live.polyv.net/#/develop/callbackSetting)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名 | 必选 | 类型   | 说明                                                         |
 | ------ | ---- | ------ | ------------------------------------------------------------ |
 | url    | 否   | string | 回调地址url，不提交表示关闭回调功能，如果提交，必须以 http:// 或者 https:// 开头 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明                  |
 | ------ | --------------------- |
 | data   | 成功时候返回，success |
 
-### 设置转存成功回调通知url
+## 设置转存成功回调通知url
 
-#### 描述
+### 描述
 ```
 设置账号下转存回放视频成功通知回调地址的接口
 ```
 
 回调参数见：[转存成功回调](../callback.md)
 
-#### 调用约束
+### 调用约束
 
 接口调用有频率限制，[详细请查看](../limit.md)
 回调地址为空，表示关闭回调功能，如果要提交的地址参数url，必须以 http:// 或者 https:// 开头
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testUpdatePlaybackCallbackUrl() throws IOException, NoSuchAlgorithmException {
@@ -2456,37 +2456,37 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置转存成功回调通知url](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否设置转存成功回调通知url成功](https://live.polyv.net/#/develop/callbackSetting)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名 | 必选 | 类型   | 说明                                                         |
 | ------ | ---- | ------ | ------------------------------------------------------------ |
 | url    | 否   | string | 回调地址url，不提交表示关闭回调功能，如果提交，必须以 http:// 或者 https:// 开头 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明           |
 | ------ | -------------- |
 | data   | 成功时候返回"" |
-### 设置录制回调通知url
+## 设置录制回调通知url
 
-#### 描述
+### 描述
 ```
 设置账号下录制视频通知回调地址的接口
 ```
 
 回调参数见：[录制生成回调](../callback.md)
 
-#### 调用约束
+### 调用约束
 
 接口调用有频率限制，[详细请查看](../limit.md)
 回调地址为空，表示关闭回调功能，如果要提交的地址参数url，必须以 http:// 或者 https:// 开头
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testUpdateRecordCallbackUrl() throws IOException, NoSuchAlgorithmException {
@@ -2501,35 +2501,35 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置录制回调通知url](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否设置录制回调通知url成功](https://live.polyv.net/#/develop/callbackSetting)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名 | 必选 | 类型   | 说明                                                         |
 | ------ | ---- | ------ | ------------------------------------------------------------ |
 | url    | 否   | string | 回调地址url，不提交表示关闭回调功能，如果提交，必须以 http:// 或者 https:// 开头 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名 | 说明           |
 | ------ | -------------- |
 | data   | 成功时候返回"" |
 
-### 查询功能开关状态接口
+## 查询功能开关状态接口
 
-#### 描述
+### 描述
 ```
 用于获取开关设置，可获取全局开关设置或频道开关设置
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 注：isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;closeChaterList当enabled值为Y时，表示的是关闭在线列表
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testAccountSwitch() throws IOException, NoSuchAlgorithmException {
@@ -2544,38 +2544,38 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-批量创建频道](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否相同](https://live.polyv.net/#/setting/functionalSwitch)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型 | 说明                             |
 | --------- | ---- | ---- | -------------------------------- |
 | channelId | 否   | int  | 频道号，不传该参数为获取全局设置 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名  | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
 | type    | 开关类型，具体类型见net.polyv.live.constant.LiveConstant.ChannelSwitch |
 | enabled | 是否已打开开关                                               |
 
-### 查询账号下所有频道缩略信息
+## 查询账号下所有频道缩略信息
 
-#### 描述
+### 描述
 ```
 获取账号下所有的频道简单信息列表
 ```
 
 如需频道具体信息，请使用[查询频道基本信息](#查询频道基本信息)
 
-#### 调用约束
+### 调用约束
 
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testListChannelBasic() throws IOException, NoSuchAlgorithmException {
@@ -2596,10 +2596,10 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询账号下所有频道缩略信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 [分页请求参数查看](../page.md)
 
@@ -2609,7 +2609,7 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | watchStatus | 否   | string | 观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始 |
 | keyword     | 否   | string | 频道名称，模糊查询                                           |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 [分页返回参数查看](../page.md)
 
@@ -2624,17 +2624,17 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | watchStatus   | 观看页状态描述，直播中，回放中，已结束，未开始               |
 | watchUrl      | 观看页链接                                                   |
 
-### 查询账户分钟数
+## 查询账户分钟数
 
-#### 描述
+### 描述
 ```
 获取用户历史已经使用的分钟数及当前可用的分钟数
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testUserDurations() throws IOException, NoSuchAlgorithmException {
@@ -2648,14 +2648,14 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询账户分钟数](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 无
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名    | 说明                         |
 | --------- | ---------------------------- |
@@ -2663,18 +2663,18 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | available | 当前可用的分钟数，长整型     |
 | used      | 历史已经使用的分钟数，长整型 |
 
-### 设置视频库列表的默认视频
+## 设置视频库列表的默认视频
 
-#### 描述
+### 描述
 ```
 将回放列表中的某个视频设置为默认回放视频
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 一个频道只能设置一个默认回放视频。
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testChannelDefaultVideo() throws IOException, NoSuchAlgorithmException {
@@ -2689,10 +2689,10 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置视频库列表的默认视频](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                                                         |
 | --------- | ---- | ------ | ------------------------------------------------------------ |
@@ -2701,21 +2701,21 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | listType  | 否   | string | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 成功为"success"
 
-### 设置频道默认项开关
+## 设置频道默认项开关
 
-#### 描述
+### 描述
 ```
 用于设置〔是否应用默认设置〕，包括的功能有打赏设置，广告设置，观看条件设置，跑马灯，功能开关，播放限制
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testChannelGlobalSwitch() throws IOException, NoSuchAlgorithmException {
@@ -2732,10 +2732,10 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置频道默认项开关](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名            | 必选 | 类型   | 说明               |
 | ----------------- | ---- | ------ | ------------------ |
@@ -2743,21 +2743,21 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | globalEnabledType | 是   | string | 功能类型           |
 | enabled           | 是   | string | Y或N，Y开启，N关闭 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 成功为"true"
 
-### 设置频道名称
+## 设置频道名称
 
-#### 描述
+### 描述
 ```
 设置频道名称
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testUpdateChannelName() throws IOException, NoSuchAlgorithmException {
@@ -2772,33 +2772,33 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置频道名称](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
 [登录保利威官网后台直播列表页面查看是否修改成功](http://live.polyv.net/#/channel)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名 | 必选 | 类型   | 说明             |
 | ------ | ---- | ------ | ---------------- |
 | name   | 是   | string | 修改后的频道名称 |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 成功为"true"
 
-### 设置主持人姓名
+## 设置主持人姓名
 
-#### 描述
+### 描述
 ```
 设置主持人姓名
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testUpdateChannelPublisher() throws IOException, NoSuchAlgorithmException {
@@ -2813,62 +2813,62 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置主持人姓名](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型   | 说明                             |
 | --------- | ---- | ------ | -------------------------------- |
 | publisher | 是   | string | 主持人姓名，不超过20个字符       |
 | channelId | 是   | int    | 频道ID，修改该频道ID的主持人姓名 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 成功为"true"
 
-### 查询直播引导图开关状态及URL
+## 查询直播引导图开关状态及URL
 
-#### 描述
+### 描述
 ```
 
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
 获取用户频道号引导图开关的状态，以及具体引导图的url。
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询直播引导图开关状态及URL](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型 | 说明   |
 | --------- | ---- | ---- | ------ |
 | channelId | 是   | int  | 频道ID |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名        | 说明         |
 | ------------- | ------------ |
 | splashImg     | 引导图片url  |
 | splashEnabled | 引导功能开关 |
 
-### 设置频道点赞数和观看热度值
+## 设置频道点赞数和观看热度值
 
-#### 描述
+### 描述
 ```
 设置频道的点赞数和观看热度
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testUpdateChannelLikes() throws IOException, NoSuchAlgorithmException {
@@ -2883,10 +2883,10 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置频道点赞数和观看热度值](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选             | 类型 | 说明     |
 | --------- | ---------------- | ---- | -------- |
@@ -2894,21 +2894,21 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 | likes     | 请查看下方注意点 | int  | 点赞数   |
 | viewers   | 请查看下方注意点 | int  | 观看热度 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 请求成功时为success，请求错误时为空
 
-### 查询频道点赞数和观众热度值
+## 查询频道点赞数和观众热度值
 
-#### 描述
+### 描述
 ```
 批量获取频道点赞数和观看热度
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testChannelLikes() throws IOException, NoSuchAlgorithmException {
@@ -2923,16 +2923,16 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询频道点赞数和观众热度值](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名     | 必选 | 类型   | 说明                                          |
 | ---------- | ---- | ------ | --------------------------------------------- |
 | channelIds | 是   | string | 用逗号隔开的频道ID，如：10000,100001 最多20个 |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 | 参数名    | 说明               |
 | --------- | ------------------ |
@@ -2940,17 +2940,17 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 | likes     | 频道点赞数，整型   |
 | viewers   | 频道观看热度，整型 |
 
-### 设置频道直播倒计时信息
+## 设置频道直播倒计时信息
 
-#### 描述
+### 描述
 ```
 修改频道的倒计时设置
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testUpdateChannelCountDown() throws IOException, NoSuchAlgorithmException {
@@ -2966,10 +2966,10 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置频道直播倒计时信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名         | 必选 | 类型   | 说明                                                         |
 | -------------- | ---- | ------ | ------------------------------------------------------------ |
@@ -2977,21 +2977,21 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 | bookingEnabled | 否   | string | 预约观看开关，Y或 N                                          |
 | startTime      | 否   | string | 直播开始时间，如果不传该值，表示不显示直播时间和倒计时（yyyy-MM-dd HH:mm:ss） |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 无
 
-### 查询频道直播倒计时信息
+## 查询频道直播倒计时信息
 
-#### 描述
+### 描述
 ```
 可以获取倒计时设置的相关信息
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testChannelCountDown() throws IOException, NoSuchAlgorithmException {
@@ -3006,32 +3006,32 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-查询频道直播倒计时信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 | 参数名         | 必选 | 类型   | 说明                                                         |
 | -------------- | ---- | ------ | ------------------------------------------------------------ |
 | channelId      | 是   | int    | 频道ID     |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 | 参数名         | 类型   | 说明                                |
 | -------------- | ------ | ----------------------------------- |
 | bookingEnabled | string | 预约观看开关，Y或 N                 |
 | startTime      | date   | 直播开始时间,为空则没有直播开始时间 |
 
-### 设置频道图标
+## 设置频道图标
 
-#### 描述
+### 描述
 ```
 设置频道图标
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 上传的图片为不大于2MB的本地图片（格式只能为JPG、JPEG、PNG）
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
@@ -3046,32 +3046,32 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置频道图标](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名    | 必选 | 类型 | 说明                                                      |
 | --------- | ---- | ---- | --------------------------------------------------------- |
 | channelId | 是   | int  | 频道ID                                                    |
 | imgfile   | 是   | file | 图片文件，不大于2MB的本地图片（格式只能为JPG、JPEG、PNG） |
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 返回值是上传成功后的图片地址
 
-### 设置引导开关以及引导图片
+## 设置引导开关以及引导图片
 
-#### 描述
+### 描述
 ```
 设置引导开关以及引导图片
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 引导图要求：只能为jpg、jpeg、png三种格式，大小不能超过4Mb。
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
@@ -3086,10 +3086,10 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置引导开关以及引导图片](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名        | 必选 | 类型   | 说明                                        |
 | ------------- | ---- | ------ | ------------------------------------------- |
@@ -3098,21 +3098,21 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 | channelId     | 是   | int    | 频道ID                                      |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 返回值是上传成功后的图片地址
 
-### 设置观看条件
+## 设置观看条件
 
-#### 描述
+### 描述
 ```
 用于设置频道或全局的观看条件
 ```
 
-#### 调用约束
+### 调用约束
 接口调用有频率限制，[详细请查看](../limit.md)
 
-#### 代码示例
+### 代码示例
 ```java
     @Test
     public void testUpdateChannelAuth() throws IOException, NoSuchAlgorithmException {
@@ -3136,10 +3136,10 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
         }
     }
 ```
-#### 单元测试流程
+### 单元测试流程
 [swagger 程序接入-设置观看条件](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
 
-#### 请求入参描述[LiveChannelRequest]
+### 请求入参描述[LiveChannelRequest]
 
 | 参数名 | 必选 | 类型 | 说明 |
 | -- | -- | -- | -- |
@@ -3179,7 +3179,7 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 | sms | false | String | 短信验证开关，Y 开启，N 关闭 |
 
 
-#### 返回对象描述[LiveChannelResponse]
+### 返回对象描述[LiveChannelResponse]
 
 true为成功，false为失败
 

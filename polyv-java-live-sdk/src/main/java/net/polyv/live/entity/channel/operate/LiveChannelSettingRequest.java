@@ -159,7 +159,7 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
     @AllArgsConstructor
     @NoArgsConstructor
     @ApiModel("观看条件设置")
-    public class AuthSetting {
+    public static class AuthSetting {
         /**
          * 通用参数：主要观看条件为1，次要观看条件为2
          */

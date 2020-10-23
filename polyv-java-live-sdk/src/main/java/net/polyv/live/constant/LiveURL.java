@@ -44,10 +44,33 @@ public class LiveURL {
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/setPublisher";
     
     /**
+     * 通过接口设置外部授权
+     */
+    public static final String CHANNEL_AUTH_EXTERNAL_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/auth-external";
+    
+    /**
+     * 设置自定义授权地址
+     */
+    public static final String CHANNEL_AUTH_CUSTOM_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/oauth-custom";
+    
+    /**
+     * 设置授权观看类型
+     */
+    public static final String CHANNEL_AUTH_TYPE_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/set-auth-type";
+    
+    /**
      * 查询直播引导图开关状态及URL
      */
     public static final String CHANNEL_SPLASH_GET_URL =
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/getSplash";
+    
+    /**
+     * 查询直播频道观看条件
+     */
+    public static final String CHANNEL_AUTH_GET_URL = BASE_URI + "v3/channel/auth/get";
     
     /**
      * 查询频道直播倒计时信息
@@ -610,12 +633,14 @@ public class LiveURL {
     /**
      * 查询咨询提问记录
      */
-    public static final String CHAT_GET_CONSULTING_RECORD_URL = BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/getQuestion";
+    public static final String CHAT_GET_CONSULTING_RECORD_URL =
+            BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/getQuestion";
     
     /**
      * 查询频道的问答统计结果statistical
      */
-    public static final String CHAT_GET_QUERSTION_STATISTICAL_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/get-question-result";
+    public static final String CHAT_GET_QUERSTION_STATISTICAL_URL =
+            BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/get-question-result";
     
     
     /**

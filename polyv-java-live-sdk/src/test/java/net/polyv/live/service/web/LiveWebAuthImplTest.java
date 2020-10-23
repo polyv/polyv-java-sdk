@@ -17,6 +17,8 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthCustomRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthCustomResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
+import net.polyv.live.entity.web.auth.LiveChannelAuthRequest;
+import net.polyv.live.entity.web.auth.LiveChannelAuthResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
@@ -56,7 +58,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     @Test
     public void testUpdateChannelAuth() throws IOException, NoSuchAlgorithmException {
         LiveChannelSettingRequest.AuthSetting authSetting =
-                new LiveChannelSettingRequest().new AuthSetting().setAuthType(
+                new LiveChannelSettingRequest.AuthSetting().setAuthType(
                 LiveConstant.AuthType.CODE.getDesc())
                 .setRank(2)
                 .setEnabled("Y")
@@ -122,11 +124,30 @@ public class LiveWebAuthImplTest extends BaseTest {
     public void testUpdateChannelAuthType() throws IOException, NoSuchAlgorithmException {
         LiveChannelAuthTypeRequest liveChannelAuthTypeRequest = new LiveChannelAuthTypeRequest();
         liveChannelAuthTypeRequest.setChannelId(1965681).setAuthType(LiveConstant.AuthType.INFO.getDesc());
-        Boolean liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(liveChannelAuthTypeRequest);
+        Boolean liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(
+                liveChannelAuthTypeRequest);
         Assert.assertNotNull(liveChannelAuthTypeResponse);
         if (liveChannelAuthTypeResponse != null) {
             //to do something ......
             log.debug("测试设置授权观看类型成功,{}", JSON.toJSONString(liveChannelAuthTypeResponse));
+        }
+    }
+    
+    /**
+     * 测试查询直播频道观看条件
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelAuth() throws IOException, NoSuchAlgorithmException {
+        LiveChannelAuthRequest liveChannelAuthRequest = new LiveChannelAuthRequest();
+        liveChannelAuthRequest.setChannelId(1965681);
+        LiveChannelAuthResponse liveChannelAuthResponse = new LiveWebAuthServiceImpl().channelAuth(
+                liveChannelAuthRequest);
+        Assert.assertNotNull(liveChannelAuthResponse);
+        if (liveChannelAuthResponse != null) {
+            //to do something ......
+            log.debug("测试查询直播频道观看条件成功,{}", JSON.toJSONString(liveChannelAuthResponse));
         }
     }
     

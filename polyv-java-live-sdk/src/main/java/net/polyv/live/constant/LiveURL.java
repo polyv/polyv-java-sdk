@@ -68,6 +68,11 @@ public class LiveURL {
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/getSplash";
     
     /**
+     * 查询直播频道观看条件
+     */
+    public static final String CHANNEL_AUTH_GET_URL = BASE_URI + "v3/channel/auth/get";
+    
+    /**
      * 查询频道直播倒计时信息
      */
     public static final String CHANNEL_COUNT_DOWN_URL =

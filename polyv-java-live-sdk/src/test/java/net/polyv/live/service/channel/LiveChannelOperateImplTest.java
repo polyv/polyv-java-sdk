@@ -395,7 +395,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 .setPublisher("sadboy主讲")
                 .setLinkMicLimit(-1)
                 .setReceiveChannelIds("213");
-        LiveChannelSettingRequest.AuthSetting authSetting = liveChannelSettingRequest.new AuthSetting().setAuthType(
+                LiveChannelSettingRequest.AuthSetting authSetting = new LiveChannelSettingRequest.AuthSetting().setAuthType(
                 LiveConstant.AuthType.CODE.getDesc())
                 .setRank(1)
                 .setEnabled("Y")

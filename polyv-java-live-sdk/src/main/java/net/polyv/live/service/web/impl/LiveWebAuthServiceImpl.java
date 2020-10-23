@@ -7,10 +7,13 @@ import java.util.Map;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthCustomRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthCustomResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
+import net.polyv.live.entity.web.auth.LiveChannelAuthRequest;
+import net.polyv.live.entity.web.auth.LiveChannelAuthResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
@@ -94,7 +97,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public LiveChannelAuthCustomResponse updateChannelAuthCustom(
             LiveChannelAuthCustomRequest liveChannelAuthCustomRequest) throws IOException, NoSuchAlgorithmException {
         liveChannelAuthCustomRequest.setUserId(LiveGlobalConfig.USER_ID);
-        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_AUTH_CUSTOM_URL,liveChannelAuthCustomRequest.getUserId());
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_AUTH_CUSTOM_URL, liveChannelAuthCustomRequest.getUserId());
         List<LiveChannelAuthCustomResponse.ChannelAuthExternal> channelAuthExternals = this.basePostReturnArray(url,
                 liveChannelAuthCustomRequest, LiveChannelAuthCustomResponse.ChannelAuthExternal.class);
         LiveChannelAuthCustomResponse liveChannelAuthCustomResponse = new LiveChannelAuthCustomResponse();
@@ -113,9 +116,28 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     @Override
     public Boolean updateChannelAuthType(LiveChannelAuthTypeRequest liveChannelAuthTypeRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_AUTH_TYPE_URL,liveChannelAuthTypeRequest.getChannelId());
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_AUTH_TYPE_URL, liveChannelAuthTypeRequest.getChannelId());
         String liveChannelAuthTypeResponse = this.basePost(url, liveChannelAuthTypeRequest, String.class);
         return "修改成功".equals(liveChannelAuthTypeResponse);
+    }
+    
+    /**
+     * 查询直播频道观看条件
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/auth/
+     * @param liveChannelAuthRequest 查询直播频道观看条件请求实体
+     * @return 查询直播频道观看条件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelAuthResponse channelAuth(LiveChannelAuthRequest liveChannelAuthRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_AUTH_GET_URL;
+        List<LiveChannelSettingRequest.AuthSetting> authSettings = this.basePostReturnArray(url, liveChannelAuthRequest,
+                LiveChannelSettingRequest.AuthSetting.class);
+        LiveChannelAuthResponse liveChannelAuthResponse = new LiveChannelAuthResponse();
+        liveChannelAuthResponse.setAuthSettings(authSettings);
+        return liveChannelAuthResponse;
     }
     
 }

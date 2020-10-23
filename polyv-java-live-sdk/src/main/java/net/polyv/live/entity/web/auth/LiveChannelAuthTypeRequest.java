@@ -26,7 +26,7 @@ public class LiveChannelAuthTypeRequest extends LiveCommonRequest {
     /**
      * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "频道号", required = false)
+    @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "channelId不能为空")
     private Integer channelId;
     

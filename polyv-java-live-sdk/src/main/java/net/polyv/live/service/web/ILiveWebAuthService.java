@@ -7,6 +7,8 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthCustomRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthCustomResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
+import net.polyv.live.entity.web.auth.LiveChannelAuthRequest;
+import net.polyv.live.entity.web.auth.LiveChannelAuthResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
@@ -70,6 +72,17 @@ public interface ILiveWebAuthService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean updateChannelAuthType(LiveChannelAuthTypeRequest liveChannelAuthTypeRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询直播频道观看条件
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/auth/
+     * @param liveChannelAuthRequest 查询直播频道观看条件请求实体
+     * @return 查询直播频道观看条件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelAuthResponse channelAuth(LiveChannelAuthRequest liveChannelAuthRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

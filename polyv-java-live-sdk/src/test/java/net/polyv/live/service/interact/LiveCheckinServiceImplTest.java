@@ -17,14 +17,14 @@ import net.polyv.live.entity.interact.LiveCheckinMetadataBySessionIdResponse;
 import net.polyv.live.entity.interact.LiveCheckinRequest;
 import net.polyv.live.entity.interact.LiveCheckinResponse;
 import net.polyv.live.service.BaseTest;
-import net.polyv.live.service.interact.impl.LiveCheckinImpl;
+import net.polyv.live.service.interact.impl.LiveCheckinServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
  * @author: thomas
  **/
 @Slf4j
-public class LiveCheckinImplTest extends BaseTest {
+public class LiveCheckinServiceImplTest extends BaseTest {
     
     
     /**
@@ -38,7 +38,7 @@ public class LiveCheckinImplTest extends BaseTest {
         LiveCheckinListRequest liveCheckinListRequest = new LiveCheckinListRequest();
         liveCheckinListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
 //        liveCheckinListRequest.setDate("2020-10-20").setSessionId("fs9v9y4nxf");
-        LiveCheckinListResponse checkinListInfo = new LiveCheckinImpl().getCheckinListInfo(liveCheckinListRequest);
+        LiveCheckinListResponse checkinListInfo = new LiveCheckinServiceImpl().getCheckinListInfo(liveCheckinListRequest);
         Assert.assertNotNull(checkinListInfo);
         if (checkinListInfo != null) {
             //to do something ......
@@ -56,7 +56,7 @@ public class LiveCheckinImplTest extends BaseTest {
         Integer channelId = super.createChannel();
         LiveCheckinRequest liveCheckinRequest = new LiveCheckinRequest();
         liveCheckinRequest.setChannelId(channelId).setCheckinId("d91a7c60-1299-11eb-8c65-c70c1c").setRequestId(LiveSignUtil.generateUUID());
-        List<LiveCheckinResponse> liveCheckinResponse = new LiveCheckinImpl().getCheckinInfoById(liveCheckinRequest);
+        List<LiveCheckinResponse> liveCheckinResponse = new LiveCheckinServiceImpl().getCheckinInfoById(liveCheckinRequest);
         Assert.assertNotNull(liveCheckinResponse);
         if (liveCheckinResponse != null) {
             //to do something ......
@@ -75,7 +75,7 @@ public class LiveCheckinImplTest extends BaseTest {
         Integer channelId = super.createChannel();
         LiveCheckinMetadataBySessionIdRequest liveCheckinMetadataBySessionIdRequest = new LiveCheckinMetadataBySessionIdRequest();
         liveCheckinMetadataBySessionIdRequest.setChannelId(channelId).setSessionId("fs9v9y4nxf").setRequestId(LiveSignUtil.generateUUID());
-        List<LiveCheckinMetadataBySessionIdResponse>  liveCheckinResponse = new LiveCheckinImpl().getCheckinMetadataBySessionId(liveCheckinMetadataBySessionIdRequest);
+        List<LiveCheckinMetadataBySessionIdResponse>  liveCheckinResponse = new LiveCheckinServiceImpl().getCheckinMetadataBySessionId(liveCheckinMetadataBySessionIdRequest);
         Assert.assertNotNull(liveCheckinResponse);
         if (liveCheckinResponse != null) {
             //to do something ......

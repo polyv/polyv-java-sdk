@@ -2,7 +2,6 @@ package net.polyv.live.service.chat;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -16,8 +15,6 @@ import edu.emory.mathcs.backport.java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.BusinessException;
 import net.polyv.live.constant.LiveConstant;
-import net.polyv.live.constant.LiveURL;
-import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
@@ -39,14 +36,14 @@ import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.chat.LiveSetChatAdminDataRequest;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.service.BaseTest;
-import net.polyv.live.service.chat.impl.LiveChatRoomImpl;
+import net.polyv.live.service.chat.impl.LiveChatRoomServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
  * @author: thomas
  **/
 @Slf4j
-public class LiveChatRoomImplTest extends BaseTest {
+public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 通过HTTP接口发送聊天消息
@@ -62,7 +59,7 @@ public class LiveChatRoomImplTest extends BaseTest {
                 .setPic("http://s1.videocc.net/default-img/avatar/teacher.png")
                 .setNickName("thomas")
                 .setRequestId(LiveSignUtil.generateUUID());
-        LiveSendChatMsgResponse liveSendChatMsgResponse = new LiveChatRoomImpl().sendChatMsg(liveSendChatMsgRequest);
+        LiveSendChatMsgResponse liveSendChatMsgResponse = new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest);
         Assert.assertNotNull(liveSendChatMsgResponse);
         if (liveSendChatMsgResponse != null) {
             //to do something ......
@@ -88,7 +85,7 @@ public class LiveChatRoomImplTest extends BaseTest {
                         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740,3965499425&fm=26&gp=0" +
                                 ".jpg")
                 .setRequestId(LiveSignUtil.generateUUID());
-        String result = new LiveChatRoomImpl().sendChatMsg(liveSetTeacherDataRequest);
+        String result = new LiveChatRoomServiceImpl().sendChatMsg(liveSetTeacherDataRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -106,7 +103,7 @@ public class LiveChatRoomImplTest extends BaseTest {
         Integer channelId = super.createChannel();
         LiveChatBannedIPRequest liveChatBannedIPRequest = new LiveChatBannedIPRequest();
         liveChatBannedIPRequest.setIp("192.168.1.3").setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-        List<String> bannedIPList = new LiveChatRoomImpl().addBannedIP(liveChatBannedIPRequest);
+        List<String> bannedIPList = new LiveChatRoomServiceImpl().addBannedIP(liveChatBannedIPRequest);
         Assert.assertNotNull(bannedIPList);
         if (bannedIPList != null) {
             //to do something ......
@@ -126,7 +123,7 @@ public class LiveChatRoomImplTest extends BaseTest {
         liveBadWordRequest
 //                .setChannelId(channelId)
                 .setWords(Arrays.asList(new String[]{"你好1", "逗逼1", "傻子"})).setRequestId(LiveSignUtil.generateUUID());
-        LiveBadWordResponse liveBadWordResponse = new LiveChatRoomImpl().addBadWord(liveBadWordRequest);
+        LiveBadWordResponse liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
         Assert.assertNotNull(liveBadWordResponse);
         if (liveBadWordResponse != null) {
             //to do something ......
@@ -146,7 +143,7 @@ public class LiveChatRoomImplTest extends BaseTest {
         liveGetBannedListRequest.setChannelId(channelId)
                 .setType(LiveConstant.BannedType.USER_ID.getType())
                 .setRequestId(LiveSignUtil.generateUUID());
-        List<String> result = new LiveChatRoomImpl().getBannedList(liveGetBannedListRequest);
+        List<String> result = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -165,7 +162,7 @@ public class LiveChatRoomImplTest extends BaseTest {
         Integer channelId = super.createChannel();
         LiveKickedListRequest liveKickedListRequest = new LiveKickedListRequest();
         liveKickedListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-        List<LiveKickedListResponse> liveKickedListResponsesList = new LiveChatRoomImpl().getKickedList(
+        List<LiveKickedListResponse> liveKickedListResponsesList = new LiveChatRoomServiceImpl().getKickedList(
                 liveKickedListRequest);
         Assert.assertNotNull(liveKickedListResponsesList);
         if (liveKickedListResponsesList != null) {
@@ -190,7 +187,7 @@ public class LiveChatRoomImplTest extends BaseTest {
                 .setChannelId(channelId)
                 .setType(LiveConstant.BannedType.IP.getType())
                 .setRequestId(LiveSignUtil.generateUUID());
-        String result = new LiveChatRoomImpl().delBanned(liveDelBannedDataRequest);
+        String result = new LiveChatRoomServiceImpl().delBanned(liveDelBannedDataRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -211,7 +208,7 @@ public class LiveChatRoomImplTest extends BaseTest {
         liveGetBadwordIPRequest.setChannelId(channelId)
                 .setType(LiveConstant.BannedType.BADWORD.getType())
                 .setRequestId(LiveSignUtil.generateUUID());
-        List<String> result = new LiveChatRoomImpl().getBadworkList(liveGetBadwordIPRequest);
+        List<String> result = new LiveChatRoomServiceImpl().getBadworkList(liveGetBadwordIPRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -228,7 +225,7 @@ public class LiveChatRoomImplTest extends BaseTest {
     @Test
     public void testGetAccountBadworkList() throws IOException, NoSuchAlgorithmException {
         Integer channelId = super.createChannel();
-        List<String> result = new LiveChatRoomImpl().getAccountBadworkList(LiveSignUtil.generateUUID());
+        List<String> result = new LiveChatRoomServiceImpl().getAccountBadworkList(LiveSignUtil.generateUUID());
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -246,7 +243,7 @@ public class LiveChatRoomImplTest extends BaseTest {
     public void testCleanChannelAllMsg() throws IOException, NoSuchAlgorithmException {
         Integer channelId = super.createChannel();
         String requestId = LiveSignUtil.generateUUID();
-        Boolean result = new LiveChatRoomImpl().cleanChannelAllMsg(channelId, requestId);
+        Boolean result = new LiveChatRoomServiceImpl().cleanChannelAllMsg(channelId, requestId);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -264,7 +261,7 @@ public class LiveChatRoomImplTest extends BaseTest {
     public void testGetChatAdminData() throws IOException, NoSuchAlgorithmException {
         Integer channelId = super.createChannel();
         String requestId = LiveSignUtil.generateUUID();
-        LiveGetChatAdminResponse liveGetChatAdminResponse = new LiveChatRoomImpl().getChatAdminData(channelId,
+        LiveGetChatAdminResponse liveGetChatAdminResponse = new LiveChatRoomServiceImpl().getChatAdminData(channelId,
                 requestId);
         Assert.assertNotNull(liveGetChatAdminResponse);
         if (liveGetChatAdminResponse != null) {
@@ -288,7 +285,7 @@ public class LiveChatRoomImplTest extends BaseTest {
                 .setEndDay("2020-12-12")
                 .setRequestId(LiveSignUtil.generateUUID());
         List<LiveGetHistoryChatMsgResponse> liveGetHistoryChatMsgResponsesList =
-                new LiveChatRoomImpl().getHistroyChatMsg(
+                new LiveChatRoomServiceImpl().getHistroyChatMsg(
                 liveGetHistoryChatMsgRequest);
         Assert.assertNotNull(liveGetHistoryChatMsgResponsesList);
         if (liveGetHistoryChatMsgResponsesList != null) {
@@ -311,7 +308,7 @@ public class LiveChatRoomImplTest extends BaseTest {
         liveChatDelSingleMsgRequest.setId("70af2450-12bc-11eb-896b-75b7b28cd5db")
                 .setChannelId(channelId)
                 .setRequestId(LiveSignUtil.generateUUID());
-        Boolean result = new LiveChatRoomImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
+        Boolean result = new LiveChatRoomServiceImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -335,7 +332,7 @@ public class LiveChatRoomImplTest extends BaseTest {
                 .setActor("娇娇")
                 .setAvatar(new File("D:/img/b.jpg"))
                 .setRequestId(LiveSignUtil.generateUUID());
-        Boolean result = new LiveChatRoomImpl().setChatAdminData(liveSetChatAdminDataRequest);
+        Boolean result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -359,7 +356,7 @@ public class LiveChatRoomImplTest extends BaseTest {
                 .setBegin(0)
                 .setEnd(10)
                 .setRequestId(LiveSignUtil.generateUUID());
-        List<LiveGetConsultingRecordResponse> responses = new LiveChatRoomImpl().getConsultingRecord(
+        List<LiveGetConsultingRecordResponse> responses = new LiveChatRoomServiceImpl().getConsultingRecord(
                 liveGetConsultingRecordRequest);
         Assert.assertNotNull(responses);
         if (responses != null) {
@@ -384,7 +381,7 @@ public class LiveChatRoomImplTest extends BaseTest {
 //                .setStartTime("2020-10-1 00:00:00")
 //                .setEndTime("2020-10-30 12:20:20")
                 .setRequestId(LiveSignUtil.generateUUID());
-        List<LiveGetQuestionStatisticalResponse> result = new LiveChatRoomImpl().getQuestionStatistical(
+        List<LiveGetQuestionStatisticalResponse> result = new LiveChatRoomServiceImpl().getQuestionStatistical(
                 liveGetQuestionStatisticalRequest);
         Assert.assertNotNull(result);
         if (result != null) {

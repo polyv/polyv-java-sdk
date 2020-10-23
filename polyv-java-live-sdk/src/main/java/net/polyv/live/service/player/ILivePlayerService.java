@@ -25,6 +25,7 @@ import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.chat.LiveSetChatAdminDataRequest;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.entity.player.LiveSetPlayerImgRequest;
+import net.polyv.live.entity.player.LiveSetWarmupEnableRequest;
 
 /**
  * 直播签到管理
@@ -33,7 +34,7 @@ import net.polyv.live.entity.player.LiveSetPlayerImgRequest;
 public interface ILivePlayerService {
 
     /**
-     * 设置播放器暖场图片，API地址：https://dev.polyv.net/2019/liveproduct/zblts/send-admin-msg/
+     * 设置播放器暖场图片，API地址：https://dev.polyv.net/2017/liveproduct/l-player/updatecoverimage/
      * @param liveSetPlayerImgRequest 设置播放器暖场图片请求实体
      * @return 响应实体
      * @throws IOException 客户端和服务器读写异常
@@ -41,6 +42,17 @@ public interface ILivePlayerService {
      */
     Boolean setPlayerImg(LiveSetPlayerImgRequest liveSetPlayerImgRequest)
             throws IOException, NoSuchAlgorithmException;
+    /**
+     * 设置频道的暖场设置开关，API地址：https://dev.polyv.net/2019/liveproduct/l-player/set-warmup-enabled/
+     * @param liveSetWarmupEnableRequest 设置频道的暖场设置开关
+     * @return 响应实体
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean setPlayerWarmupEnable(LiveSetWarmupEnableRequest liveSetWarmupEnableRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    
      
     
 }

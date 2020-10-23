@@ -654,6 +654,12 @@ public class LiveURL {
     public static final String PLAYER_SET_IMG_URL =
             BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/update";
     
+    /**
+     * 设置频道的暖场设置开关
+     */
+    public static final String PLAYER_SET_WARMUP_ENABLE_URL =
+            BASE_URI + "v3/channel/set-warmup-enabled";
+    
     
     
     /**

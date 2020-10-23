@@ -13,6 +13,8 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
+import net.polyv.live.entity.web.auth.LiveChannelAuthCustomRequest;
+import net.polyv.live.entity.web.auth.LiveChannelAuthCustomResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
@@ -54,12 +56,12 @@ public class LiveWebAuthImplTest extends BaseTest {
     public void testUpdateChannelAuth() throws IOException, NoSuchAlgorithmException {
         LiveChannelSettingRequest.AuthSetting authSetting =
                 new LiveChannelSettingRequest().new AuthSetting().setAuthType(
-                        LiveConstant.AuthType.CODE.getDesc())
-                        .setRank(2)
-                        .setEnabled("Y")
-                        .setAuthCode("123456")
-                        .setQcodeTips("提示文案测试2")
-                        .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
+                LiveConstant.AuthType.CODE.getDesc())
+                .setRank(2)
+                .setEnabled("Y")
+                .setAuthCode("123456")
+                .setQcodeTips("提示文案测试2")
+                .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
         List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(authSetting);
         LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest = new LiveUpdateChannelAuthRequest();
@@ -85,9 +87,28 @@ public class LiveWebAuthImplTest extends BaseTest {
                 new LiveWebAuthServiceImpl().updateChannelAuthExternal(
                 liveChannelAuthExternalRequest);
         Assert.assertNotNull(liveChannelAuthExternalResponse);
-        if (liveChannelAuthExternalResponse!=null) {
+        if (liveChannelAuthExternalResponse != null) {
             //to do something ......
             log.debug("测试通过接口设置外部授权成功,{}", JSON.toJSONString(liveChannelAuthExternalResponse));
+        }
+    }
+    
+    /**
+     * 测试设置自定义授权地址
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelAuthCustom() throws IOException, NoSuchAlgorithmException {
+        LiveChannelAuthCustomRequest liveChannelAuthCustomRequest = new LiveChannelAuthCustomRequest();
+        liveChannelAuthCustomRequest.setChannelId(1965681).setCustomUri("https://dev.polyv.net/");
+        LiveChannelAuthCustomResponse liveChannelAuthCustomResponse =
+                new LiveWebAuthServiceImpl().updateChannelAuthCustom(
+                liveChannelAuthCustomRequest);
+        Assert.assertNotNull(liveChannelAuthCustomResponse);
+        if (liveChannelAuthCustomResponse != null) {
+            //to do something ......
+            log.debug("测试设置自定义授权地址成功,{}", JSON.toJSONString(liveChannelAuthCustomResponse));
         }
     }
     

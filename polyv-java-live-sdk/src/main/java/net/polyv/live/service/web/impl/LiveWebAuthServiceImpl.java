@@ -7,6 +7,8 @@ import java.util.Map;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.web.auth.LiveChannelAuthCustomRequest;
+import net.polyv.live.entity.web.auth.LiveChannelAuthCustomResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
@@ -77,6 +79,26 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
         LiveChannelAuthExternalResponse liveChannelAuthExternalResponse = new LiveChannelAuthExternalResponse();
         liveChannelAuthExternalResponse.setChannelAuthExternals(channelAuthExternals);
         return liveChannelAuthExternalResponse;
+    }
+    
+    /**
+     * 设置自定义授权地址
+     * API地址：https://dev.polyv.net/2016/liveproduct/l-api/szgkygg/ymgktj/zbsq/
+     * @param liveChannelAuthCustomRequest 设置自定义授权地址请求实体
+     * @return 设置自定义授权地址返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelAuthCustomResponse updateChannelAuthCustom(
+            LiveChannelAuthCustomRequest liveChannelAuthCustomRequest) throws IOException, NoSuchAlgorithmException {
+        liveChannelAuthCustomRequest.setUserId(LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_AUTH_CUSTOM_URL,liveChannelAuthCustomRequest.getUserId());
+        List<LiveChannelAuthCustomResponse.ChannelAuthExternal> channelAuthExternals = this.basePostReturnArray(url,
+                liveChannelAuthCustomRequest, LiveChannelAuthCustomResponse.ChannelAuthExternal.class);
+        LiveChannelAuthCustomResponse liveChannelAuthCustomResponse = new LiveChannelAuthCustomResponse();
+        liveChannelAuthCustomResponse.setChannelAuthExternals(channelAuthExternals);
+        return liveChannelAuthCustomResponse;
     }
     
 }

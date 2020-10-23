@@ -48,6 +48,12 @@ public class LiveURL {
      */
     public static final String CHANNEL_AUTH_EXTERNAL_URL =
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/auth-external";
+        
+    /**
+     * 设置自定义授权地址
+     */
+    public static final String CHANNEL_AUTH_CUSTOM_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/oauth-custom";
     
     /**
      * 查询直播引导图开关状态及URL

@@ -3,6 +3,8 @@ package net.polyv.live.service.web;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.live.entity.web.auth.LiveChannelAuthCustomRequest;
+import net.polyv.live.entity.web.auth.LiveChannelAuthCustomResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
@@ -46,5 +48,16 @@ public interface ILiveWebAuthService {
      */
     LiveChannelAuthExternalResponse updateChannelAuthExternal(
             LiveChannelAuthExternalRequest liveChannelAuthExternalRequest) throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置自定义授权地址
+     * API地址：https://dev.polyv.net/2016/liveproduct/l-api/szgkygg/ymgktj/zbsq/
+     * @param liveChannelAuthCustomRequest 设置自定义授权地址请求实体
+     * @return 设置自定义授权地址返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelAuthCustomResponse updateChannelAuthCustom(LiveChannelAuthCustomRequest liveChannelAuthCustomRequest)
+            throws IOException, NoSuchAlgorithmException;
     
 }

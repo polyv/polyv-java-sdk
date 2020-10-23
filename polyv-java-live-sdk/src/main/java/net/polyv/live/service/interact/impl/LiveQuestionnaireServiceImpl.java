@@ -30,7 +30,7 @@ import net.polyv.live.util.LiveSignUtil;
  * @author: thomas
  **/
 @Slf4j
-public class LiveQuestionnaireImpl extends LiveBaseService implements ILiveQuestionnaireService {
+public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILiveQuestionnaireService {
     
     /**
      * 查询频道问卷详情，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/get-questionnaire-detail/

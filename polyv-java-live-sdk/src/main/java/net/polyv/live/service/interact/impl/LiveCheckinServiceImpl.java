@@ -21,7 +21,7 @@ import net.polyv.live.service.interact.ILiveCheckinService;
  **/
 @Slf4j
 
-public class LiveCheckinImpl extends LiveBaseService
+public class LiveCheckinServiceImpl extends LiveBaseService
         implements ILiveCheckinService {
     
     

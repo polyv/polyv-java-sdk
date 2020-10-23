@@ -33,7 +33,7 @@ import net.polyv.live.util.LiveSignUtil;
  * @author: thomas
  **/
 @Slf4j
-public class LiveAnswerRecordImpl extends LiveBaseService implements ILiveAnswerRecordService {
+public class LiveAnswerRecordServiceImpl extends LiveBaseService implements ILiveAnswerRecordService {
     
     /**
      * 查询频道答题卡答题结果，API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbhd/answer_records/

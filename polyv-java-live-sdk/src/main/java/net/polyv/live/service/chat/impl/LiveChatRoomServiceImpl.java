@@ -40,7 +40,7 @@ import net.polyv.live.service.chat.ILiveChatRoomService;
  * @author: thomas
  **/
 @Slf4j
-public class LiveChatRoomImpl extends LiveBaseService implements ILiveChatRoomService {
+public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveChatRoomService {
     
     /**
      * 通过HTTP接口发送聊天消息请求实体，API地址：https://dev.polyv.net/2019/liveproduct/zblts/send-admin-msg/

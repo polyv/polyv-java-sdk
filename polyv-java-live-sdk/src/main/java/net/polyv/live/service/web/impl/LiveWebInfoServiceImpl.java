@@ -1,21 +1,30 @@
 package net.polyv.live.service.web.impl;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.web.info.LiveChannelCountDownRequest;
+import net.polyv.live.entity.web.info.LiveChannelCountDownResponse;
 import net.polyv.live.entity.web.info.LiveChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveChannelLikesResponse;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
+import net.polyv.live.entity.web.info.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelCountDownRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
+import net.polyv.live.entity.web.info.LiveUpdateChannelLogoRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
+import net.polyv.live.entity.web.info.LiveUpdateChannelSplashRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.web.ILiveWebInfoService;
+import net.polyv.live.util.MapUtil;
 
 /**
  * @author: sadboy
@@ -84,8 +93,8 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     @Override
     public String updateChannelLikes(LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url =LiveURL.getRealUrl(LiveURL.CHANNEL_LIKES_UPDATE_URL,liveUpdateChannelLikesRequest.getChannelId());
-        String liveUpdateChannelLikesResponse = this.basePost(url,liveUpdateChannelLikesRequest,String.class);
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_LIKES_UPDATE_URL, liveUpdateChannelLikesRequest.getChannelId());
+        String liveUpdateChannelLikesResponse = this.basePost(url, liveUpdateChannelLikesRequest, String.class);
         return liveUpdateChannelLikesResponse;
     }
     
@@ -119,9 +128,87 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     @Override
     public String updateChannelCountDown(LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_COUNT_DOWN_URL,liveUpdateChannelCountDownRequest.getChannelId());
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_UPDATE_COUNT_DOWN_URL,
+                liveUpdateChannelCountDownRequest.getChannelId());
         String liveUpdateChannelCountDownResponse = this.basePost(url, liveUpdateChannelCountDownRequest, String.class);
         return liveUpdateChannelCountDownResponse;
+    }
+    
+    /**
+     * 查询频道直播倒计时信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymxxsz/get-countdown/
+     * @param liveChannelCountDownRequest 查询频道直播倒计时信息请求实体
+     * @return 查询频道直播倒计时信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelCountDownResponse channelCountDown(LiveChannelCountDownRequest liveChannelCountDownRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_COUNT_DOWN_URL, liveChannelCountDownRequest.getChannelId());
+        LiveChannelCountDownResponse liveChannelCountDownResponse = this.basePost(url, liveChannelCountDownRequest,
+                LiveChannelCountDownResponse.class);
+        return liveChannelCountDownResponse;
+    }
+    
+    /**
+     * 设置频道图标
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/szgkygg/ymxxsz/updatechannellogo/
+     * @param liveUpdateChannelLogoRequest 设置频道图标请求实体
+     * @return 设置频道图标返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String updateChannelLogo(LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_LOGO_SET_URL, liveUpdateChannelLogoRequest.getChannelId());
+        Map<String, File> fileMap = new HashMap<>();
+        fileMap.put("imgfile", liveUpdateChannelLogoRequest.getImgfile());
+        String liveUpdateChannelLogoResponse = this.baseUploadFile(url, liveUpdateChannelLogoRequest, fileMap,
+                String.class);
+        return liveUpdateChannelLogoResponse;
+    }
+    
+    /**
+     * 设置引导开关以及引导图片
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/szgkygg/ymxxsz/setsplash/
+     * @param liveUpdateChannelSplashRequest 设置引导开关以及引导图片请求实体
+     * @return 设置引导开关以及引导图片返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String updateChannelSplash(LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SPLASH_SET_URL, liveUpdateChannelSplashRequest.getChannelId());
+        Map<String, File> fileMap = new HashMap<>();
+        fileMap.put("imgfile", liveUpdateChannelSplashRequest.getImgfile());
+        String liveUpdateChannelSplashResponse = this.baseUploadFile(url, liveUpdateChannelSplashRequest, fileMap,
+                String.class);
+        return liveUpdateChannelSplashResponse;
+    }
+    
+    /**
+     * 设置观看条件
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/channel-auth-update/
+     * @param liveUpdateChannelAuthRequest 设置观看条件请求实体
+     * @return 设置观看条件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateChannelAuth(LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_AUTH_UPDATE_URL;
+        Map<String, String> signMap = MapUtil.getSignMap(liveUpdateChannelAuthRequest);
+        Integer channelId = liveUpdateChannelAuthRequest.getChannelId();
+        if (channelId != null) {
+            signMap.put("channelId", channelId.toString());
+        }
+        String liveUpdateChannelAuthResponse = this.basePostJson(url, signMap, liveUpdateChannelAuthRequest,
+                String.class);
+        return "true".equals(liveUpdateChannelAuthResponse);
     }
     
 }

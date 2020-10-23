@@ -2980,3 +2980,206 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 #### 返回对象描述[LiveChannelResponse]
 
 无
+
+### 查询频道直播倒计时信息
+
+#### 描述
+```
+可以获取倒计时设置的相关信息
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testChannelCountDown() throws IOException, NoSuchAlgorithmException {
+        LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
+        liveChannelCountDownRequest.setChannelId(1965681);
+        LiveChannelCountDownResponse liveChannelCountDownResponse = new LiveWebInfoServiceImpl().channelCountDown(
+                liveChannelCountDownRequest);
+        Assert.assertNotNull(liveChannelCountDownResponse);
+        if (liveChannelCountDownResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道直播倒计时信息成功,{}", JSON.toJSONString(liveChannelCountDownResponse));
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-查询频道直播倒计时信息](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+| 参数名         | 必选 | 类型   | 说明                                                         |
+| -------------- | ---- | ------ | ------------------------------------------------------------ |
+| channelId      | 是   | int    | 频道ID     |
+
+#### 返回对象描述[LiveChannelResponse]
+| 参数名         | 类型   | 说明                                |
+| -------------- | ------ | ----------------------------------- |
+| bookingEnabled | string | 预约观看开关，Y或 N                 |
+| startTime      | date   | 直播开始时间,为空则没有直播开始时间 |
+
+### 设置频道图标
+
+#### 描述
+```
+设置频道图标
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+上传的图片为不大于2MB的本地图片（格式只能为JPG、JPEG、PNG）
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
+        String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+        liveUpdateChannelLogoRequest.setChannelId(1965681).setImgfile(new File(path));
+        String liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(liveUpdateChannelLogoRequest);
+        Assert.assertNotNull(liveUpdateChannelLogoResponse);
+        if (liveUpdateChannelLogoResponse != null) {
+            //to do something ......
+            log.debug("测试设置频道图标成功,{}", liveUpdateChannelLogoResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置频道图标](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名    | 必选 | 类型 | 说明                                                      |
+| --------- | ---- | ---- | --------------------------------------------------------- |
+| channelId | 是   | int  | 频道ID                                                    |
+| imgfile   | 是   | file | 图片文件，不大于2MB的本地图片（格式只能为JPG、JPEG、PNG） |
+
+#### 返回对象描述[LiveChannelResponse]
+
+返回值是上传成功后的图片地址
+
+### 设置引导开关以及引导图片
+
+#### 描述
+```
+设置引导开关以及引导图片
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+引导图要求：只能为jpg、jpeg、png三种格式，大小不能超过4Mb。
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
+        String path = "C:\\Users\\T460\\Desktop\\fields.txt";
+        LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
+        liveUpdateChannelSplashRequest.setChannelId(1965681).setSplashEnabled("N").setImgfile(new File(path));
+        String liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
+                liveUpdateChannelSplashRequest);
+        Assert.assertNotNull(liveUpdateChannelSplashResponse);
+        if(liveUpdateChannelSplashResponse != null){
+            log.debug("设置引导开关以及引导图片成功,{}", liveUpdateChannelSplashResponse);
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置引导开关以及引导图片](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名        | 必选 | 类型   | 说明                                        |
+| ------------- | ---- | ------ | ------------------------------------------- |
+| splashEnabled | 是   | string | 设置开启或关闭引导页，Y或N                  |
+| imgfile       | 是   | file   | 支持jpg、jpeg、png三种格式，大小不能超过4Mb |
+| channelId     | 是   | int    | 频道ID                                      |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+返回值是上传成功后的图片地址
+
+### 设置观看条件
+
+#### 描述
+```
+用于设置频道或全局的观看条件
+```
+
+#### 调用约束
+接口调用有频率限制，[详细请查看](../limit.md)
+
+#### 代码示例
+```java
+    @Test
+    public void testUpdateChannelAuth() throws IOException, NoSuchAlgorithmException {
+        LiveChannelSettingRequest.AuthSetting authSetting =
+                new LiveChannelSettingRequest().new AuthSetting().setAuthType(
+                LiveConstant.AuthType.CODE.getDesc())
+                .setRank(2)
+                .setEnabled("Y")
+                .setAuthCode("123456")
+                .setQcodeTips("提示文案测试2")
+                .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
+        List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
+        authSettings.add(authSetting);
+        LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest = new LiveUpdateChannelAuthRequest();
+        liveUpdateChannelAuthRequest.setChannelId(1965681).setAuthSettings(authSettings);
+        Boolean liveUpdateChannelAuthResponse = new LiveWebInfoServiceImpl().updateChannelAuth(
+                liveUpdateChannelAuthRequest);
+        Assert.assertNotNull(liveUpdateChannelAuthResponse);
+        if (liveUpdateChannelAuthResponse) {
+            log.debug("测试设置观看条件成功");
+        }
+    }
+```
+#### 单元测试流程
+[swagger 程序接入-设置观看条件](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
+
+#### 请求入参描述[LiveChannelRequest]
+
+| 参数名 | 必选 | 类型 | 说明 |
+| -- | -- | -- | -- |
+| channelId | false | Integer | 频道号，不传为全局设置 |
+| authSettings | true | Array | 观看条件设置【详见**AuthSetting参数描述**】 |
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 |
+
+**AuthSetting参数描述**
+| 参数名 | 必选 | 类型 | 说明 |
+| -- | -- | -- | -- |
+| rank | true | Integer | 通用参数：主要观看条件为1，次要观看条件为2 |
+| enabled | true | String | 通用参数：是否开启，Y为开启，N为关闭 |
+| authType | false | String | 通用参数：付费观看-pay，验证码观看-code，白名单观看-phone，登记观看-info，自定义授权观看-custom，外部授权-external,直接授权-direct |
+| payAuthTips | false | String | 付费观看参数：欢迎语标题 |
+| price | false | Float | 付费观看参数：价格，单位为元 |
+| watchEndTime | false | String | 付费观看参数：付费有效截止日期，格式为yyyy-MM-dd HH:mm。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 |
+| validTimePeriod | false | Integer | 付费观看参数：付费有效时长，单位天。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 |
+| authCode | false | String | 验证码观看参数：验证码 |
+| qcodeTips | false | String | 验证码观看参数：提示文案 |
+| qcodeImg | false | String | 验证码观看参数：公众号二维码地址 |
+| authTips | false | String | 白名单观看参数：提示文案 |
+| infoFields | false | Array | 登记观看参数,上限为5个【详见**InfoField参数描述**】 |
+| externalKey | false | String | 外部授权参数：SecretKey |
+| externalUri | false | String | 外部授权参数：自定义url |
+| externalRedirectUri | false | String | 外部授权参数：跳转地址 |
+| customKey | false | String | 自定义授权参数：SecretKey |
+| customUri | false | String | 自定义授权参数：自定义url |
+| directKey | false | String | 直接授权参数：直接授权SecretKey |
+
+**InfoField参数描述**
+| 参数名 | 必选 | 类型 | 说明 |
+| -- | -- | -- | -- |
+| name | false | String | 登记信息名，最多为8字符 |
+| type | true | String | 登记类型，姓名-name，文本-text，手机号码-mobile，数字-number，下拉选项-option |
+| options | false | String | 下拉选项时，下拉的选项值，以英文逗号分割。选项个数上限为8个；选项内容最多为8字符 |
+| placeholder | false | String | 文本框输入提示，最多为8字符 |
+| sms | false | String | 短信验证开关，Y 开启，N 关闭 |
+
+
+#### 返回对象描述[LiveChannelResponse]
+
+true为成功，false为失败
+

@@ -50,6 +50,24 @@ public class LiveURL {
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/getSplash";
     
     /**
+     * 查询频道直播倒计时信息
+     */
+    public static final String CHANNEL_COUNT_DOWN_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/get-countdown";
+    
+    /**
+     * 设置频道图标
+     */
+    public static final String CHANNEL_LOGO_SET_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/setCoverImg";
+    
+    /**
+     * 设置引导开关以及引导图片
+     */
+    public static final String CHANNEL_SPLASH_SET_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/setSplash";
+    
+    /**
      * 设置频道号密码
      */
     public static final String CHANNEL_PWD_SET_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/passwdSetting";
@@ -72,9 +90,14 @@ public class LiveURL {
     public static final String CHANNEL_LIVE_STATUS_GET_URL = "http://api.polyv.net/live_status/query?stream=";
     
     /**
+     * 设置观看条件
+     */
+    public static final String CHANNEL_AUTH_UPDATE_URL = BASE_URI + "v3/channel/auth/update";
+    
+    /**
      * 设置频道直播倒计时信息
      */
-    public static final String CHANNEL_COUNT_DOWN_URL =
+    public static final String CHANNEL_UPDATE_COUNT_DOWN_URL =
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/set-countdown";
     
     /**
@@ -575,12 +598,14 @@ public class LiveURL {
     /**
      * 删除单条聊天记录
      */
-    public static final String CHAT_DEL_CHANNEL_SINGLE_MSG_URL = BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/delChat";
+    public static final String CHAT_DEL_CHANNEL_SINGLE_MSG_URL =
+            BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/delChat";
     
     /**
      * 设置聊天室管理员信息
      */
-    public static final String CHAT_SET_ADMIN_DATA_URL = BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/set-chat-admin";
+    public static final String CHAT_SET_ADMIN_DATA_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/set-chat-admin";
     
     /**
      * 查询咨询提问记录

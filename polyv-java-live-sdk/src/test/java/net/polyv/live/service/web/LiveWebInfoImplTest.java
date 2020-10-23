@@ -1,7 +1,10 @@
 package net.polyv.live.service.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,14 +12,21 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
+import net.polyv.live.entity.web.info.LiveChannelCountDownRequest;
+import net.polyv.live.entity.web.info.LiveChannelCountDownResponse;
 import net.polyv.live.entity.web.info.LiveChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveChannelLikesResponse;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
+import net.polyv.live.entity.web.info.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelCountDownRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
+import net.polyv.live.entity.web.info.LiveUpdateChannelLogoRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelNameRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
+import net.polyv.live.entity.web.info.LiveUpdateChannelSplashRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebInfoServiceImpl;
 
@@ -127,11 +137,94 @@ public class LiveWebInfoImplTest extends BaseTest {
         liveUpdateChannelCountDownRequest.setChannelId(1965681)
                 .setBookingEnabled("Y")
                 .setStartTime("2020-11-11 11:11:11");
-        String liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(liveUpdateChannelCountDownRequest);
+        String liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(
+                liveUpdateChannelCountDownRequest);
         Assert.assertNotNull(liveUpdateChannelCountDownResponse);
         if (liveUpdateChannelCountDownResponse != null) {
             //to do something ......
             log.debug("测试设置频道直播倒计时信息成功,{}", liveUpdateChannelCountDownResponse);
+        }
+    }
+    
+    /**
+     * 测试查询频道直播倒计时信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelCountDown() throws IOException, NoSuchAlgorithmException {
+        LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
+        liveChannelCountDownRequest.setChannelId(1965681);
+        LiveChannelCountDownResponse liveChannelCountDownResponse = new LiveWebInfoServiceImpl().channelCountDown(
+                liveChannelCountDownRequest);
+        Assert.assertNotNull(liveChannelCountDownResponse);
+        if (liveChannelCountDownResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道直播倒计时信息成功,{}", JSON.toJSONString(liveChannelCountDownResponse));
+        }
+    }
+    
+    /**
+     * 测试设置频道图标
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+//    public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
+//        LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
+//        String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+//        liveUpdateChannelLogoRequest.setChannelId(1965681).setImgfile(new File(path));
+//        String liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo
+//        (liveUpdateChannelLogoRequest);
+//        Assert.assertNotNull(liveUpdateChannelLogoResponse);
+//        if (liveUpdateChannelLogoResponse != null) {
+//            //to do something ......
+//            log.debug("测试设置频道图标成功,{}", liveUpdateChannelLogoResponse);
+//        }
+//    }
+    
+    /**
+     * 测试设置引导开关以及引导图片
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+//    public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
+//        String path = "C:\\Users\\T460\\Desktop\\fields.txt";
+//        LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
+//        liveUpdateChannelSplashRequest.setChannelId(1965681).setSplashEnabled("N").setImgfile(new File(path));
+//        String liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
+//                liveUpdateChannelSplashRequest);
+//        Assert.assertNotNull(liveUpdateChannelSplashResponse);
+//        if(liveUpdateChannelSplashResponse != null){
+//            log.debug("设置引导开关以及引导图片成功,{}", liveUpdateChannelSplashResponse);
+//        }
+//    }
+    
+    /**
+     * 测试设置观看条件
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelAuth() throws IOException, NoSuchAlgorithmException {
+        LiveChannelSettingRequest.AuthSetting authSetting =
+                new LiveChannelSettingRequest().new AuthSetting().setAuthType(
+                LiveConstant.AuthType.CODE.getDesc())
+                .setRank(2)
+                .setEnabled("Y")
+                .setAuthCode("123456")
+                .setQcodeTips("提示文案测试2")
+                .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
+        List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
+        authSettings.add(authSetting);
+        LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest = new LiveUpdateChannelAuthRequest();
+        liveUpdateChannelAuthRequest.setChannelId(1965681).setAuthSettings(authSettings);
+        Boolean liveUpdateChannelAuthResponse = new LiveWebInfoServiceImpl().updateChannelAuth(
+                liveUpdateChannelAuthRequest);
+        Assert.assertNotNull(liveUpdateChannelAuthResponse);
+        if (liveUpdateChannelAuthResponse) {
+            log.debug("测试设置观看条件成功");
         }
     }
     

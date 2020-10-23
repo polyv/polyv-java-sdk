@@ -164,6 +164,7 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
          * 通用参数：主要观看条件为1，次要观看条件为2
          */
         @ApiModelProperty(name = "rank", value = "通用参数：主要观看条件为1，次要观看条件为2", required = true)
+        @NotNull(message = "rank不能为空")
         private Integer rank;
         
         /**
@@ -231,9 +232,9 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
         private String authTips;
         
         /**
-         * 登记观看参数
+         * 登记观看参数,上限为5个
          */
-        @ApiModelProperty(name = "infoFields", value = "登记观看参数", required = false)
+        @ApiModelProperty(name = "infoFields", value = "登记观看参数,上限为5个", required = false)
         private List<LiveChannelInitRequest.InfoField> infoFields;
         
         /**

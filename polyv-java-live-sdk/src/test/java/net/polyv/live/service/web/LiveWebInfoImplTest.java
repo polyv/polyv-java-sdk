@@ -3,6 +3,8 @@ package net.polyv.live.service.web;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,12 +12,15 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
 import net.polyv.live.entity.web.info.LiveChannelCountDownRequest;
 import net.polyv.live.entity.web.info.LiveChannelCountDownResponse;
 import net.polyv.live.entity.web.info.LiveChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveChannelLikesResponse;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
+import net.polyv.live.entity.web.info.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelCountDownRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLogoRequest;
@@ -195,5 +200,32 @@ public class LiveWebInfoImplTest extends BaseTest {
 //            log.debug("设置引导开关以及引导图片成功,{}", liveUpdateChannelSplashResponse);
 //        }
 //    }
+    
+    /**
+     * 测试设置观看条件
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelAuth() throws IOException, NoSuchAlgorithmException {
+        LiveChannelSettingRequest.AuthSetting authSetting =
+                new LiveChannelSettingRequest().new AuthSetting().setAuthType(
+                LiveConstant.AuthType.CODE.getDesc())
+                .setRank(2)
+                .setEnabled("Y")
+                .setAuthCode("123456")
+                .setQcodeTips("提示文案测试2")
+                .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
+        List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
+        authSettings.add(authSetting);
+        LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest = new LiveUpdateChannelAuthRequest();
+        liveUpdateChannelAuthRequest.setChannelId(1965681).setAuthSettings(authSettings);
+        Boolean liveUpdateChannelAuthResponse = new LiveWebInfoServiceImpl().updateChannelAuth(
+                liveUpdateChannelAuthRequest);
+        Assert.assertNotNull(liveUpdateChannelAuthResponse);
+        if (liveUpdateChannelAuthResponse) {
+            log.debug("测试设置观看条件成功");
+        }
+    }
     
 }

@@ -9,6 +9,7 @@ import net.polyv.live.entity.web.info.LiveChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveChannelLikesResponse;
 import net.polyv.live.entity.web.info.LiveChannelSplashRequest;
 import net.polyv.live.entity.web.info.LiveChannelSplashResponse;
+import net.polyv.live.entity.web.info.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelCountDownRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLikesRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelLogoRequest;
@@ -119,6 +120,17 @@ public interface ILiveWebInfoService {
      * @throws NoSuchAlgorithmException 异常
      */
     String updateChannelSplash(LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置观看条件
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/channel-auth-update/
+     * @param liveUpdateChannelAuthRequest 设置观看条件请求实体
+     * @return 设置观看条件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateChannelAuth(LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

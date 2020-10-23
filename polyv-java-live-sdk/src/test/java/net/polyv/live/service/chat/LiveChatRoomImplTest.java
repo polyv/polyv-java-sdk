@@ -295,8 +295,6 @@ public class LiveChatRoomImplTest extends BaseTest {
             //to do something ......
             log.debug("测试查询历史聊天信息成功{}", JSON.toJSONString(liveGetHistoryChatMsgResponsesList));
             log.debug("第一个元素 {} ", liveGetHistoryChatMsgResponsesList.get(0));
-            BusinessException exception = new BusinessException(400,"todo  带后台完善相关返回数据  ");
-            throw  exception;
         }
     }
     
@@ -367,10 +365,7 @@ public class LiveChatRoomImplTest extends BaseTest {
         if (responses != null) {
             //to do something ......
             log.debug("测试查询咨询提问记录成功{}", JSON.toJSONString(responses));
-            
-            log.debug("第一个元素 {} ", responses.get(0).getUserId());
-            BusinessException exception = new BusinessException(400,"todo  带后台完善相关返回数据  ");
-            throw  exception;
+            log.debug("第一个元素 {} ", responses.get(0).getContent() );
         }
     }
     

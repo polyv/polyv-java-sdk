@@ -22,7 +22,11 @@ import lombok.experimental.Accessors;
 @ApiModel("查询历史聊天信息响应实体")
 public class LiveGetHistoryChatMsgResponse {
     
-    
+    /**
+     * 用户IP
+     */
+    @ApiModelProperty(name = "acountId", value = "账号Id", required = false)
+    private String acountId;
     /**
      * 用户IP
      */
@@ -50,56 +54,18 @@ public class LiveGetHistoryChatMsgResponse {
     /**
      * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-    @JSONField(name = "roomId")
-    private Integer channelId;
-    
+    @ApiModelProperty(name = "roomId", value = "频道号", required = false)
+    private Integer roomId;
+    /**
+     * 图片消息的图片地址
+     */
+    @ApiModelProperty(name = "sessionId", value = "场次号", required = false)
+    private String sessionId;
     /**
      * 发送消息时的时间戳
      */
     @ApiModelProperty(name = "time", value = "发送消息时的时间戳", required = false)
     private Date time;
-    
-    private User user;
-    
-    @Data
-    @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @ApiModel("查询历史聊天信息响应实体-消息对应用户消息")
-    public class User {
-        /**
-         * 用户IP
-         */
-        @ApiModelProperty(name = "clientIp", value = "用户IP", required = false)
-        private String clientIp;
-        
-        /**
-         * 观众昵称
-         */
-        @ApiModelProperty(name = "nick", value = "观众昵称", required = false)
-        private String nick;
-        
-        /**
-         * 观众头像
-         */
-        @ApiModelProperty(name = "pic", value = "观众头像", required = false)
-        private String pic;
-        
-        
-        /**
-         * 用户唯一标示
-         */
-        @ApiModelProperty(name = "userId", value = "用户唯一标示", required = false)
-        private String userId;
-        
-        /**
-         * 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员）
-         */
-        @ApiModelProperty(name = "userType", value = "用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员）",
-                required = false)
-        private String userType;
-    }
     
     /**
      * 消息来源，目前有public(群聊)、extend（管理员私聊）
@@ -119,4 +85,87 @@ public class LiveGetHistoryChatMsgResponse {
      */
     @ApiModelProperty(name = "status", value = "审核状态，pass:已审核，censor：审核中，delete：删除", required = false)
     private String status;
+    
+    private User user;
+    
+    @Data
+    @Accessors(chain = true)
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @ApiModel("查询历史聊天信息响应实体-消息对应用户消息")
+    public class User {
+        /**
+         * 用户IP
+         */
+        @ApiModelProperty(name = "clientIp", value = "用户IP", required = false)
+        private String clientIp;
+    
+        /**
+         * 观众昵称
+         */
+        @ApiModelProperty(name = "nick", value = "观众昵称", required = false)
+        private String nick;
+    
+        /**
+         * 观众头像
+         */
+        @ApiModelProperty(name = "pic", value = "观众头像", required = false)
+        private String pic;
+    
+        /**
+         * 房间号
+         */
+        @ApiModelProperty(name = "roomId", value = "房间号", required = false)
+        private String roomId;
+    
+        /**
+         * 用户唯一标示
+         */
+        @ApiModelProperty(name = "userId", value = "用户唯一标示", required = false)
+        private String userId;
+    
+        /**
+         * socketId
+         */
+        @ApiModelProperty(name = "uid", value = "socketId", required = false)
+        private String uid;
+    
+        /**
+         * 场次号
+         */
+        @ApiModelProperty(name = "sessionId", value = "场次号", required = false)
+        private String sessionId;
+    
+        /**
+         * 频道号
+         */
+        @ApiModelProperty(name = "channelId", value = "频道号", required = false)
+        private Integer channelId;
+    
+        /**
+         * 是否禁言
+         */
+        @ApiModelProperty(name = "banned", value = "是否禁言", required = false)
+        private Boolean banned;
+    
+        /**
+         * 角色
+         */
+        @ApiModelProperty(name = "actor", value = "角色", required = false)
+        private String actor;
+    
+        /**
+         * 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员）
+         */
+        @ApiModelProperty(name = "userType", value = "用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员）", required = false)
+        private String userType;
+    
+    }
+    /**
+     * 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员）
+     */
+    @ApiModelProperty(name = "userType", value = "用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员）",
+            required = false)
+    private String userType;
+ 
 }

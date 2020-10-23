@@ -12,6 +12,9 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModelProperty;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
+import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
+import net.polyv.live.entity.interact.LiveQuestionnaireListResponse;
+import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 
 /**
  * @author: sadboy
@@ -21,7 +24,7 @@ public class CommonDocUtil {
     private static final String[] tableHead = new String[]{"参数名", "必选", "类型", "说明"};
     
     public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException {
-        String className = "net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest";
+        String className = LiveQuestionnaireListResponse.class.getName();
         Class objClass = Class.forName(className);
         List<Class> classList = new ArrayList<>();
         classList.add(objClass);

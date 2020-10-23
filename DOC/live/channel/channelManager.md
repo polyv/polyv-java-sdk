@@ -1,10 +1,10 @@
-## 定义
+## 频道定义
 
 ​		频道在保利威系统里面可以理解一个直播间、一课堂、一场会议，多个C端用户可以在同一个频道观看主播端的直播视频，如多个学生可以观看老师的教学，频道包含频道名称、进入频道密码、频道ID、观看频道的条件设置等级别信息；
 
 ​		频道管理可以进入官网云直播->我的直播页面查看。具体页面如下：
 
-![avatar](..\img\image-20200925164735119.png)
+![image-20200928163452748](../../img/image-20200928163452748.png)
 
 
 
@@ -18,56 +18,60 @@
 
 #### 调用约束
 
-```
-1.频道名称、频道密码、请求流水号必填，其余参数依据实际需要填写；
-2.连麦人数不能大于16，设置连麦人数参数，必须先通知系统管理管开通连麦功能开关并设置账号级连麦人数；
-```
+接口调用有频率限制，[详细请查看](/limit.md)
+
+连麦人数不能大于16，连麦和无延时直播参数设置前，必须先通知超管开通连麦和无延时直播开关；
 
 #### 代码示例
 
 ```java
-   @Test
-    public void testCreateChannel() throws IOException {
-        LiveChannelRequest liveChannelRequest =  new  LiveChannelRequest();
-        liveChannelRequest.setName( "Spring 知识精讲")
+    /**
+     * 测试创建频道
+     * @throws IOException
+     */
+    @Test
+    public void testCreateChannel() throws IOException, NoSuchAlgorithmException {
+        LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
+        liveChannelRequest.setName("Spring 知识精讲")
                 .setChannelPasswd("666888")
-                .setRequestId("2860257a405447e1bbbe9161da2dee72");
-        LiveChannelResponse liveChannelResponse = new LiveChannelServiceImpl().createChannel(liveChannelRequest);
+                .setAutoPlay(LiveConstant.AutoPlay.AOTU_PLAY.getFlag())
+                .setScene(LiveConstant.SceneType.PPT.getDesc())
+                .setMaxViewer(300)
+                .setWatchLayout(LiveConstant.WatchLayout.PPT.getFlag())
+//                .setLinkMicLimit(2)
+//                .setPureRtcEnabled(LiveConstant.Flag.YES.getFlag())
+                .setReceive(LiveConstant.Flag.YES.getFlag())
+                .setRequestId(LiveSignUtil.generateUUID());
+        LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         Assert.assertNotNull(liveChannelResponse);
-        if(liveChannelResponse != null  ){
-            //todo something ......
-           log.debug("频道创建成功"+JSON.toJSONString(liveChannelResponse));
+        if (liveChannelResponse != null) {
+            //to do something ......
+            log.debug("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
         }
+
     }
 ```
 
-#### 单元测试流程
+#### 请求入参描述 
 
-[swagger 程序接入-频道创建](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)
-
-[登录保利威官网后台直播列表页面查看是否创建成功](http://live.polyv.net/#/channel)
-
-#### 请求入参描述[LiveChannelRequest]
-
-| 参数名            | 必选   | 类型       | 说明                                                         |
-| :---------------- | :----- | :--------- | :----------------------------------------------------------- |
-| name              | 是     | string     | 频道名称                                                     |
-| channelPasswd     | 是     | string     | 频道密码,长度不能超过16位                                    |
-| ~~courseId~~      | ~~否~~ | ~~string~~ | 课程号（参数已废弃，不推荐使用 ）                            |
-| autoPlay          | 否     | int        | 是否自动播放，0/1，默认1                                     |
-| playerColor       | 否     | string     | 播放器控制栏颜色，默认：#666666                              |
-| scene             | 否     | string     | 直播场景： alone 直播助手 ppt 云课堂 topclass 大班课         |
-| categoryId        | 否     | int        | 新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） |
-| maxViewer         | 否     | int        | 频道的最大在线人数观看限制的人数                             |
-| watchLayout       | 否     | string     | 三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt 文档为主，video 视频为主 |
-| linkMicLimit      | 否     | int        | 连麦人数; -1：使用账号的连麦人数，范围>=-1，<=账号的连麦人数，最大16人 |
-| pureRtcEnabled    | 否     | string     | 是否为无延时直播，Y 表示开启，默认为N                        |
-| receive           | 否     | string     | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) |
-| receiveChannelIds | 否     | string     | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) |
+| 参数名            | 必选 | 类型   | 说明                                                         |
+| :---------------- | :--- | :----- | :----------------------------------------------------------- |
+| name              | 是   | string | 频道名称                                                     |
+| channelPasswd     | 是   | string | 频道密码,长度不能超过16位                                    |
+| autoPlay          | 否   | int    | 是否自动播放，取值：0 - 手动播放，1 - 自动播放，默认1        |
+| playerColor       | 否   | string | 播放器控制栏颜色，默认：#666666(灰色)                        |
+| scene             | 否   | string | 直播场景： alone - 直播助手，  ppt- 云课堂 ， topclass -大班课 |
+| categoryId        | 否   | int    | 新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） |
+| maxViewer         | 否   | int    | 频道的最大在线人数观看限制的人数                             |
+| watchLayout       | 否   | string | 三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt-文档为主，video-视频为主 |
+| linkMicLimit      | 否   | int    | 连麦人数： 0-16，最多16人连麦，-1：使用账号级别的默认连麦人数配置 |
+| pureRtcEnabled    | 否   | string | 是否为无延时直播，Y 表示开启，N为不开启，默认为N             |
+| receive           | 否   | string | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) |
+| receiveChannelIds | 否   | string | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) |
 
 
 
-#### 返回对象描述[LiveChannelResponse]
+#### 返回对象描述
 
 | 参数名            | 类型      | 说明                                     |
 | :---------------- | :-------- | :--------------------------------------- |
@@ -110,7 +114,6 @@
 | linkMicLimit      | int       | 连麦人数                                 |
 
 ----------------
-
 
 
 

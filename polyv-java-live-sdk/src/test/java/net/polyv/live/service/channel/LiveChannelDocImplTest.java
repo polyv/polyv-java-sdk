@@ -17,6 +17,7 @@ import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.channel.impl.LiveChannelDocServiceImpl;
 
 /**
+ * 直播频道操作
  * @author: sadboy
  **/
 @Slf4j

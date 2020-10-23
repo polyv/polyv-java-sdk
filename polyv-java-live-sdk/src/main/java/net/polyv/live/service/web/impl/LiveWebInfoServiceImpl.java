@@ -188,27 +188,6 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
                 String.class);
         return liveUpdateChannelSplashResponse;
     }
-    
-    /**
-     * 设置观看条件
-     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/channel-auth-update/
-     * @param liveUpdateChannelAuthRequest 设置观看条件请求实体
-     * @return 设置观看条件返回实体
-     * @throws IOException 异常
-     * @throws NoSuchAlgorithmException 异常
-     */
-    @Override
-    public Boolean updateChannelAuth(LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest)
-            throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.CHANNEL_AUTH_UPDATE_URL;
-        Map<String, String> signMap = MapUtil.getSignMap(liveUpdateChannelAuthRequest);
-        Integer channelId = liveUpdateChannelAuthRequest.getChannelId();
-        if (channelId != null) {
-            signMap.put("channelId", channelId.toString());
-        }
-        String liveUpdateChannelAuthResponse = this.basePostJson(url, signMap, liveUpdateChannelAuthRequest,
-                String.class);
-        return "true".equals(liveUpdateChannelAuthResponse);
-    }
+
     
 }

@@ -201,31 +201,6 @@ public class LiveWebInfoImplTest extends BaseTest {
 //        }
 //    }
     
-    /**
-     * 测试设置观看条件
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testUpdateChannelAuth() throws IOException, NoSuchAlgorithmException {
-        LiveChannelSettingRequest.AuthSetting authSetting =
-                new LiveChannelSettingRequest().new AuthSetting().setAuthType(
-                LiveConstant.AuthType.CODE.getDesc())
-                .setRank(2)
-                .setEnabled("Y")
-                .setAuthCode("123456")
-                .setQcodeTips("提示文案测试2")
-                .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-        List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
-        authSettings.add(authSetting);
-        LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest = new LiveUpdateChannelAuthRequest();
-        liveUpdateChannelAuthRequest.setChannelId(1965681).setAuthSettings(authSettings);
-        Boolean liveUpdateChannelAuthResponse = new LiveWebInfoServiceImpl().updateChannelAuth(
-                liveUpdateChannelAuthRequest);
-        Assert.assertNotNull(liveUpdateChannelAuthResponse);
-        if (liveUpdateChannelAuthResponse) {
-            log.debug("测试设置观看条件成功");
-        }
-    }
+
     
 }

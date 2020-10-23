@@ -44,6 +44,12 @@ public class LiveURL {
             BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/setPublisher";
     
     /**
+     * 通过接口设置外部授权
+     */
+    public static final String CHANNEL_AUTH_EXTERNAL_URL =
+            BASE_URI + "v2/channelSetting/" + PARAM_REPLACE_CHAR + "/auth-external";
+    
+    /**
      * 查询直播引导图开关状态及URL
      */
     public static final String CHANNEL_SPLASH_GET_URL =

@@ -20,6 +20,8 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
+import net.polyv.live.entity.web.auth.LiveChannelWriteListRequest;
+import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.service.BaseTest;
@@ -57,8 +59,7 @@ public class LiveWebAuthImplTest extends BaseTest {
      */
     @Test
     public void testUpdateChannelAuth() throws IOException, NoSuchAlgorithmException {
-        LiveChannelSettingRequest.AuthSetting authSetting =
-                new LiveChannelSettingRequest.AuthSetting().setAuthType(
+        LiveChannelSettingRequest.AuthSetting authSetting = new LiveChannelSettingRequest.AuthSetting().setAuthType(
                 LiveConstant.AuthType.CODE.getDesc())
                 .setRank(2)
                 .setEnabled("Y")
@@ -148,6 +149,25 @@ public class LiveWebAuthImplTest extends BaseTest {
         if (liveChannelAuthResponse != null) {
             //to do something ......
             log.debug("测试查询直播频道观看条件成功,{}", JSON.toJSONString(liveChannelAuthResponse));
+        }
+    }
+    
+    /**
+     * 测试查询频道观看白名单列表
+     * 用于获取全局或频道的观看条件白名单列表
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelWriteList() throws IOException, NoSuchAlgorithmException {
+        LiveChannelWriteListRequest liveChannelWriteListRequest = new LiveChannelWriteListRequest();
+        liveChannelWriteListRequest.setChannelId(null).setRank(1).setKeyword(null).setPageSize(1);
+        LiveChannelWriteListResponse liveChannelWriteListResponse = new LiveWebAuthServiceImpl().channelWriteList(
+                liveChannelWriteListRequest);
+        Assert.assertNotNull(liveChannelWriteListResponse);
+        if (liveChannelWriteListResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道观看白名单列表成功,{}", JSON.toJSONString(liveChannelWriteListResponse));
         }
     }
     

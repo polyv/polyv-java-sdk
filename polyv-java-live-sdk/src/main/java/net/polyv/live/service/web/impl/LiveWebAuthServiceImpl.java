@@ -15,6 +15,8 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
+import net.polyv.live.entity.web.auth.LiveChannelWriteListRequest;
+import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.service.LiveBaseService;
@@ -138,6 +140,23 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
         LiveChannelAuthResponse liveChannelAuthResponse = new LiveChannelAuthResponse();
         liveChannelAuthResponse.setAuthSettings(authSettings);
         return liveChannelAuthResponse;
+    }
+    
+    /**
+     * 查询频道观看白名单列表
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/get-white-list/
+     * @param liveChannelWriteListRequest 查询频道观看白名单列表请求实体
+     * @return 查询频道观看白名单列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelWriteListResponse channelWriteList(LiveChannelWriteListRequest liveChannelWriteListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_WRITE_LIST_GET_URL;
+        LiveChannelWriteListResponse liveChannelWriteListResponse = this.baseGet(url, liveChannelWriteListRequest,
+                LiveChannelWriteListResponse.class);
+        return liveChannelWriteListResponse;
     }
     
 }

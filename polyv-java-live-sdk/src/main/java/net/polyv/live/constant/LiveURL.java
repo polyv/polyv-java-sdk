@@ -684,6 +684,14 @@ public class LiveURL {
     
     
     /**
+     * 设置播放器暖场视频
+     */
+    public static final String PLAYER_SET_CHANNEL_WARMUP_VEDIO_URL =
+            BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/update";
+    
+    
+    
+    /**
      * 400错误码
      */
     public static final int CODE_400 = 400;

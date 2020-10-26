@@ -8,6 +8,7 @@ import net.polyv.live.entity.player.LiveSetPlayerImgRequest;
 import net.polyv.live.entity.player.LiveSetPlayerLogoRequest;
 import net.polyv.live.entity.player.LiveSetPlayerPauseAdvertRequest;
 import net.polyv.live.entity.player.LiveSetWarmupEnableRequest;
+import net.polyv.live.entity.player.LiveSetWarmupVedioRequest;
 
 /**
  * 直播签到管理
@@ -64,4 +65,14 @@ public interface ILivePlayerService {
      */
     public Boolean setPlayerHeaderAdvert(LiveSetPlayerHeaderAdvertRequest liveSetPlayerHeaderAdvertRequest)
             throws IOException, NoSuchAlgorithmException ;
+    
+    /**
+     * 设置播放器暖场视频，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatewarmupflv/
+     * @param liveSetWarmupVedioRequest 设置播放器暖场视频请求实体
+     * @return 响应实体
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    public Boolean setPlayerWarmUpVedio(LiveSetWarmupVedioRequest liveSetWarmupVedioRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

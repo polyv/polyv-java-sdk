@@ -11,6 +11,7 @@ import net.polyv.live.entity.player.LiveSetPlayerImgRequest;
 import net.polyv.live.entity.player.LiveSetPlayerLogoRequest;
 import net.polyv.live.entity.player.LiveSetPlayerPauseAdvertRequest;
 import net.polyv.live.entity.player.LiveSetWarmupEnableRequest;
+import net.polyv.live.entity.player.LiveSetWarmupVedioRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.player.ILivePlayerService;
 
@@ -108,4 +109,21 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
             return result ;
         }
     }
+    
+    /**
+     * 设置播放器暖场视频，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatewarmupflv/
+     * @param liveSetWarmupVedioRequest 设置播放器暖场视频请求实体
+     * @return 响应实体
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean setPlayerWarmUpVedio(LiveSetWarmupVedioRequest liveSetWarmupVedioRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.PLAYER_SET_CHANNEL_WARMUP_VEDIO_URL, liveSetWarmupVedioRequest.getChannelId());
+        return super.basePost(url, liveSetWarmupVedioRequest, Boolean.class);
+    }
+    
+    
+    
 }

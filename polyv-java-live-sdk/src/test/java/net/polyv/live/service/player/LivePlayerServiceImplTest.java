@@ -16,6 +16,7 @@ import net.polyv.live.entity.player.LiveSetPlayerImgRequest;
 import net.polyv.live.entity.player.LiveSetPlayerLogoRequest;
 import net.polyv.live.entity.player.LiveSetPlayerPauseAdvertRequest;
 import net.polyv.live.entity.player.LiveSetWarmupEnableRequest;
+import net.polyv.live.entity.player.LiveSetWarmupVedioRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.player.impl.LivePlayerServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
@@ -100,7 +101,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
     }
  
     /**
-     * TODO 待验证功能准确性
+     *
      *设置播放器暂停广告，API地址：https://dev.polyv.net/2018/liveproduct/l-player/updatestop/
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -125,7 +126,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
     
     
     /**
-     * TODO 待验证功能准确性
+     *
      *设置播放器片头广告，API地址：https://dev.polyv.net/2018/liveproduct/l-player/updatehead/
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -152,4 +153,36 @@ public class LivePlayerServiceImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 设置播放器暖场视频，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatewarmupflv/
+     * @param liveSetWarmupVedioRequest 设置播放器暖场视频请求实体
+     * @return 响应实体
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean setPlayerLogo( liveSetWarmupVedioRequest)
+            throws IOException, NoSuchAlgorithmException
+    
+    /**
+     *
+     *设置播放器暖场视频，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatewarmupflv/
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testSetPlayerWarmUpVedio() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+        Integer channelId = super.createChannel();
+        LiveSetWarmupVedioRequest liveSetWarmupVedioRequest = new LiveSetWarmupVedioRequest();
+        liveSetWarmupVedioRequest.setChannelId(channelId)
+                .setWarmUpFlv("https://v.cnezsoft.com/zentao/introduction_catelog.mp4?sign=e1119d6ab99b07ab28c2f0508acc76e7&t=5f966aea")
+                .setRequestId(LiveSignUtil.generateUUID());
+        Boolean result = new LivePlayerServiceImpl().setPlayerWarmUpVedio(liveSetWarmupVedioRequest);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试设置播放器暖场视频成功{}", JSON.toJSONString(result));
+            
+        }
+    }
 }

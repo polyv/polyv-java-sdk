@@ -9,6 +9,8 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.entity.channel.state.LiveChannelStreamInfoRequest;
+import net.polyv.live.entity.channel.state.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.state.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.state.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.state.LiveListChannelStreamStatusResponse;
@@ -96,6 +98,25 @@ public class LiveChannelStateImplTest extends BaseTest {
         
         //删除测试数据
         deleteChannel(channelId);
+    }
+    
+    /**
+     * 测试查询频道实时推流信息（讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常）
+     * 该测试类必须在开启直播中才能测试，先注释掉
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testchannelStreamInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelStreamInfoRequest liveChannelStreamInfoRequest = new LiveChannelStreamInfoRequest();
+        liveChannelStreamInfoRequest.setChannelId(1951952);
+        LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = new LiveChannelStateServiceImpl().channelStreamInfo(
+                liveChannelStreamInfoRequest);
+        Assert.assertNotNull(liveChannelStreamInfoResponse);
+        if (liveChannelStreamInfoResponse != null) {
+            //to do something ......
+            log.debug("批量查询频道直播流状态成功{}",JSON.toJSONString(liveChannelStreamInfoResponse));
+        }
     }
     
 }

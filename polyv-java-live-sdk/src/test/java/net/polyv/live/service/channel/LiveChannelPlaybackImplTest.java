@@ -2,7 +2,6 @@ package net.polyv.live.service.channel;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Collections;
 import java.util.List;
 
 import org.junit.Assert;
@@ -11,7 +10,6 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
-import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.channel.playback.LiveChannelDefaultVideoRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelPlaybackEnabledInfoRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelPlaybackEnabledRequest;
@@ -20,13 +18,16 @@ import net.polyv.live.entity.channel.playback.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyResponse;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoSortRequest;
+import net.polyv.live.entity.channel.playback.LiveConvertChannelVideoListAsyncRequest;
 import net.polyv.live.entity.channel.playback.LiveCreateChannelVideoPlaybackRequest;
 import net.polyv.live.entity.channel.playback.LiveCreateChannelVideoPlaybackResponse;
+import net.polyv.live.entity.channel.playback.LiveDeleteChannelPlaybackVideoRequest;
+import net.polyv.live.entity.channel.playback.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoRequest;
 import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoResponse;
 import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryResponse;
+import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.channel.impl.LiveChannelPlaybackServiceImpl;
 
@@ -244,6 +245,93 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         if ("success".equals(liveChannelDefaultVideoResponse)) {
             //to do something ......
             log.debug("测试设置视频库列表的默认视频成功{}", liveChannelDefaultVideoResponse);
+        }
+    }
+    
+    /**
+     * 测试异步合并直播录制文件
+     * TODO 删除生成的视频
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
+        LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
+        liveMergeChannelVideoAsyncRequest.setChannelId(1951952)
+                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+                .setFileName("测试合并-可删除")
+                .setCallbackUrl(null)
+                .setAutoConvert("Y")
+                .setMergeMp4("Y");
+        String liveMergeChannelVideoAsyncResponse = new LiveChannelPlaybackServiceImpl().mergeChannelVideoAsync(
+                liveMergeChannelVideoAsyncRequest);
+        Assert.assertNotNull(liveMergeChannelVideoAsyncResponse);
+        if ("submit success".equals(liveMergeChannelVideoAsyncResponse)) {
+            //to do something ......
+            log.debug("测试异步合并直播录制文件,具体是否成功以回调为准{}", liveMergeChannelVideoAsyncResponse);
+        }
+    }
+    
+    /**
+     * 测试异步批量转存录制文件到点播
+     * TODO 删除生成的视频
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testConvertChannelVideoListAsync() throws IOException, NoSuchAlgorithmException {
+        LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest =
+                new LiveConvertChannelVideoListAsyncRequest();
+        liveConvertChannelVideoListAsyncRequest.setChannelId(1951952)
+                .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+                .setFileName("删除-直播录制转点播")
+                .setCataId(null)
+                .setCallbackUrl(null);
+        String liveConvertChannelVideoResponse = new LiveChannelPlaybackServiceImpl().convertChannelVideoListAsync(
+                liveConvertChannelVideoListAsyncRequest);
+        Assert.assertNotNull(liveConvertChannelVideoResponse);
+        if ("submit success".equals(liveConvertChannelVideoResponse)) {
+            //to do something ......
+            log.debug("测试异步批量转存录制文件到点播,具体是否成功以回调为准{}", liveConvertChannelVideoResponse);
+        }
+    }
+    
+    /**
+     * 测试删除直播暂存中的录制文件
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testDeleteChannelVideo() throws IOException, NoSuchAlgorithmException {
+        LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest = new LiveDeleteChannelVideoRequest();
+        liveDeleteChannelVideoRequest.setChannelId(1951952).setStartTime("20201016111234");
+        String liveDeleteChannelVideoResponse = new LiveChannelPlaybackServiceImpl().deleteChannelVideo(
+                liveDeleteChannelVideoRequest);
+        Assert.assertNotNull(liveDeleteChannelVideoResponse);
+        if (liveDeleteChannelVideoResponse != null) {
+            //to do something ......
+            log.debug("测试删除直播暂存中的录制文件");
+        }
+    }
+    
+    /**
+     * 测试删除视频库列表中的视频
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testDeleteChannelPlaybackVideo() throws IOException, NoSuchAlgorithmException {
+        int channelId = 1951952;
+        String videoId = "07f5bbeb67";
+        LiveDeleteChannelPlaybackVideoRequest liveDeleteChannelPlaybackVideoRequest =
+                new LiveDeleteChannelPlaybackVideoRequest();
+        liveDeleteChannelPlaybackVideoRequest.setChannelId(channelId).setVideoId(videoId).setListType("playback");
+        String liveDeleteChannelPlaybackVideoResponse = new LiveChannelPlaybackServiceImpl().deleteChannelPlaybackVideo(
+                liveDeleteChannelPlaybackVideoRequest);
+        Assert.assertNotNull(liveDeleteChannelPlaybackVideoResponse);
+        if ("success".equals(liveDeleteChannelPlaybackVideoResponse)) {
+            //to do something ......
+            log.debug("测试删除视频库列表中的视频成功");
         }
     }
     

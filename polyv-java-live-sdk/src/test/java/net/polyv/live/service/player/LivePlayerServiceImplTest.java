@@ -16,6 +16,7 @@ import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.chat.LiveSetChatAdminDataRequest;
 import net.polyv.live.entity.player.LiveSetPlayerImgRequest;
 import net.polyv.live.entity.player.LiveSetPlayerLogoRequest;
+import net.polyv.live.entity.player.LiveSetPlayerPauseAdvertRequest;
 import net.polyv.live.entity.player.LiveSetWarmupEnableRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.chat.impl.LiveChatRoomServiceImpl;
@@ -91,7 +92,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
                 .setLogoHref("http://www.baidu.com/huava")
                 .setLogoPosition(LiveConstant.LogoPosition.BL.getPosition())
                 .setLogoImage("https://c-ssl.duitang.com/uploads/item/202005/07/20200507133619_rpiso.thumb.1000_0.jpeg")
-                .setLogoOpacity(1f)
+                .setLogoOpacity(1D)
                 .setRequestId(LiveSignUtil.generateUUID());
         Boolean result = new LivePlayerServiceImpl().setPlayerLogo(liveSetPlayerLogoRequest);
         Assert.assertNotNull(result);
@@ -99,7 +100,30 @@ public class LivePlayerServiceImplTest extends BaseTest {
             //to do something ......
             log.debug("测试设置播放器Logo成功{}", JSON.toJSONString(result));
         }
-        
+    }
+ 
+    /**
+     * TODO 待验证功能准确性
+     *设置播放器暂停广告，API地址：https://dev.polyv.net/2018/liveproduct/l-player/updatestop/
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testSetPlayerPauseAdvert() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+        Integer channelId = super.createChannel();
+        LiveSetPlayerPauseAdvertRequest liveSetPlayerPauseAdvertRequest = new LiveSetPlayerPauseAdvertRequest();
+        liveSetPlayerPauseAdvertRequest.setChannelId(channelId)
+                .setEnabled(LiveConstant.Flag.YES.getFlag())
+                .setStopAdvertHref("http://www.baidu.com/huava")
+                .setStopAdvertImage("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
+                .setRequestId(LiveSignUtil.generateUUID());
+        Boolean result = new LivePlayerServiceImpl().setPlayerPauseAdvert(liveSetPlayerPauseAdvertRequest);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试设置播放器暂停广告成功{}", JSON.toJSONString(result));
+            
+        }
     }
     
 }

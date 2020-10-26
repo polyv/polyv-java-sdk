@@ -5,12 +5,12 @@ package net.polyv.common.exception;
  * @author: thomas
  
  **/
-public class BusinessException extends  RuntimeException {
+public class PloyvSdkException extends  RuntimeException {
     static final long serialVersionUID = -7034234234266939L;
     private Integer code;
     private String message;
     
-    public BusinessException(Integer code, String message) {
+    public PloyvSdkException(Integer code, String message) {
         this.code = code;
         this.message = message;
     }

@@ -6,7 +6,11 @@ import java.security.NoSuchAlgorithmException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.entity.web.menu.LiveListChannelMenuRequest;
+import net.polyv.live.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.entity.web.menu.LiveUpdateChannelMenuRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebMenuServiceImpl;
@@ -37,6 +41,26 @@ public class LiveWebMenuImplTest extends BaseTest {
         if (liveUpdateChannelMenuResponse) {
             //to do something ......
             log.debug("测试设置自定义菜单直播介绍成功");
+        }
+    }
+    
+    /**
+     * 测试查询频道的菜单信息
+     * 描述:获取频道的菜单信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelMenu() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelMenuRequest liveListChannelMenuRequest = new LiveListChannelMenuRequest();
+        LiveListChannelMenuResponse liveListChannelMenuResponse;
+        liveListChannelMenuRequest.setChannelId(1965681);
+        liveListChannelMenuResponse = new LiveWebMenuServiceImpl().listChannelMenu(
+                liveListChannelMenuRequest);
+        Assert.assertNotNull(liveListChannelMenuResponse);
+        if (liveListChannelMenuResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道的菜单信息成功,{}", JSON.toJSONString(liveListChannelMenuResponse));
         }
     }
     

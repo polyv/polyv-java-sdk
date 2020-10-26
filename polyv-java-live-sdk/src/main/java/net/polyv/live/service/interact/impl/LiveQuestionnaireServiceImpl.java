@@ -25,6 +25,7 @@ import net.polyv.live.entity.interact.LiveQuestionnaireResultPageRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultPageResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
+import net.polyv.live.entity.interact.LiveSetLotteryWinnerInfoRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.interact.ILiveQuestionnaireService;
 import net.polyv.live.util.LiveSignUtil;
@@ -53,9 +54,6 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
         return LiveQuestionnaireDetailResponse;
     }
     
-   
-    
-    
     /**
      * 查询频道问卷列表 ,API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/list-questionaire/
      * @param liveQuestionnaireListRequest 查询频道问卷列表请求实体
@@ -71,12 +69,13 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
                 LiveQuestionnaireListResponse.class);
         return liveQuestionnarieListResponse;
     }
+    
     /**
      * 获取签名字段
      * @param liveQuestionnaireDetailSetRequest signmap 来源
      * @return 签名字段MAP
      */
-    private Map<String, String> getSignMap( LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest) {
+    private Map<String, String> getSignMap(LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest) {
         if (StringUtils.isBlank(liveQuestionnaireDetailSetRequest.getRequestId())) {
             liveQuestionnaireDetailSetRequest.setRequestId(LiveSignUtil.generateUUID());
         }
@@ -106,10 +105,11 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_QUESTIONNAIRE_DETAIL_SET_URL;
         Map<String, String> signMap = getSignMap(liveQuestionnaireDetailSetRequest);
-        LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse = this.basePostJson(url,signMap,
+        LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse = this.basePostJson(url, signMap,
                 liveQuestionnaireDetailSetRequest, LiveQuestionnaireDetailSetResponse.class);
         return liveQuestionnaireDetailSetResponse;
     }
+    
     /**
      * 查询频道问卷结果，API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbhd/questionnaire/
      * @param liveQuestionnaireResultRequest 查询频道问卷结果请求实体
@@ -118,7 +118,7 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
      * @throws NoSuchAlgorithmException 算法异常
      */
     @Override
-    public List<LiveQuestionnaireResultResponse>  getQuestionnaireResultInfo(
+    public List<LiveQuestionnaireResultResponse> getQuestionnaireResultInfo(
             LiveQuestionnaireResultRequest liveQuestionnaireResultRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_URL;
@@ -179,5 +179,20 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
         return liveLotteryWinnerDetailResponse;
     }
     
+    /**
+     * 设置抽奖中奖者信息
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/tjzjxx/
+     * @param liveSetLotteryWinnerInfoRequest 设置抽奖中奖者信息请求实体
+     * @return 设置抽奖中奖者信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean setLotteryWinnerInfo(LiveSetLotteryWinnerInfoRequest liveSetLotteryWinnerInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_SET_LOTTERY_WINNER_INFO_URL;
+        String liveSetLotteryWinnerInfoResponse = this.baseGet(url, liveSetLotteryWinnerInfoRequest, String.class);
+        return "".equals(liveSetLotteryWinnerInfoResponse);
+    }
     
 }

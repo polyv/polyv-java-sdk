@@ -27,6 +27,7 @@ import net.polyv.live.entity.interact.LiveQuestionnaireResultPageRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultPageResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
+import net.polyv.live.entity.interact.LiveSetLotteryWinnerInfoRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.interact.impl.LiveQuestionnaireServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
@@ -281,6 +282,34 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         if (liveLotteryWinnerDetailResponse != null) {
             //to do something ......
             log.debug("测试获取频道单场抽奖的中奖记录成功，{}", JSON.toJSONString(liveLotteryWinnerDetailResponse));
+        }
+    }
+    
+    /**
+     * 测试设置抽奖中奖者信息
+     * TODO 未通过测试
+     * 描述：用于提交中奖者填写的信息
+     * 约束：2.只能成功保存一次观众中奖信息
+     * 约束：3.中奖信息需在7天内提交保存，否则会失效
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testSetLotteryWinnerInfo() throws IOException, NoSuchAlgorithmException {
+        LiveSetLotteryWinnerInfoRequest liveSetLotteryWinnerInfoRequest = new LiveSetLotteryWinnerInfoRequest();
+        Boolean liveSetLotteryWinnerInfoResponse;
+        liveSetLotteryWinnerInfoRequest.setChannelId(super.createChannel())
+                .setLotteryId("")
+                .setWinnerCode("")
+                .setViewerId("")
+                .setName("")
+                .setTelephone("")
+                .setReceiveInfo("");
+        liveSetLotteryWinnerInfoResponse = new LiveQuestionnaireServiceImpl().setLotteryWinnerInfo(liveSetLotteryWinnerInfoRequest);
+        Assert.assertNotNull(liveSetLotteryWinnerInfoResponse);
+        if (liveSetLotteryWinnerInfoResponse) {
+            //to do something ......
+            log.debug("测试设置抽奖中奖者信息成功");
         }
     }
     

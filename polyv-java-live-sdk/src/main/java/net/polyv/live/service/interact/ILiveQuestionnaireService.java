@@ -18,6 +18,7 @@ import net.polyv.live.entity.interact.LiveQuestionnaireResultPageRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultPageResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
+import net.polyv.live.entity.interact.LiveSetLotteryWinnerInfoRequest;
 
 /**
  * 直播互动管理
@@ -98,6 +99,17 @@ public interface ILiveQuestionnaireService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveLotteryWinnerDetailResponse lotteryWinnerDetail(LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置抽奖中奖者信息
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/tjzjxx/
+     * @param liveSetLotteryWinnerInfoRequest 设置抽奖中奖者信息请求实体
+     * @return 设置抽奖中奖者信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean setLotteryWinnerInfo(LiveSetLotteryWinnerInfoRequest liveSetLotteryWinnerInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

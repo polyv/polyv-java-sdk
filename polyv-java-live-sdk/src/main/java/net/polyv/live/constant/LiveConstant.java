@@ -221,7 +221,23 @@ public class LiveConstant {
         }
     }
     
-    
+    /**
+     * 	logo位置，取值为为左上角(tl)、右上角(tr)、左下角(bl)、右下角(br)
+     */
+    public enum LogoPosition {
+        //	logo位置，取值为为左上角(tl)、右上角(tr)、左下角(bl)、右下角(br)
+       TL("tl"),TR("tr"),BL("bl"),BR("br");
+        
+        private String position;
+        
+        private LogoPosition(String position) {
+            this.position = position;
+        }
+        
+        public String getPosition() {
+            return position;
+        }
+    }
     
     /**
      * 禁言类型

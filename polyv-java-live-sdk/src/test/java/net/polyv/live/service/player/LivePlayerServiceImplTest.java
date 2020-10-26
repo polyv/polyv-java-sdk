@@ -15,6 +15,7 @@ import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.chat.LiveSetChatAdminDataRequest;
 import net.polyv.live.entity.player.LiveSetPlayerImgRequest;
+import net.polyv.live.entity.player.LiveSetPlayerLogoRequest;
 import net.polyv.live.entity.player.LiveSetWarmupEnableRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.chat.impl.LiveChatRoomServiceImpl;
@@ -74,6 +75,31 @@ public class LivePlayerServiceImplTest extends BaseTest {
         
     }
     
+   
     
+    /**
+     *
+     *设置播放器Logo，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatelogo/
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testSetPlayerLogo() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+        Integer channelId = super.createChannel();
+        LiveSetPlayerLogoRequest liveSetPlayerLogoRequest = new LiveSetPlayerLogoRequest();
+        liveSetPlayerLogoRequest.setChannelId(channelId)
+                .setLogoHref("http://www.baidu.com/huava")
+                .setLogoPosition(LiveConstant.LogoPosition.BL.getPosition())
+                .setLogoImage("https://c-ssl.duitang.com/uploads/item/202005/07/20200507133619_rpiso.thumb.1000_0.jpeg")
+                .setLogoOpacity(1f)
+                .setRequestId(LiveSignUtil.generateUUID());
+        Boolean result = new LivePlayerServiceImpl().setPlayerLogo(liveSetPlayerLogoRequest);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试设置播放器Logo成功{}", JSON.toJSONString(result));
+        }
+        
+    }
     
 }

@@ -3,12 +3,14 @@ package net.polyv.live.service.web;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.entity.web.interact.LiveUpdateChannelCashRequest;
 import net.polyv.live.entity.web.interact.LiveUpdateChannelGoodRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebInteractServiceImpl;
@@ -38,11 +40,34 @@ public class LiveWebInteractImplTest extends BaseTest {
                 .setGoodEnabled("Y");
         channelGoods.add(channelGood);
         liveUpdateChannelGoodRequest.setChannelId(1965681).setEnabled("Y").setGoods(channelGoods);
-        liveUpdateChannelGoodResponse = new LiveWebInteractServiceImpl().updateChannelGood(liveUpdateChannelGoodRequest);
+        liveUpdateChannelGoodResponse = new LiveWebInteractServiceImpl().updateChannelGood(
+                liveUpdateChannelGoodRequest);
         Assert.assertNotNull(liveUpdateChannelGoodResponse);
         if (liveUpdateChannelGoodResponse) {
             //to do something ......
             log.debug("测试设置道具打赏成功");
+        }
+    }
+    
+    /**
+     * 测试设置现金打赏
+     * 描述:用于设置频道或者全局现金打赏
+     * 约束:2.带上频道ID为设置频道现金打赏，不带频道ID默认为全局现金打赏设置
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelCash() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelCashRequest liveUpdateChannelCashRequest = new LiveUpdateChannelCashRequest();
+        Boolean liveUpdateChannelCashResponse;
+        Double[] floats = {0.88d, 6.66d, 8.88d, 18.11d, 66.60d, 88.89d};
+        List<Double> cashes = Arrays.asList(floats);
+        liveUpdateChannelCashRequest.setChannelId(1965681).setCashes(cashes).setCashMin(0.02d).setEnabled("Y");
+        liveUpdateChannelCashResponse = new LiveWebInteractServiceImpl().updateChannelCash(liveUpdateChannelCashRequest);
+        Assert.assertNotNull(liveUpdateChannelCashResponse);
+        if (liveUpdateChannelCashResponse) {
+            //to do something ......
+            log.debug("测试设置现金打赏成功");
         }
     }
     

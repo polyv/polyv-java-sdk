@@ -253,15 +253,25 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
     public void testListLottery() throws IOException, NoSuchAlgorithmException {
         LiveListLotteryRequest liveListLotteryRequest = new LiveListLotteryRequest();
         LiveListLotteryResponse liveListLotteryResponse;
-        liveListLotteryRequest.setChannelId(super.createChannel())
-                .setStartTime(1601481600000l)
-                .setEndTime(1605024000000l)
-                .setPageSize(1);
-        liveListLotteryResponse = new LiveQuestionnaireServiceImpl().listLottery(liveListLotteryRequest);
-        Assert.assertNotNull(liveListLotteryResponse);
-        if (liveListLotteryResponse != null) {
-            //to do something ......
-            log.debug("测试获取频道抽奖记录列表成功，{}", JSON.toJSONString(liveListLotteryResponse));
+        try {
+            liveListLotteryRequest.setChannelId(super.createChannel())
+                    .setStartTime(1601481600000l)
+                    .setEndTime(1605024000000l)
+                    .setPageSize(1);
+            liveListLotteryResponse = new LiveQuestionnaireServiceImpl().listLottery(liveListLotteryRequest);
+            Assert.assertNotNull(liveListLotteryResponse);
+            if (liveListLotteryResponse != null) {
+                //to do something ......
+                log.debug("测试获取频道抽奖记录列表成功，{}", JSON.toJSONString(liveListLotteryResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -275,13 +285,23 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
     public void testLotteryWinnerDetail() throws IOException, NoSuchAlgorithmException {
         LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest = new LiveLotteryWinnerDetailRequest();
         LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
-        liveLotteryWinnerDetailRequest.setChannelId(super.createChannel()).setLotteryId("1211");
-        liveLotteryWinnerDetailResponse = new LiveQuestionnaireServiceImpl().lotteryWinnerDetail(
-                liveLotteryWinnerDetailRequest);
-        Assert.assertNotNull(liveLotteryWinnerDetailResponse);
-        if (liveLotteryWinnerDetailResponse != null) {
-            //to do something ......
-            log.debug("测试获取频道单场抽奖的中奖记录成功，{}", JSON.toJSONString(liveLotteryWinnerDetailResponse));
+        try {
+            liveLotteryWinnerDetailRequest.setChannelId(super.createChannel()).setLotteryId("1211");
+            liveLotteryWinnerDetailResponse = new LiveQuestionnaireServiceImpl().lotteryWinnerDetail(
+                    liveLotteryWinnerDetailRequest);
+            Assert.assertNotNull(liveLotteryWinnerDetailResponse);
+            if (liveLotteryWinnerDetailResponse != null) {
+                //to do something ......
+                log.debug("测试获取频道单场抽奖的中奖记录成功，{}", JSON.toJSONString(liveLotteryWinnerDetailResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -298,18 +318,29 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
     public void testSetLotteryWinnerInfo() throws IOException, NoSuchAlgorithmException {
         LiveSetLotteryWinnerInfoRequest liveSetLotteryWinnerInfoRequest = new LiveSetLotteryWinnerInfoRequest();
         Boolean liveSetLotteryWinnerInfoResponse;
-        liveSetLotteryWinnerInfoRequest.setChannelId(super.createChannel())
-                .setLotteryId("")
-                .setWinnerCode("")
-                .setViewerId("")
-                .setName("")
-                .setTelephone("")
-                .setReceiveInfo("");
-        liveSetLotteryWinnerInfoResponse = new LiveQuestionnaireServiceImpl().setLotteryWinnerInfo(liveSetLotteryWinnerInfoRequest);
-        Assert.assertNotNull(liveSetLotteryWinnerInfoResponse);
-        if (liveSetLotteryWinnerInfoResponse) {
-            //to do something ......
-            log.debug("测试设置抽奖中奖者信息成功");
+        try {
+            liveSetLotteryWinnerInfoRequest.setChannelId(super.createChannel())
+                    .setLotteryId("")
+                    .setWinnerCode("")
+                    .setViewerId("")
+                    .setName("")
+                    .setTelephone("")
+                    .setReceiveInfo("");
+            liveSetLotteryWinnerInfoResponse = new LiveQuestionnaireServiceImpl().setLotteryWinnerInfo(
+                    liveSetLotteryWinnerInfoRequest);
+            Assert.assertNotNull(liveSetLotteryWinnerInfoResponse);
+            if (liveSetLotteryWinnerInfoResponse) {
+                //to do something ......
+                log.debug("测试设置抽奖中奖者信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     

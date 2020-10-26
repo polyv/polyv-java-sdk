@@ -60,15 +60,15 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         try {
             Integer channelId = super.createChannel();
             liveSendChatMsgRequest.setChannelId(channelId)
-                    .setMsg("hello 大家好")
-                    .setPic("http://s1.videocc.net/default-img/avatar/teacher.png")
+                    .setMsg("hello 大家好-通过API发过来的测试信息")
+                    .setPic("https://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20190129/e3b0d6311b1a411fa68125fc03b8ef67.jpeg")
                     .setNickName("thomas")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveSendChatMsgResponse = new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest);
             Assert.assertNotNull(liveSendChatMsgResponse);
             if (liveSendChatMsgResponse != null) {
                 //to do something ......
-                log.debug("测试通过HTTP接口发送聊天消息成功{}", JSON.toJSONString(liveSendChatMsgResponse));
+                log.debug("测试通过HTTP接口发送聊天消息成功,消息ID {}",  liveSendChatMsgResponse.getMsgId());
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B

@@ -39,9 +39,10 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      */
     @Test
     public void testSetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
+        LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest = new LiveQuestionnaireDetailSetRequest();
+        LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse =null;
         Integer channelId = super.createChannel();
         //封装问卷请求对象
-        LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest = new LiveQuestionnaireDetailSetRequest();
         liveQuestionnaireDetailSetRequest.setChannelId(channelId).setCustomQuestionnaireId(LiveSignUtil.generateUUID())
 //                .setQuestionnaireId("fs9skpv22f")
                 .setQuestionnaireTitle("测试试卷，明天会更好调查2").setRequestId(LiveSignUtil.generateUUID());
@@ -81,7 +82,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                         questionDetail2}));
         
         //发送请求
-        LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse =
+          liveQuestionnaireDetailSetResponse =
                 new LiveQuestionnaireServiceImpl().setQuestionnaireDetailInfo(
                         liveQuestionnaireDetailSetRequest);
         
@@ -101,11 +102,12 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetQuestionnaireListInfo() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
-        
         LiveQuestionnaireListRequest liveQuestionnaireListRequest = new LiveQuestionnaireListRequest();
+        LiveQuestionnaireListResponse liveQuestionnaireListResponse =null;
+        Integer channelId = super.createChannel();
+       
         liveQuestionnaireListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-        LiveQuestionnaireListResponse liveQuestionnaireListResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireListInfo(
+          liveQuestionnaireListResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireListInfo(
                 liveQuestionnaireListRequest);
         Assert.assertNotNull(liveQuestionnaireListResponse);
         if (liveQuestionnaireListResponse != null) {
@@ -121,14 +123,14 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
-        
-        //获取详情
         LiveQuestionnaireDetailRequest liveQuestionnaireDetailRequest = new LiveQuestionnaireDetailRequest();
+        LiveQuestionnaireDetailResponse liveQuestionnaireDetailResponse = null;
+        Integer channelId = super.createChannel();
+        //获取详情
         liveQuestionnaireDetailRequest.setChannelId(channelId)
                 .setQuestionnaireId("fs9skpv22f")
                 .setRequestId(LiveSignUtil.generateUUID());
-        LiveQuestionnaireDetailResponse liveQuestionnaireDetailResponse =
+          liveQuestionnaireDetailResponse =
                 new LiveQuestionnaireServiceImpl().getQuestionnaireDetailInfo(
                 liveQuestionnaireDetailRequest);
         Assert.assertNotNull(liveQuestionnaireDetailResponse);
@@ -146,11 +148,13 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetQuestionnaireResultInfo() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveQuestionnaireResultRequest liveQuestionnaireResultRequest = new LiveQuestionnaireResultRequest();
+        List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = null;
+        Integer channelId = super.createChannel();
+        
         liveQuestionnaireResultRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
 //        liveQuestionnaireResultRequest.setQuestionnaireId("fs9skpv22f");
-        List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultInfo(
+        liveQuestionnaireResultResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultInfo(
                 liveQuestionnaireResultRequest);
         Assert.assertNotNull(liveQuestionnaireResultResponse);
         if (liveQuestionnaireResultResponse != null) {
@@ -166,10 +170,11 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetQuestionnaireResultPageInfo() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest = new LiveQuestionnaireResultPageRequest();
+        LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = null;
+        Integer channelId = super.createChannel();
         liveQuestionnaireResultPageRequest.setChannelId(channelId).setPageSize(20).setCurrentPage(1).setRequestId(LiveSignUtil.generateUUID());
-        LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultPageInfo(
+        liveQuestionnaireResultPageResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultPageInfo(
                 liveQuestionnaireResultPageRequest);
         Assert.assertNotNull(liveQuestionnaireResultPageRequest);
         if (liveQuestionnaireResultPageResponse != null) {

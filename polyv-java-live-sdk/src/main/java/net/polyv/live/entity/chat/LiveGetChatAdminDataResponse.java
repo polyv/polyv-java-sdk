@@ -19,7 +19,7 @@ import net.polyv.live.entity.LiveCommonRequest;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel("查询聊天室管理员信息响应实体")
-public class LiveGetChatAdminResponse extends LiveCommonRequest {
+public class LiveGetChatAdminDataResponse extends LiveCommonRequest {
     
     
     /**

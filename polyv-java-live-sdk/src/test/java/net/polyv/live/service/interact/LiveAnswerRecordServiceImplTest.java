@@ -28,11 +28,11 @@ public class LiveAnswerRecordServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetAnswerRecord() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveQuestionAnswerRecordRequest liveQuestionAnswerRecordRequest = new LiveQuestionAnswerRecordRequest();
-        liveQuestionAnswerRecordRequest.setChannelId(channelId).setRequestId(
-                LiveSignUtil.generateUUID());
-        List<LiveQuestionAnswerRecordResponse> liveCheckinResponse = new LiveAnswerRecordServiceImpl().getAnswerRecord(liveQuestionAnswerRecordRequest);
+        List<LiveQuestionAnswerRecordResponse> liveCheckinResponse = null;
+        Integer channelId = super.createChannel();
+        liveQuestionAnswerRecordRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+        liveCheckinResponse = new LiveAnswerRecordServiceImpl().getAnswerRecord(liveQuestionAnswerRecordRequest);
         Assert.assertNotNull(liveCheckinResponse);
         if (liveCheckinResponse != null) {
             //to do something ......

@@ -34,11 +34,13 @@ public class LiveCheckinServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetCheckinListInfo() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveCheckinListRequest liveCheckinListRequest = new LiveCheckinListRequest();
+        LiveCheckinListResponse checkinListInfo = null;
+        Integer channelId = super.createChannel();
+        
         liveCheckinListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
 //        liveCheckinListRequest.setDate("2020-10-20").setSessionId("fs9v9y4nxf");
-        LiveCheckinListResponse checkinListInfo = new LiveCheckinServiceImpl().getCheckinListInfo(liveCheckinListRequest);
+        checkinListInfo = new LiveCheckinServiceImpl().getCheckinListInfo(liveCheckinListRequest);
         Assert.assertNotNull(checkinListInfo);
         if (checkinListInfo != null) {
             //to do something ......
@@ -53,10 +55,13 @@ public class LiveCheckinServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetCheckinInfoById() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveCheckinRequest liveCheckinRequest = new LiveCheckinRequest();
-        liveCheckinRequest.setChannelId(channelId).setCheckinId("d91a7c60-1299-11eb-8c65-c70c1c").setRequestId(LiveSignUtil.generateUUID());
-        List<LiveCheckinResponse> liveCheckinResponse = new LiveCheckinServiceImpl().getCheckinInfoById(liveCheckinRequest);
+        List<LiveCheckinResponse> liveCheckinResponse = null;
+        Integer channelId = super.createChannel();
+        liveCheckinRequest.setChannelId(channelId)
+                .setCheckinId("d91a7c60-1299-11eb-8c65-c70c1c")
+                .setRequestId(LiveSignUtil.generateUUID());
+        liveCheckinResponse = new LiveCheckinServiceImpl().getCheckinInfoById(liveCheckinRequest);
         Assert.assertNotNull(liveCheckinResponse);
         if (liveCheckinResponse != null) {
             //to do something ......
@@ -64,7 +69,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
         }
     }
     
-   
+    
     /**
      * 依据指定直播场次sessionId查询签到场次信息
      * @throws IOException
@@ -72,10 +77,17 @@ public class LiveCheckinServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetCheckinMetadataBySessionId() throws IOException, NoSuchAlgorithmException {
+        LiveCheckinMetadataBySessionIdRequest liveCheckinMetadataBySessionIdRequest =
+                new LiveCheckinMetadataBySessionIdRequest();
+        List<LiveCheckinMetadataBySessionIdResponse> liveCheckinResponse = null;
         Integer channelId = super.createChannel();
-        LiveCheckinMetadataBySessionIdRequest liveCheckinMetadataBySessionIdRequest = new LiveCheckinMetadataBySessionIdRequest();
-        liveCheckinMetadataBySessionIdRequest.setChannelId(channelId).setSessionId("fs9v9y4nxf").setRequestId(LiveSignUtil.generateUUID());
-        List<LiveCheckinMetadataBySessionIdResponse>  liveCheckinResponse = new LiveCheckinServiceImpl().getCheckinMetadataBySessionId(liveCheckinMetadataBySessionIdRequest);
+       
+        liveCheckinMetadataBySessionIdRequest.setChannelId(channelId)
+                .setSessionId("fs9v9y4nxf")
+                .setRequestId(LiveSignUtil.generateUUID());
+          liveCheckinResponse =
+                new LiveCheckinServiceImpl().getCheckinMetadataBySessionId(
+                liveCheckinMetadataBySessionIdRequest);
         Assert.assertNotNull(liveCheckinResponse);
         if (liveCheckinResponse != null) {
             //to do something ......

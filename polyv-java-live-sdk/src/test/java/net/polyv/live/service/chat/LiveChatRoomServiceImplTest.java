@@ -18,10 +18,13 @@ import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
 import net.polyv.live.entity.chat.LiveChatBannedIPRequest;
 import net.polyv.live.entity.chat.LiveChatDelSingleMsgRequest;
+import net.polyv.live.entity.chat.LiveCleanChannelAllMsgRequest;
 import net.polyv.live.entity.chat.LiveDelBannedDataRequest;
+import net.polyv.live.entity.chat.LiveGetAccountBadWordRequest;
 import net.polyv.live.entity.chat.LiveGetBadwordIPRequest;
 import net.polyv.live.entity.chat.LiveGetBannedListRequest;
-import net.polyv.live.entity.chat.LiveGetChatAdminResponse;
+import net.polyv.live.entity.chat.LiveGetChatAdminDataRequest;
+import net.polyv.live.entity.chat.LiveGetChatAdminDataResponse;
 import net.polyv.live.entity.chat.LiveGetConsultingRecordRequest;
 import net.polyv.live.entity.chat.LiveGetConsultingRecordResponse;
 import net.polyv.live.entity.chat.LiveGetHistoryChatMsgRequest;
@@ -51,14 +54,15 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetCheckinInfoById() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveSendChatMsgRequest liveSendChatMsgRequest = new LiveSendChatMsgRequest();
+        LiveSendChatMsgResponse liveSendChatMsgResponse = null;
+        Integer channelId = super.createChannel();
         liveSendChatMsgRequest.setChannelId(channelId)
                 .setMsg("hello 大家好")
                 .setPic("http://s1.videocc.net/default-img/avatar/teacher.png")
                 .setNickName("thomas")
                 .setRequestId(LiveSignUtil.generateUUID());
-        LiveSendChatMsgResponse liveSendChatMsgResponse = new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest);
+        liveSendChatMsgResponse = new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest);
         Assert.assertNotNull(liveSendChatMsgResponse);
         if (liveSendChatMsgResponse != null) {
             //to do something ......
@@ -73,9 +77,10 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSendChatMsg() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
+    public void testSetChannelTeacherMsg() throws IOException, NoSuchAlgorithmException {
         LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
+        Boolean result = null;
+        Integer channelId = super.createChannel();
         liveSetTeacherDataRequest.setChannelId(channelId)
                 .setNickname("thomas-gogo")
                 .setActor("大师")
@@ -84,7 +89,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740,3965499425&fm=26&gp=0" +
                                 ".jpg")
                 .setRequestId(LiveSignUtil.generateUUID());
-        String result = new LiveChatRoomServiceImpl().sendChatMsg(liveSetTeacherDataRequest);
+        result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -99,10 +104,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testAddBannedIP() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveChatBannedIPRequest liveChatBannedIPRequest = new LiveChatBannedIPRequest();
+        List<String> bannedIPList = null;
+        Integer channelId = super.createChannel();
         liveChatBannedIPRequest.setIp("192.168.1.3").setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-        List<String> bannedIPList = new LiveChatRoomServiceImpl().addBannedIP(liveChatBannedIPRequest);
+        bannedIPList = new LiveChatRoomServiceImpl().addBannedIP(liveChatBannedIPRequest);
         Assert.assertNotNull(bannedIPList);
         if (bannedIPList != null) {
             //to do something ......
@@ -117,12 +123,13 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testAddBadWord() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveBadWordRequest liveBadWordRequest = new LiveBadWordRequest();
+        LiveBadWordResponse liveBadWordResponse = null;
+        Integer channelId = super.createChannel();
         liveBadWordRequest
 //                .setChannelId(channelId)
                 .setWords(Arrays.asList(new String[]{"你好1", "逗逼1", "傻子"})).setRequestId(LiveSignUtil.generateUUID());
-        LiveBadWordResponse liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
+        liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
         Assert.assertNotNull(liveBadWordResponse);
         if (liveBadWordResponse != null) {
             //to do something ......
@@ -137,12 +144,13 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetBannedList() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveGetBannedListRequest liveGetBannedListRequest = new LiveGetBannedListRequest();
+        List<String> result = null;
+        Integer channelId = super.createChannel();
         liveGetBannedListRequest.setChannelId(channelId)
                 .setType(LiveConstant.BannedType.USER_ID.getType())
                 .setRequestId(LiveSignUtil.generateUUID());
-        List<String> result = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
+        result = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -158,11 +166,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetKickedList() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveKickedListRequest liveKickedListRequest = new LiveKickedListRequest();
+        List<LiveKickedListResponse> liveKickedListResponsesList = null;
+        Integer channelId = super.createChannel();
         liveKickedListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-        List<LiveKickedListResponse> liveKickedListResponsesList = new LiveChatRoomServiceImpl().getKickedList(
-                liveKickedListRequest);
+        liveKickedListResponsesList = new LiveChatRoomServiceImpl().getKickedList(liveKickedListRequest);
         Assert.assertNotNull(liveKickedListResponsesList);
         if (liveKickedListResponsesList != null) {
             //to do something ......
@@ -180,13 +188,14 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testDelBanned() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveDelBannedDataRequest liveDelBannedDataRequest = new LiveDelBannedDataRequest();
+        Boolean result = null;
+        Integer channelId = super.createChannel();
         liveDelBannedDataRequest.setContent("192.168.1.3")
                 .setChannelId(channelId)
                 .setType(LiveConstant.BannedType.IP.getType())
                 .setRequestId(LiveSignUtil.generateUUID());
-        String result = new LiveChatRoomServiceImpl().delBanned(liveDelBannedDataRequest);
+        result = new LiveChatRoomServiceImpl().delBanned(liveDelBannedDataRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -202,12 +211,13 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetBadworkList() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveGetBadwordIPRequest liveGetBadwordIPRequest = new LiveGetBadwordIPRequest();
+        List<String> result = null;
+        Integer channelId = super.createChannel();
         liveGetBadwordIPRequest.setChannelId(channelId)
                 .setType(LiveConstant.BannedType.BADWORD.getType())
                 .setRequestId(LiveSignUtil.generateUUID());
-        List<String> result = new LiveChatRoomServiceImpl().getBadworkList(liveGetBadwordIPRequest);
+        result = new LiveChatRoomServiceImpl().getBadworkList(liveGetBadwordIPRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -223,8 +233,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetAccountBadworkList() throws IOException, NoSuchAlgorithmException {
+        LiveGetAccountBadWordRequest liveGetAccountBadWordRequest = new LiveGetAccountBadWordRequest();
+        List<String> result = null;
+        liveGetAccountBadWordRequest.setRequestId(LiveSignUtil.generateUUID());
         Integer channelId = super.createChannel();
-        List<String> result = new LiveChatRoomServiceImpl().getAccountBadworkList(LiveSignUtil.generateUUID());
+        result = new LiveChatRoomServiceImpl().getAccountBadworkList(liveGetAccountBadWordRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -240,9 +253,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testCleanChannelAllMsg() throws IOException, NoSuchAlgorithmException {
+        LiveCleanChannelAllMsgRequest liveCleanChannelAllMsgRequest = new LiveCleanChannelAllMsgRequest();
+        Boolean result = null;
         Integer channelId = super.createChannel();
-        String requestId = LiveSignUtil.generateUUID();
-        Boolean result = new LiveChatRoomServiceImpl().cleanChannelAllMsg(channelId, requestId);
+        liveCleanChannelAllMsgRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+        result = new LiveChatRoomServiceImpl().cleanChannelAllMsg(liveCleanChannelAllMsgRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -258,14 +273,16 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetChatAdminData() throws IOException, NoSuchAlgorithmException {
+        LiveGetChatAdminDataRequest liveGetChatAdminDataRequest = new LiveGetChatAdminDataRequest();
+        LiveGetChatAdminDataResponse liveGetChatAdminDataResponse = null;
         Integer channelId = super.createChannel();
         String requestId = LiveSignUtil.generateUUID();
-        LiveGetChatAdminResponse liveGetChatAdminResponse = new LiveChatRoomServiceImpl().getChatAdminData(channelId,
-                requestId);
-        Assert.assertNotNull(liveGetChatAdminResponse);
-        if (liveGetChatAdminResponse != null) {
+        liveGetChatAdminDataRequest.setChannelId(channelId).setRequestId(requestId);
+        liveGetChatAdminDataResponse = new LiveChatRoomServiceImpl().getChatAdminData(liveGetChatAdminDataRequest);
+        Assert.assertNotNull(liveGetChatAdminDataResponse);
+        if (liveGetChatAdminDataResponse != null) {
             //to do something ......
-            log.debug("测试查询聊天室管理员信息成功{}", JSON.toJSONString(liveGetChatAdminResponse));
+            log.debug("测试查询聊天室管理员信息成功{}", JSON.toJSONString(liveGetChatAdminDataResponse));
         }
     }
     
@@ -277,14 +294,14 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetHistroyChatMsg() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest = new LiveGetHistoryChatMsgRequest();
+        List<LiveGetHistoryChatMsgResponse> liveGetHistoryChatMsgResponsesList = null;
+        Integer channelId = super.createChannel();
         liveGetHistoryChatMsgRequest.setChannelId(channelId)
                 .setStartDay("2020-10-1")
                 .setEndDay("2020-12-12")
                 .setRequestId(LiveSignUtil.generateUUID());
-        List<LiveGetHistoryChatMsgResponse> liveGetHistoryChatMsgResponsesList =
-                new LiveChatRoomServiceImpl().getHistroyChatMsg(
+        liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistroyChatMsg(
                 liveGetHistoryChatMsgRequest);
         Assert.assertNotNull(liveGetHistoryChatMsgResponsesList);
         if (liveGetHistoryChatMsgResponsesList != null) {
@@ -302,12 +319,13 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testDelChatSingleMsg() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveChatDelSingleMsgRequest liveChatDelSingleMsgRequest = new LiveChatDelSingleMsgRequest();
+        Boolean result = null;
+        Integer channelId = super.createChannel();
         liveChatDelSingleMsgRequest.setId("70af2450-12bc-11eb-896b-75b7b28cd5db")
                 .setChannelId(channelId)
                 .setRequestId(LiveSignUtil.generateUUID());
-        Boolean result = new LiveChatRoomServiceImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
+        result = new LiveChatRoomServiceImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -324,14 +342,15 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testSetChatAdminData() throws IOException, NoSuchAlgorithmException, URISyntaxException {
-        Integer channelId = super.createChannel();
         LiveSetChatAdminDataRequest liveSetChatAdminDataRequest = new LiveSetChatAdminDataRequest();
+        Boolean result = null;
+        Integer channelId = super.createChannel();
         liveSetChatAdminDataRequest.setChannelId(channelId)
                 .setNickname("你个老头")
                 .setActor("娇娇")
                 .setAvatar(new File("D:/img/b.jpg"))
                 .setRequestId(LiveSignUtil.generateUUID());
-        Boolean result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
+        result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......
@@ -341,7 +360,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     }
     
     
-    
     /**
      * 查询咨询提问记录，API地址：https://dev.polyv.net/2018/liveproduct/zblts/getquestion/
      * @throws IOException
@@ -349,22 +367,21 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetConsultingRecord() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveGetConsultingRecordRequest liveGetConsultingRecordRequest = new LiveGetConsultingRecordRequest();
+        List<LiveGetConsultingRecordResponse> responses = null;
+        Integer channelId = super.createChannel();
         liveGetConsultingRecordRequest.setChannelId(channelId)
                 .setBegin(0)
                 .setEnd(10)
                 .setRequestId(LiveSignUtil.generateUUID());
-        List<LiveGetConsultingRecordResponse> responses = new LiveChatRoomServiceImpl().getConsultingRecord(
-                liveGetConsultingRecordRequest);
+        responses = new LiveChatRoomServiceImpl().getConsultingRecord(liveGetConsultingRecordRequest);
         Assert.assertNotNull(responses);
         if (responses != null) {
             //to do something ......
             log.debug("测试查询咨询提问记录成功{}", JSON.toJSONString(responses));
-            log.debug("第一个元素 {} ", responses.get(0).getContent() );
+            log.debug("第一个元素 {} ", responses.get(0).getContent());
         }
     }
-    
     
     
     /**
@@ -374,14 +391,14 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetQuestionStatistical() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
         LiveGetQuestionStatisticalRequest liveGetQuestionStatisticalRequest = new LiveGetQuestionStatisticalRequest();
+        List<LiveGetQuestionStatisticalResponse> result = null;
+        Integer channelId = super.createChannel();
         liveGetQuestionStatisticalRequest.setChannelId(channelId)
                 .setStartTime("2020-10-1 00:00:00")
                 .setEndTime("2020-10-30 12:20:20")
                 .setRequestId(LiveSignUtil.generateUUID());
-        List<LiveGetQuestionStatisticalResponse> result = new LiveChatRoomServiceImpl().getQuestionStatistical(
-                liveGetQuestionStatisticalRequest);
+        result = new LiveChatRoomServiceImpl().getQuestionStatistical(liveGetQuestionStatisticalRequest);
         Assert.assertNotNull(result);
         if (result != null) {
             //to do something ......

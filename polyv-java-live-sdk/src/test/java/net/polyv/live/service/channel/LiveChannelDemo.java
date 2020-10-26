@@ -5,7 +5,7 @@ import org.junit.Assert;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
-import net.polyv.common.exception.BusinessException;
+import net.polyv.common.exception.PloyvSdkException;
 import net.polyv.live.config.InitConfig;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
@@ -41,7 +41,7 @@ public class LiveChannelDemo {
                 //to do something ......
                 log.debug("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
             }
-        } catch (BusinessException e) {
+        } catch (PloyvSdkException e) {
             log.error(e.getMessage(), e);
         } catch (Exception e) {
             log.error("SDK调用异常", e);

@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.web.interact.LiveUpdateChannelCashRequest;
 import net.polyv.live.entity.web.interact.LiveUpdateChannelGoodRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.web.ILiveWebInteractService;
@@ -28,9 +29,27 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.GOOD_DONATE_SET_URL;
         Map<String,String> signMap = MapUtil.getSignMap(liveUpdateChannelGoodRequest);
-        signMap.put("channelId",liveUpdateChannelGoodRequest.getChannelId().toString());
+        signMap.put("channelId",String.valueOf(liveUpdateChannelGoodRequest.getChannelId()));
         String liveUpdateChannelGoodResponse = this.basePostJson(url, signMap, liveUpdateChannelGoodRequest, String.class);
         return "true".equals(liveUpdateChannelGoodResponse);
+    }
+    
+    /**
+     * 设置现金打赏
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymhd/updatecash/
+     * @param liveUpdateChannelCashRequest 设置现金打赏请求实体
+     * @return 设置现金打赏返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateChannelCash(LiveUpdateChannelCashRequest liveUpdateChannelCashRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CASH_DONATE_SET_URL;
+        Map<String,String> signMap = MapUtil.getSignMap(liveUpdateChannelCashRequest);
+        signMap.put("channelId",String.valueOf(liveUpdateChannelCashRequest.getChannelId()));
+        String liveUpdateChannelCashResponse = this.basePostJson(url, signMap, liveUpdateChannelCashRequest, String.class);
+        return "true".equals(liveUpdateChannelCashResponse);
     }
     
 }

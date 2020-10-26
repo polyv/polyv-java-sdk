@@ -131,6 +131,7 @@ public class Domain2DocUtil {
             case "Date":
             case "boolean":
             case "Boolean":
+            case "File":
                 return simpleName;
             default:
         }

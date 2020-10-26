@@ -101,7 +101,7 @@ public class DocUtil {
     public static void appendFile(String file, String conent) {
         BufferedWriter out = null;
         try {
-            out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true)));
+            out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false)));
             out.write(conent + "\r\n");
         } catch (Exception e) {
             e.printStackTrace();

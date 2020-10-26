@@ -81,12 +81,11 @@ public class LiveCheckinServiceImplTest extends BaseTest {
                 new LiveCheckinMetadataBySessionIdRequest();
         List<LiveCheckinMetadataBySessionIdResponse> liveCheckinResponse = null;
         Integer channelId = super.createChannel();
-       
+        
         liveCheckinMetadataBySessionIdRequest.setChannelId(channelId)
                 .setSessionId("fs9v9y4nxf")
                 .setRequestId(LiveSignUtil.generateUUID());
-          liveCheckinResponse =
-                new LiveCheckinServiceImpl().getCheckinMetadataBySessionId(
+        liveCheckinResponse = new LiveCheckinServiceImpl().getCheckinMetadataBySessionId(
                 liveCheckinMetadataBySessionIdRequest);
         Assert.assertNotNull(liveCheckinResponse);
         if (liveCheckinResponse != null) {

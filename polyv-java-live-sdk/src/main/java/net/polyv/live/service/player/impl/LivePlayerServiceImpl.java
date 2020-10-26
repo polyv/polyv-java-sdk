@@ -32,6 +32,7 @@ import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.chat.LiveSetChatAdminDataRequest;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.entity.player.LiveSetPlayerImgRequest;
+import net.polyv.live.entity.player.LiveSetPlayerLogoRequest;
 import net.polyv.live.entity.player.LiveSetWarmupEnableRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.chat.ILiveChatRoomService;
@@ -71,4 +72,19 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
         String url = LiveURL.PLAYER_SET_WARMUP_ENABLE_URL;
         return "success".equalsIgnoreCase(super.basePost(url, liveSetWarmupEnableRequest,  String.class));
     }
+    
+    /**
+     *设置播放器Logo，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatelogo/
+     * @param liveSetWarmupEnableRequest 设置播放器Logo请求实体
+     * @return 响应实体
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean setPlayerLogo(LiveSetPlayerLogoRequest liveSetWarmupEnableRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url =  LiveURL.getRealUrl(LiveURL.PLAYER_SET_CHANNEL_LOGO_URL,liveSetWarmupEnableRequest.getChannelId());
+        return  super.basePost(url, liveSetWarmupEnableRequest,  Boolean.class);
+    }
+    
 }

@@ -660,7 +660,15 @@ public class LiveURL {
     public static final String PLAYER_SET_WARMUP_ENABLE_URL =
             BASE_URI + "v3/channel/set-warmup-enabled";
     
- 
+    /**
+     * 设置播放器Logo
+     */
+    public static final String PLAYER_SET_CHANNEL_LOGO_URL =
+            BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/update";
+    
+    
+    
+    
     
     /**
      * 400错误码

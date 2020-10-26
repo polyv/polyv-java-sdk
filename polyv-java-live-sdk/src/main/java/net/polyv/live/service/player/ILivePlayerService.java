@@ -25,6 +25,7 @@ import net.polyv.live.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.entity.chat.LiveSetChatAdminDataRequest;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.entity.player.LiveSetPlayerImgRequest;
+import net.polyv.live.entity.player.LiveSetPlayerLogoRequest;
 import net.polyv.live.entity.player.LiveSetWarmupEnableRequest;
 
 /**
@@ -53,6 +54,15 @@ public interface ILivePlayerService {
             throws IOException, NoSuchAlgorithmException;
     
     
-     
+    /**
+     *设置播放器Logo，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatelogo/
+     * @param liveSetWarmupEnableRequest 设置播放器Logo请求实体
+     * @return 响应实体
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+   
+    public Boolean setPlayerLogo(LiveSetPlayerLogoRequest liveSetWarmupEnableRequest)
+            throws IOException, NoSuchAlgorithmException ;
     
 }

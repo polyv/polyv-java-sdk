@@ -2,6 +2,7 @@ package net.polyv.live.service.interact;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -12,6 +13,8 @@ import com.alibaba.fastjson.JSON;
 import edu.emory.mathcs.backport.java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.entity.interact.LiveListLotteryRequest;
+import net.polyv.live.entity.interact.LiveListLotteryResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
@@ -182,4 +185,27 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
             log.debug("测试分页查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultPageResponse));
         }
     }
+    
+    /**
+     * 测试获取频道抽奖记录列表
+     * TODO 测试未通过
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListLottery() throws IOException, NoSuchAlgorithmException {
+        LiveListLotteryRequest liveListLotteryRequest = new LiveListLotteryRequest();
+        LiveListLotteryResponse liveListLotteryResponse;
+        liveListLotteryRequest.setChannelId(super.createChannel())
+                .setStartTime(1601481600000l)
+                .setEndTime(1605024000000l)
+                .setPageSize(1);
+        liveListLotteryResponse =  new LiveQuestionnaireServiceImpl().listLottery(liveListLotteryRequest);
+        Assert.assertNotNull(liveListLotteryResponse);
+        if (liveListLotteryResponse != null) {
+            //to do something ......
+            log.debug("测试获取频道抽奖记录列表成功，{}", JSON.toJSONString(liveListLotteryResponse));
+        }
+    }
+    
 }

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import net.polyv.live.entity.interact.LiveListLotteryRequest;
+import net.polyv.live.entity.interact.LiveListLotteryResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
@@ -49,7 +51,8 @@ public interface ILiveQuestionnaireService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 算法异常
      */
-    LiveQuestionnaireDetailSetResponse setQuestionnaireDetailInfo(LiveQuestionnaireDetailSetRequest liveQuestionDetailSetRequest)
+    LiveQuestionnaireDetailSetResponse setQuestionnaireDetailInfo(
+            LiveQuestionnaireDetailSetRequest liveQuestionDetailSetRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -60,8 +63,7 @@ public interface ILiveQuestionnaireService {
      * @throws NoSuchAlgorithmException 算法异常
      */
     List<LiveQuestionnaireResultResponse> getQuestionnaireResultInfo(
-            LiveQuestionnaireResultRequest liveQuestionnaireResultRequest)
-            throws IOException, NoSuchAlgorithmException;
+            LiveQuestionnaireResultRequest liveQuestionnaireResultRequest) throws IOException, NoSuchAlgorithmException;
     
     /**
      * 分页查询频道问卷结果，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/list-questionnaire-by-page/
@@ -73,4 +75,16 @@ public interface ILiveQuestionnaireService {
     LiveQuestionnaireResultPageResponse getQuestionnaireResultPageInfo(
             LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取频道抽奖记录列表
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbhd/list-lottery/
+     * @param liveListLotteryRequest 获取频道抽奖记录列表请求实体
+     * @return 获取频道抽奖记录列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListLotteryResponse listLottery(LiveListLotteryRequest liveListLotteryRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
 }

@@ -11,6 +11,8 @@ import org.apache.commons.lang3.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.interact.LiveListLotteryRequest;
+import net.polyv.live.entity.interact.LiveListLotteryResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
@@ -138,6 +140,23 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
         LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = this.baseGet(url,
                 liveQuestionnaireResultPageRequest, LiveQuestionnaireResultPageResponse.class);
         return liveQuestionnaireResultPageResponse;
+    }
+    
+    /**
+     * 获取频道抽奖记录列表
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbhd/list-lottery/
+     * @param liveListLotteryRequest 获取频道抽奖记录列表请求实体
+     * @return 获取频道抽奖记录列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListLotteryResponse listLottery(LiveListLotteryRequest liveListLotteryRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_LOTTERY_LIST_GET_URL;
+        LiveListLotteryResponse liveListLotteryResponse = this.baseGet(url, liveListLotteryRequest,
+                LiveListLotteryResponse.class);
+        return liveListLotteryResponse;
     }
     
     

@@ -118,6 +118,11 @@ public class LiveURL {
     public static final String CHANNEL_LIVE_STATUS_GET_URL = "http://api.polyv.net/live_status/query?stream=";
     
     /**
+     * 获取频道抽奖记录列表
+     */
+    public static final String CHANNEL_LOTTERY_LIST_GET_URL = BASE_URI +"v3/channel/lottery/list-lottery";
+    
+    /**
      * 设置观看条件
      */
     public static final String CHANNEL_AUTH_UPDATE_URL = BASE_URI + "v3/channel/auth/update";

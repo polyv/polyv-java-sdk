@@ -77,12 +77,13 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
         String url = LiveURL.getRealUrl(LiveURL.PLAYER_SET_CHANNEL_PAUSE_ADVERT_URL,
                 liveSetPlayerPauseAdvertRequest.getChannelId());
         Boolean result = super.basePost(url, liveSetPlayerPauseAdvertRequest, Boolean.class);
-        Boolean paramResult = false;
         if (result && LiveConstant.Flag.YES.getFlag().equals(liveSetPlayerPauseAdvertRequest.getEnabled())) {
             liveSetPlayerPauseAdvertRequest.setEnabled(null).setTimestamp(null).setSign(null);
-            paramResult = super.basePost(url, liveSetPlayerPauseAdvertRequest, Boolean.class);
+            Boolean paramResult = super.basePost(url, liveSetPlayerPauseAdvertRequest, Boolean.class);
+            return result && paramResult;
+        }else{
+            return result ;
         }
-        return result && paramResult;
     }
     
     /**
@@ -102,7 +103,9 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
         if (result && LiveConstant.Flag.YES.getFlag().equals(liveSetPlayerHeaderAdvertRequest.getEnabled())) {
             liveSetPlayerHeaderAdvertRequest.setEnabled(null).setTimestamp(null).setSign(null);
             paramResult = super.basePost(url, liveSetPlayerHeaderAdvertRequest, Boolean.class);
+            return result && paramResult;
+        }else{
+            return result ;
         }
-        return result && paramResult;
     }
 }

@@ -248,7 +248,7 @@ public class LiveConstant {
         
         private String desc;
         
-        private HeadAdvertType(String position) {
+        private HeadAdvertType(String desc) {
             this.desc = desc;
         }
         

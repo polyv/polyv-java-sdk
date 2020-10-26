@@ -110,8 +110,8 @@ public class LivePlayerServiceImplTest extends BaseTest {
         Integer channelId = super.createChannel();
         LiveSetPlayerPauseAdvertRequest liveSetPlayerPauseAdvertRequest = new LiveSetPlayerPauseAdvertRequest();
         liveSetPlayerPauseAdvertRequest.setChannelId(channelId)
-                .setEnabled(LiveConstant.Flag.NO.getFlag())
-                .setStopAdvertHref("http://www.baidu.com/huava")
+                .setEnabled(LiveConstant.Flag.YES.getFlag())
+                .setStopAdvertHref("http://www.baidu.com")
                 .setStopAdvertImage("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
                 .setRequestId(LiveSignUtil.generateUUID());
         Boolean result = new LivePlayerServiceImpl().setPlayerPauseAdvert(liveSetPlayerPauseAdvertRequest);
@@ -140,7 +140,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
                 .setHeadAdvertHeight(100)
                 .setHeadAdvertType(LiveConstant.HeadAdvertType.IMAGE.getDesc())
                 .setHeadAdvertWidth(100)
-                .setHeadAdvertHref("http://www.baidu.com/huava")
+                .setHeadAdvertHref("http://www.baidu.com")
                 .setHeadAdvertMediaUrl("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
                 .setRequestId(LiveSignUtil.generateUUID());
         Boolean result = new LivePlayerServiceImpl().setPlayerHeaderAdvert(liveSetPlayerHeaderAdvertRequest);

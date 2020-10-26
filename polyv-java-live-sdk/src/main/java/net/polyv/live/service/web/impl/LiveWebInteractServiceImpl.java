@@ -5,6 +5,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.web.interact.LiveChannelDonateRequest;
+import net.polyv.live.entity.web.interact.LiveChannelDonateResponse;
 import net.polyv.live.entity.web.interact.LiveUpdateChannelCashRequest;
 import net.polyv.live.entity.web.interact.LiveUpdateChannelGoodRequest;
 import net.polyv.live.service.LiveBaseService;
@@ -50,6 +52,23 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
         signMap.put("channelId",String.valueOf(liveUpdateChannelCashRequest.getChannelId()));
         String liveUpdateChannelCashResponse = this.basePostJson(url, signMap, liveUpdateChannelCashRequest, String.class);
         return "true".equals(liveUpdateChannelCashResponse);
+    }
+    
+    /**
+     * 查询打赏设置
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymhd/donate-get/
+     * @param liveChannelDonateRequest 查询打赏设置请求实体
+     * @return 查询打赏设置返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelDonateResponse channelDonate(LiveChannelDonateRequest liveChannelDonateRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_DONATE_GET_URL;
+        LiveChannelDonateResponse liveChannelDonateResponse = this.baseGet(url, liveChannelDonateRequest,
+                LiveChannelDonateResponse.class);
+        return liveChannelDonateResponse;
     }
     
 }

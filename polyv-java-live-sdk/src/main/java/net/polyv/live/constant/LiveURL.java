@@ -668,6 +668,12 @@ public class LiveURL {
     
     
     
+    /**
+     * 设置播放器暂停广告
+     */
+    public static final String PLAYER_SET_CHANNEL_PAUSE_ADVERT_URL =
+            BASE_URI + "v2/channelAdvert/" + PARAM_REPLACE_CHAR + "/updateStop";
+    
     
     
     /**

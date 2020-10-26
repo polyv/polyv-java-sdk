@@ -33,6 +33,7 @@ import net.polyv.live.entity.chat.LiveSetChatAdminDataRequest;
 import net.polyv.live.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.entity.player.LiveSetPlayerImgRequest;
 import net.polyv.live.entity.player.LiveSetPlayerLogoRequest;
+import net.polyv.live.entity.player.LiveSetPlayerPauseAdvertRequest;
 import net.polyv.live.entity.player.LiveSetWarmupEnableRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.chat.ILiveChatRoomService;
@@ -85,6 +86,20 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
             throws IOException, NoSuchAlgorithmException {
         String url =  LiveURL.getRealUrl(LiveURL.PLAYER_SET_CHANNEL_LOGO_URL,liveSetWarmupEnableRequest.getChannelId());
         return  super.basePost(url, liveSetWarmupEnableRequest,  Boolean.class);
+    }
+    
+    /**
+     *设置播放器暂停广告，API地址：https://dev.polyv.net/2018/liveproduct/l-player/updatestop/
+     * @param liveSetPlayerPauseAdvertRequest 设置播放器暂停广告请求实体
+     * @return 响应实体
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean setPlayerPauseAdvert(LiveSetPlayerPauseAdvertRequest liveSetPlayerPauseAdvertRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url =  LiveURL.getRealUrl(LiveURL.PLAYER_SET_CHANNEL_PAUSE_ADVERT_URL,liveSetPlayerPauseAdvertRequest.getChannelId());
+        return  super.basePost(url, liveSetPlayerPauseAdvertRequest,  Boolean.class);
     }
     
 }

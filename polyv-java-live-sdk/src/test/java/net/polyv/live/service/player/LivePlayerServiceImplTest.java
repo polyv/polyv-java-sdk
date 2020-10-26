@@ -153,16 +153,6 @@ public class LivePlayerServiceImplTest extends BaseTest {
         }
     }
     
-    /**
-     * 设置播放器暖场视频，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatewarmupflv/
-     * @param liveSetWarmupVedioRequest 设置播放器暖场视频请求实体
-     * @return 响应实体
-     * @throws IOException 客户端和服务器读写异常
-     * @throws NoSuchAlgorithmException 异常
-     */
-    @Override
-    public Boolean setPlayerLogo( liveSetWarmupVedioRequest)
-            throws IOException, NoSuchAlgorithmException
     
     /**
      *

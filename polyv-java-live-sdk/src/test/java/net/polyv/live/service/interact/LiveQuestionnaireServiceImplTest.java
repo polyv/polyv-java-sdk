@@ -15,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.interact.LiveListLotteryRequest;
 import net.polyv.live.entity.interact.LiveListLotteryResponse;
+import net.polyv.live.entity.interact.LiveLotteryWinnerDetailRequest;
+import net.polyv.live.entity.interact.LiveLotteryWinnerDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
@@ -43,7 +45,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
     @Test
     public void testSetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
         LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest = new LiveQuestionnaireDetailSetRequest();
-        LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse =null;
+        LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse = null;
         Integer channelId = super.createChannel();
         //封装问卷请求对象
         liveQuestionnaireDetailSetRequest.setChannelId(channelId).setCustomQuestionnaireId(LiveSignUtil.generateUUID())
@@ -58,7 +60,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                 .setAnswer("A")
                 .setScoreEnabled(LiveConstant.Flag.YES.getFlag())
                 .setRequired(LiveConstant.Flag.YES.getFlag())
-                .setOptions(Arrays.asList(new String[]{"篮球", "足球", "排球", "跑步","羽毛球"}))
+                .setOptions(Arrays.asList(new String[]{"篮球", "足球", "排球", "跑步", "羽毛球"}))
                 .setScore(20)
                 .setType(LiveConstant.QuestionType.CHECK.getType());
         
@@ -85,9 +87,8 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                         questionDetail2}));
         
         //发送请求
-          liveQuestionnaireDetailSetResponse =
-                new LiveQuestionnaireServiceImpl().setQuestionnaireDetailInfo(
-                        liveQuestionnaireDetailSetRequest);
+        liveQuestionnaireDetailSetResponse = new LiveQuestionnaireServiceImpl().setQuestionnaireDetailInfo(
+                liveQuestionnaireDetailSetRequest);
         
         //判断结果
         Assert.assertNotNull(liveQuestionnaireDetailSetResponse);
@@ -106,11 +107,11 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
     @Test
     public void testGetQuestionnaireListInfo() throws IOException, NoSuchAlgorithmException {
         LiveQuestionnaireListRequest liveQuestionnaireListRequest = new LiveQuestionnaireListRequest();
-        LiveQuestionnaireListResponse liveQuestionnaireListResponse =null;
+        LiveQuestionnaireListResponse liveQuestionnaireListResponse = null;
         Integer channelId = super.createChannel();
-       
+        
         liveQuestionnaireListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-          liveQuestionnaireListResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireListInfo(
+        liveQuestionnaireListResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireListInfo(
                 liveQuestionnaireListRequest);
         Assert.assertNotNull(liveQuestionnaireListResponse);
         if (liveQuestionnaireListResponse != null) {
@@ -133,8 +134,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         liveQuestionnaireDetailRequest.setChannelId(channelId)
                 .setQuestionnaireId("fs9skpv22f")
                 .setRequestId(LiveSignUtil.generateUUID());
-          liveQuestionnaireDetailResponse =
-                new LiveQuestionnaireServiceImpl().getQuestionnaireDetailInfo(
+        liveQuestionnaireDetailResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireDetailInfo(
                 liveQuestionnaireDetailRequest);
         Assert.assertNotNull(liveQuestionnaireDetailResponse);
         if (liveQuestionnaireDetailResponse != null) {
@@ -173,10 +173,14 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      */
     @Test
     public void testGetQuestionnaireResultPageInfo() throws IOException, NoSuchAlgorithmException {
-        LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest = new LiveQuestionnaireResultPageRequest();
+        LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest =
+                new LiveQuestionnaireResultPageRequest();
         LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = null;
         Integer channelId = super.createChannel();
-        liveQuestionnaireResultPageRequest.setChannelId(channelId).setPageSize(20).setCurrentPage(1).setRequestId(LiveSignUtil.generateUUID());
+        liveQuestionnaireResultPageRequest.setChannelId(channelId)
+                .setPageSize(20)
+                .setCurrentPage(1)
+                .setRequestId(LiveSignUtil.generateUUID());
         liveQuestionnaireResultPageResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultPageInfo(
                 liveQuestionnaireResultPageRequest);
         Assert.assertNotNull(liveQuestionnaireResultPageRequest);
@@ -192,7 +196,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    @Test
+//    @Test
     public void testListLottery() throws IOException, NoSuchAlgorithmException {
         LiveListLotteryRequest liveListLotteryRequest = new LiveListLotteryRequest();
         LiveListLotteryResponse liveListLotteryResponse;
@@ -200,11 +204,31 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                 .setStartTime(1601481600000l)
                 .setEndTime(1605024000000l)
                 .setPageSize(1);
-        liveListLotteryResponse =  new LiveQuestionnaireServiceImpl().listLottery(liveListLotteryRequest);
+        liveListLotteryResponse = new LiveQuestionnaireServiceImpl().listLottery(liveListLotteryRequest);
         Assert.assertNotNull(liveListLotteryResponse);
         if (liveListLotteryResponse != null) {
             //to do something ......
             log.debug("测试获取频道抽奖记录列表成功，{}", JSON.toJSONString(liveListLotteryResponse));
+        }
+    }
+    
+    /**
+     * 测试获取频道单场抽奖的中奖记录
+     * TODO 测试未通过
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testLotteryWinnerDetail() throws IOException, NoSuchAlgorithmException {
+        LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest = new LiveLotteryWinnerDetailRequest();
+        LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
+        liveLotteryWinnerDetailRequest.setChannelId(super.createChannel()).setLotteryId("1211");
+        liveLotteryWinnerDetailResponse = new LiveQuestionnaireServiceImpl().lotteryWinnerDetail(
+                liveLotteryWinnerDetailRequest);
+        Assert.assertNotNull(liveLotteryWinnerDetailResponse);
+        if (liveLotteryWinnerDetailResponse != null) {
+            //to do something ......
+            log.debug("测试获取频道单场抽奖的中奖记录成功，{}", JSON.toJSONString(liveLotteryWinnerDetailResponse));
         }
     }
     

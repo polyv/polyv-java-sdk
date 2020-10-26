@@ -6,6 +6,8 @@ import java.util.List;
 
 import net.polyv.live.entity.interact.LiveListLotteryRequest;
 import net.polyv.live.entity.interact.LiveListLotteryResponse;
+import net.polyv.live.entity.interact.LiveLotteryWinnerDetailRequest;
+import net.polyv.live.entity.interact.LiveLotteryWinnerDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
@@ -85,6 +87,17 @@ public interface ILiveQuestionnaireService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveListLotteryResponse listLottery(LiveListLotteryRequest liveListLotteryRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取频道单场抽奖的中奖记录
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbhd/get-winner-detail/
+     * @param liveLotteryWinnerDetailRequest 获取频道单场抽奖的中奖记录请求实体
+     * @return 获取频道单场抽奖的中奖记录返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveLotteryWinnerDetailResponse lotteryWinnerDetail(LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

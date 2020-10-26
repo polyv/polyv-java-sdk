@@ -13,6 +13,10 @@ import edu.emory.mathcs.backport.java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.PloyvSdkException;
 import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.entity.interact.LiveListLotteryRequest;
+import net.polyv.live.entity.interact.LiveListLotteryResponse;
+import net.polyv.live.entity.interact.LiveLotteryWinnerDetailRequest;
+import net.polyv.live.entity.interact.LiveLotteryWinnerDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
@@ -237,4 +241,47 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
             throw e;
         }
     }
+    
+    /**
+     * 测试获取频道抽奖记录列表
+     * TODO 测试未通过
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testListLottery() throws IOException, NoSuchAlgorithmException {
+        LiveListLotteryRequest liveListLotteryRequest = new LiveListLotteryRequest();
+        LiveListLotteryResponse liveListLotteryResponse;
+        liveListLotteryRequest.setChannelId(super.createChannel())
+                .setStartTime(1601481600000l)
+                .setEndTime(1605024000000l)
+                .setPageSize(1);
+        liveListLotteryResponse = new LiveQuestionnaireServiceImpl().listLottery(liveListLotteryRequest);
+        Assert.assertNotNull(liveListLotteryResponse);
+        if (liveListLotteryResponse != null) {
+            //to do something ......
+            log.debug("测试获取频道抽奖记录列表成功，{}", JSON.toJSONString(liveListLotteryResponse));
+        }
+    }
+    
+    /**
+     * 测试获取频道单场抽奖的中奖记录
+     * TODO 测试未通过
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testLotteryWinnerDetail() throws IOException, NoSuchAlgorithmException {
+        LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest = new LiveLotteryWinnerDetailRequest();
+        LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
+        liveLotteryWinnerDetailRequest.setChannelId(super.createChannel()).setLotteryId("1211");
+        liveLotteryWinnerDetailResponse = new LiveQuestionnaireServiceImpl().lotteryWinnerDetail(
+                liveLotteryWinnerDetailRequest);
+        Assert.assertNotNull(liveLotteryWinnerDetailResponse);
+        if (liveLotteryWinnerDetailResponse != null) {
+            //to do something ......
+            log.debug("测试获取频道单场抽奖的中奖记录成功，{}", JSON.toJSONString(liveLotteryWinnerDetailResponse));
+        }
+    }
+    
 }

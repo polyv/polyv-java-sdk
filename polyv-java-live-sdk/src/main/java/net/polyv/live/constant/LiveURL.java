@@ -73,6 +73,11 @@ public class LiveURL {
     public static final String CHANNEL_WRITE_LIST_GET_URL = BASE_URI + "v3/channel/auth/get-white-list";
     
     /**
+     * 获取频道单场抽奖的中奖记录
+     */
+    public static final String CHANNEL_LOTTERY_WINNER_DETAIL_GET_URL = BASE_URI + "v3/channel/lottery/get-winner-detail";
+    
+    /**
      * 查询直播频道观看条件
      */
     public static final String CHANNEL_AUTH_GET_URL = BASE_URI + "v3/channel/auth/get";
@@ -116,6 +121,11 @@ public class LiveURL {
      * 获取频道直播状态
      */
     public static final String CHANNEL_LIVE_STATUS_GET_URL = "http://api.polyv.net/live_status/query?stream=";
+    
+    /**
+     * 获取频道抽奖记录列表
+     */
+    public static final String CHANNEL_LOTTERY_LIST_GET_URL = BASE_URI + "v3/channel/lottery/list-lottery";
     
     /**
      * 设置观看条件
@@ -651,21 +661,17 @@ public class LiveURL {
     /**
      * 设置播放器暖场图片
      */
-    public static final String PLAYER_SET_IMG_URL =
-            BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/update";
+    public static final String PLAYER_SET_IMG_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/update";
     
     /**
      * 设置频道的暖场设置开关
      */
-    public static final String PLAYER_SET_WARMUP_ENABLE_URL =
-            BASE_URI + "v3/channel/set-warmup-enabled";
+    public static final String PLAYER_SET_WARMUP_ENABLE_URL = BASE_URI + "v3/channel/set-warmup-enabled";
     
     /**
      * 设置播放器Logo
      */
-    public static final String PLAYER_SET_CHANNEL_LOGO_URL =
-            BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/update";
-    
+    public static final String PLAYER_SET_CHANNEL_LOGO_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/update";
     
     
     /**
@@ -673,7 +679,6 @@ public class LiveURL {
      */
     public static final String PLAYER_SET_CHANNEL_PAUSE_ADVERT_URL =
             BASE_URI + "v2/channelAdvert/" + PARAM_REPLACE_CHAR + "/updateStop";
-    
     
     
     /**
@@ -688,7 +693,6 @@ public class LiveURL {
      */
     public static final String PLAYER_SET_CHANNEL_WARMUP_VEDIO_URL =
             BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/update";
-    
     
     
     /**

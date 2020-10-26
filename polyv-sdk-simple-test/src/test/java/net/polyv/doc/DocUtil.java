@@ -41,11 +41,10 @@ public class DocUtil {
     
     public static void main(String[] args) throws ClassNotFoundException, IOException, NoSuchFieldException {
 //        JUNIT_CLASS_NAME="net.polyv.live.service.chat.LiveChatRoomServiceImplTest";
-        JUNIT_CLASS_NAME =
-                "net.polyv.live.service.interact." + LiveQuestionnaireServiceImpl.class.getSimpleName() + "Test";
-        JUNIT_CLASS_NAME = "net.polyv.live.service.interact." + LiveCheckinServiceImpl.class.getSimpleName() + "Test";
-        JUNIT_CLASS_NAME= "net.polyv.live.service.interact."+LiveAnswerRecordServiceImpl.class.getSimpleName()+"Test";
-        JUNIT_CLASS_NAME= "net.polyv.live.service.player."+ LivePlayerServiceImpl.class.getSimpleName()+"Test";
+        JUNIT_CLASS_NAME = "net.polyv.live.service.interact." + LiveQuestionnaireServiceImpl.class.getSimpleName() + "Test";
+//        JUNIT_CLASS_NAME = "net.polyv.live.service.interact." + LiveCheckinServiceImpl.class.getSimpleName() + "Test";
+//        JUNIT_CLASS_NAME= "net.polyv.live.service.interact."+LiveAnswerRecordServiceImpl.class.getSimpleName()+"Test";
+//        JUNIT_CLASS_NAME= "net.polyv.live.service.player."+ LivePlayerServiceImpl.class.getSimpleName()+"Test";
         JUNIT_CLASS_NAME= "net.polyv.live.service.chat."+ LiveChatRoomServiceImpl.class.getSimpleName()+"Test";
         
         
@@ -61,34 +60,43 @@ public class DocUtil {
         
         
         StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append("## ").append(doc.getTitle()).append("\n");
+//        stringBuffer.append("## ").append(doc.getTitle()).append("\n");
         for (int i = 0; i < doc.getMethodDocs().size(); i++) {
             JavaDocUtil.PolyvMethodDoc methodDoc = doc.getMethodDocs().get(i);
             TestMethod testMethod = testMethods.get(i);
-            stringBuffer.append("### ").append(methodDoc.getTitle()).append("\n");
-            stringBuffer.append("#### 描述").append("\n");
+            stringBuffer.append("## ").append(i+1).append("、").append(methodDoc.getTitle()).append("\n");
+            stringBuffer.append("### 描述").append("\n");
             stringBuffer.append("```").append("\n");
             stringBuffer.append(methodDoc.getDescription()).append("\n");
             stringBuffer.append("```").append("\n");
-            stringBuffer.append("#### 调用约束").append("\n");
-            stringBuffer.append("1.接口调用有频率限制，[详细请查看](../limit.md)").append("\n");
+            stringBuffer.append("### 调用约束").append("\n");
+            stringBuffer.append("1、接口调用有频率限制，[详细请查看](../limit.md)").append("\n");
             stringBuffer.append(methodDoc.getNote()).append("\n");
-            stringBuffer.append("#### 代码示例").append("\n");
+            stringBuffer.append("### 代码示例").append("\n");
             stringBuffer.append("```java").append("\n");
             stringBuffer.append(testMethod.getMethodCode()).append("\n");
             stringBuffer.append("```").append("\n");
-            stringBuffer.append("#### 单元测试流程").append("\n");
+            stringBuffer.append("### 单元测试说明").append("\n");
+            stringBuffer.append("1、请求正确，返回");
+            stringBuffer.append(testMethod.getResponseArgu().substring(testMethod.getResponseArgu().lastIndexOf(".")+1));
+            stringBuffer.append("对象，B端依据此对象处理业务逻辑；").append("\n\n");
+            stringBuffer.append("2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]").append("\n\n");
+            stringBuffer.append("3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]").append("\n\n");
 //            stringBuffer.append("[swagger 程序接入-")
 //                    .append(methodDoc.getTitle())
 //                    .append("](http://47.115.173.234:8002/doc
 //                    .html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91" +
 //                            "%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)")
 //                    .append("\n");
-            stringBuffer.append("#### 请求入参描述").append("\n");
+            stringBuffer.append("### 请求入参描述").append("\n");
             stringBuffer.append(Domain2DocUtil.domainCode(testMethod.getRequestArgu())).append("\n");
-            stringBuffer.append("#### 返回对象描述").append("\n");
-            stringBuffer.append(testMethod.getResponseArguDesc()).append("\n");
+            stringBuffer.append("### 返回对象描述").append("\n");
+            stringBuffer.append(testMethod.getResponseArguDesc()).append("\n\n");
             stringBuffer.append(Domain2DocUtil.domainCode(testMethod.getResponseArgu())).append("\n");
+            stringBuffer.append("<br /><br />").append("\n\n");
+            stringBuffer.append("------------------").append("\n\n");
+            stringBuffer.append("<br /><br />").append("\n\n");
+          
         }
         System.out.println(stringBuffer.toString());
         File f = new File(filePath);

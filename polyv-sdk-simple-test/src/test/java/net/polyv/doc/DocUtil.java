@@ -12,12 +12,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.internal.runners.TestMethod;
+
 import com.alibaba.fastjson.JSON;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import net.polyv.live.service.interact.impl.LiveAnswerRecordServiceImpl;
+import net.polyv.live.service.interact.impl.LiveCheckinServiceImpl;
+import net.polyv.live.service.interact.impl.LiveQuestionnaireServiceImpl;
 
 
 /**
@@ -27,11 +32,19 @@ public class DocUtil {
     //Junit测试类的路径，用来找源码
     private static final String JUNIT_PATH = "D:\\project-yf\\polyv-java-sdk\\polyv-java-live-sdk\\src\\test\\java\\";
     //Junit测试类全路径
-    private static final String JUNIT_CLASS_NAME = "net.polyv.live.service.interact.LiveQuestionnaireServiceImplTest";
+    private static String JUNIT_CLASS_NAME = "";
+    
     //生成文档所在文件，不存在则自动创建
     private static final String filePath = "C:\\Users\\POLYV\\Desktop\\build\\code.txt";
     
     public static void main(String[] args) throws ClassNotFoundException, IOException, NoSuchFieldException {
+//        JUNIT_CLASS_NAME="net.polyv.live.service.chat.LiveChatRoomServiceImplTest";
+        JUNIT_CLASS_NAME =
+                "net.polyv.live.service.interact." + LiveQuestionnaireServiceImpl.class.getSimpleName() + "Test";
+        JUNIT_CLASS_NAME = "net.polyv.live.service.interact." + LiveCheckinServiceImpl.class.getSimpleName() + "Test";
+//        JUNIT_CLASS_NAME= "net.polyv.live.service.interact."+LiveQuestionnaireServiceImpl.class.getSimpleName()
+//        +"Test";
+        
         String path = JUNIT_PATH + JUNIT_CLASS_NAME.replace(".", "/") + ".java";
         List<TestMethod> testMethods = readFileLine(path);
         
@@ -63,12 +76,14 @@ public class DocUtil {
             stringBuffer.append("#### 单元测试流程").append("\n");
 //            stringBuffer.append("[swagger 程序接入-")
 //                    .append(methodDoc.getTitle())
-//                    .append("](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91" +
+//                    .append("](http://47.115.173.234:8002/doc
+//                    .html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91" +
 //                            "%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)")
 //                    .append("\n");
             stringBuffer.append("#### 请求入参描述").append("\n");
             stringBuffer.append(Domain2DocUtil.domainCode(testMethod.getRequestArgu())).append("\n");
             stringBuffer.append("#### 返回对象描述").append("\n");
+            stringBuffer.append(testMethod.getResponseArguDesc()).append("\n");
             stringBuffer.append(Domain2DocUtil.domainCode(testMethod.getResponseArgu())).append("\n");
         }
         System.out.println(stringBuffer.toString());
@@ -146,7 +161,17 @@ public class DocUtil {
                     testMethod.setRequestArgu(realRequest);
                     lineNum = 2;
                 } else if (lineNum == 2) {//request
-                    String realResponse = responseMap.get(line.split(" ")[0]);
+                    String responsetType = line.split(" ")[0].trim();
+                    if (line.trim().startsWith("new ")) {
+                        continue;
+                    }
+                    if (responsetType.startsWith("List")) {
+                        responsetType = responsetType.substring(responsetType.indexOf("<") + 1,
+                                responsetType.indexOf(">"));
+                        testMethod.setResponseArguDesc("返回对象是List,具体元素内容如下：");
+                    }
+                    String realResponse = responseMap.get(responsetType);
+                    
                     if (realResponse == null) {
                         throw new RuntimeException("类型" + line.split(" ")[0] + "异常");
                     }
@@ -173,6 +198,7 @@ public class DocUtil {
         private String requestArgu;
         private String responseArgu;
         private String methodCode;
+        private String responseArguDesc = "";
     }
     
     private static Map<String, String> getBaseTypeMap() {

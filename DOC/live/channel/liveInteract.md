@@ -1,105 +1,140 @@
-### 创建频道
+##  设置频道问卷信息
 
-#### 描述
+### 描述
 
-创建一个直播频道，返回直播频道相关的基础信息。
+接口用于编辑或添加问卷信息，此操作是全量增加或修改
 
-#### 调用约束
+### 调用约束
 
 接口调用有频率限制，[详细请查看](/limit.md)
 
-连麦人数不能大于16，连麦和无延时直播参数设置前，必须先通知超管开通连麦和无延时直播开关；
-
-#### 代码示例
+### 代码示例
 
 ```java
-    /**
-     * 测试创建频道
+      /**
+     * 测试设置频道问卷信息
      * @throws IOException
+     * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCreateChannel() throws IOException, NoSuchAlgorithmException {
-        LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
-        liveChannelRequest.setName("Spring 知识精讲")
-                .setChannelPasswd("666888")
-                .setAutoPlay(LiveConstant.AutoPlay.AOTU_PLAY.getFlag())
-                .setScene(LiveConstant.SceneType.PPT.getDesc())
-                .setMaxViewer(300)
-                .setWatchLayout(LiveConstant.WatchLayout.PPT.getFlag())
-//                .setLinkMicLimit(2)
-//                .setPureRtcEnabled(LiveConstant.Flag.YES.getFlag())
-                .setReceive(LiveConstant.Flag.YES.getFlag())
-                .setRequestId(LiveSignUtil.generateUUID());
-        LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
-        Assert.assertNotNull(liveChannelResponse);
-        if (liveChannelResponse != null) {
+    public void testSetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
+        Integer channelId = super.createChannel();
+        //封装问卷请求对象
+        LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest = new LiveQuestionnaireDetailSetRequest();
+        liveQuestionnaireDetailSetRequest.setChannelId(channelId).setCustomQuestionnaireId(LiveSignUtil.generateUUID())
+//                .setQuestionnaireId("fs9skpv22f")
+                .setQuestionnaireTitle("测试试卷，明天会更好调查2").setRequestId(LiveSignUtil.generateUUID());
+        
+        //封装问卷题目
+        LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail =
+                liveQuestionnaireDetailSetRequest.new QuestionDetail();
+        questionDetail.setQuestionId(LiveSignUtil.generateUUID())
+                .setName("您的兴趣爱好？")
+                .setAnswer("A")
+                .setScoreEnabled(LiveConstant.Flag.YES.getFlag())
+                .setRequired(LiveConstant.Flag.YES.getFlag())
+                .setOptions(Arrays.asList(new String[]{"篮球", "足球", "排球", "跑步","羽毛球"}))
+                .setScore(20)
+                .setType(LiveConstant.QuestionType.CHECK.getType());
+        
+        LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail1 =
+                liveQuestionnaireDetailSetRequest.new QuestionDetail();
+        questionDetail1.setQuestionId(LiveSignUtil.generateUUID())
+                .setName("您的性别")
+                .setScoreEnabled(LiveConstant.Flag.NO.getFlag())
+                .setRequired(LiveConstant.Flag.YES.getFlag())
+                .setOptions(Arrays.asList(new String[]{"M", "W"}))
+                .setType(LiveConstant.QuestionType.RADIO.getType());
+        
+        LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail2 =
+                liveQuestionnaireDetailSetRequest.new QuestionDetail();
+        questionDetail2.setQuestionId(LiveSignUtil.generateUUID())
+                .setName("您的职务？")
+                .setScoreEnabled(LiveConstant.Flag.NO.getFlag())
+                .setRequired(LiveConstant.Flag.YES.getFlag())
+                .setType(LiveConstant.QuestionType.QUESTION.getType());
+        
+        //将问卷题目和问卷关联
+        liveQuestionnaireDetailSetRequest.setQuestions(Arrays.asList(
+                new LiveQuestionnaireDetailSetRequest.QuestionDetail[]{questionDetail, questionDetail1,
+                        questionDetail2}));
+        
+        //发送请求
+        LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse =
+                new LiveQuestionnaireImpl().setQuestionnaireDetailInfo(
+                        liveQuestionnaireDetailSetRequest);
+        
+        //判断结果
+        Assert.assertNotNull(liveQuestionnaireDetailSetResponse);
+        if (liveQuestionnaireDetailSetResponse != null) {
             //to do something ......
-            log.debug("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
+            log.debug("测试添加频道问卷成功{}", JSON.toJSONString(liveQuestionnaireDetailSetResponse));
         }
-
+        
     }
 ```
 
-#### 请求入参描述 
+### 请求入参描述 
 
-| 参数名            | 必选 | 类型   | 说明                                                         |
-| :---------------- | :--- | :----- | :----------------------------------------------------------- |
-| name              | 是   | string | 频道名称                                                     |
-| channelPasswd     | 是   | string | 频道密码,长度不能超过16位                                    |
-| autoPlay          | 否   | int    | 是否自动播放，取值：0 - 手动播放，1 - 自动播放，默认1        |
-| playerColor       | 否   | string | 播放器控制栏颜色，默认：#666666(灰色)                        |
-| scene             | 否   | string | 直播场景： alone - 直播助手，  ppt- 云课堂 ， topclass -大班课 |
-| categoryId        | 否   | int    | 新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） |
-| maxViewer         | 否   | int    | 频道的最大在线人数观看限制的人数                             |
-| watchLayout       | 否   | string | 三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt-文档为主，video-视频为主 |
-| linkMicLimit      | 否   | int    | 连麦人数： 0-16，最多16人连麦，-1：使用账号级别的默认连麦人数配置 |
-| pureRtcEnabled    | 否   | string | 是否为无延时直播，Y 表示开启，N为不开启，默认为N             |
-| receive           | 否   | string | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) |
-| receiveChannelIds | 否   | string | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) |
+| 参数名                   | 必选 | 类型   | 说明                                                   |
+| :----------------------- | :--- | :----- | :----------------------------------------------------- |
+| appId                    | 是   | string | 从API设置中获取，在直播系统登记的appId                 |
+| timestamp                | 是   | long   | 当前13位毫秒级时间戳，3分钟内有效                      |
+| sign                     | 是   | string | 签名，为32位大写的MD5值                                |
+| channelId                | 是   | string | 频道号                                                 |
+| questionnaireId          | 否   | string | 问卷id,修改问卷时需要                                  |
+| customQuestionnaireId    | 否   | string | 客户自定义问卷id                                       |
+| questionnaireTitle       | 是   | string | 问卷标题                                               |
+| questions                | 是   | array  | 题目数组                                               |
+| questions[].questionId   | 否   | string | 题目id，修改问卷时需要传                               |
+| questions[].name         | 是   | string | 题目                                                   |
+| questions[].type         | 是   | string | 题目类型,R为单选，C为多选，Q为问答                     |
+| questions[].scoreEnabled | 否   | string | 题目是否需要评分，Y为需要，N为不需要                   |
+| questions[].answer       | 否   | string | 需要评分的选择题才有答案，填入对应选项序号，如：A或AB  |
+| questions[].required     | 否   | string | 题目是否为必答，Y为必答，N为非必答                     |
+| questions[].options      | 否   | array  | 题目为单选题或多选题为必填，选项数组下标0-9对应答案A-J |
+| questions[].options[]    | 否   | string | 选项描述                                               |
+
+### 返回对象描述
+
+| 参数名               | 说明                                                       |
+| :------------------- | :--------------------------------------------------------- |
+| code                 | 响应代码，成功为200，失败为400，签名错误为401，异常错误500 |
+| status               | 成功为success，失败为error                                 |
+| message              | 错误时为错误提示消息                                       |
+| data                 | 成功响应时为问卷和题目id                                   |
+| data.questionnaireId | 问卷id                                                     |
+| data.questionIds[]   | 题目的id数组                                               |
+
+----------------
 
 
 
-#### 返回对象描述
+## 创建频道
 
-| 参数名            | 类型      | 说明                                     |
-| :---------------- | :-------- | :--------------------------------------- |
-| channelId         | string    | 直播频道ID                               |
-| userId            | string    | 直播用户ID                               |
-| name              | string    | 直播频道名称                             |
-| description       | string    | 直播频道描述                             |
-| url               | string    | 直播推流地址                             |
-| stream            | string    | 直播流名称                               |
-| logoImage         | string    | 播放器logo                               |
-| logoOpacity       | float     | Logo不透明度，1表示完全不透明            |
-| logoPosition      | string    | Logo位置                                 |
-| logoHref          | string    | Logo的跳转链接                           |
-| coverImage        | string    | 播放前显示的封面图                       |
-| coverHref         | string    | 封面图的跳转链接                         |
-| waitImage         | string    | 等待推流时的显示图片                     |
-| waitHref          | string    | 等待推流时显示图片的跳转链接             |
-| cutoffImage       | string    | 切断流时的显示图片                       |
-| cutoffHref        | string    | 切断流时显示图片的跳转链接               |
-| advertType        | string    | 广告类型                                 |
-| advertDuration    | string    | 广告时长                                 |
-| advertWidth       | string    | 广告区域宽度                             |
-| advertHeight      | string    | 广告区域高度                             |
-| advertImage       | string    | 图片广告                                 |
-| advertHref        | string    | 广告的跳转链接                           |
-| advertFlvVid      | string    | 视频广告ID                               |
-| advertFlvUrl      | string    | 视频广告链接                             |
-| playerColor       | string    | 播放器控制栏颜色                         |
-| autoPlay          | boolean   | 自动播放                                 |
-| warmUpFlv         | string    | 一开始的暖场视频                         |
-| passwdRestrict    | boolean   | 观看密码限制，需要输入观看密码才能播放流 |
-| passwdEncrypted   | string    | 观看密码加密后的密文                     |
-| isOnlyAudio       | string    | 仅推音频流                               |
-| isLowLatency      | string    | 低延迟                                   |
-| m3u8Url           | string    | 直播拉流（播放）m3u8地址                 |
-| m3u8Url1          | string    | 直播拉流（播放）m3u8地址1                |
-| m3u8Url2          | string    | 直播拉流（播放）m3u8地址2                |
-| m3u8Url3          | string    | 直播拉流（播放）m3u8地址3                |
-| currentTimeMillis | timestamp | 服务器返回的时间戳（毫秒）               |
-| linkMicLimit      | int       | 连麦人数                                 |
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
 
 ----------------
 
@@ -107,110 +142,1819 @@
 
 
 
-### 创建频道
 
-#### 描述
 
-创建一个直播频道，返回直播频道相关的基础信息。
+## 创建频道
 
-#### 调用约束
+### 描述
+
+
+
+### 调用约束
 
 接口调用有频率限制，[详细请查看](/limit.md)
 
-连麦人数不能大于16，连麦和无延时直播参数设置前，必须先通知超管开通连麦和无延时直播开关；
 
-#### 代码示例
+
+### 代码示例
 
 ```java
-    /**
-     * 测试创建频道
-     * @throws IOException
-     */
-    @Test
-    public void testCreateChannel() throws IOException, NoSuchAlgorithmException {
-        LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
-        liveChannelRequest.setName("Spring 知识精讲")
-                .setChannelPasswd("666888")
-                .setAutoPlay(LiveConstant.AutoPlay.AOTU_PLAY.getFlag())
-                .setScene(LiveConstant.SceneType.PPT.getDesc())
-                .setMaxViewer(300)
-                .setWatchLayout(LiveConstant.WatchLayout.PPT.getFlag())
-//                .setLinkMicLimit(2)
-//                .setPureRtcEnabled(LiveConstant.Flag.YES.getFlag())
-                .setReceive(LiveConstant.Flag.YES.getFlag())
-                .setRequestId(LiveSignUtil.generateUUID());
-        LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
-        Assert.assertNotNull(liveChannelResponse);
-        if (liveChannelResponse != null) {
-            //to do something ......
-            log.debug("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
-        }
-
-    }
+     
 ```
 
-#### 请求入参描述 
-
-| 参数名            | 必选 | 类型   | 说明                                                         |
-| :---------------- | :--- | :----- | :----------------------------------------------------------- |
-| name              | 是   | string | 频道名称                                                     |
-| channelPasswd     | 是   | string | 频道密码,长度不能超过16位                                    |
-| autoPlay          | 否   | int    | 是否自动播放，取值：0 - 手动播放，1 - 自动播放，默认1        |
-| playerColor       | 否   | string | 播放器控制栏颜色，默认：#666666(灰色)                        |
-| scene             | 否   | string | 直播场景： alone - 直播助手，  ppt- 云课堂 ， topclass -大班课 |
-| categoryId        | 否   | int    | 新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） |
-| maxViewer         | 否   | int    | 频道的最大在线人数观看限制的人数                             |
-| watchLayout       | 否   | string | 三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt-文档为主，video-视频为主 |
-| linkMicLimit      | 否   | int    | 连麦人数： 0-16，最多16人连麦，-1：使用账号级别的默认连麦人数配置 |
-| pureRtcEnabled    | 否   | string | 是否为无延时直播，Y 表示开启，N为不开启，默认为N             |
-| receive           | 否   | string | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) |
-| receiveChannelIds | 否   | string | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) |
+### 请求入参描述 
 
 
 
-#### 返回对象描述
+### 返回对象描述
 
-| 参数名            | 类型      | 说明                                     |
-| :---------------- | :-------- | :--------------------------------------- |
-| channelId         | string    | 直播频道ID                               |
-| userId            | string    | 直播用户ID                               |
-| name              | string    | 直播频道名称                             |
-| description       | string    | 直播频道描述                             |
-| url               | string    | 直播推流地址                             |
-| stream            | string    | 直播流名称                               |
-| logoImage         | string    | 播放器logo                               |
-| logoOpacity       | float     | Logo不透明度，1表示完全不透明            |
-| logoPosition      | string    | Logo位置                                 |
-| logoHref          | string    | Logo的跳转链接                           |
-| coverImage        | string    | 播放前显示的封面图                       |
-| coverHref         | string    | 封面图的跳转链接                         |
-| waitImage         | string    | 等待推流时的显示图片                     |
-| waitHref          | string    | 等待推流时显示图片的跳转链接             |
-| cutoffImage       | string    | 切断流时的显示图片                       |
-| cutoffHref        | string    | 切断流时显示图片的跳转链接               |
-| advertType        | string    | 广告类型                                 |
-| advertDuration    | string    | 广告时长                                 |
-| advertWidth       | string    | 广告区域宽度                             |
-| advertHeight      | string    | 广告区域高度                             |
-| advertImage       | string    | 图片广告                                 |
-| advertHref        | string    | 广告的跳转链接                           |
-| advertFlvVid      | string    | 视频广告ID                               |
-| advertFlvUrl      | string    | 视频广告链接                             |
-| playerColor       | string    | 播放器控制栏颜色                         |
-| autoPlay          | boolean   | 自动播放                                 |
-| warmUpFlv         | string    | 一开始的暖场视频                         |
-| passwdRestrict    | boolean   | 观看密码限制，需要输入观看密码才能播放流 |
-| passwdEncrypted   | string    | 观看密码加密后的密文                     |
-| isOnlyAudio       | string    | 仅推音频流                               |
-| isLowLatency      | string    | 低延迟                                   |
-| m3u8Url           | string    | 直播拉流（播放）m3u8地址                 |
-| m3u8Url1          | string    | 直播拉流（播放）m3u8地址1                |
-| m3u8Url2          | string    | 直播拉流（播放）m3u8地址2                |
-| m3u8Url3          | string    | 直播拉流（播放）m3u8地址3                |
-| currentTimeMillis | timestamp | 服务器返回的时间戳（毫秒）               |
-| linkMicLimit      | int       | 连麦人数                                 |
+
 
 ----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+## 创建频道
+
+### 描述
+
+
+
+### 调用约束
+
+接口调用有频率限制，[详细请查看](/limit.md)
+
+
+
+### 代码示例
+
+```java
+     
+```
+
+### 请求入参描述 
+
+
+
+### 返回对象描述
+
+
+
+----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

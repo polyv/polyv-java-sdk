@@ -10,7 +10,7 @@
   * [频道管理](channel/channelManager)
   * [通知管理]()
   * [web观看页]()
-  * [直播互动]()
+  * [直播互动](/channel/liveInteract)
 * 聊天室
 
   * [聊天室]()

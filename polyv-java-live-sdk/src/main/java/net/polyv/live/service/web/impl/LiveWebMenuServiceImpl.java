@@ -2,9 +2,12 @@ package net.polyv.live.service.web.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.web.menu.LiveListChannelMenuRequest;
+import net.polyv.live.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.entity.web.menu.LiveUpdateChannelMenuRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.web.ILiveWebMenuService;
@@ -30,6 +33,25 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
                 liveUpdateChannelMenuRequest.getChannelId());
         String liveUpdateChannelMenuResponse = this.basePost(url, liveUpdateChannelMenuRequest, String.class);
         return "success".equals(liveUpdateChannelMenuResponse);
+    }
+    
+    /**
+     * 查询频道的菜单信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/menu/channel-menu-list/
+     * @param liveListChannelMenuRequest 查询频道的菜单信息请求实体
+     * @return 查询频道的菜单信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListChannelMenuResponse listChannelMenu(LiveListChannelMenuRequest liveListChannelMenuRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_MENU_LIST_URL;
+        List<LiveListChannelMenuResponse.ChannelMenu> channelMenus = this.baseGetReturnArray(url,
+                liveListChannelMenuRequest, LiveListChannelMenuResponse.ChannelMenu.class);
+        LiveListChannelMenuResponse liveListChannelMenuResponse = new LiveListChannelMenuResponse();
+        liveListChannelMenuResponse.setChannelMenus(channelMenus);
+        return liveListChannelMenuResponse;
     }
     
 }

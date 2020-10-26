@@ -677,6 +677,13 @@ public class LiveURL {
     
     
     /**
+     * 设置播放器片头广告
+     */
+    public static final String PLAYER_SET_CHANNEL_HEADER_ADVERT_URL =
+            BASE_URI + "v2/channelAdvert/" + PARAM_REPLACE_CHAR + "/updateHead";
+    
+    
+    /**
      * 400错误码
      */
     public static final int CODE_400 = 400;

@@ -20,9 +20,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import net.polyv.live.service.chat.impl.LiveChatRoomServiceImpl;
 import net.polyv.live.service.interact.impl.LiveAnswerRecordServiceImpl;
 import net.polyv.live.service.interact.impl.LiveCheckinServiceImpl;
 import net.polyv.live.service.interact.impl.LiveQuestionnaireServiceImpl;
+import net.polyv.live.service.player.impl.LivePlayerServiceImpl;
 
 
 /**
@@ -42,8 +44,10 @@ public class DocUtil {
         JUNIT_CLASS_NAME =
                 "net.polyv.live.service.interact." + LiveQuestionnaireServiceImpl.class.getSimpleName() + "Test";
         JUNIT_CLASS_NAME = "net.polyv.live.service.interact." + LiveCheckinServiceImpl.class.getSimpleName() + "Test";
-//        JUNIT_CLASS_NAME= "net.polyv.live.service.interact."+LiveQuestionnaireServiceImpl.class.getSimpleName()
-//        +"Test";
+        JUNIT_CLASS_NAME= "net.polyv.live.service.interact."+LiveAnswerRecordServiceImpl.class.getSimpleName()+"Test";
+        JUNIT_CLASS_NAME= "net.polyv.live.service.player."+ LivePlayerServiceImpl.class.getSimpleName()+"Test";
+        JUNIT_CLASS_NAME= "net.polyv.live.service.chat."+ LiveChatRoomServiceImpl.class.getSimpleName()+"Test";
+        
         
         String path = JUNIT_PATH + JUNIT_CLASS_NAME.replace(".", "/") + ".java";
         List<TestMethod> testMethods = readFileLine(path);

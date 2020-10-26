@@ -240,6 +240,25 @@ public class LiveConstant {
     }
     
     /**
+     * 	广告类型,NONE-无广告，IMAGE-图片广告，FLV-视频广告
+     */
+    public enum HeadAdvertType {
+        //	广告类型,NONE-无广告，IMAGE-图片广告，FLV-视频广告
+        NONE("NONE"),IMAGE("IMAGE"),FLV("FLV");
+        
+        private String desc;
+        
+        private HeadAdvertType(String position) {
+            this.desc = desc;
+        }
+        
+        public String getDesc() {
+            return desc;
+        }
+    }
+    
+    
+    /**
      * 禁言类型
      */
     public enum BannedType {

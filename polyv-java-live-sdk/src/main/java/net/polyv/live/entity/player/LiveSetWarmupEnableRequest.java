@@ -28,6 +28,7 @@ public class LiveSetWarmupEnableRequest extends LiveCommonRequest {
     @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
+    
     /**
      * 开关值，Y或N，Y表示开启，N表示关闭
      */

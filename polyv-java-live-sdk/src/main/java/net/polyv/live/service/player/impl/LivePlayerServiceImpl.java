@@ -69,6 +69,6 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
     public Boolean setPlayerWarmupEnable(LiveSetWarmupEnableRequest liveSetWarmupEnableRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.PLAYER_SET_WARMUP_ENABLE_URL;
-        return "success".equalsIgnoreCase(super.basePost(url, liveSetWarmupEnableRequest, String.class));
+        return "success".equalsIgnoreCase(super.basePost(url, liveSetWarmupEnableRequest,  String.class));
     }
 }

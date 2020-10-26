@@ -25,11 +25,11 @@ import lombok.experimental.Accessors;
  **/
 public class DocUtil {
     //Junit测试类的路径，用来找源码
-    private static final String JUNIT_PATH = "C:/project/IdeaProject/polyv-java-sdk/polyv-java-live-sdk/src/test/java/";
+    private static final String JUNIT_PATH = "D:\\project-yf\\polyv-java-sdk\\polyv-java-live-sdk\\src\\test\\java\\";
     //Junit测试类全路径
-    private static final String JUNIT_CLASS_NAME = "net.polyv.live.service.web.LiveWebMenuImplTest";
+    private static final String JUNIT_CLASS_NAME = "net.polyv.live.service.interact.LiveQuestionnaireServiceImplTest";
     //生成文档所在文件，不存在则自动创建
-    private static final String filePath = "C:\\Users\\T460\\Desktop\\code.txt";
+    private static final String filePath = "C:\\Users\\POLYV\\Desktop\\build\\code.txt";
     
     public static void main(String[] args) throws ClassNotFoundException, IOException, NoSuchFieldException {
         String path = JUNIT_PATH + JUNIT_CLASS_NAME.replace(".", "/") + ".java";
@@ -61,14 +61,14 @@ public class DocUtil {
             stringBuffer.append(testMethod.getMethodCode()).append("\n");
             stringBuffer.append("```").append("\n");
             stringBuffer.append("#### 单元测试流程").append("\n");
-            stringBuffer.append("[swagger 程序接入-")
-                    .append(methodDoc.getTitle())
-                    .append("](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91" +
-                            "%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)")
-                    .append("\n");
-            stringBuffer.append("#### 请求入参描述[LiveChannelRequest]").append("\n");
+//            stringBuffer.append("[swagger 程序接入-")
+//                    .append(methodDoc.getTitle())
+//                    .append("](http://47.115.173.234:8002/doc.html#/%E7%9B%B4%E6%92%ADSDK/%E7%9B%B4%E6%92%AD%E9%A2%91" +
+//                            "%E9%81%93%E7%AE%A1%E7%90%86/createChannelUsingPOST)")
+//                    .append("\n");
+            stringBuffer.append("#### 请求入参描述").append("\n");
             stringBuffer.append(Domain2DocUtil.domainCode(testMethod.getRequestArgu())).append("\n");
-            stringBuffer.append("#### 返回对象描述[LiveChannelResponse]").append("\n");
+            stringBuffer.append("#### 返回对象描述").append("\n");
             stringBuffer.append(Domain2DocUtil.domainCode(testMethod.getResponseArgu())).append("\n");
         }
         System.out.println(stringBuffer.toString());

@@ -76,10 +76,10 @@ public class JavaDocUtil {
                     String temp = split[num].trim();
                     if (temp.toLowerCase().contains("todo")) {
                         continue;
-                    } else if (temp.startsWith("描述:")) {
+                    } else if (temp.startsWith("描述：")) {
                         polyvMethodDoc.setDescription(polyvMethodDoc.getDescription() == null ? temp.substring(3) :
                                 polyvMethodDoc.getDescription() + "\n" + temp.substring(3));
-                    } else if (temp.startsWith("约束:")) {
+                    } else if (temp.startsWith("约束：")) {
                         polyvMethodDoc.setNote(polyvMethodDoc.getNote() == null ? temp.substring(3) :
                                 polyvMethodDoc.getNote() + "\n" + temp.substring(3));
                     }

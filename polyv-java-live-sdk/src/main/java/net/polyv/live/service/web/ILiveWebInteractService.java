@@ -3,6 +3,8 @@ package net.polyv.live.service.web;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.live.entity.web.interact.LiveChannelDonateRequest;
+import net.polyv.live.entity.web.interact.LiveChannelDonateResponse;
 import net.polyv.live.entity.web.interact.LiveUpdateChannelCashRequest;
 import net.polyv.live.entity.web.interact.LiveUpdateChannelGoodRequest;
 
@@ -31,6 +33,17 @@ public interface ILiveWebInteractService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean updateChannelCash(LiveUpdateChannelCashRequest liveUpdateChannelCashRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询打赏设置
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymhd/donate-get/
+     * @param liveChannelDonateRequest 查询打赏设置请求实体
+     * @return 查询打赏设置返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelDonateResponse channelDonate(LiveChannelDonateRequest liveChannelDonateRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

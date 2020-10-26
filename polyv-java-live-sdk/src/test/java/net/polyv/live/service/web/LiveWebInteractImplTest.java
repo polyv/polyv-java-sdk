@@ -9,7 +9,11 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.entity.web.interact.LiveChannelDonateRequest;
+import net.polyv.live.entity.web.interact.LiveChannelDonateResponse;
 import net.polyv.live.entity.web.interact.LiveUpdateChannelCashRequest;
 import net.polyv.live.entity.web.interact.LiveUpdateChannelGoodRequest;
 import net.polyv.live.service.BaseTest;
@@ -68,6 +72,25 @@ public class LiveWebInteractImplTest extends BaseTest {
         if (liveUpdateChannelCashResponse) {
             //to do something ......
             log.debug("测试设置现金打赏成功");
+        }
+    }
+    
+    /**
+     * 测试查询打赏设置
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelDonate() throws IOException, NoSuchAlgorithmException {
+        LiveChannelDonateRequest liveChannelDonateRequest = new LiveChannelDonateRequest();
+        LiveChannelDonateResponse liveChannelDonateResponse;
+        liveChannelDonateRequest.setChannelId(1965681);
+        liveChannelDonateResponse = new LiveWebInteractServiceImpl().channelDonate(
+                liveChannelDonateRequest);
+        Assert.assertNotNull(liveChannelDonateResponse);
+        if (liveChannelDonateResponse != null) {
+            //to do something ......
+            log.debug("测试查询打赏设置成功,{}", JSON.toJSONString(liveChannelDonateResponse));
         }
     }
     

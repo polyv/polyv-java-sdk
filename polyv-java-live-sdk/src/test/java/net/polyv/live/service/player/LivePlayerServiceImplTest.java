@@ -1,6 +1,5 @@
 package net.polyv.live.service.player;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
@@ -12,14 +11,12 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveConstant;
-import net.polyv.live.constant.LiveURL;
-import net.polyv.live.entity.chat.LiveSetChatAdminDataRequest;
+import net.polyv.live.entity.player.LiveSetPlayerHeaderAdvertRequest;
 import net.polyv.live.entity.player.LiveSetPlayerImgRequest;
 import net.polyv.live.entity.player.LiveSetPlayerLogoRequest;
 import net.polyv.live.entity.player.LiveSetPlayerPauseAdvertRequest;
 import net.polyv.live.entity.player.LiveSetWarmupEnableRequest;
 import net.polyv.live.service.BaseTest;
-import net.polyv.live.service.chat.impl.LiveChatRoomServiceImpl;
 import net.polyv.live.service.player.impl.LivePlayerServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
@@ -122,6 +119,31 @@ public class LivePlayerServiceImplTest extends BaseTest {
         if (result != null) {
             //to do something ......
             log.debug("测试设置播放器暂停广告成功{}", JSON.toJSONString(result));
+            
+        }
+    }
+    
+    
+    /**
+     * TODO 待验证功能准确性
+     *设置播放器片头广告，API地址：https://dev.polyv.net/2018/liveproduct/l-player/updatehead/
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testSetPlayerHeaderAdvert() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+        Integer channelId = super.createChannel();
+        LiveSetPlayerHeaderAdvertRequest liveSetPlayerHeaderAdvertRequest = new LiveSetPlayerHeaderAdvertRequest();
+        liveSetPlayerHeaderAdvertRequest.setChannelId(channelId)
+                .setEnabled(LiveConstant.Flag.YES.getFlag())
+                .setStopAdvertHref("http://www.baidu.com/huava")
+                .setStopAdvertImage("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
+                .setRequestId(LiveSignUtil.generateUUID());
+        Boolean result = new LivePlayerServiceImpl().setPlayerHeaderAdvert(liveSetPlayerHeaderAdvertRequest);
+        Assert.assertNotNull(result);
+        if (result != null) {
+            //to do something ......
+            log.debug("测试设设置播放器片头广告成功{}", JSON.toJSONString(result));
             
         }
     }

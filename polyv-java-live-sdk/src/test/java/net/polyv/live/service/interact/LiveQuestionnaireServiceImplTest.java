@@ -236,6 +236,9 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
     /**
      * 测试设置抽奖中奖者信息
      * TODO 未通过测试
+     * 描述：用于提交中奖者填写的信息
+     * 约束：2.只能成功保存一次观众中奖信息
+     * 约束：3.中奖信息需在7天内提交保存，否则会失效
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

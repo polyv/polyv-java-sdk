@@ -13,7 +13,7 @@ import com.alibaba.fastjson.JSON;
 
 import edu.emory.mathcs.backport.java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
-import net.polyv.common.exception.BusinessException;
+import net.polyv.common.exception.PloyvSdkException;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.chat.LiveBadWordRequest;
 import net.polyv.live.entity.chat.LiveBadWordResponse;
@@ -388,7 +388,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             //to do something ......
             log.debug("测试查询咨询提问记录成功{}", JSON.toJSONString(result));
             log.debug("第一个元素 {} ", result.get(0));
-            BusinessException exception = new BusinessException(400,"todo  带后台完善相关返回数据  ");
+            PloyvSdkException exception = new PloyvSdkException(400,"todo  带后台完善相关返回数据  ");
             throw  exception;
         }
     }

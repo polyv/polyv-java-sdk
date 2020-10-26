@@ -29,7 +29,7 @@ import org.apache.http.pool.PoolStats;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.constant.Constant;
-import net.polyv.common.exception.BusinessException;
+import net.polyv.common.exception.PloyvSdkException;
 
 /**
  * HTTP 链接池初始化
@@ -101,7 +101,7 @@ public class HttpClientUtil {
      */
     public synchronized static CloseableHttpClient getHttpClient() {
         if (httpClient == null) {
-            BusinessException exception = new BusinessException(Constant.BUSINESS_ERROR_CODE, "HTTP连接池未初始化，请调用初始化方法");
+            PloyvSdkException exception = new PloyvSdkException(Constant.BUSINESS_ERROR_CODE, "HTTP连接池未初始化，请调用初始化方法");
             log.error(exception.getMessage(), exception);
             throw exception;
         }

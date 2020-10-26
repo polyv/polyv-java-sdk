@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
-import net.polyv.common.exception.BusinessException;
+import net.polyv.common.exception.PloyvSdkException;
 
 /**
  * 统一异常全局处理类
@@ -29,8 +29,8 @@ public class ExceptionHandlerAction {
     public String handlerException(Exception exce){
         log.error("点播异常",exce);
         Map<String,String> result  = new HashMap<>();
-        if(exce instanceof BusinessException){
-             result.put(((BusinessException) exce).getCode().toString(), exce.getMessage());
+        if(exce instanceof PloyvSdkException){
+             result.put(((PloyvSdkException) exce).getCode().toString(), exce.getMessage());
         }else{
             result.put("400",exce.getMessage());
         }

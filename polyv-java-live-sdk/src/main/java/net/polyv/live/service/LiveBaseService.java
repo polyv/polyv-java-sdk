@@ -13,7 +13,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.base.HttpUtil;
-import net.polyv.common.exception.BusinessException;
+import net.polyv.common.exception.PloyvSdkException;
 
 import net.polyv.common.util.ValidationUtil;
 import net.polyv.live.config.LiveGlobalConfig;
@@ -96,13 +96,13 @@ public class LiveBaseService {
             liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
             if (liveCommonResponse.getCode() != 200) {
                 String message = "保利威HTTP错误，请求流水号：" + e.getRequestId() + " ,错误原因： " + liveCommonResponse.getMessage();
-                BusinessException exception = new BusinessException(liveCommonResponse.getCode(), message);
+                PloyvSdkException exception = new PloyvSdkException(liveCommonResponse.getCode(), message);
                 log.error(message, exception);
                 throw exception;
             }
         } else {
             String message = "保利威HTTP错误，请求流水号：" + e.getRequestId() + " ,错误原因： 服务器接口未返回任何数据";
-            BusinessException exception = new BusinessException(LiveConstant.ERROR_CODE, message);
+            PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
             log.error(message, exception);
             throw exception;
         }
@@ -121,7 +121,7 @@ public class LiveBaseService {
             errors = errors.substring(0, errors.length() - 3);
             errors = "输入参数 [" + e.getClass().getName() + "]对象校验失败 ,失败字段 [" + errors + "]";
             log.error(errors);
-            throw new BusinessException(LiveConstant.ERROR_CODE, errors);
+            throw new PloyvSdkException(LiveConstant.ERROR_CODE, errors);
         }
     }
     
@@ -187,13 +187,13 @@ public class LiveBaseService {
             liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
             if (liveCommonResponse.getCode() != 200) {
                 String message = "保利威请求返回数据错误，请求流水号：" + e.getRequestId() + " ,错误原因： " + liveCommonResponse.getMessage();
-                BusinessException exception = new BusinessException(liveCommonResponse.getCode(), message);
+                PloyvSdkException exception = new PloyvSdkException(liveCommonResponse.getCode(), message);
                 log.error(message, exception);
                 throw exception;
             }
         } else {
             String message = "保利威HTTP错误，请求流水号：" + e.getRequestId() + " ,错误原因： 服务器接口未返回任何数据";
-            BusinessException exception = new BusinessException(LiveConstant.ERROR_CODE, message);
+            PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
             log.error(message, exception);
             throw exception;
         }
@@ -282,13 +282,13 @@ public class LiveBaseService {
             liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
             if (liveCommonResponse.getCode() != 200) {
                 String message = "保利威请求返回数据错误，请求流水号：" + e.getRequestId() + " ,错误原因： " + liveCommonResponse.getMessage();
-                BusinessException exception = new BusinessException(liveCommonResponse.getCode(), message);
+                PloyvSdkException exception = new PloyvSdkException(liveCommonResponse.getCode(), message);
                 log.error(message, exception);
                 throw exception;
             }
         } else {
             String message = "保利威HTTP错误，请求流水号：" + e.getRequestId() + " ,错误原因： 服务器接口未返回任何数据";
-            BusinessException exception = new BusinessException(LiveConstant.ERROR_CODE, message);
+            PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
             log.error(message, exception);
             throw exception;
         }
@@ -343,13 +343,13 @@ public class LiveBaseService {
             liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
             if (liveCommonResponse.getCode() != 200) {
                 String message = "保利威请求返回数据错误，请求流水号：" + e.getRequestId() + " ,错误原因： " + liveCommonResponse.getMessage();
-                BusinessException exception = new BusinessException(liveCommonResponse.getCode(), message);
+                PloyvSdkException exception = new PloyvSdkException(liveCommonResponse.getCode(), message);
                 log.error(message, exception);
                 throw exception;
             }
         } else {
             String message = "保利威HTTP错误，请求流水号：" + e.getRequestId() + " ,错误原因： 服务器接口未返回任何数据";
-            BusinessException exception = new BusinessException(LiveConstant.ERROR_CODE, message);
+            PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
             log.error(message, exception);
             throw exception;
         }

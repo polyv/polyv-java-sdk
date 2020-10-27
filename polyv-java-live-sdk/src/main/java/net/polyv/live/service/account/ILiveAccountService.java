@@ -67,7 +67,7 @@ public interface ILiveAccountService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String updateAccountSwitch(LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest)
+    Boolean updateAccountSwitch(LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -78,7 +78,7 @@ public interface ILiveAccountService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String createAccountToken(LiveCreateAccountTokenRequest liveCreateAccountTokenRequest)
+    Boolean createAccountToken(LiveCreateAccountTokenRequest liveCreateAccountTokenRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -89,7 +89,7 @@ public interface ILiveAccountService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String updateStreamCallbackUrl(LiveAccountStreamCallbackRequest liveAccountStreamCallbackRequest)
+    Boolean updateStreamCallbackUrl(LiveAccountStreamCallbackRequest liveAccountStreamCallbackRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -100,7 +100,7 @@ public interface ILiveAccountService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String updatePlaybackCallbackUrl(LiveAccountPlaybackCallbackRequest liveAccountPlaybackCallbackRequest)
+    Boolean updatePlaybackCallbackUrl(LiveAccountPlaybackCallbackRequest liveAccountPlaybackCallbackRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -111,7 +111,7 @@ public interface ILiveAccountService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String updateRecordCallbackUrl(LiveAccountRecordCallbackRequest liveAccountRecordCallbackRequest)
+    Boolean updateRecordCallbackUrl(LiveAccountRecordCallbackRequest liveAccountRecordCallbackRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

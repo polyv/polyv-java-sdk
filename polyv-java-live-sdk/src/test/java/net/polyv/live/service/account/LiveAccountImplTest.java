@@ -10,6 +10,7 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.exception.PloyvSdkException;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
@@ -32,38 +33,37 @@ import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.account.impl.LiveAccountServiceImpl;
 
 /**
+ * 账号级操作
  * @author: sadboy
  **/
 @Slf4j
 public class LiveAccountImplTest extends BaseTest {
     
-    @Test
-    public void testJson() {
-        LiveListAccountResponse liveListAccountResponse = new LiveListAccountResponse();
-        ArrayList<Integer> channelList = new ArrayList<>();
-        channelList.add(2);
-        channelList.add(3);
-        channelList.add(4);
-        channelList.add(5);
-        log.debug(JSON.toJSONString(liveListAccountResponse.setChannels(channelList)));
-        System.out.println(JSON.parseObject("{\"result\":[\"2\",\"3\",\"4\",\"5\"]}", LiveListAccountResponse.class)
-                .getChannels());
-    }
-    
     /**
-     * 分页查询账号下所有频道详细信息成功
+     * 分页查询账号下所有频道详细信息
      * @throws IOException
      */
     @Test
     public void testListAccountDetail() throws IOException, NoSuchAlgorithmException {
         LiveListAccountDetailRequest liveListAccountDetailRequest = new LiveListAccountDetailRequest();
-        liveListAccountDetailRequest.setCurrentPage(1);
-        LiveListAccountDetailResponse liveListAccountDetailResponse = new LiveAccountServiceImpl().listAccountDetail(
-                liveListAccountDetailRequest);
-        Assert.assertNotNull(liveListAccountDetailResponse);
-        if (liveListAccountDetailResponse != null) {
-            //to do something ......
-            log.debug("分页查询账号下所有频道详细信息成功,{}", JSON.toJSONString(liveListAccountDetailResponse));
+        LiveListAccountDetailResponse liveListAccountDetailResponse;
+        try {
+            liveListAccountDetailRequest.setCurrentPage(1);
+            liveListAccountDetailResponse = new LiveAccountServiceImpl().listAccountDetail(
+                    liveListAccountDetailRequest);
+            Assert.assertNotNull(liveListAccountDetailResponse);
+            if (liveListAccountDetailResponse != null) {
+                //to do something ......
+                log.debug("分页查询账号下所有频道详细信息成功,{}", JSON.toJSONString(liveListAccountDetailResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -75,12 +75,22 @@ public class LiveAccountImplTest extends BaseTest {
     @Test
     public void testListAccount() throws IOException, NoSuchAlgorithmException {
         LiveListAccountRequest liveListAccountRequest = new LiveListAccountRequest();
-        LiveListAccountResponse liveListAccountResponse = new LiveAccountServiceImpl().listAccount(
-                liveListAccountRequest);
-        Assert.assertNotNull(liveListAccountResponse);
-        if (liveListAccountResponse != null) {
-            //to do something ......
-            log.debug("测试查询账号下的频道列表成功,{}", JSON.toJSONString(liveListAccountResponse));
+        LiveListAccountResponse liveListAccountResponse;
+        try {
+            liveListAccountResponse = new LiveAccountServiceImpl().listAccount(liveListAccountRequest);
+            Assert.assertNotNull(liveListAccountResponse);
+            if (liveListAccountResponse != null) {
+                //to do something ......
+                log.debug("测试查询账号下的频道列表成功,{}", JSON.toJSONString(liveListAccountResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -92,12 +102,22 @@ public class LiveAccountImplTest extends BaseTest {
     @Test
     public void testMicDuration() throws IOException, NoSuchAlgorithmException {
         LiveAccountMicDurationRequest liveAccountMicDurationRequest = new LiveAccountMicDurationRequest();
-        LiveAccountMicDurationResponse liveAccountMicDurationResponse = new LiveAccountServiceImpl().micDuration(
-                liveAccountMicDurationRequest);
-        Assert.assertNotNull(liveAccountMicDurationResponse);
-        if (liveAccountMicDurationResponse != null) {
-            //to do something ......
-            log.debug("测试获取账号连麦分钟数使用量与剩余量成功,{}", JSON.toJSONString(liveAccountMicDurationResponse));
+        LiveAccountMicDurationResponse liveAccountMicDurationResponse;
+        try {
+            liveAccountMicDurationResponse = new LiveAccountServiceImpl().micDuration(liveAccountMicDurationRequest);
+            Assert.assertNotNull(liveAccountMicDurationResponse);
+            if (liveAccountMicDurationResponse != null) {
+                //to do something ......
+                log.debug("测试获取账号连麦分钟数使用量与剩余量成功,{}", JSON.toJSONString(liveAccountMicDurationResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -109,13 +129,24 @@ public class LiveAccountImplTest extends BaseTest {
     @Test
     public void testUpdateAccountSwitch() throws IOException, NoSuchAlgorithmException {
         LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest = new LiveUpdateAccountSwitchRequest();
-        liveUpdateAccountSwitchRequest.setType(LiveConstant.ChannelSwitch.AUTO_PLAY.getDesc()).setEnabled("N");
-        String liveUpdateAccountSwitchResponse = new LiveAccountServiceImpl().updateAccountSwitch(
-                liveUpdateAccountSwitchRequest);
-        Assert.assertNotNull(liveUpdateAccountSwitchResponse);
-        if ("true".equals(liveUpdateAccountSwitchResponse)) {
-            //to do something ......
-            log.debug("设置功能开关状态成功,{}", liveUpdateAccountSwitchResponse);
+        Boolean liveUpdateAccountSwitchResponse;
+        try {
+            liveUpdateAccountSwitchRequest.setType(LiveConstant.ChannelSwitch.AUTO_PLAY.getDesc()).setEnabled("N");
+            liveUpdateAccountSwitchResponse = new LiveAccountServiceImpl().updateAccountSwitch(
+                    liveUpdateAccountSwitchRequest);
+            Assert.assertNotNull(liveUpdateAccountSwitchResponse);
+            if (liveUpdateAccountSwitchResponse) {
+                //to do something ......
+                log.debug("设置功能开关状态成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -127,13 +158,24 @@ public class LiveAccountImplTest extends BaseTest {
     @Test
     public void testCreateAccountToken() throws IOException, NoSuchAlgorithmException {
         LiveCreateAccountTokenRequest liveCreateAccountTokenRequest = new LiveCreateAccountTokenRequest();
-        liveCreateAccountTokenRequest.setToken("5ZiQIhN0izj3NIMp");
-        String liveCreateAccountTokenResponse = new LiveAccountServiceImpl().createAccountToken(
-                liveCreateAccountTokenRequest);
-        Assert.assertNotNull(liveCreateAccountTokenResponse);
-        if ("success".equals(liveCreateAccountTokenResponse)) {
-            //to do something ......
-            log.debug("测试设置账号单点登录的token成功,{}", liveCreateAccountTokenResponse);
+        Boolean liveCreateAccountTokenResponse;
+        try {
+            liveCreateAccountTokenRequest.setToken("5ZiQIhN0izj3NIMp");
+            liveCreateAccountTokenResponse = new LiveAccountServiceImpl().createAccountToken(
+                    liveCreateAccountTokenRequest);
+            Assert.assertNotNull(liveCreateAccountTokenResponse);
+            if (liveCreateAccountTokenResponse) {
+                //to do something ......
+                log.debug("测试设置账号单点登录的token成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -145,13 +187,24 @@ public class LiveAccountImplTest extends BaseTest {
     @Test
     public void testUpdateStreamCallbackUrl() throws IOException, NoSuchAlgorithmException {
         LiveAccountStreamCallbackRequest liveAccountStreamCallbackRequest = new LiveAccountStreamCallbackRequest();
-        liveAccountStreamCallbackRequest.setUrl("http://www.abc.com/callback");
-        String liveAccountStreamCallbackResponse = new LiveAccountServiceImpl().updateStreamCallbackUrl(
-                liveAccountStreamCallbackRequest);
-        Assert.assertNotNull(liveAccountStreamCallbackResponse);
-        if ("success".equals(liveAccountStreamCallbackResponse)) {
-            //to do something ......
-            log.debug("测试设置直播状态回调通知url成功,{}", liveAccountStreamCallbackResponse);
+        Boolean liveAccountStreamCallbackResponse;
+        try {
+            liveAccountStreamCallbackRequest.setUrl("http://www.abc.com/callback");
+            liveAccountStreamCallbackResponse = new LiveAccountServiceImpl().updateStreamCallbackUrl(
+                    liveAccountStreamCallbackRequest);
+            Assert.assertNotNull(liveAccountStreamCallbackResponse);
+            if (liveAccountStreamCallbackResponse) {
+                //to do something ......
+                log.debug("测试设置直播状态回调通知url成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -164,13 +217,24 @@ public class LiveAccountImplTest extends BaseTest {
     public void testUpdatePlaybackCallbackUrl() throws IOException, NoSuchAlgorithmException {
         LiveAccountPlaybackCallbackRequest liveAccountPlaybackCallbackRequest =
                 new LiveAccountPlaybackCallbackRequest();
-        liveAccountPlaybackCallbackRequest.setUrl("http://www.abc.com/callback");
-        String liveAccountPlaybackCallbackResponse = new LiveAccountServiceImpl().updatePlaybackCallbackUrl(
-                liveAccountPlaybackCallbackRequest);
-        Assert.assertNotNull(liveAccountPlaybackCallbackResponse);
-        if (liveAccountPlaybackCallbackResponse != null) {
-            //to do something ......
-            log.debug("测试设置转存成功回调通知url成功,{}", liveAccountPlaybackCallbackResponse);
+        Boolean liveAccountPlaybackCallbackResponse;
+        try {
+            liveAccountPlaybackCallbackRequest.setUrl("http://www.abc.com/callback");
+            liveAccountPlaybackCallbackResponse = new LiveAccountServiceImpl().updatePlaybackCallbackUrl(
+                    liveAccountPlaybackCallbackRequest);
+            Assert.assertNotNull(liveAccountPlaybackCallbackResponse);
+            if (liveAccountPlaybackCallbackResponse != null) {
+                //to do something ......
+                log.debug("测试设置转存成功回调通知url成功,{}", liveAccountPlaybackCallbackResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -182,13 +246,24 @@ public class LiveAccountImplTest extends BaseTest {
     @Test
     public void testUpdateRecordCallbackUrl() throws IOException, NoSuchAlgorithmException {
         LiveAccountRecordCallbackRequest liveAccountRecordCallbackRequest = new LiveAccountRecordCallbackRequest();
-        liveAccountRecordCallbackRequest.setUrl("http://www.abc.com/callback");
-        String liveAccountRecordCallbackResponse = new LiveAccountServiceImpl().updateRecordCallbackUrl(
-                liveAccountRecordCallbackRequest);
-        Assert.assertNotNull(liveAccountRecordCallbackResponse);
-        if (liveAccountRecordCallbackResponse != null) {
-            //to do something ......
-            log.debug("测试设置录制回调通知url成功,{}", liveAccountRecordCallbackResponse);
+        Boolean liveAccountRecordCallbackResponse;
+        try {
+            liveAccountRecordCallbackRequest.setUrl("http://www.abc.com/callback");
+            liveAccountRecordCallbackResponse = new LiveAccountServiceImpl().updateRecordCallbackUrl(
+                    liveAccountRecordCallbackRequest);
+            Assert.assertNotNull(liveAccountRecordCallbackResponse);
+            if (liveAccountRecordCallbackResponse) {
+                //to do something ......
+                log.debug("测试设置录制回调通知url成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -200,13 +275,23 @@ public class LiveAccountImplTest extends BaseTest {
     @Test
     public void testAccountSwitch() throws IOException, NoSuchAlgorithmException {
         LiveAccountSwitchRequest liveAccountSwitchRequest = new LiveAccountSwitchRequest();
-        liveAccountSwitchRequest.setChannelId(null);
-        LiveAccountSwitchResponse liveAccountSwitchResponse = new LiveAccountServiceImpl().accountSwitch(
-                liveAccountSwitchRequest);
-        Assert.assertNotNull(liveAccountSwitchResponse);
-        if (liveAccountSwitchResponse != null) {
-            //to do something ......
-            log.debug("测试查询功能开关状态接口成功,{}", JSON.toJSONString(liveAccountSwitchResponse));
+        LiveAccountSwitchResponse liveAccountSwitchResponse;
+        try {
+            liveAccountSwitchRequest.setChannelId(null);
+            liveAccountSwitchResponse = new LiveAccountServiceImpl().accountSwitch(liveAccountSwitchRequest);
+            Assert.assertNotNull(liveAccountSwitchResponse);
+            if (liveAccountSwitchResponse != null) {
+                //to do something ......
+                log.debug("测试查询功能开关状态接口成功,{}", JSON.toJSONString(liveAccountSwitchResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -219,18 +304,28 @@ public class LiveAccountImplTest extends BaseTest {
     public void testListChannelBasic() throws IOException, NoSuchAlgorithmException {
         LiveListAccountChannelBasicRequest liveListAccountChannelBasicRequest =
                 new LiveListAccountChannelBasicRequest();
-        liveListAccountChannelBasicRequest.setCategoryId(null)
-                .setWatchStatus("end")
-                .setKeyword("勿删")
-                .setPageSize(null)
-                .setCurrentPage(1);
-        LiveListAccountChannelBasicResponse liveListAccountChannelBasicResponse =
-                new LiveAccountServiceImpl().listChannelBasic(
-                liveListAccountChannelBasicRequest);
-        Assert.assertNotNull(liveListAccountChannelBasicResponse);
-        if (liveListAccountChannelBasicResponse != null) {
-            //to do something ......
-            log.debug("测试查询账号下所有频道缩略信息成功,{}", JSON.toJSONString(liveListAccountChannelBasicResponse));
+        LiveListAccountChannelBasicResponse liveListAccountChannelBasicResponse;
+        try {
+            liveListAccountChannelBasicRequest.setCategoryId(null)
+                    .setWatchStatus("end")
+                    .setKeyword("勿删")
+                    .setPageSize(null)
+                    .setCurrentPage(1);
+            liveListAccountChannelBasicResponse = new LiveAccountServiceImpl().listChannelBasic(
+                    liveListAccountChannelBasicRequest);
+            Assert.assertNotNull(liveListAccountChannelBasicResponse);
+            if (liveListAccountChannelBasicResponse != null) {
+                //to do something ......
+                log.debug("测试查询账号下所有频道缩略信息成功,{}", JSON.toJSONString(liveListAccountChannelBasicResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -242,12 +337,23 @@ public class LiveAccountImplTest extends BaseTest {
     @Test
     public void testUserDurations() throws IOException, NoSuchAlgorithmException {
         LiveAccountUserDurationsRequest liveAccountUserDurationsRequest = new LiveAccountUserDurationsRequest();
-        LiveAccountUserDurationsResponse liveAccountUserDurationsResponse = new LiveAccountServiceImpl().userDurations(
-                liveAccountUserDurationsRequest);
-        Assert.assertNotNull(liveAccountUserDurationsResponse);
-        if (liveAccountUserDurationsResponse != null) {
-            //to do something ......
-            log.debug("测试查询账户分钟数成功,{}", JSON.toJSONString(liveAccountUserDurationsResponse));
+        LiveAccountUserDurationsResponse liveAccountUserDurationsResponse;
+        try {
+            liveAccountUserDurationsResponse = new LiveAccountServiceImpl().userDurations(
+                    liveAccountUserDurationsRequest);
+            Assert.assertNotNull(liveAccountUserDurationsResponse);
+            if (liveAccountUserDurationsResponse != null) {
+                //to do something ......
+                log.debug("测试查询账户分钟数成功,{}", JSON.toJSONString(liveAccountUserDurationsResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     

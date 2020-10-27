@@ -67,8 +67,8 @@ public class LiveWebInteractImplTest extends BaseTest {
     
     /**
      * 测试设置现金打赏
-     * 描述:用于设置频道或者全局现金打赏
-     * 约束:2.带上频道号为设置频道现金打赏，不带频道号默认为全局现金打赏设置
+     * 描述：用于设置频道或者全局现金打赏
+     * 约束：2.带上频道号为设置频道现金打赏，不带频道号默认为全局现金打赏设置
      * 返回：true表示设置成功，false表示设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException

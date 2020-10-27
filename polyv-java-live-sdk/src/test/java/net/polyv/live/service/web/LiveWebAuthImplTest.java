@@ -11,6 +11,7 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.exception.PloyvSdkException;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthCustomRequest;
@@ -36,46 +37,70 @@ import net.polyv.live.service.web.impl.LiveWebAuthServiceImpl;
 public class LiveWebAuthImplTest extends BaseTest {
     
     /**
-     * 测试添加单个白名单-全局白名单
+     * 测试添加单个白名单
+     * 返回：true为添加成功，false为添加失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
     @Test
     public void testCreateChannelWriteList() throws IOException, NoSuchAlgorithmException {
         LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest = new LiveCreateChannelWriteListRequest();
-        liveCreateChannelWriteListRequest.setRank(1).setCode("天王盖地虎1").setName("sadboy");
-        String liveCreateChannelWriteListResponse = new LiveWebAuthServiceImpl().createChannelWriteList(
-                liveCreateChannelWriteListRequest);
-        Assert.assertNotNull(liveCreateChannelWriteListResponse);
-        if ("success".equals(liveCreateChannelWriteListResponse)) {
-            //to do something ......
-            log.debug("测试添加单个白名单-全局白名单成功,{}", liveCreateChannelWriteListResponse);
+        Boolean liveCreateChannelWriteListResponse;
+        try {
+            liveCreateChannelWriteListRequest.setRank(1).setCode("天王盖地虎1").setName("sadboy");
+            liveCreateChannelWriteListResponse = new LiveWebAuthServiceImpl().createChannelWriteList(
+                    liveCreateChannelWriteListRequest);
+            Assert.assertNotNull(liveCreateChannelWriteListResponse);
+            if (liveCreateChannelWriteListResponse) {
+                //to do something ......
+                log.debug("测试添加单个白名单-全局白名单成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
     /**
      * 测试设置观看条件
+     * 返回：true为设置观看条件成功，false为设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
     @Test
     public void testUpdateChannelAuth() throws IOException, NoSuchAlgorithmException {
-        LiveChannelSettingRequest.AuthSetting authSetting = new LiveChannelSettingRequest.AuthSetting().setAuthType(
-                LiveConstant.AuthType.CODE.getDesc())
-                .setRank(2)
-                .setEnabled("Y")
-                .setAuthCode("123456")
-                .setQcodeTips("提示文案测试2")
-                .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-        List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
-        authSettings.add(authSetting);
         LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest = new LiveUpdateChannelAuthRequest();
-        liveUpdateChannelAuthRequest.setChannelId(1965681).setAuthSettings(authSettings);
-        Boolean liveUpdateChannelAuthResponse = new LiveWebAuthServiceImpl().updateChannelAuth(
-                liveUpdateChannelAuthRequest);
-        Assert.assertNotNull(liveUpdateChannelAuthResponse);
-        if (liveUpdateChannelAuthResponse) {
-            log.debug("测试设置观看条件成功");
+        Boolean liveUpdateChannelAuthResponse;
+        try {
+            LiveChannelSettingRequest.AuthSetting authSetting = new LiveChannelSettingRequest.AuthSetting().setAuthType(
+                    LiveConstant.AuthType.CODE.getDesc())
+                    .setRank(2)
+                    .setEnabled("Y")
+                    .setAuthCode("123456")
+                    .setQcodeTips("提示文案测试2")
+                    .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
+            List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
+            authSettings.add(authSetting);
+            liveUpdateChannelAuthRequest.setChannelId(1965681).setAuthSettings(authSettings);
+            liveUpdateChannelAuthResponse = new LiveWebAuthServiceImpl().updateChannelAuth(
+                    liveUpdateChannelAuthRequest);
+            Assert.assertNotNull(liveUpdateChannelAuthResponse);
+            if (liveUpdateChannelAuthResponse) {
+                log.debug("测试设置观看条件成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -87,14 +112,24 @@ public class LiveWebAuthImplTest extends BaseTest {
     @Test
     public void testUpdateChannelAuthExternal() throws IOException, NoSuchAlgorithmException {
         LiveChannelAuthExternalRequest liveChannelAuthExternalRequest = new LiveChannelAuthExternalRequest();
-        liveChannelAuthExternalRequest.setChannelId(1965681).setExternalUri("https://dev.polyv.net/");
-        LiveChannelAuthExternalResponse liveChannelAuthExternalResponse =
-                new LiveWebAuthServiceImpl().updateChannelAuthExternal(
-                liveChannelAuthExternalRequest);
-        Assert.assertNotNull(liveChannelAuthExternalResponse);
-        if (liveChannelAuthExternalResponse != null) {
-            //to do something ......
-            log.debug("测试通过接口设置外部授权成功,{}", JSON.toJSONString(liveChannelAuthExternalResponse));
+        LiveChannelAuthExternalResponse liveChannelAuthExternalResponse;
+        try {
+            liveChannelAuthExternalRequest.setChannelId(1965681).setExternalUri("https://dev.polyv.net/");
+            liveChannelAuthExternalResponse = new LiveWebAuthServiceImpl().updateChannelAuthExternal(
+                    liveChannelAuthExternalRequest);
+            Assert.assertNotNull(liveChannelAuthExternalResponse);
+            if (liveChannelAuthExternalResponse != null) {
+                //to do something ......
+                log.debug("测试通过接口设置外部授权成功,{}", JSON.toJSONString(liveChannelAuthExternalResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -106,32 +141,54 @@ public class LiveWebAuthImplTest extends BaseTest {
     @Test
     public void testUpdateChannelAuthCustom() throws IOException, NoSuchAlgorithmException {
         LiveChannelAuthCustomRequest liveChannelAuthCustomRequest = new LiveChannelAuthCustomRequest();
-        liveChannelAuthCustomRequest.setChannelId(1965681).setCustomUri("https://dev.polyv.net/");
-        LiveChannelAuthCustomResponse liveChannelAuthCustomResponse =
-                new LiveWebAuthServiceImpl().updateChannelAuthCustom(
-                liveChannelAuthCustomRequest);
-        Assert.assertNotNull(liveChannelAuthCustomResponse);
-        if (liveChannelAuthCustomResponse != null) {
-            //to do something ......
-            log.debug("测试设置自定义授权地址成功,{}", JSON.toJSONString(liveChannelAuthCustomResponse));
+        LiveChannelAuthCustomResponse liveChannelAuthCustomResponse;
+        try {
+            liveChannelAuthCustomRequest.setChannelId(1965681).setCustomUri("https://dev.polyv.net/");
+            liveChannelAuthCustomResponse = new LiveWebAuthServiceImpl().updateChannelAuthCustom(
+                    liveChannelAuthCustomRequest);
+            Assert.assertNotNull(liveChannelAuthCustomResponse);
+            if (liveChannelAuthCustomResponse != null) {
+                //to do something ......
+                log.debug("测试设置自定义授权地址成功,{}", JSON.toJSONString(liveChannelAuthCustomResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
     /**
      * 测试设置授权观看类型
+     * 返回：true为授权成功，false为授权失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
     @Test
     public void testUpdateChannelAuthType() throws IOException, NoSuchAlgorithmException {
         LiveChannelAuthTypeRequest liveChannelAuthTypeRequest = new LiveChannelAuthTypeRequest();
-        liveChannelAuthTypeRequest.setChannelId(1965681).setAuthType(LiveConstant.AuthType.INFO.getDesc());
-        Boolean liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(
-                liveChannelAuthTypeRequest);
-        Assert.assertNotNull(liveChannelAuthTypeResponse);
-        if (liveChannelAuthTypeResponse != null) {
-            //to do something ......
-            log.debug("测试设置授权观看类型成功,{}", JSON.toJSONString(liveChannelAuthTypeResponse));
+        Boolean liveChannelAuthTypeResponse;
+        try {
+            liveChannelAuthTypeRequest.setChannelId(1965681).setAuthType(LiveConstant.AuthType.INFO.getDesc());
+            liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(
+                    liveChannelAuthTypeRequest);
+            Assert.assertNotNull(liveChannelAuthTypeResponse);
+            if (liveChannelAuthTypeResponse) {
+                //to do something ......
+                log.debug("测试设置授权观看类型成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -143,13 +200,23 @@ public class LiveWebAuthImplTest extends BaseTest {
     @Test
     public void testChannelAuth() throws IOException, NoSuchAlgorithmException {
         LiveChannelAuthRequest liveChannelAuthRequest = new LiveChannelAuthRequest();
-        liveChannelAuthRequest.setChannelId(1965681);
-        LiveChannelAuthResponse liveChannelAuthResponse = new LiveWebAuthServiceImpl().channelAuth(
-                liveChannelAuthRequest);
-        Assert.assertNotNull(liveChannelAuthResponse);
-        if (liveChannelAuthResponse != null) {
-            //to do something ......
-            log.debug("测试查询直播频道观看条件成功,{}", JSON.toJSONString(liveChannelAuthResponse));
+        LiveChannelAuthResponse liveChannelAuthResponse;
+        try {
+            liveChannelAuthRequest.setChannelId(1965681);
+            liveChannelAuthResponse = new LiveWebAuthServiceImpl().channelAuth(liveChannelAuthRequest);
+            Assert.assertNotNull(liveChannelAuthResponse);
+            if (liveChannelAuthResponse != null) {
+                //to do something ......
+                log.debug("测试查询直播频道观看条件成功,{}", JSON.toJSONString(liveChannelAuthResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
@@ -162,19 +229,30 @@ public class LiveWebAuthImplTest extends BaseTest {
     @Test
     public void testChannelWriteList() throws IOException, NoSuchAlgorithmException {
         LiveChannelWriteListRequest liveChannelWriteListRequest = new LiveChannelWriteListRequest();
-        liveChannelWriteListRequest.setChannelId(null).setRank(1).setKeyword(null).setPageSize(1);
-        LiveChannelWriteListResponse liveChannelWriteListResponse = new LiveWebAuthServiceImpl().channelWriteList(
-                liveChannelWriteListRequest);
-        Assert.assertNotNull(liveChannelWriteListResponse);
-        if (liveChannelWriteListResponse != null) {
-            //to do something ......
-            log.debug("测试查询频道观看白名单列表成功,{}", JSON.toJSONString(liveChannelWriteListResponse));
+        LiveChannelWriteListResponse liveChannelWriteListResponse;
+        try {
+            liveChannelWriteListRequest.setChannelId(null).setRank(1).setKeyword(null).setPageSize(1);
+            liveChannelWriteListResponse = new LiveWebAuthServiceImpl().channelWriteList(liveChannelWriteListRequest);
+            Assert.assertNotNull(liveChannelWriteListResponse);
+            if (liveChannelWriteListResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道观看白名单列表成功,{}", JSON.toJSONString(liveChannelWriteListResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     
     /**
      * 测试设置授权认证URL
      * TODO 等待后台修改返回值
+     * 返回：true为设置成功，false为设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -182,12 +260,23 @@ public class LiveWebAuthImplTest extends BaseTest {
     public void testUpdateChannelAuthUrl() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelAuthUrlRequest liveUpdateChannelAuthUrlRequest = new LiveUpdateChannelAuthUrlRequest();
         Boolean liveUpdateChannelAuthUrlResponse;
-        liveUpdateChannelAuthUrlRequest.setChannelId(createChannel()).setUrl("http://www.polyv.net");
-        liveUpdateChannelAuthUrlResponse = new LiveWebAuthServiceImpl().updateChannelAuthUrl(liveUpdateChannelAuthUrlRequest);
-        Assert.assertNotNull(liveUpdateChannelAuthUrlResponse);
-        if (liveUpdateChannelAuthUrlResponse != null) {
-            //to do something ......
-            log.debug("测试设置授权认证URL成功");
+        try {
+            liveUpdateChannelAuthUrlRequest.setChannelId(createChannel()).setUrl("http://www.polyv.net");
+            liveUpdateChannelAuthUrlResponse = new LiveWebAuthServiceImpl().updateChannelAuthUrl(
+                    liveUpdateChannelAuthUrlRequest);
+            Assert.assertNotNull(liveUpdateChannelAuthUrlResponse);
+            if (liveUpdateChannelAuthUrlResponse != null) {
+                //to do something ......
+                log.debug("测试设置授权认证URL成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
         }
     }
     

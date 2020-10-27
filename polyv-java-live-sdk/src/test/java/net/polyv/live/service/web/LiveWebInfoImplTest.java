@@ -271,7 +271,8 @@ public class LiveWebInfoImplTest extends BaseTest {
     
     /**
      * 测试设置引导开关以及引导图片
-     * 返回：设置引导页未上传图片，成功返回success；设置引导页同时上传图片，成功返回图片http地址
+     * 返回：设置引导页未上传图片，成功返回success；
+     * 返回：设置引导页同时上传图片;成功返回地址，如：//xxx.videocc.net/uploaded/images/2017/03/******.jpg
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

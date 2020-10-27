@@ -18,6 +18,7 @@ import net.polyv.live.entity.LivePageCommonResponse;
  * @author: thomas
  **/
 @Data
+@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,6 +32,7 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
     
     
     @Data
+@ToString
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

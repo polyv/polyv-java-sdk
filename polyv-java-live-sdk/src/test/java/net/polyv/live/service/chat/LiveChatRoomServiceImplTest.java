@@ -61,7 +61,8 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             Integer channelId = super.createChannel();
             liveSendChatMsgRequest.setChannelId(channelId)
                     .setMsg("hello 大家好-通过API发过来的测试信息")
-                    .setPic("https://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20190129/e3b0d6311b1a411fa68125fc03b8ef67.jpeg")
+                    .setPic("https://5b0988e595225.cdn.sohucs.com/q_70,c_zoom," +
+                            "w_640/images/20190129/e3b0d6311b1a411fa68125fc03b8ef67.jpeg")
                     .setNickName("thomas")
                     .setFreeReview(LiveConstant.Flag.YES.getFlag())
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -69,7 +70,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             Assert.assertNotNull(liveSendChatMsgResponse);
             if (liveSendChatMsgResponse != null) {
                 //to do something ......
-                log.debug("测试通过HTTP接口发送聊天消息成功,消息ID {}",  liveSendChatMsgResponse.getMsgId());
+                log.debug("测试通过HTTP接口发送聊天消息成功,消息ID {}", liveSendChatMsgResponse.getMsgId());
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -162,8 +163,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             Integer channelId = super.createChannel();
             liveBadWordRequest
 //                .setChannelId(channelId)
-                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"}))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"})).setRequestId(LiveSignUtil.generateUUID());
             liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
             Assert.assertNotNull(liveBadWordResponse);
             if (liveBadWordResponse != null) {
@@ -192,8 +192,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         List<String> result = null;
         try {
             Integer channelId = super.createChannel();
-            liveGetBannedListRequest.setChannelId(channelId)
-                    .setType(LiveConstant.BannedType.IP.getType());
+            liveGetBannedListRequest.setChannelId(channelId).setType(LiveConstant.BannedType.IP.getType());
 //                    .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
             Assert.assertNotNull(result);
@@ -245,8 +244,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     }
     
     
-    
-    
     /**
      * 查询频道严禁词/禁言IP列表
      * @throws IOException
@@ -277,7 +274,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             throw e;
         }
     }
-    
     
     
     /**
@@ -342,7 +338,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         }
     }
     
- 
     
     /**
      * 查询聊天室管理员信息
@@ -355,7 +350,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         LiveGetChatAdminDataResponse liveGetChatAdminDataResponse = null;
         try {
             Integer channelId = super.createChannel();
-            liveGetChatAdminDataRequest.setChannelId(channelId).setRequestId( LiveSignUtil.generateUUID());
+            liveGetChatAdminDataRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveGetChatAdminDataResponse = new LiveChatRoomServiceImpl().getChatAdminData(liveGetChatAdminDataRequest);
             Assert.assertNotNull(liveGetChatAdminDataResponse);
             if (liveGetChatAdminDataResponse != null) {
@@ -387,7 +382,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             Integer channelId = super.createChannel();
             liveGetHistoryChatMsgRequest.setChannelId(channelId)
                     .setStartDay("2020-10-1")
-                    .setEndDay("2020-12-12")
+                    .setEndDay("2099-12-12")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistroyChatMsg(
                     liveGetHistoryChatMsgRequest);
@@ -410,7 +405,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     
     /**
-     * 删除单条聊天记录，API地址：https://dev.polyv.net/2017/liveproduct/zblts/delchat/
+     * 删除单条聊天记录
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -418,8 +413,29 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     public void testDelChatSingleMsg() throws IOException, NoSuchAlgorithmException {
         LiveChatDelSingleMsgRequest liveChatDelSingleMsgRequest = new LiveChatDelSingleMsgRequest();
         Boolean result = null;
+        
+        //获取已经存在的消息id开始
+        String msgId = "";
+        LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest = new LiveGetHistoryChatMsgRequest();
+        List<LiveGetHistoryChatMsgResponse> liveGetHistoryChatMsgResponsesList = null;
+        Integer channelId = super.createChannel();
+        liveGetHistoryChatMsgRequest.setChannelId(channelId)
+                .setStatus(LiveConstant.ChatStatus.PASS.getType())
+                .setStartDay("2020-10-1")
+                .setEndDay("2099-12-12")
+                .setRequestId(LiveSignUtil.generateUUID());
+        liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistroyChatMsg(
+                liveGetHistoryChatMsgRequest);
+        Assert.assertNotNull(liveGetHistoryChatMsgResponsesList);
+        if (liveGetHistoryChatMsgResponsesList != null && liveGetHistoryChatMsgResponsesList.size()>0) {
+            msgId = liveGetHistoryChatMsgResponsesList.get(0).getId();
+            log.debug("待删除消息  {}",liveGetHistoryChatMsgResponsesList.get(0));
+        }
+        Assert.assertNotEquals(0,msgId.trim().length());
+      
+        //获取已经存在的消息id结束
+        
         try {
-            Integer channelId = super.createChannel();
             liveChatDelSingleMsgRequest.setId("70af2450-12bc-11eb-896b-75b7b28cd5db")
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -542,6 +558,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             throw e;
         }
     }
+    
     /**
      * 删除频道聊天记录
      * @throws IOException

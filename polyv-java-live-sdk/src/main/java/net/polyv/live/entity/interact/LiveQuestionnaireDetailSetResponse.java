@@ -3,11 +3,14 @@ package net.polyv.live.entity.interact;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -15,6 +18,7 @@ import lombok.experimental.Accessors;
  * @author: thomas
  **/
 @Data
+@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,6 +36,12 @@ public class LiveQuestionnaireDetailSetResponse {
      */
     @ApiModelProperty(name = "questionIds", value = "同一个问卷下题目的问题id数组", required = false)
     private List<String> questionIds;
+    
+    /**
+     * 问卷标题
+     */
+    @ApiModelProperty(name = "questionnaireTitle", value = "问卷标题", required = false)
+    private String questionnaireTitle;
     
 }
 

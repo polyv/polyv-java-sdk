@@ -15,6 +15,7 @@ import net.polyv.live.entity.LivePageCommonRequest;
  * @author: thomas
  **/
 @Data
+@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,13 +31,13 @@ public class LiveQuestionAnswerRecordRequest extends LivePageCommonRequest {
     /**
      * 查询的开始时间
      */
-    @ApiModelProperty(name = "startDate", value = "查询的开始时间", required = false)
+    @ApiModelProperty(name = "startDate", value = "查询的开始时间，格式要求：yyyy-MM-dd", required = false)
     private String startDate;
     
     /**
      * 查询的结束时间
      */
-    @ApiModelProperty(name = "endDate", value = "查询的结束时间", required = false)
+    @ApiModelProperty(name = "endDate", value = "查询的结束时间，格式要求：yyyy-MM-dd", required = false)
     private String endDate;
     
     

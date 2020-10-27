@@ -5,6 +5,7 @@ import java.util.List;
 import com.alibaba.fastjson.JSON;
 
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -12,6 +13,7 @@ import lombok.experimental.Accessors;
  * @author: thomas
  **/
 @Data
+@ToString
 @Accessors(chain = true)
 public class LiveCommonResponse {
     

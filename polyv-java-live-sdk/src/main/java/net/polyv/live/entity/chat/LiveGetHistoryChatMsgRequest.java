@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
@@ -19,6 +20,7 @@ import net.polyv.live.entity.LiveCommonRequest;
  * @author: thomas
  **/
 @Data
+@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -50,7 +52,8 @@ public class LiveGetHistoryChatMsgRequest extends LiveCommonRequest {
      * 获取第几页聊天记录，默认为1
      */
     @ApiModelProperty(name = "page", value = "获取第几页聊天记录，默认为1", required = false)
-    private Integer page;
+    @JSONField(name = "page")
+    private Integer currentPage;
     
     /**
      * 每页记录数，默认为1000

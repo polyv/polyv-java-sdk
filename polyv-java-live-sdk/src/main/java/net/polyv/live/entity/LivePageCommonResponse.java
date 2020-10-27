@@ -5,6 +5,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -12,6 +13,7 @@ import lombok.experimental.Accessors;
  * @author: sadboy
  **/
 @Data
+@ToString
 @Accessors(chain = true)
 public class LivePageCommonResponse{
 

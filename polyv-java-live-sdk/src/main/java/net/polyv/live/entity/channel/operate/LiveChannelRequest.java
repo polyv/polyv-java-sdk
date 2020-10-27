@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
@@ -21,6 +22,7 @@ import net.polyv.live.entity.LiveCommonRequest;
  * @author: thomas
  **/
 @Data
+@ToString
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor

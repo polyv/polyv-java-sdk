@@ -72,6 +72,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
+        httpPost.addHeader("source","live-sdk");
         // 装填参数
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         if (params != null) {
@@ -175,6 +176,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
+        httpPost.addHeader("source","live-sdk");
         // 设置参数到请求对象中
         StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
         // "utf-8"
@@ -270,6 +272,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建get方式请求对象
         HttpGet httpGet = new HttpGet(url);
+        httpGet.addHeader("source","live-sdk");
         httpGet.addHeader("Content-type", Constant.APPLICATION_JSON);
         // 通过请求对象获取响应对象
         CloseableHttpResponse response = httpClient.execute(httpGet);
@@ -309,7 +312,8 @@ public class HttpUtil {
         }
         String result = null;
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
-        HttpPost post = new HttpPost(url);
+        HttpPost httpPost = new HttpPost(url);
+        httpPost.addHeader("source","live-sdk");
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
         if (fileMap != null) {
             for (Map.Entry<String, File> entry : fileMap.entrySet()) {
@@ -324,8 +328,8 @@ public class HttpUtil {
             }
         }
         HttpEntity entity = entityBuilder.build();
-        post.setEntity(entity);
-        CloseableHttpResponse response = httpClient.execute(post);
+        httpPost.setEntity(entity);
+        CloseableHttpResponse response = httpClient.execute(httpPost);
 //        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
         result = EntityUtils.toString(response.getEntity(), encoding);

@@ -16,7 +16,6 @@ import net.polyv.live.service.channel.impl.LiveChannelDocServiceImpl;
  * @author: sadboy
  **/
 @Data
-@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor

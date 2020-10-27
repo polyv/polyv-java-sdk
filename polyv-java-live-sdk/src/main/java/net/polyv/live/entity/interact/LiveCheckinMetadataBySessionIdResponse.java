@@ -12,7 +12,6 @@ import lombok.experimental.Accessors;
  * @author: thomas
  **/
 @Data
-@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor

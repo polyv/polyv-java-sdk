@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import lombok.experimental.Accessors;
 import sun.management.resources.agent;
 import sun.tools.jar.resources.jar;
@@ -20,7 +19,6 @@ import sun.util.logging.resources.logging;
  * @author: thomas
  **/
 @Data
-@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -53,7 +51,6 @@ public class LiveGetConsultingRecordResponse {
     private User user;
     
     @Data
-@ToString
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

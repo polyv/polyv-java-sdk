@@ -15,7 +15,6 @@ import net.polyv.live.entity.LivePageCommonResponse;
  * @author: sadboy
  **/
 @Data
-@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,7 +25,6 @@ public class LiveListLotteryResponse extends LivePageCommonResponse {
     private List<LotteryListModel> contents;
     
     @Data
-@ToString
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -103,7 +101,6 @@ public class LiveListLotteryResponse extends LivePageCommonResponse {
     }
     
     @Data
-@ToString
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -116,7 +113,6 @@ public class LiveListLotteryResponse extends LivePageCommonResponse {
     }
     
     @Data
-@ToString
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

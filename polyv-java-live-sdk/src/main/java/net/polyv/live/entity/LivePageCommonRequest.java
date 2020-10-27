@@ -14,7 +14,6 @@ import lombok.experimental.Accessors;
  * @author: sadboy
  **/
 @Data
-@ToString
 @Accessors(chain = true)
 public class LivePageCommonRequest extends LiveCommonRequest{
 

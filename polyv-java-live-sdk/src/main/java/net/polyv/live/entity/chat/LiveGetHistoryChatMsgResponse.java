@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -17,7 +16,6 @@ import lombok.experimental.Accessors;
  * @author: thomas
  **/
 @Data
-@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -93,7 +91,6 @@ public class LiveGetHistoryChatMsgResponse {
     private User user;
     
     @Data
-@ToString
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

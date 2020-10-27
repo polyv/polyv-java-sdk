@@ -17,7 +17,6 @@ import lombok.experimental.Accessors;
  * @author: thomas
  **/
 @Data
-@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -55,7 +54,6 @@ public class LiveQuestionAnswerRecordResponse {
     
     
     @Data
-@ToString
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -88,7 +86,6 @@ public class LiveQuestionAnswerRecordResponse {
     
     
     @Data
-@ToString
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

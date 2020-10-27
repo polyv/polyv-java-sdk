@@ -14,7 +14,6 @@ import net.polyv.common.entity.CommonReqeust;
  
  **/
 @Data
-@ToString
 @Accessors(chain = true)
 public class LiveCommonRequest extends CommonReqeust {
     /**

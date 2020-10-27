@@ -15,7 +15,6 @@ import net.polyv.live.entity.LiveCommonRequest;
  * @author: sadboy
  **/
 @Data
-@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor

@@ -11,7 +11,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
@@ -20,7 +19,6 @@ import net.polyv.live.entity.LiveCommonRequest;
  * @author: thomas
  **/
 @Data
-@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor

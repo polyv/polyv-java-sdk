@@ -1,6 +1,6 @@
 ## 频道定义
 
-​		频道在保利威系统里面可以理解一个直播间、一课堂、一场会议，多个C端用户可以在同一个频道观看主播端的直播视频，如多个学生可以观看老师的教学，频道包含频道名称、进入频道密码、频道ID、观看频道的条件设置等级别信息；
+​		频道在保利威系统里面可以理解一个直播间、一课堂、一场会议，多个C端用户可以在同一个频道观看主播端的直播视频，如多个学生可以观看老师的教学，频道包含频道名称、进入频道密码、频道号、观看频道的条件设置等级别信息；
 
 ​		频道管理可以进入官网云直播->我的直播页面查看。具体页面如下：
 
@@ -72,7 +72,7 @@
 
 | 参数名            | 类型      | 说明                                     |
 | :---------------- | :-------- | :--------------------------------------- |
-| channelId         | string    | 直播频道ID                               |
+| channelId         | string    | 直播频道号                               |
 | userId            | string    | 直播用户ID                               |
 | name              | string    | 直播频道名称                             |
 | description       | string    | 直播频道描述                             |
@@ -150,7 +150,7 @@
 
 | 参数名   | 说明       |
 | -------- | ---------- |
-| channels | 频道ID列表 |
+| channels | 频道号列表 |
 
 ## 查询课件重制任务列表
 
@@ -208,7 +208,7 @@
 contents列表
 | 参数名    | 类型   | 说明 |
 | :-------- |:----- | :----------------------------------------------------------- |
-|channelId|string|直播频道ID|
+|channelId|string|直播频道号|
 |duration|integer|重制的视频时长，单位秒|
 |remainDay|integer|重制剩余的过期时间，过期后将无法访问和下载|
 |sessionId|string|场次id|
@@ -353,7 +353,7 @@ contents列表
 ### 请求入参描述[LiveChannelRequest]
 | 参数名    | 必选 | 类型 | 说明                                                         |
 | --------- | ---- | ---- | ------------------------------------------------------------ |
-| channelId | 否   | int  | 频道ID，请留意，如果该参数为空，会对该用户所有的频道进行修改 |
+| channelId | 否   | int  | 频道号，请留意，如果该参数为空，会对该用户所有的频道进行修改 |
 |passwd |	是 |	string| 	修改的密码|
 
 ### 返回对象描述[LiveChannelResponse]
@@ -396,7 +396,7 @@ contents列表
 
 | 参数名    | 必选 | 类型   | 说明   |
 | --------- | ---- | ------ | ------ |
-| channelId | 是   | string | 频道ID |
+| channelId | 是   | string | 频道号 |
 
 ### 返回对象描述[LiveChannelResponse]
 
@@ -432,7 +432,7 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
 
 | 参数名     | 必选 | 类型      | 说明                              |
 | ---------- | ---- | --------- | --------------------------------- |
-| channelIds | 是   | Integer[] | 频道ID列表，每次最多删除100个频道 |
+| channelIds | 是   | Integer[] | 频道号列表，每次最多删除100个频道 |
 
 
 ### 返回对象描述[LiveChannelResponse]
@@ -472,7 +472,7 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
 
 | 参数名    | 必选 | 类型   | 说明         |
 | --------- | ---- | ------ | ------------ |
-| channelId | 是   | int    | 频道ID       |
+| channelId | 是   | int    | 频道号       |
 | token     | 是   | string | 唯一的字符串 |
 
 
@@ -514,13 +514,13 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
 
 | 参数名    | 必选 | 类型 | 说明   |
 | --------- | ---- | ---- | ------ |
-| channelId | 是   | int  | 频道ID |
+| channelId | 是   | int  | 频道号 |
 
 ### 返回对象描述[LiveChannelResponse]
 
 | 参数名            | 类型      | 说明                                                  |
 | ----------------- | --------- | ----------------------------------------------------- |
-| channelId         | string    | 直播频道ID                                            |
+| channelId         | string    | 直播频道号                                            |
 | userId            | string    | 直播用户ID                                            |
 | name              | string    | 直播频道名称                                          |
 | description       | string    | 直播频道描述                                          |
@@ -596,7 +596,7 @@ LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChanne
 ### 请求入参描述[LiveChannelRequest]
 | 参数名    | 必选 | 类型   | 说明   |
 | --------- | ---- | ------ | ------ |
-| channelId | 是   | string | 频道ID |
+| channelId | 是   | string | 频道号 |
 
 ### 返回对象描述[LiveChannelResponse]
 
@@ -685,7 +685,7 @@ AuthSetting参数描述
 
 | 参数名    | 必选 | 类型   | 说明                                               |
 | --------- | ---- | ------ | -------------------------------------------------- |
-| channelId | 是   | int    | 频道Id                                             |
+| channelId | 是   | int    | 频道号                                             |
 | role      | 是   | String | 角色，值有：teacher admin guest assistant viewer等 |
 | origin    | 否   | String | 观看来源,可以有web,client,app等                    |
 
@@ -732,7 +732,7 @@ AuthSetting参数描述
 
 | 参数名    | 必选 | 类型   | 说明                                                    |
 | --------- | ---- | ------ | ------------------------------------------------------- |
-| channelId | 是   | int    | 频道id                                                  |
+| channelId | 是   | int    | 频道号                                                  |
 | role      | 否   | string | 默认不传为助教，传Guest为嘉宾（只支持三分屏场景的频道） |
 | nickname  | 否   | string | 创建的助教或嘉宾昵称                                    |
 | actor     | 否   | string | 创建的助教或嘉宾头衔                                    |
@@ -744,7 +744,7 @@ AuthSetting参数描述
 | --------------- | ------------------------------ |
 | account         | 助教ID                         |
 | userId          | 用户ID                         |
-| channelId       | 频道ID                         |
+| channelId       | 频道号                         |
 | passwd          | 助教密码                       |
 | nickname        | 助教名称                       |
 | stream          | 助教流名（单独使用无效）       |
@@ -797,8 +797,8 @@ AuthSetting参数描述
 
 | 参数名          | 必选 | 类型   | 说明                                               |
 | --------------- | ---- | ------ | -------------------------------------------------- |
-| channelId       | 是   | int    | 频道id                                             |
-| account         | 是   | string | 子频道ID(不能以数字类型提交，否则可能去掉ID前的00) |
+| channelId       | 是   | int    | 频道号                                             |
+| account         | 是   | string | 子频道号(不能以数字类型提交，否则可能去掉ID前的00) |
 | nickname        | 否   | string | 昵称                                               |
 | password        | 否   | string | 子频道密码                                         |
 | avatar          | 否   | string | 头像                                               |
@@ -846,7 +846,7 @@ AuthSetting参数描述
 
 | 参数名  | 必选 | 类型   | 说明         |
 | ------- | ---- | ------ | ------------ |
-| account | 是   | string | 子频道id     |
+| account | 是   | string | 子频道号     |
 | token   | 是   | string | 唯一的字符串 |
 
 
@@ -888,17 +888,17 @@ AuthSetting参数描述
 
 | 参数名    | 必选 | 类型   | 说明                                               |
 | --------- | ---- | ------ | -------------------------------------------------- |
-| channelId | 是   | int    | 频道ID                                             |
-| account   | 是   | string | 子频道ID(不能以数字类型提交，否则可能去掉ID前的00) |
+| channelId | 是   | int    | 频道号                                             |
+| account   | 是   | string | 子频道号(不能以数字类型提交，否则可能去掉ID前的00) |
 
 
 ### 返回对象描述[LiveChannelResponse]
 
 | 参数名          | 说明                                             |
 | --------------- | ------------------------------------------------ |
-| account         | 子频道ID                                         |
+| account         | 子频道号                                         |
 | userId          | 用户ID                                           |
-| channelId       | 频道ID                                           |
+| channelId       | 频道号                                           |
 | passwd          | 子频道密码                                       |
 | nickname        | 子频道名称                                       |
 | stream          | 子频道流名（单独使用无效）                       |
@@ -946,15 +946,15 @@ AuthSetting参数描述
 
 | 参数名    | 必选 | 类型   | 说明   |
 | --------- | ---- | ------ | ------ |
-| channelId | 是   | string | 频道ID |
+| channelId | 是   | string | 频道号 |
 
 ### 返回对象描述[LiveChannelResponse]
 
 | 参数名          | 说明                                             |
 | --------------- | ------------------------------------------------ |
-| account         | 子频道ID                                         |
+| account         | 子频道号                                         |
 | userId          | 用户ID                                           |
-| channelId       | 频道ID                                           |
+| channelId       | 频道号                                           |
 | passwd          | 子频道密码                                       |
 | nickname        | 子频道名称                                       |
 | stream          | 子频道流名（单独使用无效）                       |
@@ -999,8 +999,8 @@ AuthSetting参数描述
 
 | 参数名    | 必选 | 类型   | 说明                                               |
 | --------- | ---- | ------ | -------------------------------------------------- |
-| channelId | 是   | int    | 频道ID                                             |
-| account   | 是   | string | 子频道ID(不能以数字类型提交，否则可能去掉ID前的00) |
+| channelId | 是   | int    | 频道号                                             |
+| account   | 是   | string | 子频道号(不能以数字类型提交，否则可能去掉ID前的00) |
 
 ### 返回对象描述[LiveChannelResponse]
 
@@ -1038,7 +1038,7 @@ AuthSetting参数描述
 ### 请求入参描述[LiveChannelRequest]
 | 参数名    | 必选 | 类型   | 说明                                               |
 | --------- | ---- | ------ | -------------------------------------------------- |
-| channelId | 是   | int    | 频道ID                                             |
+| channelId | 是   | int    | 频道号                                             |
 
 ### 返回对象描述[LiveChannelResponse]
 | 参数名 | 说明              |
@@ -1076,7 +1076,7 @@ AuthSetting参数描述
 
 | 参数名    | 必选 | 类型 | 说明   |
 | --------- | ---- | ---- | ------ |
-| channelId | 是   | int  | 频道ID |
+| channelId | 是   | int  | 频道号 |
 
 
 ### 返回对象描述[LiveChannelResponse]
@@ -1119,14 +1119,14 @@ AuthSetting参数描述
 
 | 参数名     | 必选 | 类型   | 说明                                          |
 | ---------- | ---- | ------ | --------------------------------------------- |
-| channelIds | 是   | string | 用逗号隔开的频道ID，如：10000,100001 最多20个 |
+| channelIds | 是   | string | 用逗号隔开的频道号，如：10000,100001 最多20个 |
 
 ### 返回对象描述[LiveChannelResponse]
 
 | 参数名      | 说明                                     |
 | ----------- | ---------------------------------------- |
 | channelInfo | 频道状态相关信息                         |
-| channelId   | 频道ID，整型                             |
+| channelId   | 频道号，整型                             |
 | status      | 频道的直播状态，字符串，值包括：live end |
 
 ## 查询频道实时推流信息
@@ -1161,7 +1161,7 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 
 | 参数名     | 必选 | 类型   | 说明                                          |
 | ---------- | ---- | ------ | --------------------------------------------- |
-| channelId | 是   | int | 频道ID |
+| channelId | 是   | int | 频道号 |
 
 ### 返回对象描述[LiveChannelResponse]
 
@@ -1222,7 +1222,7 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 | videoId          | 直播系统生成的id                                           |
 | videoPoolId      | 点播视频vid                                                |
 | userId           | 点播后台用户id                                             |
-| channelId        | 回放视频对应的直播频道id                                   |
+| channelId        | 回放视频对应的直播频道号                                   |
 | title            | 视频标题                                                   |
 | firstImage       | 视频首图                                                   |
 | duration         | 视频长度                                                   |
@@ -1281,7 +1281,7 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 
 | 参数名      | 必选 | 类型   | 说明                                                  |
 | ----------- | ---- | ------ | ----------------------------------------------------- |
-| channelId   | 是   | int    | 频道ID                                                |
+| channelId   | 是   | int    | 频道号                                                |
 | fileIds     | 是   | string | 要合并的录制视频文件ID，多个id用英文逗号, 分隔        |
 | fileName    | 否   | String | 合并后的视频的文件名                                  |
 | callbackUrl | 否   | string | 合并成功或失败回调的url，可以带上自定义参数           |
@@ -1345,7 +1345,7 @@ deployAddress、inAddress、lfr信息可能无法获取，返回值为null
 
 | 参数名      | 必选 | 类型   | 说明                                            |
 | ----------- | ---- | ------ | ----------------------------------------------- |
-| channelId   | 是   | string | 频道ID                                          |
+| channelId   | 是   | string | 频道号                                          |
 | fileIds     | 是   | string | 要转存的录制视频文件ID，多个id用英文逗号, 分隔  |
 | fileName    | 否   | String | 转存后的文件名，目前暂不支持传多个文件名        |
 | cataId      | 否   | long   | 转存到点播的目录ID, 默认为点播的根目录ID        |
@@ -1462,7 +1462,7 @@ channelId不设置表示所有频道执行该操作
 | 参数名          | 必选 | 类型   | 说明                                                         |
 | --------------- | ---- | ------ | ------------------------------------------------------------ |
 | playBackEnabled | 是   | string | 回放开关是开/关的状态，值为Y/N，必填                         |
-| channelId       | 否   | int    | 频道ID，非必填，不填添加该用户的所有频道ID的回放开关都设置为开/关 |
+| channelId       | 否   | int    | 频道号，非必填，不填添加该用户的所有频道号的回放开关都设置为开/关 |
 
 
 ### 返回对象描述[LiveChannelResponse]
@@ -1505,7 +1505,7 @@ channelId不设置表示所有频道执行该操作
 ### 请求入参描述[LiveChannelRequest]
 | 参数名          | 必选 | 类型   | 说明                                                         |
 | --------------- | ---- | ------ | ------------------------------------------------------------ |
-| channelId       | 是   | int    | 频道ID |
+| channelId       | 是   | int    | 频道号 |
 |listType |	否 	|string 	|playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback|
 
 ### 返回对象描述[LiveChannelResponse]
@@ -1515,7 +1515,7 @@ channelId不设置表示所有频道执行该操作
 | videoId          | 直播系统生成的id                                             |
 | videoPoolId      | 点播视频vid                                                  |
 | userId           | 点播后台用户id                                               |
-| channelId        | 回放视频对应的直播频道id                                     |
+| channelId        | 回放视频对应的直播频道号                                     |
 | title            | 视频标题                                                     |
 | firstImage       | 视频首图                                                     |
 | duration         | 视频长度                                                     |
@@ -1634,7 +1634,7 @@ videoIds可通过查询视频库列表获取，代码如下：
 
 | 参数名    | 必选 | 类型   | 说明                     |
 | --------- | ---- | ------ | ------------------------ |
-| channelId | 是   | string | 频道ID                   |
+| channelId | 是   | string | 频道号                   |
 | startDate | 否   | String | 开始日期，格式YYYY-MM-DD |
 | endDate   | 否   | String | 结束日期，格式YYYY-MM-DD |
 
@@ -1642,7 +1642,7 @@ videoIds可通过查询视频库列表获取，代码如下：
 
 | 参数名    | 说明                     |
 | --------- | ------------------------ |
-| channelId | 频道ID                   |
+| channelId | 频道号                   |
 | sessionId | 场次ID                   |
 | startTime | 直播开始时间，13位时间戳 |
 | endTime   | 直播结束时间，13位时间戳 |
@@ -1826,7 +1826,7 @@ sessionId和startTime不能同时为空，可单独提交某一参数。
 
 | 参数名    | 必选 | 类型   | 说明                                                         |
 | --------- | ---- | ------ | ------------------------------------------------------------ |
-| channelId | 是   | int    | 频道ID                                                       |
+| channelId | 是   | int    | 频道号                                                       |
 | videoId   | 是   | string | 直播系统生成的id，可在回放列表接口的返回数据获取             |
 | listType  | 否   | string | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
 
@@ -2056,7 +2056,7 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 
 | 参数名                     | 说明                            |
 | -------------------------- | ------------------------------- |
-| channelId                  | 频道Id                          |
+| channelId                  | 频道号                          |
 | name                       | 频道名称                        |
 | pcPlayDuration             | pc端播放时长，单位：分钟        |
 | pcFlowSize                 | pc端播放流量，单位为Byte        |
@@ -2107,13 +2107,13 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 
 | 参数名     | 必选 | 类型   | 说明                   |
 | ---------- | ---- | ------ | ---------------------- |
-| channelIds | 是   | string | 多个频道ID，用逗号隔开 |
+| channelIds | 是   | string | 多个频道号，用逗号隔开 |
 
 ### 返回对象描述[LiveListChannelViewerCountResponse]
 
 | 参数名    | 说明                       |
 | --------- | -------------------------- |
-| channelId | 频道ID                     |
+| channelId | 频道号                     |
 | account   | 数字格式，在线人数         |
 | time      | 统计的时间，格式：HH:mm:ss |
 
@@ -2210,7 +2210,7 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 | fileUrl      | 文件url(isShowUrl为'Y'的时候返回文件地址)                    |
 | fileType     | 文件类型                                                     |
 | totalPage    | PPT总页数                                                    |
-| channelId    | 频道ID                                                       |
+| channelId    | 频道号                                                       |
 | status       | ppt转换状态（“normal” ：正常，“waitUpload”：等待上传,“failUpload”：上传失败，"waitConvert":转换PPT中,"failConvert":转换PPT失败） |
 | createTime   | 创建时间                                                     |
 | convertType  | 转换类型（"common"："普通PPT"，"animate"： "动画PPT"）       |
@@ -2696,7 +2696,7 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 
 | 参数名    | 必选 | 类型   | 说明                                                         |
 | --------- | ---- | ------ | ------------------------------------------------------------ |
-| channelId | 是   | int    | 频道ID                                                       |
+| channelId | 是   | int    | 频道号                                                       |
 | videoId   | 是   | string | 直播系统生成的id，可在回放列表接口的返回数据获取             |
 | listType  | 否   | string | playback-回放列表，vod-点播列表; 默认普通直播场景为vod，三分屏为playback |
 
@@ -2821,7 +2821,7 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 | 参数名    | 必选 | 类型   | 说明                             |
 | --------- | ---- | ------ | -------------------------------- |
 | publisher | 是   | string | 主持人姓名，不超过20个字符       |
-| channelId | 是   | int    | 频道ID，修改该频道ID的主持人姓名 |
+| channelId | 是   | int    | 频道号，修改该频道号的主持人姓名 |
 
 ### 返回对象描述[LiveChannelResponse]
 
@@ -2848,7 +2848,7 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
 
 | 参数名    | 必选 | 类型 | 说明   |
 | --------- | ---- | ---- | ------ |
-| channelId | 是   | int  | 频道ID |
+| channelId | 是   | int  | 频道号 |
 
 ### 返回对象描述[LiveChannelResponse]
 
@@ -2890,7 +2890,7 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 
 | 参数名    | 必选             | 类型 | 说明     |
 | --------- | ---------------- | ---- | -------- |
-| channelId | 是               | int  | 频道ID   |
+| channelId | 是               | int  | 频道号   |
 | likes     | 请查看下方注意点 | int  | 点赞数   |
 | viewers   | 请查看下方注意点 | int  | 观看热度 |
 
@@ -2930,13 +2930,13 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 
 | 参数名     | 必选 | 类型   | 说明                                          |
 | ---------- | ---- | ------ | --------------------------------------------- |
-| channelIds | 是   | string | 用逗号隔开的频道ID，如：10000,100001 最多20个 |
+| channelIds | 是   | string | 用逗号隔开的频道号，如：10000,100001 最多20个 |
 
 ### 返回对象描述[LiveChannelResponse]
 
 | 参数名    | 说明               |
 | --------- | ------------------ |
-| channelId | 频道ID，整型       |
+| channelId | 频道号，整型       |
 | likes     | 频道点赞数，整型   |
 | viewers   | 频道观看热度，整型 |
 
@@ -2973,7 +2973,7 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 
 | 参数名         | 必选 | 类型   | 说明                                                         |
 | -------------- | ---- | ------ | ------------------------------------------------------------ |
-| channelId      | 是   | int    | 频道ID                                                       |
+| channelId      | 是   | int    | 频道号                                                       |
 | bookingEnabled | 否   | string | 预约观看开关，Y或 N                                          |
 | startTime      | 否   | string | 直播开始时间，如果不传该值，表示不显示直播时间和倒计时（yyyy-MM-dd HH:mm:ss） |
 
@@ -3012,7 +3012,7 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 ### 请求入参描述[LiveChannelRequest]
 | 参数名         | 必选 | 类型   | 说明                                                         |
 | -------------- | ---- | ------ | ------------------------------------------------------------ |
-| channelId      | 是   | int    | 频道ID     |
+| channelId      | 是   | int    | 频道号     |
 
 ### 返回对象描述[LiveChannelResponse]
 | 参数名         | 类型   | 说明                                |
@@ -3053,7 +3053,7 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 
 | 参数名    | 必选 | 类型 | 说明                                                      |
 | --------- | ---- | ---- | --------------------------------------------------------- |
-| channelId | 是   | int  | 频道ID                                                    |
+| channelId | 是   | int  | 频道号                                                    |
 | imgfile   | 是   | file | 图片文件，不大于2MB的本地图片（格式只能为JPG、JPEG、PNG） |
 
 ### 返回对象描述[LiveChannelResponse]
@@ -3095,7 +3095,7 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
 | ------------- | ---- | ------ | ------------------------------------------- |
 | splashEnabled | 是   | string | 设置开启或关闭引导页，Y或N                  |
 | imgfile       | 是   | file   | 支持jpg、jpeg、png三种格式，大小不能超过4Mb |
-| channelId     | 是   | int    | 频道ID                                      |
+| channelId     | 是   | int    | 频道号                                      |
 
 
 ### 返回对象描述[LiveChannelResponse]

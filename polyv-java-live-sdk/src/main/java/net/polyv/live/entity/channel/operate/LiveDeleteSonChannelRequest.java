@@ -22,16 +22,16 @@ import net.polyv.live.entity.LiveCommonRequest;
 public class LiveDeleteSonChannelRequest extends LiveCommonRequest {
     
     /**
-     * 频道ID
+     * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "频道ID", required = true)
+    @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
-     * 子频道ID(不能以数字类型提交，否则可能去掉ID前的00)
+     * 子频道号(不能以数字类型提交，否则可能去掉ID前的00)
      */
-    @ApiModelProperty(name = "account", value = "子频道ID(不能以数字类型提交，否则可能去掉ID前的00)", required = true)
+    @ApiModelProperty(name = "account", value = "子频道号(不能以数字类型提交，否则可能去掉ID前的00)", required = true)
     @NotNull(message = "属性account不能为空")
     private String account;
     

@@ -31,9 +31,9 @@ public class LiveListChannelViewerCountResponse {
     public static class ChannelViewerCount {
         
         /**
-         * 频道id
+         * 频道号
          */
-        @ApiModelProperty(name = "channelId", value = "频道id", required = false)
+        @ApiModelProperty(name = "channelId", value = "频道号", required = false)
         private Integer channelId;
         
         /**

@@ -37,7 +37,7 @@ public class BaseTest {
     /**
      * 创建channel并返回channelId
      * @param liveChannelRequest
-     * @return 频道id
+     * @return 频道号
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -50,7 +50,7 @@ public class BaseTest {
     
     /**
      * 创建channel并返回channelId
-     * @return 频道id
+     * @return 频道号
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -76,7 +76,7 @@ public class BaseTest {
     }
     
     /**
-     * 创建子频道并返回子频道id
+     * 创建子频道并返回子频道号
      * @param liveCreateSonChannelRequest
      * @return
      * @throws IOException
@@ -92,8 +92,8 @@ public class BaseTest {
     }
     
     /**
-     * 创建子频道并返回子频道id
-     * @param channelId 频道id
+     * 创建子频道并返回子频道号
+     * @param channelId 频道号
      * @return
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -134,7 +134,7 @@ public class BaseTest {
     
     /**
      * 获取回放videoIds
-     * @param channelId 频道id
+     * @param channelId 频道号
      * @return
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -160,7 +160,7 @@ public class BaseTest {
     
     /**
      * 获取频道视频fileIds
-     * @param channelId 频道id
+     * @param channelId 频道号
      * @return
      * @throws IOException
      * @throws NoSuchAlgorithmException

@@ -29,9 +29,9 @@ public class LiveChannelPasswordSettingRequest extends LiveCommonRequest {
     private String userId;
     
     /**
-     * 频道ID，请留意，如果该参数为空，会对该用户所有的频道进行修改
+     * 频道号，请留意，如果该参数为空，会对该用户所有的频道进行修改
      */
-    @ApiModelProperty(name = "channelId", value = "频道ID，请留意，如果该参数为空，会对该用户所有的频道进行修改", required = false)
+    @ApiModelProperty(name = "channelId", value = "频道号，请留意，如果该参数为空，会对该用户所有的频道进行修改", required = false)
     private Integer channelId;
     
     /**

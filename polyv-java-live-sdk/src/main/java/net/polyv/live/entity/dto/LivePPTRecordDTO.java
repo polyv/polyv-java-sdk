@@ -24,7 +24,7 @@ public class LivePPTRecordDTO {
     /**
      * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "直播频道ID")
+    @ApiModelProperty(name = "channelId", value = "直播频道号")
     private String channelId;
     
     /**

@@ -18,9 +18,9 @@ import lombok.experimental.Accessors;
 @ApiModel("创建并初始化频道返回体")
 public class LiveChannelInitResponse {
     /**
-     * 直播频道ID
+     * 直播频道号
      */
-    @ApiModelProperty(name = "channelId", value = "直播频道ID", required = false)
+    @ApiModelProperty(name = "channelId", value = "直播频道号", required = false)
     private Integer channelId;
     
     /**

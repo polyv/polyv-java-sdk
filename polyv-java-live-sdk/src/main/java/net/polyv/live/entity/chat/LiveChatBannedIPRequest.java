@@ -32,7 +32,7 @@ public class LiveChatBannedIPRequest extends LiveCommonRequest {
     /**
      * 禁言IP列表
      */
-    @ApiModelProperty(name = "ip", value = "禁言IP", required = true)
+    @ApiModelProperty(name = "ip", value = "禁言IP,如 234.22.3.34", required = true)
     @NotNull(message = "属性ip不能为空")
     private String ip;
     

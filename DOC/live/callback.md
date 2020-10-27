@@ -14,7 +14,7 @@
 
 | 参数名    | 类型   | 说明                                                         |
 | --------- | ------ | ------------------------------------------------------------ |
-| channelId | int    | 频道ID                                                       |
+| channelId | int    | 频道号                                                       |
 | status    | string | 直播频道的状态：live正在直播，end直播结束                    |
 | timestamp | long   | 13位的时间戳                                                 |
 | sign      | String | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 |
@@ -93,7 +93,7 @@
 
 | 参数名       | 类型   | 说明                                                         |
 | ------------ | ------ | ------------------------------------------------------------ |
-| channelId    | int    | 频道ID                                                       |
+| channelId    | int    | 频道号                                                       |
 | fileUrl      | string | 录制文件地址                                                 |
 | format       | string | 文件类型，m3u8或者mp4                                        |
 | timestamp    | long   | 13位的时间戳                                                 |

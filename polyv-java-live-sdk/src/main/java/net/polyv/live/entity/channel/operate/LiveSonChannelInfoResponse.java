@@ -19,9 +19,9 @@ import lombok.experimental.Accessors;
 public class LiveSonChannelInfoResponse {
     
     /**
-     * 子频道ID
+     * 子频道号
      */
-    @ApiModelProperty(name = "account", value = "子频道ID", required = false)
+    @ApiModelProperty(name = "account", value = "子频道号", required = false)
     private String account;
     
     /**
@@ -31,9 +31,9 @@ public class LiveSonChannelInfoResponse {
     private String userId;
     
     /**
-     * 频道ID
+     * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "频道ID", required = false)
+    @ApiModelProperty(name = "channelId", value = "频道号", required = false)
     private Integer channelId;
     
     /**

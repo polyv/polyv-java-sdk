@@ -28,9 +28,9 @@ public class LiveGetQuestionStatisticalResponse {
     private String questionId;
     
     /**
-     * 频道ID，整型
+     * 频道号，整型
      */
-    @ApiModelProperty(name = "channelId", value = "频道ID，整型", required = false)
+    @ApiModelProperty(name = "channelId", value = "频道号，整型", required = false)
     private Integer channelId;
     
     /**

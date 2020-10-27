@@ -129,7 +129,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         List<String> bannedIPList = null;
         try {
             Integer channelId = super.createChannel();
-            liveChatBannedIPRequest.setIp("192.168.1.3")
+            liveChatBannedIPRequest.setIp("192.168.1.1")
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
             bannedIPList = new LiveChatRoomServiceImpl().addBannedIP(liveChatBannedIPRequest);
@@ -162,7 +162,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             Integer channelId = super.createChannel();
             liveBadWordRequest
 //                .setChannelId(channelId)
-                    .setWords(Arrays.asList(new String[]{"你好1", "逗逼1", "傻子"}))
+                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"}))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
             Assert.assertNotNull(liveBadWordResponse);

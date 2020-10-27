@@ -196,7 +196,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | true | Integer | 频道ID | 
+| channelId | true | Integer | 频道号 | 
 | nickname | true | String | 讲师昵称 | 
 | actor | true | String | 讲师头衔 | 
 | passwd | true | String | 频道密码 | 
@@ -1660,7 +1660,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | questionId | false | String | 题目ID，字符串 | 
-| channelId | false | Integer | 频道ID，整型 | 
+| channelId | false | Integer | 频道号，整型 | 
 | type | false | String | 问答类型，radio为单选，judge为判断题 | 
 | startTIme | false | Date | 开始时间，格式：yyyy-MM-dd HH:mm:ss | 
 | endTIme | false | Date | 结束时间，格式：yyyy-MM-dd HH:mm:ss | 

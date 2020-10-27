@@ -75,7 +75,8 @@ public class LiveURL {
     /**
      * 获取频道单场抽奖的中奖记录
      */
-    public static final String CHANNEL_LOTTERY_WINNER_DETAIL_GET_URL = BASE_URI + "v3/channel/lottery/get-winner-detail";
+    public static final String CHANNEL_LOTTERY_WINNER_DETAIL_GET_URL =
+            BASE_URI + "v3/channel/lottery/get-winner-detail";
     
     /**
      * 设置抽奖中奖者信息
@@ -153,6 +154,10 @@ public class LiveURL {
      */
     public static final String CHANNEL_VIEW_LOGS_LIST_URL =
             BASE_URI + "v1/statistics/" + PARAM_REPLACE_CHAR + "/viewlog";
+    /**
+     * 上传频道文档
+     */
+    public static final String CREATE_CHANNEL_DOC_URL = BASE_URI + "v3/channel/document/upload-doc";
     
     /**
      * 分页获取频道观看日志

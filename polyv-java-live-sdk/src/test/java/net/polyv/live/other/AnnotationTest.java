@@ -1,5 +1,6 @@
 package net.polyv.live.other;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
@@ -14,11 +15,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.extern.slf4j.Slf4j;
+import net.polyv.live.entity.account.LiveListAccountResponse;
 import net.polyv.live.util.MapUtil;
 
 /**
  * @author: thomas
  **/
+@Slf4j
 public class AnnotationTest {
     
     @Test
@@ -29,6 +33,18 @@ public class AnnotationTest {
         System.out.println( Arrays.asList( new String[]{"123","234","34"}));
     }
     
+    @Test
+    public void testJson() {
+        LiveListAccountResponse liveListAccountResponse = new LiveListAccountResponse();
+        ArrayList<Integer> channelList = new ArrayList<>();
+        channelList.add(2);
+        channelList.add(3);
+        channelList.add(4);
+        channelList.add(5);
+        log.debug(JSON.toJSONString(liveListAccountResponse.setChannels(channelList)));
+        System.out.println(JSON.parseObject("{\"result\":[\"2\",\"3\",\"4\",\"5\"]}", LiveListAccountResponse.class)
+                .getChannels());
+    }
     
     @Test
     public void parseTest() {

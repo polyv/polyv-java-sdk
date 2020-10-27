@@ -24,6 +24,7 @@ import net.polyv.live.entity.web.auth.LiveChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
+import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebAuthServiceImpl;
 
@@ -168,6 +169,25 @@ public class LiveWebAuthImplTest extends BaseTest {
         if (liveChannelWriteListResponse != null) {
             //to do something ......
             log.debug("测试查询频道观看白名单列表成功,{}", JSON.toJSONString(liveChannelWriteListResponse));
+        }
+    }
+    
+    /**
+     * 测试设置授权认证URL
+     * TODO 等待后台修改返回值
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelAuthUrl() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelAuthUrlRequest liveUpdateChannelAuthUrlRequest = new LiveUpdateChannelAuthUrlRequest();
+        Boolean liveUpdateChannelAuthUrlResponse;
+        liveUpdateChannelAuthUrlRequest.setChannelId(createChannel()).setUrl("http://www.polyv.net");
+        liveUpdateChannelAuthUrlResponse = new LiveWebAuthServiceImpl().updateChannelAuthUrl(liveUpdateChannelAuthUrlRequest);
+        Assert.assertNotNull(liveUpdateChannelAuthUrlResponse);
+        if (liveUpdateChannelAuthUrlResponse != null) {
+            //to do something ......
+            log.debug("测试设置授权认证URL成功");
         }
     }
     

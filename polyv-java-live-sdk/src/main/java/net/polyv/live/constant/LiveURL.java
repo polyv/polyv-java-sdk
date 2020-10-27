@@ -79,6 +79,11 @@ public class LiveURL {
             BASE_URI + "v3/channel/lottery/get-winner-detail";
     
     /**
+     * 设置授权认证URL
+     */
+    public static final String CHANNEL_AUTH_URL_UPDATE_URL = BASE_URI + "v3/channel/restrict/update-auth-url";
+    
+    /**
      * 设置抽奖中奖者信息
      */
     public static final String CHANNEL_SET_LOTTERY_WINNER_INFO_URL = BASE_URI + "v3/channel/chat/add-receive-info";

@@ -47,7 +47,7 @@ public interface ILiveChannelDocService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String deleteChannelDoc(LiveDeleteChannelDocRequest liveDeleteChannelDocRequest)
+    Boolean deleteChannelDoc(LiveDeleteChannelDocRequest liveDeleteChannelDocRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

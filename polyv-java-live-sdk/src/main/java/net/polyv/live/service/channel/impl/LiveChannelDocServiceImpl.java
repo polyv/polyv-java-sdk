@@ -69,11 +69,11 @@ public class LiveChannelDocServiceImpl extends LiveBaseService implements ILiveC
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String deleteChannelDoc(LiveDeleteChannelDocRequest liveDeleteChannelDocRequest)
+    public Boolean deleteChannelDoc(LiveDeleteChannelDocRequest liveDeleteChannelDocRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_DOC_DELETE_URL;
         String liveDeleteChannelDocResponse = this.basePost(url, liveDeleteChannelDocRequest, String.class);
-        return liveDeleteChannelDocResponse;
+        return "true".equals(liveDeleteChannelDocResponse);
     }
     
     /**

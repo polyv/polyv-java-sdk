@@ -1,14 +1,13 @@
 package net.polyv.live.entity.dto;
 
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-
-import java.util.List;
 /**
  * 直播频道详情信息
  * @author: sadboy
@@ -17,7 +16,6 @@ import java.util.List;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("直播频道详情信息")
 public class LiveChannelDetailDTO {
 
@@ -86,7 +84,11 @@ public class LiveChannelDetailDTO {
      */
     @ApiModelProperty(name = "startTime", value = "直播开始时间")
     private Integer startTime;
-
+    
+    /**
+     * 直播权限设置数据传输对象
+     */
+    @ApiModelProperty(name = "authSetting", value = "直播权限设置数据传输对象")
     private List<LiveAuthSettingDTO> authSetting;
 
 }

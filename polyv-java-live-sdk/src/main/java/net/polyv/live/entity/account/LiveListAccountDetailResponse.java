@@ -1,16 +1,15 @@
 package net.polyv.live.entity.account;
 
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LivePageCommonResponse;
 import net.polyv.live.entity.dto.LiveChannelDetailDTO;
-
-import java.util.List;
 
 
 /**
@@ -21,7 +20,6 @@ import java.util.List;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("查询账号下所有频道详细信息返回实体")
 public class LiveListAccountDetailResponse extends LivePageCommonResponse{
 

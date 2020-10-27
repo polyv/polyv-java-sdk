@@ -3,7 +3,6 @@ package net.polyv.live.entity.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -17,7 +16,6 @@ import net.polyv.live.constant.LiveConstant;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("查询课件重制任务列表返回信息")
 public class LivePPTRecordDTO {
     

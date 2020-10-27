@@ -5,7 +5,6 @@ import java.util.List;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -19,7 +18,6 @@ import net.polyv.live.entity.LiveCommonRequest;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("设置现金打赏请求体")
 public class LiveUpdateChannelCashRequest extends LiveCommonRequest {
     

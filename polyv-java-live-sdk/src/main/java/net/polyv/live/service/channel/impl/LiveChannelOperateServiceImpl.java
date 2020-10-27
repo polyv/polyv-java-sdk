@@ -18,62 +18,22 @@ import net.polyv.live.entity.channel.operate.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInitResponse;
-import net.polyv.live.entity.channel.viewdata.LiveChannelMaxHistoryConcurrentRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelPasswordSettingRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelPlaybackEnabledInfoRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelPlaybackEnabledRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelPlaybackSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
-import net.polyv.live.entity.channel.state.LiveChannelStreamInfoRequest;
-import net.polyv.live.entity.channel.state.LiveChannelStreamInfoResponse;
-import net.polyv.live.entity.channel.state.LiveChannelStreamStatusResponse;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoListRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoListResponse;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyResponse;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoSortRequest;
-import net.polyv.live.entity.channel.viewdata.LiveChannelViewerConcurrenceRequest;
-import net.polyv.live.entity.channel.viewdata.LiveChannelViewerConcurrenceResponse;
-import net.polyv.live.entity.channel.playback.LiveConvertChannelVideoListAsyncRequest;
-import net.polyv.live.entity.channel.playback.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelTokenRequest;
-import net.polyv.live.entity.channel.playback.LiveCreateChannelVideoPlaybackRequest;
-import net.polyv.live.entity.channel.playback.LiveCreateChannelVideoPlaybackResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelTokenRequest;
-import net.polyv.live.entity.channel.state.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteChannelListRequest;
-import net.polyv.live.entity.channel.playback.LiveDeleteChannelPlaybackVideoRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteChannelRequest;
-import net.polyv.live.entity.channel.playback.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteSonChannelRequest;
-import net.polyv.live.entity.channel.doc.LiveListChannelDocRequest;
-import net.polyv.live.entity.channel.doc.LiveListChannelDocResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelMicRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelMicResponse;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordResponse;
-import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoRequest;
-import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoResponse;
-import net.polyv.live.entity.channel.state.LiveListChannelStreamStatusRequest;
-import net.polyv.live.entity.channel.state.LiveListChannelStreamStatusResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelSummaryRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelSummaryResponse;
-import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest;
-import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewerCountRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewerCountResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewlogRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewlogResponse;
-import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoAsyncRequest;
-import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoRequest;
-import net.polyv.live.entity.channel.state.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
@@ -151,11 +111,12 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      */
     @SneakyThrows
     @Override
-    public String updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest) throws IOException {
+    public Boolean updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest) throws IOException {
         String url = LiveURL.CHANNEL_BASIC_UPDATE_URL;
         Map<String, String> signMap = MapUtil.getSignMap(liveChannelSettingRequest);
         signMap.put("channelId", liveChannelSettingRequest.getChannelId() + "");
-        return this.basePostJson(url, signMap, liveChannelSettingRequest, String.class);
+        String liveChannelSettingResponse = this.basePostJson(url, signMap, liveChannelSettingRequest, String.class);
+        return "".equals(liveChannelSettingResponse);
     }
     
     /**
@@ -168,14 +129,15 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest)
+    public Boolean updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest)
             throws IOException, NoSuchAlgorithmException {
         //此处password字段与channelPasswd都表示频道密码，先做兼容
         if ("channelPasswd".equals(liveChannelDetailRequest.getField())) {
             liveChannelDetailRequest.setField("password");
         }
         String url = LiveURL.CHANNEL_DETAIL_SET_URL;
-        return this.basePost(url, liveChannelDetailRequest, String.class);
+        String liveChannelDetailResponse = this.basePost(url, liveChannelDetailRequest, String.class);
+        return "true".equals(liveChannelDetailResponse);
     }
     
     /**
@@ -203,11 +165,12 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String updateChannelPassword(LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest)
+    public Boolean updateChannelPassword(LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest)
             throws IOException, NoSuchAlgorithmException {
         liveChannelPasswordSettingRequest.setUserId(LiveGlobalConfig.USER_ID);
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PWD_SET_URL, liveChannelPasswordSettingRequest.getUserId());
-        return this.basePost(url, liveChannelPasswordSettingRequest, String.class);
+        String updateChannelPasswordResponse = this.basePost(url, liveChannelPasswordSettingRequest, String.class);
+        return "true".equals(updateChannelPasswordResponse);
     }
     
     /**
@@ -219,11 +182,12 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String deleteChannel(LiveDeleteChannelRequest liveDeleteChannelRequest)
+    public Boolean deleteChannel(LiveDeleteChannelRequest liveDeleteChannelRequest)
             throws IOException, NoSuchAlgorithmException {
         liveDeleteChannelRequest.setUserId(LiveGlobalConfig.USER_ID);
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_DELETE_URL, liveDeleteChannelRequest.getChannelId());
-        return this.basePost(url, liveDeleteChannelRequest, String.class);
+        String liveDeleteChannelResponse = this.basePost(url, liveDeleteChannelRequest, String.class);
+        return "true".equals(liveDeleteChannelResponse);
     }
     
     /**
@@ -235,10 +199,11 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String deleteChannelList(LiveDeleteChannelListRequest liveDeleteChannelListRequest)
+    public Boolean deleteChannelList(LiveDeleteChannelListRequest liveDeleteChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIST_DELETE_URL;
-        return this.basePostJson(url, liveDeleteChannelListRequest, String.class);
+        String liveDeleteChannelListResponse = this.basePostJson(url, liveDeleteChannelListRequest, String.class);
+        return "true".equals(liveDeleteChannelListResponse);
     }
     
     /**
@@ -250,10 +215,11 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String createChannelToken(LiveCreateChannelTokenRequest liveCreateChannelTokenRequest)
+    public Boolean createChannelToken(LiveCreateChannelTokenRequest liveCreateChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_TOKEN_CREATE_URL, liveCreateChannelTokenRequest.getChannelId());
-        return this.basePost(url, liveCreateChannelTokenRequest, String.class);
+        String liveCreateChannelTokenResponse = this.basePost(url, liveCreateChannelTokenRequest, String.class);
+        return "success".equals(liveCreateChannelTokenResponse);
     }
     
     /**
@@ -334,11 +300,12 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String updateSonChannelInfo(LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest)
+    public Boolean updateSonChannelInfo(LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_INFO_UPDATE_URL,
                 liveUpdateSonChannelInfoRequest.getChannelId());
-        return this.basePost(url, liveUpdateSonChannelInfoRequest, String.class);
+        String updateSonChannelInfoResponse = this.basePost(url, liveUpdateSonChannelInfoRequest, String.class);
+        return "success".equals(updateSonChannelInfoResponse);
     }
     
     /**
@@ -350,12 +317,12 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String createSonChannelToken(LiveCreateSonChannelTokenRequest liveCreateSonChannelTokenRequest)
+    public Boolean createSonChannelToken(LiveCreateSonChannelTokenRequest liveCreateSonChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_TOKEN_CREATE_URL,
                 liveCreateSonChannelTokenRequest.getAccount());
         String liveCreateSonChannelTokenResponse = this.basePost(url, liveCreateSonChannelTokenRequest, String.class);
-        return liveCreateSonChannelTokenResponse;
+        return "success".equals(liveCreateSonChannelTokenResponse);
     }
     
     /**
@@ -406,11 +373,11 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String deleteSonChannel(LiveDeleteSonChannelRequest liveDeleteSonChannelRequest)
+    public Boolean deleteSonChannel(LiveDeleteSonChannelRequest liveDeleteSonChannelRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_DELETE_URL, liveDeleteSonChannelRequest.getChannelId());
         String liveDeleteSonChannelResponse = this.basePost(url, liveDeleteSonChannelRequest, String.class);
-        return liveDeleteSonChannelResponse;
+        return "true".equals(liveDeleteSonChannelResponse);
     }
     
     /**
@@ -422,11 +389,11 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String createChannelPPTRecordTask(LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest)
+    public Boolean createChannelPPTRecordTask(LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_PPTRECORD_CREATE__URL;
         String liveCreateChannelPPTRecordResponse = this.basePost(url, liveCreateChannelPPTRecordRequest, String.class);
-        return liveCreateChannelPPTRecordResponse;
+        return "".equals(liveCreateChannelPPTRecordResponse);
     }
     
 }

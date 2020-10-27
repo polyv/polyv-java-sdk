@@ -79,7 +79,7 @@ public class ChannelAction {
     @ApiOperation(value = "设置频道详情，成功时为true，错误时为\"\"",notes = "调用示例：参考polyv-java-live-sdk单元测试ChannelTest.testCreateChannel()方法。<a target=\"_blank\"  href=\"http://47.115.173.234:3000/#/channel/channelManager?id=sdk%e9%a2%91%e9%81%93%e6%93%8d%e4%bd%9c\">频道创建</a>    ")
     @PostMapping("/updateChannelDetail")
     @ResponseBody
-    public String updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest)
+    public Boolean updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest)
             throws IOException, NoSuchAlgorithmException {
         return new LiveChannelOperateServiceImpl().updateChannelDetail(liveChannelDetailRequest);
     }

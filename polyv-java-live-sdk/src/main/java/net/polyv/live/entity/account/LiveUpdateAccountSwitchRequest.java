@@ -31,14 +31,14 @@ public class LiveUpdateAccountSwitchRequest extends LiveCommonRequest {
      * 开关类型
      */
     @ApiModelProperty(name = "type", value = "开关类型", required = true)
-    @NotNull(message = "type不能为空")
+    @NotNull(message = "属性type不能为空")
     private String type;
     
     /**
      * 开关值，Y或N
      */
     @ApiModelProperty(name = "enabled", value = "开关值，Y或N", required = true)
-    @NotNull(message = "enabled不能为空")
+    @NotNull(message = "属性enabled不能为空")
     private String enabled;
     
 }

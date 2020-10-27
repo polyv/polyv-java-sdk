@@ -27,21 +27,21 @@ public class LiveUpdateChannelSplashRequest extends LiveCommonRequest {
      * 频道ID，非必填，不提交默认为修改该用户的所有频道ID的主持人姓名
      */
     @ApiModelProperty(name = "channelId", value = "频道ID，非必填，不提交默认为修改该用户的所有频道ID的主持人姓名", required = false)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
      * 设置开启或关闭引导页Y或N
      */
     @ApiModelProperty(name = "splashEnabled", value = "设置开启或关闭引导页Y或N", required = true)
-    @NotNull(message = "splashEnabled不能为空")
+    @NotNull(message = "属性splashEnabled不能为空")
     private String splashEnabled;
     
     /**
      * 支持jpg、jpeg、png三种格式，大小不能超过4Mb
      */
     @ApiModelProperty(name = "imgfile", value = "支持jpg、jpeg、png三种格式，大小不能超过4Mb", required = true)
-    @NotNull(message = "imgfile不能为空")
+    @NotNull(message = "属性imgfile不能为空")
     private File imgfile;
     
 }

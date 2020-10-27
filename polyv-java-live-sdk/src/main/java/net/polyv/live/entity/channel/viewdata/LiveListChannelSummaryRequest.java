@@ -32,14 +32,14 @@ public class LiveListChannelSummaryRequest extends LiveCommonRequest {
      * 查询的开始日期,格式为yyyy-MM-dd
      */
     @ApiModelProperty(name = "startDate", value = "查询的开始日期,格式为yyyy-MM-dd", required = true)
-    @NotNull(message = "startDate不能为空")
+    @NotNull(message = "属性startDate不能为空")
     private String startDate;
     
     /**
      * 查询的结束日期,格式为yyyy-MM-dd
      */
     @ApiModelProperty(name = "endDate", value = "查询的结束日期,格式为yyyy-MM-dd", required = true)
-    @NotNull(message = "endDate不能为空")
+    @NotNull(message = "属性endDate不能为空")
     private String endDate;
     
     /**

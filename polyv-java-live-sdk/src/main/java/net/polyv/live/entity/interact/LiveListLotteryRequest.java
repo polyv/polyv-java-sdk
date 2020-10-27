@@ -26,7 +26,7 @@ public class LiveListLotteryRequest extends LivePageCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    @NotNull(message = "channelId不允许为空")
+    @NotNull(message = "属性channelId不允许为空")
     private Integer channelId;
     
     /**
@@ -39,14 +39,14 @@ public class LiveListLotteryRequest extends LivePageCommonRequest {
      * 查询的开始日期的13位时间戳
      */
     @ApiModelProperty(name = "startTime", value = "查询的开始日期的13位时间戳", required = false)
-    @NotNull(message = "startTime不允许为空")
+    @NotNull(message = "属性startTime不允许为空")
     private Long startTime;
     
     /**
      * 查询的结束日期的13位时间戳
      */
     @ApiModelProperty(name = "endTime", value = "查询的结束日期的13位时间戳", required = false)
-    @NotNull(message = "endTime不允许为空")
+    @NotNull(message = "属性endTime不允许为空")
     private Long endTime;
     
 }

@@ -38,7 +38,7 @@ public class LiveChannelAuthCustomRequest extends LiveCommonRequest {
      * 自定义授权地址
      */
     @ApiModelProperty(name = "customUri", value = "自定义授权地址", required = true)
-    @NotNull(message = "customUri不能为空")
+    @NotNull(message = "属性customUri不能为空")
     private String customUri;
     
 }

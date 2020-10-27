@@ -2,6 +2,7 @@ package net.polyv.live.service.channel;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Assert;
@@ -18,6 +19,7 @@ import net.polyv.live.entity.channel.playback.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyResponse;
+import net.polyv.live.entity.channel.playback.LiveChannelVideoSortRequest;
 import net.polyv.live.entity.channel.playback.LiveConvertChannelVideoListAsyncRequest;
 import net.polyv.live.entity.channel.playback.LiveCreateChannelVideoPlaybackRequest;
 import net.polyv.live.entity.channel.playback.LiveCreateChannelVideoPlaybackResponse;
@@ -213,22 +215,22 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
-//    public void testChannelVideoSort() throws IOException, NoSuchAlgorithmException {
-//        List<String> videoIdList = listChannelVideoIds(1965681);//992d36fa40,f1574595e1
-//        Collections.shuffle(videoIdList);
-//        LiveChannelVideoSortRequest liveChannelVideoSortRequest = new LiveChannelVideoSortRequest();
-//        liveChannelVideoSortRequest.setChannelId(1965681)
-//                .setVideoIds(videoIdList)
-//                .setListType("playback");
-//        String liveChannelVideoSortResponse = new LiveChannelPlaybackServiceImpl().channelVideoSort(
-//                liveChannelVideoSortRequest);
-//        Assert.assertNotNull(liveChannelVideoSortResponse);
-//        if ("".equals(liveChannelVideoSortResponse)) {
-//            //to do something ......
-//            log.debug("测试设置视频库列表排序成功{}", JSON.toJSONString(liveChannelVideoSortResponse));
-//        }
-//    }
+    @Test
+    public void testChannelVideoSort() throws IOException, NoSuchAlgorithmException {
+        List<String> videoIdList = listChannelVideoIds(1965681);//992d36fa40,f1574595e1
+        Collections.shuffle(videoIdList);
+        LiveChannelVideoSortRequest liveChannelVideoSortRequest = new LiveChannelVideoSortRequest();
+        liveChannelVideoSortRequest.setChannelId(1965681)
+                .setVideoIds(videoIdList)
+                .setListType("playback");
+        String liveChannelVideoSortResponse = new LiveChannelPlaybackServiceImpl().channelVideoSort(
+                liveChannelVideoSortRequest);
+        Assert.assertNotNull(liveChannelVideoSortResponse);
+        if ("".equals(liveChannelVideoSortResponse)) {
+            //to do something ......
+            log.debug("测试设置视频库列表排序成功{}", JSON.toJSONString(liveChannelVideoSortResponse));
+        }
+    }
     
     /**
      * 测试设置视频库列表的默认视频

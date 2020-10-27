@@ -63,6 +63,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                     .setMsg("hello 大家好-通过API发过来的测试信息")
                     .setPic("https://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20190129/e3b0d6311b1a411fa68125fc03b8ef67.jpeg")
                     .setNickName("thomas")
+                    .setFreeReview(LiveConstant.Flag.YES.getFlag())
                     .setRequestId(LiveSignUtil.generateUUID());
             liveSendChatMsgResponse = new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest);
             Assert.assertNotNull(liveSendChatMsgResponse);

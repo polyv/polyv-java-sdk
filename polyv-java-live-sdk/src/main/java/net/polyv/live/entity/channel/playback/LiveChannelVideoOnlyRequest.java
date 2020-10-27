@@ -31,7 +31,7 @@ public class LiveChannelVideoOnlyRequest extends LiveCommonRequest {
      * 文件ID
      */
     @ApiModelProperty(name = "fileId", value = "文件ID", required = true)
-    @NotNull(message = "fileId不能为空")
+    @NotNull(message = "属性fileId不能为空")
     private String fileId;
     
 }

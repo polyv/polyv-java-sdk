@@ -33,7 +33,7 @@ public class LiveSetPlayerImgRequest extends LiveCommonRequest {
      * 暖场图片地址，图片大小建议：800x450，支持PNG、JPEG、GIF格式
      */
     @ApiModelProperty(name = "coverImage", value = "暖场图片地址，图片大小建议：800x450，支持PNG、JPEG、GIF格式", required = true)
-    @NotNull(message = "coverImage不能为空")
+    @NotNull(message = "属性coverImage不能为空")
     private String coverImage;
     
     /**

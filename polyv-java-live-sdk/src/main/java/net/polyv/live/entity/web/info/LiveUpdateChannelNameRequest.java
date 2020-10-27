@@ -25,14 +25,14 @@ public class LiveUpdateChannelNameRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
      * 修改后的频道名称
      */
     @ApiModelProperty(name = "name", value = "修改后的频道名称", required = true)
-    @NotNull(message = "name不能为空")
+    @NotNull(message = "属性name不能为空")
     private String name;
     
 }

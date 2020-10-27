@@ -39,14 +39,14 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
          * 频道名称
          */
         @ApiModelProperty(name = "name", value = "频道名称", required = true, example = "Spring从入门到放弃")
-        @NotNull(message = "name不能为空")
+        @NotNull(message = "属性name不能为空")
         private String name;
         
         /**
          * 频道密码,长度不能超过16位
          */
         @ApiModelProperty(name = "channelPasswd", value = "频道密码,长度不能超过16位", required = true, example = "123321")
-        @NotNull(message = "channelPasswd不能为空")
+        @NotNull(message = "属性channelPasswd不能为空")
         private String channelPasswd;
         
         /**
@@ -142,7 +142,7 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
          * 通用参数：是否开启，Y为开启，N为关闭
          */
         @ApiModelProperty(name = "enabled", value = "通用参数：是否开启，Y为开启，N为关闭", required = true)
-        @NotNull(message = "enabled不能为空")
+        @NotNull(message = "属性enabled不能为空")
         private String enabled;
         
         /**
@@ -262,7 +262,7 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
          */
         @ApiModelProperty(name = "type", value = "登记类型，姓名-name，文本-text，手机号码-mobile，数字-number，下拉选项-option", required =
                 true)
-        @NotNull(message = "type不能为空")
+        @NotNull(message = "属性type不能为空")
         private String type;
         
         /**

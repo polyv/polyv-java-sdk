@@ -27,14 +27,14 @@ public class LiveUpdateChannelLogoRequest extends LiveCommonRequest {
      * 频道ID
      */
     @ApiModelProperty(name = "channelId", value = "频道ID", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
      * 图片为大小为2MB的JPG、JPEG、PNG图片
      */
     @ApiModelProperty(name = "imgfile", value = "图片为大小为2MB的JPG、JPEG、PNG图片", required = true)
-    @NotNull(message = "imgfile不允许为空")
+    @NotNull(message = "属性imgfile不允许为空")
     private File imgfile;
 
 }

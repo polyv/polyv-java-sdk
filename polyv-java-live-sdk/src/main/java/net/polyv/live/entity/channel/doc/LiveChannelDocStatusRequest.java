@@ -25,7 +25,7 @@ public class LiveChannelDocStatusRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
@@ -33,7 +33,7 @@ public class LiveChannelDocStatusRequest extends LiveCommonRequest {
      * {@link net.polyv.live.service.channel.LiveChannelDocImplTest#testListChannelDoc()}
      */
     @ApiModelProperty(name = "fileId", value = "文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串)", required = true)
-    @NotNull(message = "fileId不能为空")
+    @NotNull(message = "属性fileId不能为空")
     private String fileId;
     
 }

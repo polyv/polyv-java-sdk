@@ -25,7 +25,7 @@ public class LiveListChannelViewerCountRequest extends LiveCommonRequest {
      * 频道号，使用英文逗号分开，如：100000,100001
      */
     @ApiModelProperty(name = "channelIds", value = "频道号，使用英文逗号分开，如：100000,100001", required = true)
-    @NotNull(message = "channelIds不能为空")
+    @NotNull(message = "属性channelIds不能为空")
     private String channelIds;
     
 }

@@ -25,7 +25,7 @@ public class LiveChannelPlaybackEnabledInfoRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-    @NotNull(message = "channelId参数必传")
+    @NotNull(message = "属性channelId参数必传")
     private Integer channelId;
     
 }

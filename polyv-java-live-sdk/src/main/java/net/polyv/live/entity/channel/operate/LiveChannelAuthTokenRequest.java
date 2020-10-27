@@ -25,7 +25,7 @@ public class LiveChannelAuthTokenRequest extends LiveCommonRequest {
      * 观看者用户ID
      */
     @ApiModelProperty(name = "userId", value = "观看者用户ID", required = true)
-    @NotNull(message = "userId不能为空")
+    @NotNull(message = "属性userId不能为空")
     private String userId;
     
     /**
@@ -39,7 +39,7 @@ public class LiveChannelAuthTokenRequest extends LiveCommonRequest {
      * 角色，值有：teacher admin guest assistant viewer等
      */
     @ApiModelProperty(name = "role", value = "角色，值有：teacher admin guest assistant viewer等", required = true)
-    @NotNull(message = "role不能为空")
+    @NotNull(message = "属性role不能为空")
     private String role;
     
     /**

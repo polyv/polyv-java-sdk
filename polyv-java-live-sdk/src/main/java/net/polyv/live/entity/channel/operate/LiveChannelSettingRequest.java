@@ -164,14 +164,14 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
          * 通用参数：主要观看条件为1，次要观看条件为2
          */
         @ApiModelProperty(name = "rank", value = "通用参数：主要观看条件为1，次要观看条件为2", required = true)
-        @NotNull(message = "rank不能为空")
+        @NotNull(message = "属性rank不能为空")
         private Integer rank;
         
         /**
          * 通用参数：是否开启，Y为开启，N为关闭
          */
         @ApiModelProperty(name = "enabled", value = "通用参数：是否开启，Y为开启，N为关闭", required = true)
-        @NotNull(message = "enabled不能为空")
+        @NotNull(message = "属性enabled不能为空")
         private String enabled;
         
         /**

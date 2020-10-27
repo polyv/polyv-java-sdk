@@ -32,7 +32,7 @@ public class LiveCreateChannelTokenRequest extends LiveCommonRequest {
      * 唯一的字符串
      */
     @ApiModelProperty(name = "token", value = "唯一的字符串", required = true)
-    @NotNull(message = "token不能为空")
+    @NotNull(message = "属性token不能为空")
     private String token;
     
 }

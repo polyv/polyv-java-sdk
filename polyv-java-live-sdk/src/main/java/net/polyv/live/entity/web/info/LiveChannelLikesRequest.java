@@ -25,7 +25,7 @@ public class LiveChannelLikesRequest extends LiveCommonRequest {
      * 用逗号隔开的频道ID，如：10000,100001最多20个
      */
     @ApiModelProperty(name = "channelIds", value = "用逗号隔开的频道ID，如：10000,100001最多20个", required = true)
-    @NotNull(message = "channelIds不能为空")
+    @NotNull(message = "属性channelIds不能为空")
     private String channelIds;
     
 }

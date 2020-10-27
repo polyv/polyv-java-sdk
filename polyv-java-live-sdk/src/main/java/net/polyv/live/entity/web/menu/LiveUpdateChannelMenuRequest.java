@@ -34,21 +34,21 @@ public class LiveUpdateChannelMenuRequest extends LiveCommonRequest {
      * 频道ID，提交后对某频道ID设置，不提交则对账号下所有频道ID进行设置
      */
     @ApiModelProperty(name = "channelId", value = "频道ID，提交后对某频道ID设置，不提交则对账号下所有频道ID进行设置", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
      * 直播介绍的内容（此处可以填html页面的相关内容，如增加图片、增加文字样式等）
      */
     @ApiModelProperty(name = "content", value = "直播介绍的内容（此处可以填html页面的相关内容，如增加图片、增加文字样式等）", required = true)
-    @NotNull(message = "content不能为空")
+    @NotNull(message = "属性content不能为空")
     private String content;
     
     /**
      * 菜单类型，目前仅支持取值为desc
      */
     @ApiModelProperty(name = "menuType", value = "菜单类型，目前仅支持取值为desc", required = true)
-    @NotNull(message = "menuType不能为空")
+    @NotNull(message = "属性menuType不能为空")
     private String menuType;
 
 }

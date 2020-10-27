@@ -29,7 +29,7 @@ public interface ILiveWebInfoService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String updateChannelName(LiveUpdateChannelNameRequest liveUpdateChannelNameRequest)
+    Boolean updateChannelName(LiveUpdateChannelNameRequest liveUpdateChannelNameRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -40,7 +40,7 @@ public interface ILiveWebInfoService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String updateChannelPublisher(LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest)
+    Boolean updateChannelPublisher(LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -62,7 +62,7 @@ public interface ILiveWebInfoService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String updateChannelLikes(LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest)
+    Boolean updateChannelLikes(LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -84,7 +84,7 @@ public interface ILiveWebInfoService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String updateChannelCountDown(LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest)
+    Boolean updateChannelCountDown(LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

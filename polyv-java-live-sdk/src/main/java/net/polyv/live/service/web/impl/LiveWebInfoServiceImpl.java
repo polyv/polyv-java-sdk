@@ -38,11 +38,11 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String updateChannelName(LiveUpdateChannelNameRequest liveUpdateChannelNameRequest)
+    public Boolean updateChannelName(LiveUpdateChannelNameRequest liveUpdateChannelNameRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_NAME_SET_URL, liveUpdateChannelNameRequest.getChannelId());
         String liveUpdateChannelNameResponse = this.basePost(url, liveUpdateChannelNameRequest, String.class);
-        return liveUpdateChannelNameResponse;
+        return "true".equals(liveUpdateChannelNameResponse);
     }
     
     /**
@@ -54,13 +54,13 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String updateChannelPublisher(LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest)
+    public Boolean updateChannelPublisher(LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest)
             throws IOException, NoSuchAlgorithmException {
         liveUpdateChannelPublisherRequest.setUserId(LiveGlobalConfig.USER_ID);
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PUBLISHER_SET_URL,
                 liveUpdateChannelPublisherRequest.getUserId());
         String liveUpdateChannelPublisherResponse = this.basePost(url, liveUpdateChannelPublisherRequest, String.class);
-        return liveUpdateChannelPublisherResponse;
+        return "true".equals(liveUpdateChannelPublisherResponse);
     }
     
     /**
@@ -89,11 +89,11 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String updateChannelLikes(LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest)
+    public Boolean updateChannelLikes(LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_LIKES_UPDATE_URL, liveUpdateChannelLikesRequest.getChannelId());
         String liveUpdateChannelLikesResponse = this.basePost(url, liveUpdateChannelLikesRequest, String.class);
-        return liveUpdateChannelLikesResponse;
+        return "success".equals(liveUpdateChannelLikesResponse);
     }
     
     /**
@@ -124,12 +124,12 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String updateChannelCountDown(LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest)
+    public Boolean updateChannelCountDown(LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_UPDATE_COUNT_DOWN_URL,
                 liveUpdateChannelCountDownRequest.getChannelId());
         String liveUpdateChannelCountDownResponse = this.basePost(url, liveUpdateChannelCountDownRequest, String.class);
-        return liveUpdateChannelCountDownResponse;
+        return "".equals(liveUpdateChannelCountDownResponse);
     }
     
     /**

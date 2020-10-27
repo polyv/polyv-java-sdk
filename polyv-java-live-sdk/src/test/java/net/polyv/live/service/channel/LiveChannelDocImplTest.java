@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.entity.channel.doc.LiveChannelDocStatusRequest;
+import net.polyv.live.entity.channel.doc.LiveChannelDocStatusResponse;
 import net.polyv.live.entity.channel.doc.LiveCreateChannelDocRequest;
 import net.polyv.live.entity.channel.doc.LiveCreateChannelDocResponse;
 import net.polyv.live.entity.channel.doc.LiveDeleteChannelDocRequest;
@@ -55,11 +56,18 @@ public class LiveChannelDocImplTest extends BaseTest {
     @Test
     public void testChannelDocStatus() throws IOException, NoSuchAlgorithmException {
         LiveChannelDocStatusRequest liveChannelDocStatusRequest = new LiveChannelDocStatusRequest();
+        LiveChannelDocStatusResponse liveChannelDocStatusResponse;
         Integer channelId = createChannel();
         liveChannelDocStatusRequest.setChannelId(channelId)
                 .setFileId(
                         "c2d585857870f4eff024976e3a265c0b1965681common,6e0603f6c8ec6113b87f69a7191d22021965681common");
-        new LiveChannelDocServiceImpl().channelDocStatus(liveChannelDocStatusRequest);
+        liveChannelDocStatusResponse = new LiveChannelDocServiceImpl().channelDocStatus(
+                liveChannelDocStatusRequest);
+        Assert.assertNotNull(liveChannelDocStatusResponse);
+        if (liveChannelDocStatusResponse != null) {
+            //to do something ......
+            log.debug("测试查询频道文档转换状态成功，{}", JSON.toJSONString(liveChannelDocStatusResponse));
+        }
     }
     
     /**

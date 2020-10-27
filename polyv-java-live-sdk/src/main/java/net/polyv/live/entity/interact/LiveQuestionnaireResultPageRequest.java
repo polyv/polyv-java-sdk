@@ -14,6 +14,7 @@ import net.polyv.live.entity.LivePageCommonRequest;
  * @author: thomas
  **/
 @Data
+@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor

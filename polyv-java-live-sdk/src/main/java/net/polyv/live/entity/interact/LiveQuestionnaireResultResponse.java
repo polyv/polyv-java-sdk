@@ -18,6 +18,7 @@ import net.polyv.live.entity.LiveCommonResponse;
  * @author: thomas
  **/
 @Data
+@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -49,6 +50,7 @@ public class LiveQuestionnaireResultResponse {
     private List<QuestionStats> questionStats;
     
     @Data
+@ToString
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -68,6 +70,7 @@ public class LiveQuestionnaireResultResponse {
         private List<QuestionStat> questions;
         
         @Data
+@ToString
         @Accessors(chain = true)
         @AllArgsConstructor
         @NoArgsConstructor
@@ -167,6 +170,7 @@ public class LiveQuestionnaireResultResponse {
     private List<Users> users;
     
     @Data
+@ToString
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -203,6 +207,7 @@ public class LiveQuestionnaireResultResponse {
         private List<Answers> answers;
         
         @Data
+@ToString
         @Accessors(chain = true)
         @AllArgsConstructor
         @NoArgsConstructor

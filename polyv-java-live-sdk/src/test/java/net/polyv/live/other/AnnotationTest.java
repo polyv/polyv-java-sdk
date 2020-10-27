@@ -68,6 +68,7 @@ public class AnnotationTest {
 }
 
 @Data
+@ToString
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor

@@ -173,7 +173,7 @@ public class LiveConstant {
      */
     public enum Flag {
         //Y=YES , N=NO
-        YES("Y"), NO("N"),AOTU_PLAY("1"),MANUAL_PLAY("0");
+        YES("Y"), NO("N"), AOTU_PLAY("1"), MANUAL_PLAY("0");
         
         private String flag;
         
@@ -185,12 +185,13 @@ public class LiveConstant {
             return flag;
         }
     }
+    
     /**
-     * 	是否自动播放，0/1，默认1
+     * 是否自动播放，0/1，默认1
      */
     public enum AutoPlay {
         //	是否自动播放，0/1，默认1
-       AOTU_PLAY(1),MANUAL_PLAY(0);
+        AOTU_PLAY(1), MANUAL_PLAY(0);
         
         private Integer flag;
         
@@ -204,11 +205,11 @@ public class LiveConstant {
     }
     
     /**
-     * 	三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt 文档为主，video 视频为主
+     * 三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt 文档为主，video 视频为主
      */
     public enum WatchLayout {
         //	三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt 文档为主，video 视频为主
-        PPT("ppt"),VIDEO("video");
+        PPT("ppt"), VIDEO("video");
         
         private String flag;
         
@@ -222,11 +223,11 @@ public class LiveConstant {
     }
     
     /**
-     * 	logo位置，取值为为左上角(tl)、右上角(tr)、左下角(bl)、右下角(br)
+     * logo位置，取值为为左上角(tl)、右上角(tr)、左下角(bl)、右下角(br)
      */
     public enum LogoPosition {
         //	logo位置，取值为为左上角(tl)、右上角(tr)、左下角(bl)、右下角(br)
-       TL("tl"),TR("tr"),BL("bl"),BR("br");
+        TL("tl"), TR("tr"), BL("bl"), BR("br");
         
         private String position;
         
@@ -240,11 +241,11 @@ public class LiveConstant {
     }
     
     /**
-     * 	广告类型,NONE-无广告，IMAGE-图片广告，FLV-视频广告
+     * 广告类型,NONE-无广告，IMAGE-图片广告，FLV-视频广告
      */
     public enum HeadAdvertType {
         //	广告类型,NONE-无广告，IMAGE-图片广告，FLV-视频广告
-        NONE("NONE"),IMAGE("IMAGE"),FLV("FLV");
+        NONE("NONE"), IMAGE("IMAGE"), FLV("FLV");
         
         private String desc;
         
@@ -263,14 +264,69 @@ public class LiveConstant {
      */
     public enum BannedType {
         //禁言类型,ip/userId
-       IP("ip"),USER_ID("userId"),BADWORD("badword");
-    
+        IP("ip"), USER_ID("userId"), BADWORD("badword");
+        
         private String type;
-    
+        
         private BannedType(String type) {
             this.type = type;
         }
+        
+        public String getType() {
+            return type;
+        }
+    }
     
+    /**
+     * 聊天记录状态，默认：pass(已审核)，审核状态，pass：已审核，censor：审核中和删除
+     */
+    public enum ChatStatus {
+        //聊天记录状态，默认：pass(已审核)，审核状态，pass：已审核，censor：审核中和删除
+        PASS("pass"), CENSOR("censor");
+        
+        private String type;
+        
+        private ChatStatus(String type) {
+            this.type = type;
+        }
+        
+        public String getType() {
+            return type;
+        }
+    }
+    
+    /**
+     * 用户类型，可以选择多个类型，用英文逗号隔开。可选值包括：
+     * slice:云课堂学员
+     * teacher:讲师
+     * guest:嘉宾
+     * manager:管理员
+     * assistant:助教
+     * viewer:特邀观众
+     * monitor:场监
+     * attendee:研讨会参与者
+     * student:普通直播观众
+     */
+    public enum UserType {
+        //用户类型，可以选择多个类型，用英文逗号隔开。可选值包括：
+        //slice:云课堂学员
+        //teacher:讲师
+        //guest:嘉宾
+        //manager:管理员
+        //assistant:助教
+        //viewer:特邀观众
+        //monitor:场监
+        //attendee:研讨会参与者
+        //student:普通直播观众
+        SLICE("slice"), TEACHER("teacher"), GUEST("guest"), MANAGER("manager"), ASSISTANT("assistant"),
+        VIEWER("viewer"), MONITOR("monitor"), ATTENDEE("attendee"), STUDENT("studnet");
+        
+        private String type;
+        
+        private UserType(String type) {
+            this.type = type;
+        }
+        
         public String getType() {
             return type;
         }
@@ -287,55 +343,55 @@ public class LiveConstant {
         /**
          * 是否开启移动端系统观看页
          */
-        ,MOBILE_WATCH("mobileWatch")
+        , MOBILE_WATCH("mobileWatch")
         /**
          * 是否开启移动端音视频切换
          */
-        ,MOBILE_AUDIO("mobileAudio")
+        , MOBILE_AUDIO("mobileAudio")
         /**
          * 是否开启播放器自动播放功能
          */
-        ,AUTO_PLAY("autoPlay")
+        , AUTO_PLAY("autoPlay")
         /**
          * 是否开启预约功能
          */
-        ,BOOKING("booking")
+        , BOOKING("booking")
         /**
          * 是否开启红包功能
          */
-        ,RED_PACK("redPack")
+        , RED_PACK("redPack")
         /**
          * 是否开启分享功能
          */
-        ,SHARE_BTN_ENABLED("shareBtnEnabled")
+        , SHARE_BTN_ENABLED("shareBtnEnabled")
         /**
          * 是否开启聊天室
          */
-        ,CHAT("chat")
+        , CHAT("chat")
         /**
          * 是否关闭在线列表，Y时表示关闭
          */
-        ,CLOSE_CHATER_LIST("closeChaterList")
+        , CLOSE_CHATER_LIST("closeChaterList")
         /**
          * 是否开启咨询提问
          */
-        ,CONSULTING_MENU("consultingMenu")
+        , CONSULTING_MENU("consultingMenu")
         /**
          * 是否关闭弹幕功能，Y时表示关闭
          */
-        ,CLOSE_DANMU("closeDanmu")
+        , CLOSE_DANMU("closeDanmu")
         /**
          * 是否开启点赞语功能
          */
-        ,PRAISE("praise")
+        , PRAISE("praise")
         /**
          * 是否开启欢迎语功能
          */
-        ,WELCOME("welcome")
+        , WELCOME("welcome")
         /**
          * 是否开启观众发送图片
          */
-        ,VIEWER_SEND_IMG_ENABLED("viewerSendImgEnabled");
+        , VIEWER_SEND_IMG_ENABLED("viewerSendImgEnabled");
         
         private String desc;
         
@@ -359,34 +415,34 @@ public class LiveConstant {
         /**
          * 功能开关设置;直播间管理-功能开关
          */
-        ,SWITCH("switch")
+        , SWITCH("switch")
         /**
          * 跑马灯设置;播放器管理-防录屏跑马灯
          */
-        ,MARQUEE("marquee")
+        , MARQUEE("marquee")
         /**
          * 播放限制设置;播放器管理-播放限制
          */
-        ,RESTRICT("restrict")
+        , RESTRICT("restrict")
         /**
          * 打赏设置;观看页管理-打赏设置
          */
-        ,DONATE("donate")
+        , DONATE("donate")
         /**
          * 广告设置;观看也管理-营销设置-广告
          */
-        ,ADVERT("advert")
+        , ADVERT("advert")
         /**
          * 回调设置;
          */
-        ,CALLBACK("callback");
-    
+        , CALLBACK("callback");
+        
         private String desc;
-    
+        
         private GlobalEnabledType(String desc) {
             this.desc = desc;
         }
-    
+        
         public String getDesc() {
             return desc;
         }

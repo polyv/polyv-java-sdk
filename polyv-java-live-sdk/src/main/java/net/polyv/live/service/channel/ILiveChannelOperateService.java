@@ -12,61 +12,22 @@ import net.polyv.live.entity.channel.operate.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelInitRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInitResponse;
-import net.polyv.live.entity.channel.viewdata.LiveChannelMaxHistoryConcurrentRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelPasswordSettingRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelPlaybackEnabledInfoRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelPlaybackEnabledRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelPlaybackSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
-import net.polyv.live.entity.channel.state.LiveChannelStreamInfoRequest;
-import net.polyv.live.entity.channel.state.LiveChannelStreamInfoResponse;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoListRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoListResponse;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyRequest;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoOnlyResponse;
-import net.polyv.live.entity.channel.playback.LiveChannelVideoSortRequest;
-import net.polyv.live.entity.channel.viewdata.LiveChannelViewerConcurrenceRequest;
-import net.polyv.live.entity.channel.viewdata.LiveChannelViewerConcurrenceResponse;
-import net.polyv.live.entity.channel.playback.LiveConvertChannelVideoListAsyncRequest;
-import net.polyv.live.entity.channel.playback.LiveConvertChannelVideoRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelTokenRequest;
-import net.polyv.live.entity.channel.playback.LiveCreateChannelVideoPlaybackRequest;
-import net.polyv.live.entity.channel.playback.LiveCreateChannelVideoPlaybackResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelTokenRequest;
-import net.polyv.live.entity.channel.state.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteChannelListRequest;
-import net.polyv.live.entity.channel.playback.LiveDeleteChannelPlaybackVideoRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteChannelRequest;
-import net.polyv.live.entity.channel.playback.LiveDeleteChannelVideoRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteSonChannelRequest;
-import net.polyv.live.entity.channel.doc.LiveListChannelDocRequest;
-import net.polyv.live.entity.channel.doc.LiveListChannelDocResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelMicRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelMicResponse;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordResponse;
-import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoRequest;
-import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoResponse;
-import net.polyv.live.entity.channel.state.LiveListChannelStreamStatusRequest;
-import net.polyv.live.entity.channel.state.LiveListChannelStreamStatusResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelSummaryRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelSummaryResponse;
-import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest;
-import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewerCountRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewerCountResponse;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewlogRequest;
-import net.polyv.live.entity.channel.viewdata.LiveListChannelViewlogResponse;
-import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoAsyncRequest;
-import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoRequest;
-import net.polyv.live.entity.channel.state.LiveResumeChannelStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
@@ -119,7 +80,7 @@ public interface ILiveChannelOperateService {
      * @return 渠道设置信息
      * @throws IOException 异常
      */
-    String updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest) throws IOException;
+    Boolean updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest) throws IOException;
     
     /**
      * 设置频道详情
@@ -129,7 +90,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest)
+    Boolean updateChannelDetail(LiveChannelDetailRequest liveChannelDetailRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -151,7 +112,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String updateChannelPassword(LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest)
+    Boolean updateChannelPassword(LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -162,7 +123,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String deleteChannel(LiveDeleteChannelRequest liveDeleteChannelRequest)
+    Boolean deleteChannel(LiveDeleteChannelRequest liveDeleteChannelRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -173,7 +134,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String deleteChannelList(LiveDeleteChannelListRequest liveDeleteChannelListRequest)
+    Boolean deleteChannelList(LiveDeleteChannelListRequest liveDeleteChannelListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -184,7 +145,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String createChannelToken(LiveCreateChannelTokenRequest liveCreateChannelTokenRequest)
+    Boolean createChannelToken(LiveCreateChannelTokenRequest liveCreateChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -239,7 +200,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String updateSonChannelInfo(LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest)
+    Boolean updateSonChannelInfo(LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -250,7 +211,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String createSonChannelToken(LiveCreateSonChannelTokenRequest liveCreateSonChannelTokenRequest)
+    Boolean createSonChannelToken(LiveCreateSonChannelTokenRequest liveCreateSonChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -283,7 +244,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String deleteSonChannel(LiveDeleteSonChannelRequest liveDeleteSonChannelRequest)
+    Boolean deleteSonChannel(LiveDeleteSonChannelRequest liveDeleteSonChannelRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -294,7 +255,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String createChannelPPTRecordTask(LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest)
+    Boolean createChannelPPTRecordTask(LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

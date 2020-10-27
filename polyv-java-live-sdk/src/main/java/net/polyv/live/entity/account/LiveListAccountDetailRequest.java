@@ -3,7 +3,6 @@ package net.polyv.live.entity.account;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -17,7 +16,6 @@ import net.polyv.live.entity.LivePageCommonRequest;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("查询所有频道详细信息请求实体")
 public class LiveListAccountDetailRequest extends LivePageCommonRequest {
     

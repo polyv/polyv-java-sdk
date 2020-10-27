@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.polyv.live.constant.LiveURL;
@@ -16,7 +17,6 @@ import net.polyv.live.entity.channel.doc.LiveListChannelDocRequest;
 import net.polyv.live.entity.channel.doc.LiveListChannelDocResponse;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelDocService;
-import net.polyv.live.util.MapUtil;
 
 /**
  * 直播文档管理实现类
@@ -53,8 +53,11 @@ public class LiveChannelDocServiceImpl extends LiveBaseService implements ILiveC
     public LiveChannelDocStatusResponse channelDocStatus(LiveChannelDocStatusRequest liveChannelDocStatusRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_DOC_STATUS_URL;
-        String liveChannelDocStatusResponse = this.baseGet(url, liveChannelDocStatusRequest, String.class);
-        return null;
+        List<LiveChannelDocStatusResponse.ChannelDocStatus> channelDocStatuses = this.baseGetReturnArray(url,
+                liveChannelDocStatusRequest, LiveChannelDocStatusResponse.ChannelDocStatus.class);
+        LiveChannelDocStatusResponse liveChannelDocStatusResponse = new LiveChannelDocStatusResponse();
+        liveChannelDocStatusResponse.setChannelDocStatuses(channelDocStatuses);
+        return liveChannelDocStatusResponse;
     }
     
     /**
@@ -66,11 +69,11 @@ public class LiveChannelDocServiceImpl extends LiveBaseService implements ILiveC
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String deleteChannelDoc(LiveDeleteChannelDocRequest liveDeleteChannelDocRequest)
+    public Boolean deleteChannelDoc(LiveDeleteChannelDocRequest liveDeleteChannelDocRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_DOC_DELETE_URL;
         String liveDeleteChannelDocResponse = this.basePost(url, liveDeleteChannelDocRequest, String.class);
-        return liveDeleteChannelDocResponse;
+        return "true".equals(liveDeleteChannelDocResponse);
     }
     
     /**

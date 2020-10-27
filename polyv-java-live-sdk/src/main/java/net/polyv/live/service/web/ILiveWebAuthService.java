@@ -14,6 +14,7 @@ import net.polyv.live.entity.web.auth.LiveChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
+import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 
 /**
  * 直播Web观看页管理
@@ -97,4 +98,16 @@ public interface ILiveWebAuthService {
      */
     LiveChannelWriteListResponse channelWriteList(LiveChannelWriteListRequest liveChannelWriteListRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置授权认证URL
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/update-auth-url/
+     * @param liveUpdateChannelAuthUrlRequest 设置授权认证URL请求实体
+     * @return 设置授权认证URL返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateChannelAuthUrl(LiveUpdateChannelAuthUrlRequest liveUpdateChannelAuthUrlRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
 }

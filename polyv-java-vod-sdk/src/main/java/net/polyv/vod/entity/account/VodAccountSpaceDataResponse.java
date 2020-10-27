@@ -1,15 +1,11 @@
 package net.polyv.vod.entity.account;
 
-import javax.validation.constraints.NotNull;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import net.polyv.vod.entity.VodCommonRequest;
 
 /**
  * @author: thomas
@@ -18,7 +14,6 @@ import net.polyv.vod.entity.VodCommonRequest;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("获取用户空间及流量情况返回实体")
 public class VodAccountSpaceDataResponse     {
     /**

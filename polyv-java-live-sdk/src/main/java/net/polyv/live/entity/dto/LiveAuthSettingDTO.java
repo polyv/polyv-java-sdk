@@ -3,11 +3,9 @@ package net.polyv.live.entity.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import org.hibernate.validator.constraints.Length;
 
 /**
  * 直播权限设置数据传输对象
@@ -17,7 +15,6 @@ import org.hibernate.validator.constraints.Length;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("直播权限设置数据传输对象")
 public class LiveAuthSettingDTO {
 

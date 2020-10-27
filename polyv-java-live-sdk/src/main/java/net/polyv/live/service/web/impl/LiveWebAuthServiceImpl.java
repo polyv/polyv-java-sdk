@@ -19,6 +19,7 @@ import net.polyv.live.entity.web.auth.LiveChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
+import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.web.ILiveWebAuthService;
 import net.polyv.live.util.MapUtil;
@@ -157,6 +158,22 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
         LiveChannelWriteListResponse liveChannelWriteListResponse = this.baseGet(url, liveChannelWriteListRequest,
                 LiveChannelWriteListResponse.class);
         return liveChannelWriteListResponse;
+    }
+    
+    /**
+     * 设置授权认证URL
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/update-auth-url/
+     * @param liveUpdateChannelAuthUrlRequest 设置授权认证URL请求实体
+     * @return 设置授权认证URL返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateChannelAuthUrl(LiveUpdateChannelAuthUrlRequest liveUpdateChannelAuthUrlRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_AUTH_URL_UPDATE_URL;
+        String liveUpdateChannelAuthUrlResponse = this.basePost(url, liveUpdateChannelAuthUrlRequest, String.class);
+        return "true".equals(liveUpdateChannelAuthUrlResponse);
     }
     
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -19,7 +18,6 @@ import net.polyv.live.entity.LivePageCommonResponse;
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ApiModel("查询频道观看白名单列表请求体")
 public class LiveChannelWriteListResponse extends LivePageCommonResponse {
     
@@ -30,7 +28,6 @@ public class LiveChannelWriteListResponse extends LivePageCommonResponse {
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
-    @Builder
     @ApiModel("白名单列表")
     public static class ChannelWriteList {
         

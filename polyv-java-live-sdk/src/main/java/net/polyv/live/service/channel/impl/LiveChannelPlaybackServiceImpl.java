@@ -3,6 +3,7 @@ package net.polyv.live.service.channel.impl;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.Map;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
@@ -29,6 +30,7 @@ import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelPlaybackService;
+import net.polyv.live.util.MapUtil;
 
 /**
  * 直播录制回放实现类
@@ -210,7 +212,10 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
     public String channelVideoSort(LiveChannelVideoSortRequest liveChannelVideoSortRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_VIDEO_SORT_URL;
-        String liveChannelVideoSortResponse = this.basePost(url, liveChannelVideoSortRequest, String.class);
+        Map<String,String> signMap = MapUtil.getSignMap(liveChannelVideoSortRequest);
+        signMap.put("channelId",String.valueOf(liveChannelVideoSortRequest.getChannelId()));
+        String liveChannelVideoSortResponse = this.basePostJson(url,signMap,liveChannelVideoSortRequest,String.class);
+//        String liveChannelVideoSortResponse = this.basePost(url, liveChannelVideoSortRequest, String.class);
         return liveChannelVideoSortResponse;
     }
     

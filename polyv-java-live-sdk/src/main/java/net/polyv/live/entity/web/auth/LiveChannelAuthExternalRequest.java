@@ -29,9 +29,9 @@ public class LiveChannelAuthExternalRequest extends LiveCommonRequest {
     private String userId;
     
     /**
-     * 频道ID，提交后对某频道ID设置，不提交则对账号下所有频道ID进行设置
+     * 频道号，提交后对某频道号设置，不提交则对账号下所有频道号进行设置
      */
-    @ApiModelProperty(name = "channelId", value = "频道ID，提交后对某频道ID设置，不提交则对账号下所有频道ID进行设置", required = false)
+    @ApiModelProperty(name = "channelId", value = "频道号，提交后对某频道号设置，不提交则对账号下所有频道号进行设置", required = false)
     private Integer channelId;
     
     /**

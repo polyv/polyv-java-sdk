@@ -29,9 +29,9 @@ public class LiveConvertChannelVideoRequest extends LiveCommonRequest {
     private String userId;
     
     /**
-     * 频道ID
+     * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "频道ID", required = true)
+    @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     private Integer channelId;
     
     /**

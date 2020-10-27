@@ -37,9 +37,9 @@ public class LiveCreateChannelVideoPlaybackResponse {
     private String userId;
     
     /**
-     * 回放视频对应的直播频道id
+     * 回放视频对应的直播频道号
      */
-    @ApiModelProperty(name = "channelId", value = "回放视频对应的直播频道id", required = false)
+    @ApiModelProperty(name = "channelId", value = "回放视频对应的直播频道号", required = false)
     private Integer channelId;
     
     /**

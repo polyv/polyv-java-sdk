@@ -22,9 +22,9 @@ import net.polyv.live.entity.LiveCommonRequest;
 public class LiveDeleteChannelListRequest extends LiveCommonRequest {
     
     /**
-     * 频道ID列表，每次最多删除100个频道， 必须放在请求体中
+     * 频道号列表，每次最多删除100个频道， 必须放在请求体中
      */
-    @ApiModelProperty(name = "channelIds", value = "频道ID列表，每次最多删除100个频道，必须放在请求体中", required = true)
+    @ApiModelProperty(name = "channelIds", value = "频道号列表，每次最多删除100个频道，必须放在请求体中", required = true)
     @NotNull(message = "属性channelIds不能为空")
     private Integer[] channelIds;
     

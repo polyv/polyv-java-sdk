@@ -168,7 +168,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
      * 设置后台回放开关
      * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/lzhf/setplaybackenabled/
      * @param liveChannelPlaybackEnabledRequest 设置后台回放开关请求实体
-     * @return 设置后台回放开关返回实体, 成功返回频道id
+     * @return 设置后台回放开关返回实体, 成功返回频道号
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

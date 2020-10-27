@@ -34,9 +34,9 @@ public class LiveListChannelSummaryResponse {
     public static class ChannelSummary {
         
         /**
-         * 频道Id
+         * 频道号
          */
-        @ApiModelProperty(name = "channelId", value = "频道Id", required = false)
+        @ApiModelProperty(name = "channelId", value = "频道号", required = false)
         private Integer channelId;
         
         /**

@@ -2,7 +2,6 @@ package net.polyv.live.service.account;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -123,6 +122,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试设置功能开关状态
+     * 返回：true为设置成功，false为设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -152,6 +152,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试设置账号单点登录的token
+     * 返回：true为设置成功，false为设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -181,6 +182,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试设置直播状态回调通知url
+     * 返回：true为设置回调成功，false为设置回调失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -210,6 +212,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试设置转存成功回调通知url
+     * 返回：true为设置回调成功，false为设置回调失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -240,6 +243,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试设置录制回调通知url
+     * 返回：true为设置回调成功，false为设置回调失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

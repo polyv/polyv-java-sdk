@@ -416,27 +416,28 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         
         //获取已经存在的消息id开始
         String msgId = "";
-        LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest = new LiveGetHistoryChatMsgRequest();
-        List<LiveGetHistoryChatMsgResponse> liveGetHistoryChatMsgResponsesList = null;
+        LiveSendChatMsgRequest liveSendChatMsgRequest = new LiveSendChatMsgRequest();
+        LiveSendChatMsgResponse liveSendChatMsgResponse = null;
         Integer channelId = super.createChannel();
-        liveGetHistoryChatMsgRequest.setChannelId(channelId)
-                .setStatus(LiveConstant.ChatStatus.PASS.getType())
-                .setStartDay("2020-10-1")
-                .setEndDay("2099-12-12")
+        liveSendChatMsgRequest.setChannelId(channelId)
+                .setMsg("hello 大家好-通过API发过来的测试信息")
+                .setPic("https://5b0988e595225.cdn.sohucs.com/q_70,c_zoom," +
+                        "w_640/images/20190129/e3b0d6311b1a411fa68125fc03b8ef67.jpeg")
+                .setNickName("thomas")
+                .setFreeReview(LiveConstant.Flag.YES.getFlag())
                 .setRequestId(LiveSignUtil.generateUUID());
-        liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistroyChatMsg(
-                liveGetHistoryChatMsgRequest);
-        Assert.assertNotNull(liveGetHistoryChatMsgResponsesList);
-        if (liveGetHistoryChatMsgResponsesList != null && liveGetHistoryChatMsgResponsesList.size()>0) {
-            msgId = liveGetHistoryChatMsgResponsesList.get(0).getId();
-            log.debug("待删除消息  {}",liveGetHistoryChatMsgResponsesList.get(0));
+        liveSendChatMsgResponse = new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest);
+        Assert.assertNotNull(liveSendChatMsgResponse);
+        if (liveSendChatMsgResponse != null) {
+            //to do something ......
+            msgId = liveSendChatMsgResponse.getMsgId();
+            log.debug("测试通过HTTP接口发送聊天消息成功,消息ID {}", msgId);
         }
-        Assert.assertNotEquals(0,msgId.trim().length());
-      
+        Assert.assertNotEquals(0, msgId.trim().length());
         //获取已经存在的消息id结束
         
         try {
-            liveChatDelSingleMsgRequest.setId("70af2450-12bc-11eb-896b-75b7b28cd5db")
+            liveChatDelSingleMsgRequest.setId(msgId)
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
@@ -458,7 +459,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     
     /**
-     * 设置聊天室管理员信息，API地址：https://dev.polyv.net/2017/liveproduct/zblts/set-chat-admin/
+     * 设置聊天室管理员信息
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -471,7 +472,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setNickname("你个老头")
                     .setActor("娇娇")
-                    .setAvatar(new File("D:/img/b.jpg"))
+                    .setAvatar(new File("/data/img/b.jpg"))
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
             Assert.assertNotNull(result);
@@ -493,7 +494,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     
     /**
-     * 查询咨询提问记录，API地址：https://dev.polyv.net/2018/liveproduct/zblts/getquestion/
+     * 查询咨询提问记录
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -527,8 +528,9 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     
     /**
-     * 查询频道的问答统计结果，API地址：https://dev.polyv.net/2018/liveproduct/zblts/get-question-result/
-     * @throws IOException
+     * 查询频道的问答统计结果
+     * TODO 待验证
+    * @throws IOException
      * @throws NoSuchAlgorithmException
      */
     @Test

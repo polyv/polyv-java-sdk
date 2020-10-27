@@ -36,14 +36,12 @@ public class LiveGetQuestionStatisticalRequest extends LiveCommonRequest {
      * 开始时间，格式：yyyy-MM-dd HH:mm:ss
      */
     @ApiModelProperty(name = "startTime", value = "开始时间，格式：yyyy-MM-dd HH:mm:ss", required = false)
-//    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private String startTime;
     
     /**
      * 结束时间，格式：yyyy-MM-dd HH:mm:ss
      */
     @ApiModelProperty(name = "endTime", value = "结束时间，格式：yyyy-MM-dd HH:mm:ss", required = false)
-//    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private String endTime;
     
     

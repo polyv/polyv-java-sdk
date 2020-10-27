@@ -33,14 +33,14 @@ public class LiveSetChatAdminDataRequest extends LiveCommonRequest {
     /**
      * 管理员昵称，长度不能超过8
      */
-    @ApiModelProperty(name = "nickname", value = "管理员昵称，长度不能超过8", required = true)
+    @ApiModelProperty(name = "nickname", value = "管理员昵称，长度不能超过8个字符", required = true)
     @NotNull(message = "属性nickname不能为空")
     private String nickname;
     
     /**
      * 管理员头衔，长度不能超过4
      */
-    @ApiModelProperty(name = "actor", value = "管理员头衔，长度不能超过4", required = true)
+    @ApiModelProperty(name = "actor", value = "管理员头衔，长度不能超过4个字符", required = true)
     @NotNull(message = "属性actor不能为空")
     private String actor;
     

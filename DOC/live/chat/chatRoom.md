@@ -51,7 +51,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -164,7 +164,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -266,7 +266,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -368,7 +368,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -469,7 +469,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -570,7 +570,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -681,7 +681,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -781,7 +781,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -877,7 +877,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -971,7 +971,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -1067,7 +1067,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -1175,7 +1175,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -1293,7 +1293,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -1396,7 +1396,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -1501,7 +1501,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 
@@ -1613,7 +1613,7 @@
 
         } catch (PloyvSdkException e) {
 
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
 
             log.error(e.getMessage(), e);
 

@@ -2,6 +2,8 @@ package net.polyv.live.entity.chat;
 
 import javax.validation.constraints.NotNull;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -40,14 +42,15 @@ public class LiveKickedListResponse {
     /**
      * 踢人方式：userId,
      */
-    @ApiModelProperty(name = "kickRefer", value = "踢人方式：userId,", required = false)
+    @ApiModelProperty(name = "kickRefer", value = "踢人方式：userId : 用户userId, ip : 用户登录IP" , required = false)
     private String kickRefer;
     
     /**
      * 昵称
      */
-    @ApiModelProperty(name = "nick", value = "昵称", required = false)
-    private String nick;
+    @ApiModelProperty(name = "nickname", value = "昵称", required = false)
+    @JSONField(name="nick")
+    private String nickname;
     
     /**
      * 头像图片地址
@@ -74,9 +77,9 @@ public class LiveKickedListResponse {
     private String userId;
     
     /**
-     * 用户身份：管理员 manager，讲师 teacher， 助教 assistant， 嘉宾 guest，参与者 viewer，观看者 slice/student
+     *  用户身份：管理员 manager，讲师 teacher， 助教 assistant， 嘉宾 guest，参与者 viewer，观看者 slice/student
      */
-    @ApiModelProperty(name = "userType", value = "用户身份：管理员 manager，讲师 teacher， 助教 assistant， 嘉宾 guest，参与者 viewer，观看者 slice/student", required = false)
+    @ApiModelProperty(name = "userType", value = " 用户身份：管理员 manager，讲师 teacher， 助教 assistant， 嘉宾 guest，参与者 viewer，观看者 slice/student", required = false)
     private String userType;
-    
+   
 }

@@ -25,7 +25,7 @@
                 log.debug("测试设置播放器暖场图片成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -74,7 +74,7 @@
                 log.debug("测试设置频道的暖场设置开关成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -126,7 +126,7 @@
                 log.debug("测试设置播放器Logo成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -176,7 +176,7 @@
                 log.debug("测试设置播放器暂停广告成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -235,7 +235,7 @@
                 log.debug("测试设设置播放器片头广告成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -290,7 +290,7 @@
                 log.debug("测试设置播放器暖场视频成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;

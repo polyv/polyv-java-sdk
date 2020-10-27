@@ -112,7 +112,7 @@ public interface ILiveChatRoomService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
-    List<String>  getBadworkList(LiveGetBadwordIPRequest liveGetBadwordIPRequest)
+    List<String> getChannelBadworkList(LiveGetBadwordIPRequest liveGetBadwordIPRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

@@ -41,7 +41,7 @@ public class LiveAnswerRecordServiceImplTest extends BaseTest {
                 log.debug("测试查询频道答题卡答题结果成功{}", JSON.toJSONString(liveCheckinResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;

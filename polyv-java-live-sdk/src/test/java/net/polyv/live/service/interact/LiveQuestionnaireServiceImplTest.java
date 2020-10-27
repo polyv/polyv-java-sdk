@@ -101,7 +101,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                 log.debug("测试添加频道问卷成功{}", JSON.toJSONString(liveQuestionnaireDetailSetResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -133,7 +133,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                 log.debug("测试查询频道问卷列表成功{}", JSON.toJSONString(liveQuestionnaireListResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -166,7 +166,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                 log.debug("测试查询频道问卷详情成功{}", JSON.toJSONString(liveQuestionnaireDetailResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -199,7 +199,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                 log.debug("测试查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -233,7 +233,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                 log.debug("测试分页查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultPageResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -265,7 +265,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                 log.debug("测试获取频道抽奖记录列表成功，{}", JSON.toJSONString(liveListLotteryResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -295,7 +295,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                 log.debug("测试获取频道单场抽奖的中奖记录成功，{}", JSON.toJSONString(liveLotteryWinnerDetailResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -334,7 +334,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                 log.debug("测试设置抽奖中奖者信息成功");
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;

@@ -151,7 +151,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public List<String> getBadworkList(LiveGetBadwordIPRequest liveGetBadwordIPRequest)
+    public List<String> getChannelBadworkList(LiveGetBadwordIPRequest liveGetBadwordIPRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_GET_BAKWORD_WORD_IP_URL;
         return super.basePostReturnArray(url, liveGetBadwordIPRequest, String.class);

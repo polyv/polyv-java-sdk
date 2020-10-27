@@ -77,9 +77,9 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse baseGet(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
-        if (StringUtils.isBlank(e.getRequestId())) {
-            e.setRequestId(LiveSignUtil.generateUUID());
-        }
+//        if (StringUtils.isBlank(e.getRequestId())) {
+//            e.setRequestId(LiveSignUtil.generateUUID());
+//        }
         e.setAppId(LiveGlobalConfig.APP_ID);
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
@@ -170,9 +170,9 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse basePost(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
-        if (StringUtils.isBlank(e.getRequestId())) {
-            e.setRequestId(LiveSignUtil.generateUUID());
-        }
+//        if (StringUtils.isBlank(e.getRequestId())) {
+//            e.setRequestId(LiveSignUtil.generateUUID());
+//        }
         e.setAppId(LiveGlobalConfig.APP_ID);
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
@@ -266,9 +266,9 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse basePostJson(String url, Map<String, String> signMap, E e)
             throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
-        if (StringUtils.isBlank(e.getRequestId())) {
-            e.setRequestId(LiveSignUtil.generateUUID());
-        }
+//        if (StringUtils.isBlank(e.getRequestId())) {
+//            e.setRequestId(LiveSignUtil.generateUUID());
+//        }
         e.setAppId(LiveGlobalConfig.APP_ID);
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
@@ -326,9 +326,9 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse baseUploadFile(String url, E e, Map<String, File> fileMap)
             throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
-        if (StringUtils.isBlank(e.getRequestId())) {
-            e.setRequestId(LiveSignUtil.generateUUID());
-        }
+//        if (StringUtils.isBlank(e.getRequestId())) {
+//            e.setRequestId(LiveSignUtil.generateUUID());
+//        }
         e.setAppId(LiveGlobalConfig.APP_ID);
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));

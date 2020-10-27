@@ -30,7 +30,7 @@ public class LiveGetBadwordIPRequest extends LiveCommonRequest {
     /**
      * 禁言类型,ip/userId
      */
-    @ApiModelProperty(name = "type", value = "查询类型： ip=禁言ip，badword=严禁词，不传默认为badword", required = false)
+    @ApiModelProperty(name = "type", value = "查询类型： ip=禁言ip，badword=严禁词，默认为badword", required = false)
     private String type;
     
     

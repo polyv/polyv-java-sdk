@@ -57,7 +57,7 @@ public class LiveAccountImplTest extends BaseTest {
                 log.debug("分页查询账号下所有频道详细信息成功,{}", JSON.toJSONString(liveListAccountDetailResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -84,7 +84,7 @@ public class LiveAccountImplTest extends BaseTest {
                 log.debug("测试查询账号下的频道列表成功,{}", JSON.toJSONString(liveListAccountResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -111,7 +111,7 @@ public class LiveAccountImplTest extends BaseTest {
                 log.debug("测试获取账号连麦分钟数使用量与剩余量成功,{}", JSON.toJSONString(liveAccountMicDurationResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -140,7 +140,7 @@ public class LiveAccountImplTest extends BaseTest {
                 log.debug("设置功能开关状态成功");
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -169,7 +169,7 @@ public class LiveAccountImplTest extends BaseTest {
                 log.debug("测试设置账号单点登录的token成功");
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -198,7 +198,7 @@ public class LiveAccountImplTest extends BaseTest {
                 log.debug("测试设置直播状态回调通知url成功");
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -228,7 +228,7 @@ public class LiveAccountImplTest extends BaseTest {
                 log.debug("测试设置转存成功回调通知url成功,{}", liveAccountPlaybackCallbackResponse);
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -257,7 +257,7 @@ public class LiveAccountImplTest extends BaseTest {
                 log.debug("测试设置录制回调通知url成功");
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -285,7 +285,7 @@ public class LiveAccountImplTest extends BaseTest {
                 log.debug("测试查询功能开关状态接口成功,{}", JSON.toJSONString(liveAccountSwitchResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -319,7 +319,7 @@ public class LiveAccountImplTest extends BaseTest {
                 log.debug("测试查询账号下所有频道缩略信息成功,{}", JSON.toJSONString(liveListAccountChannelBasicResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -347,7 +347,7 @@ public class LiveAccountImplTest extends BaseTest {
                 log.debug("测试查询账户分钟数成功,{}", JSON.toJSONString(liveAccountUserDurationsResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;

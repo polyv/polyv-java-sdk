@@ -72,7 +72,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 log.debug("测试通过HTTP接口发送聊天消息成功,消息ID {}",  liveSendChatMsgResponse.getMsgId());
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -108,7 +108,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 log.debug("测试设置讲师信息成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -139,7 +139,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 log.debug("测试设置聊天室禁言ip成功{}", JSON.toJSONString(bannedIPList));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -171,7 +171,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 log.debug("测试批量导入频道严禁词成功{}", JSON.toJSONString(liveBadWordResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -193,8 +193,8 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         try {
             Integer channelId = super.createChannel();
             liveGetBannedListRequest.setChannelId(channelId)
-                    .setType(LiveConstant.BannedType.USER_ID.getType())
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setType(LiveConstant.BannedType.IP.getType());
+//                    .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
             Assert.assertNotNull(result);
             if (result != null) {
@@ -202,7 +202,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 log.debug("测试查询频道禁言列表成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -234,7 +234,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 log.debug("测试查询频道踢人列表成功{}", JSON.toJSONString(liveKickedListResponsesList));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -245,37 +245,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     }
     
     
-    /**
-     * 删除禁言IP/严禁词
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testDelBanned() throws IOException, NoSuchAlgorithmException {
-        LiveDelBannedDataRequest liveDelBannedDataRequest = new LiveDelBannedDataRequest();
-        Boolean result = null;
-        try {
-            Integer channelId = super.createChannel();
-            liveDelBannedDataRequest.setContent("192.168.1.3")
-                    .setChannelId(channelId)
-                    .setType(LiveConstant.BannedType.IP.getType())
-                    .setRequestId(LiveSignUtil.generateUUID());
-            result = new LiveChatRoomServiceImpl().delBanned(liveDelBannedDataRequest);
-            Assert.assertNotNull(result);
-            if (result != null) {
-                //to do something ......
-                log.debug("测试删除禁言IP/严禁词成功{}", JSON.toJSONString(result));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
     
     
     /**
@@ -284,22 +253,22 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetBadworkList() throws IOException, NoSuchAlgorithmException {
+    public void testGetChannelBadworkList() throws IOException, NoSuchAlgorithmException {
         LiveGetBadwordIPRequest liveGetBadwordIPRequest = new LiveGetBadwordIPRequest();
         List<String> result = null;
         try {
             Integer channelId = super.createChannel();
             liveGetBadwordIPRequest.setChannelId(channelId)
-                    .setType(LiveConstant.BannedType.BADWORD.getType())
+                    .setType(LiveConstant.BannedType.IP.getType())
                     .setRequestId(LiveSignUtil.generateUUID());
-            result = new LiveChatRoomServiceImpl().getBadworkList(liveGetBadwordIPRequest);
+            result = new LiveChatRoomServiceImpl().getChannelBadworkList(liveGetBadwordIPRequest);
             Assert.assertNotNull(result);
             if (result != null) {
                 //to do something ......
                 log.debug("测试查询频道严禁词/禁言IP列表成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -308,6 +277,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             throw e;
         }
     }
+    
     
     
     /**
@@ -329,7 +299,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 log.debug("测试查询账号严禁词列表成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -341,25 +311,28 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     
     /**
-     * 删除频道聊天记录
+     * 删除禁言IP/严禁词
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCleanChannelAllMsg() throws IOException, NoSuchAlgorithmException {
-        LiveCleanChannelAllMsgRequest liveCleanChannelAllMsgRequest = new LiveCleanChannelAllMsgRequest();
+    public void testDelBanned() throws IOException, NoSuchAlgorithmException {
+        LiveDelBannedDataRequest liveDelBannedDataRequest = new LiveDelBannedDataRequest();
         Boolean result = null;
         try {
             Integer channelId = super.createChannel();
-            liveCleanChannelAllMsgRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            result = new LiveChatRoomServiceImpl().cleanChannelAllMsg(liveCleanChannelAllMsgRequest);
+            liveDelBannedDataRequest.setContent("192.168.1.1")
+                    .setChannelId(channelId)
+                    .setType(LiveConstant.BannedType.IP.getType())
+                    .setRequestId(LiveSignUtil.generateUUID());
+            result = new LiveChatRoomServiceImpl().delBanned(liveDelBannedDataRequest);
             Assert.assertNotNull(result);
             if (result != null) {
                 //to do something ......
-                log.debug("测试删除频道聊天记录成功{}", JSON.toJSONString(result));
+                log.debug("测试删除禁言IP/严禁词成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -369,6 +342,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         }
     }
     
+ 
     
     /**
      * 查询聊天室管理员信息
@@ -381,8 +355,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         LiveGetChatAdminDataResponse liveGetChatAdminDataResponse = null;
         try {
             Integer channelId = super.createChannel();
-            String requestId = LiveSignUtil.generateUUID();
-            liveGetChatAdminDataRequest.setChannelId(channelId).setRequestId(requestId);
+            liveGetChatAdminDataRequest.setChannelId(channelId).setRequestId( LiveSignUtil.generateUUID());
             liveGetChatAdminDataResponse = new LiveChatRoomServiceImpl().getChatAdminData(liveGetChatAdminDataRequest);
             Assert.assertNotNull(liveGetChatAdminDataResponse);
             if (liveGetChatAdminDataResponse != null) {
@@ -390,7 +363,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 log.debug("测试查询聊天室管理员信息成功{}", JSON.toJSONString(liveGetChatAdminDataResponse));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -402,7 +375,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     
     /**
-     * 查询历史聊天信息，API地址：https://dev.polyv.net/2019/liveproduct/zblts/get-channel-badwords/
+     * 查询历史聊天信息
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -425,7 +398,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 log.debug("第一个元素 {} ", liveGetHistoryChatMsgResponsesList.get(0));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -457,7 +430,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 log.debug("测试删除单条聊天记录成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -491,7 +464,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 log.debug("测试设置聊天室管理员信息成功{}", JSON.toJSONString(result));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -526,7 +499,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 log.debug("第一个元素 {} ", responses.get(0).getContent());
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -560,7 +533,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
 //            log.debug("第一个元素 {} ", result.get(0));
             }
         } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
             // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
             throw e;
@@ -569,5 +542,32 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             throw e;
         }
     }
-    
+    /**
+     * 删除频道聊天记录
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testCleanChannelAllMsg() throws IOException, NoSuchAlgorithmException {
+        LiveCleanChannelAllMsgRequest liveCleanChannelAllMsgRequest = new LiveCleanChannelAllMsgRequest();
+        Boolean result = null;
+        try {
+            Integer channelId = super.createChannel();
+            liveCleanChannelAllMsgRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            result = new LiveChatRoomServiceImpl().cleanChannelAllMsg(liveCleanChannelAllMsgRequest);
+            Assert.assertNotNull(result);
+            if (result != null) {
+                //to do something ......
+                log.debug("测试删除频道聊天记录成功{}", JSON.toJSONString(result));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
 }

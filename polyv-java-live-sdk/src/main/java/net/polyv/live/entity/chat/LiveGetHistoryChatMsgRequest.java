@@ -41,7 +41,7 @@ public class LiveGetHistoryChatMsgRequest extends LiveCommonRequest {
     /**
      * 聊天记录的结束时间，要求同上
      */
-    @ApiModelProperty(name = "endDay", value = "聊天记录的结束时间，要求同上", required = true)
+    @ApiModelProperty(name = "endDay", value = "聊天记录的结束时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12）", required = true)
     @NotNull(message = "属性endDay不能为空")
     private String endDay;
     
@@ -68,15 +68,15 @@ public class LiveGetHistoryChatMsgRequest extends LiveCommonRequest {
     private String userType;
     
     /**
-     * 聊天记录状态，默认通过审核记录，censor：未审核或删除的聊天记录
+     * 聊天记录状态， 审核状态，pass:已审核，censor：审核中，delete：删除 ， 默认 pass
      */
-    @ApiModelProperty(name = "status", value = "聊天记录状态，默认通过审核记录，censor：未审核或删除的聊天记录", required = false)
+    @ApiModelProperty(name = "status", value = "聊天记录状态， 审核状态，pass:已审核，censor：审核中，delete：删除 ， 默认 pass", required = false)
     private String status;
     
     /**
      * 类型，不填默认为群聊，extend为管理员私聊
      */
-    @ApiModelProperty(name = "source", value = "类型，不填默认为群聊，extend为管理员私聊", required = false)
+    @ApiModelProperty(name = "source", value = "消息来源，public：群聊，extend：管理员私聊 ，默认：public", required = false)
     private String source;
     
 }

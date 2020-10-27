@@ -32,13 +32,14 @@ public class LiveGetBannedListRequest extends LiveCommonRequest {
     /**
      * 禁言类型,ip/userId
      */
-    @ApiModelProperty(name = "type", value = "查询禁言类型,ip / userId", required = false)
+    @ApiModelProperty(name = "type", value = "查询禁言类型,ip ： 聊天室用户用户的机器ip ， userId ： 聊天室用户用户的userId", required = false)
+    @NotNull(message = "属性type不能为空")
     private String type;
     
     /**
      * 是否获取子频道，0：不获取，1：获取
      */
-    @ApiModelProperty(name = "toGetSubRooms", value = "是否获取子频道，0：不获取，1：获取", required = false)
+    @ApiModelProperty(name = "toGetSubRooms", value = "是否获取子频道，0：不获取，1：获取，默认为 0 ", required = false)
     private Integer toGetSubRooms;
     
 }

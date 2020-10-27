@@ -59,7 +59,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String mergeChannelVideoAsync(LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest)
+    Boolean mergeChannelVideoAsync(LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -70,7 +70,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String convertChannelVideoListAsync(LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest)
+    Boolean convertChannelVideoListAsync(LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -103,7 +103,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String channelPlaybackSetting(LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest)
+    Boolean channelPlaybackSetting(LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -114,7 +114,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Integer channelPlayBackEnabledSetting(LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest)
+    String channelPlayBackEnabledSetting(LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -137,7 +137,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String channelVideoSort(LiveChannelVideoSortRequest liveChannelVideoSortRequest)
+    Boolean channelVideoSort(LiveChannelVideoSortRequest liveChannelVideoSortRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -182,7 +182,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String deleteChannelVideo(LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest)
+    Boolean deleteChannelVideo(LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -193,7 +193,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String deleteChannelPlaybackVideo(LiveDeleteChannelPlaybackVideoRequest liveDeleteChannelPlaybackVideoRequest)
+    Boolean deleteChannelPlaybackVideo(LiveDeleteChannelPlaybackVideoRequest liveDeleteChannelPlaybackVideoRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -204,7 +204,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String channelDefaultVideo(LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest)
+    Boolean channelDefaultVideo(LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

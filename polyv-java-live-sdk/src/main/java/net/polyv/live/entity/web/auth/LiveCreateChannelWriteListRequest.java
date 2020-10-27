@@ -39,14 +39,14 @@ public class LiveCreateChannelWriteListRequest extends LiveCommonRequest {
      * 会员码（最多为50个字符）
      */
     @ApiModelProperty(name = "code", value = "会员码（最多为50个字符）", required = true)
-    @NotNull(message = "code不能为空")
+    @NotNull(message = "属性code不能为空")
     private String code;
     
     /**
      * 昵称（最多为50个字符）
      */
     @ApiModelProperty(name = "name", value = "昵称（最多为50个字符）", required = true)
-    @NotNull(message = "name不能为空")
+    @NotNull(message = "属性name不能为空")
     private String name;
     
 }

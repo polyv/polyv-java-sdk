@@ -25,7 +25,7 @@ public class LiveCreateAccountTokenRequest extends LiveCommonRequest {
      * 唯一的字符串,请勿过于简单，建议使用16位随机字符串
      */
     @ApiModelProperty(name = "token", value = "唯一的字符串,请勿过于简单，建议使用16位随机字符串", required = true)
-    @NotNull(message = "token不能为空")
+    @NotNull(message = "属性token不能为空")
     private String token;
 
 }

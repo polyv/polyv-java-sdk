@@ -27,7 +27,7 @@ public class LiveChannelViewlogRequest extends LiveCommonRequest {
      * 直播账号ID
      */
     @ApiModelProperty(name = "userId", value = "直播账号ID", required = true)
-    @NotNull(message = "userId不能为空")
+    @NotNull(message = "属性userId不能为空")
     private String userId;
     
     /**
@@ -41,7 +41,7 @@ public class LiveChannelViewlogRequest extends LiveCommonRequest {
      * 查询日期，格式：yyyy-MM-dd
      */
     @ApiModelProperty(name = "currentDay", value = "查询日期，格式：yyyy-MM-dd", required = true)
-    @NotNull(message = "currentDay不能为空")
+    @NotNull(message = "属性currentDay不能为空")
     private String currentDay;
     
     /**

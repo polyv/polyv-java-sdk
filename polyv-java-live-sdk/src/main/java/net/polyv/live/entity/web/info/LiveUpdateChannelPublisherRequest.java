@@ -32,14 +32,14 @@ public class LiveUpdateChannelPublisherRequest extends LiveCommonRequest {
      * 频道ID，非必填，不提交默认为修改该用户的所有频道ID的主持人姓名
      */
     @ApiModelProperty(name = "channelId", value = "频道ID，非必填，不提交默认为修改该用户的所有频道ID的主持人姓名", required = false)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
      * 主持人姓名，不超过20个字符
      */
     @ApiModelProperty(name = "publisher", value = "主持人姓名，不超过20个字符", required = true)
-    @NotNull(message = "publisher不能为空")
+    @NotNull(message = "属性publisher不能为空")
     private String publisher;
     
 }

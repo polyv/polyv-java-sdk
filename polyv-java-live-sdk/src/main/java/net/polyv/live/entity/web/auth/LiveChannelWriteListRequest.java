@@ -33,7 +33,7 @@ public class LiveChannelWriteListRequest extends LivePageCommonRequest {
      * 1为首要条件，2为次要条件
      */
     @ApiModelProperty(name = "rank", value = "1为首要条件，2为次要条件", required = true)
-    @NotNull(message = "rank不能为空")
+    @NotNull(message = "属性rank不能为空")
     private Integer rank;
     
     /**

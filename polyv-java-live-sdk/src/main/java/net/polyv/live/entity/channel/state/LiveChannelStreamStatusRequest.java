@@ -27,7 +27,7 @@ public class LiveChannelStreamStatusRequest extends LiveCommonRequest {
      * 可调用获取频道信息接口，获取stream字段的值
      */
     @ApiModelProperty(name = "stream", value = "可调用获取频道信息接口，获取stream字段的值", required = true)
-    @NotNull(message = "stream不能为空")
+    @NotNull(message = "属性stream不能为空")
     private String stream;
     
 }

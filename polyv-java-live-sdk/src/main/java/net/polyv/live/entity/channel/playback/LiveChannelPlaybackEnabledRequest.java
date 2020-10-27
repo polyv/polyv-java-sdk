@@ -32,7 +32,7 @@ public class LiveChannelPlaybackEnabledRequest extends LiveCommonRequest {
      * 回放开关是开/关的状态，值为Y/N，必填
      */
     @ApiModelProperty(name = "playBackEnabled", value = "回放开关是开/关的状态，值为Y/N，必填", required = true)
-    @NotNull(message = "playBackEnabled不能为空")
+    @NotNull(message = "属性playBackEnabled不能为空")
     private String playBackEnabled;
     
     /**

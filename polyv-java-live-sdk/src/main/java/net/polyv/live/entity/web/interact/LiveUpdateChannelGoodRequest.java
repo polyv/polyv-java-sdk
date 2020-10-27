@@ -49,7 +49,7 @@ public class LiveUpdateChannelGoodRequest extends LiveCommonRequest {
          * 道具名称，不能超过5个字符
          */
         @ApiModelProperty(name = "goodName", value = "道具名称，不能超过5个字符", required = true)
-        @NotNull(message = "goodName不能为空")
+        @NotNull(message = "属性goodName不能为空")
         private String goodName;
         
         /**
@@ -62,7 +62,7 @@ public class LiveUpdateChannelGoodRequest extends LiveCommonRequest {
                 "咖啡:02-coffee.png;点赞:03-good.png;掌声:04-applaud.png;666:05-666.png;小星星:06-star.png;钻石:07-diamond.png;" +
                 "跑车:08-car.png;火箭:09-rocket.png;前缀统一为：//livestatic.videocc" +
                 ".net/uploaded/images/webapp/channel/donate/）", required = true)
-        @NotNull(message = "goodImg不能为空")
+        @NotNull(message = "属性goodImg不能为空")
         private String goodImg;
         
         /**
@@ -75,7 +75,7 @@ public class LiveUpdateChannelGoodRequest extends LiveCommonRequest {
          * 道具开关，值为 Y/N , Y为开启
          */
         @ApiModelProperty(name = "goodEnabled", value = "道具开关，值为 Y/N , Y为开启", required = true)
-        @NotNull(message = "goodEnabled不能为空")
+        @NotNull(message = "属性goodEnabled不能为空")
         private String goodEnabled;
         
     }

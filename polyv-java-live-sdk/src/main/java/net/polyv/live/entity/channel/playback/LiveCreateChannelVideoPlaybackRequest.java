@@ -31,7 +31,7 @@ public class LiveCreateChannelVideoPlaybackRequest extends LiveCommonRequest {
      * 要添加为回放的的点播视频
      */
     @ApiModelProperty(name = "vid", value = "要添加为回放的的点播视频", required = true)
-    @NotNull(message = "vid不能为空")
+    @NotNull(message = "属性vid不能为空")
     private String vid;
     
     /**

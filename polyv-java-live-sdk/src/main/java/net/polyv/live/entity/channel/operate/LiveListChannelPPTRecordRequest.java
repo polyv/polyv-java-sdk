@@ -26,7 +26,7 @@ public class LiveListChannelPPTRecordRequest extends LivePageCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true, example = "1940343")
-    @NotNull(message = "频道号不能为空")
+    @NotNull(message = "属性频道号不能为空")
     private Integer channelId;
     
     /**

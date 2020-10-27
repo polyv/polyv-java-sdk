@@ -38,7 +38,7 @@ public class LiveChannelAuthExternalRequest extends LiveCommonRequest {
      * 获取用户信息接口地址
      */
     @ApiModelProperty(name = "externalUri", value = "获取用户信息接口地址", required = true)
-    @NotNull(message = "externalUri不能为空")
+    @NotNull(message = "属性externalUri不能为空")
     private String externalUri;
     
 }

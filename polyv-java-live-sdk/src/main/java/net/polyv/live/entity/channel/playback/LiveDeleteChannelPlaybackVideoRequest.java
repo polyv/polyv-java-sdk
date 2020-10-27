@@ -25,7 +25,7 @@ public class LiveDeleteChannelPlaybackVideoRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
@@ -33,7 +33,7 @@ public class LiveDeleteChannelPlaybackVideoRequest extends LiveCommonRequest {
      * {@link net.polyv.live.service.ChannelTest#testListChannelVideoLibrary()}
      */
     @ApiModelProperty(name = "videoId", value = "直播系统生成的id，可在回放列表接口的返回数据获取", required = true)
-    @NotNull(message = "videoId不能为空")
+    @NotNull(message = "属性videoId不能为空")
     private String videoId;
     
     /**

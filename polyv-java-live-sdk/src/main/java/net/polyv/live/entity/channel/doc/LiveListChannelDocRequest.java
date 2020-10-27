@@ -25,7 +25,7 @@ public class LiveListChannelDocRequest extends LivePageCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    @NotNull(message = "channelId不允许为空")
+    @NotNull(message = "属性channelId不允许为空")
     private Integer channelId;
     
     /**

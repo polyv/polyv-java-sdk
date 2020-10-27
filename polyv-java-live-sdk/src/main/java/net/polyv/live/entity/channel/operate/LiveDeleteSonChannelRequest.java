@@ -25,14 +25,14 @@ public class LiveDeleteSonChannelRequest extends LiveCommonRequest {
      * 频道ID
      */
     @ApiModelProperty(name = "channelId", value = "频道ID", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
      * 子频道ID(不能以数字类型提交，否则可能去掉ID前的00)
      */
     @ApiModelProperty(name = "account", value = "子频道ID(不能以数字类型提交，否则可能去掉ID前的00)", required = true)
-    @NotNull(message = "account不能为空")
+    @NotNull(message = "属性account不能为空")
     private String account;
     
 }

@@ -26,14 +26,14 @@ public class LiveChatBannedIPRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
      * 禁言IP列表
      */
     @ApiModelProperty(name = "ip", value = "禁言IP", required = true)
-    @NotNull(message = "ip不能为空")
+    @NotNull(message = "属性ip不能为空")
     private String ip;
     
 }

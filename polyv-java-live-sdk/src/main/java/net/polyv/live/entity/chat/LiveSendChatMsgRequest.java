@@ -24,7 +24,7 @@ public class LiveSendChatMsgRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
@@ -37,27 +37,27 @@ public class LiveSendChatMsgRequest extends LiveCommonRequest {
      * 发送的文本消息
      */
     @ApiModelProperty(name = "msg", value = "发送的文本消息", required = true)
-    @NotNull(message = "msg不能为空")
+    @NotNull(message = "属性msg不能为空")
     private String msg;
     
     /**
      * 管理员头像
      */
     @ApiModelProperty(name = "pic", value = "管理员头像", required = true)
-    @NotNull(message = "pic不能为空")
+    @NotNull(message = "属性pic不能为空")
     private String pic;
     
     /**
      * 昵称，最大为8个长度，超出会被截断
      */
-    @ApiModelProperty(name = "nickName", value = "昵称，最大为8个长度，超出会被截断", required = true)
-    @NotNull(message = "nickName不能为空")
+    @ApiModelProperty(name = "nickName", value = "昵称，最大为8个字符，超出会被截断", required = true)
+    @NotNull(message = "属性nickName不能为空")
     private String nickName;
     
     /**
      * 头衔，最大为4个长度，超出会被截断，不传参数则表示无头衔
      */
-    @ApiModelProperty(name = "actor", value = "头衔，最大为4个长度，超出会被截断，不传参数则表示无头衔", required = false)
+    @ApiModelProperty(name = "actor", value = "头衔，最大为4个字符，超出会被截断，不传参数则表示无头衔", required = false)
     private String actor;
     
     /**
@@ -69,6 +69,7 @@ public class LiveSendChatMsgRequest extends LiveCommonRequest {
     /**
      * 接口版本，不填将使用默认版本，目前可选版本(3.1)，不同的版本返回数据会有细微差异，详情查看响应示例
      */
-    @ApiModelProperty(name = "apiVersion", value = "接口版本，不填将使用默认版本，目前可选版本(3.1)，不同的版本返回数据会有细微差异，详情查看响应示例", required = false)
+//    @ApiModelProperty(name = "apiVersion", value = "接口版本，不填将使用默认版本，目前可选版本(3.1)，不同的版本返回数据会有细微差异，详情查看响应示例", required = false)
+    @ApiModelProperty(hidden = true)
     private String apiVersion="3.1";
 }

@@ -25,14 +25,14 @@ public class LiveConvertChannelVideoListAsyncRequest extends LiveCommonRequest {
      * 频道ID
      */
     @ApiModelProperty(name = "channelId", value = "频道ID", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
      * 要转存的录制视频文件ID，多个id用英文逗号,
      */
     @ApiModelProperty(name = "fileIds", value = "要转存的录制视频文件ID，多个id用英文逗号,", required = true)
-    @NotNull(message = "fileIds不能为空")
+    @NotNull(message = "属性fileIds不能为空")
     private String fileIds;
     
     /**

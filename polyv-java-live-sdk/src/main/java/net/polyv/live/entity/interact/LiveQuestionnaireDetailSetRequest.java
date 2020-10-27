@@ -26,7 +26,7 @@ public class LiveQuestionnaireDetailSetRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
@@ -45,7 +45,7 @@ public class LiveQuestionnaireDetailSetRequest extends LiveCommonRequest {
      * 问卷标题
      */
     @ApiModelProperty(name = "questionnaireTitle", value = "问卷标题", required = true)
-    @NotNull(message = "questionnaireTitle不能为空")
+    @NotNull(message = "属性questionnaireTitle不能为空")
     private String questionnaireTitle;
     
     /**
@@ -76,14 +76,14 @@ public class LiveQuestionnaireDetailSetRequest extends LiveCommonRequest {
          * 题目
          */
         @ApiModelProperty(name = "name", value = "题目", required = true)
-        @NotNull(message = "name不能为空")
+        @NotNull(message = "属性name不能为空")
         private String name;
     
         /**
          * 题目类型,R为单选，C为多选，Q为问答
          */
         @ApiModelProperty(name = "type", value = "题目类型,R为单选，C为多选，Q为问答", required = true)
-        @NotNull(message = "type不能为空")
+        @NotNull(message = "属性type不能为空")
         private String type;
     
         /**

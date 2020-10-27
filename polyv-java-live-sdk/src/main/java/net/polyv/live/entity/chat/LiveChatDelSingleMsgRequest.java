@@ -25,13 +25,13 @@ public class LiveChatDelSingleMsgRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     /**
      * 	聊天记录对应的id
      */
     @ApiModelProperty(name = "id", value = "聊天记录对应的id", required = true)
-    @NotNull(message = "id不能为空")
+    @NotNull(message = "属性id不能为空")
     private String id;
     
 }

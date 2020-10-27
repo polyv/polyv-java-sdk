@@ -25,28 +25,28 @@ public class LiveSetLotteryWinnerInfoRequest extends LiveCommonRequest {
      * 频道ID
      */
     @ApiModelProperty(name = "channelId", value = "频道ID", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
      * 抽奖场次ID
      */
     @ApiModelProperty(name = "lotteryId", value = "抽奖场次ID", required = true)
-    @NotNull(message = "lotteryId不能为空")
+    @NotNull(message = "属性lotteryId不能为空")
     private String lotteryId;
     
     /**
      * 中奖码
      */
     @ApiModelProperty(name = "winnerCode", value = "中奖码", required = true)
-    @NotNull(message = "winnerCode不能为空")
+    @NotNull(message = "属性winnerCode不能为空")
     private String winnerCode;
     
     /**
      * 中奖者ID
      */
     @ApiModelProperty(name = "viewerId", value = "中奖者ID", required = true)
-    @NotNull(message = "viewerId不能为空")
+    @NotNull(message = "属性viewerId不能为空")
     private String viewerId;
     
     /**

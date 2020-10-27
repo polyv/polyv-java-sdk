@@ -27,21 +27,21 @@ public class LiveSetChatAdminDataRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    @NotNull(message = "channelId不能为空")
+    @NotNull(message = "属性channelId不能为空")
     private Integer channelId;
     
     /**
      * 管理员昵称，长度不能超过8
      */
     @ApiModelProperty(name = "nickname", value = "管理员昵称，长度不能超过8", required = true)
-    @NotNull(message = "nickname不能为空")
+    @NotNull(message = "属性nickname不能为空")
     private String nickname;
     
     /**
      * 管理员头衔，长度不能超过4
      */
     @ApiModelProperty(name = "actor", value = "管理员头衔，长度不能超过4", required = true)
-    @NotNull(message = "actor不能为空")
+    @NotNull(message = "属性actor不能为空")
     private String actor;
     
     /**

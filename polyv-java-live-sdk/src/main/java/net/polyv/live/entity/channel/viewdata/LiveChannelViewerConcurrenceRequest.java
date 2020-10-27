@@ -31,14 +31,14 @@ public class LiveChannelViewerConcurrenceRequest extends LiveCommonRequest {
      * 开始日期格式，yyyy-MM-dd,开始日期和结束日期的时间跨度：最多查两个月内的数据
      */
     @ApiModelProperty(name = "startDate", value = "开始日期格式，yyyy-MM-dd,开始日期和结束日期的时间跨度：最多查两个月内的数据", required = true)
-    @NotNull(message = "startDate不能为空")
+    @NotNull(message = "属性startDate不能为空")
     private String startDate;
     
     /**
      * 结束日期格式，yyyy-MM-dd,开始日期和结束日期的时间跨度：最多查两个月内的数据
      */
     @ApiModelProperty(name = "endDate", value = "结束日期格式，yyyy-MM-dd，开始日期和结束日期的时间跨度：最多查两个月内的数据", required = true)
-    @NotNull(message = "endDate不能为空")
+    @NotNull(message = "属性endDate不能为空")
     private String endDate;
 
 }

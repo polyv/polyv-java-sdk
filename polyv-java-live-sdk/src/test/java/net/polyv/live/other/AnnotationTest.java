@@ -73,10 +73,10 @@ public class AnnotationTest {
 @NoArgsConstructor
 class DateBean {
     @JSONField(name = "birth", format = "yyyy-MM-dd hh:mm:ss")
-    @NotNull(message = "bunengwei")
+    @NotNull(message = "属性bunengwei")
     private Date birthday;
     
-    @NotNull(message = "bunengwei")
+    @NotNull(message = "属性bunengwei")
     private Date currentDay;
     
     private String name;

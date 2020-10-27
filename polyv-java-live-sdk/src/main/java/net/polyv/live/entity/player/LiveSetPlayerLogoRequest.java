@@ -32,21 +32,21 @@ public class LiveSetPlayerLogoRequest extends LiveCommonRequest {
      * logo图片地址，建议大小为：长方形140x50或正方形50x50
      */
     @ApiModelProperty(name = "logoImage", value = "logo图片地址，建议大小为：长方形140x50或正方形50x50", required = true)
-    @NotNull(message = "logoImage不能为空")
+    @NotNull(message = "属性logoImage不能为空")
     private String logoImage;
     
     /**
      * logo透明度，取值范围为(0,1]，即大于0，并且小于等于1
      */
     @ApiModelProperty(name = "logoOpacity", value = "logo透明度，取值范围为(0,1]，即大于0，并且小于等于1", required = true)
-    @NotNull(message = "logoOpacity不能为空")
+    @NotNull(message = "属性logoOpacity不能为空")
     private Double logoOpacity;
     
     /**
      * logo位置，取值为为左上角(tl)、右上角(tr)、左下角(bl)、右下角(br)
      */
     @ApiModelProperty(name = "logoPosition", value = "logo位置，取值为为左上角(tl)、右上角(tr)、左下角(bl)、右下角(br)", required = true)
-    @NotNull(message = "logoPosition不能为空")
+    @NotNull(message = "属性logoPosition不能为空")
     private String logoPosition;
     
     /**

@@ -27,7 +27,7 @@ public class LiveChannelPlaybackSettingRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    @NotNull(message = "stream不能为空")
+    @NotNull(message = "属性stream不能为空")
     private Integer channelId;
     
     /**
@@ -52,7 +52,7 @@ public class LiveChannelPlaybackSettingRequest extends LiveCommonRequest {
      * 单个回放的视频id
      */
     @ApiModelProperty(name = "videoId", value = "单个回放的视频id", required = true)
-    @NotEmpty(message = "videoId不能为空")
+    @NotEmpty(message = "属性videoId不能为空")
     private String videoId;
     
 }

@@ -50,7 +50,7 @@ public class LiveConvertChannelVideoRequest extends LiveCommonRequest {
      * 转存后的点播视频名称
      */
     @ApiModelProperty(name = "fileName", value = "转存后的点播视频名称", required = true)
-    @NotNull(message = "fileName不能为空")
+    @NotNull(message = "属性fileName不能为空")
     private String fileName;
     
     /**

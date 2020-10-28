@@ -43,10 +43,9 @@ public class LiveChannelViewdataImplTest extends BaseTest {
                 new LiveChannelMaxHistoryConcurrentRequest();
         Integer liveChannelMaxHistoryConcurrentResponse;
         try {
-            int channelId = 1951952;
             long nowTime = System.currentTimeMillis();
             long startTime = nowTime - 30 * 24 * 60 * 60 * 1000l;
-            liveChannelMaxHistoryConcurrentRequest.setChannelId(channelId).setStartTime(startTime).setEndTime(nowTime);
+            liveChannelMaxHistoryConcurrentRequest.setChannelId(createChannel()).setStartTime(startTime).setEndTime(nowTime);
             liveChannelMaxHistoryConcurrentResponse = new LiveChannelViewdataServiceImpl().maxChannelHistoryConcurrent(
                     liveChannelMaxHistoryConcurrentRequest);
             Assert.assertNotNull(liveChannelMaxHistoryConcurrentResponse);
@@ -105,7 +104,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
         LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
         LiveListChannelViewlogResponse liveListChannelViewlogResponse;
         try {
-            liveListChannelViewlogRequest.setChannelId(1951952).setCurrentDay("2020-10-14");
+            liveListChannelViewlogRequest.setChannelId(createChannel()).setCurrentDay("2020-10-14");
             liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                     liveListChannelViewlogRequest);
             Assert.assertNotNull(liveListChannelViewlogResponse);
@@ -195,8 +194,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
                 new LiveChannelViewerConcurrenceRequest();
         LiveChannelViewerConcurrenceResponse liveChannelViewerConcurrenceResponse;
         try {
-            Integer channelId = createChannel();
-            liveChannelViewerConcurrenceRequest.setChannelId(channelId)
+            liveChannelViewerConcurrenceRequest.setChannelId(createChannel())
                     .setStartDate("2020-10-01")
                     .setEndDate("2020-11-11");
             liveChannelViewerConcurrenceResponse = new LiveChannelViewdataServiceImpl().channelViewerConcurrence(

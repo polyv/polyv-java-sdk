@@ -38,8 +38,8 @@ public class LiveChannelStateImplTest extends BaseTest {
         LiveListChannelStreamStatusResponse liveListChannelStreamStatusResponse;
         try {
             //准备测试数据
-            Integer channelId0 = createChannel();
-            Integer channelId1 = createChannel();
+            String channelId0 = createChannel();
+            String channelId1 = createChannel();
             
             liveListChannelStreamStatusRequest.setChannelIds(String.format("%s,%s", channelId0, channelId1))
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -77,7 +77,7 @@ public class LiveChannelStateImplTest extends BaseTest {
         Boolean liveResumeChannelStreamResponse;
         try {
             //准备测试数据
-            Integer channelId = createChannel();
+            String channelId = createChannel();
             
             liveResumeChannelStreamRequest.setChannelId(channelId);
             liveResumeChannelStreamResponse = new LiveChannelStateServiceImpl().resumeChannelStream(
@@ -113,7 +113,7 @@ public class LiveChannelStateImplTest extends BaseTest {
         Boolean liveCutoffChannelStreamResponse;
         try {
             //准备测试数据
-            Integer channelId = createChannel();
+            String channelId = createChannel();
             
             liveCutoffChannelStreamRequest.setChannelId(channelId);
             liveCutoffChannelStreamResponse = new LiveChannelStateServiceImpl().cutoffChannelStream(
@@ -148,7 +148,7 @@ public class LiveChannelStateImplTest extends BaseTest {
         LiveChannelStreamInfoRequest liveChannelStreamInfoRequest = new LiveChannelStreamInfoRequest();
         LiveChannelStreamInfoResponse liveChannelStreamInfoResponse;
         try {
-            liveChannelStreamInfoRequest.setChannelId(1951952);
+            liveChannelStreamInfoRequest.setChannelId(createChannel());
             liveChannelStreamInfoResponse = new LiveChannelStateServiceImpl().channelStreamInfo(
                     liveChannelStreamInfoRequest);
             Assert.assertNotNull(liveChannelStreamInfoResponse);

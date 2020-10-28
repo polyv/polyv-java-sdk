@@ -30,7 +30,7 @@ public class LiveWebSettingImplTest extends BaseTest {
         LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest = new LiveChannelGlobalSwitchRequest();
         Boolean liveChannelGlobalSwitchResponse;
         try {
-            liveChannelGlobalSwitchRequest.setChannelId(1965681)
+            liveChannelGlobalSwitchRequest.setChannelId(createChannel())
                     .setGlobalEnabledType(LiveConstant.GlobalEnabledType.CALLBACK.getDesc())
                     .setEnabled("N");
             liveChannelGlobalSwitchResponse = new LiveWebSettingServiceImpl().channelGlobalSwitch(

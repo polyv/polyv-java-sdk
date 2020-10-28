@@ -35,7 +35,7 @@ public class LiveWebMenuImplTest extends BaseTest {
         LiveUpdateChannelMenuRequest liveUpdateChannelMenuRequest = new LiveUpdateChannelMenuRequest();
         Boolean liveUpdateChannelMenuResponse;
         try {
-            liveUpdateChannelMenuRequest.setChannelId(1965681)
+            liveUpdateChannelMenuRequest.setChannelId(createChannel())
                     .setMenuType("desc")
                     .setContent("<html><body><h1>hello world</h1><button onclick=\"console.log('hello world')" +
                             "\"></button></body></html>");
@@ -68,7 +68,7 @@ public class LiveWebMenuImplTest extends BaseTest {
         LiveListChannelMenuRequest liveListChannelMenuRequest = new LiveListChannelMenuRequest();
         LiveListChannelMenuResponse liveListChannelMenuResponse;
         try {
-            liveListChannelMenuRequest.setChannelId(1965681);
+            liveListChannelMenuRequest.setChannelId(createChannel());
             liveListChannelMenuResponse = new LiveWebMenuServiceImpl().listChannelMenu(liveListChannelMenuRequest);
             Assert.assertNotNull(liveListChannelMenuResponse);
             if (liveListChannelMenuResponse != null) {

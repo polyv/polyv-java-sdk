@@ -4,10 +4,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import net.polyv.live.entity.interact.LiveListLotteryRequest;
-import net.polyv.live.entity.interact.LiveListLotteryResponse;
-import net.polyv.live.entity.interact.LiveLotteryWinnerDetailRequest;
-import net.polyv.live.entity.interact.LiveLotteryWinnerDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
@@ -18,7 +14,6 @@ import net.polyv.live.entity.interact.LiveQuestionnaireResultPageRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultPageResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
-import net.polyv.live.entity.interact.LiveSetLotteryWinnerInfoRequest;
 
 /**
  * 直播互动管理
@@ -77,39 +72,6 @@ public interface ILiveQuestionnaireService {
      */
     LiveQuestionnaireResultPageResponse getQuestionnaireResultPageInfo(
             LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest)
-            throws IOException, NoSuchAlgorithmException;
-    
-    /**
-     * 获取频道抽奖记录列表
-     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbhd/list-lottery/
-     * @param liveListLotteryRequest 获取频道抽奖记录列表请求实体
-     * @return 获取频道抽奖记录列表返回实体
-     * @throws IOException 异常
-     * @throws NoSuchAlgorithmException 异常
-     */
-    LiveListLotteryResponse listLottery(LiveListLotteryRequest liveListLotteryRequest)
-            throws IOException, NoSuchAlgorithmException;
-    
-    /**
-     * 获取频道单场抽奖的中奖记录
-     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbhd/get-winner-detail/
-     * @param liveLotteryWinnerDetailRequest 获取频道单场抽奖的中奖记录请求实体
-     * @return 获取频道单场抽奖的中奖记录返回实体
-     * @throws IOException 异常
-     * @throws NoSuchAlgorithmException 异常
-     */
-    LiveLotteryWinnerDetailResponse lotteryWinnerDetail(LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest)
-            throws IOException, NoSuchAlgorithmException;
-    
-    /**
-     * 设置抽奖中奖者信息
-     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/tjzjxx/
-     * @param liveSetLotteryWinnerInfoRequest 设置抽奖中奖者信息请求实体
-     * @return 设置抽奖中奖者信息返回实体
-     * @throws IOException 异常
-     * @throws NoSuchAlgorithmException 异常
-     */
-    Boolean setLotteryWinnerInfo(LiveSetLotteryWinnerInfoRequest liveSetLotteryWinnerInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

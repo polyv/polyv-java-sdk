@@ -24,8 +24,11 @@ import net.polyv.live.util.LiveSignUtil;
 @Slf4j
 public class LiveAnswerRecordServiceImplTest extends BaseTest {
     
+    
     /**
      * 查询频道答题卡答题结果
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
      */
     @Test
     public void testGetAnswerRecord() throws IOException, NoSuchAlgorithmException {

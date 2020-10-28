@@ -50,6 +50,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 通过HTTP接口发送聊天消息
+     * 描述：可指定发言者的头像、头衔、昵称，无需连接聊天室，通过HTTP接口发送聊天文本内容
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -86,6 +87,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 设置讲师信息
+     * 返回：true 设置讲师信息成功，false 设置讲师信息失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -121,6 +123,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 设置聊天室禁言ip
+     * 返回：当前所有的禁言ip列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -183,6 +186,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 查询频道禁言列表
+     * 返回：返回当前频道的禁言列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -228,8 +232,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             Assert.assertNotNull(liveKickedListResponsesList);
             if (liveKickedListResponsesList != null) {
                 //to do something ......
-                String channelId1 = liveKickedListResponsesList.get(0).getChannelId();
-                log.debug("取第一个信息频道 {}", channelId1);
                 log.debug("测试查询频道踢人列表成功{}", JSON.toJSONString(liveKickedListResponsesList));
             }
         } catch (PloyvSdkException e) {
@@ -246,6 +248,8 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 查询频道严禁词/禁言IP列表
+     * 描述：接口用于获取频道的严禁词或者禁言IP列表
+     * 返回：获取当前频道的严禁词/禁言IP列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -278,6 +282,8 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 查询账号严禁词列表
+     * 描述：接口用于获取账号下通用设置的严禁词列表
+     * 返回：当前保利威账号下通用设置的严禁词列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -308,6 +314,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 删除禁言IP/严禁词
+     * 返回：true 删除成功 ，false 删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -371,6 +378,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 查询历史聊天信息
+     * 描述：查询一段时间内的聊天记录，时间格式为yyyy-MM-dd 或 yyyy-MM-dd HH:mm:ss。如未提交具体时间，只提交了日期，开始时间默认为日期当天的 00:00:00，结束时间为日期当天的23:59:59
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -390,7 +398,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             if (liveGetHistoryChatMsgResponsesList != null) {
                 //to do something ......
                 log.debug("测试查询历史聊天信息成功{}", JSON.toJSONString(liveGetHistoryChatMsgResponsesList));
-                log.debug("第一个元素 {} ", liveGetHistoryChatMsgResponsesList.get(0));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -406,6 +413,8 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 删除单条聊天记录
+     * 描述：根据聊天的id删除对应聊天记录
+     * 返回：true 删除成功， false 删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -460,6 +469,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 设置聊天室管理员信息
+     * 返回：true 设置成功，false 设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -513,7 +523,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             if (responses != null) {
                 //to do something ......
                 log.debug("测试查询咨询提问记录成功{}", JSON.toJSONString(responses));
-                log.debug("第一个元素 {} ", responses.get(0).getContent());
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -563,6 +572,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 删除频道聊天记录
+     * 返回：true 删除成功， false 删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

@@ -31,6 +31,8 @@ public class LivePlayerServiceImplTest extends BaseTest {
     
     /**
      * 设置播放器暖场图片
+     * 描述：1、修改播放器的暖场图片
+     * 描述：2、暖场视频和暖场图片是处于非直播状态时，播放器显示的画面，两者在同一时间只能显示一种，以最晚设置者为准，若想删除暖场画面，则将coverImage或warmUpFlv的值设为"http://"。
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -41,7 +43,8 @@ public class LivePlayerServiceImplTest extends BaseTest {
         try {
             String channelId = super.createChannel();
             liveSetChatAdminDataRequest.setChannelId(channelId)
-                    .setCoverImage("http://pic.sc.chinaz.com/files/pic/pic9/202010/bpic21538.jpg")
+                    .setCoverImage("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57" +
+                            "/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
                     .setCoverHref("http://www.baidu.com")
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerImg(liveSetChatAdminDataRequest);
@@ -65,6 +68,8 @@ public class LivePlayerServiceImplTest extends BaseTest {
     
     /**
      * 设置频道的暖场设置开关
+     * 描述：用于设置频道的暖场开关
+     * 返回：true 设置成功 ， false 设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -98,6 +103,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
     
     /**
      * 设置播放器Logo
+     * 返回：true 设置成功， fales 设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -108,10 +114,10 @@ public class LivePlayerServiceImplTest extends BaseTest {
         try {
             String channelId = super.createChannel();
             liveSetPlayerLogoRequest.setChannelId(channelId)
-                    .setLogoHref("http://www.baidu.com/huava")
+                    .setLogoHref("http://www.baidu.com")
                     .setLogoPosition(LiveConstant.LogoPosition.BL.getPosition())
                     .setLogoImage(
-                            "https://c-ssl.duitang.com/uploads/item/202005/07/20200507133619_rpiso.thumb.1000_0.jpeg")
+                            "https://c-ssl.duitang.com/uploads/blog/202009/01/20200901155255_e8037.thumb.1000_0.jpg")
                     .setLogoOpacity(1D)
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerLogo(liveSetPlayerLogoRequest);
@@ -133,6 +139,8 @@ public class LivePlayerServiceImplTest extends BaseTest {
     
     /**
      * 设置播放器暂停广告
+     * 描述：用于设置某频道播放器的暂停广告
+     * 返回：true 设置成功，false 设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -145,10 +153,8 @@ public class LivePlayerServiceImplTest extends BaseTest {
             liveSetPlayerPauseAdvertRequest.setChannelId(channelId)
                     .setEnabled(LiveConstant.Flag.YES.getFlag())
                     .setStopAdvertHref("http://www.baidu.com")
-                    .setStopAdvertImage(
-                            "https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57" +
-                                    "/1024x0_1_q95_autohomecar__ChsEmF8EOK" +
-                                    "-AB5uaAAfsj_iwPdE906.jpg")
+                    .setStopAdvertImage("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57" +
+                            "/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerPauseAdvert(liveSetPlayerPauseAdvertRequest);
             Assert.assertNotNull(result);
@@ -171,6 +177,8 @@ public class LivePlayerServiceImplTest extends BaseTest {
     
     /**
      * 设置播放器片头广告
+     * 描述：设置某频道播放器的片头广告
+     * 返回：true 设置成功，false 设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -187,10 +195,8 @@ public class LivePlayerServiceImplTest extends BaseTest {
                     .setHeadAdvertType(LiveConstant.HeadAdvertType.IMAGE.getDesc())
                     .setHeadAdvertWidth(100)
                     .setHeadAdvertHref("http://www.baidu.com")
-                    .setHeadAdvertMediaUrl(
-                            "https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57" +
-                                    "/1024x0_1_q95_autohomecar__ChsEmF8EOK" +
-                                    "-AB5uaAAfsj_iwPdE906.jpg")
+                    .setHeadAdvertMediaUrl("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57" +
+                            "/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerHeaderAdvert(liveSetPlayerHeaderAdvertRequest);
             Assert.assertNotNull(result);
@@ -213,6 +219,9 @@ public class LivePlayerServiceImplTest extends BaseTest {
     
     /**
      * 设置播放器暖场视频
+     * 描述：1、修改播放器的暖场视频
+     * 描述：2、暖场视频和暖场图片是处于非直播状态时，播放器显示的画面，两者在同一时间只能显示一种，以最晚设置者为准，若想删除暖场画面，则将coverImage或warmUpFlv的值设为"http://"。
+     * 返回：true 设置成功，false 设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -223,8 +232,8 @@ public class LivePlayerServiceImplTest extends BaseTest {
         try {
             String channelId = super.createChannel();
             liveSetWarmupVedioRequest.setChannelId(channelId)
-                    .setWarmUpFlv("https://v.cnezsoft.com/zentao/introduction_catelog" +
-                            ".mp4?sign=e1119d6ab99b07ab28c2f0508acc76e7&t=5f966aea")
+                    .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4")
+                    .setWarmUpFlv("http://")//删除视频
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerWarmUpVedio(liveSetWarmupVedioRequest);
             Assert.assertNotNull(result);

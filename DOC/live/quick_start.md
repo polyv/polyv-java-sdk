@@ -16,7 +16,7 @@
 
 ## 1.添加Maven依赖  
 
-将如下依赖加入到项目的POM文件中： 
+&emsp;&emsp;将如下依赖加入到项目的POM文件中： 
 
 ```xml
 <dependency>
@@ -38,7 +38,7 @@
 
 ## 2.初始化系统
 
-在执行测试代码之前，需要B端先初始化系统配置，包括UserId \ AppId \ AppSecret , 如没有以上信息，请参考本文[前提条件](/quick_start?id=前提条件)部分获取，初始化示例代码如下：
+&emsp;&emsp;在执行测试代码之前，需要B端先初始化系统配置，包括UserId \ AppId \ AppSecret , 如没有以上信息，请参考本文[前提条件](/quick_start?id=前提条件)部分获取，初始化示例代码如下：
 
 ````java
    /**
@@ -53,7 +53,7 @@
     }
 ````
 
-以上代码一般配置于随系统启动执行一次的全局初始化中，如用spring框架，可以参考如下：
+&emsp;&emsp;以上代码一般配置于随系统启动执行一次的全局初始化中，如用spring框架，可以参考如下：
 
 ````java
 package net.polyv.live.config;
@@ -84,7 +84,7 @@ public class StartupListener implements ApplicationContextAware {
 
 ## 3.执行测试代码
 
-测试创建一个直播频道，单元测试代码如下：
+&emsp;&emsp;测试创建一个直播频道，单元测试代码如下：
 
 ```java
 package net.polyv.live.service.channel;
@@ -141,7 +141,7 @@ public class LiveChannelDemo {
 }
 ```
 
-执行代码后，控制台应有如下关键输出，表示整合完成：
+&emsp;&emsp;执行代码后，控制台应有如下关键输出，表示整合完成：
 
 ```json
 [main] DEBUG net.polyv.common.base.HttpUtil - http 请求 url: https://api.polyv.net/live/v2/channels/ , 请求参数: {"requestId":"2860257a405447e1bbbe9161da2dee72","appId":"frlr1zazn3","name":"Spring 知识精讲","sign":"EC98FB94BF6DADA722F1C9A7AA0E9C0E","channelPasswd":"666888","userId":"1b448be323","timestamp":"1603435147307"}
@@ -149,19 +149,19 @@ public class LiveChannelDemo {
 [main] DEBUG net.polyv.live.service.channel.LiveChannelDemo - 频道创建成功{"advertDuration":0,"advertFlvUrl":"","advertFlvVid":"","advertHeight":0,"advertHref":"","advertImage":"","advertType":"NONE","advertWidth":0,"autoPlay":false,"channelId":1972796,"coverHref":"","coverImage":"","currentTimeMillis":1603435207694,"cutoffHref":"","cutoffImage":"","description":"","isLowLatency":"N","isOnlyAudio":"N","linkMicLimit":0,"logoHref":"","logoImage":"","logoOpacity":1,"logoPosition":"tr","m3u8Url":"http://pull-d1.videocc.net/recordf/1b448be3231603435207373ea0f.m3u8?auth_key=1603435207-0-0-56b60df63374403e22821f79a681989f","m3u8Url1":"","m3u8Url2":"","m3u8Url3":"","name":"Spring 知识精讲","passwdEncrypted":"","passwdRestrict":false,"playerColor":"#666666","stream":"1b448be3231603435207373ea0f","url":"rtmp://push-d1.videocc.net/recordf/1b448be3231603435207373ea0f?auth_key=1603437007-0-0-bdbbb7f070573d80424a69c99c52ed0a","userId":"1b448be323","waitHref":"","waitImage":"","warmUpFlv":""}
 ```
 
-还可以官网登录验证创建是否成功；
+&emsp;&emsp;还可以官网登录验证创建是否成功；
 
 ![image-20200928163452748](../img/image-20200928163452748.png)
 
 
 
-至此，B端已经完成保利威直播Java SDK安装配置，可以使用直播SDK进行其他功能开发和测试，如B端接入过程有任何问题，可以通过以下方式反馈：
+&emsp;&emsp;至此，B端已经完成保利威直播Java SDK安装配置，可以使用直播SDK进行其他功能开发和测试，如B端接入过程有任何问题，可以通过以下方式反馈：
 
 1.发邮件反馈，wujie@polyv.net ；
 
 2.[官网在线咨询反馈](https://www.polyv.net/)；
 
-请将问题的运行环境、操作步骤、错误反馈信息、联系方式同步反馈，便于问题的快速定位和解决； 
+&emsp;&emsp;请将问题的运行环境、操作步骤、错误反馈信息、联系方式同步反馈，便于问题的快速定位和解决； 
 
 
 

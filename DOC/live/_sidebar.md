@@ -34,7 +34,7 @@
   * []()
 * 播放器
 
-  * [播放器](player/player)
+  * [播放器](playerService)
 * 常见问题
 
   * []()

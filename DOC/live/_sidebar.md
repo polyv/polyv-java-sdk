@@ -24,6 +24,7 @@
   * [答题卡管理](answerRecordService)
   * [签到管理](checkinService)
   * [问卷管理](questionnaireService)
+  * [抽奖管理](lotteryService)
 * 聊天室
 
   * [聊天室](chatRoomService)

@@ -96,7 +96,7 @@ public class CommonParseUtil {
                 System.out.println("@NotNull(message = \"属性" + fieldName + "不能为空\")");
             }
             if ("timestamp".equals(fieldType)) {
-                System.out.print("@JSONField(format = \"yyyy-MM-dd hh:mm:ss\")");
+                System.out.print("@JSONField(format = \"yyyy-MM-dd HH:mm:ss\")");
             }
             System.out.print("private " + reallyType + " " + fieldName + ";");
             System.out.println("");

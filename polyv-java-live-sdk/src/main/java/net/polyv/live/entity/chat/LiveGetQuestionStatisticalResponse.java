@@ -43,14 +43,14 @@ public class LiveGetQuestionStatisticalResponse {
      * 开始时间，格式：yyyy-MM-dd HH:mm:ss
      */
     @ApiModelProperty(name = "startTIme", value = "开始时间，格式：yyyy-MM-dd HH:mm:ss", required = false)
-    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date startTIme;
     
     /**
      * 结束时间，格式：yyyy-MM-dd HH:mm:ss
      */
     @ApiModelProperty(name = "endTIme", value = "结束时间，格式：yyyy-MM-dd HH:mm:ss", required = false)
-    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date endTIme;
     
     /**

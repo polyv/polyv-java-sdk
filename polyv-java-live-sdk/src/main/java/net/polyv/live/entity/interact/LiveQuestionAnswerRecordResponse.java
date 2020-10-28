@@ -118,8 +118,7 @@ public class LiveQuestionAnswerRecordResponse {
         /**
          * 答题的用户提交时间，13位毫秒级时间戳
          */
-        @ApiModelProperty(name = "submitTime", value = "答题的用户提交时间，13位毫秒级时间戳", required = false)
-        @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+        @ApiModelProperty(name = "submitTime", value = "答题的用户提交时间", required = false)
         private Date submitTime;
     }
     /**

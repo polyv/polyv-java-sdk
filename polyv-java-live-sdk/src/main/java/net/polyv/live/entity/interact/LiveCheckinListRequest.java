@@ -32,13 +32,13 @@ public class LiveCheckinListRequest extends LivePageCommonRequest {
     /**
      * 查询的指定日期，格式为yyyy-MM-dd
      */
-    @ApiModelProperty(name = "date", value = "查询的指定日期，格式为yyyy-MM-dd", required = false)
+    @ApiModelProperty(name = "date", value = "查询的指定日期，格式为yyyy-MM-dd，默认查询当天签到记录", required = false)
     private String date;
     
     /**
      * 场次sessionId,如果传sessionId,
      */
-    @ApiModelProperty(name = "sessionId", value = "场次sessionId,如果传sessionId,", required = false)
+    @ApiModelProperty(name = "sessionId", value = "场次sessionId,sessionId优先级高于date，如传sessionId，date参数无效", required = false)
     private String sessionId;
     
 }

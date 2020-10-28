@@ -41,7 +41,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
             String channelId = super.createChannel();
             
             liveCheckinListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-//        liveCheckinListRequest.setDate("2020-10-20").setSessionId("fs9v9y4nxf");
+            liveCheckinListRequest.setDate("2020-10-20").setSessionId("fs9v9y4nxf");
             checkinListInfo = new LiveCheckinServiceImpl().getCheckinListInfo(liveCheckinListRequest);
             Assert.assertNotNull(checkinListInfo);
             if (checkinListInfo != null) {

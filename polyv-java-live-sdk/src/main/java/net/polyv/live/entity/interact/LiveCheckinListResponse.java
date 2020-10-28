@@ -3,6 +3,8 @@ package net.polyv.live.entity.interact;
 import java.util.Date;
 import java.util.List;
 
+import org.w3c.dom.NamedNodeMap;
+
 import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
@@ -39,7 +41,7 @@ public class LiveCheckinListResponse {
          * 查询的签到日期，yyyy-MM-dd格式
          */
         @ApiModelProperty(name = "indate", value = "查询的签到日期，yyyy-MM-dd格式", required = false)
-        @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+        @JSONField(format = "yyyy-MM-dd")
         private Date indate;
         
         /**
@@ -51,8 +53,9 @@ public class LiveCheckinListResponse {
         /**
          * 用户id
          */
-        @ApiModelProperty(name = "userid", value = "用户id", required = false)
-        private String userid;
+        @ApiModelProperty(name = "userId", value = "用户id", required = false)
+        @JSONField(name = "userid")
+        private String userId;
         
         /**
          * 频道号
@@ -64,14 +67,13 @@ public class LiveCheckinListResponse {
          * 签到的具体时间戳
          */
         @ApiModelProperty(name = "time", value = "签到的具体时间戳", required = false)
-        @JSONField(format = "yyyy-MM-dd hh:mm:ss")
         private Date time;
         
         /**
          * 签到的格式化详细日期，yyyy-MM-dd
          */
-        @ApiModelProperty(name = "timeFormat", value = "签到的格式化详细日期，yyyy-MM-dd", required = false)
-        @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+        @ApiModelProperty(name = "timeFormat", value = "签到的格式化详细日期，yyyy-MM-dd HH:mm", required = false)
+        @JSONField(format = "yyyy-MM-dd HH:mm")
         private Date timeFormat;
         
         /**
@@ -83,9 +85,7 @@ public class LiveCheckinListResponse {
         /**
          * 该场次直播开始时间，如果不传sessionId,startTime为空；传sessionId,startTime显示
          */
-        @ApiModelProperty(name = "startTime", value = "该场次直播开始时间，如果不传sessionId,startTime为空；传sessionId,startTime显示",
-                required = false)
-        @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+        @ApiModelProperty(name = "startTime", value = "该场次直播开始时间，只有请求参数传sessionId,该字段才有值", required = false)
         private Date startTime;
         
         /**

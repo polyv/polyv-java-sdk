@@ -6,7 +6,7 @@
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testGetAnswerRecord() throws IOException, NoSuchAlgorithmException {
@@ -15,6 +15,7 @@
         try {
             String channelId = super.createChannel();
             liveQuestionAnswerRecordRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionAnswerRecordRequest.setStartDate("2020-10-01").setEndDate("2099-10-01");
             liveCheckinResponse = new LiveAnswerRecordServiceImpl().getAnswerRecord(liveQuestionAnswerRecordRequest);
             Assert.assertNotNull(liveCheckinResponse);
             if (liveCheckinResponse != null) {
@@ -36,7 +37,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveQuestionAnswerRecordResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -54,10 +55,11 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | questionId | false | String | 题目ID | 
+| questionTitle | false | String | 题目标题 | 
 | times | false | Integer | 第几次发送题目，用于区分相同题目重复发送的情况 | 
 | answer | false | String | 题目的答案 | 
 | total | false | Integer | 答题人数 | 
-| options | false | Array | 【详见**Option参数描述**】 | 
+| options | false | Array | 题目选项信息列表【详见**Option参数描述**】 | 
 | records | false | Array | 答题的用户列表【详见**Record参数描述**】 | 
 | type | false | String | 题目类型：R为单选，C为多选，Q为问答 | 
 | itemType | false | Integer | 答题类型：1表示问答，0表示答题卡 | 
@@ -78,7 +80,7 @@
 | nickname | false | String | 答题的用户昵称 | 
 | answer | false | String | 答题的用户提交的答案 | 
 | corrent | false | Boolean | 答题的用户提交的答案是否正确：false不正确，true正确 | 
-| submitTime | false | Date | 答题的用户提交时间，13位毫秒级时间戳 | 
+| submitTime | false | Date | 答题的用户提交时间 | 
 
 <br /><br />
 ------------------

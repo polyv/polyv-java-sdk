@@ -6,7 +6,7 @@
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testListChannelDoc() throws IOException, NoSuchAlgorithmException {
@@ -14,7 +14,10 @@
         LiveListChannelDocResponse liveListChannelDocResponse;
         try {
             String channelId = createChannel();
-            liveListChannelDocRequest.setChannelId(channelId).setStatus(null);
+            liveListChannelDocRequest.setChannelId(channelId)
+                    .setIsShowUrl("Y")
+                    .setStatus(null)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelDocResponse = new LiveChannelDocServiceImpl().listChannelDoc(liveListChannelDocRequest);
             Assert.assertNotNull(liveListChannelDocResponse);
             if (liveListChannelDocResponse != null) {
@@ -35,7 +38,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveListChannelDocResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -85,7 +88,7 @@
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testChannelDocStatus() throws IOException, NoSuchAlgorithmException {
@@ -94,9 +97,9 @@
         try {
             String channelId = createChannel();
             liveChannelDocStatusRequest.setChannelId(channelId)
-                    .setFileId(
-                            "c2d585857870f4eff024976e3a265c0b1965681common," +
-                                    "6e0603f6c8ec6113b87f69a7191d22021965681common");
+                    .setFileId("c2d585857870f4eff024976e3a265c0b1965681common," +
+                            "6e0603f6c8ec6113b87f69a7191d22021965681common")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelDocStatusResponse = new LiveChannelDocServiceImpl().channelDocStatus(
                     liveChannelDocStatusRequest);
             Assert.assertNotNull(liveChannelDocStatusResponse);
@@ -118,7 +121,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveChannelDocStatusResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -158,7 +161,7 @@
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testDeleteChannelDoc() throws IOException, NoSuchAlgorithmException {
@@ -167,11 +170,12 @@
         try {
             String channelId = createChannel();
             liveDeleteChannelDocRequest.setChannelId(channelId)
-                    .setFileId("d2925eab9ac71da4d27d93bd8b3d0e821965681common")
-                    .setType("new");
+                    .setFileId("6897d12bd284dd1e9b8b8534b6af91c31965681common")
+                    .setType("new")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelDocResponse = new LiveChannelDocServiceImpl().deleteChannelDoc(
                     liveDeleteChannelDocRequest);
-            Assert.assertNotNull(liveDeleteChannelDocResponse);
+            Assert.assertTrue(liveDeleteChannelDocResponse);
             if (liveDeleteChannelDocResponse) {
                 //to do something ......
                 log.debug("测试删除频道文档成功");
@@ -190,7 +194,7 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -214,7 +218,7 @@
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testCreateChannelDoc() throws IOException, NoSuchAlgorithmException {
@@ -226,7 +230,8 @@
                     .setType("common")
                     .setFile(file)
                     .setDocName("葵花宝典")
-                    .setCallbackUrl("http://www.baidu.com/callback");
+                    .setCallbackUrl("http://www.baidu.com/callback")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelDocResponse = new LiveChannelDocServiceImpl().createChannelDoc(
                     liveCreateChannelDocRequest);
             Assert.assertNotNull(liveCreateChannelDocResponse);
@@ -249,7 +254,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveCreateChannelDocResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 

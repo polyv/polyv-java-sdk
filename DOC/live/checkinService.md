@@ -6,7 +6,7 @@
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testGetCheckinListInfo() throws IOException, NoSuchAlgorithmException {
@@ -15,7 +15,7 @@
         try {
             String channelId = super.createChannel();
             liveCheckinListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-//        liveCheckinListRequest.setDate("2020-10-20").setSessionId("fs9v9y4nxf");
+            liveCheckinListRequest.setDate("2020-10-20").setSessionId("fs9v9y4nxf");
             checkinListInfo = new LiveCheckinServiceImpl().getCheckinListInfo(liveCheckinListRequest);
             Assert.assertNotNull(checkinListInfo);
             if (checkinListInfo != null) {
@@ -36,14 +36,14 @@
 ### 单元测试说明
 1、请求正确，返回LiveCheckinListResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| date | false | String | 查询的指定日期，格式为yyyy-MM-dd | 
-| sessionId | false | String | 场次sessionId,如果传sessionId, | 
+| date | false | String | 查询的指定日期，格式为yyyy-MM-dd，默认查询当天签到记录 | 
+| sessionId | false | String | 场次sessionId,sessionId优先级高于date，如传sessionId，date参数无效 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
@@ -61,12 +61,14 @@
 | -- | -- | -- | -- | 
 | indate | false | Date | 查询的签到日期，yyyy-MM-dd格式 | 
 | nickname | false | String | 昵称 | 
-| userid | false | String | 用户id | 
+| userId | false | String | 用户id | 
 | channelId | false | String | 频道号 | 
 | time | false | Date | 签到的具体时间戳 | 
-| timeFormat | false | Date | 签到的格式化详细日期，yyyy-MM-dd | 
+| timeFormat | false | Date | 签到的格式化详细日期，yyyy-MM-dd HH:mm | 
 | sessionId | false | String | 场次sessionId | 
-| startTime | false | Date | 该场次直播开始时间，如果不传sessionId,startTime为空；传sessionId,startTime显示 | 
+| checkinid | false | String | 签到ID | 
+| id | false | String | 签到记录主键 | 
+| startTime | false | Date | 该场次直播开始时间，只有请求参数传sessionId,该字段才有值 | 
 | param4 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数 | 
 | param5 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数 | 
 
@@ -76,12 +78,12 @@
 ## 2、查询指定签到ID的签到记录
 ### 描述
 ```
-查询指定签到ID的签到记录
+通过签到ID获取该次签到记录
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testGetCheckinInfoById() throws IOException, NoSuchAlgorithmException {
@@ -112,7 +114,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveCheckinResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -126,13 +128,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| checkinid | false | String | 签到时间 | 
+| checkinid | false | String | 签到id | 
 | nickname | false | String | 签到学员名称 | 
 | checked | false | String | 签到Y,未签到N | 
-| indate | false | String | 签到日期 | 
+| indate | false | Date | 签到日期,格式yyyy-MM-dd | 
 | id | false | Integer | 签到记录主键 | 
 | sessionId | false | String | 场次号 | 
-| time | false | Long | 签到时间 | 
+| time | false | Date | 签到时间 | 
 | userid | false | String | 签到学员ID | 
 | roomid | false | String | 房间号 | 
 | param4 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数 | 
@@ -144,12 +146,12 @@
 ## 3、依据指定直播场次sessionId查询签到场次信息
 ### 描述
 ```
-依据指定直播场次sessionId查询签到场次信息
+通过直播场次sessionId获取直播发起签到记录
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testGetCheckinMetadataBySessionId() throws IOException, NoSuchAlgorithmException {
@@ -183,13 +185,13 @@
 ### 单元测试说明
 1、请求正确，返回LiveCheckinMetadataBySessionIdResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| sessionId | false | String | 场次ID | 
+| sessionId | true | String | 场次ID | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述

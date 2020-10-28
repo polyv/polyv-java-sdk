@@ -1,12 +1,12 @@
-## 1、分页查询账号下所有频道详细信息
+## 1、查询账号下所有频道详细信息
 ### 描述
 ```
-分页查询账号下所有频道详细信息
+查询账号下所有频道详细信息
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testListAccountDetail() throws IOException, NoSuchAlgorithmException {
@@ -35,7 +35,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveListAccountDetailResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -109,15 +109,15 @@
 <br /><br />
 ------------------
 <br /><br />
-## 2、查询账号下的频道列表(频道号列表)
+## 2、查询账号下的频道列表
 ### 描述
 ```
-查询账号下的频道列表(频道号列表)
+查询账号下的频道列表
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testListAccount() throws IOException, NoSuchAlgorithmException {
@@ -145,7 +145,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveListAccountResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -172,7 +172,7 @@
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testMicDuration() throws IOException, NoSuchAlgorithmException {
@@ -200,7 +200,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveAccountMicDurationResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -218,64 +218,7 @@
 <br /><br />
 ------------------
 <br /><br />
-## 4、设置功能开关状态
-### 描述
-```
-设置功能开关状态
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
-
-2、isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;
-closeChaterList当enabled值为Y时，表示的是关闭在线列表
-### 代码示例
-```java
-	@Test
-	public void testUpdateAccountSwitch() throws IOException, NoSuchAlgorithmException {
-        LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest = new LiveUpdateAccountSwitchRequest();
-        Boolean liveUpdateAccountSwitchResponse;
-        try {
-            liveUpdateAccountSwitchRequest.setType(LiveConstant.ChannelSwitch.AUTO_PLAY.getDesc())
-                    .setEnabled("N")
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveUpdateAccountSwitchResponse = new LiveAccountServiceImpl().updateAccountSwitch(
-                    liveUpdateAccountSwitchRequest);
-            Assert.assertNotNull(liveUpdateAccountSwitchResponse);
-            if (liveUpdateAccountSwitchResponse) {
-                //to do something ......
-                log.debug("设置功能开关状态成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号，不传该参数则表示修改全局设置 | 
-| type | true | String | 开关类型(isClosePreview:是否关闭系统观看页，Y时表示关闭;mobileWatch:是否开启移动端音视频切换;autoPlay:是否开启播放器自动播放功能;booking:是否开启预约功能;redPack:是否开启红包功能;shareBtnEnabled:是否开启分享功能;chat:是否开启聊天室;closeChaterList:是否关闭在线列表，Y时表示关闭;consultingMenu:是否开启咨询提问;closeDanmu:是否关闭弹幕功能，Y时表示关闭;praise:是否开启点赞语功能;welcome:是否开启欢迎语功能;viewerSendImgEnabled:是否开启观众发送图片) | 
-| enabled | true | String | 开关值，Y或N | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-true为设置成功，false为设置失败
-<br /><br />
-------------------
-<br /><br />
-## 5、设置账号单点登录的token
+## 4、设置账号单点登录的token
 ### 描述
 ```
 设置账号单点登录的token
@@ -284,7 +227,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
 2、token 参数请勿过于简单，建议使用16位随机字符串
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testCreateAccountToken() throws IOException, NoSuchAlgorithmException {
@@ -313,7 +256,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -327,7 +270,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 <br /><br />
 ------------------
 <br /><br />
-## 6、设置直播状态回调通知url
+## 5、设置直播状态回调通知url
 ### 描述
 ```
 设置直播状态回调通知url
@@ -336,14 +279,15 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
 2、不提交地址参数url，则回调地址为空，表示关闭回调功能，如果要提交的地址参数url，必须以 http:// 或者 https:// 开头
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testUpdateStreamCallbackUrl() throws IOException, NoSuchAlgorithmException {
         LiveAccountStreamCallbackRequest liveAccountStreamCallbackRequest = new LiveAccountStreamCallbackRequest();
         Boolean liveAccountStreamCallbackResponse;
         try {
-            liveAccountStreamCallbackRequest.setUrl("http://www.abc.com/callback");
+            liveAccountStreamCallbackRequest.setUrl("http://www.abc.com/callback")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveAccountStreamCallbackResponse = new LiveAccountServiceImpl().updateStreamCallbackUrl(
                     liveAccountStreamCallbackRequest);
             Assert.assertNotNull(liveAccountStreamCallbackResponse);
@@ -365,7 +309,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -392,7 +336,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 <br /><br />
 ------------------
 <br /><br />
-## 7、设置转存成功回调通知url
+## 6、设置转存成功回调通知url
 ### 描述
 ```
 设置转存成功回调通知url
@@ -401,7 +345,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
 2、不提交地址参数url，则回调地址为空，表示关闭回调功能，如果要提交的地址参数url，必须以 http:// 或者 https:// 开头
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testUpdatePlaybackCallbackUrl() throws IOException, NoSuchAlgorithmException {
@@ -409,7 +353,8 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
                 new LiveAccountPlaybackCallbackRequest();
         Boolean liveAccountPlaybackCallbackResponse;
         try {
-            liveAccountPlaybackCallbackRequest.setUrl("http://www.abc.com/callback");
+            liveAccountPlaybackCallbackRequest.setUrl("http://www.abc.com/callback")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveAccountPlaybackCallbackResponse = new LiveAccountServiceImpl().updatePlaybackCallbackUrl(
                     liveAccountPlaybackCallbackRequest);
             Assert.assertNotNull(liveAccountPlaybackCallbackResponse);
@@ -431,7 +376,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -465,7 +410,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 <br /><br />
 ------------------
 <br /><br />
-## 8、设置录制回调通知url
+## 7、设置录制回调通知url
 ### 描述
 ```
 设置录制回调通知url
@@ -474,14 +419,15 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
 2、不提交地址参数url，则回调地址为空，表示关闭回调功能，如果要提交的地址参数url，必须以 http:// 或者 https:// 开头
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testUpdateRecordCallbackUrl() throws IOException, NoSuchAlgorithmException {
         LiveAccountRecordCallbackRequest liveAccountRecordCallbackRequest = new LiveAccountRecordCallbackRequest();
         Boolean liveAccountRecordCallbackResponse;
         try {
-            liveAccountRecordCallbackRequest.setUrl("http://www.abc.com/callback");
+            liveAccountRecordCallbackRequest.setUrl("http://www.abc.com/callback")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveAccountRecordCallbackResponse = new LiveAccountServiceImpl().updateRecordCallbackUrl(
                     liveAccountRecordCallbackRequest);
             Assert.assertNotNull(liveAccountRecordCallbackResponse);
@@ -503,7 +449,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -531,22 +477,81 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 <br /><br />
 ------------------
 <br /><br />
-## 9、查询功能开关状态接口
+## 8、设置功能开关状态
 ### 描述
 ```
-查询功能开关状态接口
+设置功能开关状态
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+2、isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;
+closeChaterList当enabled值为Y时，表示的是关闭在线列表
+### 单元测试
+```java
+	@Test
+	public void testUpdateAccountSwitch() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest = new LiveUpdateAccountSwitchRequest();
+        Boolean liveUpdateAccountSwitchResponse;
+        try {
+            liveUpdateAccountSwitchRequest.setType(LiveConstant.ChannelSwitch.AUTO_PLAY.getDesc())
+                    .setEnabled("N")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateAccountSwitchResponse = new LiveAccountServiceImpl().updateAccountSwitch(
+                    liveUpdateAccountSwitchRequest);
+            Assert.assertNotNull(liveUpdateAccountSwitchResponse);
+            if (liveUpdateAccountSwitchResponse) {
+                //to do something ......
+                log.debug("设置功能开关状态成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | false | String | 频道号，不传该参数则表示修改全局设置 | 
+| type | true | String | 开关类型(isClosePreview:是否关闭系统观看页，Y时表示关闭;mobileWatch:是否开启移动端音视频切换;autoPlay:是否开启播放器自动播放功能;booking:是否开启预约功能;redPack:是否开启红包功能;shareBtnEnabled:是否开启分享功能;chat:是否开启聊天室;closeChaterList:是否关闭在线列表，Y时表示关闭;consultingMenu:是否开启咨询提问;closeDanmu:是否关闭弹幕功能，Y时表示关闭;praise:是否开启点赞语功能;welcome:是否开启欢迎语功能;viewerSendImgEnabled:是否开启观众发送图片) | 
+| enabled | true | String | 开关值，Y或N | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为设置成功，false为设置失败
+<br /><br />
+------------------
+<br /><br />
+## 9、查询功能开关状态接口
+### 描述
+```
+接口用于获取开关设置，可获取全局开关设置或频道开关设置
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](../limit.md)
+
+2、isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;
+closeChaterList当enabled值为Y时，表示的是关闭在线列表
+### 单元测试
 ```java
 	@Test
 	public void testAccountSwitch() throws IOException, NoSuchAlgorithmException {
         LiveAccountSwitchRequest liveAccountSwitchRequest = new LiveAccountSwitchRequest();
         LiveAccountSwitchResponse liveAccountSwitchResponse;
         try {
-            liveAccountSwitchRequest.setChannelId(null);
+            liveAccountSwitchRequest.setChannelId(null).setRequestId(LiveSignUtil.generateUUID());
             liveAccountSwitchResponse = new LiveAccountServiceImpl().accountSwitch(liveAccountSwitchRequest);
             Assert.assertNotNull(liveAccountSwitchResponse);
             if (liveAccountSwitchResponse != null) {
@@ -567,7 +572,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试说明
 1、请求正确，返回LiveAccountSwitchResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -586,7 +591,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| type | false | String | 开关类型 | 
+| type | false | String | 开关类型(isClosePreview:是否关闭系统观看页，Y时表示关闭;mobileWatch:是否开启移动端音视频切换;autoPlay:是否开启播放器自动播放功能;booking:是否开启预约功能;redPack:是否开启红包功能;shareBtnEnabled:是否开启分享功能;chat:是否开启聊天室;closeChaterList:是否关闭在线列表，Y时表示关闭;consultingMenu:是否开启咨询提问;closeDanmu:是否关闭弹幕功能，Y时表示关闭;praise:是否开启点赞语功能;welcome:是否开启欢迎语功能;viewerSendImgEnabled:是否开启观众发送图片) | 
 | enabled | false | String | 是否已打开开关 | 
 
 <br /><br />
@@ -600,7 +605,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testListChannelBasic() throws IOException, NoSuchAlgorithmException {
@@ -612,7 +617,8 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
                     .setWatchStatus("end")
                     .setKeyword("勿删")
                     .setPageSize(null)
-                    .setCurrentPage(1);
+                    .setCurrentPage(1)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveListAccountChannelBasicResponse = new LiveAccountServiceImpl().listChannelBasic(
                     liveListAccountChannelBasicRequest);
             Assert.assertNotNull(liveListAccountChannelBasicResponse);
@@ -634,7 +640,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试说明
 1、请求正确，返回LiveListAccountChannelBasicResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -681,13 +687,14 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 代码示例
+### 单元测试
 ```java
 	@Test
 	public void testUserDurations() throws IOException, NoSuchAlgorithmException {
         LiveAccountUserDurationsRequest liveAccountUserDurationsRequest = new LiveAccountUserDurationsRequest();
         LiveAccountUserDurationsResponse liveAccountUserDurationsResponse;
         try {
+            liveAccountUserDurationsRequest.setRequestId(LiveSignUtil.generateUUID());
             liveAccountUserDurationsResponse = new LiveAccountServiceImpl().userDurations(
                     liveAccountUserDurationsRequest);
             Assert.assertNotNull(liveAccountUserDurationsResponse);
@@ -710,7 +717,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试说明
 1、请求正确，返回LiveAccountUserDurationsResponse对象，B端依据此对象处理业务逻辑；
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、请求服务器网络异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 

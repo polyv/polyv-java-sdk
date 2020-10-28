@@ -39,7 +39,7 @@ public class LiveSetPlayerImgRequest extends LiveCommonRequest {
     /**
      * 暖场图片跳转地址
      */
-    @ApiModelProperty(name = "coverHref", value = "暖场图片跳转地址", required = false)
+    @ApiModelProperty(name = "coverHref", value = "点击暖场图片后浏览器跳转地址", required = false)
     private String coverHref;
     
     

@@ -31,7 +31,7 @@ public class LiveSetPlayerPauseAdvertRequest extends LiveCommonRequest {
     /**
      * Y-打开，N-关闭；设置开关时，其余设置参数无效
      */
-    @ApiModelProperty(name = "enabled", value = "Y-打开，N-关闭；设置开关时，其余设置参数无效", required = false)
+    @ApiModelProperty(name = "enabled", value = "设置播放器暂停广告开关：Y-打开，N-关闭", required = false)
     private String enabled;
     
     /**

@@ -33,5 +33,56 @@ public class LiveAccountStreamCallbackRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "url", value = "回调地址url，不提交表示关闭回调功能，如果提交，必须以http://或者https://开头", required = false)
     private String url;
-
+    
+    @Data
+    @Accessors(chain = true)
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @ApiModel("直播状态改变回调返回实体")
+    public static class LiveStateChangeCallback{
+        
+        /**
+         * 频道号
+         */
+        @ApiModelProperty(name = "channelId", value = "频道号", required = false)
+        private Integer channelId;
+        
+        /**
+         * 直播频道的状态：live正在直播，end直播结束
+         */
+        @ApiModelProperty(name = "status", value = "直播频道的状态：live正在直播，end直播结束", required = false)
+        private String status;
+        
+        /**
+         * 13位的时间戳
+         */
+        @ApiModelProperty(name = "timestamp", value = "13位的时间戳", required = false)
+        private Long timestamp;
+        
+        /**
+         * 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙
+         */
+        @ApiModelProperty(name = "sign", value = "校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙", required = false)
+        private String sign;
+        
+        /**
+         * 直播的场次ID
+         */
+        @ApiModelProperty(name = "sessionId", value = "直播的场次ID", required = false)
+        private String sessionId;
+        
+        /**
+         * 直播的开始时间,13位的时间戳
+         */
+        @ApiModelProperty(name = "startTime", value = "直播的开始时间,13位的时间戳", required = false)
+        private Long startTime;
+        
+        /**
+         * 直播的结束时间(当status=end的时候有值，status=live的时候为空值),13位的时间戳
+         */
+        @ApiModelProperty(name = "endTime", value = "直播的结束时间(当status=end的时候有值，status=live的时候为空值),13位的时间戳", required = false)
+        private Long endTime;
+        
+    }
+    
 }

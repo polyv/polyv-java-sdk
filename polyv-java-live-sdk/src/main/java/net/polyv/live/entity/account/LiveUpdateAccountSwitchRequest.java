@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.LiveCommonRequest;
 
 /**
@@ -29,8 +30,12 @@ public class LiveUpdateAccountSwitchRequest extends LiveCommonRequest {
     
     /**
      * 开关类型
+     * {@link LiveConstant.ChannelSwitch}
      */
-    @ApiModelProperty(name = "type", value = "开关类型", required = true)
+    @ApiModelProperty(name = "type", value = "开关类型(isClosePreview:是否关闭系统观看页，Y时表示关闭;mobileWatch:是否开启移动端音视频切换;" +
+            "autoPlay:是否开启播放器自动播放功能;booking:是否开启预约功能;redPack:是否开启红包功能;shareBtnEnabled:是否开启分享功能;chat:是否开启聊天室;" +
+            "closeChaterList:是否关闭在线列表，Y时表示关闭;consultingMenu:是否开启咨询提问;closeDanmu:是否关闭弹幕功能，Y时表示关闭;praise:是否开启点赞语功能;" +
+            "welcome:是否开启欢迎语功能;viewerSendImgEnabled:是否开启观众发送图片)", required = true)
     @NotNull(message = "属性type不能为空")
     private String type;
     

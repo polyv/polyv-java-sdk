@@ -38,7 +38,7 @@ public class LiveListLotteryRequest extends LivePageCommonRequest {
     /**
      * 查询的开始日期的13位时间戳
      */
-    @ApiModelProperty(name = "startTime", value = "查询的开始日期的13位时间戳", required = false)
+    @ApiModelProperty(name = "startTime", value = "查询的开始日期的13位时间戳", required = true)
     @NotNull(message = "属性startTime不允许为空")
     private Long startTime;
     

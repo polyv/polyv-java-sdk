@@ -32,7 +32,7 @@ public class LiveSetWarmupVedioRequest extends LiveCommonRequest {
     /**
      * 开关值，Y或N，Y表示开启，N表示关闭
      */
-    @ApiModelProperty(name = "warmUpFlv", value = "暖场视频地址，移动端不支持FLV视频文件，建议使用MP4视频文件", required = true)
+    @ApiModelProperty(name = "warmUpFlv", value = "暖场视频地址(http地址)，移动端不支持FLV视频文件，建议使用MP4视频文件", required = true)
     @NotNull(message = "属性warmUpFlv不能为空")
     private String warmUpFlv;
     

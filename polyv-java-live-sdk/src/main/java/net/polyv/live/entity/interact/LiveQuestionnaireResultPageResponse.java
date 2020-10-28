@@ -25,7 +25,7 @@ public class LiveQuestionnaireResultPageResponse extends LivePageCommonResponse 
     /**
      * 问卷ID
      */
-    @ApiModelProperty(name = "contents", value = "频道的问卷信息和统计结果", required = false)
+    @ApiModelProperty(name = "contents", value = "频道的问卷信息和统计结果列表", required = false)
     private List<LiveQuestionnaireResultResponse> contents;
     
 }

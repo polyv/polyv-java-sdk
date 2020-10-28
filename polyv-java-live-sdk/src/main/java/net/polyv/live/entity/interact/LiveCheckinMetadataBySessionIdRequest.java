@@ -31,7 +31,8 @@ public class LiveCheckinMetadataBySessionIdRequest extends LiveCommonRequest {
     /**
      * 场次ID
      */
-    @ApiModelProperty(name = "sessionId", value = "场次ID", required = false)
+    @ApiModelProperty(name = "sessionId", value = "场次ID", required = true)
+    @NotNull(message = "属性sessionId不能为空")
     private String sessionId;
     
 }

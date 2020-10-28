@@ -25,7 +25,7 @@ public class LiveCheckinResponse {
     /**
      * 签到时间
      */
-    @ApiModelProperty(name = "checkinid", value = "签到时间", required = false)
+    @ApiModelProperty(name = "checkinid", value = "签到id", required = false)
     private String checkinid;
     
     /**
@@ -43,8 +43,8 @@ public class LiveCheckinResponse {
     /**
      * 签到日期
      */
-    @ApiModelProperty(name = "indate", value = "签到日期", required = false)
-    private String indate;
+    @ApiModelProperty(name = "indate", value = "签到日期,格式yyyy-MM-dd", required = false)
+    private Date indate;
     
     /**
      * 签到记录主键
@@ -62,7 +62,7 @@ public class LiveCheckinResponse {
      * 签到时间
      */
     @ApiModelProperty(name = "time", value = "签到时间", required = false)
-    private Long time;
+    private Date time;
     
     /**
      * 签到学员ID

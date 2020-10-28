@@ -3,6 +3,8 @@ package net.polyv.live.entity.interact;
 import java.util.Date;
 import java.util.List;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -53,14 +55,15 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
         /**
          * 用户ID
          */
-        @ApiModelProperty(name = "userId", value = "直播用户userId", required = false)
+        @ApiModelProperty(name = "userId", value = "用户Id", required = false)
         private String userId;
         
         /**
          * 问卷名称
          */
-        @ApiModelProperty(name = "name", value = "问卷名称", required = false)
-        private String name;
+        @ApiModelProperty(name = "questionnaireTitle", value = "问卷标题", required = false)
+        @JSONField(name = "name")
+        private String questionnaireTitle;
         
         /**
          * 问卷状态，取值：saved(已保存)，published
@@ -78,13 +81,13 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
          * 问卷最后修改时间
          */
         @ApiModelProperty(name = "lastModified", value = "问卷最后修改时间", required = false)
-        private Long lastModified;
+        private Date lastModified;
         
         /**
          * 停止提交问卷时间
          */
         @ApiModelProperty(name = "endTime", value = "停止提交问卷时间", required = false)
-        private Long endTime;
+        private Date endTime;
         
         /**
          * 用户自定义问卷ID

@@ -30,7 +30,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
     
     
     /**
-     * 设置播放器暖场图片，API地址：https://dev.polyv.net/2019/liveproduct/zblts/send-admin-msg/
+     * 设置播放器暖场图片
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -64,7 +64,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
     
     
     /**
-     * 设置频道的暖场设置开关，API地址：https://dev.polyv.net/2019/liveproduct/zblts/send-admin-msg/
+     * 设置频道的暖场设置开关
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -97,7 +97,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
     
     
     /**
-     * 设置播放器Logo，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatelogo/
+     * 设置播放器Logo
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -132,7 +132,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
     }
     
     /**
-     * 设置播放器暂停广告，API地址：https://dev.polyv.net/2018/liveproduct/l-player/updatestop/
+     * 设置播放器暂停广告
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -170,7 +170,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
     
     
     /**
-     * 设置播放器片头广告，API地址：https://dev.polyv.net/2018/liveproduct/l-player/updatehead/
+     * 设置播放器片头广告
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -212,7 +212,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
     
     
     /**
-     * 设置播放器暖场视频，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatewarmupflv/
+     * 设置播放器暖场视频
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

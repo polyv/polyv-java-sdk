@@ -34,6 +34,7 @@ public class LiveAnswerRecordServiceImplTest extends BaseTest {
         try {
             String channelId = super.createChannel();
             liveQuestionAnswerRecordRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionAnswerRecordRequest.setStartDate("2020-10-01").setEndDate("2099-10-01");
             liveCheckinResponse = new LiveAnswerRecordServiceImpl().getAnswerRecord(liveQuestionAnswerRecordRequest);
             Assert.assertNotNull(liveCheckinResponse);
             if (liveCheckinResponse != null) {

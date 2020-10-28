@@ -41,7 +41,6 @@ public class LiveCheckinListResponse {
          * 查询的签到日期，yyyy-MM-dd格式
          */
         @ApiModelProperty(name = "indate", value = "查询的签到日期，yyyy-MM-dd格式", required = false)
-        @JSONField(format = "yyyy-MM-dd")
         private Date indate;
         
         /**
@@ -73,7 +72,6 @@ public class LiveCheckinListResponse {
          * 签到的格式化详细日期，yyyy-MM-dd
          */
         @ApiModelProperty(name = "timeFormat", value = "签到的格式化详细日期，yyyy-MM-dd HH:mm", required = false)
-        @JSONField(format = "yyyy-MM-dd HH:mm")
         private Date timeFormat;
         
         /**
@@ -83,10 +81,23 @@ public class LiveCheckinListResponse {
         private String sessionId;
         
         /**
+         * 场次sessionId
+         */
+        @ApiModelProperty(name = "checkinid", value = "签到ID", required = false)
+        private String checkinid;
+    
+        /**
+         * 场次sessionId
+         */
+        @ApiModelProperty(name = "id", value = "签到记录主键", required = false)
+        private String id;
+        /**
          * 该场次直播开始时间，如果不传sessionId,startTime为空；传sessionId,startTime显示
          */
         @ApiModelProperty(name = "startTime", value = "该场次直播开始时间，只有请求参数传sessionId,该字段才有值", required = false)
         private Date startTime;
+    
+        
         
         /**
          * 在外部授权、直接（独立）授权情况下传过来的自定义参数

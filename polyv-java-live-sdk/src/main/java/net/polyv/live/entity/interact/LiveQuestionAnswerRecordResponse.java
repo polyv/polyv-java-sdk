@@ -29,6 +29,12 @@ public class LiveQuestionAnswerRecordResponse {
     private String questionId;
     
     /**
+     * 题目标题
+     */
+    @ApiModelProperty(name = "questionTitle", value = "题目标题", required = false)
+    private String questionTitle;
+    
+    /**
      * 第几次发送题目，用于区分相同题目重复发送的情况
      */
     @ApiModelProperty(name = "times", value = "第几次发送题目，用于区分相同题目重复发送的情况", required = false)
@@ -49,7 +55,7 @@ public class LiveQuestionAnswerRecordResponse {
     /**
      * 题目选项信息列表
      */
-    @ApiModelProperty(name = "options", value = "", required = false)
+    @ApiModelProperty(name = "options", value = "题目选项信息列表", required = false)
     private List<Option> options;
     
     

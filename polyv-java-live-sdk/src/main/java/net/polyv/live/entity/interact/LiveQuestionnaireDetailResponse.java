@@ -3,6 +3,8 @@ package net.polyv.live.entity.interact;
 import java.util.Date;
 import java.util.List;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -45,16 +47,18 @@ public class LiveQuestionnaireDetailResponse {
     @ApiModelProperty(name = "userId", value = "用户ID", required = false)
     private String userId;
     
+ 
     /**
      * 问卷名称
      */
-    @ApiModelProperty(name = "name", value = "问卷名称", required = false)
-    private String name;
+    @ApiModelProperty(name = "questionnaireTitle", value = "问卷标题", required = false)
+    @JSONField(name = "name")
+    private String questionnaireTitle;
     
     /**
-     * 问卷状态
+     *问卷状态，draft：草稿，send：已发送，delete：已删除
      */
-    @ApiModelProperty(name = "status", value = "问卷状态", required = false)
+    @ApiModelProperty(name = "status", value = "问卷状态，draft：草稿，send：已发送，delete：已删除", required = false)
     private String status;
     
     /**
@@ -169,7 +173,7 @@ public class LiveQuestionnaireDetailResponse {
         /**
          * 是否计分，取值Y、N
          */
-        @ApiModelProperty(name = "scoreEnabled", value = "是否计分，取值Y、N", required = false)
+        @ApiModelProperty(name = "scoreEnabled", value = "是否计分，取值： Y 计分 、N  不计分，默认N", required = false)
         private String scoreEnabled;
         
         /**
@@ -181,7 +185,7 @@ public class LiveQuestionnaireDetailResponse {
         /**
          * 是否必填，取值Y、N
          */
-        @ApiModelProperty(name = "required", value = "是否必填，取值Y、N", required = false)
+        @ApiModelProperty(name = "required", value = "是否必答，取值Y 必填 、N 非必填 ，默认 N", required = false)
         private String required;
         
         /**

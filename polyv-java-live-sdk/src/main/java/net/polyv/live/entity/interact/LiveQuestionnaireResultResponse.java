@@ -41,6 +41,19 @@ public class LiveQuestionnaireResultResponse {
      */
     @ApiModelProperty(name = "questionnaireTitle", value = "问卷名称", required = false)
     private String questionnaireTitle;
+ 
+    
+    /**
+     * 问卷最后修改时间
+     */
+    @ApiModelProperty(name = "lastModified", value = "问卷最后修改时间", required = false)
+    private Date lastModified;
+    
+    /**
+     * 问卷最后修改时间
+     */
+    @ApiModelProperty(name = "endTime", value = "问卷最后修改时间", required = false)
+    private Date endTime;
     
     /**
      * 问卷下各个问题的答题统计
@@ -163,14 +176,14 @@ public class LiveQuestionnaireResultResponse {
     /**
      * 观看端提交答题的信息
      */
-    @ApiModelProperty(name = "users", value = "观看端提交答题的信息", required = false)
+    @ApiModelProperty(name = "users", value = "观看端提交答题的用户信息", required = false)
     private List<Users> users;
     
     @Data
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
-    @ApiModel("查询频道问卷结果响应实体-观看端提交答题的信息")
+    @ApiModel("查询频道问卷结果响应实体-观看端提交答题的用户信息")
     public class Users {
         /**
          * 提交问卷的用户ID
@@ -243,13 +256,13 @@ public class LiveQuestionnaireResultResponse {
         /**
          * 在外部授权、直接（独立）授权情况下传过来的自定义参数
          */
-        @ApiModelProperty(name = "param4", value = "在外部授权、直接（独立）授权情况下传过来的自定义参数", required = false)
+        @ApiModelProperty(name = "param4", value = "在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传", required = false)
         private String param4;
     
         /**
          * 在外部授权、直接（独立）授权情况下传过来的自定义参数
          */
-        @ApiModelProperty(name = "param5", value = "在外部授权、直接（独立）授权情况下传过来的自定义参数", required = false)
+        @ApiModelProperty(name = "param5", value = "在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传", required = false)
         private String param5;
     }
 }

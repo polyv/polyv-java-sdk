@@ -123,7 +123,6 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         LiveQuestionnaireListResponse liveQuestionnaireListResponse = null;
         try {
             String channelId = super.createChannel();
-            
             liveQuestionnaireListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveQuestionnaireListResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireListInfo(
                     liveQuestionnaireListRequest);
@@ -188,8 +187,8 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = null;
         try {
             String channelId = super.createChannel();
-            
             liveQuestionnaireResultRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionnaireResultRequest.setStartDate("2020-10-01").setEndDate("2099-12-12");
 //        liveQuestionnaireResultRequest.setQuestionnaireId("fs9skpv22f");
             liveQuestionnaireResultResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultInfo(
                     liveQuestionnaireResultRequest);
@@ -210,7 +209,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
     }
     
     /**
-     * 分页查询频道问卷结果
+     * 分页查询问卷结果
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -222,6 +221,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         try {
             String channelId = super.createChannel();
             liveQuestionnaireResultPageRequest.setChannelId(channelId)
+                    .setStartDate("2020-10-01").setEndDate("2099-12-12")
                     .setPageSize(20)
                     .setCurrentPage(1)
                     .setRequestId(LiveSignUtil.generateUUID());

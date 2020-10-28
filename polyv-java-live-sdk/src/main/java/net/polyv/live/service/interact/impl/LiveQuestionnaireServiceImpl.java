@@ -128,8 +128,8 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
     }
     
     /**
-     * 分页查询频道问卷结果，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/list-questionnaire-by-page/
-     * @param liveQuestionnaireResultPageRequest 分页查询频道问卷结果请求实体
+     * 分页查询问卷结果，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/list-questionnaire-by-page/
+     * @param liveQuestionnaireResultPageRequest 分页查询问卷结果请求实体
      * @return 分页查询频道问卷结果响应实体
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 算法异常

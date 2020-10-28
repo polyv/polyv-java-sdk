@@ -34,7 +34,7 @@ public class LiveCreateSonChannelResponse {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 助教密码

@@ -26,7 +26,7 @@ public class LiveChannelAuthTypeRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 观看条件类型,默认取值为none(关闭观看条件)

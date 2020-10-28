@@ -70,7 +70,7 @@ public class LiveWebAuthImplTest extends BaseTest {
         List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(authSetting);
         LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest = new LiveUpdateChannelAuthRequest();
-        liveUpdateChannelAuthRequest.setChannelId(1965681).setAuthSettings(authSettings);
+        liveUpdateChannelAuthRequest.setChannelId("1965681").setAuthSettings(authSettings);
         Boolean liveUpdateChannelAuthResponse = new LiveWebAuthServiceImpl().updateChannelAuth(
                 liveUpdateChannelAuthRequest);
         Assert.assertNotNull(liveUpdateChannelAuthResponse);
@@ -87,7 +87,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     @Test
     public void testUpdateChannelAuthExternal() throws IOException, NoSuchAlgorithmException {
         LiveChannelAuthExternalRequest liveChannelAuthExternalRequest = new LiveChannelAuthExternalRequest();
-        liveChannelAuthExternalRequest.setChannelId(1965681).setExternalUri("https://dev.polyv.net/");
+        liveChannelAuthExternalRequest.setChannelId("1965681").setExternalUri("https://dev.polyv.net/");
         LiveChannelAuthExternalResponse liveChannelAuthExternalResponse =
                 new LiveWebAuthServiceImpl().updateChannelAuthExternal(
                 liveChannelAuthExternalRequest);
@@ -106,7 +106,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     @Test
     public void testUpdateChannelAuthCustom() throws IOException, NoSuchAlgorithmException {
         LiveChannelAuthCustomRequest liveChannelAuthCustomRequest = new LiveChannelAuthCustomRequest();
-        liveChannelAuthCustomRequest.setChannelId(1965681).setCustomUri("https://dev.polyv.net/");
+        liveChannelAuthCustomRequest.setChannelId("1965681").setCustomUri("https://dev.polyv.net/");
         LiveChannelAuthCustomResponse liveChannelAuthCustomResponse =
                 new LiveWebAuthServiceImpl().updateChannelAuthCustom(
                 liveChannelAuthCustomRequest);
@@ -125,7 +125,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     @Test
     public void testUpdateChannelAuthType() throws IOException, NoSuchAlgorithmException {
         LiveChannelAuthTypeRequest liveChannelAuthTypeRequest = new LiveChannelAuthTypeRequest();
-        liveChannelAuthTypeRequest.setChannelId(1965681).setAuthType(LiveConstant.AuthType.INFO.getDesc());
+        liveChannelAuthTypeRequest.setChannelId("1965681").setAuthType(LiveConstant.AuthType.INFO.getDesc());
         Boolean liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(
                 liveChannelAuthTypeRequest);
         Assert.assertNotNull(liveChannelAuthTypeResponse);
@@ -143,7 +143,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     @Test
     public void testChannelAuth() throws IOException, NoSuchAlgorithmException {
         LiveChannelAuthRequest liveChannelAuthRequest = new LiveChannelAuthRequest();
-        liveChannelAuthRequest.setChannelId(1965681);
+        liveChannelAuthRequest.setChannelId("1965681");
         LiveChannelAuthResponse liveChannelAuthResponse = new LiveWebAuthServiceImpl().channelAuth(
                 liveChannelAuthRequest);
         Assert.assertNotNull(liveChannelAuthResponse);

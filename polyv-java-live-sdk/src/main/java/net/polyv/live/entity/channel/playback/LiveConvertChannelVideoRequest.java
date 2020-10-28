@@ -32,7 +32,7 @@ public class LiveConvertChannelVideoRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 转存到录制文件地址（该参数从获取频道录制视频信息接口获取url的值）

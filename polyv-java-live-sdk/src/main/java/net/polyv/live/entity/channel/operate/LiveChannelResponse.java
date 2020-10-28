@@ -23,7 +23,7 @@ public class LiveChannelResponse {
      */
     
     @ApiModelProperty(name = "channelId", value = "直播频道号")
-    protected Integer channelId;
+    protected String channelId;
     
     /**
      * 用户Id

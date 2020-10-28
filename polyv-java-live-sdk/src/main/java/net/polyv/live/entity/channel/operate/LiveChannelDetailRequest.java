@@ -28,7 +28,7 @@ public class LiveChannelDetailRequest extends LiveCommonRequest {
     @ApiModelProperty(name = "channelId", value = "需要设置频道详情的频道号，例如：1938028", required = true, example =
             "1938028")
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
 
     /**
      * 要更新的字段名称：channelPasswd 密码 scene 直播场景 maxViewer 最大同时观看人数

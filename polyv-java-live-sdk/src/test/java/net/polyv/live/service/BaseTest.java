@@ -41,7 +41,7 @@ public class BaseTest {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    protected Integer createChannel(LiveChannelRequest liveChannelRequest)
+    protected String createChannel(LiveChannelRequest liveChannelRequest)
             throws IOException, NoSuchAlgorithmException {
         LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         Assert.assertNotNull(liveChannelResponse);
@@ -54,8 +54,8 @@ public class BaseTest {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    protected Integer createChannel()   {
-        Integer channelId = 1965681;
+    protected String createChannel()   {
+        String channelId = "1965681";
         return channelId;
 //        LiveChannelRequest liveChannelRequest = new LiveChannelRequest().setName("test直播频道")
 //                .setChannelPasswd("666888")
@@ -69,7 +69,7 @@ public class BaseTest {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    protected void deleteChannel(Integer channelId) throws IOException, NoSuchAlgorithmException {
+    protected void deleteChannel(String channelId) throws IOException, NoSuchAlgorithmException {
 //        LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest().setChannelId(channelId);
 //        String deleteChannel = new LiveChannelServiceImpl().deleteChannel(liveDeleteChannelRequest);
 //        Assert.assertTrue("true".equals(deleteChannel));
@@ -98,7 +98,7 @@ public class BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    protected String createSonChannel(Integer channelId) throws IOException, NoSuchAlgorithmException {
+    protected String createSonChannel(String channelId) throws IOException, NoSuchAlgorithmException {
         LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest().setChannelId(
                 channelId)
                 .setRole("Guest")
@@ -115,9 +115,9 @@ public class BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    protected String getChannelVideoFileUrl(Integer channelId) throws IOException, NoSuchAlgorithmException {
+    protected String getChannelVideoFileUrl(String channelId) throws IOException, NoSuchAlgorithmException {
         LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
-        liveChannelVideoListRequest.setChannelId(1951952)
+        liveChannelVideoListRequest.setChannelId("1951952")
                 .setStartDate("2020-01-01")
                 .setEndDate("2020-10-14")
                 .setSessionId(null);
@@ -139,7 +139,7 @@ public class BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    protected List<String> listChannelVideoIds(Integer channelId) throws IOException, NoSuchAlgorithmException {
+    protected List<String> listChannelVideoIds(String channelId) throws IOException, NoSuchAlgorithmException {
         LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
                 new LiveListChannelVideoLibraryRequest();
         liveListChannelVideoLibraryRequest.setChannelId(channelId).setListType("playback");
@@ -165,7 +165,7 @@ public class BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    protected List<String> listChannelFileIds(Integer channelId) throws IOException, NoSuchAlgorithmException {
+    protected List<String> listChannelFileIds(String channelId) throws IOException, NoSuchAlgorithmException {
         LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
         liveChannelVideoListRequest.setChannelId(channelId)
                 .setStartDate("2020-01-01")

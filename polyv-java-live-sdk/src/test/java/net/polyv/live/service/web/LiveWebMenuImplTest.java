@@ -32,7 +32,7 @@ public class LiveWebMenuImplTest extends BaseTest {
     public void testUpdateChannelMenu() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelMenuRequest liveUpdateChannelMenuRequest = new LiveUpdateChannelMenuRequest();
         Boolean liveUpdateChannelMenuResponse;
-        liveUpdateChannelMenuRequest.setChannelId(1965681)
+        liveUpdateChannelMenuRequest.setChannelId("1965681")
                 .setMenuType("desc")
                 .setContent("<html><body><h1>hello world</h1><button onclick=\"console.log('hello world')" +
                         "\"></button></body></html>");
@@ -54,7 +54,7 @@ public class LiveWebMenuImplTest extends BaseTest {
     public void testListChannelMenu() throws IOException, NoSuchAlgorithmException {
         LiveListChannelMenuRequest liveListChannelMenuRequest = new LiveListChannelMenuRequest();
         LiveListChannelMenuResponse liveListChannelMenuResponse;
-        liveListChannelMenuRequest.setChannelId(1965681);
+        liveListChannelMenuRequest.setChannelId("1965681");
         liveListChannelMenuResponse = new LiveWebMenuServiceImpl().listChannelMenu(
                 liveListChannelMenuRequest);
         Assert.assertNotNull(liveListChannelMenuResponse);

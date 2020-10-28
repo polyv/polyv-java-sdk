@@ -23,6 +23,6 @@ public class LiveChannelAuthRequest extends LiveCommonRequest {
      * 频道号,不填获取全局观看条件
      */
     @ApiModelProperty(name = "channelId", value = "频道号,不填获取全局观看条件", required = false)
-    private Integer channelId;
+    private String channelId;
     
 }

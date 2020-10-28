@@ -25,7 +25,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveSendChatMsgRequest.setChannelId(channelId)
 
@@ -134,7 +134,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveSetTeacherDataRequest.setChannelId(channelId)
 
@@ -244,7 +244,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveChatBannedIPRequest.setIp("192.168.1.3")
 
@@ -344,7 +344,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveBadWordRequest
 
@@ -447,7 +447,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveGetBannedListRequest.setChannelId(channelId)
 
@@ -548,7 +548,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveKickedListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
 
@@ -560,7 +560,7 @@
 
                 //to do something ......
 
-                Integer channelId1 = liveKickedListResponsesList.get(0).getChannelId();
+                String channelId1 = liveKickedListResponsesList.get(0).getChannelId();
 
                 log.debug("取第一个信息频道 {}", channelId1);
 
@@ -657,7 +657,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveDelBannedDataRequest.setContent("192.168.1.3")
 
@@ -759,7 +759,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveGetBadwordIPRequest.setChannelId(channelId)
 
@@ -861,7 +861,7 @@
 
             liveGetAccountBadWordRequest.setRequestId(LiveSignUtil.generateUUID());
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             result = new LiveChatRoomServiceImpl().getAccountBadworkList(liveGetAccountBadWordRequest);
 
@@ -953,7 +953,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveCleanChannelAllMsgRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
 
@@ -1047,7 +1047,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             String requestId = LiveSignUtil.generateUUID();
 
@@ -1147,7 +1147,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveGetHistoryChatMsgRequest.setChannelId(channelId)
 
@@ -1271,7 +1271,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveChatDelSingleMsgRequest.setId("70af2450-12bc-11eb-896b-75b7b28cd5db")
 
@@ -1370,7 +1370,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveSetChatAdminDataRequest.setChannelId(channelId)
 
@@ -1475,7 +1475,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveGetConsultingRecordRequest.setChannelId(channelId)
 
@@ -1587,7 +1587,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveGetQuestionStatisticalRequest.setChannelId(channelId)
 

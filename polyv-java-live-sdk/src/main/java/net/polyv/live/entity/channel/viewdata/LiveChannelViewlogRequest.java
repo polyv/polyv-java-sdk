@@ -35,7 +35,7 @@ public class LiveChannelViewlogRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = false)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 查询日期，格式：yyyy-MM-dd

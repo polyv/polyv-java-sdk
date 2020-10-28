@@ -27,7 +27,7 @@ public class LiveQuestionnaireResultRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 开始时间，格式：2018-12-10

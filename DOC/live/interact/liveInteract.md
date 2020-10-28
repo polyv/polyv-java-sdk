@@ -25,7 +25,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             //封装问卷请求对象
 
@@ -203,7 +203,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveQuestionnaireListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
 
@@ -312,7 +312,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             //获取详情
 
@@ -434,7 +434,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveQuestionnaireResultRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
 
@@ -543,7 +543,7 @@
 
         try {
 
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
 
             liveQuestionnaireResultPageRequest.setChannelId(channelId)
 

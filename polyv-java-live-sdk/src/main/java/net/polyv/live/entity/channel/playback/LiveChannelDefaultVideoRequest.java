@@ -26,7 +26,7 @@ public class LiveChannelDefaultVideoRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 直播系统生成的id，可在回放列表接口的返回数据获取

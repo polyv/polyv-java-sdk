@@ -41,7 +41,7 @@ public class LiveListLotteryResponse extends LivePageCommonResponse {
          * 频道号
          */
         @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-        private Integer channelId;
+        private String channelId;
         
         /**
          * 抽奖时的直播场次ID

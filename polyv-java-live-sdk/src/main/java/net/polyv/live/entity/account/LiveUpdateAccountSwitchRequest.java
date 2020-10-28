@@ -25,7 +25,7 @@ public class LiveUpdateAccountSwitchRequest extends LiveCommonRequest {
      * 频道号，不传该参数则表示修改全局设置
      */
     @ApiModelProperty(name = "channelId", value = "频道号，不传该参数则表示修改全局设置", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 开关类型

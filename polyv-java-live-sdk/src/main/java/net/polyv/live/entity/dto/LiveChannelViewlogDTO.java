@@ -38,7 +38,7 @@ public class LiveChannelViewlogDTO {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 播放时长，单位：秒

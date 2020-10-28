@@ -13,7 +13,7 @@
         LiveSetPlayerImgRequest liveSetChatAdminDataRequest = new LiveSetPlayerImgRequest();
         Boolean result = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setCoverImage("http://pic.sc.chinaz.com/files/pic/pic9/202010/bpic21538.jpg")
                     .setCoverHref("http://www.baidu.com")
@@ -63,7 +63,7 @@
         LiveSetWarmupEnableRequest liveSetWarmupEnableRequest = new LiveSetWarmupEnableRequest();
         Boolean result = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             liveSetWarmupEnableRequest.setChannelId(channelId)
                     .setWarmUpEnabled(LiveConstant.Flag.YES.getFlag())
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -111,7 +111,7 @@
         LiveSetPlayerLogoRequest liveSetPlayerLogoRequest = new LiveSetPlayerLogoRequest();
         Boolean result = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             liveSetPlayerLogoRequest.setChannelId(channelId)
                     .setLogoHref("http://www.baidu.com/huava")
                     .setLogoPosition(LiveConstant.LogoPosition.BL.getPosition())
@@ -160,7 +160,7 @@
         LiveSetPlayerPauseAdvertRequest liveSetPlayerPauseAdvertRequest = new LiveSetPlayerPauseAdvertRequest();
         Boolean result = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             liveSetPlayerPauseAdvertRequest.setChannelId(channelId)
                     .setEnabled(LiveConstant.Flag.YES.getFlag())
                     .setStopAdvertHref("http://www.baidu.com")
@@ -215,7 +215,7 @@
         LiveSetPlayerHeaderAdvertRequest liveSetPlayerHeaderAdvertRequest = new LiveSetPlayerHeaderAdvertRequest();
         Boolean result = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             liveSetPlayerHeaderAdvertRequest.setChannelId(channelId)
                     .setEnabled(LiveConstant.Flag.YES.getFlag())
                     .setHeadAdvertDuration(5)
@@ -278,7 +278,7 @@
         LiveSetWarmupVedioRequest liveSetWarmupVedioRequest = new LiveSetWarmupVedioRequest();
         Boolean result = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             liveSetWarmupVedioRequest.setChannelId(channelId)
                     .setWarmUpFlv("https://v.cnezsoft.com/zentao/introduction_catelog" +
                             ".mp4?sign=e1119d6ab99b07ab28c2f0508acc76e7&t=5f966aea")

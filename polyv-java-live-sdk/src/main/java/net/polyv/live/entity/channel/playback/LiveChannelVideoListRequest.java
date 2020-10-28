@@ -34,7 +34,7 @@ public class LiveChannelVideoListRequest extends LiveCommonRequest {
     @ApiModelProperty(name = "channelId", value = "需要设置频道详情的频道号，例如：1938028", required = true, example =
             "1938028")
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 开始日期（录制生成的日期），格式为：yyyy-MM-dd

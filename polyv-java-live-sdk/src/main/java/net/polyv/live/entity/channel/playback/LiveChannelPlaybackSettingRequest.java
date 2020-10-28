@@ -28,7 +28,7 @@ public class LiveChannelPlaybackSettingRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性stream不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 回放开关，Y-开启，N-关闭

@@ -26,7 +26,7 @@ public class LiveWebSettingImplTest extends BaseTest {
     @Test
     public void testChannelGlobalSwitch() throws IOException, NoSuchAlgorithmException {
         LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest = new LiveChannelGlobalSwitchRequest();
-        liveChannelGlobalSwitchRequest.setChannelId(1965681)
+        liveChannelGlobalSwitchRequest.setChannelId("1965681")
                 .setGlobalEnabledType(LiveConstant.GlobalEnabledType.CALLBACK.getDesc())
                 .setEnabled("N");
         String liveChannelGlobalSwitchResponse = new LiveWebSettingServiceImpl().channelGlobalSwitch(

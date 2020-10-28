@@ -35,7 +35,7 @@ public class LiveListChannelSessionInfoResponse extends LivePageCommonResponse {
          * 频道号
          */
         @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-        private Integer channelId;
+        private String channelId;
         
         /**
          * 场次ID

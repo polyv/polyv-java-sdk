@@ -27,7 +27,7 @@ public class LiveListLotteryRequest extends LivePageCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不允许为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 要查询的直播场次ID

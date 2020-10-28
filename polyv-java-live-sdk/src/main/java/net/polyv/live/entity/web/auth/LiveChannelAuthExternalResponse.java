@@ -34,7 +34,7 @@ public class LiveChannelAuthExternalResponse {
          * 设置的频道号
          */
         @ApiModelProperty(name = "channelId", value = "设置的频道号", required = false)
-        private Integer channelId;
+        private String channelId;
         
         /**
          * 频道号对应外部授权的secretKey

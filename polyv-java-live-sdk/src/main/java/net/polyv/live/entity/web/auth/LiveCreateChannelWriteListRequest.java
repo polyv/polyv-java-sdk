@@ -25,7 +25,7 @@ public class LiveCreateChannelWriteListRequest extends LiveCommonRequest {
      * 频道号（传频道号则添加频道观看白名单，不传频道号则添加全局观看白名单）
      */
     @ApiModelProperty(name = "channelId", value = "频道号（传频道号则添加频道观看白名单，不传频道号则添加全局观看白名单）", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 主要观看条件为1,次要观看条件为2

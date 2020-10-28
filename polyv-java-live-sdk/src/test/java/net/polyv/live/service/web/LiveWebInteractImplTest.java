@@ -43,7 +43,7 @@ public class LiveWebInteractImplTest extends BaseTest {
                 .setGoodPrice(9999.99)
                 .setGoodEnabled("Y");
         channelGoods.add(channelGood);
-        liveUpdateChannelGoodRequest.setChannelId(1965681).setEnabled("Y").setGoods(channelGoods);
+        liveUpdateChannelGoodRequest.setChannelId("1965681").setEnabled("Y").setGoods(channelGoods);
         liveUpdateChannelGoodResponse = new LiveWebInteractServiceImpl().updateChannelGood(
                 liveUpdateChannelGoodRequest);
         Assert.assertNotNull(liveUpdateChannelGoodResponse);
@@ -66,7 +66,7 @@ public class LiveWebInteractImplTest extends BaseTest {
         Boolean liveUpdateChannelCashResponse;
         Double[] floats = {0.88d, 6.66d, 8.88d, 18.11d, 66.60d, 88.89d};
         List<Double> cashes = Arrays.asList(floats);
-        liveUpdateChannelCashRequest.setChannelId(1965681).setCashes(cashes).setCashMin(0.02d).setEnabled("Y");
+        liveUpdateChannelCashRequest.setChannelId("1965681").setCashes(cashes).setCashMin(0.02d).setEnabled("Y");
         liveUpdateChannelCashResponse = new LiveWebInteractServiceImpl().updateChannelCash(liveUpdateChannelCashRequest);
         Assert.assertNotNull(liveUpdateChannelCashResponse);
         if (liveUpdateChannelCashResponse) {
@@ -84,7 +84,7 @@ public class LiveWebInteractImplTest extends BaseTest {
     public void testChannelDonate() throws IOException, NoSuchAlgorithmException {
         LiveChannelDonateRequest liveChannelDonateRequest = new LiveChannelDonateRequest();
         LiveChannelDonateResponse liveChannelDonateResponse;
-        liveChannelDonateRequest.setChannelId(1965681);
+        liveChannelDonateRequest.setChannelId("1965681");
         liveChannelDonateResponse = new LiveWebInteractServiceImpl().channelDonate(
                 liveChannelDonateRequest);
         Assert.assertNotNull(liveChannelDonateResponse);

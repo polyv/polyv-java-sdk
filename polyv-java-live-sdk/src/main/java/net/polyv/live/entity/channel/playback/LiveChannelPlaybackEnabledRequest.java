@@ -39,6 +39,6 @@ public class LiveChannelPlaybackEnabledRequest extends LiveCommonRequest {
      * 频道号，非必填，不填添加该用户的所有频道号的回放开关都设置为开/关
      */
     @ApiModelProperty(name = "channelId", value = "频道号，非必填，不填添加该用户的所有频道号的回放开关都设置为开/关", required = false)
-    private Integer channelId;
+    private String channelId;
 
 }

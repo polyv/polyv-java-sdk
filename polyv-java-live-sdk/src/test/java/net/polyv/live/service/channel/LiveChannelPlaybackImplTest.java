@@ -51,7 +51,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
         LiveChannelVideoListResponse liveChannelVideoListResponse;
         try {
-            liveChannelVideoListRequest.setChannelId(1951952)
+            liveChannelVideoListRequest.setChannelId("1951952")
                     .setStartDate("2020-01-01")
                     .setEndDate("2020-10-14")
                     .setSessionId(null);
@@ -84,7 +84,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest;
         Boolean liveChannelPlaybackSettingResponse;
         try {
-            int channelId = createChannel();
+            String channelId = createChannel();
             List<String> videoIds = listChannelVideoIds(channelId);
             liveChannelPlaybackSettingRequest = new LiveChannelPlaybackSettingRequest();
             liveChannelPlaybackSettingRequest.setChannelId(channelId)
@@ -154,7 +154,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
                 new LiveListChannelVideoLibraryRequest();
         LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse;
         try {
-            liveListChannelVideoLibraryRequest.setChannelId(1951952).setListType("playback");
+            liveListChannelVideoLibraryRequest.setChannelId("1951952").setListType("playback");
             liveListChannelVideoLibraryResponse = new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary(
                     liveListChannelVideoLibraryRequest);
             Assert.assertNotNull(liveListChannelVideoLibraryResponse);
@@ -183,7 +183,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveListChannelSessionInfoRequest liveListChannelSessionInfoRequest = new LiveListChannelSessionInfoRequest();
         LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse;
         try {
-            liveListChannelSessionInfoRequest.setChannelId(1951952)
+            liveListChannelSessionInfoRequest.setChannelId("1951952")
                     .setStartDate("2020-10-01")
                     .setEndDate("2020-10-24")
                     .setCurrentPage(1);
@@ -247,9 +247,9 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest = new LiveChannelVideoOnlyRequest();
         LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse;
         try {
-            int channelId = createChannel();
+            String channelId = createChannel();
             String fileId = listChannelFileIds(channelId).get(0);
-            liveChannelVideoOnlyRequest.setChannelId(1951952).setFileId(fileId);
+            liveChannelVideoOnlyRequest.setChannelId("1951952").setFileId(fileId);
             liveChannelVideoOnlyResponse = new LiveChannelPlaybackServiceImpl().channelVideoOnly(
                     liveChannelVideoOnlyRequest);
             Assert.assertNotNull(liveChannelVideoOnlyResponse);
@@ -281,7 +281,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
                 new LiveCreateChannelVideoPlaybackRequest();
         LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse;
         try {
-            liveCreateChannelVideoPlaybackRequest.setChannelId(1958888)
+            liveCreateChannelVideoPlaybackRequest.setChannelId("1958888")
                     .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
                     .setListType("vod");
             liveCreateChannelVideoPlaybackResponse = new LiveChannelPlaybackServiceImpl().addChannelVideoPlayback(
@@ -314,9 +314,9 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveChannelVideoSortRequest liveChannelVideoSortRequest = new LiveChannelVideoSortRequest();
         Boolean liveChannelVideoSortResponse;
         try {
-            List<String> videoIdList = listChannelVideoIds(1965681);//992d36fa40,f1574595e1
+            List<String> videoIdList = listChannelVideoIds("1965681");//992d36fa40,f1574595e1
             Collections.shuffle(videoIdList);
-            liveChannelVideoSortRequest.setChannelId(1965681).setVideoIds(videoIdList).setListType("playback");
+            liveChannelVideoSortRequest.setChannelId("1965681").setVideoIds(videoIdList).setListType("playback");
             liveChannelVideoSortResponse = new LiveChannelPlaybackServiceImpl().channelVideoSort(
                     liveChannelVideoSortRequest);
             Assert.assertNotNull(liveChannelVideoSortResponse);
@@ -346,7 +346,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest = new LiveChannelDefaultVideoRequest();
         Boolean liveChannelDefaultVideoResponse;
         try {
-            liveChannelDefaultVideoRequest.setChannelId(1965681).setVideoId("f1574595e1").setListType("playback");
+            liveChannelDefaultVideoRequest.setChannelId("1965681").setVideoId("f1574595e1").setListType("playback");
             liveChannelDefaultVideoResponse = new LiveChannelPlaybackServiceImpl().channelDefaultVideo(
                     liveChannelDefaultVideoRequest);
             Assert.assertNotNull(liveChannelDefaultVideoResponse);
@@ -376,7 +376,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
         Boolean liveMergeChannelVideoAsyncResponse;
         try {
-            liveMergeChannelVideoAsyncRequest.setChannelId(1951952)
+            liveMergeChannelVideoAsyncRequest.setChannelId("1951952")
                     .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
                     .setFileName("测试合并-可删除")
                     .setCallbackUrl(null)
@@ -413,7 +413,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
                 new LiveConvertChannelVideoListAsyncRequest();
         Boolean liveConvertChannelVideoResponse;
         try {
-            liveConvertChannelVideoListAsyncRequest.setChannelId(1951952)
+            liveConvertChannelVideoListAsyncRequest.setChannelId("1951952")
                     .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
                     .setFileName("删除-直播录制转点播")
                     .setCataId(null)
@@ -447,7 +447,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest = new LiveDeleteChannelVideoRequest();
         Boolean liveDeleteChannelVideoResponse;
         try {
-            liveDeleteChannelVideoRequest.setChannelId(1951952).setStartTime("20201016111234");
+            liveDeleteChannelVideoRequest.setChannelId("1951952").setStartTime("20201016111234");
             liveDeleteChannelVideoResponse = new LiveChannelPlaybackServiceImpl().deleteChannelVideo(
                     liveDeleteChannelVideoRequest);
             Assert.assertNotNull(liveDeleteChannelVideoResponse);
@@ -478,7 +478,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
                 new LiveDeleteChannelPlaybackVideoRequest();
         Boolean liveDeleteChannelPlaybackVideoResponse;
         try {
-            int channelId = 1951952;
+            String channelId = "1951952";
             String videoId = "07f5bbeb67";
             liveDeleteChannelPlaybackVideoRequest.setChannelId(channelId).setVideoId(videoId).setListType("playback");
             liveDeleteChannelPlaybackVideoResponse = new LiveChannelPlaybackServiceImpl().deleteChannelPlaybackVideo(

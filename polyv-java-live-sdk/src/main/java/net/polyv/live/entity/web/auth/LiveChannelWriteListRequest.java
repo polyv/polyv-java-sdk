@@ -25,7 +25,7 @@ public class LiveChannelWriteListRequest extends LivePageCommonRequest {
      * 频道号，不传为获取全局设置
      */
     @ApiModelProperty(name = "channelId", value = "频道号，不传为获取全局设置", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 1为首要条件，2为次要条件

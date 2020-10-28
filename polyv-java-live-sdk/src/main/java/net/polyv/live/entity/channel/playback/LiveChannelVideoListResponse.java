@@ -40,7 +40,7 @@ public class LiveChannelVideoListResponse {
          * 频道号
          */
         @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-        private Integer channelId;
+        private String channelId;
         
         /**
          * 录制文件地址，优先返回mp4，若没有MP4会返回m3u8

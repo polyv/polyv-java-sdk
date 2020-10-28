@@ -27,7 +27,7 @@ public class LiveDelBannedDataRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     /**
      * 传输内容类型：ip: 属性content内容为IP，badword 属性content内容为严禁词
      */

@@ -2178,7 +2178,7 @@ currentDay与startTime、endTime 同时传将使用currentDay的值。
 ```java
     @Test
     public void testListChannelDoc() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = createChannel();
+        String channelId = createChannel();
         LiveListChannelDocRequest liveListChannelDocRequest = new LiveListChannelDocRequest();
         liveListChannelDocRequest.setChannelId(channelId).setStatus(null);
         LiveListChannelDocResponse liveListChannelDocResponse = new LiveChannelServiceImpl().listChannelDoc(
@@ -2679,7 +2679,7 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
     @Test
     public void testChannelDefaultVideo() throws IOException, NoSuchAlgorithmException {
         LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest = new LiveChannelDefaultVideoRequest();
-        liveChannelDefaultVideoRequest.setChannelId(1965681).setVideoId("f1574595e1").setListType("playback");
+        liveChannelDefaultVideoRequest.setChannelId("1965681").setVideoId("f1574595e1").setListType("playback");
         String liveChannelDefaultVideoResponse = new LiveChannelPlaybackServiceImpl().channelDefaultVideo(
                 liveChannelDefaultVideoRequest);
         Assert.assertNotNull(liveChannelDefaultVideoResponse);
@@ -2720,7 +2720,7 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
     @Test
     public void testChannelGlobalSwitch() throws IOException, NoSuchAlgorithmException {
         LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest = new LiveChannelGlobalSwitchRequest();
-        liveChannelGlobalSwitchRequest.setChannelId(1965681)
+        liveChannelGlobalSwitchRequest.setChannelId("1965681")
                 .setGlobalEnabledType(LiveConstant.GlobalEnabledType.CALLBACK.getDesc())
                 .setEnabled("N");
         String liveChannelGlobalSwitchResponse = new LiveWebSettingServiceImpl().channelGlobalSwitch(
@@ -2762,7 +2762,7 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
     @Test
     public void testUpdateChannelName() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelNameRequest liveUpdateChannelNameRequest = new LiveUpdateChannelNameRequest();
-        liveUpdateChannelNameRequest.setChannelId(1965681).setName("Junit测试(勿删)");
+        liveUpdateChannelNameRequest.setChannelId("1965681").setName("Junit测试(勿删)");
         String liveUpdateChannelNameResponse = new LiveWebInfoServiceImpl().updateChannelName(
                 liveUpdateChannelNameRequest);
         Assert.assertNotNull(liveUpdateChannelNameResponse);
@@ -2803,7 +2803,7 @@ token设置后需要10秒内及时使用，使用请参考后台单点登录
     @Test
     public void testUpdateChannelPublisher() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest = new LiveUpdateChannelPublisherRequest();
-        liveUpdateChannelPublisherRequest.setChannelId(1965681).setPublisher("主讲人sadboy");
+        liveUpdateChannelPublisherRequest.setChannelId("1965681").setPublisher("主讲人sadboy");
         String liveUpdateChannelPublisherResponse = new LiveWebInfoServiceImpl().updateChannelPublisher(
                 liveUpdateChannelPublisherRequest);
         Assert.assertNotNull(liveUpdateChannelPublisherResponse);
@@ -2873,7 +2873,7 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
     @Test
     public void testUpdateChannelLikes() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest = new LiveUpdateChannelLikesRequest();
-        liveUpdateChannelLikesRequest.setChannelId(1965681).setLikes(9999).setViewers(9999);
+        liveUpdateChannelLikesRequest.setChannelId("1965681").setLikes(9999).setViewers(9999);
         String liveUpdateChannelLikesResponse = new LiveWebInfoServiceImpl().updateChannelLikes(
                 liveUpdateChannelLikesRequest);
         Assert.assertNotNull(liveUpdateChannelLikesResponse);
@@ -2955,7 +2955,7 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
     @Test
     public void testUpdateChannelCountDown() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest = new LiveUpdateChannelCountDownRequest();
-        liveUpdateChannelCountDownRequest.setChannelId(1965681)
+        liveUpdateChannelCountDownRequest.setChannelId("1965681")
                 .setBookingEnabled("Y")
                 .setStartTime("2020-11-11 11:11:11");
         String liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(liveUpdateChannelCountDownRequest);
@@ -2996,7 +2996,7 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
     @Test
     public void testChannelCountDown() throws IOException, NoSuchAlgorithmException {
         LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
-        liveChannelCountDownRequest.setChannelId(1965681);
+        liveChannelCountDownRequest.setChannelId("1965681");
         LiveChannelCountDownResponse liveChannelCountDownResponse = new LiveWebInfoServiceImpl().channelCountDown(
                 liveChannelCountDownRequest);
         Assert.assertNotNull(liveChannelCountDownResponse);
@@ -3037,7 +3037,7 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
     public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
         String path = "C:\\Users\\T460\\Desktop\\elephant.png";
-        liveUpdateChannelLogoRequest.setChannelId(1965681).setImgfile(new File(path));
+        liveUpdateChannelLogoRequest.setChannelId("1965681").setImgfile(new File(path));
         String liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(liveUpdateChannelLogoRequest);
         Assert.assertNotNull(liveUpdateChannelLogoResponse);
         if (liveUpdateChannelLogoResponse != null) {
@@ -3077,7 +3077,7 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
     public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
         String path = "C:\\Users\\T460\\Desktop\\fields.txt";
         LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
-        liveUpdateChannelSplashRequest.setChannelId(1965681).setSplashEnabled("N").setImgfile(new File(path));
+        liveUpdateChannelSplashRequest.setChannelId("1965681").setSplashEnabled("N").setImgfile(new File(path));
         String liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
                 liveUpdateChannelSplashRequest);
         Assert.assertNotNull(liveUpdateChannelSplashResponse);
@@ -3127,7 +3127,7 @@ likes跟viewers可以同时传，也可以只传其中一个，不能都不传
         List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
         authSettings.add(authSetting);
         LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest = new LiveUpdateChannelAuthRequest();
-        liveUpdateChannelAuthRequest.setChannelId(1965681).setAuthSettings(authSettings);
+        liveUpdateChannelAuthRequest.setChannelId("1965681").setAuthSettings(authSettings);
         Boolean liveUpdateChannelAuthResponse = new LiveWebInfoServiceImpl().updateChannelAuth(
                 liveUpdateChannelAuthRequest);
         Assert.assertNotNull(liveUpdateChannelAuthResponse);

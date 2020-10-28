@@ -34,7 +34,7 @@ public class LiveListChannelViewerCountResponse {
          * 频道号
          */
         @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-        private Integer channelId;
+        private String channelId;
         
         /**
          * 统计的时间点（时间格式：12H）

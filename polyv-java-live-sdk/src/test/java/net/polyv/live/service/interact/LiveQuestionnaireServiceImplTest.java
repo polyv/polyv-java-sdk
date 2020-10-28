@@ -48,7 +48,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest = new LiveQuestionnaireDetailSetRequest();
         LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             //封装问卷请求对象
             liveQuestionnaireDetailSetRequest.setChannelId(channelId)
                     .setCustomQuestionnaireId(LiveSignUtil.generateUUID())
@@ -122,7 +122,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         LiveQuestionnaireListRequest liveQuestionnaireListRequest = new LiveQuestionnaireListRequest();
         LiveQuestionnaireListResponse liveQuestionnaireListResponse = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             
             liveQuestionnaireListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveQuestionnaireListResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireListInfo(
@@ -153,7 +153,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         LiveQuestionnaireDetailRequest liveQuestionnaireDetailRequest = new LiveQuestionnaireDetailRequest();
         LiveQuestionnaireDetailResponse liveQuestionnaireDetailResponse = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             //获取详情
             liveQuestionnaireDetailRequest.setChannelId(channelId)
                     .setQuestionnaireId("fs9skpv22f")
@@ -187,7 +187,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         LiveQuestionnaireResultRequest liveQuestionnaireResultRequest = new LiveQuestionnaireResultRequest();
         List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             
             liveQuestionnaireResultRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
 //        liveQuestionnaireResultRequest.setQuestionnaireId("fs9skpv22f");
@@ -220,7 +220,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                 new LiveQuestionnaireResultPageRequest();
         LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             liveQuestionnaireResultPageRequest.setChannelId(channelId)
                     .setPageSize(20)
                     .setCurrentPage(1)

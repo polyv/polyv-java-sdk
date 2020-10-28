@@ -27,7 +27,7 @@ public class LiveQuestionnaireDetailSetRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 问卷id,修改问卷时需要

@@ -86,7 +86,7 @@ public class LiveGetConsultingRecordResponse {
          * 频道号
          */
         @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-        private Integer channelId;
+        private String channelId;
         
         /**
          * 是否禁言

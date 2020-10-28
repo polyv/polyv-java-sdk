@@ -26,7 +26,7 @@ public class LiveSetPlayerPauseAdvertRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * Y-打开，N-关闭；设置开关时，其余设置参数无效

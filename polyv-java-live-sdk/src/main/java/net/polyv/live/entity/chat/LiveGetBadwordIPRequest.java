@@ -25,7 +25,7 @@ public class LiveGetBadwordIPRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = false)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 禁言类型,ip/userId

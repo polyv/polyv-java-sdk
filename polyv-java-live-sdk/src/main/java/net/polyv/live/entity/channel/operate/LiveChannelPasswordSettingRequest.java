@@ -32,7 +32,7 @@ public class LiveChannelPasswordSettingRequest extends LiveCommonRequest {
      * 频道号，请留意，如果该参数为空，会对该用户所有的频道进行修改
      */
     @ApiModelProperty(name = "channelId", value = "频道号，请留意，如果该参数为空，会对该用户所有的频道进行修改", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 修改的密码  

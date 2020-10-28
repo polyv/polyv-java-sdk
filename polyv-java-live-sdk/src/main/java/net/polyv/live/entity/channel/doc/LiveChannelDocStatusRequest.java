@@ -26,7 +26,7 @@ public class LiveChannelDocStatusRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串)

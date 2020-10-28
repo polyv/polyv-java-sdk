@@ -29,7 +29,7 @@ public class LiveGetQuestionStatisticalRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    private Integer channelId;
+    private String channelId;
     
     
     /**

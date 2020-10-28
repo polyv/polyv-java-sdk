@@ -28,7 +28,7 @@ public class LiveSetPlayerImgRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     /**
      * 暖场图片地址，图片大小建议：800x450，支持PNG、JPEG、GIF格式
      */

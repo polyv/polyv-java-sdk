@@ -18,7 +18,7 @@
      */
     @Test
     public void testSetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = super.createChannel();
+        String channelId = super.createChannel();
         //封装问卷请求对象
         LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest = new LiveQuestionnaireDetailSetRequest();
         liveQuestionnaireDetailSetRequest.setChannelId(channelId).setCustomQuestionnaireId(LiveSignUtil.generateUUID())

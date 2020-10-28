@@ -25,7 +25,7 @@ public class LiveUpdateChannelCashRequest extends LiveCommonRequest {
      * 频道号，不传为全局设置
      */
     @ApiModelProperty(name = "channelId", value = "频道号，不传为全局设置", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 请求体参数，现金打赏数额数组，数组的长度必须为6

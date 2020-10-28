@@ -36,7 +36,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     @Test
     public void testUpdateChannelName() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelNameRequest liveUpdateChannelNameRequest = new LiveUpdateChannelNameRequest();
-        liveUpdateChannelNameRequest.setChannelId(1965681).setName("Junit测试(勿删)");
+        liveUpdateChannelNameRequest.setChannelId("1965681").setName("Junit测试(勿删)");
         String liveUpdateChannelNameResponse = new LiveWebInfoServiceImpl().updateChannelName(
                 liveUpdateChannelNameRequest);
         Assert.assertNotNull(liveUpdateChannelNameResponse);
@@ -54,7 +54,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     @Test
     public void testUpdateChannelPublisher() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest = new LiveUpdateChannelPublisherRequest();
-        liveUpdateChannelPublisherRequest.setChannelId(1965681).setPublisher("主讲人sadboy");
+        liveUpdateChannelPublisherRequest.setChannelId("1965681").setPublisher("主讲人sadboy");
         String liveUpdateChannelPublisherResponse = new LiveWebInfoServiceImpl().updateChannelPublisher(
                 liveUpdateChannelPublisherRequest);
         Assert.assertNotNull(liveUpdateChannelPublisherResponse);
@@ -72,7 +72,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     @Test
     public void testChannelSplash() throws IOException, NoSuchAlgorithmException {
         LiveChannelSplashRequest liveChannelSplashRequest = new LiveChannelSplashRequest();
-        liveChannelSplashRequest.setChannelId(1965681);
+        liveChannelSplashRequest.setChannelId("1965681");
         LiveChannelSplashResponse liveChannelSplashResponse = new LiveWebInfoServiceImpl().channelSplash(
                 liveChannelSplashRequest);
         Assert.assertNotNull(liveChannelSplashResponse);
@@ -90,7 +90,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     @Test
     public void testUpdateChannelLikes() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest = new LiveUpdateChannelLikesRequest();
-        liveUpdateChannelLikesRequest.setChannelId(1965681).setLikes(9999).setViewers(9999);
+        liveUpdateChannelLikesRequest.setChannelId("1965681").setLikes(9999).setViewers(9999);
         String liveUpdateChannelLikesResponse = new LiveWebInfoServiceImpl().updateChannelLikes(
                 liveUpdateChannelLikesRequest);
         Assert.assertNotNull(liveUpdateChannelLikesResponse);
@@ -126,7 +126,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     @Test
     public void testUpdateChannelCountDown() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest = new LiveUpdateChannelCountDownRequest();
-        liveUpdateChannelCountDownRequest.setChannelId(1965681)
+        liveUpdateChannelCountDownRequest.setChannelId("1965681")
                 .setBookingEnabled("Y")
                 .setStartTime("2020-11-11 11:11:11");
         String liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(
@@ -146,7 +146,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     @Test
     public void testChannelCountDown() throws IOException, NoSuchAlgorithmException {
         LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
-        liveChannelCountDownRequest.setChannelId(1965681);
+        liveChannelCountDownRequest.setChannelId("1965681");
         LiveChannelCountDownResponse liveChannelCountDownResponse = new LiveWebInfoServiceImpl().channelCountDown(
                 liveChannelCountDownRequest);
         Assert.assertNotNull(liveChannelCountDownResponse);
@@ -165,7 +165,7 @@ public class LiveWebInfoImplTest extends BaseTest {
 //    public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
 //        LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
 //        String path = "C:\\Users\\T460\\Desktop\\elephant.png";
-//        liveUpdateChannelLogoRequest.setChannelId(1965681).setImgfile(new File(path));
+//        liveUpdateChannelLogoRequest.setChannelId("1965681").setImgfile(new File(path));
 //        String liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo
 //        (liveUpdateChannelLogoRequest);
 //        Assert.assertNotNull(liveUpdateChannelLogoResponse);
@@ -184,7 +184,7 @@ public class LiveWebInfoImplTest extends BaseTest {
 //    public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
 //        String path = "C:\\Users\\T460\\Desktop\\fields.txt";
 //        LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
-//        liveUpdateChannelSplashRequest.setChannelId(1965681).setSplashEnabled("N").setImgfile(new File(path));
+//        liveUpdateChannelSplashRequest.setChannelId("1965681").setSplashEnabled("N").setImgfile(new File(path));
 //        String liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
 //                liveUpdateChannelSplashRequest);
 //        Assert.assertNotNull(liveUpdateChannelSplashResponse);

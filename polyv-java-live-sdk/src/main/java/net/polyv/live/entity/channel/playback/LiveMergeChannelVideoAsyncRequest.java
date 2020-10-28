@@ -26,7 +26,7 @@ public class LiveMergeChannelVideoAsyncRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 要合并的录制视频文件ID，多个id用英文逗号,分隔，可通过调用查询视频库列表获取fileId

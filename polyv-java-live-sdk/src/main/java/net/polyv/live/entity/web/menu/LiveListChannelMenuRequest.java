@@ -26,6 +26,6 @@ public class LiveListChannelMenuRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号，不传为获取全局设置", required = true)
     @NotNull(message = "属性channelId不允许为空")
-    private Integer channelId;
+    private String channelId;
     
 }

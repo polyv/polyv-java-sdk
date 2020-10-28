@@ -31,7 +31,7 @@ public class LiveGetQuestionStatisticalResponse {
      * 频道号，整型
      */
     @ApiModelProperty(name = "channelId", value = "频道号，整型", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 问答类型，radio为单选，judge为判断题

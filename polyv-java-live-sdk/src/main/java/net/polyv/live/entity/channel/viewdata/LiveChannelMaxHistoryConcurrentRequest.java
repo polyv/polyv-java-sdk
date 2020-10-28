@@ -23,7 +23,7 @@ public class LiveChannelMaxHistoryConcurrentRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 开始时间13位毫秒级时间戳

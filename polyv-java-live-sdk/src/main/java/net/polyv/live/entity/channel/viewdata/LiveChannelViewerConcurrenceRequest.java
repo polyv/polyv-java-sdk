@@ -25,7 +25,7 @@ public class LiveChannelViewerConcurrenceRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 开始日期格式，yyyy-MM-dd,开始日期和结束日期的时间跨度：最多查两个月内的数据

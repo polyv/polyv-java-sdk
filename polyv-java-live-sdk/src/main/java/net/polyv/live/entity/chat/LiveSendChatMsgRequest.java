@@ -25,7 +25,7 @@ public class LiveSendChatMsgRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 管理员索引，可以指定多个管理员发送消息，默认只有一个管理员

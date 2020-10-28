@@ -32,7 +32,7 @@ public class LiveAnswerRecordServiceImplTest extends BaseTest {
         LiveQuestionAnswerRecordRequest liveQuestionAnswerRecordRequest = new LiveQuestionAnswerRecordRequest();
         List<LiveQuestionAnswerRecordResponse> liveCheckinResponse = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             liveQuestionAnswerRecordRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveCheckinResponse = new LiveAnswerRecordServiceImpl().getAnswerRecord(liveQuestionAnswerRecordRequest);
             Assert.assertNotNull(liveCheckinResponse);

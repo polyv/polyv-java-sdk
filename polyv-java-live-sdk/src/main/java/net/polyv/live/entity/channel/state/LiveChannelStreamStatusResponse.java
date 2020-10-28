@@ -22,7 +22,7 @@ public class LiveChannelStreamStatusResponse {
      * 频道号，整型
      */
     @ApiModelProperty(name = "channelId", value = "频道号，整型", required = false)
-    private Integer channelId;
+    private String channelId;
     
     
     /**

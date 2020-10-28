@@ -26,7 +26,7 @@ public class LiveUpdateChannelAuthRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号，不传为全局设置", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 观看条件设置，最多设置2个观看条件，由rank字段进行区分，其中 主要观看条件为1，次要观看条件为2

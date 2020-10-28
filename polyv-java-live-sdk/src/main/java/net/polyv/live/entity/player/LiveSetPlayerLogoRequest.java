@@ -26,7 +26,7 @@ public class LiveSetPlayerLogoRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * logo图片地址，建议大小为：长方形140x50或正方形50x50

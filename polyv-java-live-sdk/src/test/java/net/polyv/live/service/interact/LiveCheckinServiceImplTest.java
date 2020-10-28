@@ -38,7 +38,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
         LiveCheckinListRequest liveCheckinListRequest = new LiveCheckinListRequest();
         LiveCheckinListResponse checkinListInfo = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             
             liveCheckinListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
 //        liveCheckinListRequest.setDate("2020-10-20").setSessionId("fs9v9y4nxf");
@@ -69,7 +69,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
         LiveCheckinRequest liveCheckinRequest = new LiveCheckinRequest();
         List<LiveCheckinResponse> liveCheckinResponse = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             liveCheckinRequest.setChannelId(channelId)
                     .setCheckinId("d91a7c60-1299-11eb-8c65-c70c1c")
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -102,7 +102,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
                 new LiveCheckinMetadataBySessionIdRequest();
         List<LiveCheckinMetadataBySessionIdResponse> liveCheckinResponse = null;
         try {
-            Integer channelId = super.createChannel();
+            String channelId = super.createChannel();
             
             liveCheckinMetadataBySessionIdRequest.setChannelId(channelId)
                     .setSessionId("fs9v9y4nxf")

@@ -58,7 +58,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_AUTH_UPDATE_URL;
         Map<String, String> signMap = MapUtil.getSignMap(liveUpdateChannelAuthRequest);
-        Integer channelId = liveUpdateChannelAuthRequest.getChannelId();
+        String channelId = liveUpdateChannelAuthRequest.getChannelId();
         if (channelId != null) {
             signMap.put("channelId", channelId.toString());
         }

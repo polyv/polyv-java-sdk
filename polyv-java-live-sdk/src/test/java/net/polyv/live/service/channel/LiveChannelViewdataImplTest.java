@@ -36,7 +36,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
      */
     @Test
     public void testMaxChannelHistoryConcurrent() throws IOException, NoSuchAlgorithmException {
-        int channelId = 1951952;
+        String channelId = "1951952";
         long nowTime = System.currentTimeMillis();
         long startTime = nowTime - 30 * 24 * 60 * 60 * 1000l;
         LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest =
@@ -60,7 +60,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
     @Test
     public void testListChannelMic() throws IOException, NoSuchAlgorithmException {
         LiveListChannelMicRequest liveListChannelMicRequest = new LiveListChannelMicRequest();
-        liveListChannelMicRequest.setChannelIds("1951952,1958888").setStartDay("2020-01-01").setEndDay("2020-11-11");
+        liveListChannelMicRequest.setChannelIds("1958888").setStartDay("2020-01-01").setEndDay("2020-11-11");
         LiveListChannelMicResponse liveListChannelMicResponse = new LiveChannelViewdataServiceImpl().listChannelMic(
                 liveListChannelMicRequest);
         Assert.assertNotNull(liveListChannelMicResponse);
@@ -78,7 +78,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
     @Test
     public void testListChannelViewlog() throws IOException, NoSuchAlgorithmException {
         LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
-        liveListChannelViewlogRequest.setChannelId(1951952).setCurrentDay("2020-10-14");
+        liveListChannelViewlogRequest.setChannelId("1951952").setCurrentDay("2020-10-14");
         LiveListChannelViewlogResponse liveListChannelViewlogResponse =
                 new LiveChannelViewdataServiceImpl().listChannelViewlog(
                 liveListChannelViewlogRequest);
@@ -99,7 +99,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
         LiveListChannelSummaryRequest liveListChannelSummaryRequest = new LiveListChannelSummaryRequest();
         liveListChannelSummaryRequest.setStartDate("2020-01-01")
                 .setEndDate("2020-11-11")
-                .setChannelIds("1951952,1958888");
+                .setChannelIds("1951952");
         LiveListChannelSummaryResponse liveListChannelSummaryResponse =
                 new LiveChannelViewdataServiceImpl().listChannelSummary(
                 liveListChannelSummaryRequest);
@@ -118,7 +118,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
     @Test
     public void testListChannelViewerCount() throws IOException, NoSuchAlgorithmException {
         LiveListChannelViewerCountRequest liveListChannelViewerCountRequest = new LiveListChannelViewerCountRequest();
-        liveListChannelViewerCountRequest.setChannelIds("1951952,1958888");
+        liveListChannelViewerCountRequest.setChannelIds("1958888");
         LiveListChannelViewerCountResponse liveListChannelViewerCountResponse =
                 new LiveChannelViewdataServiceImpl().listChannelViewerCount(
                 liveListChannelViewerCountRequest);
@@ -136,7 +136,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
      */
     @Test
     public void testChannelViewerConcurrence() throws IOException, NoSuchAlgorithmException {
-        Integer channelId = createChannel();
+        String channelId = createChannel();
         LiveChannelViewerConcurrenceRequest liveChannelViewerConcurrenceRequest =
                 new LiveChannelViewerConcurrenceRequest();
         liveChannelViewerConcurrenceRequest.setChannelId(channelId).setStartDate("2020-10-01").setEndDate("2020-11-11");

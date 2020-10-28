@@ -26,7 +26,7 @@ public class LiveListChannelVideoLibraryRequest extends LivePageCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * playback-回放列表,vod-点播列表;默认普通直播场景为vod，三分屏为playback

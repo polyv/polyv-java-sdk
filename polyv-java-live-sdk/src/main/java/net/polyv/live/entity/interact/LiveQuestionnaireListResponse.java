@@ -26,7 +26,7 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
     /**
      * 查询的结果列表
      */
-    @ApiModelProperty(name = "contents", value = "查询频道问卷列表", required = false)
+    @ApiModelProperty(name = "contents", value = "问卷数据列表", required = false)
     private List<QuestionDetail> contents;
     
     
@@ -34,7 +34,7 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
-    @ApiModel("查询频道问卷列表响应实体-问题详情")
+    @ApiModel("查询频道问卷列表响应实体-问卷数据详情")
     public class QuestionDetail {
         
         
@@ -48,12 +48,12 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
          * 频道号
          */
         @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-        private Integer channelId;
+        private String channelId;
         
         /**
          * 用户ID
          */
-        @ApiModelProperty(name = "userId", value = "用户ID", required = false)
+        @ApiModelProperty(name = "userId", value = "直播用户userId", required = false)
         private String userId;
         
         /**
@@ -65,7 +65,7 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
         /**
          * 问卷状态，取值：saved(已保存)，published
          */
-        @ApiModelProperty(name = "status", value = "问卷状态，取值：saved(已保存)，published", required = false)
+        @ApiModelProperty(name = "status", value = "问卷状态，取值：saved(已保存)，published （已发布），forbidden （问卷已完成填写）", required = false)
         private String status;
         
         /**

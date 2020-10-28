@@ -23,7 +23,7 @@ public class LiveUpdateChannelAuthUrlRequest extends LiveCommonRequest {
      * 频道号，无该参数为全局设置
      */
     @ApiModelProperty(name = "channelId", value = "频道号，无该参数为全局设置", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 授权认证url，为空时清除设置

@@ -27,7 +27,7 @@ public class LiveUpdateChannelGoodRequest extends LiveCommonRequest {
      * 频道号，不传为全局设置
      */
     @ApiModelProperty(name = "channelId", value = "频道号，不传为全局设置", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 请求体参数，道具打赏开关，不传默认开启，值为 Y/N , Y为开启

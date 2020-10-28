@@ -28,7 +28,7 @@ public class LiveSetChatAdminDataRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 管理员昵称，长度不能超过8

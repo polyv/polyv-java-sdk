@@ -45,7 +45,7 @@ public class DocUtil {
 //        JUNIT_CLASS_NAME = "net.polyv.live.service.interact." + LiveCheckinServiceImpl.class.getSimpleName() + "Test";
 //        JUNIT_CLASS_NAME= "net.polyv.live.service.interact."+LiveAnswerRecordServiceImpl.class.getSimpleName()+"Test";
 //        JUNIT_CLASS_NAME= "net.polyv.live.service.player."+ LivePlayerServiceImpl.class.getSimpleName()+"Test";
-        JUNIT_CLASS_NAME= "net.polyv.live.service.chat."+ LiveChatRoomServiceImpl.class.getSimpleName()+"Test";
+//        JUNIT_CLASS_NAME= "net.polyv.live.service.chat."+ LiveChatRoomServiceImpl.class.getSimpleName()+"Test";
         
         
         String path = JUNIT_PATH + JUNIT_CLASS_NAME.replace(".", "/") + ".java";

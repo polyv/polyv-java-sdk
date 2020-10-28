@@ -26,7 +26,7 @@ public class LiveCreateSonChannelRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 默认不传为助教，传Guest为嘉宾（只支持三分屏场景的频道）

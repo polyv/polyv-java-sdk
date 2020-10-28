@@ -26,7 +26,7 @@ public class LiveListChannelDocRequest extends LivePageCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不允许为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 文档状态，不传查询所有（“normal” ：正常，“waitUpload”：等待上传,“failUpload”：上传失败，"waitConvert":转换PPT中,"failConvert":转换PPT失败）

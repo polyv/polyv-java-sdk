@@ -32,7 +32,7 @@ public class LiveChannelAuthCustomRequest extends LiveCommonRequest {
      * 频道号，提交后对某频道号设置，不提交则对账号下所有频道号进行设置
      */
     @ApiModelProperty(name = "channelId", value = "频道号，提交后对某频道号设置，不提交则对账号下所有频道号进行设置", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 自定义授权地址

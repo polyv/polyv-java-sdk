@@ -26,7 +26,7 @@ public class LiveUpdateChannelLikesRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 点赞数,likes跟viewers可以同时传，也可以只传其中一个，不能都不传

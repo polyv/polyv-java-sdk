@@ -24,7 +24,7 @@ public class LiveChannelBasicInfoResponse {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 频道名称
@@ -167,7 +167,7 @@ public class LiveChannelBasicInfoResponse {
          * 频道号
          */
         @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-        private Integer channelId;
+        private String channelId;
         
         /**
          * 用户ID

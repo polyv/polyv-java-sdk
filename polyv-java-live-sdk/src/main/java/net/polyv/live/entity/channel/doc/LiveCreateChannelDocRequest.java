@@ -28,7 +28,7 @@ public class LiveCreateChannelDocRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelId", value = "频道ID", required = true)
     @NotNull(message = "属性channelId不能为空")
-    private Integer channelId;
+    private String channelId;
     
     /**
      * 转换类型（‘common’：转普通图片， ‘animate’：转动画效果）默认不传转普通，因为只有ppt，pptx可以转动画，其他类型文件会自动转成普通；文件转动画转失败会直接把类型转为普通
@@ -66,7 +66,7 @@ public class LiveCreateChannelDocRequest extends LiveCommonRequest {
          * 频道ID
          */
         @ApiModelProperty(name = "channelId", value = "频道ID", required = false)
-        private Integer channelId;
+        private String channelId;
     
         /**
          * 文件转换状态（normal：正常,failConvert:转换PPT失败）

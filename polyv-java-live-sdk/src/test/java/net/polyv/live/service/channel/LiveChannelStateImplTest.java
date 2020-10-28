@@ -32,8 +32,8 @@ public class LiveChannelStateImplTest extends BaseTest {
     @Test
     public void testListChannelLiveStream() throws IOException, NoSuchAlgorithmException {
         //准备测试数据
-        Integer channelId0 = createChannel();
-        Integer channelId1 = createChannel();
+        String channelId0 = createChannel();
+        String channelId1 = createChannel();
         
         LiveListChannelStreamStatusRequest liveListChannelStreamStatusRequest =
                 new LiveListChannelStreamStatusRequest();
@@ -60,7 +60,7 @@ public class LiveChannelStateImplTest extends BaseTest {
     @Test
     public void testResumeChannelStream() throws IOException, NoSuchAlgorithmException {
         //准备测试数据
-        Integer channelId = createChannel();
+        String channelId = createChannel();
         
         LiveResumeChannelStreamRequest liveResumeChannelStreamRequest = new LiveResumeChannelStreamRequest();
         liveResumeChannelStreamRequest.setChannelId(channelId);
@@ -84,7 +84,7 @@ public class LiveChannelStateImplTest extends BaseTest {
     @Test
     public void testCutoffChannelStream() throws IOException, NoSuchAlgorithmException {
         //准备测试数据
-        Integer channelId = createChannel();
+        String channelId = createChannel();
         
         LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest = new LiveCutoffChannelStreamRequest();
         liveCutoffChannelStreamRequest.setChannelId(channelId);
@@ -109,7 +109,7 @@ public class LiveChannelStateImplTest extends BaseTest {
 //    @Test
     public void testchannelStreamInfo() throws IOException, NoSuchAlgorithmException {
         LiveChannelStreamInfoRequest liveChannelStreamInfoRequest = new LiveChannelStreamInfoRequest();
-        liveChannelStreamInfoRequest.setChannelId(1951952);
+        liveChannelStreamInfoRequest.setChannelId("1951952");
         LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = new LiveChannelStateServiceImpl().channelStreamInfo(
                 liveChannelStreamInfoRequest);
         Assert.assertNotNull(liveChannelStreamInfoResponse);

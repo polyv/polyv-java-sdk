@@ -38,7 +38,7 @@ public class LiveChannelDocImplTest extends BaseTest {
         LiveListChannelDocRequest liveListChannelDocRequest = new LiveListChannelDocRequest();
         LiveListChannelDocResponse liveListChannelDocResponse;
         try {
-            Integer channelId = createChannel();
+            String channelId = createChannel();
             liveListChannelDocRequest.setChannelId(channelId).setStatus(null);
             liveListChannelDocResponse = new LiveChannelDocServiceImpl().listChannelDoc(liveListChannelDocRequest);
             Assert.assertNotNull(liveListChannelDocResponse);
@@ -68,7 +68,7 @@ public class LiveChannelDocImplTest extends BaseTest {
         LiveChannelDocStatusRequest liveChannelDocStatusRequest = new LiveChannelDocStatusRequest();
         LiveChannelDocStatusResponse liveChannelDocStatusResponse;
         try {
-            Integer channelId = createChannel();
+            String channelId = createChannel();
             liveChannelDocStatusRequest.setChannelId(channelId)
                     .setFileId(
                             "c2d585857870f4eff024976e3a265c0b1965681common," +
@@ -102,7 +102,7 @@ public class LiveChannelDocImplTest extends BaseTest {
         LiveDeleteChannelDocRequest liveDeleteChannelDocRequest = new LiveDeleteChannelDocRequest();
         Boolean liveDeleteChannelDocResponse;
         try {
-            Integer channelId = createChannel();
+            String channelId = createChannel();
             liveDeleteChannelDocRequest.setChannelId(channelId)
                     .setFileId("d2925eab9ac71da4d27d93bd8b3d0e821965681common")
                     .setType("new");

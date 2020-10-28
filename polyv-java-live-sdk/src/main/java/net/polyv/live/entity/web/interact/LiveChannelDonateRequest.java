@@ -23,6 +23,6 @@ public class LiveChannelDonateRequest extends LiveCommonRequest {
      * 频道号，不传为全局设置
      */
     @ApiModelProperty(name = "channelId", value = "频道号，不传为全局设置", required = false)
-    private Integer channelId;
+    private String channelId;
     
 }

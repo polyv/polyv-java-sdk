@@ -192,8 +192,8 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         List<String> result = null;
         try {
             String channelId = super.createChannel();
-            liveGetBannedListRequest.setChannelId(channelId).setType(LiveConstant.BannedType.IP.getType());
-//                    .setRequestId(LiveSignUtil.generateUUID());
+            liveGetBannedListRequest.setChannelId(channelId).setType(LiveConstant.BannedType.IP.getType())
+                    .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
             Assert.assertNotNull(result);
             if (result != null) {

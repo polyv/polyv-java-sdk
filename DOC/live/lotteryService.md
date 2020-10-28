@@ -1,44 +1,44 @@
 ## 1、获取频道抽奖记录列表
-### 描述
-```
-获取频道抽奖记录列表
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+### 描述
+```
+获取频道抽奖记录列表
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 单元测试
-```java
-	@Test
-	public void testListLottery() throws IOException, NoSuchAlgorithmException {
-        LiveListLotteryRequest liveListLotteryRequest = new LiveListLotteryRequest();
-        LiveListLotteryResponse liveListLotteryResponse;
-        try {
-            liveListLotteryRequest.setChannelId(super.createChannel())
-                    .setStartTime(1601481600000l)
-                    .setEndTime(1605024000000l)
-                    .setPageSize(1);
-            liveListLotteryResponse = new LiveLotteryServiceImpl().listLottery(liveListLotteryRequest);
-            Assert.assertNotNull(liveListLotteryResponse);
-            if (liveListLotteryResponse != null) {
-                //to do something ......
-                log.debug("测试获取频道抽奖记录列表成功，{}", JSON.toJSONString(liveListLotteryResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回LiveListLotteryResponse对象，B端依据此对象处理业务逻辑；
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
+### 单元测试
+```java
+	@Test
+	public void testListLottery() throws IOException, NoSuchAlgorithmException {
+        LiveListLotteryRequest liveListLotteryRequest = new LiveListLotteryRequest();
+        LiveListLotteryResponse liveListLotteryResponse;
+        try {
+            liveListLotteryRequest.setChannelId(super.createChannel())
+                    .setStartTime(1601481600000l)
+                    .setEndTime(1605024000000l)
+                    .setPageSize(1);
+            liveListLotteryResponse = new LiveLotteryServiceImpl().listLottery(liveListLotteryRequest);
+            Assert.assertNotNull(liveListLotteryResponse);
+            if (liveListLotteryResponse != null) {
+                //to do something ......
+                log.debug("测试获取频道抽奖记录列表成功，{}", JSON.toJSONString(liveListLotteryResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveListLotteryResponse对象，B端依据此对象处理业务逻辑；
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -50,7 +50,7 @@
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-### 返回对象描述
+### 返回对象描述
 
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -90,48 +90,48 @@
 | field | false | String | 填写的字段名 | 
 | tips | false | String | 填写的字段提示 | 
 
-<br /><br />
-------------------
-<br /><br />
-## 2、获取频道单场抽奖的中奖记录
-### 描述
-```
-获取频道单场抽奖的中奖记录
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+<br /><br />
+------------------
+<br /><br />
+## 2、获取频道单场抽奖的中奖记录
+### 描述
+```
+获取频道单场抽奖的中奖记录
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 单元测试
-```java
-	@Test
-	public void testLotteryWinnerDetail() throws IOException, NoSuchAlgorithmException {
-        LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest = new LiveLotteryWinnerDetailRequest();
-        LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
-        try {
-            liveLotteryWinnerDetailRequest.setChannelId(super.createChannel()).setLotteryId("1211");
-            liveLotteryWinnerDetailResponse = new LiveLotteryServiceImpl().lotteryWinnerDetail(
-                    liveLotteryWinnerDetailRequest);
-            Assert.assertNotNull(liveLotteryWinnerDetailResponse);
-            if (liveLotteryWinnerDetailResponse != null) {
-                //to do something ......
-                log.debug("测试获取频道单场抽奖的中奖记录成功，{}", JSON.toJSONString(liveLotteryWinnerDetailResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回LiveLotteryWinnerDetailResponse对象，B端依据此对象处理业务逻辑；
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
+### 单元测试
+```java
+	@Test
+	public void testLotteryWinnerDetail() throws IOException, NoSuchAlgorithmException {
+        LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest = new LiveLotteryWinnerDetailRequest();
+        LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
+        try {
+            liveLotteryWinnerDetailRequest.setChannelId(super.createChannel()).setLotteryId("1211");
+            liveLotteryWinnerDetailResponse = new LiveLotteryServiceImpl().lotteryWinnerDetail(
+                    liveLotteryWinnerDetailRequest);
+            Assert.assertNotNull(liveLotteryWinnerDetailResponse);
+            if (liveLotteryWinnerDetailResponse != null) {
+                //to do something ......
+                log.debug("测试获取频道单场抽奖的中奖记录成功，{}", JSON.toJSONString(liveLotteryWinnerDetailResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveLotteryWinnerDetailResponse对象，B端依据此对象处理业务逻辑；
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -141,7 +141,7 @@
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-### 返回对象描述
+### 返回对象描述
 
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -180,57 +180,57 @@
 | field | false | String | 填写的字段名 | 
 | tips | false | String | 填写的字段提示 | 
 
-<br /><br />
-------------------
-<br /><br />
-## 3、设置抽奖中奖者信息
-### 描述
-```
-用于提交中奖者填写的信息
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+<br /><br />
+------------------
+<br /><br />
+## 3、设置抽奖中奖者信息
+### 描述
+```
+用于提交中奖者填写的信息
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](../limit.md)
 
 2.只能成功保存一次观众中奖信息
 3.中奖信息需在7天内提交保存，否则会失效
-### 单元测试
-```java
-	@Test
-	public void testSetLotteryWinnerInfo() throws IOException, NoSuchAlgorithmException {
-        LiveSetLotteryWinnerInfoRequest liveSetLotteryWinnerInfoRequest = new LiveSetLotteryWinnerInfoRequest();
-        Boolean liveSetLotteryWinnerInfoResponse;
-        try {
-            liveSetLotteryWinnerInfoRequest.setChannelId(super.createChannel())
-                    .setLotteryId("")
-                    .setWinnerCode("")
-                    .setViewerId("")
-                    .setName("")
-                    .setTelephone("")
-                    .setReceiveInfo("");
-            liveSetLotteryWinnerInfoResponse = new LiveLotteryServiceImpl().setLotteryWinnerInfo(
-                    liveSetLotteryWinnerInfoRequest);
-            Assert.assertNotNull(liveSetLotteryWinnerInfoResponse);
-            if (liveSetLotteryWinnerInfoResponse) {
-                //to do something ......
-                log.debug("测试设置抽奖中奖者信息成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-}
-```
-### 单元测试说明
-1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
+### 单元测试
+```java
+	@Test
+	public void testSetLotteryWinnerInfo() throws IOException, NoSuchAlgorithmException {
+        LiveSetLotteryWinnerInfoRequest liveSetLotteryWinnerInfoRequest = new LiveSetLotteryWinnerInfoRequest();
+        Boolean liveSetLotteryWinnerInfoResponse;
+        try {
+            liveSetLotteryWinnerInfoRequest.setChannelId(super.createChannel())
+                    .setLotteryId("")
+                    .setWinnerCode("")
+                    .setViewerId("")
+                    .setName("")
+                    .setTelephone("")
+                    .setReceiveInfo("");
+            liveSetLotteryWinnerInfoResponse = new LiveLotteryServiceImpl().setLotteryWinnerInfo(
+                    liveSetLotteryWinnerInfoRequest);
+            Assert.assertNotNull(liveSetLotteryWinnerInfoResponse);
+            if (liveSetLotteryWinnerInfoResponse) {
+                //to do something ......
+                log.debug("测试设置抽奖中奖者信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+}
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -243,11 +243,10 @@
 | receiveInfo | false | String | 自定义字段数据，数据类型为数组JSON[{"field":"姓名","value":"测试"},{"field":"手机","value":"13412345678"}] field：字段名称，value：字段值，如果传这个参数，name和telephone字段不需要传（无效） | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-### 返回对象描述
+### 返回对象描述
 
-null
-<br /><br />
-------------------
-<br /><br />
+null
+<br /><br />
+------------------
+<br /><br />
 
-

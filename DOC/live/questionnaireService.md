@@ -1,80 +1,80 @@
 ## 1、设置频道问卷信息
-### 描述
-```
-接口用于编辑或添加问卷信息，为全量增加或修改
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+### 描述
+```
+接口用于编辑或添加问卷信息，为全量增加或修改
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 单元测试
-```java
-	@Test
-	public void testSetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
-        LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest = new LiveQuestionnaireDetailSetRequest();
-        LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse = null;
-        try {
-            String channelId = super.createChannel();
-            //封装问卷请求对象
-            liveQuestionnaireDetailSetRequest.setChannelId(channelId)
-                    .setCustomQuestionnaireId(LiveSignUtil.generateUUID())
-//                .setQuestionnaireId("fs9skpv22f")
-                    .setQuestionnaireTitle("测试试卷，明天会更好调查2")
-                    .setRequestId(LiveSignUtil.generateUUID());
-            //封装问卷题目
-            LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail =
-                    liveQuestionnaireDetailSetRequest.new QuestionDetail();
-            questionDetail.setQuestionId(LiveSignUtil.generateUUID())
-                    .setName("您的兴趣爱好？")
-                    .setAnswer("A")
-                    .setScoreEnabled(LiveConstant.Flag.YES.getFlag())
-                    .setRequired(LiveConstant.Flag.YES.getFlag())
-                    .setOptions(Arrays.asList(new String[]{"篮球", "足球", "排球", "跑步", "羽毛球"}))
-                    .setScore(20)
-                    .setType(LiveConstant.QuestionType.CHECK.getType());
-            LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail1 =
-                    liveQuestionnaireDetailSetRequest.new QuestionDetail();
-            questionDetail1.setQuestionId(LiveSignUtil.generateUUID())
-                    .setName("您的性别")
-                    .setScoreEnabled(LiveConstant.Flag.NO.getFlag())
-                    .setRequired(LiveConstant.Flag.YES.getFlag())
-                    .setOptions(Arrays.asList(new String[]{"M", "W"}))
-                    .setType(LiveConstant.QuestionType.RADIO.getType());
-            LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail2 =
-                    liveQuestionnaireDetailSetRequest.new QuestionDetail();
-            questionDetail2.setQuestionId(LiveSignUtil.generateUUID())
-                    .setName("您的职务？")
-                    .setScoreEnabled(LiveConstant.Flag.NO.getFlag())
-                    .setRequired(LiveConstant.Flag.YES.getFlag())
-                    .setType(LiveConstant.QuestionType.QUESTION.getType());
-            //将问卷题目和问卷关联
-            liveQuestionnaireDetailSetRequest.setQuestions(Arrays.asList(
-                    new LiveQuestionnaireDetailSetRequest.QuestionDetail[]{questionDetail, questionDetail1,
-                            questionDetail2}));
-            //发送请求
-            liveQuestionnaireDetailSetResponse = new LiveQuestionnaireServiceImpl().setQuestionnaireDetailInfo(
-                    liveQuestionnaireDetailSetRequest);
-            //判断结果
-            Assert.assertNotNull(liveQuestionnaireDetailSetResponse);
-            if (liveQuestionnaireDetailSetResponse != null) {
-                //to do something ......
-                log.debug("测试添加频道问卷成功{}", JSON.toJSONString(liveQuestionnaireDetailSetResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回LiveQuestionnaireDetailSetResponse对象，B端依据此对象处理业务逻辑；
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
+### 单元测试
+```java
+	@Test
+	public void testSetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
+        LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest = new LiveQuestionnaireDetailSetRequest();
+        LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse = null;
+        try {
+            String channelId = super.createChannel();
+            //封装问卷请求对象
+            liveQuestionnaireDetailSetRequest.setChannelId(channelId)
+                    .setCustomQuestionnaireId(LiveSignUtil.generateUUID())
+//                .setQuestionnaireId("fs9skpv22f")
+                    .setQuestionnaireTitle("测试试卷，明天会更好调查2")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            //封装问卷题目
+            LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail =
+                    liveQuestionnaireDetailSetRequest.new QuestionDetail();
+            questionDetail.setQuestionId(LiveSignUtil.generateUUID())
+                    .setName("您的兴趣爱好？")
+                    .setAnswer("A")
+                    .setScoreEnabled(LiveConstant.Flag.YES.getFlag())
+                    .setRequired(LiveConstant.Flag.YES.getFlag())
+                    .setOptions(Arrays.asList(new String[]{"篮球", "足球", "排球", "跑步", "羽毛球"}))
+                    .setScore(20)
+                    .setType(LiveConstant.QuestionType.CHECK.getType());
+            LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail1 =
+                    liveQuestionnaireDetailSetRequest.new QuestionDetail();
+            questionDetail1.setQuestionId(LiveSignUtil.generateUUID())
+                    .setName("您的性别")
+                    .setScoreEnabled(LiveConstant.Flag.NO.getFlag())
+                    .setRequired(LiveConstant.Flag.YES.getFlag())
+                    .setOptions(Arrays.asList(new String[]{"M", "W"}))
+                    .setType(LiveConstant.QuestionType.RADIO.getType());
+            LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail2 =
+                    liveQuestionnaireDetailSetRequest.new QuestionDetail();
+            questionDetail2.setQuestionId(LiveSignUtil.generateUUID())
+                    .setName("您的职务？")
+                    .setScoreEnabled(LiveConstant.Flag.NO.getFlag())
+                    .setRequired(LiveConstant.Flag.YES.getFlag())
+                    .setType(LiveConstant.QuestionType.QUESTION.getType());
+            //将问卷题目和问卷关联
+            liveQuestionnaireDetailSetRequest.setQuestions(Arrays.asList(
+                    new LiveQuestionnaireDetailSetRequest.QuestionDetail[]{questionDetail, questionDetail1,
+                            questionDetail2}));
+            //发送请求
+            liveQuestionnaireDetailSetResponse = new LiveQuestionnaireServiceImpl().setQuestionnaireDetailInfo(
+                    liveQuestionnaireDetailSetRequest);
+            //判断结果
+            Assert.assertNotNull(liveQuestionnaireDetailSetResponse);
+            if (liveQuestionnaireDetailSetResponse != null) {
+                //to do something ......
+                log.debug("测试添加频道问卷成功{}", JSON.toJSONString(liveQuestionnaireDetailSetResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveQuestionnaireDetailSetResponse对象，B端依据此对象处理业务逻辑；
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -98,7 +98,7 @@
 | required | false | String | 题目是否为必答，Y为必答，N为非必答，默认为N | 
 | options | false | Array | 题目为单选题或多选题的选项数据列表，选项数组下标0-9对应答案A-J | 
 
-### 返回对象描述
+### 返回对象描述
 
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -107,49 +107,49 @@
 | questionIds | false | Array | 同一个问卷下题目的问题id数组 | 
 | questionnaireTitle | false | String | 问卷标题 | 
 
-<br /><br />
-------------------
-<br /><br />
-## 2、查询频道问卷列表
-### 描述
-```
-接口用于获取频道的问卷列表
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+<br /><br />
+------------------
+<br /><br />
+## 2、查询频道问卷列表
+### 描述
+```
+接口用于获取频道的问卷列表
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 单元测试
-```java
-	@Test
-	public void testGetQuestionnaireListInfo() throws IOException, NoSuchAlgorithmException {
-        LiveQuestionnaireListRequest liveQuestionnaireListRequest = new LiveQuestionnaireListRequest();
-        LiveQuestionnaireListResponse liveQuestionnaireListResponse = null;
-        try {
-            String channelId = super.createChannel();
-            liveQuestionnaireListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveQuestionnaireListResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireListInfo(
-                    liveQuestionnaireListRequest);
-            Assert.assertNotNull(liveQuestionnaireListResponse);
-            if (liveQuestionnaireListResponse != null) {
-                //to do something ......
-                log.debug("测试查询频道问卷列表成功{}", JSON.toJSONString(liveQuestionnaireListResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回LiveQuestionnaireListResponse对象，B端依据此对象处理业务逻辑；
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
+### 单元测试
+```java
+	@Test
+	public void testGetQuestionnaireListInfo() throws IOException, NoSuchAlgorithmException {
+        LiveQuestionnaireListRequest liveQuestionnaireListRequest = new LiveQuestionnaireListRequest();
+        LiveQuestionnaireListResponse liveQuestionnaireListResponse = null;
+        try {
+            String channelId = super.createChannel();
+            liveQuestionnaireListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionnaireListResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireListInfo(
+                    liveQuestionnaireListRequest);
+            Assert.assertNotNull(liveQuestionnaireListResponse);
+            if (liveQuestionnaireListResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道问卷列表成功{}", JSON.toJSONString(liveQuestionnaireListResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveQuestionnaireListResponse对象，B端依据此对象处理业务逻辑；
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -160,7 +160,7 @@
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-### 返回对象描述
+### 返回对象描述
 
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -185,53 +185,53 @@
 | endTime | false | Date | 停止提交问卷时间 | 
 | customQuestionnaireId | false | String | 用户自定义问卷ID | 
 
-<br /><br />
-------------------
-<br /><br />
-## 3、查询频道问卷详情
-### 描述
-```
-1、接口用于查询频道问卷详情
+<br /><br />
+------------------
+<br /><br />
+## 3、查询频道问卷详情
+### 描述
+```
+1、接口用于查询频道问卷详情
 2、问卷ID 可以从获取频道问卷列表中获取
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 单元测试
-```java
-	@Test
-	public void testGetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
-        LiveQuestionnaireDetailRequest liveQuestionnaireDetailRequest = new LiveQuestionnaireDetailRequest();
-        LiveQuestionnaireDetailResponse liveQuestionnaireDetailResponse = null;
-        try {
-            String channelId = super.createChannel();
-            //获取详情
-            liveQuestionnaireDetailRequest.setChannelId(channelId)
-                    .setQuestionnaireId("fs9skpv22f")
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveQuestionnaireDetailResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireDetailInfo(
-                    liveQuestionnaireDetailRequest);
-            Assert.assertNotNull(liveQuestionnaireDetailResponse);
-            if (liveQuestionnaireDetailResponse != null) {
-                //to do something ......
-                log.debug("测试查询频道问卷详情成功{}", JSON.toJSONString(liveQuestionnaireDetailResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回LiveQuestionnaireDetailResponse对象，B端依据此对象处理业务逻辑；
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
+### 单元测试
+```java
+	@Test
+	public void testGetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
+        LiveQuestionnaireDetailRequest liveQuestionnaireDetailRequest = new LiveQuestionnaireDetailRequest();
+        LiveQuestionnaireDetailResponse liveQuestionnaireDetailResponse = null;
+        try {
+            String channelId = super.createChannel();
+            //获取详情
+            liveQuestionnaireDetailRequest.setChannelId(channelId)
+                    .setQuestionnaireId("fs9skpv22f")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionnaireDetailResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireDetailInfo(
+                    liveQuestionnaireDetailRequest);
+            Assert.assertNotNull(liveQuestionnaireDetailResponse);
+            if (liveQuestionnaireDetailResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道问卷详情成功{}", JSON.toJSONString(liveQuestionnaireDetailResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveQuestionnaireDetailResponse对象，B端依据此对象处理业务逻辑；
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -239,7 +239,7 @@
 | questionnaireId | true | String | 问卷id | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-### 返回对象描述
+### 返回对象描述
 
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -278,51 +278,51 @@
 | required | false | String | 是否必答，取值Y 必填 、N 非必填 ，默认 N | 
 | answer | false | String | 问题答案 | 
 
-<br /><br />
-------------------
-<br /><br />
-## 4、查询频道问卷结果
-### 描述
-```
-接口用于查询直播问卷的答题结果及统计
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+<br /><br />
+------------------
+<br /><br />
+## 4、查询频道问卷结果
+### 描述
+```
+接口用于查询直播问卷的答题结果及统计
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 单元测试
-```java
-	@Test
-	public void testGetQuestionnaireResultInfo() throws IOException, NoSuchAlgorithmException {
-        LiveQuestionnaireResultRequest liveQuestionnaireResultRequest = new LiveQuestionnaireResultRequest();
-        List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = null;
-        try {
-            String channelId = super.createChannel();
-            liveQuestionnaireResultRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveQuestionnaireResultRequest.setStartDate("2020-10-01").setEndDate("2099-12-12");
-//        liveQuestionnaireResultRequest.setQuestionnaireId("fs9skpv22f");
-            liveQuestionnaireResultResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultInfo(
-                    liveQuestionnaireResultRequest);
-            Assert.assertNotNull(liveQuestionnaireResultResponse);
-            if (liveQuestionnaireResultResponse != null) {
-                //to do something ......
-                log.debug("测试查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回LiveQuestionnaireResultResponse对象，B端依据此对象处理业务逻辑；
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
+### 单元测试
+```java
+	@Test
+	public void testGetQuestionnaireResultInfo() throws IOException, NoSuchAlgorithmException {
+        LiveQuestionnaireResultRequest liveQuestionnaireResultRequest = new LiveQuestionnaireResultRequest();
+        List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = null;
+        try {
+            String channelId = super.createChannel();
+            liveQuestionnaireResultRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionnaireResultRequest.setStartDate("2020-10-01").setEndDate("2099-12-12");
+//        liveQuestionnaireResultRequest.setQuestionnaireId("fs9skpv22f");
+            liveQuestionnaireResultResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultInfo(
+                    liveQuestionnaireResultRequest);
+            Assert.assertNotNull(liveQuestionnaireResultResponse);
+            if (liveQuestionnaireResultResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveQuestionnaireResultResponse对象，B端依据此对象处理业务逻辑；
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -332,8 +332,8 @@
 | questionnaireId | false | String | 问卷ID，和 startDate / endDate 同时提交时，startDate / endDate 无效，优先以questionnaireId为查询条件 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-### 返回对象描述
-返回对象是List,具体元素内容如下：
+### 返回对象描述
+返回对象是List,具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -394,55 +394,55 @@
 | score | false | String | 用户答题的得分 | 
 | type | false | String | 题目的类型，R | 
 
-<br /><br />
-------------------
-<br /><br />
-## 5、分页查询问卷结果
-### 描述
-```
-分页查询直播问卷的答题结果及统计
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+<br /><br />
+------------------
+<br /><br />
+## 5、分页查询问卷结果
+### 描述
+```
+分页查询直播问卷的答题结果及统计
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 单元测试
-```java
-	@Test
-	public void testGetQuestionnaireResultPageInfo() throws IOException, NoSuchAlgorithmException {
-        LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest =
-                new LiveQuestionnaireResultPageRequest();
-        LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = null;
-        try {
-            String channelId = super.createChannel();
-            liveQuestionnaireResultPageRequest.setChannelId(channelId)
-                    .setStartDate("2020-10-01").setEndDate("2099-12-12")
-                    .setPageSize(20)
-                    .setCurrentPage(1)
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveQuestionnaireResultPageResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultPageInfo(
-                    liveQuestionnaireResultPageRequest);
-            Assert.assertNotNull(liveQuestionnaireResultPageRequest);
-            if (liveQuestionnaireResultPageResponse != null) {
-                //to do something ......
-                log.debug("测试分页查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultPageResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-}
-```
-### 单元测试说明
-1、请求正确，返回LiveQuestionnaireResultPageResponse对象，B端依据此对象处理业务逻辑；
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
+### 单元测试
+```java
+	@Test
+	public void testGetQuestionnaireResultPageInfo() throws IOException, NoSuchAlgorithmException {
+        LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest =
+                new LiveQuestionnaireResultPageRequest();
+        LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = null;
+        try {
+            String channelId = super.createChannel();
+            liveQuestionnaireResultPageRequest.setChannelId(channelId)
+                    .setStartDate("2020-10-01").setEndDate("2099-12-12")
+                    .setPageSize(20)
+                    .setCurrentPage(1)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionnaireResultPageResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultPageInfo(
+                    liveQuestionnaireResultPageRequest);
+            Assert.assertNotNull(liveQuestionnaireResultPageRequest);
+            if (liveQuestionnaireResultPageResponse != null) {
+                //to do something ......
+                log.debug("测试分页查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultPageResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+}
+```
+### 单元测试说明
+1、请求正确，返回LiveQuestionnaireResultPageResponse对象，B端依据此对象处理业务逻辑；
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -453,7 +453,7 @@
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-### 返回对象描述
+### 返回对象描述
 
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -525,8 +525,7 @@
 | score | false | String | 用户答题的得分 | 
 | type | false | String | 题目的类型，R | 
 
-<br /><br />
-------------------
-<br /><br />
+<br /><br />
+------------------
+<br /><br />
 
-

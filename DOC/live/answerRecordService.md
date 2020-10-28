@@ -1,44 +1,44 @@
 ## 1、查询频道答题卡答题结果
-### 描述
-```
-查询频道答题卡答题结果
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+### 描述
+```
+查询频道答题卡答题结果
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](../limit.md)
 
-### 单元测试
-```java
-	@Test
-	public void testGetAnswerRecord() throws IOException, NoSuchAlgorithmException {
-        LiveQuestionAnswerRecordRequest liveQuestionAnswerRecordRequest = new LiveQuestionAnswerRecordRequest();
-        List<LiveQuestionAnswerRecordResponse> liveCheckinResponse = null;
-        try {
-            String channelId = super.createChannel();
-            liveQuestionAnswerRecordRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveQuestionAnswerRecordRequest.setStartDate("2020-10-01").setEndDate("2099-10-01");
-            liveCheckinResponse = new LiveAnswerRecordServiceImpl().getAnswerRecord(liveQuestionAnswerRecordRequest);
-            Assert.assertNotNull(liveCheckinResponse);
-            if (liveCheckinResponse != null) {
-                //to do something ......
-                log.debug("测试查询频道答题卡答题结果成功{}", JSON.toJSONString(liveCheckinResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-}
-```
-### 单元测试说明
-1、请求正确，返回LiveQuestionAnswerRecordResponse对象，B端依据此对象处理业务逻辑；
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
+### 单元测试
+```java
+	@Test
+	public void testGetAnswerRecord() throws IOException, NoSuchAlgorithmException {
+        LiveQuestionAnswerRecordRequest liveQuestionAnswerRecordRequest = new LiveQuestionAnswerRecordRequest();
+        List<LiveQuestionAnswerRecordResponse> liveCheckinResponse = null;
+        try {
+            String channelId = super.createChannel();
+            liveQuestionAnswerRecordRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionAnswerRecordRequest.setStartDate("2020-10-01").setEndDate("2099-10-01");
+            liveCheckinResponse = new LiveAnswerRecordServiceImpl().getAnswerRecord(liveQuestionAnswerRecordRequest);
+            Assert.assertNotNull(liveCheckinResponse);
+            if (liveCheckinResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道答题卡答题结果成功{}", JSON.toJSONString(liveCheckinResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+}
+```
+### 单元测试说明
+1、请求正确，返回LiveQuestionAnswerRecordResponse对象，B端依据此对象处理业务逻辑；
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -49,8 +49,8 @@
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-### 返回对象描述
-返回对象是List,具体元素内容如下：
+### 返回对象描述
+返回对象是List,具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -82,8 +82,7 @@
 | corrent | false | Boolean | 答题的用户提交的答案是否正确：false不正确，true正确 | 
 | submitTime | false | Date | 答题的用户提交时间 | 
 
-<br /><br />
-------------------
-<br /><br />
+<br /><br />
+------------------
+<br /><br />
 
-

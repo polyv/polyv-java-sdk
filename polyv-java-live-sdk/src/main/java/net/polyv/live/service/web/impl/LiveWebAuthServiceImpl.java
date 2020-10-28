@@ -38,11 +38,11 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String createChannelWriteList(LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest)
+    public Boolean createChannelWriteList(LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_WRITE_LIST_ADD_URL;
         String liveCreateChannelWriteListResponse = this.basePost(url, liveCreateChannelWriteListRequest, String.class);
-        return liveCreateChannelWriteListResponse;
+        return "success".equals(liveCreateChannelWriteListResponse);
     }
     
     /**

@@ -24,7 +24,7 @@ public interface ILiveChannelStateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String resumeChannelStream(LiveResumeChannelStreamRequest liveResumeChannelStreamRequest)
+    Boolean resumeChannelStream(LiveResumeChannelStreamRequest liveResumeChannelStreamRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -35,7 +35,7 @@ public interface ILiveChannelStateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String cutoffChannelStream(LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest)
+    Boolean cutoffChannelStream(LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

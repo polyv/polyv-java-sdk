@@ -30,7 +30,7 @@ public interface ILiveWebAuthService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String createChannelWriteList(LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest)
+    Boolean createChannelWriteList(LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

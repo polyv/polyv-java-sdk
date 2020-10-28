@@ -18,7 +18,7 @@ public interface ILiveWebSettingService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String channelGlobalSwitch(LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest)
+    Boolean channelGlobalSwitch(LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -31,13 +31,13 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String resumeChannelStream(LiveResumeChannelStreamRequest liveResumeChannelStreamRequest)
+    public Boolean resumeChannelStream(LiveResumeChannelStreamRequest liveResumeChannelStreamRequest)
             throws IOException, NoSuchAlgorithmException {
         liveResumeChannelStreamRequest.setUserId(LiveGlobalConfig.USER_ID);
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_RESUME_URL,
                 liveResumeChannelStreamRequest.getChannelId());
         String liveResumeChannelStreamResponse = this.basePost(url, liveResumeChannelStreamRequest, String.class);
-        return liveResumeChannelStreamResponse;
+        return "success".equals(liveResumeChannelStreamResponse);
     }
     
     
@@ -50,12 +50,13 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String cutoffChannelStream(LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest)
+    public Boolean cutoffChannelStream(LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest)
             throws IOException, NoSuchAlgorithmException {
         liveCutoffChannelStreamRequest.setUserId(LiveGlobalConfig.USER_ID);
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_CUTOFF_URL,
                 liveCutoffChannelStreamRequest.getChannelId());
-        return this.basePost(url, liveCutoffChannelStreamRequest, String.class);
+        String liveCutoffChannelStreamResponse = this.basePost(url, liveCutoffChannelStreamRequest, String.class);
+        return "success".equals(liveCutoffChannelStreamResponse);
     }
     
     /**

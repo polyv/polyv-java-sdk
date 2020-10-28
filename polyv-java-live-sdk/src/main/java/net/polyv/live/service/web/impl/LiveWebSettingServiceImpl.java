@@ -22,11 +22,11 @@ public class LiveWebSettingServiceImpl extends LiveBaseService implements ILiveW
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String channelGlobalSwitch(LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest)
+    public Boolean channelGlobalSwitch(LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_GLOBAL_SWITCH_URL;
         String liveChannelGlobalSwitchResponse = this.basePost(url, liveChannelGlobalSwitchRequest, String.class);
-        return liveChannelGlobalSwitchResponse;
+        return "true".equals(liveChannelGlobalSwitchResponse);
     }
     
 }

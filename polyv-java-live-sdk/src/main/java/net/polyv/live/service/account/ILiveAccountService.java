@@ -33,6 +33,7 @@ public interface ILiveAccountService {
      * @param liveListAccountDetailRequest 查询所有频道详细信息请求实体
      * @return 账号下所有频道详细信息返回实体
      * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
      */
     LiveListAccountDetailResponse listAccountDetail(LiveListAccountDetailRequest liveListAccountDetailRequest)
             throws IOException, NoSuchAlgorithmException;
@@ -140,6 +141,7 @@ public interface ILiveAccountService {
     /**
      * 查询账户分钟数
      * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zhsz/get-user-durations/
+     *   @param liveAccountUserDurationsRequest 查询账户分钟数请求实体
      * @return 查询账户分钟数返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常

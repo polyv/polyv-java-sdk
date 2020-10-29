@@ -303,6 +303,7 @@ public class LiveBaseService {
      * @param e 请求参数对象
      * @param tClass 返回对象class类型
      * @param <E> 请求参数泛型
+     * @param <T> 返回数据泛型
      * @return HTTP response 数据封装对象
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常

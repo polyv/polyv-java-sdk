@@ -548,7 +548,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testCreateSonChannelGuest() throws IOException, NoSuchAlgorithmException {
         LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
         LiveCreateSonChannelResponse liveCreateSonChannelResponse;
@@ -585,7 +585,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testCreateSonChannelAssistant() throws IOException, NoSuchAlgorithmException {
         LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
         LiveCreateSonChannelResponse liveCreateSonChannelResponse;

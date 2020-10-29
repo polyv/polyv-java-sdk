@@ -5,7 +5,7 @@
 2、暖场视频和暖场图片是处于非直播状态时，播放器显示的画面，两者在同一时间只能显示一种，以最晚设置者为准，若想删除暖场画面，则将coverImage或warmUpFlv的值设为"http://"。
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -67,7 +67,7 @@ null
 用于设置频道的暖场开关
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -126,7 +126,7 @@ true 设置成功 ， false 设置失败
 设置播放器Logo
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -192,7 +192,7 @@ true 设置成功， fales 设置失败
 用于设置某频道播放器的暂停广告
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -256,7 +256,7 @@ true 设置成功，false 设置失败
 设置某频道播放器的片头广告
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -273,8 +273,7 @@ true 设置成功，false 设置失败
                     .setHeadAdvertType(LiveConstant.HeadAdvertType.IMAGE.getDesc())
                     .setHeadAdvertWidth(100)
                     .setHeadAdvertHref("http://www.baidu.com")
-                    .setHeadAdvertMediaUrl("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57" +
-                            "/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
+                    .setHeadAdvertMediaUrl("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerHeaderAdvert(liveSetPlayerHeaderAdvertRequest);
             Assert.assertNotNull(result);
@@ -329,7 +328,7 @@ true 设置成功，false 设置失败
 2、暖场视频和暖场图片是处于非直播状态时，播放器显示的画面，两者在同一时间只能显示一种，以最晚设置者为准，若想删除暖场画面，则将coverImage或warmUpFlv的值设为"http://"。
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -341,7 +340,7 @@ true 设置成功，false 设置失败
             String channelId = super.createChannel();
             liveSetWarmupVedioRequest.setChannelId(channelId)
                     .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4")
-                    .setWarmUpFlv("http://")//删除视频
+//                    .setWarmUpFlv("http://")//删除视频
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerWarmUpVedio(liveSetWarmupVedioRequest);
             Assert.assertNotNull(result);

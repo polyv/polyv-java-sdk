@@ -4,7 +4,7 @@
 批量查询频道直播流状态
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -55,9 +55,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelInfo | false | Array | 频道信息【详见**LiveChannelStreamStatusResponse参数描述**】 | 
+| channelInfo | false | Array | 频道信息【详见[LiveChannelStreamStatusResponse参数描述](listChannelStreamStatusResponse.md?id=LiveChannelStreamStatusResponse参数描述)】 | 
 
-**LiveChannelStreamStatusResponse参数描述**
+###### LiveChannelStreamStatusResponse参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -76,7 +76,7 @@
 恢复直播频道推流
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -134,7 +134,7 @@ true为恢复成功，false为恢复失败
 禁止直播频道推流
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -192,7 +192,7 @@ true为禁止推流成功，false为失败
 查询频道实时推流信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 2、讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常
 ### 单元测试

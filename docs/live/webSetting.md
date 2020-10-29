@@ -4,11 +4,11 @@
 设置频道默认项开关
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
-	@Test 
+	@Test
 	public void testChannelGlobalSwitch() throws IOException, NoSuchAlgorithmException {
         LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest = new LiveChannelGlobalSwitchRequest();
         Boolean liveChannelGlobalSwitchResponse;

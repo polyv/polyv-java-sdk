@@ -4,7 +4,7 @@
 添加单个白名单
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -66,7 +66,7 @@ true为添加成功，false为添加失败
 设置观看条件
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -115,10 +115,10 @@ true为添加成功，false为添加失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，不传为全局设置 | 
-| authSettings | true | Array | 观看条件设置【详见**AuthSetting参数描述**】 | 
+| authSettings | true | Array | 观看条件设置【详见[AuthSetting参数描述](updateChannelAuthRequest.md?id=AuthSetting参数描述)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-**AuthSetting参数描述**
+###### AuthSetting参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -133,7 +133,7 @@ true为添加成功，false为添加失败
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数,上限为5个【详见**InfoField参数描述**】 | 
+| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](authSetting.md?id=InfoField参数描述)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -141,7 +141,7 @@ true为添加成功，false为添加失败
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-**InfoField参数描述**
+###### InfoField参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -166,7 +166,7 @@ true为设置观看条件成功，false为设置失败
 通过接口设置外部授权
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -215,9 +215,9 @@ true为设置观看条件成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelAuthExternals | false | Array | 外部授权【详见**ChannelAuthExternal参数描述**】 | 
+| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](channelAuthExternalResponse.md?id=ChannelAuthExternal参数描述)】 | 
 
-**ChannelAuthExternal参数描述**
+###### ChannelAuthExternal参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -236,7 +236,7 @@ true为设置观看条件成功，false为设置失败
 设置自定义授权地址
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -285,9 +285,9 @@ true为设置观看条件成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelAuthExternals | false | Array | 外部授权【详见**ChannelAuthExternal参数描述**】 | 
+| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](channelAuthCustomResponse.md?id=ChannelAuthExternal参数描述)】 | 
 
-**ChannelAuthExternal参数描述**
+###### ChannelAuthExternal参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -306,7 +306,7 @@ true为设置观看条件成功，false为设置失败
 设置授权观看类型
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -365,7 +365,7 @@ true为授权成功，false为授权失败
 查询直播频道观看条件
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -410,9 +410,9 @@ true为授权成功，false为授权失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| authSettings | true | Array | 观看条件【详见**AuthSetting参数描述**】 | 
+| authSettings | true | Array | 观看条件【详见[AuthSetting参数描述](channelAuthResponse.md?id=AuthSetting参数描述)】 | 
 
-**AuthSetting参数描述**
+###### AuthSetting参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -427,7 +427,7 @@ true为授权成功，false为授权失败
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数,上限为5个【详见**InfoField参数描述**】 | 
+| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](authSetting.md?id=InfoField参数描述)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -435,7 +435,7 @@ true为授权成功，false为授权失败
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-**InfoField参数描述**
+###### InfoField参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -457,7 +457,7 @@ true为授权成功，false为授权失败
 查询频道观看白名单列表
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -510,13 +510,13 @@ true为授权成功，false为授权失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 白名单列表【详见**ChannelWriteList参数描述**】 | 
+| contents | false | Array | 白名单列表【详见[ChannelWriteList参数描述](channelWriteListResponse.md?id=ChannelWriteList参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-**ChannelWriteList参数描述**
+###### ChannelWriteList参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -535,7 +535,7 @@ true为授权成功，false为授权失败
 设置授权认证URL
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java

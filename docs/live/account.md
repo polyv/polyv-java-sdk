@@ -4,7 +4,7 @@
 查询账号下所有频道详细信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -54,13 +54,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道详细信息列表【详见**LiveChannelDetailDTO参数描述**】 | 
+| contents | false | Array | 频道详细信息列表【详见[LiveChannelDetailDTO参数描述](listAccountDetailResponse.md?id=LiveChannelDetailDTO参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-**LiveChannelDetailDTO参数描述**
+###### LiveChannelDetailDTO参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -75,9 +75,9 @@
 | watchUrl | false | String | 观看页链接 | 
 | content | false | String | 直播介绍 | 
 | startTime | false | Date | 直播开始时间 | 
-| authSetting | false | Array | 直播权限设置数据传输对象【详见**LiveAuthSettingDTO参数描述**】 | 
+| authSetting | false | Array | 直播权限设置数据传输对象【详见[LiveAuthSettingDTO参数描述](channelDetailDTO.md?id=LiveAuthSettingDTO参数描述)】 | 
 
-**LiveAuthSettingDTO参数描述**
+###### LiveAuthSettingDTO参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -120,7 +120,7 @@
 查询账号下的频道列表
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -180,7 +180,7 @@
 获取账号连麦分钟数使用量与剩余量
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -239,7 +239,7 @@
 设置账号单点登录的token
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 2、token 参数请勿过于简单，建议使用16位随机字符串
 ### 单元测试
@@ -296,7 +296,7 @@ true为设置成功，false为设置失败
 设置直播状态回调通知url
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 2、不提交地址参数url，则回调地址为空，表示关闭回调功能，如果要提交的地址参数url，必须以 http:// 或者 https:// 开头
 ### 单元测试
@@ -367,7 +367,7 @@ true为设置回调成功，false为设置回调失败
 设置转存成功回调通知url
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 2、不提交地址参数url，则回调地址为空，表示关闭回调功能，如果要提交的地址参数url，必须以 http:// 或者 https:// 开头
 ### 单元测试
@@ -446,7 +446,7 @@ true为设置回调成功，false为设置回调失败
 设置录制回调通知url
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 2、不提交地址参数url，则回调地址为空，表示关闭回调功能，如果要提交的地址参数url，必须以 http:// 或者 https:// 开头
 ### 单元测试
@@ -518,7 +518,7 @@ true为设置回调成功，false为设置回调失败
 设置功能开关状态
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 2、isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;
 closeChaterList当enabled值为Y时，表示的是关闭在线列表
@@ -580,7 +580,7 @@ true为设置成功，false为设置失败
 接口用于获取开关设置，可获取全局开关设置或频道开关设置
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 2、isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;
 closeChaterList当enabled值为Y时，表示的是关闭在线列表
@@ -627,9 +627,9 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelSwitches | false | Array | 频道开关【详见**ChannelSwitch参数描述**】 | 
+| channelSwitches | false | Array | 频道开关【详见[ChannelSwitch参数描述](accountSwitchResponse.md?id=ChannelSwitch参数描述)】 | 
 
-**ChannelSwitch参数描述**
+###### ChannelSwitch参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -648,7 +648,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 查询账号下所有频道缩略信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -704,13 +704,13 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道基础信息【详见**ChannelBasicInfo参数描述**】 | 
+| contents | false | Array | 频道基础信息【详见[ChannelBasicInfo参数描述](listAccountChannelBasicResponse.md?id=ChannelBasicInfo参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-**ChannelBasicInfo参数描述**
+###### ChannelBasicInfo参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -735,7 +735,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 查询账户分钟数
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java

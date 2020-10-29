@@ -4,11 +4,11 @@
 设置自定义菜单中用户设置菜单的直播介绍
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
-	@Test 
+	@Test
 	public void testUpdateChannelMenu() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelMenuRequest liveUpdateChannelMenuRequest = new LiveUpdateChannelMenuRequest();
         Boolean liveUpdateChannelMenuResponse;
@@ -66,7 +66,7 @@ true为设置成功，false为设置失败
 获取频道的菜单信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -111,9 +111,9 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelMenus | false | Array | 频道的菜单信息【详见**ChannelMenu参数描述**】 | 
+| channelMenus | false | Array | 频道的菜单信息【详见[ChannelMenu参数描述](listChannelMenuResponse.md?id=ChannelMenu参数描述)】 | 
 
-**ChannelMenu参数描述**
+###### ChannelMenu参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

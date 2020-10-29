@@ -4,7 +4,7 @@
 获取频道抽奖记录列表
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -57,13 +57,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 抽奖记录列表【详见**LotteryListModel参数描述**】 | 
+| contents | false | Array | 抽奖记录列表【详见[LotteryListModel参数描述](listLotteryResponse.md?id=LotteryListModel参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-**LotteryListModel参数描述**
+###### LotteryListModel参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -79,13 +79,13 @@
 | winnerCount | false | Integer | 实际中奖人数 | 
 | ext | false | CollectInfo | 表示抽奖的额外拓展信息【详见**CollectInfo参数描述**】 | 
 
-**CollectInfo参数描述**
+###### CollectInfo参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见**CollectInfoFieldModel参数描述**】 | 
+| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](collectInfo.md?id=CollectInfoFieldModel参数描述)】 | 
 
-**CollectInfoFieldModel参数描述**
+###### CollectInfoFieldModel参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -104,7 +104,7 @@
 获取频道单场抽奖的中奖记录
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -153,13 +153,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 中奖记录表【详见**LotteryWinnerDetail参数描述**】 | 
+| contents | false | Array | 中奖记录表【详见[LotteryWinnerDetail参数描述](lotteryWinnerDetailResponse.md?id=LotteryWinnerDetail参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-**LotteryWinnerDetail参数描述**
+###### LotteryWinnerDetail参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -174,13 +174,13 @@
 | createdTime | false | Long | 中奖时间 | 
 | ext | false | CollectInfo | json 格式的字符串,表示中奖记录的额外拓展信息，对应模型类：WinnerRecordModelExt【详见**CollectInfo参数描述**】 | 
 
-**CollectInfo参数描述**
+###### CollectInfo参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见**CollectInfoFieldModel参数描述**】 | 
+| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](collectInfo.md?id=CollectInfoFieldModel参数描述)】 | 
 
-**CollectInfoFieldModel参数描述**
+###### CollectInfoFieldModel参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -199,7 +199,7 @@
 用于提交中奖者填写的信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 2.只能成功保存一次观众中奖信息
 3.中奖信息需在7天内提交保存，否则会失效

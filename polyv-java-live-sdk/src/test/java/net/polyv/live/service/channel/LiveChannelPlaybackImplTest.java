@@ -36,6 +36,7 @@ import net.polyv.live.service.channel.impl.LiveChannelPlaybackServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
+ * 录制回放
  * @author: sadboy
  **/
 @Slf4j

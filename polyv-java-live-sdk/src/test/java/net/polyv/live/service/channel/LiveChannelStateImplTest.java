@@ -21,6 +21,7 @@ import net.polyv.live.service.channel.impl.LiveChannelStateServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
+ * 直播状态
  * @author: sadboy
  **/
 @Slf4j

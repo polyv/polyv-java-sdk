@@ -49,6 +49,7 @@ import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
+ * 频道操作
  * @author: thomas
  **/
 @Slf4j

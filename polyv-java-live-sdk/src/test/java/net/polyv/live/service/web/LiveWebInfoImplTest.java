@@ -28,6 +28,7 @@ import net.polyv.live.service.web.impl.LiveWebInfoServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
+ * 页面信息
  * @author: sadboy
  **/
 @Slf4j

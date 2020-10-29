@@ -36,6 +36,8 @@ import net.polyv.common.constant.Constant;
 @Slf4j
 public class HttpUtil {
     
+    public static final String  SOURCE="source" ;
+    public static final String  LIVE_SDK="live_sdk";
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为form表单形式
      * @param url 请求地址
@@ -72,7 +74,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader("source", "live-sdk");
+        httpPost.addHeader(SOURCE, LIVE_SDK);
         // 装填参数
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         if (params != null) {
@@ -94,14 +96,10 @@ public class HttpUtil {
         response = httpClient.execute(httpPost);
         // 获取结果实体
         // 判断网络连接状态码是否正常(0--200都数正常)
-//        int statusCode = response.getStatusLine().getStatusCode();
-//        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
         if (null != response) {
             result = EntityUtils.toString(response.getEntity(), encoding);
             log.debug("http 请求结果: {}", result);
         }
-
-//        }
         try {
             if (null != response) {
                 response.close();
@@ -179,7 +177,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader("source", "live-sdk");
+        httpPost.addHeader(SOURCE, LIVE_SDK);
         // 设置参数到请求对象中
         StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
         // "utf-8"
@@ -189,12 +187,9 @@ public class HttpUtil {
         CloseableHttpResponse response = httpClient.execute(httpPost);
         // 获取结果实体
         // 判断网络连接状态码是否正常(0--200都数正常)
-//        int statusCode = response.getStatusLine().getStatusCode();
-//        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
         if (null != response) {
             result = EntityUtils.toString(response.getEntity(), encoding);
             log.debug("http 请求结果: {}", result);
-//        }
         }
         try {
             if (null != response) {
@@ -277,19 +272,15 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建get方式请求对象
         HttpGet httpGet = new HttpGet(url);
-        httpGet.addHeader("source", "live-sdk");
+        httpGet.addHeader(SOURCE, LIVE_SDK);
         httpGet.addHeader("Content-type", Constant.APPLICATION_JSON);
         // 通过请求对象获取响应对象
         CloseableHttpResponse response = httpClient.execute(httpGet);
         // 获取结果实体
-        // 判断网络连接状态码是否正常(0--200都数正常)
-//        int statusCode = response.getStatusLine().getStatusCode();
-//        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
         if (null != response) {
             result = EntityUtils.toString(response.getEntity(), encoding);
             log.debug("http 请求结果: {}", result);
         }
-//        }
         try {
             if (null != response) {
                 response.close();
@@ -320,7 +311,7 @@ public class HttpUtil {
         String result = null;
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader("source", "live-sdk");
+        httpPost.addHeader(SOURCE, LIVE_SDK);
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
         if (fileMap != null) {
             for (Map.Entry<String, File> entry : fileMap.entrySet()) {
@@ -337,12 +328,9 @@ public class HttpUtil {
         HttpEntity entity = entityBuilder.build();
         httpPost.setEntity(entity);
         CloseableHttpResponse response = httpClient.execute(httpPost);
-//        int statusCode = response.getStatusLine().getStatusCode();
-//        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
         if (null != response) {
             result = EntityUtils.toString(response.getEntity(), encoding);
             log.debug("http 请求结果: {}", result);
-//        }
         }
         try {
             if (null != response) {

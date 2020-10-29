@@ -100,7 +100,7 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
         String url = LiveURL.getRealUrl(LiveURL.PLAYER_SET_CHANNEL_HEADER_ADVERT_URL,
                 liveSetPlayerHeaderAdvertRequest.getChannelId());
         Boolean result = super.basePost(url, liveSetPlayerHeaderAdvertRequest, Boolean.class);
-        Boolean paramResult = false;
+        Boolean paramResult = Boolean.FALSE;
         if (result && LiveConstant.Flag.YES.getFlag().equals(liveSetPlayerHeaderAdvertRequest.getEnabled())) {
             liveSetPlayerHeaderAdvertRequest.setEnabled(null).setTimestamp(null).setSign(null);
             paramResult = super.basePost(url, liveSetPlayerHeaderAdvertRequest, Boolean.class);

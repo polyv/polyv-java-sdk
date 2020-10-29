@@ -60,7 +60,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
         Map<String, String> signMap = MapUtil.getSignMap(liveUpdateChannelAuthRequest);
         String channelId = liveUpdateChannelAuthRequest.getChannelId();
         if (channelId != null) {
-            signMap.put("channelId", channelId.toString());
+            signMap.put("channelId", channelId);
         }
         String liveUpdateChannelAuthResponse = this.basePostJson(url, signMap, liveUpdateChannelAuthRequest,
                 String.class);

@@ -83,7 +83,7 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
         tempMap.put("appId", liveQuestionnaireDetailSetRequest.getAppId());
         tempMap.put("timestamp", liveQuestionnaireDetailSetRequest.getTimestamp());
         tempMap.put("requestId", liveQuestionnaireDetailSetRequest.getRequestId());
-        tempMap.put("channelId", liveQuestionnaireDetailSetRequest.getChannelId().toString());
+        tempMap.put("channelId", liveQuestionnaireDetailSetRequest.getChannelId());
         return tempMap;
     }
     

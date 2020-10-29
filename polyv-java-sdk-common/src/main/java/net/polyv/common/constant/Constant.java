@@ -6,6 +6,7 @@ package net.polyv.common.constant;
  
  **/
 public class Constant {
+    private Constant(){}
     
     public final static String APPLICATION_FORM_URLENCODED = "application/x-www-form-urlencoded; charset=UTF-8";
     
@@ -22,7 +23,7 @@ public class Constant {
     
     public final static String USER_AGENT_BROWSER = "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)";
     
-    public static Integer BUSINESS_ERROR_CODE = 500;
+    public final static Integer BUSINESS_ERROR_CODE = 500;
     
     public final static String UTF8 ="utf-8";
     

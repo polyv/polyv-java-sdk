@@ -1,21 +1,93 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="Description">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+
+    <!--
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css">
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css">
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/pure.css">
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css">
+ -->
+
 </head>
 <body>
-  <div id="app"></div>
-  <script>
+<div id="app">保利威直播JAVA SDK</div>
+
+<script>
+
     window.$docsify = {
-      name: '',
-      repo: ''
+        name: '保利威直播Java SDK',
+        repo: 'https://github.com/polyv/polyv-java-sdk.git',
+        loadSidebar: true,
+        subMaxLevel: 2,
+        // autoHeader: false,
+        // logo:'../img/logo.png',
+        // auto2top:true,
+        // themeColor: 'green',
+        // mergeNavbar: true,
+        // formatUpdated: '{MM}/{DD} {HH}:{mm}',
+        // formatUpdated: function (time) {
+        //     return time;
+        // },
+
+
+        // search: 'auto', // 默认值
+
+        // 完整配置参数
+        search: {
+            maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+            paths:   'auto',
+            placeholder: '搜索',
+            noData: '查找不到内容!',
+            // 搜索标题的最大层级, 1 - 6
+            depth: 6,
+            hideOtherSidebarContent: false, // 是否隐藏其他侧边栏内容
+        },
+        count:{
+            countable:true,
+            fontsize:'0.9em',
+            color:'rgb(90,90,90)',
+            language:'chinese'
+        }
+        /**
+         swagger: {
+			cache: true,
+			tableWidth: "auto",
+			i18n: {
+			  "en": {
+				request: "Request parameters",
+				response: "Response parameters",
+				name: "Name",
+				type: "Type",
+				required: "Required",
+				description: "Description",
+				none: "None"
+			  },
+			  fallback: "en"
+			}
+		}
+         */
+
     }
-  </script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+
+</script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+<script src="//unpkg.com/docsify-swagger/dist/docsify-swagger.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-javadoc.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+<script src="//unpkg.com/docsify-count/dist/countable.js"></script>
 </body>
 </html>

@@ -37,7 +37,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回LiveListChannelDocResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -45,6 +47,7 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | status | false | String | 文档状态，不传查询所有（“normal”：正常，“waitUpload”：等待上传,failUpload：上传失败，waitConvert:转换PPT中,failConvert:转换PPT失败） | 
+| isShowUrl | false | String | 是否展示PPT原文件地址，Y：是；N：否；默认为N | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
@@ -68,18 +71,21 @@
 | fileId | false | String | 文件ID | 
 | fileName | false | String | 文件名 | 
 | fileUrl | false | String | 文件url(isShowUrl为'Y'的时候返回文件地址) | 
-| fileType | false | String | 文件类型 | 
+| fileType | false | String | 文件类型，如：.pdf | 
 | totalPage | false | Integer | PPT总页数 | 
 | channelId | false | String | 频道号 | 
 | status | false | String | ppt转换状态（“normal”：正常，“waitUpload”：等待上传,failUpload：上传失败，waitConvert:转换PPT中,failConvert:转换PPT失败） | 
 | createTime | false | Date | 创建时间 | 
 | convertType | false | String | 转换类型（common：普通PPT，animate：动画PPT） | 
 | type | false | String | 类型，区分旧版PPT还是新版PPT，新版值为“new”，旧版值为“old” | 
-| previewImage | false | String | ppt预览小图地址 | 
+| previewImage | false | String | ppt预览小图地址，如：http://doc-2.polyv.net/x/xxx_0.jpeg | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 2、查询频道文档转换状态
 ### 描述
 ```
@@ -120,7 +126,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelDocStatusResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -151,8 +159,11 @@
 | fileId | false | String | 文件ID | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 3、删除频道文档
 ### 描述
 ```
@@ -193,7 +204,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -208,8 +221,11 @@
 
 true为删除文档成功，false为删除文档失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 4、上传频道文档
 ### 描述
 ```
@@ -253,7 +269,9 @@ true为删除文档成功，false为删除文档失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveCreateChannelDocResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -277,6 +295,9 @@ true为删除文档成功，false为删除文档失败
 | status | false | String | 文件转换状态（normal：正常,waitConvert:转换PPT中,failConvert:转换PPT失败） | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 

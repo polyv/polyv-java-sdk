@@ -18,7 +18,7 @@ import net.polyv.live.service.interact.impl.LiveAnswerRecordServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
- * 直播互动管理
+ * 答题卡管理
  * @author: thomas
  **/
 @Slf4j

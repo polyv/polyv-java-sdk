@@ -42,7 +42,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -106,8 +108,11 @@
 | linkMicLimit | false | Integer | 连麦人数 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 2、创建并初始化频道
 ### 描述
 ```
@@ -167,7 +172,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelInitResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -272,8 +279,11 @@
 | currentTimeMillis | false | Long | 服务器返回的时间戳（毫秒） | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 3、修改频道的相关设置
 ### 描述
 ```
@@ -290,9 +300,9 @@
         Boolean liveChannelSettingResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = getAloneChannelId();
             LiveChannelSettingRequest.BasicSetting basicSetting = liveChannelSettingRequest.new BasicSetting().setName(
-                    "Junit测试(勿删)")
+                    "Junit测试(勿删)888")
                     .setChannelPasswd("123321")
                     .setCategoryId(340019)
                     .setMaxViewer(0)
@@ -313,7 +323,7 @@
                     .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
             List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
             authSettings.add(authSetting);
-            liveChannelSettingRequest.setChannelId("1958888")
+            liveChannelSettingRequest.setChannelId(channelId)
                     .setBasicSetting(basicSetting)
                     .setAuthSettings(authSettings)
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -337,7 +347,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -407,8 +419,11 @@
 
 true为设置成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 4、批量创建频道
 ### 描述
 ```
@@ -446,11 +461,6 @@ true为设置成功，false为设置失败
                 //to do something ......
                 log.debug("频道批量创建成功{}", JSON.toJSONString(liveCreateChannelListResponse));
             }
-            //删除测试数据
-            List<LiveChannelResponse> channelsResponse = liveCreateChannelListResponse.getChannels();
-            for (LiveChannelResponse temp : channelsResponse) {
-                deleteChannel(temp.getChannelId());
-            }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -464,7 +474,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveCreateChannelListResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -535,8 +547,11 @@ true为设置成功，false为设置失败
 | linkMicLimit | false | Integer | 连麦人数 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 5、设置频道详情
 ### 描述
 ```
@@ -579,7 +594,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -594,8 +611,11 @@ true为设置成功，false为设置失败
 
 true为修改成功，false为修改失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 6、查询课件重制任务列表
 ### 描述
 ```
@@ -636,7 +656,9 @@ true为修改成功，false为修改失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveListChannelPPTRecordResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -676,8 +698,11 @@ true为修改成功，false为修改失败
 | duration | false | Integer | 重制的视频时长，单位秒 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 7、设置频道密码
 ### 描述
 ```
@@ -718,7 +743,9 @@ true为修改成功，false为修改失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -732,8 +759,11 @@ true为修改成功，false为修改失败
 
 true为设置密码成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 8、删除直播频道
 ### 描述
 ```
@@ -771,7 +801,9 @@ true为设置密码成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -784,8 +816,11 @@ true为设置密码成功，false为设置失败
 
 true为删除成功，false为删除失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 9、批量删除频道
 ### 描述
 ```
@@ -824,7 +859,9 @@ true为删除成功，false为删除失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -837,8 +874,11 @@ true为删除成功，false为删除失败
 
 true为批量删除成功，false为批量删除失败，不存在部分成功
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 10、设置频道单点登陆token
 ### 描述
 ```
@@ -879,7 +919,9 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -893,8 +935,11 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 
 true为设置token成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 11、查询频道信息
 ### 描述
 ```
@@ -932,7 +977,9 @@ true为设置token成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelInfoResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -992,8 +1039,11 @@ true为设置token成功，false为设置失败
 | channelPasswd | false | String | 频道密码 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 12、查询频道基本信息
 ### 描述
 ```
@@ -1032,7 +1082,9 @@ true为设置token成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelBasicInfoResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -1099,8 +1151,11 @@ true为设置token成功，false为设置失败
 | externalRedirectUri | false | String | 外部授权观看，用户直接访问观看页时的跳转地址 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 13、查询授权和连麦的token
 ### 描述
 ```
@@ -1142,7 +1197,9 @@ true为设置token成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelAuthTokenResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -1163,8 +1220,11 @@ true为设置token成功，false为设置失败
 | mediaChannelKey | false | String | 连麦需要的key | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 14、创建子频道-三分屏添加Guest
 ### 描述
 ```
@@ -1208,7 +1268,9 @@ true为设置token成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveCreateSonChannelResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -1244,8 +1306,11 @@ true为设置token成功，false为设置失败
 | role | false | String | 子频道角色 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 15、创建子频道-非三分屏添加助教
 ### 描述
 ```
@@ -1289,7 +1354,9 @@ true为设置token成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveCreateSonChannelResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -1325,8 +1392,11 @@ true为设置token成功，false为设置失败
 | role | false | String | 子频道角色 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 16、设置子频道信息
 ### 描述
 ```
@@ -1374,7 +1444,9 @@ true为设置token成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -1394,8 +1466,11 @@ true为设置token成功，false为设置失败
 
 true为设置成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 17、设置子频道单点登陆token
 ### 描述
 ```
@@ -1437,7 +1512,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -1451,8 +1528,11 @@ true为设置成功，false为设置失败
 
 true为设置子频道token成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 18、查询子频道信息
 ### 描述
 ```
@@ -1493,7 +1573,9 @@ true为设置子频道token成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveSonChannelInfoResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -1527,8 +1609,11 @@ true为设置子频道token成功，false为设置失败
 | pushUrl | false | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 19、查询频道号下所有子频道信息
 ### 描述
 ```
@@ -1567,7 +1652,9 @@ true为设置子频道token成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveSonChannelInfoListResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -1606,8 +1693,11 @@ true为设置子频道token成功，false为设置失败
 | pushUrl | false | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 20、删除子频道
 ### 描述
 ```
@@ -1649,7 +1739,9 @@ true为设置子频道token成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -1663,8 +1755,11 @@ true为设置子频道token成功，false为设置失败
 
 true为删除成功，false为删除失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 21、创建重制课件任务
 ### 描述
 ```
@@ -1704,7 +1799,9 @@ true为删除成功，false为删除失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -1718,6 +1815,9 @@ true为删除成功，false为删除失败
 
 true为创建成功，false为创建失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 

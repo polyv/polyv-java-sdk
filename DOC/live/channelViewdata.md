@@ -16,7 +16,10 @@
         try {
             long nowTime = System.currentTimeMillis();
             long startTime = nowTime - 30 * 24 * 60 * 60 * 1000l;
-            liveChannelMaxHistoryConcurrentRequest.setChannelId(createChannel()).setStartTime(startTime).setEndTime(nowTime);
+            liveChannelMaxHistoryConcurrentRequest.setChannelId(createChannel())
+                    .setStartTime(startTime)
+                    .setEndTime(nowTime)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelMaxHistoryConcurrentResponse = new LiveChannelViewdataServiceImpl().maxChannelHistoryConcurrent(
                     liveChannelMaxHistoryConcurrentRequest);
             Assert.assertNotNull(liveChannelMaxHistoryConcurrentResponse);
@@ -37,7 +40,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回Integer对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -52,8 +57,11 @@
 
 返回时间区间内的最高并发人数
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 2、分页获取连麦情况使用详情
 ### 描述
 ```
@@ -71,7 +79,8 @@
         try {
             liveListChannelMicRequest.setChannelIds("1951952,1958888")
                     .setStartDay("2020-01-01")
-                    .setEndDay("2020-11-11");
+                    .setEndDay("2020-11-11")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelMicResponse = new LiveChannelViewdataServiceImpl().listChannelMic(liveListChannelMicRequest);
             Assert.assertNotNull(liveListChannelMicResponse);
             if (liveListChannelMicResponse != null) {
@@ -91,7 +100,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回LiveListChannelMicResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -125,8 +136,11 @@
 | history | false | Integer | 使用连麦分钟数，单位：分钟 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 3、分页查询频道观看日志
 ### 描述
 ```
@@ -142,7 +156,9 @@
         LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
         LiveListChannelViewlogResponse liveListChannelViewlogResponse;
         try {
-            liveListChannelViewlogRequest.setChannelId(createChannel()).setCurrentDay("2020-10-14");
+            liveListChannelViewlogRequest.setChannelId(createChannel())
+                    .setCurrentDay("2020-10-14")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                     liveListChannelViewlogRequest);
             Assert.assertNotNull(liveListChannelViewlogResponse);
@@ -163,7 +179,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回LiveListChannelViewlogResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -220,8 +238,11 @@
 | lastModified | false | Date | 日志更新日期 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 4、查询多个频道汇总的统计数据
 ### 描述
 ```
@@ -239,7 +260,8 @@
         try {
             liveListChannelSummaryRequest.setStartDate("2020-01-01")
                     .setEndDate("2020-11-11")
-                    .setChannelIds("1951952,1958888");
+                    .setChannelIds("1951952,1958888")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelSummaryResponse = new LiveChannelViewdataServiceImpl().listChannelSummary(
                     liveListChannelSummaryRequest);
             Assert.assertNotNull(liveListChannelSummaryResponse);
@@ -260,7 +282,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回LiveListChannelSummaryResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -300,8 +324,11 @@
 | unknownMobilePlayDuration | false | Integer | 移动端其他播放时长，单位为分钟 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 5、查询多个频道的实时在线人数
 ### 描述
 ```
@@ -317,7 +344,8 @@
         LiveListChannelViewerCountRequest liveListChannelViewerCountRequest = new LiveListChannelViewerCountRequest();
         LiveListChannelViewerCountResponse liveListChannelViewerCountResponse;
         try {
-            liveListChannelViewerCountRequest.setChannelIds("1951952,1958888");
+            liveListChannelViewerCountRequest.setChannelIds("1951952,1958888")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelViewerCountResponse = new LiveChannelViewdataServiceImpl().listChannelViewerCount(
                     liveListChannelViewerCountRequest);
             Assert.assertNotNull(liveListChannelViewerCountResponse);
@@ -338,7 +366,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回LiveListChannelViewerCountResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -363,8 +393,11 @@
 | count | false | String | 某个时间点实时观看人数 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 6、查询频道的历史并发人数
 ### 描述
 ```
@@ -383,7 +416,8 @@
         try {
             liveChannelViewerConcurrenceRequest.setChannelId(createChannel())
                     .setStartDate("2020-10-01")
-                    .setEndDate("2020-11-11");
+                    .setEndDate("2020-11-11")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelViewerConcurrenceResponse = new LiveChannelViewdataServiceImpl().channelViewerConcurrence(
                     liveChannelViewerConcurrenceRequest);
             Assert.assertNotNull(liveChannelViewerConcurrenceResponse);
@@ -405,7 +439,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelViewerConcurrenceResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -432,6 +468,9 @@
 | viewers | false | String | 某个时间点实时观看人数 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 

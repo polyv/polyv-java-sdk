@@ -33,7 +33,7 @@ import net.polyv.live.service.account.impl.LiveAccountServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
- * 账号级操作
+ * 账户管理
  * @author: sadboy
  **/
 @Slf4j

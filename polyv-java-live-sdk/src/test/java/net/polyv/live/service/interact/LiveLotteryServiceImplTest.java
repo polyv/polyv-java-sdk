@@ -18,6 +18,7 @@ import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.interact.impl.LiveLotteryServiceImpl;
 
 /**
+ * 抽奖管理
  * @author: sadboy
  **/
 @Slf4j

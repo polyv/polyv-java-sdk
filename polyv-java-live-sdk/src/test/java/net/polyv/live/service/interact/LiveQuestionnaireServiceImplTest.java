@@ -13,10 +13,6 @@ import edu.emory.mathcs.backport.java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.PloyvSdkException;
 import net.polyv.live.constant.LiveConstant;
-import net.polyv.live.entity.interact.LiveListLotteryRequest;
-import net.polyv.live.entity.interact.LiveListLotteryResponse;
-import net.polyv.live.entity.interact.LiveLotteryWinnerDetailRequest;
-import net.polyv.live.entity.interact.LiveLotteryWinnerDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
@@ -27,12 +23,12 @@ import net.polyv.live.entity.interact.LiveQuestionnaireResultPageRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultPageResponse;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireResultResponse;
-import net.polyv.live.entity.interact.LiveSetLotteryWinnerInfoRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.interact.impl.LiveQuestionnaireServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
+ * 问卷管理
  * @author: thomas
  **/
 @Slf4j

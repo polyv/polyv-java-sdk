@@ -30,8 +30,6 @@ import net.polyv.live.entity.chat.LiveGetConsultingRecordRequest;
 import net.polyv.live.entity.chat.LiveGetConsultingRecordResponse;
 import net.polyv.live.entity.chat.LiveGetHistoryChatMsgRequest;
 import net.polyv.live.entity.chat.LiveGetHistoryChatMsgResponse;
-import net.polyv.live.entity.chat.LiveGetQuestionStatisticalRequest;
-import net.polyv.live.entity.chat.LiveGetQuestionStatisticalResponse;
 import net.polyv.live.entity.chat.LiveKickedListRequest;
 import net.polyv.live.entity.chat.LiveKickedListResponse;
 import net.polyv.live.entity.chat.LiveSendChatMsgRequest;
@@ -43,6 +41,7 @@ import net.polyv.live.service.chat.impl.LiveChatRoomServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
+ * 聊天室
  * @author: thomas
  **/
 @Slf4j

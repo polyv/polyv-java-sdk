@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
@@ -15,6 +16,7 @@ import net.polyv.live.entity.LiveCommonRequest;
  * @author: sadboy
  **/
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,6 +37,7 @@ public class LiveAccountRecordCallbackRequest extends LiveCommonRequest {
     private String url;
     
     @Data
+@EqualsAndHashCode(callSuper = false)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

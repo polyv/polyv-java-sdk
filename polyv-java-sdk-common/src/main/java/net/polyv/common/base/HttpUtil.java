@@ -48,7 +48,7 @@ public class HttpUtil {
     public static String sendPostDataByMap(String url, String pathVariable, Map<String, String> params, String encoding)
             throws IOException {
         if (StringUtils.isNotBlank(pathVariable)) {
-            url =String.format( url, pathVariable);
+            url = String.format(url, pathVariable);
         }
         return sendPostDataByMap(url, params, encoding);
     }
@@ -72,7 +72,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader("source","live-sdk");
+        httpPost.addHeader("source", "live-sdk");
         // 装填参数
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         if (params != null) {
@@ -96,8 +96,11 @@ public class HttpUtil {
         // 判断网络连接状态码是否正常(0--200都数正常)
 //        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
-        result = EntityUtils.toString(response.getEntity(), encoding);
-        log.debug("http 请求结果: {}", result);
+        if (null != response) {
+            result = EntityUtils.toString(response.getEntity(), encoding);
+            log.debug("http 请求结果: {}", result);
+        }
+
 //        }
         try {
             if (null != response) {
@@ -122,7 +125,7 @@ public class HttpUtil {
     public static String sendPostDataByJson(String url, String pathVariable, Map<String, String> params,
             String encoding) throws IOException {
         if (StringUtils.isNotBlank(pathVariable)) {
-            url =String.format( url, pathVariable);
+            url = String.format(url, pathVariable);
         }
         return sendPostDataByJson(url, JSON.toJSONString(params), encoding);
     }
@@ -153,7 +156,7 @@ public class HttpUtil {
     public static String sendPostDataByJson(String url, String pathVariable, String json, String encoding)
             throws IOException {
         if (StringUtils.isNotBlank(pathVariable)) {
-            url =String.format( url, pathVariable);
+            url = String.format(url, pathVariable);
         }
         return sendPostDataByJson(url, json, encoding);
     }
@@ -176,7 +179,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader("source","live-sdk");
+        httpPost.addHeader("source", "live-sdk");
         // 设置参数到请求对象中
         StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
         // "utf-8"
@@ -188,9 +191,11 @@ public class HttpUtil {
         // 判断网络连接状态码是否正常(0--200都数正常)
 //        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
-        result = EntityUtils.toString(response.getEntity(), encoding);
-        log.debug("http 请求结果: {}", result);
+        if (null != response) {
+            result = EntityUtils.toString(response.getEntity(), encoding);
+            log.debug("http 请求结果: {}", result);
 //        }
+        }
         try {
             if (null != response) {
                 response.close();
@@ -272,7 +277,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建get方式请求对象
         HttpGet httpGet = new HttpGet(url);
-        httpGet.addHeader("source","live-sdk");
+        httpGet.addHeader("source", "live-sdk");
         httpGet.addHeader("Content-type", Constant.APPLICATION_JSON);
         // 通过请求对象获取响应对象
         CloseableHttpResponse response = httpClient.execute(httpGet);
@@ -280,8 +285,10 @@ public class HttpUtil {
         // 判断网络连接状态码是否正常(0--200都数正常)
 //        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
-        result = EntityUtils.toString(response.getEntity(), encoding);
-        log.debug("http 请求结果: {}", result);
+        if (null != response) {
+            result = EntityUtils.toString(response.getEntity(), encoding);
+            log.debug("http 请求结果: {}", result);
+        }
 //        }
         try {
             if (null != response) {
@@ -313,7 +320,7 @@ public class HttpUtil {
         String result = null;
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader("source","live-sdk");
+        httpPost.addHeader("source", "live-sdk");
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
         if (fileMap != null) {
             for (Map.Entry<String, File> entry : fileMap.entrySet()) {
@@ -332,9 +339,11 @@ public class HttpUtil {
         CloseableHttpResponse response = httpClient.execute(httpPost);
 //        int statusCode = response.getStatusLine().getStatusCode();
 //        if (statusCode == 200 || statusCode == 400 || statusCode == 500 || statusCode == 403) {
-        result = EntityUtils.toString(response.getEntity(), encoding);
-        log.debug("http 请求结果: {}" , result);
+        if (null != response) {
+            result = EntityUtils.toString(response.getEntity(), encoding);
+            log.debug("http 请求结果: {}", result);
 //        }
+        }
         try {
             if (null != response) {
                 response.close();

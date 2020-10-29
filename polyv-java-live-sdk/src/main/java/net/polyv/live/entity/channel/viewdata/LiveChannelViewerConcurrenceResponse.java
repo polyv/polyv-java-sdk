@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
@@ -17,6 +18,7 @@ import lombok.experimental.Accessors;
  * @author: sadboy
  **/
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,6 +29,7 @@ public class LiveChannelViewerConcurrenceResponse {
     private List<ChannelViewerConcurrence> channelViewerConcurrences;
     
     @Data
+@EqualsAndHashCode(callSuper = false)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

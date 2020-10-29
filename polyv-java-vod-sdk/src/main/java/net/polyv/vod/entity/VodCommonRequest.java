@@ -6,6 +6,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.common.entity.CommonReqeust;
 
@@ -15,6 +16,7 @@ import net.polyv.common.entity.CommonReqeust;
  
  **/
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class VodCommonRequest extends CommonReqeust {
     /**

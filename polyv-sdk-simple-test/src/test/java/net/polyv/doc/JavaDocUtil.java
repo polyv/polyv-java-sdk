@@ -9,6 +9,7 @@ import com.sun.javadoc.RootDoc;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
@@ -95,6 +96,7 @@ public class JavaDocUtil {
     }
     
     @Data
+@EqualsAndHashCode(callSuper = false)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -104,6 +106,7 @@ public class JavaDocUtil {
     }
     
     @Data
+@EqualsAndHashCode(callSuper = false)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

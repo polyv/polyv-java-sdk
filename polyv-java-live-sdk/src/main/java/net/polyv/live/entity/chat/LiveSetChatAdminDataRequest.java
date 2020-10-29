@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
@@ -18,6 +19,7 @@ import net.polyv.live.entity.LiveCommonRequest;
  * @author: thomas
  **/
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor

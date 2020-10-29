@@ -11,6 +11,7 @@ import javax.validation.Validator;
 import org.hibernate.validator.HibernateValidator;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * hibernate-validator 参数校验工具类
@@ -65,6 +66,7 @@ public class ValidationUtil {
      * 校验结果类
      */
     @Data
+@EqualsAndHashCode(callSuper = false)
     public class ValidResult {
         
         /**
@@ -113,6 +115,7 @@ public class ValidationUtil {
     }
     
     @Data
+@EqualsAndHashCode(callSuper = false)
     public static class ErrorMessage {
         
         private String propertyPath;

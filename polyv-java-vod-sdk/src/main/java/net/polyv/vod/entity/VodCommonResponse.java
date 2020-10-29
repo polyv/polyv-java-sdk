@@ -3,6 +3,7 @@ package net.polyv.vod.entity;
 import com.alibaba.fastjson.JSON;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
@@ -11,6 +12,7 @@ import lombok.experimental.Accessors;
  
  **/
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 
 public class VodCommonResponse {

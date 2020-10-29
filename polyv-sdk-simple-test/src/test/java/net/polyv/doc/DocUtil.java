@@ -18,6 +18,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.service.chat.impl.LiveChatRoomServiceImpl;
@@ -202,6 +203,7 @@ public class DocUtil {
     }
     
     @Data
+@EqualsAndHashCode(callSuper = false)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

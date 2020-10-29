@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LivePageCommonRequest;
@@ -20,6 +21,7 @@ import net.polyv.live.entity.LivePageCommonResponse;
  * @author: thomas
  **/
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,6 +35,7 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
     
     
     @Data
+@EqualsAndHashCode(callSuper = false)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

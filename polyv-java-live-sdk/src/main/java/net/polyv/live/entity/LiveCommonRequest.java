@@ -4,6 +4,7 @@ import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 import net.polyv.common.entity.CommonReqeust;
@@ -14,6 +15,7 @@ import net.polyv.common.entity.CommonReqeust;
  
  **/
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class LiveCommonRequest extends CommonReqeust {
     /**

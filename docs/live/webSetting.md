@@ -8,7 +8,7 @@
 
 ### 单元测试
 ```java
-	@Test
+	@Test 
 	public void testChannelGlobalSwitch() throws IOException, NoSuchAlgorithmException {
         LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest = new LiveChannelGlobalSwitchRequest();
         Boolean liveChannelGlobalSwitchResponse;

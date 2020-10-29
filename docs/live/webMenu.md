@@ -8,7 +8,7 @@
 
 ### 单元测试
 ```java
-	@Test
+	@Test 
 	public void testUpdateChannelMenu() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelMenuRequest liveUpdateChannelMenuRequest = new LiveUpdateChannelMenuRequest();
         Boolean liveUpdateChannelMenuResponse;

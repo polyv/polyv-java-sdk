@@ -28,6 +28,7 @@ import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebAuthServiceImpl;
+import net.polyv.live.util.LiveSignUtil;
 
 /**
  * Web观看页-页面观看条件测试用例
@@ -47,7 +48,10 @@ public class LiveWebAuthImplTest extends BaseTest {
         LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest = new LiveCreateChannelWriteListRequest();
         Boolean liveCreateChannelWriteListResponse;
         try {
-            liveCreateChannelWriteListRequest.setRank(1).setCode("天王盖地虎1").setName("sadboy");
+            liveCreateChannelWriteListRequest.setRank(1)
+                    .setCode(String.valueOf(System.currentTimeMillis()))
+                    .setName("sadboy")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelWriteListResponse = new LiveWebAuthServiceImpl().createChannelWriteList(
                     liveCreateChannelWriteListRequest);
             Assert.assertNotNull(liveCreateChannelWriteListResponse);
@@ -86,7 +90,9 @@ public class LiveWebAuthImplTest extends BaseTest {
                     .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
             List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
             authSettings.add(authSetting);
-            liveUpdateChannelAuthRequest.setChannelId(createChannel()).setAuthSettings(authSettings);
+            liveUpdateChannelAuthRequest.setChannelId(createChannel())
+                    .setAuthSettings(authSettings)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelAuthResponse = new LiveWebAuthServiceImpl().updateChannelAuth(
                     liveUpdateChannelAuthRequest);
             Assert.assertNotNull(liveUpdateChannelAuthResponse);
@@ -114,7 +120,9 @@ public class LiveWebAuthImplTest extends BaseTest {
         LiveChannelAuthExternalRequest liveChannelAuthExternalRequest = new LiveChannelAuthExternalRequest();
         LiveChannelAuthExternalResponse liveChannelAuthExternalResponse;
         try {
-            liveChannelAuthExternalRequest.setChannelId(createChannel()).setExternalUri("https://dev.polyv.net/");
+            liveChannelAuthExternalRequest.setChannelId(createChannel())
+                    .setExternalUri("https://dev.polyv.net/")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelAuthExternalResponse = new LiveWebAuthServiceImpl().updateChannelAuthExternal(
                     liveChannelAuthExternalRequest);
             Assert.assertNotNull(liveChannelAuthExternalResponse);
@@ -143,7 +151,9 @@ public class LiveWebAuthImplTest extends BaseTest {
         LiveChannelAuthCustomRequest liveChannelAuthCustomRequest = new LiveChannelAuthCustomRequest();
         LiveChannelAuthCustomResponse liveChannelAuthCustomResponse;
         try {
-            liveChannelAuthCustomRequest.setChannelId(createChannel()).setCustomUri("https://dev.polyv.net/");
+            liveChannelAuthCustomRequest.setChannelId(createChannel())
+                    .setCustomUri("https://dev.polyv.net/")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelAuthCustomResponse = new LiveWebAuthServiceImpl().updateChannelAuthCustom(
                     liveChannelAuthCustomRequest);
             Assert.assertNotNull(liveChannelAuthCustomResponse);
@@ -173,7 +183,9 @@ public class LiveWebAuthImplTest extends BaseTest {
         LiveChannelAuthTypeRequest liveChannelAuthTypeRequest = new LiveChannelAuthTypeRequest();
         Boolean liveChannelAuthTypeResponse;
         try {
-            liveChannelAuthTypeRequest.setChannelId(createChannel()).setAuthType(LiveConstant.AuthType.INFO.getDesc());
+            liveChannelAuthTypeRequest.setChannelId(createChannel())
+                    .setAuthType("none")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(
                     liveChannelAuthTypeRequest);
             Assert.assertNotNull(liveChannelAuthTypeResponse);
@@ -202,7 +214,7 @@ public class LiveWebAuthImplTest extends BaseTest {
         LiveChannelAuthRequest liveChannelAuthRequest = new LiveChannelAuthRequest();
         LiveChannelAuthResponse liveChannelAuthResponse;
         try {
-            liveChannelAuthRequest.setChannelId(createChannel());
+            liveChannelAuthRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
             liveChannelAuthResponse = new LiveWebAuthServiceImpl().channelAuth(liveChannelAuthRequest);
             Assert.assertNotNull(liveChannelAuthResponse);
             if (liveChannelAuthResponse != null) {
@@ -231,7 +243,11 @@ public class LiveWebAuthImplTest extends BaseTest {
         LiveChannelWriteListRequest liveChannelWriteListRequest = new LiveChannelWriteListRequest();
         LiveChannelWriteListResponse liveChannelWriteListResponse;
         try {
-            liveChannelWriteListRequest.setChannelId(null).setRank(1).setKeyword(null).setPageSize(1);
+            liveChannelWriteListRequest.setChannelId(null)
+                    .setRank(1)
+                    .setKeyword(null)
+                    .setPageSize(1)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelWriteListResponse = new LiveWebAuthServiceImpl().channelWriteList(liveChannelWriteListRequest);
             Assert.assertNotNull(liveChannelWriteListResponse);
             if (liveChannelWriteListResponse != null) {
@@ -261,7 +277,9 @@ public class LiveWebAuthImplTest extends BaseTest {
         LiveUpdateChannelAuthUrlRequest liveUpdateChannelAuthUrlRequest = new LiveUpdateChannelAuthUrlRequest();
         Boolean liveUpdateChannelAuthUrlResponse;
         try {
-            liveUpdateChannelAuthUrlRequest.setChannelId(createChannel()).setUrl("http://www.polyv.net");
+            liveUpdateChannelAuthUrlRequest.setChannelId(createChannel())
+                    .setUrl("http://www.polyv.net")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelAuthUrlResponse = new LiveWebAuthServiceImpl().updateChannelAuthUrl(
                     liveUpdateChannelAuthUrlRequest);
             Assert.assertNotNull(liveUpdateChannelAuthUrlResponse);

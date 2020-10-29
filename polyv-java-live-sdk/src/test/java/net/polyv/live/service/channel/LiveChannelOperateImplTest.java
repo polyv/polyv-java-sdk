@@ -114,7 +114,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setLinkMicLimit(-1)
                     .setPureRtcEnabled("N")
                     .setReceiveChannelIds("213");
-            liveChannelInitRequest.setBasicSetting(basicSetting);
+            liveChannelInitRequest.setBasicSetting(basicSetting).setRequestId(LiveSignUtil.generateUUID());
             //验证码观看
             LiveChannelInitRequest.AuthSetting codeAuthSettings = new LiveChannelInitRequest.AuthSetting().setRank(1)
                     .setAuthType(LiveConstant.AuthType.CODE.getDesc())
@@ -154,10 +154,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveChannelSettingResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = getAloneChannelId();
             
             LiveChannelSettingRequest.BasicSetting basicSetting = liveChannelSettingRequest.new BasicSetting().setName(
-                    "Junit测试(勿删)")
+                    "Junit测试(勿删)888")
                     .setChannelPasswd("123321")
                     .setCategoryId(340019)
                     .setMaxViewer(0)
@@ -180,7 +180,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
             authSettings.add(authSetting);
             liveChannelSettingRequest.setChannelId(channelId)
                     .setBasicSetting(basicSetting)
-                    .setAuthSettings(authSettings);
+                    .setAuthSettings(authSettings)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelSettingResponse = new LiveChannelOperateServiceImpl().updateChannelSetting(
                     liveChannelSettingRequest);
             Assert.assertNotNull(liveChannelSettingResponse);
@@ -188,9 +189,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("测试修改频道的相关设置成功");
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -223,19 +221,15 @@ public class LiveChannelOperateImplTest extends BaseTest {
                         .setCategoryId(340019);
                 channels.add(liveChannel);
             }
-            liveCreateChannelListRequest.setChannels(channels).setRequestId("123456");
+            liveCreateChannelListRequest.setChannels(channels)
+                    .setRequestId("123456")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelListResponse = new LiveChannelOperateServiceImpl().createChannelList(
                     liveCreateChannelListRequest);
             Assert.assertNotNull(liveCreateChannelListResponse);
             if (liveCreateChannelListResponse != null) {
                 //to do something ......
                 log.debug("频道批量创建成功{}", JSON.toJSONString(liveCreateChannelListResponse));
-            }
-            
-            //删除测试数据
-            List<LiveChannelResponse> channelsResponse = liveCreateChannelListResponse.getChannels();
-            for (LiveChannelResponse temp : channelsResponse) {
-                deleteChannel(temp.getChannelId());
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
@@ -265,7 +259,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             liveChannelDetailRequest.setChannelId(channelId)
                     .setField("channelPasswd")
                     .setValue(newPassword)
-                    .setRequestId("2860257a405447e1bbbe9161da2dee73");
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelDetailResponse = new LiveChannelOperateServiceImpl().updateChannelDetail(
                     liveChannelDetailRequest);
             Assert.assertNotNull(liveChannelDetailResponse);
@@ -273,9 +267,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("频道{}修改密码为{}成功", channelId, newPassword);
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -299,7 +290,9 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveListChannelPPTRecordRequest.setChannelId(channelId).setCurrentPage(1);
+            liveListChannelPPTRecordRequest.setChannelId(channelId)
+                    .setCurrentPage(1)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelPPTRecordResponse = new LiveChannelOperateServiceImpl().listPPTRecord(
                     liveListChannelPPTRecordRequest);
             Assert.assertNotNull(liveListChannelPPTRecordResponse);
@@ -307,9 +300,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("查询课件重制任务列表信息成功{}", JSON.toJSONString(liveListChannelPPTRecordResponse));
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -335,7 +325,9 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveChannelPasswordSettingRequest.setChannelId(channelId).setPasswd("987654");
+            liveChannelPasswordSettingRequest.setChannelId(channelId)
+                    .setPasswd("987654")
+                    .setRequestId(LiveSignUtil.generateUUID());
             updateChannelPasswordResponse = new LiveChannelOperateServiceImpl().updateChannelPassword(
                     liveChannelPasswordSettingRequest);
             Assert.assertNotNull(updateChannelPasswordResponse);
@@ -343,9 +335,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("设置频道密码成功");
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -369,7 +358,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveDeleteChannelRequest.setChannelId(channelId);
+            liveDeleteChannelRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelResponse = new LiveChannelOperateServiceImpl().deleteChannel(liveDeleteChannelRequest);
             Assert.assertNotNull(liveDeleteChannelResponse);
             if (liveDeleteChannelResponse) {
@@ -401,7 +390,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String[] channelIds = new String[]{createChannel(), createChannel(), createChannel()};
             
-            liveDeleteChannelListRequest.setChannelIds(channelIds);
+            liveDeleteChannelListRequest.setChannelIds(channelIds).setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelListResponse = new LiveChannelOperateServiceImpl().deleteChannelList(
                     liveDeleteChannelListRequest);
             Assert.assertNotNull(liveDeleteChannelListResponse);
@@ -434,7 +423,9 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveCreateChannelTokenRequest.setChannelId(channelId).setToken("testToken");
+            liveCreateChannelTokenRequest.setChannelId(channelId)
+                    .setToken("testToken")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelTokenResponse = new LiveChannelOperateServiceImpl().createChannelToken(
                     liveCreateChannelTokenRequest);
             Assert.assertNotNull(liveCreateChannelTokenResponse);
@@ -442,9 +433,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("设置频道单点登陆token成功");
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -469,16 +457,13 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveChannelInfoRequest.setChannelId(channelId);
+            liveChannelInfoRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelInfoResponse = new LiveChannelOperateServiceImpl().channelInfo(liveChannelInfoRequest);
             Assert.assertNotNull(liveChannelInfoResponse);
             if (liveChannelInfoResponse != null) {
                 //to do something ......
                 log.debug("查询频道信息成功{}", JSON.toJSONString(liveChannelInfoResponse));
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -503,7 +488,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveChannelBasicInfoRequest.setChannelId(channelId);
+            liveChannelBasicInfoRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().channelBasicInfo(
                     liveChannelBasicInfoRequest);
             Assert.assertNotNull(liveChannelBasicInfoResponse);
@@ -511,9 +496,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("查询频道基本信息成功{}", JSON.toJSONString(liveChannelBasicInfoResponse));
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -540,7 +522,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
             
             liveChannelAuthTokenRequest.setChannelId(channelId)
                     .setRole(LiveConstant.Role.ADMIN.getDesc())
-                    .setOrigin(null);
+                    .setOrigin(null)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelAuthTokenResponse = new LiveChannelOperateServiceImpl().channelAuthToken(
                     liveChannelAuthTokenRequest);
             Assert.assertNotNull(liveChannelAuthTokenResponse);
@@ -548,9 +531,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("查询授权和连麦的token成功{}", JSON.toJSONString(liveChannelAuthTokenResponse));
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -579,7 +559,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRole("Guest")
                     .setNickname("sadboy")
                     .setActor("教授")
-                    .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
+                    .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveCreateSonChannelResponse = new LiveChannelOperateServiceImpl().createSonChannel(
                     liveCreateSonChannelRequest);
             Assert.assertNotNull(liveCreateSonChannelResponse);
@@ -587,9 +568,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("创建子频道成功{}", JSON.toJSONString(liveCreateSonChannelResponse));
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -618,7 +596,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRole(null)
                     .setNickname("sadboy")
                     .setActor("教授")
-                    .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
+                    .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveCreateSonChannelResponse = new LiveChannelOperateServiceImpl().createSonChannel(
                     liveCreateSonChannelRequest);
             Assert.assertNotNull(liveCreateSonChannelResponse);
@@ -626,9 +605,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("创建子频道成功{}", JSON.toJSONString(liveCreateSonChannelResponse));
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -662,7 +638,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0")
                     .setActor("教授")
                     .setPageTurnEnabled("Y")
-                    .setNotifyEnabled("Y");
+                    .setNotifyEnabled("Y")
+                    .setRequestId(LiveSignUtil.generateUUID());
             updateSonChannelInfoResponse = new LiveChannelOperateServiceImpl().updateSonChannelInfo(
                     liveUpdateSonChannelInfoRequest);
             Assert.assertNotNull(updateSonChannelInfoResponse);
@@ -670,9 +647,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("设置子频道信息成功");
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -699,7 +673,9 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             String sonChannelId = createSonChannel(channelId);
             
-            liveCreateSonChannelTokenRequest.setAccount(sonChannelId).setToken("sonChannelLogintoken");
+            liveCreateSonChannelTokenRequest.setAccount(sonChannelId)
+                    .setToken("sonChannelLogintoken")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveCreateSonChannelTokenResponse = new LiveChannelOperateServiceImpl().createSonChannelToken(
                     liveCreateSonChannelTokenRequest);
             Assert.assertNotNull(liveCreateSonChannelTokenResponse);
@@ -707,9 +683,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("设置子频道单点登陆token成功");
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -735,16 +708,15 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             String sonChannelId = createSonChannel(channelId);
             
-            liveSonChannelInfoRequest.setAccount(sonChannelId).setChannelId(channelId);
+            liveSonChannelInfoRequest.setAccount(sonChannelId)
+                    .setChannelId(channelId)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().sonChannelInfo(liveSonChannelInfoRequest);
             Assert.assertNotNull(liveSonChannelInfoResponse);
             if (liveSonChannelInfoResponse != null) {
                 //to do something ......
                 log.debug("测试查询子频道信息成功{}", JSON.toJSONString(liveSonChannelInfoResponse));
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -767,7 +739,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveSonChannelInfoListRequest.setChannelId(channelId);
+            liveSonChannelInfoListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().sonChannelInfoList(
                     liveSonChannelInfoListRequest);
             Assert.assertNotNull(liveSonChannelInfoResponse);
@@ -775,9 +747,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("查询频道号下所有子频道信息成功{}", JSON.toJSONString(liveSonChannelInfoResponse));
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -804,7 +773,9 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             String sonChannelId = createSonChannel(channelId);
             
-            liveDeleteSonChannelRequest.setChannelId(channelId).setAccount(sonChannelId);
+            liveDeleteSonChannelRequest.setChannelId(channelId)
+                    .setAccount(sonChannelId)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveDeleteSonChannelResponse = new LiveChannelOperateServiceImpl().deleteSonChannel(
                     liveDeleteSonChannelRequest);
             Assert.assertNotNull(liveDeleteSonChannelResponse);
@@ -812,9 +783,6 @@ public class LiveChannelOperateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("测试删除子频道成功");
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -837,7 +805,9 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest = new LiveCreateChannelPPTRecordRequest();
         Boolean liveCreateChannelPPTRecordResponse;
         try {
-            liveCreateChannelPPTRecordRequest.setChannelId("1951952").setVideoId("07f5bbeb67");
+            liveCreateChannelPPTRecordRequest.setChannelId("1951952")
+                    .setVideoId("07f5bbeb67")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelPPTRecordResponse = new LiveChannelOperateServiceImpl().createChannelPPTRecordTask(
                     liveCreateChannelPPTRecordRequest);
             Assert.assertNotNull(liveCreateChannelPPTRecordResponse);

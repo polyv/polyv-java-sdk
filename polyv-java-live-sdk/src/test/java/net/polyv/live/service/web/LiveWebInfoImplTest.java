@@ -25,6 +25,7 @@ import net.polyv.live.entity.web.info.LiveUpdateChannelPublisherRequest;
 import net.polyv.live.entity.web.info.LiveUpdateChannelSplashRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebInfoServiceImpl;
+import net.polyv.live.util.LiveSignUtil;
 
 /**
  * @author: sadboy
@@ -43,7 +44,9 @@ public class LiveWebInfoImplTest extends BaseTest {
         LiveUpdateChannelNameRequest liveUpdateChannelNameRequest = new LiveUpdateChannelNameRequest();
         Boolean liveUpdateChannelNameResponse;
         try {
-            liveUpdateChannelNameRequest.setChannelId(createChannel()).setName("Junit测试(勿删)");
+            liveUpdateChannelNameRequest.setChannelId(createChannel())
+                    .setName("Junit测试(勿删)")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelNameResponse = new LiveWebInfoServiceImpl().updateChannelName(
                     liveUpdateChannelNameRequest);
             Assert.assertNotNull(liveUpdateChannelNameResponse);
@@ -73,7 +76,9 @@ public class LiveWebInfoImplTest extends BaseTest {
         LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest = new LiveUpdateChannelPublisherRequest();
         Boolean liveUpdateChannelPublisherResponse;
         try {
-            liveUpdateChannelPublisherRequest.setChannelId(createChannel()).setPublisher("主讲人sadboy");
+            liveUpdateChannelPublisherRequest.setChannelId(createChannel())
+                    .setPublisher("主讲人sadboy")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelPublisherResponse = new LiveWebInfoServiceImpl().updateChannelPublisher(
                     liveUpdateChannelPublisherRequest);
             Assert.assertNotNull(liveUpdateChannelPublisherResponse);
@@ -102,7 +107,7 @@ public class LiveWebInfoImplTest extends BaseTest {
         LiveChannelSplashRequest liveChannelSplashRequest = new LiveChannelSplashRequest();
         LiveChannelSplashResponse liveChannelSplashResponse;
         try {
-            liveChannelSplashRequest.setChannelId(createChannel());
+            liveChannelSplashRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
             liveChannelSplashResponse = new LiveWebInfoServiceImpl().channelSplash(liveChannelSplashRequest);
             Assert.assertNotNull(liveChannelSplashResponse);
             if (liveChannelSplashResponse != null) {
@@ -131,7 +136,10 @@ public class LiveWebInfoImplTest extends BaseTest {
         LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest = new LiveUpdateChannelLikesRequest();
         Boolean liveUpdateChannelLikesResponse;
         try {
-            liveUpdateChannelLikesRequest.setChannelId(createChannel()).setLikes(9999).setViewers(9999);
+            liveUpdateChannelLikesRequest.setChannelId(createChannel())
+                    .setLikes(9999)
+                    .setViewers(9999)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelLikesResponse = new LiveWebInfoServiceImpl().updateChannelLikes(
                     liveUpdateChannelLikesRequest);
             Assert.assertNotNull(liveUpdateChannelLikesResponse);
@@ -160,7 +168,7 @@ public class LiveWebInfoImplTest extends BaseTest {
         LiveChannelLikesRequest liveChannelLikesRequest = new LiveChannelLikesRequest();
         LiveChannelLikesResponse liveChannelLikesResponse;
         try {
-            liveChannelLikesRequest.setChannelIds("1965681");
+            liveChannelLikesRequest.setChannelIds("1965681").setRequestId(LiveSignUtil.generateUUID());
             liveChannelLikesResponse = new LiveWebInfoServiceImpl().channelLikes(liveChannelLikesRequest);
             Assert.assertNotNull(liveChannelLikesResponse);
             if (liveChannelLikesResponse != null) {
@@ -191,7 +199,8 @@ public class LiveWebInfoImplTest extends BaseTest {
         try {
             liveUpdateChannelCountDownRequest.setChannelId(createChannel())
                     .setBookingEnabled("Y")
-                    .setStartTime("2020-11-11 11:11:11");
+                    .setStartTime("2020-11-11 11:11:11")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(
                     liveUpdateChannelCountDownRequest);
             Assert.assertNotNull(liveUpdateChannelCountDownResponse);
@@ -220,7 +229,7 @@ public class LiveWebInfoImplTest extends BaseTest {
         LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
         LiveChannelCountDownResponse liveChannelCountDownResponse;
         try {
-            liveChannelCountDownRequest.setChannelId(createChannel());
+            liveChannelCountDownRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
             liveChannelCountDownResponse = new LiveWebInfoServiceImpl().channelCountDown(liveChannelCountDownRequest);
             Assert.assertNotNull(liveChannelCountDownResponse);
             if (liveChannelCountDownResponse != null) {
@@ -250,7 +259,9 @@ public class LiveWebInfoImplTest extends BaseTest {
         String liveUpdateChannelLogoResponse;
         try {
             String path = "C:\\Users\\T460\\Desktop\\elephant.png";
-            liveUpdateChannelLogoRequest.setChannelId(createChannel()).setImgfile(new File(path));
+            liveUpdateChannelLogoRequest.setChannelId(createChannel())
+                    .setImgfile(new File(path))
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(
                     liveUpdateChannelLogoRequest);
             Assert.assertNotNull(liveUpdateChannelLogoResponse);
@@ -281,8 +292,11 @@ public class LiveWebInfoImplTest extends BaseTest {
         LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
         String liveUpdateChannelSplashResponse;
         try {
-            String path = "C:\\Users\\T460\\Desktop\\fields.txt";
-            liveUpdateChannelSplashRequest.setChannelId(createChannel()).setSplashEnabled("N").setImgfile(new File(path));
+            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+            liveUpdateChannelSplashRequest.setChannelId(createChannel())
+                    .setSplashEnabled("N")
+                    .setImgfile(new File(path))
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
                     liveUpdateChannelSplashRequest);
             Assert.assertNotNull(liveUpdateChannelSplashResponse);

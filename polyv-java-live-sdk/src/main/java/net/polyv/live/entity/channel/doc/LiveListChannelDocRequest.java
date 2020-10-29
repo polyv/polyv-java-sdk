@@ -35,4 +35,10 @@ public class LiveListChannelDocRequest extends LivePageCommonRequest {
             "failUpload：上传失败，waitConvert:转换PPT中,failConvert:转换PPT失败）", required = false)
     private String status;
     
+    /**
+     * 是否展示PPT原文件地址，Y：是；N：否；默认为N
+     */
+    @ApiModelProperty(name = "isShowUrl", value = "是否展示PPT原文件地址，Y：是；N：否；默认为N", required = false)
+    private String isShowUrl;
+    
 }

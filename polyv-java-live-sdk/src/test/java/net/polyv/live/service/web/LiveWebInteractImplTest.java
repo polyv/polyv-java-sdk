@@ -19,6 +19,7 @@ import net.polyv.live.entity.web.interact.LiveUpdateChannelCashRequest;
 import net.polyv.live.entity.web.interact.LiveUpdateChannelGoodRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebInteractServiceImpl;
+import net.polyv.live.util.LiveSignUtil;
 
 /**
  * 页面互动
@@ -46,7 +47,10 @@ public class LiveWebInteractImplTest extends BaseTest {
                     .setGoodPrice(9999.99)
                     .setGoodEnabled("Y");
             channelGoods.add(channelGood);
-            liveUpdateChannelGoodRequest.setChannelId(createChannel()).setEnabled("Y").setGoods(channelGoods);
+            liveUpdateChannelGoodRequest.setChannelId(createChannel())
+                    .setEnabled("Y")
+                    .setGoods(channelGoods)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelGoodResponse = new LiveWebInteractServiceImpl().updateChannelGood(
                     liveUpdateChannelGoodRequest);
             Assert.assertNotNull(liveUpdateChannelGoodResponse);
@@ -73,14 +77,18 @@ public class LiveWebInteractImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    @Test
+//    @Test
     public void testUpdateChannelCash() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelCashRequest liveUpdateChannelCashRequest = new LiveUpdateChannelCashRequest();
         Boolean liveUpdateChannelCashResponse;
         try {
             Double[] floats = {0.88d, 6.66d, 8.88d, 18.11d, 66.60d, 88.89d};
             List<Double> cashes = Arrays.asList(floats);
-            liveUpdateChannelCashRequest.setChannelId(createChannel()).setCashes(cashes).setCashMin(0.02d).setEnabled("Y");
+            liveUpdateChannelCashRequest.setChannelId(createChannel())
+                    .setCashes(cashes)
+                    .setCashMin(0.02d)
+                    .setEnabled("Y")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelCashResponse = new LiveWebInteractServiceImpl().updateChannelCash(
                     liveUpdateChannelCashRequest);
             Assert.assertNotNull(liveUpdateChannelCashResponse);
@@ -109,7 +117,7 @@ public class LiveWebInteractImplTest extends BaseTest {
         LiveChannelDonateRequest liveChannelDonateRequest = new LiveChannelDonateRequest();
         LiveChannelDonateResponse liveChannelDonateResponse;
         try {
-            liveChannelDonateRequest.setChannelId(createChannel());
+            liveChannelDonateRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
             liveChannelDonateResponse = new LiveWebInteractServiceImpl().channelDonate(liveChannelDonateRequest);
             Assert.assertNotNull(liveChannelDonateResponse);
             if (liveChannelDonateResponse != null) {

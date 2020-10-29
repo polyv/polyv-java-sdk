@@ -10,7 +10,6 @@ import org.junit.Assert;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.InitConfig;
-import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
@@ -21,6 +20,7 @@ import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest
 import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
 import net.polyv.live.service.channel.impl.LiveChannelPlaybackServiceImpl;
+import net.polyv.live.util.LiveSignUtil;
 
 /**
  * @author: thomas
@@ -41,8 +41,7 @@ public class BaseTest {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    protected String createChannel(LiveChannelRequest liveChannelRequest)
-            throws IOException, NoSuchAlgorithmException {
+    protected String createChannel(LiveChannelRequest liveChannelRequest) throws IOException, NoSuchAlgorithmException {
         LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         Assert.assertNotNull(liveChannelResponse);
         return liveChannelResponse.getChannelId();
@@ -54,13 +53,21 @@ public class BaseTest {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    protected String createChannel()   {
+    protected String createChannel() {
         String channelId = "1965681";
         return channelId;
 //        LiveChannelRequest liveChannelRequest = new LiveChannelRequest().setName("test直播频道")
 //                .setChannelPasswd("666888")
 //                .setScene(LiveConstant.SceneType.PPT.getDesc());
 //        return createChannel(liveChannelRequest);
+    }
+    
+    /**
+     * 获取测试纯视频类型频道id
+     * @return
+     */
+    protected String getAloneChannelId() {
+        return "1958888";
     }
     
     /**
@@ -99,13 +106,15 @@ public class BaseTest {
      * @throws NoSuchAlgorithmException
      */
     protected String createSonChannel(String channelId) throws IOException, NoSuchAlgorithmException {
-        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest().setChannelId(
-                channelId)
-                .setRole("Guest")
-                .setNickname("sadboy")
-                .setActor("教授")
-                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
-        return createSonChannel(liveCreateSonChannelRequest);
+        return "00111965681";
+//        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
+//        liveCreateSonChannelRequest.setChannelId(channelId)
+//                .setRole("Guest")
+//                .setNickname("sadboy")
+//                .setActor("教授")
+//                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0")
+//                .setRequestId(LiveSignUtil.generateUUID());
+//        return createSonChannel(liveCreateSonChannelRequest);
     }
     
     /**
@@ -142,7 +151,9 @@ public class BaseTest {
     protected List<String> listChannelVideoIds(String channelId) throws IOException, NoSuchAlgorithmException {
         LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
                 new LiveListChannelVideoLibraryRequest();
-        liveListChannelVideoLibraryRequest.setChannelId(channelId).setListType("playback");
+        liveListChannelVideoLibraryRequest.setChannelId(channelId)
+                .setListType("playback")
+                .setRequestId(LiveSignUtil.generateUUID());
         LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse =
                 new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary(
                 liveListChannelVideoLibraryRequest);
@@ -169,8 +180,9 @@ public class BaseTest {
         LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
         liveChannelVideoListRequest.setChannelId(channelId)
                 .setStartDate("2020-01-01")
-                .setEndDate("2020-10-14")
-                .setSessionId(null);
+                .setEndDate("2020-11-11")
+                .setSessionId(null)
+                .setRequestId(LiveSignUtil.generateUUID());
         LiveChannelVideoListResponse liveChannelVideoListResponse =
                 new LiveChannelPlaybackServiceImpl().listChannelVideo(
                 liveChannelVideoListRequest);

@@ -39,7 +39,7 @@ public class LiveChannelStateImplTest extends BaseTest {
         try {
             //准备测试数据
             String channelId0 = createChannel();
-            String channelId1 = createChannel();
+            String channelId1 = getAloneChannelId();
             
             liveListChannelStreamStatusRequest.setChannelIds(String.format("%s,%s", channelId0, channelId1))
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -50,10 +50,6 @@ public class LiveChannelStateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("批量查询频道直播流状态成功{}", JSON.toJSONString(liveListChannelStreamStatusResponse));
             }
-            
-            //删除测试数据
-            deleteChannel(channelId0);
-            deleteChannel(channelId1);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
@@ -79,7 +75,7 @@ public class LiveChannelStateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveResumeChannelStreamRequest.setChannelId(channelId);
+            liveResumeChannelStreamRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveResumeChannelStreamResponse = new LiveChannelStateServiceImpl().resumeChannelStream(
                     liveResumeChannelStreamRequest);
             Assert.assertNotNull(liveResumeChannelStreamResponse);
@@ -87,9 +83,6 @@ public class LiveChannelStateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("恢复直播频道推流成功");
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
@@ -115,7 +108,7 @@ public class LiveChannelStateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveCutoffChannelStreamRequest.setChannelId(channelId);
+            liveCutoffChannelStreamRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveCutoffChannelStreamResponse = new LiveChannelStateServiceImpl().cutoffChannelStream(
                     liveCutoffChannelStreamRequest);
             Assert.assertNotNull(liveCutoffChannelStreamResponse);
@@ -123,9 +116,6 @@ public class LiveChannelStateImplTest extends BaseTest {
                 //to do something ......
                 log.debug("禁止直播频道推流成功");
             }
-            
-            //删除测试数据
-            deleteChannel(channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
@@ -144,11 +134,11 @@ public class LiveChannelStateImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testchannelStreamInfo() throws IOException, NoSuchAlgorithmException {
+    public void testChannelStreamInfo() throws IOException, NoSuchAlgorithmException {
         LiveChannelStreamInfoRequest liveChannelStreamInfoRequest = new LiveChannelStreamInfoRequest();
         LiveChannelStreamInfoResponse liveChannelStreamInfoResponse;
         try {
-            liveChannelStreamInfoRequest.setChannelId(createChannel());
+            liveChannelStreamInfoRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
             liveChannelStreamInfoResponse = new LiveChannelStateServiceImpl().channelStreamInfo(
                     liveChannelStreamInfoRequest);
             Assert.assertNotNull(liveChannelStreamInfoResponse);

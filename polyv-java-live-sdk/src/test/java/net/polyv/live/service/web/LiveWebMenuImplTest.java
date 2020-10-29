@@ -15,6 +15,7 @@ import net.polyv.live.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.entity.web.menu.LiveUpdateChannelMenuRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebMenuServiceImpl;
+import net.polyv.live.util.LiveSignUtil;
 
 /**
  * 页面菜单
@@ -38,7 +39,8 @@ public class LiveWebMenuImplTest extends BaseTest {
             liveUpdateChannelMenuRequest.setChannelId(createChannel())
                     .setMenuType("desc")
                     .setContent("<html><body><h1>hello world</h1><button onclick=\"console.log('hello world')" +
-                            "\"></button></body></html>");
+                            "\"></button></body></html>")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelMenuResponse = new LiveWebMenuServiceImpl().updateChannelMenu(
                     liveUpdateChannelMenuRequest);
             Assert.assertNotNull(liveUpdateChannelMenuResponse);
@@ -68,7 +70,7 @@ public class LiveWebMenuImplTest extends BaseTest {
         LiveListChannelMenuRequest liveListChannelMenuRequest = new LiveListChannelMenuRequest();
         LiveListChannelMenuResponse liveListChannelMenuResponse;
         try {
-            liveListChannelMenuRequest.setChannelId(createChannel());
+            liveListChannelMenuRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
             liveListChannelMenuResponse = new LiveWebMenuServiceImpl().listChannelMenu(liveListChannelMenuRequest);
             Assert.assertNotNull(liveListChannelMenuResponse);
             if (liveListChannelMenuResponse != null) {

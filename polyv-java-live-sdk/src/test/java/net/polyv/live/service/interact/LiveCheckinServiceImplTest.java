@@ -22,6 +22,7 @@ import net.polyv.live.service.interact.impl.LiveCheckinServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
+ * 签到管理
  * @author: thomas
  **/
 @Slf4j

@@ -12,8 +12,10 @@ import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.web.setting.LiveChannelGlobalSwitchRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebSettingServiceImpl;
+import net.polyv.live.util.LiveSignUtil;
 
 /**
+ * 快捷设置
  * @author: sadboy
  **/
 @Slf4j
@@ -32,7 +34,8 @@ public class LiveWebSettingImplTest extends BaseTest {
         try {
             liveChannelGlobalSwitchRequest.setChannelId(createChannel())
                     .setGlobalEnabledType(LiveConstant.GlobalEnabledType.CALLBACK.getDesc())
-                    .setEnabled("N");
+                    .setEnabled("N")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelGlobalSwitchResponse = new LiveWebSettingServiceImpl().channelGlobalSwitch(
                     liveChannelGlobalSwitchRequest);
             Assert.assertNotNull(liveChannelGlobalSwitchResponse);

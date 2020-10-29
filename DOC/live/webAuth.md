@@ -13,7 +13,10 @@
         LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest = new LiveCreateChannelWriteListRequest();
         Boolean liveCreateChannelWriteListResponse;
         try {
-            liveCreateChannelWriteListRequest.setRank(1).setCode("天王盖地虎1").setName("sadboy");
+            liveCreateChannelWriteListRequest.setRank(1)
+                    .setCode(String.valueOf(System.currentTimeMillis()))
+                    .setName("sadboy")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelWriteListResponse = new LiveWebAuthServiceImpl().createChannelWriteList(
                     liveCreateChannelWriteListRequest);
             Assert.assertNotNull(liveCreateChannelWriteListResponse);
@@ -34,7 +37,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -50,8 +55,11 @@
 
 true为添加成功，false为添加失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 2、设置观看条件
 ### 描述
 ```
@@ -76,7 +84,9 @@ true为添加成功，false为添加失败
                     .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
             List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
             authSettings.add(authSetting);
-            liveUpdateChannelAuthRequest.setChannelId(createChannel()).setAuthSettings(authSettings);
+            liveUpdateChannelAuthRequest.setChannelId(createChannel())
+                    .setAuthSettings(authSettings)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelAuthResponse = new LiveWebAuthServiceImpl().updateChannelAuth(
                     liveUpdateChannelAuthRequest);
             Assert.assertNotNull(liveUpdateChannelAuthResponse);
@@ -96,7 +106,9 @@ true为添加成功，false为添加失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -143,8 +155,11 @@ true为添加成功，false为添加失败
 
 true为设置观看条件成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 3、通过接口设置外部授权
 ### 描述
 ```
@@ -160,7 +175,9 @@ true为设置观看条件成功，false为设置失败
         LiveChannelAuthExternalRequest liveChannelAuthExternalRequest = new LiveChannelAuthExternalRequest();
         LiveChannelAuthExternalResponse liveChannelAuthExternalResponse;
         try {
-            liveChannelAuthExternalRequest.setChannelId(createChannel()).setExternalUri("https://dev.polyv.net/");
+            liveChannelAuthExternalRequest.setChannelId(createChannel())
+                    .setExternalUri("https://dev.polyv.net/")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelAuthExternalResponse = new LiveWebAuthServiceImpl().updateChannelAuthExternal(
                     liveChannelAuthExternalRequest);
             Assert.assertNotNull(liveChannelAuthExternalResponse);
@@ -181,7 +198,9 @@ true为设置观看条件成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelAuthExternalResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -206,8 +225,11 @@ true为设置观看条件成功，false为设置失败
 | secretKey | false | String | 频道号对应外部授权的secretKey | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 4、设置自定义授权地址
 ### 描述
 ```
@@ -223,7 +245,9 @@ true为设置观看条件成功，false为设置失败
         LiveChannelAuthCustomRequest liveChannelAuthCustomRequest = new LiveChannelAuthCustomRequest();
         LiveChannelAuthCustomResponse liveChannelAuthCustomResponse;
         try {
-            liveChannelAuthCustomRequest.setChannelId(createChannel()).setCustomUri("https://dev.polyv.net/");
+            liveChannelAuthCustomRequest.setChannelId(createChannel())
+                    .setCustomUri("https://dev.polyv.net/")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelAuthCustomResponse = new LiveWebAuthServiceImpl().updateChannelAuthCustom(
                     liveChannelAuthCustomRequest);
             Assert.assertNotNull(liveChannelAuthCustomResponse);
@@ -244,7 +268,9 @@ true为设置观看条件成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelAuthCustomResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -269,8 +295,11 @@ true为设置观看条件成功，false为设置失败
 | secretKey | false | String | 频道号对应外部授权的secretKey | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 5、设置授权观看类型
 ### 描述
 ```
@@ -286,7 +315,9 @@ true为设置观看条件成功，false为设置失败
         LiveChannelAuthTypeRequest liveChannelAuthTypeRequest = new LiveChannelAuthTypeRequest();
         Boolean liveChannelAuthTypeResponse;
         try {
-            liveChannelAuthTypeRequest.setChannelId(createChannel()).setAuthType(LiveConstant.AuthType.INFO.getDesc());
+            liveChannelAuthTypeRequest.setChannelId(createChannel())
+                    .setAuthType("none")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(
                     liveChannelAuthTypeRequest);
             Assert.assertNotNull(liveChannelAuthTypeResponse);
@@ -307,7 +338,9 @@ true为设置观看条件成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -321,8 +354,11 @@ true为设置观看条件成功，false为设置失败
 
 true为授权成功，false为授权失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 6、查询直播频道观看条件
 ### 描述
 ```
@@ -338,7 +374,7 @@ true为授权成功，false为授权失败
         LiveChannelAuthRequest liveChannelAuthRequest = new LiveChannelAuthRequest();
         LiveChannelAuthResponse liveChannelAuthResponse;
         try {
-            liveChannelAuthRequest.setChannelId(createChannel());
+            liveChannelAuthRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
             liveChannelAuthResponse = new LiveWebAuthServiceImpl().channelAuth(liveChannelAuthRequest);
             Assert.assertNotNull(liveChannelAuthResponse);
             if (liveChannelAuthResponse != null) {
@@ -358,7 +394,9 @@ true为授权成功，false为授权失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelAuthResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -408,8 +446,11 @@ true为授权成功，false为授权失败
 | sms | false | String | 短信验证开关，Y 开启，N 关闭 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 7、查询频道观看白名单列表
 ### 描述
 ```
@@ -425,7 +466,11 @@ true为授权成功，false为授权失败
         LiveChannelWriteListRequest liveChannelWriteListRequest = new LiveChannelWriteListRequest();
         LiveChannelWriteListResponse liveChannelWriteListResponse;
         try {
-            liveChannelWriteListRequest.setChannelId(null).setRank(1).setKeyword(null).setPageSize(1);
+            liveChannelWriteListRequest.setChannelId(null)
+                    .setRank(1)
+                    .setKeyword(null)
+                    .setPageSize(1)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelWriteListResponse = new LiveWebAuthServiceImpl().channelWriteList(liveChannelWriteListRequest);
             Assert.assertNotNull(liveChannelWriteListResponse);
             if (liveChannelWriteListResponse != null) {
@@ -445,7 +490,9 @@ true为授权成功，false为授权失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelWriteListResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -477,8 +524,11 @@ true为授权成功，false为授权失败
 | phone | false | String | 会员码 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 8、设置授权认证URL
 ### 描述
 ```
@@ -494,7 +544,9 @@ true为授权成功，false为授权失败
         LiveUpdateChannelAuthUrlRequest liveUpdateChannelAuthUrlRequest = new LiveUpdateChannelAuthUrlRequest();
         Boolean liveUpdateChannelAuthUrlResponse;
         try {
-            liveUpdateChannelAuthUrlRequest.setChannelId(createChannel()).setUrl("http://www.polyv.net");
+            liveUpdateChannelAuthUrlRequest.setChannelId(createChannel())
+                    .setUrl("http://www.polyv.net")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelAuthUrlResponse = new LiveWebAuthServiceImpl().updateChannelAuthUrl(
                     liveUpdateChannelAuthUrlRequest);
             Assert.assertNotNull(liveUpdateChannelAuthUrlResponse);
@@ -516,7 +568,9 @@ true为授权成功，false为授权失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -530,6 +584,9 @@ true为授权成功，false为授权失败
 
 true为设置成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 

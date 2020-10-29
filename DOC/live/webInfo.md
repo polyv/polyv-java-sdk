@@ -13,7 +13,9 @@
         LiveUpdateChannelNameRequest liveUpdateChannelNameRequest = new LiveUpdateChannelNameRequest();
         Boolean liveUpdateChannelNameResponse;
         try {
-            liveUpdateChannelNameRequest.setChannelId(createChannel()).setName("Junit测试(勿删)");
+            liveUpdateChannelNameRequest.setChannelId(createChannel())
+                    .setName("Junit测试(勿删)")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelNameResponse = new LiveWebInfoServiceImpl().updateChannelName(
                     liveUpdateChannelNameRequest);
             Assert.assertNotNull(liveUpdateChannelNameResponse);
@@ -34,7 +36,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -48,8 +52,11 @@
 
 true为设置成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 2、设置主持人姓名
 ### 描述
 ```
@@ -65,7 +72,9 @@ true为设置成功，false为设置失败
         LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest = new LiveUpdateChannelPublisherRequest();
         Boolean liveUpdateChannelPublisherResponse;
         try {
-            liveUpdateChannelPublisherRequest.setChannelId(createChannel()).setPublisher("主讲人sadboy");
+            liveUpdateChannelPublisherRequest.setChannelId(createChannel())
+                    .setPublisher("主讲人sadboy")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelPublisherResponse = new LiveWebInfoServiceImpl().updateChannelPublisher(
                     liveUpdateChannelPublisherRequest);
             Assert.assertNotNull(liveUpdateChannelPublisherResponse);
@@ -86,7 +95,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -100,8 +111,11 @@ true为设置成功，false为设置失败
 
 true为设置成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 3、查询直播引导图开关状态及URL
 ### 描述
 ```
@@ -117,7 +131,7 @@ true为设置成功，false为设置失败
         LiveChannelSplashRequest liveChannelSplashRequest = new LiveChannelSplashRequest();
         LiveChannelSplashResponse liveChannelSplashResponse;
         try {
-            liveChannelSplashRequest.setChannelId(createChannel());
+            liveChannelSplashRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
             liveChannelSplashResponse = new LiveWebInfoServiceImpl().channelSplash(liveChannelSplashRequest);
             Assert.assertNotNull(liveChannelSplashResponse);
             if (liveChannelSplashResponse != null) {
@@ -137,7 +151,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelSplashResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -155,8 +171,11 @@ true为设置成功，false为设置失败
 | splashEnabled | false | String | 引导功能开关 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 4、设置频道点赞数和观看热度值
 ### 描述
 ```
@@ -172,7 +191,10 @@ true为设置成功，false为设置失败
         LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest = new LiveUpdateChannelLikesRequest();
         Boolean liveUpdateChannelLikesResponse;
         try {
-            liveUpdateChannelLikesRequest.setChannelId(createChannel()).setLikes(9999).setViewers(9999);
+            liveUpdateChannelLikesRequest.setChannelId(createChannel())
+                    .setLikes(9999)
+                    .setViewers(9999)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelLikesResponse = new LiveWebInfoServiceImpl().updateChannelLikes(
                     liveUpdateChannelLikesRequest);
             Assert.assertNotNull(liveUpdateChannelLikesResponse);
@@ -193,7 +215,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -208,8 +232,11 @@ true为设置成功，false为设置失败
 
 true为设置成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 5、查询频道点赞数和观众热度值
 ### 描述
 ```
@@ -225,7 +252,7 @@ true为设置成功，false为设置失败
         LiveChannelLikesRequest liveChannelLikesRequest = new LiveChannelLikesRequest();
         LiveChannelLikesResponse liveChannelLikesResponse;
         try {
-            liveChannelLikesRequest.setChannelIds("1965681");
+            liveChannelLikesRequest.setChannelIds("1965681").setRequestId(LiveSignUtil.generateUUID());
             liveChannelLikesResponse = new LiveWebInfoServiceImpl().channelLikes(liveChannelLikesRequest);
             Assert.assertNotNull(liveChannelLikesResponse);
             if (liveChannelLikesResponse != null) {
@@ -245,7 +272,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelLikesResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -270,8 +299,11 @@ true为设置成功，false为设置失败
 | viewers | false | Integer | 频道观看热度 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 6、设置频道直播倒计时信息
 ### 描述
 ```
@@ -289,7 +321,8 @@ true为设置成功，false为设置失败
         try {
             liveUpdateChannelCountDownRequest.setChannelId(createChannel())
                     .setBookingEnabled("Y")
-                    .setStartTime("2020-11-11 11:11:11");
+                    .setStartTime("2020-11-11 11:11:11")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(
                     liveUpdateChannelCountDownRequest);
             Assert.assertNotNull(liveUpdateChannelCountDownResponse);
@@ -310,7 +343,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -325,8 +360,11 @@ true为设置成功，false为设置失败
 
 true为设置成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 7、查询频道直播倒计时信息
 ### 描述
 ```
@@ -342,7 +380,7 @@ true为设置成功，false为设置失败
         LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
         LiveChannelCountDownResponse liveChannelCountDownResponse;
         try {
-            liveChannelCountDownRequest.setChannelId(createChannel());
+            liveChannelCountDownRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
             liveChannelCountDownResponse = new LiveWebInfoServiceImpl().channelCountDown(liveChannelCountDownRequest);
             Assert.assertNotNull(liveChannelCountDownResponse);
             if (liveChannelCountDownResponse != null) {
@@ -362,7 +400,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelCountDownResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -380,8 +420,11 @@ true为设置成功，false为设置失败
 | startTime | false | Date | 直播开始时间,为空则没有直播开始时间 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 8、设置频道图标
 ### 描述
 ```
@@ -398,7 +441,9 @@ true为设置成功，false为设置失败
         String liveUpdateChannelLogoResponse;
         try {
             String path = "C:\\Users\\T460\\Desktop\\elephant.png";
-            liveUpdateChannelLogoRequest.setChannelId(createChannel()).setImgfile(new File(path));
+            liveUpdateChannelLogoRequest.setChannelId(createChannel())
+                    .setImgfile(new File(path))
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(
                     liveUpdateChannelLogoRequest);
             Assert.assertNotNull(liveUpdateChannelLogoResponse);
@@ -419,7 +464,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -433,8 +480,11 @@ true为设置成功，false为设置失败
 
 成功返回图标地址，如://livestatic.videocc.net/uploaded/images/2017/03/******.jpg
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 9、设置引导开关以及引导图片
 ### 描述
 ```
@@ -450,8 +500,11 @@ true为设置成功，false为设置失败
         LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
         String liveUpdateChannelSplashResponse;
         try {
-            String path = "C:\\Users\\T460\\Desktop\\fields.txt";
-            liveUpdateChannelSplashRequest.setChannelId(createChannel()).setSplashEnabled("N").setImgfile(new File(path));
+            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+            liveUpdateChannelSplashRequest.setChannelId(createChannel())
+                    .setSplashEnabled("N")
+                    .setImgfile(new File(path))
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
                     liveUpdateChannelSplashRequest);
             Assert.assertNotNull(liveUpdateChannelSplashResponse);
@@ -472,7 +525,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -488,6 +543,9 @@ true为设置成功，false为设置失败
 设置引导页未上传图片，成功返回success；
 设置引导页同时上传图片;成功返回地址，如：//xxx.videocc.net/uploaded/images/2017/03/******.jpg
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 

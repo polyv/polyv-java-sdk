@@ -16,7 +16,8 @@
             liveChannelVideoListRequest.setChannelId("1951952")
                     .setStartDate("2020-01-01")
                     .setEndDate("2020-10-14")
-                    .setSessionId(null);
+                    .setSessionId(null)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelVideoListResponse = new LiveChannelPlaybackServiceImpl().listChannelVideo(
                     liveChannelVideoListRequest);
             Assert.assertNotNull(liveChannelVideoListResponse);
@@ -37,7 +38,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelVideoListResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -73,8 +76,11 @@
 | fileName | false | String | 录制文件名称 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 2、设置频道回放设置
 ### 描述
 ```
@@ -119,7 +125,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -136,8 +144,11 @@
 
 true为设置成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 3、设置后台回放开关
 ### 描述
 ```
@@ -176,7 +187,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -190,8 +203,11 @@ true为设置成功，false为设置失败
 
 成功返回频道号
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 4、查询视频库列表
 ### 描述
 ```
@@ -208,7 +224,9 @@ true为设置成功，false为设置失败
                 new LiveListChannelVideoLibraryRequest();
         LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse;
         try {
-            liveListChannelVideoLibraryRequest.setChannelId("1951952").setListType("playback");
+            liveListChannelVideoLibraryRequest.setChannelId("1951952")
+                    .setListType("playback")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelVideoLibraryResponse = new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary(
                     liveListChannelVideoLibraryRequest);
             Assert.assertNotNull(liveListChannelVideoLibraryResponse);
@@ -229,7 +247,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveListChannelVideoLibraryResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -276,8 +296,11 @@ true为设置成功，false为设置失败
 | listType | false | String | playback-回放列表，vod-点播列表; | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 5、查询频道直播场次信息
 ### 描述
 ```
@@ -293,10 +316,11 @@ true为设置成功，false为设置失败
         LiveListChannelSessionInfoRequest liveListChannelSessionInfoRequest = new LiveListChannelSessionInfoRequest();
         LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse;
         try {
-            liveListChannelSessionInfoRequest.setChannelId("1951952")
+            liveListChannelSessionInfoRequest.setChannelId(createChannel())
                     .setStartDate("2020-10-01")
                     .setEndDate("2020-10-24")
-                    .setCurrentPage(1);
+                    .setCurrentPage(1)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelSessionInfoResponse = new LiveChannelPlaybackServiceImpl().listChannelSessionInfo(
                     liveListChannelSessionInfoRequest);
             Assert.assertNotNull(liveListChannelSessionInfoResponse);
@@ -317,7 +341,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveListChannelSessionInfoResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -351,8 +377,11 @@ true为设置成功，false为设置失败
 | endTime | false | String | 直播结束时间，13位时间戳 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 6、查询频道的回放开关状态
 ### 描述
 ```
@@ -391,7 +420,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -404,8 +435,11 @@ true为设置成功，false为设置失败
 
 Y为开启，N为关闭
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 7、查询指定文件ID的录制文件信息
 ### 描述
 ```
@@ -423,7 +457,9 @@ Y为开启，N为关闭
         try {
             String channelId = createChannel();
             String fileId = listChannelFileIds(channelId).get(0);
-            liveChannelVideoOnlyRequest.setChannelId("1951952").setFileId(fileId);
+            liveChannelVideoOnlyRequest.setChannelId(channelId)
+                    .setFileId(fileId)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelVideoOnlyResponse = new LiveChannelPlaybackServiceImpl().channelVideoOnly(
                     liveChannelVideoOnlyRequest);
             Assert.assertNotNull(liveChannelVideoOnlyResponse);
@@ -444,7 +480,9 @@ Y为开启，N为关闭
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelVideoOnlyResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -477,8 +515,11 @@ Y为开启，N为关闭
 | width | false | Integer | 宽 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 8、将点播中的视频添加到视频库
 ### 描述
 ```
@@ -496,9 +537,10 @@ Y为开启，N为关闭
                 new LiveCreateChannelVideoPlaybackRequest();
         LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse;
         try {
-            liveCreateChannelVideoPlaybackRequest.setChannelId("1958888")
+            liveCreateChannelVideoPlaybackRequest.setChannelId(getAloneChannelId())
                     .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
-                    .setListType("vod");
+                    .setListType("vod")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelVideoPlaybackResponse = new LiveChannelPlaybackServiceImpl().addChannelVideoPlayback(
                     liveCreateChannelVideoPlaybackRequest);
             Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
@@ -519,7 +561,9 @@ Y为开启，N为关闭
 ```
 ### 单元测试说明
 1、请求正确，返回LiveCreateChannelVideoPlaybackResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -554,8 +598,11 @@ Y为开启，N为关闭
 | liveType | false | String | 回放视频的场景类型 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 9、设置视频库列表排序
 ### 描述
 ```
@@ -573,7 +620,10 @@ Y为开启，N为关闭
         try {
             List<String> videoIdList = listChannelVideoIds("1965681");//992d36fa40,f1574595e1
             Collections.shuffle(videoIdList);
-            liveChannelVideoSortRequest.setChannelId("1965681").setVideoIds(videoIdList).setListType("playback");
+            liveChannelVideoSortRequest.setChannelId("1965681")
+                    .setVideoIds(videoIdList)
+                    .setListType("playback")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelVideoSortResponse = new LiveChannelPlaybackServiceImpl().channelVideoSort(
                     liveChannelVideoSortRequest);
             Assert.assertNotNull(liveChannelVideoSortResponse);
@@ -594,7 +644,9 @@ Y为开启，N为关闭
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -609,8 +661,11 @@ Y为开启，N为关闭
 
 true为设置成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 10、设置视频库列表的默认视频
 ### 描述
 ```
@@ -626,7 +681,10 @@ true为设置成功，false为设置失败
         LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest = new LiveChannelDefaultVideoRequest();
         Boolean liveChannelDefaultVideoResponse;
         try {
-            liveChannelDefaultVideoRequest.setChannelId("1965681").setVideoId("f1574595e1").setListType("playback");
+            liveChannelDefaultVideoRequest.setChannelId("1965681")
+                    .setVideoId("f1574595e1")
+                    .setListType("playback")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveChannelDefaultVideoResponse = new LiveChannelPlaybackServiceImpl().channelDefaultVideo(
                     liveChannelDefaultVideoRequest);
             Assert.assertNotNull(liveChannelDefaultVideoResponse);
@@ -647,7 +705,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -662,8 +722,11 @@ true为设置成功，false为设置失败
 
 true为设置成功，false为设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 11、异步合并直播录制文件
 ### 描述
 ```
@@ -706,7 +769,9 @@ true为设置成功，false为设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -724,8 +789,11 @@ true为设置成功，false为设置失败
 
 true为提交成功，false为提交失败，具体合并是否成功以回调为准
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 12、异步批量转存录制文件到点播
 ### 描述
 ```
@@ -746,7 +814,8 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
                     .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
                     .setFileName("删除-直播录制转点播")
                     .setCataId(null)
-                    .setCallbackUrl(null);
+                    .setCallbackUrl(null)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveConvertChannelVideoResponse = new LiveChannelPlaybackServiceImpl().convertChannelVideoListAsync(
                     liveConvertChannelVideoListAsyncRequest);
             Assert.assertNotNull(liveConvertChannelVideoResponse);
@@ -767,7 +836,9 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -784,8 +855,11 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 true为提交成功，false为提交失败，具体转存是否成功以回调为准
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 13、删除直播暂存中的录制文件
 ### 描述
 ```
@@ -801,7 +875,9 @@ true为提交成功，false为提交失败，具体转存是否成功以回调�
         LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest = new LiveDeleteChannelVideoRequest();
         Boolean liveDeleteChannelVideoResponse;
         try {
-            liveDeleteChannelVideoRequest.setChannelId("1951952").setStartTime("20201016111234");
+            liveDeleteChannelVideoRequest.setChannelId("1951952")
+                    .setStartTime("20201016111234")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelVideoResponse = new LiveChannelPlaybackServiceImpl().deleteChannelVideo(
                     liveDeleteChannelVideoRequest);
             Assert.assertNotNull(liveDeleteChannelVideoResponse);
@@ -822,7 +898,9 @@ true为提交成功，false为提交失败，具体转存是否成功以回调�
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -837,8 +915,11 @@ true为提交成功，false为提交失败，具体转存是否成功以回调�
 
 true为删除成功，false为删除失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 14、删除视频库列表中的视频
 ### 描述
 ```
@@ -857,7 +938,10 @@ true为删除成功，false为删除失败
         try {
             String channelId = "1951952";
             String videoId = "07f5bbeb67";
-            liveDeleteChannelPlaybackVideoRequest.setChannelId(channelId).setVideoId(videoId).setListType("playback");
+            liveDeleteChannelPlaybackVideoRequest.setChannelId(channelId)
+                    .setVideoId(videoId)
+                    .setListType("playback")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelPlaybackVideoResponse = new LiveChannelPlaybackServiceImpl().deleteChannelPlaybackVideo(
                     liveDeleteChannelPlaybackVideoRequest);
             Assert.assertNotNull(liveDeleteChannelPlaybackVideoResponse);
@@ -879,7 +963,9 @@ true为删除成功，false为删除失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -894,6 +980,9 @@ true为删除成功，false为删除失败
 
 null
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 

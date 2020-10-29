@@ -59,7 +59,7 @@ public class LiveListChannelDocResponse extends LivePageCommonResponse {
         /**
          * 文件类型
          */
-        @ApiModelProperty(name = "fileType", value = "文件类型", required = false)
+        @ApiModelProperty(name = "fileType", value = "文件类型，如：.pdf", required = false)
         private String fileType;
         
         /**
@@ -100,9 +100,10 @@ public class LiveListChannelDocResponse extends LivePageCommonResponse {
         private String type;
         
         /**
-         * ppt预览小图地址
+         * ppt预览小图地址，如：http://doc-2.polyv.net/x/xxx_0.jpeg
          */
-        @ApiModelProperty(name = "previewImage", value = "ppt预览小图地址", required = false)
+        @ApiModelProperty(name = "previewImage", value = "ppt预览小图地址，如：http://doc-2.polyv.net/x/xxx_0.jpeg", required
+                = false)
         private String previewImage;
         
     }

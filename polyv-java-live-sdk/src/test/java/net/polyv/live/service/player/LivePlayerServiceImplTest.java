@@ -195,8 +195,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
                     .setHeadAdvertType(LiveConstant.HeadAdvertType.IMAGE.getDesc())
                     .setHeadAdvertWidth(100)
                     .setHeadAdvertHref("http://www.baidu.com")
-                    .setHeadAdvertMediaUrl("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57" +
-                            "/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
+                    .setHeadAdvertMediaUrl("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerHeaderAdvert(liveSetPlayerHeaderAdvertRequest);
             Assert.assertNotNull(result);
@@ -233,7 +232,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
             String channelId = super.createChannel();
             liveSetWarmupVedioRequest.setChannelId(channelId)
                     .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4")
-                    .setWarmUpFlv("http://")//删除视频
+//                    .setWarmUpFlv("http://")//删除视频
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerWarmUpVedio(liveSetWarmupVedioRequest);
             Assert.assertNotNull(result);

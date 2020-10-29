@@ -40,7 +40,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回LiveSendChatMsgResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -63,8 +65,11 @@
 | msgId | false | String | 发送消息ID | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 2、设置讲师信息
 ### 描述
 ```
@@ -107,7 +112,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -124,8 +131,11 @@
 
 true 设置讲师信息成功，false 设置讲师信息失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 3、设置聊天室禁言ip
 ### 描述
 ```
@@ -164,7 +174,9 @@ true 设置讲师信息成功，false 设置讲师信息失败
 ```
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -178,8 +190,11 @@ true 设置讲师信息成功，false 设置讲师信息失败
 返回对象是List,具体元素内容如下：
 当前所有的禁言ip列表
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 4、批量导入频道严禁词
 ### 描述
 ```
@@ -218,7 +233,9 @@ true 设置讲师信息成功，false 设置讲师信息失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveBadWordResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -237,8 +254,11 @@ true 设置讲师信息成功，false 设置讲师信息失败
 | userId | false | String | 直播账号ID | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 5、查询频道禁言列表
 ### 描述
 ```
@@ -276,7 +296,9 @@ true 设置讲师信息成功，false 设置讲师信息失败
 ```
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -291,8 +313,11 @@ true 设置讲师信息成功，false 设置讲师信息失败
 返回对象是List,具体元素内容如下：
 返回当前频道的禁言列表
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 6、查询频道踢人列表
 ### 描述
 ```
@@ -329,7 +354,9 @@ true 设置讲师信息成功，false 设置讲师信息失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveKickedListResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -355,8 +382,11 @@ true 设置讲师信息成功，false 设置讲师信息失败
 | userType | false | String |  用户身份：管理员 manager，讲师 teacher， 助教 assistant， 嘉宾 guest，参与者 viewer，观看者 slice/student | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 7、查询频道严禁词/禁言IP列表
 ### 描述
 ```
@@ -395,7 +425,9 @@ true 设置讲师信息成功，false 设置讲师信息失败
 ```
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -409,8 +441,11 @@ true 设置讲师信息成功，false 设置讲师信息失败
 返回对象是List,具体元素内容如下：
 获取当前频道的严禁词/禁言IP列表
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 8、查询账号严禁词列表
 ### 描述
 ```
@@ -447,7 +482,9 @@ true 设置讲师信息成功，false 设置讲师信息失败
 ```
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -459,8 +496,11 @@ true 设置讲师信息成功，false 设置讲师信息失败
 返回对象是List,具体元素内容如下：
 当前保利威账号下通用设置的严禁词列表
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 9、删除禁言IP/严禁词
 ### 描述
 ```
@@ -500,7 +540,9 @@ true 设置讲师信息成功，false 设置讲师信息失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -515,8 +557,11 @@ true 设置讲师信息成功，false 设置讲师信息失败
 
 true 删除成功 ，false 删除失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 10、查询聊天室管理员信息
 ### 描述
 ```
@@ -553,7 +598,9 @@ true 删除成功 ，false 删除失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveGetChatAdminDataResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -573,8 +620,11 @@ true 删除成功 ，false 删除失败
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 11、查询历史聊天信息
 ### 描述
 ```
@@ -615,7 +665,9 @@ true 删除成功 ，false 删除失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveGetHistoryChatMsgResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -650,8 +702,11 @@ true 删除成功 ，false 删除失败
 | userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 12、删除单条聊天记录
 ### 描述
 ```
@@ -710,7 +765,9 @@ true 删除成功 ，false 删除失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -724,8 +781,11 @@ true 删除成功 ，false 删除失败
 
 true 删除成功， false 删除失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 13、设置聊天室管理员信息
 ### 描述
 ```
@@ -766,7 +826,9 @@ true 删除成功， false 删除失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -782,8 +844,11 @@ true 删除成功， false 删除失败
 
 true 设置成功，false 设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 14、查询咨询提问记录
 ### 描述
 ```
@@ -856,7 +921,9 @@ true 设置成功，false 设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveGetConsultingRecordResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -892,8 +959,11 @@ true 设置成功，false 设置失败
 | userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 15、删除频道聊天记录
 ### 描述
 ```
@@ -931,7 +1001,9 @@ true 设置成功，false 设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -944,6 +1016,9 @@ true 设置成功，false 设置失败
 
 true 删除成功， false 删除失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 

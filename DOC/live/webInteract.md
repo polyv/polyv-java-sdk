@@ -20,7 +20,10 @@
                     .setGoodPrice(9999.99)
                     .setGoodEnabled("Y");
             channelGoods.add(channelGood);
-            liveUpdateChannelGoodRequest.setChannelId(createChannel()).setEnabled("Y").setGoods(channelGoods);
+            liveUpdateChannelGoodRequest.setChannelId(createChannel())
+                    .setEnabled("Y")
+                    .setGoods(channelGoods)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelGoodResponse = new LiveWebInteractServiceImpl().updateChannelGood(
                     liveUpdateChannelGoodRequest);
             Assert.assertNotNull(liveUpdateChannelGoodResponse);
@@ -41,7 +44,9 @@
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -65,8 +70,11 @@
 
 true代表设置成功，false代表设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 2、设置现金打赏
 ### 描述
 ```
@@ -85,7 +93,11 @@ true代表设置成功，false代表设置失败
         try {
             Double[] floats = {0.88d, 6.66d, 8.88d, 18.11d, 66.60d, 88.89d};
             List<Double> cashes = Arrays.asList(floats);
-            liveUpdateChannelCashRequest.setChannelId(createChannel()).setCashes(cashes).setCashMin(0.02d).setEnabled("Y");
+            liveUpdateChannelCashRequest.setChannelId(createChannel())
+                    .setCashes(cashes)
+                    .setCashMin(0.02d)
+                    .setEnabled("Y")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelCashResponse = new LiveWebInteractServiceImpl().updateChannelCash(
                     liveUpdateChannelCashRequest);
             Assert.assertNotNull(liveUpdateChannelCashResponse);
@@ -106,7 +118,9 @@ true代表设置成功，false代表设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -122,8 +136,11 @@ true代表设置成功，false代表设置失败
 
 true表示设置成功，false表示设置失败
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 ## 3、查询打赏设置
 ### 描述
 ```
@@ -139,7 +156,7 @@ true表示设置成功，false表示设置失败
         LiveChannelDonateRequest liveChannelDonateRequest = new LiveChannelDonateRequest();
         LiveChannelDonateResponse liveChannelDonateResponse;
         try {
-            liveChannelDonateRequest.setChannelId(createChannel());
+            liveChannelDonateRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
             liveChannelDonateResponse = new LiveWebInteractServiceImpl().channelDonate(liveChannelDonateRequest);
             Assert.assertNotNull(liveChannelDonateResponse);
             if (liveChannelDonateResponse != null) {
@@ -160,7 +177,9 @@ true表示设置成功，false表示设置失败
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelDonateResponse对象，B端依据此对象处理业务逻辑；
+
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
 ### 请求入参描述
 
@@ -192,6 +211,9 @@ true表示设置成功，false表示设置失败
 | goodEnabled | true | String | 道具开关，值为 Y/N , Y为开启 | 
 
 <br /><br />
+
 ------------------
+
 <br /><br />
+
 

@@ -31,7 +31,7 @@ import net.polyv.live.service.web.impl.LiveWebAuthServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
- * Web观看页-页面观看条件测试用例
+ * 页面观看条件
  * @author: sadboy
  **/
 @Slf4j

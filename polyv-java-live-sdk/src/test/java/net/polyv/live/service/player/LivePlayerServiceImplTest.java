@@ -23,6 +23,7 @@ import net.polyv.live.service.player.impl.LivePlayerServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
+ * 播放器
  * @author: thomas
  **/
 @Slf4j

@@ -26,6 +26,7 @@ import net.polyv.live.service.channel.impl.LiveChannelViewdataServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
+ * 观看数据
  * @author: sadboy
  **/
 @Slf4j

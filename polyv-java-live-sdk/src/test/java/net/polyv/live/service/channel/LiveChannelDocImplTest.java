@@ -23,7 +23,7 @@ import net.polyv.live.service.channel.impl.LiveChannelDocServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
- * 直播频道操作
+ * 文档管理
  * @author: sadboy
  **/
 @Slf4j

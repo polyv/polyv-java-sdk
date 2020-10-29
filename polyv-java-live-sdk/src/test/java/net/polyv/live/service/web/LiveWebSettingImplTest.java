@@ -15,6 +15,7 @@ import net.polyv.live.service.web.impl.LiveWebSettingServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
 
 /**
+ * 快捷设置
  * @author: sadboy
  **/
 @Slf4j

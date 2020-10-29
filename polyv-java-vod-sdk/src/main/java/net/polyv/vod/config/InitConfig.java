@@ -13,9 +13,9 @@ public class InitConfig {
      */
     public static void initVodPolyv() {
         String userId = "1b448be323";
-        String writeToken = "s2GUm9YXzWpU1Z6-Uagx0rs3oG0QNZQq";
-        String readToken = "WmBI70idfN-4Sb9qfRot7-gqkkzWcCRG";
-        String secretKey = "GyqkTJckCT";
+        String writeToken = "xxx-x";
+        String readToken = "xxx-x-x";
+        String secretKey = "xxx";
         
         VodGlobalConfig.init(userId, writeToken, readToken, secretKey);
         log.debug("--初始化完成--");

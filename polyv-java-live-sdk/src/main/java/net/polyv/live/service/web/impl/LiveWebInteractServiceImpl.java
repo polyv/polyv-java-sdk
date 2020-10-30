@@ -19,7 +19,7 @@ import net.polyv.live.util.MapUtil;
 public class LiveWebInteractServiceImpl extends LiveBaseService implements ILiveWebInteractService {
     
     /**
-     * 测试设置道具打赏
+     * 设置道具打赏
      * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymhd/updategood/
      * @param liveUpdateChannelGoodRequest 设置道具打赏请求实体
      * @return 设置道具打赏返回实体

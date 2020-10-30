@@ -181,7 +181,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | basicSetting | true | BasicSetting | 基础设置【详见**BasicSetting参数描述**】 | 
-| authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelInitRequest.md?id=AuthSetting参数描述)】 | 
+| authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelOperate.md?id=AuthSetting参数描述)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ###### BasicSetting参数描述 <!-- {docsify-ignore} -->
@@ -218,7 +218,7 @@
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数【详见[InfoField参数描述](authSetting.md?id=InfoField参数描述)】 | 
+| infoFields | false | Array | 登记观看参数【详见[InfoField参数描述](channelOperate.md?id=InfoField参数描述)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -357,7 +357,7 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 需要设置频道详情的频道号，例如：1938028 | 
 | basicSetting | true | BasicSetting | 基础设置【详见**BasicSetting参数描述**】 | 
-| authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelSettingRequest.md?id=AuthSetting参数描述)】 | 
+| authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelOperate.md?id=AuthSetting参数描述)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ###### BasicSetting参数描述 <!-- {docsify-ignore} -->
@@ -397,7 +397,7 @@
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](authSetting.md?id=InfoField参数描述)】 | 
+| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](channelOperate.md?id=InfoField参数描述)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -482,7 +482,7 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channels | true | Array | 频道列表【详见[LiveChannelBasicDTO参数描述](createChannelListRequest.md?id=LiveChannelBasicDTO参数描述)】 | 
+| channels | true | Array | 频道列表【详见[LiveChannelBasicDTO参数描述](channelOperate.md?id=LiveChannelBasicDTO参数描述)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ###### LiveChannelBasicDTO参数描述 <!-- {docsify-ignore} -->
@@ -502,7 +502,7 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channels | false | Array | 频道基本信息【详见[LiveChannelResponse参数描述](createChannelListResponse.md?id=LiveChannelResponse参数描述)】 | 
+| channels | false | Array | 频道基本信息【详见[LiveChannelResponse参数描述](channelOperate.md?id=LiveChannelResponse参数描述)】 | 
 
 ###### LiveChannelResponse参数描述 <!-- {docsify-ignore} -->
 
@@ -678,7 +678,7 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 课件重制任务列表【详见[LivePPTRecordDTO参数描述](listChannelPPTRecordResponse.md?id=LivePPTRecordDTO参数描述)】 | 
+| contents | false | Array | 课件重制任务列表【详见[LivePPTRecordDTO参数描述](channelOperate.md?id=LivePPTRecordDTO参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
@@ -1115,7 +1115,7 @@ true为设置token成功，false为设置失败
 | watchStatus | false | String | 频道的观看页状态，取值为： 频道状态,取值：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
 | watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
 | userCategory | false | UserCategory | 频道所属分类的信息【详见**UserCategory参数描述**】 | 
-| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](channelBasicInfoResponse.md?id=AuthSetting参数描述)】 | 
+| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](channelOperate.md?id=AuthSetting参数描述)】 | 
 
 ###### UserCategory参数描述 <!-- {docsify-ignore} -->
 
@@ -1668,7 +1668,7 @@ true为设置子频道token成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](sonChannelInfoListResponse.md?id=LiveSonChannelInfoResponse参数描述)】 | 
+| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](channelOperate.md?id=LiveSonChannelInfoResponse参数描述)】 | 
 
 ###### LiveSonChannelInfoResponse参数描述 <!-- {docsify-ignore} -->
 

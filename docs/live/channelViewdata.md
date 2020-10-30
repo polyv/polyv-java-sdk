@@ -120,7 +120,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 列表信息【详见[ChannelMic参数描述](listChannelMicResponse.md?id=ChannelMic参数描述)】 | 
+| contents | false | Array | 列表信息【详见[ChannelMic参数描述](channelViewdata.md?id=ChannelMic参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
@@ -203,7 +203,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道观看日志【详见[LiveChannelViewlogDTO参数描述](listChannelViewlogResponse.md?id=LiveChannelViewlogDTO参数描述)】 | 
+| contents | false | Array | 频道观看日志【详见[LiveChannelViewlogDTO参数描述](channelViewdata.md?id=LiveChannelViewlogDTO参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
@@ -300,7 +300,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelSummarys | false | Array | 统计数据【详见[ChannelSummary参数描述](listChannelSummaryResponse.md?id=ChannelSummary参数描述)】 | 
+| channelSummarys | false | Array | 统计数据【详见[ChannelSummary参数描述](channelViewdata.md?id=ChannelSummary参数描述)】 | 
 
 ###### ChannelSummary参数描述 <!-- {docsify-ignore} -->
 
@@ -382,7 +382,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelViewerCounts | false | Array | 频道实时在线人数【详见[ChannelViewerCount参数描述](listChannelViewerCountResponse.md?id=ChannelViewerCount参数描述)】 | 
+| channelViewerCounts | false | Array | 频道实时在线人数【详见[ChannelViewerCount参数描述](channelViewdata.md?id=ChannelViewerCount参数描述)】 | 
 
 ###### ChannelViewerCount参数描述 <!-- {docsify-ignore} -->
 
@@ -457,7 +457,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelViewerConcurrences | false | Array | 频道并发在线人数【详见[ChannelViewerConcurrence参数描述](channelViewerConcurrenceResponse.md?id=ChannelViewerConcurrence参数描述)】 | 
+| channelViewerConcurrences | false | Array | 频道并发在线人数【详见[ChannelViewerConcurrence参数描述](channelViewdata.md?id=ChannelViewerConcurrence参数描述)】 | 
 
 ###### ChannelViewerConcurrence参数描述 <!-- {docsify-ignore} -->
 

@@ -57,7 +57,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道文档【详见[ChannelDoc参数描述](listChannelDocResponse.md?id=ChannelDoc参数描述)】 | 
+| contents | false | Array | 频道文档【详见[ChannelDoc参数描述](channelDoc.md?id=ChannelDoc参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
@@ -143,7 +143,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelDocStatuses | false | Array | 频道文档列表转换信息【详见[ChannelDocStatus参数描述](channelDocStatusResponse.md?id=ChannelDocStatus参数描述)】 | 
+| channelDocStatuses | false | Array | 频道文档列表转换信息【详见[ChannelDocStatus参数描述](channelDoc.md?id=ChannelDocStatus参数描述)】 | 
 
 ###### ChannelDocStatus参数描述 <!-- {docsify-ignore} -->
 

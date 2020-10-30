@@ -14,8 +14,8 @@ public class InitConfig {
      */
     public static void initPolyvLive(){
         String appId = "frlr1zazn3";
-        String appSecret = "3a7cd25d068442f080adcb337c701fc3";
         String userId = "1b448be323";
+        String appSecret = "5dbfa7dacee34ae6a7aaef4940504139";
         LiveGlobalConfig.init(appId,userId,appSecret);
         log.debug("--初始化完成--");
     }

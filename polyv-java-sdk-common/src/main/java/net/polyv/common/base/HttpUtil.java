@@ -37,7 +37,9 @@ public class HttpUtil {
     
     public static final String  SOURCE="source" ;
     public static final String  LIVE_SDK="live_sdk";
-    /**
+    public static final String UTF8 = "UTF-8";
+    
+    /** 
      * HTTP POST 请求处理逻辑，参数提交方式为form表单形式
      * @param url 请求地址
      * @param pathVariable 对于restful请求，指定一个路径参数
@@ -65,7 +67,8 @@ public class HttpUtil {
     public static String sendPostDataByMap(String url, Map<String, String> params, String encoding) throws IOException {
         log.debug("http 请求 url: {} , 请求参数: {}", url, JSON.toJSONString(params));
         if (StringUtils.isBlank(encoding)) {
-            encoding = "UTF-8";
+           
+            encoding = UTF8;
         }
         String result = null;
         CloseableHttpResponse response = null;
@@ -169,7 +172,7 @@ public class HttpUtil {
     public static String sendPostDataByJson(String url, String json, String encoding) throws IOException {
         log.debug("http 请求 url: {} , 请求参数: {}", url, json);
         if (StringUtils.isBlank(encoding)) {
-            encoding = "UTF-8";
+            encoding = UTF8;
         }
         String result = null;
         // 创建httpclient对象
@@ -264,7 +267,7 @@ public class HttpUtil {
     public static String sendGetData(String url, String encoding) throws IOException {
         log.debug("http 请求 url: {}", url);
         if (StringUtils.isBlank(encoding)) {
-            encoding = "UTF-8";
+            encoding = UTF8;
         }
         String result = null;
         // 创建httpclient对象
@@ -305,7 +308,7 @@ public class HttpUtil {
             String encoding) throws IOException {
         log.debug("http 请求 url: {} , 请求参数: {}", url, JSON.toJSONString(params));
         if (StringUtils.isBlank(encoding)) {
-            encoding = "UTF-8";
+            encoding = UTF8;
         }
         String result = null;
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();

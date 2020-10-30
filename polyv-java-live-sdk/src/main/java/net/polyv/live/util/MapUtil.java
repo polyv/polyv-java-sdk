@@ -107,7 +107,7 @@ public class MapUtil {
      */
     private static List<Field> getAllFields(Class<?> clazz) {
         if (!clazz.equals(Object.class)) {
-            return null;
+            return new ArrayList();
         }
         List<Field> fields = new ArrayList<Field>(Arrays.asList(clazz.getDeclaredFields()));
         List<Field> fields2 = getAllFields(clazz.getSuperclass());

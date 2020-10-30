@@ -57,7 +57,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 抽奖记录列表【详见[LotteryListModel参数描述](listLotteryResponse.md?id=LotteryListModel参数描述)】 | 
+| contents | false | Array | 抽奖记录列表【详见[LotteryListModel参数描述](lotteryService.md?id=LotteryListModel参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
@@ -83,7 +83,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](collectInfo.md?id=CollectInfoFieldModel参数描述)】 | 
+| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](lotteryService.md?id=CollectInfoFieldModel参数描述)】 | 
 
 ###### CollectInfoFieldModel参数描述 <!-- {docsify-ignore} -->
 
@@ -153,7 +153,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 中奖记录表【详见[LotteryWinnerDetail参数描述](lotteryWinnerDetailResponse.md?id=LotteryWinnerDetail参数描述)】 | 
+| contents | false | Array | 中奖记录表【详见[LotteryWinnerDetail参数描述](lotteryService.md?id=LotteryWinnerDetail参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
@@ -178,7 +178,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](collectInfo.md?id=CollectInfoFieldModel参数描述)】 | 
+| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](lotteryService.md?id=CollectInfoFieldModel参数描述)】 | 
 
 ###### CollectInfoFieldModel参数描述 <!-- {docsify-ignore} -->
 

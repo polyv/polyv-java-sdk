@@ -61,8 +61,8 @@
 | times | false | Integer | 第几次发送题目，用于区分相同题目重复发送的情况 | 
 | answer | false | String | 题目的答案 | 
 | total | false | Integer | 答题人数 | 
-| options | false | Array | 题目选项信息列表【详见[Option参数描述](questionAnswerRecordResponse.md?id=Option参数描述)】 | 
-| records | false | Array | 答题的用户列表【详见[Record参数描述](questionAnswerRecordResponse.md?id=Record参数描述)】 | 
+| options | false | Array | 题目选项信息列表【详见[Option参数描述](answerRecordService.md?id=Option参数描述)】 | 
+| records | false | Array | 答题的用户列表【详见[Record参数描述](answerRecordService.md?id=Record参数描述)】 | 
 | type | false | String | 题目类型：R为单选，C为多选，Q为问答 | 
 | itemType | false | Integer | 答题类型：1表示问答，0表示答题卡 | 
 

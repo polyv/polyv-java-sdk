@@ -111,7 +111,7 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelMenus | false | Array | 频道的菜单信息【详见[ChannelMenu参数描述](listChannelMenuResponse.md?id=ChannelMenu参数描述)】 | 
+| channelMenus | false | Array | 频道的菜单信息【详见[ChannelMenu参数描述](webMenu.md?id=ChannelMenu参数描述)】 | 
 
 ###### ChannelMenu参数描述 <!-- {docsify-ignore} -->
 

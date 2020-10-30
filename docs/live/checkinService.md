@@ -55,7 +55,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 签到记录数据数组【详见[CheckinRecord参数描述](checkinListResponse.md?id=CheckinRecord参数描述)】 | 
+| contents | false | Array | 签到记录数据数组【详见[CheckinRecord参数描述](checkinService.md?id=CheckinRecord参数描述)】 | 
 
 ###### CheckinRecord参数描述 <!-- {docsify-ignore} -->
 

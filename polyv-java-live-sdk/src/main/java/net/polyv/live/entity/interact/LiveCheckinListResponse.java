@@ -20,7 +20,7 @@ import lombok.experimental.Accessors;
  * @author: thomas
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,7 +33,7 @@ public class LiveCheckinListResponse {
     private List<CheckinRecord> contents;
     
     @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

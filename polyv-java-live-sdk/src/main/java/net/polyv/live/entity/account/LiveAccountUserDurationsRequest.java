@@ -13,7 +13,7 @@ import net.polyv.live.entity.LiveCommonRequest;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("查询账户分钟数请求实体")
 public class LiveAccountUserDurationsRequest extends LiveCommonRequest {

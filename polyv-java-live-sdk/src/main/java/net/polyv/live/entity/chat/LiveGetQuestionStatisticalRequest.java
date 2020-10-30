@@ -20,7 +20,7 @@ import net.polyv.live.entity.LiveCommonRequest;
  * @author: thomas
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor

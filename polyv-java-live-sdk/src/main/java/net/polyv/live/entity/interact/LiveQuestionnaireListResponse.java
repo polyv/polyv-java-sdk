@@ -21,7 +21,7 @@ import net.polyv.live.entity.LivePageCommonResponse;
  * @author: thomas
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,7 +35,7 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
     
     
     @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

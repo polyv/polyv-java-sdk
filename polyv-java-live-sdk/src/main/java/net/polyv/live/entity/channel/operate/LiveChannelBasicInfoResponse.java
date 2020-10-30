@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -126,7 +126,7 @@ public class LiveChannelBasicInfoResponse {
     private List<AuthSetting> authSettings;
     
     @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -160,7 +160,7 @@ public class LiveChannelBasicInfoResponse {
     }
     
     @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

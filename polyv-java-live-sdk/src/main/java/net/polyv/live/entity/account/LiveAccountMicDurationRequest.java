@@ -12,7 +12,7 @@ import net.polyv.live.entity.LiveCommonRequest;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("获取账号连麦分钟数使用量与剩余量请求实体")
 public class LiveAccountMicDurationRequest extends LiveCommonRequest {

@@ -16,7 +16,7 @@ import net.polyv.live.entity.LivePageCommonResponse;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,7 +27,7 @@ public class LiveListChannelVideoLibraryResponse extends LivePageCommonResponse 
     private List<ChannelVideoLibrary> contents;
     
     @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

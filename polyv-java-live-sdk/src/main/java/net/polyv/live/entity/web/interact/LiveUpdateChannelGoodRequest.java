@@ -18,7 +18,7 @@ import net.polyv.live.entity.LiveCommonRequest;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -41,7 +41,7 @@ public class LiveUpdateChannelGoodRequest extends LiveCommonRequest {
     private List<ChannelGood> goods;
     
     @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

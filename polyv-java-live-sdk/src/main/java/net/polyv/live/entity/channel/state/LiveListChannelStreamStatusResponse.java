@@ -16,7 +16,7 @@ import net.polyv.live.entity.channel.state.LiveChannelStreamStatusResponse;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor

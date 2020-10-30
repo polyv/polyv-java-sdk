@@ -19,7 +19,7 @@ import net.polyv.live.entity.LiveCommonResponse;
  * @author: thomas
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -64,7 +64,7 @@ public class LiveQuestionnaireResultResponse {
     private List<QuestionStats> questionStats;
     
     @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -84,7 +84,7 @@ public class LiveQuestionnaireResultResponse {
         private List<QuestionStat> questions;
         
         @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
         @Accessors(chain = true)
         @AllArgsConstructor
         @NoArgsConstructor
@@ -184,7 +184,7 @@ public class LiveQuestionnaireResultResponse {
     private List<Users> users;
     
     @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -221,7 +221,7 @@ public class LiveQuestionnaireResultResponse {
         private List<Answers> answers;
         
         @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
         @Accessors(chain = true)
         @AllArgsConstructor
         @NoArgsConstructor

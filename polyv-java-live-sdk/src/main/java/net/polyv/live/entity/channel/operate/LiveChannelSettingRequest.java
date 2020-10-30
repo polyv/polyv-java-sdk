@@ -19,7 +19,7 @@ import net.polyv.live.entity.channel.operate.LiveChannelInitRequest;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -46,7 +46,7 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
     private List<AuthSetting> authSettings;
     
     @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -158,7 +158,7 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
     }
     
     @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

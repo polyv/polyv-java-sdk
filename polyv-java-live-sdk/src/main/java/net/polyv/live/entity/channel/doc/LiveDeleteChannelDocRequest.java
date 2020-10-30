@@ -17,7 +17,7 @@ import net.polyv.live.service.channel.impl.LiveChannelDocServiceImpl;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor

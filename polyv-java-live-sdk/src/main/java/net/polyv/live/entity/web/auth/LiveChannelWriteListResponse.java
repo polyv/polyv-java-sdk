@@ -27,7 +27,6 @@ public class LiveChannelWriteListResponse extends LivePageCommonResponse {
     private List<ChannelWriteList> contents;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

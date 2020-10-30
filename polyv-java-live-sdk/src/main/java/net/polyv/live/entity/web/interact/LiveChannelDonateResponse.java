@@ -17,7 +17,6 @@ import lombok.experimental.Accessors;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -64,7 +63,6 @@ public class LiveChannelDonateResponse {
     private List<ChannelGood> goods;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

@@ -27,7 +27,6 @@ public class LiveListChannelVideoLibraryResponse extends LivePageCommonResponse 
     private List<ChannelVideoLibrary> contents;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

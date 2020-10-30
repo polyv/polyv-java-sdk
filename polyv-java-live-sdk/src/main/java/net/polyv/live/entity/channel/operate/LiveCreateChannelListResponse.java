@@ -16,7 +16,6 @@ import net.polyv.live.entity.channel.operate.LiveChannelResponse;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor

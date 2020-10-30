@@ -58,7 +58,6 @@ public class LiveCreateChannelDocRequest extends LiveCommonRequest {
     private String callbackUrl;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

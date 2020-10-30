@@ -16,7 +16,6 @@ import net.polyv.live.constant.LiveConstant;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,7 +26,6 @@ public class LiveAccountSwitchResponse {
     private List<ChannelSwitch> channelSwitches;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

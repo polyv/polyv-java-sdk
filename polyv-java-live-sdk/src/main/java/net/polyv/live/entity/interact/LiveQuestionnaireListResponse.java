@@ -35,7 +35,6 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
     
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

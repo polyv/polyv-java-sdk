@@ -27,7 +27,6 @@ public class LiveListAccountChannelBasicResponse extends LivePageCommonResponse 
     private List<ChannelBasicInfo> contents;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

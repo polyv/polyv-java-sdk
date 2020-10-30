@@ -31,7 +31,6 @@ public class LiveListChannelMicResponse extends LivePageCommonResponse {
     private List<ChannelMic> contents;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

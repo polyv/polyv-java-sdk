@@ -41,7 +41,6 @@ public class LiveUpdateChannelGoodRequest extends LiveCommonRequest {
     private List<ChannelGood> goods;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

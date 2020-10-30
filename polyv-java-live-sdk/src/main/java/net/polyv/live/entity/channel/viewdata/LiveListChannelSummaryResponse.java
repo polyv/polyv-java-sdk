@@ -15,7 +15,6 @@ import lombok.experimental.Accessors;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,7 +28,6 @@ public class LiveListChannelSummaryResponse {
     private List<ChannelSummary> channelSummarys;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

@@ -58,7 +58,6 @@ public class LiveQuestionnaireDetailSetRequest extends LiveCommonRequest {
     
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

@@ -17,7 +17,6 @@ import lombok.experimental.Accessors;
  * @author: thomas
  **/
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -93,7 +92,6 @@ public class LiveGetHistoryChatMsgResponse {
     private User user;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

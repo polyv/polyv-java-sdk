@@ -14,7 +14,6 @@ import lombok.experimental.Accessors;
  * @author: thomas
  **/
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 public class LiveCommonResponse {
     

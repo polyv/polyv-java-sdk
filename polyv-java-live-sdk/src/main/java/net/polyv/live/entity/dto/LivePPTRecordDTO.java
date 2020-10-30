@@ -14,7 +14,6 @@ import net.polyv.live.constant.LiveConstant;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @AllArgsConstructor
 @NoArgsConstructor

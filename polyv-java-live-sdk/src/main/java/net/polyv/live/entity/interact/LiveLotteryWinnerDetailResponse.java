@@ -27,7 +27,6 @@ public class LiveLotteryWinnerDetailResponse extends LivePageCommonResponse {
     private List<LotteryWinnerDetail> contents;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -98,7 +97,6 @@ public class LiveLotteryWinnerDetailResponse extends LivePageCommonResponse {
     }
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

@@ -27,7 +27,6 @@ public class LiveListChannelSessionInfoResponse extends LivePageCommonResponse {
     private List<LiveListChannelSessionInfoResponse.ChannelSessionInfo> contents;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

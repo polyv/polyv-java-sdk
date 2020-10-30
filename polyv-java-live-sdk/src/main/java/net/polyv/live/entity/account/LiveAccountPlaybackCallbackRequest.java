@@ -38,7 +38,6 @@ public class LiveAccountPlaybackCallbackRequest extends LiveCommonRequest {
     private String url;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

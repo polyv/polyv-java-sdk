@@ -32,7 +32,6 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
     private List<AuthSetting> authSettings;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -130,7 +129,6 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
     }
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -250,7 +248,6 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
     }
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

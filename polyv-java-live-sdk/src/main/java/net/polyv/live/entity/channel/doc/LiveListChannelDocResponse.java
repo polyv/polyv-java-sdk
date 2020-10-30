@@ -28,7 +28,6 @@ public class LiveListChannelDocResponse extends LivePageCommonResponse {
     private List<ChannelDoc> contents;
     
     @Data
-@EqualsAndHashCode(callSuper = true)
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor

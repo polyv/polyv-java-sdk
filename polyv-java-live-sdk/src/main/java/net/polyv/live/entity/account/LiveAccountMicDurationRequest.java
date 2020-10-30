@@ -3,7 +3,6 @@ package net.polyv.live.entity.account;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 

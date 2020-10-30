@@ -43,9 +43,9 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveListAccountDetailResponse listAccountDetail(LiveListAccountDetailRequest liveListAccountDetailRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_LIST_CHANNEL_DETAIL_URL;
-        LiveListAccountDetailResponse liveListAccountDetailResponse = this.basePost(url, liveListAccountDetailRequest,
+        return this.basePost(url, liveListAccountDetailRequest,
                 LiveListAccountDetailResponse.class);
-        return liveListAccountDetailResponse;
+        
     }
     
     /**
@@ -60,9 +60,8 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveListAccountResponse listAccount(LiveListAccountRequest liveListAccountRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_LIST_CHANNEL_URL;
-        LiveListAccountResponse liveListAccountResponse = this.baseGet(url, liveListAccountRequest,
+        return this.baseGet(url, liveListAccountRequest,
                 LiveListAccountResponse.class);
-        return liveListAccountResponse;
     }
     
     /**
@@ -77,9 +76,9 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveAccountMicDurationResponse micDuration(LiveAccountMicDurationRequest liveAccountMicDurationRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_MIC_DURATION_URL;
-        LiveAccountMicDurationResponse liveAccountMicDurationResponse = this.baseGet(url, liveAccountMicDurationRequest,
+        return this.baseGet(url, liveAccountMicDurationRequest,
                 LiveAccountMicDurationResponse.class);
-        return liveAccountMicDurationResponse;
+       
     }
     
     /**
@@ -185,9 +184,9 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         LiveAccountSwitchResponse.ChannelSwitch[] channelSwitches = this.baseGet(url, liveAccountSwitchRequest,
                 LiveAccountSwitchResponse.ChannelSwitch[].class);
         channelSwitches = channelSwitches == null ? new LiveAccountSwitchResponse.ChannelSwitch[]{} : channelSwitches;
-        LiveAccountSwitchResponse liveAccountSwitchResponse = new LiveAccountSwitchResponse().setChannelSwitches(
+        return new LiveAccountSwitchResponse().setChannelSwitches(
                 Arrays.asList(channelSwitches));
-        return liveAccountSwitchResponse;
+         
     }
     
     
@@ -204,9 +203,9 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
             LiveListAccountChannelBasicRequest liveListAccountChannelBasicRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIST_URL;
-        LiveListAccountChannelBasicResponse liveListAccountChannelBasicResponse = this.baseGet(url,
+        return this.baseGet(url,
                 liveListAccountChannelBasicRequest, LiveListAccountChannelBasicResponse.class);
-        return liveListAccountChannelBasicResponse;
+         
     }
     
     /**
@@ -221,9 +220,9 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
             LiveAccountUserDurationsRequest liveAccountUserDurationsRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.USER_DURATION_GET_URL;
-        LiveAccountUserDurationsResponse liveAccountUserDurationsResponse = this.basePost(url,
+        return this.basePost(url,
                 liveAccountUserDurationsRequest, LiveAccountUserDurationsResponse.class);
-        return liveAccountUserDurationsResponse;
+        
     }
     
     

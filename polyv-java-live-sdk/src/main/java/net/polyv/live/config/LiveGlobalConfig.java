@@ -1,5 +1,6 @@
 package net.polyv.live.config;
 
+import lombok.Data;
 import net.polyv.common.base.HttpClientUtil;
 import net.polyv.common.exception.GlobalUncaughtExceptionHandler;
 
@@ -7,8 +8,9 @@ import net.polyv.common.exception.GlobalUncaughtExceptionHandler;
  * 直播全局配置类
  * @author: thomas
  **/
-
+@Data
 public class LiveGlobalConfig {
+    private LiveGlobalConfig(){};
     
     public static String APP_ID = "";
     public static String USER_ID = "";

@@ -1,7 +1,5 @@
 package net.polyv.common.exception;
 
-import java.util.Arrays;
-
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -18,8 +16,8 @@ public class GlobalUncaughtExceptionHandler implements Thread.UncaughtExceptionH
        }else{
            log.error("JVM 发生致命错误",e);
        }
-       log.error("全局错误信息：",e.getLocalizedMessage());
-       log.error("发生错误基本信息，线程名：%s  ,线程堆栈：%s",t.getName(), Arrays.toString(t.getStackTrace()));
-       e.printStackTrace();
+       log.error("全局错误信息",e.getLocalizedMessage());
+       log.error("发生错误基本信息，线程名：%s  ,线程堆栈：%s",t.getName(),  t.getStackTrace() );
+ 
     }
 }

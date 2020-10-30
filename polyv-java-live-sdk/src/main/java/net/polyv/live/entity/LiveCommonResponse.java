@@ -5,8 +5,6 @@ import java.util.List;
 import com.alibaba.fastjson.JSON;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -43,7 +41,7 @@ public class LiveCommonResponse {
     
     public <T> T parseData(Class<T> dataClass) {
         if (dataClass == String.class) {
-            return (T) this.data.toString();
+            return (T) this.data;
         }
         return JSON.parseObject(this.data, dataClass);
     }

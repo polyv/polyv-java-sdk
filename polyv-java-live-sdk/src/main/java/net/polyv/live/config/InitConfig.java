@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
  **/
 @Slf4j
 public class InitConfig {
+    private InitConfig(){}
     
     /**
      * 初始化配置

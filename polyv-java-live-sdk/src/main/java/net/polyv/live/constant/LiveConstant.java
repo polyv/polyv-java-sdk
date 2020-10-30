@@ -1,16 +1,12 @@
 package net.polyv.live.constant;
 
-import javax.validation.constraints.NotNull;
-
-import io.swagger.annotations.ApiModelProperty;
-
 /**
  * 直播常量类
  * @author: thomas
  **/
 public class LiveConstant {
     
-    public static Integer ERROR_CODE = 400;
+    public final static Integer ERROR_CODE = 400;
     
     
     public enum SceneType {

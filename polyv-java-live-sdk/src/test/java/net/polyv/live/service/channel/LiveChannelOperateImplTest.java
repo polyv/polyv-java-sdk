@@ -43,7 +43,6 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
-import net.polyv.live.entity.dto.LiveChannelBasicDTO;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
@@ -210,9 +209,9 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateChannelListRequest liveCreateChannelListRequest = new LiveCreateChannelListRequest();
         LiveCreateChannelListResponse liveCreateChannelListResponse;
         try {
-            List<LiveChannelBasicDTO> channels = new ArrayList<>();
+            List<LiveCreateChannelListRequest.LiveChannelBasic> channels = new ArrayList<>();
             for (int i = 0; i <= 2; i++) {
-                LiveChannelBasicDTO liveChannel = new LiveChannelBasicDTO();
+                LiveCreateChannelListRequest.LiveChannelBasic liveChannel = new LiveCreateChannelListRequest.LiveChannelBasic();
                 liveChannel.setName("批量创建" + i)
                         .setChannelPasswd("123456" + i)
                         .setCourseId("c" + i)

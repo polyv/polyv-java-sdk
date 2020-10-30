@@ -55,9 +55,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelInfo | false | Array | 频道信息【详见[LiveChannelStreamStatusResponse参数描述](channelState.md?id=LiveChannelStreamStatusResponse参数描述)】 | 
+| channelInfo | false | Array | 频道信息【详见[LiveChannelStreamStatusResponse参数描述](channelState.md?id=polyv22)】 | 
 
-###### LiveChannelStreamStatusResponse参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv22"><a href="#/channelOperate?id=polyv22"data-id="LiveChannelStreamStatusResponse参数描述"class="anchor"><span>LiveChannelStreamStatusResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

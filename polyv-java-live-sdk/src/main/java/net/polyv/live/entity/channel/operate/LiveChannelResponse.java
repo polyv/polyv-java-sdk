@@ -172,8 +172,8 @@ public class LiveChannelResponse {
     /**
      * 自动播放
      */
-    @ApiModelProperty(name = "autoPlay", value = "自动播放" )
-    protected boolean autoPlay;
+    @ApiModelProperty(name = "autoPlay", value = "自动播放，true为自动播放，false为关闭" )
+    protected Boolean autoPlay;
     
     /**
      * 一开始的暖场视频
@@ -185,7 +185,7 @@ public class LiveChannelResponse {
      * 观看密码限制，需要输入观看密码才能播放流
      */
     @ApiModelProperty(name = "passwdRestrict", value = "观看密码限制，需要输入观看密码才能播放流"  )
-    protected boolean passwdRestrict;
+    protected Boolean passwdRestrict;
     
     /**
      * 观看密码加密后的密文

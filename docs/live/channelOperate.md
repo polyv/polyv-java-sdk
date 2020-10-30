@@ -52,12 +52,12 @@
 | -- | -- | -- | -- | 
 | name | true | String | 自定义频道名称，一般是课程主题、会议主题、培训主题等，例如 财务制度培训、乌镇峰会 | 
 | channelPasswd | true | String | 自定义频道密码,终端用户通过该密码进入直播间，长度不能超过16位 | 
-| autoPlay | false | Integer | 是否自动播放标识，取值范围 0 、 1 ，默认取值 1 | 
-| playerColor | false | String | 播放器控制栏颜色，默认：#666666 | 
+| autoPlay | false | Integer | 是否自动播放标识，0：关闭自动播放；1：开启，默认取值 1 | 
+| playerColor | false | String | 播放器控制栏颜色，默认：[#666666](https://www.colorgg.com/666666) | 
 | scene | false | String | 直播场景：alone 活动拍摄; ppt 三分屏; topclass 大班课 ， 默认：alone | 
 | categoryId | false | Integer | 分类ID ,新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） | 
 | maxViewer | false | Integer | 频道的最大在线人数观看限制的人数 | 
-| watchLayout | false | String | 三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt 文档为主，video 视频为主 | 
+| watchLayout | false | String | 三分屏频道的观看布局，ppt：文档为主；video：视频为主；不设置会使用账号的通用设置 | 
 | linkMicLimit | false | Integer | 连麦人数，-1=<取值范围<=账号级的连麦人数，-1：表示使用账号默认的连麦人数，最大16人（注：账号级连麦人数需通知平台管理员设置才生效） | 
 | pureRtcEnabled | false | String | 是否为无延时直播，Y 表示开启，默认为N | 
 | receive | false | String | 是否为接收转播频道，Y表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) | 
@@ -94,9 +94,9 @@
 | advertFlvVid | false | String | 视频广告ID | 
 | advertFlvUrl | false | String | 视频广告链接 | 
 | playerColor | false | String | 播放器控制栏颜色 | 
-| autoPlay | false | boolean | 自动播放 | 
+| autoPlay | false | Boolean | 自动播放，true为自动播放，false为关闭 | 
 | warmUpFlv | false | String | 一开始的暖场视频 | 
-| passwdRestrict | false | boolean | 观看密码限制，需要输入观看密码才能播放流 | 
+| passwdRestrict | false | Boolean | 观看密码限制，需要输入观看密码才能播放流 | 
 | passwdEncrypted | false | String | 观看密码加密后的密文 | 
 | isOnlyAudio | false | String | 仅推音频流 | 
 | isLowLatency | false | String | 低延迟 | 
@@ -180,11 +180,11 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| basicSetting | true | BasicSetting | 基础设置【详见**BasicSetting参数描述**】 | 
-| authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelOperate.md?id=AuthSetting参数描述)】 | 
+| basicSetting | true | BasicSetting | 基础设置【详见[BasicSetting参数描述](channelOperate.md?id=polyv6)】 | 
+| authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelOperate.md?id=polyv7)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-###### BasicSetting参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv6"><a href="#/channelOperate?id=polyv6"data-id="BasicSetting参数描述"class="anchor"><span>BasicSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -203,7 +203,7 @@
 | receive | false | String | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) | 
 | receiveChannelIds | false | String | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) | 
 
-###### AuthSetting参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv7"><a href="#/channelOperate?id=polyv7"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -218,7 +218,7 @@
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数【详见[InfoField参数描述](channelOperate.md?id=InfoField参数描述)】 | 
+| infoFields | false | Array | 登记观看参数【详见[InfoField参数描述](channelOperate.md?id=polyv8)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -226,7 +226,7 @@
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-###### InfoField参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv8"><a href="#/channelOperate?id=polyv8"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -356,11 +356,11 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 需要设置频道详情的频道号，例如：1938028 | 
-| basicSetting | true | BasicSetting | 基础设置【详见**BasicSetting参数描述**】 | 
-| authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelOperate.md?id=AuthSetting参数描述)】 | 
+| basicSetting | true | BasicSetting | 基础设置【详见[BasicSetting参数描述](channelOperate.md?id=polyv9)】 | 
+| authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelOperate.md?id=polyv10)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-###### BasicSetting参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv9"><a href="#/channelOperate?id=polyv9"data-id="BasicSetting参数描述"class="anchor"><span>BasicSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -382,7 +382,7 @@
 | operation | false | String | 是否增加转播关联，Y：表示增加关联，N：表示取消关联 (注：需要开启频道转播功能该参数才生效)(Y、N) | 
 | receiveChannelIds | false | String | 接收转播频道号，多个频道号用半角逗号,隔开(注：需要开启频道转播功能该参数才生效) | 
 
-###### AuthSetting参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv10"><a href="#/channelOperate?id=polyv10"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -397,7 +397,7 @@
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](channelOperate.md?id=InfoField参数描述)】 | 
+| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](channelOperate.md?id=polyv11)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -405,7 +405,7 @@
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-###### InfoField参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv11"><a href="#/channelOperate?id=polyv11"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -482,10 +482,10 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channels | true | Array | 频道列表【详见[LiveChannelBasicDTO参数描述](channelOperate.md?id=LiveChannelBasicDTO参数描述)】 | 
+| channels | true | Array | 频道列表【详见[LiveChannelBasicDTO参数描述](channelOperate.md?id=polyv12)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-###### LiveChannelBasicDTO参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv12"><a href="#/channelOperate?id=polyv12"data-id="LiveChannelBasicDTO参数描述"class="anchor"><span>LiveChannelBasicDTO参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -502,9 +502,9 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channels | false | Array | 频道基本信息【详见[LiveChannelResponse参数描述](channelOperate.md?id=LiveChannelResponse参数描述)】 | 
+| channels | false | Array | 频道基本信息【详见[LiveChannelResponse参数描述](channelOperate.md?id=polyv13)】 | 
 
-###### LiveChannelResponse参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv13"><a href="#/channelOperate?id=polyv13"data-id="LiveChannelResponse参数描述"class="anchor"><span>LiveChannelResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -533,9 +533,9 @@ true为设置成功，false为设置失败
 | advertFlvVid | false | String | 视频广告ID | 
 | advertFlvUrl | false | String | 视频广告链接 | 
 | playerColor | false | String | 播放器控制栏颜色 | 
-| autoPlay | false | boolean | 自动播放 | 
+| autoPlay | false | Boolean | 自动播放，true为自动播放，false为关闭 | 
 | warmUpFlv | false | String | 一开始的暖场视频 | 
-| passwdRestrict | false | boolean | 观看密码限制，需要输入观看密码才能播放流 | 
+| passwdRestrict | false | Boolean | 观看密码限制，需要输入观看密码才能播放流 | 
 | passwdEncrypted | false | String | 观看密码加密后的密文 | 
 | isOnlyAudio | false | String | 仅推音频流 | 
 | isLowLatency | false | String | 低延迟 | 
@@ -678,13 +678,13 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 课件重制任务列表【详见[LivePPTRecordDTO参数描述](channelOperate.md?id=LivePPTRecordDTO参数描述)】 | 
+| contents | false | Array | 课件重制任务列表【详见[LivePPTRecordDTO参数描述](channelOperate.md?id=polyv14)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-###### LivePPTRecordDTO参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv14"><a href="#/channelOperate?id=polyv14"data-id="LivePPTRecordDTO参数描述"class="anchor"><span>LivePPTRecordDTO参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -867,7 +867,7 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelIds | true | String[] | 频道号列表，每次最多删除100个频道，必须放在请求体中【详见**String[]参数描述**】 | 
+| channelIds | true | String[] | 频道号列表，每次最多删除100个频道，必须放在请求体中【详见[String[]参数描述](channelOperate.md?id=polyv15)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
@@ -1114,10 +1114,10 @@ true为设置token成功，false为设置失败
 | maxViewer | false | Integer | 最大在线观看人数 | 
 | watchStatus | false | String | 频道的观看页状态，取值为： 频道状态,取值：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
 | watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
-| userCategory | false | UserCategory | 频道所属分类的信息【详见**UserCategory参数描述**】 | 
-| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](channelOperate.md?id=AuthSetting参数描述)】 | 
+| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](channelOperate.md?id=polyv16)】 | 
+| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](channelOperate.md?id=polyv17)】 | 
 
-###### UserCategory参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv16"><a href="#/channelOperate?id=polyv16"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1126,7 +1126,7 @@ true为设置token成功，false为设置失败
 | userId | false | String | POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置） | 
 | rank | false | Integer | 分类的排序值 | 
 
-###### AuthSetting参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv17"><a href="#/channelOperate?id=polyv17"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1668,9 +1668,9 @@ true为设置子频道token成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](channelOperate.md?id=LiveSonChannelInfoResponse参数描述)】 | 
+| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](channelOperate.md?id=polyv18)】 | 
 
-###### LiveSonChannelInfoResponse参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv18"><a href="#/channelOperate?id=polyv18"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

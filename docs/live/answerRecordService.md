@@ -61,12 +61,12 @@
 | times | false | Integer | 第几次发送题目，用于区分相同题目重复发送的情况 | 
 | answer | false | String | 题目的答案 | 
 | total | false | Integer | 答题人数 | 
-| options | false | Array | 题目选项信息列表【详见[Option参数描述](answerRecordService.md?id=Option参数描述)】 | 
-| records | false | Array | 答题的用户列表【详见[Record参数描述](answerRecordService.md?id=Record参数描述)】 | 
+| options | false | Array | 题目选项信息列表【详见[Option参数描述](answerRecordService.md?id=polyv29)】 | 
+| records | false | Array | 答题的用户列表【详见[Record参数描述](answerRecordService.md?id=polyv30)】 | 
 | type | false | String | 题目类型：R为单选，C为多选，Q为问答 | 
 | itemType | false | Integer | 答题类型：1表示问答，0表示答题卡 | 
 
-###### Option参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv29"><a href="#/channelOperate?id=polyv29"data-id="Option参数描述"class="anchor"><span>Option参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -74,7 +74,7 @@
 | count | false | Integer | 选择该选项的人数 | 
 | percent | false | String | 选择该选项的人数百分比 | 
 
-###### Record参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv30"><a href="#/channelOperate?id=polyv30"data-id="Record参数描述"class="anchor"><span>Record参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

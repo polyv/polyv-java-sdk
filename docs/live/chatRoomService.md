@@ -942,11 +942,11 @@ true 设置成功，false 设置失败
 | id | false | String | 信息id | 
 | content | false | String | 内容 | 
 | time | false | Date | 发言时间 | 
-| user | false | User | 发言人信息【详见**User参数描述**】 | 
+| user | false | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv28)】 | 
 | event | false | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
-| s_userId | false | String | 提问者ID | 
+| userId | false | String | 提问者ID | 
 
-###### User参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv28"><a href="#/channelOperate?id=polyv28"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

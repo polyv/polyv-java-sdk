@@ -29,6 +29,11 @@
         repo: 'https://github.com/polyv/polyv-java-sdk.git',
         loadSidebar: true,
         subMaxLevel: 2,
+        copyCode: {
+            buttonText : '复制',
+            errorText  : '复制失败',
+            successText: '复制成功'
+        },
         // autoHeader: false,
         // logo:'../img/logo.png',
         // auto2top:true,
@@ -91,6 +96,8 @@
             title: 'TOP',
             titleAsText: true
         });
+        var h1s = $("body").find("h2");
+        console.log(h1s)
     });
 </script>
 

@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
  
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 
 public class VodCommonResponse {

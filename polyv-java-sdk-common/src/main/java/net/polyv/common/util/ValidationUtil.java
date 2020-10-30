@@ -66,7 +66,7 @@ public class ValidationUtil {
      * 校验结果类
      */
     @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
     public class ValidResult {
         
         /**
@@ -115,7 +115,7 @@ public class ValidationUtil {
     }
     
     @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
     public static class ErrorMessage {
         
         private String propertyPath;

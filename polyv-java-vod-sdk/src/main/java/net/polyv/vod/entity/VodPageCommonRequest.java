@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
  * @author: sadboy
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 public class VodPageCommonRequest extends VodCommonRequest {
 

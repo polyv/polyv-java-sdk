@@ -16,7 +16,7 @@ import net.polyv.common.entity.CommonReqeust;
  
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 public class VodCommonRequest extends CommonReqeust {
     /**

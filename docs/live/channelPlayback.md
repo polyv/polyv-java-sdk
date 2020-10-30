@@ -4,7 +4,7 @@
 查询频道录制视频信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -57,9 +57,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelVedioInfos | false | Array | 视频库视频信息【详见**ChannelVedioInfo参数描述**】 | 
+| channelVedioInfos | false | Array | 视频库视频信息【详见[ChannelVedioInfo参数描述](channelVideoListResponse.md?id=ChannelVedioInfo参数描述)】 | 
 
-**ChannelVedioInfo参数描述**
+###### ChannelVedioInfo参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -87,7 +87,7 @@
 设置频道回放设置
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -155,7 +155,7 @@ true为设置成功，false为设置失败
 设置后台回放开关
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -214,7 +214,7 @@ true为设置成功，false为设置失败
 查询视频库列表
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -266,13 +266,13 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 视频库视频信息【详见**ChannelVideoLibrary参数描述**】 | 
+| contents | false | Array | 视频库视频信息【详见[ChannelVideoLibrary参数描述](listChannelVideoLibraryResponse.md?id=ChannelVideoLibrary参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-**ChannelVideoLibrary参数描述**
+###### ChannelVideoLibrary参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -307,7 +307,7 @@ true为设置成功，false为设置失败
 查询频道直播场次信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -361,13 +361,13 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道直播场次信息【详见**ChannelSessionInfo参数描述**】 | 
+| contents | false | Array | 频道直播场次信息【详见[ChannelSessionInfo参数描述](listChannelSessionInfoResponse.md?id=ChannelSessionInfo参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-**ChannelSessionInfo参数描述**
+###### ChannelSessionInfo参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -388,7 +388,7 @@ true为设置成功，false为设置失败
 查询频道的回放开关状态
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -446,7 +446,7 @@ Y为开启，N为关闭
 查询指定文件ID的录制文件信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -526,7 +526,7 @@ Y为开启，N为关闭
 将点播中的视频添加到视频库
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 2、点播视频得设置标签为频道号，多个用英文逗号分隔
 ### 单元测试
@@ -609,7 +609,7 @@ Y为开启，N为关闭
 设置视频库列表排序
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -672,7 +672,7 @@ true为设置成功，false为设置失败
 设置视频库列表的默认视频
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -733,7 +733,7 @@ true为设置成功，false为设置失败
 异步合并直播录制文件
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -800,7 +800,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 异步批量转存录制文件到点播
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -866,7 +866,7 @@ true为提交成功，false为提交失败，具体转存是否成功以回调�
 删除直播暂存中的录制文件
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -926,7 +926,7 @@ true为删除成功，false为删除失败
 删除视频库列表中的视频
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java

@@ -4,7 +4,7 @@
 获取频道文档列表
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -57,13 +57,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道文档【详见**ChannelDoc参数描述**】 | 
+| contents | false | Array | 频道文档【详见[ChannelDoc参数描述](listChannelDocResponse.md?id=ChannelDoc参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-**ChannelDoc参数描述**
+###### ChannelDoc参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -92,7 +92,7 @@
 查询频道文档转换状态
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -143,9 +143,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelDocStatuses | false | Array | 频道文档列表转换信息【详见**ChannelDocStatus参数描述**】 | 
+| channelDocStatuses | false | Array | 频道文档列表转换信息【详见[ChannelDocStatus参数描述](channelDocStatusResponse.md?id=ChannelDocStatus参数描述)】 | 
 
-**ChannelDocStatus参数描述**
+###### ChannelDocStatus参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -170,7 +170,7 @@
 删除频道文档
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -232,7 +232,7 @@ true为删除文档成功，false为删除文档失败
 上传频道文档
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java

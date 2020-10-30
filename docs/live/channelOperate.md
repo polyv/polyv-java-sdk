@@ -4,7 +4,7 @@
 创建一个直播频道，返回直播频道相关的基础信息。
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -119,7 +119,7 @@
 创建并初始化频道
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -181,10 +181,10 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | basicSetting | true | BasicSetting | 基础设置【详见**BasicSetting参数描述**】 | 
-| authSettings | false | Array | 观看条件设置【详见**AuthSetting参数描述**】 | 
+| authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelInitRequest.md?id=AuthSetting参数描述)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-**BasicSetting参数描述**
+###### BasicSetting参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -203,7 +203,7 @@
 | receive | false | String | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) | 
 | receiveChannelIds | false | String | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) | 
 
-**AuthSetting参数描述**
+###### AuthSetting参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -218,7 +218,7 @@
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数【详见**InfoField参数描述**】 | 
+| infoFields | false | Array | 登记观看参数【详见[InfoField参数描述](authSetting.md?id=InfoField参数描述)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -226,7 +226,7 @@
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-**InfoField参数描述**
+###### InfoField参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -290,7 +290,7 @@
 修改频道的相关设置
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -357,10 +357,10 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 需要设置频道详情的频道号，例如：1938028 | 
 | basicSetting | true | BasicSetting | 基础设置【详见**BasicSetting参数描述**】 | 
-| authSettings | false | Array | 观看条件设置【详见**AuthSetting参数描述**】 | 
+| authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelSettingRequest.md?id=AuthSetting参数描述)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-**BasicSetting参数描述**
+###### BasicSetting参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -382,7 +382,7 @@
 | operation | false | String | 是否增加转播关联，Y：表示增加关联，N：表示取消关联 (注：需要开启频道转播功能该参数才生效)(Y、N) | 
 | receiveChannelIds | false | String | 接收转播频道号，多个频道号用半角逗号,隔开(注：需要开启频道转播功能该参数才生效) | 
 
-**AuthSetting参数描述**
+###### AuthSetting参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -397,7 +397,7 @@
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数,上限为5个【详见**InfoField参数描述**】 | 
+| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](authSetting.md?id=InfoField参数描述)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -405,7 +405,7 @@
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-**InfoField参数描述**
+###### InfoField参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -430,7 +430,7 @@ true为设置成功，false为设置失败
 批量创建频道
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -482,10 +482,10 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channels | true | Array | 频道列表【详见**LiveChannelBasicDTO参数描述**】 | 
+| channels | true | Array | 频道列表【详见[LiveChannelBasicDTO参数描述](createChannelListRequest.md?id=LiveChannelBasicDTO参数描述)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-**LiveChannelBasicDTO参数描述**
+###### LiveChannelBasicDTO参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -502,9 +502,9 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channels | false | Array | 频道基本信息【详见**LiveChannelResponse参数描述**】 | 
+| channels | false | Array | 频道基本信息【详见[LiveChannelResponse参数描述](createChannelListResponse.md?id=LiveChannelResponse参数描述)】 | 
 
-**LiveChannelResponse参数描述**
+###### LiveChannelResponse参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -558,7 +558,7 @@ true为设置成功，false为设置失败
 设置频道详情
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -622,7 +622,7 @@ true为修改成功，false为修改失败
 查询课件重制任务列表
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -678,13 +678,13 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 课件重制任务列表【详见**LivePPTRecordDTO参数描述**】 | 
+| contents | false | Array | 课件重制任务列表【详见[LivePPTRecordDTO参数描述](listChannelPPTRecordResponse.md?id=LivePPTRecordDTO参数描述)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-**LivePPTRecordDTO参数描述**
+###### LivePPTRecordDTO参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -709,7 +709,7 @@ true为修改成功，false为修改失败
 设置频道密码
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -770,7 +770,7 @@ true为设置密码成功，false为设置失败
 删除直播频道
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -827,7 +827,7 @@ true为删除成功，false为删除失败
 批量删除频道
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -885,7 +885,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 设置频道单点登陆token
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -946,7 +946,7 @@ true为设置token成功，false为设置失败
 查询频道信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -1050,7 +1050,7 @@ true为设置token成功，false为设置失败
 查询频道基本信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -1115,9 +1115,9 @@ true为设置token成功，false为设置失败
 | watchStatus | false | String | 频道的观看页状态，取值为： 频道状态,取值：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
 | watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
 | userCategory | false | UserCategory | 频道所属分类的信息【详见**UserCategory参数描述**】 | 
-| authSettings | false | Array | 直播观看条件列表【详见**AuthSetting参数描述**】 | 
+| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](channelBasicInfoResponse.md?id=AuthSetting参数描述)】 | 
 
-**UserCategory参数描述**
+###### UserCategory参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1126,7 +1126,7 @@ true为设置token成功，false为设置失败
 | userId | false | String | POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置） | 
 | rank | false | Integer | 分类的排序值 | 
 
-**AuthSetting参数描述**
+###### AuthSetting参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1162,7 +1162,7 @@ true为设置token成功，false为设置失败
 查询授权和连麦的token
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -1231,7 +1231,7 @@ true为设置token成功，false为设置失败
 创建子频道-三分屏添加Guest
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -1317,7 +1317,7 @@ true为设置token成功，false为设置失败
 创建子频道-非三分屏添加助教
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -1403,7 +1403,7 @@ true为设置token成功，false为设置失败
 设置子频道信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -1477,7 +1477,7 @@ true为设置成功，false为设置失败
 设置子频道单点登陆token
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -1539,7 +1539,7 @@ true为设置子频道token成功，false为设置失败
 查询子频道信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -1620,7 +1620,7 @@ true为设置子频道token成功，false为设置失败
 查询频道号下所有子频道信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -1668,9 +1668,9 @@ true为设置子频道token成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| sonChannelInfos | false | Array | 子频道信息【详见**LiveSonChannelInfoResponse参数描述**】 | 
+| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](sonChannelInfoListResponse.md?id=LiveSonChannelInfoResponse参数描述)】 | 
 
-**LiveSonChannelInfoResponse参数描述**
+###### LiveSonChannelInfoResponse参数描述 <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1704,7 +1704,7 @@ true为设置子频道token成功，false为设置失败
 删除子频道
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java
@@ -1766,7 +1766,7 @@ true为删除成功，false为删除失败
 创建重制课件任务
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](../limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)
 
 ### 单元测试
 ```java

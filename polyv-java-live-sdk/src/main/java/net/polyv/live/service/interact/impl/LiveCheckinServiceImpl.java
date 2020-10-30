@@ -6,8 +6,8 @@ import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.constant.LiveURL;
-import net.polyv.live.entity.interact.LiveCheckinListResponse;
 import net.polyv.live.entity.interact.LiveCheckinListRequest;
+import net.polyv.live.entity.interact.LiveCheckinListResponse;
 import net.polyv.live.entity.interact.LiveCheckinMetadataBySessionIdRequest;
 import net.polyv.live.entity.interact.LiveCheckinMetadataBySessionIdResponse;
 import net.polyv.live.entity.interact.LiveCheckinRequest;

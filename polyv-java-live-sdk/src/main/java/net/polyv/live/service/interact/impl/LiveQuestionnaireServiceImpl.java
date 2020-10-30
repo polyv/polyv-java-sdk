@@ -60,9 +60,9 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
     public LiveQuestionnaireListResponse getQuestionnaireListInfo(
             LiveQuestionnaireListRequest liveQuestionnaireListRequest) throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_QUESTIONNAIRE_LIST_URL;
-        LiveQuestionnaireListResponse liveQuestionnarieListResponse = this.basePost(url, liveQuestionnaireListRequest,
+        return this.basePost(url, liveQuestionnaireListRequest,
                 LiveQuestionnaireListResponse.class);
-        return liveQuestionnarieListResponse;
+      
     }
     
     /**
@@ -100,9 +100,9 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_QUESTIONNAIRE_DETAIL_SET_URL;
         Map<String, String> signMap = getSignMap(liveQuestionnaireDetailSetRequest);
-        LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse = this.basePostJson(url, signMap,
+        return this.basePostJson(url, signMap,
                 liveQuestionnaireDetailSetRequest, LiveQuestionnaireDetailSetResponse.class);
-        return liveQuestionnaireDetailSetResponse;
+     
     }
     
     /**
@@ -117,9 +117,9 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
             LiveQuestionnaireResultRequest liveQuestionnaireResultRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_URL;
-        List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = this.baseGetReturnArray(url,
+        return this.baseGetReturnArray(url,
                 liveQuestionnaireResultRequest, LiveQuestionnaireResultResponse.class);
-        return liveQuestionnaireResultResponse;
+        
     }
     
     /**
@@ -134,9 +134,9 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
             LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_PAGE_URL;
-        LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = this.baseGet(url,
+        return this.baseGet(url,
                 liveQuestionnaireResultPageRequest, LiveQuestionnaireResultPageResponse.class);
-        return liveQuestionnaireResultPageResponse;
+        
     }
     
 }

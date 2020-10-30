@@ -30,9 +30,9 @@ public class LiveLotteryServiceImpl  extends LiveBaseService implements ILiveLot
     public LiveListLotteryResponse listLottery(LiveListLotteryRequest liveListLotteryRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LOTTERY_LIST_GET_URL;
-        LiveListLotteryResponse liveListLotteryResponse = this.baseGet(url, liveListLotteryRequest,
+        return this.baseGet(url, liveListLotteryRequest,
                 LiveListLotteryResponse.class);
-        return liveListLotteryResponse;
+        
     }
     
     /**
@@ -48,9 +48,9 @@ public class LiveLotteryServiceImpl  extends LiveBaseService implements ILiveLot
             LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LOTTERY_WINNER_DETAIL_GET_URL;
-        LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse = this.baseGet(url,
+        return this.baseGet(url,
                 liveLotteryWinnerDetailRequest, LiveLotteryWinnerDetailResponse.class);
-        return liveLotteryWinnerDetailResponse;
+        
     }
     
     /**

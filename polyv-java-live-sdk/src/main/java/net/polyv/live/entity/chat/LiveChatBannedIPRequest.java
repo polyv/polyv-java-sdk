@@ -1,5 +1,4 @@
 package net.polyv.live.entity.chat;
-import java.util.List;
 
 import javax.validation.constraints.NotNull;
 

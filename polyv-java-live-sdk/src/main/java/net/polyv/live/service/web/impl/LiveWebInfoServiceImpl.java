@@ -75,9 +75,9 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public LiveChannelSplashResponse channelSplash(LiveChannelSplashRequest liveChannelSplashRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SPLASH_GET_URL, liveChannelSplashRequest.getChannelId());
-        LiveChannelSplashResponse liveChannelSplashResponse = this.basePost(url, liveChannelSplashRequest,
+        return this.basePost(url, liveChannelSplashRequest,
                 LiveChannelSplashResponse.class);
-        return liveChannelSplashResponse;
+        
     }
     
     /**

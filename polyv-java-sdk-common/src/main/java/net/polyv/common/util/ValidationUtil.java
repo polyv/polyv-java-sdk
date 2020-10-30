@@ -11,7 +11,6 @@ import javax.validation.Validator;
 import org.hibernate.validator.HibernateValidator;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * hibernate-validator 参数校验工具类

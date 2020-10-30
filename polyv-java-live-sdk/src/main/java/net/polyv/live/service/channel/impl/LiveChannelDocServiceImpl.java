@@ -36,9 +36,9 @@ public class LiveChannelDocServiceImpl extends LiveBaseService implements ILiveC
     public LiveListChannelDocResponse listChannelDoc(LiveListChannelDocRequest liveListChannelDocRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_DOC_LIST_URL;
-        LiveListChannelDocResponse liveListChannelDocResponse = this.baseGet(url, liveListChannelDocRequest,
+        return this.baseGet(url, liveListChannelDocRequest,
                 LiveListChannelDocResponse.class);
-        return liveListChannelDocResponse;
+         
     }
     
     /**
@@ -90,9 +90,9 @@ public class LiveChannelDocServiceImpl extends LiveBaseService implements ILiveC
         String url = LiveURL.CREATE_CHANNEL_DOC_URL;
         Map<String, File> fileMap = new HashMap<>();
         fileMap.put("file", liveCreateChannelDocRequest.getFile());
-        LiveCreateChannelDocResponse liveCreateChannelDocResponse = this.baseUploadFile(url,
+        return this.baseUploadFile(url,
                 liveCreateChannelDocRequest, fileMap, LiveCreateChannelDocResponse.class);
-        return liveCreateChannelDocResponse;
+        
     }
     
 }

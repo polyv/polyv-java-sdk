@@ -1,6 +1,5 @@
 package net.polyv.live.entity.interact;
 
-import java.util.Date;
 import java.util.List;
 
 import io.swagger.annotations.ApiModel;

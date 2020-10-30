@@ -155,9 +155,9 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public LiveChannelWriteListResponse channelWriteList(LiveChannelWriteListRequest liveChannelWriteListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_WRITE_LIST_GET_URL;
-        LiveChannelWriteListResponse liveChannelWriteListResponse = this.baseGet(url, liveChannelWriteListRequest,
+        return this.baseGet(url, liveChannelWriteListRequest,
                 LiveChannelWriteListResponse.class);
-        return liveChannelWriteListResponse;
+        
     }
     
     /**

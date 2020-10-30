@@ -7,7 +7,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import net.polyv.vod.config.InitConfig;
-import net.polyv.vod.config.VodGlobalConfig;
 import net.polyv.vod.entity.account.VodAccountSpaceDataRequest;
 import net.polyv.vod.entity.account.VodAccountSpaceDataResponse;
 import net.polyv.vod.service.account.impl.VodAccountServiceImpl;

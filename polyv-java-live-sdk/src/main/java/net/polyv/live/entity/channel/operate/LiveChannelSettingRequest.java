@@ -12,7 +12,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
-import net.polyv.live.entity.channel.operate.LiveChannelInitRequest;
 
 /**
  * 修改频道的相关设置请求实体

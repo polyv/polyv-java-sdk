@@ -8,12 +8,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import sun.management.resources.agent;
-import sun.tools.jar.resources.jar;
-import sun.util.logging.resources.logging;
 
 /**
  * 查询咨询提问记录响应实体
@@ -114,8 +110,9 @@ public class LiveGetConsultingRecordResponse {
     /**
      * 提问者ID
      */
-    @ApiModelProperty(name = "s_userId", value = "提问者ID", required = false)
-    private String s_userId;
+    @ApiModelProperty(name = "userId", value = "提问者ID", required = false)
+    @JSONField(name="s_userId")
+    private String userId;
     
     
 }

@@ -2,17 +2,13 @@ package net.polyv.live.entity.interact;
 
 import javax.validation.constraints.NotNull;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.LivePageCommonRequest;
 
 /**

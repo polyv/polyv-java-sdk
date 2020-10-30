@@ -10,8 +10,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
 import org.apache.commons.lang3.StringUtils;
+
 import com.alibaba.fastjson.JSON;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -20,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
  **/
 @Slf4j
 public class LiveSignUtil {
-    
+    private LiveSignUtil(){}
     public static String generateUUID(){
         return UUID.randomUUID().toString().replaceAll("-","");
     }
@@ -171,22 +174,5 @@ public class LiveSignUtil {
         return stringBuilder.toString();
     }
     
-//    /**
-//     * 判断字符是否为空
-//     * @param cs 字符
-//     * @return true/false
-//     */
-//    public static boolean isBlank(CharSequence cs) {
-//        int strLen;
-//        if (cs != null && (strLen = cs.length()) != 0) {
-//            for (int i = 0; i < strLen; ++i) {
-//                if (!Character.isWhitespace(cs.charAt(i))) {
-//                    return false;
-//                }
-//            }
-//            return true;
-//        } else {
-//            return true;
-//        }
-//    }
+ 
 }

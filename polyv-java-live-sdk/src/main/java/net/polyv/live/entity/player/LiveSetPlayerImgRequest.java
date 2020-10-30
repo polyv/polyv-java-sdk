@@ -1,7 +1,5 @@
 package net.polyv.live.entity.player;
 
-import java.util.List;
-
 import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;

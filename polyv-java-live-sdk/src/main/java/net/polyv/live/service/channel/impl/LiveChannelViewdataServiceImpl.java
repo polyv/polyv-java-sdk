@@ -120,7 +120,7 @@ public class LiveChannelViewdataServiceImpl extends LiveBaseService implements I
         LiveListChannelViewerCountResponse.ChannelViewerCount[] channelViewerCounts = this.baseGet(url,
                 liveListChannelViewerCountRequest, LiveListChannelViewerCountResponse.ChannelViewerCount[].class);
         channelViewerCounts = channelViewerCounts == null ?
-                channelViewerCounts = new LiveListChannelViewerCountResponse.ChannelViewerCount[]{} :
+                 new LiveListChannelViewerCountResponse.ChannelViewerCount[]{} :
                 channelViewerCounts;
         LiveListChannelViewerCountResponse liveListChannelViewerCountResponse =
                 new LiveListChannelViewerCountResponse();

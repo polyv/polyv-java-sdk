@@ -3,7 +3,6 @@ package net.polyv.common.base;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -12,8 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.internal.runners.TestMethod;
-
 import com.alibaba.fastjson.JSON;
 
 import lombok.AllArgsConstructor;
@@ -21,11 +19,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import net.polyv.live.service.chat.impl.LiveChatRoomServiceImpl;
-import net.polyv.live.service.interact.impl.LiveAnswerRecordServiceImpl;
-import net.polyv.live.service.interact.impl.LiveCheckinServiceImpl;
 import net.polyv.live.service.interact.impl.LiveQuestionnaireServiceImpl;
-import net.polyv.live.service.player.impl.LivePlayerServiceImpl;
 
 
 /**

@@ -218,7 +218,8 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_TOKEN_CREATE_URL, liveCreateChannelTokenRequest.getChannelId());
         String liveCreateChannelTokenResponse = this.basePost(url, liveCreateChannelTokenRequest, String.class);
-        return "success".equals(liveCreateChannelTokenResponse);
+        String success = "success";
+        return success.equals(liveCreateChannelTokenResponse);
     }
     
     /**

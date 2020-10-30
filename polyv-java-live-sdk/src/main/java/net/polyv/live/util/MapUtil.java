@@ -180,10 +180,14 @@ public class MapUtil {
      */
     public static Map<String, String> getSignMap(Map<String, String> map) {
         Map<String, String> tempMap = new HashMap<>();
-        tempMap.put("appId", map.get("appId"));
-        tempMap.put("timestamp", map.get("timestamp"));
-        tempMap.put("sign", map.get("sign"));
-        tempMap.put("requestId", map.get("requestId"));
+        String appId = "appId";
+        tempMap.put(appId, map.get(appId));
+        String timestamp = "timestamp";
+        tempMap.put(timestamp, map.get(timestamp));
+        String sign = "sign";
+        tempMap.put(sign, map.get(sign));
+        String requestId = "requestId";
+        tempMap.put(requestId, map.get(requestId));
         return tempMap;
     }
     

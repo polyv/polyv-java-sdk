@@ -10,7 +10,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
-import net.polyv.live.entity.LivePageCommonRequest;
 
 /**
  * 查询指定签到ID的签到记录

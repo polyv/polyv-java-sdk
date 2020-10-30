@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.LiveCommonRequest;
 
 /**

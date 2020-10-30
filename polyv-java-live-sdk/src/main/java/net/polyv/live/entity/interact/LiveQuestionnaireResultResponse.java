@@ -6,13 +6,9 @@ import java.util.List;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import net.polyv.live.constant.LiveConstant;
-import net.polyv.live.entity.LiveCommonResponse;
 
 /**
  * 查询频道问卷结果响应实体

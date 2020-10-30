@@ -2,7 +2,6 @@ package net.polyv.vod.service;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.vod.config.InitConfig;
-import net.polyv.vod.config.VodGlobalConfig;
 
 /**
  * @author: thomas

@@ -1,20 +1,13 @@
 package net.polyv.live.service;
 
-import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.annotation.JSONField;
-
 import io.swagger.annotations.ApiModelProperty;
-import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
-import net.polyv.live.entity.interact.LiveQuestionnaireDetailSetRequest;
 import net.polyv.live.entity.interact.LiveQuestionnaireListResponse;
-import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 
 /**
  * @author: sadboy

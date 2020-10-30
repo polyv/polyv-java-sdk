@@ -203,13 +203,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道观看日志【详见[LiveChannelViewlogDTO参数描述](channelViewdata.md?id=polyv24)】 | 
+| contents | false | Array | 频道观看日志【详见[LiveChannelViewlog参数描述](channelViewdata.md?id=polyv24)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="LiveChannelViewlogDTO参数描述"class="anchor"><span>LiveChannelViewlogDTO参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="LiveChannelViewlog参数描述"class="anchor"><span>LiveChannelViewlog参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

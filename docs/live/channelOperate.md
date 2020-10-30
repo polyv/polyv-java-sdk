@@ -439,9 +439,9 @@ true为设置成功，false为设置失败
         LiveCreateChannelListRequest liveCreateChannelListRequest = new LiveCreateChannelListRequest();
         LiveCreateChannelListResponse liveCreateChannelListResponse;
         try {
-            List<LiveChannelBasicDTO> channels = new ArrayList<>();
+            List<LiveCreateChannelListRequest.LiveChannelBasic> channels = new ArrayList<>();
             for (int i = 0; i <= 2; i++) {
-                LiveChannelBasicDTO liveChannel = new LiveChannelBasicDTO();
+                LiveCreateChannelListRequest.LiveChannelBasic liveChannel = new LiveCreateChannelListRequest.LiveChannelBasic();
                 liveChannel.setName("批量创建" + i)
                         .setChannelPasswd("123456" + i)
                         .setCourseId("c" + i)
@@ -482,10 +482,10 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channels | true | Array | 频道列表【详见[LiveChannelBasicDTO参数描述](channelOperate.md?id=polyv12)】 | 
+| channels | true | Array | 频道列表【详见[LiveChannelBasic参数描述](channelOperate.md?id=polyv12)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-<h6 id="polyv12"><a href="#/channelOperate?id=polyv12"data-id="LiveChannelBasicDTO参数描述"class="anchor"><span>LiveChannelBasicDTO参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv12"><a href="#/channelOperate?id=polyv12"data-id="LiveChannelBasic参数描述"class="anchor"><span>LiveChannelBasic参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -678,13 +678,13 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 课件重制任务列表【详见[LivePPTRecordDTO参数描述](channelOperate.md?id=polyv14)】 | 
+| contents | false | Array | 课件重制任务列表【详见[LivePPTRecord参数描述](channelOperate.md?id=polyv14)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv14"><a href="#/channelOperate?id=polyv14"data-id="LivePPTRecordDTO参数描述"class="anchor"><span>LivePPTRecordDTO参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv14"><a href="#/channelOperate?id=polyv14"data-id="LivePPTRecord参数描述"class="anchor"><span>LivePPTRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

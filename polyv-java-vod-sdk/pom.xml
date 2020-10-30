@@ -5,7 +5,7 @@
     <parent>
         <artifactId>polyv-java-sdk</artifactId>
         <groupId>net.polyv</groupId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,7 +13,7 @@
     <properties>
         <slf4j.version>1.7.30</slf4j.version>
         <swagger.version>1.5.22</swagger.version>
-        <polyv.common.version>1.0.0</polyv.common.version>
+        <polyv.common.version>1.0.1</polyv.common.version>
     </properties>
     <dependencies>
         <dependency>

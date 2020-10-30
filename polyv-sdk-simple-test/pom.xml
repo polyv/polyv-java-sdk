@@ -16,7 +16,7 @@
         <dependency>
             <groupId>net.polyv</groupId>
             <artifactId>polyv-java-vod-sdk</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>net.polyv</groupId>
             <artifactId>polyv-java-live-sdk</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
             <scope>test</scope>
         </dependency>
 

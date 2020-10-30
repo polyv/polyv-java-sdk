@@ -312,12 +312,11 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     
     /**
      * 测试设置视频库列表排序
-     * TODO 对接未通过，暂时注释
      * 返回：true为设置成功，false为设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testChannelVideoSort() throws IOException, NoSuchAlgorithmException {
         LiveChannelVideoSortRequest liveChannelVideoSortRequest = new LiveChannelVideoSortRequest();
         Boolean liveChannelVideoSortResponse;

@@ -30,12 +30,11 @@ public class LiveWebInteractImplTest extends BaseTest {
     
     /**
      * 测试设置道具打赏
-     * TODO 未通过测试
      * 返回：true代表设置成功，false代表设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testUpdateChannelGood() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelGoodRequest liveUpdateChannelGoodRequest = new LiveUpdateChannelGoodRequest();
         Boolean liveUpdateChannelGoodResponse;
@@ -77,7 +76,7 @@ public class LiveWebInteractImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testUpdateChannelCash() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelCashRequest liveUpdateChannelCashRequest = new LiveUpdateChannelCashRequest();
         Boolean liveUpdateChannelCashResponse;

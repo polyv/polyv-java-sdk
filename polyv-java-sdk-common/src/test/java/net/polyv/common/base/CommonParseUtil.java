@@ -6,9 +6,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @author: thomas
  **/
+@Slf4j
 public class CommonParseUtil {
     public static void main(String[] args) {
         testCreateFields();
@@ -120,17 +123,19 @@ public class CommonParseUtil {
             bf.close();
             inputReader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("",e);
         }finally {
             try {
+                if(inputReader!=null)
                 inputReader.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("",e);
             }
             try {
+                if(bf!=null)
                 bf.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("",e);
             }
         }
         return stringBuffer.toString();

@@ -55,9 +55,9 @@ public class VodSignUtil {
             }
         }
         String plain = String.join("&", tmp) + secretKey;
-        log.debug("签名原始字符串：" + plain);
+        log.debug("签名原始字符串：{}" , plain);
         String sign = getSha1(plain).toUpperCase();
-        log.debug("签名结果：" + sign);
+        log.debug("签名结果：{}",  sign);
         return sign;
     }
     

@@ -9,7 +9,7 @@ import java.util.Map;
 public class VodConstant {
     public  final static Integer ERROR_CODE = 400;
     
-    public final static Map<String,String> ERROR_CODE_MAP = new HashMap();
+    private final static Map<String,String> ERROR_CODE_MAP = new HashMap();
     
     static{
         ERROR_CODE_MAP.put("0","无错误");

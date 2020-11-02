@@ -19,11 +19,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.extern.slf4j.Slf4j;
 
 
 /**
  * @author: sadboy
  **/
+@Slf4j
 public class DocUtil extends BaseUtil {
     
     public static void main(String[] args) throws NoSuchFieldException, IOException, ClassNotFoundException {
@@ -211,12 +213,12 @@ public class DocUtil extends BaseUtil {
             out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false)));
             out.write(content + "\n");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("",e);
         } finally {
             try {
                 out.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("",e);
             }
         }
     }

@@ -6,7 +6,7 @@ package net.polyv.live.constant;
  **/
 public class LiveConstant {
     
-    public final static Integer ERROR_CODE = 400;
+    public static  final Integer ERROR_CODE = 400;
     
     
     public enum SceneType {

@@ -468,6 +468,14 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         LiveSetChatAdminDataRequest liveSetChatAdminDataRequest = new LiveSetChatAdminDataRequest();
         Boolean result = null;
         try {
+            File file = new File("/data/img");
+            if (file.exists()) {
+                for (String temp : file.list()) {
+                    log.debug("============ 文件名字  {}================", temp);
+                }
+            }else{
+                log.debug("============ 目录不存在================");
+            }
             String channelId = super.createChannel();
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setNickname("你个老头")

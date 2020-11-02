@@ -237,7 +237,129 @@ true为设置成功，false为设置失败
 
 <br /><br />
 
-## 5、查询频道点赞数和观众热度值
+## 5、设置频道图标
+### 描述
+```
+设置频道图标
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
+        String liveUpdateChannelLogoResponse;
+        try {
+            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+            liveUpdateChannelLogoRequest.setChannelId(createChannel())
+                    .setImgfile(new File(path))
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(
+                    liveUpdateChannelLogoRequest);
+            Assert.assertNotNull(liveUpdateChannelLogoResponse);
+            if (liveUpdateChannelLogoResponse != null) {
+                //to do something ......
+                log.debug("测试设置频道图标成功,{}", liveUpdateChannelLogoResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| imgfile | true | File | 图片为大小为2MB的JPG、JPEG、PNG图片 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+成功返回图标地址，如://livestatic.videocc.net/uploaded/images/2017/03/******.jpg
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 6、设置引导开关以及引导图片
+### 描述
+```
+设置引导开关以及引导图片
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
+        String liveUpdateChannelSplashResponse;
+        try {
+            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+            liveUpdateChannelSplashRequest.setChannelId(createChannel())
+                    .setSplashEnabled("N")
+                    .setImgfile(new File(path))
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
+                    liveUpdateChannelSplashRequest);
+            Assert.assertNotNull(liveUpdateChannelSplashResponse);
+            if (liveUpdateChannelSplashResponse != null) {
+                log.debug("设置引导开关以及引导图片成功,{}", liveUpdateChannelSplashResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | false | String | 频道号，非必填，不提交默认为修改该用户的所有频道号的主持人姓名 | 
+| splashEnabled | true | String | 设置开启或关闭引导页Y或N | 
+| imgfile | true | File | 支持jpg、jpeg、png三种格式，大小不能超过4Mb | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+设置引导页未上传图片，成功返回success；
+设置引导页同时上传图片;成功返回地址，如：//xxx.videocc.net/uploaded/images/2017/03/******.jpg
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 7、查询频道点赞数和观众热度值
 ### 描述
 ```
 查询频道点赞数和观众热度值
@@ -304,7 +426,7 @@ true为设置成功，false为设置失败
 
 <br /><br />
 
-## 6、设置频道直播倒计时信息
+## 8、设置频道直播倒计时信息
 ### 描述
 ```
 设置频道直播倒计时信息
@@ -365,7 +487,7 @@ true为设置成功，false为设置失败
 
 <br /><br />
 
-## 7、查询频道直播倒计时信息
+## 9、查询频道直播倒计时信息
 ### 描述
 ```
 查询频道直播倒计时信息
@@ -397,6 +519,7 @@ true为设置成功，false为设置失败
             throw e;
         }
     }
+}
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelCountDownResponse对象，B端依据此对象处理业务逻辑；
@@ -419,129 +542,6 @@ true为设置成功，false为设置失败
 | bookingEnabled | false | String | 预约观看开关Y或N | 
 | startTime | false | Date | 直播开始时间,为空则没有直播开始时间 | 
 
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 8、设置频道图标
-### 描述
-```
-设置频道图标
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-### 单元测试
-```java
-	@Test
-	public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
-        LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
-        String liveUpdateChannelLogoResponse;
-        try {
-            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
-            liveUpdateChannelLogoRequest.setChannelId(createChannel())
-                    .setImgfile(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(
-                    liveUpdateChannelLogoRequest);
-            Assert.assertNotNull(liveUpdateChannelLogoResponse);
-            if (liveUpdateChannelLogoResponse != null) {
-                //to do something ......
-                log.debug("测试设置频道图标成功,{}", liveUpdateChannelLogoResponse);
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| imgfile | true | File | 图片为大小为2MB的JPG、JPEG、PNG图片 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-成功返回图标地址，如://livestatic.videocc.net/uploaded/images/2017/03/******.jpg
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 9、设置引导开关以及引导图片
-### 描述
-```
-设置引导开关以及引导图片
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-### 单元测试
-```java
-	@Test
-	public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
-        LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
-        String liveUpdateChannelSplashResponse;
-        try {
-            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
-            liveUpdateChannelSplashRequest.setChannelId(createChannel())
-                    .setSplashEnabled("N")
-                    .setImgfile(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
-                    liveUpdateChannelSplashRequest);
-            Assert.assertNotNull(liveUpdateChannelSplashResponse);
-            if (liveUpdateChannelSplashResponse != null) {
-                log.debug("设置引导开关以及引导图片成功,{}", liveUpdateChannelSplashResponse);
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-}
-```
-### 单元测试说明
-1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号，非必填，不提交默认为修改该用户的所有频道号的主持人姓名 | 
-| splashEnabled | true | String | 设置开启或关闭引导页Y或N | 
-| imgfile | true | File | 支持jpg、jpeg、png三种格式，大小不能超过4Mb | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-设置引导页未上传图片，成功返回success；
-设置引导页同时上传图片;成功返回地址，如：//xxx.videocc.net/uploaded/images/2017/03/******.jpg
 <br /><br />
 
 ------------------

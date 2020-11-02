@@ -468,9 +468,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         Boolean result = null;
         try {
             String path = getClass().getResource("/img/b.jpg").getPath();
-            if (new File(path).exists()) {
-                log.debug("=============文件存在============");
-            }
             String channelId = super.createChannel();
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setNickname("你个老头")

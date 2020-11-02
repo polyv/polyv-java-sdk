@@ -474,6 +474,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                     log.debug("============ 文件名字  {}================", temp);
                 }
             }else{
+                file.mkdirs();
                 log.debug("============ 目录不存在================");
             }
             String channelId = super.createChannel();

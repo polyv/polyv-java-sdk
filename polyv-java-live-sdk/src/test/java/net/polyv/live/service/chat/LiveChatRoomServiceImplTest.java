@@ -468,7 +468,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         LiveSetChatAdminDataRequest liveSetChatAdminDataRequest = new LiveSetChatAdminDataRequest();
         Boolean result = null;
         try {
-            File file = new File("\\data\\img");
+            File file = new File("/data/img");
             if (file.exists()) {
                 for (String temp : file.list()) {
                     log.debug("============ 文件名字  {}================", temp);
@@ -480,7 +480,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setNickname("你个老头")
                     .setActor("娇娇")
-                    .setAvatar(new File("/data/img/b.jpg"))
+                    .setAvatar(new File("/data/ll img/b.jpg"))
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
             Assert.assertNotNull(result);

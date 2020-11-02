@@ -83,7 +83,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         }
     }
     
-    
     /**
      * 设置讲师信息
      * 返回：true 设置讲师信息成功，false 设置讲师信息失败
@@ -214,7 +213,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         }
     }
     
-    
     /**
      * 查询频道踢人列表
      * @throws IOException
@@ -243,7 +241,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             throw e;
         }
     }
-    
     
     /**
      * 查询频道严禁词/禁言IP列表
@@ -278,7 +275,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         }
     }
     
-    
     /**
      * 查询账号严禁词列表
      * 描述：接口用于获取账号下通用设置的严禁词列表
@@ -309,7 +305,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             throw e;
         }
     }
-    
     
     /**
      * 删除禁言IP/严禁词
@@ -344,7 +339,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         }
     }
     
-    
     /**
      * 查询聊天室管理员信息
      * @throws IOException
@@ -373,7 +367,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             throw e;
         }
     }
-    
     
     /**
      * 查询历史聊天信息
@@ -408,7 +401,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             throw e;
         }
     }
-    
     
     /**
      * 删除单条聊天记录
@@ -465,7 +457,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         }
     }
     
-    
     /**
      * 设置聊天室管理员信息
      * 返回：true 设置成功，false 设置失败
@@ -501,7 +492,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         
     }
     
-    
     /**
      * 查询咨询提问记录
      * @throws IOException
@@ -534,41 +524,6 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         }
     }
     
-    
-//    /**
-//     * 查询频道的问答统计结果
-//     * 此功能已经废弃
-//    * @throws IOException
-//     * @throws NoSuchAlgorithmException
-//     */
-//    @Test
-//    public void testGetQuestionStatistical() throws IOException, NoSuchAlgorithmException {
-//        LiveGetQuestionStatisticalRequest liveGetQuestionStatisticalRequest = new LiveGetQuestionStatisticalRequest();
-//        List<LiveGetQuestionStatisticalResponse> result = null;
-//        try {
-//            String channelId = super.createChannel();
-//            liveGetQuestionStatisticalRequest.setChannelId(channelId)
-//                    .setStartTime("2020-10-01 00:00:00")
-//                    .setEndTime("2020-10-30 12:20:20")
-//                    .setRequestId(LiveSignUtil.generateUUID());
-//            result = new LiveChatRoomServiceImpl().getQuestionStatistical(liveGetQuestionStatisticalRequest);
-//            Assert.assertNotNull(result);
-//            if (result != null) {
-//                //to do something ......
-//                log.debug("测试查询咨询提问记录成功{}", JSON.toJSONString(result));
-////            log.debug("第一个元素 {} ", result.get(0));
-//            }
-//        } catch (PloyvSdkException e) {
-//            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-//            log.error(e.getMessage(), e);
-//            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-//            throw e;
-//        } catch (Exception e) {
-//            log.error("SDK调用异常", e);
-//            throw e;
-//        }
-//    }
-    
     /**
      * 删除频道聊天记录
      * 返回：true 删除成功， false 删除失败
@@ -598,4 +553,5 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             throw e;
         }
     }
+
 }

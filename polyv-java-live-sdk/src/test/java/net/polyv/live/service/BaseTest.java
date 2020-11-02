@@ -113,7 +113,7 @@ public class BaseTest {
      * @throws NoSuchAlgorithmException
      */
     protected String createSonChannel(String channelId) throws IOException, NoSuchAlgorithmException {
-        return "00111965681";
+        return "0011965681";
 //        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
 //        liveCreateSonChannelRequest.setChannelId(channelId)
 //                .setRole("Guest")
@@ -144,7 +144,9 @@ public class BaseTest {
                 log.debug("查询频道号下所有子频道信息成功{}", JSON.toJSONString(liveSonChannelInfoResponse));
                 List<String> sonChannelIds = new ArrayList<>();
                 for (LiveSonChannelInfoResponse temp : liveSonChannelInfoResponse.getSonChannelInfos()) {
-                    sonChannelIds.add(temp.getAccount());
+                    if (!createSonChannel(createChannel()).equals(temp)) {
+                        sonChannelIds.add(temp.getAccount());
+                    }
                 }
                 return sonChannelIds;
             }

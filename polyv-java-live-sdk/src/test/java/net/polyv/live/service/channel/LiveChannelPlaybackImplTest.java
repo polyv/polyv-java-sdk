@@ -43,6 +43,112 @@ import net.polyv.live.util.LiveSignUtil;
 public class LiveChannelPlaybackImplTest extends BaseTest {
     
     /**
+     * 测试将点播中的视频添加到视频库
+     * 约束：2、点播视频得设置标签为频道号，多个用英文逗号分隔
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
+        LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest =
+                new LiveCreateChannelVideoPlaybackRequest();
+        LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse;
+        try {
+            liveCreateChannelVideoPlaybackRequest.setChannelId(getAloneChannelId())
+                    .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
+                    .setListType("vod")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveCreateChannelVideoPlaybackResponse = new LiveChannelPlaybackServiceImpl().addChannelVideoPlayback(
+                    liveCreateChannelVideoPlaybackRequest);
+            Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
+            if (liveCreateChannelVideoPlaybackResponse != null) {
+                //to do something ......
+                log.debug("测试将点播中的视频添加到视频库成功{}", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试异步批量转存录制文件到点播
+     * 返回：true为提交成功，false为提交失败，具体转存是否成功以回调为准
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testConvertChannelVideoListAsync() throws IOException, NoSuchAlgorithmException {
+        LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest =
+                new LiveConvertChannelVideoListAsyncRequest();
+        Boolean liveConvertChannelVideoResponse;
+        try {
+            liveConvertChannelVideoListAsyncRequest.setChannelId("1951952")
+                    .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+                    .setFileName("删除-直播录制转点播")
+                    .setCataId(null)
+                    .setCallbackUrl(null)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveConvertChannelVideoResponse = new LiveChannelPlaybackServiceImpl().convertChannelVideoListAsync(
+                    liveConvertChannelVideoListAsyncRequest);
+            Assert.assertNotNull(liveConvertChannelVideoResponse);
+            if (liveConvertChannelVideoResponse) {
+                //to do something ......
+                log.debug("测试异步批量转存录制文件到点播,具体是否成功以回调为准");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试异步合并直播录制文件
+     * 返回：true为提交成功，false为提交失败，具体合并是否成功以回调为准
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
+        LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
+        Boolean liveMergeChannelVideoAsyncResponse;
+        try {
+            liveMergeChannelVideoAsyncRequest.setChannelId("1951952")
+                    .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+                    .setFileName("测试合并-可删除")
+                    .setCallbackUrl(null)
+                    .setAutoConvert("Y")
+                    .setMergeMp4("Y")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveMergeChannelVideoAsyncResponse = new LiveChannelPlaybackServiceImpl().mergeChannelVideoAsync(
+                    liveMergeChannelVideoAsyncRequest);
+            Assert.assertNotNull(liveMergeChannelVideoAsyncResponse);
+            if (liveMergeChannelVideoAsyncResponse) {
+                //to do something ......
+                log.debug("测试异步合并直播录制文件,具体是否成功以回调为准");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
      * 测试查询频道录制视频信息
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -63,76 +169,6 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
             if (liveChannelVideoListResponse != null) {
                 //to do something ......
                 log.debug("查询频道录制视频信息成功{}", JSON.toJSONString(liveChannelVideoListResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 测试设置频道回放设置
-     * 返回：true为设置成功，false为设置失败
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testChannelPlaybackSetting() throws IOException, NoSuchAlgorithmException {
-        LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest;
-        Boolean liveChannelPlaybackSettingResponse;
-        try {
-            String channelId = createChannel();
-            List<String> videoIds = listChannelVideoIds(channelId);
-            liveChannelPlaybackSettingRequest = new LiveChannelPlaybackSettingRequest();
-            liveChannelPlaybackSettingRequest.setChannelId(channelId)
-                    .setPlaybackEnabled("Y")
-                    .setType("single")
-                    .setOrigin("playback")
-                    .setVideoId(videoIds.get(0))
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelPlaybackSettingResponse = new LiveChannelPlaybackServiceImpl().channelPlaybackSetting(
-                    liveChannelPlaybackSettingRequest);
-            Assert.assertNotNull(liveChannelPlaybackSettingResponse);
-            if (liveChannelPlaybackSettingResponse) {
-                //to do something ......
-                log.debug("设置频道回放设置成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 测试设置后台回放开关
-     * 返回：成功返回频道号
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
-        LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
-        String liveChannelPlaybackEnabledResponse;
-        try {
-            liveChannelPlaybackEnabledRequest.setChannelId(createChannel())
-                    .setPlayBackEnabled("Y")
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelPlaybackEnabledResponse = new LiveChannelPlaybackServiceImpl().channelPlayBackEnabledSetting(
-                    liveChannelPlaybackEnabledRequest);
-            Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
-            if (liveChannelPlaybackEnabledResponse != null) {
-                //to do something ......
-                log.debug("测试设置后台回放开关成功{}", liveChannelPlaybackEnabledResponse);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -275,29 +311,32 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         }
     }
     
-    
     /**
-     * 测试将点播中的视频添加到视频库
-     * 约束：2、点播视频得设置标签为频道号，多个用英文逗号分隔
+     * 测试设置频道回放设置
+     * 返回：true为设置成功，false为设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
-    public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
-        LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest =
-                new LiveCreateChannelVideoPlaybackRequest();
-        LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse;
+    @Test
+    public void testChannelPlaybackSetting() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest;
+        Boolean liveChannelPlaybackSettingResponse;
         try {
-            liveCreateChannelVideoPlaybackRequest.setChannelId(getAloneChannelId())
-                    .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
-                    .setListType("vod")
+            String channelId = createChannel();
+            List<String> videoIds = listChannelVideoIds(channelId);
+            liveChannelPlaybackSettingRequest = new LiveChannelPlaybackSettingRequest();
+            liveChannelPlaybackSettingRequest.setChannelId(channelId)
+                    .setPlaybackEnabled("Y")
+                    .setType("single")
+                    .setOrigin("playback")
+                    .setVideoId(videoIds.get(0))
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveCreateChannelVideoPlaybackResponse = new LiveChannelPlaybackServiceImpl().addChannelVideoPlayback(
-                    liveCreateChannelVideoPlaybackRequest);
-            Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
-            if (liveCreateChannelVideoPlaybackResponse != null) {
+            liveChannelPlaybackSettingResponse = new LiveChannelPlaybackServiceImpl().channelPlaybackSetting(
+                    liveChannelPlaybackSettingRequest);
+            Assert.assertNotNull(liveChannelPlaybackSettingResponse);
+            if (liveChannelPlaybackSettingResponse) {
                 //to do something ......
-                log.debug("测试将点播中的视频添加到视频库成功{}", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse));
+                log.debug("设置频道回放设置成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -310,6 +349,38 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 测试设置后台回放开关
+     * 返回：成功返回频道号
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
+        String liveChannelPlaybackEnabledResponse;
+        try {
+            liveChannelPlaybackEnabledRequest.setChannelId(createChannel())
+                    .setPlayBackEnabled("Y")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveChannelPlaybackEnabledResponse = new LiveChannelPlaybackServiceImpl().channelPlayBackEnabledSetting(
+                    liveChannelPlaybackEnabledRequest);
+            Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
+            if (liveChannelPlaybackEnabledResponse != null) {
+                //to do something ......
+                log.debug("测试设置后台回放开关成功{}", liveChannelPlaybackEnabledResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+
     /**
      * 测试设置视频库列表排序
      * 返回：true为设置成功，false为设置失败
@@ -377,79 +448,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
             throw e;
         }
     }
-    
-    /**
-     * 测试异步合并直播录制文件
-     * 返回：true为提交成功，false为提交失败，具体合并是否成功以回调为准
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-//    @Test
-    public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
-        LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
-        Boolean liveMergeChannelVideoAsyncResponse;
-        try {
-            liveMergeChannelVideoAsyncRequest.setChannelId("1951952")
-                    .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
-                    .setFileName("测试合并-可删除")
-                    .setCallbackUrl(null)
-                    .setAutoConvert("Y")
-                    .setMergeMp4("Y")
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveMergeChannelVideoAsyncResponse = new LiveChannelPlaybackServiceImpl().mergeChannelVideoAsync(
-                    liveMergeChannelVideoAsyncRequest);
-            Assert.assertNotNull(liveMergeChannelVideoAsyncResponse);
-            if (liveMergeChannelVideoAsyncResponse) {
-                //to do something ......
-                log.debug("测试异步合并直播录制文件,具体是否成功以回调为准");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 测试异步批量转存录制文件到点播
-     * 返回：true为提交成功，false为提交失败，具体转存是否成功以回调为准
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-//    @Test
-    public void testConvertChannelVideoListAsync() throws IOException, NoSuchAlgorithmException {
-        LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest =
-                new LiveConvertChannelVideoListAsyncRequest();
-        Boolean liveConvertChannelVideoResponse;
-        try {
-            liveConvertChannelVideoListAsyncRequest.setChannelId("1951952")
-                    .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
-                    .setFileName("删除-直播录制转点播")
-                    .setCataId(null)
-                    .setCallbackUrl(null)
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveConvertChannelVideoResponse = new LiveChannelPlaybackServiceImpl().convertChannelVideoListAsync(
-                    liveConvertChannelVideoListAsyncRequest);
-            Assert.assertNotNull(liveConvertChannelVideoResponse);
-            if (liveConvertChannelVideoResponse) {
-                //to do something ......
-                log.debug("测试异步批量转存录制文件到点播,具体是否成功以回调为准");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
+
     /**
      * 测试删除直播暂存中的录制文件
      * 返回：true为删除成功，false为删除失败

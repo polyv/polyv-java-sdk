@@ -28,6 +28,36 @@ import net.polyv.live.util.LiveSignUtil;
 public class LiveChannelStateImplTest extends BaseTest {
     
     /**
+     * 测试查询频道实时推流信息
+     * 约束：2、讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testChannelStreamInfo() throws IOException, NoSuchAlgorithmException {
+        LiveChannelStreamInfoRequest liveChannelStreamInfoRequest = new LiveChannelStreamInfoRequest();
+        LiveChannelStreamInfoResponse liveChannelStreamInfoResponse;
+        try {
+            liveChannelStreamInfoRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelStreamInfoResponse = new LiveChannelStateServiceImpl().channelStreamInfo(
+                    liveChannelStreamInfoRequest);
+            Assert.assertNotNull(liveChannelStreamInfoResponse);
+            if (liveChannelStreamInfoResponse != null) {
+                //to do something ......
+                log.debug("批量查询频道直播流状态成功{}", JSON.toJSONString(liveChannelStreamInfoResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
      * 批量查询频道直播流状态
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -50,39 +80,6 @@ public class LiveChannelStateImplTest extends BaseTest {
             if (liveListChannelStreamStatusResponse != null) {
                 //to do something ......
                 log.debug("批量查询频道直播流状态成功{}", JSON.toJSONString(liveListChannelStreamStatusResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 测试恢复直播频道推流
-     * 返回：true为恢复成功，false为恢复失败
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testResumeChannelStream() throws IOException, NoSuchAlgorithmException {
-        LiveResumeChannelStreamRequest liveResumeChannelStreamRequest = new LiveResumeChannelStreamRequest();
-        Boolean liveResumeChannelStreamResponse;
-        try {
-            //准备测试数据
-            String channelId = createChannel();
-            
-            liveResumeChannelStreamRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveResumeChannelStreamResponse = new LiveChannelStateServiceImpl().resumeChannelStream(
-                    liveResumeChannelStreamRequest);
-            Assert.assertNotNull(liveResumeChannelStreamResponse);
-            if (liveResumeChannelStreamResponse) {
-                //to do something ......
-                log.debug("恢复直播频道推流成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -129,23 +126,26 @@ public class LiveChannelStateImplTest extends BaseTest {
     }
     
     /**
-     * 测试查询频道实时推流信息
-     * 约束：2、讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常
+     * 测试恢复直播频道推流
+     * 返回：true为恢复成功，false为恢复失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
-    public void testChannelStreamInfo() throws IOException, NoSuchAlgorithmException {
-        LiveChannelStreamInfoRequest liveChannelStreamInfoRequest = new LiveChannelStreamInfoRequest();
-        LiveChannelStreamInfoResponse liveChannelStreamInfoResponse;
+    @Test
+    public void testResumeChannelStream() throws IOException, NoSuchAlgorithmException {
+        LiveResumeChannelStreamRequest liveResumeChannelStreamRequest = new LiveResumeChannelStreamRequest();
+        Boolean liveResumeChannelStreamResponse;
         try {
-            liveChannelStreamInfoRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelStreamInfoResponse = new LiveChannelStateServiceImpl().channelStreamInfo(
-                    liveChannelStreamInfoRequest);
-            Assert.assertNotNull(liveChannelStreamInfoResponse);
-            if (liveChannelStreamInfoResponse != null) {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveResumeChannelStreamRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveResumeChannelStreamResponse = new LiveChannelStateServiceImpl().resumeChannelStream(
+                    liveResumeChannelStreamRequest);
+            Assert.assertNotNull(liveResumeChannelStreamResponse);
+            if (liveResumeChannelStreamResponse) {
                 //to do something ......
-                log.debug("批量查询频道直播流状态成功{}", JSON.toJSONString(liveChannelStreamInfoResponse));
+                log.debug("恢复直播频道推流成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -157,5 +157,5 @@ public class LiveChannelStateImplTest extends BaseTest {
             throw e;
         }
     }
-    
+
 }

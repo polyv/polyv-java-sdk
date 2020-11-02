@@ -30,25 +30,28 @@ import net.polyv.live.util.LiveSignUtil;
 public class LiveChannelDocImplTest extends BaseTest {
     
     /**
-     * 测试获取频道文档列表
+     * 测试上传频道文档
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    @Test
-    public void testListChannelDoc() throws IOException, NoSuchAlgorithmException {
-        LiveListChannelDocRequest liveListChannelDocRequest = new LiveListChannelDocRequest();
-        LiveListChannelDocResponse liveListChannelDocResponse;
+//    @Test
+    public void testCreateChannelDoc() throws IOException, NoSuchAlgorithmException {
+        LiveCreateChannelDocRequest liveCreateChannelDocRequest = new LiveCreateChannelDocRequest();
+        LiveCreateChannelDocResponse liveCreateChannelDocResponse;
         try {
-            String channelId = createChannel();
-            liveListChannelDocRequest.setChannelId(channelId)
-                    .setIsShowUrl("Y")
-                    .setStatus(null)
+            File file = new File("C:\\Users\\T460\\Desktop\\葵花宝典PPT.pptx");
+            liveCreateChannelDocRequest.setChannelId(createChannel())
+                    .setType("common")
+                    .setFile(file)
+                    .setDocName("葵花宝典")
+                    .setCallbackUrl("http://www.baidu.com/callback")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveListChannelDocResponse = new LiveChannelDocServiceImpl().listChannelDoc(liveListChannelDocRequest);
-            Assert.assertNotNull(liveListChannelDocResponse);
-            if (liveListChannelDocResponse != null) {
+            liveCreateChannelDocResponse = new LiveChannelDocServiceImpl().createChannelDoc(
+                    liveCreateChannelDocRequest);
+            Assert.assertNotNull(liveCreateChannelDocResponse);
+            if (liveCreateChannelDocResponse != null) {
                 //to do something ......
-                log.debug("测试获取频道文档列表成功，{}", JSON.toJSONString(liveListChannelDocResponse));
+                log.debug("测试上传频道文档成功，{}", liveCreateChannelDocResponse);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
@@ -95,6 +98,38 @@ public class LiveChannelDocImplTest extends BaseTest {
     }
     
     /**
+     * 测试获取频道文档列表
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testListChannelDoc() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelDocRequest liveListChannelDocRequest = new LiveListChannelDocRequest();
+        LiveListChannelDocResponse liveListChannelDocResponse;
+        try {
+            String channelId = createChannel();
+            liveListChannelDocRequest.setChannelId(channelId)
+                    .setIsShowUrl("Y")
+                    .setStatus(null)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveListChannelDocResponse = new LiveChannelDocServiceImpl().listChannelDoc(liveListChannelDocRequest);
+            Assert.assertNotNull(liveListChannelDocResponse);
+            if (liveListChannelDocResponse != null) {
+                //to do something ......
+                log.debug("测试获取频道文档列表成功，{}", JSON.toJSONString(liveListChannelDocResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
      * 测试删除频道文档
      * 返回：true为删除文档成功，false为删除文档失败
      * @throws IOException
@@ -116,41 +151,6 @@ public class LiveChannelDocImplTest extends BaseTest {
             if (liveDeleteChannelDocResponse) {
                 //to do something ......
                 log.debug("测试删除频道文档成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 测试上传频道文档
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-//    @Test
-    public void testCreateChannelDoc() throws IOException, NoSuchAlgorithmException {
-        LiveCreateChannelDocRequest liveCreateChannelDocRequest = new LiveCreateChannelDocRequest();
-        LiveCreateChannelDocResponse liveCreateChannelDocResponse;
-        try {
-            File file = new File("C:\\Users\\T460\\Desktop\\葵花宝典PPT.pptx");
-            liveCreateChannelDocRequest.setChannelId(createChannel())
-                    .setType("common")
-                    .setFile(file)
-                    .setDocName("葵花宝典")
-                    .setCallbackUrl("http://www.baidu.com/callback")
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveCreateChannelDocResponse = new LiveChannelDocServiceImpl().createChannelDoc(
-                    liveCreateChannelDocRequest);
-            Assert.assertNotNull(liveCreateChannelDocResponse);
-            if (liveCreateChannelDocResponse != null) {
-                //to do something ......
-                log.debug("测试上传频道文档成功，{}", liveCreateChannelDocResponse);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B

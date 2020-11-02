@@ -84,10 +84,10 @@
 | questionnaireId | false | String | 问卷id,新增问卷该字段为null，修改问卷该字段问卷id | 
 | customQuestionnaireId | false | String | 客户自定义问卷id，用于关联自己系统的主键id | 
 | questionnaireTitle | true | String | 问卷标题 | 
-| questions | true | Array | 问卷的单个题目详情列表【详见[QuestionDetail参数描述](questionnaireService.md?id=QuestionDetail参数描述)】 | 
+| questions | true | Array | 问卷的单个题目详情列表【详见[QuestionDetail参数描述](questionnaireService.md?id=polyv38)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-###### QuestionDetail参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv38"><a href="#/channelOperate?id=polyv38"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -172,13 +172,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 问卷数据列表【详见[QuestionDetail参数描述](questionnaireService.md?id=QuestionDetail参数描述)】 | 
+| contents | false | Array | 问卷数据列表【详见[QuestionDetail参数描述](questionnaireService.md?id=polyv39)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-###### QuestionDetail参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv39"><a href="#/channelOperate?id=polyv39"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -264,9 +264,9 @@
 | status | false | String | 问卷状态，draft：草稿，send：已发送，delete：已删除 | 
 | createdTime | false | Date | 问卷创建时间 | 
 | endTime | false | Date | 停止问卷时间 | 
-| questions | false | Array | 问卷问题列表【详见[QuestionDetail参数描述](questionnaireService.md?id=QuestionDetail参数描述)】 | 
+| questions | false | Array | 问卷问题列表【详见[QuestionDetail参数描述](questionnaireService.md?id=polyv40)】 | 
 
-###### QuestionDetail参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv40"><a href="#/channelOperate?id=polyv40"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -359,17 +359,17 @@
 | questionnaireTitle | false | String | 问卷名称 | 
 | lastModified | false | Date | 问卷最后修改时间 | 
 | endTime | false | Date | 问卷最后修改时间 | 
-| questionStats | false | Array | 问卷下各个问题的答题统计【详见[QuestionStats参数描述](questionnaireService.md?id=QuestionStats参数描述)】 | 
-| users | false | Array | 观看端提交答题的用户信息【详见[Users参数描述](questionnaireService.md?id=Users参数描述)】 | 
+| questionStats | false | Array | 问卷下各个问题的答题统计【详见[QuestionStats参数描述](questionnaireService.md?id=polyv41)】 | 
+| users | false | Array | 观看端提交答题的用户信息【详见[Users参数描述](questionnaireService.md?id=polyv42)】 | 
 
-###### QuestionStats参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv41"><a href="#/channelOperate?id=polyv41"data-id="QuestionStats参数描述"class="anchor"><span>QuestionStats参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | total | false | Integer | 题目的答题人数 | 
-| questions | false | Array | 问卷下单个问题的答题统计信息【详见[QuestionStat参数描述](questionnaireService.md?id=QuestionStat参数描述)】 | 
+| questions | false | Array | 问卷下单个问题的答题统计信息【详见[QuestionStat参数描述](questionnaireService.md?id=polyv43)】 | 
 
-###### Users参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv42"><a href="#/channelOperate?id=polyv42"data-id="Users参数描述"class="anchor"><span>Users参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -377,11 +377,11 @@
 | nickname | false | String | 提交问卷的用户昵称 | 
 | submitTime | false | Date | 提交问卷时间 | 
 | totalScore | false | String | 提交问卷的用户的总得分 | 
-| answers | false | Array | 用户每道题目的答题情况【详见[Answers参数描述](questionnaireService.md?id=Answers参数描述)】 | 
+| answers | false | Array | 用户每道题目的答题情况【详见[Answers参数描述](questionnaireService.md?id=polyv44)】 | 
 | param4 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
 | param5 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
 
-###### QuestionStat参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv43"><a href="#/channelOperate?id=polyv43"data-id="QuestionStat参数描述"class="anchor"><span>QuestionStat参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -401,7 +401,7 @@
 | i | false | Integer | 选择项g的答题人数 | 
 | j | false | Integer | 选择项g的答题人数 | 
 
-###### Answers参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv44"><a href="#/channelOperate?id=polyv44"data-id="Answers参数描述"class="anchor"><span>Answers参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -480,13 +480,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道的问卷信息和统计结果列表【详见[LiveQuestionnaireResultResponse参数描述](questionnaireService.md?id=LiveQuestionnaireResultResponse参数描述)】 | 
+| contents | false | Array | 频道的问卷信息和统计结果列表【详见[LiveQuestionnaireResultResponse参数描述](questionnaireService.md?id=polyv45)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-###### LiveQuestionnaireResultResponse参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv45"><a href="#/channelOperate?id=polyv45"data-id="LiveQuestionnaireResultResponse参数描述"class="anchor"><span>LiveQuestionnaireResultResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -495,17 +495,17 @@
 | questionnaireTitle | false | String | 问卷名称 | 
 | lastModified | false | Date | 问卷最后修改时间 | 
 | endTime | false | Date | 问卷最后修改时间 | 
-| questionStats | false | Array | 问卷下各个问题的答题统计【详见[QuestionStats参数描述](questionnaireService.md?id=QuestionStats参数描述)】 | 
-| users | false | Array | 观看端提交答题的用户信息【详见[Users参数描述](questionnaireService.md?id=Users参数描述)】 | 
+| questionStats | false | Array | 问卷下各个问题的答题统计【详见[QuestionStats参数描述](questionnaireService.md?id=polyv46)】 | 
+| users | false | Array | 观看端提交答题的用户信息【详见[Users参数描述](questionnaireService.md?id=polyv47)】 | 
 
-###### QuestionStats参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv46"><a href="#/channelOperate?id=polyv46"data-id="QuestionStats参数描述"class="anchor"><span>QuestionStats参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | total | false | Integer | 题目的答题人数 | 
-| questions | false | Array | 问卷下单个问题的答题统计信息【详见[QuestionStat参数描述](questionnaireService.md?id=QuestionStat参数描述)】 | 
+| questions | false | Array | 问卷下单个问题的答题统计信息【详见[QuestionStat参数描述](questionnaireService.md?id=polyv48)】 | 
 
-###### Users参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv47"><a href="#/channelOperate?id=polyv47"data-id="Users参数描述"class="anchor"><span>Users参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -513,11 +513,11 @@
 | nickname | false | String | 提交问卷的用户昵称 | 
 | submitTime | false | Date | 提交问卷时间 | 
 | totalScore | false | String | 提交问卷的用户的总得分 | 
-| answers | false | Array | 用户每道题目的答题情况【详见[Answers参数描述](questionnaireService.md?id=Answers参数描述)】 | 
+| answers | false | Array | 用户每道题目的答题情况【详见[Answers参数描述](questionnaireService.md?id=polyv49)】 | 
 | param4 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
 | param5 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
 
-###### QuestionStat参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv48"><a href="#/channelOperate?id=polyv48"data-id="QuestionStat参数描述"class="anchor"><span>QuestionStat参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -537,7 +537,7 @@
 | i | false | Integer | 选择项g的答题人数 | 
 | j | false | Integer | 选择项g的答题人数 | 
 
-###### Answers参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv49"><a href="#/channelOperate?id=polyv49"data-id="Answers参数描述"class="anchor"><span>Answers参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

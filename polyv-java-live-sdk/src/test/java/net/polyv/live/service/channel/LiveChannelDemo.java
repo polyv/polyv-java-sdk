@@ -51,6 +51,7 @@ public class LiveChannelDemo {
         } catch (Exception e) {
             log.error("SDK调用异常", e);
         }
+        
     }
     
     

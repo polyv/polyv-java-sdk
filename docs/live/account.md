@@ -54,13 +54,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道详细信息列表【详见[LiveChannelDetailDTO参数描述](account.md?id=LiveChannelDetailDTO参数描述)】 | 
+| contents | false | Array | 频道详细信息列表【详见[LiveChannelDetail参数描述](account.md?id=polyv0)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-###### LiveChannelDetailDTO参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv0"><a href="#/channelOperate?id=polyv0"data-id="LiveChannelDetail参数描述"class="anchor"><span>LiveChannelDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -75,9 +75,9 @@
 | watchUrl | false | String | 观看页链接 | 
 | content | false | String | 直播介绍 | 
 | startTime | false | Date | 直播开始时间 | 
-| authSetting | false | Array | 直播权限设置数据传输对象【详见[LiveAuthSettingDTO参数描述](account.md?id=LiveAuthSettingDTO参数描述)】 | 
+| authSetting | false | Array | 直播权限设置数据传输对象【详见[LiveAuthSetting参数描述](account.md?id=polyv1)】 | 
 
-###### LiveAuthSettingDTO参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv1"><a href="#/channelOperate?id=polyv1"data-id="LiveAuthSetting参数描述"class="anchor"><span>LiveAuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -627,9 +627,9 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelSwitches | false | Array | 频道开关【详见[ChannelSwitch参数描述](account.md?id=ChannelSwitch参数描述)】 | 
+| channelSwitches | false | Array | 频道开关【详见[ChannelSwitch参数描述](account.md?id=polyv2)】 | 
 
-###### ChannelSwitch参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv2"><a href="#/channelOperate?id=polyv2"data-id="ChannelSwitch参数描述"class="anchor"><span>ChannelSwitch参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -704,13 +704,13 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道基础信息【详见[ChannelBasicInfo参数描述](account.md?id=ChannelBasicInfo参数描述)】 | 
+| contents | false | Array | 频道基础信息【详见[ChannelBasicInfo参数描述](account.md?id=polyv3)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-###### ChannelBasicInfo参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv3"><a href="#/channelOperate?id=polyv3"data-id="ChannelBasicInfo参数描述"class="anchor"><span>ChannelBasicInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

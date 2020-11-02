@@ -54,15 +54,15 @@ public class LiveChannelRequest extends LiveCommonRequest {
     
     
     /**
-     * 是否自动播放标识，取值范围 0 、 1 ，默认取值 1
+     * 是否自动播放标识，0：关闭自动播放；1：开启，默认取值 1
      */
-    @ApiModelProperty(name = "autoPlay", value = "是否自动播放标识，取值范围 0 、 1 ，默认取值 1")
+    @ApiModelProperty(name = "autoPlay", value = "是否自动播放标识，0：关闭自动播放；1：开启，默认取值 1")
     private Integer autoPlay;
     
     /**
      * 播放器控制栏颜色，默认：#666666
      */
-    @ApiModelProperty(name = "playerColor", value = "播放器控制栏颜色，默认：#666666")
+    @ApiModelProperty(name = "playerColor", value = "播放器控制栏颜色，默认：[#666666](https://www.colorgg.com/666666)")
     private String playerColor;
     
     /**
@@ -84,9 +84,9 @@ public class LiveChannelRequest extends LiveCommonRequest {
     private Integer maxViewer;
     
     /**
-     * 三分屏频道的观看布局  ，不设置会使用账号的通用设置，取值：ppt 文档为主，video 视频为主
+     * 三分屏频道的观看布局，ppt：文档为主；video：视频为主；不设置会使用账号的通用设置
      */
-    @ApiModelProperty(name = "watchLayout", value = "三分屏频道的观看布局，不设置会使用账号的通用设置，取值：ppt 文档为主，video 视频为主")
+    @ApiModelProperty(name = "watchLayout", value = "三分屏频道的观看布局，ppt：文档为主；video：视频为主；不设置会使用账号的通用设置")
     private String watchLayout;
     
     /**

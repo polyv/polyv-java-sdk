@@ -120,13 +120,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 列表信息【详见[ChannelMic参数描述](channelViewdata.md?id=ChannelMic参数描述)】 | 
+| contents | false | Array | 列表信息【详见[ChannelMic参数描述](channelViewdata.md?id=polyv23)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-###### ChannelMic参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv23"><a href="#/channelOperate?id=polyv23"data-id="ChannelMic参数描述"class="anchor"><span>ChannelMic参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -203,13 +203,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道观看日志【详见[LiveChannelViewlogDTO参数描述](channelViewdata.md?id=LiveChannelViewlogDTO参数描述)】 | 
+| contents | false | Array | 频道观看日志【详见[LiveChannelViewlog参数描述](channelViewdata.md?id=polyv24)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-###### LiveChannelViewlogDTO参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="LiveChannelViewlog参数描述"class="anchor"><span>LiveChannelViewlog参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -300,9 +300,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelSummarys | false | Array | 统计数据【详见[ChannelSummary参数描述](channelViewdata.md?id=ChannelSummary参数描述)】 | 
+| channelSummarys | false | Array | 统计数据【详见[ChannelSummary参数描述](channelViewdata.md?id=polyv25)】 | 
 
-###### ChannelSummary参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv25"><a href="#/channelOperate?id=polyv25"data-id="ChannelSummary参数描述"class="anchor"><span>ChannelSummary参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -382,9 +382,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelViewerCounts | false | Array | 频道实时在线人数【详见[ChannelViewerCount参数描述](channelViewdata.md?id=ChannelViewerCount参数描述)】 | 
+| channelViewerCounts | false | Array | 频道实时在线人数【详见[ChannelViewerCount参数描述](channelViewdata.md?id=polyv26)】 | 
 
-###### ChannelViewerCount参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv26"><a href="#/channelOperate?id=polyv26"data-id="ChannelViewerCount参数描述"class="anchor"><span>ChannelViewerCount参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -457,9 +457,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelViewerConcurrences | false | Array | 频道并发在线人数【详见[ChannelViewerConcurrence参数描述](channelViewdata.md?id=ChannelViewerConcurrence参数描述)】 | 
+| channelViewerConcurrences | false | Array | 频道并发在线人数【详见[ChannelViewerConcurrence参数描述](channelViewdata.md?id=polyv27)】 | 
 
-###### ChannelViewerConcurrence参数描述 <!-- {docsify-ignore} -->
+<h6 id="polyv27"><a href="#/channelOperate?id=polyv27"data-id="ChannelViewerConcurrence参数描述"class="anchor"><span>ChannelViewerConcurrence参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

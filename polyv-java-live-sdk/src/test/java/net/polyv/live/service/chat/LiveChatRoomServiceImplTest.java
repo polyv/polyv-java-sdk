@@ -467,33 +467,15 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         LiveSetChatAdminDataRequest liveSetChatAdminDataRequest = new LiveSetChatAdminDataRequest();
         Boolean result = null;
         try {
-            File file = new File("/data/img");
-            if (file.exists()) {
-                for (String temp : file.list()) {
-                    log.debug(file.getPath() + "============ 文件名字  {}================", temp);
-                }
-                log.debug("============ 目录存在================");
-            } else {
-                log.debug("============ 目录不存在================");
-                boolean mkdirs = file.mkdirs();
-                log.debug("============ 创建目录 ================" + mkdirs);
-            }
-            log.debug("=======================================");
-            file = new File("/data");
-            if (file.exists()) {
-                for (String temp : file.list()) {
-                    log.debug(file.getPath() + "============ 文件名字  {}================", temp);
-                }
-            } else {
-                log.debug("============ 目录不存在================");
-                boolean mkdirs = file.mkdirs();
-                log.debug("============ 创建目录 ================" + mkdirs);
+            String path = getClass().getResource("/img/b.jpg").getPath();
+            if (new File(path).exists()) {
+                log.debug("=============文件存在============");
             }
             String channelId = super.createChannel();
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setNickname("你个老头")
                     .setActor("娇娇")
-                    .setAvatar(new File("/data/img/b.jpg"))
+                    .setAvatar(new File(path))
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
             Assert.assertNotNull(result);

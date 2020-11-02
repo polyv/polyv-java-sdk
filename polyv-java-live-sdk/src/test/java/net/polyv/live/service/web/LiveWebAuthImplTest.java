@@ -71,6 +71,67 @@ public class LiveWebAuthImplTest extends BaseTest {
     }
     
     /**
+     * 测试查询频道观看白名单列表
+     * 用于获取全局或频道的观看条件白名单列表
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelWriteList() throws IOException, NoSuchAlgorithmException {
+        LiveChannelWriteListRequest liveChannelWriteListRequest = new LiveChannelWriteListRequest();
+        LiveChannelWriteListResponse liveChannelWriteListResponse;
+        try {
+            liveChannelWriteListRequest.setChannelId(null)
+                    .setRank(1)
+                    .setKeyword(null)
+                    .setPageSize(1)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveChannelWriteListResponse = new LiveWebAuthServiceImpl().channelWriteList(liveChannelWriteListRequest);
+            Assert.assertNotNull(liveChannelWriteListResponse);
+            if (liveChannelWriteListResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道观看白名单列表成功,{}", JSON.toJSONString(liveChannelWriteListResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询直播频道观看条件
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelAuth() throws IOException, NoSuchAlgorithmException {
+        LiveChannelAuthRequest liveChannelAuthRequest = new LiveChannelAuthRequest();
+        LiveChannelAuthResponse liveChannelAuthResponse;
+        try {
+            liveChannelAuthRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelAuthResponse = new LiveWebAuthServiceImpl().channelAuth(liveChannelAuthRequest);
+            Assert.assertNotNull(liveChannelAuthResponse);
+            if (liveChannelAuthResponse != null) {
+                //to do something ......
+                log.debug("测试查询直播频道观看条件成功,{}", JSON.toJSONString(liveChannelAuthResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
      * 测试设置观看条件
      * 返回：true为设置观看条件成功，false为设置失败
      * @throws IOException
@@ -173,101 +234,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     }
     
     /**
-     * 测试设置授权观看类型
-     * 返回：true为授权成功，false为授权失败
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testUpdateChannelAuthType() throws IOException, NoSuchAlgorithmException {
-        LiveChannelAuthTypeRequest liveChannelAuthTypeRequest = new LiveChannelAuthTypeRequest();
-        Boolean liveChannelAuthTypeResponse;
-        try {
-            liveChannelAuthTypeRequest.setChannelId(createChannel())
-                    .setAuthType("none")
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(
-                    liveChannelAuthTypeRequest);
-            Assert.assertNotNull(liveChannelAuthTypeResponse);
-            if (liveChannelAuthTypeResponse) {
-                //to do something ......
-                log.debug("测试设置授权观看类型成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 测试查询直播频道观看条件
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testChannelAuth() throws IOException, NoSuchAlgorithmException {
-        LiveChannelAuthRequest liveChannelAuthRequest = new LiveChannelAuthRequest();
-        LiveChannelAuthResponse liveChannelAuthResponse;
-        try {
-            liveChannelAuthRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelAuthResponse = new LiveWebAuthServiceImpl().channelAuth(liveChannelAuthRequest);
-            Assert.assertNotNull(liveChannelAuthResponse);
-            if (liveChannelAuthResponse != null) {
-                //to do something ......
-                log.debug("测试查询直播频道观看条件成功,{}", JSON.toJSONString(liveChannelAuthResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 测试查询频道观看白名单列表
-     * 用于获取全局或频道的观看条件白名单列表
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testChannelWriteList() throws IOException, NoSuchAlgorithmException {
-        LiveChannelWriteListRequest liveChannelWriteListRequest = new LiveChannelWriteListRequest();
-        LiveChannelWriteListResponse liveChannelWriteListResponse;
-        try {
-            liveChannelWriteListRequest.setChannelId(null)
-                    .setRank(1)
-                    .setKeyword(null)
-                    .setPageSize(1)
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelWriteListResponse = new LiveWebAuthServiceImpl().channelWriteList(liveChannelWriteListRequest);
-            Assert.assertNotNull(liveChannelWriteListResponse);
-            if (liveChannelWriteListResponse != null) {
-                //to do something ......
-                log.debug("测试查询频道观看白名单列表成功,{}", JSON.toJSONString(liveChannelWriteListResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
      * 测试设置授权认证URL
-     * TODO 等待后台修改返回值
      * 返回：true为设置成功，false为设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -298,4 +265,36 @@ public class LiveWebAuthImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 测试设置授权观看类型
+     * 返回：true为授权成功，false为授权失败
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelAuthType() throws IOException, NoSuchAlgorithmException {
+        LiveChannelAuthTypeRequest liveChannelAuthTypeRequest = new LiveChannelAuthTypeRequest();
+        Boolean liveChannelAuthTypeResponse;
+        try {
+            liveChannelAuthTypeRequest.setChannelId(createChannel())
+                    .setAuthType("none")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(
+                    liveChannelAuthTypeRequest);
+            Assert.assertNotNull(liveChannelAuthTypeResponse);
+            if (liveChannelAuthTypeResponse) {
+                //to do something ......
+                log.debug("测试设置授权观看类型成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+
 }

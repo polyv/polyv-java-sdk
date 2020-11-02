@@ -144,7 +144,7 @@ public class BaseTest {
                 log.debug("查询频道号下所有子频道信息成功{}", JSON.toJSONString(liveSonChannelInfoResponse));
                 List<String> sonChannelIds = new ArrayList<>();
                 for (LiveSonChannelInfoResponse temp : liveSonChannelInfoResponse.getSonChannelInfos()) {
-                    if (!createSonChannel(createChannel()).equals(temp)) {
+                    if (!createSonChannel(createChannel()).equals(temp.getAccount())) {
                         sonChannelIds.add(temp.getAccount());
                     }
                 }

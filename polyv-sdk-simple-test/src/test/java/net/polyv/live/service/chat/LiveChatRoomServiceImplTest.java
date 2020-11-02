@@ -164,7 +164,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         try {
             String channelId = super.createChannel();
             liveBadWordRequest
-                .setChannelId(channelId)
+                    .setChannelId(channelId)
                     .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"})).setRequestId(LiveSignUtil.generateUUID());
             liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
             Assert.assertNotNull(liveBadWordResponse);
@@ -533,8 +533,8 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             throw e;
         }
     }
-    
-    
+
+
 //    /**
 //     * 查询频道的问答统计结果
 //     * 此功能已经废弃

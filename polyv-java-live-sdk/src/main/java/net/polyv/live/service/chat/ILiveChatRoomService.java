@@ -154,7 +154,7 @@ public interface ILiveChatRoomService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
-    List<LiveGetHistoryChatMsgResponse>  getHistroyChatMsg(LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest)
+    List<LiveGetHistoryChatMsgResponse>  getHistoryChatMsg(LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest)
             throws IOException, NoSuchAlgorithmException;
     
     

@@ -33,6 +33,141 @@ import net.polyv.live.util.LiveSignUtil;
  **/
 @Slf4j
 public class LiveQuestionnaireServiceImplTest extends BaseTest {
+
+    /**
+     * 查询频道问卷列表
+     * 描述：接口用于获取频道的问卷列表
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetQuestionnaireListInfo() throws IOException, NoSuchAlgorithmException {
+        LiveQuestionnaireListRequest liveQuestionnaireListRequest = new LiveQuestionnaireListRequest();
+        LiveQuestionnaireListResponse liveQuestionnaireListResponse = null;
+        try {
+            String channelId = super.createChannel();
+            liveQuestionnaireListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionnaireListResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireListInfo(
+                    liveQuestionnaireListRequest);
+            Assert.assertNotNull(liveQuestionnaireListResponse);
+            if (liveQuestionnaireListResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道问卷列表成功{}", JSON.toJSONString(liveQuestionnaireListResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 查询频道问卷详情
+     * 描述：1、接口用于查询频道问卷详情
+     * 描述：2、问卷ID 可以从获取频道问卷列表中获取
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
+        LiveQuestionnaireDetailRequest liveQuestionnaireDetailRequest = new LiveQuestionnaireDetailRequest();
+        LiveQuestionnaireDetailResponse liveQuestionnaireDetailResponse = null;
+        try {
+            String channelId = super.createChannel();
+            //获取详情
+            liveQuestionnaireDetailRequest.setChannelId(channelId)
+                    .setQuestionnaireId("fs9skpv22f")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionnaireDetailResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireDetailInfo(
+                    liveQuestionnaireDetailRequest);
+            Assert.assertNotNull(liveQuestionnaireDetailResponse);
+            if (liveQuestionnaireDetailResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道问卷详情成功{}", JSON.toJSONString(liveQuestionnaireDetailResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 查询频道问卷结果
+     * 描述：接口用于查询直播问卷的答题结果及统计
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetQuestionnaireResultInfo() throws IOException, NoSuchAlgorithmException {
+        LiveQuestionnaireResultRequest liveQuestionnaireResultRequest = new LiveQuestionnaireResultRequest();
+        List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = null;
+        try {
+            String channelId = super.createChannel();
+            liveQuestionnaireResultRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionnaireResultRequest.setStartDate("2020-10-01").setEndDate("2099-12-12");
+//        liveQuestionnaireResultRequest.setQuestionnaireId("fs9skpv22f");
+            liveQuestionnaireResultResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultInfo(
+                    liveQuestionnaireResultRequest);
+            Assert.assertNotNull(liveQuestionnaireResultResponse);
+            if (liveQuestionnaireResultResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 分页查询问卷结果
+     * 描述：分页查询直播问卷的答题结果及统计
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetQuestionnaireResultPageInfo() throws IOException, NoSuchAlgorithmException {
+        LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest =
+                new LiveQuestionnaireResultPageRequest();
+        LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = null;
+        try {
+            String channelId = super.createChannel();
+            liveQuestionnaireResultPageRequest.setChannelId(channelId)
+                    .setStartDate("2020-10-01").setEndDate("2099-12-12")
+                    .setPageSize(20)
+                    .setCurrentPage(1)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionnaireResultPageResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultPageInfo(
+                    liveQuestionnaireResultPageRequest);
+            Assert.assertNotNull(liveQuestionnaireResultPageRequest);
+            if (liveQuestionnaireResultPageResponse != null) {
+                //to do something ......
+                log.debug("测试分页查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultPageResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
     
     /**
      * 设置频道问卷信息
@@ -107,142 +242,6 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
             throw e;
         }
         
-    }
-    
-    /**
-     * 查询频道问卷列表
-     * 描述：接口用于获取频道的问卷列表
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testGetQuestionnaireListInfo() throws IOException, NoSuchAlgorithmException {
-        LiveQuestionnaireListRequest liveQuestionnaireListRequest = new LiveQuestionnaireListRequest();
-        LiveQuestionnaireListResponse liveQuestionnaireListResponse = null;
-        try {
-            String channelId = super.createChannel();
-            liveQuestionnaireListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveQuestionnaireListResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireListInfo(
-                    liveQuestionnaireListRequest);
-            Assert.assertNotNull(liveQuestionnaireListResponse);
-            if (liveQuestionnaireListResponse != null) {
-                //to do something ......
-                log.debug("测试查询频道问卷列表成功{}", JSON.toJSONString(liveQuestionnaireListResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 查询频道问卷详情
-     * 描述：1、接口用于查询频道问卷详情
-     * 描述：2、问卷ID 可以从获取频道问卷列表中获取
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testGetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
-        LiveQuestionnaireDetailRequest liveQuestionnaireDetailRequest = new LiveQuestionnaireDetailRequest();
-        LiveQuestionnaireDetailResponse liveQuestionnaireDetailResponse = null;
-        try {
-            String channelId = super.createChannel();
-            //获取详情
-            liveQuestionnaireDetailRequest.setChannelId(channelId)
-                    .setQuestionnaireId("fs9skpv22f")
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveQuestionnaireDetailResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireDetailInfo(
-                    liveQuestionnaireDetailRequest);
-            Assert.assertNotNull(liveQuestionnaireDetailResponse);
-            if (liveQuestionnaireDetailResponse != null) {
-                //to do something ......
-                log.debug("测试查询频道问卷详情成功{}", JSON.toJSONString(liveQuestionnaireDetailResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    
-    /**
-     * 查询频道问卷结果
-     * 描述：接口用于查询直播问卷的答题结果及统计
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testGetQuestionnaireResultInfo() throws IOException, NoSuchAlgorithmException {
-        LiveQuestionnaireResultRequest liveQuestionnaireResultRequest = new LiveQuestionnaireResultRequest();
-        List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = null;
-        try {
-            String channelId = super.createChannel();
-            liveQuestionnaireResultRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveQuestionnaireResultRequest.setStartDate("2020-10-01").setEndDate("2099-12-12");
-//        liveQuestionnaireResultRequest.setQuestionnaireId("fs9skpv22f");
-            liveQuestionnaireResultResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultInfo(
-                    liveQuestionnaireResultRequest);
-            Assert.assertNotNull(liveQuestionnaireResultResponse);
-            if (liveQuestionnaireResultResponse != null) {
-                //to do something ......
-                log.debug("测试查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 分页查询问卷结果
-     * 描述：分页查询直播问卷的答题结果及统计
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testGetQuestionnaireResultPageInfo() throws IOException, NoSuchAlgorithmException {
-        LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest =
-                new LiveQuestionnaireResultPageRequest();
-        LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = null;
-        try {
-            String channelId = super.createChannel();
-            liveQuestionnaireResultPageRequest.setChannelId(channelId)
-                    .setStartDate("2020-10-01").setEndDate("2099-12-12")
-                    .setPageSize(20)
-                    .setCurrentPage(1)
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveQuestionnaireResultPageResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultPageInfo(
-                    liveQuestionnaireResultPageRequest);
-            Assert.assertNotNull(liveQuestionnaireResultPageRequest);
-            if (liveQuestionnaireResultPageResponse != null) {
-                //to do something ......
-                log.debug("测试分页查询频道问卷结果成功{}", JSON.toJSONString(liveQuestionnaireResultPageResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
     }
     
 }

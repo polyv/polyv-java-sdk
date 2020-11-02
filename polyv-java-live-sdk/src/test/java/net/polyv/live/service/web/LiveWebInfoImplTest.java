@@ -160,6 +160,73 @@ public class LiveWebInfoImplTest extends BaseTest {
     }
     
     /**
+     * 测试设置频道图标
+     * 返回：成功返回图标地址，如://livestatic.videocc.net/uploaded/images/2017/03/******.jpg
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
+        String liveUpdateChannelLogoResponse;
+        try {
+            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+            liveUpdateChannelLogoRequest.setChannelId(createChannel())
+                    .setImgfile(new File(path))
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(
+                    liveUpdateChannelLogoRequest);
+            Assert.assertNotNull(liveUpdateChannelLogoResponse);
+            if (liveUpdateChannelLogoResponse != null) {
+                //to do something ......
+                log.debug("测试设置频道图标成功,{}", liveUpdateChannelLogoResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试设置引导开关以及引导图片
+     * 返回：设置引导页未上传图片，成功返回success；
+     * 返回：设置引导页同时上传图片;成功返回地址，如：//xxx.videocc.net/uploaded/images/2017/03/******.jpg
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
+        LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
+        String liveUpdateChannelSplashResponse;
+        try {
+            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+            liveUpdateChannelSplashRequest.setChannelId(createChannel())
+                    .setSplashEnabled("N")
+                    .setImgfile(new File(path))
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
+                    liveUpdateChannelSplashRequest);
+            Assert.assertNotNull(liveUpdateChannelSplashResponse);
+            if (liveUpdateChannelSplashResponse != null) {
+                log.debug("设置引导开关以及引导图片成功,{}", liveUpdateChannelSplashResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
      * 测试查询频道点赞数和观众热度值
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -247,72 +314,5 @@ public class LiveWebInfoImplTest extends BaseTest {
             throw e;
         }
     }
-    
-    /**
-     * 测试设置频道图标
-     * 返回：成功返回图标地址，如://livestatic.videocc.net/uploaded/images/2017/03/******.jpg
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-//    @Test
-    public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
-        LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
-        String liveUpdateChannelLogoResponse;
-        try {
-            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
-            liveUpdateChannelLogoRequest.setChannelId(createChannel())
-                    .setImgfile(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(
-                    liveUpdateChannelLogoRequest);
-            Assert.assertNotNull(liveUpdateChannelLogoResponse);
-            if (liveUpdateChannelLogoResponse != null) {
-                //to do something ......
-                log.debug("测试设置频道图标成功,{}", liveUpdateChannelLogoResponse);
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 测试设置引导开关以及引导图片
-     * 返回：设置引导页未上传图片，成功返回success；
-     * 返回：设置引导页同时上传图片;成功返回地址，如：//xxx.videocc.net/uploaded/images/2017/03/******.jpg
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-//    @Test
-    public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
-        LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
-        String liveUpdateChannelSplashResponse;
-        try {
-            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
-            liveUpdateChannelSplashRequest.setChannelId(createChannel())
-                    .setSplashEnabled("N")
-                    .setImgfile(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
-                    liveUpdateChannelSplashRequest);
-            Assert.assertNotNull(liveUpdateChannelSplashResponse);
-            if (liveUpdateChannelSplashResponse != null) {
-                log.debug("设置引导开关以及引导图片成功,{}", liveUpdateChannelSplashResponse);
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
+
 }

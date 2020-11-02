@@ -92,7 +92,6 @@ public class LiveCheckinServiceImplTest extends BaseTest {
         }
     }
     
-    
     /**
      * 依据指定直播场次sessionId查询签到场次信息
      * 描述：通过直播场次sessionId获取直播发起签到记录

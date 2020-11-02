@@ -203,7 +203,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public List<LiveGetHistoryChatMsgResponse> getHistroyChatMsg(
+    public List<LiveGetHistoryChatMsgResponse> getHistoryChatMsg(
             LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest) throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_HISTORY_MSG_URL, liveGetHistoryChatMsgRequest.getChannelId());
         return super.basePostReturnArray(url, liveGetHistoryChatMsgRequest, LiveGetHistoryChatMsgResponse.class);

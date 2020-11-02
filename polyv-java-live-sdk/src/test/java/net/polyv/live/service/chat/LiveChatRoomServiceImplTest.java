@@ -481,7 +481,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setNickname("你个老头")
                     .setActor("娇娇")
-                    .setAvatar(new File("/data/ll img/b.jpg"))
+                    .setAvatar(new File("/data/img/b.jpg"))
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
             Assert.assertNotNull(result);

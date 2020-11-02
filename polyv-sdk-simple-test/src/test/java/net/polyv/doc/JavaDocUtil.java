@@ -82,6 +82,16 @@ public class JavaDocUtil {
                     } else if (temp.startsWith("约束：")) {
                         polyvMethodDoc.setNote(polyvMethodDoc.getNote() == null ? temp.substring(3) :
                                 polyvMethodDoc.getNote() + "\n" + temp.substring(3));
+                    } else if (temp.startsWith("返回：")) {
+                        polyvMethodDoc.setRtDesc(polyvMethodDoc.getRtDesc() == null ? temp.substring(3) :
+                                polyvMethodDoc.getRtDesc() + "\n" + temp.substring(3));
+                    } else if (temp.startsWith("回调说明：")) {
+                        polyvMethodDoc.setCallbackDesc(polyvMethodDoc.getCallbackDesc() == null ? temp.substring(5) :
+                                polyvMethodDoc.getCallbackDesc() + temp.substring(5));
+                    } else if (temp.startsWith("回调对象：")) {
+                        polyvMethodDoc.setCallbackResponse(
+                                polyvMethodDoc.getCallbackResponse() == null ? temp.substring(5) :
+                                        polyvMethodDoc.getCallbackResponse() + temp.substring(5));
                     }
                 }
                 if (polyvMethodDoc.getDescription() == null) {
@@ -95,7 +105,6 @@ public class JavaDocUtil {
     }
     
     @Data
-
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -105,7 +114,6 @@ public class JavaDocUtil {
     }
     
     @Data
-
     @Accessors(chain = true)
     @AllArgsConstructor
     @NoArgsConstructor
@@ -113,6 +121,9 @@ public class JavaDocUtil {
         private String title;
         private String description;
         private String note = "";
+        private String rtDesc;//返回说明，如果返回Boolean等使用
+        private String callbackDesc;//回调说明
+        private String callbackResponse;//回调对象
     }
     
     public static PolyvClassDoc getDoc(String fileName) {

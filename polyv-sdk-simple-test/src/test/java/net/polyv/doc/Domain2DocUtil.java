@@ -4,7 +4,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.swagger.annotations.ApiModelProperty;
 import net.polyv.live.entity.interact.LiveQuestionnaireListResponse;
@@ -16,6 +18,7 @@ import net.polyv.live.entity.interact.LiveQuestionnaireListResponse;
 public class Domain2DocUtil {
     
     private static final String[] tableHead = new String[]{"参数名", "必选", "类型", "说明"};
+    public static String fileName = "";
     
     public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException {
         String className = LiveQuestionnaireListResponse.class.getName();
@@ -33,7 +36,9 @@ public class Domain2DocUtil {
         List<Class> classList = new ArrayList<>();
         classList.add(objClass);
         analysisClass(classList);
-        return domainCode.toString();
+        String string = domainCode.toString();
+        domainCode = new StringBuffer();
+        return string;
     }
     
     
@@ -49,12 +54,19 @@ public class Domain2DocUtil {
     }
     
     private static List<Class> analysisClass(Class objClass) throws ClassNotFoundException {
+        boolean appendArgu = false;//是否添加了字段，未添加则不添加表头
         System.out.println(">>>>>" + objClass.getName());
         List<Class> classList = new ArrayList<>();
-        StringBuffer stringBuffer = appendBuffer(new StringBuffer(), tableHead);
+        StringBuffer stringBuffer = new StringBuffer();
+        if (!"".equals(domainCode.toString())) {
+            stringBuffer.append(queryDomainRandom(objClass.getSimpleName()) + " <!-- {docsify-ignore} -->")
+                    .append("\n\n");
+        }
+        stringBuffer = appendBuffer(stringBuffer, tableHead);
         appendBuffer(stringBuffer, "--", "--", "--", "--");
         
         System.out.println("**" + objClass.getSimpleName() + "参数描述**");
+        
         while (null != objClass && objClass != Object.class) {
             Field[] fields = objClass.getDeclaredFields();
             for (Field f : fields) {
@@ -74,13 +86,18 @@ public class Domain2DocUtil {
 //                        System.out.println(accountPrincipalApproveClazz);
                         String simpleName = accountPrincipalApproveClazz.getSimpleName();
 //                        System.out.println(simpleName);
+                        if (annotation == null) {
+                            throw new RuntimeException(f.getName() + "字段未设置ApiModelProperty");
+                        }
                         if (!annotation.hidden()) {
+                            appendArgu = true;
                             if (isSimpleType(accountPrincipalApproveClazz)) {
                                 appendBuffer(stringBuffer, f.getName(), annotation.required() + "", "Array",
                                         annotation.value());
                             } else {
                                 appendBuffer(stringBuffer, f.getName(), annotation.required() + "", "Array",
-                                        annotation.value() + "【详见**" + simpleName + "参数描述**】");
+                                        annotation.value() + "【详见[" + simpleName + "参数描述](" + fileName + ".md?id=" +
+                                                getRandom(simpleName) + ")】");
                                 classList.add(accountPrincipalApproveClazz);
                             }
                         }
@@ -90,14 +107,16 @@ public class Domain2DocUtil {
                         continue;
                     }
                     if (!annotation.hidden()) {
+                        appendArgu = true;
                         try {
                             String simpleType = getSimpleType(fieldType);
                             appendBuffer(stringBuffer, f.getName(), annotation.required() + "", simpleType,
                                     annotation.value());
                         } catch (Exception e) {
-                            appendBuffer(stringBuffer, f.getName(), annotation.required() + "",
-                                    fieldType.getSimpleName(),
-                                    annotation.value() + "【详见**" + fieldType.getSimpleName() + "参数描述**】");
+                            String simpleName = fieldType.getSimpleName();
+                            appendBuffer(stringBuffer, f.getName(), annotation.required() + "", simpleName,
+                                    annotation.value() + "【详见[" + simpleName + "参数描述](" + fileName + ".md?id=" +
+                                            getRandom(simpleName) + ")】");
                             classList.add(fieldType);
                             e.printStackTrace();
                         }
@@ -109,11 +128,31 @@ public class Domain2DocUtil {
             objClass = objClass.getSuperclass();
         }
         System.out.println(stringBuffer.toString());
-        domainCode = stringBuffer;
+        if (appendArgu) {
+            domainCode.append("\n").append(stringBuffer.toString());
+        }
         return classList;
     }
     
-    private static StringBuffer appendBuffer(StringBuffer stringBuffer, String... strings) {
+    private static Map<String, String> domainRandom = new HashMap<>();
+    private static int defaultInteger = 0;
+    
+    private static String getRandom(String simpleName) {
+        String value = "polyv"+defaultInteger++;
+        domainRandom.put(simpleName, value);
+        return value;
+    }
+    
+    private static String queryDomainRandom(String simpleName) {
+        String value = domainRandom.get(simpleName);
+        if (value == null) {
+            throw new RuntimeException(simpleName + "未能获取RandomId");
+        }
+        return "<h6 id=\"" + value + "\"><a href=\"#/channelOperate?id=" + value + "\"data-id=\"" + simpleName +
+                "参数描述\"class=\"anchor\"><span>"+simpleName+"参数描述</span></a></h6>";
+    }
+    
+    public static StringBuffer appendBuffer(StringBuffer stringBuffer, String... strings) {
         stringBuffer.append("| ");
         for (String string : strings) {
             stringBuffer.append(string).append(" | ");

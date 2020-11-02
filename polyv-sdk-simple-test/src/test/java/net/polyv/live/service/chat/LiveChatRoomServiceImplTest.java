@@ -163,9 +163,9 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         LiveBadWordResponse liveBadWordResponse = null;
         try {
             String channelId = super.createChannel();
-            liveBadWordRequest
-                .setChannelId(channelId)
-                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"})).setRequestId(LiveSignUtil.generateUUID());
+            liveBadWordRequest.setChannelId(channelId)
+                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"}))
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
             Assert.assertNotNull(liveBadWordResponse);
             if (liveBadWordResponse != null) {
@@ -195,7 +195,8 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         List<String> result = null;
         try {
             String channelId = super.createChannel();
-            liveGetBannedListRequest.setChannelId(channelId).setType(LiveConstant.BannedType.IP.getType())
+            liveGetBannedListRequest.setChannelId(channelId)
+                    .setType(LiveConstant.BannedType.IP.getType())
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
             Assert.assertNotNull(result);
@@ -445,9 +446,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         //获取已经存在的消息id结束
         
         try {
-            liveChatDelSingleMsgRequest.setId(msgId)
-                    .setChannelId(channelId)
-                    .setRequestId(LiveSignUtil.generateUUID());
+            liveChatDelSingleMsgRequest.setId(msgId).setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
             Assert.assertNotNull(result);
             if (result != null) {
@@ -477,6 +476,14 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         LiveSetChatAdminDataRequest liveSetChatAdminDataRequest = new LiveSetChatAdminDataRequest();
         Boolean result = null;
         try {
+            File file = new File("/data/img");
+            if (file.exists()) {
+                for (String temp : file.list()) {
+                    log.debug("============ 文件名字  {}================", temp);
+                }
+            }else{
+                log.debug("============ 目录不存在================");
+            }
             String channelId = super.createChannel();
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setNickname("你个老头")
@@ -533,8 +540,8 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             throw e;
         }
     }
-    
-    
+
+
 //    /**
 //     * 查询频道的问答统计结果
 //     * 此功能已经废弃

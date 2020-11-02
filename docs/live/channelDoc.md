@@ -1,7 +1,7 @@
-## 1、获取频道文档列表
+## 1、上传频道文档
 ### 描述
 ```
-获取频道文档列表
+上传频道文档
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)
@@ -9,20 +9,23 @@
 ### 单元测试
 ```java
 	@Test
-	public void testListChannelDoc() throws IOException, NoSuchAlgorithmException {
-        LiveListChannelDocRequest liveListChannelDocRequest = new LiveListChannelDocRequest();
-        LiveListChannelDocResponse liveListChannelDocResponse;
+	public void testCreateChannelDoc() throws IOException, NoSuchAlgorithmException {
+        LiveCreateChannelDocRequest liveCreateChannelDocRequest = new LiveCreateChannelDocRequest();
+        LiveCreateChannelDocResponse liveCreateChannelDocResponse;
         try {
-            String channelId = createChannel();
-            liveListChannelDocRequest.setChannelId(channelId)
-                    .setIsShowUrl("Y")
-                    .setStatus(null)
+            File file = new File("C:\\Users\\T460\\Desktop\\葵花宝典PPT.pptx");
+            liveCreateChannelDocRequest.setChannelId(createChannel())
+                    .setType("common")
+                    .setFile(file)
+                    .setDocName("葵花宝典")
+                    .setCallbackUrl("http://www.baidu.com/callback")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveListChannelDocResponse = new LiveChannelDocServiceImpl().listChannelDoc(liveListChannelDocRequest);
-            Assert.assertNotNull(liveListChannelDocResponse);
-            if (liveListChannelDocResponse != null) {
+            liveCreateChannelDocResponse = new LiveChannelDocServiceImpl().createChannelDoc(
+                    liveCreateChannelDocRequest);
+            Assert.assertNotNull(liveCreateChannelDocResponse);
+            if (liveCreateChannelDocResponse != null) {
                 //to do something ......
-                log.debug("测试获取频道文档列表成功，{}", JSON.toJSONString(liveListChannelDocResponse));
+                log.debug("测试上传频道文档成功，{}", liveCreateChannelDocResponse);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
@@ -36,7 +39,7 @@
     }
 ```
 ### 单元测试说明
-1、请求正确，返回LiveListChannelDocResponse对象，B端依据此对象处理业务逻辑；
+1、请求正确，返回LiveCreateChannelDocResponse对象，B端依据此对象处理业务逻辑；
 
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
 
@@ -45,11 +48,11 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| status | false | String | 文档状态，不传查询所有（“normal”：正常，“waitUpload”：等待上传,failUpload：上传失败，waitConvert:转换PPT中,failConvert:转换PPT失败） | 
-| isShowUrl | false | String | 是否展示PPT原文件地址，Y：是；N：否；默认为N | 
-| currentPage | false | Integer | 页数，默认为1 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| channelId | true | String | 频道ID | 
+| type | false | String | 转换类型（‘common’：转普通图片， ‘animate’：转动画效果）默认不传转普通，因为只有ppt，pptx可以转动画，其他类型文件会自动转成普通；文件转动画转失败会直接把类型转为普通 | 
+| file | true | File | 上传的文件不超过50M，格式限制为（ppt， pdf，pptx，doc，docx，wps, xls，xlsx） | 
+| docName | false | String | 文档名称（不传默认使用ppt上传的文件获取到的文件名作为文档名称，文档名称不得超过100个字符） | 
+| callbackUrl | false | String | 文档上传转换成功回调地址 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
@@ -57,28 +60,10 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道文档【详见[ChannelDoc参数描述](channelDoc.md?id=polyv4)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
-
-<h6 id="polyv4"><a href="#/channelOperate?id=polyv4"data-id="ChannelDoc参数描述"class="anchor"><span>ChannelDoc参数描述</span></a></h6> <!-- {docsify-ignore} -->
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| autoId | false | Integer | 文档ID | 
-| fileId | false | String | 文件ID | 
-| fileName | false | String | 文件名 | 
-| fileUrl | false | String | 文件url(isShowUrl为'Y'的时候返回文件地址) | 
-| fileType | false | String | 文件类型，如：.pdf | 
-| totalPage | false | Integer | PPT总页数 | 
-| channelId | false | String | 频道号 | 
-| status | false | String | ppt转换状态（“normal”：正常，“waitUpload”：等待上传,failUpload：上传失败，waitConvert:转换PPT中,failConvert:转换PPT失败） | 
-| createTime | false | Date | 创建时间 | 
-| convertType | false | String | 转换类型（common：普通PPT，animate：动画PPT） | 
-| type | false | String | 类型，区分旧版PPT还是新版PPT，新版值为“new”，旧版值为“old” | 
-| previewImage | false | String | ppt预览小图地址，如：http://doc-2.polyv.net/x/xxx_0.jpeg | 
+| fileId | false | String | 成功时返回文件ID | 
+| autoId | false | Integer | 成功时返回文件记录自增标识id | 
+| type | false | String | 转换类型（common：转普通图片，animate：转动画效果）只有ppt，pptx会转动画，其中会自动转成普通，转动画转失败也会直接把类型转为普通 | 
+| status | false | String | 文件转换状态（normal：正常,waitConvert:转换PPT中,failConvert:转换PPT失败） | 
 
 <br /><br />
 
@@ -143,9 +128,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelDocStatuses | false | Array | 频道文档列表转换信息【详见[ChannelDocStatus参数描述](channelDoc.md?id=polyv5)】 | 
+| channelDocStatuses | false | Array | 频道文档列表转换信息【详见[ChannelDocStatus参数描述](channelDoc.md?id=polyv4)】 | 
 
-<h6 id="polyv5"><a href="#/channelOperate?id=polyv5"data-id="ChannelDocStatus参数描述"class="anchor"><span>ChannelDocStatus参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv4"><a href="#/channelOperate?id=polyv4"data-id="ChannelDocStatus参数描述"class="anchor"><span>ChannelDocStatus参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -164,7 +149,95 @@
 
 <br /><br />
 
-## 3、删除频道文档
+## 3、获取频道文档列表
+### 描述
+```
+获取频道文档列表
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testListChannelDoc() throws IOException, NoSuchAlgorithmException {
+        LiveListChannelDocRequest liveListChannelDocRequest = new LiveListChannelDocRequest();
+        LiveListChannelDocResponse liveListChannelDocResponse;
+        try {
+            String channelId = createChannel();
+            liveListChannelDocRequest.setChannelId(channelId)
+                    .setIsShowUrl("Y")
+                    .setStatus(null)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveListChannelDocResponse = new LiveChannelDocServiceImpl().listChannelDoc(liveListChannelDocRequest);
+            Assert.assertNotNull(liveListChannelDocResponse);
+            if (liveListChannelDocResponse != null) {
+                //to do something ......
+                log.debug("测试获取频道文档列表成功，{}", JSON.toJSONString(liveListChannelDocResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveListChannelDocResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| status | false | String | 文档状态，不传查询所有（“normal”：正常，“waitUpload”：等待上传,failUpload：上传失败，waitConvert:转换PPT中,failConvert:转换PPT失败） | 
+| isShowUrl | false | String | 是否展示PPT原文件地址，Y：是；N：否；默认为N | 
+| currentPage | false | Integer | 页数，默认为1 | 
+| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| contents | false | Array | 频道文档【详见[ChannelDoc参数描述](channelDoc.md?id=polyv5)】 | 
+| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | false | Integer | 当前页 | 
+| totalItems | false | Integer | 记录总条数 | 
+| totalPage | false | Integer | 总页数 | 
+
+<h6 id="polyv5"><a href="#/channelOperate?id=polyv5"data-id="ChannelDoc参数描述"class="anchor"><span>ChannelDoc参数描述</span></a></h6> <!-- {docsify-ignore} -->
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| autoId | false | Integer | 文档ID | 
+| fileId | false | String | 文件ID | 
+| fileName | false | String | 文件名 | 
+| fileUrl | false | String | 文件url(isShowUrl为'Y'的时候返回文件地址) | 
+| fileType | false | String | 文件类型，如：.pdf | 
+| totalPage | false | Integer | PPT总页数 | 
+| channelId | false | String | 频道号 | 
+| status | false | String | ppt转换状态（“normal”：正常，“waitUpload”：等待上传,failUpload：上传失败，waitConvert:转换PPT中,failConvert:转换PPT失败） | 
+| createTime | false | Date | 创建时间 | 
+| convertType | false | String | 转换类型（common：普通PPT，animate：动画PPT） | 
+| type | false | String | 类型，区分旧版PPT还是新版PPT，新版值为“new”，旧版值为“old” | 
+| previewImage | false | String | ppt预览小图地址，如：http://doc-2.polyv.net/x/xxx_0.jpeg | 
+
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 4、删除频道文档
 ### 描述
 ```
 删除频道文档
@@ -201,6 +274,7 @@
             throw e;
         }
     }
+}
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
@@ -220,80 +294,6 @@
 ### 返回对象描述
 
 true为删除文档成功，false为删除文档失败
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 4、上传频道文档
-### 描述
-```
-上传频道文档
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-### 单元测试
-```java
-	@Test
-	public void testCreateChannelDoc() throws IOException, NoSuchAlgorithmException {
-        LiveCreateChannelDocRequest liveCreateChannelDocRequest = new LiveCreateChannelDocRequest();
-        LiveCreateChannelDocResponse liveCreateChannelDocResponse;
-        try {
-            File file = new File("C:\\Users\\T460\\Desktop\\葵花宝典PPT.pptx");
-            liveCreateChannelDocRequest.setChannelId(createChannel())
-                    .setType("common")
-                    .setFile(file)
-                    .setDocName("葵花宝典")
-                    .setCallbackUrl("http://www.baidu.com/callback")
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveCreateChannelDocResponse = new LiveChannelDocServiceImpl().createChannelDoc(
-                    liveCreateChannelDocRequest);
-            Assert.assertNotNull(liveCreateChannelDocResponse);
-            if (liveCreateChannelDocResponse != null) {
-                //to do something ......
-                log.debug("测试上传频道文档成功，{}", liveCreateChannelDocResponse);
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-}
-```
-### 单元测试说明
-1、请求正确，返回LiveCreateChannelDocResponse对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道ID | 
-| type | false | String | 转换类型（‘common’：转普通图片， ‘animate’：转动画效果）默认不传转普通，因为只有ppt，pptx可以转动画，其他类型文件会自动转成普通；文件转动画转失败会直接把类型转为普通 | 
-| file | true | File | 上传的文件不超过50M，格式限制为（ppt， pdf，pptx，doc，docx，wps, xls，xlsx） | 
-| docName | false | String | 文档名称（不传默认使用ppt上传的文件获取到的文件名作为文档名称，文档名称不得超过100个字符） | 
-| callbackUrl | false | String | 文档上传转换成功回调地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| fileId | false | String | 成功时返回文件ID | 
-| autoId | false | Integer | 成功时返回文件记录自增标识id | 
-| type | false | String | 转换类型（common：转普通图片，animate：转动画效果）只有ppt，pptx会转动画，其中会自动转成普通，转动画转失败也会直接把类型转为普通 | 
-| status | false | String | 文件转换状态（normal：正常,waitConvert:转换PPT中,failConvert:转换PPT失败） | 
-
 <br /><br />
 
 ------------------

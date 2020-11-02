@@ -16,7 +16,8 @@
             liveListLotteryRequest.setChannelId(super.createChannel())
                     .setStartTime(1601481600000l)
                     .setEndTime(1605024000000l)
-                    .setPageSize(1);
+                    .setPageSize(1)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveListLotteryResponse = new LiveLotteryServiceImpl().listLottery(liveListLotteryRequest);
             Assert.assertNotNull(liveListLotteryResponse);
             if (liveListLotteryResponse != null) {
@@ -113,7 +114,9 @@
         LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest = new LiveLotteryWinnerDetailRequest();
         LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
         try {
-            liveLotteryWinnerDetailRequest.setChannelId(super.createChannel()).setLotteryId("1211");
+            liveLotteryWinnerDetailRequest.setChannelId(super.createChannel())
+                    .setLotteryId("1211")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveLotteryWinnerDetailResponse = new LiveLotteryServiceImpl().lotteryWinnerDetail(
                     liveLotteryWinnerDetailRequest);
             Assert.assertNotNull(liveLotteryWinnerDetailResponse);
@@ -216,7 +219,8 @@
                     .setViewerId("")
                     .setName("")
                     .setTelephone("")
-                    .setReceiveInfo("");
+                    .setReceiveInfo("")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveSetLotteryWinnerInfoResponse = new LiveLotteryServiceImpl().setLotteryWinnerInfo(
                     liveSetLotteryWinnerInfoRequest);
             Assert.assertNotNull(liveSetLotteryWinnerInfoResponse);

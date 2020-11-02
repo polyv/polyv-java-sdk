@@ -1,4 +1,220 @@
-## 1、查询频道录制视频信息
+## 1、将点播中的视频添加到视频库
+### 描述
+```
+将点播中的视频添加到视频库
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+2、点播视频得设置标签为频道号，多个用英文逗号分隔
+### 单元测试
+```java
+	@Test
+	public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
+        LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest =
+                new LiveCreateChannelVideoPlaybackRequest();
+        LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse;
+        try {
+            liveCreateChannelVideoPlaybackRequest.setChannelId(getAloneChannelId())
+                    .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
+                    .setListType("vod")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveCreateChannelVideoPlaybackResponse = new LiveChannelPlaybackServiceImpl().addChannelVideoPlayback(
+                    liveCreateChannelVideoPlaybackRequest);
+            Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
+            if (liveCreateChannelVideoPlaybackResponse != null) {
+                //to do something ......
+                log.debug("测试将点播中的视频添加到视频库成功{}", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveCreateChannelVideoPlaybackResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| vid | true | String | 要添加为回放的的点播视频 | 
+| listType | false | String | playback-回放列表，vod-点播列表; | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| videoId | false | String | 直播系统生成的id | 
+| videoPoolId | false | String | 点播视频vid | 
+| userId | false | String | 点播后台用户id | 
+| channelId | false | String | 回放视频对应的直播频道号 | 
+| title | false | String | 视频标题 | 
+| firstImage | false | String | 视频首图 | 
+| duration | false | String | 视频长度 | 
+| myBr | false | String | 默认视频的播放清晰度，1为流畅，2为高清，3为超清 | 
+| qid | false | String | 访客信息收集id | 
+| seed | false | String | 视频加密状态，1表示为加密状态，0为非加密 | 
+| createdTime | false | Long | 添加为回放视频的日期 | 
+| lastModified | false | Long | 视频最后修改日期 | 
+| url | false | String | 视频播放地址，注：如果视频为加密视频，则此地址无法访问 | 
+| channelSessionId | false | String | 用于PPT请求数据，与PPT直播的回放相关，普通直播回放值为null | 
+| mergeInfo | false | String | 视频合并信息 | 
+| startTime | false | String | 直播开始时间 | 
+| liveType | false | String | 回放视频的场景类型 | 
+
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 2、异步批量转存录制文件到点播
+### 描述
+```
+异步批量转存录制文件到点播
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testConvertChannelVideoListAsync() throws IOException, NoSuchAlgorithmException {
+        LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest =
+                new LiveConvertChannelVideoListAsyncRequest();
+        Boolean liveConvertChannelVideoResponse;
+        try {
+            liveConvertChannelVideoListAsyncRequest.setChannelId("1951952")
+                    .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+                    .setFileName("删除-直播录制转点播")
+                    .setCataId(null)
+                    .setCallbackUrl(null)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveConvertChannelVideoResponse = new LiveChannelPlaybackServiceImpl().convertChannelVideoListAsync(
+                    liveConvertChannelVideoListAsyncRequest);
+            Assert.assertNotNull(liveConvertChannelVideoResponse);
+            if (liveConvertChannelVideoResponse) {
+                //to do something ......
+                log.debug("测试异步批量转存录制文件到点播,具体是否成功以回调为准");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| fileIds | true | String | 要转存的录制视频文件ID，多个id用英文逗号, | 
+| fileName | false | String | 转存后的文件名，目前暂不支持传多个文件名 | 
+| cataId | false | Long | 转存到点播的目录ID, | 
+| callbackUrl | false | String | 转存成功时候回调通知的url，通知的相关参数见附录 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为提交成功，false为提交失败，具体转存是否成功以回调为准
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 3、异步合并直播录制文件
+### 描述
+```
+异步合并直播录制文件
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
+        LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
+        Boolean liveMergeChannelVideoAsyncResponse;
+        try {
+            liveMergeChannelVideoAsyncRequest.setChannelId("1951952")
+                    .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
+                    .setFileName("测试合并-可删除")
+                    .setCallbackUrl(null)
+                    .setAutoConvert("Y")
+                    .setMergeMp4("Y")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveMergeChannelVideoAsyncResponse = new LiveChannelPlaybackServiceImpl().mergeChannelVideoAsync(
+                    liveMergeChannelVideoAsyncRequest);
+            Assert.assertNotNull(liveMergeChannelVideoAsyncResponse);
+            if (liveMergeChannelVideoAsyncResponse) {
+                //to do something ......
+                log.debug("测试异步合并直播录制文件,具体是否成功以回调为准");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| fileIds | true | String | 要合并的录制视频文件ID，多个id用英文逗号,分隔，可通过调用查询视频库列表获取fileId | 
+| fileName | false | String | 合并后的视频的文件名 | 
+| callbackUrl | false | String | 合并成功或失败回调的url，可以带上自定义参数 | 
+| autoConvert | false | String | 传入Y，自动转存到对应点播分类下(直播回放-频道号-场次) | 
+| mergeMp4 | false | String | 传Y合并MP4文件，传N或者不传合并m3u8文件 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为提交成功，false为提交失败，具体合并是否成功以回调为准
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 4、查询频道录制视频信息
 ### 描述
 ```
 查询频道录制视频信息
@@ -81,134 +297,7 @@
 
 <br /><br />
 
-## 2、设置频道回放设置
-### 描述
-```
-设置频道回放设置
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-### 单元测试
-```java
-	@Test
-	public void testChannelPlaybackSetting() throws IOException, NoSuchAlgorithmException {
-        LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest;
-        Boolean liveChannelPlaybackSettingResponse;
-        try {
-            String channelId = createChannel();
-            List<String> videoIds = listChannelVideoIds(channelId);
-            liveChannelPlaybackSettingRequest = new LiveChannelPlaybackSettingRequest();
-            liveChannelPlaybackSettingRequest.setChannelId(channelId)
-                    .setPlaybackEnabled("Y")
-                    .setType("single")
-                    .setOrigin("playback")
-                    .setVideoId(videoIds.get(0))
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelPlaybackSettingResponse = new LiveChannelPlaybackServiceImpl().channelPlaybackSetting(
-                    liveChannelPlaybackSettingRequest);
-            Assert.assertNotNull(liveChannelPlaybackSettingResponse);
-            if (liveChannelPlaybackSettingResponse) {
-                //to do something ......
-                log.debug("设置频道回放设置成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| playbackEnabled | false | String | 回放开关，Y-开启，N-关闭 | 
-| type | false | String | 回放方式，single-单个回放，list-列表回放 | 
-| origin | false | String | 回放来源，record-暂存，playback-回放列表，vod-点播列表 | 
-| videoId | true | String | 单个回放的视频id | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-true为设置成功，false为设置失败
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 3、设置后台回放开关
-### 描述
-```
-设置后台回放开关
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-### 单元测试
-```java
-	@Test
-	public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
-        LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
-        String liveChannelPlaybackEnabledResponse;
-        try {
-            liveChannelPlaybackEnabledRequest.setChannelId(createChannel())
-                    .setPlayBackEnabled("Y")
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelPlaybackEnabledResponse = new LiveChannelPlaybackServiceImpl().channelPlayBackEnabledSetting(
-                    liveChannelPlaybackEnabledRequest);
-            Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
-            if (liveChannelPlaybackEnabledResponse != null) {
-                //to do something ......
-                log.debug("测试设置后台回放开关成功{}", liveChannelPlaybackEnabledResponse);
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| playBackEnabled | true | String | 回放开关是开/关的状态，值为Y/N，必填 | 
-| channelId | false | String | 频道号，非必填，不填添加该用户的所有频道号的回放开关都设置为开/关 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-成功返回频道号
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 4、查询视频库列表
+## 5、查询视频库列表
 ### 描述
 ```
 查询视频库列表
@@ -301,7 +390,7 @@ true为设置成功，false为设置失败
 
 <br /><br />
 
-## 5、查询频道直播场次信息
+## 6、查询频道直播场次信息
 ### 描述
 ```
 查询频道直播场次信息
@@ -382,7 +471,7 @@ true为设置成功，false为设置失败
 
 <br /><br />
 
-## 6、查询频道的回放开关状态
+## 7、查询频道的回放开关状态
 ### 描述
 ```
 查询频道的回放开关状态
@@ -440,7 +529,7 @@ Y为开启，N为关闭
 
 <br /><br />
 
-## 7、查询指定文件ID的录制文件信息
+## 8、查询指定文件ID的录制文件信息
 ### 描述
 ```
 查询指定文件ID的录制文件信息
@@ -520,33 +609,36 @@ Y为开启，N为关闭
 
 <br /><br />
 
-## 8、将点播中的视频添加到视频库
+## 9、设置频道回放设置
 ### 描述
 ```
-将点播中的视频添加到视频库
+设置频道回放设置
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)
 
-2、点播视频得设置标签为频道号，多个用英文逗号分隔
 ### 单元测试
 ```java
 	@Test
-	public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
-        LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest =
-                new LiveCreateChannelVideoPlaybackRequest();
-        LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse;
+	public void testChannelPlaybackSetting() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest;
+        Boolean liveChannelPlaybackSettingResponse;
         try {
-            liveCreateChannelVideoPlaybackRequest.setChannelId(getAloneChannelId())
-                    .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
-                    .setListType("vod")
+            String channelId = createChannel();
+            List<String> videoIds = listChannelVideoIds(channelId);
+            liveChannelPlaybackSettingRequest = new LiveChannelPlaybackSettingRequest();
+            liveChannelPlaybackSettingRequest.setChannelId(channelId)
+                    .setPlaybackEnabled("Y")
+                    .setType("single")
+                    .setOrigin("playback")
+                    .setVideoId(videoIds.get(0))
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveCreateChannelVideoPlaybackResponse = new LiveChannelPlaybackServiceImpl().addChannelVideoPlayback(
-                    liveCreateChannelVideoPlaybackRequest);
-            Assert.assertNotNull(liveCreateChannelVideoPlaybackResponse);
-            if (liveCreateChannelVideoPlaybackResponse != null) {
+            liveChannelPlaybackSettingResponse = new LiveChannelPlaybackServiceImpl().channelPlaybackSetting(
+                    liveChannelPlaybackSettingRequest);
+            Assert.assertNotNull(liveChannelPlaybackSettingResponse);
+            if (liveChannelPlaybackSettingResponse) {
                 //to do something ......
-                log.debug("测试将点播中的视频添加到视频库成功{}", JSON.toJSONString(liveCreateChannelVideoPlaybackResponse));
+                log.debug("设置频道回放设置成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -560,7 +652,7 @@ Y为开启，N为关闭
     }
 ```
 ### 单元测试说明
-1、请求正确，返回LiveCreateChannelVideoPlaybackResponse对象，B端依据此对象处理业务逻辑；
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
 
@@ -570,40 +662,81 @@ Y为开启，N为关闭
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| vid | true | String | 要添加为回放的的点播视频 | 
-| listType | false | String | playback-回放列表，vod-点播列表; | 
+| playbackEnabled | false | String | 回放开关，Y-开启，N-关闭 | 
+| type | false | String | 回放方式，single-单个回放，list-列表回放 | 
+| origin | false | String | 回放来源，record-暂存，playback-回放列表，vod-点播列表 | 
+| videoId | true | String | 单个回放的视频id | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | false | String | 直播系统生成的id | 
-| videoPoolId | false | String | 点播视频vid | 
-| userId | false | String | 点播后台用户id | 
-| channelId | false | String | 回放视频对应的直播频道号 | 
-| title | false | String | 视频标题 | 
-| firstImage | false | String | 视频首图 | 
-| duration | false | String | 视频长度 | 
-| myBr | false | String | 默认视频的播放清晰度，1为流畅，2为高清，3为超清 | 
-| qid | false | String | 访客信息收集id | 
-| seed | false | String | 视频加密状态，1表示为加密状态，0为非加密 | 
-| createdTime | false | Long | 添加为回放视频的日期 | 
-| lastModified | false | Long | 视频最后修改日期 | 
-| url | false | String | 视频播放地址，注：如果视频为加密视频，则此地址无法访问 | 
-| channelSessionId | false | String | 用于PPT请求数据，与PPT直播的回放相关，普通直播回放值为null | 
-| mergeInfo | false | String | 视频合并信息 | 
-| startTime | false | String | 直播开始时间 | 
-| liveType | false | String | 回放视频的场景类型 | 
-
+true为设置成功，false为设置失败
 <br /><br />
 
 ------------------
 
 <br /><br />
 
-## 9、设置视频库列表排序
+## 10、设置后台回放开关
+### 描述
+```
+设置后台回放开关
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
+        LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
+        String liveChannelPlaybackEnabledResponse;
+        try {
+            liveChannelPlaybackEnabledRequest.setChannelId(createChannel())
+                    .setPlayBackEnabled("Y")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveChannelPlaybackEnabledResponse = new LiveChannelPlaybackServiceImpl().channelPlayBackEnabledSetting(
+                    liveChannelPlaybackEnabledRequest);
+            Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
+            if (liveChannelPlaybackEnabledResponse != null) {
+                //to do something ......
+                log.debug("测试设置后台回放开关成功{}", liveChannelPlaybackEnabledResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| playBackEnabled | true | String | 回放开关是开/关的状态，值为Y/N，必填 | 
+| channelId | false | String | 频道号，非必填，不填添加该用户的所有频道号的回放开关都设置为开/关 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+成功返回频道号
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 11、设置视频库列表排序
 ### 描述
 ```
 设置视频库列表排序
@@ -666,7 +799,7 @@ true为设置成功，false为设置失败
 
 <br /><br />
 
-## 10、设置视频库列表的默认视频
+## 12、设置视频库列表的默认视频
 ### 描述
 ```
 设置视频库列表的默认视频
@@ -721,139 +854,6 @@ true为设置成功，false为设置失败
 ### 返回对象描述
 
 true为设置成功，false为设置失败
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 11、异步合并直播录制文件
-### 描述
-```
-异步合并直播录制文件
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-### 单元测试
-```java
-	@Test
-	public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
-        LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
-        Boolean liveMergeChannelVideoAsyncResponse;
-        try {
-            liveMergeChannelVideoAsyncRequest.setChannelId("1951952")
-                    .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
-                    .setFileName("测试合并-可删除")
-                    .setCallbackUrl(null)
-                    .setAutoConvert("Y")
-                    .setMergeMp4("Y")
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveMergeChannelVideoAsyncResponse = new LiveChannelPlaybackServiceImpl().mergeChannelVideoAsync(
-                    liveMergeChannelVideoAsyncRequest);
-            Assert.assertNotNull(liveMergeChannelVideoAsyncResponse);
-            if (liveMergeChannelVideoAsyncResponse) {
-                //to do something ......
-                log.debug("测试异步合并直播录制文件,具体是否成功以回调为准");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| fileIds | true | String | 要合并的录制视频文件ID，多个id用英文逗号,分隔，可通过调用查询视频库列表获取fileId | 
-| fileName | false | String | 合并后的视频的文件名 | 
-| callbackUrl | false | String | 合并成功或失败回调的url，可以带上自定义参数 | 
-| autoConvert | false | String | 传入Y，自动转存到对应点播分类下(直播回放-频道号-场次) | 
-| mergeMp4 | false | String | 传Y合并MP4文件，传N或者不传合并m3u8文件 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-true为提交成功，false为提交失败，具体合并是否成功以回调为准
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 12、异步批量转存录制文件到点播
-### 描述
-```
-异步批量转存录制文件到点播
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-### 单元测试
-```java
-	@Test
-	public void testConvertChannelVideoListAsync() throws IOException, NoSuchAlgorithmException {
-        LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest =
-                new LiveConvertChannelVideoListAsyncRequest();
-        Boolean liveConvertChannelVideoResponse;
-        try {
-            liveConvertChannelVideoListAsyncRequest.setChannelId("1951952")
-                    .setFileIds("dfcfabd4e3db60892b625aeddf80b242,4329a8920588b257c3d66414bd37f8d8")
-                    .setFileName("删除-直播录制转点播")
-                    .setCataId(null)
-                    .setCallbackUrl(null)
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveConvertChannelVideoResponse = new LiveChannelPlaybackServiceImpl().convertChannelVideoListAsync(
-                    liveConvertChannelVideoListAsyncRequest);
-            Assert.assertNotNull(liveConvertChannelVideoResponse);
-            if (liveConvertChannelVideoResponse) {
-                //to do something ......
-                log.debug("测试异步批量转存录制文件到点播,具体是否成功以回调为准");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| fileIds | true | String | 要转存的录制视频文件ID，多个id用英文逗号, | 
-| fileName | false | String | 转存后的文件名，目前暂不支持传多个文件名 | 
-| cataId | false | Long | 转存到点播的目录ID, | 
-| callbackUrl | false | String | 转存成功时候回调通知的url，通知的相关参数见附录 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-true为提交成功，false为提交失败，具体转存是否成功以回调为准
 <br /><br />
 
 ------------------

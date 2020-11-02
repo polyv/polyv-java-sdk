@@ -1,4 +1,68 @@
-## 1、通过HTTP接口发送聊天消息
+## 1、批量导入频道严禁词
+### 描述
+```
+批量导入频道严禁词
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testAddBadWord() throws IOException, NoSuchAlgorithmException {
+        LiveBadWordRequest liveBadWordRequest = new LiveBadWordRequest();
+        LiveBadWordResponse liveBadWordResponse = null;
+        try {
+            String channelId = super.createChannel();
+            liveBadWordRequest
+                    .setChannelId(channelId)
+                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"})).setRequestId(LiveSignUtil.generateUUID());
+            liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
+            Assert.assertNotNull(liveBadWordResponse);
+            if (liveBadWordResponse != null) {
+                //to do something ......
+                log.debug("测试批量导入频道严禁词成功{}", JSON.toJSONString(liveBadWordResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveBadWordResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| words | true | Array | 严禁词列表 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| count | false | Integer | 请求参设设置了频道号，count则为该频道严禁词的数量，如果没有设置频道号，count为该该账户严禁词的数量 | 
+| userId | false | String | 直播账号ID | 
+
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 2、通过HTTP接口发送聊天消息
 ### 描述
 ```
 可指定发言者的头像、头衔、昵称，无需连接聊天室，通过HTTP接口发送聊天文本内容
@@ -70,10 +134,10 @@
 
 <br /><br />
 
-## 2、设置讲师信息
+## 3、查询历史聊天信息
 ### 描述
 ```
-设置讲师信息
+查询一段时间内的聊天记录，时间格式为yyyy-MM-dd 或 yyyy-MM-dd HH:mm:ss。如未提交具体时间，只提交了日期，开始时间默认为日期当天的 00:00:00，结束时间为日期当天的23:59:59
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)
@@ -81,23 +145,21 @@
 ### 单元测试
 ```java
 	@Test
-	public void testSetChannelTeacherMsg() throws IOException, NoSuchAlgorithmException {
-        LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
-        Boolean result = null;
+	public void testGetHistoryChatMsg() throws IOException, NoSuchAlgorithmException {
+        LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest = new LiveGetHistoryChatMsgRequest();
+        List<LiveGetHistoryChatMsgResponse> liveGetHistoryChatMsgResponsesList = null;
         try {
             String channelId = super.createChannel();
-            liveSetTeacherDataRequest.setChannelId(channelId)
-                    .setNickname("thomas-gogo")
-                    .setActor("大师")
-                    .setPasswd("123456")
-                    .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740," +
-                            "3965499425&fm=26&gp=0" + ".jpg")
+            liveGetHistoryChatMsgRequest.setChannelId(channelId)
+                    .setStartDay("2020-10-01")
+                    .setEndDay("2099-12-12")
                     .setRequestId(LiveSignUtil.generateUUID());
-            result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
-            Assert.assertNotNull(result);
-            if (result != null) {
+            liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistoryChatMsg(
+                    liveGetHistoryChatMsgRequest);
+            Assert.assertNotNull(liveGetHistoryChatMsgResponsesList);
+            if (liveGetHistoryChatMsgResponsesList != null) {
                 //to do something ......
-                log.debug("测试设置讲师信息成功{}", JSON.toJSONString(result));
+                log.debug("测试查询历史聊天信息成功{}", JSON.toJSONString(liveGetHistoryChatMsgResponsesList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -111,7 +173,7 @@
     }
 ```
 ### 单元测试说明
-1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+1、请求正确，返回LiveGetHistoryChatMsgResponse对象，B端依据此对象处理业务逻辑；
 
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
 
@@ -121,84 +183,43 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| nickname | true | String | 讲师昵称 | 
-| actor | true | String | 讲师头衔 | 
-| passwd | true | String | 频道密码 | 
-| avatar | false | String | 头像图片地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-true 设置讲师信息成功，false 设置讲师信息失败
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 3、设置聊天室禁言ip
-### 描述
-```
-设置聊天室禁言ip
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-### 单元测试
-```java
-	@Test
-	public void testAddBannedIP() throws IOException, NoSuchAlgorithmException {
-        LiveChatBannedIPRequest liveChatBannedIPRequest = new LiveChatBannedIPRequest();
-        List<String> bannedIPList = null;
-        try {
-            String channelId = super.createChannel();
-            liveChatBannedIPRequest.setIp("192.168.1.1")
-                    .setChannelId(channelId)
-                    .setRequestId(LiveSignUtil.generateUUID());
-            bannedIPList = new LiveChatRoomServiceImpl().addBannedIP(liveChatBannedIPRequest);
-            Assert.assertNotNull(bannedIPList);
-            if (bannedIPList != null) {
-                //to do something ......
-                log.debug("测试设置聊天室禁言ip成功{}", JSON.toJSONString(bannedIPList));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| ip | true | String | 禁言IP,如 234.22.3.34 | 
+| startDay | true | String | 聊天记录的开始时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
+| endDay | true | String | 聊天记录的结束时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
+| currentPage | false | Integer | 获取第几页聊天记录，默认为1 | 
+| pageSize | false | Integer | 每页记录数，默认为1000 | 
+| userType | false | String | 用户类型，可以选择多个类型，用英文逗号隔开,目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
+| status | false | String | 聊天记录状态， 审核状态，pass:已审核，censor：审核中，delete：删除 ， 默认 pass | 
+| source | false | String | 消息来源，public：群聊，extend：管理员私聊 ，默认：public | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List,具体元素内容如下：
-当前所有的禁言ip列表
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| userId | false | String | 直播账号userId | 
+| clientIP | false | String | 用户IP | 
+| content | false | String | 聊天内容 | 
+| id | false | String | 聊天消息id | 
+| image | false | String | 图片消息的图片地址 | 
+| roomId | false | Integer | 聊天记录所在的房间号 | 
+| sessionId | false | String | 场次号 | 
+| time | false | Date | 发送消息的时间戳 | 
+| source | false | String | 消息来源，目前有public(群聊)、extend（管理员私聊） | 
+| msgType | false | String | 消息类型，目前取值：redpaper: 红包消息；get_redpaper：领取红包消息；chatImg：图片消息；custom：自定义消息（通过socket发送的自定义消息）；reward：打赏消息；customerMessage：自定义消息（通过http接口发送的自定义消息） 为空（msgType=""）时表示普通聊天消息； | 
+| status | false | String | 审核状态，pass:已审核，censor：审核中，delete：删除 | 
+| userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
+
 <br /><br />
 
 ------------------
 
 <br /><br />
 
-## 4、批量导入频道严禁词
+## 4、查询聊天室管理员信息
 ### 描述
 ```
-批量导入频道严禁词
+查询聊天室管理员信息
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)
@@ -206,19 +227,17 @@ true 设置讲师信息成功，false 设置讲师信息失败
 ### 单元测试
 ```java
 	@Test
-	public void testAddBadWord() throws IOException, NoSuchAlgorithmException {
-        LiveBadWordRequest liveBadWordRequest = new LiveBadWordRequest();
-        LiveBadWordResponse liveBadWordResponse = null;
+	public void testGetChatAdminData() throws IOException, NoSuchAlgorithmException {
+        LiveGetChatAdminDataRequest liveGetChatAdminDataRequest = new LiveGetChatAdminDataRequest();
+        LiveGetChatAdminDataResponse liveGetChatAdminDataResponse = null;
         try {
             String channelId = super.createChannel();
-            liveBadWordRequest
-                .setChannelId(channelId)
-                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"})).setRequestId(LiveSignUtil.generateUUID());
-            liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
-            Assert.assertNotNull(liveBadWordResponse);
-            if (liveBadWordResponse != null) {
+            liveGetChatAdminDataRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveGetChatAdminDataResponse = new LiveChatRoomServiceImpl().getChatAdminData(liveGetChatAdminDataRequest);
+            Assert.assertNotNull(liveGetChatAdminDataResponse);
+            if (liveGetChatAdminDataResponse != null) {
                 //to do something ......
-                log.debug("测试批量导入频道严禁词成功{}", JSON.toJSONString(liveBadWordResponse));
+                log.debug("测试查询聊天室管理员信息成功{}", JSON.toJSONString(liveGetChatAdminDataResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -232,7 +251,7 @@ true 设置讲师信息成功，false 设置讲师信息失败
     }
 ```
 ### 单元测试说明
-1、请求正确，返回LiveBadWordResponse对象，B端依据此对象处理业务逻辑；
+1、请求正确，返回LiveGetChatAdminDataResponse对象，B端依据此对象处理业务逻辑；
 
 2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
 
@@ -242,7 +261,6 @@ true 设置讲师信息成功，false 设置讲师信息失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| words | true | Array | 严禁词列表 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
@@ -250,8 +268,10 @@ true 设置讲师信息成功，false 设置讲师信息失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| count | false | Integer | 请求参设设置了频道号，count则为该频道严禁词的数量，如果没有设置频道号，count为该该账户严禁词的数量 | 
-| userId | false | String | 直播账号ID | 
+| nickname | false | String | 讲师昵称 | 
+| actor | false | String | 讲师头衔 | 
+| avatar | false | String | 头像图片地址 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <br /><br />
 
@@ -501,7 +521,277 @@ true 设置讲师信息成功，false 设置讲师信息失败
 
 <br /><br />
 
-## 9、删除禁言IP/严禁词
+## 9、查询咨询提问记录
+### 描述
+```
+查询咨询提问记录
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testGetConsultingRecord() throws IOException, NoSuchAlgorithmException {
+        LiveGetConsultingRecordRequest liveGetConsultingRecordRequest = new LiveGetConsultingRecordRequest();
+        List<LiveGetConsultingRecordResponse> responses = null;
+        try {
+            String channelId = super.createChannel();
+            liveGetConsultingRecordRequest.setChannelId(channelId)
+                    .setBegin(0)
+                    .setEnd(10)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            responses = new LiveChatRoomServiceImpl().getConsultingRecord(liveGetConsultingRecordRequest);
+            Assert.assertNotNull(responses);
+            if (responses != null) {
+                //to do something ......
+                log.debug("测试查询咨询提问记录成功{}", JSON.toJSONString(responses));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveGetConsultingRecordResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| begin | false | Integer | 起始下标，从0开始 | 
+| end | false | Integer | 结束下标，-1表示不分页 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+返回对象是List,具体元素内容如下：
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| id | false | String | 信息id | 
+| content | false | String | 内容 | 
+| time | false | Date | 发言时间 | 
+| user | false | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv28)】 | 
+| event | false | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
+| userId | false | String | 提问者ID | 
+
+<h6 id="polyv28"><a href="#/channelOperate?id=polyv28"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| nick | false | String | 观众昵称 | 
+| pic | false | String | 观众头像 | 
+| userId | false | String | 用户唯一标示 | 
+| sessionId | false | String | 场次号 | 
+| channelId | false | String | 频道号 | 
+| banned | false | Boolean | 是否禁言 | 
+| userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
+
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 10、设置讲师信息
+### 描述
+```
+设置讲师信息
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testSetChannelTeacherMsg() throws IOException, NoSuchAlgorithmException {
+        LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
+        Boolean result = null;
+        try {
+            String channelId = super.createChannel();
+            liveSetTeacherDataRequest.setChannelId(channelId)
+                    .setNickname("thomas-gogo")
+                    .setActor("大师")
+                    .setPasswd("123456")
+                    .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740," +
+                            "3965499425&fm=26&gp=0" + ".jpg")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
+            Assert.assertNotNull(result);
+            if (result != null) {
+                //to do something ......
+                log.debug("测试设置讲师信息成功{}", JSON.toJSONString(result));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| nickname | true | String | 讲师昵称 | 
+| actor | true | String | 讲师头衔 | 
+| passwd | true | String | 频道密码 | 
+| avatar | false | String | 头像图片地址 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true 设置讲师信息成功，false 设置讲师信息失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 11、设置聊天室禁言ip
+### 描述
+```
+设置聊天室禁言ip
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testAddBannedIP() throws IOException, NoSuchAlgorithmException {
+        LiveChatBannedIPRequest liveChatBannedIPRequest = new LiveChatBannedIPRequest();
+        List<String> bannedIPList = null;
+        try {
+            String channelId = super.createChannel();
+            liveChatBannedIPRequest.setIp("192.168.1.1")
+                    .setChannelId(channelId)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            bannedIPList = new LiveChatRoomServiceImpl().addBannedIP(liveChatBannedIPRequest);
+            Assert.assertNotNull(bannedIPList);
+            if (bannedIPList != null) {
+                //to do something ......
+                log.debug("测试设置聊天室禁言ip成功{}", JSON.toJSONString(bannedIPList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| ip | true | String | 禁言IP,如 234.22.3.34 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+返回对象是List,具体元素内容如下：
+当前所有的禁言ip列表
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 12、设置聊天室管理员信息
+### 描述
+```
+设置聊天室管理员信息
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testSetChatAdminData() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+        LiveSetChatAdminDataRequest liveSetChatAdminDataRequest = new LiveSetChatAdminDataRequest();
+        Boolean result = null;
+        try {
+            String channelId = super.createChannel();
+            liveSetChatAdminDataRequest.setChannelId(channelId)
+                    .setNickname("你个老头")
+                    .setActor("娇娇")
+                    .setAvatar(new File("/data/img/b.jpg"))
+                    .setRequestId(LiveSignUtil.generateUUID());
+            result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
+            Assert.assertNotNull(result);
+            if (result != null) {
+                //to do something ......
+                log.debug("测试设置聊天室管理员信息成功{}", JSON.toJSONString(result));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| nickname | true | String | 管理员昵称，长度不能超过8个字符 | 
+| actor | true | String | 管理员头衔，长度不能超过4个字符 | 
+| avatar | true | File | 管理员头像，支持jpg、jpeg、png三种格式，大小不能超过2Mb | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true 设置成功，false 设置失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 13、删除禁言IP/严禁词
 ### 描述
 ```
 删除禁言IP/严禁词
@@ -562,152 +852,7 @@ true 删除成功 ，false 删除失败
 
 <br /><br />
 
-## 10、查询聊天室管理员信息
-### 描述
-```
-查询聊天室管理员信息
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-### 单元测试
-```java
-	@Test
-	public void testGetChatAdminData() throws IOException, NoSuchAlgorithmException {
-        LiveGetChatAdminDataRequest liveGetChatAdminDataRequest = new LiveGetChatAdminDataRequest();
-        LiveGetChatAdminDataResponse liveGetChatAdminDataResponse = null;
-        try {
-            String channelId = super.createChannel();
-            liveGetChatAdminDataRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveGetChatAdminDataResponse = new LiveChatRoomServiceImpl().getChatAdminData(liveGetChatAdminDataRequest);
-            Assert.assertNotNull(liveGetChatAdminDataResponse);
-            if (liveGetChatAdminDataResponse != null) {
-                //to do something ......
-                log.debug("测试查询聊天室管理员信息成功{}", JSON.toJSONString(liveGetChatAdminDataResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回LiveGetChatAdminDataResponse对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| nickname | false | String | 讲师昵称 | 
-| actor | false | String | 讲师头衔 | 
-| avatar | false | String | 头像图片地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 11、查询历史聊天信息
-### 描述
-```
-查询一段时间内的聊天记录，时间格式为yyyy-MM-dd 或 yyyy-MM-dd HH:mm:ss。如未提交具体时间，只提交了日期，开始时间默认为日期当天的 00:00:00，结束时间为日期当天的23:59:59
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-### 单元测试
-```java
-	@Test
-	public void testGetHistroyChatMsg() throws IOException, NoSuchAlgorithmException {
-        LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest = new LiveGetHistoryChatMsgRequest();
-        List<LiveGetHistoryChatMsgResponse> liveGetHistoryChatMsgResponsesList = null;
-        try {
-            String channelId = super.createChannel();
-            liveGetHistoryChatMsgRequest.setChannelId(channelId)
-                    .setStartDay("2020-10-01")
-                    .setEndDay("2099-12-12")
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistroyChatMsg(
-                    liveGetHistoryChatMsgRequest);
-            Assert.assertNotNull(liveGetHistoryChatMsgResponsesList);
-            if (liveGetHistoryChatMsgResponsesList != null) {
-                //to do something ......
-                log.debug("测试查询历史聊天信息成功{}", JSON.toJSONString(liveGetHistoryChatMsgResponsesList));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回LiveGetHistoryChatMsgResponse对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| startDay | true | String | 聊天记录的开始时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
-| endDay | true | String | 聊天记录的结束时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
-| currentPage | false | Integer | 获取第几页聊天记录，默认为1 | 
-| pageSize | false | Integer | 每页记录数，默认为1000 | 
-| userType | false | String | 用户类型，可以选择多个类型，用英文逗号隔开,目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
-| status | false | String | 聊天记录状态， 审核状态，pass:已审核，censor：审核中，delete：删除 ， 默认 pass | 
-| source | false | String | 消息来源，public：群聊，extend：管理员私聊 ，默认：public | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-返回对象是List,具体元素内容如下：
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| userId | false | String | 直播账号userId | 
-| clientIP | false | String | 用户IP | 
-| content | false | String | 聊天内容 | 
-| id | false | String | 聊天消息id | 
-| image | false | String | 图片消息的图片地址 | 
-| roomId | false | Integer | 聊天记录所在的房间号 | 
-| sessionId | false | String | 场次号 | 
-| time | false | Date | 发送消息的时间戳 | 
-| source | false | String | 消息来源，目前有public(群聊)、extend（管理员私聊） | 
-| msgType | false | String | 消息类型，目前取值：redpaper: 红包消息；get_redpaper：领取红包消息；chatImg：图片消息；custom：自定义消息（通过socket发送的自定义消息）；reward：打赏消息；customerMessage：自定义消息（通过http接口发送的自定义消息） 为空（msgType=""）时表示普通聊天消息； | 
-| status | false | String | 审核状态，pass:已审核，censor：审核中，delete：删除 | 
-| userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
-
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 12、删除单条聊天记录
+## 14、删除单条聊天记录
 ### 描述
 ```
 根据聊天的id删除对应聊天记录
@@ -780,184 +925,6 @@ true 删除成功 ，false 删除失败
 ### 返回对象描述
 
 true 删除成功， false 删除失败
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 13、设置聊天室管理员信息
-### 描述
-```
-设置聊天室管理员信息
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-### 单元测试
-```java
-	@Test
-	public void testSetChatAdminData() throws IOException, NoSuchAlgorithmException, URISyntaxException {
-        LiveSetChatAdminDataRequest liveSetChatAdminDataRequest = new LiveSetChatAdminDataRequest();
-        Boolean result = null;
-        try {
-            String channelId = super.createChannel();
-            liveSetChatAdminDataRequest.setChannelId(channelId)
-                    .setNickname("你个老头")
-                    .setActor("娇娇")
-                    .setAvatar(new File("/data/img/b.jpg"))
-                    .setRequestId(LiveSignUtil.generateUUID());
-            result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
-            Assert.assertNotNull(result);
-            if (result != null) {
-                //to do something ......
-                log.debug("测试设置聊天室管理员信息成功{}", JSON.toJSONString(result));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| nickname | true | String | 管理员昵称，长度不能超过8个字符 | 
-| actor | true | String | 管理员头衔，长度不能超过4个字符 | 
-| avatar | true | File | 管理员头像，支持jpg、jpeg、png三种格式，大小不能超过2Mb | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-true 设置成功，false 设置失败
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 14、查询咨询提问记录
-### 描述
-```
-查询咨询提问记录
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-### 单元测试
-```java
-	@Test
-	public void testGetConsultingRecord() throws IOException, NoSuchAlgorithmException {
-        LiveGetConsultingRecordRequest liveGetConsultingRecordRequest = new LiveGetConsultingRecordRequest();
-        List<LiveGetConsultingRecordResponse> responses = null;
-        try {
-            String channelId = super.createChannel();
-            liveGetConsultingRecordRequest.setChannelId(channelId)
-                    .setBegin(0)
-                    .setEnd(10)
-                    .setRequestId(LiveSignUtil.generateUUID());
-            responses = new LiveChatRoomServiceImpl().getConsultingRecord(liveGetConsultingRecordRequest);
-            Assert.assertNotNull(responses);
-            if (responses != null) {
-                //to do something ......
-                log.debug("测试查询咨询提问记录成功{}", JSON.toJSONString(responses));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-//    /**
-//     * 查询频道的问答统计结果
-//     * 此功能已经废弃
-//    * @throws IOException
-//     * @throws NoSuchAlgorithmException
-//     */
-//    @Test
-//    public void testGetQuestionStatistical() throws IOException, NoSuchAlgorithmException {
-//        LiveGetQuestionStatisticalRequest liveGetQuestionStatisticalRequest = new LiveGetQuestionStatisticalRequest();
-//        List<LiveGetQuestionStatisticalResponse> result = null;
-//        try {
-//            String channelId = super.createChannel();
-//            liveGetQuestionStatisticalRequest.setChannelId(channelId)
-//                    .setStartTime("2020-10-01 00:00:00")
-//                    .setEndTime("2020-10-30 12:20:20")
-//                    .setRequestId(LiveSignUtil.generateUUID());
-//            result = new LiveChatRoomServiceImpl().getQuestionStatistical(liveGetQuestionStatisticalRequest);
-//            Assert.assertNotNull(result);
-//            if (result != null) {
-//                //to do something ......
-//                log.debug("测试查询咨询提问记录成功{}", JSON.toJSONString(result));
-////            log.debug("第一个元素 {} ", result.get(0));
-//            }
-//        } catch (PloyvSdkException e) {
-//            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-//            log.error(e.getMessage(), e);
-//            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-//            throw e;
-//        } catch (Exception e) {
-//            log.error("SDK调用异常", e);
-//            throw e;
-//        }
-//    }
-```
-### 单元测试说明
-1、请求正确，返回LiveGetConsultingRecordResponse对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ,错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| begin | false | Integer | 起始下标，从0开始 | 
-| end | false | Integer | 结束下标，-1表示不分页 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-返回对象是List,具体元素内容如下：
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| id | false | String | 信息id | 
-| content | false | String | 内容 | 
-| time | false | Date | 发言时间 | 
-| user | false | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv28)】 | 
-| event | false | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
-| userId | false | String | 提问者ID | 
-
-<h6 id="polyv28"><a href="#/channelOperate?id=polyv28"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| nick | false | String | 观众昵称 | 
-| pic | false | String | 观众头像 | 
-| userId | false | String | 用户唯一标示 | 
-| sessionId | false | String | 场次号 | 
-| channelId | false | String | 频道号 | 
-| banned | false | Boolean | 是否禁言 | 
-| userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
-
 <br /><br />
 
 ------------------

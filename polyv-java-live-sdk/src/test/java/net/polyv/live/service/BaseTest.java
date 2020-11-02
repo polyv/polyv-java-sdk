@@ -8,12 +8,19 @@ import java.util.List;
 
 import org.junit.Assert;
 
+import com.alibaba.fastjson.JSON;
+
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.exception.PloyvSdkException;
 import net.polyv.live.config.InitConfig;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
+import net.polyv.live.entity.channel.operate.LiveDeleteSonChannelRequest;
+import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListRequest;
+import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
+import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoListRequest;
 import net.polyv.live.entity.channel.playback.LiveChannelVideoListResponse;
 import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest;
@@ -115,6 +122,75 @@ public class BaseTest {
 //                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0")
 //                .setRequestId(LiveSignUtil.generateUUID());
 //        return createSonChannel(liveCreateSonChannelRequest);
+    }
+    
+    /**
+     * 获取需要删除的子频道id
+     * @return
+     */
+    protected List<String> getDelSonChannelIds() {
+        LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
+        LiveSonChannelInfoListResponse liveSonChannelInfoResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveSonChannelInfoListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().sonChannelInfoList(
+                    liveSonChannelInfoListRequest);
+            Assert.assertNotNull(liveSonChannelInfoResponse);
+            if (liveSonChannelInfoResponse != null) {
+                //to do something ......
+                log.debug("查询频道号下所有子频道信息成功{}", JSON.toJSONString(liveSonChannelInfoResponse));
+                List<String> sonChannelIds = new ArrayList<>();
+                for (LiveSonChannelInfoResponse temp : liveSonChannelInfoResponse.getSonChannelInfos()) {
+                    sonChannelIds.add(temp.getAccount());
+                }
+                return sonChannelIds;
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+        }
+        return new ArrayList<>();
+    }
+    
+    /**
+     * 删除子频道
+     * @param sonChannelId
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    protected void deleteSonChannel(String sonChannelId) throws IOException, NoSuchAlgorithmException {
+        LiveDeleteSonChannelRequest liveDeleteSonChannelRequest = new LiveDeleteSonChannelRequest();
+        Boolean liveDeleteSonChannelResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveDeleteSonChannelRequest.setChannelId(channelId)
+                    .setAccount(sonChannelId)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveDeleteSonChannelResponse = new LiveChannelOperateServiceImpl().deleteSonChannel(
+                    liveDeleteSonChannelRequest);
+            Assert.assertNotNull(liveDeleteSonChannelResponse);
+            if (liveDeleteSonChannelResponse) {
+                //to do something ......
+                log.debug("测试删除子频道成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
     }
     
     /**

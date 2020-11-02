@@ -554,7 +554,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
         try {
             //准备测试数据
             String channelId = createChannel();
-            
+            List<String> sonChannelIds = getDelSonChannelIds();
+            for(String temp:sonChannelIds){
+                deleteSonChannel(temp);
+            }
+    
             liveCreateSonChannelRequest.setChannelId(channelId)
                     .setRole("Guest")
                     .setNickname("sadboy")
@@ -591,6 +595,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
         try {
             //准备测试数据
             String channelId = createChannel();
+            List<String> sonChannelIds = getDelSonChannelIds();
+            for(String temp:sonChannelIds){
+                deleteSonChannel(temp);
+            }
             
             liveCreateSonChannelRequest.setChannelId(channelId)
                     .setRole(null)

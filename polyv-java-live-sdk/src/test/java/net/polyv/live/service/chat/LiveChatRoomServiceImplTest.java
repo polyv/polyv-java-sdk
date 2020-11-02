@@ -162,9 +162,9 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         LiveBadWordResponse liveBadWordResponse = null;
         try {
             String channelId = super.createChannel();
-            liveBadWordRequest
-                .setChannelId(channelId)
-                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"})).setRequestId(LiveSignUtil.generateUUID());
+            liveBadWordRequest.setChannelId(channelId)
+                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"}))
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
             Assert.assertNotNull(liveBadWordResponse);
             if (liveBadWordResponse != null) {
@@ -194,7 +194,8 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         List<String> result = null;
         try {
             String channelId = super.createChannel();
-            liveGetBannedListRequest.setChannelId(channelId).setType(LiveConstant.BannedType.IP.getType())
+            liveGetBannedListRequest.setChannelId(channelId)
+                    .setType(LiveConstant.BannedType.IP.getType())
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
             Assert.assertNotNull(result);
@@ -437,9 +438,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         //获取已经存在的消息id结束
         
         try {
-            liveChatDelSingleMsgRequest.setId(msgId)
-                    .setChannelId(channelId)
-                    .setRequestId(LiveSignUtil.generateUUID());
+            liveChatDelSingleMsgRequest.setId(msgId).setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
             Assert.assertNotNull(result);
             if (result != null) {
@@ -468,21 +467,32 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         LiveSetChatAdminDataRequest liveSetChatAdminDataRequest = new LiveSetChatAdminDataRequest();
         Boolean result = null;
         try {
-            File file = new File("/data/log");
+            File file = new File("/data/img");
             if (file.exists()) {
                 for (String temp : file.list()) {
-                    log.debug(file.getPath()+"============ 文件名字  {}================", temp);
+                    log.debug(file.getPath() + "============ 文件名字  {}================", temp);
                 }
-            }else{
+            } else {
                 log.debug("============ 目录不存在================");
                 boolean mkdirs = file.mkdirs();
-                log.debug("============ 创建目录 ================"+mkdirs);
+                log.debug("============ 创建目录 ================" + mkdirs);
+            }
+            log.debug("=======================================");
+            file = new File("/data");
+            if (file.exists()) {
+                for (String temp : file.list()) {
+                    log.debug(file.getPath() + "============ 文件名字  {}================", temp);
+                }
+            } else {
+                log.debug("============ 目录不存在================");
+                boolean mkdirs = file.mkdirs();
+                log.debug("============ 创建目录 ================" + mkdirs);
             }
             String channelId = super.createChannel();
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setNickname("你个老头")
                     .setActor("娇娇")
-                    .setAvatar(new File("/data/log/b.jpg"))
+                    .setAvatar(new File("/data/img/b.jpg"))
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
             Assert.assertNotNull(result);
@@ -563,5 +573,5 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             throw e;
         }
     }
-
+    
 }

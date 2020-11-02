@@ -391,7 +391,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                     .setStartDay("2020-10-01")
                     .setEndDay("2099-12-12")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistroyChatMsg(
+            liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistoryChatMsg(
                     liveGetHistoryChatMsgRequest);
             Assert.assertNotNull(liveGetHistoryChatMsgResponsesList);
             if (liveGetHistoryChatMsgResponsesList != null) {

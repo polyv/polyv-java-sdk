@@ -474,14 +474,15 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                     log.debug("============ 文件名字  {}================", temp);
                 }
             }else{
+                log.debug("============ 目录不存在================");
                 boolean mkdirs = file.mkdirs();
-                log.debug("============ 目录不存在================"+mkdirs);
+                log.debug("============ 创建目录 ================"+mkdirs);
             }
             String channelId = super.createChannel();
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setNickname("你个老头")
                     .setActor("娇娇")
-                    .setAvatar(new File("/data/img/b.jpg"))
+                    .setAvatar(new File("/data/log/b.jpg"))
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
             Assert.assertNotNull(result);

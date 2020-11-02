@@ -468,7 +468,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         LiveSetChatAdminDataRequest liveSetChatAdminDataRequest = new LiveSetChatAdminDataRequest();
         Boolean result = null;
         try {
-            File file = new File("/data");
+            File file = new File("\\data\\img");
             if (file.exists()) {
                 for (String temp : file.list()) {
                     log.debug("============ 文件名字  {}================", temp);

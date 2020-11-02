@@ -471,7 +471,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             File file = new File("/data/log");
             if (file.exists()) {
                 for (String temp : file.list()) {
-                    log.debug("============ 文件名字  {}================", temp);
+                    log.debug(file.getPath()+"============ 文件名字  {}================", temp);
                 }
             }else{
                 log.debug("============ 目录不存在================");

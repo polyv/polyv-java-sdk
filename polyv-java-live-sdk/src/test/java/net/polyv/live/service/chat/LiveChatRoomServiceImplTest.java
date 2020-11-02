@@ -472,6 +472,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
                 for (String temp : file.list()) {
                     log.debug(file.getPath() + "============ 文件名字  {}================", temp);
                 }
+                log.debug("============ 目录存在================");
             } else {
                 log.debug("============ 目录不存在================");
                 boolean mkdirs = file.mkdirs();

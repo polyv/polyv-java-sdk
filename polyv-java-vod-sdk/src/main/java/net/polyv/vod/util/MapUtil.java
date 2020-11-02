@@ -126,7 +126,7 @@ public class MapUtil {
                 String temp = (key.endsWith("_") && key.length() > 1) ? key.substring(0, key.length() - 1) : key;
                 stringBuilder.append(keyLower ? temp.toLowerCase() : temp)
                         .append("=")
-                        .append(valueUrlEncode ? URLEncoder.encode(value, "utf-8").replace("+", "%20") : value)
+                        .append(valueUrlEncode ? URLEncoder.encode(value,  StandardCharsets.UTF_8.name()).replace("+", "%20") : value)
                         .append("&");
             } catch (UnsupportedEncodingException e) {
                 LOG.error(e.getMessage(), e);

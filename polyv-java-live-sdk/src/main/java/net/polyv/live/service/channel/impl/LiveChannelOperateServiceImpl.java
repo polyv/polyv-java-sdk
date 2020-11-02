@@ -61,7 +61,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     @Override
     public LiveChannelResponse createChannel(LiveChannelRequest liveChannelRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveChannelRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveChannelRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.CHANNEL_CREATE_URL;
         LiveChannelResponse liveChannelResponse = this.basePost(url, liveChannelRequest, LiveChannelResponse.class);
         return liveChannelResponse;
@@ -166,7 +166,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     @Override
     public Boolean updateChannelPassword(LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveChannelPasswordSettingRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveChannelPasswordSettingRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PWD_SET_URL, liveChannelPasswordSettingRequest.getUserId());
         String updateChannelPasswordResponse = this.basePost(url, liveChannelPasswordSettingRequest, String.class);
         return "true".equals(updateChannelPasswordResponse);
@@ -183,7 +183,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     @Override
     public Boolean deleteChannel(LiveDeleteChannelRequest liveDeleteChannelRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveDeleteChannelRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveDeleteChannelRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_DELETE_URL, liveDeleteChannelRequest.getChannelId());
         String liveDeleteChannelResponse = this.basePost(url, liveDeleteChannelRequest, String.class);
         return "true".equals(liveDeleteChannelResponse);
@@ -268,7 +268,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public LiveChannelAuthTokenResponse channelAuthToken(LiveChannelAuthTokenRequest liveCreateChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_AUTH_TOKEN_URL;
-        liveCreateChannelTokenRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveCreateChannelTokenRequest.setUserId(LiveGlobalConfig.getUserId());
         LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = this.basePost(url, liveCreateChannelTokenRequest,
                 LiveChannelAuthTokenResponse.class);
         return liveChannelAuthTokenResponse;

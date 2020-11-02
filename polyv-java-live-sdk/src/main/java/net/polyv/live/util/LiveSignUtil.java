@@ -55,12 +55,12 @@ public class LiveSignUtil {
             throws NoSuchAlgorithmException {
         params.put("appId", appId);
         // 处理参数，计算MD5哈希值
-        log.debug("参与签名参数：" + JSON.toJSONString(params));
+        log.debug("参与签名参数：{}" , JSON.toJSONString(params));
         String concatStr = concatParams(params);
         String plain = appSecret + concatStr + appSecret;
-        log.debug("签名原始字符串：" + plain);
+        log.debug("签名原始字符串：{}" , plain);
         String encrypted = md5Hex(plain).toUpperCase();
-        log.debug("签名结果：" + encrypted);
+        log.debug("签名结果： {}" , encrypted);
         // 32位大写MD5值
         return encrypted;
     }
@@ -165,7 +165,7 @@ public class LiveSignUtil {
             String temp = (key.endsWith("_") && key.length() > 1) ? key.substring(0, key.length() - 1) : key;
             stringBuilder.append(keyLower ? temp.toLowerCase() : temp)
                     .append("=")
-                    .append(valueUrlEncode ? URLEncoder.encode(value, "utf-8").replace("+", "%20") : value)
+                    .append(valueUrlEncode ? URLEncoder.encode(value,  StandardCharsets.UTF_8.name()).replace("+", "%20") : value)
                     .append("&");
         }
         if (stringBuilder.length() > 0) {

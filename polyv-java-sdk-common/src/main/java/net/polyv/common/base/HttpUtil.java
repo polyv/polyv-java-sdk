@@ -4,6 +4,7 @@ package net.polyv.common.base;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -37,7 +38,7 @@ public class HttpUtil {
     
     public static final String  SOURCE="source" ;
     public static final String  LIVE_SDK="live_sdk";
-    public static final String UTF8 = "UTF-8";
+    public static final String UTF8 = StandardCharsets.UTF_8.name();
     
     /** 
      * HTTP POST 请求处理逻辑，参数提交方式为form表单形式
@@ -182,7 +183,7 @@ public class HttpUtil {
         httpPost.addHeader(SOURCE, LIVE_SDK);
         // 设置参数到请求对象中
         StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
-        // "utf-8"
+        //  StandardCharsets.UTF_8.name()
         stringEntity.setContentEncoding(encoding);
         httpPost.setEntity(stringEntity);
         // 执行请求操作，并拿到结果（同步阻塞）
@@ -242,7 +243,7 @@ public class HttpUtil {
         if (StringUtils.isNotBlank(pathVariable)) {
             url = String.format(url, pathVariable);
         }
-        StringBuffer paramStringBuffer = new StringBuffer();
+        StringBuilder paramStringBuffer = new StringBuilder();
         if (null != params) {
             Iterator<Map.Entry<String, Object>> mapIterator = params.entrySet().iterator();
             while (mapIterator.hasNext()) {

@@ -1,6 +1,5 @@
 package net.polyv.live.config;
 
-import lombok.Data;
 import net.polyv.common.base.HttpClientUtil;
 import net.polyv.common.exception.GlobalUncaughtExceptionHandler;
 
@@ -8,13 +7,25 @@ import net.polyv.common.exception.GlobalUncaughtExceptionHandler;
  * 直播全局配置类
  * @author: thomas
  **/
-@Data
+ 
 public class LiveGlobalConfig {
     private LiveGlobalConfig(){};
     
-    public static String APP_ID = "";
-    public static String USER_ID = "";
-    public static String APP_SECRET = "";
+    private static String APP_ID = "";
+    private static String USER_ID = "";
+    private static String APP_SECRET = "";
+    
+    public static String getAppId() {
+        return APP_ID;
+    }
+    
+    public static String getUserId() {
+        return USER_ID;
+    }
+    
+    public static String getAppSecret() {
+        return APP_SECRET;
+    }
     
     /**
      *  系统全局初始化

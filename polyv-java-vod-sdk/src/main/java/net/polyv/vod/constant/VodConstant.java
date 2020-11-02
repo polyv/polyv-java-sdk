@@ -9,7 +9,8 @@ import java.util.Map;
 public class VodConstant {
     public  final static Integer ERROR_CODE = 400;
     
-    public static Map<String,String> ERROR_CODE_MAP = new HashMap();
+    public final static Map<String,String> ERROR_CODE_MAP = new HashMap();
+    
     static{
         ERROR_CODE_MAP.put("0","无错误");
         ERROR_CODE_MAP.put("1","找不到writetoken关联的user");

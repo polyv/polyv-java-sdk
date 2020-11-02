@@ -85,13 +85,13 @@ public class LiveBaseService {
 //        if (StringUtils.isBlank(e.getRequestId())) {
 //            e.setRequestId(LiveSignUtil.generateUUID());
 //        }
-        e.setAppId(LiveGlobalConfig.APP_ID);
+        e.setAppId(LiveGlobalConfig.getAppId());
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
         Map<String, String> paramMap = MapUtil.objectToMap(e);
         paramMap = MapUtil.filterNullValue(paramMap);
-        String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.APP_ID, LiveGlobalConfig.APP_SECRET);
+        String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.getAppId(), LiveGlobalConfig.getAppSecret());
         e.setSign(sign);
         validateBean(e);
         String queryStr = MapUtil.mapJoinNotEncode(paramMap);
@@ -181,13 +181,13 @@ public class LiveBaseService {
 //        if (StringUtils.isBlank(e.getRequestId())) {
 //            e.setRequestId(LiveSignUtil.generateUUID());
 //        }
-        e.setAppId(LiveGlobalConfig.APP_ID);
+        e.setAppId(LiveGlobalConfig.getAppId());
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
         Map<String, String> paramMap = MapUtil.objectToMap(e);
         paramMap = MapUtil.filterNullValue(paramMap);
-        String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.APP_ID, LiveGlobalConfig.APP_SECRET);
+        String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.getAppId(), LiveGlobalConfig.getAppSecret());
         e.setSign(sign);
         validateBean(e);
         String response = HttpUtil.sendPostDataByMap(url, paramMap, Consts.UTF_8.toString());
@@ -278,11 +278,11 @@ public class LiveBaseService {
 //        if (StringUtils.isBlank(e.getRequestId())) {
 //            e.setRequestId(LiveSignUtil.generateUUID());
 //        }
-        e.setAppId(LiveGlobalConfig.APP_ID);
+        e.setAppId(LiveGlobalConfig.getAppId());
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
-        String sign = LiveSignUtil.setLiveSign(signMap, LiveGlobalConfig.APP_ID, LiveGlobalConfig.APP_SECRET);
+        String sign = LiveSignUtil.setLiveSign(signMap, LiveGlobalConfig.getAppId(), LiveGlobalConfig.getAppSecret());
         e.setSign(sign);
         validateBean(e);
         url = url + "?" + MapUtil.mapJoinNotEncode(signMap);
@@ -339,13 +339,13 @@ public class LiveBaseService {
 //        if (StringUtils.isBlank(e.getRequestId())) {
 //            e.setRequestId(LiveSignUtil.generateUUID());
 //        }
-        e.setAppId(LiveGlobalConfig.APP_ID);
+        e.setAppId(LiveGlobalConfig.getAppId());
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
         Map<String, String> paramMap = MapUtil.objectToMap(e);
         paramMap = MapUtil.filterNullValue(paramMap);
-        String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.APP_ID, LiveGlobalConfig.APP_SECRET);
+        String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.getAppId(), LiveGlobalConfig.getAppSecret());
         e.setSign(sign);
         validateBean(e);
         String response = HttpUtil.sendUploadFile(url, paramMap, fileMap, Consts.UTF_8.toString());

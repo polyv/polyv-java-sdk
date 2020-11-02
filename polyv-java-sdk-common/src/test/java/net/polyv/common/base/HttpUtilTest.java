@@ -1,6 +1,7 @@
 package net.polyv.common.base;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -55,7 +56,7 @@ public class HttpUtilTest {
 //                public void run() {
 //                    String url = "https://www.w3school.com.cn/index.html";
 //                    url = "http://47.115.173.234:8001/get";
-//                    String encoding = "utf-8";
+//                    String encoding =  StandardCharsets.UTF_8.name();
 //                    String data = null;
 //                    try {
 //                        data = HttpUtil.sendGetData(url, encoding);
@@ -80,7 +81,7 @@ public class HttpUtilTest {
     public void testHttpGet() throws Exception {
         String url = "https://www.w3school.com.cn/index.html";
         url = "http://47.115.173.234:8001/get";
-        String encoding = "utf-8";
+        String encoding =  StandardCharsets.UTF_8.name();
         String data = HttpUtil.sendGetData(url, encoding);
         Assert.assertNotNull(data);
         System.out.println(data);
@@ -96,7 +97,7 @@ public class HttpUtilTest {
         Map<String, String> param = new HashMap<String, String>();
         param.put("name", "thomas");
         param.put("age", "23");
-        String data = HttpUtil.sendPostDataByMap(url, param, "utf-8");
+        String data = HttpUtil.sendPostDataByMap(url, param,  StandardCharsets.UTF_8.name());
         System.out.println(data);
         
     }
@@ -111,7 +112,7 @@ public class HttpUtilTest {
         list.add("hello");
         list.add("thomas");
         list.add("thomas is good man");
-        String data = HttpUtil.sendPostDataByJson(url, JSON.toJSONString(list), "utf-8");
+        String data = HttpUtil.sendPostDataByJson(url, JSON.toJSONString(list),  StandardCharsets.UTF_8.name());
         System.out.println(data);
     }
 

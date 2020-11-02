@@ -56,7 +56,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     @Override
     public Boolean updateChannelPublisher(LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveUpdateChannelPublisherRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveUpdateChannelPublisherRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PUBLISHER_SET_URL,
                 liveUpdateChannelPublisherRequest.getUserId());
         String liveUpdateChannelPublisherResponse = this.basePost(url, liveUpdateChannelPublisherRequest, String.class);

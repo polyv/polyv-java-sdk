@@ -79,7 +79,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public LiveChannelAuthExternalResponse updateChannelAuthExternal(
             LiveChannelAuthExternalRequest liveChannelAuthExternalRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveChannelAuthExternalRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveChannelAuthExternalRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_AUTH_EXTERNAL_URL, liveChannelAuthExternalRequest.getUserId());
         List<LiveChannelAuthExternalResponse.ChannelAuthExternal> channelAuthExternals = this.basePostReturnArray(url,
                 liveChannelAuthExternalRequest, LiveChannelAuthExternalResponse.ChannelAuthExternal.class);
@@ -99,7 +99,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     @Override
     public LiveChannelAuthCustomResponse updateChannelAuthCustom(
             LiveChannelAuthCustomRequest liveChannelAuthCustomRequest) throws IOException, NoSuchAlgorithmException {
-        liveChannelAuthCustomRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveChannelAuthCustomRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_AUTH_CUSTOM_URL, liveChannelAuthCustomRequest.getUserId());
         List<LiveChannelAuthCustomResponse.ChannelAuthExternal> channelAuthExternals = this.basePostReturnArray(url,
                 liveChannelAuthCustomRequest, LiveChannelAuthCustomResponse.ChannelAuthExternal.class);

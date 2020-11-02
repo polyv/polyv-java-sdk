@@ -33,7 +33,7 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
     @Override
     public Boolean resumeChannelStream(LiveResumeChannelStreamRequest liveResumeChannelStreamRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveResumeChannelStreamRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveResumeChannelStreamRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_RESUME_URL,
                 liveResumeChannelStreamRequest.getChannelId());
         String liveResumeChannelStreamResponse = this.basePost(url, liveResumeChannelStreamRequest, String.class);
@@ -52,7 +52,7 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
     @Override
     public Boolean cutoffChannelStream(LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveCutoffChannelStreamRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveCutoffChannelStreamRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_CUTOFF_URL,
                 liveCutoffChannelStreamRequest.getChannelId());
         String liveCutoffChannelStreamResponse = this.basePost(url, liveCutoffChannelStreamRequest, String.class);

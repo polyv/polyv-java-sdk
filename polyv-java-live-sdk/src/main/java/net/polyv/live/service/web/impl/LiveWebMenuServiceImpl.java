@@ -28,7 +28,7 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
     @Override
     public Boolean updateChannelMenu(LiveUpdateChannelMenuRequest liveUpdateChannelMenuRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveUpdateChannelMenuRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveUpdateChannelMenuRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_MENU_SET_URL, liveUpdateChannelMenuRequest.getUserId(),
                 liveUpdateChannelMenuRequest.getChannelId());
         String liveUpdateChannelMenuResponse = this.basePost(url, liveUpdateChannelMenuRequest, String.class);

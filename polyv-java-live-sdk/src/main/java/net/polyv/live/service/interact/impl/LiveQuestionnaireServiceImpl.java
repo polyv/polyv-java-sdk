@@ -75,7 +75,7 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
             liveQuestionnaireDetailSetRequest.setRequestId(LiveSignUtil.generateUUID());
         }
         
-        liveQuestionnaireDetailSetRequest.setAppId(LiveGlobalConfig.APP_ID);
+        liveQuestionnaireDetailSetRequest.setAppId(LiveGlobalConfig.getAppId());
         if (StringUtils.isBlank(liveQuestionnaireDetailSetRequest.getTimestamp())) {
             liveQuestionnaireDetailSetRequest.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }

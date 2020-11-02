@@ -68,9 +68,9 @@ public class VodBaseService {
             if (StringUtils.isBlank(e.getPtime())) {
                 e.setPtime(String.valueOf(System.currentTimeMillis()));
             }
-            e.setUserid(VodGlobalConfig.USER_ID);
+            e.setUserid(VodGlobalConfig.getUserId());
             paramMap = MapUtil.objectToMap(e);
-            String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.SECRET_KEY);
+            String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.getSecretKey());
             e.setSign(sign);
         } else {
             // 以 http://v.polyv.net开始的URL地址，对象参数不做任何处理直接转换MAP传输
@@ -153,12 +153,12 @@ public class VodBaseService {
         }
         url = url.trim();
         if (url.startsWith(VodURL.BASE_URI)) {
-            e.setUserid(VodGlobalConfig.USER_ID);
+            e.setUserid(VodGlobalConfig.getUserId());
             if (StringUtils.isBlank(e.getPtime())) {
                 e.setPtime(String.valueOf(System.currentTimeMillis()));
             }
             paramMap = MapUtil.objectToMap(e);
-            String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.SECRET_KEY);
+            String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.getSecretKey());
             e.setSign(sign);
         } else {
              // 以 http://v.polyv.net开始的URL地址，对象参数不做任何处理直接转换MAP传输
@@ -223,12 +223,12 @@ public class VodBaseService {
         }
         url = url.trim();
         if (url.startsWith(VodURL.BASE_URI)) {
-            e.setUserid(VodGlobalConfig.USER_ID);
+            e.setUserid(VodGlobalConfig.getUserId());
             if (StringUtils.isBlank(e.getPtime())) {
                 e.setPtime(String.valueOf(System.currentTimeMillis()));
             }
             paramMap = MapUtil.objectToMap(e);
-            String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.SECRET_KEY);
+            String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.getSecretKey());
             e.setSign(sign);
         } else {
             // 以 http://v.polyv.net开始的URL地址，对象参数不做任何处理直接转换MAP传输

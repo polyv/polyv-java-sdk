@@ -96,7 +96,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     @Override
     public LiveBadWordResponse addBadWord(LiveBadWordRequest liveBadWordRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHAT_SET_BAD_WORD_URL, LiveGlobalConfig.USER_ID);
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_SET_BAD_WORD_URL, LiveGlobalConfig.getUserId());
         return super.basePost(url, liveBadWordRequest, LiveBadWordResponse.class);
     }
     

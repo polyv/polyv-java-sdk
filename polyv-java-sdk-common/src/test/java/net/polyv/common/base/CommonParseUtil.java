@@ -122,12 +122,14 @@ public class CommonParseUtil {
         throw new RuntimeException(fieldType + "类型错误");
     }
     
-    private static String readFileString(String path) {
+    private static String readFileString(String path) throws IOException {
         StringBuffer stringBuffer = new StringBuffer();
+        InputStreamReader inputReader =null;
+        BufferedReader bf = null ;
         try {
             File file = new File(path);
-            InputStreamReader inputReader = new InputStreamReader(new FileInputStream(file));
-            BufferedReader bf = new BufferedReader(inputReader);
+              inputReader = new InputStreamReader(new FileInputStream(file));
+              bf = new BufferedReader(inputReader);
             // 按行读取字符串
             String str;
             while ((str = bf.readLine()) != null) {
@@ -137,6 +139,9 @@ public class CommonParseUtil {
             inputReader.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            inputReader.close();
+            bf.close();
         }
         return stringBuffer.toString();
     }

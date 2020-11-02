@@ -45,7 +45,7 @@ public class VodSignUtil {
      * @throws NoSuchAlgorithmException 异常异常
      */
     public static String getSign(Map<String, String> params, String secretKey) throws NoSuchAlgorithmException {
-        log.debug("参与签名参数：" + JSON.toJSONString(params));
+        log.debug("参与签名参数：{}" , JSON.toJSONString(params));
         List<String> keys = new ArrayList<>(params.keySet());
         List<String> tmp = new ArrayList<>();
         Collections.sort(keys);
@@ -122,7 +122,7 @@ public class VodSignUtil {
             String temp = (key.endsWith("_") && key.length() > 1) ? key.substring(0, key.length() - 1) : key;
             stringBuilder.append(keyLower ? temp.toLowerCase() : temp)
                     .append("=")
-                    .append(valueUrlEncode ? URLEncoder.encode(value, "utf-8").replace("+", "%20") : value)
+                    .append(valueUrlEncode ? URLEncoder.encode(value,  StandardCharsets.UTF_8.name()).replace("+", "%20") : value)
                     .append("&");
         }
         if (stringBuilder.length() > 0) {

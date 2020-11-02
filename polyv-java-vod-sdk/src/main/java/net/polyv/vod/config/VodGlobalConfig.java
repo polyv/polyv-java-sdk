@@ -10,23 +10,40 @@ public class VodGlobalConfig {
     /**
      * 点播userId
      */
-    public static String USER_ID;
+    private static String USER_ID;
     
     /**
      * 写入密钥
      */
-    public static String WRITE_TOKEN;
+    private static String WRITE_TOKEN;
     
     /**
      * 读取数据密钥
      */
-    public static String READ_TOKEN;
+    private static String READ_TOKEN;
     
     /**
      * 鉴权密钥
      */
-    public static String SECRET_KEY;
+    private static String SECRET_KEY;
     
+    
+    
+    public static String getUserId() {
+        return USER_ID;
+    }
+    
+    public static String getWriteToken() {
+        return WRITE_TOKEN;
+    }
+    
+    public static String getReadToken() {
+        return READ_TOKEN;
+    }
+    
+    public static String getSecretKey() {
+        return SECRET_KEY;
+    }
     
     /**
      * 点播业务全局初始化

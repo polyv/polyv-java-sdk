@@ -119,7 +119,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
     @Override
     public LiveChannelVideoListResponse listChannelVideo(LiveChannelVideoListRequest liveChannelVideoListRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveChannelVideoListRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveChannelVideoListRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_RECORD_FILES_URL, liveChannelVideoListRequest.getChannelId());
         LiveChannelVideoListResponse.ChannelVedioInfo[] channelVedioInfos = this.baseGet(url,
                 liveChannelVideoListRequest, LiveChannelVideoListResponse.ChannelVedioInfo[].class);
@@ -141,7 +141,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
     @Override
     public String convertChannelVideo(LiveConvertChannelVideoRequest liveConvertChannelVideoRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveConvertChannelVideoRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveConvertChannelVideoRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_RECORD_FILE_CONVERT_URL,
                 liveConvertChannelVideoRequest.getChannelId());
         String liveConvertChannelVideoResponse = this.basePost(url, liveConvertChannelVideoRequest, String.class);
@@ -175,7 +175,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
     @Override
     public String channelPlayBackEnabledSetting(LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveChannelPlaybackEnabledRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveChannelPlaybackEnabledRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PLAYBACK_SET_URL,
                 liveChannelPlaybackEnabledRequest.getUserId());
         Integer liveChannelPlaybackEnabledResponse = this.basePost(url, liveChannelPlaybackEnabledRequest, Integer.class);

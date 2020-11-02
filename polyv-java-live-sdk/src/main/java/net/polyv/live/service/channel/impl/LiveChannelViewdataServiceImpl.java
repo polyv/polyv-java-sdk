@@ -92,7 +92,7 @@ public class LiveChannelViewdataServiceImpl extends LiveBaseService implements I
     @Override
     public LiveListChannelSummaryResponse listChannelSummary(
             LiveListChannelSummaryRequest liveListChannelSummaryRequest) throws IOException, NoSuchAlgorithmException {
-        liveListChannelSummaryRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveListChannelSummaryRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SUMMARY_LIST_GET_URL,
                 liveListChannelSummaryRequest.getUserId());
         LiveListChannelSummaryResponse.ChannelSummary[] channelSummaries = this.basePost(url,

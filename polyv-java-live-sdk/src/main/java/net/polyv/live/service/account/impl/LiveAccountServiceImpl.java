@@ -124,7 +124,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     @Override
     public Boolean updateStreamCallbackUrl(LiveAccountStreamCallbackRequest liveAccountStreamCallbackRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveAccountStreamCallbackRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveAccountStreamCallbackRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_STREAM_CALLBACK_URL,
                 liveAccountStreamCallbackRequest.getUserId());
         String liveAccountStreamCallbackResponse = this.basePost(url, liveAccountStreamCallbackRequest, String.class);
@@ -142,7 +142,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     @Override
     public Boolean updatePlaybackCallbackUrl(LiveAccountPlaybackCallbackRequest liveAccountPlaybackCallbackRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveAccountPlaybackCallbackRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveAccountPlaybackCallbackRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_PLAYBACK_CALLBACK_URL,
                 liveAccountPlaybackCallbackRequest.getUserId());
         String liveAccountPlaybackCallbackResponse = this.basePost(url, liveAccountPlaybackCallbackRequest,
@@ -161,7 +161,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     @Override
     public Boolean updateRecordCallbackUrl(LiveAccountRecordCallbackRequest liveAccountRecordCallbackRequest)
             throws IOException, NoSuchAlgorithmException {
-        liveAccountRecordCallbackRequest.setUserId(LiveGlobalConfig.USER_ID);
+        liveAccountRecordCallbackRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_RECORD_CALLBACK_URL,
                 liveAccountRecordCallbackRequest.getUserId());
         String liveAccountRecordCallbackResponse = this.basePost(url, liveAccountRecordCallbackRequest, String.class);

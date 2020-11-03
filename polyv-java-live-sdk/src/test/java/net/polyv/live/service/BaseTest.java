@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.junit.Assert;
 
@@ -17,6 +18,7 @@ import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
+import net.polyv.live.entity.channel.operate.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
@@ -84,9 +86,11 @@ public class BaseTest {
      * @throws NoSuchAlgorithmException 异常
      */
     protected void deleteChannel(String channelId) throws IOException, NoSuchAlgorithmException {
-//        LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest().setChannelId(channelId);
-//        String deleteChannel = new LiveChannelServiceImpl().deleteChannel(liveDeleteChannelRequest);
-//        Assert.assertTrue("true".equals(deleteChannel));
+        LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest();
+        liveDeleteChannelRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+        Boolean deleteChannel = new LiveChannelOperateServiceImpl().deleteChannel(liveDeleteChannelRequest);
+        Assert.assertTrue(deleteChannel);
+        log.debug("BaseTest删除频道成功");
     }
     
     /**
@@ -274,6 +278,23 @@ public class BaseTest {
             fileIds.add(temp.getFileId());
         }
         return fileIds;
+    }
+    
+    /**
+     * 生成长度固定的随机字符串
+     * @param length
+     * @return
+     */
+    protected String getRandomString(int length) {
+        length = length < 0 ? 0 : length;
+        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random=new Random();
+        StringBuffer sb=new StringBuffer();
+        for(int i=0;i<length;i++){
+            int number=random.nextInt(62);
+            sb.append(str.charAt(number));
+        }
+        return sb.toString();
     }
     
 }

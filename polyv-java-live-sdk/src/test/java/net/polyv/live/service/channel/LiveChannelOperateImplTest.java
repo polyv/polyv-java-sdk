@@ -95,7 +95,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 测试创建并初始化频道
      * @throws IOException 异常
      */
-//    @Test
+    @Test
     public void testCreateChannelInit() throws IOException, NoSuchAlgorithmException {
         LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
         LiveChannelInitResponse liveChannelInitResponse = null;
@@ -130,6 +130,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             if (liveChannelInitResponse != null) {
                 //to do something ......
                 log.debug("测试创建并初始化频道 验证码观看创建成功{}", JSON.toJSONString(liveChannelInitResponse));
+                deleteChannel(liveChannelInitResponse.getChannelId());
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
@@ -353,7 +354,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            String newPassword = "1234567";
+            String newPassword = getRandomString(16);
             liveChannelDetailRequest.setChannelId(channelId)
                     .setField("channelPasswd")
                     .setValue(newPassword)
@@ -426,7 +427,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveCreateChannelTokenRequest.setChannelId(channelId)
-                    .setToken("testToken")
+                    .setToken(LiveSignUtil.generateUUID())
                     .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelTokenResponse = new LiveChannelOperateServiceImpl().createChannelToken(
                     liveCreateChannelTokenRequest);
@@ -673,7 +674,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             liveUpdateSonChannelInfoRequest.setChannelId(channelId)
                     .setAccount(sonChannelId)
                     .setNickname("sadboy")
-                    .setPassword("137890")
+                    .setPassword(getRandomString(16))
                     .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0")
                     .setActor("教授")
                     .setPageTurnEnabled("Y")
@@ -713,7 +714,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String sonChannelId = createSonChannel(channelId);
             
             liveCreateSonChannelTokenRequest.setAccount(sonChannelId)
-                    .setToken("sonChannelLogintoken")
+                    .setToken(LiveSignUtil.generateUUID())
                     .setRequestId(LiveSignUtil.generateUUID());
             liveCreateSonChannelTokenResponse = new LiveChannelOperateServiceImpl().createSonChannelToken(
                     liveCreateSonChannelTokenRequest);

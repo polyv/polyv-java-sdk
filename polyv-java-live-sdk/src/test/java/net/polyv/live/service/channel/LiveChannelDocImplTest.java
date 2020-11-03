@@ -34,15 +34,15 @@ public class LiveChannelDocImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testCreateChannelDoc() throws IOException, NoSuchAlgorithmException {
         LiveCreateChannelDocRequest liveCreateChannelDocRequest = new LiveCreateChannelDocRequest();
         LiveCreateChannelDocResponse liveCreateChannelDocResponse;
         try {
-            File file = new File("C:\\Users\\T460\\Desktop\\葵花宝典PPT.pptx");
+            String path = getClass().getResource("/file/PPT.pptx").getPath();
             liveCreateChannelDocRequest.setChannelId(createChannel())
                     .setType("common")
-                    .setFile(file)
+                    .setFile(new File(path))
                     .setDocName("葵花宝典")
                     .setCallbackUrl("http://www.baidu.com/callback")
                     .setRequestId(LiveSignUtil.generateUUID());

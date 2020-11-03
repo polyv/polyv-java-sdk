@@ -14,54 +14,67 @@
     <style>
         #toc_container li,
         #toc_container ul {
-            margin:0;
-            padding:0
+            margin: 0;
+            padding: 0
         }
+
         #toc_container.no_bullets li,
         #toc_container.no_bullets ul,
         #toc_container.no_bullets ul li,
         .toc_widget_list.no_bullets li {
-            background:0 0;
-            list-style-type:none;
-            list-style:none
+            background: 0 0;
+            list-style-type: none;
+            list-style: none
         }
+
         #toc_container.have_bullets li {
-            padding-left:12px
+            padding-left: 12px
         }
+
         #toc_container ul ul {
-            margin-left:1.5em
+            margin-left: 1.5em
+        }
+
+        #toc_container .toc_list a{
+            color: #505d6b;
         }
         #toc_container {
-            background:#f9f9f9;
-            border:1px solid #aaa;
-            padding:10px;
-            margin-bottom:1em;
-            width:auto;
-            display:table;
-            font-size:95%
+            background: #f9f9f9;
+            border: 1px solid #aaa;
+            padding: 10px;
+            margin-bottom: 1em;
+            width: auto;
+            display: table;
+            font-size: 95%;
         }
+
         #toc_container p.toc_title {
-            text-align:center;
-            font-weight:700;
-            margin:0;
-            padding:0
+            text-align: center;
+            font-weight: 700;
+            margin: 0;
+            padding: 0
         }
+
         #toc_container.toc_black p.toc_title {
-            color:#aaa
+            color: #aaa
         }
+
         #toc_container span.toc_toggle {
-            font-weight:400;
-            font-size:90%
+            font-weight: 400;
+            font-size: 90%
         }
-        #toc_container p.toc_title+ul.toc_list {
-            margin-top:1em
+
+        #toc_container p.toc_title + ul.toc_list {
+            margin-top: 1em
         }
+
         #toc_container a {
-            text-decoration:none;
-            text-shadow:none
+            text-decoration: none;
+            text-shadow: none
         }
+
         #toc_container a:hover {
-            text-decoration:underline
+            text-decoration: underline
         }
 
         #toc_container {
@@ -69,6 +82,9 @@
             z-index: 999;
             right: 25px;
             top: 70px;
+        }
+        #toc_container .menuActive {
+            color:#42b983 !important;
         }
     </style>
     <!--
@@ -80,7 +96,7 @@
  -->
 
 </head>
-<body>
+<body onscroll="scroll()">
 <div id="app">保利威直播JAVA SDK</div>
 
 <script>
@@ -122,7 +138,8 @@
             countable: true,
             fontsize: '0.9em',
             color: 'rgb(90,90,90)',
-            language: 'chinese'
+            language: 'chinese',
+            float: 'left'
         }
         /**
          swagger: {
@@ -192,15 +209,42 @@
 </script>
 <script id="titleHtml" type="text/template">
     <li>
-        <a href="#href#">
+        <a href="#href#" id="menu#i#" class="menu">
             #title#
         </a>
     </li>
     <!-- 模板结束 -->
 </script>
 <script>
+    function getElementTop(elem) {
+        var elemTop = elem.offsetTop;
+        elem = elem.offsetParent;
+        while (elem != null) {
+            elemTop += elem.offsetTop;
+            elem = elem.offsetParent;
+        }
+        return elemTop;
+    }
+
+    //滚动右侧菜单同步移动
+    function scroll() {
+        var h3 = $("h2");
+        var lastH = 0;
+        for (var i = 0; i < h3.length; i++) {
+            var elemTop = getElementTop(h3[i]);
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+            console.log(scrollTop +"---"+elemTop+"--"+i);
+            if (scrollTop >= elemTop - 1) {
+                lastH = i;
+                console.log(i);
+            }
+        }
+        $(".menu").removeClass("menuActive");
+        $("#menu"+lastH).addClass("menuActive");
+    }
+
+    //点击隐藏方法
     function menuHidden() {
-        // $("#toc_container .toc_list").attr("style","display: none;");
         var menuUl = $("#toc_container .toc_list");
         if (menuUl.is(":hidden")) {
             menuUl.show();
@@ -228,7 +272,7 @@
                 let baseUrl = window.location.href.split("?")[0];
                 $.each(articleTitle, function (index, value) {
                     let title = value.split(" ")[1];
-                    liHtml += titleHtml.replace("#title#", title).replace("#href#", baseUrl + "?id=_" + title);
+                    liHtml += titleHtml.replace("#title#", title).replace("#href#", baseUrl + "?id=_" + title).replace("#i#",index);
                 });
                 html += menuHtml.replace("#liHtml#", liHtml);
             }

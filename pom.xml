@@ -283,9 +283,9 @@
                     <includes>
                         <include>com/**/*</include>
                     </includes>
-                    <excludes>
-                        <exclude>com/src/test/**/*</exclude>
-                    </excludes>
+<!--                    <excludes>-->
+<!--                        <exclude>com/src/test/**/*</exclude>-->
+<!--                    </excludes>-->
                 </configuration>
                 <executions>
                     <execution>

@@ -1,10 +1,10 @@
 ## 前提条件
 
-在安装和使用保利威直播Java SDK功能前，确保B端已经具备如下环境：
+在安装和使用**保利威直播Java SDK**功能前，确保B端已经具备如下环境：
 
 - 安装Java环境。
 
-  保利威直播Java SDK支持1.8或更高版本。
+  **保利威直播Java SDK**支持1.8或更高版本。
 
 - 注册[保利威账号](https://www.polyv.net/)并获取[访问密钥信息](http://live.polyv.net/#/develop/appId)（UserId  、 AppId 、 AppSecret）。            
 
@@ -155,9 +155,9 @@ public class LiveChannelDemo {
 
 
 
-&emsp;&emsp;至此，B端已经完成保利威直播Java SDK安装配置，可以使用直播SDK进行其他功能开发和测试，如B端接入过程有任何问题，可以通过以下方式反馈：
+&emsp;&emsp;至此，B端已经完成**保利威直播Java SDK**安装配置，可以使用直播SDK进行其他功能开发和测试，如B端接入过程有任何问题，可以通过以下方式反馈：
 
-1.发邮件反馈，wujie@polyv.net ；
+1.反馈问题到GitHub，[反馈地址](https://github.com/polyv/polyv-java-sdk/issues) ；
 
 2.[官网在线咨询反馈](https://www.polyv.net/)；
 

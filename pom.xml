@@ -38,6 +38,7 @@
         <lombok.version>1.18.10</lombok.version>
         <jacoco.version>0.8.0</jacoco.version>
         <allure-junit4.version>2.13.1</allure-junit4.version>
+        <hutool-all.version>5.4.7</hutool-all.version>
     </properties>
 
 
@@ -114,7 +115,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.4.7</version>
+            <version>${hutool-all.version}</version>
         </dependency>
 
     </dependencies>

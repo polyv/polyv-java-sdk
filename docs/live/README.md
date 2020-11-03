@@ -44,7 +44,9 @@
 
 &emsp;* 解析返回数据：解析返回数据，如SDK调用正常成功，将封装响应对象，正常返回，<font color=#FF0000 >如服务器返回错误信息，SDK将将抛出BusinessionException异常，exception的message包括具体服务器执行错误信息，此异常是运行时异常，必须捕获处理相关业务逻辑；</font>
 
-  
+## 调用示例如下
+
+![image-20201103092938884](../../DOC/img/image-20201103092938884.png)
 
 
 

@@ -1,13 +1,12 @@
 package net.polyv.common.util;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.commons.lang3.StringUtils;
 
 import com.alibaba.fastjson.JSON;
 
+import cn.hutool.core.io.file.FileReader;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.entity.AccountInfo;
 
@@ -30,13 +29,9 @@ public class FileUtil {
      */
     public static String readFile(String path) throws IOException {
         String encoding = "UTF-8";
-        File file = new File(path);
-        Long filelength = file.length();
-        byte[] filecontent = new byte[filelength.intValue()];
-        FileInputStream in = new FileInputStream(file);
-        in.read(filecontent);
-        in.close();
-        return new String(filecontent, encoding);
+        FileReader fileReader = new FileReader(path);
+        String result = fileReader.readString();
+        return result;
     }
     
     /**

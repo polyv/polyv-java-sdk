@@ -744,10 +744,11 @@ true 设置讲师信息成功，false 设置讲师信息失败
         Boolean result = null;
         try {
             String channelId = super.createChannel();
+            String path = getClass().getResource("/img/b.jpg").getPath();
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setNickname("你个老头")
                     .setActor("娇娇")
-                    .setAvatar(new File("/data/img/b.jpg"))
+                    .setAvatar(new File(path))
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
             Assert.assertNotNull(result);

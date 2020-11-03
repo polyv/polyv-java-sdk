@@ -158,6 +158,7 @@
             if (liveChannelInitResponse != null) {
                 //to do something ......
                 log.debug("测试创建并初始化频道 验证码观看创建成功{}", JSON.toJSONString(liveChannelInitResponse));
+                deleteChannel(liveChannelInitResponse.getChannelId());
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
@@ -854,7 +855,7 @@ true为设置成功，false为设置失败
         try {
             //准备测试数据
             String channelId = createChannel();
-            String newPassword = "1234567";
+            String newPassword = getRandomString(16);
             liveChannelDetailRequest.setChannelId(channelId)
                     .setField("channelPasswd")
                     .setValue(newPassword)
@@ -980,7 +981,7 @@ true为设置密码成功，false为设置失败
             //准备测试数据
             String channelId = createChannel();
             liveCreateChannelTokenRequest.setChannelId(channelId)
-                    .setToken("testToken")
+                    .setToken(LiveSignUtil.generateUUID())
                     .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelTokenResponse = new LiveChannelOperateServiceImpl().createChannelToken(
                     liveCreateChannelTokenRequest);
@@ -1504,7 +1505,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
             liveUpdateSonChannelInfoRequest.setChannelId(channelId)
                     .setAccount(sonChannelId)
                     .setNickname("sadboy")
-                    .setPassword("137890")
+                    .setPassword(getRandomString(16))
                     .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0")
                     .setActor("教授")
                     .setPageTurnEnabled("Y")
@@ -1576,7 +1577,7 @@ true为设置成功，false为设置失败
             String channelId = createChannel();
             String sonChannelId = createSonChannel(channelId);
             liveCreateSonChannelTokenRequest.setAccount(sonChannelId)
-                    .setToken("sonChannelLogintoken")
+                    .setToken(LiveSignUtil.generateUUID())
                     .setRequestId(LiveSignUtil.generateUUID());
             liveCreateSonChannelTokenResponse = new LiveChannelOperateServiceImpl().createSonChannelToken(
                     liveCreateSonChannelTokenRequest);

@@ -249,7 +249,7 @@
         LiveCreateAccountTokenRequest liveCreateAccountTokenRequest = new LiveCreateAccountTokenRequest();
         Boolean liveCreateAccountTokenResponse;
         try {
-            liveCreateAccountTokenRequest.setToken("5ZiQIhN0izj3NIMp").setRequestId(LiveSignUtil.generateUUID());
+            liveCreateAccountTokenRequest.setToken(LiveSignUtil.generateUUID()).setRequestId(LiveSignUtil.generateUUID());
             liveCreateAccountTokenResponse = new LiveAccountServiceImpl().createAccountToken(
                     liveCreateAccountTokenRequest);
             Assert.assertNotNull(liveCreateAccountTokenResponse);

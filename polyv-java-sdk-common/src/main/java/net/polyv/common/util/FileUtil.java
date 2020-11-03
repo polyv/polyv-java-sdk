@@ -31,6 +31,7 @@ public class FileUtil {
         String encoding = "UTF-8";
         FileReader fileReader = new FileReader(path);
         String result = fileReader.readString();
+        log.debug("读取文件内容：{}",result);
         return result;
     }
     

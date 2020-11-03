@@ -9,12 +9,14 @@ import java.util.List;
 import java.util.Map;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.entity.interact.LiveQuestionnaireListResponse;
 
 /**
  * 根据实体类生成字段说明文档
  * @author: sadboy
  **/
+@Slf4j
 public class Domain2DocUtil {
     
     private static final String[] tableHead = new String[]{"参数名", "必选", "类型", "说明"};
@@ -118,7 +120,7 @@ public class Domain2DocUtil {
                                     annotation.value() + "【详见[" + simpleName + "参数描述](" + fileName + ".md?id=" +
                                             getRandom(simpleName) + ")】");
                             classList.add(fieldType);
-                            e.printStackTrace();
+                          log.error("",e);
                         }
                         
                     }

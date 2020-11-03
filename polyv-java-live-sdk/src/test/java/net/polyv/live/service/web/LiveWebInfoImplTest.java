@@ -165,12 +165,12 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
         String liveUpdateChannelLogoResponse;
         try {
-            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+            String path = getClass().getResource("/img/elephant.png").getPath();
             liveUpdateChannelLogoRequest.setChannelId(createChannel())
                     .setImgfile(new File(path))
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -199,12 +199,12 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
         LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
         String liveUpdateChannelSplashResponse;
         try {
-            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+            String path = getClass().getResource("/img/elephant.png").getPath();
             liveUpdateChannelSplashRequest.setChannelId(createChannel())
                     .setSplashEnabled("N")
                     .setImgfile(new File(path))

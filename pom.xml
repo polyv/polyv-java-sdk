@@ -37,6 +37,7 @@
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.10</lombok.version>
         <jacoco.version>0.8.0</jacoco.version>
+        <allure-junit4.version>2.13.1</allure-junit4.version>
     </properties>
 
 
@@ -100,7 +101,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit4</artifactId>
-            <version>2.13.1</version>
+            <version>${allure-junit4.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -235,7 +236,6 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-
 
 
             <plugin>

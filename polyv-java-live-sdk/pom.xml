@@ -14,7 +14,7 @@
     <properties>
         <slf4j.version>1.7.30</slf4j.version>
         <swagger.version>1.5.22</swagger.version>
-        <polyv.common.version>1.0.1</polyv.common.version>
+        <polyv.version>1.0.1</polyv.version>
     </properties>
     <dependencies>
         <dependency>
@@ -30,7 +30,7 @@
         <dependency>
             <groupId>net.polyv</groupId>
             <artifactId>polyv-java-sdk-common</artifactId>
-            <version>${polyv.common.version}</version>
+            <version>${polyv.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

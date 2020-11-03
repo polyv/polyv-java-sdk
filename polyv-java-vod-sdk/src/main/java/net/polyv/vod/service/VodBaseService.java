@@ -65,8 +65,8 @@ public class VodBaseService {
         }
         url = url.trim();
         if (url.startsWith(VodURL.BASE_URI)) {
-            if (StringUtils.isBlank(e.getPtime())) {
-                e.setPtime(String.valueOf(System.currentTimeMillis()));
+            if ( e.getPtime() == null) {
+                e.setPtime( System.currentTimeMillis());
             }
             e.setUserid(VodGlobalConfig.getUserId());
             paramMap = MapUtil.objectToMap(e);
@@ -154,8 +154,8 @@ public class VodBaseService {
         url = url.trim();
         if (url.startsWith(VodURL.BASE_URI)) {
             e.setUserid(VodGlobalConfig.getUserId());
-            if (StringUtils.isBlank(e.getPtime())) {
-                e.setPtime(String.valueOf(System.currentTimeMillis()));
+            if ( e.getPtime() == null) {
+                e.setPtime( System.currentTimeMillis());
             }
             paramMap = MapUtil.objectToMap(e);
             String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.getSecretKey());
@@ -224,8 +224,8 @@ public class VodBaseService {
         url = url.trim();
         if (url.startsWith(VodURL.BASE_URI)) {
             e.setUserid(VodGlobalConfig.getUserId());
-            if (StringUtils.isBlank(e.getPtime())) {
-                e.setPtime(String.valueOf(System.currentTimeMillis()));
+            if ( e.getPtime() == null) {
+                e.setPtime( System.currentTimeMillis());
             }
             paramMap = MapUtil.objectToMap(e);
             String sign = VodSignUtil.setVodSign(paramMap, VodGlobalConfig.getSecretKey());

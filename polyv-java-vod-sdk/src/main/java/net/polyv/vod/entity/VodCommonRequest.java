@@ -31,7 +31,7 @@ public class VodCommonRequest extends CommonReqeust {
     @ApiModelProperty(hidden = true )
     @NotNull(message = "属性ptime不能为空，当前时间的毫秒级时间戳（13位），3分钟内有效")
     @JSONField(name="ptime")
-    private String ptime;
+    private Long ptime;
     /**
      * 数据MD5签名，系统自动生成
      */

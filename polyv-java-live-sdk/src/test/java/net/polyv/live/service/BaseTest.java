@@ -17,6 +17,7 @@ import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
+import net.polyv.live.entity.channel.operate.LiveDeleteChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
@@ -84,9 +85,12 @@ public class BaseTest {
      * @throws NoSuchAlgorithmException 异常
      */
     protected void deleteChannel(String channelId) throws IOException, NoSuchAlgorithmException {
-//        LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest().setChannelId(channelId);
-//        String deleteChannel = new LiveChannelServiceImpl().deleteChannel(liveDeleteChannelRequest);
-//        Assert.assertTrue("true".equals(deleteChannel));
+        LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest();
+        liveDeleteChannelRequest.setChannelId(channelId)
+                .setRequestId(LiveSignUtil.generateUUID());
+        Boolean deleteChannel = new LiveChannelOperateServiceImpl().deleteChannel(liveDeleteChannelRequest);
+        Assert.assertTrue(deleteChannel);
+        log.debug("BaseTest删除频道成功");
     }
     
     /**

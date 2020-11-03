@@ -95,7 +95,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 测试创建并初始化频道
      * @throws IOException 异常
      */
-//    @Test
+    @Test
     public void testCreateChannelInit() throws IOException, NoSuchAlgorithmException {
         LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
         LiveChannelInitResponse liveChannelInitResponse = null;
@@ -130,6 +130,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             if (liveChannelInitResponse != null) {
                 //to do something ......
                 log.debug("测试创建并初始化频道 验证码观看创建成功{}", JSON.toJSONString(liveChannelInitResponse));
+                deleteChannel(liveChannelInitResponse.getChannelId());
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B

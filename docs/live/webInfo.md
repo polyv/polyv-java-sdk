@@ -252,7 +252,7 @@ true为设置成功，false为设置失败
         LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
         String liveUpdateChannelLogoResponse;
         try {
-            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+            String path = getClass().getResource("/img/elephant.png").getPath();
             liveUpdateChannelLogoRequest.setChannelId(createChannel())
                     .setImgfile(new File(path))
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -312,7 +312,7 @@ true为设置成功，false为设置失败
         LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
         String liveUpdateChannelSplashResponse;
         try {
-            String path = "C:\\Users\\T460\\Desktop\\elephant.png";
+            String path = getClass().getResource("/img/elephant.png").getPath();
             liveUpdateChannelSplashRequest.setChannelId(createChannel())
                     .setSplashEnabled("N")
                     .setImgfile(new File(path))

@@ -49,12 +49,12 @@ public class HttpClientUtil {
     /**
      * 读写超时时间设置，默认5S
      */
-    private static int TIME_OUT = 5000;
+    private static int TIME_OUT = 30000;
     
     /**
      * 默认线程数
      */
-    private static int MAX_CLIENT_NUM = 60;
+    private static int MAX_CLIENT_NUM = 100;
     
     public static int getMaxClientNum() {
         return MAX_CLIENT_NUM;
@@ -185,7 +185,7 @@ public class HttpClientUtil {
                     //设置等待数据超时时间，5s
                     .setSocketTimeout(TIME_OUT)
                     //设置从连接池获取连接的等待超时时间
-                    .setConnectionRequestTimeout(2 * TIME_OUT).build();
+                    .setConnectionRequestTimeout( TIME_OUT).build();
             
             //创建HttpClient
             httpClient = HttpClients.custom().setConnectionManager(manager)

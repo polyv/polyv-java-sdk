@@ -13,7 +13,7 @@ git status
 :: # 提交master分支到origin远程仓库
 git push origin master
 :: # 部署到中央版本库
-:: mvn clean install deploy -Dmaven.test.skip=true -P release
+mvn clean install deploy -Dmaven.test.skip=true -P release
 PAUSE
 :: # 提交master分支到github远程仓库
 git push github master

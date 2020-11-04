@@ -12,7 +12,7 @@ public class BaseTest {
      * 系统默认初始化
      */
     BaseTest() {
-        InitConfig.initPolyvVodByFile();
+        InitConfig.initPolyvVodByFile(null);
     }
     
    

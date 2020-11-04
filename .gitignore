@@ -44,4 +44,4 @@ images/
 **/log
 *.log
 /polyv-java-sdk-common/allure-results/
-auto_deploy.bat
+*.bat

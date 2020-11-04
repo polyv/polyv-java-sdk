@@ -4,6 +4,7 @@ git checkout V1.0.0
 git pull 
 git commit -am "JSDK-1 自动脚本提交(版本升级、bug优化)"  &&  git  push
 :: # 切换到master分支
+PAUSE
 git checkout master
 git pull origin master
 :: # 合并V1.0.0 分支代码

@@ -75,7 +75,11 @@ public class StartupListener implements ApplicationContextAware {
     
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        InitConfig.initPolyvLive();
+        String appId = "xxx";
+        String appSecret = "xxx";
+        String userId = "xxx";
+        LiveGlobalConfig.init(appId,userId,appSecret);
+        log.debug("--初始化完成--");
     }
     
     
@@ -114,7 +118,11 @@ public class LiveChannelDemo {
      */
     public static void main(String[] args) {
         //全局初始化，此处应该全局执行一次
-        InitConfig.initPolyvLive();
+        String appId = "xxx";
+        String appSecret = "xxx";
+        String userId = "xxx";
+        LiveGlobalConfig.init(appId,userId,appSecret);
+        log.debug("--初始化完成--");
         try {
             //封装API请求对象
             LiveChannelRequest liveChannelRequest = new LiveChannelRequest();

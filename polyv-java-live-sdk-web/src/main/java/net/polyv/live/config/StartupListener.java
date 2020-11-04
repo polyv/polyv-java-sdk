@@ -17,7 +17,7 @@ public class StartupListener implements ApplicationContextAware {
     
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        InitConfig.initPolyvLiveByFile();
+        InitConfig.initPolyvLiveByFile(null);
     }
     
     

@@ -31,7 +31,7 @@ public class BaseTest {
      * 系统账号密钥配置
      */
     public BaseTest() {
-        InitConfig.initPolyvLiveByFile();
+        InitConfig.initPolyvLiveByFile(null);
     }
     
     /**

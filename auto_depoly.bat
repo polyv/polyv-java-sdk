@@ -1,4 +1,4 @@
-@echo off
+:: @echo off
 
 git checkout V1.0.0
 :: #提交所有代码

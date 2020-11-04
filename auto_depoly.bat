@@ -1,25 +1,23 @@
 :: @echo off
 
 git checkout V1.0.0
-timeout /T 3 /NOBREAK
-:: #Ìá½»ËùÓĞ´úÂë
+:: #æäº¤æ‰€æœ‰ä»£ç 
 git pull 
-git commit -am "JSDK-1 ×Ô¶¯½Å±¾Ìá½»(°æ±¾Éı¼¶¡¢bugÓÅ»¯)"  &&  git  push
-:: # ÇĞ»»µ½master·ÖÖ§
+git commit -am "JSDK-1 auto_deploy"  &&  git  push
+:: # åˆ‡æ¢åˆ°masteråˆ†æ”¯
 git checkout master
-timeout /T 3 /NOBREAK
 git pull origin master
-:: # ºÏ²¢V1.0.0 ·ÖÖ§´úÂë
+:: # åˆå¹¶V1.0.0 åˆ†æ”¯ä»£ç 
 git merge V1.0.0
 git status
-:: # Ìá½»master·ÖÖ§µ½originÔ¶³Ì²Ö¿â
+:: # æäº¤masteråˆ†æ”¯åˆ°originè¿œç¨‹ä»“åº“
 git push origin master
-:: # ²¿Êğµ½ÖĞÑë°æ±¾¿â
+:: # éƒ¨ç½²åˆ°ä¸­å¤®ç‰ˆæœ¬åº“
 :: mvn clean install deploy -Dmaven.test.skip=true -P release
 PAUSE
-:: # Ìá½»master·ÖÖ§µ½githubÔ¶³Ì²Ö¿â
+:: # æäº¤masteråˆ†æ”¯åˆ°githubè¿œç¨‹ä»“åº“
 git push github master
-:: # ÇĞ»»»ØV1.0.0·ÖÖ§
+:: # åˆ‡æ¢å›V1.0.0åˆ†æ”¯
 git checkout V1.0.0
-timeout /T 3 /NOBREAK
+
 PAUSE

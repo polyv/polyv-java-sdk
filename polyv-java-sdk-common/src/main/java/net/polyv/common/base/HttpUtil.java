@@ -3,7 +3,6 @@ package net.polyv.common.base;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,20 +38,7 @@ public class HttpUtil {
     public static final String SOURCE = "source";
     public static final String LIVE_SDK = "live_sdk";
     public static final String VERSION = "version";
-    public static final String CURRETN_VERSION = "1.0.3";
-    public static final String IP = "";
-    public static   String IP_ADDRESS;
-    
-    static {
-        try {
-            IP_ADDRESS = InetAddress.getLocalHost().getHostAddress();
-        } catch (Exception e) {
-            IP_ADDRESS="NA";
-        }
-    }
-    
-    ;
-   
+    public static final String CURRETN_VERSION = "1.0.4";
     public static final String UTF8 = Constant.UTF8;
     
     
@@ -94,7 +80,7 @@ public class HttpUtil {
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, LIVE_SDK);
-        httpPost.addHeader(IP, IP_ADDRESS);
+        
         httpPost.addHeader(VERSION, CURRETN_VERSION);
         // 装填参数
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
@@ -199,7 +185,7 @@ public class HttpUtil {
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, LIVE_SDK);
-        httpPost.addHeader(IP, IP_ADDRESS);
+        
         httpPost.addHeader(VERSION, CURRETN_VERSION);
         // 设置参数到请求对象中
         StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
@@ -335,7 +321,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, LIVE_SDK);
-        httpPost.addHeader(IP, IP_ADDRESS);
+        
         httpPost.addHeader(VERSION, CURRETN_VERSION);
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
         if (fileMap != null) {

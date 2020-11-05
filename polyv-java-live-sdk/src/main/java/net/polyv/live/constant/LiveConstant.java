@@ -7,7 +7,7 @@ package net.polyv.live.constant;
 public class LiveConstant {
     
     public static  final Integer ERROR_CODE = 400;
-    
+    public static  final String UTF8 = "UTF-8";
     
     public enum SceneType {
         /**

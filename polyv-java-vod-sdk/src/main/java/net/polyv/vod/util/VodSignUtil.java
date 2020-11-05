@@ -49,7 +49,6 @@ public class VodSignUtil {
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
         log.debug("参与签名参数：{}", JSON.toJSONString(params));
         List<String> keys = new ArrayList<String>(params.keySet());
-        List<String> tmp = new ArrayList<String>();
         Collections.sort(keys);
         String plain = "";
         for (String key : keys) {

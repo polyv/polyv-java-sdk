@@ -5,7 +5,7 @@
     <parent>
         <artifactId>polyv-java-sdk</artifactId>
         <groupId>net.polyv</groupId>
-        <version>1.0.3</version>
+        <version>1.0.4</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>polyv-java-live-sdk-web</artifactId>
@@ -17,7 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
-        <polyv.version>1.0.3</polyv.version>
+        <polyv.version>1.0.4</polyv.version>
         <javax.el-api.version>3.0.0</javax.el-api.version>
         <hibernate-validator.version>6.0.0.Final</hibernate-validator.version>
         <knife4j-spring-boot-starter.version>2.0.4</knife4j-spring-boot-starter.version>

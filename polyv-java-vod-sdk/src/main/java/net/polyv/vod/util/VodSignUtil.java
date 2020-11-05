@@ -72,7 +72,7 @@ public class VodSignUtil {
      * @return 签名
      * @throws NoSuchAlgorithmException 签名异常
      */
-    public static String getSha1(String input) throws NoSuchAlgorithmException  {
+    public static String getSha1(String input) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         
         MessageDigest mDigest = MessageDigest.getInstance("SHA1");
         byte[] result = mDigest.digest(input.getBytes(Constant.UTF8));

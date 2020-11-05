@@ -11,7 +11,7 @@
         <java-version>1.6</java-version>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
-        <polyv.version>1.0.3</polyv.version>
+        <polyv.version>1.0.4</polyv.version>
         <junit.version>4.12</junit.version>
     </properties>
     <dependencies>

@@ -1,6 +1,5 @@
 package  net.polyv.vod.service;
 
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import org.junit.Assert;
@@ -26,7 +25,7 @@ public class VodAccountServiceImplTest   {
      * 获取用户空间及流量情况
      */
     @Test
-    public void  testGetAccountSpaceFlow() throws IOException, NoSuchAlgorithmException {
+    public void  testGetAccountSpaceFlow() throws Exception, NoSuchAlgorithmException {
         VodAccountSpaceDataRequest vodAccountSpaceDataRequest = new VodAccountSpaceDataRequest().setDate("2020-10-13");
         VodAccountSpaceDataResponse accountSpaceFlow = new VodAccountServiceImpl().getAccountSpaceFlow(
                 vodAccountSpaceDataRequest);

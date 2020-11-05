@@ -50,7 +50,7 @@ public class BaseTest {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    protected String createChannel(LiveChannelRequest liveChannelRequest) throws IOException, NoSuchAlgorithmException {
+    protected String createChannel(LiveChannelRequest liveChannelRequest) throws Exception, NoSuchAlgorithmException {
         LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         Assert.assertNotNull(liveChannelResponse);
         return liveChannelResponse.getChannelId();
@@ -85,7 +85,7 @@ public class BaseTest {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    protected void deleteChannel(String channelId) throws IOException, NoSuchAlgorithmException {
+    protected void deleteChannel(String channelId) throws Exception, NoSuchAlgorithmException {
         LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest();
         liveDeleteChannelRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
         Boolean deleteChannel = new LiveChannelOperateServiceImpl().deleteChannel(liveDeleteChannelRequest);
@@ -101,7 +101,7 @@ public class BaseTest {
      * @throws NoSuchAlgorithmException
      */
     protected String createSonChannel(LiveCreateSonChannelRequest liveCreateSonChannelRequest)
-            throws IOException, NoSuchAlgorithmException {
+            throws Exception, NoSuchAlgorithmException {
         LiveCreateSonChannelResponse liveCreateSonChannelResponse =
                 new LiveChannelOperateServiceImpl().createSonChannel(
                 liveCreateSonChannelRequest);
@@ -116,7 +116,7 @@ public class BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    protected String createSonChannel(String channelId) throws IOException, NoSuchAlgorithmException {
+    protected String createSonChannel(String channelId) throws Exception, NoSuchAlgorithmException {
         return "0011965681";
 //        LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
 //        liveCreateSonChannelRequest.setChannelId(channelId)
@@ -146,7 +146,7 @@ public class BaseTest {
             if (liveSonChannelInfoResponse != null) {
                 //to do something ......
                 log.debug("查询频道号下所有子频道信息成功{}", JSON.toJSONString(liveSonChannelInfoResponse));
-                List<String> sonChannelIds = new ArrayList<>();
+                List<String> sonChannelIds = new ArrayList<String>();
                 for (LiveSonChannelInfoResponse temp : liveSonChannelInfoResponse.getSonChannelInfos()) {
                     if (!createSonChannel(createChannel()).equals(temp.getAccount())) {
                         sonChannelIds.add(temp.getAccount());
@@ -162,7 +162,7 @@ public class BaseTest {
         } catch (Exception e) {
             log.error("SDK调用异常", e);
         }
-        return new ArrayList<>();
+        return new ArrayList<String>();
     }
     
     /**
@@ -171,7 +171,7 @@ public class BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    protected void deleteSonChannel(String sonChannelId) throws IOException, NoSuchAlgorithmException {
+    protected void deleteSonChannel(String sonChannelId) throws Exception, NoSuchAlgorithmException {
         LiveDeleteSonChannelRequest liveDeleteSonChannelRequest = new LiveDeleteSonChannelRequest();
         Boolean liveDeleteSonChannelResponse;
         try {
@@ -206,7 +206,7 @@ public class BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    protected String getChannelVideoFileUrl(String channelId) throws IOException, NoSuchAlgorithmException {
+    protected String getChannelVideoFileUrl(String channelId) throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
         liveChannelVideoListRequest.setChannelId("1951952")
                 .setStartDate("2020-01-01")
@@ -230,7 +230,7 @@ public class BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    protected List<String> listChannelVideoIds(String channelId) throws IOException, NoSuchAlgorithmException {
+    protected List<String> listChannelVideoIds(String channelId) throws Exception, NoSuchAlgorithmException {
         LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
                 new LiveListChannelVideoLibraryRequest();
         liveListChannelVideoLibraryRequest.setChannelId(channelId)
@@ -244,7 +244,7 @@ public class BaseTest {
                 liveListChannelVideoLibraryResponse.getContents();
         int size = contents.size();
         Assert.assertTrue(size > 0);
-        List<String> videoIds = new ArrayList<>(size);
+        List<String> videoIds = new ArrayList<String>(size);
         for (LiveListChannelVideoLibraryResponse.ChannelVideoLibrary temp : contents) {
             videoIds.add(temp.getVideoId());
         }
@@ -258,7 +258,7 @@ public class BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    protected List<String> listChannelFileIds(String channelId) throws IOException, NoSuchAlgorithmException {
+    protected List<String> listChannelFileIds(String channelId) throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
         liveChannelVideoListRequest.setChannelId(channelId)
                 .setStartDate("2020-01-01")
@@ -273,7 +273,7 @@ public class BaseTest {
                 liveChannelVideoListResponse.getChannelVedioInfos();
         int size = channelVedioInfos.size();
         Assert.assertTrue(size > 0);
-        List<String> fileIds = new ArrayList<>(size);
+        List<String> fileIds = new ArrayList<String>(size);
         for (LiveChannelVideoListResponse.ChannelVedioInfo temp : channelVedioInfos) {
             fileIds.add(temp.getFileId());
         }

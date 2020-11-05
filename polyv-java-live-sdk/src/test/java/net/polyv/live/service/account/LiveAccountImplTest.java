@@ -44,7 +44,7 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws IOException
      */
     @Test
-    public void testListAccountDetail() throws IOException, NoSuchAlgorithmException {
+    public void testListAccountDetail() throws Exception, NoSuchAlgorithmException {
         LiveListAccountDetailRequest liveListAccountDetailRequest = new LiveListAccountDetailRequest();
         LiveListAccountDetailResponse liveListAccountDetailResponse;
         try {
@@ -73,7 +73,7 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListAccount() throws IOException, NoSuchAlgorithmException {
+    public void testListAccount() throws Exception, NoSuchAlgorithmException {
         LiveListAccountRequest liveListAccountRequest = new LiveListAccountRequest();
         LiveListAccountResponse liveListAccountResponse;
         try {
@@ -101,7 +101,7 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testMicDuration() throws IOException, NoSuchAlgorithmException {
+    public void testMicDuration() throws Exception, NoSuchAlgorithmException {
         LiveAccountMicDurationRequest liveAccountMicDurationRequest = new LiveAccountMicDurationRequest();
         LiveAccountMicDurationResponse liveAccountMicDurationResponse;
         try {
@@ -131,7 +131,7 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCreateAccountToken() throws IOException, NoSuchAlgorithmException {
+    public void testCreateAccountToken() throws Exception, NoSuchAlgorithmException {
         LiveCreateAccountTokenRequest liveCreateAccountTokenRequest = new LiveCreateAccountTokenRequest();
         Boolean liveCreateAccountTokenResponse;
         try {
@@ -166,7 +166,7 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateStreamCallbackUrl() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateStreamCallbackUrl() throws Exception, NoSuchAlgorithmException {
         LiveAccountStreamCallbackRequest liveAccountStreamCallbackRequest = new LiveAccountStreamCallbackRequest();
         Boolean liveAccountStreamCallbackResponse;
         try {
@@ -204,7 +204,7 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdatePlaybackCallbackUrl() throws IOException, NoSuchAlgorithmException {
+    public void testUpdatePlaybackCallbackUrl() throws Exception, NoSuchAlgorithmException {
         LiveAccountPlaybackCallbackRequest liveAccountPlaybackCallbackRequest =
                 new LiveAccountPlaybackCallbackRequest();
         Boolean liveAccountPlaybackCallbackResponse;
@@ -242,7 +242,7 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateRecordCallbackUrl() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateRecordCallbackUrl() throws Exception, NoSuchAlgorithmException {
         LiveAccountRecordCallbackRequest liveAccountRecordCallbackRequest = new LiveAccountRecordCallbackRequest();
         Boolean liveAccountRecordCallbackResponse;
         try {
@@ -276,7 +276,7 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateAccountSwitch() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateAccountSwitch() throws Exception, NoSuchAlgorithmException {
         LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest = new LiveUpdateAccountSwitchRequest();
         Boolean liveUpdateAccountSwitchResponse;
         try {
@@ -310,7 +310,7 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testAccountSwitch() throws IOException, NoSuchAlgorithmException {
+    public void testAccountSwitch() throws Exception, NoSuchAlgorithmException {
         LiveAccountSwitchRequest liveAccountSwitchRequest = new LiveAccountSwitchRequest();
         LiveAccountSwitchResponse liveAccountSwitchResponse;
         try {
@@ -338,7 +338,7 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListChannelBasic() throws IOException, NoSuchAlgorithmException {
+    public void testListChannelBasic() throws Exception, NoSuchAlgorithmException {
         LiveListAccountChannelBasicRequest liveListAccountChannelBasicRequest =
                 new LiveListAccountChannelBasicRequest();
         LiveListAccountChannelBasicResponse liveListAccountChannelBasicResponse;
@@ -373,7 +373,7 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUserDurations() throws IOException, NoSuchAlgorithmException {
+    public void testUserDurations() throws Exception, NoSuchAlgorithmException {
         LiveAccountUserDurationsRequest liveAccountUserDurationsRequest = new LiveAccountUserDurationsRequest();
         LiveAccountUserDurationsResponse liveAccountUserDurationsResponse;
         try {

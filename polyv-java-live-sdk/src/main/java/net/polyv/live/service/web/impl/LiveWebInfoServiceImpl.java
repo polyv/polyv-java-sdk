@@ -161,7 +161,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public String updateChannelLogo(LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_LOGO_SET_URL, liveUpdateChannelLogoRequest.getChannelId());
-        Map<String, File> fileMap = new HashMap<>();
+        Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("imgfile", liveUpdateChannelLogoRequest.getImgfile());
         String liveUpdateChannelLogoResponse = this.baseUploadFile(url, liveUpdateChannelLogoRequest, fileMap,
                 String.class);
@@ -180,7 +180,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public String updateChannelSplash(LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SPLASH_SET_URL, liveUpdateChannelSplashRequest.getChannelId());
-        Map<String, File> fileMap = new HashMap<>();
+        Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("imgfile", liveUpdateChannelSplashRequest.getImgfile());
         String liveUpdateChannelSplashResponse = this.baseUploadFile(url, liveUpdateChannelSplashRequest, fileMap,
                 String.class);

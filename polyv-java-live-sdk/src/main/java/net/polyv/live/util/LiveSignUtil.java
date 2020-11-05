@@ -2,7 +2,6 @@ package net.polyv.live.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.constant.Constant;
 
 /**
  *  polyv 直播签名工具类
@@ -37,7 +37,7 @@ public class LiveSignUtil {
      * @throws NoSuchAlgorithmException 签名异常
      */
     public static String setLiveSign(Map<String, String> params, String appId, String appSecret)
-            throws NoSuchAlgorithmException {
+            throws NoSuchAlgorithmException, UnsupportedEncodingException {
         String sign = getSign(params, appId, appSecret);
         params.put("sign", sign);
         return sign;
@@ -52,7 +52,7 @@ public class LiveSignUtil {
      * @throws NoSuchAlgorithmException 签名异常
      */
     public static String getSign(Map<String, String> params, String appId, String appSecret)
-            throws NoSuchAlgorithmException {
+            throws NoSuchAlgorithmException, UnsupportedEncodingException {
         params.put("appId", appId);
         // 处理参数，计算MD5哈希值
         log.debug("参与签名参数：{}" , JSON.toJSONString(params));
@@ -71,7 +71,7 @@ public class LiveSignUtil {
      * @return 拼接后字符串
      */
     public static String concatParams(Map<String, String> params) {
-        List<String> keys = new ArrayList<>(params.keySet());
+        List<String> keys = new ArrayList<String>(params.keySet());
         Collections.sort(keys);
         
         StringBuilder sb = new StringBuilder();
@@ -91,10 +91,10 @@ public class LiveSignUtil {
      * @return 加密后的字符串。
      * @throws NoSuchAlgorithmException 签名异常
      */
-    public static String md5Hex(String text) throws NoSuchAlgorithmException {
+    public static String md5Hex(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException {
          
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            byte[] inputByteArray = text.getBytes(StandardCharsets.UTF_8);
+            byte[] inputByteArray = text.getBytes(Constant.UTF8);
             messageDigest.update(inputByteArray);
             byte[] resultByteArray = messageDigest.digest();
             return byteArrayToHex(resultByteArray).toLowerCase();
@@ -165,7 +165,7 @@ public class LiveSignUtil {
             String temp = (key.endsWith("_") && key.length() > 1) ? key.substring(0, key.length() - 1) : key;
             stringBuilder.append(keyLower ? temp.toLowerCase() : temp)
                     .append("=")
-                    .append(valueUrlEncode ? URLEncoder.encode(value,  StandardCharsets.UTF_8.name()).replace("+", "%20") : value)
+                    .append(valueUrlEncode ? URLEncoder.encode(value,  Constant.UTF8).replace("+", "%20") : value)
                     .append("&");
         }
         if (stringBuilder.length() > 0) {

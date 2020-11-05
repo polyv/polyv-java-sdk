@@ -7,10 +7,7 @@ package net.polyv.live.constant;
 public class LiveURL {
     
     
-    /**
-     * POLYV live api base uri
-     */
-    public static final String BASE_DOMAIN = "api.polyv.net";
+    
     
     /**
      * POLYV live api base uri

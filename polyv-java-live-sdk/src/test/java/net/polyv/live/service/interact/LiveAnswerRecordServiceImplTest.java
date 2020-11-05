@@ -31,7 +31,7 @@ public class LiveAnswerRecordServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetAnswerRecord() throws IOException, NoSuchAlgorithmException {
+    public void testGetAnswerRecord() throws Exception, NoSuchAlgorithmException {
         LiveQuestionAnswerRecordRequest liveQuestionAnswerRecordRequest = new LiveQuestionAnswerRecordRequest();
         List<LiveQuestionAnswerRecordResponse> liveCheckinResponse = null;
         try {

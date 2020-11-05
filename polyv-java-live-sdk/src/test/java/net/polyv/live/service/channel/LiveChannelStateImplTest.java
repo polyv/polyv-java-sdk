@@ -34,7 +34,7 @@ public class LiveChannelStateImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testChannelStreamInfo() throws IOException, NoSuchAlgorithmException {
+    public void testChannelStreamInfo() throws Exception, NoSuchAlgorithmException {
         LiveChannelStreamInfoRequest liveChannelStreamInfoRequest = new LiveChannelStreamInfoRequest();
         LiveChannelStreamInfoResponse liveChannelStreamInfoResponse;
         try {
@@ -63,7 +63,7 @@ public class LiveChannelStateImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListChannelLiveStream() throws IOException, NoSuchAlgorithmException {
+    public void testListChannelLiveStream() throws Exception, NoSuchAlgorithmException {
         LiveListChannelStreamStatusRequest liveListChannelStreamStatusRequest =
                 new LiveListChannelStreamStatusRequest();
         LiveListChannelStreamStatusResponse liveListChannelStreamStatusResponse;
@@ -99,7 +99,7 @@ public class LiveChannelStateImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCutoffChannelStream() throws IOException, NoSuchAlgorithmException {
+    public void testCutoffChannelStream() throws Exception, NoSuchAlgorithmException {
         LiveCutoffChannelStreamRequest liveCutoffChannelStreamRequest = new LiveCutoffChannelStreamRequest();
         Boolean liveCutoffChannelStreamResponse;
         try {
@@ -132,7 +132,7 @@ public class LiveChannelStateImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testResumeChannelStream() throws IOException, NoSuchAlgorithmException {
+    public void testResumeChannelStream() throws Exception, NoSuchAlgorithmException {
         LiveResumeChannelStreamRequest liveResumeChannelStreamRequest = new LiveResumeChannelStreamRequest();
         Boolean liveResumeChannelStreamResponse;
         try {

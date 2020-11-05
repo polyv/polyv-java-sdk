@@ -1,7 +1,6 @@
 package net.polyv.live.service.chat;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -49,11 +48,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 批量导入频道严禁词
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testAddBadWord() throws IOException, NoSuchAlgorithmException {
+    public void testAddBadWord() throws Exception, NoSuchAlgorithmException {
         LiveBadWordRequest liveBadWordRequest = new LiveBadWordRequest();
         LiveBadWordResponse liveBadWordResponse = null;
         try {
@@ -81,11 +80,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 通过HTTP接口发送聊天消息
      * 描述：可指定发言者的头像、头衔、昵称，无需连接聊天室，通过HTTP接口发送聊天文本内容
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSendChatMsg() throws IOException, NoSuchAlgorithmException {
+    public void testSendChatMsg() throws Exception, NoSuchAlgorithmException {
         LiveSendChatMsgRequest liveSendChatMsgRequest = new LiveSendChatMsgRequest();
         LiveSendChatMsgResponse liveSendChatMsgResponse = null;
         try {
@@ -117,11 +116,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 查询历史聊天信息
      * 描述：查询一段时间内的聊天记录，时间格式为yyyy-MM-dd 或 yyyy-MM-dd HH:mm:ss。如未提交具体时间，只提交了日期，开始时间默认为日期当天的 00:00:00，结束时间为日期当天的23:59:59
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetHistoryChatMsg() throws IOException, NoSuchAlgorithmException {
+    public void testGetHistoryChatMsg() throws Exception, NoSuchAlgorithmException {
         LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest = new LiveGetHistoryChatMsgRequest();
         List<LiveGetHistoryChatMsgResponse> liveGetHistoryChatMsgResponsesList = null;
         try {
@@ -150,11 +149,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 查询聊天室管理员信息
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetChatAdminData() throws IOException, NoSuchAlgorithmException {
+    public void testGetChatAdminData() throws Exception, NoSuchAlgorithmException {
         LiveGetChatAdminDataRequest liveGetChatAdminDataRequest = new LiveGetChatAdminDataRequest();
         LiveGetChatAdminDataResponse liveGetChatAdminDataResponse = null;
         try {
@@ -180,11 +179,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 查询频道禁言列表
      * 返回：返回当前频道的禁言列表
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetBannedList() throws IOException, NoSuchAlgorithmException {
+    public void testGetBannedList() throws Exception, NoSuchAlgorithmException {
         LiveGetBannedListRequest liveGetBannedListRequest = new LiveGetBannedListRequest();
         List<String> result = null;
         try {
@@ -210,11 +209,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 查询频道踢人列表
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetKickedList() throws IOException, NoSuchAlgorithmException {
+    public void testGetKickedList() throws Exception, NoSuchAlgorithmException {
         LiveKickedListRequest liveKickedListRequest = new LiveKickedListRequest();
         List<LiveKickedListResponse> liveKickedListResponsesList = null;
         try {
@@ -241,11 +240,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * 查询频道严禁词/禁言IP列表
      * 描述：接口用于获取频道的严禁词或者禁言IP列表
      * 返回：获取当前频道的严禁词/禁言IP列表
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetChannelBadworkList() throws IOException, NoSuchAlgorithmException {
+    public void testGetChannelBadworkList() throws Exception, NoSuchAlgorithmException {
         LiveGetBadwordIPRequest liveGetBadwordIPRequest = new LiveGetBadwordIPRequest();
         List<String> result = null;
         try {
@@ -274,11 +273,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * 查询账号严禁词列表
      * 描述：接口用于获取账号下通用设置的严禁词列表
      * 返回：当前保利威账号下通用设置的严禁词列表
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetAccountBadworkList() throws IOException, NoSuchAlgorithmException {
+    public void testGetAccountBadworkList() throws Exception, NoSuchAlgorithmException {
         LiveGetAccountBadWordRequest liveGetAccountBadWordRequest = new LiveGetAccountBadWordRequest();
         List<String> result = null;
         try {
@@ -303,11 +302,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 查询咨询提问记录
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetConsultingRecord() throws IOException, NoSuchAlgorithmException {
+    public void testGetConsultingRecord() throws Exception, NoSuchAlgorithmException {
         LiveGetConsultingRecordRequest liveGetConsultingRecordRequest = new LiveGetConsultingRecordRequest();
         List<LiveGetConsultingRecordResponse> responses = null;
         try {
@@ -336,11 +335,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 设置讲师信息
      * 返回：true 设置讲师信息成功，false 设置讲师信息失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSetChannelTeacherMsg() throws IOException, NoSuchAlgorithmException {
+    public void testSetChannelTeacherMsg() throws Exception, NoSuchAlgorithmException {
         LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
         Boolean result = null;
         try {
@@ -372,11 +371,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 设置聊天室禁言ip
      * 返回：当前所有的禁言ip列表
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testAddBannedIP() throws IOException, NoSuchAlgorithmException {
+    public void testAddBannedIP() throws Exception, NoSuchAlgorithmException {
         LiveChatBannedIPRequest liveChatBannedIPRequest = new LiveChatBannedIPRequest();
         List<String> bannedIPList = null;
         try {
@@ -404,11 +403,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 设置聊天室管理员信息
      * 返回：true 设置成功，false 设置失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSetChatAdminData() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+    public void testSetChatAdminData() throws Exception, NoSuchAlgorithmException, URISyntaxException {
         LiveSetChatAdminDataRequest liveSetChatAdminDataRequest = new LiveSetChatAdminDataRequest();
         Boolean result = null;
         try {
@@ -441,11 +440,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 删除禁言IP/严禁词
      * 返回：true 删除成功 ，false 删除失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testDelBanned() throws IOException, NoSuchAlgorithmException {
+    public void testDelBanned() throws Exception, NoSuchAlgorithmException {
         LiveDelBannedDataRequest liveDelBannedDataRequest = new LiveDelBannedDataRequest();
         Boolean result = null;
         try {
@@ -475,11 +474,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * 删除单条聊天记录
      * 描述：根据聊天的id删除对应聊天记录
      * 返回：true 删除成功， false 删除失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testDelChatSingleMsg() throws IOException, NoSuchAlgorithmException {
+    public void testDelChatSingleMsg() throws Exception, NoSuchAlgorithmException {
         LiveChatDelSingleMsgRequest liveChatDelSingleMsgRequest = new LiveChatDelSingleMsgRequest();
         Boolean result = null;
         
@@ -529,11 +528,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 删除频道聊天记录
      * 返回：true 删除成功， false 删除失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCleanChannelAllMsg() throws IOException, NoSuchAlgorithmException {
+    public void testCleanChannelAllMsg() throws Exception, NoSuchAlgorithmException {
         LiveCleanChannelAllMsgRequest liveCleanChannelAllMsgRequest = new LiveCleanChannelAllMsgRequest();
         Boolean result = null;
         try {

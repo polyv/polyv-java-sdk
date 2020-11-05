@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -54,7 +53,7 @@ public class HttpUtil {
     
     ;
    
-    public static final String UTF8 = StandardCharsets.UTF_8.name();
+    public static final String UTF8 = Constant.UTF8;
     
     
     /**
@@ -204,7 +203,7 @@ public class HttpUtil {
         httpPost.addHeader(VERSION, CURRETN_VERSION);
         // 设置参数到请求对象中
         StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
-        //  StandardCharsets.UTF_8.name()
+        //  Constant.UTF8
         stringEntity.setContentEncoding(encoding);
         httpPost.setEntity(stringEntity);
         // 执行请求操作，并拿到结果（同步阻塞）

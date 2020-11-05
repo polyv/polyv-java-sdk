@@ -23,12 +23,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java-version>1.8</java-version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <java-version>1.6</java-version>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
         <log4j.version>2.13.2</log4j.version>
         <slf4j.version>1.7.30</slf4j.version>
-        <hutool-version>5.4.0</hutool-version>
         <httpclient.version>4.5</httpclient.version>
         <commons.lang3.version>3.5</commons.lang3.version>
         <fastjson.version>1.2.70</fastjson.version>
@@ -38,7 +37,6 @@
         <lombok.version>1.18.10</lombok.version>
         <jacoco.version>0.8.0</jacoco.version>
         <allure-junit4.version>2.13.1</allure-junit4.version>
-        <hutool-all.version>5.4.7</hutool-all.version>
     </properties>
 
 
@@ -112,10 +110,11 @@
             <version>${jacoco.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool-all.version}</version>
+            <groupId>aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.5.0</version>
         </dependency>
 
     </dependencies>
@@ -259,7 +258,8 @@
                     </excludes>
                     <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.5/aspectjweaver-1.9.5.jar"
+                        <!--                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.5.4/aspectjweaver-1.5.4.jar"-->
+                        -javaagent:"${settings.localRepository}/aspectj/aspectjweaver/1.5.0/aspectjweaver-1.5.0.jar"
                     </argLine>
                     <properties>
                         <property>
@@ -269,13 +269,13 @@
                     </properties>
 
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>1.9.5</version>
-                    </dependency>
-                </dependencies>
+                <!--                <dependencies>-->
+                <!--                    <dependency>-->
+                <!--                        <groupId>org.aspectj</groupId>-->
+                <!--                        <artifactId>aspectjweaver</artifactId>-->
+                <!--                        <version>1.6.0</version>-->
+                <!--                    </dependency>-->
+                <!--                </dependencies>-->
             </plugin>
 
 
@@ -288,9 +288,9 @@
                     <includes>
                         <include>com/**/*</include>
                     </includes>
-<!--                    <excludes>-->
-<!--                        <exclude>com/src/test/**/*</exclude>-->
-<!--                    </excludes>-->
+                    <!--                    <excludes>-->
+                    <!--                        <exclude>com/src/test/**/*</exclude>-->
+                    <!--                    </excludes>-->
                 </configuration>
                 <executions>
                     <execution>

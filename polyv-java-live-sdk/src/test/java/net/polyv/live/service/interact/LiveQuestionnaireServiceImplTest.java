@@ -41,7 +41,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetQuestionnaireListInfo() throws IOException, NoSuchAlgorithmException {
+    public void testGetQuestionnaireListInfo() throws Exception, NoSuchAlgorithmException {
         LiveQuestionnaireListRequest liveQuestionnaireListRequest = new LiveQuestionnaireListRequest();
         LiveQuestionnaireListResponse liveQuestionnaireListResponse = null;
         try {
@@ -73,7 +73,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
+    public void testGetQuestionnaireDetailInfo() throws Exception, NoSuchAlgorithmException {
         LiveQuestionnaireDetailRequest liveQuestionnaireDetailRequest = new LiveQuestionnaireDetailRequest();
         LiveQuestionnaireDetailResponse liveQuestionnaireDetailResponse = null;
         try {
@@ -107,7 +107,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetQuestionnaireResultInfo() throws IOException, NoSuchAlgorithmException {
+    public void testGetQuestionnaireResultInfo() throws Exception, NoSuchAlgorithmException {
         LiveQuestionnaireResultRequest liveQuestionnaireResultRequest = new LiveQuestionnaireResultRequest();
         List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = null;
         try {
@@ -140,7 +140,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetQuestionnaireResultPageInfo() throws IOException, NoSuchAlgorithmException {
+    public void testGetQuestionnaireResultPageInfo() throws Exception, NoSuchAlgorithmException {
         LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest =
                 new LiveQuestionnaireResultPageRequest();
         LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = null;
@@ -176,7 +176,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
+    public void testSetQuestionnaireDetailInfo() throws Exception, NoSuchAlgorithmException {
         LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest = new LiveQuestionnaireDetailSetRequest();
         LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse = null;
         try {

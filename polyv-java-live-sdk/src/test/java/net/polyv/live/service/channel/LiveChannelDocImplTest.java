@@ -35,7 +35,7 @@ public class LiveChannelDocImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCreateChannelDoc() throws IOException, NoSuchAlgorithmException {
+    public void testCreateChannelDoc() throws Exception, NoSuchAlgorithmException {
         LiveCreateChannelDocRequest liveCreateChannelDocRequest = new LiveCreateChannelDocRequest();
         LiveCreateChannelDocResponse liveCreateChannelDocResponse;
         try {
@@ -70,7 +70,7 @@ public class LiveChannelDocImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelDocStatus() throws IOException, NoSuchAlgorithmException {
+    public void testChannelDocStatus() throws Exception, NoSuchAlgorithmException {
         LiveChannelDocStatusRequest liveChannelDocStatusRequest = new LiveChannelDocStatusRequest();
         LiveChannelDocStatusResponse liveChannelDocStatusResponse;
         try {
@@ -103,7 +103,7 @@ public class LiveChannelDocImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListChannelDoc() throws IOException, NoSuchAlgorithmException {
+    public void testListChannelDoc() throws Exception, NoSuchAlgorithmException {
         LiveListChannelDocRequest liveListChannelDocRequest = new LiveListChannelDocRequest();
         LiveListChannelDocResponse liveListChannelDocResponse;
         try {
@@ -136,7 +136,7 @@ public class LiveChannelDocImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testDeleteChannelDoc() throws IOException, NoSuchAlgorithmException {
+    public void testDeleteChannelDoc() throws Exception, NoSuchAlgorithmException {
         LiveDeleteChannelDocRequest liveDeleteChannelDocRequest = new LiveDeleteChannelDocRequest();
         Boolean liveDeleteChannelDocResponse;
         try {

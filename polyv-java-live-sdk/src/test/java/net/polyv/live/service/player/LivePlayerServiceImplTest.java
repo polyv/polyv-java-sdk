@@ -37,7 +37,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSetPlayerWarmupEnable() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+    public void testSetPlayerWarmupEnable() throws Exception, NoSuchAlgorithmException, URISyntaxException {
         LiveSetWarmupEnableRequest liveSetWarmupEnableRequest = new LiveSetWarmupEnableRequest();
         Boolean result = null;
         try {
@@ -71,7 +71,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSetChatAdminData() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+    public void testSetChatAdminData() throws Exception, NoSuchAlgorithmException, URISyntaxException {
         LiveSetPlayerImgRequest liveSetChatAdminDataRequest = new LiveSetPlayerImgRequest();
         Boolean result = null;
         try {
@@ -108,7 +108,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSetPlayerWarmUpVedio() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+    public void testSetPlayerWarmUpVedio() throws Exception, NoSuchAlgorithmException, URISyntaxException {
         LiveSetWarmupVedioRequest liveSetWarmupVedioRequest = new LiveSetWarmupVedioRequest();
         Boolean result = null;
         try {
@@ -142,7 +142,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSetPlayerLogo() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+    public void testSetPlayerLogo() throws Exception, NoSuchAlgorithmException, URISyntaxException {
         LiveSetPlayerLogoRequest liveSetPlayerLogoRequest = new LiveSetPlayerLogoRequest();
         Boolean result = null;
         try {
@@ -179,7 +179,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSetPlayerHeaderAdvert() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+    public void testSetPlayerHeaderAdvert() throws Exception, NoSuchAlgorithmException, URISyntaxException {
         LiveSetPlayerHeaderAdvertRequest liveSetPlayerHeaderAdvertRequest = new LiveSetPlayerHeaderAdvertRequest();
         Boolean result = null;
         try {
@@ -219,7 +219,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSetPlayerPauseAdvert() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+    public void testSetPlayerPauseAdvert() throws Exception, NoSuchAlgorithmException, URISyntaxException {
         LiveSetPlayerPauseAdvertRequest liveSetPlayerPauseAdvertRequest = new LiveSetPlayerPauseAdvertRequest();
         Boolean result = null;
         try {

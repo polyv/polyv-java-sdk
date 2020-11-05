@@ -1,6 +1,5 @@
 package net.polyv.live.service.web;
 
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,11 +39,11 @@ public class LiveWebAuthImplTest extends BaseTest {
     /**
      * 测试添加单个白名单
      * 返回：true为添加成功，false为添加失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCreateChannelWriteList() throws IOException, NoSuchAlgorithmException {
+    public void testCreateChannelWriteList() throws Exception, NoSuchAlgorithmException {
         LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest = new LiveCreateChannelWriteListRequest();
         Boolean liveCreateChannelWriteListResponse;
         try {
@@ -73,11 +72,11 @@ public class LiveWebAuthImplTest extends BaseTest {
     /**
      * 测试查询频道观看白名单列表
      * 用于获取全局或频道的观看条件白名单列表
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelWriteList() throws IOException, NoSuchAlgorithmException {
+    public void testChannelWriteList() throws Exception, NoSuchAlgorithmException {
         LiveChannelWriteListRequest liveChannelWriteListRequest = new LiveChannelWriteListRequest();
         LiveChannelWriteListResponse liveChannelWriteListResponse;
         try {
@@ -105,11 +104,11 @@ public class LiveWebAuthImplTest extends BaseTest {
     
     /**
      * 测试查询直播频道观看条件
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelAuth() throws IOException, NoSuchAlgorithmException {
+    public void testChannelAuth() throws Exception, NoSuchAlgorithmException {
         LiveChannelAuthRequest liveChannelAuthRequest = new LiveChannelAuthRequest();
         LiveChannelAuthResponse liveChannelAuthResponse;
         try {
@@ -134,11 +133,11 @@ public class LiveWebAuthImplTest extends BaseTest {
     /**
      * 测试设置观看条件
      * 返回：true为设置观看条件成功，false为设置失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelAuth() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelAuth() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest = new LiveUpdateChannelAuthRequest();
         Boolean liveUpdateChannelAuthResponse;
         try {
@@ -149,7 +148,7 @@ public class LiveWebAuthImplTest extends BaseTest {
                     .setAuthCode("123456")
                     .setQcodeTips("提示文案测试2")
                     .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-            List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
+            List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<LiveChannelSettingRequest.AuthSetting>();
             authSettings.add(authSetting);
             liveUpdateChannelAuthRequest.setChannelId(createChannel())
                     .setAuthSettings(authSettings)
@@ -173,11 +172,11 @@ public class LiveWebAuthImplTest extends BaseTest {
     
     /**
      * 测试通过接口设置外部授权
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelAuthExternal() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelAuthExternal() throws Exception, NoSuchAlgorithmException {
         LiveChannelAuthExternalRequest liveChannelAuthExternalRequest = new LiveChannelAuthExternalRequest();
         LiveChannelAuthExternalResponse liveChannelAuthExternalResponse;
         try {
@@ -204,11 +203,11 @@ public class LiveWebAuthImplTest extends BaseTest {
     
     /**
      * 测试设置自定义授权地址
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelAuthCustom() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelAuthCustom() throws Exception, NoSuchAlgorithmException {
         LiveChannelAuthCustomRequest liveChannelAuthCustomRequest = new LiveChannelAuthCustomRequest();
         LiveChannelAuthCustomResponse liveChannelAuthCustomResponse;
         try {
@@ -236,11 +235,11 @@ public class LiveWebAuthImplTest extends BaseTest {
     /**
      * 测试设置授权认证URL
      * 返回：true为设置成功，false为设置失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelAuthUrl() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelAuthUrl() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelAuthUrlRequest liveUpdateChannelAuthUrlRequest = new LiveUpdateChannelAuthUrlRequest();
         Boolean liveUpdateChannelAuthUrlResponse;
         try {
@@ -268,11 +267,11 @@ public class LiveWebAuthImplTest extends BaseTest {
     /**
      * 测试设置授权观看类型
      * 返回：true为授权成功，false为授权失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelAuthType() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelAuthType() throws Exception, NoSuchAlgorithmException {
         LiveChannelAuthTypeRequest liveChannelAuthTypeRequest = new LiveChannelAuthTypeRequest();
         Boolean liveChannelAuthTypeResponse;
         try {

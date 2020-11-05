@@ -96,7 +96,7 @@ public class DocUtil extends BaseUtil {
     }
     
     public static List<File> listFile(File filePath) {
-        List<File> fileList = new ArrayList<>();
+        List<File> fileList = new ArrayList<File>();
         if (filePath.isDirectory()) {
             File[] files = filePath.listFiles();
             for (File f : files) {
@@ -140,7 +140,7 @@ public class DocUtil extends BaseUtil {
             throw new RuntimeException("请给类" + classPath + "添加类级别的注释");
         }
 //        stringBuffer.append("## ").append(doc.getTitle()).append("\n");
-        List<String> tempFunctionList = tempFunctionList = new ArrayList<>();
+        List<String> tempFunctionList = tempFunctionList = new ArrayList<String>();
         for (int i = 0; i < doc.getMethodDocs().size(); i++) {
             JavaDocUtil.PolyvMethodDoc methodDoc = doc.getMethodDocs().get(i);
             tempFunctionList.add(
@@ -237,7 +237,7 @@ public class DocUtil extends BaseUtil {
     
     public static List<TestMethod> readFileLine(String path) throws IOException, IOException {
         int lineNum = 0;
-        List<String> lineList = new ArrayList<>();
+        List<String> lineList = new ArrayList<String>();
         Map<String, String> requestMap = getBaseTypeMap();
         Map<String, String> responseMap = getBaseTypeMap();
         FileReader fr = new FileReader(path);
@@ -246,7 +246,7 @@ public class DocUtil extends BaseUtil {
         TestMethod testMethod = null;
         StringBuffer codeBuffer = new StringBuffer();
         Boolean inFunction = false;
-        List<TestMethod> testMethods = new ArrayList<>();
+        List<TestMethod> testMethods = new ArrayList<TestMethod>();
         while ((line = br.readLine()) != null) {
             if (inFunction) {
                 if (line.trim().startsWith("/**")) {
@@ -324,7 +324,7 @@ public class DocUtil extends BaseUtil {
     }
     
     private static Map<String, String> getBaseTypeMap() {
-        Map<String, String> baseMap = new HashMap<>();
+        Map<String, String> baseMap = new HashMap<String, String>();
         baseMap.put(Integer.class.getSimpleName(), Integer.class.getName());
         baseMap.put(String.class.getSimpleName(), String.class.getName());
         baseMap.put(Boolean.class.getSimpleName(), Boolean.class.getName());

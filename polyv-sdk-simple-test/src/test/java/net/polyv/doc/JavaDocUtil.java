@@ -60,7 +60,7 @@ public class JavaDocUtil {
             System.out.println(">>>>>>>>" + classes[i].commentText());
             int j = 0;
             PolyvMethodDoc polyvMethodDoc;
-            List<PolyvMethodDoc> methodDocs = new ArrayList<>();
+            List<PolyvMethodDoc> methodDocs = new ArrayList<PolyvMethodDoc>();
             for (MethodDoc method : classes[i].methods()) {
                 polyvMethodDoc = new PolyvMethodDoc();
                 String commentText = method.commentText();

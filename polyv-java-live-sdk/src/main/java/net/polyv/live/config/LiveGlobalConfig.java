@@ -57,6 +57,8 @@ public class LiveGlobalConfig {
         HttpClientUtil.setTimeOut(timeOut);
         HttpClientUtil.setMaxClientNum(maxClientNum);
         HttpClientUtil.init();
+        //全局异常和错误处理配置
+        Thread.setDefaultUncaughtExceptionHandler(new GlobalUncaughtExceptionHandler());
     }
     
     

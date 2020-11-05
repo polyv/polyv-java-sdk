@@ -88,7 +88,7 @@ public class LiveChannelDocServiceImpl extends LiveBaseService implements ILiveC
     public LiveCreateChannelDocResponse createChannelDoc(LiveCreateChannelDocRequest liveCreateChannelDocRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CREATE_CHANNEL_DOC_URL;
-        Map<String, File> fileMap = new HashMap<>();
+        Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("file", liveCreateChannelDocRequest.getFile());
         return this.baseUploadFile(url,
                 liveCreateChannelDocRequest, fileMap, LiveCreateChannelDocResponse.class);

@@ -4,9 +4,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -15,8 +13,6 @@ import lombok.experimental.Accessors;
  **/
 @Data
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("查询频道踢人列表响应实体")
 public class LiveKickedListResponse {
     /**

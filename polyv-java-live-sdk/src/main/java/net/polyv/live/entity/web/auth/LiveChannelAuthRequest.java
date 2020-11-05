@@ -2,10 +2,8 @@ package net.polyv.live.entity.web.auth;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
@@ -16,8 +14,6 @@ import net.polyv.live.entity.LiveCommonRequest;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("查询直播频道观看条件请求体")
 public class LiveChannelAuthRequest extends LiveCommonRequest {
     

@@ -18,7 +18,7 @@ public class BaseUtil {
     //生成文档所在文件，不存在则自动创建
     protected static String filePath = "C:\\project\\IdeaProject\\polyv-java-sdk\\docs\\live\\";
     
-    protected static Map<String, List<String>> functionMap = new HashMap<>();
+    protected static Map<String, List<String>> functionMap = new HashMap<String, List<String>>();
     
     //Junit测试类全路径
     private static String JUNIT_CLASS_NAME = "";

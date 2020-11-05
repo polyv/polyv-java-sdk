@@ -4,6 +4,9 @@ package net.polyv.common.base;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSession;
+
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
@@ -26,6 +29,7 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.impl.conn.SystemDefaultDnsResolver;
 import org.apache.http.impl.io.DefaultHttpRequestWriterFactory;
 import org.apache.http.pool.PoolStats;
+import org.apache.http.ssl.SSLContexts;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.constant.Constant;
@@ -47,9 +51,9 @@ public class HttpClientUtil {
     private static CloseableHttpClient httpClient = null;
     
     /**
-     * 读写超时时间设置，默认5S
+     * 读写超时时间设置，默认20S
      */
-    private static int TIME_OUT = 30000;
+    private static int TIME_OUT = 20000;
     
     /**
      * 默认线程数
@@ -68,7 +72,7 @@ public class HttpClientUtil {
         MAX_CLIENT_NUM = maxClientNum < 300 ? maxClientNum : MAX_CLIENT_NUM;
     }
     
-   
+    
     public static int getTimeOut() {
         return TIME_OUT;
     }
@@ -108,9 +112,11 @@ public class HttpClientUtil {
         return httpClient;
     }
     
+    
+    
     /**
      * HTTP 链接池初始化类
-     * @return   CloseableHttpClient  Http client
+     * @return CloseableHttpClient  Http client
      */
     public static synchronized CloseableHttpClient init() {
         if (httpClient == null) {
@@ -119,8 +125,14 @@ public class HttpClientUtil {
             Registry<ConnectionSocketFactory> socketFactoryRegistry =
                     RegistryBuilder.<ConnectionSocketFactory>create().register(
                     "http", PlainConnectionSocketFactory.INSTANCE)
-                    .register("https", SSLConnectionSocketFactory.getSystemSocketFactory())
-                    .build();
+//                    .register("https", SSLConnectionSocketFactory.getSystemSocketFactory())
+                    .register("https",
+                            new SSLConnectionSocketFactory(SSLContexts.createDefault(), new HostnameVerifier() {
+                                @Override
+                                public boolean verify(String s, SSLSession sslSession) {
+                                    return true;
+                                }
+                            })).build();
             
             //HttpConnection 工厂:配置写请求/解析响应处理器
             HttpConnectionFactory<HttpRoute, ManagedHttpClientConnection> connectionFactory =
@@ -185,7 +197,7 @@ public class HttpClientUtil {
                     //设置等待数据超时时间，5s
                     .setSocketTimeout(TIME_OUT)
                     //设置从连接池获取连接的等待超时时间
-                    .setConnectionRequestTimeout( TIME_OUT).build();
+                    .setConnectionRequestTimeout(TIME_OUT).build();
             
             //创建HttpClient
             httpClient = HttpClients.custom().setConnectionManager(manager)

@@ -7,9 +7,7 @@ import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.MethodDoc;
 import com.sun.javadoc.RootDoc;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -62,7 +60,7 @@ public class JavaDocUtil {
             System.out.println(">>>>>>>>" + classes[i].commentText());
             int j = 0;
             PolyvMethodDoc polyvMethodDoc;
-            List<PolyvMethodDoc> methodDocs = new ArrayList<>();
+            List<PolyvMethodDoc> methodDocs = new ArrayList<PolyvMethodDoc>();
             for (MethodDoc method : classes[i].methods()) {
                 polyvMethodDoc = new PolyvMethodDoc();
                 String commentText = method.commentText();
@@ -106,8 +104,6 @@ public class JavaDocUtil {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     public static class PolyvClassDoc {
         private String title;
         private List<PolyvMethodDoc> methodDocs;
@@ -115,8 +111,6 @@ public class JavaDocUtil {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     public static class PolyvMethodDoc {
         private String title;
         private String description;

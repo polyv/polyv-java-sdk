@@ -6,10 +6,8 @@ import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
@@ -20,8 +18,6 @@ import net.polyv.live.entity.LiveCommonRequest;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("频道相关设置请求基本信息")
 public class LiveChannelSettingRequest extends LiveCommonRequest {
     
@@ -46,8 +42,6 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("基础设置")
     public class BasicSetting {
         /**
@@ -157,8 +151,6 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("观看条件设置")
     public static class AuthSetting {
         /**

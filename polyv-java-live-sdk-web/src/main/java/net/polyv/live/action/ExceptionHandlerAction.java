@@ -28,7 +28,7 @@ public class ExceptionHandlerAction {
     @ExceptionHandler(value = Exception.class)
     public String handlerException(Exception exce){
         log.error("SDK调用错误",exce);
-        Map<String,String> result  = new HashMap<>();
+        Map<String,String> result  = new HashMap<String, String>();
         if(exce instanceof PloyvSdkException){
              result.put(((PloyvSdkException) exce).getCode().toString(), exce.getMessage());
         }else{

@@ -34,7 +34,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListLottery() throws IOException, NoSuchAlgorithmException {
+    public void testListLottery() throws Exception, NoSuchAlgorithmException {
         LiveListLotteryRequest liveListLotteryRequest = new LiveListLotteryRequest();
         LiveListLotteryResponse liveListLotteryResponse;
         try {
@@ -67,7 +67,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testLotteryWinnerDetail() throws IOException, NoSuchAlgorithmException {
+    public void testLotteryWinnerDetail() throws Exception, NoSuchAlgorithmException {
         LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest = new LiveLotteryWinnerDetailRequest();
         LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
         try {
@@ -102,7 +102,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testSetLotteryWinnerInfo() throws IOException, NoSuchAlgorithmException {
+    public void testSetLotteryWinnerInfo() throws Exception, NoSuchAlgorithmException {
         LiveSetLotteryWinnerInfoRequest liveSetLotteryWinnerInfoRequest = new LiveSetLotteryWinnerInfoRequest();
         Boolean liveSetLotteryWinnerInfoResponse;
         try {

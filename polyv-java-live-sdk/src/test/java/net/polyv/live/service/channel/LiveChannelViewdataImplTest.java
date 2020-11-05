@@ -40,7 +40,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testMaxChannelHistoryConcurrent() throws IOException, NoSuchAlgorithmException {
+    public void testMaxChannelHistoryConcurrent() throws Exception, NoSuchAlgorithmException {
         LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest =
                 new LiveChannelMaxHistoryConcurrentRequest();
         Integer liveChannelMaxHistoryConcurrentResponse;
@@ -75,7 +75,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListChannelMic() throws IOException, NoSuchAlgorithmException {
+    public void testListChannelMic() throws Exception, NoSuchAlgorithmException {
         LiveListChannelMicRequest liveListChannelMicRequest = new LiveListChannelMicRequest();
         LiveListChannelMicResponse liveListChannelMicResponse;
         try {
@@ -106,7 +106,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListChannelViewlog() throws IOException, NoSuchAlgorithmException {
+    public void testListChannelViewlog() throws Exception, NoSuchAlgorithmException {
         LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
         LiveListChannelViewlogResponse liveListChannelViewlogResponse;
         try {
@@ -137,7 +137,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListChannelSummary() throws IOException, NoSuchAlgorithmException {
+    public void testListChannelSummary() throws Exception, NoSuchAlgorithmException {
         LiveListChannelSummaryRequest liveListChannelSummaryRequest = new LiveListChannelSummaryRequest();
         LiveListChannelSummaryResponse liveListChannelSummaryResponse;
         try {
@@ -169,7 +169,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListChannelViewerCount() throws IOException, NoSuchAlgorithmException {
+    public void testListChannelViewerCount() throws Exception, NoSuchAlgorithmException {
         LiveListChannelViewerCountRequest liveListChannelViewerCountRequest = new LiveListChannelViewerCountRequest();
         LiveListChannelViewerCountResponse liveListChannelViewerCountResponse;
         try {
@@ -199,7 +199,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelViewerConcurrence() throws IOException, NoSuchAlgorithmException {
+    public void testChannelViewerConcurrence() throws Exception, NoSuchAlgorithmException {
         LiveChannelViewerConcurrenceRequest liveChannelViewerConcurrenceRequest =
                 new LiveChannelViewerConcurrenceRequest();
         LiveChannelViewerConcurrenceResponse liveChannelViewerConcurrenceResponse;

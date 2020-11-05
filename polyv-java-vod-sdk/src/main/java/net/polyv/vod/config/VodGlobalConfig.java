@@ -61,4 +61,24 @@ public class VodGlobalConfig {
         //全局异常和错误处理配置
         Thread.setDefaultUncaughtExceptionHandler(new GlobalUncaughtExceptionHandler());
     }
+    
+    /**
+     * 点播业务全局初始化
+     * @param userId 系统分配的USERID
+     * @param writeToken 写入操作密钥
+     * @param readToken 读取操作密钥
+     * @param secretKey 鉴权密钥
+     */
+    public static void  init(String userId,String writeToken,String readToken,String secretKey,Integer timeOut ,Integer maxClientNum){
+        VodGlobalConfig.USER_ID = userId;
+        VodGlobalConfig.WRITE_TOKEN = writeToken;
+        VodGlobalConfig.READ_TOKEN=readToken;
+        VodGlobalConfig.SECRET_KEY = secretKey;
+        HttpClientUtil.setTimeOut(timeOut);
+        HttpClientUtil.setMaxClientNum(maxClientNum);
+        HttpClientUtil.init();
+        //全局异常和错误处理配置
+        Thread.setDefaultUncaughtExceptionHandler(new GlobalUncaughtExceptionHandler());
+    }
+    
 }

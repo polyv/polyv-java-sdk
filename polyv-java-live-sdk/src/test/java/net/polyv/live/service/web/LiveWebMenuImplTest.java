@@ -32,7 +32,7 @@ public class LiveWebMenuImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelMenu() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelMenu() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelMenuRequest liveUpdateChannelMenuRequest = new LiveUpdateChannelMenuRequest();
         Boolean liveUpdateChannelMenuResponse;
         try {
@@ -66,7 +66,7 @@ public class LiveWebMenuImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListChannelMenu() throws IOException, NoSuchAlgorithmException {
+    public void testListChannelMenu() throws Exception, NoSuchAlgorithmException {
         LiveListChannelMenuRequest liveListChannelMenuRequest = new LiveListChannelMenuRequest();
         LiveListChannelMenuResponse liveListChannelMenuResponse;
         try {

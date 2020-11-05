@@ -49,7 +49,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
+    public void testAddChannelVideoPlayback() throws Exception, NoSuchAlgorithmException {
         LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest =
                 new LiveCreateChannelVideoPlaybackRequest();
         LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse;
@@ -83,7 +83,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testConvertChannelVideoListAsync() throws IOException, NoSuchAlgorithmException {
+    public void testConvertChannelVideoListAsync() throws Exception, NoSuchAlgorithmException {
         LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest =
                 new LiveConvertChannelVideoListAsyncRequest();
         Boolean liveConvertChannelVideoResponse;
@@ -119,7 +119,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
+    public void testMergeChannelVideoAsync() throws Exception, NoSuchAlgorithmException {
         LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
         Boolean liveMergeChannelVideoAsyncResponse;
         try {
@@ -154,7 +154,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListChannelVideo() throws IOException, NoSuchAlgorithmException {
+    public void testListChannelVideo() throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
         LiveChannelVideoListResponse liveChannelVideoListResponse;
         try {
@@ -187,7 +187,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListChannelVideoLibrary() throws IOException, NoSuchAlgorithmException {
+    public void testListChannelVideoLibrary() throws Exception, NoSuchAlgorithmException {
         LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
                 new LiveListChannelVideoLibraryRequest();
         LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse;
@@ -219,7 +219,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testListChannelSessionInfo() throws IOException, NoSuchAlgorithmException {
+    public void testListChannelSessionInfo() throws Exception, NoSuchAlgorithmException {
         LiveListChannelSessionInfoRequest liveListChannelSessionInfoRequest = new LiveListChannelSessionInfoRequest();
         LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse;
         try {
@@ -253,7 +253,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelPlayBackEnabledInfo() throws IOException, NoSuchAlgorithmException {
+    public void testChannelPlayBackEnabledInfo() throws Exception, NoSuchAlgorithmException {
         LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest =
                 new LiveChannelPlaybackEnabledInfoRequest();
         String liveChannelPlaybackEnabledInfoResponse;
@@ -284,7 +284,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelVideoOnly() throws IOException, NoSuchAlgorithmException {
+    public void testChannelVideoOnly() throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest = new LiveChannelVideoOnlyRequest();
         LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse;
         try {
@@ -318,7 +318,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelPlaybackSetting() throws IOException, NoSuchAlgorithmException {
+    public void testChannelPlaybackSetting() throws Exception, NoSuchAlgorithmException {
         LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest;
         Boolean liveChannelPlaybackSettingResponse;
         try {
@@ -356,7 +356,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
+    public void testChannelPlayBackEnabledSetting() throws Exception, NoSuchAlgorithmException {
         LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
         String liveChannelPlaybackEnabledResponse;
         try {
@@ -388,7 +388,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelVideoSort() throws IOException, NoSuchAlgorithmException {
+    public void testChannelVideoSort() throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoSortRequest liveChannelVideoSortRequest = new LiveChannelVideoSortRequest();
         Boolean liveChannelVideoSortResponse;
         try {
@@ -423,7 +423,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelDefaultVideo() throws IOException, NoSuchAlgorithmException {
+    public void testChannelDefaultVideo() throws Exception, NoSuchAlgorithmException {
         LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest = new LiveChannelDefaultVideoRequest();
         Boolean liveChannelDefaultVideoResponse;
         try {
@@ -456,7 +456,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testDeleteChannelVideo() throws IOException, NoSuchAlgorithmException {
+    public void testDeleteChannelVideo() throws Exception, NoSuchAlgorithmException {
         LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest = new LiveDeleteChannelVideoRequest();
         Boolean liveDeleteChannelVideoResponse;
         try {
@@ -488,7 +488,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testDeleteChannelPlaybackVideo() throws IOException, NoSuchAlgorithmException {
+    public void testDeleteChannelPlaybackVideo() throws Exception, NoSuchAlgorithmException {
         LiveDeleteChannelPlaybackVideoRequest liveDeleteChannelPlaybackVideoRequest =
                 new LiveDeleteChannelPlaybackVideoRequest();
         Boolean liveDeleteChannelPlaybackVideoResponse;

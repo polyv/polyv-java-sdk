@@ -233,7 +233,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public Boolean setChatAdminData(LiveSetChatAdminDataRequest liveSetChatAdminDataRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_SET_ADMIN_DATA_URL, liveSetChatAdminDataRequest.getChannelId());
-        Map<String, File> fileMap = new HashMap<>();
+        Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("avatar",liveSetChatAdminDataRequest.getAvatar());
         return "修改成功".equalsIgnoreCase(super.baseUploadFile(url, liveSetChatAdminDataRequest, fileMap, String.class));
     }

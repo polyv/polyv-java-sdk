@@ -4,10 +4,8 @@ import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
@@ -18,8 +16,6 @@ import net.polyv.live.entity.LiveCommonRequest;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("依据指定直播场次sessionId查询签到场次信息请求实体")
 public class LiveCheckinMetadataBySessionIdRequest extends LiveCommonRequest {
     

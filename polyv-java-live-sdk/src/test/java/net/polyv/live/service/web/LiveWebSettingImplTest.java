@@ -28,7 +28,7 @@ public class LiveWebSettingImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelGlobalSwitch() throws IOException, NoSuchAlgorithmException {
+    public void testChannelGlobalSwitch() throws Exception, NoSuchAlgorithmException {
         LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest = new LiveChannelGlobalSwitchRequest();
         Boolean liveChannelGlobalSwitchResponse;
         try {

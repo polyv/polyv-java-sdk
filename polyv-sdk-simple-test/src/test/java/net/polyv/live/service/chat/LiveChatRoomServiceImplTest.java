@@ -54,7 +54,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSendChatMsg() throws IOException, NoSuchAlgorithmException {
+    public void testSendChatMsg() throws Exception, NoSuchAlgorithmException {
         LiveSendChatMsgRequest liveSendChatMsgRequest = new LiveSendChatMsgRequest();
         LiveSendChatMsgResponse liveSendChatMsgResponse = null;
         try {
@@ -91,7 +91,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSetChannelTeacherMsg() throws IOException, NoSuchAlgorithmException {
+    public void testSetChannelTeacherMsg() throws Exception, NoSuchAlgorithmException {
         LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
         Boolean result = null;
         try {
@@ -127,7 +127,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testAddBannedIP() throws IOException, NoSuchAlgorithmException {
+    public void testAddBannedIP() throws Exception, NoSuchAlgorithmException {
         LiveChatBannedIPRequest liveChatBannedIPRequest = new LiveChatBannedIPRequest();
         List<String> bannedIPList = null;
         try {
@@ -158,7 +158,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testAddBadWord() throws IOException, NoSuchAlgorithmException {
+    public void testAddBadWord() throws Exception, NoSuchAlgorithmException {
         LiveBadWordRequest liveBadWordRequest = new LiveBadWordRequest();
         LiveBadWordResponse liveBadWordResponse = null;
         try {
@@ -190,7 +190,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetBannedList() throws IOException, NoSuchAlgorithmException {
+    public void testGetBannedList() throws Exception, NoSuchAlgorithmException {
         LiveGetBannedListRequest liveGetBannedListRequest = new LiveGetBannedListRequest();
         List<String> result = null;
         try {
@@ -221,7 +221,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetKickedList() throws IOException, NoSuchAlgorithmException {
+    public void testGetKickedList() throws Exception, NoSuchAlgorithmException {
         LiveKickedListRequest liveKickedListRequest = new LiveKickedListRequest();
         List<LiveKickedListResponse> liveKickedListResponsesList = null;
         try {
@@ -253,7 +253,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetChannelBadworkList() throws IOException, NoSuchAlgorithmException {
+    public void testGetChannelBadworkList() throws Exception, NoSuchAlgorithmException {
         LiveGetBadwordIPRequest liveGetBadwordIPRequest = new LiveGetBadwordIPRequest();
         List<String> result = null;
         try {
@@ -287,7 +287,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetAccountBadworkList() throws IOException, NoSuchAlgorithmException {
+    public void testGetAccountBadworkList() throws Exception, NoSuchAlgorithmException {
         LiveGetAccountBadWordRequest liveGetAccountBadWordRequest = new LiveGetAccountBadWordRequest();
         List<String> result = null;
         try {
@@ -318,7 +318,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testDelBanned() throws IOException, NoSuchAlgorithmException {
+    public void testDelBanned() throws Exception, NoSuchAlgorithmException {
         LiveDelBannedDataRequest liveDelBannedDataRequest = new LiveDelBannedDataRequest();
         Boolean result = null;
         try {
@@ -351,7 +351,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetChatAdminData() throws IOException, NoSuchAlgorithmException {
+    public void testGetChatAdminData() throws Exception, NoSuchAlgorithmException {
         LiveGetChatAdminDataRequest liveGetChatAdminDataRequest = new LiveGetChatAdminDataRequest();
         LiveGetChatAdminDataResponse liveGetChatAdminDataResponse = null;
         try {
@@ -382,7 +382,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetHistroyChatMsg() throws IOException, NoSuchAlgorithmException {
+    public void testGetHistroyChatMsg() throws Exception, NoSuchAlgorithmException {
         LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest = new LiveGetHistoryChatMsgRequest();
         List<LiveGetHistoryChatMsgResponse> liveGetHistoryChatMsgResponsesList = null;
         try {
@@ -418,7 +418,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testDelChatSingleMsg() throws IOException, NoSuchAlgorithmException {
+    public void testDelChatSingleMsg() throws Exception, NoSuchAlgorithmException {
         LiveChatDelSingleMsgRequest liveChatDelSingleMsgRequest = new LiveChatDelSingleMsgRequest();
         Boolean result = null;
         
@@ -473,7 +473,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSetChatAdminData() throws IOException, NoSuchAlgorithmException, URISyntaxException {
+    public void testSetChatAdminData() throws Exception, NoSuchAlgorithmException, URISyntaxException {
         LiveSetChatAdminDataRequest liveSetChatAdminDataRequest = new LiveSetChatAdminDataRequest();
         Boolean result = null;
         try {
@@ -508,7 +508,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetConsultingRecord() throws IOException, NoSuchAlgorithmException {
+    public void testGetConsultingRecord() throws Exception, NoSuchAlgorithmException {
         LiveGetConsultingRecordRequest liveGetConsultingRecordRequest = new LiveGetConsultingRecordRequest();
         List<LiveGetConsultingRecordResponse> responses = null;
         try {
@@ -541,7 +541,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCleanChannelAllMsg() throws IOException, NoSuchAlgorithmException {
+    public void testCleanChannelAllMsg() throws Exception, NoSuchAlgorithmException {
         LiveCleanChannelAllMsgRequest liveCleanChannelAllMsgRequest = new LiveCleanChannelAllMsgRequest();
         Boolean result = null;
         try {

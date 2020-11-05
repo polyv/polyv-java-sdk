@@ -1,7 +1,5 @@
 package net.polyv.common.constant;
 
-import java.nio.charset.StandardCharsets;
-
 /**
  * 公共常量定义类
  * @author: thomas
@@ -29,6 +27,6 @@ public class Constant {
     
     public static  final Integer CLIENT_ERROR_CODE = 900;
     
-    public static  final String UTF8 = StandardCharsets.UTF_8.name();
+    public static  final String UTF8 = "UTF-8";
     
 }

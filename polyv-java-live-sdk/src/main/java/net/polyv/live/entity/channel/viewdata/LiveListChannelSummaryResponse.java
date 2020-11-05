@@ -4,9 +4,7 @@ import java.util.List;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -15,8 +13,6 @@ import lombok.experimental.Accessors;
  **/
 @Data
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("查询多个频道汇总的统计数据返回实体")
 public class LiveListChannelSummaryResponse {
     
@@ -28,8 +24,6 @@ public class LiveListChannelSummaryResponse {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("统计数据")
     public static class ChannelSummary {
         

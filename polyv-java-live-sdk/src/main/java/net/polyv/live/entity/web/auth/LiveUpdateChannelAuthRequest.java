@@ -4,10 +4,8 @@ import java.util.List;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
@@ -19,8 +17,6 @@ import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("设置观看条件请求实体")
 public class LiveUpdateChannelAuthRequest extends LiveCommonRequest {
     

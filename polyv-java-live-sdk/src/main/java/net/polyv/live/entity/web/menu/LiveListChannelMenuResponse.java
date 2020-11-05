@@ -4,9 +4,7 @@ import java.util.List;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -16,8 +14,6 @@ import lombok.experimental.Accessors;
 @Data
 
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("查询频道的菜单信息请求实体")
 public class LiveListChannelMenuResponse {
     
@@ -27,8 +23,6 @@ public class LiveListChannelMenuResponse {
     @Data
 
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("频道的菜单信息")
     public static class ChannelMenu{
     

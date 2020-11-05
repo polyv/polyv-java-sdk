@@ -6,9 +6,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -17,8 +15,6 @@ import lombok.experimental.Accessors;
  **/
 @Data
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("查询历史聊天信息响应实体")
 public class LiveGetHistoryChatMsgResponse {
     
@@ -92,8 +88,6 @@ public class LiveGetHistoryChatMsgResponse {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("查询历史聊天信息响应实体-消息对应用户消息")
     public class User {
         /**

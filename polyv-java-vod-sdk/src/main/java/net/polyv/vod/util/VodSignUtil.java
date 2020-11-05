@@ -2,7 +2,6 @@ package net.polyv.vod.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.constant.Constant;
 
 /**
  * polyv 直播签名工具类
@@ -31,7 +31,8 @@ public class VodSignUtil {
     /**
      * 获取加密串
      */
-    public static String setVodSign(Map<String, String> params, String appSecret) throws NoSuchAlgorithmException {
+    public static String setVodSign(Map<String, String> params, String appSecret)
+            throws NoSuchAlgorithmException, UnsupportedEncodingException {
         String sign = getSign(params, appSecret);
         params.put("sign", sign);
         return sign;
@@ -44,20 +45,25 @@ public class VodSignUtil {
      * @return 签名
      * @throws NoSuchAlgorithmException 异常异常
      */
-    public static String getSign(Map<String, String> params, String secretKey) throws NoSuchAlgorithmException {
-        log.debug("参与签名参数：{}" , JSON.toJSONString(params));
-        List<String> keys = new ArrayList<>(params.keySet());
-        List<String> tmp = new ArrayList<>();
+    public static String getSign(Map<String, String> params, String secretKey)
+            throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        log.debug("参与签名参数：{}", JSON.toJSONString(params));
+        List<String> keys = new ArrayList<String>(params.keySet());
+        List<String> tmp = new ArrayList<String>();
         Collections.sort(keys);
+        String plain = "";
         for (String key : keys) {
             if (null != params.get(key) && params.get(key).length() > 0) {
-                tmp.add(key + "=" + params.get(key));
+                plain += key + "=" + params.get(key) + "&";
             }
         }
-        String plain = String.join("&", tmp) + secretKey;
-        log.debug("签名原始字符串：{}" , plain);
+        if (StringUtils.isNotBlank(plain)) {
+            plain = plain.substring(0, plain.length() - 1);
+        }
+        plain += secretKey;
+        log.debug("签名原始字符串：{}", plain);
         String sign = getSha1(plain).toUpperCase();
-        log.debug("签名结果：{}",  sign);
+        log.debug("签名结果：{}", sign);
         return sign;
     }
     
@@ -67,16 +73,16 @@ public class VodSignUtil {
      * @return 签名
      * @throws NoSuchAlgorithmException 签名异常
      */
-    public static String getSha1(String input) throws NoSuchAlgorithmException {
-         
-            MessageDigest mDigest = MessageDigest.getInstance("SHA1");
-            byte[] result = mDigest.digest(input.getBytes(StandardCharsets.UTF_8));
-            StringBuilder sb = new StringBuilder();
-            for (int b : result) {
-                sb.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
-            }
-            return sb.toString();
-         
+    public static String getSha1(String input) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        
+        MessageDigest mDigest = MessageDigest.getInstance("SHA1");
+        byte[] result = mDigest.digest(input.getBytes(Constant.UTF8));
+        StringBuilder sb = new StringBuilder();
+        for (int b : result) {
+            sb.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
+        }
+        return sb.toString();
+        
     }
     
     
@@ -122,7 +128,7 @@ public class VodSignUtil {
             String temp = (key.endsWith("_") && key.length() > 1) ? key.substring(0, key.length() - 1) : key;
             stringBuilder.append(keyLower ? temp.toLowerCase() : temp)
                     .append("=")
-                    .append(valueUrlEncode ? URLEncoder.encode(value,  StandardCharsets.UTF_8.name()).replace("+", "%20") : value)
+                    .append(valueUrlEncode ? URLEncoder.encode(value, Constant.UTF8).replace("+", "%20") : value)
                     .append("&");
         }
         if (stringBuilder.length() > 0) {

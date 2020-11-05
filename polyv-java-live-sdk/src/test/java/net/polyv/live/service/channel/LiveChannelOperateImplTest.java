@@ -1,6 +1,5 @@
 package net.polyv.live.service.channel;
 
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,10 +56,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试创建频道
      * 描述：创建一个直播频道，返回直播频道相关的基础信息。
-     * @throws IOException
+     * @throws Exception
      */
 //    @Test
-    public void testCreateChannel() throws IOException, NoSuchAlgorithmException {
+    public void testCreateChannel() throws Exception, NoSuchAlgorithmException {
         LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
         LiveChannelResponse liveChannelResponse = null;
         try {
@@ -93,10 +92,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试创建并初始化频道
-     * @throws IOException 异常
+     * @throws Exception 异常
      */
     @Test
-    public void testCreateChannelInit() throws IOException, NoSuchAlgorithmException {
+    public void testCreateChannelInit() throws Exception, NoSuchAlgorithmException {
         LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
         LiveChannelInitResponse liveChannelInitResponse = null;
         try {
@@ -122,7 +121,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setAuthCode("123456")
                     .setQcodeTips("提示文案")
                     .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-            List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<>();
+            List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<LiveChannelInitRequest.AuthSetting>();
             authSettings.add(codeAuthSettings);
             liveChannelInitRequest.setAuthSettings(authSettings);
             liveChannelInitResponse = new LiveChannelOperateServiceImpl().createChannelInit(liveChannelInitRequest);
@@ -145,14 +144,14 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试批量创建频道
-     * @throws IOException
+     * @throws Exception
      */
 //    @Test
-    public void testCreateChannelList() throws IOException, NoSuchAlgorithmException {
+    public void testCreateChannelList() throws Exception, NoSuchAlgorithmException {
         LiveCreateChannelListRequest liveCreateChannelListRequest = new LiveCreateChannelListRequest();
         LiveCreateChannelListResponse liveCreateChannelListResponse;
         try {
-            List<LiveCreateChannelListRequest.LiveChannelBasic> channels = new ArrayList<>();
+            List<LiveCreateChannelListRequest.LiveChannelBasic> channels = new ArrayList<LiveCreateChannelListRequest.LiveChannelBasic>();
             for (int i = 0; i <= 2; i++) {
                 LiveCreateChannelListRequest.LiveChannelBasic liveChannel = new LiveCreateChannelListRequest.LiveChannelBasic();
                 liveChannel.setName("批量创建" + i)
@@ -187,11 +186,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试查询频道信息
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelInfo() throws IOException, NoSuchAlgorithmException {
+    public void testChannelInfo() throws Exception, NoSuchAlgorithmException {
         LiveChannelInfoRequest liveChannelInfoRequest = new LiveChannelInfoRequest();
         LiveChannelInfoResponse liveChannelInfoResponse;
         try {
@@ -218,11 +217,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试查询频道基本信息
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelBasicInfo() throws IOException, NoSuchAlgorithmException {
+    public void testChannelBasicInfo() throws Exception, NoSuchAlgorithmException {
         LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;
         try {
@@ -250,11 +249,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试查询授权和连麦的token
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelAuthToken() throws IOException, NoSuchAlgorithmException {
+    public void testChannelAuthToken() throws Exception, NoSuchAlgorithmException {
         LiveChannelAuthTokenRequest liveChannelAuthTokenRequest = new LiveChannelAuthTokenRequest();
         LiveChannelAuthTokenResponse liveChannelAuthTokenResponse;
         try {
@@ -286,11 +285,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试修改频道的相关设置
      * 返回：true为设置成功，false为设置失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelSetting() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelSetting() throws Exception, NoSuchAlgorithmException {
         LiveChannelSettingRequest liveChannelSettingRequest = new LiveChannelSettingRequest();
         Boolean liveChannelSettingResponse;
         try {
@@ -317,7 +316,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setAuthCode("123456")
                     .setQcodeTips("提示文案")
                     .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-            List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
+            List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<LiveChannelSettingRequest.AuthSetting>();
             authSettings.add(authSetting);
             liveChannelSettingRequest.setChannelId(channelId)
                     .setBasicSetting(basicSetting)
@@ -344,10 +343,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置频道详情
      * 返回：true为修改成功，false为修改失败
-     * @throws IOException
+     * @throws Exception
      */
     @Test
-    public void testUpdateChannelDetail() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelDetail() throws Exception, NoSuchAlgorithmException {
         LiveChannelDetailRequest liveChannelDetailRequest = new LiveChannelDetailRequest();
         Boolean liveChannelDetailResponse;
         try {
@@ -380,11 +379,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置频道密码
      * 返回：true为设置密码成功，false为设置失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelPassword() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelPassword() throws Exception, NoSuchAlgorithmException {
         LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest = new LiveChannelPasswordSettingRequest();
         Boolean updateChannelPasswordResponse;
         try {
@@ -415,11 +414,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置频道单点登陆token
      * 返回：true为设置token成功，false为设置失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCreateChannelToken() throws IOException, NoSuchAlgorithmException {
+    public void testCreateChannelToken() throws Exception, NoSuchAlgorithmException {
         LiveCreateChannelTokenRequest liveCreateChannelTokenRequest = new LiveCreateChannelTokenRequest();
         Boolean liveCreateChannelTokenResponse;
         try {
@@ -452,7 +451,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 返回：true为删除成功，false为删除失败
      */
 //    @Test
-    public void testDeleteChannel() throws IOException, NoSuchAlgorithmException {
+    public void testDeleteChannel() throws Exception, NoSuchAlgorithmException {
         LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest();
         Boolean liveDeleteChannelResponse;
         try {
@@ -480,11 +479,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 批量删除频道
      * 返回：true为批量删除成功，false为批量删除失败，不存在部分成功
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testDeleteChannelList() throws IOException, NoSuchAlgorithmException {
+    public void testDeleteChannelList() throws Exception, NoSuchAlgorithmException {
         LiveDeleteChannelListRequest liveDeleteChannelListRequest = new LiveDeleteChannelListRequest();
         Boolean liveDeleteChannelListResponse;
         try {
@@ -512,11 +511,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
 
     /**
      * 测试创建子频道-三分屏添加Guest
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCreateSonChannelGuest() throws IOException, NoSuchAlgorithmException {
+    public void testCreateSonChannelGuest() throws Exception, NoSuchAlgorithmException {
         LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
         LiveCreateSonChannelResponse liveCreateSonChannelResponse;
         try {
@@ -553,11 +552,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试创建子频道-非三分屏添加助教
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCreateSonChannelAssistant() throws IOException, NoSuchAlgorithmException {
+    public void testCreateSonChannelAssistant() throws Exception, NoSuchAlgorithmException {
         LiveCreateSonChannelRequest liveCreateSonChannelRequest = new LiveCreateSonChannelRequest();
         LiveCreateSonChannelResponse liveCreateSonChannelResponse;
         try {
@@ -594,11 +593,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试查询子频道信息
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSonChannelInfo() throws IOException, NoSuchAlgorithmException {
+    public void testSonChannelInfo() throws Exception, NoSuchAlgorithmException {
         LiveSonChannelInfoRequest liveSonChannelInfoRequest = new LiveSonChannelInfoRequest();
         LiveSonChannelInfoResponse liveSonChannelInfoResponse;
         try {
@@ -630,7 +629,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 测试查询频道号下所有子频道信息
      */
     @Test
-    public void testSonChannelInfoList() throws IOException, NoSuchAlgorithmException {
+    public void testSonChannelInfoList() throws Exception, NoSuchAlgorithmException {
         LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
         LiveSonChannelInfoListResponse liveSonChannelInfoResponse;
         try {
@@ -659,11 +658,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置子频道信息
      * 返回：true为设置成功，false为设置失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateSonChannelInfo() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateSonChannelInfo() throws Exception, NoSuchAlgorithmException {
         LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest = new LiveUpdateSonChannelInfoRequest();
         Boolean updateSonChannelInfoResponse;
         try {
@@ -701,11 +700,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置子频道单点登陆token
      * 返回：true为设置子频道token成功，false为设置失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testCreateSonChannelToken() throws IOException, NoSuchAlgorithmException {
+    public void testCreateSonChannelToken() throws Exception, NoSuchAlgorithmException {
         LiveCreateSonChannelTokenRequest liveCreateSonChannelTokenRequest = new LiveCreateSonChannelTokenRequest();
         Boolean liveCreateSonChannelTokenResponse;
         try {
@@ -737,11 +736,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试删除子频道
      * 返回：true为删除成功，false为删除失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testDeleteSonChannel() throws IOException, NoSuchAlgorithmException {
+    public void testDeleteSonChannel() throws Exception, NoSuchAlgorithmException {
         LiveDeleteSonChannelRequest liveDeleteSonChannelRequest = new LiveDeleteSonChannelRequest();
         Boolean liveDeleteSonChannelResponse;
         try {
@@ -773,11 +772,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试创建重制课件任务
      * 返回：true为创建成功，false为创建失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testCreateChannelPPTRecordTask() throws IOException, NoSuchAlgorithmException {
+    public void testCreateChannelPPTRecordTask() throws Exception, NoSuchAlgorithmException {
         LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest = new LiveCreateChannelPPTRecordRequest();
         Boolean liveCreateChannelPPTRecordResponse;
         try {
@@ -804,10 +803,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 查询课件重制任务列表
-     * @throws IOException
+     * @throws Exception
      */
     @Test
-    public void testListPPTRecord() throws IOException, NoSuchAlgorithmException {
+    public void testListPPTRecord() throws Exception, NoSuchAlgorithmException {
         LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest = new LiveListChannelPPTRecordRequest();
         LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse;
         try {

@@ -4,10 +4,8 @@ import java.util.List;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.LivePageCommonResponse;
@@ -19,8 +17,6 @@ import net.polyv.live.entity.LivePageCommonResponse;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("查询课件重制任务列表返回实体")
 public class LiveListChannelPPTRecordResponse extends LivePageCommonResponse {
     
@@ -29,8 +25,6 @@ public class LiveListChannelPPTRecordResponse extends LivePageCommonResponse {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("查询课件重制任务列表返回信息")
     public class LivePPTRecord {
         

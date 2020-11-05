@@ -5,10 +5,8 @@ import java.util.List;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LivePageCommonResponse;
 
@@ -19,8 +17,6 @@ import net.polyv.live.entity.LivePageCommonResponse;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("分页获取连麦情况使用详情返回实体")
 public class LiveListChannelMicResponse extends LivePageCommonResponse {
     
@@ -32,8 +28,6 @@ public class LiveListChannelMicResponse extends LivePageCommonResponse {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("频道连麦使用详情")
     public class ChannelMic{
     

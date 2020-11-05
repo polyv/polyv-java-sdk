@@ -5,10 +5,8 @@ import java.util.List;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LivePageCommonResponse;
 
@@ -20,8 +18,6 @@ import net.polyv.live.entity.LivePageCommonResponse;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("查询账号下所有频道详细信息返回实体")
 public class LiveListAccountDetailResponse extends LivePageCommonResponse{
 
@@ -30,8 +26,6 @@ public class LiveListAccountDetailResponse extends LivePageCommonResponse{
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("直播频道详情信息")
     public static class LiveChannelDetail {
         
@@ -111,8 +105,6 @@ public class LiveListAccountDetailResponse extends LivePageCommonResponse{
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("直播权限设置数据传输对象")
     public static class LiveAuthSetting {
         

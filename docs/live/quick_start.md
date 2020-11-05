@@ -4,7 +4,7 @@
 
 - 安装Java环境。
 
-  **保利威直播Java SDK**支持1.8或更高版本。
+  **保利威直播Java SDK**支持1.6或更高版本。
 
 - 注册[保利威账号](https://www.polyv.net/)并获取[访问密钥信息](http://live.polyv.net/#/develop/appId)（UserId  、 AppId 、 AppSecret）。            
 
@@ -38,7 +38,7 @@
 
 ## 2.初始化系统
 
-&emsp;&emsp;在执行测试代码之前，需要B端先初始化系统配置，包括UserId \ AppId \ AppSecret , 如没有以上信息，请参考本文[前提条件](/quick_start?id=前提条件)部分获取，初始化示例代码如下：
+&emsp;&emsp;在执行测试代码之前，需要B端先初始化系统配置，包括UserId \ AppId \ AppSecret , 如没有以上信息，请参考本文[前提条件](/quick_start?id=前提条件)部分获取，初始化示例代码如下，任选一种：
 
 ````java
    /**
@@ -48,7 +48,20 @@
         String appId = "xxx";
         String appSecret = "xxx";
         String userId = "xxx";
-        LiveGlobalConfig.init(appId,userId,appSecret);
+        LiveGlobalConfig.init(appId, userId, appSecret);
+        log.debug("--初始化完成--");
+    }
+
+ 	/**
+     * 初始化配置并初始化 HTTP CLIENT 连接池超时时间和最大连接数配置,请配置自己的账号信息
+     */
+    public static void initPolyvLive(){
+        String appId = "xxx";
+        String appSecret = "xxx";
+        String userId = "xxx";
+        Integer timeOut = 20000;  //HTTP CLIENT 连接池超时时间
+        Integer maxClientNum = 100;  //HTTP CLIENT 最大连接数      
+        LiveGlobalConfig.init(  appId,  userId,  appSecret,  timeOut ,  maxClientNum);
         log.debug("--初始化完成--");
     }
 ````

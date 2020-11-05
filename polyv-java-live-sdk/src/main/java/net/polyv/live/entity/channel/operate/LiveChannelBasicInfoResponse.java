@@ -4,9 +4,7 @@ import java.util.List;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -15,8 +13,6 @@ import lombok.experimental.Accessors;
  **/
 @Data
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("查询频道基本信息返回体")
 public class LiveChannelBasicInfoResponse {
     
@@ -125,8 +121,6 @@ public class LiveChannelBasicInfoResponse {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("频道所属分类的信息")
     public class UserCategory {
         
@@ -158,8 +152,6 @@ public class LiveChannelBasicInfoResponse {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("直播观看条件列表")
     public class AuthSetting {
         

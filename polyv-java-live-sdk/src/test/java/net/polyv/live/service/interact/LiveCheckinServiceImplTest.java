@@ -35,7 +35,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetCheckinListInfo() throws IOException, NoSuchAlgorithmException {
+    public void testGetCheckinListInfo() throws Exception, NoSuchAlgorithmException {
         LiveCheckinListRequest liveCheckinListRequest = new LiveCheckinListRequest();
         LiveCheckinListResponse checkinListInfo = null;
         try {
@@ -67,7 +67,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetCheckinInfoById() throws IOException, NoSuchAlgorithmException {
+    public void testGetCheckinInfoById() throws Exception, NoSuchAlgorithmException {
         LiveCheckinRequest liveCheckinRequest = new LiveCheckinRequest();
         List<LiveCheckinResponse> liveCheckinResponse = null;
         try {
@@ -99,7 +99,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetCheckinMetadataBySessionId() throws IOException, NoSuchAlgorithmException {
+    public void testGetCheckinMetadataBySessionId() throws Exception, NoSuchAlgorithmException {
         LiveCheckinMetadataBySessionIdRequest liveCheckinMetadataBySessionIdRequest =
                 new LiveCheckinMetadataBySessionIdRequest();
         List<LiveCheckinMetadataBySessionIdResponse> liveCheckinResponse = null;

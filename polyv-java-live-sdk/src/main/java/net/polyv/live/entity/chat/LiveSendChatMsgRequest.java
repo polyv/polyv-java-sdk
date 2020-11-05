@@ -1,12 +1,11 @@
 package net.polyv.live.entity.chat;
+
 import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
@@ -17,8 +16,6 @@ import net.polyv.live.entity.LiveCommonRequest;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("通过HTTP接口发送聊天消息请求实体")
 public class LiveSendChatMsgRequest extends LiveCommonRequest {
     

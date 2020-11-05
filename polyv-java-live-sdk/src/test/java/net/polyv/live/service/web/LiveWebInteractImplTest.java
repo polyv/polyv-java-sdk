@@ -1,6 +1,5 @@
 package net.polyv.live.service.web;
 
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,15 +30,15 @@ public class LiveWebInteractImplTest extends BaseTest {
     /**
      * 测试设置道具打赏
      * 返回：true代表设置成功，false代表设置失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelGood() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelGood() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelGoodRequest liveUpdateChannelGoodRequest = new LiveUpdateChannelGoodRequest();
         Boolean liveUpdateChannelGoodResponse;
         try {
-            List<LiveUpdateChannelGoodRequest.ChannelGood> channelGoods = new ArrayList<>();
+            List<LiveUpdateChannelGoodRequest.ChannelGood> channelGoods = new ArrayList<LiveUpdateChannelGoodRequest.ChannelGood>();
             LiveUpdateChannelGoodRequest.ChannelGood channelGood = new LiveUpdateChannelGoodRequest.ChannelGood();
             channelGood.setGoodName("佛跳墙")
                     .setGoodImg("//livestatic.videocc.net/uploaded/images/webapp/channel/donate/07-diamond.png")
@@ -73,11 +72,11 @@ public class LiveWebInteractImplTest extends BaseTest {
      * 描述：用于设置频道或者全局现金打赏
      * 约束：2.带上频道号为设置频道现金打赏，不带频道号默认为全局现金打赏设置
      * 返回：true表示设置成功，false表示设置失败
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelCash() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelCash() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelCashRequest liveUpdateChannelCashRequest = new LiveUpdateChannelCashRequest();
         Boolean liveUpdateChannelCashResponse;
         try {
@@ -108,11 +107,11 @@ public class LiveWebInteractImplTest extends BaseTest {
     
     /**
      * 测试查询打赏设置
-     * @throws IOException
+     * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelDonate() throws IOException, NoSuchAlgorithmException {
+    public void testChannelDonate() throws Exception, NoSuchAlgorithmException {
         LiveChannelDonateRequest liveChannelDonateRequest = new LiveChannelDonateRequest();
         LiveChannelDonateResponse liveChannelDonateResponse;
         try {

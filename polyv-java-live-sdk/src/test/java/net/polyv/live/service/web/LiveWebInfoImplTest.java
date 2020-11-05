@@ -41,7 +41,7 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelName() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelName() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelNameRequest liveUpdateChannelNameRequest = new LiveUpdateChannelNameRequest();
         Boolean liveUpdateChannelNameResponse;
         try {
@@ -73,7 +73,7 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelPublisher() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelPublisher() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelPublisherRequest liveUpdateChannelPublisherRequest = new LiveUpdateChannelPublisherRequest();
         Boolean liveUpdateChannelPublisherResponse;
         try {
@@ -104,7 +104,7 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelSplash() throws IOException, NoSuchAlgorithmException {
+    public void testChannelSplash() throws Exception, NoSuchAlgorithmException {
         LiveChannelSplashRequest liveChannelSplashRequest = new LiveChannelSplashRequest();
         LiveChannelSplashResponse liveChannelSplashResponse;
         try {
@@ -133,7 +133,7 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelLikes() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelLikes() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest = new LiveUpdateChannelLikesRequest();
         Boolean liveUpdateChannelLikesResponse;
         try {
@@ -166,7 +166,7 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelLogo() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelLogo() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelLogoRequest liveUpdateChannelLogoRequest = new LiveUpdateChannelLogoRequest();
         String liveUpdateChannelLogoResponse;
         try {
@@ -200,7 +200,7 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelSplash() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelSplash() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest = new LiveUpdateChannelSplashRequest();
         String liveUpdateChannelSplashResponse;
         try {
@@ -232,7 +232,7 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelLikes() throws IOException, NoSuchAlgorithmException {
+    public void testChannelLikes() throws Exception, NoSuchAlgorithmException {
         LiveChannelLikesRequest liveChannelLikesRequest = new LiveChannelLikesRequest();
         LiveChannelLikesResponse liveChannelLikesResponse;
         try {
@@ -261,7 +261,7 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelCountDown() throws IOException, NoSuchAlgorithmException {
+    public void testUpdateChannelCountDown() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest = new LiveUpdateChannelCountDownRequest();
         Boolean liveUpdateChannelCountDownResponse;
         try {
@@ -293,7 +293,7 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelCountDown() throws IOException, NoSuchAlgorithmException {
+    public void testChannelCountDown() throws Exception, NoSuchAlgorithmException {
         LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
         LiveChannelCountDownResponse liveChannelCountDownResponse;
         try {

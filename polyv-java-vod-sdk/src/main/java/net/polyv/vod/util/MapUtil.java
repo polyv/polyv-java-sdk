@@ -3,7 +3,6 @@ package net.polyv.vod.util;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,6 +17,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.annotation.JSONField;
+
+import net.polyv.common.constant.Constant;
 
 /**
  * MAP对象和HTTP参数 互相转换对象
@@ -127,7 +128,7 @@ public class MapUtil {
                 String temp = (key.endsWith("_") && key.length() > 1) ? key.substring(0, key.length() - 1) : key;
                 stringBuilder.append(keyLower ? temp.toLowerCase() : temp)
                         .append("=")
-                        .append(valueUrlEncode ? URLEncoder.encode(value,  StandardCharsets.UTF_8.name()).replace("+", "%20") : value)
+                        .append(valueUrlEncode ? URLEncoder.encode(value,  Constant.UTF8).replace("+", "%20") : value)
                         .append("&");
             } catch (UnsupportedEncodingException e) {
                 LOG.error(e.getMessage(), e);

@@ -79,7 +79,7 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
         if (StringUtils.isBlank(liveQuestionnaireDetailSetRequest.getTimestamp())) {
             liveQuestionnaireDetailSetRequest.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
-        Map<String, String> tempMap = new HashMap<>();
+        Map<String, String> tempMap = new HashMap<String, String>();
         tempMap.put("appId", liveQuestionnaireDetailSetRequest.getAppId());
         tempMap.put("timestamp", liveQuestionnaireDetailSetRequest.getTimestamp());
         tempMap.put("requestId", liveQuestionnaireDetailSetRequest.getRequestId());

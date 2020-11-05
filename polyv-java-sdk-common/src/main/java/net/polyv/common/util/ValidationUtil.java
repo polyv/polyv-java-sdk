@@ -78,7 +78,7 @@ public class ValidationUtil {
         private List<ErrorMessage> errors;
         
         public ValidResult() {
-            this.errors = new ArrayList<>();
+            this.errors = new ArrayList<ErrorMessage>();
         }
         public boolean hasErrors() {
             return hasErrors;

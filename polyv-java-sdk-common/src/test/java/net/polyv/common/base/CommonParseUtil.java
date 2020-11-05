@@ -26,8 +26,8 @@ public class CommonParseUtil {
                 "viewerId\tstring\t答题的用户ID\n" + "nickname\tstring\t答题的用户昵称\n" + "answer\tstring\t答题的用户提交的答案\n" +
                 "corrent\tboolean\t答题的用户提交的答案是否正确：false不正确，true正确\n" + "submitTime\ttimestamp\t答题的用户提交时间，13位毫秒级时间戳\n" +
                 "type\tstring\t题目类型：R为单选，C为多选，Q为问答\n" + "itemType\tint\t答题类型：1表示问答，0表示答题卡";
-        
-        
+
+
 //        fieldsStr = readFileString("C:\\Users\\T460\\Desktop\\fields.txt");
         
         String[] lineStr = fieldsStr.split("\n");
@@ -45,7 +45,8 @@ public class CommonParseUtil {
             String fieldName = lineArr[0].trim();
             String mustSelect, fieldType, descript;
             if (req) {
-                mustSelect = lineArr[1].trim().equals("是") ? "true" : (lineArr[1].trim().equals("true")?"true":"false");
+                mustSelect =
+                        lineArr[1].trim().equals("是") ? "true" : (lineArr[1].trim().equals("true") ? "true" : "false");
                 fieldType = lineArr[2].trim().toLowerCase();
                 descript = lineArr[3].trim();
             } else {
@@ -76,45 +77,70 @@ public class CommonParseUtil {
     }
     
     private static String getReallyType(String fieldType, boolean isRequest) {
-        switch (fieldType.toLowerCase()) {
-            case "integer":
-            case "int":
-                return "Integer";
-            case "string":
-                return "String";
-            case "boolean":
-                return "Boolean";
-            case "long":
+        if ("integer".equalsIgnoreCase(fieldType) || "int".equalsIgnoreCase(fieldType)) {
+            return "Integer";
+        } else if ("string".equalsIgnoreCase(fieldType)) {
+            return "String";
+        } else if ("boolean".equalsIgnoreCase(fieldType)) {
+            return "Boolean";
+        } else if ("long".equalsIgnoreCase(fieldType)) {
+            return "Long";
+        } else if ("timestamp".equalsIgnoreCase(fieldType) || "date".equalsIgnoreCase(fieldType)) {
+            if (isRequest) {
                 return "Long";
-            case "timestamp":
-            case "date":
-                if (isRequest) {
-                    return "Long";
-                } else {
-                    return "Date";
-                }
-            case "float":
-                return "Float";
-            case "array":
-                return "List";
-            case "file":
-                return "File";
-            case "double":
-                return "Double";
-            default:
-                break;
+            } else {
+                return "Date";
+            }
+        } else if ("float".equalsIgnoreCase(fieldType)) {
+            return "Float";
+        } else if ("array".equalsIgnoreCase(fieldType)) {
+            return "List";
+        } else if ("file".equalsIgnoreCase(fieldType)) {
+            return "File";
+        } else if ("double".equalsIgnoreCase(fieldType)) {
+            return "Double";
+        } else {
+            throw new RuntimeException(fieldType + "类型错误");
         }
-        throw new RuntimeException(fieldType + "类型错误");
+//        switch (fieldType.toLowerCase()) {
+//            case "integer":
+//            case "int":
+//                return "Integer";
+//            case "string":
+//                return "String";
+//            case "boolean":
+//                return "Boolean";
+//            case "long":
+//                return "Long";
+//            case "timestamp":
+//            case "date":
+//                if (isRequest) {
+//                    return "Long";
+//                } else {
+//                    return "Date";
+//                }
+//            case "float":
+//                return "Float";
+//            case "array":
+//                return "List";
+//            case "file":
+//                return "File";
+//            case "double":
+//                return "Double";
+//            default:
+//                break;
+//        }
+//        throw new RuntimeException(fieldType + "类型错误");
     }
     
-    private static String readFileString(String path)   {
+    private static String readFileString(String path) {
         StringBuffer stringBuffer = new StringBuffer();
-        InputStreamReader inputReader =null;
-        BufferedReader bf = null ;
+        InputStreamReader inputReader = null;
+        BufferedReader bf = null;
         try {
             File file = new File(path);
-              inputReader = new InputStreamReader(new FileInputStream(file));
-              bf = new BufferedReader(inputReader);
+            inputReader = new InputStreamReader(new FileInputStream(file));
+            bf = new BufferedReader(inputReader);
             // 按行读取字符串
             String str;
             while ((str = bf.readLine()) != null) {
@@ -123,19 +149,21 @@ public class CommonParseUtil {
             bf.close();
             inputReader.close();
         } catch (IOException e) {
-            log.error("",e);
-        }finally {
+            log.error("", e);
+        } finally {
             try {
-                if(inputReader!=null)
+                if (inputReader != null) {
                     inputReader.close();
+                }
             } catch (IOException e) {
-                log.error("",e);
+                log.error("", e);
             }
             try {
-                if(bf!=null)
+                if (bf != null) {
                     bf.close();
+                }
             } catch (IOException e) {
-                log.error("",e);
+                log.error("", e);
             }
         }
         return stringBuffer.toString();

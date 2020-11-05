@@ -35,7 +35,7 @@ public class Domain2DocUtil {
     public static String domainCode(String className) throws ClassNotFoundException, NoSuchFieldException {
 //        String className = "net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest";
         Class objClass = Class.forName(className);
-        List<Class> classList = new ArrayList<>();
+        List<Class> classList = new ArrayList<Class>();
         classList.add(objClass);
         analysisClass(classList);
         String string = domainCode.toString();
@@ -58,7 +58,7 @@ public class Domain2DocUtil {
     private static List<Class> analysisClass(Class objClass) throws ClassNotFoundException {
         boolean appendArgu = false;//是否添加了字段，未添加则不添加表头
         System.out.println(">>>>>" + objClass.getName());
-        List<Class> classList = new ArrayList<>();
+        List<Class> classList = new ArrayList<Class>();
         StringBuffer stringBuffer = new StringBuffer();
         if (!"".equals(domainCode.toString())) {
             stringBuffer.append(queryDomainRandom(objClass.getSimpleName()) + " <!-- {docsify-ignore} -->")
@@ -136,7 +136,7 @@ public class Domain2DocUtil {
         return classList;
     }
     
-    private static Map<String, String> domainRandom = new HashMap<>();
+    private static Map<String, String> domainRandom = new HashMap<String, String>();
     private static int defaultInteger = 0;
     
     private static String getRandom(String simpleName) {
@@ -164,33 +164,48 @@ public class Domain2DocUtil {
     
     private static String getSimpleType(Class<?> clazz) {
         String simpleName = clazz.getSimpleName();
-        switch (simpleName) {
-            case "String":
-            case "Integer":
-            case "Long":
-            case "Float":
-            case "Date":
-            case "boolean":
-            case "Boolean":
-            case "File":
-                return simpleName;
-            default:
+        if ("String".equalsIgnoreCase(simpleName) || "Integer".equalsIgnoreCase(simpleName) ||
+                "Long".equalsIgnoreCase(simpleName) || "Float".equalsIgnoreCase(simpleName) ||
+                "Date".equalsIgnoreCase(simpleName) || "boolean".equalsIgnoreCase(simpleName)|| "File".equalsIgnoreCase(simpleName)) {
+            return simpleName;
+        }else{
+            throw new RuntimeException(clazz + "不能解析");
         }
-        throw new RuntimeException(clazz + "不能解析");
+//        switch (simpleName) {
+//            case "String":
+//            case "Integer":
+//            case "Long":
+//            case "Float":
+//            case "Date":
+//            case "boolean":
+//            case "Boolean":
+//            case "File":
+//                return simpleName;
+//            default:
+//        }
+//        throw new RuntimeException(clazz + "不能解析");
     }
     
     private static Boolean isSimpleType(Class<?> clazz) {
         String simpleName = clazz.getSimpleName();
-        switch (simpleName) {
-            case "String":
-            case "Integer":
-            case "Long":
-            case "Float":
-            case "Date":
-                return true;
-            default:
+        if ("String".equalsIgnoreCase(simpleName) || "Integer".equalsIgnoreCase(simpleName) ||
+                "Long".equalsIgnoreCase(simpleName) || "Float".equalsIgnoreCase(simpleName) ||
+                "Date".equalsIgnoreCase(simpleName) ) {
+            return true;
+        }else{
+            return false;
         }
-        return false;
+        
+//        switch (simpleName) {
+//            case "String":
+//            case "Integer":
+//            case "Long":
+//            case "Float":
+//            case "Date":
+//                return true;
+//            default:
+//        }
+//        return false;
     }
     
 }

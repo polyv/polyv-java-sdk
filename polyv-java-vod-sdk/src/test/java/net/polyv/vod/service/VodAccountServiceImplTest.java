@@ -1,6 +1,5 @@
 package net.polyv.vod.service;
 
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
@@ -22,7 +21,7 @@ public class VodAccountServiceImplTest extends BaseTest {
      * 获取用户空间及流量情况
      */
     @Test
-    public void testGetAccountSpaceFlow() throws IOException, NoSuchAlgorithmException {
+    public void testGetAccountSpaceFlow() throws Exception, NoSuchAlgorithmException {
         VodAccountSpaceDataRequest vodAccountSpaceDataRequest = new VodAccountSpaceDataRequest();
         vodAccountSpaceDataRequest.setDate("2020-10-13")
                 .setPtime(new Date().getTime())

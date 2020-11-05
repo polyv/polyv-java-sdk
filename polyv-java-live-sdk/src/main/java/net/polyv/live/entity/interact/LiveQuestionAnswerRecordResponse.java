@@ -5,9 +5,7 @@ import java.util.List;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -16,8 +14,6 @@ import lombok.experimental.Accessors;
  **/
 @Data
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("查询频道答题卡答题结果响应实体响应实体")
 public class LiveQuestionAnswerRecordResponse {
     /**
@@ -59,8 +55,6 @@ public class LiveQuestionAnswerRecordResponse {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("查询频道答题卡答题结果响应实体-题目选项信息列表")
     public class Option {
         /**
@@ -91,8 +85,6 @@ public class LiveQuestionAnswerRecordResponse {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("查询频道答题卡答题结果响应实体-答题的用户列表")
     public class Record {
         /**

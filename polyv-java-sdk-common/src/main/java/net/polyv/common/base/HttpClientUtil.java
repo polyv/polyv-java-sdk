@@ -47,9 +47,9 @@ public class HttpClientUtil {
     private static CloseableHttpClient httpClient = null;
     
     /**
-     * 读写超时时间设置，默认5S
+     * 读写超时时间设置，默认20S
      */
-    private static int TIME_OUT = 30000;
+    private static int TIME_OUT = 20000;
     
     /**
      * 默认线程数

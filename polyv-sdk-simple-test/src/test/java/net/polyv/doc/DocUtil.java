@@ -15,9 +15,7 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 
@@ -317,8 +315,6 @@ public class DocUtil extends BaseUtil {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     public static class TestMethod {
         private String methodName;
         private String requestArgu;

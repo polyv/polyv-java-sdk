@@ -4,10 +4,8 @@ import java.util.List;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import net.polyv.live.entity.LivePageCommonResponse;
 
@@ -18,8 +16,6 @@ import net.polyv.live.entity.LivePageCommonResponse;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("获取频道单场抽奖的中奖记录返回实体")
 public class LiveLotteryWinnerDetailResponse extends LivePageCommonResponse {
     
@@ -28,8 +24,6 @@ public class LiveLotteryWinnerDetailResponse extends LivePageCommonResponse {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("中奖记录表")
     public static class LotteryWinnerDetail {
         
@@ -98,8 +92,6 @@ public class LiveLotteryWinnerDetailResponse extends LivePageCommonResponse {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("抽奖记录的拓展信息")
     public static class CollectInfo {
         

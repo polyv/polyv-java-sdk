@@ -5,9 +5,7 @@ import java.util.List;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -16,8 +14,6 @@ import lombok.experimental.Accessors;
  **/
 @Data
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("查询频道问卷结果响应实体")
 public class LiveQuestionnaireResultResponse {
     
@@ -60,8 +56,6 @@ public class LiveQuestionnaireResultResponse {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("查询频道问卷结果响应实体-问卷下各个问题的答题统计")
     public class QuestionStats {
         
@@ -79,8 +73,6 @@ public class LiveQuestionnaireResultResponse {
         
         @Data
         @Accessors(chain = true)
-        @AllArgsConstructor
-        @NoArgsConstructor
         @ApiModel("查询频道问卷结果响应实体-问卷下单个问题的答题统计")
         public class QuestionStat {
             
@@ -178,8 +170,6 @@ public class LiveQuestionnaireResultResponse {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("查询频道问卷结果响应实体-观看端提交答题的用户信息")
     public class Users {
         /**
@@ -214,8 +204,6 @@ public class LiveQuestionnaireResultResponse {
         
         @Data
         @Accessors(chain = true)
-        @AllArgsConstructor
-        @NoArgsConstructor
         @ApiModel("查询频道问卷结果响应实体-用户每道题目的答题情况")
         public class Answers {
             /**

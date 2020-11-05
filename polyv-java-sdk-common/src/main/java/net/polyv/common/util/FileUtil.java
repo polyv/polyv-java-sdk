@@ -39,7 +39,7 @@ public class FileUtil {
      * 从文件读取JSON初始化配置，JSON格式如下：liveConfig:直播配置，vodConfig：点播配置
      * {"liveConfig":{"appId":"xxx","userId":"xxx","appSecret":"xxx"},"vodConfig":{"userId":"xxx","writeToken":"xxxxxxe","readToken":"xxxxxx","secretKey":"xxxx"}}
      */
-    public static AccountInfo readConfigFromFile(String path) {
+    public static AccountInfo  readConfigFromFile(String path) {
         if (StringUtils.isBlank(path)) {
             path = "/data/password/password.txt";
         }

@@ -4,9 +4,7 @@ import java.util.List;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -16,8 +14,6 @@ import lombok.experimental.Accessors;
 @Data
 
 @Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @ApiModel("通过接口设置外部授权返回实体")
 public class LiveChannelAuthExternalResponse {
     
@@ -27,8 +23,6 @@ public class LiveChannelAuthExternalResponse {
     @Data
 
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     @ApiModel("外部授权")
     public static class ChannelAuthExternal {
         

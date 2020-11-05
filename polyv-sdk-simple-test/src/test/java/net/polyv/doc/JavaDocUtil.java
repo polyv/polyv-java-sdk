@@ -7,9 +7,7 @@ import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.MethodDoc;
 import com.sun.javadoc.RootDoc;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -106,8 +104,6 @@ public class JavaDocUtil {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     public static class PolyvClassDoc {
         private String title;
         private List<PolyvMethodDoc> methodDocs;
@@ -115,8 +111,6 @@ public class JavaDocUtil {
     
     @Data
     @Accessors(chain = true)
-    @AllArgsConstructor
-    @NoArgsConstructor
     public static class PolyvMethodDoc {
         private String title;
         private String description;

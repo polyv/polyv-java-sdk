@@ -15,7 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
-import net.polyv.common.constant.Constant;
+import net.polyv.live.constant.LiveConstant;
 
 /**
  *  polyv 直播签名工具类
@@ -91,10 +91,10 @@ public class LiveSignUtil {
      * @return 加密后的字符串。
      * @throws NoSuchAlgorithmException 签名异常
      */
-    public static String md5Hex(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public static String md5Hex(String text) throws NoSuchAlgorithmException  {
          
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            byte[] inputByteArray = text.getBytes(Constant.UTF8);
+            byte[] inputByteArray = text.getBytes(LiveConstant.UTF8);
             messageDigest.update(inputByteArray);
             byte[] resultByteArray = messageDigest.digest();
             return byteArrayToHex(resultByteArray).toLowerCase();
@@ -165,7 +165,7 @@ public class LiveSignUtil {
             String temp = (key.endsWith("_") && key.length() > 1) ? key.substring(0, key.length() - 1) : key;
             stringBuilder.append(keyLower ? temp.toLowerCase() : temp)
                     .append("=")
-                    .append(valueUrlEncode ? URLEncoder.encode(value,  Constant.UTF8).replace("+", "%20") : value)
+                    .append(valueUrlEncode ? URLEncoder.encode(value,  LiveConstant.UTF8).replace("+", "%20") : value)
                     .append("&");
         }
         if (stringBuilder.length() > 0) {

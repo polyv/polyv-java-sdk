@@ -49,7 +49,6 @@ public class VodSignUtil {
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
         log.debug("参与签名参数：{}", JSON.toJSONString(params));
         List<String> keys = new ArrayList<String>(params.keySet());
-        List<String> tmp = new ArrayList<String>();
         Collections.sort(keys);
         String plain = "";
         for (String key : keys) {
@@ -73,7 +72,7 @@ public class VodSignUtil {
      * @return 签名
      * @throws NoSuchAlgorithmException 签名异常
      */
-    public static String getSha1(String input) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public static String getSha1(String input) throws NoSuchAlgorithmException  {
         
         MessageDigest mDigest = MessageDigest.getInstance("SHA1");
         byte[] result = mDigest.digest(input.getBytes(Constant.UTF8));

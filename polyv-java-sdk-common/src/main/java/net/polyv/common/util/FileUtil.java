@@ -36,7 +36,7 @@ public class FileUtil {
         byte[] filecontent = new byte[filelength.intValue()];
         try {
             in = new FileInputStream(file);
-            in.read(filecontent);
+            int readNum = in.read(filecontent);
             return new String(filecontent, encoding);
         } finally {
             if (in != null) {

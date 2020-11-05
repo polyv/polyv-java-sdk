@@ -3,6 +3,7 @@ package net.polyv.common.base;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -36,11 +37,27 @@ import net.polyv.common.constant.Constant;
 @Slf4j
 public class HttpUtil {
     
-    public static final String  SOURCE="source" ;
-    public static final String  LIVE_SDK="live_sdk";
+    public static final String SOURCE = "source";
+    public static final String LIVE_SDK = "live_sdk";
+    public static final String VERSION = "version";
+    public static final String CURRETN_VERSION = "1.0.3";
+    public static final String IP = "";
+    public static   String IP_ADDRESS;
+    
+    static {
+        try {
+            IP_ADDRESS = InetAddress.getLocalHost().getHostAddress();
+        } catch (Exception e) {
+            IP_ADDRESS="NA";
+        }
+    }
+    
+    ;
+   
     public static final String UTF8 = StandardCharsets.UTF_8.name();
     
-    /** 
+    
+    /**
      * HTTP POST 请求处理逻辑，参数提交方式为form表单形式
      * @param url 请求地址
      * @param pathVariable 对于restful请求，指定一个路径参数
@@ -68,7 +85,7 @@ public class HttpUtil {
     public static String sendPostDataByMap(String url, Map<String, String> params, String encoding) throws IOException {
         log.debug("http 请求 url: {} , 请求参数: {}", url, JSON.toJSONString(params));
         if (StringUtils.isBlank(encoding)) {
-           
+            
             encoding = UTF8;
         }
         String result = null;
@@ -78,6 +95,8 @@ public class HttpUtil {
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, LIVE_SDK);
+        httpPost.addHeader(IP, IP_ADDRESS);
+        httpPost.addHeader(VERSION, CURRETN_VERSION);
         // 装填参数
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         if (params != null) {
@@ -181,6 +200,8 @@ public class HttpUtil {
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, LIVE_SDK);
+        httpPost.addHeader(IP, IP_ADDRESS);
+        httpPost.addHeader(VERSION, CURRETN_VERSION);
         // 设置参数到请求对象中
         StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
         //  StandardCharsets.UTF_8.name()
@@ -315,6 +336,8 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, LIVE_SDK);
+        httpPost.addHeader(IP, IP_ADDRESS);
+        httpPost.addHeader(VERSION, CURRETN_VERSION);
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
         if (fileMap != null) {
             for (Map.Entry<String, File> entry : fileMap.entrySet()) {

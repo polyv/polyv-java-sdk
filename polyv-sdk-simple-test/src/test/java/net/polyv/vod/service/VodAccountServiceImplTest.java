@@ -19,7 +19,7 @@ public class VodAccountServiceImplTest   {
      * 初始化全局配置
      */
     public VodAccountServiceImplTest(){
-        InitConfig.initPolyvVodByFile();
+        InitConfig.initPolyvVodByFile(null);
     }
     /**
      * 获取用户空间及流量情况

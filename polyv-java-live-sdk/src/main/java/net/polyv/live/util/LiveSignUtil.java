@@ -91,7 +91,7 @@ public class LiveSignUtil {
      * @return 加密后的字符串。
      * @throws NoSuchAlgorithmException 签名异常
      */
-    public static String md5Hex(String text) throws NoSuchAlgorithmException  {
+    public static String md5Hex(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException {
          
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
             byte[] inputByteArray = text.getBytes(LiveConstant.UTF8);

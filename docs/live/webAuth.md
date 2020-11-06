@@ -9,7 +9,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testCreateChannelWriteList() throws IOException, NoSuchAlgorithmException {
+	public void testCreateChannelWriteList() throws Exception, NoSuchAlgorithmException {
         LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest = new LiveCreateChannelWriteListRequest();
         Boolean liveCreateChannelWriteListResponse;
         try {
@@ -38,7 +38,7 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -71,7 +71,7 @@ true为添加成功，false为添加失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelWriteList() throws IOException, NoSuchAlgorithmException {
+	public void testChannelWriteList() throws Exception, NoSuchAlgorithmException {
         LiveChannelWriteListRequest liveChannelWriteListRequest = new LiveChannelWriteListRequest();
         LiveChannelWriteListResponse liveChannelWriteListResponse;
         try {
@@ -100,7 +100,7 @@ true为添加成功，false为添加失败
 ### 单元测试说明
 1、请求正确，返回LiveChannelWriteListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -149,7 +149,7 @@ true为添加成功，false为添加失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelAuth() throws IOException, NoSuchAlgorithmException {
+	public void testChannelAuth() throws Exception, NoSuchAlgorithmException {
         LiveChannelAuthRequest liveChannelAuthRequest = new LiveChannelAuthRequest();
         LiveChannelAuthResponse liveChannelAuthResponse;
         try {
@@ -174,7 +174,7 @@ true为添加成功，false为添加失败
 ### 单元测试说明
 1、请求正确，返回LiveChannelAuthResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -241,7 +241,7 @@ true为添加成功，false为添加失败
 ### 单元测试
 ```java
 	@Test
-	public void testUpdateChannelAuth() throws IOException, NoSuchAlgorithmException {
+	public void testUpdateChannelAuth() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest = new LiveUpdateChannelAuthRequest();
         Boolean liveUpdateChannelAuthResponse;
         try {
@@ -252,7 +252,7 @@ true为添加成功，false为添加失败
                     .setAuthCode("123456")
                     .setQcodeTips("提示文案测试2")
                     .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-            List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<>();
+            List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<LiveChannelSettingRequest.AuthSetting>();
             authSettings.add(authSetting);
             liveUpdateChannelAuthRequest.setChannelId(createChannel())
                     .setAuthSettings(authSettings)
@@ -277,7 +277,7 @@ true为添加成功，false为添加失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -341,7 +341,7 @@ true为设置观看条件成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testUpdateChannelAuthExternal() throws IOException, NoSuchAlgorithmException {
+	public void testUpdateChannelAuthExternal() throws Exception, NoSuchAlgorithmException {
         LiveChannelAuthExternalRequest liveChannelAuthExternalRequest = new LiveChannelAuthExternalRequest();
         LiveChannelAuthExternalResponse liveChannelAuthExternalResponse;
         try {
@@ -369,7 +369,7 @@ true为设置观看条件成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回LiveChannelAuthExternalResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -411,7 +411,7 @@ true为设置观看条件成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testUpdateChannelAuthCustom() throws IOException, NoSuchAlgorithmException {
+	public void testUpdateChannelAuthCustom() throws Exception, NoSuchAlgorithmException {
         LiveChannelAuthCustomRequest liveChannelAuthCustomRequest = new LiveChannelAuthCustomRequest();
         LiveChannelAuthCustomResponse liveChannelAuthCustomResponse;
         try {
@@ -439,7 +439,7 @@ true为设置观看条件成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回LiveChannelAuthCustomResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -481,7 +481,7 @@ true为设置观看条件成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testUpdateChannelAuthUrl() throws IOException, NoSuchAlgorithmException {
+	public void testUpdateChannelAuthUrl() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelAuthUrlRequest liveUpdateChannelAuthUrlRequest = new LiveUpdateChannelAuthUrlRequest();
         Boolean liveUpdateChannelAuthUrlResponse;
         try {
@@ -509,7 +509,7 @@ true为设置观看条件成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -540,7 +540,7 @@ true为设置成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testUpdateChannelAuthType() throws IOException, NoSuchAlgorithmException {
+	public void testUpdateChannelAuthType() throws Exception, NoSuchAlgorithmException {
         LiveChannelAuthTypeRequest liveChannelAuthTypeRequest = new LiveChannelAuthTypeRequest();
         Boolean liveChannelAuthTypeResponse;
         try {
@@ -569,7 +569,7 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述

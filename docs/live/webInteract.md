@@ -9,11 +9,11 @@
 ### 单元测试
 ```java
 	@Test
-	public void testUpdateChannelGood() throws IOException, NoSuchAlgorithmException {
+	public void testUpdateChannelGood() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelGoodRequest liveUpdateChannelGoodRequest = new LiveUpdateChannelGoodRequest();
         Boolean liveUpdateChannelGoodResponse;
         try {
-            List<LiveUpdateChannelGoodRequest.ChannelGood> channelGoods = new ArrayList<>();
+            List<LiveUpdateChannelGoodRequest.ChannelGood> channelGoods = new ArrayList<LiveUpdateChannelGoodRequest.ChannelGood>();
             LiveUpdateChannelGoodRequest.ChannelGood channelGood = new LiveUpdateChannelGoodRequest.ChannelGood();
             channelGood.setGoodName("佛跳墙")
                     .setGoodImg("//livestatic.videocc.net/uploaded/images/webapp/channel/donate/07-diamond.png")
@@ -45,7 +45,7 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -87,7 +87,7 @@ true代表设置成功，false代表设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testUpdateChannelCash() throws IOException, NoSuchAlgorithmException {
+	public void testUpdateChannelCash() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelCashRequest liveUpdateChannelCashRequest = new LiveUpdateChannelCashRequest();
         Boolean liveUpdateChannelCashResponse;
         try {
@@ -119,7 +119,7 @@ true代表设置成功，false代表设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -152,7 +152,7 @@ true表示设置成功，false表示设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelDonate() throws IOException, NoSuchAlgorithmException {
+	public void testChannelDonate() throws Exception, NoSuchAlgorithmException {
         LiveChannelDonateRequest liveChannelDonateRequest = new LiveChannelDonateRequest();
         LiveChannelDonateResponse liveChannelDonateResponse;
         try {
@@ -178,7 +178,7 @@ true表示设置成功，false表示设置失败
 ### 单元测试说明
 1、请求正确，返回LiveChannelDonateResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述

@@ -9,7 +9,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testGetCheckinListInfo() throws IOException, NoSuchAlgorithmException {
+	public void testGetCheckinListInfo() throws Exception, NoSuchAlgorithmException {
         LiveCheckinListRequest liveCheckinListRequest = new LiveCheckinListRequest();
         LiveCheckinListResponse checkinListInfo = null;
         try {
@@ -36,7 +36,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveCheckinListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -91,7 +91,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testGetCheckinInfoById() throws IOException, NoSuchAlgorithmException {
+	public void testGetCheckinInfoById() throws Exception, NoSuchAlgorithmException {
         LiveCheckinRequest liveCheckinRequest = new LiveCheckinRequest();
         List<LiveCheckinResponse> liveCheckinResponse = null;
         try {
@@ -119,7 +119,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveCheckinResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -164,7 +164,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testGetCheckinMetadataBySessionId() throws IOException, NoSuchAlgorithmException {
+	public void testGetCheckinMetadataBySessionId() throws Exception, NoSuchAlgorithmException {
         LiveCheckinMetadataBySessionIdRequest liveCheckinMetadataBySessionIdRequest =
                 new LiveCheckinMetadataBySessionIdRequest();
         List<LiveCheckinMetadataBySessionIdResponse> liveCheckinResponse = null;
@@ -195,7 +195,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveCheckinMetadataBySessionIdResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述

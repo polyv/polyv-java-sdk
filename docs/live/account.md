@@ -9,7 +9,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testListAccountDetail() throws IOException, NoSuchAlgorithmException {
+	public void testListAccountDetail() throws Exception, NoSuchAlgorithmException {
         LiveListAccountDetailRequest liveListAccountDetailRequest = new LiveListAccountDetailRequest();
         LiveListAccountDetailResponse liveListAccountDetailResponse;
         try {
@@ -35,7 +35,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveListAccountDetailResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -125,7 +125,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testListAccount() throws IOException, NoSuchAlgorithmException {
+	public void testListAccount() throws Exception, NoSuchAlgorithmException {
         LiveListAccountRequest liveListAccountRequest = new LiveListAccountRequest();
         LiveListAccountResponse liveListAccountResponse;
         try {
@@ -150,7 +150,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveListAccountResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -185,7 +185,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testMicDuration() throws IOException, NoSuchAlgorithmException {
+	public void testMicDuration() throws Exception, NoSuchAlgorithmException {
         LiveAccountMicDurationRequest liveAccountMicDurationRequest = new LiveAccountMicDurationRequest();
         LiveAccountMicDurationResponse liveAccountMicDurationResponse;
         try {
@@ -210,7 +210,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveAccountMicDurationResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -245,7 +245,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testCreateAccountToken() throws IOException, NoSuchAlgorithmException {
+	public void testCreateAccountToken() throws Exception, NoSuchAlgorithmException {
         LiveCreateAccountTokenRequest liveCreateAccountTokenRequest = new LiveCreateAccountTokenRequest();
         Boolean liveCreateAccountTokenResponse;
         try {
@@ -271,7 +271,7 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -302,7 +302,7 @@ true为设置成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testUpdateStreamCallbackUrl() throws IOException, NoSuchAlgorithmException {
+	public void testUpdateStreamCallbackUrl() throws Exception, NoSuchAlgorithmException {
         LiveAccountStreamCallbackRequest liveAccountStreamCallbackRequest = new LiveAccountStreamCallbackRequest();
         Boolean liveAccountStreamCallbackResponse;
         try {
@@ -329,7 +329,7 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -373,7 +373,7 @@ true为设置回调成功，false为设置回调失败
 ### 单元测试
 ```java
 	@Test
-	public void testUpdatePlaybackCallbackUrl() throws IOException, NoSuchAlgorithmException {
+	public void testUpdatePlaybackCallbackUrl() throws Exception, NoSuchAlgorithmException {
         LiveAccountPlaybackCallbackRequest liveAccountPlaybackCallbackRequest =
                 new LiveAccountPlaybackCallbackRequest();
         Boolean liveAccountPlaybackCallbackResponse;
@@ -401,7 +401,7 @@ true为设置回调成功，false为设置回调失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -452,7 +452,7 @@ true为设置回调成功，false为设置回调失败
 ### 单元测试
 ```java
 	@Test
-	public void testUpdateRecordCallbackUrl() throws IOException, NoSuchAlgorithmException {
+	public void testUpdateRecordCallbackUrl() throws Exception, NoSuchAlgorithmException {
         LiveAccountRecordCallbackRequest liveAccountRecordCallbackRequest = new LiveAccountRecordCallbackRequest();
         Boolean liveAccountRecordCallbackResponse;
         try {
@@ -479,7 +479,7 @@ true为设置回调成功，false为设置回调失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -525,7 +525,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试
 ```java
 	@Test
-	public void testUpdateAccountSwitch() throws IOException, NoSuchAlgorithmException {
+	public void testUpdateAccountSwitch() throws Exception, NoSuchAlgorithmException {
         LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest = new LiveUpdateAccountSwitchRequest();
         Boolean liveUpdateAccountSwitchResponse;
         try {
@@ -553,7 +553,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -587,7 +587,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试
 ```java
 	@Test
-	public void testAccountSwitch() throws IOException, NoSuchAlgorithmException {
+	public void testAccountSwitch() throws Exception, NoSuchAlgorithmException {
         LiveAccountSwitchRequest liveAccountSwitchRequest = new LiveAccountSwitchRequest();
         LiveAccountSwitchResponse liveAccountSwitchResponse;
         try {
@@ -612,7 +612,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试说明
 1、请求正确，返回LiveAccountSwitchResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -653,7 +653,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试
 ```java
 	@Test
-	public void testListChannelBasic() throws IOException, NoSuchAlgorithmException {
+	public void testListChannelBasic() throws Exception, NoSuchAlgorithmException {
         LiveListAccountChannelBasicRequest liveListAccountChannelBasicRequest =
                 new LiveListAccountChannelBasicRequest();
         LiveListAccountChannelBasicResponse liveListAccountChannelBasicResponse;
@@ -685,7 +685,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试说明
 1、请求正确，返回LiveListAccountChannelBasicResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -740,7 +740,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试
 ```java
 	@Test
-	public void testUserDurations() throws IOException, NoSuchAlgorithmException {
+	public void testUserDurations() throws Exception, NoSuchAlgorithmException {
         LiveAccountUserDurationsRequest liveAccountUserDurationsRequest = new LiveAccountUserDurationsRequest();
         LiveAccountUserDurationsResponse liveAccountUserDurationsResponse;
         try {
@@ -767,7 +767,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试说明
 1、请求正确，返回LiveAccountUserDurationsResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述

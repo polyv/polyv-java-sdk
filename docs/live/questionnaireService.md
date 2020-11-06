@@ -9,7 +9,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testGetQuestionnaireListInfo() throws IOException, NoSuchAlgorithmException {
+	public void testGetQuestionnaireListInfo() throws Exception, NoSuchAlgorithmException {
         LiveQuestionnaireListRequest liveQuestionnaireListRequest = new LiveQuestionnaireListRequest();
         LiveQuestionnaireListResponse liveQuestionnaireListResponse = null;
         try {
@@ -36,7 +36,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveQuestionnaireListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -93,7 +93,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testGetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
+	public void testGetQuestionnaireDetailInfo() throws Exception, NoSuchAlgorithmException {
         LiveQuestionnaireDetailRequest liveQuestionnaireDetailRequest = new LiveQuestionnaireDetailRequest();
         LiveQuestionnaireDetailResponse liveQuestionnaireDetailResponse = null;
         try {
@@ -123,7 +123,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveQuestionnaireDetailResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -190,7 +190,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testGetQuestionnaireResultInfo() throws IOException, NoSuchAlgorithmException {
+	public void testGetQuestionnaireResultInfo() throws Exception, NoSuchAlgorithmException {
         LiveQuestionnaireResultRequest liveQuestionnaireResultRequest = new LiveQuestionnaireResultRequest();
         List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = null;
         try {
@@ -219,7 +219,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveQuestionnaireResultResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -311,7 +311,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testGetQuestionnaireResultPageInfo() throws IOException, NoSuchAlgorithmException {
+	public void testGetQuestionnaireResultPageInfo() throws Exception, NoSuchAlgorithmException {
         LiveQuestionnaireResultPageRequest liveQuestionnaireResultPageRequest =
                 new LiveQuestionnaireResultPageRequest();
         LiveQuestionnaireResultPageResponse liveQuestionnaireResultPageResponse = null;
@@ -343,7 +343,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveQuestionnaireResultPageResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -446,7 +446,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testSetQuestionnaireDetailInfo() throws IOException, NoSuchAlgorithmException {
+	public void testSetQuestionnaireDetailInfo() throws Exception, NoSuchAlgorithmException {
         LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest = new LiveQuestionnaireDetailSetRequest();
         LiveQuestionnaireDetailSetResponse liveQuestionnaireDetailSetResponse = null;
         try {
@@ -511,7 +511,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveQuestionnaireDetailSetResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述

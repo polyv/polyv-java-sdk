@@ -10,7 +10,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testAddChannelVideoPlayback() throws IOException, NoSuchAlgorithmException {
+	public void testAddChannelVideoPlayback() throws Exception, NoSuchAlgorithmException {
         LiveCreateChannelVideoPlaybackRequest liveCreateChannelVideoPlaybackRequest =
                 new LiveCreateChannelVideoPlaybackRequest();
         LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse;
@@ -40,7 +40,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveCreateChannelVideoPlaybackResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -92,7 +92,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testConvertChannelVideoListAsync() throws IOException, NoSuchAlgorithmException {
+	public void testConvertChannelVideoListAsync() throws Exception, NoSuchAlgorithmException {
         LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest =
                 new LiveConvertChannelVideoListAsyncRequest();
         Boolean liveConvertChannelVideoResponse;
@@ -124,7 +124,7 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -158,7 +158,7 @@ true为提交成功，false为提交失败，具体转存是否成功以回调�
 ### 单元测试
 ```java
 	@Test
-	public void testMergeChannelVideoAsync() throws IOException, NoSuchAlgorithmException {
+	public void testMergeChannelVideoAsync() throws Exception, NoSuchAlgorithmException {
         LiveMergeChannelVideoAsyncRequest liveMergeChannelVideoAsyncRequest = new LiveMergeChannelVideoAsyncRequest();
         Boolean liveMergeChannelVideoAsyncResponse;
         try {
@@ -190,7 +190,7 @@ true为提交成功，false为提交失败，具体转存是否成功以回调�
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -225,7 +225,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试
 ```java
 	@Test
-	public void testListChannelVideo() throws IOException, NoSuchAlgorithmException {
+	public void testListChannelVideo() throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
         LiveChannelVideoListResponse liveChannelVideoListResponse;
         try {
@@ -255,7 +255,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试说明
 1、请求正确，返回LiveChannelVideoListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -308,7 +308,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试
 ```java
 	@Test
-	public void testListChannelVideoLibrary() throws IOException, NoSuchAlgorithmException {
+	public void testListChannelVideoLibrary() throws Exception, NoSuchAlgorithmException {
         LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
                 new LiveListChannelVideoLibraryRequest();
         LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse;
@@ -337,7 +337,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试说明
 1、请求正确，返回LiveListChannelVideoLibraryResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -401,7 +401,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试
 ```java
 	@Test
-	public void testListChannelSessionInfo() throws IOException, NoSuchAlgorithmException {
+	public void testListChannelSessionInfo() throws Exception, NoSuchAlgorithmException {
         LiveListChannelSessionInfoRequest liveListChannelSessionInfoRequest = new LiveListChannelSessionInfoRequest();
         LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse;
         try {
@@ -431,7 +431,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试说明
 1、请求正确，返回LiveListChannelSessionInfoResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -482,7 +482,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试
 ```java
 	@Test
-	public void testChannelPlayBackEnabledInfo() throws IOException, NoSuchAlgorithmException {
+	public void testChannelPlayBackEnabledInfo() throws Exception, NoSuchAlgorithmException {
         LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest =
                 new LiveChannelPlaybackEnabledInfoRequest();
         String liveChannelPlaybackEnabledInfoResponse;
@@ -510,7 +510,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -540,7 +540,7 @@ Y为开启，N为关闭
 ### 单元测试
 ```java
 	@Test
-	public void testChannelVideoOnly() throws IOException, NoSuchAlgorithmException {
+	public void testChannelVideoOnly() throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest = new LiveChannelVideoOnlyRequest();
         LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse;
         try {
@@ -570,7 +570,7 @@ Y为开启，N为关闭
 ### 单元测试说明
 1、请求正确，返回LiveChannelVideoOnlyResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -620,7 +620,7 @@ Y为开启，N为关闭
 ### 单元测试
 ```java
 	@Test
-	public void testChannelPlaybackSetting() throws IOException, NoSuchAlgorithmException {
+	public void testChannelPlaybackSetting() throws Exception, NoSuchAlgorithmException {
         LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest;
         Boolean liveChannelPlaybackSettingResponse;
         try {
@@ -654,7 +654,7 @@ Y为开启，N为关闭
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -688,7 +688,7 @@ true为设置成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelPlayBackEnabledSetting() throws IOException, NoSuchAlgorithmException {
+	public void testChannelPlayBackEnabledSetting() throws Exception, NoSuchAlgorithmException {
         LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
         String liveChannelPlaybackEnabledResponse;
         try {
@@ -716,7 +716,7 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -747,7 +747,7 @@ true为设置成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelVideoSort() throws IOException, NoSuchAlgorithmException {
+	public void testChannelVideoSort() throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoSortRequest liveChannelVideoSortRequest = new LiveChannelVideoSortRequest();
         Boolean liveChannelVideoSortResponse;
         try {
@@ -778,7 +778,7 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -810,7 +810,7 @@ true为设置成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelDefaultVideo() throws IOException, NoSuchAlgorithmException {
+	public void testChannelDefaultVideo() throws Exception, NoSuchAlgorithmException {
         LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest = new LiveChannelDefaultVideoRequest();
         Boolean liveChannelDefaultVideoResponse;
         try {
@@ -839,7 +839,7 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -871,7 +871,7 @@ true为设置成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testDeleteChannelVideo() throws IOException, NoSuchAlgorithmException {
+	public void testDeleteChannelVideo() throws Exception, NoSuchAlgorithmException {
         LiveDeleteChannelVideoRequest liveDeleteChannelVideoRequest = new LiveDeleteChannelVideoRequest();
         Boolean liveDeleteChannelVideoResponse;
         try {
@@ -899,7 +899,7 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -931,7 +931,7 @@ true为删除成功，false为删除失败
 ### 单元测试
 ```java
 	@Test
-	public void testDeleteChannelPlaybackVideo() throws IOException, NoSuchAlgorithmException {
+	public void testDeleteChannelPlaybackVideo() throws Exception, NoSuchAlgorithmException {
         LiveDeleteChannelPlaybackVideoRequest liveDeleteChannelPlaybackVideoRequest =
                 new LiveDeleteChannelPlaybackVideoRequest();
         Boolean liveDeleteChannelPlaybackVideoResponse;
@@ -964,7 +964,7 @@ true为删除成功，false为删除失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述

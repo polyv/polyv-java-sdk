@@ -9,7 +9,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testCreateChannelDoc() throws IOException, NoSuchAlgorithmException {
+	public void testCreateChannelDoc() throws Exception, NoSuchAlgorithmException {
         LiveCreateChannelDocRequest liveCreateChannelDocRequest = new LiveCreateChannelDocRequest();
         LiveCreateChannelDocResponse liveCreateChannelDocResponse;
         try {
@@ -41,7 +41,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveCreateChannelDocResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -82,7 +82,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testChannelDocStatus() throws IOException, NoSuchAlgorithmException {
+	public void testChannelDocStatus() throws Exception, NoSuchAlgorithmException {
         LiveChannelDocStatusRequest liveChannelDocStatusRequest = new LiveChannelDocStatusRequest();
         LiveChannelDocStatusResponse liveChannelDocStatusResponse;
         try {
@@ -112,7 +112,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveChannelDocStatusResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -160,7 +160,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testListChannelDoc() throws IOException, NoSuchAlgorithmException {
+	public void testListChannelDoc() throws Exception, NoSuchAlgorithmException {
         LiveListChannelDocRequest liveListChannelDocRequest = new LiveListChannelDocRequest();
         LiveListChannelDocResponse liveListChannelDocResponse;
         try {
@@ -189,7 +189,7 @@
 ### 单元测试说明
 1、请求正确，返回LiveListChannelDocResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -248,7 +248,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testDeleteChannelDoc() throws IOException, NoSuchAlgorithmException {
+	public void testDeleteChannelDoc() throws Exception, NoSuchAlgorithmException {
         LiveDeleteChannelDocRequest liveDeleteChannelDocRequest = new LiveDeleteChannelDocRequest();
         Boolean liveDeleteChannelDocResponse;
         try {
@@ -279,7 +279,7 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ,失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
 ### 请求入参描述

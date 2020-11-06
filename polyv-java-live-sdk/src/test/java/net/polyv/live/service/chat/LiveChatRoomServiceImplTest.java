@@ -3,6 +3,7 @@ package net.polyv.live.service.chat;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
@@ -10,7 +11,6 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
-import edu.emory.mathcs.backport.java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.PloyvSdkException;
 import net.polyv.live.constant.LiveConstant;

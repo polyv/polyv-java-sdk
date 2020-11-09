@@ -23,6 +23,7 @@ import net.polyv.live.entity.account.LiveAccountUserDurationsResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveCreateCategoryRequest;
 import net.polyv.live.entity.account.LiveCreateCategoryResponse;
+import net.polyv.live.entity.account.LiveDeleteCategoryRequest;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicRequest;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicResponse;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
@@ -103,8 +104,32 @@ public class LiveAccountImplTest extends BaseTest {
         try {
             liveUpdateCategoryRequest.setCategoryId(345111).setCategoryName("测试分类").setRequestId(LiveSignUtil.generateUUID());
             liveUpdateCategoryResponse = new LiveAccountServiceImpl().updateCategory(liveUpdateCategoryRequest);
-            Assert.assertNotNull(liveUpdateCategoryResponse);
+            Assert.assertTrue(liveUpdateCategoryResponse);
             log.debug("测试修改直播频道分类名称成功");
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试删除直播频道分类
+     * @throws Exception
+     */
+//    @Test
+    public void testDeleteCategory() throws Exception {
+        LiveDeleteCategoryRequest liveDeleteCategoryRequest = new LiveDeleteCategoryRequest();
+        Boolean liveDeleteCategoryResponse;
+        try {
+            liveDeleteCategoryRequest.setCategoryId(345128).setRequestId(LiveSignUtil.generateUUID());
+            liveDeleteCategoryResponse = new LiveAccountServiceImpl().deleteCategory(liveDeleteCategoryRequest);
+            Assert.assertTrue(liveDeleteCategoryResponse);
+            log.debug("测试删除直播频道分类成功");
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);

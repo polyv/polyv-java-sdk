@@ -19,6 +19,7 @@ import net.polyv.live.entity.account.LiveAccountUserDurationsResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveCreateCategoryRequest;
 import net.polyv.live.entity.account.LiveCreateCategoryResponse;
+import net.polyv.live.entity.account.LiveDeleteCategoryRequest;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicRequest;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicResponse;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
@@ -273,6 +274,22 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         String url = LiveURL.UPDATE_CHANNEL_CATEGORY_URL;
         String liveUpdateCategoryResponse = this.basePost(url, liveUpdateCategoryRequest, String.class);
         return "".equals(liveUpdateCategoryResponse);
+    }
+    
+    /**
+     * 删除直播频道分类
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zhsz/delete-category/
+     * @param liveDeleteCategoryRequest 删除直播频道分类请求实体
+     * @return 删除直播频道分类返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean deleteCategory(LiveDeleteCategoryRequest liveDeleteCategoryRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.DELETE_CHANNEL_CATEGORY_URL;
+        String liveDeleteCategoryResponse = this.basePost(url,liveDeleteCategoryRequest,String.class);
+        return "".equals(liveDeleteCategoryResponse);
     }
     
 }

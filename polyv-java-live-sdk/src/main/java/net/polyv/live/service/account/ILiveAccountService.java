@@ -15,6 +15,7 @@ import net.polyv.live.entity.account.LiveAccountUserDurationsResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveCreateCategoryRequest;
 import net.polyv.live.entity.account.LiveCreateCategoryResponse;
+import net.polyv.live.entity.account.LiveDeleteCategoryRequest;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicRequest;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicResponse;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
@@ -185,6 +186,17 @@ public interface ILiveAccountService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean updateCategory(LiveUpdateCategoryRequest liveUpdateCategoryRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 删除直播频道分类
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zhsz/delete-category/
+     * @param liveDeleteCategoryRequest 删除直播频道分类请求实体
+     * @return 删除直播频道分类返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean deleteCategory(LiveDeleteCategoryRequest liveDeleteCategoryRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

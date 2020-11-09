@@ -291,7 +291,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public Boolean deleteCategory(LiveDeleteCategoryRequest liveDeleteCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DELETE_CHANNEL_CATEGORY_URL;
-        String liveDeleteCategoryResponse = this.basePost(url, liveDeleteCategoryRequest, String.class);
+        String liveDeleteCategoryResponse = this.basePost(url,liveDeleteCategoryRequest,String.class);
         return "".equals(liveDeleteCategoryResponse);
     }
     

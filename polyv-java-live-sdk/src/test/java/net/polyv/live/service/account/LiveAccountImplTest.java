@@ -98,6 +98,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试修改直播频道分类名称
+     * 返回：true为修改成功，false为修改失败
      * @throws Exception
      */
     @Test
@@ -124,6 +125,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试修改直播频道分类顺序
+     * 返回：true为修改排序成功，false为修改排序失败
      * @throws Exception
      */
     @Test
@@ -151,6 +153,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试删除直播频道分类
+     * 返回：true为删除成功，false为删除失败
      * @throws Exception
      */
 //    @Test

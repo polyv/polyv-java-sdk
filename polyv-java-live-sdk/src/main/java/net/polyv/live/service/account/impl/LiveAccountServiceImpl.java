@@ -28,6 +28,7 @@ import net.polyv.live.entity.account.LiveListAccountResponse;
 import net.polyv.live.entity.account.LiveListCategoryRequest;
 import net.polyv.live.entity.account.LiveListCategoryResponse;
 import net.polyv.live.entity.account.LiveUpdateAccountSwitchRequest;
+import net.polyv.live.entity.account.LiveUpdateCategoryRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.account.ILiveAccountService;
 
@@ -256,6 +257,22 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         LiveListCategoryResponse liveListCategoryResponse = new LiveListCategoryResponse();
         liveListCategoryResponse.setLiveCategories(liveCategories);
         return liveListCategoryResponse;
+    }
+    
+    /**
+     * 修改直播频道分类名称
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zhsz/update-category-name/
+     * @param liveUpdateCategoryRequest 修改直播频道分类名称请求实体
+     * @return 修改直播频道分类名称返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateCategory(LiveUpdateCategoryRequest liveUpdateCategoryRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.UPDATE_CHANNEL_CATEGORY_URL;
+        String liveUpdateCategoryResponse = this.basePost(url, liveUpdateCategoryRequest, String.class);
+        return "".equals(liveUpdateCategoryResponse);
     }
     
 }

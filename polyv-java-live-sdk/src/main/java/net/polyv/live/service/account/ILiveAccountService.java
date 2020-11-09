@@ -24,6 +24,7 @@ import net.polyv.live.entity.account.LiveListAccountResponse;
 import net.polyv.live.entity.account.LiveListCategoryRequest;
 import net.polyv.live.entity.account.LiveListCategoryResponse;
 import net.polyv.live.entity.account.LiveUpdateAccountSwitchRequest;
+import net.polyv.live.entity.account.LiveUpdateCategoryRequest;
 
 /**
  * 直播账号级管理
@@ -173,6 +174,17 @@ public interface ILiveAccountService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveListCategoryResponse listCategory(LiveListCategoryRequest liveCategoryRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 修改直播频道分类名称
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zhsz/update-category-name/
+     * @param liveUpdateCategoryRequest 修改直播频道分类名称请求实体
+     * @return 修改直播频道分类名称返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateCategory(LiveUpdateCategoryRequest liveUpdateCategoryRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

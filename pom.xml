@@ -15,7 +15,7 @@
 
     <packaging>pom</packaging>
     <name>polyv-java-sdk</name>
-    <description>保利威视频云JAVA接入SDK</description>
+    <description>保利威视频云JAVA SDK</description>
     <url>https://www.polyv.net/</url>
 
 

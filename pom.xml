@@ -258,7 +258,7 @@
                     <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
                         <!--                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.5.4/aspectjweaver-1.5.4.jar"-->
-                        -javaagent:"${settings.localRepository}/aspectj/aspectjweaver/1.5.0/aspectjweaver-1.5.0.jar"
+                        -javaagent:"${settings.localRepository}/aspectj/aspectjweaver/1.5.0/aspectjweaver-1.5.0.jar" ${jacocoArgLine}
                     </argLine>
                     <properties>
                         <property>
@@ -290,6 +290,7 @@
                     <!--                    <excludes>-->
                     <!--                        <exclude>com/src/test/**/*</exclude>-->
                     <!--                    </excludes>-->
+                    <propertyName>jacocoArgLine</propertyName>
                 </configuration>
                 <executions>
                     <execution>

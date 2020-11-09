@@ -715,6 +715,11 @@ public class LiveURL {
      */
     public static final String GET_ACCOUNT_INFO_URL = BASE_URI + "v3/user/get-info";
     
+    /**
+     * 查询账号下所有/某个频道号收入详情
+     */
+    public static final String GET_CHANNEL_INCOME_DETAIL_URL = BASE_URI +"v2/user/"+PARAM_REPLACE_CHAR+ "/get-income-detail";
+    
     
     /**
      * 设置播放器暂停广告

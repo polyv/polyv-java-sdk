@@ -14,6 +14,8 @@ import net.polyv.live.entity.account.LiveAccountSwitchRequest;
 import net.polyv.live.entity.account.LiveAccountSwitchResponse;
 import net.polyv.live.entity.account.LiveAccountUserDurationsRequest;
 import net.polyv.live.entity.account.LiveAccountUserDurationsResponse;
+import net.polyv.live.entity.account.LiveChannelIncomeDetailRequest;
+import net.polyv.live.entity.account.LiveChannelIncomeDetailResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveCreateCategoryRequest;
 import net.polyv.live.entity.account.LiveCreateCategoryResponse;
@@ -222,6 +224,17 @@ public interface ILiveAccountService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveAccountInfoResponse accountInfo(LiveAccountInfoRequest liveAccountInfoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询账号下所有/某个频道号收入详情
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zhsz/get-income-detail/
+     * @param liveChannelIncomeDetailRequest 查询账号下所有/某个频道号收入详情请求实体
+     * @return 查询账号下所有/某个频道号收入详情返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelIncomeDetailResponse channelIncomeDetail(LiveChannelIncomeDetailRequest liveChannelIncomeDetailRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

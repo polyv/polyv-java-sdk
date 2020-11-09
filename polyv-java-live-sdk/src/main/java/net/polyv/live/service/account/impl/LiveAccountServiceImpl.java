@@ -18,6 +18,8 @@ import net.polyv.live.entity.account.LiveAccountSwitchRequest;
 import net.polyv.live.entity.account.LiveAccountSwitchResponse;
 import net.polyv.live.entity.account.LiveAccountUserDurationsRequest;
 import net.polyv.live.entity.account.LiveAccountUserDurationsResponse;
+import net.polyv.live.entity.account.LiveChannelIncomeDetailRequest;
+import net.polyv.live.entity.account.LiveChannelIncomeDetailResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveCreateCategoryRequest;
 import net.polyv.live.entity.account.LiveCreateCategoryResponse;
@@ -324,6 +326,23 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.GET_ACCOUNT_INFO_URL;
         return this.baseGet(url, liveAccountInfoRequest, LiveAccountInfoResponse.class);
+    }
+    
+    /**
+     * 查询账号下所有/某个频道号收入详情
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zhsz/get-income-detail/
+     * @param liveChannelIncomeDetailRequest 查询账号下所有/某个频道号收入详情请求实体
+     * @return 查询账号下所有/某个频道号收入详情返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelIncomeDetailResponse channelIncomeDetail(
+            LiveChannelIncomeDetailRequest liveChannelIncomeDetailRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveChannelIncomeDetailRequest.setUserId(LiveGlobalConfig.getUserId());
+        String url = LiveURL.getRealUrl(LiveURL.GET_CHANNEL_INCOME_DETAIL_URL,liveChannelIncomeDetailRequest.getUserId());
+        return this.basePost(url,liveChannelIncomeDetailRequest,LiveChannelIncomeDetailResponse.class);
     }
     
 }

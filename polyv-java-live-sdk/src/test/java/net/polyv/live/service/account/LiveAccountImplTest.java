@@ -22,6 +22,8 @@ import net.polyv.live.entity.account.LiveAccountSwitchRequest;
 import net.polyv.live.entity.account.LiveAccountSwitchResponse;
 import net.polyv.live.entity.account.LiveAccountUserDurationsRequest;
 import net.polyv.live.entity.account.LiveAccountUserDurationsResponse;
+import net.polyv.live.entity.account.LiveChannelIncomeDetailRequest;
+import net.polyv.live.entity.account.LiveChannelIncomeDetailResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
 import net.polyv.live.entity.account.LiveCreateCategoryRequest;
 import net.polyv.live.entity.account.LiveCreateCategoryResponse;
@@ -188,7 +190,7 @@ public class LiveAccountImplTest extends BaseTest {
             liveAccountInfoRequest.setRequestId(LiveSignUtil.generateUUID());
             liveAccountInfoResponse = new LiveAccountServiceImpl().accountInfo(liveAccountInfoRequest);
             Assert.assertNotNull(liveAccountInfoResponse);
-            log.debug("测试获取直播用户账号信息接口成功,{}",JSON.toJSONString(liveAccountInfoResponse));
+            log.debug("测试获取直播用户账号信息接口成功,{}", JSON.toJSONString(liveAccountInfoResponse));
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
@@ -546,6 +548,40 @@ public class LiveAccountImplTest extends BaseTest {
             if (liveAccountUserDurationsResponse != null) {
                 //to do something ......
                 log.debug("测试查询账户分钟数成功,{}", JSON.toJSONString(liveAccountUserDurationsResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询账号下所有/某个频道号收入详情
+     * 约束：根据是否提交channelId来获取全部频道/某个频道的收入详情数据
+     * @return
+     * @throws Exception
+     */
+    @Test
+    public void testChannelIncomeDetail() throws Exception {
+        LiveChannelIncomeDetailRequest liveChannelIncomeDetailRequest = new LiveChannelIncomeDetailRequest();
+        LiveChannelIncomeDetailResponse liveChannelIncomeDetailResponse;
+        try {
+            String channelId = createChannel();
+            liveChannelIncomeDetailRequest.setChannelId(channelId)
+                    .setStartDate("2020-10-24")
+                    .setEndDate("2020-11-11")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveChannelIncomeDetailResponse = new LiveAccountServiceImpl().channelIncomeDetail(
+                    liveChannelIncomeDetailRequest);
+            Assert.assertNotNull(liveChannelIncomeDetailResponse);
+            if (liveChannelIncomeDetailResponse != null) {
+                //to do something ......
+                log.debug("测试查询账号下所有/某个频道号收入详情成功,{}", JSON.toJSONString(liveChannelIncomeDetailResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

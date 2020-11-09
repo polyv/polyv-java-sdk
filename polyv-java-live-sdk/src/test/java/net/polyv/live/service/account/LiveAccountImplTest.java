@@ -11,6 +11,8 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.PloyvSdkException;
 import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.entity.account.LiveAccountInfoRequest;
+import net.polyv.live.entity.account.LiveAccountInfoResponse;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
 import net.polyv.live.entity.account.LiveAccountPlaybackCallbackRequest;
@@ -160,6 +162,30 @@ public class LiveAccountImplTest extends BaseTest {
             liveDeleteCategoryResponse = new LiveAccountServiceImpl().deleteCategory(liveDeleteCategoryRequest);
             Assert.assertTrue(liveDeleteCategoryResponse);
             log.debug("测试删除直播频道分类成功");
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试获取直播用户账号信息接口
+     * @throws Exception
+     */
+    @Test
+    public void testAccountInfo() throws Exception {
+        LiveAccountInfoRequest liveAccountInfoRequest = new LiveAccountInfoRequest();
+        LiveAccountInfoResponse liveAccountInfoResponse;
+        try {
+            liveAccountInfoRequest.setRequestId(LiveSignUtil.generateUUID());
+            liveAccountInfoResponse = new LiveAccountServiceImpl().accountInfo(liveAccountInfoRequest);
+            Assert.assertNotNull(liveAccountInfoResponse);
+            log.debug("测试获取直播用户账号信息接口成功,{}",JSON.toJSONString(liveAccountInfoResponse));
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);

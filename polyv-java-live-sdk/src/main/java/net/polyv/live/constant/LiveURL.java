@@ -710,6 +710,11 @@ public class LiveURL {
      */
     public static final String UPDATE_CHANNEL_CATEGORY_SORT_URL = BASE_URI + "v3/user/category/update-rank";
     
+    /**
+     * 获取直播用户账号信息接口
+     */
+    public static final String GET_ACCOUNT_INFO_URL = BASE_URI + "v3/user/get-info";
+    
     
     /**
      * 设置播放器暂停广告

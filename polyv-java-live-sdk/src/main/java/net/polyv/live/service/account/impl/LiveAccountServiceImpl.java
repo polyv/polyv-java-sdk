@@ -7,6 +7,8 @@ import java.util.List;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.account.LiveAccountInfoRequest;
+import net.polyv.live.entity.account.LiveAccountInfoResponse;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
 import net.polyv.live.entity.account.LiveAccountPlaybackCallbackRequest;
@@ -289,7 +291,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public Boolean deleteCategory(LiveDeleteCategoryRequest liveDeleteCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DELETE_CHANNEL_CATEGORY_URL;
-        String liveDeleteCategoryResponse = this.basePost(url,liveDeleteCategoryRequest,String.class);
+        String liveDeleteCategoryResponse = this.basePost(url, liveDeleteCategoryRequest, String.class);
         return "".equals(liveDeleteCategoryResponse);
     }
     
@@ -305,8 +307,23 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public Boolean updateCategorySort(LiveUpdateCategorySortRequest liveUpdateCategorySortRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_CHANNEL_CATEGORY_SORT_URL;
-        String liveUpdateCategorySortResponse = this.basePost(url,liveUpdateCategorySortRequest,String.class);
+        String liveUpdateCategorySortResponse = this.basePost(url, liveUpdateCategorySortRequest, String.class);
         return "".equals(liveUpdateCategorySortResponse);
+    }
+    
+    /**
+     * 获取直播用户账号信息接口
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zhsz/get-user-info/
+     * @param liveAccountInfoRequest 获取直播用户账号信息接口请求实体
+     * @return 获取直播用户账号信息接口返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveAccountInfoResponse accountInfo(LiveAccountInfoRequest liveAccountInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.GET_ACCOUNT_INFO_URL;
+        return this.baseGet(url, liveAccountInfoRequest, LiveAccountInfoResponse.class);
     }
     
 }

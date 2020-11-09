@@ -685,6 +685,11 @@ public class LiveURL {
      */
     public static final String PLAYER_SET_CHANNEL_LOGO_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/update";
     
+    /**
+     * 创建账号下直播分类
+     */
+    public static final String CREATE_CHANNEL_CATEGORY_URL = BASE_URI + "v3/user/category/create";
+    
     
     /**
      * 设置播放器暂停广告

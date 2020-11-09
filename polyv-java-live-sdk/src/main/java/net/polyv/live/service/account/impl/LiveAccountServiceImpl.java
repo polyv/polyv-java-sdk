@@ -16,6 +16,8 @@ import net.polyv.live.entity.account.LiveAccountSwitchResponse;
 import net.polyv.live.entity.account.LiveAccountUserDurationsRequest;
 import net.polyv.live.entity.account.LiveAccountUserDurationsResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
+import net.polyv.live.entity.account.LiveCreateCategoryRequest;
+import net.polyv.live.entity.account.LiveCreateCategoryResponse;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicRequest;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicResponse;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
@@ -223,6 +225,21 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         return this.basePost(url,
                 liveAccountUserDurationsRequest, LiveAccountUserDurationsResponse.class);
         
+    }
+    
+    /**
+     * 创建账号下直播分类
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zhsz/create-category/
+     * @param liveCreateCategoryRequest 创建账号下直播分类请求实体
+     * @return 创建账号下直播分类返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveCreateCategoryResponse createCategory(LiveCreateCategoryRequest liveCreateCategoryRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CREATE_CHANNEL_CATEGORY_URL;
+        return this.basePost(url,liveCreateCategoryRequest,LiveCreateCategoryResponse.class);
     }
     
     

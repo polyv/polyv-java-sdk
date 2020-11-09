@@ -3,6 +3,8 @@ package net.polyv.live.service.account;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.live.entity.account.LiveAccountInfoRequest;
+import net.polyv.live.entity.account.LiveAccountInfoResponse;
 import net.polyv.live.entity.account.LiveAccountMicDurationRequest;
 import net.polyv.live.entity.account.LiveAccountMicDurationResponse;
 import net.polyv.live.entity.account.LiveAccountPlaybackCallbackRequest;
@@ -209,6 +211,17 @@ public interface ILiveAccountService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean updateCategorySort(LiveUpdateCategorySortRequest liveUpdateCategorySortRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取直播用户账号信息接口
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zhsz/get-user-info/
+     * @param liveAccountInfoRequest 获取直播用户账号信息接口请求实体
+     * @return 获取直播用户账号信息接口返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveAccountInfoResponse accountInfo(LiveAccountInfoRequest liveAccountInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

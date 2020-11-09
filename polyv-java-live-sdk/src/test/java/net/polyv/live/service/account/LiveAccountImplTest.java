@@ -43,9 +43,10 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试创建账号下直播分类
+     * TODO 需要后台支持
      * @throws Exception
      */
-    @Test
+//    @Test
     public void testCreateCategory() throws Exception {
         LiveCreateCategoryRequest liveCreateCategoryRequest = new LiveCreateCategoryRequest();
         LiveCreateCategoryResponse liveCreateCategoryResponse;

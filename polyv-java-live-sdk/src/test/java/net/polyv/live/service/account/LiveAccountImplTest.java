@@ -34,6 +34,7 @@ import net.polyv.live.entity.account.LiveListCategoryRequest;
 import net.polyv.live.entity.account.LiveListCategoryResponse;
 import net.polyv.live.entity.account.LiveUpdateAccountSwitchRequest;
 import net.polyv.live.entity.account.LiveUpdateCategoryRequest;
+import net.polyv.live.entity.account.LiveUpdateCategorySortRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.account.impl.LiveAccountServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
@@ -102,10 +103,39 @@ public class LiveAccountImplTest extends BaseTest {
         LiveUpdateCategoryRequest liveUpdateCategoryRequest = new LiveUpdateCategoryRequest();
         Boolean liveUpdateCategoryResponse;
         try {
-            liveUpdateCategoryRequest.setCategoryId(345111).setCategoryName("测试分类").setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateCategoryRequest.setCategoryId(345111)
+                    .setCategoryName("测试分类")
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateCategoryResponse = new LiveAccountServiceImpl().updateCategory(liveUpdateCategoryRequest);
             Assert.assertTrue(liveUpdateCategoryResponse);
             log.debug("测试修改直播频道分类名称成功");
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试修改直播频道分类顺序
+     * @throws Exception
+     */
+    @Test
+    public void testUpdateCategorySort() throws Exception {
+        LiveUpdateCategorySortRequest liveUpdateCategorySortRequest = new LiveUpdateCategorySortRequest();
+        Boolean liveUpdateCategorySortResponse;
+        try {
+            liveUpdateCategorySortRequest.setCategoryId(345111)
+                    .setAfterCategoryId(345134)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateCategorySortResponse = new LiveAccountServiceImpl().updateCategorySort(
+                    liveUpdateCategorySortRequest);
+            Assert.assertTrue(liveUpdateCategorySortResponse);
+            log.debug("测试修改直播频道分类顺序成功");
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);

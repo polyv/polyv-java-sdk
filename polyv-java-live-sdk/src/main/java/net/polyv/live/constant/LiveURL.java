@@ -705,6 +705,11 @@ public class LiveURL {
      */
     public static final String DELETE_CHANNEL_CATEGORY_URL = BASE_URI + "v3/user/category/delete";
     
+    /**
+     * 修改直播频道分类顺序
+     */
+    public static final String UPDATE_CHANNEL_CATEGORY_SORT_URL = BASE_URI + "v3/user/category/update-rank";
+    
     
     /**
      * 设置播放器暂停广告

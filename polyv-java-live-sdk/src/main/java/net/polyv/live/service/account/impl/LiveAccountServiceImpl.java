@@ -30,6 +30,7 @@ import net.polyv.live.entity.account.LiveListCategoryRequest;
 import net.polyv.live.entity.account.LiveListCategoryResponse;
 import net.polyv.live.entity.account.LiveUpdateAccountSwitchRequest;
 import net.polyv.live.entity.account.LiveUpdateCategoryRequest;
+import net.polyv.live.entity.account.LiveUpdateCategorySortRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.account.ILiveAccountService;
 
@@ -290,6 +291,22 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         String url = LiveURL.DELETE_CHANNEL_CATEGORY_URL;
         String liveDeleteCategoryResponse = this.basePost(url,liveDeleteCategoryRequest,String.class);
         return "".equals(liveDeleteCategoryResponse);
+    }
+    
+    /**
+     * 修改直播频道分类顺序
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zhsz/update-category-rank/
+     * @param liveUpdateCategorySortRequest 修改直播频道分类顺序请求实体
+     * @return 修改直播频道分类顺序返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateCategorySort(LiveUpdateCategorySortRequest liveUpdateCategorySortRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.UPDATE_CHANNEL_CATEGORY_SORT_URL;
+        String liveUpdateCategorySortResponse = this.basePost(url,liveUpdateCategorySortRequest,String.class);
+        return "".equals(liveUpdateCategorySortResponse);
     }
     
 }

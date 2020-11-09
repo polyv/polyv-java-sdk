@@ -21,6 +21,8 @@ import net.polyv.live.entity.account.LiveAccountSwitchResponse;
 import net.polyv.live.entity.account.LiveAccountUserDurationsRequest;
 import net.polyv.live.entity.account.LiveAccountUserDurationsResponse;
 import net.polyv.live.entity.account.LiveCreateAccountTokenRequest;
+import net.polyv.live.entity.account.LiveCreateCategoryRequest;
+import net.polyv.live.entity.account.LiveCreateCategoryResponse;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicRequest;
 import net.polyv.live.entity.account.LiveListAccountChannelBasicResponse;
 import net.polyv.live.entity.account.LiveListAccountDetailRequest;
@@ -38,6 +40,31 @@ import net.polyv.live.util.LiveSignUtil;
  **/
 @Slf4j
 public class LiveAccountImplTest extends BaseTest {
+    
+    /**
+     * 测试创建账号下直播分类
+     * TODO 需要后台支持
+     * @throws Exception
+     */
+//    @Test
+    public void testCreateCategory() throws Exception {
+        LiveCreateCategoryRequest liveCreateCategoryRequest = new LiveCreateCategoryRequest();
+        LiveCreateCategoryResponse liveCreateCategoryResponse;
+        try {
+            liveCreateCategoryRequest.setCategoryName("分类1").setRequestId(LiveSignUtil.generateUUID());
+            liveCreateCategoryResponse = new LiveAccountServiceImpl().createCategory(liveCreateCategoryRequest);
+            Assert.assertNotNull(liveCreateCategoryRequest);
+            log.debug("分页查询账号下所有频道详细信息成功,{}", JSON.toJSONString(liveCreateCategoryResponse));
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
     
     /**
      * 查询账号下所有频道详细信息
@@ -135,7 +162,8 @@ public class LiveAccountImplTest extends BaseTest {
         LiveCreateAccountTokenRequest liveCreateAccountTokenRequest = new LiveCreateAccountTokenRequest();
         Boolean liveCreateAccountTokenResponse;
         try {
-            liveCreateAccountTokenRequest.setToken(LiveSignUtil.generateUUID()).setRequestId(LiveSignUtil.generateUUID());
+            liveCreateAccountTokenRequest.setToken(LiveSignUtil.generateUUID())
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveCreateAccountTokenResponse = new LiveAccountServiceImpl().createAccountToken(
                     liveCreateAccountTokenRequest);
             Assert.assertNotNull(liveCreateAccountTokenResponse);

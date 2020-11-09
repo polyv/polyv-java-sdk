@@ -29,6 +29,8 @@ import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
 import net.polyv.live.entity.account.LiveListAccountResponse;
+import net.polyv.live.entity.account.LiveListCategoryRequest;
+import net.polyv.live.entity.account.LiveListCategoryResponse;
 import net.polyv.live.entity.account.LiveUpdateAccountSwitchRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.account.impl.LiveAccountServiceImpl;
@@ -43,7 +45,6 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试创建账号下直播分类
-     * TODO 需要后台支持
      * @throws Exception
      */
 //    @Test
@@ -54,7 +55,31 @@ public class LiveAccountImplTest extends BaseTest {
             liveCreateCategoryRequest.setCategoryName("分类1").setRequestId(LiveSignUtil.generateUUID());
             liveCreateCategoryResponse = new LiveAccountServiceImpl().createCategory(liveCreateCategoryRequest);
             Assert.assertNotNull(liveCreateCategoryRequest);
-            log.debug("分页查询账号下所有频道详细信息成功,{}", JSON.toJSONString(liveCreateCategoryResponse));
+            log.debug("测试创建账号下直播分类成功,{}", JSON.toJSONString(liveCreateCategoryResponse));
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询账号下直播分类
+     * @throws Exception
+     */
+    @Test
+    public void testListCategory() throws Exception {
+        LiveListCategoryRequest liveListCategoryRequest = new LiveListCategoryRequest();
+        LiveListCategoryResponse liveListCategoryResponse;
+        try {
+            liveListCategoryRequest.setRequestId(LiveSignUtil.generateUUID());
+            liveListCategoryResponse = new LiveAccountServiceImpl().listCategory(liveListCategoryRequest);
+            Assert.assertNotNull(liveListCategoryResponse);
+            log.debug("测试查询账号下直播分类成功,{}", JSON.toJSONString(liveListCategoryResponse));
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);

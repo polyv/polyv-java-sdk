@@ -21,6 +21,8 @@ import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
 import net.polyv.live.entity.account.LiveListAccountResponse;
+import net.polyv.live.entity.account.LiveListCategoryRequest;
+import net.polyv.live.entity.account.LiveListCategoryResponse;
 import net.polyv.live.entity.account.LiveUpdateAccountSwitchRequest;
 
 /**
@@ -160,6 +162,17 @@ public interface ILiveAccountService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveCreateCategoryResponse createCategory(LiveCreateCategoryRequest liveCreateCategoryRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询账号下直播分类
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zhsz/get-category-list/
+     * @param liveCategoryRequest 查询账号下直播分类请求实体
+     * @return 查询账号下直播分类返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveListCategoryResponse listCategory(LiveListCategoryRequest liveCategoryRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

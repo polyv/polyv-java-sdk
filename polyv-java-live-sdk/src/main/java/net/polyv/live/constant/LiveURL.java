@@ -690,6 +690,11 @@ public class LiveURL {
      */
     public static final String CREATE_CHANNEL_CATEGORY_URL = BASE_URI + "v3/user/category/create";
     
+    /**
+     * 查询账号下直播分类
+     */
+    public static final String LIST_CHANNEL_CATEGORY_URL = BASE_URI + "v3/user/category/list";
+    
     
     /**
      * 设置播放器暂停广告

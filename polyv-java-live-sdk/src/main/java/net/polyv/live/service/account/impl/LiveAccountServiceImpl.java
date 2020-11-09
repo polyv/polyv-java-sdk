@@ -3,6 +3,7 @@ package net.polyv.live.service.account.impl;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.List;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
@@ -24,6 +25,8 @@ import net.polyv.live.entity.account.LiveListAccountDetailRequest;
 import net.polyv.live.entity.account.LiveListAccountDetailResponse;
 import net.polyv.live.entity.account.LiveListAccountRequest;
 import net.polyv.live.entity.account.LiveListAccountResponse;
+import net.polyv.live.entity.account.LiveListCategoryRequest;
+import net.polyv.live.entity.account.LiveListCategoryResponse;
 import net.polyv.live.entity.account.LiveUpdateAccountSwitchRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.account.ILiveAccountService;
@@ -45,8 +48,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveListAccountDetailResponse listAccountDetail(LiveListAccountDetailRequest liveListAccountDetailRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_LIST_CHANNEL_DETAIL_URL;
-        return this.basePost(url, liveListAccountDetailRequest,
-                LiveListAccountDetailResponse.class);
+        return this.basePost(url, liveListAccountDetailRequest, LiveListAccountDetailResponse.class);
         
     }
     
@@ -62,8 +64,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveListAccountResponse listAccount(LiveListAccountRequest liveListAccountRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_LIST_CHANNEL_URL;
-        return this.baseGet(url, liveListAccountRequest,
-                LiveListAccountResponse.class);
+        return this.baseGet(url, liveListAccountRequest, LiveListAccountResponse.class);
     }
     
     /**
@@ -78,9 +79,8 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveAccountMicDurationResponse micDuration(LiveAccountMicDurationRequest liveAccountMicDurationRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_MIC_DURATION_URL;
-        return this.baseGet(url, liveAccountMicDurationRequest,
-                LiveAccountMicDurationResponse.class);
-       
+        return this.baseGet(url, liveAccountMicDurationRequest, LiveAccountMicDurationResponse.class);
+        
     }
     
     /**
@@ -186,9 +186,8 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         LiveAccountSwitchResponse.ChannelSwitch[] channelSwitches = this.baseGet(url, liveAccountSwitchRequest,
                 LiveAccountSwitchResponse.ChannelSwitch[].class);
         channelSwitches = channelSwitches == null ? new LiveAccountSwitchResponse.ChannelSwitch[]{} : channelSwitches;
-        return new LiveAccountSwitchResponse().setChannelSwitches(
-                Arrays.asList(channelSwitches));
-         
+        return new LiveAccountSwitchResponse().setChannelSwitches(Arrays.asList(channelSwitches));
+        
     }
     
     
@@ -205,9 +204,8 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
             LiveListAccountChannelBasicRequest liveListAccountChannelBasicRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIST_URL;
-        return this.baseGet(url,
-                liveListAccountChannelBasicRequest, LiveListAccountChannelBasicResponse.class);
-         
+        return this.baseGet(url, liveListAccountChannelBasicRequest, LiveListAccountChannelBasicResponse.class);
+        
     }
     
     /**
@@ -222,8 +220,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
             LiveAccountUserDurationsRequest liveAccountUserDurationsRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.USER_DURATION_GET_URL;
-        return this.basePost(url,
-                liveAccountUserDurationsRequest, LiveAccountUserDurationsResponse.class);
+        return this.basePost(url, liveAccountUserDurationsRequest, LiveAccountUserDurationsResponse.class);
         
     }
     
@@ -239,8 +236,26 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveCreateCategoryResponse createCategory(LiveCreateCategoryRequest liveCreateCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CREATE_CHANNEL_CATEGORY_URL;
-        return this.basePost(url,liveCreateCategoryRequest,LiveCreateCategoryResponse.class);
+        return this.basePost(url, liveCreateCategoryRequest, LiveCreateCategoryResponse.class);
     }
     
+    /**
+     * 查询账号下直播分类
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zhsz/get-category-list/
+     * @param liveCategoryRequest 查询账号下直播分类请求实体
+     * @return 查询账号下直播分类返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveListCategoryResponse listCategory(LiveListCategoryRequest liveCategoryRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.LIST_CHANNEL_CATEGORY_URL;
+        List<LiveListCategoryResponse.LiveCategory> liveCategories = this.basePostReturnArray(url, liveCategoryRequest,
+                LiveListCategoryResponse.LiveCategory.class);
+        LiveListCategoryResponse liveListCategoryResponse = new LiveListCategoryResponse();
+        liveListCategoryResponse.setLiveCategories(liveCategories);
+        return liveListCategoryResponse;
+    }
     
 }

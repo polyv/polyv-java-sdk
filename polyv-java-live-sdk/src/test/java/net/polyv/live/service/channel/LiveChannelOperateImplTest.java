@@ -31,6 +31,8 @@ import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.operate.LiveCreateSonChannelListRequest;
+import net.polyv.live.entity.channel.operate.LiveCreateSonChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelTokenRequest;
@@ -891,6 +893,59 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     liveUpdateChannelCallbackSettingRequest);
             Assert.assertNotNull(liveUpdateChannelCallbackSettingResponse);
             if (liveUpdateChannelCallbackSettingResponse) {
+                //to do something ......
+                log.debug("测试设置频道回调设置成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试批量创建子频道
+     * 约束：2、批量创建子频道，子频道角色支持guest(嘉宾，只支持三分屏场景)、assistant(助教)
+     * TODO 需要后台修改json解析功能
+     * @throws Exception
+     */
+//    @Test
+    public void testCreateSonChannelList() throws Exception {
+        LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
+        LiveCreateSonChannelListResponse liveCreateSonChannelListResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            List<LiveCreateSonChannelListRequest.SonChannel> sonChannels =
+                    new ArrayList<LiveCreateSonChannelListRequest.SonChannel>();
+            LiveCreateSonChannelListRequest.SonChannel sonChannel1 = new LiveCreateSonChannelListRequest.SonChannel();
+            sonChannel1.setRole("Guest")
+                    .setNickname("嘉宾大大")
+                    .setPasswd(getRandomString(10))
+                    .setActor("教授")
+                    .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740," +
+                            "3965499425&fm=26&gp=0.jpg");
+            sonChannels.add(sonChannel1);
+            sonChannel1 = new LiveCreateSonChannelListRequest.SonChannel();
+            sonChannel1.setRole(null)
+                    .setNickname("助教大大")
+                    .setPasswd(getRandomString(10))
+                    .setActor("王者")
+                    .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740," +
+                            "3965499425&fm=26&gp=0.jpg");
+            sonChannels.add(sonChannel1);
+            liveCreateSonChannelListRequest.setChannelId(channelId)
+                    .setSonChannels(sonChannels)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveCreateSonChannelListResponse = new LiveChannelOperateServiceImpl().createSonChannelList(
+                    liveCreateSonChannelListRequest);
+            Assert.assertNotNull(liveCreateSonChannelListResponse);
+            if (liveCreateSonChannelListResponse != null) {
                 //to do something ......
                 log.debug("测试设置频道回调设置成功");
             }

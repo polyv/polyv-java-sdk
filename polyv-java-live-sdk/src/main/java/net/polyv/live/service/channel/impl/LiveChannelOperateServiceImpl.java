@@ -28,6 +28,8 @@ import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.operate.LiveCreateSonChannelListRequest;
+import net.polyv.live.entity.channel.operate.LiveCreateSonChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelTokenRequest;
@@ -430,6 +432,24 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         String url = LiveURL.UPDATE_CHANNEL_CALLBACK_SETTING_URL;
         String liveUpdateChannelCallbackSettingResponse = this.basePost(url,liveUpdateChannelCallbackSettingRequest,String.class);
         return "".equals(liveUpdateChannelCallbackSettingResponse);
+    }
+    
+    /**
+     * 批量创建子频道
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/batch-create/
+     * @param liveCreateSonChannelListRequest 批量创建子频道请求实体
+     * @return 批量创建子频道返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveCreateSonChannelListResponse createSonChannelList(
+            LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CREATE_SON_CHANNEL_LIST_URL;
+        Map<String,String> map = MapUtil.getSignMap(liveCreateSonChannelListRequest);
+        map.put("channelId",liveCreateSonChannelListRequest.getChannelId());
+        return this.basePostJson(url,map,liveCreateSonChannelListRequest,LiveCreateSonChannelListResponse.class);
     }
     
 }

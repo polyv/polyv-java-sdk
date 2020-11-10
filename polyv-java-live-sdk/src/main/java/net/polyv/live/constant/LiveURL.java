@@ -730,6 +730,11 @@ public class LiveURL {
      */
     public static final String UPDATE_CHANNEL_CALLBACK_SETTING_URL = BASE_URI +"v3/channel/callback/update-setting";
     
+    /**
+     * 批量创建子频道
+     */
+    public static final String CREATE_SON_CHANNEL_LIST_URL = BASE_URI +"v3/channel/account/batch-create";
+    
     
     /**
      * 设置播放器暂停广告

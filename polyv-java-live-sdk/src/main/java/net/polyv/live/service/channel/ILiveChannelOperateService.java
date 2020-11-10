@@ -18,6 +18,8 @@ import net.polyv.live.entity.channel.operate.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelTransmitListRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelTransmitListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
@@ -297,6 +299,17 @@ public interface ILiveChannelOperateService {
      */
     LiveCreateSonChannelListResponse createSonChannelList(
             LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取账号或频道转播列表信息
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/get-transmit-associations/
+     * @param liveChannelTransmitListRequest 获取账号或频道转播列表信息请求实体
+     * @return 获取账号或频道转播列表信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelTransmitListResponse channelTransmitList(LiveChannelTransmitListRequest liveChannelTransmitListRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -36,9 +36,9 @@ public class LiveCreateSonChannelListResponse {
         private String userId;
         
         /**
-         * 频道ID
+         * 频道号
          */
-        @ApiModelProperty(name = "channelId", value = "频道ID", required = false)
+        @ApiModelProperty(name = "channelId", value = "频道号", required = false)
         private Integer channelId;
         
         /**

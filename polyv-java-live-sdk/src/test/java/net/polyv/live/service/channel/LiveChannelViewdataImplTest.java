@@ -226,4 +226,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 测试用例结束
+     */
 }

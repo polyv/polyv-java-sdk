@@ -132,4 +132,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 测试用例结束
+     */
 }

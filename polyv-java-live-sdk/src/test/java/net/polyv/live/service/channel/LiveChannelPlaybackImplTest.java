@@ -517,4 +517,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 测试用例结束
+     */
 }

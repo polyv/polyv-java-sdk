@@ -157,5 +157,8 @@ public class LiveChannelStateImplTest extends BaseTest {
             throw e;
         }
     }
-
+    
+    /**
+     * 测试用例结束
+     */
 }

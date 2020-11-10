@@ -48,6 +48,7 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateChannelCallbackSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveUpdateChannelMaxViewerRequest;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
@@ -981,6 +982,37 @@ public class LiveChannelOperateImplTest extends BaseTest {
             if (liveChannelTransmitListResponse != null) {
                 //to do something ......
                 log.debug("测试获取账号或频道转播列表信息成功，{}", JSON.toJSONString(liveChannelTransmitListResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试设置频道最大在线人数
+     * @throws Exception
+     */
+    @Test
+    public void testUpdateChannelMaxViewer() throws Exception {
+        LiveUpdateChannelMaxViewerRequest liveUpdateChannelMaxViewerRequest = new LiveUpdateChannelMaxViewerRequest();
+        Boolean liveUpdateChannelMaxViewerResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveUpdateChannelMaxViewerRequest.setChannelId(channelId).setMaxViewer(Integer.MAX_VALUE).setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelMaxViewerResponse = new LiveChannelOperateServiceImpl().updateChannelMaxViewer(
+                    liveUpdateChannelMaxViewerRequest);
+            Assert.assertNotNull(liveUpdateChannelMaxViewerResponse);
+            if (liveUpdateChannelMaxViewerResponse) {
+                //to do something ......
+                log.debug("测试设置频道最大在线人数成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B

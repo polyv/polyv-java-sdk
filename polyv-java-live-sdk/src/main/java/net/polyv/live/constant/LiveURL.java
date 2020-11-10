@@ -7,8 +7,6 @@ package net.polyv.live.constant;
 public class LiveURL {
     
     
-    
-    
     /**
      * POLYV live api base uri
      */
@@ -718,27 +716,34 @@ public class LiveURL {
     /**
      * 查询账号下所有/某个频道号收入详情
      */
-    public static final String GET_CHANNEL_INCOME_DETAIL_URL = BASE_URI +"v2/user/"+PARAM_REPLACE_CHAR+ "/get-income-detail";
+    public static final String GET_CHANNEL_INCOME_DETAIL_URL =
+            BASE_URI + "v2/user/" + PARAM_REPLACE_CHAR + "/get-income-detail";
     
     /**
      * 查询频道回调设置接口
      */
-    public static final String GET_CHANNEL_CALLBACK_SETTING_URL = BASE_URI +"v3/channel/callback/get-setting";
+    public static final String GET_CHANNEL_CALLBACK_SETTING_URL = BASE_URI + "v3/channel/callback/get-setting";
     
     /**
      * 设置频道回调设置
      */
-    public static final String UPDATE_CHANNEL_CALLBACK_SETTING_URL = BASE_URI +"v3/channel/callback/update-setting";
+    public static final String UPDATE_CHANNEL_CALLBACK_SETTING_URL = BASE_URI + "v3/channel/callback/update-setting";
     
     /**
      * 批量创建子频道
      */
-    public static final String CREATE_SON_CHANNEL_LIST_URL = BASE_URI +"v3/channel/account/batch-create";
+    public static final String CREATE_SON_CHANNEL_LIST_URL = BASE_URI + "v3/channel/account/batch-create";
     
     /**
      * 获取账号或频道转播列表信息
      */
-    public static final String CHANNEL_TRANSMIT_LIST_URL = BASE_URI +"v3/channel/transmit/get-associations";
+    public static final String CHANNEL_TRANSMIT_LIST_URL = BASE_URI + "v3/channel/transmit/get-associations";
+    
+    /**
+     * 设置频道最大在线人数
+     */
+    public static final String UPDATE_CHANNEL_MAX_VIEWER_URL =
+            BASE_URI + "v2/channelRestrict/" + PARAM_REPLACE_CHAR + "/set-max-viewer";
     
     
     /**

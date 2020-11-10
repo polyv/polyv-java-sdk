@@ -39,6 +39,7 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateChannelCallbackSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveUpdateChannelMaxViewerRequest;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 
 /**
@@ -310,6 +311,17 @@ public interface ILiveChannelOperateService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveChannelTransmitListResponse channelTransmitList(LiveChannelTransmitListRequest liveChannelTransmitListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置频道最大在线人数
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/setmaxviewerv2/
+     * @param liveUpdateChannelMaxViewerRequest 设置频道最大在线人数请求实体
+     * @return 设置频道最大在线人数返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateChannelMaxViewer(LiveUpdateChannelMaxViewerRequest liveUpdateChannelMaxViewerRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

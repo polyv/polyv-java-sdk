@@ -46,6 +46,7 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateChannelCallbackSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveUpdateChannelMaxViewerRequest;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelOperateService;
@@ -474,6 +475,24 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         LiveChannelTransmitListResponse liveChannelTransmitListResponse = new LiveChannelTransmitListResponse();
         liveChannelTransmitListResponse.setChannelTransmits(channelTransmits);
         return liveChannelTransmitListResponse;
+    }
+    
+    /**
+     * 设置频道最大在线人数
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/setmaxviewerv2/
+     * @param liveUpdateChannelMaxViewerRequest 设置频道最大在线人数请求实体
+     * @return 设置频道最大在线人数返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateChannelMaxViewer(LiveUpdateChannelMaxViewerRequest liveUpdateChannelMaxViewerRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveUpdateChannelMaxViewerRequest.setUserId(LiveGlobalConfig.getUserId());
+        String url = LiveURL.getRealUrl(LiveURL.UPDATE_CHANNEL_MAX_VIEWER_URL,
+                liveUpdateChannelMaxViewerRequest.getChannelId());
+        String liveUpdateChannelMaxViewerResponse = this.basePost(url, liveUpdateChannelMaxViewerRequest, String.class);
+        return "设置成功".equals(liveUpdateChannelMaxViewerResponse);
     }
     
 }

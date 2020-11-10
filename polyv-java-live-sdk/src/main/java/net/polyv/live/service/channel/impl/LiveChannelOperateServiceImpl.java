@@ -10,6 +10,8 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.channel.operate.LiveChannelAdvertListRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelAdvertListResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
@@ -493,6 +495,25 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
                 liveUpdateChannelMaxViewerRequest.getChannelId());
         String liveUpdateChannelMaxViewerResponse = this.basePost(url, liveUpdateChannelMaxViewerRequest, String.class);
         return "设置成功".equals(liveUpdateChannelMaxViewerResponse);
+    }
+    
+    /**
+     * 查询频道广告列表
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/pdcz/channel-advert-list/
+     * @param liveChannelAdvertListRequest 查询频道广告列表请求实体
+     * @return 查询频道广告列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelAdvertListResponse channelAdvertList(LiveChannelAdvertListRequest liveChannelAdvertListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_ADVERT_LIST_GET_URL;
+        List<LiveChannelAdvertListResponse.ChannelAdvert> channelAdverts = this.baseGetReturnArray(url,
+                liveChannelAdvertListRequest, LiveChannelAdvertListResponse.ChannelAdvert.class);
+        LiveChannelAdvertListResponse liveChannelAdvertListResponse = new LiveChannelAdvertListResponse();
+        liveChannelAdvertListResponse.setChannelAdverts(channelAdverts);
+        return liveChannelAdvertListResponse;
     }
     
 }

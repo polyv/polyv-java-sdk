@@ -3,6 +3,8 @@ package net.polyv.live.service.channel;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.live.entity.channel.operate.LiveChannelAdvertListRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelAdvertListResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
@@ -322,6 +324,17 @@ public interface ILiveChannelOperateService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean updateChannelMaxViewer(LiveUpdateChannelMaxViewerRequest liveUpdateChannelMaxViewerRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道广告列表
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/pdcz/channel-advert-list/
+     * @param liveChannelAdvertListRequest 查询频道广告列表请求实体
+     * @return 查询频道广告列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelAdvertListResponse channelAdvertList(LiveChannelAdvertListRequest liveChannelAdvertListRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

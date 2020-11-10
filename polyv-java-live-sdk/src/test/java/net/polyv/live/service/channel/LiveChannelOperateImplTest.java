@@ -12,6 +12,8 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.PloyvSdkException;
 import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.entity.channel.operate.LiveChannelAdvertListRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelAdvertListResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
@@ -996,6 +998,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试设置频道最大在线人数
+     * 返回：true为设置成功，false为设置失败
      * @throws Exception
      */
     @Test
@@ -1006,13 +1009,47 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveUpdateChannelMaxViewerRequest.setChannelId(channelId).setMaxViewer(Integer.MAX_VALUE).setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelMaxViewerRequest.setChannelId(channelId)
+                    .setMaxViewer(Integer.MAX_VALUE)
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelMaxViewerResponse = new LiveChannelOperateServiceImpl().updateChannelMaxViewer(
                     liveUpdateChannelMaxViewerRequest);
             Assert.assertNotNull(liveUpdateChannelMaxViewerResponse);
             if (liveUpdateChannelMaxViewerResponse) {
                 //to do something ......
                 log.debug("测试设置频道最大在线人数成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询频道广告列表
+     * 约束：2、提供查询频道轮播广告列表信息，频道广告为空时，获取全局广告
+     * @throws Exception
+     */
+    @Test
+    public void testChannelAdvertList() throws Exception {
+        LiveChannelAdvertListRequest liveChannelAdvertListRequest = new LiveChannelAdvertListRequest();
+        LiveChannelAdvertListResponse liveChannelAdvertListResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveChannelAdvertListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelAdvertListResponse = new LiveChannelOperateServiceImpl().channelAdvertList(
+                    liveChannelAdvertListRequest);
+            Assert.assertNotNull(liveChannelAdvertListResponse);
+            if (liveChannelAdvertListResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道广告列表成功,{}", JSON.toJSONString(liveChannelAdvertListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B

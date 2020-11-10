@@ -873,6 +873,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试设置频道回调设置
+     * 约束：2、如频道需要跟随用户设置，可以调用设置频道默认项开关接口
      * TODO 等待后台修改返回值
      * @throws Exception
      */

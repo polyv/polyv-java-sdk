@@ -483,7 +483,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     
     /**
      * 测试删除视频库列表中的视频
-     * 返回:true为删除成功，false为删除失败
+     * 返回：true为删除成功，false为删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

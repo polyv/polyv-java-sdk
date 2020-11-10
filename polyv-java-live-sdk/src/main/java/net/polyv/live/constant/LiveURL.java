@@ -720,6 +720,11 @@ public class LiveURL {
      */
     public static final String GET_CHANNEL_INCOME_DETAIL_URL = BASE_URI +"v2/user/"+PARAM_REPLACE_CHAR+ "/get-income-detail";
     
+    /**
+     * 查询频道回调设置接口
+     */
+    public static final String GET_CHANNEL_CALLBACK_SETTING_URL = BASE_URI +"v3/channel/callback/get-setting";
+    
     
     /**
      * 设置播放器暂停广告

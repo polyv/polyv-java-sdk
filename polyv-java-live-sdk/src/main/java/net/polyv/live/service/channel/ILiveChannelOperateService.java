@@ -7,6 +7,8 @@ import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoResponse;
@@ -256,6 +258,18 @@ public interface ILiveChannelOperateService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean createChannelPPTRecordTask(LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道回调设置接口
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/get-callback-setting/
+     * @param liveChannelCallbackSettingRequest 查询频道回调设置接口请求实体
+     * @return 查询频道回调设置接口返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelCallbackSettingResponse channelCallbackSetting(
+            LiveChannelCallbackSettingRequest liveChannelCallbackSettingRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

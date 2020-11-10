@@ -13,6 +13,8 @@ import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoResponse;
@@ -110,7 +112,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      */
     @SneakyThrows
     @Override
-    public Boolean updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest)  throws IOException  {
+    public Boolean updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest) throws IOException {
         String url = LiveURL.CHANNEL_BASIC_UPDATE_URL;
         Map<String, String> signMap = MapUtil.getSignMap(liveChannelSettingRequest);
         signMap.put("channelId", liveChannelSettingRequest.getChannelId() + "");
@@ -394,6 +396,22 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         String url = LiveURL.CHANNEL_PPTRECORD_CREATE__URL;
         String liveCreateChannelPPTRecordResponse = this.basePost(url, liveCreateChannelPPTRecordRequest, String.class);
         return "".equals(liveCreateChannelPPTRecordResponse);
+    }
+    
+    /**
+     * 查询频道回调设置接口
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/get-callback-setting/
+     * @param liveChannelCallbackSettingRequest 查询频道回调设置接口请求实体
+     * @return 查询频道回调设置接口返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelCallbackSettingResponse channelCallbackSetting(
+            LiveChannelCallbackSettingRequest liveChannelCallbackSettingRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.GET_CHANNEL_CALLBACK_SETTING_URL;
+        return this.baseGet(url, liveChannelCallbackSettingRequest, LiveChannelCallbackSettingResponse.class);
     }
     
 }

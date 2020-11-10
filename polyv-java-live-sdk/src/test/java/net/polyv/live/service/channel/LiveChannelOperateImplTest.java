@@ -16,6 +16,8 @@ import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoResponse;
@@ -822,6 +824,38 @@ public class LiveChannelOperateImplTest extends BaseTest {
             if (liveListChannelPPTRecordResponse != null) {
                 //to do something ......
                 log.debug("查询课件重制任务列表信息成功{}", JSON.toJSONString(liveListChannelPPTRecordResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询频道回调设置接口
+     * @throws Exception
+     */
+    @Test
+    public void testChannelCallbackSetting() throws Exception {
+        LiveChannelCallbackSettingRequest liveChannelCallbackSettingRequest = new LiveChannelCallbackSettingRequest();
+        LiveChannelCallbackSettingResponse liveChannelCallbackSettingResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+    
+            liveChannelCallbackSettingRequest.setChannelId(channelId)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().channelCallbackSetting(
+                    liveChannelCallbackSettingRequest);
+            Assert.assertNotNull(liveChannelCallbackSettingResponse);
+            if (liveChannelCallbackSettingResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道回调设置接口成功，{}", JSON.toJSONString(liveChannelCallbackSettingResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B

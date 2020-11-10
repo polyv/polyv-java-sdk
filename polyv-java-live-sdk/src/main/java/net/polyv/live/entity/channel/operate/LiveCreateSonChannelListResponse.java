@@ -8,11 +8,12 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
+ * 批量创建子频道返回实体
  * @author: sadboy
  **/
 @Data
 @Accessors(chain = true)
-@ApiModel("创建直播频道请求实体")
+@ApiModel("批量创建子频道返回实体")
 public class LiveCreateSonChannelListResponse {
     
     @ApiModelProperty(name = "sonChannelInfos", value = "子频道返回信息", required = false)

@@ -735,6 +735,11 @@ public class LiveURL {
      */
     public static final String CREATE_SON_CHANNEL_LIST_URL = BASE_URI +"v3/channel/account/batch-create";
     
+    /**
+     * 获取账号或频道转播列表信息
+     */
+    public static final String CHANNEL_TRANSMIT_LIST_URL = BASE_URI +"v3/channel/transmit/get-associations";
+    
     
     /**
      * 设置播放器暂停广告

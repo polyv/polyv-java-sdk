@@ -27,6 +27,8 @@ import net.polyv.live.entity.channel.operate.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelTransmitListRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelTransmitListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
@@ -948,6 +950,37 @@ public class LiveChannelOperateImplTest extends BaseTest {
             if (liveCreateSonChannelListResponse != null) {
                 //to do something ......
                 log.debug("测试设置频道回调设置成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试获取账号或频道转播列表信息
+     * @throws Exception
+     */
+    @Test
+    public void testChannelTransmitList() throws Exception {
+        LiveChannelTransmitListRequest liveChannelTransmitListRequest = new LiveChannelTransmitListRequest();
+        LiveChannelTransmitListResponse liveChannelTransmitListResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveChannelTransmitListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelTransmitListResponse = new LiveChannelOperateServiceImpl().channelTransmitList(
+                    liveChannelTransmitListRequest);
+            Assert.assertNotNull(liveChannelTransmitListResponse);
+            if (liveChannelTransmitListResponse != null) {
+                //to do something ......
+                log.debug("测试获取账号或频道转播列表信息成功，{}", JSON.toJSONString(liveChannelTransmitListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B

@@ -18,6 +18,7 @@ import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelCaptureRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoResponse;
@@ -514,6 +515,21 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         LiveChannelAdvertListResponse liveChannelAdvertListResponse = new LiveChannelAdvertListResponse();
         liveChannelAdvertListResponse.setChannelAdverts(channelAdverts);
         return liveChannelAdvertListResponse;
+    }
+    
+    /**
+     * 查询频道直播截图
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/get-capture-image/
+     * @param liveChannelCaptureRequest 查询频道直播截图请求实体
+     * @return 查询频道直播截图返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String channelCapture(LiveChannelCaptureRequest liveChannelCaptureRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_CAPTURE_URL,liveChannelCaptureRequest.getChannelId());
+        return this.basePost(url,liveChannelCaptureRequest,String.class);
     }
     
 }

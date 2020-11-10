@@ -745,6 +745,11 @@ public class LiveURL {
     public static final String UPDATE_CHANNEL_MAX_VIEWER_URL =
             BASE_URI + "v2/channelRestrict/" + PARAM_REPLACE_CHAR + "/set-max-viewer";
     
+    /**
+     * 查询频道直播截图
+     */
+    public static final String CHANNEL_CAPTURE_URL = BASE_URI + "v2/stream/" + PARAM_REPLACE_CHAR + "/capture";
+    
     
     /**
      * 设置播放器暂停广告

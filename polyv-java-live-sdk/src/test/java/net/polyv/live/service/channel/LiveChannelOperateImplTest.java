@@ -20,6 +20,7 @@ import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelCaptureRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoResponse;
@@ -1050,6 +1051,38 @@ public class LiveChannelOperateImplTest extends BaseTest {
             if (liveChannelAdvertListResponse != null) {
                 //to do something ......
                 log.debug("测试查询频道广告列表成功,{}", JSON.toJSONString(liveChannelAdvertListResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询频道广告列表
+     * 约束：2、如果直播未开启，将抛出"channel is not live."异常
+     * 返回：返回图片http地址，
+     * @throws Exception
+     */
+    @Test
+    public void testChannelCapture() throws Exception {
+        LiveChannelCaptureRequest liveChannelCaptureRequest = new LiveChannelCaptureRequest();
+        String liveChannelCaptureResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveChannelCaptureRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelCaptureResponse = new LiveChannelOperateServiceImpl().channelCapture(liveChannelCaptureRequest);
+            Assert.assertNotNull(liveChannelCaptureResponse);
+            if (liveChannelCaptureResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道广告列表成功,{}", JSON.toJSONString(liveChannelCaptureResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B

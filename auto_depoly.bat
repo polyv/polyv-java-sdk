@@ -14,9 +14,10 @@ git status
 git push origin master
 :: # 部署到中央版本库
 :: mvn clean install deploy -Dmaven.test.skip=true -P release
-PAUSE
 :: # 提交master分支到github远程仓库
 git push github master
+:: # 提交master分支到gitee远程仓库
+git push gitee master
 :: # 切换回V1.0.0分支
 git checkout V1.0.0
 

@@ -40,9 +40,9 @@
 ### 单元测试说明
 1、请求正确，返回LiveCreateChannelVideoPlaybackResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -124,9 +124,9 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -190,9 +190,9 @@ true为提交成功，false为提交失败，具体转存是否成功以回调�
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -255,9 +255,9 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试说明
 1、请求正确，返回LiveChannelVideoListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -337,9 +337,9 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试说明
 1、请求正确，返回LiveListChannelVideoLibraryResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -431,9 +431,9 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试说明
 1、请求正确，返回LiveListChannelSessionInfoResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -510,9 +510,9 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -570,9 +570,9 @@ Y为开启，N为关闭
 ### 单元测试说明
 1、请求正确，返回LiveChannelVideoOnlyResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -654,9 +654,9 @@ Y为开启，N为关闭
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -716,9 +716,9 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -778,9 +778,9 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -839,9 +839,9 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -899,9 +899,9 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -964,9 +964,9 @@ true为删除成功，false为删除失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败 ，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b ，错误原因： invalid signature. ]
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 

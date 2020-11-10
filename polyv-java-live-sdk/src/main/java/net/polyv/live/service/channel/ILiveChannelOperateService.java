@@ -34,6 +34,7 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
+import net.polyv.live.entity.channel.operate.LiveUpdateChannelCallbackSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 
 /**
@@ -270,6 +271,18 @@ public interface ILiveChannelOperateService {
      */
     LiveChannelCallbackSettingResponse channelCallbackSetting(
             LiveChannelCallbackSettingRequest liveChannelCallbackSettingRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置频道回调设置
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/update-setting/
+     * @param liveUpdateChannelCallbackSettingRequest 设置频道回调设置请求实体
+     * @return 设置频道回调设置返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateChannelCallbackSetting(
+            LiveUpdateChannelCallbackSettingRequest liveUpdateChannelCallbackSettingRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

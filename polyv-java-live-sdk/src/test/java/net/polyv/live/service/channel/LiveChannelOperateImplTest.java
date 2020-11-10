@@ -43,6 +43,7 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
+import net.polyv.live.entity.channel.operate.LiveUpdateChannelCallbackSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
@@ -153,9 +154,11 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateChannelListRequest liveCreateChannelListRequest = new LiveCreateChannelListRequest();
         LiveCreateChannelListResponse liveCreateChannelListResponse;
         try {
-            List<LiveCreateChannelListRequest.LiveChannelBasic> channels = new ArrayList<LiveCreateChannelListRequest.LiveChannelBasic>();
+            List<LiveCreateChannelListRequest.LiveChannelBasic> channels =
+                    new ArrayList<LiveCreateChannelListRequest.LiveChannelBasic>();
             for (int i = 0; i <= 2; i++) {
-                LiveCreateChannelListRequest.LiveChannelBasic liveChannel = new LiveCreateChannelListRequest.LiveChannelBasic();
+                LiveCreateChannelListRequest.LiveChannelBasic liveChannel =
+                        new LiveCreateChannelListRequest.LiveChannelBasic();
                 liveChannel.setName("批量创建" + i)
                         .setChannelPasswd("123456" + i)
                         .setCourseId("c" + i)
@@ -318,7 +321,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setAuthCode("123456")
                     .setQcodeTips("提示文案")
                     .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-            List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<LiveChannelSettingRequest.AuthSetting>();
+            List<LiveChannelSettingRequest.AuthSetting> authSettings =
+                    new ArrayList<LiveChannelSettingRequest.AuthSetting>();
             authSettings.add(authSetting);
             liveChannelSettingRequest.setChannelId(channelId)
                     .setBasicSetting(basicSetting)
@@ -510,7 +514,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             throw e;
         }
     }
-
+    
     /**
      * 测试创建子频道-三分屏添加Guest
      * @throws Exception
@@ -524,10 +528,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             List<String> sonChannelIds = getDelSonChannelIds();
-            for(String temp:sonChannelIds){
+            for (String temp : sonChannelIds) {
                 deleteSonChannel(temp);
             }
-    
+            
             liveCreateSonChannelRequest.setChannelId(channelId)
                     .setRole("Guest")
                     .setNickname("sadboy")
@@ -565,7 +569,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             List<String> sonChannelIds = getDelSonChannelIds();
-            for(String temp:sonChannelIds){
+            for (String temp : sonChannelIds) {
                 deleteSonChannel(temp);
             }
             
@@ -734,7 +738,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             throw e;
         }
     }
-
+    
     /**
      * 测试删除子频道
      * 返回：true为删除成功，false为删除失败
@@ -847,15 +851,47 @@ public class LiveChannelOperateImplTest extends BaseTest {
         try {
             //准备测试数据
             String channelId = createChannel();
-    
-            liveChannelCallbackSettingRequest.setChannelId(channelId)
-                    .setRequestId(LiveSignUtil.generateUUID());
+            
+            liveChannelCallbackSettingRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().channelCallbackSetting(
                     liveChannelCallbackSettingRequest);
             Assert.assertNotNull(liveChannelCallbackSettingResponse);
             if (liveChannelCallbackSettingResponse != null) {
                 //to do something ......
                 log.debug("测试查询频道回调设置接口成功，{}", JSON.toJSONString(liveChannelCallbackSettingResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试设置频道回调设置
+     * TODO 等待后台修改返回值
+     * @throws Exception
+     */
+//    @Test
+    public void testUpdateChannelCallbackSetting() throws Exception {
+        LiveUpdateChannelCallbackSettingRequest liveUpdateChannelCallbackSettingRequest =
+                new LiveUpdateChannelCallbackSettingRequest();
+        Boolean liveUpdateChannelCallbackSettingResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveUpdateChannelCallbackSettingRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().updateChannelCallbackSetting(
+                    liveUpdateChannelCallbackSettingRequest);
+            Assert.assertNotNull(liveUpdateChannelCallbackSettingResponse);
+            if (liveUpdateChannelCallbackSettingResponse) {
+                //to do something ......
+                log.debug("测试设置频道回调设置成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B

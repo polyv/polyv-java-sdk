@@ -725,6 +725,11 @@ public class LiveURL {
      */
     public static final String GET_CHANNEL_CALLBACK_SETTING_URL = BASE_URI +"v3/channel/callback/get-setting";
     
+    /**
+     * 设置频道回调设置
+     */
+    public static final String UPDATE_CHANNEL_CALLBACK_SETTING_URL = BASE_URI +"v3/channel/callback/update-setting";
+    
     
     /**
      * 设置播放器暂停广告

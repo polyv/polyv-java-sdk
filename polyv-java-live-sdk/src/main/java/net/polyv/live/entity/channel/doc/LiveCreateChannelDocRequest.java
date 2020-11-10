@@ -22,9 +22,9 @@ import net.polyv.live.entity.LiveCommonRequest;
 public class LiveCreateChannelDocRequest extends LiveCommonRequest {
     
     /**
-     * 频道ID
+     * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "频道ID", required = true)
+    @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
     private String channelId;
     
@@ -59,9 +59,9 @@ public class LiveCreateChannelDocRequest extends LiveCommonRequest {
     public static class CallbackData{
         
         /**
-         * 频道ID
+         * 频道号
          */
-        @ApiModelProperty(name = "channelId", value = "频道ID", required = false)
+        @ApiModelProperty(name = "channelId", value = "频道号", required = false)
         private String channelId;
     
         /**

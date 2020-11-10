@@ -27,9 +27,9 @@ public class LiveChannelIncomeDetailRequest extends LivePageCommonRequest {
     private String userId;
     
     /**
-     * 要查询的频道ID，不提交默认为查询所有频道
+     * 要查询的频道号，不提交默认为查询所有频道
      */
-    @ApiModelProperty(name = "channelId", value = "要查询的频道ID，不提交默认为查询所有频道", required = false)
+    @ApiModelProperty(name = "channelId", value = "要查询的频道号，不提交默认为查询所有频道", required = false)
     private String channelId;
     
     /**

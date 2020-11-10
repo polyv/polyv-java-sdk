@@ -22,6 +22,8 @@ import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.operate.LiveCreateSonChannelListRequest;
+import net.polyv.live.entity.channel.operate.LiveCreateSonChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelTokenRequest;
@@ -283,6 +285,18 @@ public interface ILiveChannelOperateService {
      */
     Boolean updateChannelCallbackSetting(
             LiveUpdateChannelCallbackSettingRequest liveUpdateChannelCallbackSettingRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 批量创建子频道
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/batch-create/
+     * @param liveCreateSonChannelListRequest 批量创建子频道请求实体
+     * @return 批量创建子频道返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveCreateSonChannelListResponse createSonChannelList(
+            LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

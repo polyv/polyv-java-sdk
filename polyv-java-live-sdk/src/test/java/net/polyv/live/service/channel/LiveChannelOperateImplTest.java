@@ -12,12 +12,15 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.PloyvSdkException;
 import net.polyv.live.constant.LiveConstant;
+import net.polyv.live.entity.channel.operate.LiveChannelAdvertListRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelAdvertListResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelCaptureRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoResponse;
@@ -27,6 +30,8 @@ import net.polyv.live.entity.channel.operate.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelTransmitListRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelTransmitListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
@@ -46,6 +51,7 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateChannelCallbackSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveUpdateChannelMaxViewerRequest;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
@@ -960,4 +966,136 @@ public class LiveChannelOperateImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 测试获取账号或频道转播列表信息
+     * @throws Exception
+     */
+    @Test
+    public void testChannelTransmitList() throws Exception {
+        LiveChannelTransmitListRequest liveChannelTransmitListRequest = new LiveChannelTransmitListRequest();
+        LiveChannelTransmitListResponse liveChannelTransmitListResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveChannelTransmitListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelTransmitListResponse = new LiveChannelOperateServiceImpl().channelTransmitList(
+                    liveChannelTransmitListRequest);
+            Assert.assertNotNull(liveChannelTransmitListResponse);
+            if (liveChannelTransmitListResponse != null) {
+                //to do something ......
+                log.debug("测试获取账号或频道转播列表信息成功，{}", JSON.toJSONString(liveChannelTransmitListResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试设置频道最大在线人数
+     * 返回：true为设置成功，false为设置失败
+     * @throws Exception
+     */
+    @Test
+    public void testUpdateChannelMaxViewer() throws Exception {
+        LiveUpdateChannelMaxViewerRequest liveUpdateChannelMaxViewerRequest = new LiveUpdateChannelMaxViewerRequest();
+        Boolean liveUpdateChannelMaxViewerResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveUpdateChannelMaxViewerRequest.setChannelId(channelId)
+                    .setMaxViewer(Integer.MAX_VALUE)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelMaxViewerResponse = new LiveChannelOperateServiceImpl().updateChannelMaxViewer(
+                    liveUpdateChannelMaxViewerRequest);
+            Assert.assertNotNull(liveUpdateChannelMaxViewerResponse);
+            if (liveUpdateChannelMaxViewerResponse) {
+                //to do something ......
+                log.debug("测试设置频道最大在线人数成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询频道广告列表
+     * 约束：2、提供查询频道轮播广告列表信息，频道广告为空时，获取全局广告
+     * @throws Exception
+     */
+    @Test
+    public void testChannelAdvertList() throws Exception {
+        LiveChannelAdvertListRequest liveChannelAdvertListRequest = new LiveChannelAdvertListRequest();
+        LiveChannelAdvertListResponse liveChannelAdvertListResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveChannelAdvertListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelAdvertListResponse = new LiveChannelOperateServiceImpl().channelAdvertList(
+                    liveChannelAdvertListRequest);
+            Assert.assertNotNull(liveChannelAdvertListResponse);
+            if (liveChannelAdvertListResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道广告列表成功,{}", JSON.toJSONString(liveChannelAdvertListResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询频道广告列表
+     * 约束：2、如果直播未开启，将抛出"channel is not live."异常
+     * 返回：返回图片http地址，
+     * @throws Exception
+     */
+    @Test
+    public void testChannelCapture() throws Exception {
+        LiveChannelCaptureRequest liveChannelCaptureRequest = new LiveChannelCaptureRequest();
+        String liveChannelCaptureResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveChannelCaptureRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelCaptureResponse = new LiveChannelOperateServiceImpl().channelCapture(liveChannelCaptureRequest);
+            Assert.assertNotNull(liveChannelCaptureResponse);
+            if (liveChannelCaptureResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道广告列表成功,{}", JSON.toJSONString(liveChannelCaptureResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试用例结束
+     */
 }

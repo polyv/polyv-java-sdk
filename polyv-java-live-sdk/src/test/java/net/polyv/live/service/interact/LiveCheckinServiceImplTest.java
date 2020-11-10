@@ -127,4 +127,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 测试用例结束
+     */
 }

@@ -3,12 +3,15 @@ package net.polyv.live.service.channel;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.live.entity.channel.operate.LiveChannelAdvertListRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelAdvertListResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelCaptureRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoResponse;
@@ -18,6 +21,8 @@ import net.polyv.live.entity.channel.operate.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelTransmitListRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelTransmitListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
@@ -37,6 +42,7 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateChannelCallbackSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveUpdateChannelMaxViewerRequest;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 
 /**
@@ -297,6 +303,50 @@ public interface ILiveChannelOperateService {
      */
     LiveCreateSonChannelListResponse createSonChannelList(
             LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取账号或频道转播列表信息
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/get-transmit-associations/
+     * @param liveChannelTransmitListRequest 获取账号或频道转播列表信息请求实体
+     * @return 获取账号或频道转播列表信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelTransmitListResponse channelTransmitList(LiveChannelTransmitListRequest liveChannelTransmitListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置频道最大在线人数
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/setmaxviewerv2/
+     * @param liveUpdateChannelMaxViewerRequest 设置频道最大在线人数请求实体
+     * @return 设置频道最大在线人数返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateChannelMaxViewer(LiveUpdateChannelMaxViewerRequest liveUpdateChannelMaxViewerRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道广告列表
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/pdcz/channel-advert-list/
+     * @param liveChannelAdvertListRequest 查询频道广告列表请求实体
+     * @return 查询频道广告列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelAdvertListResponse channelAdvertList(LiveChannelAdvertListRequest liveChannelAdvertListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道直播截图
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/get-capture-image/
+     * @param liveChannelCaptureRequest 查询频道直播截图请求实体
+     * @return 查询频道直播截图返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String channelCapture(LiveChannelCaptureRequest liveChannelCaptureRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -241,7 +241,9 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
             log.error("SDK调用异常", e);
             throw e;
         }
-        
     }
     
+    /**
+     * 测试用例结束
+     */
 }

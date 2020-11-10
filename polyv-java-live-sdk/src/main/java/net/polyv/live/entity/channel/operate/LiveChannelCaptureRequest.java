@@ -10,14 +10,14 @@ import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
 /**
- * 查询频道回调设置接口请求实体
+ * 查询频道直播截图请求实体
  * @author: sadboy
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("查询频道回调设置接口请求实体")
-public class LiveChannelCallbackSettingRequest extends LiveCommonRequest {
+@ApiModel("查询频道直播截图请求实体")
+public class LiveChannelCaptureRequest extends LiveCommonRequest {
     
     /**
      * 频道号

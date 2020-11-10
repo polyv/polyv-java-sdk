@@ -163,4 +163,7 @@ public class LiveChannelDocImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 测试用例结束
+     */
 }

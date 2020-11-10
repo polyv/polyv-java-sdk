@@ -3,18 +3,22 @@ package net.polyv.live.service.channel.impl;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.channel.operate.LiveChannelAdvertListRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelAdvertListResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelAuthTokenResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelBasicInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelCallbackSettingResponse;
+import net.polyv.live.entity.channel.operate.LiveChannelCaptureRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelDetailRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelInfoResponse;
@@ -24,6 +28,8 @@ import net.polyv.live.entity.channel.operate.LiveChannelPasswordSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelTransmitListRequest;
+import net.polyv.live.entity.channel.operate.LiveChannelTransmitListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
@@ -43,6 +49,7 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoListResponse;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateChannelCallbackSettingRequest;
+import net.polyv.live.entity.channel.operate.LiveUpdateChannelMaxViewerRequest;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelOperateService;
@@ -430,7 +437,8 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             LiveUpdateChannelCallbackSettingRequest liveUpdateChannelCallbackSettingRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_CHANNEL_CALLBACK_SETTING_URL;
-        String liveUpdateChannelCallbackSettingResponse = this.basePost(url,liveUpdateChannelCallbackSettingRequest,String.class);
+        String liveUpdateChannelCallbackSettingResponse = this.basePost(url, liveUpdateChannelCallbackSettingRequest,
+                String.class);
         return "".equals(liveUpdateChannelCallbackSettingResponse);
     }
     
@@ -447,9 +455,81 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CREATE_SON_CHANNEL_LIST_URL;
-        Map<String,String> map = MapUtil.getSignMap(liveCreateSonChannelListRequest);
-        map.put("channelId",liveCreateSonChannelListRequest.getChannelId());
-        return this.basePostJson(url,map,liveCreateSonChannelListRequest,LiveCreateSonChannelListResponse.class);
+        Map<String, String> map = MapUtil.getSignMap(liveCreateSonChannelListRequest);
+        map.put("channelId", liveCreateSonChannelListRequest.getChannelId());
+        return this.basePostJson(url, map, liveCreateSonChannelListRequest, LiveCreateSonChannelListResponse.class);
+    }
+    
+    /**
+     * 获取账号或频道转播列表信息
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/get-transmit-associations/
+     * @param liveChannelTransmitListRequest 获取账号或频道转播列表信息请求实体
+     * @return 获取账号或频道转播列表信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelTransmitListResponse channelTransmitList(
+            LiveChannelTransmitListRequest liveChannelTransmitListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_TRANSMIT_LIST_URL;
+        List<LiveChannelTransmitListResponse.ChannelTransmit> channelTransmits = this.baseGetReturnArray(url,
+                liveChannelTransmitListRequest, LiveChannelTransmitListResponse.ChannelTransmit.class);
+        LiveChannelTransmitListResponse liveChannelTransmitListResponse = new LiveChannelTransmitListResponse();
+        liveChannelTransmitListResponse.setChannelTransmits(channelTransmits);
+        return liveChannelTransmitListResponse;
+    }
+    
+    /**
+     * 设置频道最大在线人数
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/setmaxviewerv2/
+     * @param liveUpdateChannelMaxViewerRequest 设置频道最大在线人数请求实体
+     * @return 设置频道最大在线人数返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateChannelMaxViewer(LiveUpdateChannelMaxViewerRequest liveUpdateChannelMaxViewerRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveUpdateChannelMaxViewerRequest.setUserId(LiveGlobalConfig.getUserId());
+        String url = LiveURL.getRealUrl(LiveURL.UPDATE_CHANNEL_MAX_VIEWER_URL,
+                liveUpdateChannelMaxViewerRequest.getChannelId());
+        String liveUpdateChannelMaxViewerResponse = this.basePost(url, liveUpdateChannelMaxViewerRequest, String.class);
+        return "设置成功".equals(liveUpdateChannelMaxViewerResponse);
+    }
+    
+    /**
+     * 查询频道广告列表
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/pdcz/channel-advert-list/
+     * @param liveChannelAdvertListRequest 查询频道广告列表请求实体
+     * @return 查询频道广告列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelAdvertListResponse channelAdvertList(LiveChannelAdvertListRequest liveChannelAdvertListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_ADVERT_LIST_GET_URL;
+        List<LiveChannelAdvertListResponse.ChannelAdvert> channelAdverts = this.baseGetReturnArray(url,
+                liveChannelAdvertListRequest, LiveChannelAdvertListResponse.ChannelAdvert.class);
+        LiveChannelAdvertListResponse liveChannelAdvertListResponse = new LiveChannelAdvertListResponse();
+        liveChannelAdvertListResponse.setChannelAdverts(channelAdverts);
+        return liveChannelAdvertListResponse;
+    }
+    
+    /**
+     * 查询频道直播截图
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbglgn/pdcz/get-capture-image/
+     * @param liveChannelCaptureRequest 查询频道直播截图请求实体
+     * @return 查询频道直播截图返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String channelCapture(LiveChannelCaptureRequest liveChannelCaptureRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_CAPTURE_URL,liveChannelCaptureRequest.getChannelId());
+        return this.basePost(url,liveChannelCaptureRequest,String.class);
     }
     
 }

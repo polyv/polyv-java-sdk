@@ -52,6 +52,7 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateChannelCallbackSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveUpdateChannelMaxViewerRequest;
+import net.polyv.live.entity.channel.operate.LiveUpdateChannelStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
@@ -1083,6 +1084,41 @@ public class LiveChannelOperateImplTest extends BaseTest {
             if (liveChannelCaptureResponse != null) {
                 //to do something ......
                 log.debug("测试查询频道广告列表成功,{}", JSON.toJSONString(liveChannelCaptureResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试修改直播推流方式
+     * 约束：2、直播过程中不允许修改直播方式
+     * 返回：true为修改推流方式成功，false为修改失败
+     * @throws Exception
+     */
+    @Test
+    public void testUpdateChannelStream() throws Exception {
+        LiveUpdateChannelStreamRequest liveUpdateChannelStreamRequest = new LiveUpdateChannelStreamRequest();
+        Boolean liveUpdateChannelStreamResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveUpdateChannelStreamRequest.setStreamType("client")
+                    .setChannelId(channelId)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelStreamResponse = new LiveChannelOperateServiceImpl().updateChannelStream(
+                    liveUpdateChannelStreamRequest);
+            Assert.assertNotNull(liveUpdateChannelStreamResponse);
+            if (liveUpdateChannelStreamResponse) {
+                //to do something ......
+                log.debug("测试修改直播推流方式成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B

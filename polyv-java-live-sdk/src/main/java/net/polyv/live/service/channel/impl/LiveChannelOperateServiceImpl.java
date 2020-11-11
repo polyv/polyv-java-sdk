@@ -50,6 +50,7 @@ import net.polyv.live.entity.channel.operate.LiveSonChannelInfoRequest;
 import net.polyv.live.entity.channel.operate.LiveSonChannelInfoResponse;
 import net.polyv.live.entity.channel.operate.LiveUpdateChannelCallbackSettingRequest;
 import net.polyv.live.entity.channel.operate.LiveUpdateChannelMaxViewerRequest;
+import net.polyv.live.entity.channel.operate.LiveUpdateChannelStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelOperateService;
@@ -530,6 +531,22 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_CAPTURE_URL,liveChannelCaptureRequest.getChannelId());
         return this.basePost(url,liveChannelCaptureRequest,String.class);
+    }
+    
+    /**
+     * 修改直播推流方式
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/update-stream-type/
+     * @param liveUpdateChannelStreamRequest 修改直播推流方式请求实体
+     * @return 修改直播推流方式返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateChannelStream(LiveUpdateChannelStreamRequest liveUpdateChannelStreamRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.UPDATE_CHANNEL_STREAM_URL;
+        String liveUpdateChannelStreamResponse = this.basePost(url,liveUpdateChannelStreamRequest,String.class);
+        return "".equals(liveUpdateChannelStreamResponse);
     }
     
 }

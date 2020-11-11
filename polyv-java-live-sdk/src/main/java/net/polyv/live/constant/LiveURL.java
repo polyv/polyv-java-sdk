@@ -750,6 +750,11 @@ public class LiveURL {
      */
     public static final String CHANNEL_CAPTURE_URL = BASE_URI + "v2/stream/" + PARAM_REPLACE_CHAR + "/capture";
     
+    /**
+     * 修改直播推流方式
+     */
+    public static final String UPDATE_CHANNEL_STREAM_URL = BASE_URI + "v3/channel/stream/update";
+    
     
     /**
      * 设置播放器暂停广告

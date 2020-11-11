@@ -27,6 +27,7 @@ import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.operate.LiveCreateDiskVideosStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
@@ -359,6 +360,17 @@ public interface ILiveChannelOperateService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean updateChannelStream(LiveUpdateChannelStreamRequest liveUpdateChannelStreamRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置硬盘推流直播
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/add-disk-videos/
+     * @param liveCreateDiskVideosStreamRequest 设置硬盘推流直播请求实体
+     * @return 设置硬盘推流直播返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean createDiskVideosStream(LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

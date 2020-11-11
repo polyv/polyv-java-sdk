@@ -755,6 +755,11 @@ public class LiveURL {
      */
     public static final String UPDATE_CHANNEL_STREAM_URL = BASE_URI + "v3/channel/stream/update";
     
+    /**
+     * 设置硬盘推流直播
+     */
+    public static final String UPDATE_DISK_VIDEOS__STREAM_URL = BASE_URI + "v3/channel/stream/add-disk-videos";
+    
     
     /**
      * 设置播放器暂停广告

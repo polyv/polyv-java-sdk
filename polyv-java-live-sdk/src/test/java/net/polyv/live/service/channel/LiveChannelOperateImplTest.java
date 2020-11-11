@@ -36,6 +36,7 @@ import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.operate.LiveCreateDiskVideosStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
@@ -1110,7 +1111,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveUpdateChannelStreamRequest.setStreamType("client")
+            liveUpdateChannelStreamRequest.setStreamType("disk")
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelStreamResponse = new LiveChannelOperateServiceImpl().updateChannelStream(
@@ -1119,6 +1120,43 @@ public class LiveChannelOperateImplTest extends BaseTest {
             if (liveUpdateChannelStreamResponse) {
                 //to do something ......
                 log.debug("测试修改直播推流方式成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试设置硬盘推流直播
+     * 约束：2、调用接口后，如果当前频道未在直播中，会自动设置直播方式为“硬盘推流”。如果当前使用其他直播推流方式直播中，则需要在直播结束后，调用《修改直播推流方式》修改为硬盘推流，才会在所设置的开始时间进行直播
+     * 返回：true为设置硬盘推流直播成功，false为修改失败
+     * @throws Exception
+     */
+//    @Test
+    public void testCreateDiskVideosStream() throws Exception {
+        LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest = new LiveCreateDiskVideosStreamRequest();
+        Boolean liveCreateDiskVideosStreamResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            String videoId = listChannelVideoIds(channelId).get(0);
+    
+            liveCreateDiskVideosStreamRequest.setVideos(videoId)
+                    .setStartTimes(System.currentTimeMillis()+3000000)
+                    .setChannelId(channelId)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveCreateDiskVideosStreamResponse = new LiveChannelOperateServiceImpl().createDiskVideosStream(
+                    liveCreateDiskVideosStreamRequest);
+            Assert.assertNotNull(liveCreateDiskVideosStreamResponse);
+            if (liveCreateDiskVideosStreamResponse) {
+                //to do something ......
+                log.debug("测试设置硬盘推流直播成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B

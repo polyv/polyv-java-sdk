@@ -34,6 +34,7 @@ import net.polyv.live.entity.channel.operate.LiveCreateChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateChannelTokenRequest;
+import net.polyv.live.entity.channel.operate.LiveCreateDiskVideosStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelListResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelRequest;
@@ -547,6 +548,22 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         String url = LiveURL.UPDATE_CHANNEL_STREAM_URL;
         String liveUpdateChannelStreamResponse = this.basePost(url,liveUpdateChannelStreamRequest,String.class);
         return "".equals(liveUpdateChannelStreamResponse);
+    }
+    
+    /**
+     * 设置硬盘推流直播
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/add-disk-videos/
+     * @param liveCreateDiskVideosStreamRequest 设置硬盘推流直播请求实体
+     * @return 设置硬盘推流直播返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean createDiskVideosStream(LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.UPDATE_DISK_VIDEOS__STREAM_URL;
+        String liveCreateDiskVideosStreamResponse = this.basePost(url,liveCreateDiskVideosStreamRequest,String.class);
+        return "".equals(liveCreateDiskVideosStreamResponse);
     }
     
 }

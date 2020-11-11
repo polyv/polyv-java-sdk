@@ -44,6 +44,7 @@ import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteChannelRequest;
+import net.polyv.live.entity.channel.operate.LiveDeleteDiskVideosStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordResponse;
@@ -1146,9 +1147,9 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             String videoId = listChannelVideoIds(channelId).get(0);
-    
+            
             liveCreateDiskVideosStreamRequest.setVideos(videoId)
-                    .setStartTimes(System.currentTimeMillis()+3000000)
+                    .setStartTimes(System.currentTimeMillis() + 3000000)
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveCreateDiskVideosStreamResponse = new LiveChannelOperateServiceImpl().createDiskVideosStream(
@@ -1168,6 +1169,42 @@ public class LiveChannelOperateImplTest extends BaseTest {
             throw e;
         }
     }
+    
+    /**
+     * 测试删除硬盘推流的视频
+     * 约束：2、调用接口后，如果当前频道未在直播中，会自动设置直播方式为“硬盘推流”。如果当前使用其他直播推流方式直播中，则需要在直播结束后，调用《修改直播推流方式》修改为硬盘推流，才会在所设置的开始时间进行直播
+     * 返回：true为设置硬盘推流直播成功，false为修改失败
+     * @throws Exception
+     */
+    @Test
+    public void testDeleteDiskVideosStream() throws Exception {
+        LiveDeleteDiskVideosStreamRequest liveDeleteDiskVideosStreamRequest = new LiveDeleteDiskVideosStreamRequest();
+        Boolean liveDeleteDiskVideosStreamResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            
+            liveDeleteDiskVideosStreamRequest.setVideos("f1574595e1")
+                    .setChannelId(channelId)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveDeleteDiskVideosStreamResponse = new LiveChannelOperateServiceImpl().deleteDiskVideosStream(
+                    liveDeleteDiskVideosStreamRequest);
+            Assert.assertNotNull(liveDeleteDiskVideosStreamResponse);
+            if (liveDeleteDiskVideosStreamResponse) {
+                //to do something ......
+                log.debug("测试删除硬盘推流的视频成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
     
     /**
      * 测试用例结束

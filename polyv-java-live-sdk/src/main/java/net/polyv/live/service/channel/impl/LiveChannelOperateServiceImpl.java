@@ -42,6 +42,7 @@ import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteChannelRequest;
+import net.polyv.live.entity.channel.operate.LiveDeleteDiskVideosStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordResponse;
@@ -561,9 +562,25 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     @Override
     public Boolean createDiskVideosStream(LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.UPDATE_DISK_VIDEOS__STREAM_URL;
+        String url = LiveURL.UPDATE_DISK_VIDEOS_STREAM_URL;
         String liveCreateDiskVideosStreamResponse = this.basePost(url,liveCreateDiskVideosStreamRequest,String.class);
         return "".equals(liveCreateDiskVideosStreamResponse);
+    }
+    
+    /**
+     * 删除硬盘推流的视频
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/delete-disk-videos/
+     * @param liveDeleteDiskVideosStreamRequest 删除硬盘推流的视频请求实体
+     * @return 删除硬盘推流的视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean deleteDiskVideosStream(LiveDeleteDiskVideosStreamRequest liveDeleteDiskVideosStreamRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.DELETE_DISK_VIDEOS_STREAM_URL;
+        String liveDeleteDiskVideosStreamResponse = this.basePost(url,liveDeleteDiskVideosStreamRequest,String.class);
+        return "".equals(liveDeleteDiskVideosStreamResponse);
     }
     
 }

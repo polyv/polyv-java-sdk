@@ -12,14 +12,14 @@ import lombok.experimental.Accessors;
 import net.polyv.live.entity.LiveCommonRequest;
 
 /**
- * 设置硬盘推流直播请求实体
+ * 删除硬盘推流的视频请求实体
  * @author: sadboy
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("设置硬盘推流直播请求实体")
-public class LiveCreateDiskVideosStreamRequest extends LiveCommonRequest {
+@ApiModel("删除硬盘推流的视频请求实体")
+public class LiveDeleteDiskVideosStreamRequest extends LiveCommonRequest {
     
     /**
      * 频道号
@@ -29,18 +29,12 @@ public class LiveCreateDiskVideosStreamRequest extends LiveCommonRequest {
     private String channelId;
     
     /**
-     * 要设置硬盘推流的点播视频ID,可使用new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary()获取
+     * 要删除的硬盘推流视频id,可使用new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary()获取
      */
-    @ApiModelProperty(name = "vids", value = "要设置硬盘推流的点播视频ID,可使用new LiveChannelPlaybackServiceImpl()" +
+    @ApiModelProperty(name = "vids", value = "要删除的硬盘推流视频id,可使用new LiveChannelPlaybackServiceImpl()" +
             ".listChannelVideoLibrary()获取", required = true)
     @NotNull(message = "属性vids不能为空")
     @JSONField(name = "vids")
     private String videos;
-    
-    /**
-     * 硬盘推流开始时间，13位毫秒级时间戳
-     */
-    @ApiModelProperty(name = "startTimes", value = "硬盘推流开始时间，13位毫秒级时间戳", required = true)
-    private Long startTimes;
     
 }

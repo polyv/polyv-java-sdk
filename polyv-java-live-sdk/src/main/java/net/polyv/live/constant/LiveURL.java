@@ -758,7 +758,12 @@ public class LiveURL {
     /**
      * 设置硬盘推流直播
      */
-    public static final String UPDATE_DISK_VIDEOS__STREAM_URL = BASE_URI + "v3/channel/stream/add-disk-videos";
+    public static final String UPDATE_DISK_VIDEOS_STREAM_URL = BASE_URI + "v3/channel/stream/add-disk-videos";
+    
+    /**
+     * 删除硬盘推流的视频
+     */
+    public static final String DELETE_DISK_VIDEOS_STREAM_URL = BASE_URI + "v3/channel/stream/delete-disk-videos";
     
     
     /**

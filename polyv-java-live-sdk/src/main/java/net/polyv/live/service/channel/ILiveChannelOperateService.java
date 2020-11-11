@@ -35,6 +35,7 @@ import net.polyv.live.entity.channel.operate.LiveCreateSonChannelResponse;
 import net.polyv.live.entity.channel.operate.LiveCreateSonChannelTokenRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteChannelListRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteChannelRequest;
+import net.polyv.live.entity.channel.operate.LiveDeleteDiskVideosStreamRequest;
 import net.polyv.live.entity.channel.operate.LiveDeleteSonChannelRequest;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordRequest;
 import net.polyv.live.entity.channel.operate.LiveListChannelPPTRecordResponse;
@@ -371,6 +372,17 @@ public interface ILiveChannelOperateService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean createDiskVideosStream(LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 删除硬盘推流的视频
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/pdcz/delete-disk-videos/
+     * @param liveDeleteDiskVideosStreamRequest 删除硬盘推流的视频请求实体
+     * @return 删除硬盘推流的视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean deleteDiskVideosStream(LiveDeleteDiskVideosStreamRequest liveDeleteDiskVideosStreamRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

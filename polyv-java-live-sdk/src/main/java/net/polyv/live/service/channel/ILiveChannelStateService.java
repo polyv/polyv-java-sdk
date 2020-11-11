@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import net.polyv.live.entity.channel.state.LiveChannelStreamInfoRequest;
 import net.polyv.live.entity.channel.state.LiveChannelStreamInfoResponse;
+import net.polyv.live.entity.channel.state.LiveChannelStreamLiveRequest;
 import net.polyv.live.entity.channel.state.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.state.LiveListChannelStreamStatusRequest;
 import net.polyv.live.entity.channel.state.LiveListChannelStreamStatusResponse;
@@ -59,6 +60,17 @@ public interface ILiveChannelStateService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveChannelStreamInfoResponse channelStreamInfo(LiveChannelStreamInfoRequest liveChannelStreamInfoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置频道流状态为直播中
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/hqzbxx/live/
+     * @param liveChannelStreamLiveRequest 设置频道流状态为直播中请求实体
+     * @return 设置频道流状态为直播中返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean channelStreamLive(LiveChannelStreamLiveRequest liveChannelStreamLiveRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

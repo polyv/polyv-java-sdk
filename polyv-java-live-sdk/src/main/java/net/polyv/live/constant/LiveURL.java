@@ -588,7 +588,6 @@ public class LiveURL {
      */
     public static final String CHAT_BANNED_IP_URL = BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/addBannedIP";
     
-    
     /**
      * 批量导入频道严禁词
      */
@@ -769,6 +768,11 @@ public class LiveURL {
      * 设置频道流状态为直播中
      */
     public static final String CHANNEL_STREAM_LIVE_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/live";
+    
+    /**
+     * 设置频道为无直播状态
+     */
+    public static final String CHANNEL_STREAM_END_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/end";
     
     
     /**

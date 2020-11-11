@@ -10,6 +10,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.PloyvSdkException;
+import net.polyv.live.entity.channel.state.LiveChannelStreamEndRequest;
 import net.polyv.live.entity.channel.state.LiveChannelStreamInfoRequest;
 import net.polyv.live.entity.channel.state.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.state.LiveChannelStreamLiveRequest;
@@ -180,6 +181,39 @@ public class LiveChannelStateImplTest extends BaseTest {
             if (liveChannelStreamLiveResponse) {
                 //to do something ......
                 log.debug("测试设置频道流状态为直播中成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试设置频道为无直播状态
+     * 返回：true为设置成功，false为设置失败
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testChannelStreamEnd() throws Exception, NoSuchAlgorithmException {
+        LiveChannelStreamEndRequest liveChannelStreamEndRequest = new LiveChannelStreamEndRequest();
+        Boolean liveChannelStreamEndResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+    
+            liveChannelStreamEndRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelStreamEndResponse = new LiveChannelStateServiceImpl().channelStreamEnd(
+                    liveChannelStreamEndRequest);
+            Assert.assertNotNull(liveChannelStreamEndResponse);
+            if (liveChannelStreamEndResponse) {
+                //to do something ......
+                log.debug("测试设置频道为无直播状态成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.channel.state.LiveChannelStreamEndRequest;
 import net.polyv.live.entity.channel.state.LiveChannelStreamInfoRequest;
 import net.polyv.live.entity.channel.state.LiveChannelStreamInfoResponse;
 import net.polyv.live.entity.channel.state.LiveChannelStreamLiveRequest;
@@ -116,6 +117,23 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_LIVE_URL,liveChannelStreamLiveRequest.getChannelId());
         String liveChannelStreamLiveResponse = this.basePost(url,liveChannelStreamLiveRequest,String.class);
         return "success".equals(liveChannelStreamLiveResponse);
+    }
+    
+    /**
+     * 设置频道为无直播状态
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/hqzbxx/set-channal-status-end/
+     * @param liveChannelStreamEndRequest 设置频道为无直播状态设置频道为无直播状态请求实体
+     * @return 设置频道为无直播状态返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean channelStreamEnd(LiveChannelStreamEndRequest liveChannelStreamEndRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveChannelStreamEndRequest.setUserId(LiveGlobalConfig.getUserId());
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_END_URL,liveChannelStreamEndRequest.getChannelId());
+        String liveChannelStreamEndResponse = this.basePost(url,liveChannelStreamEndRequest,String.class);
+        return "success".equals(liveChannelStreamEndResponse);
     }
     
 }

@@ -8,6 +8,7 @@ import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.channel.state.LiveChannelStreamInfoRequest;
 import net.polyv.live.entity.channel.state.LiveChannelStreamInfoResponse;
+import net.polyv.live.entity.channel.state.LiveChannelStreamLiveRequest;
 import net.polyv.live.entity.channel.state.LiveChannelStreamStatusResponse;
 import net.polyv.live.entity.channel.state.LiveCutoffChannelStreamRequest;
 import net.polyv.live.entity.channel.state.LiveListChannelStreamStatusRequest;
@@ -98,6 +99,23 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
         LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = this.baseGet(url, liveChannelStreamInfoRequest,
                 LiveChannelStreamInfoResponse.class);
         return liveChannelStreamInfoResponse;
+    }
+    
+    /**
+     * 设置频道流状态为直播中
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-api/zbglgn/hqzbxx/live/
+     * @param liveChannelStreamLiveRequest 设置频道流状态为直播中请求实体
+     * @return 设置频道流状态为直播中返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean channelStreamLive(LiveChannelStreamLiveRequest liveChannelStreamLiveRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveChannelStreamLiveRequest.setUserId(LiveGlobalConfig.getUserId());
+        String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_LIVE_URL,liveChannelStreamLiveRequest.getChannelId());
+        String liveChannelStreamLiveResponse = this.basePost(url,liveChannelStreamLiveRequest,String.class);
+        return "success".equals(liveChannelStreamLiveResponse);
     }
     
 }

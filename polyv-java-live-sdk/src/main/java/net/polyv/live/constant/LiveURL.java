@@ -765,6 +765,11 @@ public class LiveURL {
      */
     public static final String DELETE_DISK_VIDEOS_STREAM_URL = BASE_URI + "v3/channel/stream/delete-disk-videos";
     
+    /**
+     * 设置频道流状态为直播中
+     */
+    public static final String CHANNEL_STREAM_LIVE_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/live";
+    
     
     /**
      * 设置播放器暂停广告

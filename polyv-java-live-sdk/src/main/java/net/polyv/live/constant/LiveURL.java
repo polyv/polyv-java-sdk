@@ -774,6 +774,11 @@ public class LiveURL {
      */
     public static final String CHANNEL_STREAM_END_URL = BASE_URI + "v2/channels/" + PARAM_REPLACE_CHAR + "/end";
     
+    /**
+     * 修改回放视频名称
+     */
+    public static final String UPDATE_PLAYBACK_TITLE_URL = BASE_URI + "v3/channel/playback/update-title";
+    
     
     /**
      * 设置播放器暂停广告

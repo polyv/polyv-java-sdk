@@ -24,6 +24,7 @@ import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest
 import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoRequest;
+import net.polyv.live.entity.channel.playback.LiveUpdatePlaybackTitleRequest;
 
 /**
  * 直播录制回放接口
@@ -70,7 +71,8 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean convertChannelVideoListAsync(LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest)
+    Boolean convertChannelVideoListAsync(
+            LiveConvertChannelVideoListAsyncRequest liveConvertChannelVideoListAsyncRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -205,6 +207,17 @@ public interface ILiveChannelPlaybackService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean channelDefaultVideo(LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 修改回放视频名称
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/lzhf/update-playback-title/
+     * @param liveUpdatePlaybackTitleRequest 修改回放视频名称请求实体
+     * @return 修改回放视频名称返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updatePlaybackTitle(LiveUpdatePlaybackTitleRequest liveUpdatePlaybackTitleRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -28,6 +28,7 @@ import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest
 import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoRequest;
+import net.polyv.live.entity.channel.playback.LiveUpdatePlaybackTitleRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.channel.ILiveChannelPlaybackService;
 import net.polyv.live.util.MapUtil;
@@ -178,7 +179,8 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
         liveChannelPlaybackEnabledRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PLAYBACK_SET_URL,
                 liveChannelPlaybackEnabledRequest.getUserId());
-        Integer liveChannelPlaybackEnabledResponse = this.basePost(url, liveChannelPlaybackEnabledRequest, Integer.class);
+        Integer liveChannelPlaybackEnabledResponse = this.basePost(url, liveChannelPlaybackEnabledRequest,
+                Integer.class);
         return String.valueOf(liveChannelPlaybackEnabledResponse);
     }
     
@@ -213,9 +215,10 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
     public Boolean channelVideoSort(LiveChannelVideoSortRequest liveChannelVideoSortRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_VIDEO_SORT_URL;
-        Map<String,String> signMap = MapUtil.getSignMap(liveChannelVideoSortRequest);
-        signMap.put("channelId",String.valueOf(liveChannelVideoSortRequest.getChannelId()));
-        String liveChannelVideoSortResponse = this.basePostJson(url,signMap,liveChannelVideoSortRequest,String.class);
+        Map<String, String> signMap = MapUtil.getSignMap(liveChannelVideoSortRequest);
+        signMap.put("channelId", String.valueOf(liveChannelVideoSortRequest.getChannelId()));
+        String liveChannelVideoSortResponse = this.basePostJson(url, signMap, liveChannelVideoSortRequest,
+                String.class);
         return "".equals(liveChannelVideoSortResponse);
     }
     
@@ -322,6 +325,22 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
                 liveChannelDefaultVideoRequest.getChannelId());
         String liveChannelDefaultVideoResponse = this.basePost(url, liveChannelDefaultVideoRequest, String.class);
         return "success".equals(liveChannelDefaultVideoResponse);
+    }
+    
+    /**
+     * 修改回放视频名称
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbglgn/lzhf/update-playback-title/
+     * @param liveUpdatePlaybackTitleRequest 修改回放视频名称请求实体
+     * @return 修改回放视频名称返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updatePlaybackTitle(LiveUpdatePlaybackTitleRequest liveUpdatePlaybackTitleRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.UPDATE_PLAYBACK_TITLE_URL;
+        String liveUpdatePlaybackTitleResponse = this.basePost(url, liveUpdatePlaybackTitleRequest, String.class);
+        return "".equals(liveUpdatePlaybackTitleResponse);
     }
     
 }

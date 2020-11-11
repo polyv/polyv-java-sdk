@@ -31,6 +31,7 @@ import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoResponse
 import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoAsyncRequest;
+import net.polyv.live.entity.channel.playback.LiveUpdatePlaybackTitleRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.channel.impl.LiveChannelPlaybackServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
@@ -380,7 +381,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
             throw e;
         }
     }
-
+    
     /**
      * 测试设置视频库列表排序
      * 返回：true为设置成功，false为设置失败
@@ -448,7 +449,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
             throw e;
         }
     }
-
+    
     /**
      * 测试删除直播暂存中的录制文件
      * 返回：true为删除成功，false为删除失败
@@ -493,7 +494,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
                 new LiveDeleteChannelPlaybackVideoRequest();
         Boolean liveDeleteChannelPlaybackVideoResponse;
         try {
-            String channelId = "1951952";
+            String channelId = createChannel();
             String videoId = "07f5bbeb67";
             liveDeleteChannelPlaybackVideoRequest.setChannelId(channelId)
                     .setVideoId(videoId)
@@ -505,6 +506,41 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
             if (liveDeleteChannelPlaybackVideoResponse) {
                 //to do something ......
                 log.debug("测试删除视频库列表中的视频成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试修改回放视频名称
+     * 返回：true为修改成功，false为修改失败
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdatePlaybackTitle() throws Exception, NoSuchAlgorithmException {
+        LiveUpdatePlaybackTitleRequest liveUpdatePlaybackTitleRequest = new LiveUpdatePlaybackTitleRequest();
+        Boolean liveUpdatePlaybackTitleResponse;
+        try {
+            String channelId = createChannel();
+            String videoId = "992d36fa40";
+            liveUpdatePlaybackTitleRequest.setChannelId(channelId)
+                    .setVideoId(videoId)
+                    .setTitle("修改标题后")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdatePlaybackTitleResponse = new LiveChannelPlaybackServiceImpl().updatePlaybackTitle(
+                    liveUpdatePlaybackTitleRequest);
+            Assert.assertTrue(liveUpdatePlaybackTitleResponse);
+            if (liveUpdatePlaybackTitleResponse) {
+                //to do something ......
+                log.debug("测试修改回放视频名称成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

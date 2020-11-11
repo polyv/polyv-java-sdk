@@ -1072,7 +1072,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 返回：返回图片http地址，
      * @throws Exception
      */
-    @Test
+//    @Test
     public void testChannelCapture() throws Exception {
         LiveChannelCaptureRequest liveChannelCaptureRequest = new LiveChannelCaptureRequest();
         String liveChannelCaptureResponse;

@@ -170,7 +170,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelInfoResponse channelInfo(LiveChannelInfoRequest liveChannelInfoRequest)
+    LiveChannelInfoResponse getChannelInfo(LiveChannelInfoRequest liveChannelInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -181,7 +181,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelBasicInfoResponse channelBasicInfo(LiveChannelBasicInfoRequest liveChannelBasicInfoRequest)
+    LiveChannelBasicInfoResponse getChannelBasicInfo(LiveChannelBasicInfoRequest liveChannelBasicInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -192,7 +192,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelAuthTokenResponse channelAuthToken(LiveChannelAuthTokenRequest liveCreateChannelTokenRequest)
+    LiveChannelAuthTokenResponse getChannelAuthToken(LiveChannelAuthTokenRequest liveCreateChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -236,7 +236,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveSonChannelInfoResponse sonChannelInfo(LiveSonChannelInfoRequest liveSonChannelInfoRequest)
+    LiveSonChannelInfoResponse getSonChannelInfo(LiveSonChannelInfoRequest liveSonChannelInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -247,7 +247,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveSonChannelInfoListResponse sonChannelInfoList(LiveSonChannelInfoListRequest liveSonChannelInfoListRequest)
+    LiveSonChannelInfoListResponse getSonChannelInfoList(LiveSonChannelInfoListRequest liveSonChannelInfoListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -338,7 +338,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelAdvertListResponse channelAdvertList(LiveChannelAdvertListRequest liveChannelAdvertListRequest)
+    LiveChannelAdvertListResponse getChannelAdvertList(LiveChannelAdvertListRequest liveChannelAdvertListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -349,7 +349,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String channelCapture(LiveChannelCaptureRequest liveChannelCaptureRequest)
+    String getChannelCapture(LiveChannelCaptureRequest liveChannelCaptureRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

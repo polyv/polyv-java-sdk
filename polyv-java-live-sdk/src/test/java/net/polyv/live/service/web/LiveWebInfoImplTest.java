@@ -104,12 +104,12 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelSplash() throws Exception, NoSuchAlgorithmException {
+    public void testGetChannelSplash() throws Exception, NoSuchAlgorithmException {
         LiveChannelSplashRequest liveChannelSplashRequest = new LiveChannelSplashRequest();
         LiveChannelSplashResponse liveChannelSplashResponse;
         try {
             liveChannelSplashRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelSplashResponse = new LiveWebInfoServiceImpl().channelSplash(liveChannelSplashRequest);
+            liveChannelSplashResponse = new LiveWebInfoServiceImpl().getChannelSplash(liveChannelSplashRequest);
             Assert.assertNotNull(liveChannelSplashResponse);
             if (liveChannelSplashResponse != null) {
                 //to do something ......
@@ -232,12 +232,12 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelLikes() throws Exception, NoSuchAlgorithmException {
+    public void testGetChannelLikes() throws Exception, NoSuchAlgorithmException {
         LiveChannelLikesRequest liveChannelLikesRequest = new LiveChannelLikesRequest();
         LiveChannelLikesResponse liveChannelLikesResponse;
         try {
             liveChannelLikesRequest.setChannelIds("1965681").setRequestId(LiveSignUtil.generateUUID());
-            liveChannelLikesResponse = new LiveWebInfoServiceImpl().channelLikes(liveChannelLikesRequest);
+            liveChannelLikesResponse = new LiveWebInfoServiceImpl().getChannelLikes(liveChannelLikesRequest);
             Assert.assertNotNull(liveChannelLikesResponse);
             if (liveChannelLikesResponse != null) {
                 //to do something ......
@@ -293,12 +293,12 @@ public class LiveWebInfoImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelCountDown() throws Exception, NoSuchAlgorithmException {
+    public void testGetChannelCountDown() throws Exception, NoSuchAlgorithmException {
         LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
         LiveChannelCountDownResponse liveChannelCountDownResponse;
         try {
             liveChannelCountDownRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelCountDownResponse = new LiveWebInfoServiceImpl().channelCountDown(liveChannelCountDownRequest);
+            liveChannelCountDownResponse = new LiveWebInfoServiceImpl().getChannelCountDown(liveChannelCountDownRequest);
             Assert.assertNotNull(liveChannelCountDownResponse);
             if (liveChannelCountDownResponse != null) {
                 //to do something ......

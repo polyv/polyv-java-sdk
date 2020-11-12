@@ -183,12 +183,12 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws Exception
      */
     @Test
-    public void testAccountInfo() throws Exception {
+    public void testGetAccountInfo() throws Exception {
         LiveAccountInfoRequest liveAccountInfoRequest = new LiveAccountInfoRequest();
         LiveAccountInfoResponse liveAccountInfoResponse;
         try {
             liveAccountInfoRequest.setRequestId(LiveSignUtil.generateUUID());
-            liveAccountInfoResponse = new LiveAccountServiceImpl().accountInfo(liveAccountInfoRequest);
+            liveAccountInfoResponse = new LiveAccountServiceImpl().getAccountInfo(liveAccountInfoRequest);
             Assert.assertNotNull(liveAccountInfoResponse);
             log.debug("测试获取直播用户账号信息接口成功,{}", JSON.toJSONString(liveAccountInfoResponse));
         } catch (PloyvSdkException e) {
@@ -474,12 +474,12 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testAccountSwitch() throws Exception, NoSuchAlgorithmException {
+    public void testGetAccountSwitch() throws Exception, NoSuchAlgorithmException {
         LiveAccountSwitchRequest liveAccountSwitchRequest = new LiveAccountSwitchRequest();
         LiveAccountSwitchResponse liveAccountSwitchResponse;
         try {
             liveAccountSwitchRequest.setChannelId(null).setRequestId(LiveSignUtil.generateUUID());
-            liveAccountSwitchResponse = new LiveAccountServiceImpl().accountSwitch(liveAccountSwitchRequest);
+            liveAccountSwitchResponse = new LiveAccountServiceImpl().getAccountSwitch(liveAccountSwitchRequest);
             Assert.assertNotNull(liveAccountSwitchResponse);
             if (liveAccountSwitchResponse != null) {
                 //to do something ......

@@ -72,7 +72,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelSplashResponse channelSplash(LiveChannelSplashRequest liveChannelSplashRequest)
+    public LiveChannelSplashResponse getChannelSplash(LiveChannelSplashRequest liveChannelSplashRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SPLASH_GET_URL, liveChannelSplashRequest.getChannelId());
         return this.basePost(url, liveChannelSplashRequest,
@@ -105,7 +105,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelLikesResponse channelLikes(LiveChannelLikesRequest liveChannelLikesRequest)
+    public LiveChannelLikesResponse getChannelLikes(LiveChannelLikesRequest liveChannelLikesRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIKES_GET_URL;
         List<LiveChannelLikesResponse.ChannelLikes> channelLikes = this.basePostReturnArray(url,
@@ -141,7 +141,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelCountDownResponse channelCountDown(LiveChannelCountDownRequest liveChannelCountDownRequest)
+    public LiveChannelCountDownResponse getChannelCountDown(LiveChannelCountDownRequest liveChannelCountDownRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_COUNT_DOWN_URL, liveChannelCountDownRequest.getChannelId());
         LiveChannelCountDownResponse liveChannelCountDownResponse = this.basePost(url, liveChannelCountDownRequest,

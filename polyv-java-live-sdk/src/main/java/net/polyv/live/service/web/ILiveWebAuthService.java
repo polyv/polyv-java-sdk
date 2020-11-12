@@ -91,7 +91,7 @@ public interface ILiveWebAuthService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelAuthResponse channelAuth(LiveChannelAuthRequest liveChannelAuthRequest)
+    LiveChannelAuthResponse getChannelAuth(LiveChannelAuthRequest liveChannelAuthRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -102,7 +102,7 @@ public interface ILiveWebAuthService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelWriteListResponse channelWriteList(LiveChannelWriteListRequest liveChannelWriteListRequest)
+    LiveChannelWriteListResponse getChannelWriteList(LiveChannelWriteListRequest liveChannelWriteListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

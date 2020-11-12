@@ -82,7 +82,7 @@ public class LiveWebAuthImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelWriteList() throws Exception, NoSuchAlgorithmException {
+    public void testGetChannelWriteList() throws Exception, NoSuchAlgorithmException {
         LiveChannelWriteListRequest liveChannelWriteListRequest = new LiveChannelWriteListRequest();
         LiveChannelWriteListResponse liveChannelWriteListResponse;
         try {
@@ -91,7 +91,7 @@ public class LiveWebAuthImplTest extends BaseTest {
                     .setKeyword(null)
                     .setPageSize(1)
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelWriteListResponse = new LiveWebAuthServiceImpl().channelWriteList(liveChannelWriteListRequest);
+            liveChannelWriteListResponse = new LiveWebAuthServiceImpl().getChannelWriteList(liveChannelWriteListRequest);
             Assert.assertNotNull(liveChannelWriteListResponse);
             if (liveChannelWriteListResponse != null) {
                 //to do something ......
@@ -114,12 +114,12 @@ public class LiveWebAuthImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelAuth() throws Exception, NoSuchAlgorithmException {
+    public void testGetChannelAuth() throws Exception, NoSuchAlgorithmException {
         LiveChannelAuthRequest liveChannelAuthRequest = new LiveChannelAuthRequest();
         LiveChannelAuthResponse liveChannelAuthResponse;
         try {
             liveChannelAuthRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelAuthResponse = new LiveWebAuthServiceImpl().channelAuth(liveChannelAuthRequest);
+            liveChannelAuthResponse = new LiveWebAuthServiceImpl().getChannelAuth(liveChannelAuthRequest);
             Assert.assertNotNull(liveChannelAuthResponse);
             if (liveChannelAuthResponse != null) {
                 //to do something ......

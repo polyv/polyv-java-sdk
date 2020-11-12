@@ -206,7 +206,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelInfo() throws Exception, NoSuchAlgorithmException {
+    public void testGetChannelInfo() throws Exception, NoSuchAlgorithmException {
         LiveChannelInfoRequest liveChannelInfoRequest = new LiveChannelInfoRequest();
         LiveChannelInfoResponse liveChannelInfoResponse;
         try {
@@ -214,7 +214,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveChannelInfoRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelInfoResponse = new LiveChannelOperateServiceImpl().channelInfo(liveChannelInfoRequest);
+            liveChannelInfoResponse = new LiveChannelOperateServiceImpl().getChannelInfo(liveChannelInfoRequest);
             Assert.assertNotNull(liveChannelInfoResponse);
             if (liveChannelInfoResponse != null) {
                 //to do something ......
@@ -237,7 +237,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelBasicInfo() throws Exception, NoSuchAlgorithmException {
+    public void testGetChannelBasicInfo() throws Exception, NoSuchAlgorithmException {
         LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;
         try {
@@ -245,7 +245,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveChannelBasicInfoRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().channelBasicInfo(
+            liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().getChannelBasicInfo(
                     liveChannelBasicInfoRequest);
             Assert.assertNotNull(liveChannelBasicInfoResponse);
             if (liveChannelBasicInfoResponse != null) {
@@ -269,7 +269,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelAuthToken() throws Exception, NoSuchAlgorithmException {
+    public void testGetChannelAuthToken() throws Exception, NoSuchAlgorithmException {
         LiveChannelAuthTokenRequest liveChannelAuthTokenRequest = new LiveChannelAuthTokenRequest();
         LiveChannelAuthTokenResponse liveChannelAuthTokenResponse;
         try {
@@ -280,7 +280,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRole(LiveConstant.Role.ADMIN.getDesc())
                     .setOrigin(null)
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelAuthTokenResponse = new LiveChannelOperateServiceImpl().channelAuthToken(
+            liveChannelAuthTokenResponse = new LiveChannelOperateServiceImpl().getChannelAuthToken(
                     liveChannelAuthTokenRequest);
             Assert.assertNotNull(liveChannelAuthTokenResponse);
             if (liveChannelAuthTokenResponse != null) {
@@ -614,7 +614,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSonChannelInfo() throws Exception, NoSuchAlgorithmException {
+    public void testGetSonChannelInfo() throws Exception, NoSuchAlgorithmException {
         LiveSonChannelInfoRequest liveSonChannelInfoRequest = new LiveSonChannelInfoRequest();
         LiveSonChannelInfoResponse liveSonChannelInfoResponse;
         try {
@@ -625,7 +625,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             liveSonChannelInfoRequest.setAccount(sonChannelId)
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().sonChannelInfo(liveSonChannelInfoRequest);
+            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfo(liveSonChannelInfoRequest);
             Assert.assertNotNull(liveSonChannelInfoResponse);
             if (liveSonChannelInfoResponse != null) {
                 //to do something ......
@@ -646,7 +646,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 测试查询频道号下所有子频道信息
      */
     @Test
-    public void testSonChannelInfoList() throws Exception, NoSuchAlgorithmException {
+    public void testGetSonChannelInfoList() throws Exception, NoSuchAlgorithmException {
         LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
         LiveSonChannelInfoListResponse liveSonChannelInfoResponse;
         try {
@@ -654,7 +654,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveSonChannelInfoListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().sonChannelInfoList(
+            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfoList(
                     liveSonChannelInfoListRequest);
             Assert.assertNotNull(liveSonChannelInfoResponse);
             if (liveSonChannelInfoResponse != null) {
@@ -1040,7 +1040,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
     @Test
-    public void testChannelAdvertList() throws Exception {
+    public void testGetChannelAdvertList() throws Exception {
         LiveChannelAdvertListRequest liveChannelAdvertListRequest = new LiveChannelAdvertListRequest();
         LiveChannelAdvertListResponse liveChannelAdvertListResponse;
         try {
@@ -1048,7 +1048,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveChannelAdvertListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelAdvertListResponse = new LiveChannelOperateServiceImpl().channelAdvertList(
+            liveChannelAdvertListResponse = new LiveChannelOperateServiceImpl().getChannelAdvertList(
                     liveChannelAdvertListRequest);
             Assert.assertNotNull(liveChannelAdvertListResponse);
             if (liveChannelAdvertListResponse != null) {
@@ -1073,7 +1073,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
 //    @Test
-    public void testChannelCapture() throws Exception {
+    public void testGetChannelCapture() throws Exception {
         LiveChannelCaptureRequest liveChannelCaptureRequest = new LiveChannelCaptureRequest();
         String liveChannelCaptureResponse;
         try {
@@ -1081,7 +1081,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveChannelCaptureRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelCaptureResponse = new LiveChannelOperateServiceImpl().channelCapture(liveChannelCaptureRequest);
+            liveChannelCaptureResponse = new LiveChannelOperateServiceImpl().getChannelCapture(liveChannelCaptureRequest);
             Assert.assertNotNull(liveChannelCaptureResponse);
             if (liveChannelCaptureResponse != null) {
                 //to do something ......

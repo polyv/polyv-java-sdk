@@ -134,7 +134,7 @@ public interface ILiveAccountService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveAccountSwitchResponse accountSwitch(LiveAccountSwitchRequest liveAccountSwitchRequest)
+    LiveAccountSwitchResponse getAccountSwitch(LiveAccountSwitchRequest liveAccountSwitchRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -223,7 +223,7 @@ public interface ILiveAccountService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveAccountInfoResponse accountInfo(LiveAccountInfoRequest liveAccountInfoRequest)
+    LiveAccountInfoResponse getAccountInfo(LiveAccountInfoRequest liveAccountInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

@@ -187,7 +187,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveAccountSwitchResponse accountSwitch(LiveAccountSwitchRequest liveAccountSwitchRequest)
+    public LiveAccountSwitchResponse getAccountSwitch(LiveAccountSwitchRequest liveAccountSwitchRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_SWITCH_URL;
         LiveAccountSwitchResponse.ChannelSwitch[] channelSwitches = this.baseGet(url, liveAccountSwitchRequest,
@@ -322,7 +322,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveAccountInfoResponse accountInfo(LiveAccountInfoRequest liveAccountInfoRequest)
+    public LiveAccountInfoResponse getAccountInfo(LiveAccountInfoRequest liveAccountInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.GET_ACCOUNT_INFO_URL;
         return this.baseGet(url, liveAccountInfoRequest, LiveAccountInfoResponse.class);

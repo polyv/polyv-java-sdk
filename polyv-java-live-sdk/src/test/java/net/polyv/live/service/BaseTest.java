@@ -140,7 +140,7 @@ public class BaseTest {
             String channelId = createChannel();
             
             liveSonChannelInfoListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().sonChannelInfoList(
+            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfoList(
                     liveSonChannelInfoListRequest);
             Assert.assertNotNull(liveSonChannelInfoResponse);
             if (liveSonChannelInfoResponse != null) {

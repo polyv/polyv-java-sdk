@@ -51,7 +51,7 @@ public interface ILiveWebInfoService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelSplashResponse channelSplash(LiveChannelSplashRequest liveChannelSplashRequest)
+    LiveChannelSplashResponse getChannelSplash(LiveChannelSplashRequest liveChannelSplashRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -73,7 +73,7 @@ public interface ILiveWebInfoService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelLikesResponse channelLikes(LiveChannelLikesRequest liveChannelLikesRequest)
+    LiveChannelLikesResponse getChannelLikes(LiveChannelLikesRequest liveChannelLikesRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -95,7 +95,7 @@ public interface ILiveWebInfoService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelCountDownResponse channelCountDown(LiveChannelCountDownRequest liveChannelCountDownRequest)
+    LiveChannelCountDownResponse getChannelCountDown(LiveChannelCountDownRequest liveChannelCountDownRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

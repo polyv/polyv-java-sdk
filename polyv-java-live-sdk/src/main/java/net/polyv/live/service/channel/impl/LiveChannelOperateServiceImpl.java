@@ -246,7 +246,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelInfoResponse channelInfo(LiveChannelInfoRequest liveChannelInfoRequest)
+    public LiveChannelInfoResponse getChannelInfo(LiveChannelInfoRequest liveChannelInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_GET_URL, liveChannelInfoRequest.getChannelId());
         LiveChannelInfoResponse liveChannelInfoResponse = this.baseGet(url, liveChannelInfoRequest,
@@ -263,7 +263,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelBasicInfoResponse channelBasicInfo(LiveChannelBasicInfoRequest liveChannelBasicInfoRequest)
+    public LiveChannelBasicInfoResponse getChannelBasicInfo(LiveChannelBasicInfoRequest liveChannelBasicInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_BASIC_INFO_URL;
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = this.basePost(url, liveChannelBasicInfoRequest,
@@ -280,7 +280,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelAuthTokenResponse channelAuthToken(LiveChannelAuthTokenRequest liveCreateChannelTokenRequest)
+    public LiveChannelAuthTokenResponse getChannelAuthToken(LiveChannelAuthTokenRequest liveCreateChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_AUTH_TOKEN_URL;
         liveCreateChannelTokenRequest.setUserId(LiveGlobalConfig.getUserId());
@@ -349,7 +349,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveSonChannelInfoResponse sonChannelInfo(LiveSonChannelInfoRequest liveSonChannelInfoRequest)
+    public LiveSonChannelInfoResponse getSonChannelInfo(LiveSonChannelInfoRequest liveSonChannelInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_INFO_GET_URL, liveSonChannelInfoRequest.getChannelId());
         LiveSonChannelInfoResponse liveSonChannelInfoResponse = this.baseGet(url, liveSonChannelInfoRequest,
@@ -366,7 +366,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveSonChannelInfoListResponse sonChannelInfoList(
+    public LiveSonChannelInfoListResponse getSonChannelInfoList(
             LiveSonChannelInfoListRequest liveSonChannelInfoListRequest) throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_ACCOUNTS_GET_URL, liveSonChannelInfoListRequest.getChannelId());
         LiveSonChannelInfoResponse[] liveSonChannelInfoResponses = this.baseGet(url, liveSonChannelInfoListRequest,
@@ -510,7 +510,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelAdvertListResponse channelAdvertList(LiveChannelAdvertListRequest liveChannelAdvertListRequest)
+    public LiveChannelAdvertListResponse getChannelAdvertList(LiveChannelAdvertListRequest liveChannelAdvertListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_ADVERT_LIST_GET_URL;
         List<LiveChannelAdvertListResponse.ChannelAdvert> channelAdverts = this.baseGetReturnArray(url,
@@ -529,7 +529,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String channelCapture(LiveChannelCaptureRequest liveChannelCaptureRequest)
+    public String getChannelCapture(LiveChannelCaptureRequest liveChannelCaptureRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_CAPTURE_URL,liveChannelCaptureRequest.getChannelId());
         return this.basePost(url,liveChannelCaptureRequest,String.class);

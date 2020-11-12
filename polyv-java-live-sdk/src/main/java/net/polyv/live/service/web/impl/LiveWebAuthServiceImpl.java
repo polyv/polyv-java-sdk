@@ -139,7 +139,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelAuthResponse channelAuth(LiveChannelAuthRequest liveChannelAuthRequest)
+    public LiveChannelAuthResponse getChannelAuth(LiveChannelAuthRequest liveChannelAuthRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_AUTH_GET_URL;
         List<LiveChannelSettingRequest.AuthSetting> authSettings = this.basePostReturnArray(url, liveChannelAuthRequest,
@@ -158,7 +158,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelWriteListResponse channelWriteList(LiveChannelWriteListRequest liveChannelWriteListRequest)
+    public LiveChannelWriteListResponse getChannelWriteList(LiveChannelWriteListRequest liveChannelWriteListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_WRITE_LIST_GET_URL;
         return this.baseGet(url, liveChannelWriteListRequest, LiveChannelWriteListResponse.class);

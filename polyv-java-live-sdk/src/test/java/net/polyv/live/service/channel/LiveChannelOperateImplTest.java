@@ -974,7 +974,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
     @Test
-    public void testChannelTransmitList() throws Exception {
+    public void testGetChannelTransmitList() throws Exception {
         LiveChannelTransmitListRequest liveChannelTransmitListRequest = new LiveChannelTransmitListRequest();
         LiveChannelTransmitListResponse liveChannelTransmitListResponse;
         try {
@@ -982,7 +982,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveChannelTransmitListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelTransmitListResponse = new LiveChannelOperateServiceImpl().channelTransmitList(
+            liveChannelTransmitListResponse = new LiveChannelOperateServiceImpl().getChannelTransmitList(
                     liveChannelTransmitListRequest);
             Assert.assertNotNull(liveChannelTransmitListResponse);
             if (liveChannelTransmitListResponse != null) {

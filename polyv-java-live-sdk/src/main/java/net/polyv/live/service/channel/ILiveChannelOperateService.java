@@ -316,7 +316,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelTransmitListResponse channelTransmitList(LiveChannelTransmitListRequest liveChannelTransmitListRequest)
+    LiveChannelTransmitListResponse getChannelTransmitList(LiveChannelTransmitListRequest liveChannelTransmitListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

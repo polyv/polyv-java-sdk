@@ -472,7 +472,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelTransmitListResponse channelTransmitList(
+    public LiveChannelTransmitListResponse getChannelTransmitList(
             LiveChannelTransmitListRequest liveChannelTransmitListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_TRANSMIT_LIST_URL;

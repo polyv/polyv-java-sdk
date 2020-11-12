@@ -22,7 +22,7 @@ public class LiveChannelAuthTokenRequest extends LiveCommonRequest {
     /**
      * 观看者用户ID
      */
-    @ApiModelProperty(name = "userId", value = "观看者用户ID", required = true)
+    @ApiModelProperty(hidden = true)
     @NotNull(message = "属性userId不能为空")
     private String userId;
     

@@ -24,7 +24,7 @@ public class LiveChannelViewlogRequest extends LiveCommonRequest {
     /**
      * 直播账号ID
      */
-    @ApiModelProperty(name = "userId", value = "直播账号ID", required = true)
+    @ApiModelProperty(hidden = true)
     @NotNull(message = "属性userId不能为空")
     private String userId;
     

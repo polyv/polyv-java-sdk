@@ -24,6 +24,8 @@ import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest
 import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoAsyncRequest;
 import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoRequest;
+import net.polyv.live.entity.channel.playback.LiveMergeMp4RecordRequest;
+import net.polyv.live.entity.channel.playback.LiveMergeMp4RecordResponse;
 import net.polyv.live.entity.channel.playback.LiveUpdatePlaybackTitleRequest;
 
 /**
@@ -218,6 +220,17 @@ public interface ILiveChannelPlaybackService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean updatePlaybackTitle(LiveUpdatePlaybackTitleRequest liveUpdatePlaybackTitleRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 导出合并的录制文件并回调mp4下载地址
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbglgn/lzhf/merge-record-mp4/
+     * @param liveMergeMp4RecordRequest 导出合并的录制文件并回调mp4下载地址请求实体
+     * @return 导出合并的录制文件并回调mp4下载地址返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveMergeMp4RecordResponse mergeMp4Record(LiveMergeMp4RecordRequest liveMergeMp4RecordRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -18,6 +18,7 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
 import net.polyv.live.entity.web.auth.LiveChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
+import net.polyv.live.entity.web.auth.LiveDeleteChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelWriteListRequest;
@@ -190,6 +191,22 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
         String url = LiveURL.UPDATE_CHANNEL_WRITE_LIST_URL;
         String liveUpdateChannelWriteListResponse = this.basePost(url, liveUpdateChannelWriteListRequest, String.class);
         return "success".equals(liveUpdateChannelWriteListResponse);
+    }
+    
+    /**
+     * 删除白名单
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/szgkygg/ymgktj/delete-white-list/
+     * @param liveDeleteChannelWriteListRequest 删除白名单请求实体
+     * @return 删除白名单返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean deleteChannelWriteList(LiveDeleteChannelWriteListRequest liveDeleteChannelWriteListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.DELETE_CHANNEL_WRITE_LIST_URL;
+        String liveDeleteChannelWriteListResponse = this.basePost(url, liveDeleteChannelWriteListRequest, String.class);
+        return "success".equals(liveDeleteChannelWriteListResponse);
     }
     
 }

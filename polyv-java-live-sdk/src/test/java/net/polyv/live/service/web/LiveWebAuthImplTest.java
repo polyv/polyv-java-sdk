@@ -23,6 +23,7 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
 import net.polyv.live.entity.web.auth.LiveChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
+import net.polyv.live.entity.web.auth.LiveDeleteChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelWriteListRequest;
@@ -321,6 +322,41 @@ public class LiveWebAuthImplTest extends BaseTest {
             if (liveUpdateChannelWriteListResponse) {
                 //to do something ......
                 log.debug("测试更新白名单成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试删除白名单
+     * 描述：用于删除指定观看白名单（支持一键清空）
+     * 返回：true为删除成功，false为失败
+     * @throws Exception
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testDeleteChannelWriteList() throws Exception, NoSuchAlgorithmException {
+        LiveDeleteChannelWriteListRequest liveDeleteChannelWriteListRequest = new LiveDeleteChannelWriteListRequest();
+        Boolean liveDeleteChannelWriteListResponse;
+        try {
+            liveDeleteChannelWriteListRequest.setChannelId(null)
+                    .setRank(1)
+                    .setIsClear("N")
+                    .setCode("1605052902421")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveDeleteChannelWriteListResponse = new LiveWebAuthServiceImpl().deleteChannelWriteList(
+                    liveDeleteChannelWriteListRequest);
+            Assert.assertNotNull(liveDeleteChannelWriteListResponse);
+            if (liveDeleteChannelWriteListResponse) {
+                //to do something ......
+                log.debug("测试删除白名单成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

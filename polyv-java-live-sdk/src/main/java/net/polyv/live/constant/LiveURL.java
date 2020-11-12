@@ -789,6 +789,11 @@ public class LiveURL {
      */
     public static final String UPDATE_CHANNEL_WRITE_LIST_URL = BASE_URI + "v3/channel/auth/update-white-list";
     
+    /**
+     * 删除白名单
+     */
+    public static final String DELETE_CHANNEL_WRITE_LIST_URL = BASE_URI + "v3/channel/auth/delete-white-list";
+    
     
     /**
      * 设置播放器暂停广告

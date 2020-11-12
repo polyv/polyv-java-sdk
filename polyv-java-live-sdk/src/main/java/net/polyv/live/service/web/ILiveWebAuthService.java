@@ -13,6 +13,7 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
 import net.polyv.live.entity.web.auth.LiveChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
+import net.polyv.live.entity.web.auth.LiveDeleteChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelWriteListRequest;
@@ -120,6 +121,17 @@ public interface ILiveWebAuthService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean updateChannelWriteList(LiveUpdateChannelWriteListRequest liveUpdateChannelWriteListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 删除白名单
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/szgkygg/ymgktj/delete-white-list/
+     * @param liveDeleteChannelWriteListRequest 删除白名单请求实体
+     * @return 删除白名单返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean deleteChannelWriteList(LiveDeleteChannelWriteListRequest liveDeleteChannelWriteListRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

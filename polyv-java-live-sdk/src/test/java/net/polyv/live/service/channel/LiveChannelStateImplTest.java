@@ -167,7 +167,7 @@ public class LiveChannelStateImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelStreamLive() throws Exception, NoSuchAlgorithmException {
+    public void testSetChannelStreamLive() throws Exception, NoSuchAlgorithmException {
         LiveChannelStreamLiveRequest liveChannelStreamLiveRequest = new LiveChannelStreamLiveRequest();
         Boolean liveChannelStreamLiveResponse;
         try {
@@ -175,7 +175,7 @@ public class LiveChannelStateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveChannelStreamLiveRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelStreamLiveResponse = new LiveChannelStateServiceImpl().channelStreamLive(
+            liveChannelStreamLiveResponse = new LiveChannelStateServiceImpl().setChannelStreamLive(
                     liveChannelStreamLiveRequest);
             Assert.assertNotNull(liveChannelStreamLiveResponse);
             if (liveChannelStreamLiveResponse) {

@@ -71,7 +71,7 @@ public interface ILiveChannelStateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean channelStreamLive(LiveChannelStreamLiveRequest liveChannelStreamLiveRequest)
+    Boolean setChannelStreamLive(LiveChannelStreamLiveRequest liveChannelStreamLiveRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

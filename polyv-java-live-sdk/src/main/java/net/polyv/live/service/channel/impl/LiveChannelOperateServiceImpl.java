@@ -420,7 +420,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelCallbackSettingResponse channelCallbackSetting(
+    public LiveChannelCallbackSettingResponse getChannelCallbackSetting(
             LiveChannelCallbackSettingRequest liveChannelCallbackSettingRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.GET_CHANNEL_CALLBACK_SETTING_URL;

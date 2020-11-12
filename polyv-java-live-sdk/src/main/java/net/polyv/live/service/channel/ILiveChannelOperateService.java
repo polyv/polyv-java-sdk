@@ -280,7 +280,7 @@ public interface ILiveChannelOperateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelCallbackSettingResponse channelCallbackSetting(
+    LiveChannelCallbackSettingResponse getChannelCallbackSetting(
             LiveChannelCallbackSettingRequest liveChannelCallbackSettingRequest)
             throws IOException, NoSuchAlgorithmException;
     

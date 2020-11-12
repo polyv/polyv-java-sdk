@@ -856,7 +856,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
     @Test
-    public void testChannelCallbackSetting() throws Exception {
+    public void testGetChannelCallbackSetting() throws Exception {
         LiveChannelCallbackSettingRequest liveChannelCallbackSettingRequest = new LiveChannelCallbackSettingRequest();
         LiveChannelCallbackSettingResponse liveChannelCallbackSettingResponse;
         try {
@@ -864,7 +864,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveChannelCallbackSettingRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().channelCallbackSetting(
+            liveChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().getChannelCallbackSetting(
                     liveChannelCallbackSettingRequest);
             Assert.assertNotNull(liveChannelCallbackSettingResponse);
             if (liveChannelCallbackSettingResponse != null) {

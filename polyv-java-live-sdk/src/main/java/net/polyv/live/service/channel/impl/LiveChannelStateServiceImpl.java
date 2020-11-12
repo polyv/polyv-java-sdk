@@ -128,7 +128,7 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Boolean channelStreamEnd(LiveChannelStreamEndRequest liveChannelStreamEndRequest)
+    public Boolean setChannelStreamEnd(LiveChannelStreamEndRequest liveChannelStreamEndRequest)
             throws IOException, NoSuchAlgorithmException {
         liveChannelStreamEndRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_END_URL,liveChannelStreamEndRequest.getChannelId());

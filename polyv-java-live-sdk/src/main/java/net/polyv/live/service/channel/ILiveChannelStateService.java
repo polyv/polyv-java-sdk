@@ -82,7 +82,7 @@ public interface ILiveChannelStateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean channelStreamEnd(LiveChannelStreamEndRequest liveChannelStreamEndRequest)
+    Boolean setChannelStreamEnd(LiveChannelStreamEndRequest liveChannelStreamEndRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

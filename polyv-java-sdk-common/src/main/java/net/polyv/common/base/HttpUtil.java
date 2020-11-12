@@ -301,6 +301,13 @@ public class HttpUtil {
 //        return result;
 //    }
     
+    /**
+     * 公共数据解析
+     * @param <T>
+     */
+    interface DataParse<T> {
+        T parseData(HttpEntity httpEntity ,String encoding) throws IOException;
+    }
         /**
      * HTTP POST 请求处理逻辑，参数提交方式为json形式
      * @param url 请求地址
@@ -332,7 +339,7 @@ public class HttpUtil {
             }
         });
     }
-    
+   
     private static <T> T   commonSendGetData(String url, String encoding ,Class<T> tClass ,  DataParse<T> dataParse) throws IOException {
         log.debug("http 请求 url: {}", url);
         if (StringUtils.isBlank(encoding)) {

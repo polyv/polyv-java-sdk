@@ -794,6 +794,11 @@ public class LiveURL {
      */
     public static final String DELETE_CHANNEL_WRITE_LIST_URL = BASE_URI + "v3/channel/auth/delete-white-list";
     
+    /**
+     * 查询频道或全局登记观看字段
+     */
+    public static final String CHANNEL_AUTH_FIELD_GET_URL = BASE_URI + "v3/channel/auth/get-record-field";
+    
     
     /**
      * 设置播放器暂停广告

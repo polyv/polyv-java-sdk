@@ -7,6 +7,8 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthCustomRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthCustomResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
+import net.polyv.live.entity.web.auth.LiveChannelAuthFieldRequest;
+import net.polyv.live.entity.web.auth.LiveChannelAuthFieldResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
@@ -132,6 +134,17 @@ public interface ILiveWebAuthService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean deleteChannelWriteList(LiveDeleteChannelWriteListRequest liveDeleteChannelWriteListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道或全局登记观看字段
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/get-record-field/
+     * @param liveChannelAuthFieldRequest 查询频道或全局登记观看字段请求实体
+     * @return 查询频道或全局登记观看字段返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelAuthFieldResponse getChannelAuthField(LiveChannelAuthFieldRequest liveChannelAuthFieldRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

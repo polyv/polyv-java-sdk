@@ -2,6 +2,7 @@ package net.polyv.live.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
@@ -82,9 +83,54 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse baseGet(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
-//        if (StringUtils.isBlank(e.getRequestId())) {
-//            e.setRequestId(LiveSignUtil.generateUUID());
-//        }
+        Map<String, String> paramMap = commonRequestLogic(e);
+        String queryStr = MapUtil.mapJoinNotEncode(paramMap);
+        url += "?" + queryStr;
+        String response = HttpUtil.sendGetData(url, Consts.UTF_8.toString());
+        if (StringUtils.isNotBlank(response)) {
+            liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
+            if (liveCommonResponse.getCode() != 200) {
+                String message = ERROR_PREFIX + e.getRequestId() + ERROR_INFO + liveCommonResponse.getMessage();
+                PloyvSdkException exception = new PloyvSdkException(liveCommonResponse.getCode(), message);
+                log.error(message, exception);
+                throw exception;
+            }
+        } else {
+            String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
+            PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
+            log.error(message, exception);
+            throw exception;
+        }
+        return liveCommonResponse;
+    }
+    
+    
+    /**
+     * HTTP GET 公共请求
+     * @param url 请求URL
+     * @param e 请求参数对象
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    private <E extends LiveCommonRequest> byte[] baseGetReturnArray(String url, E e)
+            throws IOException, NoSuchAlgorithmException {
+        Map<String, String> paramMap = commonRequestLogic(e);
+        String queryStr = MapUtil.mapJoinNotEncode(paramMap);
+        url += "?" + queryStr;
+        byte[] response = HttpUtil.sendGetDataReturnArray(url, Consts.UTF_8.toString());
+        if ( response ==null ) {
+            String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
+            PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
+            log.error(message, exception);
+            throw exception;
+        }
+        return response;
+    }
+    
+    private <E extends LiveCommonRequest> Map<String, String> commonRequestLogic(E e)
+            throws NoSuchAlgorithmException, UnsupportedEncodingException {
         e.setAppId(LiveGlobalConfig.getAppId());
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
@@ -94,28 +140,9 @@ public class LiveBaseService {
         String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.getAppId(), LiveGlobalConfig.getAppSecret());
         e.setSign(sign);
         validateBean(e);
-        String queryStr = MapUtil.mapJoinNotEncode(paramMap);
-        url += "?" + queryStr;
-        String response = HttpUtil.sendGetData(url, Consts.UTF_8.toString());
-       
-        if (StringUtils.isNotBlank(response)) {
-            liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
-            if (liveCommonResponse.getCode() != 200) {
-               
-                String message = ERROR_PREFIX + e.getRequestId() + ERROR_INFO + liveCommonResponse.getMessage();
-                PloyvSdkException exception = new PloyvSdkException(liveCommonResponse.getCode(), message);
-                log.error(message, exception);
-                throw exception;
-            }
-        } else {
-            
-            String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
-            PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
-            log.error(message, exception);
-            throw exception;
-        }
-        return liveCommonResponse;
+        return paramMap;
     }
+    
     
     /**
      * 采用hibernate-validator校验入参
@@ -178,23 +205,11 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse basePost(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
-//        if (StringUtils.isBlank(e.getRequestId())) {
-//            e.setRequestId(LiveSignUtil.generateUUID());
-//        }
-        e.setAppId(LiveGlobalConfig.getAppId());
-        if (StringUtils.isBlank(e.getTimestamp())) {
-            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
-        }
-        Map<String, String> paramMap = MapUtil.objectToMap(e);
-        paramMap = MapUtil.filterNullValue(paramMap);
-        String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.getAppId(), LiveGlobalConfig.getAppSecret());
-        e.setSign(sign);
-        validateBean(e);
+        Map<String, String> paramMap = commonRequestLogic(e);
         String response = HttpUtil.sendPostDataByMap(url, paramMap, Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
             if (liveCommonResponse.getCode() != 200) {
-                
                 String message = ERROR_PREFIX1 + e.getRequestId() + ERROR_INFO + liveCommonResponse.getMessage();
                 PloyvSdkException exception = new PloyvSdkException(liveCommonResponse.getCode(), message);
                 log.error(message, exception);
@@ -262,6 +277,8 @@ public class LiveBaseService {
         return this.basePostJson(url, signMap, e).parseArray(tClass);
     }
     
+
+    
     /**
      * HTTP POST 请求发送json
      * @param url 请求URL
@@ -275,9 +292,6 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse basePostJson(String url, Map<String, String> signMap, E e)
             throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
-//        if (StringUtils.isBlank(e.getRequestId())) {
-//            e.setRequestId(LiveSignUtil.generateUUID());
-//        }
         e.setAppId(LiveGlobalConfig.getAppId());
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
@@ -336,18 +350,7 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse baseUploadFile(String url, E e, Map<String, File> fileMap)
             throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
-//        if (StringUtils.isBlank(e.getRequestId())) {
-//            e.setRequestId(LiveSignUtil.generateUUID());
-//        }
-        e.setAppId(LiveGlobalConfig.getAppId());
-        if (StringUtils.isBlank(e.getTimestamp())) {
-            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
-        }
-        Map<String, String> paramMap = MapUtil.objectToMap(e);
-        paramMap = MapUtil.filterNullValue(paramMap);
-        String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.getAppId(), LiveGlobalConfig.getAppSecret());
-        e.setSign(sign);
-        validateBean(e);
+        Map<String, String> paramMap = commonRequestLogic(e);
         String response = HttpUtil.sendUploadFile(url, paramMap, fileMap, Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
@@ -413,15 +416,7 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse baseUploadFileList(String url, E e, Map<String, List<File>> fileMap)
             throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
-        e.setAppId(LiveGlobalConfig.getAppId());
-        if (StringUtils.isBlank(e.getTimestamp())) {
-            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
-        }
-        Map<String, String> paramMap = MapUtil.objectToMap(e);
-        paramMap = MapUtil.filterNullValue(paramMap);
-        String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.getAppId(), LiveGlobalConfig.getAppSecret());
-        e.setSign(sign);
-        validateBean(e);
+        Map<String, String> paramMap = commonRequestLogic(e);
         String response = HttpUtil.sendUploadFileList(url, paramMap, fileMap, Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);

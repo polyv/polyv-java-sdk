@@ -340,7 +340,7 @@ public class HttpUtil {
         });
     }
    
-    private static <T> T   commonSendGetData(String url, String encoding ,Class<T> tClass ,  DataParse<T> dataParse) throws IOException {
+    private  static <T> T   commonSendGetData(String url, String encoding ,Class<T> tClass ,  DataParse<T> dataParse) throws IOException {
         log.debug("http 请求 url: {}", url);
         if (StringUtils.isBlank(encoding)) {
             encoding = UTF8;

@@ -265,7 +265,43 @@ public class HttpUtil {
         return sendGetData(url, encoding);
     }
     
-    /**
+//    /**
+//     * HTTP POST 请求处理逻辑，参数提交方式为json形式
+//     * @param url 请求地址
+//     * @param encoding 编码字符集， 默认为 utf-8
+//     * @return HTTP 返回的内容
+//     * @throws IOException 客户端和服务器读写通讯异常
+//     */
+//    public static String sendGetData(String url, String encoding) throws IOException {
+//        log.debug("http 请求 url: {}", url);
+//        if (StringUtils.isBlank(encoding)) {
+//            encoding = UTF8;
+//        }
+//        String result = null;
+//        // 创建httpclient对象
+//        CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
+//        // 创建get方式请求对象
+//        HttpGet httpGet = new HttpGet(url);
+//        httpGet.addHeader(SOURCE, LIVE_SDK);
+//        httpGet.addHeader("Content-type", Constant.APPLICATION_JSON);
+//        // 通过请求对象获取响应对象
+//        CloseableHttpResponse response = httpClient.execute(httpGet);
+//        // 获取结果实体
+//        if (null != response) {
+//            result = EntityUtils.toString(response.getEntity(), encoding);
+//            log.debug("http 请求结果: {}", result);
+//        }
+//        try {
+//            if (null != response) {
+//                response.close();
+//            }
+//        } catch (IOException ex) {
+//            log.error(ex.getMessage(), ex);
+//        }
+//        return result;
+//    }
+    
+        /**
      * HTTP POST 请求处理逻辑，参数提交方式为json形式
      * @param url 请求地址
      * @param encoding 编码字符集， 默认为 utf-8
@@ -273,11 +309,36 @@ public class HttpUtil {
      * @throws IOException 客户端和服务器读写通讯异常
      */
     public static String sendGetData(String url, String encoding) throws IOException {
+       return  commonSendGetData(url, encoding, String.class, new DataParse<String>() {
+            @Override
+            public String parseData(HttpEntity httpEntity, String encoding) throws IOException {
+                return  EntityUtils.toString(httpEntity, encoding);
+            }
+        });
+    }
+    
+    /**
+     * HTTP POST 请求处理逻辑，参数提交方式为json形式
+     * @param url 请求地址
+     * @param encoding 编码字符集， 默认为 utf-8
+     * @return HTTP 返回的内容
+     * @throws IOException 客户端和服务器读写通讯异常
+     */
+    public static byte[] sendGetDataReturnArray(String url, String encoding) throws IOException {
+        return  commonSendGetData(url, encoding, byte[].class, new DataParse<byte[]>() {
+            @Override
+            public byte[] parseData(HttpEntity httpEntity, String encoding) throws IOException {
+                return  EntityUtils.toByteArray(httpEntity);
+            }
+        });
+    }
+    
+    private static <T> T   commonSendGetData(String url, String encoding ,Class<T> tClass ,  DataParse<T> dataParse) throws IOException {
         log.debug("http 请求 url: {}", url);
         if (StringUtils.isBlank(encoding)) {
             encoding = UTF8;
         }
-        String result = null;
+        T result = null;
         // 创建httpclient对象
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建get方式请求对象
@@ -288,7 +349,8 @@ public class HttpUtil {
         CloseableHttpResponse response = httpClient.execute(httpGet);
         // 获取结果实体
         if (null != response) {
-            result = EntityUtils.toString(response.getEntity(), encoding);
+//            result = EntityUtils.toString(response.getEntity(), encoding);
+            result = dataParse.parseData(response.getEntity(), encoding);
             log.debug("http 请求结果: {}", result);
         }
         try {
@@ -298,13 +360,13 @@ public class HttpUtil {
         } catch (IOException ex) {
             log.error(ex.getMessage(), ex);
         }
-        return result;
+        return   result;
     }
+    
     
     
     /**
      * HTTP 传输文件 需要和服务器端联调测试
-     * todo：待联调测试
      * @param url 服务器地址
      * @param params 需要同步上传的参数
      * @param fileMap 文件列表

@@ -31,6 +31,8 @@ import net.polyv.live.entity.channel.playback.LiveListChannelSessionInfoResponse
 import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.entity.channel.playback.LiveListChannelVideoLibraryResponse;
 import net.polyv.live.entity.channel.playback.LiveMergeChannelVideoAsyncRequest;
+import net.polyv.live.entity.channel.playback.LiveMergeMp4RecordRequest;
+import net.polyv.live.entity.channel.playback.LiveMergeMp4RecordResponse;
 import net.polyv.live.entity.channel.playback.LiveUpdatePlaybackTitleRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.channel.impl.LiveChannelPlaybackServiceImpl;
@@ -541,6 +543,47 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
             if (liveUpdatePlaybackTitleResponse) {
                 //to do something ......
                 log.debug("测试修改回放视频名称成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试导出合并的录制文件并回调mp4下载地址
+     * 返回：true为修改成功，false为修改失败
+     * 约束：2、该接口为文件合并过程为异步处理过程
+     * 约束：3、该接口合并的录制文件必须在8小时内
+     * 约束：4、三分屏的录制将自动经过重制课件后再合并mp4
+     * 约束：5、mp4下载地址30天内有效，超出后需要重新导出
+     * 回调说明：该接口为异步处理，如果需要获取合并的结果，可以在请求接口时提交callbackUrl 参数，在程序合并成功后，会对callbackUrl 进行回调通知
+     * 回调对象：net.polyv.live.entity.channel.playback.LiveMergeMp4RecordResponse$MergeMp4RecordCallback
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testMergeMp4Record() throws Exception, NoSuchAlgorithmException {
+        LiveMergeMp4RecordRequest liveMergeMp4RecordRequest = new LiveMergeMp4RecordRequest();
+        LiveMergeMp4RecordResponse liveMergeMp4RecordResponse;
+        try {
+            String channelId = createChannel();
+            liveMergeMp4RecordRequest.setChannelId(channelId)
+                    .setStartTime(1603848613000l)
+                    .setEndTime(1603854259000l)
+                    .setCallbackUrl(null)
+                    .setFileName("testMergeMp4")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveMergeMp4RecordResponse = new LiveChannelPlaybackServiceImpl().mergeMp4Record(liveMergeMp4RecordRequest);
+            Assert.assertNotNull(liveMergeMp4RecordResponse);
+            if (liveMergeMp4RecordResponse != null) {
+                //to do something ......
+                log.debug("测试导出合并的录制文件并回调mp4下载地址成功,{}", JSON.toJSONString(liveMergeMp4RecordResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

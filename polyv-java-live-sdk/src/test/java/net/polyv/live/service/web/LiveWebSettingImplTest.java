@@ -1,7 +1,10 @@
 package net.polyv.live.service.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.PloyvSdkException;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.web.setting.LiveChannelGlobalSwitchRequest;
+import net.polyv.live.entity.web.setting.LiveUploadImageRequest;
+import net.polyv.live.entity.web.setting.LiveUploadImageResponse;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebSettingServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
@@ -42,6 +47,40 @@ public class LiveWebSettingImplTest extends BaseTest {
             if (liveChannelGlobalSwitchResponse) {
                 //to do something ......
                 log.debug("测试设置频道默认项开关成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试上传图片资源
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testUploadImage() throws Exception, NoSuchAlgorithmException {
+        LiveUploadImageRequest liveUploadImageRequest = new LiveUploadImageRequest();
+        LiveUploadImageResponse liveUploadImageResponse = new LiveUploadImageResponse();
+        try {
+            String path = getClass().getResource("/img/elephant.png").getPath();
+            List<File> fileList = new ArrayList<File>();
+            fileList.add(new File(path));
+            liveUploadImageRequest.setType("coverImage")
+                    .setFile(fileList)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUploadImageResponse = new LiveWebSettingServiceImpl().uploadImage(
+                    liveUploadImageRequest);
+            Assert.assertNotNull(liveUploadImageResponse);
+            if (liveUploadImageResponse != null) {
+                //to do something ......
+                log.debug("测试上传图片资源成功,{}",liveUploadImageResponse);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

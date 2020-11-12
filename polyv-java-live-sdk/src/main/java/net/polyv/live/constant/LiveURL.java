@@ -779,6 +779,11 @@ public class LiveURL {
      */
     public static final String UPDATE_PLAYBACK_TITLE_URL = BASE_URI + "v3/channel/playback/update-title";
     
+    /**
+     * 上传图片资源
+     */
+    public static final String UPDATE_IMAGE_FILE_URL = BASE_URI + "v3/common/upload-image";
+    
     
     /**
      * 设置播放器暂停广告

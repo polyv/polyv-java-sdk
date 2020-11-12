@@ -234,7 +234,7 @@ public interface ILiveAccountService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelIncomeDetailResponse channelIncomeDetail(LiveChannelIncomeDetailRequest liveChannelIncomeDetailRequest)
+    LiveChannelIncomeDetailResponse getChannelIncomeDetail(LiveChannelIncomeDetailRequest liveChannelIncomeDetailRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

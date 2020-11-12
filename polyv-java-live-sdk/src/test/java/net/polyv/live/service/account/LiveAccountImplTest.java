@@ -567,7 +567,7 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws Exception
      */
     @Test
-    public void testChannelIncomeDetail() throws Exception {
+    public void testGetChannelIncomeDetail() throws Exception {
         LiveChannelIncomeDetailRequest liveChannelIncomeDetailRequest = new LiveChannelIncomeDetailRequest();
         LiveChannelIncomeDetailResponse liveChannelIncomeDetailResponse;
         try {
@@ -576,7 +576,7 @@ public class LiveAccountImplTest extends BaseTest {
                     .setStartDate("2020-10-24")
                     .setEndDate("2020-11-11")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelIncomeDetailResponse = new LiveAccountServiceImpl().channelIncomeDetail(
+            liveChannelIncomeDetailResponse = new LiveAccountServiceImpl().getChannelIncomeDetail(
                     liveChannelIncomeDetailRequest);
             Assert.assertNotNull(liveChannelIncomeDetailResponse);
             if (liveChannelIncomeDetailResponse != null) {

@@ -337,7 +337,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelIncomeDetailResponse channelIncomeDetail(
+    public LiveChannelIncomeDetailResponse getChannelIncomeDetail(
             LiveChannelIncomeDetailRequest liveChannelIncomeDetailRequest)
             throws IOException, NoSuchAlgorithmException {
         liveChannelIncomeDetailRequest.setUserId(LiveGlobalConfig.getUserId());

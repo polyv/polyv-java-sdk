@@ -25,6 +25,7 @@ import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
+import net.polyv.live.entity.web.auth.LiveUpdateChannelWriteListRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebAuthServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
@@ -42,7 +43,7 @@ public class LiveWebAuthImplTest extends BaseTest {
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
-    @Test
+//    @Test
     public void testCreateChannelWriteList() throws Exception, NoSuchAlgorithmException {
         LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest = new LiveCreateChannelWriteListRequest();
         Boolean liveCreateChannelWriteListResponse;
@@ -148,7 +149,8 @@ public class LiveWebAuthImplTest extends BaseTest {
                     .setAuthCode("123456")
                     .setQcodeTips("提示文案测试2")
                     .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-            List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<LiveChannelSettingRequest.AuthSetting>();
+            List<LiveChannelSettingRequest.AuthSetting> authSettings =
+                    new ArrayList<LiveChannelSettingRequest.AuthSetting>();
             authSettings.add(authSetting);
             liveUpdateChannelAuthRequest.setChannelId(createChannel())
                     .setAuthSettings(authSettings)
@@ -284,6 +286,41 @@ public class LiveWebAuthImplTest extends BaseTest {
             if (liveChannelAuthTypeResponse) {
                 //to do something ......
                 log.debug("测试设置授权观看类型成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试更新白名单
+     * 返回：true为更新成功，false为失败
+     * @throws Exception
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelWriteList() throws Exception, NoSuchAlgorithmException {
+        LiveUpdateChannelWriteListRequest liveUpdateChannelWriteListRequest = new LiveUpdateChannelWriteListRequest();
+        Boolean liveUpdateChannelWriteListResponse;
+        try {
+            liveUpdateChannelWriteListRequest.setChannelId(null)
+                    .setRank(1)
+                    .setOldCode("1605067278063")
+                    .setCode("1605067278063")
+                    .setName("sadboyChange")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelWriteListResponse = new LiveWebAuthServiceImpl().updateChannelWriteList(
+                    liveUpdateChannelWriteListRequest);
+            Assert.assertNotNull(liveUpdateChannelWriteListResponse);
+            if (liveUpdateChannelWriteListResponse) {
+                //to do something ......
+                log.debug("测试更新白名单成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

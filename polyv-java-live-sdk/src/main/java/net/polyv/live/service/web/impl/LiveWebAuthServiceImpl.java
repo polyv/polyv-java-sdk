@@ -20,6 +20,7 @@ import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
+import net.polyv.live.entity.web.auth.LiveUpdateChannelWriteListRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.web.ILiveWebAuthService;
 import net.polyv.live.util.MapUtil;
@@ -155,8 +156,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public LiveChannelWriteListResponse channelWriteList(LiveChannelWriteListRequest liveChannelWriteListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_WRITE_LIST_GET_URL;
-        return this.baseGet(url, liveChannelWriteListRequest,
-                LiveChannelWriteListResponse.class);
+        return this.baseGet(url, liveChannelWriteListRequest, LiveChannelWriteListResponse.class);
         
     }
     
@@ -174,6 +174,22 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
         String url = LiveURL.CHANNEL_AUTH_URL_UPDATE_URL;
         String liveUpdateChannelAuthUrlResponse = this.basePost(url, liveUpdateChannelAuthUrlRequest, String.class);
         return "true".equals(liveUpdateChannelAuthUrlResponse);
+    }
+    
+    /**
+     * 更新白名单
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/szgkygg/ymgktj/update-white-list/
+     * @param liveUpdateChannelWriteListRequest 更新白名单请求实体
+     * @return 更新白名单返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateChannelWriteList(LiveUpdateChannelWriteListRequest liveUpdateChannelWriteListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.UPDATE_CHANNEL_WRITE_LIST_URL;
+        String liveUpdateChannelWriteListResponse = this.basePost(url, liveUpdateChannelWriteListRequest, String.class);
+        return "success".equals(liveUpdateChannelWriteListResponse);
     }
     
 }

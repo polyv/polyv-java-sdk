@@ -784,6 +784,11 @@ public class LiveURL {
      */
     public static final String UPDATE_IMAGE_FILE_URL = BASE_URI + "v3/common/upload-image";
     
+    /**
+     * 更新白名单
+     */
+    public static final String UPDATE_CHANNEL_WRITE_LIST_URL = BASE_URI + "v3/channel/auth/update-white-list";
+    
     
     /**
      * 设置播放器暂停广告

@@ -19,6 +19,8 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthFieldRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthFieldResponse;
+import net.polyv.live.entity.web.auth.LiveChannelAuthInfoRequest;
+import net.polyv.live.entity.web.auth.LiveChannelAuthInfoResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
@@ -389,7 +391,37 @@ public class LiveWebAuthImplTest extends BaseTest {
             Assert.assertNotNull(liveChannelAuthFieldResponse);
             if (liveChannelAuthFieldResponse != null) {
                 //to do something ......
-                log.debug("查询频道或全局登记观看字段成功,{}",JSON.toJSONString(liveChannelAuthFieldResponse));
+                log.debug("测试查询频道或全局登记观看字段成功,{}",JSON.toJSONString(liveChannelAuthFieldResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询页面登记观看列表
+     * @throws Exception
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetChannelAuthInfo() throws Exception, NoSuchAlgorithmException {
+        LiveChannelAuthInfoRequest liveChannelAuthInfoRequest = new LiveChannelAuthInfoRequest();
+        LiveChannelAuthInfoResponse liveChannelAuthInfoResponse;
+        try {
+            liveChannelAuthInfoRequest.setChannelId(createChannel())
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveChannelAuthInfoResponse = new LiveWebAuthServiceImpl().getChannelAuthInfo(
+                    liveChannelAuthInfoRequest);
+            Assert.assertNotNull(liveChannelAuthInfoResponse);
+            if (liveChannelAuthInfoResponse != null) {
+                //to do something ......
+                log.debug("测试查询页面登记观看列表成功,{}",JSON.toJSONString(liveChannelAuthInfoResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -799,6 +799,11 @@ public class LiveURL {
      */
     public static final String CHANNEL_AUTH_FIELD_GET_URL = BASE_URI + "v3/channel/auth/get-record-field";
     
+    /**
+     * 查询页面登记观看列表
+     */
+    public static final String CHANNEL_AUTH_INFO_GET_URL = BASE_URI + "v3/channel/auth/get-record-info";
+    
     
     /**
      * 设置播放器暂停广告

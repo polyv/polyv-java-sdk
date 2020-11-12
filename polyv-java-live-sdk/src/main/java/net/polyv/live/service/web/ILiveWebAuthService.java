@@ -9,6 +9,8 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthFieldRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthFieldResponse;
+import net.polyv.live.entity.web.auth.LiveChannelAuthInfoRequest;
+import net.polyv.live.entity.web.auth.LiveChannelAuthInfoResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
@@ -147,4 +149,14 @@ public interface ILiveWebAuthService {
     LiveChannelAuthFieldResponse getChannelAuthField(LiveChannelAuthFieldRequest liveChannelAuthFieldRequest)
             throws IOException, NoSuchAlgorithmException;
     
+    /**
+     * 查询页面登记观看列表
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/get-record-info/
+     * @param liveChannelAuthInfoRequest 查询页面登记观看列表请求实体
+     * @return 查询页面登记观看列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveChannelAuthInfoResponse getChannelAuthInfo(LiveChannelAuthInfoRequest liveChannelAuthInfoRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

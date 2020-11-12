@@ -14,6 +14,8 @@ import net.polyv.live.entity.web.auth.LiveChannelAuthExternalRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthExternalResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthFieldRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthFieldResponse;
+import net.polyv.live.entity.web.auth.LiveChannelAuthInfoRequest;
+import net.polyv.live.entity.web.auth.LiveChannelAuthInfoResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthResponse;
 import net.polyv.live.entity.web.auth.LiveChannelAuthTypeRequest;
@@ -228,6 +230,21 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
         LiveChannelAuthFieldResponse liveChannelAuthFieldResponse = new LiveChannelAuthFieldResponse();
         liveChannelAuthFieldResponse.setChannelAuthFields(channelAuthFields);
         return liveChannelAuthFieldResponse;
+    }
+    
+    /**
+     * 查询页面登记观看列表
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/get-record-info/
+     * @param liveChannelAuthInfoRequest 查询页面登记观看列表请求实体
+     * @return 查询页面登记观看列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveChannelAuthInfoResponse getChannelAuthInfo(LiveChannelAuthInfoRequest liveChannelAuthInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_AUTH_INFO_GET_URL;
+        return this.baseGet(url,liveChannelAuthInfoRequest,LiveChannelAuthInfoResponse.class);
     }
     
 }

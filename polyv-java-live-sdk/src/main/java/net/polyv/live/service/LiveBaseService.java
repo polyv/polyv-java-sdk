@@ -366,5 +366,78 @@ public class LiveBaseService {
         return liveCommonResponse;
     }
     
+    /**
+     * HTTP POST 上传文件公共请求
+     * @param url 请求URL
+     * @param fileMap 文件MAP，key为服务器接收的名字，value 为File对象
+     * @param e 请求参数对象
+     * @param tClass 返回对象class类型
+     * @param <E> 请求参数泛型
+     * @param <T> 返回数据泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    protected <T, E extends LiveCommonRequest> T baseUploadFileList(String url, E e, Map<String, List<File>> fileMap,
+            Class<T> tClass) throws IOException, NoSuchAlgorithmException {
+        return this.baseUploadFileList(url, e, fileMap).parseData(tClass);
+    }
+    
+    /**
+     * HTTP POST 上传文件公共请求
+     * @param url 请求URL
+     * @param fileMap 文件MAP，key为服务器接收的名字，value 为File对象
+     * @param e 请求参数对象
+     * @param tClass 返回对象class类型
+     * @param <E> 请求参数泛型
+     * @param <T> 返回数据泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    protected <T, E extends LiveCommonRequest> List<T> baseUploadFileListReturnArray(String url, E e, Map<String, List<File>> fileMap,
+            Class<T> tClass) throws IOException, NoSuchAlgorithmException {
+        return this.baseUploadFileList(url, e, fileMap).parseArray(tClass);
+    }
+    
+    /**
+     * HTTP POST 批量上传文件公共请求
+     * @param url 请求URL
+     * @param e 请求参数对象
+     * @param fileMap 多文件文件MAP，key为服务器接收的名字，value 为 List<File>对象
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    private <E extends LiveCommonRequest> LiveCommonResponse baseUploadFileList(String url, E e, Map<String, List<File>> fileMap)
+            throws IOException, NoSuchAlgorithmException {
+        LiveCommonResponse liveCommonResponse = null;
+        e.setAppId(LiveGlobalConfig.getAppId());
+        if (StringUtils.isBlank(e.getTimestamp())) {
+            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        }
+        Map<String, String> paramMap = MapUtil.objectToMap(e);
+        paramMap = MapUtil.filterNullValue(paramMap);
+        String sign = LiveSignUtil.setLiveSign(paramMap, LiveGlobalConfig.getAppId(), LiveGlobalConfig.getAppSecret());
+        e.setSign(sign);
+        validateBean(e);
+        String response = HttpUtil.sendUploadFileList(url, paramMap, fileMap, Consts.UTF_8.toString());
+        if (StringUtils.isNotBlank(response)) {
+            liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
+            if (liveCommonResponse.getCode() != 200) {
+                String message = ERROR_PREFIX1 + e.getRequestId() + ERROR_INFO + liveCommonResponse.getMessage();
+                PloyvSdkException exception = new PloyvSdkException(liveCommonResponse.getCode(), message);
+                log.error(message, exception);
+                throw exception;
+            }
+        } else {
+            String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
+            PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
+            log.error(message, exception);
+            throw exception;
+        }
+        return liveCommonResponse;
+    }
     
 }

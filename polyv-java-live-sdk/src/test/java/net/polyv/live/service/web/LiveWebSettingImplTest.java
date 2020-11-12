@@ -61,13 +61,14 @@ public class LiveWebSettingImplTest extends BaseTest {
     
     /**
      * 测试上传图片资源
+     * 描述：接口用于上传接口所需图片，同时获取图片地址。图片地址可用于 设置道具打赏 goodImg字段等。
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
 //    @Test
     public void testUploadImage() throws Exception, NoSuchAlgorithmException {
         LiveUploadImageRequest liveUploadImageRequest = new LiveUploadImageRequest();
-        LiveUploadImageResponse liveUploadImageResponse = new LiveUploadImageResponse();
+        LiveUploadImageResponse liveUploadImageResponse;
         try {
             String path = getClass().getResource("/img/elephant.png").getPath();
             List<File> fileList = new ArrayList<File>();

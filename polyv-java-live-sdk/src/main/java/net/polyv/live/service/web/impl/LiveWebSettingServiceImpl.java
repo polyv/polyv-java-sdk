@@ -1,8 +1,11 @@
 package net.polyv.live.service.web.impl;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.polyv.live.constant.LiveURL;
 import net.polyv.live.entity.web.setting.LiveChannelGlobalSwitchRequest;
@@ -10,7 +13,6 @@ import net.polyv.live.entity.web.setting.LiveUploadImageRequest;
 import net.polyv.live.entity.web.setting.LiveUploadImageResponse;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.web.ILiveWebSettingService;
-import net.polyv.live.util.MapUtil;
 
 /**
  * @author: sadboy
@@ -45,8 +47,12 @@ public class LiveWebSettingServiceImpl extends LiveBaseService implements ILiveW
     public LiveUploadImageResponse uploadImage(LiveUploadImageRequest liveUploadImageRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_IMAGE_FILE_URL;
-        List<String> imgUrls = this.basePostJsonReturnArray(url, MapUtil.getSignMap(liveUploadImageRequest),
-                liveUploadImageRequest, String.class);
+        Map<String,List<File>> fileListMap = new HashMap<String, List<File>>();
+        fileListMap.put("file",liveUploadImageRequest.getFile());
+        List<String> imgUrls = this.baseUploadFileListReturnArray(url, liveUploadImageRequest, fileListMap,
+                String.class);
+//        List<String> imgUrls = this.basePostJsonReturnArray(url, MapUtil.getSignMap(liveUploadImageRequest),
+//                liveUploadImageRequest, String.class);
         LiveUploadImageResponse liveUploadImageResponse = new LiveUploadImageResponse();
         liveUploadImageResponse.setImgUrls(imgUrls);
         return liveUploadImageResponse;

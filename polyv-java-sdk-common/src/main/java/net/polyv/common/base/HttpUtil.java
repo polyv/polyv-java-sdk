@@ -19,6 +19,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -352,5 +353,64 @@ public class HttpUtil {
         }
         return result;
     }
+    
+    /**
+     * HTTP 多文件传输
+     * @param url 服务器地址
+     * @param params 需要同步上传的参数
+     * @param fileListMap 文件列表
+     * @param encoding 字符集编码，默认UTF-8
+     * @return 返回的内容
+     * @throws IOException 客户端和服务器读写通讯异常
+     */
+    public static String sendUploadFileList(String url, Map<String, String> params, Map<String, List<File>> fileListMap,
+            String encoding) throws IOException {
+        log.debug("http 请求 url: {} , 请求参数: {}", url, JSON.toJSONString(params));
+        if (StringUtils.isBlank(encoding)) {
+            encoding = UTF8;
+        }
+        String result = null;
+        CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
+        HttpPost httpPost = new HttpPost(url);
+        httpPost.addHeader(SOURCE, LIVE_SDK);
+        
+        httpPost.addHeader(VERSION, CURRETN_VERSION);
+        MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
+   
+        ContentType contentType = ContentType.create("text/plain", Charset.forName(encoding));
+        if (null != params) {
+            for (Map.Entry<String, String> entry : params.entrySet()) {
+                entityBuilder.addTextBody(entry.getKey(), entry.getValue(), contentType);
+            }
+        }
+    
+        if (fileListMap != null) {
+            for (Map.Entry<String, List<File>> entry : fileListMap.entrySet()) {
+                String key = entry.getKey();
+                List<File> fileList = entry.getValue();
+                for (File file : fileList) {
+                    FileBody fileBody = new FileBody(file);
+                    entityBuilder.addPart(key, fileBody);
+                }
+            }
+        }
+        
+        HttpEntity entity = entityBuilder.build();
+        httpPost.setEntity(entity);
+        CloseableHttpResponse response = httpClient.execute(httpPost);
+        if (null != response) {
+            result = EntityUtils.toString(response.getEntity(), encoding);
+            log.debug("http 请求结果: {}", result);
+        }
+        try {
+            if (null != response) {
+                response.close();
+            }
+        } catch (IOException ex) {
+            log.error(ex.getMessage(), ex);
+        }
+        return result;
+    }
+    
 }
 

@@ -114,7 +114,7 @@ public class LiveBaseService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    private <E extends LiveCommonRequest> byte[] baseGetReturnArray(String url, E e)
+    protected  <E extends LiveCommonRequest> byte[] baseGetReturnArray(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         Map<String, String> paramMap = commonRequestLogic(e);
         String queryStr = MapUtil.mapJoinNotEncode(paramMap);

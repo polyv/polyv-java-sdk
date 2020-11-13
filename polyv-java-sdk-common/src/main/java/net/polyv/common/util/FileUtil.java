@@ -2,7 +2,9 @@ package net.polyv.common.util;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -67,6 +69,32 @@ public class FileUtil {
         } else {
             log.error("文件内容为空，文件路径 {}", path);
             return null;
+        }
+    }
+    
+    /**
+     * 把二进制写入文件
+     * @param bytes
+     * @param path
+     * @throws IOException
+     */
+    public static void writeFile(byte[] bytes, String path) throws IOException {
+        OutputStream os = null;
+        try {
+            // 根据绝对路径初始化文件
+            File localFile = new File(path);
+            if (!localFile.exists()) {
+                localFile.createNewFile();
+            }
+            // 输出流
+            os = new FileOutputStream(localFile);
+            os.write(bytes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(os != null){
+                os.close();
+            }
         }
     }
     

@@ -15,7 +15,7 @@
         try {
             String channelId = super.createChannel();
             liveCheckinListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveCheckinListRequest.setDate("2020-10-20").setSessionId("fs9v9y4nxf");
+            liveCheckinListRequest.setDate(getDate(2020,10,20)).setSessionId("fs9v9y4nxf");
             checkinListInfo = new LiveCheckinServiceImpl().getCheckinListInfo(liveCheckinListRequest);
             Assert.assertNotNull(checkinListInfo);
             if (checkinListInfo != null) {
@@ -44,7 +44,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| date | false | String | 查询的指定日期，格式为yyyy-MM-dd，默认查询当天签到记录 | 
+| date | false | Date | 查询的指定日期，格式为yyyy-MM-dd，默认查询当天签到记录 | 
 | sessionId | false | String | 场次sessionId,sessionId优先级高于date，如传sessionId，date参数无效 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
@@ -55,9 +55,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 签到记录数据数组【详见[CheckinRecord参数描述](checkinService.md?id=polyv31)】 | 
+| contents | false | Array | 签到记录数据数组【详见[CheckinRecord参数描述](checkinService.md?id=polyv37)】 | 
 
-<h6 id="polyv31"><a href="#/channelOperate?id=polyv31"data-id="CheckinRecord参数描述"class="anchor"><span>CheckinRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv37"><a href="#/channelOperate?id=polyv37"data-id="CheckinRecord参数描述"class="anchor"><span>CheckinRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -190,7 +190,6 @@
             throw e;
         }
     }
-}
 ```
 ### 单元测试说明
 1、请求正确，返回LiveCheckinMetadataBySessionIdResponse对象，B端依据此对象处理业务逻辑；

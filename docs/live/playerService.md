@@ -233,7 +233,7 @@ true 设置成功，false 设置失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | logoImage | true | String | logo图片地址，建议大小为：长方形140x50或正方形50x50 | 
-| logoOpacity | true | Double | logo透明度，取值范围为(0,1]，即大于0，并且小于等于1【详见[Double参数描述](playerService.md?id=polyv50)】 | 
+| logoOpacity | true | Double | logo透明度，取值范围为(0,1]，即大于0，并且小于等于1【详见[Double参数描述](playerService.md?id=polyv56)】 | 
 | logoPosition | true | String | logo位置，取值为为左上角(tl)、右上角(tr)、左下角(bl)、右下角(br) | 
 | logoHref | false | String | logo图片点击跳转链接 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
@@ -356,7 +356,6 @@ true 设置成功，false 设置失败
             throw e;
         }
     }
-}
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；

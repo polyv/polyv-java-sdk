@@ -16,7 +16,7 @@
         LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse;
         try {
             liveCreateChannelVideoPlaybackRequest.setChannelId(getAloneChannelId())
-                    .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
+                    .setVideoId("1b448be32340ff32f52c5db0f9e06a75_1")
                     .setListType("vod")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelVideoPlaybackResponse = new LiveChannelPlaybackServiceImpl().addChannelVideoPlayback(
@@ -48,7 +48,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| vid | true | String | 要添加为回放的的点播视频 | 
+| videoId | true | String | 要添加为回放的的点播视频 | 
 | listType | false | String | playback-回放列表，vod-点播列表; | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
@@ -230,8 +230,8 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
         LiveChannelVideoListResponse liveChannelVideoListResponse;
         try {
             liveChannelVideoListRequest.setChannelId("1951952")
-                    .setStartDate("2020-01-01")
-                    .setEndDate("2020-10-14")
+                    .setStartDate(getDate(2020,1,1))
+                    .setEndDate(getDate(2020,10,14))
                     .setSessionId(null)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelVideoListResponse = new LiveChannelPlaybackServiceImpl().listChannelVideo(
@@ -263,8 +263,8 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 需要设置频道详情的频道号，例如：1938028 | 
-| startDate | false | String | 开始日期（录制生成的日期），格式为：yyyy-MM-dd | 
-| endDate | false | String | 结束日期，格式为：yyyy-MM-dd | 
+| startDate | false | Date | 开始日期（录制生成的日期），格式为：yyyy-MM-dd | 
+| endDate | false | Date | 结束日期，格式为：yyyy-MM-dd | 
 | sessionId | false | String | 直播的场次ID | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
@@ -273,9 +273,9 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelVedioInfos | false | Array | 视频库视频信息【详见[ChannelVedioInfo参数描述](channelPlayback.md?id=polyv19)】 | 
+| channelVedioInfos | false | Array | 视频库视频信息【详见[ChannelVedioInfo参数描述](channelPlayback.md?id=polyv25)】 | 
 
-<h6 id="polyv19"><a href="#/channelOperate?id=polyv19"data-id="ChannelVedioInfo参数描述"class="anchor"><span>ChannelVedioInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv25"><a href="#/channelOperate?id=polyv25"data-id="ChannelVedioInfo参数描述"class="anchor"><span>ChannelVedioInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -355,13 +355,13 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 视频库视频信息【详见[ChannelVideoLibrary参数描述](channelPlayback.md?id=polyv20)】 | 
+| contents | false | Array | 视频库视频信息【详见[ChannelVideoLibrary参数描述](channelPlayback.md?id=polyv26)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv20"><a href="#/channelOperate?id=polyv20"data-id="ChannelVideoLibrary参数描述"class="anchor"><span>ChannelVideoLibrary参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv26"><a href="#/channelOperate?id=polyv26"data-id="ChannelVideoLibrary参数描述"class="anchor"><span>ChannelVideoLibrary参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -405,9 +405,11 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
         LiveListChannelSessionInfoRequest liveListChannelSessionInfoRequest = new LiveListChannelSessionInfoRequest();
         LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse;
         try {
+            Calendar instance = Calendar.getInstance();
+            instance.set(2020,10,1);
             liveListChannelSessionInfoRequest.setChannelId(createChannel())
-                    .setStartDate("2020-10-01")
-                    .setEndDate("2020-10-24")
+                    .setStartDate(instance.getTime())
+                    .setEndDate(new Date())
                     .setCurrentPage(1)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelSessionInfoResponse = new LiveChannelPlaybackServiceImpl().listChannelSessionInfo(
@@ -439,8 +441,8 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| startDate | false | String | 开始日期，格式YYYY-MM-DD | 
-| endDate | false | String | 结束日期，格式YYYY-MM-DD | 
+| startDate | false | Date | 开始日期，格式YYYY-MM-DD | 
+| endDate | false | Date | 结束日期，格式YYYY-MM-DD | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
@@ -450,13 +452,13 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道直播场次信息【详见[ChannelSessionInfo参数描述](channelPlayback.md?id=polyv21)】 | 
+| contents | false | Array | 频道直播场次信息【详见[ChannelSessionInfo参数描述](channelPlayback.md?id=polyv27)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv21"><a href="#/channelOperate?id=polyv21"data-id="ChannelSessionInfo参数描述"class="anchor"><span>ChannelSessionInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv27"><a href="#/channelOperate?id=polyv27"data-id="ChannelSessionInfo参数描述"class="anchor"><span>ChannelSessionInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -936,7 +938,7 @@ true为删除成功，false为删除失败
                 new LiveDeleteChannelPlaybackVideoRequest();
         Boolean liveDeleteChannelPlaybackVideoResponse;
         try {
-            String channelId = "1951952";
+            String channelId = createChannel();
             String videoId = "07f5bbeb67";
             liveDeleteChannelPlaybackVideoRequest.setChannelId(channelId)
                     .setVideoId(videoId)
@@ -959,7 +961,6 @@ true为删除成功，false为删除失败
             throw e;
         }
     }
-}
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
@@ -978,7 +979,156 @@ true为删除成功，false为删除失败
 
 ### 返回对象描述
 
-null
+true为删除成功，false为删除失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 15、修改回放视频名称
+### 描述
+```
+修改回放视频名称
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testUpdatePlaybackTitle() throws Exception, NoSuchAlgorithmException {
+        LiveUpdatePlaybackTitleRequest liveUpdatePlaybackTitleRequest = new LiveUpdatePlaybackTitleRequest();
+        Boolean liveUpdatePlaybackTitleResponse;
+        try {
+            String channelId = createChannel();
+            String videoId = "992d36fa40";
+            liveUpdatePlaybackTitleRequest.setChannelId(channelId)
+                    .setVideoId(videoId)
+                    .setTitle("修改标题后")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdatePlaybackTitleResponse = new LiveChannelPlaybackServiceImpl().updatePlaybackTitle(
+                    liveUpdatePlaybackTitleRequest);
+            Assert.assertTrue(liveUpdatePlaybackTitleResponse);
+            if (liveUpdatePlaybackTitleResponse) {
+                //to do something ......
+                log.debug("测试修改回放视频名称成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| videoId | true | String | 回放视频ID | 
+| title | true | String | 回放视频名称 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为修改成功，false为修改失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 16、导出合并的录制文件并回调mp4下载地址
+### 描述
+```
+导出合并的录制文件并回调mp4下载地址
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+2、该接口为文件合并过程为异步处理过程
+3、该接口合并的录制文件必须在8小时内
+4、三分屏的录制将自动经过重制课件后再合并mp4
+5、mp4下载地址30天内有效，超出后需要重新导出
+### 单元测试
+```java
+	@Test
+	public void testMergeMp4Record() throws Exception, NoSuchAlgorithmException {
+        LiveMergeMp4RecordRequest liveMergeMp4RecordRequest = new LiveMergeMp4RecordRequest();
+        LiveMergeMp4RecordResponse liveMergeMp4RecordResponse;
+        try {
+            String channelId = createChannel();
+            liveMergeMp4RecordRequest.setChannelId(channelId)
+                    .setStartTime(super.getDate(1603848613000l))
+                    .setEndTime(super.getDate(1603854259000l))
+                    .setCallbackUrl(null)
+                    .setFileName("testMergeMp4")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveMergeMp4RecordResponse = new LiveChannelPlaybackServiceImpl().mergeMp4Record(liveMergeMp4RecordRequest);
+            Assert.assertNotNull(liveMergeMp4RecordResponse);
+            if (liveMergeMp4RecordResponse != null) {
+                //to do something ......
+                log.debug("测试导出合并的录制文件并回调mp4下载地址成功,{}", JSON.toJSONString(liveMergeMp4RecordResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveMergeMp4RecordResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| startTime | true | Date | 录制文件开始时间(13位时间戳)，与endtime最大不能超过8小时 | 
+| endTime | true | Date | 录制文件结束时间(13位时间戳)，与startTime最大不能超过8小时 | 
+| callbackUrl | false | String | 合并成功或失败回调的url | 
+| fileName | false | String | 合并后文件名 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| fileId | false | String | 文件ID | 
+| fileUrl | false | String | 已合并返回文件地址，合并中返回空字符串 | 
+
+### 回调说明
+&emsp;&emsp;该接口为异步处理，如果需要获取合并的结果，可以在请求接口时提交callbackUrl 参数，在程序合并成功后，会对callbackUrl 进行回调通知
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| status | false | String | 接口处理结果，取值：success（成功），error（出错） | 
+| channelId | false | String | 频道号，成功时返回 | 
+| fileId | false | String | 合并后的文件ID，成功时返回 | 
+| fileIds | false | String | 合并前的所有文件ID，成功时返回 | 
+| fileUrl | false | String | 合并后的MP4的地址，成功时返回 | 
+| fileName | false | String | 合并后的文件名称，成功时返回 | 
+
 <br /><br />
 
 ------------------

@@ -151,8 +151,8 @@
         try {
             String channelId = super.createChannel();
             liveGetHistoryChatMsgRequest.setChannelId(channelId)
-                    .setStartDay("2020-10-01")
-                    .setEndDay("2099-12-12")
+                    .setStartDay(getDate(2020,10,01))
+                    .setEndDay(getDate(2099,12,12))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistoryChatMsg(
                     liveGetHistoryChatMsgRequest);
@@ -183,8 +183,8 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| startDay | true | String | 聊天记录的开始时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
-| endDay | true | String | 聊天记录的结束时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
+| startDay | true | Date | 聊天记录的开始时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
+| endDay | true | Date | 聊天记录的结束时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
 | currentPage | false | Integer | 获取第几页聊天记录，默认为1 | 
 | pageSize | false | Integer | 每页记录数，默认为1000 | 
 | userType | false | String | 用户类型，可以选择多个类型，用英文逗号隔开,目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
@@ -581,11 +581,11 @@
 | id | false | String | 信息id | 
 | content | false | String | 内容 | 
 | time | false | Date | 发言时间 | 
-| user | false | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv28)】 | 
+| user | false | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv34)】 | 
 | event | false | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
 | userId | false | String | 提问者ID | 
 
-<h6 id="polyv28"><a href="#/channelOperate?id=polyv28"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv34"><a href="#/channelOperate?id=polyv34"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -965,7 +965,6 @@ true 删除成功， false 删除失败
             throw e;
         }
     }
-}
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；

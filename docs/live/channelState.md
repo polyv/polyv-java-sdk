@@ -121,9 +121,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelInfo | false | Array | 频道信息【详见[LiveChannelStreamStatusResponse参数描述](channelState.md?id=polyv22)】 | 
+| channelInfo | false | Array | 频道信息【详见[LiveChannelStreamStatusResponse参数描述](channelState.md?id=polyv28)】 | 
 
-<h6 id="polyv22"><a href="#/channelOperate?id=polyv22"data-id="LiveChannelStreamStatusResponse参数描述"class="anchor"><span>LiveChannelStreamStatusResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv28"><a href="#/channelOperate?id=polyv28"data-id="LiveChannelStreamStatusResponse参数描述"class="anchor"><span>LiveChannelStreamStatusResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -229,7 +229,6 @@ true为禁止推流成功，false为失败
             throw e;
         }
     }
-}
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
@@ -247,6 +246,122 @@ true为禁止推流成功，false为失败
 ### 返回对象描述
 
 true为恢复成功，false为恢复失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 5、设置频道流状态为直播中
+### 描述
+```
+设置频道流状态为直播中
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testSetChannelStreamLive() throws Exception, NoSuchAlgorithmException {
+        LiveChannelStreamLiveRequest liveChannelStreamLiveRequest = new LiveChannelStreamLiveRequest();
+        Boolean liveChannelStreamLiveResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            liveChannelStreamLiveRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelStreamLiveResponse = new LiveChannelStateServiceImpl().setChannelStreamLive(
+                    liveChannelStreamLiveRequest);
+            Assert.assertNotNull(liveChannelStreamLiveResponse);
+            if (liveChannelStreamLiveResponse) {
+                //to do something ......
+                log.debug("测试设置频道流状态为直播中成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为设置成功，false为设置失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 6、设置频道为无直播状态
+### 描述
+```
+设置频道为无直播状态
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testSetChannelStreamEnd() throws Exception, NoSuchAlgorithmException {
+        LiveChannelStreamEndRequest liveChannelStreamEndRequest = new LiveChannelStreamEndRequest();
+        Boolean liveChannelStreamEndResponse;
+        try {
+            //准备测试数据
+            String channelId = createChannel();
+            liveChannelStreamEndRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelStreamEndResponse = new LiveChannelStateServiceImpl().setChannelStreamEnd(
+                    liveChannelStreamEndRequest);
+            Assert.assertNotNull(liveChannelStreamEndResponse);
+            if (liveChannelStreamEndResponse) {
+                //to do something ......
+                log.debug("测试设置频道为无直播状态成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为设置成功，false为设置失败
 <br /><br />
 
 ------------------

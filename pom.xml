@@ -219,91 +219,91 @@
             </plugin>
 
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.7.1</version>
-                <configuration>
-                    <skipTests>false</skipTests>
-                    <!--表示执行任何子目录下所有命名以Test结尾的java类 -->
-                    <includes>
-                        <include>**/*Test.java</include>
-                    </includes>
-                    <!--表示不执行任何子目录下所有命名以Test开头的java类 -->
-                    <excludes>
-                        <exclude>**/Test*.java</exclude>
-                    </excludes>
-                    <testFailureIgnore>true</testFailureIgnore>
-                    <argLine>
-                        <!--                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.5.4/aspectjweaver-1.5.4.jar"-->
-                        -javaagent:"${settings.localRepository}/aspectj/aspectjweaver/1.5.0/aspectjweaver-1.5.0.jar"
-                        ${jacocoArgLine}
-                    </argLine>
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>io.qameta.allure.junit4.AllureJunit4</value>
-                        </property>
-                    </properties>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <version>2.7.1</version>-->
+<!--                <configuration>-->
+<!--                    <skipTests>false</skipTests>-->
+<!--                    &lt;!&ndash;表示执行任何子目录下所有命名以Test结尾的java类 &ndash;&gt;-->
+<!--                    <includes>-->
+<!--                        <include>**/*Test.java</include>-->
+<!--                    </includes>-->
+<!--                    &lt;!&ndash;表示不执行任何子目录下所有命名以Test开头的java类 &ndash;&gt;-->
+<!--                    <excludes>-->
+<!--                        <exclude>**/Test*.java</exclude>-->
+<!--                    </excludes>-->
+<!--                    <testFailureIgnore>true</testFailureIgnore>-->
+<!--                    <argLine>-->
+<!--                        &lt;!&ndash;                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.5.4/aspectjweaver-1.5.4.jar"&ndash;&gt;-->
+<!--                        -javaagent:"${settings.localRepository}/aspectj/aspectjweaver/1.5.0/aspectjweaver-1.5.0.jar"-->
+<!--                        ${jacocoArgLine}-->
+<!--                    </argLine>-->
+<!--                    <properties>-->
+<!--                        <property>-->
+<!--                            <name>listener</name>-->
+<!--                            <value>io.qameta.allure.junit4.AllureJunit4</value>-->
+<!--                        </property>-->
+<!--                    </properties>-->
 
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>io.qameta.allure</groupId>
-                        <artifactId>allure-junit4</artifactId>
-                        <version>${allure-junit4.version}</version>
-                        <scope>test</scope>
-                    </dependency>
-
-
-                    <dependency>
-                        <groupId>aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>1.5.0</version>
-                    </dependency>
-
-                </dependencies>
-            </plugin>
+<!--                </configuration>-->
+<!--                <dependencies>-->
+<!--                    <dependency>-->
+<!--                        <groupId>io.qameta.allure</groupId>-->
+<!--                        <artifactId>allure-junit4</artifactId>-->
+<!--                        <version>${allure-junit4.version}</version>-->
+<!--                        <scope>test</scope>-->
+<!--                    </dependency>-->
 
 
-            <!--检查代码覆盖率的插件配置-->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.version}</version>
-                <configuration>
-                    <includes>
-                        <include>com/**/*</include>
-                    </includes>
-                    <!--                    <excludes>-->
-                    <!--                        <exclude>com/src/test/**/*</exclude>-->
-                    <!--                    </excludes>-->
-                    <propertyName>jacocoArgLine</propertyName>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>pre-test</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>post-test</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                        <version>${jacoco.version}</version>
-                        <scope>test</scope>
-                    </dependency>
-                </dependencies>
-            </plugin>
+<!--                    <dependency>-->
+<!--                        <groupId>aspectj</groupId>-->
+<!--                        <artifactId>aspectjweaver</artifactId>-->
+<!--                        <version>1.5.0</version>-->
+<!--                    </dependency>-->
+
+<!--                </dependencies>-->
+<!--            </plugin>-->
+
+
+<!--            &lt;!&ndash;检查代码覆盖率的插件配置&ndash;&gt;-->
+<!--            <plugin>-->
+<!--                <groupId>org.jacoco</groupId>-->
+<!--                <artifactId>jacoco-maven-plugin</artifactId>-->
+<!--                <version>${jacoco.version}</version>-->
+<!--                <configuration>-->
+<!--                    <includes>-->
+<!--                        <include>com/**/*</include>-->
+<!--                    </includes>-->
+<!--                    &lt;!&ndash;                    <excludes>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <exclude>com/src/test/**/*</exclude>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </excludes>&ndash;&gt;-->
+<!--                    <propertyName>jacocoArgLine</propertyName>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>pre-test</id>-->
+<!--                        <goals>-->
+<!--                            <goal>prepare-agent</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>post-test</id>-->
+<!--                        <phase>test</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>report</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <dependencies>-->
+<!--                    <dependency>-->
+<!--                        <groupId>org.jacoco</groupId>-->
+<!--                        <artifactId>jacoco-maven-plugin</artifactId>-->
+<!--                        <version>${jacoco.version}</version>-->
+<!--                        <scope>test</scope>-->
+<!--                    </dependency>-->
+<!--                </dependencies>-->
+<!--            </plugin>-->
 
 
         </plugins>

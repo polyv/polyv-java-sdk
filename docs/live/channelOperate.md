@@ -1129,7 +1129,7 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelIds | true | String[] | 频道号列表，每次最多删除100个频道，必须放在请求体中【详见[String[]参数描述](channelOperate.md?id=polyv18)】 | 
+| channelIds | true | String[] | 频道号列表，每次最多删除100个频道，必须放在请求体中 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
@@ -1456,9 +1456,9 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](channelOperate.md?id=polyv19)】 | 
+| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](channelOperate.md?id=polyv18)】 | 
 
-<h6 id="polyv19"><a href="#/channelOperate?id=polyv19"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv18"><a href="#/channelOperate?id=polyv18"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1807,13 +1807,13 @@ true为创建成功，false为创建失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 课件重制任务列表【详见[LivePPTRecord参数描述](channelOperate.md?id=polyv20)】 | 
+| contents | false | Array | 课件重制任务列表【详见[LivePPTRecord参数描述](channelOperate.md?id=polyv19)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv20"><a href="#/channelOperate?id=polyv20"data-id="LivePPTRecord参数描述"class="anchor"><span>LivePPTRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv19"><a href="#/channelOperate?id=polyv19"data-id="LivePPTRecord参数描述"class="anchor"><span>LivePPTRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -2036,10 +2036,10 @@ null
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| sonChannels | true | Array | 子频道【详见[SonChannel参数描述](channelOperate.md?id=polyv21)】 | 
+| sonChannels | true | Array | 子频道【详见[SonChannel参数描述](channelOperate.md?id=polyv20)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-<h6 id="polyv21"><a href="#/channelOperate?id=polyv21"data-id="SonChannel参数描述"class="anchor"><span>SonChannel参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv20"><a href="#/channelOperate?id=polyv20"data-id="SonChannel参数描述"class="anchor"><span>SonChannel参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -2054,9 +2054,9 @@ null
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| sonChannelInfos | false | Array | 子频道返回信息【详见[SonChannelInfo参数描述](channelOperate.md?id=polyv22)】 | 
+| sonChannelInfos | false | Array | 子频道返回信息【详见[SonChannelInfo参数描述](channelOperate.md?id=polyv21)】 | 
 
-<h6 id="polyv22"><a href="#/channelOperate?id=polyv22"data-id="SonChannelInfo参数描述"class="anchor"><span>SonChannelInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv21"><a href="#/channelOperate?id=polyv21"data-id="SonChannelInfo参数描述"class="anchor"><span>SonChannelInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -2138,9 +2138,9 @@ null
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelTransmits | false | Array | 账号或频道转播信息【详见[ChannelTransmit参数描述](channelOperate.md?id=polyv23)】 | 
+| channelTransmits | false | Array | 账号或频道转播信息【详见[ChannelTransmit参数描述](channelOperate.md?id=polyv22)】 | 
 
-<h6 id="polyv23"><a href="#/channelOperate?id=polyv23"data-id="ChannelTransmit参数描述"class="anchor"><span>ChannelTransmit参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv22"><a href="#/channelOperate?id=polyv22"data-id="ChannelTransmit参数描述"class="anchor"><span>ChannelTransmit参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -2269,9 +2269,9 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelAdverts | false | Array | 频道广告【详见[ChannelAdvert参数描述](channelOperate.md?id=polyv24)】 | 
+| channelAdverts | false | Array | 频道广告【详见[ChannelAdvert参数描述](channelOperate.md?id=polyv23)】 | 
 
-<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="ChannelAdvert参数描述"class="anchor"><span>ChannelAdvert参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv23"><a href="#/channelOperate?id=polyv23"data-id="ChannelAdvert参数描述"class="anchor"><span>ChannelAdvert参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

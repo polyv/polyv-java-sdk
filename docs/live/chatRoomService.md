@@ -581,11 +581,11 @@
 | id | false | String | 信息id | 
 | content | false | String | 内容 | 
 | time | false | Date | 发言时间 | 
-| user | false | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv34)】 | 
+| user | false | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv33)】 | 
 | event | false | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
 | userId | false | String | 提问者ID | 
 
-<h6 id="polyv34"><a href="#/channelOperate?id=polyv34"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv33"><a href="#/channelOperate?id=polyv33"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

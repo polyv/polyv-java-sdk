@@ -331,7 +331,9 @@ public class HttpUtil {
         if (null != response) {
 //            result = EntityUtils.toString(response.getEntity(), encoding);
             result = dataParse.parseData(response.getEntity(), encoding);
-            log.debug("http 请求结果: {}", result);
+            if (!(result instanceof byte[])) {
+                log.debug("http 请求结果: {}", result);
+            }
         }
         try {
             if (null != response) {

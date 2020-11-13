@@ -17,8 +17,8 @@
             long nowTime = System.currentTimeMillis();
             long startTime = nowTime - 30 * 24 * 60 * 60 * 1000l;
             liveChannelMaxHistoryConcurrentRequest.setChannelId(createChannel())
-                    .setStartTime(startTime)
-                    .setEndTime(nowTime)
+                    .setStartTime(super.getDate(startTime))
+                    .setEndTime(super.getDate(nowTime))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelMaxHistoryConcurrentResponse = new LiveChannelViewdataServiceImpl().maxChannelHistoryConcurrent(
                     liveChannelMaxHistoryConcurrentRequest);
@@ -49,8 +49,8 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| startTime | true | Long | 开始时间13位毫秒级时间戳 | 
-| endTime | true | Long | 结束时间13位毫秒级时间戳 | 
+| startTime | true | Date | 开始时间13位毫秒级时间戳 | 
+| endTime | true | Date | 结束时间13位毫秒级时间戳 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
@@ -78,8 +78,8 @@
         LiveListChannelMicResponse liveListChannelMicResponse;
         try {
             liveListChannelMicRequest.setChannelIds("1951952,1958888")
-                    .setStartDay("2020-01-01")
-                    .setEndDay("2020-11-11")
+                    .setStartDay(getDate(2020, 1, 1))
+                    .setEndDay(getDate(2020, 11, 11))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelMicResponse = new LiveChannelViewdataServiceImpl().listChannelMic(liveListChannelMicRequest);
             Assert.assertNotNull(liveListChannelMicResponse);
@@ -109,8 +109,8 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelIds | false | String | 频道号，使用英文逗号分开，如：100000,100001 | 
-| startDay | false | String | 开始时间，格式：yyyy-MM-dd | 
-| endDay | false | String | 结束时间，格式：yyyy-MM-dd | 
+| startDay | false | Date | 开始时间，格式：yyyy-MM-dd | 
+| endDay | false | Date | 结束时间，格式：yyyy-MM-dd | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
@@ -120,13 +120,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 列表信息【详见[ChannelMic参数描述](channelViewdata.md?id=polyv23)】 | 
+| contents | false | Array | 列表信息【详见[ChannelMic参数描述](channelViewdata.md?id=polyv29)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv23"><a href="#/channelOperate?id=polyv23"data-id="ChannelMic参数描述"class="anchor"><span>ChannelMic参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv29"><a href="#/channelOperate?id=polyv29"data-id="ChannelMic参数描述"class="anchor"><span>ChannelMic参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -157,7 +157,7 @@
         LiveListChannelViewlogResponse liveListChannelViewlogResponse;
         try {
             liveListChannelViewlogRequest.setChannelId(createChannel())
-                    .setCurrentDay("2020-10-14")
+                    .setCurrentDay(getDate(2020, 10, 14))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                     liveListChannelViewlogRequest);
@@ -188,7 +188,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号 | 
-| currentDay | true | String | 查询日期，格式：yyyy-MM-dd | 
+| currentDay | true | Date | 查询日期，格式：yyyy-MM-dd | 
 | startTime | false | String | 查询开始时间，为13位毫秒级时间戳 | 
 | endTime | false | String | 查询结束时间，13位毫秒级时间戳 | 
 | viewerId | false | String | 观看用户ID | 
@@ -203,13 +203,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道观看日志【详见[LiveChannelViewlog参数描述](channelViewdata.md?id=polyv24)】 | 
+| contents | false | Array | 频道观看日志【详见[LiveChannelViewlog参数描述](channelViewdata.md?id=polyv30)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="LiveChannelViewlog参数描述"class="anchor"><span>LiveChannelViewlog参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv30"><a href="#/channelOperate?id=polyv30"data-id="LiveChannelViewlog参数描述"class="anchor"><span>LiveChannelViewlog参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -258,8 +258,8 @@
         LiveListChannelSummaryRequest liveListChannelSummaryRequest = new LiveListChannelSummaryRequest();
         LiveListChannelSummaryResponse liveListChannelSummaryResponse;
         try {
-            liveListChannelSummaryRequest.setStartDate("2020-01-01")
-                    .setEndDate("2020-11-11")
+            liveListChannelSummaryRequest.setStartDate(getDate(2020, 01, 01))
+                    .setEndDate(getDate(2020, 11, 11))
                     .setChannelIds("1951952,1958888")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelSummaryResponse = new LiveChannelViewdataServiceImpl().listChannelSummary(
@@ -290,8 +290,8 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| startDate | true | String | 查询的开始日期,格式为yyyy-MM-dd | 
-| endDate | true | String | 查询的结束日期,格式为yyyy-MM-dd | 
+| startDate | true | Date | 查询的开始日期,格式为yyyy-MM-dd | 
+| endDate | true | Date | 查询的结束日期,格式为yyyy-MM-dd | 
 | channelIds | false | String | 要查询的频道号，不提交默认为查询所有频道，多个频道号以英文逗号“,”分开，如：105420,104400 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
@@ -300,9 +300,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelSummarys | false | Array | 统计数据【详见[ChannelSummary参数描述](channelViewdata.md?id=polyv25)】 | 
+| channelSummarys | false | Array | 统计数据【详见[ChannelSummary参数描述](channelViewdata.md?id=polyv31)】 | 
 
-<h6 id="polyv25"><a href="#/channelOperate?id=polyv25"data-id="ChannelSummary参数描述"class="anchor"><span>ChannelSummary参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv31"><a href="#/channelOperate?id=polyv31"data-id="ChannelSummary参数描述"class="anchor"><span>ChannelSummary参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -382,9 +382,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelViewerCounts | false | Array | 频道实时在线人数【详见[ChannelViewerCount参数描述](channelViewdata.md?id=polyv26)】 | 
+| channelViewerCounts | false | Array | 频道实时在线人数【详见[ChannelViewerCount参数描述](channelViewdata.md?id=polyv32)】 | 
 
-<h6 id="polyv26"><a href="#/channelOperate?id=polyv26"data-id="ChannelViewerCount参数描述"class="anchor"><span>ChannelViewerCount参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv32"><a href="#/channelOperate?id=polyv32"data-id="ChannelViewerCount参数描述"class="anchor"><span>ChannelViewerCount参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -415,8 +415,8 @@
         LiveChannelViewerConcurrenceResponse liveChannelViewerConcurrenceResponse;
         try {
             liveChannelViewerConcurrenceRequest.setChannelId(createChannel())
-                    .setStartDate("2020-10-01")
-                    .setEndDate("2020-11-11")
+                    .setStartDate(getDate(2020, 10, 01))
+                    .setEndDate(getDate(2020,11,11))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelViewerConcurrenceResponse = new LiveChannelViewdataServiceImpl().channelViewerConcurrence(
                     liveChannelViewerConcurrenceRequest);
@@ -435,7 +435,6 @@
             throw e;
         }
     }
-}
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelViewerConcurrenceResponse对象，B端依据此对象处理业务逻辑；
@@ -448,8 +447,8 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| startDate | true | String | 开始日期格式，yyyy-MM-dd,开始日期和结束日期的时间跨度：最多查两个月内的数据 | 
-| endDate | true | String | 结束日期格式，yyyy-MM-dd，开始日期和结束日期的时间跨度：最多查两个月内的数据 | 
+| startDate | true | Date | 开始日期格式，yyyy-MM-dd,开始日期和结束日期的时间跨度：最多查两个月内的数据 | 
+| endDate | true | Date | 结束日期格式，yyyy-MM-dd，开始日期和结束日期的时间跨度：最多查两个月内的数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
@@ -457,9 +456,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelViewerConcurrences | false | Array | 频道并发在线人数【详见[ChannelViewerConcurrence参数描述](channelViewdata.md?id=polyv27)】 | 
+| channelViewerConcurrences | false | Array | 频道并发在线人数【详见[ChannelViewerConcurrence参数描述](channelViewdata.md?id=polyv33)】 | 
 
-<h6 id="polyv27"><a href="#/channelOperate?id=polyv27"data-id="ChannelViewerConcurrence参数描述"class="anchor"><span>ChannelViewerConcurrence参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv33"><a href="#/channelOperate?id=polyv33"data-id="ChannelViewerConcurrence参数描述"class="anchor"><span>ChannelViewerConcurrence参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

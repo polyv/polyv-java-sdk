@@ -63,7 +63,7 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelDonateResponse channelDonate(LiveChannelDonateRequest liveChannelDonateRequest)
+    public LiveChannelDonateResponse getChannelDonate(LiveChannelDonateRequest liveChannelDonateRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_DONATE_GET_URL;
         LiveChannelDonateResponse liveChannelDonateResponse = this.baseGet(url, liveChannelDonateRequest,

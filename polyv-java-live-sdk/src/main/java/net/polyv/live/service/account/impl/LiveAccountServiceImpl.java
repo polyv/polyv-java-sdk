@@ -82,8 +82,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    @Override
-    public LiveAccountMicDurationResponse micDuration(LiveAccountMicDurationRequest liveAccountMicDurationRequest)
+    public LiveAccountMicDurationResponse getMicDuration(LiveAccountMicDurationRequest liveAccountMicDurationRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_MIC_DURATION_URL;
         return this.baseGet(url, liveAccountMicDurationRequest, LiveAccountMicDurationResponse.class);
@@ -222,8 +221,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    @Override
-    public LiveAccountUserDurationsResponse userDurations(
+    public LiveAccountUserDurationsResponse getUserDurations(
             LiveAccountUserDurationsRequest liveAccountUserDurationsRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.USER_DURATION_GET_URL;

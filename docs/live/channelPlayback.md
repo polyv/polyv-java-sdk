@@ -484,14 +484,14 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 单元测试
 ```java
 	@Test
-	public void testChannelPlayBackEnabledInfo() throws Exception, NoSuchAlgorithmException {
+	public void testGetChannelPlayBackEnabledInfo() throws Exception, NoSuchAlgorithmException {
         LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest =
                 new LiveChannelPlaybackEnabledInfoRequest();
         String liveChannelPlaybackEnabledInfoResponse;
         try {
             liveChannelPlaybackEnabledInfoRequest.setChannelId(createChannel())
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelPlaybackEnabledInfoResponse = new LiveChannelPlaybackServiceImpl().channelPlayBackEnabledInfo(
+            liveChannelPlaybackEnabledInfoResponse = new LiveChannelPlaybackServiceImpl().getChannelPlayBackEnabledInfo(
                     liveChannelPlaybackEnabledInfoRequest);
             Assert.assertNotNull(liveChannelPlaybackEnabledInfoResponse);
             if ("Y".equals(liveChannelPlaybackEnabledInfoResponse)) {
@@ -542,7 +542,7 @@ Y为开启，N为关闭
 ### 单元测试
 ```java
 	@Test
-	public void testChannelVideoOnly() throws Exception, NoSuchAlgorithmException {
+	public void testGetChannelVideoOnly() throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest = new LiveChannelVideoOnlyRequest();
         LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse;
         try {
@@ -551,7 +551,7 @@ Y为开启，N为关闭
             liveChannelVideoOnlyRequest.setChannelId(channelId)
                     .setFileId(fileId)
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelVideoOnlyResponse = new LiveChannelPlaybackServiceImpl().channelVideoOnly(
+            liveChannelVideoOnlyResponse = new LiveChannelPlaybackServiceImpl().getChannelVideoOnly(
                     liveChannelVideoOnlyRequest);
             Assert.assertNotNull(liveChannelVideoOnlyResponse);
             if (liveChannelVideoOnlyResponse != null) {
@@ -622,7 +622,7 @@ Y为开启，N为关闭
 ### 单元测试
 ```java
 	@Test
-	public void testChannelPlaybackSetting() throws Exception, NoSuchAlgorithmException {
+	public void testUpdateChannelPlaybackSetting() throws Exception, NoSuchAlgorithmException {
         LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest;
         Boolean liveChannelPlaybackSettingResponse;
         try {
@@ -635,7 +635,7 @@ Y为开启，N为关闭
                     .setOrigin("playback")
                     .setVideoId(videoIds.get(0))
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelPlaybackSettingResponse = new LiveChannelPlaybackServiceImpl().channelPlaybackSetting(
+            liveChannelPlaybackSettingResponse = new LiveChannelPlaybackServiceImpl().updateChannelPlaybackSetting(
                     liveChannelPlaybackSettingRequest);
             Assert.assertNotNull(liveChannelPlaybackSettingResponse);
             if (liveChannelPlaybackSettingResponse) {
@@ -690,14 +690,14 @@ true为设置成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelPlayBackEnabledSetting() throws Exception, NoSuchAlgorithmException {
+	public void testUpdateChannelPlayBackEnabledSetting() throws Exception, NoSuchAlgorithmException {
         LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest = new LiveChannelPlaybackEnabledRequest();
         String liveChannelPlaybackEnabledResponse;
         try {
             liveChannelPlaybackEnabledRequest.setChannelId(createChannel())
                     .setPlayBackEnabled("Y")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelPlaybackEnabledResponse = new LiveChannelPlaybackServiceImpl().channelPlayBackEnabledSetting(
+            liveChannelPlaybackEnabledResponse = new LiveChannelPlaybackServiceImpl().updateChannelPlayBackEnabledSetting(
                     liveChannelPlaybackEnabledRequest);
             Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
             if (liveChannelPlaybackEnabledResponse != null) {
@@ -749,7 +749,7 @@ true为设置成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelVideoSort() throws Exception, NoSuchAlgorithmException {
+	public void testSetChannelVideoSort() throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoSortRequest liveChannelVideoSortRequest = new LiveChannelVideoSortRequest();
         Boolean liveChannelVideoSortResponse;
         try {
@@ -759,7 +759,7 @@ true为设置成功，false为设置失败
                     .setVideoIds(videoIdList)
                     .setListType("playback")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelVideoSortResponse = new LiveChannelPlaybackServiceImpl().channelVideoSort(
+            liveChannelVideoSortResponse = new LiveChannelPlaybackServiceImpl().setChannelVideoSort(
                     liveChannelVideoSortRequest);
             Assert.assertNotNull(liveChannelVideoSortResponse);
             if (liveChannelVideoSortResponse) {
@@ -812,7 +812,7 @@ true为设置成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelDefaultVideo() throws Exception, NoSuchAlgorithmException {
+	public void testSetChannelDefaultVideo() throws Exception, NoSuchAlgorithmException {
         LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest = new LiveChannelDefaultVideoRequest();
         Boolean liveChannelDefaultVideoResponse;
         try {
@@ -820,7 +820,7 @@ true为设置成功，false为设置失败
                     .setVideoId("f1574595e1")
                     .setListType("playback")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelDefaultVideoResponse = new LiveChannelPlaybackServiceImpl().channelDefaultVideo(
+            liveChannelDefaultVideoResponse = new LiveChannelPlaybackServiceImpl().setChannelDefaultVideo(
                     liveChannelDefaultVideoRequest);
             Assert.assertNotNull(liveChannelDefaultVideoResponse);
             if (liveChannelDefaultVideoResponse) {

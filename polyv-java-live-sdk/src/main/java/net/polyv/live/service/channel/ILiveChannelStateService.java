@@ -60,7 +60,7 @@ public interface ILiveChannelStateService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelStreamInfoResponse channelStreamInfo(LiveChannelStreamInfoRequest liveChannelStreamInfoRequest)
+    LiveChannelStreamInfoResponse getChannelStreamInfo(LiveChannelStreamInfoRequest liveChannelStreamInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

@@ -35,7 +35,7 @@ public class LiveChannelViewdataServiceImpl extends LiveBaseService implements I
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Integer maxChannelHistoryConcurrent(
+    public Integer getMaxChannelHistoryConcurrent(
             LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_MAX_HISTORY_CONCURRENT_URL;
@@ -137,7 +137,7 @@ public class LiveChannelViewdataServiceImpl extends LiveBaseService implements I
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelViewerConcurrenceResponse channelViewerConcurrence(
+    public LiveChannelViewerConcurrenceResponse getChannelViewerConcurrence(
             LiveChannelViewerConcurrenceRequest liveChannelViewerConcurrenceRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_VIEWER_CONCURRENCE_URL;

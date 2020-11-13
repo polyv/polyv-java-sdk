@@ -159,8 +159,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    @Override
-    public Boolean channelPlaybackSetting(LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest)
+    public Boolean updateChannelPlaybackSetting(LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_PLAYBACK_SETTING_URL;
         String liveChannelPlaybackSettingResponse = this.basePost(url, liveChannelPlaybackSettingRequest, String.class);
@@ -175,8 +174,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    @Override
-    public String channelPlayBackEnabledSetting(LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest)
+    public String updateChannelPlayBackEnabledSetting(LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest)
             throws IOException, NoSuchAlgorithmException {
         liveChannelPlaybackEnabledRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PLAYBACK_SET_URL,
@@ -213,8 +211,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    @Override
-    public Boolean channelVideoSort(LiveChannelVideoSortRequest liveChannelVideoSortRequest)
+    public Boolean setChannelVideoSort(LiveChannelVideoSortRequest liveChannelVideoSortRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_VIDEO_SORT_URL;
         Map<String, String> signMap = MapUtil.getSignMap(liveChannelVideoSortRequest);
@@ -250,8 +247,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    @Override
-    public LiveChannelVideoOnlyResponse channelVideoOnly(LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest)
+    public LiveChannelVideoOnlyResponse getChannelVideoOnly(LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_RECORD_GET_URL;
         LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse = this.baseGet(url, liveChannelVideoOnlyRequest,
@@ -267,8 +263,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    @Override
-    public String channelPlayBackEnabledInfo(
+    public String getChannelPlayBackEnabledInfo(
             LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_PLAYBACK_ENABLED_INFO_URL;
@@ -321,7 +316,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Boolean channelDefaultVideo(LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest)
+    public Boolean setChannelDefaultVideo(LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PLAYBACK_SET_DEFAULT_URL,
                 liveChannelDefaultVideoRequest.getChannelId());

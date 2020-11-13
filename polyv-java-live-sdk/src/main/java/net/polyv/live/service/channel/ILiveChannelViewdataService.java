@@ -29,7 +29,7 @@ public interface ILiveChannelViewdataService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Integer maxChannelHistoryConcurrent(LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest)
+    Integer getMaxChannelHistoryConcurrent(LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -85,7 +85,7 @@ public interface ILiveChannelViewdataService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelViewerConcurrenceResponse channelViewerConcurrence(
+    LiveChannelViewerConcurrenceResponse getChannelViewerConcurrence(
             LiveChannelViewerConcurrenceRequest liveChannelViewerConcurrenceRequest)
             throws IOException, NoSuchAlgorithmException;
     

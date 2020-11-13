@@ -67,14 +67,14 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testLotteryWinnerDetail() throws Exception, NoSuchAlgorithmException {
+    public void testGetLotteryWinnerDetail() throws Exception, NoSuchAlgorithmException {
         LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest = new LiveLotteryWinnerDetailRequest();
         LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
         try {
             liveLotteryWinnerDetailRequest.setChannelId(super.createChannel())
                     .setLotteryId("1211")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveLotteryWinnerDetailResponse = new LiveLotteryServiceImpl().lotteryWinnerDetail(
+            liveLotteryWinnerDetailResponse = new LiveLotteryServiceImpl().getLotteryWinnerDetail(
                     liveLotteryWinnerDetailRequest);
             Assert.assertNotNull(liveLotteryWinnerDetailResponse);
             if (liveLotteryWinnerDetailResponse != null) {

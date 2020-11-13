@@ -36,7 +36,7 @@ public interface ILiveChannelDocService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelDocStatusResponse channelDocStatus(LiveChannelDocStatusRequest liveChannelDocStatusRequest)
+    LiveChannelDocStatusResponse getChannelDocStatus(LiveChannelDocStatusRequest liveChannelDocStatusRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

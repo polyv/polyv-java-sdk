@@ -107,7 +107,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean channelPlaybackSetting(LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest)
+    Boolean updateChannelPlaybackSetting(LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -118,7 +118,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String channelPlayBackEnabledSetting(LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest)
+    String updateChannelPlayBackEnabledSetting(LiveChannelPlaybackEnabledRequest liveChannelPlaybackEnabledRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -141,7 +141,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean channelVideoSort(LiveChannelVideoSortRequest liveChannelVideoSortRequest)
+    Boolean setChannelVideoSort(LiveChannelVideoSortRequest liveChannelVideoSortRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -164,7 +164,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelVideoOnlyResponse channelVideoOnly(LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest)
+    LiveChannelVideoOnlyResponse getChannelVideoOnly(LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -175,7 +175,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String channelPlayBackEnabledInfo(LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest)
+    String getChannelPlayBackEnabledInfo(LiveChannelPlaybackEnabledInfoRequest liveChannelPlaybackEnabledInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -208,7 +208,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean channelDefaultVideo(LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest)
+    Boolean setChannelDefaultVideo(LiveChannelDefaultVideoRequest liveChannelDefaultVideoRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

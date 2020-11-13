@@ -9,7 +9,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testMaxChannelHistoryConcurrent() throws Exception, NoSuchAlgorithmException {
+	public void testGetMaxChannelHistoryConcurrent() throws Exception, NoSuchAlgorithmException {
         LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest =
                 new LiveChannelMaxHistoryConcurrentRequest();
         Integer liveChannelMaxHistoryConcurrentResponse;
@@ -20,7 +20,7 @@
                     .setStartTime(super.getDate(startTime))
                     .setEndTime(super.getDate(nowTime))
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelMaxHistoryConcurrentResponse = new LiveChannelViewdataServiceImpl().maxChannelHistoryConcurrent(
+            liveChannelMaxHistoryConcurrentResponse = new LiveChannelViewdataServiceImpl().getMaxChannelHistoryConcurrent(
                     liveChannelMaxHistoryConcurrentRequest);
             Assert.assertNotNull(liveChannelMaxHistoryConcurrentResponse);
             if (liveChannelMaxHistoryConcurrentResponse != null) {
@@ -409,7 +409,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testChannelViewerConcurrence() throws Exception, NoSuchAlgorithmException {
+	public void testGetChannelViewerConcurrence() throws Exception, NoSuchAlgorithmException {
         LiveChannelViewerConcurrenceRequest liveChannelViewerConcurrenceRequest =
                 new LiveChannelViewerConcurrenceRequest();
         LiveChannelViewerConcurrenceResponse liveChannelViewerConcurrenceResponse;
@@ -418,7 +418,7 @@
                     .setStartDate(getDate(2020, 10, 01))
                     .setEndDate(getDate(2020,11,11))
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelViewerConcurrenceResponse = new LiveChannelViewdataServiceImpl().channelViewerConcurrence(
+            liveChannelViewerConcurrenceResponse = new LiveChannelViewdataServiceImpl().getChannelViewerConcurrence(
                     liveChannelViewerConcurrenceRequest);
             Assert.assertNotNull(liveChannelViewerConcurrenceResponse);
             if (liveChannelViewerConcurrenceResponse != null) {

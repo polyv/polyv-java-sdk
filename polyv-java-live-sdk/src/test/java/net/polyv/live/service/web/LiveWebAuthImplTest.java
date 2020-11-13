@@ -11,7 +11,6 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.PloyvSdkException;
-import net.polyv.common.util.FileUtil;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthCustomRequest;
@@ -29,7 +28,6 @@ import net.polyv.live.entity.web.auth.LiveChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveDeleteChannelWriteListRequest;
-import net.polyv.live.entity.web.auth.LiveDownloadChannelAuthInfoRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelWriteListRequest;
@@ -434,42 +432,7 @@ public class LiveWebAuthImplTest extends BaseTest {
             throw e;
         }
     }
-    
-    /**
-     * 测试下载频道登记观看记录
-     * 描述：接口用于下载频道的登记观看列表，包含登记观看记录字段和数据内容
-     * @throws Exception
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testDownloadChannelAuthInfo() throws Exception, NoSuchAlgorithmException {
-        LiveDownloadChannelAuthInfoRequest liveDownloadChannelAuthInfoRequest =
-                new LiveDownloadChannelAuthInfoRequest();
-        byte[] liveDownloadChannelAuthInfoResponse;
-        try {
-            //path设置为下载文件路径
-            String path = getClass().getResource("/file/").getPath()+"downLoad.xlsx";
-            liveDownloadChannelAuthInfoRequest.setChannelId(createChannel())
-                    .setRank(1)
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveDownloadChannelAuthInfoResponse = new LiveWebAuthServiceImpl().downloadChannelAuthInfo(
-                    liveDownloadChannelAuthInfoRequest);
-            Assert.assertNotNull(liveDownloadChannelAuthInfoResponse);
-            if (liveDownloadChannelAuthInfoResponse != null) {
-                FileUtil.writeFile(liveDownloadChannelAuthInfoResponse,path);
-                //to do something ......
-                log.debug("测试下载频道登记观看记录成功, 文件长度 {}", liveDownloadChannelAuthInfoResponse.length);
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
+
     
     /**
      * 测试用例结束

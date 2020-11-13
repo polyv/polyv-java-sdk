@@ -69,7 +69,7 @@ true 设置成功 ， false 设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testSetChatAdminData() throws Exception, NoSuchAlgorithmException, URISyntaxException {
+	public void testSetPlayerImg() throws Exception, NoSuchAlgorithmException, URISyntaxException {
         LiveSetPlayerImgRequest liveSetChatAdminDataRequest = new LiveSetPlayerImgRequest();
         Boolean result = null;
         try {
@@ -81,9 +81,9 @@ true 设置成功 ， false 设置失败
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerImg(liveSetChatAdminDataRequest);
             Assert.assertNotNull(result);
-            if (result != null) {
+            if (result ) {
                 //to do something ......
-                log.debug("测试设置播放器暖场图片成功{}", JSON.toJSONString(result));
+                log.debug("测试设置播放器暖场图片成功 "   );
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -113,7 +113,7 @@ true 设置成功 ， false 设置失败
 
 ### 返回对象描述
 
-true 设置成功 ， false 设置失败 
+true 设置成功 ， false 设置失败
 <br /><br />
 
 ------------------

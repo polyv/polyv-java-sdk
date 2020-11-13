@@ -1796,8 +1796,8 @@ true为创建成功，false为创建失败
 | channelId | true | String | 频道号 | 
 | sessionId | false | String | 场次id | 
 | status | false | String | 课件重置状态值 | 
-| startTime | false | Date | 直播开始时间开始区间,格式为yyyyMMddHHmmss | 
-| endTime | false | Date | 直播开始时间结束区间,格式为yyyyMMddHHmmss | 
+| startTime | false | Date | 直播开始时间开始区间,格式为yyyy-MM-dd HH:mm:ss | 
+| endTime | false | Date | 直播开始时间结束区间,格式为yyyy-MM-dd HH:mm:ss | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
@@ -1821,7 +1821,7 @@ true为创建成功，false为创建失败
 | title | false | String | 对应回放的名称 | 
 | url | false | String | 重制mp4下载地址，有24小时的防盗链超时时间 | 
 | sessionId | false | String | 场次id | 
-| startTime | false | String | 对应回放的直播开始时间,格式为yyyyMMddhhmmss | 
+| startTime | false | String | 对应回放的直播开始时间,格式为yyyy-MM-dd HH:mm:ss | 
 | status | false | String | 状态值，分类可见LiveConstant.PPTStatus | 
 | remainDay | false | Integer | 重制剩余的过期时间，过期后将无法访问和下载 | 
 | duration | false | Integer | 重制的视频时长，单位秒 | 

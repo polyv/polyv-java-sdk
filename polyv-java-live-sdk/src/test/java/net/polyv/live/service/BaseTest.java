@@ -4,6 +4,8 @@ package net.polyv.live.service;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -287,14 +289,29 @@ public class BaseTest {
      */
     protected String getRandomString(int length) {
         length = length < 0 ? 0 : length;
-        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        Random random=new Random();
-        StringBuffer sb=new StringBuffer();
-        for(int i=0;i<length;i++){
-            int number=random.nextInt(62);
+        String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < length; i++) {
+            int number = random.nextInt(62);
             sb.append(str.charAt(number));
         }
         return sb.toString();
+    }
+    
+    public Date getDate(int year, int month,int day, int... time) {
+        Calendar instance = Calendar.getInstance();
+        instance.set(year,month,day);
+        if(time.length>0){
+            instance.set(Calendar.HOUR_OF_DAY,time[0]);
+        }
+        if(time.length>1){
+            instance.set(Calendar.MINUTE,time[1]);
+        }
+        if(time.length>2){
+            instance.set(Calendar.SECOND,time[2]);
+        }
+        return instance.getTime();
     }
     
 }

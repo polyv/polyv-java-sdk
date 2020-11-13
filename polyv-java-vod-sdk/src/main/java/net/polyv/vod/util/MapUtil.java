@@ -1,5 +1,6 @@
 package net.polyv.vod.util;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.net.URLEncoder;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -16,6 +18,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
 
 import net.polyv.common.constant.Constant;
@@ -53,6 +56,7 @@ public class MapUtil {
     }
     
     
+    
     /**
      * 转换对象为map
      * @param obj object
@@ -71,10 +75,32 @@ public class MapUtil {
                     Field f = objClass.getDeclaredField(fields[i].getName());
                     f.setAccessible(true);
                     Object o = f.get(obj);
+                    if (o instanceof File) {
+                        continue;
+                    }
                     JSONField jsonField = f.getAnnotation(JSONField.class);
-                    String key = jsonField != null ? jsonField.name() : fields[i].getName();
-                    reMap.put(key, (null == o) ? null : o.toString());
-                    
+                    String key = jsonField != null && StringUtils.isNotBlank(jsonField.name()) ? jsonField.name() :
+                            fields[i].getName();
+                    String value = null;
+                    if (o != null) {
+//                        value = o instanceof List ? JSON.toJSONString(o) : o.toString();
+                        if (o instanceof List) {
+                            value = JSON.toJSONString(o);
+                        } else if (o instanceof Date) {
+                            if (jsonField != null && StringUtils.isNotBlank(jsonField.format())) {
+                                //按照固定格式格式化数据
+                                value = JSON.toJSONStringWithDateFormat(o, jsonField.format());
+                                //待优化
+                                value = value.replace("\"","");
+                            } else {
+                                value = JSON.toJSONString(o);
+                            }
+                        } else {
+                            //基本数据类型采用默认的,其他复合数据对象必须采用JSON序列化方式
+                            value = o.toString();
+                        }
+                    }
+                    reMap.put(key, (null == o) ? null : value);
                 }
                 objClass = objClass.getSuperclass();
             }

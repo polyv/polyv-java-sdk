@@ -23,6 +23,7 @@ import net.polyv.live.entity.web.auth.LiveChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveDeleteChannelWriteListRequest;
+import net.polyv.live.entity.web.auth.LiveDownloadChannelAuthInfoRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelWriteListRequest;
@@ -244,7 +245,22 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public LiveChannelAuthInfoResponse getChannelAuthInfo(LiveChannelAuthInfoRequest liveChannelAuthInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_AUTH_INFO_GET_URL;
-        return this.baseGet(url,liveChannelAuthInfoRequest,LiveChannelAuthInfoResponse.class);
+        return this.baseGet(url, liveChannelAuthInfoRequest, LiveChannelAuthInfoResponse.class);
+    }
+    
+    /**
+     * 下载频道登记观看记录
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/download-record-info/
+     * @param liveDownloadChannelAuthInfoRequest 下载频道登记观看记录请求实体
+     * @return 下载频道登记观看记录返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public byte[] downloadChannelAuthInfo(LiveDownloadChannelAuthInfoRequest liveDownloadChannelAuthInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.DOWNLOAD_CHANNEL_AUTH_INFO_URL;
+        return this.baseGetReturnArray(url, liveDownloadChannelAuthInfoRequest);
     }
     
 }

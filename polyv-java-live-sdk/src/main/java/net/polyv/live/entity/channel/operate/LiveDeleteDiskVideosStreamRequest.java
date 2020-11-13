@@ -31,10 +31,10 @@ public class LiveDeleteDiskVideosStreamRequest extends LiveCommonRequest {
     /**
      * 要删除的硬盘推流视频id,可使用new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary()获取
      */
-    @ApiModelProperty(name = "vids", value = "要删除的硬盘推流视频id,可使用new LiveChannelPlaybackServiceImpl()" +
+    @ApiModelProperty(name = "videoIds", value = "要删除的硬盘推流视频id,可使用new LiveChannelPlaybackServiceImpl()" +
             ".listChannelVideoLibrary()获取", required = true)
-    @NotNull(message = "属性vids不能为空")
+    @NotNull(message = "属性videoIds不能为空")
     @JSONField(name = "vids")
-    private String videos;
+    private String videoIds;
     
 }

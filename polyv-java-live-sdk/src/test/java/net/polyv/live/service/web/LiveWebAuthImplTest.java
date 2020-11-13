@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.PloyvSdkException;
+import net.polyv.common.util.FileUtil;
 import net.polyv.live.constant.LiveConstant;
 import net.polyv.live.entity.channel.operate.LiveChannelSettingRequest;
 import net.polyv.live.entity.web.auth.LiveChannelAuthCustomRequest;
@@ -28,6 +29,7 @@ import net.polyv.live.entity.web.auth.LiveChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveDeleteChannelWriteListRequest;
+import net.polyv.live.entity.web.auth.LiveDownloadChannelAuthInfoRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelWriteListRequest;
@@ -91,7 +93,8 @@ public class LiveWebAuthImplTest extends BaseTest {
                     .setKeyword(null)
                     .setPageSize(1)
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelWriteListResponse = new LiveWebAuthServiceImpl().getChannelWriteList(liveChannelWriteListRequest);
+            liveChannelWriteListResponse = new LiveWebAuthServiceImpl().getChannelWriteList(
+                    liveChannelWriteListRequest);
             Assert.assertNotNull(liveChannelWriteListResponse);
             if (liveChannelWriteListResponse != null) {
                 //to do something ......
@@ -345,7 +348,7 @@ public class LiveWebAuthImplTest extends BaseTest {
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
-    @Test
+//    @Test
     public void testDeleteChannelWriteList() throws Exception, NoSuchAlgorithmException {
         LiveDeleteChannelWriteListRequest liveDeleteChannelWriteListRequest = new LiveDeleteChannelWriteListRequest();
         Boolean liveDeleteChannelWriteListResponse;
@@ -391,7 +394,7 @@ public class LiveWebAuthImplTest extends BaseTest {
             Assert.assertNotNull(liveChannelAuthFieldResponse);
             if (liveChannelAuthFieldResponse != null) {
                 //to do something ......
-                log.debug("测试查询频道或全局登记观看字段成功,{}",JSON.toJSONString(liveChannelAuthFieldResponse));
+                log.debug("测试查询频道或全局登记观看字段成功,{}", JSON.toJSONString(liveChannelAuthFieldResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -414,14 +417,48 @@ public class LiveWebAuthImplTest extends BaseTest {
         LiveChannelAuthInfoRequest liveChannelAuthInfoRequest = new LiveChannelAuthInfoRequest();
         LiveChannelAuthInfoResponse liveChannelAuthInfoResponse;
         try {
-            liveChannelAuthInfoRequest.setChannelId(createChannel())
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelAuthInfoResponse = new LiveWebAuthServiceImpl().getChannelAuthInfo(
-                    liveChannelAuthInfoRequest);
+            liveChannelAuthInfoRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelAuthInfoResponse = new LiveWebAuthServiceImpl().getChannelAuthInfo(liveChannelAuthInfoRequest);
             Assert.assertNotNull(liveChannelAuthInfoResponse);
             if (liveChannelAuthInfoResponse != null) {
                 //to do something ......
-                log.debug("测试查询页面登记观看列表成功,{}",JSON.toJSONString(liveChannelAuthInfoResponse));
+                log.debug("测试查询页面登记观看列表成功,{}", JSON.toJSONString(liveChannelAuthInfoResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试下载频道登记观看记录
+     * 描述：接口用于下载频道的登记观看列表，包含登记观看记录字段和数据内容
+     * @throws Exception
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testDownloadChannelAuthInfo() throws Exception, NoSuchAlgorithmException {
+        LiveDownloadChannelAuthInfoRequest liveDownloadChannelAuthInfoRequest =
+                new LiveDownloadChannelAuthInfoRequest();
+        byte[] liveDownloadChannelAuthInfoResponse;
+        try {
+            //path设置为下载文件路径
+            String path = getClass().getResource("/file/").getPath()+"downLoad.xlsx";
+            liveDownloadChannelAuthInfoRequest.setChannelId(createChannel())
+                    .setRank(1)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveDownloadChannelAuthInfoResponse = new LiveWebAuthServiceImpl().downloadChannelAuthInfo(
+                    liveDownloadChannelAuthInfoRequest);
+            Assert.assertNotNull(liveDownloadChannelAuthInfoResponse);
+            if (liveDownloadChannelAuthInfoResponse != null) {
+                FileUtil.writeFile(liveDownloadChannelAuthInfoResponse,path);
+                //to do something ......
+                log.debug("测试下载频道登记观看记录成功,{}", JSON.toJSONString(liveDownloadChannelAuthInfoResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

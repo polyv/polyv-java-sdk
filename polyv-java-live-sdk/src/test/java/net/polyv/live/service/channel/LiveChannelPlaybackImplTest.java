@@ -60,7 +60,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveCreateChannelVideoPlaybackResponse liveCreateChannelVideoPlaybackResponse;
         try {
             liveCreateChannelVideoPlaybackRequest.setChannelId(getAloneChannelId())
-                    .setVid("1b448be32340ff32f52c5db0f9e06a75_1")
+                    .setVideoId("1b448be32340ff32f52c5db0f9e06a75_1")
                     .setListType("vod")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelVideoPlaybackResponse = new LiveChannelPlaybackServiceImpl().addChannelVideoPlayback(

@@ -804,6 +804,11 @@ public class LiveURL {
      */
     public static final String CHANNEL_AUTH_INFO_GET_URL = BASE_URI + "v3/channel/auth/get-record-info";
     
+    /**
+     * 下载频道登记观看记录
+     */
+    public static final String DOWNLOAD_CHANNEL_AUTH_INFO_URL = BASE_URI + "v3/channel/auth/download-record-info";
+    
     
     /**
      * 设置播放器暂停广告

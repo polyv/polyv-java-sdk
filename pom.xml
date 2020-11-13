@@ -245,24 +245,21 @@
                             <value>io.qameta.allure.junit4.AllureJunit4</value>
                         </property>
                     </properties>
-
                 </configuration>
+
                 <dependencies>
                     <dependency>
                         <groupId>io.qameta.allure</groupId>
                         <artifactId>allure-junit4</artifactId>
                         <version>${allure-junit4.version}</version>
-
                     </dependency>
-
-
                     <dependency>
                         <groupId>aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
                         <version>1.5.0</version>
                     </dependency>
-
                 </dependencies>
+
             </plugin>
 
 
@@ -295,12 +292,12 @@
                         </goals>
                     </execution>
                 </executions>
+
                 <dependencies>
                     <dependency>
                         <groupId>org.jacoco</groupId>
                         <artifactId>jacoco-maven-plugin</artifactId>
                         <version>${jacoco.version}</version>
-
                     </dependency>
                 </dependencies>
             </plugin>

@@ -84,15 +84,16 @@ public class FileUtil {
             // 根据绝对路径初始化文件
             File localFile = new File(path);
             if (!localFile.exists()) {
-                localFile.createNewFile();
+                boolean newFile = localFile.createNewFile();
+                if (!newFile) {
+                    throw new RuntimeException("创建文件异常，路径：" + path);
+                }
             }
             // 输出流
             os = new FileOutputStream(localFile);
             os.write(bytes);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if(os != null){
+        }finally {
+            if (os != null) {
                 os.close();
             }
         }

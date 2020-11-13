@@ -103,53 +103,53 @@ public class LiveQuestionnaireDetailResponse {
         /**
          * 选项A~G
          */
-        @ApiModelProperty(name = "option1", value = "选项A~G", required = false)
+        @ApiModelProperty(name = "option1", value = "选项A", required = false)
         private String option1;
         
         /**
          * 选项A~G
          */
-        @ApiModelProperty(name = "option2", value = "选项A~G", required = false)
+        @ApiModelProperty(name = "option2", value = "选项B", required = false)
         private String option2;
         /**
          * 选项A~G
          */
-        @ApiModelProperty(name = "option3", value = "选项A~G", required = false)
+        @ApiModelProperty(name = "option3", value = "选项C", required = false)
         private String option3;
         /**
          * 选项A~G
          */
-        @ApiModelProperty(name = "option4", value = "选项A~G", required = false)
+        @ApiModelProperty(name = "option4", value = "选项D", required = false)
         private String option4;
         /**
          * 选项A~G
          */
-        @ApiModelProperty(name = "option5", value = "选项A~G", required = false)
+        @ApiModelProperty(name = "option5", value = "选项E", required = false)
         private String option5;
         /**
          * 选项A~G
          */
-        @ApiModelProperty(name = "option6", value = "选项A~G", required = false)
+        @ApiModelProperty(name = "option6", value = "选项F", required = false)
         private String option6;
         /**
          * 选项A~G
          */
-        @ApiModelProperty(name = "option7", value = "选项A~G", required = false)
+        @ApiModelProperty(name = "option7", value = "选项G", required = false)
         private String option7;
         /**
          * 选项A~G
          */
-        @ApiModelProperty(name = "option8", value = "选项A~G", required = false)
+        @ApiModelProperty(name = "option8", value = "选项H", required = false)
         private String option8;
         /**
          * 选项A~G
          */
-        @ApiModelProperty(name = "option9", value = "选项A~G", required = false)
+        @ApiModelProperty(name = "option9", value = "选项I", required = false)
         private String option9;
         /**
          * 选项A~G
          */
-        @ApiModelProperty(name = "option10", value = "选项A~G", required = false)
+        @ApiModelProperty(name = "option10", value = "选项J", required = false)
         private String option10;
         
         /**

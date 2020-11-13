@@ -299,6 +299,14 @@ public class BaseTest {
         return sb.toString();
     }
     
+    /**
+     * 获取Date对象
+     * @param year 年
+     * @param month 月
+     * @param day 日
+     * @param time 时分秒整形数组
+     * @return
+     */
     public Date getDate(int year, int month,int day, int... time) {
         Calendar instance = Calendar.getInstance();
         instance.set(year,month,day);

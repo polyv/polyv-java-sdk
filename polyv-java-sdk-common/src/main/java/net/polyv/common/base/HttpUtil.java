@@ -39,7 +39,7 @@ public class HttpUtil {
     public static final String SOURCE = "source";
     public static final String LIVE_SDK = "live_sdk";
     public static final String VERSION = "version";
-    public static final String CURRETN_VERSION = "1.0.5";
+    public static final String CURRETN_VERSION = "1.0.6";
     public static final String UTF8 = Constant.UTF8;
     
     

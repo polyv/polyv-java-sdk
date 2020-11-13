@@ -33,7 +33,7 @@ org.apache.http.conn.ConnectionPoolTimeoutException: Timeout waiting for connect
 	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.13.jar:4.5.13]
 	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.13.jar:4.5.13]
 	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108) ~[httpclient-4.5.13.jar:4.5.13]
-	at net.polyv.common.base.HttpUtil.sendGetData(HttpUtil.java:287) ~[polyv-java-sdk-common-1.0.5.jar:na]
+	at net.polyv.common.base.HttpUtil.sendGetData(HttpUtil.java:287) ~[polyv-java-sdk-common-1.0.6.jar:na]
 	at com.example.demo.controller.account.AccountController.test1(AccountController.java:115) ~[classes/:na]
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source) ~[na:na]
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_261]

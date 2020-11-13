@@ -1,5 +1,6 @@
 package net.polyv.live.entity.channel.operate;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -79,7 +80,7 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
          * 直播开始时间，13位时间戳
          */
         @ApiModelProperty(name = "startTime", value = "直播开始时间，13位时间戳", required = false)
-        private Long startTime;
+        private Date startTime;
         
         /**
          * 直播介绍的内容

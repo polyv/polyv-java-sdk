@@ -1,5 +1,7 @@
 package net.polyv.live.entity.channel.operate;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
 
 import com.alibaba.fastjson.annotation.JSONField;
@@ -41,6 +43,6 @@ public class LiveCreateDiskVideosStreamRequest extends LiveCommonRequest {
      * 硬盘推流开始时间，13位毫秒级时间戳
      */
     @ApiModelProperty(name = "startTimes", value = "硬盘推流开始时间，13位毫秒级时间戳", required = true)
-    private Long startTimes;
+    private Date startTimes;
     
 }

@@ -1,5 +1,7 @@
 package net.polyv.live.entity.channel.playback;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
@@ -30,13 +32,13 @@ public class LiveMergeMp4RecordRequest extends LiveCommonRequest {
      * 录制文件开始时间(13位时间戳)，与endtime最大不能超过8小时
      */
     @ApiModelProperty(name = "startTime", value = "录制文件开始时间(13位时间戳)，与endtime最大不能超过8小时", required = true)
-    private Long startTime;
+    private Date startTime;
     
     /**
      * 录制文件结束时间(13位时间戳)，与startTime最大不能超过8小时
      */
     @ApiModelProperty(name = "endTime", value = "录制文件结束时间(13位时间戳)，与startTime最大不能超过8小时", required = true)
-    private Long endTime;
+    private Date endTime;
     
     /**
      * 合并成功或失败回调的url

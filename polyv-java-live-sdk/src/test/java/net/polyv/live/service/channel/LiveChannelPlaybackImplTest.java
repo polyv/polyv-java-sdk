@@ -578,8 +578,8 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         try {
             String channelId = createChannel();
             liveMergeMp4RecordRequest.setChannelId(channelId)
-                    .setStartTime(1603848613000l)
-                    .setEndTime(1603854259000l)
+                    .setStartTime(super.getDate(1603848613000l))
+                    .setEndTime(super.getDate(1603854259000l))
                     .setCallbackUrl(null)
                     .setFileName("testMergeMp4")
                     .setRequestId(LiveSignUtil.generateUUID());

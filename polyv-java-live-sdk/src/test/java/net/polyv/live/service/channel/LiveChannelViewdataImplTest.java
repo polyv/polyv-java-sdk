@@ -48,8 +48,8 @@ public class LiveChannelViewdataImplTest extends BaseTest {
             long nowTime = System.currentTimeMillis();
             long startTime = nowTime - 30 * 24 * 60 * 60 * 1000l;
             liveChannelMaxHistoryConcurrentRequest.setChannelId(createChannel())
-                    .setStartTime(startTime)
-                    .setEndTime(nowTime)
+                    .setStartTime(super.getDate(startTime))
+                    .setEndTime(super.getDate(nowTime))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelMaxHistoryConcurrentResponse = new LiveChannelViewdataServiceImpl().maxChannelHistoryConcurrent(
                     liveChannelMaxHistoryConcurrentRequest);

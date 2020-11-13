@@ -1,5 +1,7 @@
 package net.polyv.live.entity.channel.viewdata;
 
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -27,12 +29,12 @@ public class LiveChannelMaxHistoryConcurrentRequest extends LiveCommonRequest {
      * 开始时间13位毫秒级时间戳
      */
     @ApiModelProperty(name = "startTime", value = "开始时间13位毫秒级时间戳", required = true)
-    private Long startTime;
+    private Date startTime;
     
     /**
      * 结束时间13位毫秒级时间戳
      */
     @ApiModelProperty(name = "endTime", value = "结束时间13位毫秒级时间戳", required = true)
-    private Long endTime;
+    private Date endTime;
     
 }

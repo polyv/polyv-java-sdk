@@ -322,4 +322,16 @@ public class BaseTest {
         return instance.getTime();
     }
     
+    /**
+     * 获取Date对象
+     * @param  timestamp 时间戳
+     * @return
+     */
+    public Date getDate(Long timestamp) {
+        Calendar instance = Calendar.getInstance();
+        instance.setTimeInMillis(timestamp);
+        return instance.getTime();
+    }
+    
+    
 }

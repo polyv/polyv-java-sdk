@@ -121,7 +121,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setScene(LiveConstant.SceneType.ALONE.getDesc())
                     .setCategoryId(340019)
                     .setMaxViewer(0)
-                    .setStartTime(1602306535000l)
+                    .setStartTime(super.getDate(1602306535000l))
                     .setDesc("这是一个描述")
                     .setPublisher("sadboy主讲")
                     .setLinkMicLimit(-1)
@@ -1149,7 +1149,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String videoId = listChannelVideoIds(channelId).get(0);
             
             liveCreateDiskVideosStreamRequest.setVideoIds(videoId)
-                    .setStartTimes(System.currentTimeMillis() + 3000000)
+                    .setStartTimes(super.getDate(System.currentTimeMillis() + 3000000))
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveCreateDiskVideosStreamResponse = new LiveChannelOperateServiceImpl().createDiskVideosStream(

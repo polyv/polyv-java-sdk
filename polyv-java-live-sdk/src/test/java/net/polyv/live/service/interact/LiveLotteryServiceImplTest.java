@@ -39,8 +39,8 @@ public class LiveLotteryServiceImplTest extends BaseTest {
         LiveListLotteryResponse liveListLotteryResponse;
         try {
             liveListLotteryRequest.setChannelId(super.createChannel())
-                    .setStartTime(1601481600000l)
-                    .setEndTime(1605024000000l)
+                    .setStartTime(super.getDate(1601481600000l))
+                    .setEndTime(super.getDate(1605024000000l))
                     .setPageSize(1)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListLotteryResponse = new LiveLotteryServiceImpl().listLottery(liveListLotteryRequest);

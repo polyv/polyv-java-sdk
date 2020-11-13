@@ -1,5 +1,7 @@
 package net.polyv.live.entity.interact;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
@@ -37,13 +39,13 @@ public class LiveListLotteryRequest extends LivePageCommonRequest {
      */
     @ApiModelProperty(name = "startTime", value = "查询的开始日期的13位时间戳", required = true)
     @NotNull(message = "属性startTime不允许为空")
-    private Long startTime;
+    private Date startTime;
     
     /**
      * 查询的结束日期的13位时间戳
      */
     @ApiModelProperty(name = "endTime", value = "查询的结束日期的13位时间戳", required = false)
     @NotNull(message = "属性endTime不允许为空")
-    private Long endTime;
+    private Date endTime;
     
 }

@@ -1,5 +1,7 @@
 package net.polyv.live.entity.account;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
@@ -53,7 +55,7 @@ public class LiveAccountStreamCallbackRequest extends LiveCommonRequest {
          * 13位的时间戳
          */
         @ApiModelProperty(name = "timestamp", value = "13位的时间戳", required = false)
-        private Long timestamp;
+        private Date timestamp;
         
         /**
          * 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙
@@ -71,13 +73,13 @@ public class LiveAccountStreamCallbackRequest extends LiveCommonRequest {
          * 直播的开始时间,13位的时间戳
          */
         @ApiModelProperty(name = "startTime", value = "直播的开始时间,13位的时间戳", required = false)
-        private Long startTime;
+        private Date startTime;
         
         /**
          * 直播的结束时间(当status=end的时候有值，status=live的时候为空值),13位的时间戳
          */
         @ApiModelProperty(name = "endTime", value = "直播的结束时间(当status=end的时候有值，status=live的时候为空值),13位的时间戳", required = false)
-        private Long endTime;
+        private Date endTime;
         
     }
     

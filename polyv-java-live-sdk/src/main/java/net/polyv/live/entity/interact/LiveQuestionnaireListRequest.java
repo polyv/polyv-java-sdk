@@ -1,5 +1,7 @@
 package net.polyv.live.entity.interact;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
@@ -30,13 +32,13 @@ public class LiveQuestionnaireListRequest extends LivePageCommonRequest {
      * 查询的记录的开始时间，13位位毫秒级时间戳
      */
     @ApiModelProperty(name = "startTime", value = "查询的记录的开始时间，13位位毫秒级时间戳", required = false)
-    private Long startTime;
+    private Date startTime;
     
     /**
      * 查询的记录的结束时间，13位毫秒级时间戳
      */
     @ApiModelProperty(name = "endTime", value = "查询的记录的结束时间，13位毫秒级时间戳", required = false)
-    private Long endTime;
+    private Date endTime;
     
     
     

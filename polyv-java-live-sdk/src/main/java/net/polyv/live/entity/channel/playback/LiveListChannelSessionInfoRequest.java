@@ -1,6 +1,10 @@
 package net.polyv.live.entity.channel.playback;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -30,12 +34,14 @@ public class LiveListChannelSessionInfoRequest extends LivePageCommonRequest {
      * 开始日期，格式YYYY-MM-DD
      */
     @ApiModelProperty(name = "startDate", value = "开始日期，格式YYYY-MM-DD", required = false)
-    private String startDate;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date startDate;
     
     /**
      * 结束日期，格式YYYY-MM-DD
      */
     @ApiModelProperty(name = "endDate", value = "结束日期，格式YYYY-MM-DD", required = false)
-    private String endDate;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date endDate;
     
 }

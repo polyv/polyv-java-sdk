@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -75,14 +76,30 @@ public class MapUtil {
                     Field f = objClass.getDeclaredField(fields[i].getName());
                     f.setAccessible(true);
                     Object o = f.get(obj);
-                    if(o instanceof File){
+                    if (o instanceof File) {
                         continue;
                     }
                     JSONField jsonField = f.getAnnotation(JSONField.class);
-                    String key = jsonField != null ? jsonField.name() : fields[i].getName();
+                    String key = jsonField != null && StringUtils.isNotBlank(jsonField.name()) ? jsonField.name() :
+                            fields[i].getName();
                     String value = null;
                     if (o != null) {
-                        value = o instanceof List ? JSON.toJSONString(o) : o.toString();
+//                        value = o instanceof List ? JSON.toJSONString(o) : o.toString();
+                        if (o instanceof List) {
+                            value = JSON.toJSONString(o);
+                        } else if (o instanceof Date) {
+                            if (jsonField != null && StringUtils.isNotBlank(jsonField.format())) {
+                                //按照固定格式格式化数据
+                                value = JSON.toJSONStringWithDateFormat(o, jsonField.format());
+                                //待优化
+                                value = value.replace("\"","");
+                            } else {
+                                value = JSON.toJSONString(o);
+                            }
+                        } else {
+                            //基本数据类型采用默认的,其他复合数据对象必须采用JSON序列化方式
+                            value = o.toString();
+                        }
                     }
                     reMap.put(key, (null == o) ? null : value);
                 }
@@ -138,7 +155,7 @@ public class MapUtil {
                 String temp = (key.endsWith("_") && key.length() > 1) ? key.substring(0, key.length() - 1) : key;
                 stringBuilder.append(keyLower ? temp.toLowerCase() : temp)
                         .append("=")
-                        .append(valueUrlEncode ? URLEncoder.encode(value,  Constant.UTF8).replace("+", "%20") : value)
+                        .append(valueUrlEncode ? URLEncoder.encode(value, Constant.UTF8).replace("+", "%20") : value)
                         .append("&");
             } catch (UnsupportedEncodingException e) {
                 LOG.error(e.getMessage(), e);

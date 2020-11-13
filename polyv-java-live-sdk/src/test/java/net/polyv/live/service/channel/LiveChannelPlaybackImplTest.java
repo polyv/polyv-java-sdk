@@ -2,7 +2,9 @@ package net.polyv.live.service.channel;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -226,9 +228,11 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveListChannelSessionInfoRequest liveListChannelSessionInfoRequest = new LiveListChannelSessionInfoRequest();
         LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse;
         try {
+            Calendar instance = Calendar.getInstance();
+            instance.set(2020,10,1);
             liveListChannelSessionInfoRequest.setChannelId(createChannel())
-                    .setStartDate("2020-10-01")
-                    .setEndDate("2020-10-24")
+                    .setStartDate(instance.getTime())
+                    .setEndDate(new Date())
                     .setCurrentPage(1)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelSessionInfoResponse = new LiveChannelPlaybackServiceImpl().listChannelSessionInfo(

@@ -80,6 +80,31 @@ public class LiveBaseService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 签名异常
      */
+    private <E extends LiveCommonRequest> byte[] baseGetReturnArray(String url, E e)
+            throws IOException, NoSuchAlgorithmException {
+        Map<String, String> paramMap = commonRequestLogic(e);
+        String queryStr = MapUtil.mapJoinNotEncode(paramMap);
+        url += "?" + queryStr;
+        byte[] response = HttpUtil.sendGetDataReturnArray(url, Consts.UTF_8.toString());
+        if ( response ==null ) {
+            String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
+            PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
+            log.error(message, exception);
+            throw exception;
+        }
+        return response;
+    }
+    
+    
+    /**
+     * HTTP GET 公共请求
+     * @param url 请求URL
+     * @param e 请求参数对象
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
     private <E extends LiveCommonRequest> LiveCommonResponse baseGet(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
@@ -105,29 +130,7 @@ public class LiveBaseService {
     }
     
     
-    /**
-     * HTTP GET 公共请求
-     * @param url 请求URL
-     * @param e 请求参数对象
-     * @param <E> 请求参数泛型
-     * @return HTTP response 数据封装对象
-     * @throws IOException 异常
-     * @throws NoSuchAlgorithmException 签名异常
-     */
-    private <E extends LiveCommonRequest> byte[] baseGetReturnArray(String url, E e)
-            throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(e);
-        String queryStr = MapUtil.mapJoinNotEncode(paramMap);
-        url += "?" + queryStr;
-        byte[] response = HttpUtil.sendGetDataReturnArray(url, Consts.UTF_8.toString());
-        if ( response ==null ) {
-            String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
-            PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
-            log.error(message, exception);
-            throw exception;
-        }
-        return response;
-    }
+   
     
     private <E extends LiveCommonRequest> Map<String, String> commonRequestLogic(E e)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -301,7 +304,7 @@ public class LiveBaseService {
         validateBean(e);
         url = url + "?" + MapUtil.mapJoinNotEncode(signMap);
         String response = HttpUtil.sendPostDataByJson(url, JSON.toJSONString(e), Consts.UTF_8.toString());
-        if (StringUtils.isNotBlank(response)) {
+            if (StringUtils.isNotBlank(response)) {
             liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
             if (liveCommonResponse.getCode() != 200) {
                 String message = ERROR_PREFIX1 + e.getRequestId() + ERROR_INFO + liveCommonResponse.getMessage();

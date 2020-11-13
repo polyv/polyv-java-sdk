@@ -164,8 +164,8 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveChannelVideoListResponse liveChannelVideoListResponse;
         try {
             liveChannelVideoListRequest.setChannelId("1951952")
-                    .setStartDate("2020-01-01")
-                    .setEndDate("2020-10-14")
+                    .setStartDate(getDate(2020,1,1))
+                    .setEndDate(getDate(2020,10,14))
                     .setSessionId(null)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelVideoListResponse = new LiveChannelPlaybackServiceImpl().listChannelVideo(

@@ -1,6 +1,10 @@
 package net.polyv.live.entity.channel.operate;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -45,10 +49,12 @@ public class LiveListChannelPPTRecordRequest extends LivePageCommonRequest {
      * 直播开始时间开始区间,格式为yyyyMMddHHmmss
      */
     @ApiModelProperty(name = "startTime", value = "直播开始时间开始区间,格式为yyyyMMddHHmmss", required = false, example = "20200101000000")
-    private String startTime;
+    @JSONField(format = "yyyyMMddHHmmss")
+    private Date startTime;
     /**
      * 直播开始时间结束区间,格式为yyyyMMddHHmmss
      */
     @ApiModelProperty(name = "endTime", value = "直播开始时间结束区间,格式为yyyyMMddHHmmss", required = false, example = "2020100123595959")
-    private String endTime;
+    @JSONField(format = "yyyyMMddHHmmss")
+    private Date endTime;
 }

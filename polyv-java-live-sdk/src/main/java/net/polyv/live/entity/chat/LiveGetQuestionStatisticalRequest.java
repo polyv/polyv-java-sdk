@@ -1,5 +1,9 @@
 package net.polyv.live.entity.chat;
 
+import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -28,13 +32,15 @@ public class LiveGetQuestionStatisticalRequest extends LiveCommonRequest {
      * 开始时间，格式：yyyy-MM-dd HH:mm:ss
      */
     @ApiModelProperty(name = "startTime", value = "开始时间，格式：yyyy-MM-dd HH:mm:ss", required = false)
-    private String startTime;
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    private Date startTime;
     
     /**
      * 结束时间，格式：yyyy-MM-dd HH:mm:ss
      */
     @ApiModelProperty(name = "endTime", value = "结束时间，格式：yyyy-MM-dd HH:mm:ss", required = false)
-    private String endTime;
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    private Date endTime;
     
     
 }

@@ -1,5 +1,9 @@
 package net.polyv.vod.entity.account;
 
+import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,5 +23,6 @@ public class VodAccountSpaceDataRequest extends VodCommonRequest {
      * 要查询的日期，格式 ：yyyy-MM-dd
      */
     @ApiModelProperty(name = "date", value = "要查询的日期，格式 ：yyyy-MM-dd", required = false)
-    private String date;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date date;
 }

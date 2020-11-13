@@ -1,6 +1,10 @@
 package net.polyv.live.entity.channel.viewdata;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -30,13 +34,15 @@ public class LiveChannelViewerConcurrenceRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "startDate", value = "开始日期格式，yyyy-MM-dd,开始日期和结束日期的时间跨度：最多查两个月内的数据", required = true)
     @NotNull(message = "属性startDate不能为空")
-    private String startDate;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date startDate;
     
     /**
      * 结束日期格式，yyyy-MM-dd,开始日期和结束日期的时间跨度：最多查两个月内的数据
      */
     @ApiModelProperty(name = "endDate", value = "结束日期格式，yyyy-MM-dd，开始日期和结束日期的时间跨度：最多查两个月内的数据", required = true)
     @NotNull(message = "属性endDate不能为空")
-    private String endDate;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date endDate;
 
 }

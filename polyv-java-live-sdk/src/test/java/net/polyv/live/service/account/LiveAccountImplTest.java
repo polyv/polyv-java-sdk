@@ -573,8 +573,8 @@ public class LiveAccountImplTest extends BaseTest {
         try {
             String channelId = createChannel();
             liveChannelIncomeDetailRequest.setChannelId(channelId)
-                    .setStartDate("2020-10-24")
-                    .setEndDate("2020-11-11")
+                    .setStartDate(getDate(2020,10,24))
+                    .setEndDate(getDate(2020,11,11))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelIncomeDetailResponse = new LiveAccountServiceImpl().getChannelIncomeDetail(
                     liveChannelIncomeDetailRequest);

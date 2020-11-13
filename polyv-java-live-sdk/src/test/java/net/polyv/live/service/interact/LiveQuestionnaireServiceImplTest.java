@@ -33,7 +33,7 @@ import net.polyv.live.util.LiveSignUtil;
  **/
 @Slf4j
 public class LiveQuestionnaireServiceImplTest extends BaseTest {
-
+    
     /**
      * 查询频道问卷列表
      * 描述：接口用于获取频道的问卷列表
@@ -113,7 +113,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         try {
             String channelId = super.createChannel();
             liveQuestionnaireResultRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveQuestionnaireResultRequest.setStartDate("2020-10-01").setEndDate("2099-12-12");
+            liveQuestionnaireResultRequest.setStartDate(getDate(2020, 10, 01)).setEndDate(getDate(2099, 12, 12));
 //        liveQuestionnaireResultRequest.setQuestionnaireId("fs9skpv22f");
             liveQuestionnaireResultResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultInfo(
                     liveQuestionnaireResultRequest);
@@ -147,7 +147,8 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         try {
             String channelId = super.createChannel();
             liveQuestionnaireResultPageRequest.setChannelId(channelId)
-                    .setStartDate("2020-10-01").setEndDate("2099-12-12")
+                    .setStartDate(getDate(2020, 10, 01))
+                    .setEndDate(getDate(2099, 12, 12))
                     .setPageSize(20)
                     .setCurrentPage(1)
                     .setRequestId(LiveSignUtil.generateUUID());

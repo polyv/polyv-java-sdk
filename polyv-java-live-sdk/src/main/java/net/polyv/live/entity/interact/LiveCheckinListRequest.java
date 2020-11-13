@@ -1,6 +1,10 @@
 package net.polyv.live.entity.interact;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -30,7 +34,8 @@ public class LiveCheckinListRequest extends LivePageCommonRequest {
      * 查询的指定日期，格式为yyyy-MM-dd
      */
     @ApiModelProperty(name = "date", value = "查询的指定日期，格式为yyyy-MM-dd，默认查询当天签到记录", required = false)
-    private String date;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date date;
     
     /**
      * 场次sessionId,如果传sessionId,

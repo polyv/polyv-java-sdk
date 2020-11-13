@@ -1,5 +1,7 @@
 package net.polyv.live.entity.channel.viewdata;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
 
 import com.alibaba.fastjson.annotation.JSONField;
@@ -32,7 +34,8 @@ public class LiveListChannelViewlogRequest extends LivePageCommonRequest {
      * 查询日期，格式：yyyy-MM-dd
      */
     @ApiModelProperty(name = "currentDay", value = "查询日期，格式：yyyy-MM-dd", required = true)
-    private String currentDay;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date currentDay;
     
     /**
      * 查询开始时间，为13位毫秒级时间戳

@@ -1,6 +1,10 @@
 package net.polyv.live.entity.account;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -37,13 +41,15 @@ public class LiveChannelIncomeDetailRequest extends LivePageCommonRequest {
      */
     @ApiModelProperty(name = "startDate", value = "查询的开始日期 格式为yyyy-MM-dd", required = true)
     @NotNull(message = "属性startDate不能为空")
-    private String startDate;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date startDate;
     
     /**
      * 查询的结束日期 格式为yyyy-MM-dd
      */
     @ApiModelProperty(name = "endDate", value = "查询的结束日期 格式为yyyy-MM-dd", required = true)
     @NotNull(message = "属性endDate不能为空")
-    private String endDate;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date endDate;
     
 }

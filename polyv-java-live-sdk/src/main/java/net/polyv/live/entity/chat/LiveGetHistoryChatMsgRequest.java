@@ -1,5 +1,7 @@
 package net.polyv.live.entity.chat;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
 
 import com.alibaba.fastjson.annotation.JSONField;
@@ -32,14 +34,16 @@ public class LiveGetHistoryChatMsgRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "startDay", value = "聊天记录的开始时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12）", required = true)
     @NotNull(message = "属性startDay不能为空")
-    private String startDay;
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    private Date startDay;
     
     /**
      * 聊天记录的结束时间，要求同上
      */
     @ApiModelProperty(name = "endDay", value = "聊天记录的结束时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12）", required = true)
     @NotNull(message = "属性endDay不能为空")
-    private String endDay;
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    private Date endDay;
     
  
     /**

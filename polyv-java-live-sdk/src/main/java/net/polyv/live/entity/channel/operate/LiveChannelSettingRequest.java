@@ -1,8 +1,11 @@
 package net.polyv.live.entity.channel.operate;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -191,7 +194,8 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
          */
         @ApiModelProperty(name = "watchEndTime", value = "付费观看参数：付费有效截止日期，格式为yyyy-MM-dd " +
                 "HH:mm。当watchEndTime和validTimePeriod都为空时，表示付费永久有效", required = false)
-        private String watchEndTime;
+        @JSONField(format = "yyyy-MM-dd HH:mm")
+        private Date watchEndTime;
         
         /**
          * 付费观看参数：付费有效时长，单位天。当watchEndTime和validTimePeriod都为空时，表示付费永久有效

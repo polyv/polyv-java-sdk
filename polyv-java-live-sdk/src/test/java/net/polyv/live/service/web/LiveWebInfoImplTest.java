@@ -267,7 +267,7 @@ public class LiveWebInfoImplTest extends BaseTest {
         try {
             liveUpdateChannelCountDownRequest.setChannelId(createChannel())
                     .setBookingEnabled("Y")
-                    .setStartTime("2020-11-11 11:11:11")
+                    .setStartTime(getDate(2020, 11, 11, 11, 11, 11))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(
                     liveUpdateChannelCountDownRequest);
@@ -298,7 +298,8 @@ public class LiveWebInfoImplTest extends BaseTest {
         LiveChannelCountDownResponse liveChannelCountDownResponse;
         try {
             liveChannelCountDownRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelCountDownResponse = new LiveWebInfoServiceImpl().getChannelCountDown(liveChannelCountDownRequest);
+            liveChannelCountDownResponse = new LiveWebInfoServiceImpl().getChannelCountDown(
+                    liveChannelCountDownRequest);
             Assert.assertNotNull(liveChannelCountDownResponse);
             if (liveChannelCountDownResponse != null) {
                 //to do something ......

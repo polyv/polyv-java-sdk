@@ -1,6 +1,10 @@
 package net.polyv.live.entity.web.info;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -36,6 +40,7 @@ public class LiveUpdateChannelCountDownRequest extends LiveCommonRequest {
      * 直播开始时间，如果不传该值，表示不显示直播时间和倒计时（yyyy-MM-dd HH:mm:ss）
      */
     @ApiModelProperty(name = "startTime", value = "直播开始时间，如果不传该值，表示不显示直播时间和倒计时（yyyy-MM-dd HH:mm:ss）", required = false)
-    private String startTime;
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    private Date startTime;
     
 }

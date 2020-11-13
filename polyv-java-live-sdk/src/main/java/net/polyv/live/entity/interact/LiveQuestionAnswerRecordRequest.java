@@ -1,6 +1,10 @@
 package net.polyv.live.entity.interact;
 
+import java.util.Date;
+
 import javax.validation.constraints.NotNull;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -29,13 +33,15 @@ public class LiveQuestionAnswerRecordRequest extends LivePageCommonRequest {
      * 查询的开始时间
      */
     @ApiModelProperty(name = "startDate", value = "查询的开始时间，格式要求：yyyy-MM-dd", required = false)
-    private String startDate;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date startDate;
     
     /**
      * 查询的结束时间
      */
     @ApiModelProperty(name = "endDate", value = "查询的结束时间，格式要求：yyyy-MM-dd", required = false)
-    private String endDate;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date endDate;
     
     
 }

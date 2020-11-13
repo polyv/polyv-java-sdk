@@ -1,5 +1,9 @@
 package net.polyv.live.entity.channel.viewdata;
 
+import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -27,12 +31,14 @@ public class LiveListChannelMicRequest extends LivePageCommonRequest {
      * 开始时间，格式：yyyy-MM-dd
      */
     @ApiModelProperty(name = "startDay", value = "开始时间，格式：yyyy-MM-dd", required = false)
-    private String startDay;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date startDay;
     
     /**
      * 结束时间，格式：yyyy-MM-dd
      */
     @ApiModelProperty(name = "endDay", value = "结束时间，格式：yyyy-MM-dd", required = false)
-    private String endDay;
+    @JSONField(format = "yyyy-MM-dd")
+    private Date endDay;
 
 }

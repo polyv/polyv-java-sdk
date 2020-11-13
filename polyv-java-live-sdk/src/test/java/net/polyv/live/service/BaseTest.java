@@ -211,8 +211,8 @@ public class BaseTest {
     protected String getChannelVideoFileUrl(String channelId) throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
         liveChannelVideoListRequest.setChannelId("1951952")
-                .setStartDate("2020-01-01")
-                .setEndDate("2020-10-14")
+                .setStartDate(getDate(2020,1,1))
+                .setEndDate(getDate(2020,10,14))
                 .setSessionId(null);
         LiveChannelVideoListResponse liveChannelVideoListResponse =
                 new LiveChannelPlaybackServiceImpl().listChannelVideo(
@@ -263,8 +263,8 @@ public class BaseTest {
     protected List<String> listChannelFileIds(String channelId) throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
         liveChannelVideoListRequest.setChannelId(channelId)
-                .setStartDate("2020-01-01")
-                .setEndDate("2020-11-11")
+                .setStartDate(getDate(2020,1,1))
+                .setEndDate(getDate(2020,11,11))
                 .setSessionId(null)
                 .setRequestId(LiveSignUtil.generateUUID());
         LiveChannelVideoListResponse liveChannelVideoListResponse =

@@ -264,12 +264,12 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testMicDuration() throws Exception, NoSuchAlgorithmException {
+    public void testGetMicDuration() throws Exception, NoSuchAlgorithmException {
         LiveAccountMicDurationRequest liveAccountMicDurationRequest = new LiveAccountMicDurationRequest();
         LiveAccountMicDurationResponse liveAccountMicDurationResponse;
         try {
             liveAccountMicDurationRequest.setRequestId(LiveSignUtil.generateUUID());
-            liveAccountMicDurationResponse = new LiveAccountServiceImpl().micDuration(liveAccountMicDurationRequest);
+            liveAccountMicDurationResponse = new LiveAccountServiceImpl().getMicDuration(liveAccountMicDurationRequest);
             Assert.assertNotNull(liveAccountMicDurationResponse);
             if (liveAccountMicDurationResponse != null) {
                 //to do something ......
@@ -537,12 +537,12 @@ public class LiveAccountImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUserDurations() throws Exception, NoSuchAlgorithmException {
+    public void testGetUserDurations() throws Exception, NoSuchAlgorithmException {
         LiveAccountUserDurationsRequest liveAccountUserDurationsRequest = new LiveAccountUserDurationsRequest();
         LiveAccountUserDurationsResponse liveAccountUserDurationsResponse;
         try {
             liveAccountUserDurationsRequest.setRequestId(LiveSignUtil.generateUUID());
-            liveAccountUserDurationsResponse = new LiveAccountServiceImpl().userDurations(
+            liveAccountUserDurationsResponse = new LiveAccountServiceImpl().getUserDurations(
                     liveAccountUserDurationsRequest);
             Assert.assertNotNull(liveAccountUserDurationsResponse);
             if (liveAccountUserDurationsResponse != null) {

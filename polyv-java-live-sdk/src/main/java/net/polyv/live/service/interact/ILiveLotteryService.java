@@ -33,7 +33,7 @@ public interface ILiveLotteryService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveLotteryWinnerDetailResponse lotteryWinnerDetail(LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest)
+    LiveLotteryWinnerDetailResponse getLotteryWinnerDetail(LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

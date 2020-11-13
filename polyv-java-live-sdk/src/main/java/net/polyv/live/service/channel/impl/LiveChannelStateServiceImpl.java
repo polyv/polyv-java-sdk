@@ -94,7 +94,7 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelStreamInfoResponse channelStreamInfo(LiveChannelStreamInfoRequest liveChannelStreamInfoRequest)
+    public LiveChannelStreamInfoResponse getChannelStreamInfo(LiveChannelStreamInfoRequest liveChannelStreamInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIVE_STREAM_INFO_URL;
         LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = this.baseGet(url, liveChannelStreamInfoRequest,

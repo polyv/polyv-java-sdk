@@ -70,7 +70,7 @@ public class LiveChannelDocImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelDocStatus() throws Exception, NoSuchAlgorithmException {
+    public void testGetChannelDocStatus() throws Exception, NoSuchAlgorithmException {
         LiveChannelDocStatusRequest liveChannelDocStatusRequest = new LiveChannelDocStatusRequest();
         LiveChannelDocStatusResponse liveChannelDocStatusResponse;
         try {
@@ -79,7 +79,7 @@ public class LiveChannelDocImplTest extends BaseTest {
                     .setFileId("c2d585857870f4eff024976e3a265c0b1965681common," +
                             "6e0603f6c8ec6113b87f69a7191d22021965681common")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelDocStatusResponse = new LiveChannelDocServiceImpl().channelDocStatus(
+            liveChannelDocStatusResponse = new LiveChannelDocServiceImpl().getChannelDocStatus(
                     liveChannelDocStatusRequest);
             Assert.assertNotNull(liveChannelDocStatusResponse);
             if (liveChannelDocStatusResponse != null) {

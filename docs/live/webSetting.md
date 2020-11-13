@@ -9,7 +9,7 @@
 ### 单元测试
 ```java
 	@Test
-	public void testChannelGlobalSwitch() throws Exception, NoSuchAlgorithmException {
+	public void testSetChannelGlobalSwitch() throws Exception, NoSuchAlgorithmException {
         LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest = new LiveChannelGlobalSwitchRequest();
         Boolean liveChannelGlobalSwitchResponse;
         try {
@@ -17,7 +17,7 @@
                     .setGlobalEnabledType(LiveConstant.GlobalEnabledType.CALLBACK.getDesc())
                     .setEnabled("N")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelGlobalSwitchResponse = new LiveWebSettingServiceImpl().channelGlobalSwitch(
+            liveChannelGlobalSwitchResponse = new LiveWebSettingServiceImpl().setChannelGlobalSwitch(
                     liveChannelGlobalSwitchRequest);
             Assert.assertNotNull(liveChannelGlobalSwitchResponse);
             if (liveChannelGlobalSwitchResponse) {
@@ -110,7 +110,7 @@ true为设置成功，false为设置失败
 | -- | -- | -- | -- | 
 | type | true | String | 上传图片类型(coverImage：频道图标，建议140 x 140 大小的图标，文件大小不超过 2M。splashImage：直播引导图，建议 750 x 1334 大小的图片，大小不超过 2M。logoImage：播放器logo，建议不大于 140 x 50 大小的图片，文件大小不超过 2M。adminAvatar：聊天室管理员头像，建议 140 x 140 大小的图标，文件大小不超过2M。assistantAvatar：助教头像，建议 140 x 140 大小的图标，文件大小不超过2M。authCodeImage：授权观看二维码图片, 最大不超过 200K。
 warmImage：暖场图片, 建议1280 x 720，图片大小不超过 2M。adImage：广告栏图片，建议750 x 120，最大不超过2 M。startAdImage：片头广告图片，建议 1280 x 720 大小的图片 ，文件大小不超过 4 M。stopAdImage：暂停广告图片，建议 1280 x 720 大小的图片 ，文件大小不超过 4 M。goodImage：打赏图标，建议 180 x 180 大小的图标，文件大小不超过 300 k。invitationImage:邀请卡图片，建议 750 x 1334 大小的图片，大小不超过 4 M。menuImage:频道菜单图片, 最大不能超过为 2M。) | 
-| file | false | Array | 图片文件列表，支持同时上传不超过6个【详见[File参数描述](webSetting.md?id=polyv76)】 | 
+| file | false | Array | 图片文件列表，支持同时上传不超过6个【详见[File参数描述](webSetting.md?id=polyv70)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述

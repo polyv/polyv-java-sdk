@@ -809,6 +809,11 @@ public class LiveURL {
      */
     public static final String DOWNLOAD_CHANNEL_AUTH_INFO_URL = BASE_URI + "v3/channel/auth/download-record-info";
     
+    /**
+     * 新增白名单
+     */
+    public static final String UPLOAD_WEITE_LIST_URL = BASE_URI + "v3/channel/auth/upload-white-list";
+    
     
     /**
      * 设置播放器暂停广告

@@ -43,7 +43,7 @@ public interface ILiveWebInteractService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelDonateResponse channelDonate(LiveChannelDonateRequest liveChannelDonateRequest)
+    LiveChannelDonateResponse getChannelDonate(LiveChannelDonateRequest liveChannelDonateRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

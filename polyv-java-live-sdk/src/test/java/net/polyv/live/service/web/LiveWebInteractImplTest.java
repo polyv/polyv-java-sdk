@@ -111,12 +111,12 @@ public class LiveWebInteractImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelDonate() throws Exception, NoSuchAlgorithmException {
+    public void testGetChannelDonate() throws Exception, NoSuchAlgorithmException {
         LiveChannelDonateRequest liveChannelDonateRequest = new LiveChannelDonateRequest();
         LiveChannelDonateResponse liveChannelDonateResponse;
         try {
             liveChannelDonateRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelDonateResponse = new LiveWebInteractServiceImpl().channelDonate(liveChannelDonateRequest);
+            liveChannelDonateResponse = new LiveWebInteractServiceImpl().getChannelDonate(liveChannelDonateRequest);
             Assert.assertNotNull(liveChannelDonateResponse);
             if (liveChannelDonateResponse != null) {
                 //to do something ......

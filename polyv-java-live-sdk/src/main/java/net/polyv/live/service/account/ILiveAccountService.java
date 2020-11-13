@@ -68,7 +68,7 @@ public interface ILiveAccountService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveAccountMicDurationResponse micDuration(LiveAccountMicDurationRequest liveAccountMicDurationRequest)
+    LiveAccountMicDurationResponse getMicDuration(LiveAccountMicDurationRequest liveAccountMicDurationRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -157,7 +157,7 @@ public interface ILiveAccountService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveAccountUserDurationsResponse userDurations(LiveAccountUserDurationsRequest liveAccountUserDurationsRequest)
+    LiveAccountUserDurationsResponse getUserDurations(LiveAccountUserDurationsRequest liveAccountUserDurationsRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

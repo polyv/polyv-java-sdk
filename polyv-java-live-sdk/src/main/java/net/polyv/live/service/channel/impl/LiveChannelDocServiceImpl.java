@@ -50,7 +50,7 @@ public class LiveChannelDocServiceImpl extends LiveBaseService implements ILiveC
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelDocStatusResponse channelDocStatus(LiveChannelDocStatusRequest liveChannelDocStatusRequest)
+    public LiveChannelDocStatusResponse getChannelDocStatus(LiveChannelDocStatusRequest liveChannelDocStatusRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_DOC_STATUS_URL;
         List<LiveChannelDocStatusResponse.ChannelDocStatus> channelDocStatuses = this.baseGetReturnArray(url,

@@ -44,7 +44,7 @@ public class LiveLotteryServiceImpl  extends LiveBaseService implements ILiveLot
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveLotteryWinnerDetailResponse lotteryWinnerDetail(
+    public LiveLotteryWinnerDetailResponse getLotteryWinnerDetail(
             LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LOTTERY_WINNER_DETAIL_GET_URL;

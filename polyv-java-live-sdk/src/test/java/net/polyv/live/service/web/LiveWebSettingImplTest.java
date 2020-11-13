@@ -33,7 +33,7 @@ public class LiveWebSettingImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testChannelGlobalSwitch() throws Exception, NoSuchAlgorithmException {
+    public void testSetChannelGlobalSwitch() throws Exception, NoSuchAlgorithmException {
         LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest = new LiveChannelGlobalSwitchRequest();
         Boolean liveChannelGlobalSwitchResponse;
         try {
@@ -41,7 +41,7 @@ public class LiveWebSettingImplTest extends BaseTest {
                     .setGlobalEnabledType(LiveConstant.GlobalEnabledType.CALLBACK.getDesc())
                     .setEnabled("N")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelGlobalSwitchResponse = new LiveWebSettingServiceImpl().channelGlobalSwitch(
+            liveChannelGlobalSwitchResponse = new LiveWebSettingServiceImpl().setChannelGlobalSwitch(
                     liveChannelGlobalSwitchRequest);
             Assert.assertNotNull(liveChannelGlobalSwitchResponse);
             if (liveChannelGlobalSwitchResponse) {

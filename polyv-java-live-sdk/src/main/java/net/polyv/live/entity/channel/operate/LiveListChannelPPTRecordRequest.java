@@ -46,15 +46,15 @@ public class LiveListChannelPPTRecordRequest extends LivePageCommonRequest {
     private String status;
     
     /**
-     * 直播开始时间开始区间,格式为yyyyMMddHHmmss
+     * 直播开始时间开始区间,格式为yyyy-MM-dd HH:mm:ss
      */
-    @ApiModelProperty(name = "startTime", value = "直播开始时间开始区间,格式为yyyyMMddHHmmss", required = false, example = "20200101000000")
+    @ApiModelProperty(name = "startTime", value = "直播开始时间开始区间,格式为yyyy-MM-dd HH:mm:ss", required = false )
     @JSONField(format = "yyyyMMddHHmmss")
     private Date startTime;
     /**
-     * 直播开始时间结束区间,格式为yyyyMMddHHmmss
+     * 直播开始时间结束区间,格式为yyyy-MM-dd HH:mm:ss
      */
-    @ApiModelProperty(name = "endTime", value = "直播开始时间结束区间,格式为yyyyMMddHHmmss", required = false, example = "2020100123595959")
+    @ApiModelProperty(name = "endTime", value = "直播开始时间结束区间,格式为yyyy-MM-dd HH:mm:ss", required = false )
     @JSONField(format = "yyyyMMddHHmmss")
     private Date endTime;
 }

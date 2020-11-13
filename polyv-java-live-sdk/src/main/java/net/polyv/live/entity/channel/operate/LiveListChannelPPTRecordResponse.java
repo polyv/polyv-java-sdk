@@ -55,7 +55,7 @@ public class LiveListChannelPPTRecordResponse extends LivePageCommonResponse {
         /**
          * 对应回放的直播开始时间,格式为yyyyMMddhhmmss
          */
-        @ApiModelProperty(name = "startTime", value = "对应回放的直播开始时间,格式为yyyyMMddhhmmss")
+        @ApiModelProperty(name = "startTime", value = "对应回放的直播开始时间,格式为yyyy-MM-dd HH:mm:ss")
         private String startTime;
         
         /**

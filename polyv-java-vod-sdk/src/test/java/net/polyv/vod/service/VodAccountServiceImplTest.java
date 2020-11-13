@@ -23,7 +23,7 @@ public class VodAccountServiceImplTest extends BaseTest {
     @Test
     public void testGetAccountSpaceFlow() throws Exception, NoSuchAlgorithmException {
         VodAccountSpaceDataRequest vodAccountSpaceDataRequest = new VodAccountSpaceDataRequest();
-        vodAccountSpaceDataRequest.setDate("2020-10-13")
+        vodAccountSpaceDataRequest.setDate(super.getDate(2020,10,13))
                 .setPtime(new Date().getTime())
                 .setRequestId(VodSignUtil.generateUUID());
         VodAccountSpaceDataResponse accountSpaceFlow = new VodAccountServiceImpl().getAccountSpaceFlow(

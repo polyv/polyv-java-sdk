@@ -95,23 +95,11 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>${jacoco.version}</version>
-        </dependency>
-
-
-            <dependency>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-junit4</artifactId>
-                <version>${allure-junit4.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>aspectj</groupId>
-                <artifactId>aspectjweaver</artifactId>
-                <version>1.5.0</version>
-            </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.jacoco</groupId>-->
+        <!--            <artifactId>jacoco-maven-plugin</artifactId>-->
+        <!--            <version>${jacoco.version}</version>-->
+        <!--        </dependency>-->
 
     </dependencies>
 
@@ -173,8 +161,8 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.2.0</version>
-                        <!--                        <version>2.9</version>-->
+                        <!--                        <version>3.2.0</version>-->
+                        <version>2.9</version>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
@@ -266,60 +254,60 @@
                     </properties>
                 </configuration>
 
-<!--                <dependencies>-->
-<!--                    <dependency>-->
-<!--                        <groupId>io.qameta.allure</groupId>-->
-<!--                        <artifactId>allure-junit4</artifactId>-->
-<!--                        <version>${allure-junit4.version}</version>-->
-<!--                    </dependency>-->
-<!--                    <dependency>-->
-<!--                        <groupId>aspectj</groupId>-->
-<!--                        <artifactId>aspectjweaver</artifactId>-->
-<!--                        <version>1.5.0</version>-->
-<!--                    </dependency>-->
-<!--                </dependencies>-->
+                <dependencies>
+                    <dependency>
+                        <groupId>io.qameta.allure</groupId>
+                        <artifactId>allure-junit4</artifactId>
+                        <version>${allure-junit4.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>1.5.0</version>
+                    </dependency>
+                </dependencies>
 
             </plugin>
 
 
-            <!--检查代码覆盖率的插件配置-->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.version}</version>
-                <configuration>
-                    <includes>
-                        <include>com/**/*</include>
-                    </includes>
-                    <!--                    <excludes>-->
-                    <!--                        <exclude>com/src/test/**/*</exclude>-->
-                    <!--                    </excludes>-->
-                    <propertyName>jacocoArgLine</propertyName>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>pre-test</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>post-test</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
+            <!--            &lt;!&ndash;检查代码覆盖率的插件配置&ndash;&gt;-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.jacoco</groupId>-->
+            <!--                <artifactId>jacoco-maven-plugin</artifactId>-->
+            <!--                <version>${jacoco.version}</version>-->
+            <!--                <configuration>-->
+            <!--                    <includes>-->
+            <!--                        <include>com/**/*</include>-->
+            <!--                    </includes>-->
+            <!--                    &lt;!&ndash;                    <excludes>&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                        <exclude>com/src/test/**/*</exclude>&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                    </excludes>&ndash;&gt;-->
+            <!--                    <propertyName>jacocoArgLine</propertyName>-->
+            <!--                </configuration>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>pre-test</id>-->
+            <!--                        <goals>-->
+            <!--                            <goal>prepare-agent</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                    <execution>-->
+            <!--                        <id>post-test</id>-->
+            <!--                        <phase>test</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>report</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
 
-<!--                <dependencies>-->
-<!--                    <dependency>-->
-<!--                        <groupId>org.jacoco</groupId>-->
-<!--                        <artifactId>jacoco-maven-plugin</artifactId>-->
-<!--                        <version>${jacoco.version}</version>-->
-<!--                    </dependency>-->
-<!--                </dependencies>-->
-            </plugin>
+            <!--&lt;!&ndash;                <dependencies>&ndash;&gt;-->
+            <!--&lt;!&ndash;                    <dependency>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        <groupId>org.jacoco</groupId>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        <artifactId>jacoco-maven-plugin</artifactId>&ndash;&gt;-->
+            <!--&lt;!&ndash;                        <version>${jacoco.version}</version>&ndash;&gt;-->
+            <!--&lt;!&ndash;                    </dependency>&ndash;&gt;-->
+            <!--&lt;!&ndash;                </dependencies>&ndash;&gt;-->
+            <!--            </plugin>-->
 
 
         </plugins>

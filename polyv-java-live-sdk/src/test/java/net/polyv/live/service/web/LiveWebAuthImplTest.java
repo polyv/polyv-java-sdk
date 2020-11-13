@@ -1,5 +1,6 @@
 package net.polyv.live.service.web;
 
+import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ import net.polyv.live.entity.web.auth.LiveDownloadChannelAuthInfoRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelWriteListRequest;
+import net.polyv.live.entity.web.auth.LiveUploadWriteListRequest;
 import net.polyv.live.service.BaseTest;
 import net.polyv.live.service.web.impl.LiveWebAuthServiceImpl;
 import net.polyv.live.util.LiveSignUtil;
@@ -449,7 +451,7 @@ public class LiveWebAuthImplTest extends BaseTest {
         byte[] liveDownloadChannelAuthInfoResponse;
         try {
             //path设置为下载文件路径
-            String path = getClass().getResource("/file/").getPath()+"downLoad.xlsx";
+            String path = getClass().getResource("/file/").getPath() + "downLoad.xlsx";
             liveDownloadChannelAuthInfoRequest.setChannelId(createChannel())
                     .setRank(1)
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -457,9 +459,44 @@ public class LiveWebAuthImplTest extends BaseTest {
                     liveDownloadChannelAuthInfoRequest);
             Assert.assertNotNull(liveDownloadChannelAuthInfoResponse);
             if (liveDownloadChannelAuthInfoResponse != null) {
-                FileUtil.writeFile(liveDownloadChannelAuthInfoResponse,path);
+                FileUtil.writeFile(liveDownloadChannelAuthInfoResponse, path);
                 //to do something ......
                 log.debug("测试下载频道登记观看记录成功, 文件长度 {}", liveDownloadChannelAuthInfoResponse.length);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试新增白名单
+     * 描述：用于设置频道或全局观看条件中的白名单列表
+     * 返回：如导入数据与现有列表数据会员码一致，则会以导入昵称覆盖现有昵称。
+     * @throws Exception
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testUploadWriteList() throws Exception, NoSuchAlgorithmException {
+        LiveUploadWriteListRequest liveUploadWriteListRequest = new LiveUploadWriteListRequest();
+        Boolean liveUploadWriteListResponse;
+        try {
+            //path设置为模板文件路径(已填写完数据)
+            String path = getClass().getResource("/file/WhiteListTemplate.xls").getPath();
+            liveUploadWriteListRequest.setChannelId(createChannel())
+                    .setRank(1)
+                    .setFile(new File(path))
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUploadWriteListResponse = new LiveWebAuthServiceImpl().uploadWriteList(liveUploadWriteListRequest);
+            Assert.assertTrue(liveUploadWriteListResponse);
+            if (liveUploadWriteListResponse) {
+                //to do something ......
+                log.debug("测试新增白名单成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

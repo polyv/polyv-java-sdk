@@ -1,7 +1,9 @@
 package net.polyv.live.service.web.impl;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +29,7 @@ import net.polyv.live.entity.web.auth.LiveDownloadChannelAuthInfoRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelWriteListRequest;
+import net.polyv.live.entity.web.auth.LiveUploadWriteListRequest;
 import net.polyv.live.service.LiveBaseService;
 import net.polyv.live.service.web.ILiveWebAuthService;
 import net.polyv.live.util.MapUtil;
@@ -261,6 +264,25 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DOWNLOAD_CHANNEL_AUTH_INFO_URL;
         return this.baseGetReturnArray(url, liveDownloadChannelAuthInfoRequest);
+    }
+    
+    /**
+     * 新增白名单
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/upload-white-list/
+     * @param liveUploadWriteListRequest 新增白名单请求实体
+     * @return 新增白名单返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean uploadWriteList(LiveUploadWriteListRequest liveUploadWriteListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.UPLOAD_WEITE_LIST_URL;
+        Map<String, File> fileMap = new HashMap<String, File>();
+        fileMap.put("file", liveUploadWriteListRequest.getFile());
+        String liveUploadWriteListResponse = this.baseUploadFile(url, liveUploadWriteListRequest, fileMap,
+                String.class);
+        return "true".equals(liveUploadWriteListResponse);
     }
     
 }

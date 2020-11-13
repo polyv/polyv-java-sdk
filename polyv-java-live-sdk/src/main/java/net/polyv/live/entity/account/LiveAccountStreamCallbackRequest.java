@@ -55,7 +55,7 @@ public class LiveAccountStreamCallbackRequest extends LiveCommonRequest {
          * 13位的时间戳
          */
         @ApiModelProperty(name = "timestamp", value = "13位的时间戳", required = false)
-        private Date timestamp;
+        private Long timestamp;
         
         /**
          * 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙

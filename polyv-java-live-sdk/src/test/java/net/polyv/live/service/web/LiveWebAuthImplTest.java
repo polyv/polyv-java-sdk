@@ -458,7 +458,7 @@ public class LiveWebAuthImplTest extends BaseTest {
             if (liveDownloadChannelAuthInfoResponse != null) {
                 FileUtil.writeFile(liveDownloadChannelAuthInfoResponse,path);
                 //to do something ......
-                log.debug("测试下载频道登记观看记录成功,{}", JSON.toJSONString(liveDownloadChannelAuthInfoResponse));
+                log.debug("测试下载频道登记观看记录成功, 文件长度 {}", liveDownloadChannelAuthInfoResponse.length);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

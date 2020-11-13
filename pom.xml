@@ -252,7 +252,7 @@
                         <groupId>io.qameta.allure</groupId>
                         <artifactId>allure-junit4</artifactId>
                         <version>${allure-junit4.version}</version>
-                        <scope>test</scope>
+
                     </dependency>
 
 
@@ -300,7 +300,7 @@
                         <groupId>org.jacoco</groupId>
                         <artifactId>jacoco-maven-plugin</artifactId>
                         <version>${jacoco.version}</version>
-                        <scope>test</scope>
+
                     </dependency>
                 </dependencies>
             </plugin>

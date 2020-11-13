@@ -695,7 +695,7 @@ true为设置回调成功，false为设置回调失败
 | -- | -- | -- | -- | 
 | channelId | false | Integer | 频道号 | 
 | status | false | String | 直播频道的状态：live正在直播，end直播结束 | 
-| timestamp | false | Date | 13位的时间戳 | 
+| timestamp | false | Long | 13位的时间戳 | 
 | sign | false | String | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 | 
 | sessionId | false | String | 直播的场次ID | 
 | startTime | false | Date | 直播的开始时间,13位的时间戳 | 

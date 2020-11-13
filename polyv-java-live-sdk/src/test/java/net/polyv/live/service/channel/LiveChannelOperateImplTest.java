@@ -2,7 +2,6 @@ package net.polyv.live.service.channel;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -831,11 +830,9 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            Date startTime = getDate(2020,1,1);
-            Date endTime = getDate(2020,11,11);
             liveListChannelPPTRecordRequest.setChannelId(channelId)
-                    .setStartTime(startTime)
-                    .setEndTime(endTime)
+                    .setStartTime(getDate(2020,1,1))
+                    .setEndTime(getDate(2020,11,11))
                     .setCurrentPage(1)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelPPTRecordResponse = new LiveChannelOperateServiceImpl().listPPTRecord(

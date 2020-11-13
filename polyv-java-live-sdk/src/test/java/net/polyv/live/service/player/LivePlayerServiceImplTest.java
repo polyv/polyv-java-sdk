@@ -67,11 +67,12 @@ public class LivePlayerServiceImplTest extends BaseTest {
      * 设置播放器暖场图片
      * 描述：1、修改播放器的暖场图片
      * 描述：2、暖场视频和暖场图片是处于非直播状态时，播放器显示的画面，两者在同一时间只能显示一种，以最晚设置者为准，若想删除暖场画面，则将coverImage或warmUpFlv的值设为"http://"。
+     * 返回：true 设置成功 ， false 设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSetChatAdminData() throws Exception, NoSuchAlgorithmException, URISyntaxException {
+    public void testSetPlayerImg() throws Exception, NoSuchAlgorithmException, URISyntaxException {
         LiveSetPlayerImgRequest liveSetChatAdminDataRequest = new LiveSetPlayerImgRequest();
         Boolean result = null;
         try {
@@ -83,9 +84,9 @@ public class LivePlayerServiceImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerImg(liveSetChatAdminDataRequest);
             Assert.assertNotNull(result);
-            if (result != null) {
+            if (result ) {
                 //to do something ......
-                log.debug("测试设置播放器暖场图片成功{}", JSON.toJSONString(result));
+                log.debug("测试设置播放器暖场图片成功 "   );
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

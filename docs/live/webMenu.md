@@ -111,9 +111,9 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelMenus | false | Array | 频道的菜单信息【详见[ChannelMenu参数描述](webMenu.md?id=polyv67)】 | 
+| channelMenus | false | Array | 频道的菜单信息【详见[ChannelMenu参数描述](webMenu.md?id=polyv75)】 | 
 
-<h6 id="polyv67"><a href="#/channelOperate?id=polyv67"data-id="ChannelMenu参数描述"class="anchor"><span>ChannelMenu参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv75"><a href="#/channelOperate?id=polyv75"data-id="ChannelMenu参数描述"class="anchor"><span>ChannelMenu参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

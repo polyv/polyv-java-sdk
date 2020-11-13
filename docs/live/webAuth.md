@@ -71,7 +71,7 @@ true为添加成功，false为添加失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelWriteList() throws Exception, NoSuchAlgorithmException {
+	public void testGetChannelWriteList() throws Exception, NoSuchAlgorithmException {
         LiveChannelWriteListRequest liveChannelWriteListRequest = new LiveChannelWriteListRequest();
         LiveChannelWriteListResponse liveChannelWriteListResponse;
         try {
@@ -80,7 +80,8 @@ true为添加成功，false为添加失败
                     .setKeyword(null)
                     .setPageSize(1)
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelWriteListResponse = new LiveWebAuthServiceImpl().channelWriteList(liveChannelWriteListRequest);
+            liveChannelWriteListResponse = new LiveWebAuthServiceImpl().getChannelWriteList(
+                    liveChannelWriteListRequest);
             Assert.assertNotNull(liveChannelWriteListResponse);
             if (liveChannelWriteListResponse != null) {
                 //to do something ......
@@ -119,13 +120,13 @@ true为添加成功，false为添加失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 白名单列表【详见[ChannelWriteList参数描述](webAuth.md?id=polyv51)】 | 
+| contents | false | Array | 白名单列表【详见[ChannelWriteList参数描述](webAuth.md?id=polyv57)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv51"><a href="#/channelOperate?id=polyv51"data-id="ChannelWriteList参数描述"class="anchor"><span>ChannelWriteList参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv57"><a href="#/channelOperate?id=polyv57"data-id="ChannelWriteList参数描述"class="anchor"><span>ChannelWriteList参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -149,12 +150,12 @@ true为添加成功，false为添加失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelAuth() throws Exception, NoSuchAlgorithmException {
+	public void testGetChannelAuth() throws Exception, NoSuchAlgorithmException {
         LiveChannelAuthRequest liveChannelAuthRequest = new LiveChannelAuthRequest();
         LiveChannelAuthResponse liveChannelAuthResponse;
         try {
             liveChannelAuthRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelAuthResponse = new LiveWebAuthServiceImpl().channelAuth(liveChannelAuthRequest);
+            liveChannelAuthResponse = new LiveWebAuthServiceImpl().getChannelAuth(liveChannelAuthRequest);
             Assert.assertNotNull(liveChannelAuthResponse);
             if (liveChannelAuthResponse != null) {
                 //to do something ......
@@ -189,9 +190,9 @@ true为添加成功，false为添加失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| authSettings | true | Array | 观看条件【详见[AuthSetting参数描述](webAuth.md?id=polyv52)】 | 
+| authSettings | true | Array | 观看条件【详见[AuthSetting参数描述](webAuth.md?id=polyv58)】 | 
 
-<h6 id="polyv52"><a href="#/channelOperate?id=polyv52"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv58"><a href="#/channelOperate?id=polyv58"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -200,13 +201,13 @@ true为添加成功，false为添加失败
 | authType | false | String | 通用参数：付费观看-pay，验证码观看-code，白名单观看-phone，登记观看-info，自定义授权观看-custom，外部授权-external,直接授权-direct | 
 | payAuthTips | false | String | 付费观看参数：欢迎语标题 | 
 | price | false | Float | 付费观看参数：价格，单位为元 | 
-| watchEndTime | false | String | 付费观看参数：付费有效截止日期，格式为yyyy-MM-dd HH:mm。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
+| watchEndTime | false | Date | 付费观看参数：付费有效截止日期，格式为yyyy-MM-dd HH:mm。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
 | validTimePeriod | false | Integer | 付费观看参数：付费有效时长，单位天。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
 | authCode | false | String | 验证码观看参数：验证码 | 
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv53)】 | 
+| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv59)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -214,7 +215,7 @@ true为添加成功，false为添加失败
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-<h6 id="polyv53"><a href="#/channelOperate?id=polyv53"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv59"><a href="#/channelOperate?id=polyv59"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -252,7 +253,8 @@ true为添加成功，false为添加失败
                     .setAuthCode("123456")
                     .setQcodeTips("提示文案测试2")
                     .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
-            List<LiveChannelSettingRequest.AuthSetting> authSettings = new ArrayList<LiveChannelSettingRequest.AuthSetting>();
+            List<LiveChannelSettingRequest.AuthSetting> authSettings =
+                    new ArrayList<LiveChannelSettingRequest.AuthSetting>();
             authSettings.add(authSetting);
             liveUpdateChannelAuthRequest.setChannelId(createChannel())
                     .setAuthSettings(authSettings)
@@ -285,10 +287,10 @@ true为添加成功，false为添加失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，不传为全局设置 | 
-| authSettings | true | Array | 观看条件设置【详见[AuthSetting参数描述](webAuth.md?id=polyv54)】 | 
+| authSettings | true | Array | 观看条件设置【详见[AuthSetting参数描述](webAuth.md?id=polyv60)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-<h6 id="polyv54"><a href="#/channelOperate?id=polyv54"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv60"><a href="#/channelOperate?id=polyv60"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -297,13 +299,13 @@ true为添加成功，false为添加失败
 | authType | false | String | 通用参数：付费观看-pay，验证码观看-code，白名单观看-phone，登记观看-info，自定义授权观看-custom，外部授权-external,直接授权-direct | 
 | payAuthTips | false | String | 付费观看参数：欢迎语标题 | 
 | price | false | Float | 付费观看参数：价格，单位为元 | 
-| watchEndTime | false | String | 付费观看参数：付费有效截止日期，格式为yyyy-MM-dd HH:mm。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
+| watchEndTime | false | Date | 付费观看参数：付费有效截止日期，格式为yyyy-MM-dd HH:mm。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
 | validTimePeriod | false | Integer | 付费观看参数：付费有效时长，单位天。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
 | authCode | false | String | 验证码观看参数：验证码 | 
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv55)】 | 
+| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv61)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -311,7 +313,7 @@ true为添加成功，false为添加失败
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-<h6 id="polyv55"><a href="#/channelOperate?id=polyv55"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv61"><a href="#/channelOperate?id=polyv61"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -385,9 +387,9 @@ true为设置观看条件成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv56)】 | 
+| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv62)】 | 
 
-<h6 id="polyv56"><a href="#/channelOperate?id=polyv56"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv62"><a href="#/channelOperate?id=polyv62"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -455,9 +457,9 @@ true为设置观看条件成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv57)】 | 
+| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv63)】 | 
 
-<h6 id="polyv57"><a href="#/channelOperate?id=polyv57"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv63"><a href="#/channelOperate?id=polyv63"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -564,7 +566,6 @@ true为设置成功，false为设置失败
             throw e;
         }
     }
-}
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
@@ -583,6 +584,278 @@ true为设置成功，false为设置失败
 ### 返回对象描述
 
 true为授权成功，false为授权失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 9、更新白名单
+### 描述
+```
+更新白名单
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testUpdateChannelWriteList() throws Exception, NoSuchAlgorithmException {
+        LiveUpdateChannelWriteListRequest liveUpdateChannelWriteListRequest = new LiveUpdateChannelWriteListRequest();
+        Boolean liveUpdateChannelWriteListResponse;
+        try {
+            liveUpdateChannelWriteListRequest.setChannelId(null)
+                    .setRank(1)
+                    .setOldCode("1605067278063")
+                    .setCode("1605067278063")
+                    .setName("sadboyChange")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelWriteListResponse = new LiveWebAuthServiceImpl().updateChannelWriteList(
+                    liveUpdateChannelWriteListRequest);
+            Assert.assertNotNull(liveUpdateChannelWriteListResponse);
+            if (liveUpdateChannelWriteListResponse) {
+                //to do something ......
+                log.debug("测试更新白名单成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | false | String | 频道号（传频道号则修改频道观看白名单，不传频道号则修改全局观看白名单） | 
+| rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
+| oldCode | true | String | 旧会员码 | 
+| code | true | String | 会员码（最多为50个字符） | 
+| name | true | String | 昵称（最多为50个字符） | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为更新成功，false为失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 10、删除白名单
+### 描述
+```
+用于删除指定观看白名单（支持一键清空）
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testDeleteChannelWriteList() throws Exception, NoSuchAlgorithmException {
+        LiveDeleteChannelWriteListRequest liveDeleteChannelWriteListRequest = new LiveDeleteChannelWriteListRequest();
+        Boolean liveDeleteChannelWriteListResponse;
+        try {
+            liveDeleteChannelWriteListRequest.setChannelId(null)
+                    .setRank(1)
+                    .setIsClear("N")
+                    .setCode("1605052902421")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveDeleteChannelWriteListResponse = new LiveWebAuthServiceImpl().deleteChannelWriteList(
+                    liveDeleteChannelWriteListRequest);
+            Assert.assertNotNull(liveDeleteChannelWriteListResponse);
+            if (liveDeleteChannelWriteListResponse) {
+                //to do something ......
+                log.debug("测试删除白名单成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | false | String | 频道号（传频道号则修改频道观看白名单，不传频道号则修改全局观看白名单） | 
+| rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
+| isClear | true | String | 是否一键清空白名单（Y ：清空白名单；N：根据code请求白名单，code） | 
+| code | false | String | 会员码（isClear 为N时为必传参数） | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为删除成功，false为失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 11、查询频道或全局登记观看字段
+### 描述
+```
+查询频道或全局登记观看字段
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testGetChannelAuthField() throws Exception, NoSuchAlgorithmException {
+        LiveChannelAuthFieldRequest liveChannelAuthFieldRequest = new LiveChannelAuthFieldRequest();
+        LiveChannelAuthFieldResponse liveChannelAuthFieldResponse;
+        try {
+            liveChannelAuthFieldRequest.setChannelId(createChannel())
+                    .setRank(1)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveChannelAuthFieldResponse = new LiveWebAuthServiceImpl().getChannelAuthField(
+                    liveChannelAuthFieldRequest);
+            Assert.assertNotNull(liveChannelAuthFieldResponse);
+            if (liveChannelAuthFieldResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道或全局登记观看字段成功,{}", JSON.toJSONString(liveChannelAuthFieldResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveChannelAuthFieldResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
+| channelId | false | String | 频道号，不填为获取全局 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelAuthFields | false | Array | 登记观看字段【详见[ChannelAuthField参数描述](webAuth.md?id=polyv64)】 | 
+
+<h6 id="polyv64"><a href="#/channelOperate?id=polyv64"data-id="ChannelAuthField参数描述"class="anchor"><span>ChannelAuthField参数描述</span></a></h6> <!-- {docsify-ignore} -->
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| type | false | String | 登记观看类型。name-姓名；mobile-手机号码；number-数字；option-下拉选择；text-文本 | 
+| name | false | String | 登记观看信息标题 | 
+| placeholder | false | String | 登记观看信息描述 | 
+| options | false | String | 登记观看为下拉选择时的选项，选项值以英文逗号分隔 | 
+
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 12、查询页面登记观看列表
+### 描述
+```
+查询页面登记观看列表
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testGetChannelAuthInfo() throws Exception, NoSuchAlgorithmException {
+        LiveChannelAuthInfoRequest liveChannelAuthInfoRequest = new LiveChannelAuthInfoRequest();
+        LiveChannelAuthInfoResponse liveChannelAuthInfoResponse;
+        try {
+            liveChannelAuthInfoRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelAuthInfoResponse = new LiveWebAuthServiceImpl().getChannelAuthInfo(liveChannelAuthInfoRequest);
+            Assert.assertNotNull(liveChannelAuthInfoResponse);
+            if (liveChannelAuthInfoResponse != null) {
+                //to do something ......
+                log.debug("测试查询页面登记观看列表成功,{}", JSON.toJSONString(liveChannelAuthInfoResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveChannelAuthInfoResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| currentPage | false | Integer | 页数，默认为1 | 
+| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| contents | false | Array | 页面登记记录【详见[ChannelAuthInfo参数描述](webAuth.md?id=polyv65)】 | 
+| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | false | Integer | 当前页 | 
+| totalItems | false | Integer | 记录总条数 | 
+| totalPage | false | Integer | 总页数 | 
+
+<h6 id="polyv65"><a href="#/channelOperate?id=polyv65"data-id="ChannelAuthInfo参数描述"class="anchor"><span>ChannelAuthInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| createdTime | false | Date | 登记时间 | 
+| params | false | Array | 登记的内容数据 | 
+
 <br /><br />
 
 ------------------

@@ -127,12 +127,12 @@ true为设置成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelSplash() throws Exception, NoSuchAlgorithmException {
+	public void testGetChannelSplash() throws Exception, NoSuchAlgorithmException {
         LiveChannelSplashRequest liveChannelSplashRequest = new LiveChannelSplashRequest();
         LiveChannelSplashResponse liveChannelSplashResponse;
         try {
             liveChannelSplashRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelSplashResponse = new LiveWebInfoServiceImpl().channelSplash(liveChannelSplashRequest);
+            liveChannelSplashResponse = new LiveWebInfoServiceImpl().getChannelSplash(liveChannelSplashRequest);
             Assert.assertNotNull(liveChannelSplashResponse);
             if (liveChannelSplashResponse != null) {
                 //to do something ......
@@ -370,12 +370,12 @@ true为设置成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelLikes() throws Exception, NoSuchAlgorithmException {
+	public void testGetChannelLikes() throws Exception, NoSuchAlgorithmException {
         LiveChannelLikesRequest liveChannelLikesRequest = new LiveChannelLikesRequest();
         LiveChannelLikesResponse liveChannelLikesResponse;
         try {
             liveChannelLikesRequest.setChannelIds("1965681").setRequestId(LiveSignUtil.generateUUID());
-            liveChannelLikesResponse = new LiveWebInfoServiceImpl().channelLikes(liveChannelLikesRequest);
+            liveChannelLikesResponse = new LiveWebInfoServiceImpl().getChannelLikes(liveChannelLikesRequest);
             Assert.assertNotNull(liveChannelLikesResponse);
             if (liveChannelLikesResponse != null) {
                 //to do something ......
@@ -410,9 +410,9 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelLikes | false | Array | 频道点赞数和观众热度值【详见[ChannelLikes参数描述](webInfo.md?id=polyv58)】 | 
+| channelLikes | false | Array | 频道点赞数和观众热度值【详见[ChannelLikes参数描述](webInfo.md?id=polyv66)】 | 
 
-<h6 id="polyv58"><a href="#/channelOperate?id=polyv58"data-id="ChannelLikes参数描述"class="anchor"><span>ChannelLikes参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv66"><a href="#/channelOperate?id=polyv66"data-id="ChannelLikes参数描述"class="anchor"><span>ChannelLikes参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -443,7 +443,7 @@ true为设置成功，false为设置失败
         try {
             liveUpdateChannelCountDownRequest.setChannelId(createChannel())
                     .setBookingEnabled("Y")
-                    .setStartTime("2020-11-11 11:11:11")
+                    .setStartTime(getDate(2020, 11, 11, 11, 11, 11))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(
                     liveUpdateChannelCountDownRequest);
@@ -475,7 +475,7 @@ true为设置成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | bookingEnabled | false | String | 预约观看开关Y或N | 
-| startTime | false | String | 直播开始时间，如果不传该值，表示不显示直播时间和倒计时（yyyy-MM-dd HH:mm:ss） | 
+| startTime | false | Date | 直播开始时间，如果不传该值，表示不显示直播时间和倒计时（yyyy-MM-dd HH:mm:ss） | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
@@ -498,12 +498,13 @@ true为设置成功，false为设置失败
 ### 单元测试
 ```java
 	@Test
-	public void testChannelCountDown() throws Exception, NoSuchAlgorithmException {
+	public void testGetChannelCountDown() throws Exception, NoSuchAlgorithmException {
         LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
         LiveChannelCountDownResponse liveChannelCountDownResponse;
         try {
             liveChannelCountDownRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelCountDownResponse = new LiveWebInfoServiceImpl().channelCountDown(liveChannelCountDownRequest);
+            liveChannelCountDownResponse = new LiveWebInfoServiceImpl().getChannelCountDown(
+                    liveChannelCountDownRequest);
             Assert.assertNotNull(liveChannelCountDownResponse);
             if (liveChannelCountDownResponse != null) {
                 //to do something ......
@@ -519,7 +520,6 @@ true为设置成功，false为设置失败
             throw e;
         }
     }
-}
 ```
 ### 单元测试说明
 1、请求正确，返回LiveChannelCountDownResponse对象，B端依据此对象处理业务逻辑；

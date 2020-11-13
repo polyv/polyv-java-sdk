@@ -1104,7 +1104,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 返回：true为修改推流方式成功，false为修改失败
      * @throws Exception
      */
-    @Test
+//    @Test
     public void testUpdateChannelStream() throws Exception {
         LiveUpdateChannelStreamRequest liveUpdateChannelStreamRequest = new LiveUpdateChannelStreamRequest();
         Boolean liveUpdateChannelStreamResponse;

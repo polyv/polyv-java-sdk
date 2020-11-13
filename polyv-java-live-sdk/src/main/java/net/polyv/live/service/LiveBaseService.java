@@ -106,11 +106,12 @@ public class LiveBaseService {
     
     
     /**
+     * 请求API，返回文件专用逻辑
      * HTTP GET 公共请求
      * @param url 请求URL
      * @param e 请求参数对象
      * @param <E> 请求参数泛型
-     * @return HTTP response 数据封装对象
+     * @return 文件二进制流
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 签名异常
      */
@@ -129,6 +130,14 @@ public class LiveBaseService {
         return response;
     }
     
+    /**
+     * 请求参数公共用校验逻辑，添加全局userid、生成签名、转换对象返回
+     * @param e 请求参数对象
+     * @param <E> 请求参数泛型
+     * @return  转换对象为MAP，将签名、时间戳等加入到返回map
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
     private <E extends LiveCommonRequest> Map<String, String> commonRequestLogic(E e)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
         e.setAppId(LiveGlobalConfig.getAppId());

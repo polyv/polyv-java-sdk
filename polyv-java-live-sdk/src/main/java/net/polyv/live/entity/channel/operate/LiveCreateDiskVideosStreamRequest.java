@@ -31,11 +31,11 @@ public class LiveCreateDiskVideosStreamRequest extends LiveCommonRequest {
     /**
      * 要设置硬盘推流的点播视频ID,可使用new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary()获取
      */
-    @ApiModelProperty(name = "vids", value = "要设置硬盘推流的点播视频ID,可使用new LiveChannelPlaybackServiceImpl()" +
+    @ApiModelProperty(name = "videoIds", value = "要设置硬盘推流的点播视频ID,可使用new LiveChannelPlaybackServiceImpl()" +
             ".listChannelVideoLibrary()获取", required = true)
-    @NotNull(message = "属性vids不能为空")
+    @NotNull(message = "属性videoIds不能为空")
     @JSONField(name = "vids")
-    private String videos;
+    private String videoIds;
     
     /**
      * 硬盘推流开始时间，13位毫秒级时间戳

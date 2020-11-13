@@ -1148,7 +1148,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             String videoId = listChannelVideoIds(channelId).get(0);
             
-            liveCreateDiskVideosStreamRequest.setVideos(videoId)
+            liveCreateDiskVideosStreamRequest.setVideoIds(videoId)
                     .setStartTimes(System.currentTimeMillis() + 3000000)
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -1184,7 +1184,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveDeleteDiskVideosStreamRequest.setVideos("f1574595e1")
+            liveDeleteDiskVideosStreamRequest.setVideoIds("f1574595e1")
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveDeleteDiskVideosStreamResponse = new LiveChannelOperateServiceImpl().deleteDiskVideosStream(

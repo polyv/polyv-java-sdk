@@ -2,6 +2,8 @@ package net.polyv.live.entity.channel.playback;
 
 import javax.validation.constraints.NotNull;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -28,9 +30,10 @@ public class LiveCreateChannelVideoPlaybackRequest extends LiveCommonRequest {
     /**
      * 要添加为回放的的点播视频
      */
-    @ApiModelProperty(name = "vid", value = "要添加为回放的的点播视频", required = true)
+    @ApiModelProperty(name = "videoId", value = "要添加为回放的的点播视频", required = true)
     @NotNull(message = "属性vid不能为空")
-    private String vid;
+    @JSONField(name = "vid")
+    private String videoId;
     
     /**
      * playback-回放列表，vod-点播列表;

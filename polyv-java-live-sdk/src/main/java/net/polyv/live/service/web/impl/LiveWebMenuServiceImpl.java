@@ -6,6 +6,8 @@ import java.util.List;
 
 import net.polyv.live.config.LiveGlobalConfig;
 import net.polyv.live.constant.LiveURL;
+import net.polyv.live.entity.web.menu.LiveAddChannelMenuRequest;
+import net.polyv.live.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.entity.web.menu.LiveUpdateChannelMenuRequest;
@@ -52,6 +54,21 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
         LiveListChannelMenuResponse liveListChannelMenuResponse = new LiveListChannelMenuResponse();
         liveListChannelMenuResponse.setChannelMenus(channelMenus);
         return liveListChannelMenuResponse;
+    }
+    
+    /**
+     * 添加频道菜单
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/szgkygg/menu/add/
+     * @param liveAddChannelMenuRequest 添加频道菜单请求实体
+     * @return 添加频道菜单返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveAddChannelMenuResponse addChannelMenu(LiveAddChannelMenuRequest liveAddChannelMenuRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.ADD_CHANNEL_MENU_URL;
+        return this.basePost(url,liveAddChannelMenuRequest,LiveAddChannelMenuResponse.class);
     }
     
 }

@@ -3,6 +3,8 @@ package net.polyv.live.service.web;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.live.entity.web.menu.LiveAddChannelMenuRequest;
+import net.polyv.live.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.entity.web.menu.LiveUpdateChannelMenuRequest;
@@ -32,6 +34,17 @@ public interface ILiveWebMenuService {
      * @throws NoSuchAlgorithmException 异常
      */
     LiveListChannelMenuResponse listChannelMenu(LiveListChannelMenuRequest liveListChannelMenuRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 添加频道菜单
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/szgkygg/menu/add/
+     * @param liveAddChannelMenuRequest 添加频道菜单请求实体
+     * @return 添加频道菜单返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveAddChannelMenuResponse addChannelMenu(LiveAddChannelMenuRequest liveAddChannelMenuRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -819,9 +819,14 @@ public class LiveURL {
      */
     public static final String DOWNLOAD_CHANNEL_WHITE_LIST_URL = BASE_URI + "v3/channel/auth/download-white-list";
     
+    /**
+     * 添加频道菜单
+     */
+    public static final String ADD_CHANNEL_MENU_URL = BASE_URI + "v3/channel/menu/add";
+    
     
     /**
-     * 设置播放器暂停广告
+     * 添加频道菜单
      */
     public static final String PLAYER_SET_CHANNEL_PAUSE_ADVERT_URL =
             BASE_URI + "v2/channelAdvert/" + PARAM_REPLACE_CHAR + "/updateStop";

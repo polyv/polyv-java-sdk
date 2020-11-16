@@ -10,6 +10,8 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.PloyvSdkException;
+import net.polyv.live.entity.web.menu.LiveAddChannelMenuRequest;
+import net.polyv.live.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.entity.web.menu.LiveUpdateChannelMenuRequest;
@@ -76,6 +78,41 @@ public class LiveWebMenuImplTest extends BaseTest {
             if (liveListChannelMenuResponse != null) {
                 //to do something ......
                 log.debug("测试查询频道的菜单信息成功,{}", JSON.toJSONString(liveListChannelMenuResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试添加频道菜单
+     * 约束：2、如果该类型的菜单已经存在，会抛出“menu already exist”异常。
+     * 描述：添加一个频道菜单
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testAddChannelMenu() throws Exception, NoSuchAlgorithmException {
+        LiveAddChannelMenuRequest liveAddChannelMenuRequest = new LiveAddChannelMenuRequest();
+        LiveAddChannelMenuResponse liveAddChannelMenuResponse;
+        try {
+            liveAddChannelMenuRequest.setChannelId(createChannel())
+                    .setName("直播描述")
+                    .setType("desc")
+                    .setContent("XXX为你讲述成功之道")
+                    .setLang("zh_CN")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveAddChannelMenuResponse = new LiveWebMenuServiceImpl().addChannelMenu(liveAddChannelMenuRequest);
+            Assert.assertNotNull(liveAddChannelMenuResponse);
+            if (liveAddChannelMenuResponse != null) {
+                //to do something ......
+                log.debug("测试添加频道菜单成功,{}", JSON.toJSONString(liveAddChannelMenuResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

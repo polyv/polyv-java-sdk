@@ -19,6 +19,7 @@ import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveDeleteChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveDownloadChannelAuthInfoRequest;
+import net.polyv.live.entity.web.auth.LiveDownloadChannelWhiteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelWriteListRequest;
@@ -182,6 +183,17 @@ public interface ILiveWebAuthService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean uploadWriteList(LiveUploadWriteListRequest liveUploadWriteListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     *下载频道观看白名单列表
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/download-white-list/
+     * @param liveDownloadChannelWhiteListRequest 下载频道观看白名单列表请求实体
+     * @return 下载频道观看白名单列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    byte[] downloadChannelWhiteList(LiveDownloadChannelWhiteListRequest liveDownloadChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

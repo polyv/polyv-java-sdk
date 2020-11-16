@@ -26,6 +26,7 @@ import net.polyv.live.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveDeleteChannelWriteListRequest;
 import net.polyv.live.entity.web.auth.LiveDownloadChannelAuthInfoRequest;
+import net.polyv.live.entity.web.auth.LiveDownloadChannelWhiteListRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.entity.web.auth.LiveUpdateChannelWriteListRequest;
@@ -277,12 +278,27 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     @Override
     public Boolean uploadWriteList(LiveUploadWriteListRequest liveUploadWriteListRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.UPLOAD_WEITE_LIST_URL;
+        String url = LiveURL.UPLOAD_WHITE_LIST_URL;
         Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("file", liveUploadWriteListRequest.getFile());
         String liveUploadWriteListResponse = this.baseUploadFile(url, liveUploadWriteListRequest, fileMap,
                 String.class);
         return "true".equals(liveUploadWriteListResponse);
+    }
+    
+    /**
+     *下载频道观看白名单列表
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/download-white-list/
+     * @param liveDownloadChannelWhiteListRequest 下载频道观看白名单列表请求实体
+     * @return 下载频道观看白名单列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public byte[] downloadChannelWhiteList(LiveDownloadChannelWhiteListRequest liveDownloadChannelWhiteListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.DOWNLOAD_CHANNEL_WHITE_LIST_URL;
+        return this.baseGetReturnArray(url,liveDownloadChannelWhiteListRequest);
     }
     
 }

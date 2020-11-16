@@ -812,7 +812,12 @@ public class LiveURL {
     /**
      * 新增白名单
      */
-    public static final String UPLOAD_WEITE_LIST_URL = BASE_URI + "v3/channel/auth/upload-white-list";
+    public static final String UPLOAD_WHITE_LIST_URL = BASE_URI + "v3/channel/auth/upload-white-list";
+    
+    /**
+     * 下载频道观看白名单列表
+     */
+    public static final String DOWNLOAD_CHANNEL_WHITE_LIST_URL = BASE_URI + "v3/channel/auth/download-white-list";
     
     
     /**

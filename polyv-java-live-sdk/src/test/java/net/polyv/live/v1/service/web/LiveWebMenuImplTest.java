@@ -17,6 +17,7 @@ import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
+import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuInfoRequest;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuSortRequest;
 import net.polyv.live.v1.service.BaseTest;
@@ -149,11 +150,45 @@ public class LiveWebMenuImplTest extends BaseTest {
                     .setMenuIds(menuIdsStr)
                     .setLang("zh_CN")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveUpdateChannelMenuSortResponse = new LiveWebMenuServiceImpl().updateChannelMenuSort(liveUpdateChannelMenuSortRequest);
+            liveUpdateChannelMenuSortResponse = new LiveWebMenuServiceImpl().updateChannelMenuSort(
+                    liveUpdateChannelMenuSortRequest);
             Assert.assertNotNull(liveUpdateChannelMenuSortResponse);
             if (liveUpdateChannelMenuSortResponse != null) {
                 //to do something ......
                 log.debug("测试设置频道菜单排序成功,{}", JSON.toJSONString(liveUpdateChannelMenuSortResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试设置指定菜单id的频道菜单信息
+     * 约束：2、互动聊天或咨询提问的菜单ID不允许设置
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateChannelMenuInfo() throws Exception, NoSuchAlgorithmException {
+        LiveUpdateChannelMenuInfoRequest liveUpdateChannelMenuInfoRequest = new LiveUpdateChannelMenuInfoRequest();
+        Boolean liveUpdateChannelMenuInfoResponse;
+        try {
+            liveUpdateChannelMenuInfoRequest.setMenuId("3e687a3575")
+                    .setContent("XXX生财之道(Junit勿删)")
+                    .setLang("zh_CN")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelMenuInfoResponse = new LiveWebMenuServiceImpl().updateChannelMenuInfo(
+                    liveUpdateChannelMenuInfoRequest);
+            Assert.assertNotNull(liveUpdateChannelMenuInfoResponse);
+            if (liveUpdateChannelMenuInfoResponse != null) {
+                //to do something ......
+                log.debug("测试设置指定菜单id的频道菜单信息成功,{}", JSON.toJSONString(liveUpdateChannelMenuInfoResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -29,8 +29,11 @@ import net.polyv.live.v1.entity.channel.playback.LiveChannelVideoListRequest;
 import net.polyv.live.v1.entity.channel.playback.LiveChannelVideoListResponse;
 import net.polyv.live.v1.entity.channel.playback.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.v1.entity.channel.playback.LiveListChannelVideoLibraryResponse;
+import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
+import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.v1.service.channel.impl.LiveChannelOperateServiceImpl;
 import net.polyv.live.v1.service.channel.impl.LiveChannelPlaybackServiceImpl;
+import net.polyv.live.v1.service.web.impl.LiveWebMenuServiceImpl;
 import net.polyv.live.v1.util.LiveSignUtil;
 
 /**
@@ -106,7 +109,7 @@ public class BaseTest {
             throws Exception, NoSuchAlgorithmException {
         LiveCreateSonChannelResponse liveCreateSonChannelResponse =
                 new LiveChannelOperateServiceImpl().createSonChannel(
-                liveCreateSonChannelRequest);
+                        liveCreateSonChannelRequest);
         Assert.assertNotNull(liveCreateSonChannelResponse);
         return liveCreateSonChannelResponse.getAccount();
     }
@@ -211,12 +214,12 @@ public class BaseTest {
     protected String getChannelVideoFileUrl(String channelId) throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
         liveChannelVideoListRequest.setChannelId("1951952")
-                .setStartDate(getDate(2020,1,1))
-                .setEndDate(getDate(2020,10,14))
+                .setStartDate(getDate(2020, 1, 1))
+                .setEndDate(getDate(2020, 10, 14))
                 .setSessionId(null);
         LiveChannelVideoListResponse liveChannelVideoListResponse =
                 new LiveChannelPlaybackServiceImpl().listChannelVideo(
-                liveChannelVideoListRequest);
+                        liveChannelVideoListRequest);
         Assert.assertNotNull(liveChannelVideoListResponse);
         List<LiveChannelVideoListResponse.ChannelVedioInfo> channelVedioInfos =
                 liveChannelVideoListResponse.getChannelVedioInfos();
@@ -240,7 +243,7 @@ public class BaseTest {
                 .setRequestId(LiveSignUtil.generateUUID());
         LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse =
                 new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary(
-                liveListChannelVideoLibraryRequest);
+                        liveListChannelVideoLibraryRequest);
         Assert.assertNotNull(liveListChannelVideoLibraryResponse);
         List<LiveListChannelVideoLibraryResponse.ChannelVideoLibrary> contents =
                 liveListChannelVideoLibraryResponse.getContents();
@@ -263,13 +266,13 @@ public class BaseTest {
     protected List<String> listChannelFileIds(String channelId) throws Exception, NoSuchAlgorithmException {
         LiveChannelVideoListRequest liveChannelVideoListRequest = new LiveChannelVideoListRequest();
         liveChannelVideoListRequest.setChannelId(channelId)
-                .setStartDate(getDate(2020,1,1))
-                .setEndDate(getDate(2020,11,11))
+                .setStartDate(getDate(2020, 1, 1))
+                .setEndDate(getDate(2020, 11, 11))
                 .setSessionId(null)
                 .setRequestId(LiveSignUtil.generateUUID());
         LiveChannelVideoListResponse liveChannelVideoListResponse =
                 new LiveChannelPlaybackServiceImpl().listChannelVideo(
-                liveChannelVideoListRequest);
+                        liveChannelVideoListRequest);
         Assert.assertNotNull(liveChannelVideoListResponse);
         List<LiveChannelVideoListResponse.ChannelVedioInfo> channelVedioInfos =
                 liveChannelVideoListResponse.getChannelVedioInfos();
@@ -280,6 +283,20 @@ public class BaseTest {
             fileIds.add(temp.getFileId());
         }
         return fileIds;
+    }
+    
+    protected List<String> listChannelMenuIds(String channelId) throws IOException, NoSuchAlgorithmException {
+        LiveListChannelMenuRequest liveListChannelMenuRequest = new LiveListChannelMenuRequest();
+        LiveListChannelMenuResponse liveListChannelMenuResponse;
+        liveListChannelMenuRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+        liveListChannelMenuResponse = new LiveWebMenuServiceImpl().listChannelMenu(liveListChannelMenuRequest);
+        Assert.assertNotNull(liveListChannelMenuResponse);
+        List<LiveListChannelMenuResponse.ChannelMenu> channelMenus = liveListChannelMenuResponse.getChannelMenus();
+        List<String> menuList = new ArrayList<String>(channelMenus.size());
+        for(LiveListChannelMenuResponse.ChannelMenu temp:channelMenus){
+            menuList.add(temp.getMenuId());
+        }
+        return menuList;
     }
     
     /**
@@ -307,24 +324,24 @@ public class BaseTest {
      * @param time 时分秒整形数组
      * @return
      */
-    public Date getDate(int year, int month,int day, int... time) {
+    public Date getDate(int year, int month, int day, int... time) {
         Calendar instance = Calendar.getInstance();
-        instance.set(year,month,day);
-        if(time.length>0){
-            instance.set(Calendar.HOUR_OF_DAY,time[0]);
+        instance.set(year, month, day);
+        if (time.length > 0) {
+            instance.set(Calendar.HOUR_OF_DAY, time[0]);
         }
-        if(time.length>1){
-            instance.set(Calendar.MINUTE,time[1]);
+        if (time.length > 1) {
+            instance.set(Calendar.MINUTE, time[1]);
         }
-        if(time.length>2){
-            instance.set(Calendar.SECOND,time[2]);
+        if (time.length > 2) {
+            instance.set(Calendar.SECOND, time[2]);
         }
         return instance.getTime();
     }
     
     /**
      * 获取Date对象
-     * @param  timestamp 时间戳
+     * @param timestamp 时间戳
      * @return
      */
     public Date getDate(Long timestamp) {

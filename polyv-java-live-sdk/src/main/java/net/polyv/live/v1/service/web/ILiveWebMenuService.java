@@ -3,9 +3,12 @@ package net.polyv.live.v1.service.web;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuRequest;
+import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuRequest;
+import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuSortRequest;
 
 /**
  * @author: sadboy
@@ -34,4 +37,27 @@ public interface ILiveWebMenuService {
     LiveListChannelMenuResponse listChannelMenu(LiveListChannelMenuRequest liveListChannelMenuRequest)
             throws IOException, NoSuchAlgorithmException;
     
+    /**
+     * 添加频道菜单
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/szgkygg/menu/add/
+     * @param liveAddChannelMenuRequest 添加频道菜单请求实体
+     * @return 添加频道菜单返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveAddChannelMenuResponse addChannelMenu(LiveAddChannelMenuRequest liveAddChannelMenuRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     *设置频道菜单排序
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/menu/update-rank/
+     * @param liveUpdateChannelMenuSortRequest 设置频道菜单排序请求实体
+     * @return 设置频道菜单排序返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateChannelMenuSort(LiveUpdateChannelMenuSortRequest liveUpdateChannelMenuSortRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
 }
+

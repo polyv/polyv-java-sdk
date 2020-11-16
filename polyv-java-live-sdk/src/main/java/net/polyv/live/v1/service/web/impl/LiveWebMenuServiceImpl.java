@@ -6,9 +6,12 @@ import java.util.List;
 
 import net.polyv.live.v1.config.LiveGlobalConfig;
 import net.polyv.live.v1.constant.LiveURL;
+import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuRequest;
+import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuRequest;
+import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuSortRequest;
 import net.polyv.live.v1.service.LiveBaseService;
 import net.polyv.live.v1.service.web.ILiveWebMenuService;
 
@@ -54,4 +57,36 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
         return liveListChannelMenuResponse;
     }
     
+    /**
+     * 添加频道菜单
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/szgkygg/menu/add/
+     * @param liveAddChannelMenuRequest 添加频道菜单请求实体
+     * @return 添加频道菜单返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveAddChannelMenuResponse addChannelMenu(LiveAddChannelMenuRequest liveAddChannelMenuRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.ADD_CHANNEL_MENU_URL;
+        return this.basePost(url, liveAddChannelMenuRequest, LiveAddChannelMenuResponse.class);
+    }
+    
+    /**
+     * 设置频道菜单排序
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/menu/update-rank/
+     * @param liveUpdateChannelMenuSortRequest 设置频道菜单排序请求实体
+     * @return 设置频道菜单排序返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateChannelMenuSort(LiveUpdateChannelMenuSortRequest liveUpdateChannelMenuSortRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.UPDATE_CHANNEL_MENU_SORT_URL;
+        String liveUpdateChannelMenuSortResponse = this.basePost(url, liveUpdateChannelMenuSortRequest, String.class);
+        return "success".equals(liveUpdateChannelMenuSortResponse);
+    }
+    
 }
+

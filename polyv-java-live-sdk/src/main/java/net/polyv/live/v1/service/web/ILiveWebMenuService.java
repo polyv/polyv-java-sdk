@@ -8,6 +8,7 @@ import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveDeleteChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
+import net.polyv.live.v1.entity.web.menu.LiveSetConsultingEnabledRequest;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuInfoRequest;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuSortRequest;
@@ -81,6 +82,17 @@ public interface ILiveWebMenuService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean deleteChannelMenu(LiveDeleteChannelMenuRequest liveDeleteChannelMenuRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置提问功能显示开关
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/menu/update-consulting-enabled/
+     * @param liveSetConsultingEnabledRequest 设置提问功能显示开关请求实体
+     * @return 设置提问功能显示开关返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean setConsultingEnabled(LiveSetConsultingEnabledRequest liveSetConsultingEnabledRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

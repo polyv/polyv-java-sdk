@@ -18,6 +18,7 @@ import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveDeleteChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
+import net.polyv.live.v1.entity.web.menu.LiveSetConsultingEnabledRequest;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuInfoRequest;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuSortRequest;
@@ -220,6 +221,38 @@ public class LiveWebMenuImplTest extends BaseTest {
             if (liveDeleteChannelMenuResponse) {
                 //to do something ......
                 log.debug("测试删除频道菜单成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试设置提问功能显示开关
+     * 描述：可以开启或关闭咨询提问功能菜单
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testSetConsultingEnabled() throws Exception, NoSuchAlgorithmException {
+        LiveSetConsultingEnabledRequest liveSetConsultingEnabledRequest = new LiveSetConsultingEnabledRequest();
+        Boolean liveSetConsultingEnabledResponse;
+        try {
+            liveSetConsultingEnabledRequest.setChannelId(createChannel())
+                    .setEnabled("N")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveSetConsultingEnabledResponse = new LiveWebMenuServiceImpl().setConsultingEnabled(
+                    liveSetConsultingEnabledRequest);
+            Assert.assertTrue(liveSetConsultingEnabledResponse);
+            if (liveSetConsultingEnabledResponse) {
+                //to do something ......
+                log.debug("测试设置提问功能显示开关成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

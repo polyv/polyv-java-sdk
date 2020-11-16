@@ -834,6 +834,12 @@ public class LiveURL {
      */
     public static final String DELETE_CHANNEL_MENU_URL = BASE_URI + "v3/channel/menu/delete";
     
+    /**
+     * 设置提问功能显示开关
+     */
+    public static final String UPDATE_CHANNEL_CONSULTING_ENABLED_URL =
+            BASE_URI + "v2/channel/menu/" + PARAM_REPLACE_CHAR + "/update-consulting-enabled";
+    
     
     /**
      * 添加频道菜单

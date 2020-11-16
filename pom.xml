@@ -36,6 +36,7 @@
         <lombok.version>1.18.10</lombok.version>
         <jacoco.version>0.8.0</jacoco.version>
         <allure-junit4.version>2.13.1</allure-junit4.version>
+        <javadoc.opts>-Xdoclint:none</javadoc.opts>
     </properties>
 
 
@@ -171,7 +172,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <!--                        <version>3.2.0</version>-->
+<!--                                                <version>3.2.0</version>-->
                         <version>2.9</version>
                         <executions>
                             <execution>
@@ -185,7 +186,7 @@
                             <charset>UTF-8</charset>
                             <locale>zh_CN</locale>
 <!--                            <doclint>none</doclint>-->
-                                                        <additionalparam>-Xdoclint:none</additionalparam>
+<!--                                                        <additionalparam>-Xdoclint:none</additionalparam>-->
                         </configuration>
                     </plugin>
                     <!-- Gpg Signature -->

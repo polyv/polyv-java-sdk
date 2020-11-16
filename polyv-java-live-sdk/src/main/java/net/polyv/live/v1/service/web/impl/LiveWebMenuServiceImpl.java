@@ -10,6 +10,7 @@ import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
+import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuInfoRequest;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuSortRequest;
 import net.polyv.live.v1.service.LiveBaseService;
@@ -87,6 +88,23 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
         String liveUpdateChannelMenuSortResponse = this.basePost(url, liveUpdateChannelMenuSortRequest, String.class);
         return "success".equals(liveUpdateChannelMenuSortResponse);
     }
+    
+    /**
+     * 设置指定菜单id的频道菜单信息
+     * URL地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/menu/update-channel-menu/
+     * @param liveUpdateChannelMenuInfoRequest 设置指定菜单id的频道菜单信息请求实体
+     * @return 设置指定菜单id的频道菜单信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateChannelMenuInfo(LiveUpdateChannelMenuInfoRequest liveUpdateChannelMenuInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.CHANNEL_MENU_UPDATE_URL;
+        String liveUpdateChannelMenuInfoResponse = this.basePost(url,liveUpdateChannelMenuInfoRequest,String.class);
+        return "success".equals(liveUpdateChannelMenuInfoResponse);
+    }
+    
     
 }
 

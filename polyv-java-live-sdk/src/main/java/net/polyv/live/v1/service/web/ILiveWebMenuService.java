@@ -6,6 +6,8 @@ import java.security.NoSuchAlgorithmException;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveDeleteChannelMenuRequest;
+import net.polyv.live.v1.entity.web.menu.LiveGetChannelImageTextRequest;
+import net.polyv.live.v1.entity.web.menu.LiveGetChannelImageTextResponse;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveSetConsultingEnabledRequest;
@@ -93,6 +95,17 @@ public interface ILiveWebMenuService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean setConsultingEnabled(LiveSetConsultingEnabledRequest liveSetConsultingEnabledRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询频道图文内容列表
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/szgkygg/menu/tuwen-list/
+     * @param liveGetChannelImageTextRequest 查询频道图文内容列表请求实体
+     * @return 查询频道图文内容列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    LiveGetChannelImageTextResponse getChannelImageText(LiveGetChannelImageTextRequest liveGetChannelImageTextRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

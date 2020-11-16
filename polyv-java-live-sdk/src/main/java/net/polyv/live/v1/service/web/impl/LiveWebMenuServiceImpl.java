@@ -9,6 +9,8 @@ import net.polyv.live.v1.constant.LiveURL;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveDeleteChannelMenuRequest;
+import net.polyv.live.v1.entity.web.menu.LiveGetChannelImageTextRequest;
+import net.polyv.live.v1.entity.web.menu.LiveGetChannelImageTextResponse;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveSetConsultingEnabledRequest;
@@ -138,6 +140,22 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
                 liveSetConsultingEnabledRequest.getChannelId());
         String liveSetConsultingEnabledResponse = this.basePost(url, liveSetConsultingEnabledRequest, String.class);
         return "".equals(liveSetConsultingEnabledResponse);
+    }
+    
+    /**
+     * 查询频道图文内容列表
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/szgkygg/menu/tuwen-list/
+     * @param liveGetChannelImageTextRequest 查询频道图文内容列表请求实体
+     * @return 查询频道图文内容列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveGetChannelImageTextResponse getChannelImageText(
+            LiveGetChannelImageTextRequest liveGetChannelImageTextRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.GET_CHANNEL_IMAGE_TEXT_URL;
+        return this.basePost(url,liveGetChannelImageTextRequest,LiveGetChannelImageTextResponse.class);
     }
     
 }

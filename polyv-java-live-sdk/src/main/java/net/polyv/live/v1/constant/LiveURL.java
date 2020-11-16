@@ -840,6 +840,11 @@ public class LiveURL {
     public static final String UPDATE_CHANNEL_CONSULTING_ENABLED_URL =
             BASE_URI + "v2/channel/menu/" + PARAM_REPLACE_CHAR + "/update-consulting-enabled";
     
+    /**
+     * 查询频道图文内容列表
+     */
+    public static final String GET_CHANNEL_IMAGE_TEXT_URL = BASE_URI + "v3/channel/watch/tuwen/list";
+    
     
     /**
      * 添加频道菜单

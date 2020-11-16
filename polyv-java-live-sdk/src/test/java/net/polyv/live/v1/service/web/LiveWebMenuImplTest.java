@@ -16,6 +16,8 @@ import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveDeleteChannelMenuRequest;
+import net.polyv.live.v1.entity.web.menu.LiveGetChannelImageTextRequest;
+import net.polyv.live.v1.entity.web.menu.LiveGetChannelImageTextResponse;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveSetConsultingEnabledRequest;
@@ -253,6 +255,39 @@ public class LiveWebMenuImplTest extends BaseTest {
             if (liveSetConsultingEnabledResponse) {
                 //to do something ......
                 log.debug("测试设置提问功能显示开关成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询频道图文内容列表
+     * 描述：可以开启或关闭咨询提问功能菜单
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetChannelImageText() throws Exception, NoSuchAlgorithmException {
+        LiveGetChannelImageTextRequest liveGetChannelImageTextRequest = new LiveGetChannelImageTextRequest();
+        LiveGetChannelImageTextResponse liveGetChannelImageTextResponse = new LiveGetChannelImageTextResponse();
+        try {
+            liveGetChannelImageTextRequest.setChannelId(createChannel())
+                    .setId(null)
+                    .setImageMode("N")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveGetChannelImageTextResponse = new LiveWebMenuServiceImpl().getChannelImageText(
+                    liveGetChannelImageTextRequest);
+            Assert.assertNotNull(liveGetChannelImageTextResponse);
+            if (liveGetChannelImageTextResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道图文内容列表成功，{}",JSON.toJSONString(liveGetChannelImageTextResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

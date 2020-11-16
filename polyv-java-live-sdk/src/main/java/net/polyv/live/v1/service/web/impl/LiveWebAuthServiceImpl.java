@@ -277,7 +277,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     @Override
     public Boolean uploadWriteList(LiveUploadWriteListRequest liveUploadWriteListRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.UPLOAD_WEITE_LIST_URL;
+        String url = LiveURL.UPLOAD_WHITE_LIST_URL;
         Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("file", liveUploadWriteListRequest.getFile());
         String liveUploadWriteListResponse = this.baseUploadFile(url, liveUploadWriteListRequest, fileMap,

@@ -890,7 +890,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * TODO 等待后台修改返回值
      * @throws Exception
      */
-//    @Test
+    @Test
     public void testUpdateChannelCallbackSetting() throws Exception {
         LiveUpdateChannelCallbackSettingRequest liveUpdateChannelCallbackSettingRequest =
                 new LiveUpdateChannelCallbackSettingRequest();
@@ -1069,7 +1069,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     }
     
     /**
-     * 测试查询频道广告列表
+     * 测试查询频道直播截图
      * 约束：2、如果直播未开启，将抛出"channel is not live."异常
      * 返回：返回图片http地址，
      * @throws Exception
@@ -1087,7 +1087,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             Assert.assertNotNull(liveChannelCaptureResponse);
             if (liveChannelCaptureResponse != null) {
                 //to do something ......
-                log.debug("测试查询频道广告列表成功,{}", JSON.toJSONString(liveChannelCaptureResponse));
+                log.debug("测试查询频道直播截图成功,{}", JSON.toJSONString(liveChannelCaptureResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
@@ -1141,7 +1141,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 返回：true为设置硬盘推流直播成功，false为修改失败
      * @throws Exception
      */
-//    @Test
+    @Test
     public void testCreateDiskVideosStream() throws Exception {
         LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest = new LiveCreateDiskVideosStreamRequest();
         Boolean liveCreateDiskVideosStreamResponse;

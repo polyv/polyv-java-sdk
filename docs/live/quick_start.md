@@ -22,7 +22,7 @@
 <dependency>
     <groupId>net.polyv</groupId>
     <artifactId>polyv-java-live-sdk</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
 </dependency> 
 ```
 
@@ -109,10 +109,10 @@ import org.junit.Assert;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.exception.BusinessException;
-import net.polyv.live.config.InitConfig;
-import net.polyv.live.entity.channel.operate.LiveChannelRequest;
-import net.polyv.live.entity.channel.operate.LiveChannelResponse;
-import net.polyv.live.service.channel.impl.LiveChannelOperateServiceImpl;
+import InitConfig;
+import LiveChannelRequest;
+import LiveChannelResponse;
+import LiveChannelOperateServiceImpl;
 
 /**
  * @author: thomas
@@ -165,9 +165,9 @@ public class LiveChannelDemo {
 &emsp;&emsp;执行代码后，控制台应有如下关键输出，表示整合完成：
 
 ```json
-[main] DEBUG net.polyv.common.base.HttpUtil - http 请求 url: https://api.polyv.net/live/v2/channels/ , 请求参数: {"requestId":"2860257a405447e1bbbe9161da2dee72","appId":"frlr1zazn3","name":"Spring 知识精讲","sign":"EC98FB94BF6DADA722F1C9A7AA0E9C0E","channelPasswd":"666888","userId":"1b448be323","timestamp":"1603435147307"}
-[main] DEBUG net.polyv.common.base.HttpUtil - http 请求结果: {"code":200,"status":"success","message":"","data":{"channelId":1972796,"userId":"1b448be323","name":"Spring 知识精讲","publisher":"主持人","description":"","url":"rtmp://push-d1.videocc.net/recordf/1b448be3231603435207373ea0f?auth_key=1603437007-0-0-bdbbb7f070573d80424a69c99c52ed0a","stream":"1b448be3231603435207373ea0f","logoImage":"","logoOpacity":1.0,"logoPosition":"tr","logoHref":"","coverImage":"","coverHref":"","waitImage":"","waitHref":"","cutoffImage":"","cutoffHref":"","advertType":"NONE","advertDuration":0,"advertWidth":0,"advertHeight":0,"advertImage":"","advertHref":"","advertFlvVid":"","advertFlvUrl":"","playerColor":"#666666","autoPlay":false,"warmUpFlv":"","passwdRestrict":false,"passwdEncrypted":"","isOnlyAudio":"N","isLowLatency":"N","m3u8Url":"http://pull-d1.videocc.net/recordf/1b448be3231603435207373ea0f.m3u8?auth_key=1603435207-0-0-56b60df63374403e22821f79a681989f","m3u8Url1":"","m3u8Url2":"","m3u8Url3":"","channelLogoImage":"http://liveimages.videocc.net/assets/wimages/pc_images/logo.png","scene":"alone","channelViewerPasswd":null,"channelPasswd":"666888","linkMicLimit":0,"streamType":"client","pureRtcEnabled":"N","type":"transmit","currentTimeMillis":1603435207694}}
-[main] DEBUG net.polyv.live.service.channel.LiveChannelDemo - 频道创建成功{"advertDuration":0,"advertFlvUrl":"","advertFlvVid":"","advertHeight":0,"advertHref":"","advertImage":"","advertType":"NONE","advertWidth":0,"autoPlay":false,"channelId":1972796,"coverHref":"","coverImage":"","currentTimeMillis":1603435207694,"cutoffHref":"","cutoffImage":"","description":"","isLowLatency":"N","isOnlyAudio":"N","linkMicLimit":0,"logoHref":"","logoImage":"","logoOpacity":1,"logoPosition":"tr","m3u8Url":"http://pull-d1.videocc.net/recordf/1b448be3231603435207373ea0f.m3u8?auth_key=1603435207-0-0-56b60df63374403e22821f79a681989f","m3u8Url1":"","m3u8Url2":"","m3u8Url3":"","name":"Spring 知识精讲","passwdEncrypted":"","passwdRestrict":false,"playerColor":"#666666","stream":"1b448be3231603435207373ea0f","url":"rtmp://push-d1.videocc.net/recordf/1b448be3231603435207373ea0f?auth_key=1603437007-0-0-bdbbb7f070573d80424a69c99c52ed0a","userId":"1b448be323","waitHref":"","waitImage":"","warmUpFlv":""}
+[main] DEBUG HttpUtil - http 请求 url: https://api.polyv.net/live/v2/channels/ , 请求参数: {"requestId":"2860257a405447e1bbbe9161da2dee72","appId":"frlr1zazn3","name":"Spring 知识精讲","sign":"EC98FB94BF6DADA722F1C9A7AA0E9C0E","channelPasswd":"666888","userId":"1b448be323","timestamp":"1603435147307"}
+[main] DEBUG HttpUtil - http 请求结果: {"code":200,"status":"success","message":"","data":{"channelId":1972796,"userId":"1b448be323","name":"Spring 知识精讲","publisher":"主持人","description":"","url":"rtmp://push-d1.videocc.net/recordf/1b448be3231603435207373ea0f?auth_key=1603437007-0-0-bdbbb7f070573d80424a69c99c52ed0a","stream":"1b448be3231603435207373ea0f","logoImage":"","logoOpacity":1.0,"logoPosition":"tr","logoHref":"","coverImage":"","coverHref":"","waitImage":"","waitHref":"","cutoffImage":"","cutoffHref":"","advertType":"NONE","advertDuration":0,"advertWidth":0,"advertHeight":0,"advertImage":"","advertHref":"","advertFlvVid":"","advertFlvUrl":"","playerColor":"#666666","autoPlay":false,"warmUpFlv":"","passwdRestrict":false,"passwdEncrypted":"","isOnlyAudio":"N","isLowLatency":"N","m3u8Url":"http://pull-d1.videocc.net/recordf/1b448be3231603435207373ea0f.m3u8?auth_key=1603435207-0-0-56b60df63374403e22821f79a681989f","m3u8Url1":"","m3u8Url2":"","m3u8Url3":"","channelLogoImage":"http://liveimages.videocc.net/assets/wimages/pc_images/logo.png","scene":"alone","channelViewerPasswd":null,"channelPasswd":"666888","linkMicLimit":0,"streamType":"client","pureRtcEnabled":"N","type":"transmit","currentTimeMillis":1603435207694}}
+[main] DEBUG LiveChannelDemo - 频道创建成功{"advertDuration":0,"advertFlvUrl":"","advertFlvVid":"","advertHeight":0,"advertHref":"","advertImage":"","advertType":"NONE","advertWidth":0,"autoPlay":false,"channelId":1972796,"coverHref":"","coverImage":"","currentTimeMillis":1603435207694,"cutoffHref":"","cutoffImage":"","description":"","isLowLatency":"N","isOnlyAudio":"N","linkMicLimit":0,"logoHref":"","logoImage":"","logoOpacity":1,"logoPosition":"tr","m3u8Url":"http://pull-d1.videocc.net/recordf/1b448be3231603435207373ea0f.m3u8?auth_key=1603435207-0-0-56b60df63374403e22821f79a681989f","m3u8Url1":"","m3u8Url2":"","m3u8Url3":"","name":"Spring 知识精讲","passwdEncrypted":"","passwdRestrict":false,"playerColor":"#666666","stream":"1b448be3231603435207373ea0f","url":"rtmp://push-d1.videocc.net/recordf/1b448be3231603435207373ea0f?auth_key=1603437007-0-0-bdbbb7f070573d80424a69c99c52ed0a","userId":"1b448be323","waitHref":"","waitImage":"","warmUpFlv":""}
 ```
 
 &emsp;&emsp;还可以官网登录验证创建是否成功；

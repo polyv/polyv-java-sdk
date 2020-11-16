@@ -36,6 +36,7 @@
         <lombok.version>1.18.10</lombok.version>
         <jacoco.version>0.8.0</jacoco.version>
         <allure-junit4.version>2.13.1</allure-junit4.version>
+        <javadoc.opts>-Xdoclint:none</javadoc.opts>
     </properties>
 
 
@@ -184,7 +185,7 @@
                         <configuration>
                             <charset>UTF-8</charset>
                             <locale>zh_CN</locale>
-                            <doclint>none</doclint>
+<!--                            <doclint>none</doclint>-->
 <!--                                                        <additionalparam>-Xdoclint:none</additionalparam>-->
                         </configuration>
                     </plugin>

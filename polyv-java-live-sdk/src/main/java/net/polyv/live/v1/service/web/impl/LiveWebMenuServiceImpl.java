@@ -8,6 +8,7 @@ import net.polyv.live.v1.config.LiveGlobalConfig;
 import net.polyv.live.v1.constant.LiveURL;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
+import net.polyv.live.v1.entity.web.menu.LiveDeleteChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuInfoRequest;
@@ -105,6 +106,21 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
         return "success".equals(liveUpdateChannelMenuInfoResponse);
     }
     
+    /**
+     * 删除频道菜单
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/menu/menu-delete/
+     * @param liveDeleteChannelMenuRequest 删除频道菜单请求实体
+     * @return 删除频道菜单返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean deleteChannelMenu(LiveDeleteChannelMenuRequest liveDeleteChannelMenuRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.DELETE_CHANNEL_MENU_URL;
+        String liveDeleteChannelMenuResponse = this.basePost(url,liveDeleteChannelMenuRequest,String.class);
+        return "2".equals(liveDeleteChannelMenuResponse);
+    }
     
 }
 

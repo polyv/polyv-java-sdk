@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
+import net.polyv.live.v1.entity.web.menu.LiveDeleteChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuInfoRequest;
@@ -69,6 +70,17 @@ public interface ILiveWebMenuService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean updateChannelMenuInfo(LiveUpdateChannelMenuInfoRequest liveUpdateChannelMenuInfoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 删除频道菜单
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/menu/menu-delete/
+     * @param liveDeleteChannelMenuRequest 删除频道菜单请求实体
+     * @return 删除频道菜单返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean deleteChannelMenu(LiveDeleteChannelMenuRequest liveDeleteChannelMenuRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

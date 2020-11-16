@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
+import net.polyv.live.v1.entity.web.menu.LiveDeleteChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuInfoRequest;
@@ -97,7 +98,7 @@ public class LiveWebMenuImplTest extends BaseTest {
     
     /**
      * 测试添加频道菜单
-     * 约束：2、如果该类型的菜单已经存在，会抛出“menu already exist”异常。
+     * 约束：2、如果desc类型的菜单已经存在，会抛出“menu already exist”异常。
      * 描述：添加一个频道菜单
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -108,9 +109,9 @@ public class LiveWebMenuImplTest extends BaseTest {
         LiveAddChannelMenuResponse liveAddChannelMenuResponse;
         try {
             liveAddChannelMenuRequest.setChannelId(createChannel())
-                    .setName("直播描述")
-                    .setType("desc")
-                    .setContent("XXX为你讲述成功之道")
+                    .setName("推广2")
+                    .setType("iframe")
+                    .setContent("http://live.polyv.net")
                     .setLang("zh_CN")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveAddChannelMenuResponse = new LiveWebMenuServiceImpl().addChannelMenu(liveAddChannelMenuRequest);
@@ -189,6 +190,36 @@ public class LiveWebMenuImplTest extends BaseTest {
             if (liveUpdateChannelMenuInfoResponse != null) {
                 //to do something ......
                 log.debug("测试设置指定菜单id的频道菜单信息成功,{}", JSON.toJSONString(liveUpdateChannelMenuInfoResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试删除频道菜单
+     * 描述：删除指定的频道菜单，支持批量
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testDeleteChannelMenu() throws Exception, NoSuchAlgorithmException {
+        LiveDeleteChannelMenuRequest liveDeleteChannelMenuRequest = new LiveDeleteChannelMenuRequest();
+        Boolean liveDeleteChannelMenuResponse;
+        try {
+            liveDeleteChannelMenuRequest.setMenuIds("db1663823d,d9ba333cdc").setRequestId(LiveSignUtil.generateUUID());
+            liveDeleteChannelMenuResponse = new LiveWebMenuServiceImpl().deleteChannelMenu(
+                    liveDeleteChannelMenuRequest);
+            Assert.assertTrue(liveDeleteChannelMenuResponse);
+            if (liveDeleteChannelMenuResponse) {
+                //to do something ......
+                log.debug("测试删除频道菜单成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

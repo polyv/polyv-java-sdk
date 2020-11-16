@@ -829,6 +829,11 @@ public class LiveURL {
      */
     public static final String UPDATE_CHANNEL_MENU_SORT_URL = BASE_URI + "v3/channel/menu/update-rank";
     
+    /**
+     * 删除频道菜单
+     */
+    public static final String DELETE_CHANNEL_MENU_URL = BASE_URI + "v3/channel/menu/delete";
+    
     
     /**
      * 添加频道菜单

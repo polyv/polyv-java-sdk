@@ -6,7 +6,7 @@
 
     <groupId>net.polyv</groupId>
     <artifactId>polyv-java-sdk</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <modules>
         <module>polyv-java-vod-sdk</module>
         <module>polyv-java-live-sdk</module>
@@ -104,6 +104,7 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit4</artifactId>
             <version>${allure-junit4.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>aspectj</groupId>
@@ -183,8 +184,8 @@
                         <configuration>
                             <charset>UTF-8</charset>
                             <locale>zh_CN</locale>
-                            <doclint>none</doclint>
-                            <!--                            <additionalparam>-Xdoclint:none</additionalparam>-->
+<!--                            <doclint>none</doclint>-->
+                                                        <additionalparam>-Xdoclint:none</additionalparam>
                         </configuration>
                     </plugin>
                     <!-- Gpg Signature -->

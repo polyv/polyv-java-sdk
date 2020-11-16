@@ -31,6 +31,7 @@ import net.polyv.live.v1.entity.web.auth.LiveChannelWriteListResponse;
 import net.polyv.live.v1.entity.web.auth.LiveCreateChannelWriteListRequest;
 import net.polyv.live.v1.entity.web.auth.LiveDeleteChannelWriteListRequest;
 import net.polyv.live.v1.entity.web.auth.LiveDownloadChannelAuthInfoRequest;
+import net.polyv.live.v1.entity.web.auth.LiveDownloadChannelWhiteListRequest;
 import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
 import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelWriteListRequest;
@@ -38,6 +39,7 @@ import net.polyv.live.v1.entity.web.auth.LiveUploadWriteListRequest;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.web.impl.LiveWebAuthServiceImpl;
 import net.polyv.live.v1.util.LiveSignUtil;
+
 
 /**
  * 页面观看条件
@@ -497,6 +499,42 @@ public class LiveWebAuthImplTest extends BaseTest {
             if (liveUploadWriteListResponse) {
                 //to do something ......
                 log.debug("测试新增白名单成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试下载频道观看白名单列表
+     * 描述：用于下载全局或频道的观看条件白名单列表
+     * 返回：返回的byte[]可以按照单元测试示例进行保存，也可以自行处理。
+     * @throws Exception
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testDownloadChannelWhiteList() throws Exception, NoSuchAlgorithmException {
+       LiveDownloadChannelWhiteListRequest liveDownloadChannelWhiteListRequest = new LiveDownloadChannelWhiteListRequest();
+        byte[] liveDownloadChannelWhiteListResponse;
+        try {
+            //path设置为下载文件路径
+            String path = getClass().getResource("/file/").getPath() + "downLoadWhiteList.xlsx";
+            liveDownloadChannelWhiteListRequest.setChannelId(createChannel())
+                    .setRank(1)
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveDownloadChannelWhiteListResponse = new LiveWebAuthServiceImpl().downloadChannelWhiteList(
+                    liveDownloadChannelWhiteListRequest);
+            Assert.assertNotNull(liveDownloadChannelWhiteListResponse);
+            if (liveDownloadChannelWhiteListResponse != null) {
+                FileUtil.writeFile(liveDownloadChannelWhiteListResponse, path);
+                //to do something ......
+                log.debug("测试下载频道观看白名单列表成功, 文件长度 {}", liveDownloadChannelWhiteListResponse.length);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

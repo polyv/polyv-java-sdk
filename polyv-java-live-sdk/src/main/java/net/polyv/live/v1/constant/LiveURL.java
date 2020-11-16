@@ -824,6 +824,11 @@ public class LiveURL {
      */
     public static final String ADD_CHANNEL_MENU_URL = BASE_URI + "v3/channel/menu/add";
     
+    /**
+     * 设置频道菜单排序
+     */
+    public static final String UPDATE_CHANNEL_MENU_SORT_URL = BASE_URI + "v3/channel/menu/update-rank";
+    
     
     /**
      * 添加频道菜单
@@ -876,3 +881,4 @@ public class LiveURL {
         return String.format(format, param);
     }
 }
+

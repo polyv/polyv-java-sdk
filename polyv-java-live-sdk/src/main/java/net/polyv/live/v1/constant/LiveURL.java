@@ -845,6 +845,11 @@ public class LiveURL {
      */
     public static final String GET_CHANNEL_IMAGE_TEXT_URL = BASE_URI + "v3/channel/watch/tuwen/list";
     
+    /**
+     * 设置频道微信分享信息
+     */
+    public static final String UPDATE_CHANNEL_WX_SHARE_URL = BASE_URI + "v3/channel/weixin-share/update";
+    
     
     /**
      * 添加频道菜单

@@ -850,6 +850,11 @@ public class LiveURL {
      */
     public static final String UPDATE_CHANNEL_WX_SHARE_URL = BASE_URI + "v3/channel/weixin-share/update";
     
+    /**
+     * 查询频道微信分享信息
+     */
+    public static final String GET_CHANNEL_WX_SHARE_URL = BASE_URI + "v3/channel/weixin-share/get";
+    
     
     /**
      * 添加频道菜单

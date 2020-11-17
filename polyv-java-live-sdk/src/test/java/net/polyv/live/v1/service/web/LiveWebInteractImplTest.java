@@ -14,6 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.live.v1.entity.web.interact.LiveChannelDonateRequest;
 import net.polyv.live.v1.entity.web.interact.LiveChannelDonateResponse;
+import net.polyv.live.v1.entity.web.interact.LiveGetChannelWxShareRequest;
+import net.polyv.live.v1.entity.web.interact.LiveGetChannelWxShareResponse;
 import net.polyv.live.v1.entity.web.interact.LiveUpdateChannelCashRequest;
 import net.polyv.live.v1.entity.web.interact.LiveUpdateChannelGoodRequest;
 import net.polyv.live.v1.entity.web.interact.LiveUpdateChannelWxShareRequest;
@@ -157,6 +159,36 @@ public class LiveWebInteractImplTest extends BaseTest {
             if (liveUpdateChannelWxShareResponse) {
                 //to do something ......
                 log.debug("测试设置频道微信分享信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询频道微信分享信息
+     * 描述：获取频道的微信分享设置信息
+     * @throws Exception
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetChannelWxShare() throws Exception, NoSuchAlgorithmException {
+        LiveGetChannelWxShareRequest liveGetChannelWxShareRequest = new LiveGetChannelWxShareRequest();
+        LiveGetChannelWxShareResponse liveGetChannelWxShareResponse;
+        try {
+            liveGetChannelWxShareRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveGetChannelWxShareResponse = new LiveWebInteractServiceImpl().getChannelWxShare(
+                    liveGetChannelWxShareRequest);
+            Assert.assertNotNull(liveGetChannelWxShareResponse);
+            if (liveGetChannelWxShareResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道微信分享信息成功，{}", JSON.toJSONString(liveGetChannelWxShareResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

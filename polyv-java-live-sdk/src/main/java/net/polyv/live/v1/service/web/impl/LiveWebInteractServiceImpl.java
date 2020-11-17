@@ -7,6 +7,8 @@ import java.util.Map;
 import net.polyv.live.v1.constant.LiveURL;
 import net.polyv.live.v1.entity.web.interact.LiveChannelDonateRequest;
 import net.polyv.live.v1.entity.web.interact.LiveChannelDonateResponse;
+import net.polyv.live.v1.entity.web.interact.LiveGetChannelWxShareRequest;
+import net.polyv.live.v1.entity.web.interact.LiveGetChannelWxShareResponse;
 import net.polyv.live.v1.entity.web.interact.LiveUpdateChannelCashRequest;
 import net.polyv.live.v1.entity.web.interact.LiveUpdateChannelGoodRequest;
 import net.polyv.live.v1.entity.web.interact.LiveUpdateChannelWxShareRequest;
@@ -88,6 +90,21 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
         String url = LiveURL.UPDATE_CHANNEL_WX_SHARE_URL;
         String liveUpdateChannelWxShareResponse = this.basePost(url, liveUpdateChannelWxShareRequest, String.class);
         return "success".equals(liveUpdateChannelWxShareResponse);
+    }
+    
+    /**
+     * 查询频道微信分享信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymhd/get-weixin-share/
+     * @param liveGetChannelWxShareRequest 查询频道微信分享信息请求实体
+     * @return 查询频道微信分享信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveGetChannelWxShareResponse getChannelWxShare(LiveGetChannelWxShareRequest liveGetChannelWxShareRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.GET_CHANNEL_WX_SHARE_URL;
+        return this.baseGet(url,liveGetChannelWxShareRequest,LiveGetChannelWxShareResponse.class);
     }
     
 }

@@ -860,6 +860,11 @@ public class LiveURL {
      */
     public static final String DOWNLOAD_LOTTERY_WINNER_DETAIL_URL = BASE_URI + "v3/channel/lottery/download-winner-detail";
     
+    /**
+     * 发送点赞
+     */
+    public static final String SEND_CHANNEL_LIKE_URL = BASE_URI +"v2/channels/"+ PARAM_REPLACE_CHAR+"/like";
+    
     
     /**
      * 添加频道菜单

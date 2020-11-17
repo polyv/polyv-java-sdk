@@ -9,6 +9,7 @@ import net.polyv.live.v1.entity.interact.LiveListLotteryRequest;
 import net.polyv.live.v1.entity.interact.LiveListLotteryResponse;
 import net.polyv.live.v1.entity.interact.LiveLotteryWinnerDetailRequest;
 import net.polyv.live.v1.entity.interact.LiveLotteryWinnerDetailResponse;
+import net.polyv.live.v1.entity.interact.LiveSendChannelLikeRequest;
 import net.polyv.live.v1.entity.interact.LiveSetLotteryWinnerInfoRequest;
 import net.polyv.live.v1.service.LiveBaseService;
 import net.polyv.live.v1.service.interact.ILiveLotteryService;
@@ -83,6 +84,21 @@ public class LiveLotteryServiceImpl  extends LiveBaseService implements ILiveLot
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DOWNLOAD_LOTTERY_WINNER_DETAIL_URL;
         return this.baseGetReturnArray(url,liveDownloadLotteryDetailRequest);
+    }
+    
+    /**
+     * 发送点赞
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/zbhd/like/
+     * @param liveSendChannelLikeRequest 发送点赞请求实体
+     * @return 发送点赞返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Integer sendChannelLike(LiveSendChannelLikeRequest liveSendChannelLikeRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.SEND_CHANNEL_LIKE_URL,liveSendChannelLikeRequest.getChannelId());
+        return this.basePost(url,liveSendChannelLikeRequest,Integer.class);
     }
     
 }

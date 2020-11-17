@@ -855,6 +855,11 @@ public class LiveURL {
      */
     public static final String GET_CHANNEL_WX_SHARE_URL = BASE_URI + "v3/channel/weixin-share/get";
     
+    /**
+     * 导出频道单场抽奖的中奖记录
+     */
+    public static final String DOWNLOAD_LOTTERY_WINNER_DETAIL_URL = BASE_URI + "v3/channel/lottery/download-winner-detail";
+    
     
     /**
      * 添加频道菜单

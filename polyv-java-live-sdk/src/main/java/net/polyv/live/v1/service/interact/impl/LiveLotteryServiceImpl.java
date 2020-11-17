@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import net.polyv.live.v1.constant.LiveURL;
+import net.polyv.live.v1.entity.interact.LiveDownloadLotteryDetailRequest;
 import net.polyv.live.v1.entity.interact.LiveListLotteryRequest;
 import net.polyv.live.v1.entity.interact.LiveListLotteryResponse;
 import net.polyv.live.v1.entity.interact.LiveLotteryWinnerDetailRequest;
@@ -67,6 +68,21 @@ public class LiveLotteryServiceImpl  extends LiveBaseService implements ILiveLot
         String url = LiveURL.CHANNEL_SET_LOTTERY_WINNER_INFO_URL;
         String liveSetLotteryWinnerInfoResponse = this.baseGet(url, liveSetLotteryWinnerInfoRequest, String.class);
         return "".equals(liveSetLotteryWinnerInfoResponse);
+    }
+    
+    /**
+     * 导出频道单场抽奖的中奖记录
+     * API地址：https://dev.polyv.net/2020/liveproduct/l-api/zbhd/download-winner-detail/
+     * @param liveDownloadLotteryDetailRequest 导出频道单场抽奖的中奖记录请求实体
+     * @return 导出频道单场抽奖的中奖记录返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public byte[] downloadLotteryDetail(LiveDownloadLotteryDetailRequest liveDownloadLotteryDetailRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.DOWNLOAD_LOTTERY_WINNER_DETAIL_URL;
+        return this.baseGetReturnArray(url,liveDownloadLotteryDetailRequest);
     }
     
 }

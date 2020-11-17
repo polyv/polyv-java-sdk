@@ -276,7 +276,7 @@ public class LiveWebMenuImplTest extends BaseTest {
     @Test
     public void testGetChannelImageText() throws Exception, NoSuchAlgorithmException {
         LiveGetChannelImageTextRequest liveGetChannelImageTextRequest = new LiveGetChannelImageTextRequest();
-        LiveGetChannelImageTextResponse liveGetChannelImageTextResponse = new LiveGetChannelImageTextResponse();
+        LiveGetChannelImageTextResponse liveGetChannelImageTextResponse;
         try {
             liveGetChannelImageTextRequest.setChannelId(createChannel())
                     .setId(null)
@@ -299,7 +299,6 @@ public class LiveWebMenuImplTest extends BaseTest {
             throw e;
         }
     }
-    
     
     /**
      * 测试用例结束

@@ -214,6 +214,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * 描述：用于发送打赏消息,请求成功后，服务器会向聊天室的用户广播打赏消息
      * 约束：viewerId需要是在线的viewerId
      * 返回：true为发送成功，false为发送失败
+     * TODO 未测试通过，等后台回复如何获取在线viewerId
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */

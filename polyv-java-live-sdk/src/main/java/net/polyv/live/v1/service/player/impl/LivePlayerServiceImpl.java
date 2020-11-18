@@ -10,6 +10,7 @@ import net.polyv.live.v1.entity.player.LiveSetPlayerHeaderAdvertRequest;
 import net.polyv.live.v1.entity.player.LiveSetPlayerImgRequest;
 import net.polyv.live.v1.entity.player.LiveSetPlayerLogoRequest;
 import net.polyv.live.v1.entity.player.LiveSetPlayerPauseAdvertRequest;
+import net.polyv.live.v1.entity.player.LiveSetPlayerUrlMarqueeRequest;
 import net.polyv.live.v1.entity.player.LiveSetWarmupEnableRequest;
 import net.polyv.live.v1.entity.player.LiveSetWarmupVedioRequest;
 import net.polyv.live.v1.service.LiveBaseService;
@@ -21,7 +22,6 @@ import net.polyv.live.v1.service.player.ILivePlayerService;
  **/
 @Slf4j
 public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlayerService {
-    
     
     /**
      * 设置播放器暖场图片，API地址：https://dev.polyv.net/2017/liveproduct/l-player/updatecoverimage/
@@ -124,6 +124,21 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
         return super.basePost(url, liveSetWarmupVedioRequest, Boolean.class);
     }
     
+    /**
+     * 设置播放器自定义url跑马灯
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-player/set-diyurl-marquee/
+     * @param liveSetPlayerUrlMarqueeRequest 设置播放器自定义url跑马灯请求实体
+     * @return 设置播放器自定义url跑马灯返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean setPlayerUrlMarquee(LiveSetPlayerUrlMarqueeRequest liveSetPlayerUrlMarqueeRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.SET_PLAYER_URL_MARQUEE_URL,liveSetPlayerUrlMarqueeRequest.getChannelId());
+        String liveSetPlayerUrlMarqueeResponse = this.basePost(url,liveSetPlayerUrlMarqueeRequest,String.class);
+        return "设置成功".equals(liveSetPlayerUrlMarqueeResponse);
+    }
     
     
 }

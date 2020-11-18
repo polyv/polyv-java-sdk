@@ -865,6 +865,11 @@ public class LiveURL {
      */
     public static final String SEND_CHANNEL_LIKE_URL = BASE_URI +"v2/channels/"+ PARAM_REPLACE_CHAR+"/like";
     
+    /**
+     * 发送打赏消息
+     */
+    public static final String SEND_REWARD_MSG_URL = BASE_URI +"v3/channel/chat/send-reward-msg";
+    
     
     /**
      * 添加频道菜单

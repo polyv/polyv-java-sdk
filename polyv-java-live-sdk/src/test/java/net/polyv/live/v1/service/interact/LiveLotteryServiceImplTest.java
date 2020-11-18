@@ -17,6 +17,7 @@ import net.polyv.live.v1.entity.interact.LiveListLotteryResponse;
 import net.polyv.live.v1.entity.interact.LiveLotteryWinnerDetailRequest;
 import net.polyv.live.v1.entity.interact.LiveLotteryWinnerDetailResponse;
 import net.polyv.live.v1.entity.interact.LiveSendChannelLikeRequest;
+import net.polyv.live.v1.entity.interact.LiveSendChannelRewardMsgRequest;
 import net.polyv.live.v1.entity.interact.LiveSetLotteryWinnerInfoRequest;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.interact.impl.LiveLotteryServiceImpl;
@@ -179,7 +180,6 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * 约束：3、如果有需求支持同时点多个赞，可提交非必填参数times，times最大不能超过30。*如果提交次数为n，则需n-1秒才能继续点赞
      * 约束：4、viewerId由调用端去进行区分用户即可
      * 返回：点赞数
-     * TODO viewerId未设置
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -197,6 +197,48 @@ public class LiveLotteryServiceImplTest extends BaseTest {
             if (liveSendChannelLikeResponse != null) {
                 //to do something ......
                 log.debug("测试发送点赞成功,{}", JSON.toJSONString(liveSendChannelLikeResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试发送打赏消息
+     * 描述：用于发送打赏消息,请求成功后，服务器会向聊天室的用户广播打赏消息
+     * 约束：viewerId需要是在线的viewerId
+     * 返回：true为发送成功，false为发送失败
+     * @throws Exception
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testSendChannelRewardMsg() throws Exception, NoSuchAlgorithmException {
+        LiveSendChannelRewardMsgRequest liveSendChannelRewardMsgRequest = new LiveSendChannelRewardMsgRequest();
+        Boolean liveSendChannelRewardMsgResponse;
+        try {
+            liveSendChannelRewardMsgRequest.setChannelId(createChannel())
+                    .setNickname("sadboy")
+                    .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740,3965499425&fm=26&gp=0.jpg")
+                    .setDonateType("cash")
+                    .setContent("1")
+                    .setGoodImage("https://s1.videocc.net/live-admin/img/icon-redpack-new.ae299535.png")
+                    .setSessionId(null)
+                    .setGoodNum("1")
+                    .setNeedUserImage("N")
+                    .setViewerId(getRandomString(16))
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveSendChannelRewardMsgResponse = new LiveLotteryServiceImpl().sendChannelRewardMsg(
+                    liveSendChannelRewardMsgRequest);
+            Assert.assertTrue(liveSendChannelRewardMsgResponse);
+            if (liveSendChannelRewardMsgResponse) {
+                //to do something ......
+                log.debug("测试发送打赏消息成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

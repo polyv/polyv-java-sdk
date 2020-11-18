@@ -32,6 +32,7 @@ import net.polyv.live.v1.entity.chat.LiveKickedListResponse;
 import net.polyv.live.v1.entity.chat.LiveSendChannelChatRequest;
 import net.polyv.live.v1.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.v1.entity.chat.LiveSendChatMsgResponse;
+import net.polyv.live.v1.entity.chat.LiveSendCustomChatRequest;
 import net.polyv.live.v1.entity.chat.LiveSetChatAdminDataRequest;
 import net.polyv.live.v1.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.v1.service.LiveBaseService;
@@ -293,6 +294,23 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
         String url = LiveURL.SEND_ADMIN_MSG_URL;
         String liveSendChannelChatResponse = this.basePost(url, liveSendChannelChatRequest, String.class);
         return "The message send success!".equals(liveSendChannelChatResponse);
+    }
+    
+    /**
+     * 发送自定义聊天信息
+     * API地址：https://dev.polyv.net/2016/liveproduct/zblts/send-chat/
+     * @param liveSendCustomChatRequest 发送自定义聊天信息请求实体
+     * @return 发送自定义聊天信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean sendCustomChat(LiveSendCustomChatRequest liveSendCustomChatRequest)
+            throws IOException, NoSuchAlgorithmException {
+        liveSendCustomChatRequest.setUserId(LiveGlobalConfig.getUserId());
+        String url = LiveURL.getRealUrl(LiveURL.SEND_CUSTOM_MSG_URL,liveSendCustomChatRequest.getChannelId());
+        String liveSendCustomChatResponse = this.basePost(url,liveSendCustomChatRequest,String.class);
+        return "".equals(liveSendCustomChatResponse);
     }
     
 }

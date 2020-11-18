@@ -34,6 +34,7 @@ import net.polyv.live.v1.entity.chat.LiveKickedListResponse;
 import net.polyv.live.v1.entity.chat.LiveSendChannelChatRequest;
 import net.polyv.live.v1.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.v1.entity.chat.LiveSendChatMsgResponse;
+import net.polyv.live.v1.entity.chat.LiveSendCustomChatRequest;
 import net.polyv.live.v1.entity.chat.LiveSetChatAdminDataRequest;
 import net.polyv.live.v1.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.v1.service.BaseTest;
@@ -576,6 +577,39 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             if (liveSendChannelChatResponse) {
                 //to do something ......
                 log.debug("测试管理员发送频道聊天信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试发送自定义聊天信息
+     * 返回：true 发送成功， false 发送失败
+     * TODO 返回格式不正确
+     * @throws Exception
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testSendCustomChat() throws Exception, NoSuchAlgorithmException {
+        LiveSendCustomChatRequest liveSendCustomChatRequest = new LiveSendCustomChatRequest();
+        Boolean liveSendCustomChatResponse;
+        try {
+            String channelId = super.createChannel();
+            liveSendCustomChatRequest.setChannelId(channelId)
+                    .setContent("请同学们认真学习")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveSendCustomChatResponse = new LiveChatRoomServiceImpl().sendCustomChat(liveSendCustomChatRequest);
+            Assert.assertTrue(liveSendCustomChatResponse);
+            if (liveSendCustomChatResponse) {
+                //to do something ......
+                log.debug("测试发送自定义聊天信息成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -876,6 +876,11 @@ public class LiveURL {
     public static final String SEND_ADMIN_MSG_URL = BASE_URI +"v3/channel/chat/send";
     
     /**
+     * 发送自定义聊天信息
+     */
+    public static final String SEND_CUSTOM_MSG_URL = BASE_URI +"v1/channelSetting/"+PARAM_REPLACE_CHAR+"/send-chat";
+    
+    /**
      * 设置播放器自定义url跑马灯
      */
     public static final String SET_PLAYER_URL_MARQUEE_URL = BASE_URI +"v2/channelRestrict/"+PARAM_REPLACE_CHAR+"/set-diyurl-marquee";

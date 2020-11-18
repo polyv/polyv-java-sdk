@@ -26,16 +26,16 @@ import net.polyv.live.v1.entity.web.auth.LiveChannelAuthInfoResponse;
 import net.polyv.live.v1.entity.web.auth.LiveChannelAuthRequest;
 import net.polyv.live.v1.entity.web.auth.LiveChannelAuthResponse;
 import net.polyv.live.v1.entity.web.auth.LiveChannelAuthTypeRequest;
-import net.polyv.live.v1.entity.web.auth.LiveChannelWriteListRequest;
-import net.polyv.live.v1.entity.web.auth.LiveChannelWriteListResponse;
-import net.polyv.live.v1.entity.web.auth.LiveCreateChannelWriteListRequest;
-import net.polyv.live.v1.entity.web.auth.LiveDeleteChannelWriteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveChannelWhiteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveChannelWhiteListResponse;
+import net.polyv.live.v1.entity.web.auth.LiveCreateChannelWhiteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveDeleteChannelWhiteListRequest;
 import net.polyv.live.v1.entity.web.auth.LiveDownloadChannelAuthInfoRequest;
 import net.polyv.live.v1.entity.web.auth.LiveDownloadChannelWhiteListRequest;
 import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
-import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelWriteListRequest;
-import net.polyv.live.v1.entity.web.auth.LiveUploadWriteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelWhiteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveUploadWhiteListRequest;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.web.impl.LiveWebAuthServiceImpl;
 import net.polyv.live.v1.util.LiveSignUtil;
@@ -55,18 +55,18 @@ public class LiveWebAuthImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testCreateChannelWriteList() throws Exception, NoSuchAlgorithmException {
-        LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest = new LiveCreateChannelWriteListRequest();
-        Boolean liveCreateChannelWriteListResponse;
+    public void testCreateChannelWhiteList() throws Exception, NoSuchAlgorithmException {
+        LiveCreateChannelWhiteListRequest liveCreateChannelWhiteListRequest = new LiveCreateChannelWhiteListRequest();
+        Boolean liveCreateChannelWhiteListResponse;
         try {
-            liveCreateChannelWriteListRequest.setRank(1)
+            liveCreateChannelWhiteListRequest.setRank(1)
                     .setCode(String.valueOf(System.currentTimeMillis()))
                     .setName("sadboy")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveCreateChannelWriteListResponse = new LiveWebAuthServiceImpl().createChannelWriteList(
-                    liveCreateChannelWriteListRequest);
-            Assert.assertNotNull(liveCreateChannelWriteListResponse);
-            if (liveCreateChannelWriteListResponse) {
+            liveCreateChannelWhiteListResponse = new LiveWebAuthServiceImpl().createChannelWhiteList(
+                    liveCreateChannelWhiteListRequest);
+            Assert.assertNotNull(liveCreateChannelWhiteListResponse);
+            if (liveCreateChannelWhiteListResponse) {
                 //to do something ......
                 log.debug("测试添加单个白名单-全局白名单成功");
             }
@@ -88,21 +88,21 @@ public class LiveWebAuthImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetChannelWriteList() throws Exception, NoSuchAlgorithmException {
-        LiveChannelWriteListRequest liveChannelWriteListRequest = new LiveChannelWriteListRequest();
-        LiveChannelWriteListResponse liveChannelWriteListResponse;
+    public void testGetChannelWhiteList() throws Exception, NoSuchAlgorithmException {
+        LiveChannelWhiteListRequest liveChannelWhiteListRequest = new LiveChannelWhiteListRequest();
+        LiveChannelWhiteListResponse liveChannelWhiteListResponse;
         try {
-            liveChannelWriteListRequest.setChannelId(null)
+            liveChannelWhiteListRequest.setChannelId(null)
                     .setRank(1)
                     .setKeyword(null)
                     .setPageSize(1)
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelWriteListResponse = new LiveWebAuthServiceImpl().getChannelWriteList(
-                    liveChannelWriteListRequest);
-            Assert.assertNotNull(liveChannelWriteListResponse);
-            if (liveChannelWriteListResponse != null) {
+            liveChannelWhiteListResponse = new LiveWebAuthServiceImpl().getChannelWhiteList(
+                    liveChannelWhiteListRequest);
+            Assert.assertNotNull(liveChannelWhiteListResponse);
+            if (liveChannelWhiteListResponse != null) {
                 //to do something ......
-                log.debug("测试查询频道观看白名单列表成功,{}", JSON.toJSONString(liveChannelWriteListResponse));
+                log.debug("测试查询频道观看白名单列表成功,{}", JSON.toJSONString(liveChannelWhiteListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -317,20 +317,20 @@ public class LiveWebAuthImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testUpdateChannelWriteList() throws Exception, NoSuchAlgorithmException {
-        LiveUpdateChannelWriteListRequest liveUpdateChannelWriteListRequest = new LiveUpdateChannelWriteListRequest();
-        Boolean liveUpdateChannelWriteListResponse;
+    public void testUpdateChannelWhiteList() throws Exception, NoSuchAlgorithmException {
+        LiveUpdateChannelWhiteListRequest liveUpdateChannelWhiteListRequest = new LiveUpdateChannelWhiteListRequest();
+        Boolean liveUpdateChannelWhiteListResponse;
         try {
-            liveUpdateChannelWriteListRequest.setChannelId(null)
+            liveUpdateChannelWhiteListRequest.setChannelId(null)
                     .setRank(1)
                     .setOldCode("1605067278063")
                     .setCode("1605067278063")
                     .setName("sadboyChange")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveUpdateChannelWriteListResponse = new LiveWebAuthServiceImpl().updateChannelWriteList(
-                    liveUpdateChannelWriteListRequest);
-            Assert.assertNotNull(liveUpdateChannelWriteListResponse);
-            if (liveUpdateChannelWriteListResponse) {
+            liveUpdateChannelWhiteListResponse = new LiveWebAuthServiceImpl().updateChannelWhiteList(
+                    liveUpdateChannelWhiteListRequest);
+            Assert.assertNotNull(liveUpdateChannelWhiteListResponse);
+            if (liveUpdateChannelWhiteListResponse) {
                 //to do something ......
                 log.debug("测试更新白名单成功");
             }
@@ -353,19 +353,19 @@ public class LiveWebAuthImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testDeleteChannelWriteList() throws Exception, NoSuchAlgorithmException {
-        LiveDeleteChannelWriteListRequest liveDeleteChannelWriteListRequest = new LiveDeleteChannelWriteListRequest();
-        Boolean liveDeleteChannelWriteListResponse;
+    public void testDeleteChannelWhiteList() throws Exception, NoSuchAlgorithmException {
+        LiveDeleteChannelWhiteListRequest liveDeleteChannelWhiteListRequest = new LiveDeleteChannelWhiteListRequest();
+        Boolean liveDeleteChannelWhiteListResponse;
         try {
-            liveDeleteChannelWriteListRequest.setChannelId(null)
+            liveDeleteChannelWhiteListRequest.setChannelId(null)
                     .setRank(1)
                     .setIsClear("N")
                     .setCode("1605052902421")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveDeleteChannelWriteListResponse = new LiveWebAuthServiceImpl().deleteChannelWriteList(
-                    liveDeleteChannelWriteListRequest);
-            Assert.assertNotNull(liveDeleteChannelWriteListResponse);
-            if (liveDeleteChannelWriteListResponse) {
+            liveDeleteChannelWhiteListResponse = new LiveWebAuthServiceImpl().deleteChannelWhiteList(
+                    liveDeleteChannelWhiteListRequest);
+            Assert.assertNotNull(liveDeleteChannelWhiteListResponse);
+            if (liveDeleteChannelWhiteListResponse) {
                 //to do something ......
                 log.debug("测试删除白名单成功");
             }
@@ -484,19 +484,19 @@ public class LiveWebAuthImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testUploadWriteList() throws Exception, NoSuchAlgorithmException {
-        LiveUploadWriteListRequest liveUploadWriteListRequest = new LiveUploadWriteListRequest();
-        Boolean liveUploadWriteListResponse;
+    public void testUploadWhiteList() throws Exception, NoSuchAlgorithmException {
+        LiveUploadWhiteListRequest liveUploadWhiteListRequest = new LiveUploadWhiteListRequest();
+        Boolean liveUploadWhiteListResponse;
         try {
             //path设置为模板文件路径(已填写完数据)
             String path = getClass().getResource("/file/WhiteListTemplate.xls").getPath();
-            liveUploadWriteListRequest.setChannelId(createChannel())
+            liveUploadWhiteListRequest.setChannelId(createChannel())
                     .setRank(1)
                     .setFile(new File(path))
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveUploadWriteListResponse = new LiveWebAuthServiceImpl().uploadWriteList(liveUploadWriteListRequest);
-            Assert.assertTrue(liveUploadWriteListResponse);
-            if (liveUploadWriteListResponse) {
+            liveUploadWhiteListResponse = new LiveWebAuthServiceImpl().uploadWhiteList(liveUploadWhiteListRequest);
+            Assert.assertTrue(liveUploadWhiteListResponse);
+            if (liveUploadWhiteListResponse) {
                 //to do something ......
                 log.debug("测试新增白名单成功");
             }

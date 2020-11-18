@@ -65,7 +65,7 @@ public class LiveURL {
     /**
      * 查询频道观看白名单列表
      */
-    public static final String CHANNEL_WRITE_LIST_GET_URL = BASE_URI + "v3/channel/auth/get-white-list";
+    public static final String CHANNEL_WHITE_LIST_GET_URL = BASE_URI + "v3/channel/auth/get-white-list";
     
     /**
      * 获取频道单场抽奖的中奖记录
@@ -413,7 +413,7 @@ public class LiveURL {
     /**
      * 添加单个白名单
      */
-    public static final String CHANNEL_WRITE_LIST_ADD_URL = BASE_URI + "v3/channel/auth/add-white-list";
+    public static final String CHANNEL_WHITE_LIST_ADD_URL = BASE_URI + "v3/channel/auth/add-white-list";
     
     /**
      * 将点播中的视频添加到视频库
@@ -787,12 +787,12 @@ public class LiveURL {
     /**
      * 更新白名单
      */
-    public static final String UPDATE_CHANNEL_WRITE_LIST_URL = BASE_URI + "v3/channel/auth/update-white-list";
+    public static final String UPDATE_CHANNEL_WHITE_LIST_URL = BASE_URI + "v3/channel/auth/update-white-list";
     
     /**
      * 删除白名单
      */
-    public static final String DELETE_CHANNEL_WRITE_LIST_URL = BASE_URI + "v3/channel/auth/delete-white-list";
+    public static final String DELETE_CHANNEL_WHITE_LIST_URL = BASE_URI + "v3/channel/auth/delete-white-list";
     
     /**
      * 查询频道或全局登记观看字段

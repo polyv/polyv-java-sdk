@@ -17,7 +17,7 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("添加单个白名单请求体")
-public class LiveCreateChannelWriteListRequest extends LiveCommonRequest {
+public class LiveCreateChannelWhiteListRequest extends LiveCommonRequest {
     
     /**
      * 频道号（传频道号则添加频道观看白名单，不传频道号则添加全局观看白名单）

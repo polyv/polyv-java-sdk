@@ -17,7 +17,7 @@ import net.polyv.live.v1.entity.LivePageCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("查询频道观看白名单列表请求体")
-public class LiveChannelWriteListRequest extends LivePageCommonRequest {
+public class LiveChannelWhiteListRequest extends LivePageCommonRequest {
     
     /**
      * 频道号，不传为获取全局设置

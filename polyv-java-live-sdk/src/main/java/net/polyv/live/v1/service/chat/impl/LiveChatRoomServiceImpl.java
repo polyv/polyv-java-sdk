@@ -29,6 +29,7 @@ import net.polyv.live.v1.entity.chat.LiveGetQuestionStatisticalRequest;
 import net.polyv.live.v1.entity.chat.LiveGetQuestionStatisticalResponse;
 import net.polyv.live.v1.entity.chat.LiveKickedListRequest;
 import net.polyv.live.v1.entity.chat.LiveKickedListResponse;
+import net.polyv.live.v1.entity.chat.LiveSendChannelChatRequest;
 import net.polyv.live.v1.entity.chat.LiveSendChatMsgRequest;
 import net.polyv.live.v1.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.v1.entity.chat.LiveSetChatAdminDataRequest;
@@ -164,7 +165,8 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public List<String> getAccountBadworkList(LiveGetAccountBadWordRequest liveGetAccountBadWordRequest) throws IOException, NoSuchAlgorithmException {
+    public List<String> getAccountBadworkList(LiveGetAccountBadWordRequest liveGetAccountBadWordRequest)
+            throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_GET_ACCOUNT_BAKWORD_WORD_URL;
         return super.baseGetReturnArray(url, liveGetAccountBadWordRequest, String.class);
     }
@@ -177,28 +179,31 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
      * @throws NoSuchAlgorithmException 签名异常
      */
     @Override
-    public Boolean cleanChannelAllMsg(LiveCleanChannelAllMsgRequest liveCleanChannelAllMsgRequest) throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHAT_CLEAN_CHANNEL_MSG_URL, liveCleanChannelAllMsgRequest.getChannelId() );
+    public Boolean cleanChannelAllMsg(LiveCleanChannelAllMsgRequest liveCleanChannelAllMsgRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_CLEAN_CHANNEL_MSG_URL,
+                liveCleanChannelAllMsgRequest.getChannelId());
         return super.baseGet(url, liveCleanChannelAllMsgRequest, Boolean.class);
     }
+    
     /**
      * 查询聊天室管理员信息，API地址：https://dev.polyv.net/2017/liveproduct/zblts/get-chat-admin/
      * @param liveGetChatAdminDataRequest 查询聊天室管理员信息请求实体
-     * @return  频道号
+     * @return 频道号
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
     @Override
     public LiveGetChatAdminDataResponse getChatAdminData(LiveGetChatAdminDataRequest liveGetChatAdminDataRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_ADMIN_URL,liveGetChatAdminDataRequest.getChannelId());
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_ADMIN_URL, liveGetChatAdminDataRequest.getChannelId());
         return super.basePost(url, liveGetChatAdminDataRequest, LiveGetChatAdminDataResponse.class);
     }
     
     /**
      * 查询历史聊天信息，API地址：https://dev.polyv.net/2019/liveproduct/zblts/get-channel-badwords/
      * @param liveGetHistoryChatMsgRequest 查询历史聊天信息请求实体
-     * @return  想要实体列表
+     * @return 想要实体列表
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -208,24 +213,26 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
         String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_HISTORY_MSG_URL, liveGetHistoryChatMsgRequest.getChannelId());
         return super.basePostReturnArray(url, liveGetHistoryChatMsgRequest, LiveGetHistoryChatMsgResponse.class);
     }
+    
     /**
      * 删除单条聊天记录，API地址：https://dev.polyv.net/2017/liveproduct/zblts/delchat/
      * @param liveChatDelSingleMsgRequest 删除单条聊天记录请求实体
-     * @return  是否成功
+     * @return 是否成功
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
     @Override
     public Boolean delChatSingleMsg(LiveChatDelSingleMsgRequest liveChatDelSingleMsgRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHAT_DEL_CHANNEL_SINGLE_MSG_URL, liveChatDelSingleMsgRequest.getChannelId());
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_DEL_CHANNEL_SINGLE_MSG_URL,
+                liveChatDelSingleMsgRequest.getChannelId());
         return "success".equalsIgnoreCase(super.baseGet(url, liveChatDelSingleMsgRequest, String.class));
     }
     
     /**
      * 设置聊天室管理员信息，API地址：https://dev.polyv.net/2017/liveproduct/zblts/set-chat-admin/
      * @param liveSetChatAdminDataRequest 设置聊天室管理员信息请求实体
-     * @return  是否成功
+     * @return 是否成功
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
@@ -234,7 +241,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_SET_ADMIN_DATA_URL, liveSetChatAdminDataRequest.getChannelId());
         Map<String, File> fileMap = new HashMap<String, File>();
-        fileMap.put("avatar",liveSetChatAdminDataRequest.getAvatar());
+        fileMap.put("avatar", liveSetChatAdminDataRequest.getAvatar());
         return "修改成功".equalsIgnoreCase(super.baseUploadFile(url, liveSetChatAdminDataRequest, fileMap, String.class));
     }
     
@@ -242,7 +249,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     /**
      * 查询咨询提问记录，API地址：https://dev.polyv.net/2018/liveproduct/zblts/getquestion/
      * @param liveGetConsultingRecordRequest 查询咨询提问记录请求实体
-     * @return  实体列表
+     * @return 实体列表
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -250,14 +257,15 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public List<LiveGetConsultingRecordResponse> getConsultingRecord(
             LiveGetConsultingRecordRequest liveGetConsultingRecordRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_CONSULTING_RECORD_URL, liveGetConsultingRecordRequest.getChannelId());
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_CONSULTING_RECORD_URL,
+                liveGetConsultingRecordRequest.getChannelId());
         return super.baseGetReturnArray(url, liveGetConsultingRecordRequest, LiveGetConsultingRecordResponse.class);
     }
     
     /**
      * 查询频道的问答统计结果，API地址：https://dev.polyv.net/2018/liveproduct/zblts/get-question-result/
      * @param liveGetQuestionStatisticalRequest 查询频道的问答统计结果请求实体
-     * @return  想要实体列表
+     * @return 想要实体列表
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -265,9 +273,26 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public List<LiveGetQuestionStatisticalResponse> getQuestionStatistical(
             LiveGetQuestionStatisticalRequest liveGetQuestionStatisticalRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_QUERSTION_STATISTICAL_URL, liveGetQuestionStatisticalRequest.getChannelId());
-        return super.basePostReturnArray(url, liveGetQuestionStatisticalRequest, LiveGetQuestionStatisticalResponse.class);
+        String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_QUERSTION_STATISTICAL_URL,
+                liveGetQuestionStatisticalRequest.getChannelId());
+        return super.basePostReturnArray(url, liveGetQuestionStatisticalRequest,
+                LiveGetQuestionStatisticalResponse.class);
     }
     
+    /**
+     * 管理员发送频道聊天信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/zblts/chatsendmsg/
+     * @param liveSendChannelChatRequest 管理员发送频道聊天信息请求实体
+     * @return 管理员发送频道聊天信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean sendChannelChat(LiveSendChannelChatRequest liveSendChannelChatRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.SEND_ADMIN_MSG_URL;
+        String liveSendChannelChatResponse = this.basePost(url, liveSendChannelChatRequest, String.class);
+        return "The message send success!".equals(liveSendChannelChatResponse);
+    }
     
 }

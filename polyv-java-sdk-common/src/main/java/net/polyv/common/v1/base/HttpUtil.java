@@ -37,7 +37,7 @@ import net.polyv.common.v1.constant.Constant;
 public class HttpUtil {
     
     public static final String SOURCE = "source";
-    public static final String LIVE_SDK = "live_sdk";
+    public static final String SDK = "sdk";
     public static final String VERSION = "version";
     public static final String CURRETN_VERSION = "1.0.8";
     public static final String UTF8 = Constant.UTF8;
@@ -80,7 +80,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader(SOURCE, LIVE_SDK);
+        httpPost.addHeader(SOURCE, SDK);
         httpPost.addHeader(VERSION, CURRETN_VERSION);
         // 装填参数
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
@@ -184,7 +184,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader(SOURCE, LIVE_SDK);
+        httpPost.addHeader(SOURCE, SDK);
         httpPost.addHeader(VERSION, CURRETN_VERSION);
         // 设置参数到请求对象中
         StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
@@ -322,7 +322,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建get方式请求对象
         HttpGet httpGet = new HttpGet(url);
-        httpGet.addHeader(SOURCE, LIVE_SDK);
+        httpGet.addHeader(SOURCE, SDK);
         httpGet.addHeader(VERSION, CURRETN_VERSION);
         httpGet.addHeader("Content-type", Constant.APPLICATION_JSON);
         // 通过请求对象获取响应对象
@@ -364,7 +364,7 @@ public class HttpUtil {
         String result = null;
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader(SOURCE, LIVE_SDK);
+        httpPost.addHeader(SOURCE, SDK);
         
         httpPost.addHeader(VERSION, CURRETN_VERSION);
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
@@ -415,7 +415,7 @@ public class HttpUtil {
         String result = null;
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader(SOURCE, LIVE_SDK);
+        httpPost.addHeader(SOURCE, SDK);
         
         httpPost.addHeader(VERSION, CURRETN_VERSION);
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();

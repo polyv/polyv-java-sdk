@@ -145,7 +145,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testDownloadLotteryDetail() throws Exception, NoSuchAlgorithmException {
+    public void testSkipDownloadLotteryDetail() throws Exception, NoSuchAlgorithmException {
         LiveDownloadLotteryDetailRequest liveDownloadLotteryDetailRequest = new LiveDownloadLotteryDetailRequest();
         byte[] liveDownloadLotteryDetailResponse;
         try {
@@ -219,7 +219,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testSendChannelRewardMsg() throws Exception, NoSuchAlgorithmException {
+    public void testSkipSendChannelRewardMsg() throws Exception, NoSuchAlgorithmException {
         LiveSendChannelRewardMsgRequest liveSendChannelRewardMsgRequest = new LiveSendChannelRewardMsgRequest();
         Boolean liveSendChannelRewardMsgResponse;
         try {

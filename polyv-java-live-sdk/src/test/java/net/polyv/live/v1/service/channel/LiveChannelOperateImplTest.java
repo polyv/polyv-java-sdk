@@ -893,7 +893,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
     @Test
-    public void testUpdateChannelCallbackSetting() throws Exception {
+    public void testSkipUpdateChannelCallbackSetting() throws Exception {
         LiveUpdateChannelCallbackSettingRequest liveUpdateChannelCallbackSettingRequest =
                 new LiveUpdateChannelCallbackSettingRequest();
         Boolean liveUpdateChannelCallbackSettingResponse;
@@ -927,7 +927,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
 //    @Test
-    public void testCreateSonChannelList() throws Exception {
+    public void testSkipCreateSonChannelList() throws Exception {
         LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse;
         try {
@@ -960,7 +960,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             Assert.assertNotNull(liveCreateSonChannelListResponse);
             if (liveCreateSonChannelListResponse != null) {
                 //to do something ......
-                log.debug("测试设置频道回调设置成功");
+                log.debug("测试批量创建子频道成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
@@ -1077,7 +1077,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
 //    @Test
-    public void testGetChannelCapture() throws Exception {
+    public void testSkipGetChannelCapture() throws Exception {
         LiveChannelCaptureRequest liveChannelCaptureRequest = new LiveChannelCaptureRequest();
         String liveChannelCaptureResponse;
         try {
@@ -1145,7 +1145,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
 //    @Test
-    public void testCreateDiskVideosStream() throws Exception {
+    public void testSkipCreateDiskVideosStream() throws Exception {
         LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest = new LiveCreateDiskVideosStreamRequest();
         Boolean liveCreateDiskVideosStreamResponse;
         try {
@@ -1178,7 +1178,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试删除硬盘推流的视频
      * 约束：2、调用接口后，如果当前频道未在直播中，会自动设置直播方式为“硬盘推流”。如果当前使用其他直播推流方式直播中，则需要在直播结束后，调用《修改直播推流方式》修改为硬盘推流，才会在所设置的开始时间进行直播
-     * 返回：true为设置硬盘推流直播成功，false为修改失败
+     * 返回：true为删除硬盘推流直播成功，false为删除失败
      * @throws Exception
      */
     @Test

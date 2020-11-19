@@ -597,7 +597,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testSendCustomChat() throws Exception, NoSuchAlgorithmException {
+    public void testSkipSendCustomChat() throws Exception, NoSuchAlgorithmException {
         LiveSendCustomChatRequest liveSendCustomChatRequest = new LiveSendCustomChatRequest();
         Boolean liveSendCustomChatResponse;
         try {

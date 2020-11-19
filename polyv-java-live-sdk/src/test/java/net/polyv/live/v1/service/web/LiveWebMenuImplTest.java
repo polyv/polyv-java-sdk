@@ -274,7 +274,7 @@ public class LiveWebMenuImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testGetChannelImageText() throws Exception, NoSuchAlgorithmException {
+    public void testSkipGetChannelImageText() throws Exception, NoSuchAlgorithmException {
         LiveGetChannelImageTextRequest liveGetChannelImageTextRequest = new LiveGetChannelImageTextRequest();
         LiveGetChannelImageTextResponse liveGetChannelImageTextResponse;
         try {

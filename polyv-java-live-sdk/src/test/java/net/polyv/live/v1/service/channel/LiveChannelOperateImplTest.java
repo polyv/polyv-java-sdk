@@ -106,6 +106,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试创建并初始化频道
+     * 约束：2、AuthSetting中AuthType不能直接设置白名单观看，需要先创建频道后再设置观看条件
      * @throws Exception 异常
      */
     @Test
@@ -625,7 +626,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
             liveSonChannelInfoRequest.setAccount(sonChannelId)
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfo(liveSonChannelInfoRequest);
+            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfo(
+                    liveSonChannelInfoRequest);
             Assert.assertNotNull(liveSonChannelInfoResponse);
             if (liveSonChannelInfoResponse != null) {
                 //to do something ......
@@ -831,8 +833,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveListChannelPPTRecordRequest.setChannelId(channelId)
-                    .setStartTime(getDate(2020,1,1))
-                    .setEndTime(getDate(2020,11,11))
+                    .setStartTime(getDate(2020, 1, 1))
+                    .setEndTime(getDate(2020, 11, 11))
                     .setCurrentPage(1)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelPPTRecordResponse = new LiveChannelOperateServiceImpl().listPPTRecord(
@@ -1083,7 +1085,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveChannelCaptureRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelCaptureResponse = new LiveChannelOperateServiceImpl().getChannelCapture(liveChannelCaptureRequest);
+            liveChannelCaptureResponse = new LiveChannelOperateServiceImpl().getChannelCapture(
+                    liveChannelCaptureRequest);
             Assert.assertNotNull(liveChannelCaptureResponse);
             if (liveChannelCaptureResponse != null) {
                 //to do something ......

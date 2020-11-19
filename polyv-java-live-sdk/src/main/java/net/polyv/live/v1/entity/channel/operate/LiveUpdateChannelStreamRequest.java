@@ -20,9 +20,9 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 public class LiveUpdateChannelStreamRequest extends LiveCommonRequest {
     
     /**
-     * 直播频道ID
+     * 直播频道号
      */
-    @ApiModelProperty(name = "channelId", value = "直播频道ID", required = true)
+    @ApiModelProperty(name = "channelId", value = "直播频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
     private String channelId;
     

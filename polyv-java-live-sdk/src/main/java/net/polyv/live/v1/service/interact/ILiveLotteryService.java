@@ -9,6 +9,7 @@ import net.polyv.live.v1.entity.interact.LiveListLotteryResponse;
 import net.polyv.live.v1.entity.interact.LiveLotteryWinnerDetailRequest;
 import net.polyv.live.v1.entity.interact.LiveLotteryWinnerDetailResponse;
 import net.polyv.live.v1.entity.interact.LiveSendChannelLikeRequest;
+import net.polyv.live.v1.entity.interact.LiveSendChannelRewardMsgRequest;
 import net.polyv.live.v1.entity.interact.LiveSetLotteryWinnerInfoRequest;
 
 /**
@@ -69,6 +70,17 @@ public interface ILiveLotteryService {
      * @throws NoSuchAlgorithmException 异常
      */
     Integer sendChannelLike(LiveSendChannelLikeRequest liveSendChannelLikeRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 发送打赏消息
+     * API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/fsdsxx/
+     * @param liveSendChannelRewardMsgRequest 发送打赏消息请求实体
+     * @return 发送打赏消息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean sendChannelRewardMsg(LiveSendChannelRewardMsgRequest liveSendChannelRewardMsgRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

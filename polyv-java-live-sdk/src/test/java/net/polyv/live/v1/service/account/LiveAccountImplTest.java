@@ -325,7 +325,7 @@ public class LiveAccountImplTest extends BaseTest {
      * 回调说明：设置接口地址后，如果账号下频道有进行推流、断流操作导致频道直播状态改变，直播系统会将以下参数channelId（频道号）和status（直播状态：live表示开始直播，end表示直播结束）以GET
      * 回调说明：方式提交到给用户自定义的回调接口进行通知，如：http://abc.com/test.do?channelId=123456&status=live&timestamp=1557976774000
      * 回调说明：&sign=xxdxxxxx&sessionId=xxxxxddd&startTime=1557976777111&endTime=1557976777111
-     * 回调对象：net.polyv.live.entity.account.LiveAccountStreamCallbackRequest$LiveStateChangeCallback
+     * 回调对象：net.polyv.live.v1.entity.account.LiveAccountStreamCallbackRequest$LiveStateChangeCallback
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -363,7 +363,7 @@ public class LiveAccountImplTest extends BaseTest {
      * 回调说明：.do?channelId=123456&vid=e6b23c6f5134943a015bc117e2854eae_e&title=视频标题&duration=01:23:45&fileSize=123400
      * 回调说明：&timestamp=1557976774000&sign=xxxxxxxxxx&fileId=359a81ed8fd8cb83d88ddcd97d9e8a2b&videoId=b1c6f3ad2c&origin
      * 回调说明：=auto&sessionIds=["20190703145126,4,fdqbopvtnv","20190703145126,8,fdqbopvtnv"]
-     * 回调对象：net.polyv.live.entity.account.LiveAccountPlaybackCallbackRequest$PlaybackCallBack
+     * 回调对象：net.polyv.live.v1.entity.account.LiveAccountPlaybackCallbackRequest$PlaybackCallBack
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -401,7 +401,7 @@ public class LiveAccountImplTest extends BaseTest {
      * 回调说明：方式提交到给用户自定义的回调接口进行通知，如：http://abc.com/test.do?channelId=104400&fileUrl=http://rflive.videocc
      * 回调说明：.net/i6ro0hxj0020150529112242035/recordf.i6ro0hxj0020150529112242035_20170120184803
      * 回调说明：.m3u8&origin=auto&fileId=072c36138cfbd3e546cda227dc273951&timestamp=1557976774000&sign=xxxxxxxxxx
-     * 回调对象：net.polyv.live.entity.account.LiveAccountRecordCallbackRequest$RecordCallback
+     * 回调对象：net.polyv.live.v1.entity.account.LiveAccountRecordCallbackRequest$RecordCallback
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

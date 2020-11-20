@@ -191,7 +191,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
             
             //封装问卷题目
             LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail =
-                    liveQuestionnaireDetailSetRequest.new QuestionDetail();
+                    new LiveQuestionnaireDetailSetRequest.QuestionDetail();
             questionDetail.setQuestionId(LiveSignUtil.generateUUID())
                     .setName("您的兴趣爱好？")
                     .setAnswer("A")
@@ -202,7 +202,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                     .setType(LiveConstant.QuestionType.CHECK.getType());
             
             LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail1 =
-                    liveQuestionnaireDetailSetRequest.new QuestionDetail();
+                    new LiveQuestionnaireDetailSetRequest.QuestionDetail();
             questionDetail1.setQuestionId(LiveSignUtil.generateUUID())
                     .setName("您的性别")
                     .setScoreEnabled(LiveConstant.Flag.NO.getFlag())
@@ -211,7 +211,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                     .setType(LiveConstant.QuestionType.RADIO.getType());
             
             LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail2 =
-                    liveQuestionnaireDetailSetRequest.new QuestionDetail();
+                    new LiveQuestionnaireDetailSetRequest.QuestionDetail();
             questionDetail2.setQuestionId(LiveSignUtil.generateUUID())
                     .setName("您的职务？")
                     .setScoreEnabled(LiveConstant.Flag.NO.getFlag())

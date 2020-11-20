@@ -10,6 +10,7 @@ git pull
 :: git commit -am "JSDK-1 auto_deploy"  &&  git  push
 :: # 切换到master分支
 git checkout master
+PAUSE
 :: 同步主分支代码
 git pull origin master
 :: # 合并dev 分支代码

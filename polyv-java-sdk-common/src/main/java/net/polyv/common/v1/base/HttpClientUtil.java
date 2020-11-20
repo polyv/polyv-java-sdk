@@ -69,7 +69,7 @@ public class HttpClientUtil {
      * @param maxClientNum HTTP 链接池最大并发连接数
      */
     public static void setMaxClientNum(int maxClientNum) {
-        MAX_CLIENT_NUM = maxClientNum < 300 ? maxClientNum : MAX_CLIENT_NUM;
+        MAX_CLIENT_NUM = maxClientNum < 300 ? maxClientNum : 300;
     }
     
     
@@ -82,7 +82,7 @@ public class HttpClientUtil {
      * @param timeOut HTTP 连接超时时间
      */
     public static void setTimeOut(int timeOut) {
-        TIME_OUT = timeOut;
+        TIME_OUT = timeOut < 30000 ? timeOut : 30000 ;
     }
     
     

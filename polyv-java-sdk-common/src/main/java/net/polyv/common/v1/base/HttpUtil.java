@@ -37,11 +37,18 @@ import net.polyv.common.v1.constant.Constant;
 public class HttpUtil {
     
     public static final String SOURCE = "source";
-    public static  String SDK = "sdk";
+    private static  String SDK = "sdk";
     public static final String VERSION = "version";
-    public static final String CURRETN_VERSION = "1.0.9";
-    public static final String UTF8 = Constant.UTF8;
+    private static final String CURRENT_VERSION = "1.0.9";
+    private static final String UTF8 = Constant.UTF8;
     
+    public static String getSDK() {
+        return SDK;
+    }
+    
+    public static void setSDK(String SDK) {
+        HttpUtil.SDK = SDK;
+    }
     
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为form表单形式
@@ -81,7 +88,7 @@ public class HttpUtil {
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, SDK);
-        httpPost.addHeader(VERSION, CURRETN_VERSION);
+        httpPost.addHeader(VERSION, CURRENT_VERSION);
         // 装填参数
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         if (params != null) {
@@ -185,7 +192,7 @@ public class HttpUtil {
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, SDK);
-        httpPost.addHeader(VERSION, CURRETN_VERSION);
+        httpPost.addHeader(VERSION, CURRENT_VERSION);
         // 设置参数到请求对象中
         StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
         //  Constant.UTF8
@@ -323,7 +330,7 @@ public class HttpUtil {
         // 创建get方式请求对象
         HttpGet httpGet = new HttpGet(url);
         httpGet.addHeader(SOURCE, SDK);
-        httpGet.addHeader(VERSION, CURRETN_VERSION);
+        httpGet.addHeader(VERSION, CURRENT_VERSION);
         httpGet.addHeader("Content-type", Constant.APPLICATION_JSON);
         // 通过请求对象获取响应对象
         CloseableHttpResponse response = httpClient.execute(httpGet);
@@ -366,7 +373,7 @@ public class HttpUtil {
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, SDK);
         
-        httpPost.addHeader(VERSION, CURRETN_VERSION);
+        httpPost.addHeader(VERSION, CURRENT_VERSION);
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
         if (fileMap != null) {
             for (Map.Entry<String, File> entry : fileMap.entrySet()) {
@@ -417,7 +424,7 @@ public class HttpUtil {
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, SDK);
         
-        httpPost.addHeader(VERSION, CURRETN_VERSION);
+        httpPost.addHeader(VERSION, CURRENT_VERSION);
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
         
         ContentType contentType = ContentType.create("text/plain", Charset.forName(encoding));

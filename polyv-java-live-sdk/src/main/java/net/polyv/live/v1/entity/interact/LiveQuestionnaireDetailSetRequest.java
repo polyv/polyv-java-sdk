@@ -56,7 +56,7 @@ public class LiveQuestionnaireDetailSetRequest extends LiveCommonRequest {
     @Data
     @Accessors(chain = true)
     @ApiModel("设置频道问卷信息请求实体-问卷的单个题目详情列表")
-    public  class QuestionDetail {
+    public static class QuestionDetail {
     
         /**
          * 题目id，修改问卷时需要传

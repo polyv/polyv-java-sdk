@@ -37,7 +37,7 @@ import net.polyv.common.v1.constant.Constant;
 public class HttpUtil {
     
     public static final String SOURCE = "source";
-    private static  String SDK = "sdk";
+    private static  String SDK = "SDK";
     public static final String VERSION = "version";
     private static final String CURRENT_VERSION = "1.0.9";
     private static final String UTF8 = Constant.UTF8;

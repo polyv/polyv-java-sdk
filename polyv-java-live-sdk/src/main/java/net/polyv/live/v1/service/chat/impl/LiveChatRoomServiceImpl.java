@@ -57,7 +57,6 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_SEND_MSG_URL;
         return super.basePost(url, liveSendChatMsgRequest, LiveSendChatMsgResponse.class);
-        
     }
     
     /**

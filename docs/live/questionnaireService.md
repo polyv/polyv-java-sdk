@@ -460,7 +460,7 @@
                     .setRequestId(LiveSignUtil.generateUUID());
             //封装问卷题目
             LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail =
-                    liveQuestionnaireDetailSetRequest.new QuestionDetail();
+                    new LiveQuestionnaireDetailSetRequest.QuestionDetail();
             questionDetail.setQuestionId(LiveSignUtil.generateUUID())
                     .setName("您的兴趣爱好？")
                     .setAnswer("A")
@@ -470,7 +470,7 @@
                     .setScore(20)
                     .setType(LiveConstant.QuestionType.CHECK.getType());
             LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail1 =
-                    liveQuestionnaireDetailSetRequest.new QuestionDetail();
+                    new LiveQuestionnaireDetailSetRequest.QuestionDetail();
             questionDetail1.setQuestionId(LiveSignUtil.generateUUID())
                     .setName("您的性别")
                     .setScoreEnabled(LiveConstant.Flag.NO.getFlag())
@@ -478,7 +478,7 @@
                     .setOptions(Arrays.asList(new String[]{"M", "W"}))
                     .setType(LiveConstant.QuestionType.RADIO.getType());
             LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail2 =
-                    liveQuestionnaireDetailSetRequest.new QuestionDetail();
+                    new LiveQuestionnaireDetailSetRequest.QuestionDetail();
             questionDetail2.setQuestionId(LiveSignUtil.generateUUID())
                     .setName("您的职务？")
                     .setScoreEnabled(LiveConstant.Flag.NO.getFlag())

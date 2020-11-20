@@ -3,6 +3,9 @@
 
 
 :: @echo off
+chcp 65001
+echo "请确认请求域名已经替换回  【api.polyv.net】 "
+pause
 :: 调用示例  auto_deploy.bat  1.0.9
 git checkout dev
 :: #同步开发分支所有代码

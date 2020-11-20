@@ -38,7 +38,7 @@ public class LiveGlobalConfig {
         LiveGlobalConfig.APP_ID = appId;
         LiveGlobalConfig.USER_ID = userId;
         LiveGlobalConfig.APP_SECRET = appSecret;
-        HttpUtil.SDK="LIVE_SDK";
+        HttpUtil.setSDK("LIVE_SDK");
         HttpClientUtil.init();
         //全局异常和错误处理配置
         Thread.setDefaultUncaughtExceptionHandler(new GlobalUncaughtExceptionHandler());
@@ -56,7 +56,7 @@ public class LiveGlobalConfig {
         LiveGlobalConfig.APP_ID = appId;
         LiveGlobalConfig.USER_ID = userId;
         LiveGlobalConfig.APP_SECRET = appSecret;
-        HttpUtil.SDK="LIVE_SDK";
+        HttpUtil.setSDK("LIVE_SDK");
         HttpClientUtil.setTimeOut(timeOut);
         HttpClientUtil.setMaxClientNum(maxClientNum);
         HttpClientUtil.init();

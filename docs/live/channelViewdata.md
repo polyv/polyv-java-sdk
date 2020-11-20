@@ -4,7 +4,7 @@
 获取频道一定时间范围之内的历史最高并发人数，粒度可以支持到分钟
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -68,7 +68,7 @@
 分页获取连麦情况使用详情
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -120,13 +120,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 列表信息【详见[ChannelMic参数描述](channelViewdata.md?id=polyv28)】 | 
+| contents | false | Array | 列表信息【详见[ChannelMic参数描述](channelViewdata.md?id=polyv26)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv28"><a href="#/channelOperate?id=polyv28"data-id="ChannelMic参数描述"class="anchor"><span>ChannelMic参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv26"><a href="#/channelOperate?id=polyv26"data-id="ChannelMic参数描述"class="anchor"><span>ChannelMic参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -147,7 +147,7 @@
 分页查询频道观看日志
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -203,13 +203,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道观看日志【详见[LiveChannelViewlog参数描述](channelViewdata.md?id=polyv29)】 | 
+| contents | false | Array | 频道观看日志【详见[LiveChannelViewlog参数描述](channelViewdata.md?id=polyv27)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv29"><a href="#/channelOperate?id=polyv29"data-id="LiveChannelViewlog参数描述"class="anchor"><span>LiveChannelViewlog参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv27"><a href="#/channelOperate?id=polyv27"data-id="LiveChannelViewlog参数描述"class="anchor"><span>LiveChannelViewlog参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -249,7 +249,7 @@
 查询多个频道汇总的统计数据
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -300,9 +300,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelSummarys | false | Array | 统计数据【详见[ChannelSummary参数描述](channelViewdata.md?id=polyv30)】 | 
+| channelSummarys | false | Array | 统计数据【详见[ChannelSummary参数描述](channelViewdata.md?id=polyv28)】 | 
 
-<h6 id="polyv30"><a href="#/channelOperate?id=polyv30"data-id="ChannelSummary参数描述"class="anchor"><span>ChannelSummary参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv28"><a href="#/channelOperate?id=polyv28"data-id="ChannelSummary参数描述"class="anchor"><span>ChannelSummary参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -335,7 +335,7 @@
 查询多个频道的实时在线人数
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -382,9 +382,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelViewerCounts | false | Array | 频道实时在线人数【详见[ChannelViewerCount参数描述](channelViewdata.md?id=polyv31)】 | 
+| channelViewerCounts | false | Array | 频道实时在线人数【详见[ChannelViewerCount参数描述](channelViewdata.md?id=polyv29)】 | 
 
-<h6 id="polyv31"><a href="#/channelOperate?id=polyv31"data-id="ChannelViewerCount参数描述"class="anchor"><span>ChannelViewerCount参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv29"><a href="#/channelOperate?id=polyv29"data-id="ChannelViewerCount参数描述"class="anchor"><span>ChannelViewerCount参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -404,7 +404,7 @@
 查询频道的历史并发人数
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -456,9 +456,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelViewerConcurrences | false | Array | 频道并发在线人数【详见[ChannelViewerConcurrence参数描述](channelViewdata.md?id=polyv32)】 | 
+| channelViewerConcurrences | false | Array | 频道并发在线人数【详见[ChannelViewerConcurrence参数描述](channelViewdata.md?id=polyv30)】 | 
 
-<h6 id="polyv32"><a href="#/channelOperate?id=polyv32"data-id="ChannelViewerConcurrence参数描述"class="anchor"><span>ChannelViewerConcurrence参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv30"><a href="#/channelOperate?id=polyv30"data-id="ChannelViewerConcurrence参数描述"class="anchor"><span>ChannelViewerConcurrence参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

@@ -65,7 +65,7 @@ public class LiveURL {
     /**
      * 查询频道观看白名单列表
      */
-    public static final String CHANNEL_WRITE_LIST_GET_URL = BASE_URI + "v3/channel/auth/get-white-list";
+    public static final String CHANNEL_WHITE_LIST_GET_URL = BASE_URI + "v3/channel/auth/get-white-list";
     
     /**
      * 获取频道单场抽奖的中奖记录
@@ -413,7 +413,7 @@ public class LiveURL {
     /**
      * 添加单个白名单
      */
-    public static final String CHANNEL_WRITE_LIST_ADD_URL = BASE_URI + "v3/channel/auth/add-white-list";
+    public static final String CHANNEL_WHITE_LIST_ADD_URL = BASE_URI + "v3/channel/auth/add-white-list";
     
     /**
      * 将点播中的视频添加到视频库
@@ -787,12 +787,12 @@ public class LiveURL {
     /**
      * 更新白名单
      */
-    public static final String UPDATE_CHANNEL_WRITE_LIST_URL = BASE_URI + "v3/channel/auth/update-white-list";
+    public static final String UPDATE_CHANNEL_WHITE_LIST_URL = BASE_URI + "v3/channel/auth/update-white-list";
     
     /**
      * 删除白名单
      */
-    public static final String DELETE_CHANNEL_WRITE_LIST_URL = BASE_URI + "v3/channel/auth/delete-white-list";
+    public static final String DELETE_CHANNEL_WHITE_LIST_URL = BASE_URI + "v3/channel/auth/delete-white-list";
     
     /**
      * 查询频道或全局登记观看字段
@@ -812,11 +812,82 @@ public class LiveURL {
     /**
      * 新增白名单
      */
-    public static final String UPLOAD_WEITE_LIST_URL = BASE_URI + "v3/channel/auth/upload-white-list";
+    public static final String UPLOAD_WHITE_LIST_URL = BASE_URI + "v3/channel/auth/upload-white-list";
+    
+    /**
+     * 下载频道观看白名单列表
+     */
+    public static final String DOWNLOAD_CHANNEL_WHITE_LIST_URL = BASE_URI + "v3/channel/auth/download-white-list";
+    
+    /**
+     * 添加频道菜单
+     */
+    public static final String ADD_CHANNEL_MENU_URL = BASE_URI + "v3/channel/menu/add";
+    
+    /**
+     * 设置频道菜单排序
+     */
+    public static final String UPDATE_CHANNEL_MENU_SORT_URL = BASE_URI + "v3/channel/menu/update-rank";
+    
+    /**
+     * 删除频道菜单
+     */
+    public static final String DELETE_CHANNEL_MENU_URL = BASE_URI + "v3/channel/menu/delete";
+    
+    /**
+     * 设置提问功能显示开关
+     */
+    public static final String UPDATE_CHANNEL_CONSULTING_ENABLED_URL =
+            BASE_URI + "v2/channel/menu/" + PARAM_REPLACE_CHAR + "/update-consulting-enabled";
+    
+    /**
+     * 查询频道图文内容列表
+     */
+    public static final String GET_CHANNEL_IMAGE_TEXT_URL = BASE_URI + "v3/channel/watch/tuwen/list";
+    
+    /**
+     * 设置频道微信分享信息
+     */
+    public static final String UPDATE_CHANNEL_WX_SHARE_URL = BASE_URI + "v3/channel/weixin-share/update";
+    
+    /**
+     * 查询频道微信分享信息
+     */
+    public static final String GET_CHANNEL_WX_SHARE_URL = BASE_URI + "v3/channel/weixin-share/get";
+    
+    /**
+     * 导出频道单场抽奖的中奖记录
+     */
+    public static final String DOWNLOAD_LOTTERY_WINNER_DETAIL_URL = BASE_URI + "v3/channel/lottery/download-winner-detail";
+    
+    /**
+     * 发送点赞
+     */
+    public static final String SEND_CHANNEL_LIKE_URL = BASE_URI +"v2/channels/"+ PARAM_REPLACE_CHAR+"/like";
+    
+    /**
+     * 发送打赏消息
+     */
+    public static final String SEND_REWARD_MSG_URL = BASE_URI +"v3/channel/chat/send-reward-msg";
+    
+    /**
+     * 管理员发送频道聊天信息
+     */
+    public static final String SEND_ADMIN_MSG_URL = BASE_URI +"v3/channel/chat/send";
+    
+    /**
+     * 发送自定义聊天信息
+     */
+    public static final String SEND_CUSTOM_MSG_URL = BASE_URI +"v1/channelSetting/"+PARAM_REPLACE_CHAR+"/send-chat";
+    
+    /**
+     * 设置播放器自定义url跑马灯
+     */
+    public static final String SET_PLAYER_URL_MARQUEE_URL = BASE_URI +"v2/channelRestrict/"+PARAM_REPLACE_CHAR+"/set-diyurl-marquee";
     
     
     /**
-     * 设置播放器暂停广告
+     * 添加频道菜单
      */
     public static final String PLAYER_SET_CHANNEL_PAUSE_ADVERT_URL =
             BASE_URI + "v2/channelAdvert/" + PARAM_REPLACE_CHAR + "/updateStop";
@@ -866,3 +937,4 @@ public class LiveURL {
         return String.format(format, param);
     }
 }
+

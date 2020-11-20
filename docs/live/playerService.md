@@ -4,7 +4,7 @@
 用于设置频道的暖场开关
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -64,7 +64,7 @@ true 设置成功 ， false 设置失败
 2、暖场视频和暖场图片是处于非直播状态时，播放器显示的画面，两者在同一时间只能显示一种，以最晚设置者为准，若想删除暖场画面，则将coverImage或warmUpFlv的值设为"http://"。
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -81,9 +81,9 @@ true 设置成功 ， false 设置失败
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerImg(liveSetChatAdminDataRequest);
             Assert.assertNotNull(result);
-            if (result ) {
+            if (result) {
                 //to do something ......
-                log.debug("测试设置播放器暖场图片成功 "   );
+                log.debug("测试设置播放器暖场图片成功 ");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -127,7 +127,7 @@ true 设置成功 ， false 设置失败
 2、暖场视频和暖场图片是处于非直播状态时，播放器显示的画面，两者在同一时间只能显示一种，以最晚设置者为准，若想删除暖场画面，则将coverImage或warmUpFlv的值设为"http://"。
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -187,7 +187,7 @@ true 设置成功，false 设置失败
 设置播放器Logo
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -253,7 +253,7 @@ true 设置成功， fales 设置失败
 设置某频道播放器的片头广告
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -270,7 +270,9 @@ true 设置成功， fales 设置失败
                     .setHeadAdvertType(LiveConstant.HeadAdvertType.IMAGE.getDesc())
                     .setHeadAdvertWidth(100)
                     .setHeadAdvertHref("http://www.baidu.com")
-                    .setHeadAdvertMediaUrl("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
+                    .setHeadAdvertMediaUrl(
+                            "https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57" +
+                                    "/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerHeaderAdvert(liveSetPlayerHeaderAdvertRequest);
             Assert.assertNotNull(result);
@@ -324,7 +326,7 @@ true 设置成功，false 设置失败
 用于设置某频道播放器的暂停广告
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -371,6 +373,67 @@ true 设置成功，false 设置失败
 | enabled | false | String | 设置播放器暂停广告开关：Y-打开，N-关闭 | 
 | stopAdvertImage | false | String | 图片地址，不填代表删除 | 
 | stopAdvertHref | false | String | 点击图片跳转Url | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true 设置成功，false 设置失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 7、设置播放器自定义url跑马灯
+### 描述
+```
+可以设置播放器防录屏自定义url跑马灯开关，在开启时需提交url参数。
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testSetPlayerUrlMarquee() throws Exception, NoSuchAlgorithmException, URISyntaxException {
+        LiveSetPlayerUrlMarqueeRequest liveSetPlayerUrlMarqueeRequest = new LiveSetPlayerUrlMarqueeRequest();
+        Boolean liveSetPlayerUrlMarqueeResponse;
+        try {
+            String channelId = super.createChannel();
+            liveSetPlayerUrlMarqueeRequest.setChannelId(channelId)
+                    .setMarqueeRestrict("N")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveSetPlayerUrlMarqueeResponse = new LivePlayerServiceImpl().setPlayerUrlMarquee(
+                    liveSetPlayerUrlMarqueeRequest);
+            Assert.assertTrue(liveSetPlayerUrlMarqueeResponse);
+            if (liveSetPlayerUrlMarqueeResponse) {
+                //to do something ......
+                log.debug("测试设置播放器自定义url跑马灯成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| marqueeRestrict | true | String | 自定义url防录屏跑马灯开关,Y或N | 
+| url | false | String | 自定义url， 在开关为关时可为空，开启开关时为必填 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述

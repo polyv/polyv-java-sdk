@@ -31,7 +31,7 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("查询频道问卷列表响应实体-问卷数据详情")
-    public class QuestionDetail {
+    public static class QuestionDetail {
         
         
         /**

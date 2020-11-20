@@ -567,7 +567,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * 约束：4、三分屏的录制将自动经过重制课件后再合并mp4
      * 约束：5、mp4下载地址30天内有效，超出后需要重新导出
      * 回调说明：该接口为异步处理，如果需要获取合并的结果，可以在请求接口时提交callbackUrl 参数，在程序合并成功后，会对callbackUrl 进行回调通知
-     * 回调对象：net.polyv.live.entity.channel.playback.LiveMergeMp4RecordResponse$MergeMp4RecordCallback
+     * 回调对象：net.polyv.live.v1.entity.channel.playback.LiveMergeMp4RecordResponse$MergeMp4RecordCallback
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

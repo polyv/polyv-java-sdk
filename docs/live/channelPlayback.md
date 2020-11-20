@@ -4,7 +4,7 @@
 将点播中的视频添加到视频库
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 2、点播视频得设置标签为频道号，多个用英文逗号分隔
 ### 单元测试
@@ -87,7 +87,7 @@
 异步批量转存录制文件到点播
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -153,7 +153,7 @@ true为提交成功，false为提交失败，具体转存是否成功以回调�
 异步合并直播录制文件
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -220,7 +220,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 查询频道录制视频信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -273,9 +273,9 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelVedioInfos | false | Array | 视频库视频信息【详见[ChannelVedioInfo参数描述](channelPlayback.md?id=polyv24)】 | 
+| channelVedioInfos | false | Array | 视频库视频信息【详见[ChannelVedioInfo参数描述](channelPlayback.md?id=polyv22)】 | 
 
-<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="ChannelVedioInfo参数描述"class="anchor"><span>ChannelVedioInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv22"><a href="#/channelOperate?id=polyv22"data-id="ChannelVedioInfo参数描述"class="anchor"><span>ChannelVedioInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -303,7 +303,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 查询视频库列表
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -355,13 +355,13 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 视频库视频信息【详见[ChannelVideoLibrary参数描述](channelPlayback.md?id=polyv25)】 | 
+| contents | false | Array | 视频库视频信息【详见[ChannelVideoLibrary参数描述](channelPlayback.md?id=polyv23)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv25"><a href="#/channelOperate?id=polyv25"data-id="ChannelVideoLibrary参数描述"class="anchor"><span>ChannelVideoLibrary参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv23"><a href="#/channelOperate?id=polyv23"data-id="ChannelVideoLibrary参数描述"class="anchor"><span>ChannelVideoLibrary参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -396,7 +396,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 查询频道直播场次信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -452,13 +452,13 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道直播场次信息【详见[ChannelSessionInfo参数描述](channelPlayback.md?id=polyv26)】 | 
+| contents | false | Array | 频道直播场次信息【详见[ChannelSessionInfo参数描述](channelPlayback.md?id=polyv24)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv26"><a href="#/channelOperate?id=polyv26"data-id="ChannelSessionInfo参数描述"class="anchor"><span>ChannelSessionInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="ChannelSessionInfo参数描述"class="anchor"><span>ChannelSessionInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -479,7 +479,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 查询频道的回放开关状态
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -519,7 +519,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
+| channelId | true | String | 频道号 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
@@ -537,7 +537,7 @@ Y为开启，N为关闭
 查询指定文件ID的录制文件信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -617,7 +617,7 @@ Y为开启，N为关闭
 设置频道回放设置
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -685,7 +685,7 @@ true为设置成功，false为设置失败
 设置后台回放开关
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -744,7 +744,7 @@ true为设置成功，false为设置失败
 设置视频库列表排序
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -807,7 +807,7 @@ true为设置成功，false为设置失败
 设置视频库列表的默认视频
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -868,7 +868,7 @@ true为设置成功，false为设置失败
 删除直播暂存中的录制文件
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -928,7 +928,7 @@ true为删除成功，false为删除失败
 删除视频库列表中的视频
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -992,7 +992,7 @@ true为删除成功，false为删除失败
 修改回放视频名称
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1055,7 +1055,7 @@ true为修改成功，false为修改失败
 导出合并的录制文件并回调mp4下载地址
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 2、该接口为文件合并过程为异步处理过程
 3、该接口合并的录制文件必须在8小时内
@@ -1103,8 +1103,8 @@ true为修改成功，false为修改失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| startTime | true | Date | 录制文件开始时间(13位时间戳)，与endtime最大不能超过8小时 | 
-| endTime | true | Date | 录制文件结束时间(13位时间戳)，与startTime最大不能超过8小时 | 
+| startTime | true | Date | 录制文件开始时间，与endtime最大不能超过8小时 | 
+| endTime | true | Date | 录制文件结束时间，与startTime最大不能超过8小时 | 
 | callbackUrl | false | String | 合并成功或失败回调的url | 
 | fileName | false | String | 合并后文件名 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 

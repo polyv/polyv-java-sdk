@@ -106,6 +106,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试创建并初始化频道
+     * 约束：2、AuthSetting中AuthType不能直接设置白名单观看，需要先创建频道后再设置观看条件
      * @throws Exception 异常
      */
     @Test
@@ -312,7 +313,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = getAloneChannelId();
             
-            LiveChannelSettingRequest.BasicSetting basicSetting = liveChannelSettingRequest.new BasicSetting().setName(
+            LiveChannelSettingRequest.BasicSetting basicSetting = new LiveChannelSettingRequest.BasicSetting().setName(
                     "Junit测试(勿删)888")
                     .setChannelPasswd("123321")
                     .setCategoryId(340019)
@@ -625,7 +626,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
             liveSonChannelInfoRequest.setAccount(sonChannelId)
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfo(liveSonChannelInfoRequest);
+            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfo(
+                    liveSonChannelInfoRequest);
             Assert.assertNotNull(liveSonChannelInfoResponse);
             if (liveSonChannelInfoResponse != null) {
                 //to do something ......
@@ -831,8 +833,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveListChannelPPTRecordRequest.setChannelId(channelId)
-                    .setStartTime(getDate(2020,1,1))
-                    .setEndTime(getDate(2020,11,11))
+                    .setStartTime(getDate(2020, 1, 1))
+                    .setEndTime(getDate(2020, 11, 11))
                     .setCurrentPage(1)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelPPTRecordResponse = new LiveChannelOperateServiceImpl().listPPTRecord(
@@ -890,8 +892,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * TODO 等待后台修改返回值
      * @throws Exception
      */
-//    @Test
-    public void testUpdateChannelCallbackSetting() throws Exception {
+    @Test
+    public void testSkipUpdateChannelCallbackSetting() throws Exception {
         LiveUpdateChannelCallbackSettingRequest liveUpdateChannelCallbackSettingRequest =
                 new LiveUpdateChannelCallbackSettingRequest();
         Boolean liveUpdateChannelCallbackSettingResponse;
@@ -925,7 +927,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
 //    @Test
-    public void testCreateSonChannelList() throws Exception {
+    public void testSkipCreateSonChannelList() throws Exception {
         LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse;
         try {
@@ -958,7 +960,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             Assert.assertNotNull(liveCreateSonChannelListResponse);
             if (liveCreateSonChannelListResponse != null) {
                 //to do something ......
-                log.debug("测试设置频道回调设置成功");
+                log.debug("测试批量创建子频道成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
@@ -1069,13 +1071,13 @@ public class LiveChannelOperateImplTest extends BaseTest {
     }
     
     /**
-     * 测试查询频道广告列表
+     * 测试查询频道直播截图
      * 约束：2、如果直播未开启，将抛出"channel is not live."异常
      * 返回：返回图片http地址，
      * @throws Exception
      */
 //    @Test
-    public void testGetChannelCapture() throws Exception {
+    public void testSkipGetChannelCapture() throws Exception {
         LiveChannelCaptureRequest liveChannelCaptureRequest = new LiveChannelCaptureRequest();
         String liveChannelCaptureResponse;
         try {
@@ -1083,11 +1085,12 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = createChannel();
             
             liveChannelCaptureRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelCaptureResponse = new LiveChannelOperateServiceImpl().getChannelCapture(liveChannelCaptureRequest);
+            liveChannelCaptureResponse = new LiveChannelOperateServiceImpl().getChannelCapture(
+                    liveChannelCaptureRequest);
             Assert.assertNotNull(liveChannelCaptureResponse);
             if (liveChannelCaptureResponse != null) {
                 //to do something ......
-                log.debug("测试查询频道广告列表成功,{}", JSON.toJSONString(liveChannelCaptureResponse));
+                log.debug("测试查询频道直播截图成功,{}", JSON.toJSONString(liveChannelCaptureResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
@@ -1142,7 +1145,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
 //    @Test
-    public void testCreateDiskVideosStream() throws Exception {
+    public void testSkipCreateDiskVideosStream() throws Exception {
         LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest = new LiveCreateDiskVideosStreamRequest();
         Boolean liveCreateDiskVideosStreamResponse;
         try {
@@ -1175,7 +1178,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试删除硬盘推流的视频
      * 约束：2、调用接口后，如果当前频道未在直播中，会自动设置直播方式为“硬盘推流”。如果当前使用其他直播推流方式直播中，则需要在直播结束后，调用《修改直播推流方式》修改为硬盘推流，才会在所设置的开始时间进行直播
-     * 返回：true为设置硬盘推流直播成功，false为修改失败
+     * 返回：true为删除硬盘推流直播成功，false为删除失败
      * @throws Exception
      */
     @Test

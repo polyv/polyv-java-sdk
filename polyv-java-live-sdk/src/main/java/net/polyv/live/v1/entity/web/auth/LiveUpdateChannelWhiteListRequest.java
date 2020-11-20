@@ -17,7 +17,7 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("更新白名单请求实体")
-public class LiveUpdateChannelWriteListRequest extends LiveCommonRequest {
+public class LiveUpdateChannelWhiteListRequest extends LiveCommonRequest {
     
     /**
      * 频道号（传频道号则修改频道观看白名单，不传频道号则修改全局观看白名单）

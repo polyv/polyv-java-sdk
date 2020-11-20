@@ -14,15 +14,17 @@ import net.polyv.live.v1.entity.web.auth.LiveChannelAuthInfoResponse;
 import net.polyv.live.v1.entity.web.auth.LiveChannelAuthRequest;
 import net.polyv.live.v1.entity.web.auth.LiveChannelAuthResponse;
 import net.polyv.live.v1.entity.web.auth.LiveChannelAuthTypeRequest;
-import net.polyv.live.v1.entity.web.auth.LiveChannelWriteListRequest;
-import net.polyv.live.v1.entity.web.auth.LiveChannelWriteListResponse;
-import net.polyv.live.v1.entity.web.auth.LiveCreateChannelWriteListRequest;
-import net.polyv.live.v1.entity.web.auth.LiveDeleteChannelWriteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveChannelWhiteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveChannelWhiteListResponse;
+import net.polyv.live.v1.entity.web.auth.LiveCreateChannelWhiteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveDeleteChannelWhiteListRequest;
 import net.polyv.live.v1.entity.web.auth.LiveDownloadChannelAuthInfoRequest;
+import net.polyv.live.v1.entity.web.auth.LiveDownloadChannelWhiteListRequest;
 import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
-import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelWriteListRequest;
-import net.polyv.live.v1.entity.web.auth.LiveUploadWriteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelWhiteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveUploadWhiteListRequest;
+
 
 /**
  * 直播Web观看页管理
@@ -33,12 +35,12 @@ public interface ILiveWebAuthService {
     /**
      * 添加单个白名单
      * API地址：https://dev.polyv.net/2020/liveproduct/l-api/szgkygg/ymgktj/add-white-list/
-     * @param liveCreateChannelWriteListRequest 添加单个白名单请求体
+     * @param liveCreateChannelWhiteListRequest 添加单个白名单请求体
      * @return 添加单个白名单返回体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean createChannelWriteList(LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest)
+    Boolean createChannelWhiteList(LiveCreateChannelWhiteListRequest liveCreateChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -99,12 +101,12 @@ public interface ILiveWebAuthService {
     /**
      * 查询频道观看白名单列表
      * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/get-white-list/
-     * @param liveChannelWriteListRequest 查询频道观看白名单列表请求实体
+     * @param liveChannelWhiteListRequest 查询频道观看白名单列表请求实体
      * @return 查询频道观看白名单列表返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    LiveChannelWriteListResponse getChannelWriteList(LiveChannelWriteListRequest liveChannelWriteListRequest)
+    LiveChannelWhiteListResponse getChannelWhiteList(LiveChannelWhiteListRequest liveChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -121,23 +123,23 @@ public interface ILiveWebAuthService {
     /**
      * 更新白名单
      * API地址：https://dev.polyv.net/2020/liveproduct/l-api/szgkygg/ymgktj/update-white-list/
-     * @param liveUpdateChannelWriteListRequest 更新白名单请求实体
+     * @param liveUpdateChannelWhiteListRequest 更新白名单请求实体
      * @return 更新白名单返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean updateChannelWriteList(LiveUpdateChannelWriteListRequest liveUpdateChannelWriteListRequest)
+    Boolean updateChannelWhiteList(LiveUpdateChannelWhiteListRequest liveUpdateChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
      * 删除白名单
      * API地址：https://dev.polyv.net/2020/liveproduct/l-api/szgkygg/ymgktj/delete-white-list/
-     * @param liveDeleteChannelWriteListRequest 删除白名单请求实体
+     * @param liveDeleteChannelWhiteListRequest 删除白名单请求实体
      * @return 删除白名单返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean deleteChannelWriteList(LiveDeleteChannelWriteListRequest liveDeleteChannelWriteListRequest)
+    Boolean deleteChannelWhiteList(LiveDeleteChannelWhiteListRequest liveDeleteChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -176,12 +178,23 @@ public interface ILiveWebAuthService {
     /**
      * 新增白名单
      * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/upload-white-list/
-     * @param liveUploadWriteListRequest 新增白名单请求实体
+     * @param liveUploadWhiteListRequest 新增白名单请求实体
      * @return 新增白名单返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean uploadWriteList(LiveUploadWriteListRequest liveUploadWriteListRequest)
+    Boolean uploadWhiteList(LiveUploadWhiteListRequest liveUploadWhiteListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     *下载频道观看白名单列表
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/download-white-list/
+     * @param liveDownloadChannelWhiteListRequest 下载频道观看白名单列表请求实体
+     * @return 下载频道观看白名单列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    byte[] downloadChannelWhiteList(LiveDownloadChannelWhiteListRequest liveDownloadChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

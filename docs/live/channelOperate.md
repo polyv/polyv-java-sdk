@@ -4,7 +4,7 @@
 创建一个直播频道，返回直播频道相关的基础信息。
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -119,8 +119,9 @@
 创建并初始化频道
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
+2、AuthSetting中AuthType不能直接设置白名单观看，需要先创建频道后再设置观看条件
 ### 单元测试
 ```java
 	@Test
@@ -291,7 +292,7 @@
 批量创建频道
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -421,7 +422,7 @@
 查询频道信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -525,7 +526,7 @@
 查询频道基本信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -637,7 +638,7 @@
 查询授权和连麦的token
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -705,7 +706,7 @@
 修改频道的相关设置
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -716,7 +717,7 @@
         try {
             //准备测试数据
             String channelId = getAloneChannelId();
-            LiveChannelSettingRequest.BasicSetting basicSetting = liveChannelSettingRequest.new BasicSetting().setName(
+            LiveChannelSettingRequest.BasicSetting basicSetting = new LiveChannelSettingRequest.BasicSetting().setName(
                     "Junit测试(勿删)888")
                     .setChannelPasswd("123321")
                     .setCategoryId(340019)
@@ -846,7 +847,7 @@ true为设置成功，false为设置失败
 设置频道详情
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -910,7 +911,7 @@ true为修改成功，false为修改失败
 设置频道密码
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -971,7 +972,7 @@ true为设置密码成功，false为设置失败
 设置频道单点登陆token
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1032,7 +1033,7 @@ true为设置token成功，false为设置失败
 删除直播频道
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1089,7 +1090,7 @@ true为删除成功，false为删除失败
 批量删除频道
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1147,7 +1148,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 创建子频道-三分屏添加Guest
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1237,7 +1238,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 创建子频道-非三分屏添加助教
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1327,7 +1328,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 查询子频道信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1342,7 +1343,8 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
             liveSonChannelInfoRequest.setAccount(sonChannelId)
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfo(liveSonChannelInfoRequest);
+            liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfo(
+                    liveSonChannelInfoRequest);
             Assert.assertNotNull(liveSonChannelInfoResponse);
             if (liveSonChannelInfoResponse != null) {
                 //to do something ......
@@ -1408,7 +1410,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 查询频道号下所有子频道信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1492,7 +1494,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 设置子频道信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1566,7 +1568,7 @@ true为设置成功，false为设置失败
 设置子频道单点登陆token
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1628,7 +1630,7 @@ true为设置子频道token成功，false为设置失败
 删除子频道
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1690,7 +1692,7 @@ true为删除成功，false为删除失败
 创建重制课件任务
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1749,7 +1751,7 @@ true为创建成功，false为创建失败
 查询课件重制任务列表
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1761,8 +1763,8 @@ true为创建成功，false为创建失败
             //准备测试数据
             String channelId = createChannel();
             liveListChannelPPTRecordRequest.setChannelId(channelId)
-                    .setStartTime(getDate(2020,1,1))
-                    .setEndTime(getDate(2020,11,11))
+                    .setStartTime(getDate(2020, 1, 1))
+                    .setEndTime(getDate(2020, 11, 11))
                     .setCurrentPage(1)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelPPTRecordResponse = new LiveChannelOperateServiceImpl().listPPTRecord(
@@ -1838,7 +1840,7 @@ true为创建成功，false为创建失败
 查询频道回调设置接口
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -1901,196 +1903,13 @@ true为创建成功，false为创建失败
 
 <br /><br />
 
-## 23、设置频道回调设置
-### 描述
-```
-设置频道回调设置
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-2、如频道需要跟随用户设置，可以调用设置频道默认项开关接口
-### 单元测试
-```java
-	@Test
-	public void testUpdateChannelCallbackSetting() throws Exception {
-        LiveUpdateChannelCallbackSettingRequest liveUpdateChannelCallbackSettingRequest =
-                new LiveUpdateChannelCallbackSettingRequest();
-        Boolean liveUpdateChannelCallbackSettingResponse;
-        try {
-            //准备测试数据
-            String channelId = createChannel();
-            liveUpdateChannelCallbackSettingRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveUpdateChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().updateChannelCallbackSetting(
-                    liveUpdateChannelCallbackSettingRequest);
-            Assert.assertNotNull(liveUpdateChannelCallbackSettingResponse);
-            if (liveUpdateChannelCallbackSettingResponse) {
-                //to do something ......
-                log.debug("测试设置频道回调设置成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| recordCallbackVideoType | false | String | 录制回调文件类型，可选值m3u8或mp4或m3u8,mp4 | 
-| recordCallbackUrl | false | String | 录制回调http(s)地址，需要url编码，如果要清空设置传入空串 | 
-| playbackCallbackUrl | false | String | 转存成功回调http(s)地址，需要url编码，如果要清空设置传入空串 | 
-| streamCallbackUrl | false | String | 流状态回调http(s)地址，需要url编码，如果要清空设置传入空串 | 
-| pptRecordCallbackUrl | false | String | 课件重制成功回调http(s)地址，需要url编码，如果要清空设置传入空串 | 
-| liveScanCallbackUrl | false | String | 直播内容鉴别回调http(s)地址，需要url编码，如果要清空设置传入空串 | 
-| playbackCacheCallbackUrl | false | String | 回放转存回调http(s)地址，需要url编码，如果要清空设置传入空串 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-null
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 24、批量创建子频道
-### 描述
-```
-批量创建子频道
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-2、批量创建子频道，子频道角色支持guest(嘉宾，只支持三分屏场景)、assistant(助教)
-### 单元测试
-```java
-	@Test
-	public void testCreateSonChannelList() throws Exception {
-        LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
-        LiveCreateSonChannelListResponse liveCreateSonChannelListResponse;
-        try {
-            //准备测试数据
-            String channelId = createChannel();
-            List<LiveCreateSonChannelListRequest.SonChannel> sonChannels =
-                    new ArrayList<LiveCreateSonChannelListRequest.SonChannel>();
-            LiveCreateSonChannelListRequest.SonChannel sonChannel1 = new LiveCreateSonChannelListRequest.SonChannel();
-            sonChannel1.setRole("Guest")
-                    .setNickname("嘉宾大大")
-                    .setPasswd(getRandomString(10))
-                    .setActor("教授")
-                    .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740," +
-                            "3965499425&fm=26&gp=0.jpg");
-            sonChannels.add(sonChannel1);
-            sonChannel1 = new LiveCreateSonChannelListRequest.SonChannel();
-            sonChannel1.setRole(null)
-                    .setNickname("助教大大")
-                    .setPasswd(getRandomString(10))
-                    .setActor("王者")
-                    .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740," +
-                            "3965499425&fm=26&gp=0.jpg");
-            sonChannels.add(sonChannel1);
-            liveCreateSonChannelListRequest.setChannelId(channelId)
-                    .setSonChannels(sonChannels)
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveCreateSonChannelListResponse = new LiveChannelOperateServiceImpl().createSonChannelList(
-                    liveCreateSonChannelListRequest);
-            Assert.assertNotNull(liveCreateSonChannelListResponse);
-            if (liveCreateSonChannelListResponse != null) {
-                //to do something ......
-                log.debug("测试设置频道回调设置成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回LiveCreateSonChannelListResponse对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| sonChannels | true | Array | 子频道【详见[SonChannel参数描述](channelOperate.md?id=polyv20)】 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-<h6 id="polyv20"><a href="#/channelOperate?id=polyv20"data-id="SonChannel参数描述"class="anchor"><span>SonChannel参数描述</span></a></h6> <!-- {docsify-ignore} -->
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| role | false | String | 默认不传为助教，传Guest为嘉宾 | 
-| nickname | false | String | 创建的助教或嘉宾昵称 | 
-| passwd | true | String | 子频道密码 | 
-| actor | true | String | 创建的助教或嘉宾头衔 | 
-| avatar | true | String | 创建的助教或嘉宾头像 | 
-
-### 返回对象描述
-
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| sonChannelInfos | false | Array | 子频道返回信息【详见[SonChannelInfo参数描述](channelOperate.md?id=polyv21)】 | 
-
-<h6 id="polyv21"><a href="#/channelOperate?id=polyv21"data-id="SonChannelInfo参数描述"class="anchor"><span>SonChannelInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| account | false | Integer | 助教ID | 
-| userId | false | String | 用户ID | 
-| channelId | false | Integer | 频道号 | 
-| passwd | false | String | 助教密码 | 
-| nickname | false | String | 助教名称 | 
-| stream | false | String | 助教流名（单独使用无效） | 
-| status | false | String | 助教状态 | 
-| createdTime | false | Long | 创建助教时间 | 
-| lastModified | false | Long | 助教最后修改时间 | 
-| sort | false | Integer | 频道中所有助教序号 | 
-| avatar | false | String | 助教头像 | 
-| pageTurnEnabled | false | String | 助教翻页权限（只能一个助教有） | 
-| notifyEnabled | false | String | 发布公告权限 | 
-| checkinEnabled | false | String | 开启签到权限 | 
-| voteEnabled | false | String | 发起投票 | 
-| role | false | String | 子频道角色 | 
-| loginUrl | false | String | 子账号（嘉宾）登陆地址 | 
-
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 25、获取账号或频道转播列表信息
+## 23、获取账号或频道转播列表信息
 ### 描述
 ```
 获取账号或频道转播列表信息
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -2138,9 +1957,9 @@ null
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelTransmits | false | Array | 账号或频道转播信息【详见[ChannelTransmit参数描述](channelOperate.md?id=polyv22)】 | 
+| channelTransmits | false | Array | 账号或频道转播信息【详见[ChannelTransmit参数描述](channelOperate.md?id=polyv20)】 | 
 
-<h6 id="polyv22"><a href="#/channelOperate?id=polyv22"data-id="ChannelTransmit参数描述"class="anchor"><span>ChannelTransmit参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv20"><a href="#/channelOperate?id=polyv20"data-id="ChannelTransmit参数描述"class="anchor"><span>ChannelTransmit参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -2153,13 +1972,13 @@ null
 
 <br /><br />
 
-## 26、设置频道最大在线人数
+## 24、设置频道最大在线人数
 ### 描述
 ```
 设置频道最大在线人数
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -2214,13 +2033,13 @@ true为设置成功，false为设置失败
 
 <br /><br />
 
-## 27、查询频道广告列表
+## 25、查询频道广告列表
 ### 描述
 ```
 查询频道广告列表
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 2、提供查询频道轮播广告列表信息，频道广告为空时，获取全局广告
 ### 单元测试
@@ -2269,9 +2088,9 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelAdverts | false | Array | 频道广告【详见[ChannelAdvert参数描述](channelOperate.md?id=polyv23)】 | 
+| channelAdverts | false | Array | 频道广告【详见[ChannelAdvert参数描述](channelOperate.md?id=polyv21)】 | 
 
-<h6 id="polyv23"><a href="#/channelOperate?id=polyv23"data-id="ChannelAdvert参数描述"class="anchor"><span>ChannelAdvert参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv21"><a href="#/channelOperate?id=polyv21"data-id="ChannelAdvert参数描述"class="anchor"><span>ChannelAdvert参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -2285,71 +2104,13 @@ true为设置成功，false为设置失败
 
 <br /><br />
 
-## 28、查询频道广告列表
-### 描述
-```
-查询频道广告列表
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-2、如果直播未开启，将抛出"channel is not live."异常
-### 单元测试
-```java
-	@Test
-	public void testGetChannelCapture() throws Exception {
-        LiveChannelCaptureRequest liveChannelCaptureRequest = new LiveChannelCaptureRequest();
-        String liveChannelCaptureResponse;
-        try {
-            //准备测试数据
-            String channelId = createChannel();
-            liveChannelCaptureRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            liveChannelCaptureResponse = new LiveChannelOperateServiceImpl().getChannelCapture(liveChannelCaptureRequest);
-            Assert.assertNotNull(liveChannelCaptureResponse);
-            if (liveChannelCaptureResponse != null) {
-                //to do something ......
-                log.debug("测试查询频道广告列表成功,{}", JSON.toJSONString(liveChannelCaptureResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-返回图片http地址，
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 29、修改直播推流方式
+## 26、修改直播推流方式
 ### 描述
 ```
 修改直播推流方式
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 2、直播过程中不允许修改直播方式
 ### 单元测试
@@ -2392,7 +2153,7 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | true | String | 直播频道ID | 
+| channelId | true | String | 直播频道号 | 
 | streamType | true | String | 直播方式，client:客户端推流;disk:硬盘推流;audio:音频直播;pull:拉流直播 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
@@ -2405,78 +2166,13 @@ true为修改推流方式成功，false为修改失败
 
 <br /><br />
 
-## 30、设置硬盘推流直播
-### 描述
-```
-设置硬盘推流直播
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
-
-2、调用接口后，如果当前频道未在直播中，会自动设置直播方式为“硬盘推流”。如果当前使用其他直播推流方式直播中，则需要在直播结束后，调用《修改直播推流方式》修改为硬盘推流，才会在所设置的开始时间进行直播
-### 单元测试
-```java
-	@Test
-	public void testCreateDiskVideosStream() throws Exception {
-        LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest = new LiveCreateDiskVideosStreamRequest();
-        Boolean liveCreateDiskVideosStreamResponse;
-        try {
-            //准备测试数据
-            String channelId = createChannel();
-            String videoId = listChannelVideoIds(channelId).get(0);
-            liveCreateDiskVideosStreamRequest.setVideoIds(videoId)
-                    .setStartTimes(super.getDate(System.currentTimeMillis() + 3000000))
-                    .setChannelId(channelId)
-                    .setRequestId(LiveSignUtil.generateUUID());
-            liveCreateDiskVideosStreamResponse = new LiveChannelOperateServiceImpl().createDiskVideosStream(
-                    liveCreateDiskVideosStreamRequest);
-            Assert.assertNotNull(liveCreateDiskVideosStreamResponse);
-            if (liveCreateDiskVideosStreamResponse) {
-                //to do something ......
-                log.debug("测试设置硬盘推流直播成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | true | String | 频道号 | 
-| videoIds | true | String | 要设置硬盘推流的点播视频ID,可使用new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary()获取 | 
-| startTimes | true | Date | 硬盘推流开始时间，13位毫秒级时间戳 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-true为设置硬盘推流直播成功，false为修改失败
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 31、删除硬盘推流的视频
+## 27、删除硬盘推流的视频
 ### 描述
 ```
 删除硬盘推流的视频
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 2、调用接口后，如果当前频道未在直播中，会自动设置直播方式为“硬盘推流”。如果当前使用其他直播推流方式直播中，则需要在直播结束后，调用《修改直播推流方式》修改为硬盘推流，才会在所设置的开始时间进行直播
 ### 单元测试
@@ -2525,7 +2221,7 @@ true为设置硬盘推流直播成功，false为修改失败
 
 ### 返回对象描述
 
-true为设置硬盘推流直播成功，false为修改失败
+true为删除硬盘推流直播成功，false为删除失败
 <br /><br />
 
 ------------------

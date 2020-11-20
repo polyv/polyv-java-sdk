@@ -27,7 +27,7 @@ public class LiveChannelAuthTokenRequest extends LiveCommonRequest {
     private String userId;
     
     /**
-     * 频道号，请留意，如果该参数为空，会对该用户所有的频道进行修改
+     * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")

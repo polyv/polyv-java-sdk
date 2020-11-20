@@ -16,6 +16,7 @@ import net.polyv.live.v1.entity.player.LiveSetPlayerHeaderAdvertRequest;
 import net.polyv.live.v1.entity.player.LiveSetPlayerImgRequest;
 import net.polyv.live.v1.entity.player.LiveSetPlayerLogoRequest;
 import net.polyv.live.v1.entity.player.LiveSetPlayerPauseAdvertRequest;
+import net.polyv.live.v1.entity.player.LiveSetPlayerUrlMarqueeRequest;
 import net.polyv.live.v1.entity.player.LiveSetWarmupEnableRequest;
 import net.polyv.live.v1.entity.player.LiveSetWarmupVedioRequest;
 import net.polyv.live.v1.service.BaseTest;
@@ -84,9 +85,9 @@ public class LivePlayerServiceImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerImg(liveSetChatAdminDataRequest);
             Assert.assertNotNull(result);
-            if (result ) {
+            if (result) {
                 //to do something ......
-                log.debug("测试设置播放器暖场图片成功 "   );
+                log.debug("测试设置播放器暖场图片成功 ");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -135,7 +136,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
             throw e;
         }
     }
-
+    
     /**
      * 设置播放器Logo
      * 返回：true 设置成功， fales 设置失败
@@ -192,7 +193,9 @@ public class LivePlayerServiceImplTest extends BaseTest {
                     .setHeadAdvertType(LiveConstant.HeadAdvertType.IMAGE.getDesc())
                     .setHeadAdvertWidth(100)
                     .setHeadAdvertHref("http://www.baidu.com")
-                    .setHeadAdvertMediaUrl("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
+                    .setHeadAdvertMediaUrl(
+                            "https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57" +
+                                    "/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerHeaderAdvert(liveSetPlayerHeaderAdvertRequest);
             Assert.assertNotNull(result);
@@ -236,6 +239,41 @@ public class LivePlayerServiceImplTest extends BaseTest {
             if (result != null) {
                 //to do something ......
                 log.debug("测试设置播放器暂停广告成功{}", JSON.toJSONString(result));
+                
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试设置播放器自定义url跑马灯
+     * 描述：可以设置播放器防录屏自定义url跑马灯开关，在开启时需提交url参数。
+     * 返回：true 设置成功，false 设置失败
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testSetPlayerUrlMarquee() throws Exception, NoSuchAlgorithmException, URISyntaxException {
+        LiveSetPlayerUrlMarqueeRequest liveSetPlayerUrlMarqueeRequest = new LiveSetPlayerUrlMarqueeRequest();
+        Boolean liveSetPlayerUrlMarqueeResponse;
+        try {
+            String channelId = super.createChannel();
+            liveSetPlayerUrlMarqueeRequest.setChannelId(channelId)
+                    .setMarqueeRestrict("N")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveSetPlayerUrlMarqueeResponse = new LivePlayerServiceImpl().setPlayerUrlMarquee(
+                    liveSetPlayerUrlMarqueeRequest);
+            Assert.assertTrue(liveSetPlayerUrlMarqueeResponse);
+            if (liveSetPlayerUrlMarqueeResponse) {
+                //to do something ......
+                log.debug("测试设置播放器自定义url跑马灯成功");
                 
             }
         } catch (PloyvSdkException e) {

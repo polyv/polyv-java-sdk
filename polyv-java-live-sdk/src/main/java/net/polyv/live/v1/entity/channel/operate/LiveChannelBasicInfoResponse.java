@@ -122,7 +122,7 @@ public class LiveChannelBasicInfoResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("频道所属分类的信息")
-    public class UserCategory {
+    public static class UserCategory {
         
         /**
          * 分类ID
@@ -153,7 +153,7 @@ public class LiveChannelBasicInfoResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("直播观看条件列表")
-    public class AuthSetting {
+    public static class AuthSetting {
         
         /**
          * 频道号

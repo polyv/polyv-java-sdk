@@ -46,7 +46,7 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
     @Data
     @Accessors(chain = true)
     @ApiModel("基础设置")
-    public class BasicSetting {
+    public static class BasicSetting {
         /**
          * 频道名称
          */

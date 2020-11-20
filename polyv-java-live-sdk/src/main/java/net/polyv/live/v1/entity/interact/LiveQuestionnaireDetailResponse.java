@@ -79,7 +79,7 @@ public class LiveQuestionnaireDetailResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("查询频道问卷详情响应实体-问题详情")
-    public class QuestionDetail {
+    public static class QuestionDetail {
         
         
         /**

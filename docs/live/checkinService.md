@@ -4,7 +4,7 @@
 查询签到结果
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -55,9 +55,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 签到记录数据数组【详见[CheckinRecord参数描述](checkinService.md?id=polyv36)】 | 
+| contents | false | Array | 签到记录数据数组【详见[CheckinRecord参数描述](checkinService.md?id=polyv34)】 | 
 
-<h6 id="polyv36"><a href="#/channelOperate?id=polyv36"data-id="CheckinRecord参数描述"class="anchor"><span>CheckinRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv34"><a href="#/channelOperate?id=polyv34"data-id="CheckinRecord参数描述"class="anchor"><span>CheckinRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -86,7 +86,7 @@
 通过签到ID获取该次签到记录
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java
@@ -159,7 +159,7 @@
 通过直播场次sessionId获取直播发起签到记录
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 ### 单元测试
 ```java

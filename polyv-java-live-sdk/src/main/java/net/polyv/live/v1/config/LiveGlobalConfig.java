@@ -1,6 +1,7 @@
 package net.polyv.live.v1.config;
 
 import net.polyv.common.v1.base.HttpClientUtil;
+import net.polyv.common.v1.base.HttpUtil;
 import net.polyv.common.v1.exception.GlobalUncaughtExceptionHandler;
 
 /**
@@ -37,6 +38,7 @@ public class LiveGlobalConfig {
         LiveGlobalConfig.APP_ID = appId;
         LiveGlobalConfig.USER_ID = userId;
         LiveGlobalConfig.APP_SECRET = appSecret;
+        HttpUtil.setSDK("LIVE_SDK");
         HttpClientUtil.init();
         //全局异常和错误处理配置
         Thread.setDefaultUncaughtExceptionHandler(new GlobalUncaughtExceptionHandler());
@@ -54,6 +56,7 @@ public class LiveGlobalConfig {
         LiveGlobalConfig.APP_ID = appId;
         LiveGlobalConfig.USER_ID = userId;
         LiveGlobalConfig.APP_SECRET = appSecret;
+        HttpUtil.setSDK("LIVE_SDK");
         HttpClientUtil.setTimeOut(timeOut);
         HttpClientUtil.setMaxClientNum(maxClientNum);
         HttpClientUtil.init();

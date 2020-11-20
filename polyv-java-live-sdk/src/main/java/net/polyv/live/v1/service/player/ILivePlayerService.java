@@ -7,6 +7,7 @@ import net.polyv.live.v1.entity.player.LiveSetPlayerHeaderAdvertRequest;
 import net.polyv.live.v1.entity.player.LiveSetPlayerImgRequest;
 import net.polyv.live.v1.entity.player.LiveSetPlayerLogoRequest;
 import net.polyv.live.v1.entity.player.LiveSetPlayerPauseAdvertRequest;
+import net.polyv.live.v1.entity.player.LiveSetPlayerUrlMarqueeRequest;
 import net.polyv.live.v1.entity.player.LiveSetWarmupEnableRequest;
 import net.polyv.live.v1.entity.player.LiveSetWarmupVedioRequest;
 
@@ -15,7 +16,7 @@ import net.polyv.live.v1.entity.player.LiveSetWarmupVedioRequest;
  * @author: thomas
  **/
 public interface ILivePlayerService {
-
+    
     /**
      * 设置播放器暖场图片，API地址：https://dev.polyv.net/2017/liveproduct/l-player/updatecoverimage/
      * @param liveSetPlayerImgRequest 设置播放器暖场图片请求实体
@@ -23,8 +24,8 @@ public interface ILivePlayerService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean setPlayerImg(LiveSetPlayerImgRequest liveSetPlayerImgRequest)
-            throws IOException, NoSuchAlgorithmException;
+    Boolean setPlayerImg(LiveSetPlayerImgRequest liveSetPlayerImgRequest) throws IOException, NoSuchAlgorithmException;
+    
     /**
      * 设置频道的暖场设置开关，API地址：https://dev.polyv.net/2019/liveproduct/l-player/set-warmup-enabled/
      * @param liveSetWarmupEnableRequest 设置频道的暖场设置开关
@@ -37,17 +38,18 @@ public interface ILivePlayerService {
     
     
     /**
-     *设置播放器Logo，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatelogo/
+     * 设置播放器Logo，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatelogo/
      * @param liveSetWarmupEnableRequest 设置播放器Logo请求实体
      * @return 响应实体
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
-   
+    
     public Boolean setPlayerLogo(LiveSetPlayerLogoRequest liveSetWarmupEnableRequest)
-            throws IOException, NoSuchAlgorithmException ;
+            throws IOException, NoSuchAlgorithmException;
+    
     /**
-     *设置播放器暂停广告，API地址：https://dev.polyv.net/2018/liveproduct/l-player/updatestop/
+     * 设置播放器暂停广告，API地址：https://dev.polyv.net/2018/liveproduct/l-player/updatestop/
      * @param liveSetPlayerPauseAdvertRequest 设置播放器暂停广告请求实体
      * @return 响应实体
      * @throws IOException 客户端和服务器读写异常
@@ -57,14 +59,14 @@ public interface ILivePlayerService {
             throws IOException, NoSuchAlgorithmException;
     
     /**
-     *设置播放器片头广告，API地址：https://dev.polyv.net/2018/liveproduct/l-player/updatehead/
+     * 设置播放器片头广告，API地址：https://dev.polyv.net/2018/liveproduct/l-player/updatehead/
      * @param liveSetPlayerHeaderAdvertRequest 设置播放器片头广告请求实体
      * @return 响应实体
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
     public Boolean setPlayerHeaderAdvert(LiveSetPlayerHeaderAdvertRequest liveSetPlayerHeaderAdvertRequest)
-            throws IOException, NoSuchAlgorithmException ;
+            throws IOException, NoSuchAlgorithmException;
     
     /**
      * 设置播放器暖场视频，API地址：https://dev.polyv.net/2016/liveproduct/l-player/updatewarmupflv/
@@ -75,4 +77,16 @@ public interface ILivePlayerService {
      */
     public Boolean setPlayerWarmUpVedio(LiveSetWarmupVedioRequest liveSetWarmupVedioRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置播放器自定义url跑马灯
+     * API地址：https://dev.polyv.net/2017/liveproduct/l-player/set-diyurl-marquee/
+     * @param liveSetPlayerUrlMarqueeRequest 设置播放器自定义url跑马灯请求实体
+     * @return 设置播放器自定义url跑马灯返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean setPlayerUrlMarquee(LiveSetPlayerUrlMarqueeRequest liveSetPlayerUrlMarqueeRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
 }

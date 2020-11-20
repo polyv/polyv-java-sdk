@@ -89,7 +89,7 @@ public class LiveGetHistoryChatMsgResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("查询历史聊天信息响应实体-消息对应用户消息")
-    public class User {
+    public static class User {
         /**
          * 用户IP
          */

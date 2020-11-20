@@ -19,7 +19,7 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("新增白名单请求实体")
-public class LiveUploadWriteListRequest extends LiveCommonRequest {
+public class LiveUploadWhiteListRequest extends LiveCommonRequest {
     
     /**
      * 频道号，无该参数为全局设置

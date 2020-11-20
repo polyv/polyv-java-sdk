@@ -243,7 +243,7 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
     @Data
     @Accessors(chain = true)
     @ApiModel("登记观看参数")
-    public class InfoField {
+    public static class InfoField {
         /**
          * 登记信息名，最多为8字符
          */

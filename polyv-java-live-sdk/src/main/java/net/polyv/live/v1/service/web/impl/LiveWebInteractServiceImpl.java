@@ -7,8 +7,11 @@ import java.util.Map;
 import net.polyv.live.v1.constant.LiveURL;
 import net.polyv.live.v1.entity.web.interact.LiveChannelDonateRequest;
 import net.polyv.live.v1.entity.web.interact.LiveChannelDonateResponse;
+import net.polyv.live.v1.entity.web.interact.LiveGetChannelWxShareRequest;
+import net.polyv.live.v1.entity.web.interact.LiveGetChannelWxShareResponse;
 import net.polyv.live.v1.entity.web.interact.LiveUpdateChannelCashRequest;
 import net.polyv.live.v1.entity.web.interact.LiveUpdateChannelGoodRequest;
+import net.polyv.live.v1.entity.web.interact.LiveUpdateChannelWxShareRequest;
 import net.polyv.live.v1.service.LiveBaseService;
 import net.polyv.live.v1.service.web.ILiveWebInteractService;
 import net.polyv.live.v1.util.MapUtil;
@@ -30,9 +33,10 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
     public Boolean updateChannelGood(LiveUpdateChannelGoodRequest liveUpdateChannelGoodRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.GOOD_DONATE_SET_URL;
-        Map<String,String> signMap = MapUtil.getSignMap(liveUpdateChannelGoodRequest);
-        signMap.put("channelId",String.valueOf(liveUpdateChannelGoodRequest.getChannelId()));
-        String liveUpdateChannelGoodResponse = this.basePostJson(url, signMap, liveUpdateChannelGoodRequest, String.class);
+        Map<String, String> signMap = MapUtil.getSignMap(liveUpdateChannelGoodRequest);
+        signMap.put("channelId", String.valueOf(liveUpdateChannelGoodRequest.getChannelId()));
+        String liveUpdateChannelGoodResponse = this.basePostJson(url, signMap, liveUpdateChannelGoodRequest,
+                String.class);
         return "true".equals(liveUpdateChannelGoodResponse);
     }
     
@@ -48,9 +52,10 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
     public Boolean updateChannelCash(LiveUpdateChannelCashRequest liveUpdateChannelCashRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CASH_DONATE_SET_URL;
-        Map<String,String> signMap = MapUtil.getSignMap(liveUpdateChannelCashRequest);
-        signMap.put("channelId",String.valueOf(liveUpdateChannelCashRequest.getChannelId()));
-        String liveUpdateChannelCashResponse = this.basePostJson(url, signMap, liveUpdateChannelCashRequest, String.class);
+        Map<String, String> signMap = MapUtil.getSignMap(liveUpdateChannelCashRequest);
+        signMap.put("channelId", String.valueOf(liveUpdateChannelCashRequest.getChannelId()));
+        String liveUpdateChannelCashResponse = this.basePostJson(url, signMap, liveUpdateChannelCashRequest,
+                String.class);
         return "true".equals(liveUpdateChannelCashResponse);
     }
     
@@ -69,6 +74,37 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
         LiveChannelDonateResponse liveChannelDonateResponse = this.baseGet(url, liveChannelDonateRequest,
                 LiveChannelDonateResponse.class);
         return liveChannelDonateResponse;
+    }
+    
+    /**
+     * 设置频道微信分享信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymhd/update-weixin-share/
+     * @param liveUpdateChannelWxShareRequest 设置频道微信分享信息请求实体
+     * @return 设置频道微信分享信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateChannelWxShare(LiveUpdateChannelWxShareRequest liveUpdateChannelWxShareRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.UPDATE_CHANNEL_WX_SHARE_URL;
+        String liveUpdateChannelWxShareResponse = this.basePost(url, liveUpdateChannelWxShareRequest, String.class);
+        return "success".equals(liveUpdateChannelWxShareResponse);
+    }
+    
+    /**
+     * 查询频道微信分享信息
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymhd/get-weixin-share/
+     * @param liveGetChannelWxShareRequest 查询频道微信分享信息请求实体
+     * @return 查询频道微信分享信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public LiveGetChannelWxShareResponse getChannelWxShare(LiveGetChannelWxShareRequest liveGetChannelWxShareRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.GET_CHANNEL_WX_SHARE_URL;
+        return this.baseGet(url,liveGetChannelWxShareRequest,LiveGetChannelWxShareResponse.class);
     }
     
 }

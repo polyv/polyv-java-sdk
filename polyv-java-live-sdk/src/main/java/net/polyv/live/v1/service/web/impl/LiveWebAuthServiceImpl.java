@@ -21,15 +21,16 @@ import net.polyv.live.v1.entity.web.auth.LiveChannelAuthInfoResponse;
 import net.polyv.live.v1.entity.web.auth.LiveChannelAuthRequest;
 import net.polyv.live.v1.entity.web.auth.LiveChannelAuthResponse;
 import net.polyv.live.v1.entity.web.auth.LiveChannelAuthTypeRequest;
-import net.polyv.live.v1.entity.web.auth.LiveChannelWriteListRequest;
-import net.polyv.live.v1.entity.web.auth.LiveChannelWriteListResponse;
-import net.polyv.live.v1.entity.web.auth.LiveCreateChannelWriteListRequest;
-import net.polyv.live.v1.entity.web.auth.LiveDeleteChannelWriteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveChannelWhiteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveChannelWhiteListResponse;
+import net.polyv.live.v1.entity.web.auth.LiveCreateChannelWhiteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveDeleteChannelWhiteListRequest;
 import net.polyv.live.v1.entity.web.auth.LiveDownloadChannelAuthInfoRequest;
+import net.polyv.live.v1.entity.web.auth.LiveDownloadChannelWhiteListRequest;
 import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelAuthRequest;
 import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelAuthUrlRequest;
-import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelWriteListRequest;
-import net.polyv.live.v1.entity.web.auth.LiveUploadWriteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelWhiteListRequest;
+import net.polyv.live.v1.entity.web.auth.LiveUploadWhiteListRequest;
 import net.polyv.live.v1.service.LiveBaseService;
 import net.polyv.live.v1.service.web.ILiveWebAuthService;
 import net.polyv.live.v1.util.MapUtil;
@@ -42,17 +43,17 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     
     /**
      * 添加单个白名单
-     * @param liveCreateChannelWriteListRequest 添加单个白名单请求体
+     * @param liveCreateChannelWhiteListRequest 添加单个白名单请求体
      * @return 添加单个白名单返回体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Boolean createChannelWriteList(LiveCreateChannelWriteListRequest liveCreateChannelWriteListRequest)
+    public Boolean createChannelWhiteList(LiveCreateChannelWhiteListRequest liveCreateChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.CHANNEL_WRITE_LIST_ADD_URL;
-        String liveCreateChannelWriteListResponse = this.basePost(url, liveCreateChannelWriteListRequest, String.class);
-        return "success".equals(liveCreateChannelWriteListResponse);
+        String url = LiveURL.CHANNEL_WHITE_LIST_ADD_URL;
+        String liveCreateChannelWhiteListResponse = this.basePost(url, liveCreateChannelWhiteListRequest, String.class);
+        return "success".equals(liveCreateChannelWhiteListResponse);
     }
     
     /**
@@ -156,16 +157,16 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     /**
      * 查询频道观看白名单列表
      * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/get-white-list/
-     * @param liveChannelWriteListRequest 查询频道观看白名单列表请求实体
+     * @param liveChannelWhiteListRequest 查询频道观看白名单列表请求实体
      * @return 查询频道观看白名单列表返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public LiveChannelWriteListResponse getChannelWriteList(LiveChannelWriteListRequest liveChannelWriteListRequest)
+    public LiveChannelWhiteListResponse getChannelWhiteList(LiveChannelWhiteListRequest liveChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.CHANNEL_WRITE_LIST_GET_URL;
-        return this.baseGet(url, liveChannelWriteListRequest, LiveChannelWriteListResponse.class);
+        String url = LiveURL.CHANNEL_WHITE_LIST_GET_URL;
+        return this.baseGet(url, liveChannelWhiteListRequest, LiveChannelWhiteListResponse.class);
         
     }
     
@@ -188,33 +189,33 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     /**
      * 更新白名单
      * API地址：https://dev.polyv.net/2020/liveproduct/l-api/szgkygg/ymgktj/update-white-list/
-     * @param liveUpdateChannelWriteListRequest 更新白名单请求实体
+     * @param liveUpdateChannelWhiteListRequest 更新白名单请求实体
      * @return 更新白名单返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Boolean updateChannelWriteList(LiveUpdateChannelWriteListRequest liveUpdateChannelWriteListRequest)
+    public Boolean updateChannelWhiteList(LiveUpdateChannelWhiteListRequest liveUpdateChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.UPDATE_CHANNEL_WRITE_LIST_URL;
-        String liveUpdateChannelWriteListResponse = this.basePost(url, liveUpdateChannelWriteListRequest, String.class);
-        return "success".equals(liveUpdateChannelWriteListResponse);
+        String url = LiveURL.UPDATE_CHANNEL_WHITE_LIST_URL;
+        String liveUpdateChannelWhiteListResponse = this.basePost(url, liveUpdateChannelWhiteListRequest, String.class);
+        return "success".equals(liveUpdateChannelWhiteListResponse);
     }
     
     /**
      * 删除白名单
      * API地址：https://dev.polyv.net/2020/liveproduct/l-api/szgkygg/ymgktj/delete-white-list/
-     * @param liveDeleteChannelWriteListRequest 删除白名单请求实体
+     * @param liveDeleteChannelWhiteListRequest 删除白名单请求实体
      * @return 删除白名单返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Boolean deleteChannelWriteList(LiveDeleteChannelWriteListRequest liveDeleteChannelWriteListRequest)
+    public Boolean deleteChannelWhiteList(LiveDeleteChannelWhiteListRequest liveDeleteChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.DELETE_CHANNEL_WRITE_LIST_URL;
-        String liveDeleteChannelWriteListResponse = this.basePost(url, liveDeleteChannelWriteListRequest, String.class);
-        return "success".equals(liveDeleteChannelWriteListResponse);
+        String url = LiveURL.DELETE_CHANNEL_WHITE_LIST_URL;
+        String liveDeleteChannelWhiteListResponse = this.basePost(url, liveDeleteChannelWhiteListRequest, String.class);
+        return "success".equals(liveDeleteChannelWhiteListResponse);
     }
     
     /**
@@ -269,20 +270,35 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     /**
      * 新增白名单
      * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/upload-white-list/
-     * @param liveUploadWriteListRequest 新增白名单请求实体
+     * @param liveUploadWhiteListRequest 新增白名单请求实体
      * @return 新增白名单返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Boolean uploadWriteList(LiveUploadWriteListRequest liveUploadWriteListRequest)
+    public Boolean uploadWhiteList(LiveUploadWhiteListRequest liveUploadWhiteListRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = LiveURL.UPLOAD_WEITE_LIST_URL;
+        String url = LiveURL.UPLOAD_WHITE_LIST_URL;
         Map<String, File> fileMap = new HashMap<String, File>();
-        fileMap.put("file", liveUploadWriteListRequest.getFile());
-        String liveUploadWriteListResponse = this.baseUploadFile(url, liveUploadWriteListRequest, fileMap,
+        fileMap.put("file", liveUploadWhiteListRequest.getFile());
+        String liveUploadWhiteListResponse = this.baseUploadFile(url, liveUploadWhiteListRequest, fileMap,
                 String.class);
-        return "true".equals(liveUploadWriteListResponse);
+        return "true".equals(liveUploadWhiteListResponse);
+    }
+    
+    /**
+     *下载频道观看白名单列表
+     * API地址：https://dev.polyv.net/2018/liveproduct/l-api/szgkygg/ymgktj/download-white-list/
+     * @param liveDownloadChannelWhiteListRequest 下载频道观看白名单列表请求实体
+     * @return 下载频道观看白名单列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public byte[] downloadChannelWhiteList(LiveDownloadChannelWhiteListRequest liveDownloadChannelWhiteListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = LiveURL.DOWNLOAD_CHANNEL_WHITE_LIST_URL;
+        return this.baseGetReturnArray(url,liveDownloadChannelWhiteListRequest);
     }
     
 }

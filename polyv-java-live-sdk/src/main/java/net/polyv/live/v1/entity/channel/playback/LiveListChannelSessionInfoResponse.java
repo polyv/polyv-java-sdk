@@ -25,7 +25,7 @@ public class LiveListChannelSessionInfoResponse extends LivePageCommonResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("频道直播场次信息")
-    public class ChannelSessionInfo {
+    public static class ChannelSessionInfo {
         
         /**
          * 频道号

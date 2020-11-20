@@ -46,7 +46,7 @@ public class LiveGetConsultingRecordResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("查询咨询提问记录响应实体-消息对应用户消息")
-    public class User {
+    public static class User {
      
         /**
          * 观众昵称

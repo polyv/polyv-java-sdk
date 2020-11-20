@@ -56,7 +56,7 @@ public class LiveQuestionAnswerRecordResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("查询频道答题卡答题结果响应实体-题目选项信息列表")
-    public class Option {
+    public static class Option {
         /**
          * 选项标题
          */
@@ -86,7 +86,7 @@ public class LiveQuestionAnswerRecordResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("查询频道答题卡答题结果响应实体-答题的用户列表")
-    public class Record {
+    public static class Record {
         /**
          * 答题的用户ID
          */

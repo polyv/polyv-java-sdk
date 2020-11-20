@@ -26,7 +26,7 @@ public class LiveListChannelPPTRecordResponse extends LivePageCommonResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("查询课件重制任务列表返回信息")
-    public class LivePPTRecord {
+    public static class LivePPTRecord {
         
         /**
          * 频道号

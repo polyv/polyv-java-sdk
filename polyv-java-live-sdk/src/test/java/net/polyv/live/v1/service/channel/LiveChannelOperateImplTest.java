@@ -313,7 +313,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = getAloneChannelId();
             
-            LiveChannelSettingRequest.BasicSetting basicSetting = liveChannelSettingRequest.new BasicSetting().setName(
+            LiveChannelSettingRequest.BasicSetting basicSetting = new LiveChannelSettingRequest.BasicSetting().setName(
                     "Junit测试(勿删)888")
                     .setChannelPasswd("123321")
                     .setCategoryId(340019)

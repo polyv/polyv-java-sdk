@@ -57,7 +57,7 @@ public class LiveQuestionnaireResultResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("查询频道问卷结果响应实体-问卷下各个问题的答题统计")
-    public class QuestionStats {
+    public static class QuestionStats {
         
         /**
          * 题目的答题人数
@@ -74,7 +74,7 @@ public class LiveQuestionnaireResultResponse {
         @Data
         @Accessors(chain = true)
         @ApiModel("查询频道问卷结果响应实体-问卷下单个问题的答题统计")
-        public class QuestionStat {
+        public static class QuestionStat {
             
             /**
              * 题目ID,
@@ -171,7 +171,7 @@ public class LiveQuestionnaireResultResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("查询频道问卷结果响应实体-观看端提交答题的用户信息")
-    public class Users {
+    public static class Users {
         /**
          * 提交问卷的用户ID
          */
@@ -205,7 +205,7 @@ public class LiveQuestionnaireResultResponse {
         @Data
         @Accessors(chain = true)
         @ApiModel("查询频道问卷结果响应实体-用户每道题目的答题情况")
-        public class Answers {
+        public static class Answers {
             /**
              * 题目ID
              */

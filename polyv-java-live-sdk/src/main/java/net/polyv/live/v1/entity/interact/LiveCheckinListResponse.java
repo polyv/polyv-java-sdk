@@ -27,7 +27,7 @@ public class LiveCheckinListResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("查询签到结果响应实体-单条签到记录数据")
-    public class CheckinRecord {
+    public static class CheckinRecord {
         
         /**
          * 查询的签到日期，yyyy-MM-dd格式

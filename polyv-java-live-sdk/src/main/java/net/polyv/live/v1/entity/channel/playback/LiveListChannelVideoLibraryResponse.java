@@ -25,7 +25,7 @@ public class LiveListChannelVideoLibraryResponse extends LivePageCommonResponse 
     @Data
     @Accessors(chain = true)
     @ApiModel("视频库视频信息")
-    public class ChannelVideoLibrary {
+    public static class ChannelVideoLibrary {
         /**
          * 直播系统生成的id
          */

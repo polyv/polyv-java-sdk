@@ -29,7 +29,7 @@ public class LiveListChannelMicResponse extends LivePageCommonResponse {
     @Data
     @Accessors(chain = true)
     @ApiModel("频道连麦使用详情")
-    public class ChannelMic{
+    public static class ChannelMic{
     
         /**
          * 用户userId

@@ -1,5 +1,5 @@
 :: @echo off
-:: 调用示例  auto_deploy.bat  1.0.8
+:: 调用示例  auto_deploy.bat  1.0.9
 git checkout dev
 :: #同步开发分支所有代码
 git pull 

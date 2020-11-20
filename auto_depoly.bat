@@ -14,12 +14,12 @@ git merge dev --no-ff
 git status
 PAUSE
 :: 执行集成测试，确认测试没有问题全部通过
-mvn clean  test
-PAUSE
+:: mvn clean  test
+:: PAUSE
 :: 针对当前分支新建一个版本tag
 git  tag  %1
 :: # 部署到中央版本库
-mvn clean install deploy -Dmaven.test.skip=true -P release
+:: mvn clean install deploy -Dmaven.test.skip=true -P release
 :: # 提交master分支到origin远程仓库
 git push origin master
 :: # 提交master分支到github远程仓库

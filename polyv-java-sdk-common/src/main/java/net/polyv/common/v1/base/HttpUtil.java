@@ -37,10 +37,10 @@ import net.polyv.common.v1.constant.Constant;
 public class HttpUtil {
     
     public static final String SOURCE = "source";
-    public static  String SDK = "sdk";
-    private static final String VERSION = "version";
-    public static final String CURRETN_VERSION = "1.0.9";
-    public static final String UTF8 = Constant.UTF8;
+    private static  String SDK = "sdk";
+    public static final String VERSION = "version";
+    private static final String CURRETN_VERSION = "1.0.9";
+    private static final String UTF8 = Constant.UTF8;
     
     public static String getSDK() {
         return SDK;

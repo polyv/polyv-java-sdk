@@ -14,9 +14,9 @@
         LiveBadWordResponse liveBadWordResponse = null;
         try {
             String channelId = super.createChannel();
-            liveBadWordRequest
-                    .setChannelId(channelId)
-                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"})).setRequestId(LiveSignUtil.generateUUID());
+            liveBadWordRequest.setChannelId(channelId)
+                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"}))
+                    .setRequestId(LiveSignUtil.generateUUID());
             liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
             Assert.assertNotNull(liveBadWordResponse);
             if (liveBadWordResponse != null) {
@@ -151,8 +151,8 @@
         try {
             String channelId = super.createChannel();
             liveGetHistoryChatMsgRequest.setChannelId(channelId)
-                    .setStartDay(getDate(2020,10,01))
-                    .setEndDay(getDate(2099,12,12))
+                    .setStartDay(getDate(2020, 10, 01))
+                    .setEndDay(getDate(2099, 12, 12))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistoryChatMsg(
                     liveGetHistoryChatMsgRequest);
@@ -295,7 +295,8 @@
         List<String> result = null;
         try {
             String channelId = super.createChannel();
-            liveGetBannedListRequest.setChannelId(channelId).setType(LiveConstant.BannedType.IP.getType())
+            liveGetBannedListRequest.setChannelId(channelId)
+                    .setType(LiveConstant.BannedType.IP.getType())
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
             Assert.assertNotNull(result);
@@ -581,11 +582,11 @@
 | id | false | String | 信息id | 
 | content | false | String | 内容 | 
 | time | false | Date | 发言时间 | 
-| user | false | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv33)】 | 
+| user | false | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv31)】 | 
 | event | false | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
 | userId | false | String | 提问者ID | 
 
-<h6 id="polyv33"><a href="#/channelOperate?id=polyv33"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv31"><a href="#/channelOperate?id=polyv31"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -889,9 +890,7 @@ true 删除成功 ，false 删除失败
         Assert.assertNotEquals(0, msgId.trim().length());
         //获取已经存在的消息id结束
         try {
-            liveChatDelSingleMsgRequest.setId(msgId)
-                    .setChannelId(channelId)
-                    .setRequestId(LiveSignUtil.generateUUID());
+            liveChatDelSingleMsgRequest.setId(msgId).setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
             Assert.assertNotNull(result);
             if (result != null) {
@@ -982,6 +981,67 @@ true 删除成功， false 删除失败
 ### 返回对象描述
 
 true 删除成功， false 删除失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 16、管理员发送频道聊天信息
+### 描述
+```
+管理员发送频道聊天信息
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testSendChannelChat() throws Exception, NoSuchAlgorithmException {
+        LiveSendChannelChatRequest liveSendChannelChatRequest = new LiveSendChannelChatRequest();
+        Boolean liveSendChannelChatResponse;
+        try {
+            String channelId = super.createChannel();
+            liveSendChannelChatRequest.setChannelId(channelId)
+                    .setContent("请同学们认真学习")
+                    .setRole("ADMIN")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveSendChannelChatResponse = new LiveChatRoomServiceImpl().sendChannelChat(liveSendChannelChatRequest);
+            Assert.assertTrue(liveSendChannelChatResponse);
+            if (liveSendChannelChatResponse) {
+                //to do something ......
+                log.debug("测试管理员发送频道聊天信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| content | true | String | 聊天信息内容 | 
+| role | true | String | 发送人角色（目前为只提供管理员角色，值为'ADMIN'） | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true 发送成功， false 发送失败
 <br /><br />
 
 ------------------

@@ -273,9 +273,9 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelVedioInfos | false | Array | 视频库视频信息【详见[ChannelVedioInfo参数描述](channelPlayback.md?id=polyv24)】 | 
+| channelVedioInfos | false | Array | 视频库视频信息【详见[ChannelVedioInfo参数描述](channelPlayback.md?id=polyv22)】 | 
 
-<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="ChannelVedioInfo参数描述"class="anchor"><span>ChannelVedioInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv22"><a href="#/channelOperate?id=polyv22"data-id="ChannelVedioInfo参数描述"class="anchor"><span>ChannelVedioInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -355,13 +355,13 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 视频库视频信息【详见[ChannelVideoLibrary参数描述](channelPlayback.md?id=polyv25)】 | 
+| contents | false | Array | 视频库视频信息【详见[ChannelVideoLibrary参数描述](channelPlayback.md?id=polyv23)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv25"><a href="#/channelOperate?id=polyv25"data-id="ChannelVideoLibrary参数描述"class="anchor"><span>ChannelVideoLibrary参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv23"><a href="#/channelOperate?id=polyv23"data-id="ChannelVideoLibrary参数描述"class="anchor"><span>ChannelVideoLibrary参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -452,13 +452,13 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 频道直播场次信息【详见[ChannelSessionInfo参数描述](channelPlayback.md?id=polyv26)】 | 
+| contents | false | Array | 频道直播场次信息【详见[ChannelSessionInfo参数描述](channelPlayback.md?id=polyv24)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv26"><a href="#/channelOperate?id=polyv26"data-id="ChannelSessionInfo参数描述"class="anchor"><span>ChannelSessionInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="ChannelSessionInfo参数描述"class="anchor"><span>ChannelSessionInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -519,7 +519,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
+| channelId | true | String | 频道号 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
@@ -1103,8 +1103,8 @@ true为修改成功，false为修改失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| startTime | true | Date | 录制文件开始时间(13位时间戳)，与endtime最大不能超过8小时 | 
-| endTime | true | Date | 录制文件结束时间(13位时间戳)，与startTime最大不能超过8小时 | 
+| startTime | true | Date | 录制文件开始时间，与endtime最大不能超过8小时 | 
+| endTime | true | Date | 录制文件结束时间，与startTime最大不能超过8小时 | 
 | callbackUrl | false | String | 合并成功或失败回调的url | 
 | fileName | false | String | 合并后文件名 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 

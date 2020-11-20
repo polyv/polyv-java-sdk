@@ -13,7 +13,8 @@
         LiveUpdateChannelGoodRequest liveUpdateChannelGoodRequest = new LiveUpdateChannelGoodRequest();
         Boolean liveUpdateChannelGoodResponse;
         try {
-            List<LiveUpdateChannelGoodRequest.ChannelGood> channelGoods = new ArrayList<LiveUpdateChannelGoodRequest.ChannelGood>();
+            List<LiveUpdateChannelGoodRequest.ChannelGood> channelGoods =
+                    new ArrayList<LiveUpdateChannelGoodRequest.ChannelGood>();
             LiveUpdateChannelGoodRequest.ChannelGood channelGood = new LiveUpdateChannelGoodRequest.ChannelGood();
             channelGood.setGoodName("佛跳墙")
                     .setGoodImg("//livestatic.videocc.net/uploaded/images/webapp/channel/donate/07-diamond.png")
@@ -54,10 +55,10 @@
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，不传为全局设置 | 
 | enabled | false | String | 请求体参数，道具打赏开关，不传默认开启，值为 Y/N , Y为开启 | 
-| goods | false | Array | 道具打赏【详见[ChannelGood参数描述](webInteract.md?id=polyv65)】 | 
+| goods | false | Array | 道具打赏【详见[ChannelGood参数描述](webInteract.md?id=polyv63)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-<h6 id="polyv65"><a href="#/channelOperate?id=polyv65"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv63"><a href="#/channelOperate?id=polyv63"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -127,7 +128,7 @@ true代表设置成功，false代表设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，不传为全局设置 | 
-| cashes | true | Array | 请求体参数，现金打赏数额数组，数组的长度必须为6【详见[Double参数描述](webInteract.md?id=polyv66)】 | 
+| cashes | true | Array | 请求体参数，现金打赏数额数组，数组的长度必须为6【详见[Double参数描述](webInteract.md?id=polyv64)】 | 
 | cashMin | true | Double | 请求体参数，现金打赏自定义最小金额 | 
 | enabled | false | String | 请求体参数，现金打赏开关，不传默认开启，值为 Y/N , Y为开启 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
@@ -196,11 +197,11 @@ true表示设置成功，false表示设置失败
 | donateCashEnabled | false | String | 现金打赏开关 | 
 | donateGoodEnabled | false | String | 道具打赏开关 | 
 | donateTips | false | String | 打赏提示 | 
-| cashes | true | Array | 请求体参数，现金打赏数额数组，数组的长度必须为6【详见[Double参数描述](webInteract.md?id=polyv67)】 | 
+| cashes | true | Array | 请求体参数，现金打赏数额数组，数组的长度必须为6【详见[Double参数描述](webInteract.md?id=polyv65)】 | 
 | cashMin | true | Double | 请求体参数，现金打赏自定义最小金额 | 
-| goods | true | Array | 道具打赏【详见[ChannelGood参数描述](webInteract.md?id=polyv68)】 | 
+| goods | true | Array | 道具打赏【详见[ChannelGood参数描述](webInteract.md?id=polyv66)】 | 
 
-<h6 id="polyv68"><a href="#/channelOperate?id=polyv68"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv66"><a href="#/channelOperate?id=polyv66"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -208,6 +209,131 @@ true表示设置成功，false表示设置失败
 | goodImg | true | String | 道具图片，不能超过120个字符（通过上传图片接口上传获取图片地址，或者使用默认地址;鲜花：01-flower.png;咖啡:02-coffee.png;点赞:03-good.png;掌声:04-applaud.png;666:05-666.png;小星星:06-star.png;钻石:07-diamond.png;跑车:08-car.png;火箭:09-rocket.png;前缀统一为：//livestatic.videocc.net/uploaded/images/webapp/channel/donate/） | 
 | goodPrice | true | Double | 道具打赏价格 | 
 | goodEnabled | true | String | 道具开关，值为 Y/N , Y为开启 | 
+
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 4、设置频道微信分享信息
+### 描述
+```
+用于修改频道的微信分享相关设置
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testUpdateChannelWxShare() throws Exception, NoSuchAlgorithmException {
+        LiveUpdateChannelWxShareRequest liveUpdateChannelWxShareRequest = new LiveUpdateChannelWxShareRequest();
+        Boolean liveUpdateChannelWxShareResponse;
+        try {
+            liveUpdateChannelWxShareRequest.setChannelId(createChannel())
+                    .setWxShareTitle("赚钱之道（第一场）")
+                    .setWxShareDesc("XXX带你钱生钱")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelWxShareResponse = new LiveWebInteractServiceImpl().updateChannelWxShare(
+                    liveUpdateChannelWxShareRequest);
+            Assert.assertTrue(liveUpdateChannelWxShareResponse);
+            if (liveUpdateChannelWxShareResponse) {
+                //to do something ......
+                log.debug("测试设置频道微信分享信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| wxShareTitle | false | String | 微信分享的标题（30字符内） | 
+| wxShareDesc | false | String | 微信分享的描述（120字符内） | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为设置成功，false为设置失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 5、查询频道微信分享信息
+### 描述
+```
+获取频道的微信分享设置信息
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)
+
+### 单元测试
+```java
+	@Test
+	public void testGetChannelWxShare() throws Exception, NoSuchAlgorithmException {
+        LiveGetChannelWxShareRequest liveGetChannelWxShareRequest = new LiveGetChannelWxShareRequest();
+        LiveGetChannelWxShareResponse liveGetChannelWxShareResponse;
+        try {
+            liveGetChannelWxShareRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveGetChannelWxShareResponse = new LiveWebInteractServiceImpl().getChannelWxShare(
+                    liveGetChannelWxShareRequest);
+            Assert.assertNotNull(liveGetChannelWxShareResponse);
+            if (liveGetChannelWxShareResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道微信分享信息成功，{}", JSON.toJSONString(liveGetChannelWxShareResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveGetChannelWxShareResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | false | String | 频道号 | 
+| channelName | false | String | 频道名称 | 
+| coverImg | false | String | 微信分享图标，即频道的直播图标 | 
+| wxShareTitle | false | String | 微信分享的标题 | 
+| wxShareDesc | false | String | 微信分享的描述 | 
 
 <br /><br />
 

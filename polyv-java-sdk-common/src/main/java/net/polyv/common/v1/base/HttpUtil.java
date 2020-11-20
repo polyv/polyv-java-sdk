@@ -38,10 +38,17 @@ public class HttpUtil {
     
     public static final String SOURCE = "source";
     public static  String SDK = "sdk";
-    public static final String VERSION = "version";
+    private static final String VERSION = "version";
     public static final String CURRETN_VERSION = "1.0.9";
     public static final String UTF8 = Constant.UTF8;
     
+    public static String getSDK() {
+        return SDK;
+    }
+    
+    public static void setSDK(String SDK) {
+        HttpUtil.SDK = SDK;
+    }
     
     /**
      * HTTP POST 请求处理逻辑，参数提交方式为form表单形式

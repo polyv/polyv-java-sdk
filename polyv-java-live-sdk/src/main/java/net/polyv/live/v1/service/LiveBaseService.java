@@ -29,12 +29,10 @@ import net.polyv.live.v1.util.MapUtil;
  **/
 @Slf4j
 public class LiveBaseService {
-    public static final   String ERROR_PREFIX = "保利威HTTP错误，请求流水号：";
-    public static final   String ERROR_INFO = " ,错误原因： ";
-    public static final  String ERROR_SUFFIX = " ,错误原因： 服务器接口未返回任何数据";
-    public static final  String ERROR_PREFIX1 = "保利威请求返回数据错误，请求流水号：";
-    
-    
+    public static final String ERROR_PREFIX = "保利威HTTP错误，请求流水号：";
+    public static final String ERROR_INFO = " ,错误原因： ";
+    public static final String ERROR_SUFFIX = " ,错误原因： 服务器接口未返回任何数据";
+    public static final String ERROR_PREFIX1 = "保利威请求返回数据错误，请求流水号：";
     
     
     /**
@@ -115,13 +113,13 @@ public class LiveBaseService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    protected  <E extends LiveCommonRequest> byte[] baseGetReturnArray(String url, E e)
+    protected <E extends LiveCommonRequest> byte[] baseGetReturnArray(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         Map<String, String> paramMap = commonRequestLogic(e);
         String queryStr = MapUtil.mapJoinNotEncode(paramMap);
         url += "?" + queryStr;
         byte[] response = HttpUtil.sendGetDataReturnArray(url, Consts.UTF_8.toString());
-        if ( response ==null ) {
+        if (response == null) {
             String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
             PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
             log.error(message, exception);
@@ -134,7 +132,7 @@ public class LiveBaseService {
      * 请求参数公共用校验逻辑，添加全局userid、生成签名、转换对象返回
      * @param e 请求参数对象
      * @param <E> 请求参数泛型
-     * @return  转换对象为MAP，将签名、时间戳等加入到返回map
+     * @return 转换对象为MAP，将签名、时间戳等加入到返回map
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 签名异常
      */
@@ -265,7 +263,26 @@ public class LiveBaseService {
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url, Map<String, String> signMap, E e,
             Class<T> tClass) throws IOException, NoSuchAlgorithmException {
-        return this.basePostJson(url, signMap, e).parseData(tClass);
+        return this.basePostJson(url, signMap, e, "").parseData(tClass);
+        
+    }
+    
+    /**
+     * HTTP POST 请求发送json
+     * @param url 请求URL
+     * @param signMap 需要签名的map
+     * @param e 请求参数对象
+     * @param json
+     * @param tClass 返回对象class类型
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    protected <T, E extends LiveCommonRequest> T basePostJson(String url, Map<String, String> signMap, E e, String json,
+            Class<T> tClass) throws IOException, NoSuchAlgorithmException {
+        return this.basePostJson(url, signMap, e, json).parseData(tClass);
         
     }
     
@@ -283,10 +300,26 @@ public class LiveBaseService {
      */
     protected <T, E extends LiveCommonRequest> List<T> basePostJsonReturnArray(String url, Map<String, String> signMap,
             E e, Class<T> tClass) throws IOException, NoSuchAlgorithmException {
-        return this.basePostJson(url, signMap, e).parseArray(tClass);
+        return this.basePostJson(url, signMap, e, "").parseArray(tClass);
     }
     
-
+    /**
+     * HTTP POST 请求发送json
+     * @param url 请求URL
+     * @param signMap 需要签名的map
+     * @param e 请求参数对象
+     * @param tClass 返回对象class类型
+     * @param <T> 返回对象泛型
+     * @param <E> 请求参数泛型
+     * @return HTTP response 数据封装对象
+     * @throws IOException 客户端和服务器读写异常
+     * @throws NoSuchAlgorithmException 签名异常
+     */
+    protected <T, E extends LiveCommonRequest> List<T> basePostJsonReturnArray(String url, Map<String, String> signMap,
+            E e, String json, Class<T> tClass) throws IOException, NoSuchAlgorithmException {
+        return this.basePostJson(url, signMap, e, json).parseArray(tClass);
+    }
+    
     
     /**
      * HTTP POST 请求发送json
@@ -298,8 +331,8 @@ public class LiveBaseService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    private <E extends LiveCommonRequest> LiveCommonResponse basePostJson(String url, Map<String, String> signMap, E e)
-            throws IOException, NoSuchAlgorithmException {
+    private <E extends LiveCommonRequest> LiveCommonResponse basePostJson(String url, Map<String, String> signMap, E e,
+            String json) throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
         e.setAppId(LiveGlobalConfig.getAppId());
         if (StringUtils.isBlank(e.getTimestamp())) {
@@ -309,7 +342,10 @@ public class LiveBaseService {
         e.setSign(sign);
         validateBean(e);
         url = url + "?" + MapUtil.mapJoinNotEncode(signMap);
-        String response = HttpUtil.sendPostDataByJson(url, JSON.toJSONString(e), Consts.UTF_8.toString());
+        if (StringUtils.isBlank(json)) {
+            json = JSON.toJSONString(e);
+        }
+        String response = HttpUtil.sendPostDataByJson(url, json, Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
             if (liveCommonResponse.getCode() != 200) {
@@ -407,8 +443,8 @@ public class LiveBaseService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    protected <T, E extends LiveCommonRequest> List<T> baseUploadFileListReturnArray(String url, E e, Map<String, List<File>> fileMap,
-            Class<T> tClass) throws IOException, NoSuchAlgorithmException {
+    protected <T, E extends LiveCommonRequest> List<T> baseUploadFileListReturnArray(String url, E e,
+            Map<String, List<File>> fileMap, Class<T> tClass) throws IOException, NoSuchAlgorithmException {
         return this.baseUploadFileList(url, e, fileMap).parseArray(tClass);
     }
     
@@ -422,8 +458,8 @@ public class LiveBaseService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    private <E extends LiveCommonRequest> LiveCommonResponse baseUploadFileList(String url, E e, Map<String, List<File>> fileMap)
-            throws IOException, NoSuchAlgorithmException {
+    private <E extends LiveCommonRequest> LiveCommonResponse baseUploadFileList(String url, E e,
+            Map<String, List<File>> fileMap) throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse = null;
         Map<String, String> paramMap = commonRequestLogic(e);
         String response = HttpUtil.sendUploadFileList(url, paramMap, fileMap, Consts.UTF_8.toString());

@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
+
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.v1.config.LiveGlobalConfig;
@@ -460,7 +462,12 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         String url = LiveURL.CREATE_SON_CHANNEL_LIST_URL;
         Map<String, String> map = MapUtil.getSignMap(liveCreateSonChannelListRequest);
         map.put("channelId", liveCreateSonChannelListRequest.getChannelId());
-        return this.basePostJson(url, map, liveCreateSonChannelListRequest, LiveCreateSonChannelListResponse.class);
+        List<LiveCreateSonChannelListResponse.SonChannelInfo> sonChannelInfos = this.basePostJsonReturnArray(url, map,
+                liveCreateSonChannelListRequest, JSON.toJSONString(liveCreateSonChannelListRequest.getSonChannels()),
+                LiveCreateSonChannelListResponse.SonChannelInfo.class);
+        LiveCreateSonChannelListResponse liveCreateSonChannelListResponse = new LiveCreateSonChannelListResponse();
+        liveCreateSonChannelListResponse.setSonChannelInfos(sonChannelInfos);
+        return liveCreateSonChannelListResponse;
     }
     
     /**

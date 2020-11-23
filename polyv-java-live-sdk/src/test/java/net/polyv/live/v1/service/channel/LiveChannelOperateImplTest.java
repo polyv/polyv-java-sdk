@@ -923,11 +923,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试批量创建子频道
      * 约束：2、批量创建子频道，子频道角色支持guest(嘉宾，只支持三分屏场景)、assistant(助教)
-     * TODO 需要后台修改json解析功能
      * @throws Exception
      */
-//    @Test
-    public void testSkipCreateSonChannelList() throws Exception {
+    @Test
+    public void testCreateSonChannelList() throws Exception {
         LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse;
         try {

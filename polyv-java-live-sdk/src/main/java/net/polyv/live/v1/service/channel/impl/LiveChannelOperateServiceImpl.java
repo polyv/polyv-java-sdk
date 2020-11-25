@@ -444,7 +444,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         String url = LiveURL.UPDATE_CHANNEL_CALLBACK_SETTING_URL;
         String liveUpdateChannelCallbackSettingResponse = this.basePost(url, liveUpdateChannelCallbackSettingRequest,
                 String.class);
-        return null == liveUpdateChannelCallbackSettingResponse;
+        return "success".equals(liveUpdateChannelCallbackSettingResponse);
     }
     
     /**

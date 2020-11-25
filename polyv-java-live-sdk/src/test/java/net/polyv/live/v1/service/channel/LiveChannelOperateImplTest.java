@@ -1143,14 +1143,14 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 返回：true为设置硬盘推流直播成功，false为修改失败
      * @throws Exception
      */
-//    @Test
+    @Test
     public void testSkipCreateDiskVideosStream() throws Exception {
         LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest = new LiveCreateDiskVideosStreamRequest();
         Boolean liveCreateDiskVideosStreamResponse;
         try {
             //准备测试数据
             String channelId = createChannel();
-            String videoId = listChannelVideoIds(channelId).get(0);
+            String videoId = listChannelVideoPoolIds(channelId).get(0);
             
             liveCreateDiskVideosStreamRequest.setVideoIds(videoId)
                     .setStartTimes(super.getDate(System.currentTimeMillis() + 3000000))

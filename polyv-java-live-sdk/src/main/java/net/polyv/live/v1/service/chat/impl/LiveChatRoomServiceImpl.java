@@ -309,7 +309,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
         liveSendCustomChatRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.SEND_CUSTOM_MSG_URL,liveSendCustomChatRequest.getChannelId());
         String liveSendCustomChatResponse = this.basePost(url,liveSendCustomChatRequest,String.class);
-        return "".equals(liveSendCustomChatResponse);
+        return "success".equals(liveSendCustomChatResponse);
     }
     
 }

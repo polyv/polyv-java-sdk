@@ -10,6 +10,7 @@ public class LiveURL {
     /**
      * POLYV live api base uri
      */
+//    private static final String BASE_URI = "http://183.61.80.162/live/";
     private static final String BASE_URI = "https://api.polyv.net/live/";
     
     /**

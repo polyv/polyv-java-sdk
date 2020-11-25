@@ -271,7 +271,7 @@ public class LiveWebInfoImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(
                     liveUpdateChannelCountDownRequest);
-            Assert.assertNotNull(liveUpdateChannelCountDownResponse);
+            Assert.assertTrue(liveUpdateChannelCountDownResponse);
             if (liveUpdateChannelCountDownResponse) {
                 //to do something ......
                 log.debug("测试设置频道直播倒计时信息成功");

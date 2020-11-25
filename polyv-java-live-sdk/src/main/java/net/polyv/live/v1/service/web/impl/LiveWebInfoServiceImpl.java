@@ -129,7 +129,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_UPDATE_COUNT_DOWN_URL,
                 liveUpdateChannelCountDownRequest.getChannelId());
         String liveUpdateChannelCountDownResponse = this.basePost(url, liveUpdateChannelCountDownRequest, String.class);
-        return "".equals(liveUpdateChannelCountDownResponse);
+        return "success".equals(liveUpdateChannelCountDownResponse);
     }
     
     /**

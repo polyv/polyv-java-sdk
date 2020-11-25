@@ -156,7 +156,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
                 liveAccountPlaybackCallbackRequest.getUserId());
         String liveAccountPlaybackCallbackResponse = this.basePost(url, liveAccountPlaybackCallbackRequest,
                 String.class);
-        return "".equals(liveAccountPlaybackCallbackResponse);
+        return "success".equals(liveAccountPlaybackCallbackResponse);
     }
     
     /**
@@ -174,7 +174,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_RECORD_CALLBACK_URL,
                 liveAccountRecordCallbackRequest.getUserId());
         String liveAccountRecordCallbackResponse = this.basePost(url, liveAccountRecordCallbackRequest, String.class);
-        return "".equals(liveAccountRecordCallbackResponse);
+        return "success".equals(liveAccountRecordCallbackResponse);
     }
     
     /**
@@ -278,7 +278,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_CHANNEL_CATEGORY_URL;
         String liveUpdateCategoryResponse = this.basePost(url, liveUpdateCategoryRequest, String.class);
-        return "".equals(liveUpdateCategoryResponse);
+        return "success".equals(liveUpdateCategoryResponse);
     }
     
     /**
@@ -294,7 +294,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DELETE_CHANNEL_CATEGORY_URL;
         String liveDeleteCategoryResponse = this.basePost(url,liveDeleteCategoryRequest,String.class);
-        return "".equals(liveDeleteCategoryResponse);
+        return "success".equals(liveDeleteCategoryResponse);
     }
     
     /**
@@ -310,7 +310,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_CHANNEL_CATEGORY_SORT_URL;
         String liveUpdateCategorySortResponse = this.basePost(url, liveUpdateCategorySortRequest, String.class);
-        return "".equals(liveUpdateCategorySortResponse);
+        return "success".equals(liveUpdateCategorySortResponse);
     }
     
     /**

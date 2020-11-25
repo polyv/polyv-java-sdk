@@ -8,7 +8,6 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.v1.config.LiveGlobalConfig;
 import net.polyv.live.v1.constant.LiveURL;
@@ -125,9 +124,10 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
      * @return 修改频道的相关设置返回体
      * @throws IOException 异常
      */
-    @SneakyThrows
+   
     @Override
-    public Boolean updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest) throws IOException {
+    public Boolean updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest)
+            throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_BASIC_UPDATE_URL;
         Map<String, String> signMap = MapUtil.getSignMap(liveChannelSettingRequest);
         signMap.put("channelId", liveChannelSettingRequest.getChannelId() + "");

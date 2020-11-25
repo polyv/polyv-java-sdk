@@ -257,6 +257,34 @@ public class BaseTest {
     }
     
     /**
+     * 获取回放videoPoolIds
+     * @param channelId 频道号
+     * @return
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    protected List<String> listChannelVideoPoolIds(String channelId) throws Exception, NoSuchAlgorithmException {
+        LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
+                new LiveListChannelVideoLibraryRequest();
+        liveListChannelVideoLibraryRequest.setChannelId(channelId)
+                .setListType("playback")
+                .setRequestId(LiveSignUtil.generateUUID());
+        LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse =
+                new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary(
+                        liveListChannelVideoLibraryRequest);
+        Assert.assertNotNull(liveListChannelVideoLibraryResponse);
+        List<LiveListChannelVideoLibraryResponse.ChannelVideoLibrary> contents =
+                liveListChannelVideoLibraryResponse.getContents();
+        int size = contents.size();
+        Assert.assertTrue(size > 0);
+        List<String> videoIds = new ArrayList<String>(size);
+        for (LiveListChannelVideoLibraryResponse.ChannelVideoLibrary temp : contents) {
+            videoIds.add(temp.getVideoPoolId());
+        }
+        return videoIds;
+    }
+    
+    /**
      * 获取频道视频fileIds
      * @param channelId 频道号
      * @return

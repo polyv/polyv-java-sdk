@@ -80,7 +80,7 @@ public class HttpUtil {
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
      */
-    public static String sendPostDataByMap1(String url, String pathVariable, Map<String, String> params, String encoding)
+    public static String sendPostDataByMap(String url, String pathVariable, Map<String, String> params, String encoding)
             throws IOException {
         if (StringUtils.isNotBlank(pathVariable)) {
             url = String.format(url, pathVariable);

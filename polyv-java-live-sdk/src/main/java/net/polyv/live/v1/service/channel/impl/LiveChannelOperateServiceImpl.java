@@ -132,7 +132,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         Map<String, String> signMap = MapUtil.getSignMap(liveChannelSettingRequest);
         signMap.put("channelId", liveChannelSettingRequest.getChannelId() + "");
         String liveChannelSettingResponse = this.basePostJson(url, signMap, liveChannelSettingRequest, String.class);
-        return "".equals(liveChannelSettingResponse);
+        return "success".equals(liveChannelSettingResponse);
     }
     
     /**
@@ -410,7 +410,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_PPTRECORD_CREATE__URL;
         String liveCreateChannelPPTRecordResponse = this.basePost(url, liveCreateChannelPPTRecordRequest, String.class);
-        return "".equals(liveCreateChannelPPTRecordResponse);
+        return "success".equals(liveCreateChannelPPTRecordResponse);
     }
     
     /**
@@ -555,7 +555,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_CHANNEL_STREAM_URL;
         String liveUpdateChannelStreamResponse = this.basePost(url, liveUpdateChannelStreamRequest, String.class);
-        return "".equals(liveUpdateChannelStreamResponse);
+        return "success".equals(liveUpdateChannelStreamResponse);
     }
     
     /**
@@ -571,7 +571,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_DISK_VIDEOS_STREAM_URL;
         String liveCreateDiskVideosStreamResponse = this.basePost(url, liveCreateDiskVideosStreamRequest, String.class);
-        return "".equals(liveCreateDiskVideosStreamResponse);
+        return "success".equals(liveCreateDiskVideosStreamResponse);
     }
     
     /**
@@ -587,7 +587,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DELETE_DISK_VIDEOS_STREAM_URL;
         String liveDeleteDiskVideosStreamResponse = this.basePost(url, liveDeleteDiskVideosStreamRequest, String.class);
-        return "".equals(liveDeleteDiskVideosStreamResponse);
+        return "success".equals(liveDeleteDiskVideosStreamResponse);
     }
     
 }

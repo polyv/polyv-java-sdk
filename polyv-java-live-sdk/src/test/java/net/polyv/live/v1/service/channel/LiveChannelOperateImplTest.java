@@ -342,7 +342,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelSettingResponse = new LiveChannelOperateServiceImpl().updateChannelSetting(
                     liveChannelSettingRequest);
-            Assert.assertNotNull(liveChannelSettingResponse);
+            Assert.assertTrue(liveChannelSettingResponse);
             if (liveChannelSettingResponse) {
                 //to do something ......
                 log.debug("测试修改频道的相关设置成功");
@@ -799,12 +799,14 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest = new LiveCreateChannelPPTRecordRequest();
         Boolean liveCreateChannelPPTRecordResponse;
         try {
-            liveCreateChannelPPTRecordRequest.setChannelId("1951952")
-                    .setVideoId("07f5bbeb67")
+             String channel = createChannel();
+            List<String> videoIds = listChannelVideoIds(channel);
+            liveCreateChannelPPTRecordRequest.setChannelId(channel)
+                    .setVideoId(videoIds.get(1))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelPPTRecordResponse = new LiveChannelOperateServiceImpl().createChannelPPTRecordTask(
                     liveCreateChannelPPTRecordRequest);
-            Assert.assertNotNull(liveCreateChannelPPTRecordResponse);
+            Assert.assertTrue(liveCreateChannelPPTRecordResponse);
             if (liveCreateChannelPPTRecordResponse) {
                 //to do something ......
                 log.debug("测试创建重制课件任务成功");
@@ -1120,7 +1122,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelStreamResponse = new LiveChannelOperateServiceImpl().updateChannelStream(
                     liveUpdateChannelStreamRequest);
-            Assert.assertNotNull(liveUpdateChannelStreamResponse);
+            Assert.assertTrue(liveUpdateChannelStreamResponse);
             if (liveUpdateChannelStreamResponse) {
                 //to do something ......
                 log.debug("测试修改直播推流方式成功");
@@ -1158,7 +1160,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveCreateDiskVideosStreamResponse = new LiveChannelOperateServiceImpl().createDiskVideosStream(
                     liveCreateDiskVideosStreamRequest);
-            Assert.assertNotNull(liveCreateDiskVideosStreamResponse);
+            Assert.assertTrue(liveCreateDiskVideosStreamResponse);
             if (liveCreateDiskVideosStreamResponse) {
                 //to do something ......
                 log.debug("测试设置硬盘推流直播成功");
@@ -1193,7 +1195,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveDeleteDiskVideosStreamResponse = new LiveChannelOperateServiceImpl().deleteDiskVideosStream(
                     liveDeleteDiskVideosStreamRequest);
-            Assert.assertNotNull(liveDeleteDiskVideosStreamResponse);
+            Assert.assertTrue(liveDeleteDiskVideosStreamResponse);
             if (liveDeleteDiskVideosStreamResponse) {
                 //to do something ......
                 log.debug("测试删除硬盘推流的视频成功");

@@ -1143,7 +1143,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 返回：true为设置硬盘推流直播成功，false为修改失败
      * @throws Exception
      */
-    @Test
+//    @Test
     public void testSkipCreateDiskVideosStream() throws Exception {
         LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest = new LiveCreateDiskVideosStreamRequest();
         Boolean liveCreateDiskVideosStreamResponse;

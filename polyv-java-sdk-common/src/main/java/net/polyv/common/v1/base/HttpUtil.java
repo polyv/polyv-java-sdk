@@ -16,6 +16,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -28,6 +29,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.constant.Constant;
+import net.polyv.common.v1.util.AddressUtils;
 
 /**
  * HTTP请求工具类
@@ -37,10 +39,13 @@ import net.polyv.common.v1.constant.Constant;
 public class HttpUtil {
     
     public static final String SOURCE = "source";
-    private static  String SDK = "sdk";
+    private static String SDK = "SDK";
     public static final String VERSION = "version";
     private static final String CURRENT_VERSION = "1.0.9";
     private static final String UTF8 = Constant.UTF8;
+    private static String APP_ID = "";
+    private static String USER_ID = "";
+    private static final String IP = AddressUtils.getV4IP();
     
     public static String getSDK() {
         return SDK;
@@ -48,6 +53,22 @@ public class HttpUtil {
     
     public static void setSDK(String SDK) {
         HttpUtil.SDK = SDK;
+    }
+    
+    public static String getAppId() {
+        return APP_ID;
+    }
+    
+    public static void setAppId(String appId) {
+        APP_ID = appId;
+    }
+    
+    public static String getUserId() {
+        return USER_ID;
+    }
+    
+    public static void setUserId(String userId) {
+        USER_ID = userId;
     }
     
     /**
@@ -59,7 +80,7 @@ public class HttpUtil {
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
      */
-    public static String sendPostDataByMap(String url, String pathVariable, Map<String, String> params, String encoding)
+    public static String sendPostDataByMap1(String url, String pathVariable, Map<String, String> params, String encoding)
             throws IOException {
         if (StringUtils.isNotBlank(pathVariable)) {
             url = String.format(url, pathVariable);
@@ -107,7 +128,7 @@ public class HttpUtil {
         httpPost.setHeader("Content-type", Constant.APPLICATION_FORM_URLENCODED);
         httpPost.setHeader("User-Agent", Constant.USER_AGENT_BROWSER);
         // 执行请求操作，并拿到结果（同步阻塞）
-        response = httpClient.execute(httpPost);
+        response =  sendRequestAndGetResult(url,httpClient,httpPost);
         // 获取结果实体
         // 判断网络连接状态码是否正常(0--200都数正常)
         if (null != response) {
@@ -199,7 +220,7 @@ public class HttpUtil {
         stringEntity.setContentEncoding(encoding);
         httpPost.setEntity(stringEntity);
         // 执行请求操作，并拿到结果（同步阻塞）
-        CloseableHttpResponse response = httpClient.execute(httpPost);
+        CloseableHttpResponse response =  sendRequestAndGetResult(url,httpClient,httpPost);
         // 获取结果实体
         // 判断网络连接状态码是否正常(0--200都数正常)
         if (null != response) {
@@ -230,7 +251,7 @@ public class HttpUtil {
     }
     
     /**
-     *HTTP GET 请求处理逻辑
+     * HTTP GET 请求处理逻辑
      * @param url 请求地址
      * @param params 请求参数
      * @param encoding 编码字符集， 默认为 utf-8
@@ -269,7 +290,7 @@ public class HttpUtil {
         }
         return sendGetData(url, encoding);
     }
- 
+    
     
     /**
      * 公共数据解析接口
@@ -333,7 +354,7 @@ public class HttpUtil {
         httpGet.addHeader(VERSION, CURRENT_VERSION);
         httpGet.addHeader("Content-type", Constant.APPLICATION_JSON);
         // 通过请求对象获取响应对象
-        CloseableHttpResponse response = httpClient.execute(httpGet);
+        CloseableHttpResponse response = sendRequestAndGetResult(url, httpClient, httpGet);
         // 获取结果实体
         if (null != response) {
 //            result = EntityUtils.toString(response.getEntity(), encoding);
@@ -352,6 +373,34 @@ public class HttpUtil {
         return result;
     }
     
+    /**
+     * 发送请求获取HTTP结果
+     * @param url
+     * @param httpClient
+     * @param httpUriRequest
+     * @return
+     * @throws IOException
+     */
+    private static CloseableHttpResponse sendRequestAndGetResult(String url, CloseableHttpClient httpClient,
+            HttpUriRequest httpUriRequest) throws IOException {
+        long startTime = System.currentTimeMillis();
+        CloseableHttpResponse response = httpClient.execute(httpUriRequest);
+        long endTime = System.currentTimeMillis();
+        collectAPISpendTime(url,startTime,endTime);
+        return response;
+    }
+    
+    
+    /**
+     * 采集分析数据：userId\appId\请求URL\请求开始时间\请求结束时间\sdk版本\服务器IP\请求线程号
+     * @param url  url
+     * @param startTime 开始时间
+     * @param endTime  结束时间
+     */
+    private static void collectAPISpendTime(String url, long startTime, long endTime) {
+        log.debug("HTTP请求耗时分析，请求URL: {} ， userId: {} ， appId: {} ， sdk版本: {} ， IP: {} ， 耗时: {} ms", url, getUserId(),getAppId(), CURRENT_VERSION , IP , endTime - startTime);
+        //save server
+    }
     
     /**
      * HTTP 传输文件
@@ -389,7 +438,7 @@ public class HttpUtil {
         }
         HttpEntity entity = entityBuilder.build();
         httpPost.setEntity(entity);
-        CloseableHttpResponse response = httpClient.execute(httpPost);
+        CloseableHttpResponse response = sendRequestAndGetResult(url,httpClient,httpPost);
         if (null != response) {
             result = EntityUtils.toString(response.getEntity(), encoding);
             log.debug("http 请求结果: {}", result);
@@ -447,7 +496,7 @@ public class HttpUtil {
         
         HttpEntity entity = entityBuilder.build();
         httpPost.setEntity(entity);
-        CloseableHttpResponse response = httpClient.execute(httpPost);
+        CloseableHttpResponse response =  sendRequestAndGetResult(url,httpClient,httpPost);
         if (null != response) {
             result = EntityUtils.toString(response.getEntity(), encoding);
             log.debug("http 请求结果: {}", result);

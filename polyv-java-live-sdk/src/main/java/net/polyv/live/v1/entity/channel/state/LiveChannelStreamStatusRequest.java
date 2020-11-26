@@ -21,10 +21,10 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 public class LiveChannelStreamStatusRequest extends LiveCommonRequest {
     
     /**
-     * @see net.polyv.channel.ChannelTest#testChannelInfo()
-     * 可调用获取频道信息接口，获取stream字段的值
+     * 可调用获取频道信息接口，获取stream字段的值;new LiveChannelOperateServiceImpl().getChannelInfo()
      */
-    @ApiModelProperty(name = "stream", value = "可调用获取频道信息接口，获取stream字段的值", required = true)
+    @ApiModelProperty(name = "stream", value = "可调用获取频道信息接口，获取stream字段的值;new LiveChannelOperateServiceImpl()" +
+            ".getChannelInfo()", required = true)
     @NotNull(message = "属性stream不能为空")
     private String stream;
     

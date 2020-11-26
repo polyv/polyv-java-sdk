@@ -18,10 +18,10 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 public class LiveListAccountRequest extends LiveCommonRequest {
     
     /**
-     * TODO 链接分类id
-     * 所属分类id
+     * 所属分类id；new LiveAccountServiceImpl().listCategory()获取
      */
-    @ApiModelProperty(name = "categoryId", value = "所属分类id", dataType = "Integer", example = "340182")
+    @ApiModelProperty(name = "categoryId", value = "所属分类id；new LiveAccountServiceImpl().listCategory()获取", dataType =
+            "Integer", example = "340182")
     private Integer categoryId;
     
     /**

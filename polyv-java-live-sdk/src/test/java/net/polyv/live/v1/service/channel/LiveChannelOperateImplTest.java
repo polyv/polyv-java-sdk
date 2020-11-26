@@ -894,7 +894,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
     @Test
-    public void testSkipUpdateChannelCallbackSetting() throws Exception {
+    public void testUpdateChannelCallbackSetting() throws Exception {
         LiveUpdateChannelCallbackSettingRequest liveUpdateChannelCallbackSettingRequest =
                 new LiveUpdateChannelCallbackSettingRequest();
         Boolean liveUpdateChannelCallbackSettingResponse;
@@ -1077,7 +1077,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
 //    @Test
-    public void testSkipGetChannelCapture() throws Exception {
+    public void testGetChannelCapture() throws Exception {
         LiveChannelCaptureRequest liveChannelCaptureRequest = new LiveChannelCaptureRequest();
         String liveChannelCaptureResponse;
         try {

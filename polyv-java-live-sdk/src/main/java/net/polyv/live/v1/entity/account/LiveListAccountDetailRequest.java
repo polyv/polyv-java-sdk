@@ -24,7 +24,6 @@ public class LiveListAccountDetailRequest extends LivePageCommonRequest {
     private Integer categoryId;
     
     /**
-     * TODO 枚举使用
      * 观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始
      */
     @ApiModelProperty(name = "watchStatus", value = "观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始", dataType =

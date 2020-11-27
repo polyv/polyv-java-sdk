@@ -130,6 +130,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             liveGetHistoryChatMsgRequest.setChannelId(channelId)
                     .setStartDay(getDate(2020, 10, 01))
                     .setEndDay(getDate(2099, 12, 12))
+                    .setPageSize(2)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistoryChatMsg(
                     liveGetHistoryChatMsgRequest);

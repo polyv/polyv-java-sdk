@@ -641,7 +641,7 @@ public class LiveURL {
     /**
      * 查询历史聊天信息
      */
-    public static final String CHAT_GET_HISTORY_MSG_URL = BASE_URI + "v2/chat/" + PARAM_REPLACE_CHAR + "/getHistory";
+    public static final String CHAT_GET_HISTORY_MSG_URL = BASE_URI + "v3/channel/chat/get-history";
     
     /**
      * 删除单条聊天记录

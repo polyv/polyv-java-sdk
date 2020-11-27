@@ -57,7 +57,7 @@ public class LiveGetHistoryChatMsgRequest extends LiveCommonRequest {
      * 每页记录数，默认为1000
      */
     @ApiModelProperty(name = "pageSize", value = "每页记录数，默认为1000", required = false)
-    @JSONField(name = "limit")
+//    @JSONField(name = "limit")
     private Integer pageSize;
     
  

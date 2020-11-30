@@ -3,6 +3,7 @@ package net.polyv.live.v1.service.account.impl;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import net.polyv.live.v1.config.LiveGlobalConfig;
@@ -55,7 +56,15 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveListAccountDetailResponse listAccountDetail(LiveListAccountDetailRequest liveListAccountDetailRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_LIST_CHANNEL_DETAIL_URL;
-        return this.basePost(url, liveListAccountDetailRequest, LiveListAccountDetailResponse.class);
+        LiveListAccountDetailResponse liveListAccountDetailResponse = this.basePost(url, liveListAccountDetailRequest,
+                LiveListAccountDetailResponse.class);
+        for(LiveListAccountDetailResponse.LiveChannelDetail liveChannelDetail:liveListAccountDetailResponse.getContents()){
+            Date startTime = liveChannelDetail.getStartTime();
+            if(startTime != null && startTime.getTime() == 0){
+                liveChannelDetail.setStartTime(null);
+            }
+        }
+        return liveListAccountDetailResponse;
         
     }
     

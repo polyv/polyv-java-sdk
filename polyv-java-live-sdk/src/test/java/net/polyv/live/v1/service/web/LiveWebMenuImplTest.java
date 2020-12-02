@@ -208,6 +208,7 @@ public class LiveWebMenuImplTest extends BaseTest {
     /**
      * 测试删除频道菜单
      * 描述：删除指定的频道菜单，支持批量
+     * 返回：true为删除成功，false为删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -274,7 +275,7 @@ public class LiveWebMenuImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSkipGetChannelImageText() throws Exception, NoSuchAlgorithmException {
+    public void testGetChannelImageText() throws Exception, NoSuchAlgorithmException {
         LiveGetChannelImageTextRequest liveGetChannelImageTextRequest = new LiveGetChannelImageTextRequest();
         LiveGetChannelImageTextResponse liveGetChannelImageTextResponse;
         try {

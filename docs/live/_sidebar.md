@@ -3,7 +3,7 @@
   * [简介](/)
   * [全局约束](/limit)
   * [快速接入](/quick_start)
-  * [实现大会直播](/)
+  * [实现大会直播](/videoRoom)
   * [实现线上教学](/classRoom)
   * [功能索引](/function_index)
 * 频道管理

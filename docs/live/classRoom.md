@@ -1,42 +1,38 @@
-## 直播课程
+## 线上教学
 
 ### 描述
 
-您可以下载我们的 SDK 使用简单的代码实现直播课堂的效果，包括语音、视频、课件播放等上课方式。
+您可以下载我们的 SDK 使用下面简单的代码示例实现直播课堂的效果，包括语音、视频、课件播放、屏幕分享等上课方式，支持讲师端与观看端连麦功能等。
 
 ### 效果展示
 
-引导页动态图
+动态图
 
 <img src="..\img\d.gif" alt="d" style="width:calc( 50% - 10px);float:right" /><img src="..\img\c.gif" alt="c" style="width:50%;float:left;" />
 
 <div style="clear: both;"><div/>
 
-
-
 讲师引导页效果图-电脑端
 
 ![image-20201202113227197](..\img\image-20201202113227197.png)
 
-讲师端直播效果图-电脑端
+讲师讲课页效果图-电脑端
 
 ![image-20201202115200628](..\img\image-20201202115200628.png)
 
-学生引导页效果图
+观看引导页效果图
 
 <img src="..\img\image-20201202103718453.png" alt="image-20201202103718453.png" style="height: 685px;border: 1px solid #323232;width: calc( 75% - 10px );float: left;" />
 <img src="..\img\image-20201202111257982.png" alt="image-20201202111257982" style="width:25%;float: right;" />
 <div style="clear: both;"><div/>
 
-学生观看页输入效果图-电脑端
+验证码输入效果图-电脑端
 
 <img src="..\img\image-20201202113443688.png" alt="image-20201202113443688" style="width:50%;margin-left:25%;" />
 
-学生观看页效果图-电脑端
+观看页效果图-电脑端
 
 ![image-20201202114639182](..\img\image-20201202114639182.png)
-
-
 
 上图的标识：
 
@@ -54,7 +50,7 @@
 | 10       | 验证页图片(可设置公众号二维码，关注公众号获取验证码) |
 | 11       | 验证码观看提示文案                                   |
 
-### 代码展示
+### 代码示例
 
 ```
 package net.polyv.demo;
@@ -258,3 +254,6 @@ public class Demo {
 
 
 
+### 流程图
+
+![image-20201203102941520](..\img\image-20201203102941520.png)

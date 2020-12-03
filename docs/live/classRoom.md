@@ -12,27 +12,31 @@
 
 <div style="clear: both;"><div/>
 
-引导页效果图
 
-<img src="..\img\image-20201202103718453.png" alt="image-20201202103718453.png" style="height: 685px;border: 1px solid #323232;width: calc( 75% - 10px );float: left;" />
-<img src="..\img\image-20201202111257982.png" alt="image-20201202111257982" style="width:25%;float: right;" />
-<div style="clear: both;"><div/>
 
 讲师引导页效果图-电脑端
 
 ![image-20201202113227197](..\img\image-20201202113227197.png)
 
-验证码输入效果图-电脑端
+讲师端直播效果图-电脑端
+
+![image-20201202115200628](..\img\image-20201202115200628.png)
+
+学生引导页效果图
+
+<img src="..\img\image-20201202103718453.png" alt="image-20201202103718453.png" style="height: 685px;border: 1px solid #323232;width: calc( 75% - 10px );float: left;" />
+<img src="..\img\image-20201202111257982.png" alt="image-20201202111257982" style="width:25%;float: right;" />
+<div style="clear: both;"><div/>
+
+学生观看页输入效果图-电脑端
 
 <img src="..\img\image-20201202113443688.png" alt="image-20201202113443688" style="width:50%;margin-left:25%;" />
 
-观看页效果图-电脑端
+学生观看页效果图-电脑端
 
 ![image-20201202114639182](..\img\image-20201202114639182.png)
 
-讲师端效果图-电脑端
 
-![image-20201202115200628](..\img\image-20201202115200628.png)
 
 上图的标识：
 

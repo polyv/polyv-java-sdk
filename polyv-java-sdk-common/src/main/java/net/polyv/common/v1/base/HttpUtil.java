@@ -39,7 +39,7 @@ public class HttpUtil {
     public static final String SOURCE = "source";
     private static  String SDK = "sdk";
     public static final String VERSION = "version";
-    private static final String CURRENT_VERSION = "1.0.9";
+    private static final String CURRENT_VERSION = "1.0.10";
     private static final String UTF8 = Constant.UTF8;
     
     public static String getSDK() {

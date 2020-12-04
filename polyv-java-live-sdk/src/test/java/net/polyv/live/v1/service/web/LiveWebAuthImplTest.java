@@ -253,7 +253,7 @@ public class LiveWebAuthImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void testSkipUpdateChannelAuthUrl() throws Exception, NoSuchAlgorithmException {
+    public void testUpdateChannelAuthUrl() throws Exception, NoSuchAlgorithmException {
         LiveUpdateChannelAuthUrlRequest liveUpdateChannelAuthUrlRequest = new LiveUpdateChannelAuthUrlRequest();
         Boolean liveUpdateChannelAuthUrlResponse;
         try {

@@ -18,14 +18,12 @@ import net.polyv.live.v1.entity.LivePageCommonRequest;
 public class LiveListAccountDetailRequest extends LivePageCommonRequest {
     
     /**
-     * TODO 链接分类id
-     * 所属分类id
+     * 所属分类id;new LiveAccountServiceImpl().listCategory()获取
      */
-    @ApiModelProperty(name = "categoryId", value = "所属分类id", dataType = "Integer", example = "340182")
+    @ApiModelProperty(name = "categoryId", value = "所属分类id;new LiveAccountServiceImpl().listCategory()获取", dataType = "Integer", example = "340182")
     private Integer categoryId;
     
     /**
-     * TODO 枚举使用
      * 观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始
      */
     @ApiModelProperty(name = "watchStatus", value = "观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始", dataType =

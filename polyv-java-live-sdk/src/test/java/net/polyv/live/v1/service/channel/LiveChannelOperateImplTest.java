@@ -342,7 +342,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelSettingResponse = new LiveChannelOperateServiceImpl().updateChannelSetting(
                     liveChannelSettingRequest);
-            Assert.assertNotNull(liveChannelSettingResponse);
+            Assert.assertTrue(liveChannelSettingResponse);
             if (liveChannelSettingResponse) {
                 //to do something ......
                 log.debug("测试修改频道的相关设置成功");
@@ -799,12 +799,14 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest = new LiveCreateChannelPPTRecordRequest();
         Boolean liveCreateChannelPPTRecordResponse;
         try {
-            liveCreateChannelPPTRecordRequest.setChannelId("1951952")
-                    .setVideoId("07f5bbeb67")
+             String channel = createChannel();
+            List<String> videoIds = listChannelVideoIds(channel);
+            liveCreateChannelPPTRecordRequest.setChannelId(channel)
+                    .setVideoId(videoIds.get(1))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveCreateChannelPPTRecordResponse = new LiveChannelOperateServiceImpl().createChannelPPTRecordTask(
                     liveCreateChannelPPTRecordRequest);
-            Assert.assertNotNull(liveCreateChannelPPTRecordResponse);
+            Assert.assertTrue(liveCreateChannelPPTRecordResponse);
             if (liveCreateChannelPPTRecordResponse) {
                 //to do something ......
                 log.debug("测试创建重制课件任务成功");
@@ -889,11 +891,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置频道回调设置
      * 约束：2、如频道需要跟随用户设置，可以调用设置频道默认项开关接口
-     * TODO 等待后台修改返回值
      * @throws Exception
      */
     @Test
-    public void testSkipUpdateChannelCallbackSetting() throws Exception {
+    public void testUpdateChannelCallbackSetting() throws Exception {
         LiveUpdateChannelCallbackSettingRequest liveUpdateChannelCallbackSettingRequest =
                 new LiveUpdateChannelCallbackSettingRequest();
         Boolean liveUpdateChannelCallbackSettingResponse;
@@ -923,11 +924,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试批量创建子频道
      * 约束：2、批量创建子频道，子频道角色支持guest(嘉宾，只支持三分屏场景)、assistant(助教)
-     * TODO 需要后台修改json解析功能
      * @throws Exception
      */
-//    @Test
-    public void testSkipCreateSonChannelList() throws Exception {
+    @Test
+    public void testCreateSonChannelList() throws Exception {
         LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse;
         try {
@@ -1077,7 +1077,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * @throws Exception
      */
 //    @Test
-    public void testSkipGetChannelCapture() throws Exception {
+    public void testGetChannelCapture() throws Exception {
         LiveChannelCaptureRequest liveChannelCaptureRequest = new LiveChannelCaptureRequest();
         String liveChannelCaptureResponse;
         try {
@@ -1122,7 +1122,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelStreamResponse = new LiveChannelOperateServiceImpl().updateChannelStream(
                     liveUpdateChannelStreamRequest);
-            Assert.assertNotNull(liveUpdateChannelStreamResponse);
+            Assert.assertTrue(liveUpdateChannelStreamResponse);
             if (liveUpdateChannelStreamResponse) {
                 //to do something ......
                 log.debug("测试修改直播推流方式成功");
@@ -1142,6 +1142,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 测试设置硬盘推流直播
      * 约束：2、调用接口后，如果当前频道未在直播中，会自动设置直播方式为“硬盘推流”。如果当前使用其他直播推流方式直播中，则需要在直播结束后，调用《修改直播推流方式》修改为硬盘推流，才会在所设置的开始时间进行直播
      * 返回：true为设置硬盘推流直播成功，false为修改失败
+     * TODO 测试未通过
      * @throws Exception
      */
 //    @Test
@@ -1151,7 +1152,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         try {
             //准备测试数据
             String channelId = createChannel();
-            String videoId = listChannelVideoIds(channelId).get(0);
+            String videoId = listChannelVideoPoolIds(channelId).get(0);
             
             liveCreateDiskVideosStreamRequest.setVideoIds(videoId)
                     .setStartTimes(super.getDate(System.currentTimeMillis() + 3000000))
@@ -1159,7 +1160,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveCreateDiskVideosStreamResponse = new LiveChannelOperateServiceImpl().createDiskVideosStream(
                     liveCreateDiskVideosStreamRequest);
-            Assert.assertNotNull(liveCreateDiskVideosStreamResponse);
+            Assert.assertTrue(liveCreateDiskVideosStreamResponse);
             if (liveCreateDiskVideosStreamResponse) {
                 //to do something ......
                 log.debug("测试设置硬盘推流直播成功");
@@ -1194,7 +1195,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveDeleteDiskVideosStreamResponse = new LiveChannelOperateServiceImpl().deleteDiskVideosStream(
                     liveDeleteDiskVideosStreamRequest);
-            Assert.assertNotNull(liveDeleteDiskVideosStreamResponse);
+            Assert.assertTrue(liveDeleteDiskVideosStreamResponse);
             if (liveDeleteDiskVideosStreamResponse) {
                 //to do something ......
                 log.debug("测试删除硬盘推流的视频成功");

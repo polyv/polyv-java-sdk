@@ -139,7 +139,7 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
         String url = LiveURL.getRealUrl(LiveURL.UPDATE_CHANNEL_CONSULTING_ENABLED_URL,
                 liveSetConsultingEnabledRequest.getChannelId());
         String liveSetConsultingEnabledResponse = this.basePost(url, liveSetConsultingEnabledRequest, String.class);
-        return "".equals(liveSetConsultingEnabledResponse);
+        return "success".equals(liveSetConsultingEnabledResponse);
     }
     
     /**

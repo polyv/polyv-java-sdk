@@ -130,6 +130,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
             liveGetHistoryChatMsgRequest.setChannelId(channelId)
                     .setStartDay(getDate(2020, 10, 01))
                     .setEndDay(getDate(2099, 12, 12))
+                    .setPageSize(2)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistoryChatMsg(
                     liveGetHistoryChatMsgRequest);
@@ -592,12 +593,11 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 测试发送自定义聊天信息
      * 返回：true 发送成功， false 发送失败
-     * TODO 返回格式不正确
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
-//    @Test
-    public void testSkipSendCustomChat() throws Exception, NoSuchAlgorithmException {
+    @Test
+    public void testSendCustomChat() throws Exception, NoSuchAlgorithmException {
         LiveSendCustomChatRequest liveSendCustomChatRequest = new LiveSendCustomChatRequest();
         Boolean liveSendCustomChatResponse;
         try {

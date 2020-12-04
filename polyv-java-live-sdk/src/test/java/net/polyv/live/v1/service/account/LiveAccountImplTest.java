@@ -377,7 +377,7 @@ public class LiveAccountImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveAccountPlaybackCallbackResponse = new LiveAccountServiceImpl().updatePlaybackCallbackUrl(
                     liveAccountPlaybackCallbackRequest);
-            Assert.assertNotNull(liveAccountPlaybackCallbackResponse);
+            Assert.assertTrue(liveAccountPlaybackCallbackResponse);
             if (liveAccountPlaybackCallbackResponse != null) {
                 //to do something ......
                 log.debug("测试设置转存成功回调通知url成功,{}", liveAccountPlaybackCallbackResponse);
@@ -414,7 +414,7 @@ public class LiveAccountImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveAccountRecordCallbackResponse = new LiveAccountServiceImpl().updateRecordCallbackUrl(
                     liveAccountRecordCallbackRequest);
-            Assert.assertNotNull(liveAccountRecordCallbackResponse);
+            Assert.assertTrue(liveAccountRecordCallbackResponse);
             if (liveAccountRecordCallbackResponse) {
                 //to do something ......
                 log.debug("测试设置录制回调通知url成功");

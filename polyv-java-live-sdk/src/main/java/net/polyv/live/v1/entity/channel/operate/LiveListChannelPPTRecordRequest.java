@@ -32,15 +32,15 @@ public class LiveListChannelPPTRecordRequest extends LivePageCommonRequest {
     private String channelId;
     
     /**
-     * TODO 写明场次id从哪里获取
-     * 场次id
+     * 场次id，new LiveChannelPlaybackServiceImpl().listChannelSessionInfo()方法获取场次信息
      */
-    @ApiModelProperty(name = "sessionId", value = "场次id", required = false, example = "")
+    @ApiModelProperty(name = "sessionId", value = "场次id，new LiveChannelPlaybackServiceImpl().listChannelSessionInfo()" +
+            "方法获取场次信息", required = false, example = "")
     private String sessionId;
     
     /**
      * @see LiveConstant.PPTStatus
-     * 课件重置状态值
+     *         课件重置状态值
      */
     @ApiModelProperty(name = "status", value = "课件重置状态值", required = false, example = "success")
     private String status;
@@ -48,13 +48,13 @@ public class LiveListChannelPPTRecordRequest extends LivePageCommonRequest {
     /**
      * 直播开始时间开始区间,格式为yyyy-MM-dd HH:mm:ss
      */
-    @ApiModelProperty(name = "startTime", value = "直播开始时间开始区间,格式为yyyy-MM-dd HH:mm:ss", required = false )
+    @ApiModelProperty(name = "startTime", value = "直播开始时间开始区间,格式为yyyy-MM-dd HH:mm:ss", required = false)
     @JSONField(format = "yyyyMMddHHmmss")
     private Date startTime;
     /**
      * 直播开始时间结束区间,格式为yyyy-MM-dd HH:mm:ss
      */
-    @ApiModelProperty(name = "endTime", value = "直播开始时间结束区间,格式为yyyy-MM-dd HH:mm:ss", required = false )
+    @ApiModelProperty(name = "endTime", value = "直播开始时间结束区间,格式为yyyy-MM-dd HH:mm:ss", required = false)
     @JSONField(format = "yyyyMMddHHmmss")
     private Date endTime;
 }

@@ -69,7 +69,7 @@ public class LiveLotteryServiceImpl  extends LiveBaseService implements ILiveLot
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_SET_LOTTERY_WINNER_INFO_URL;
         String liveSetLotteryWinnerInfoResponse = this.baseGet(url, liveSetLotteryWinnerInfoRequest, String.class);
-        return "".equals(liveSetLotteryWinnerInfoResponse);
+        return "success".equals(liveSetLotteryWinnerInfoResponse);
     }
     
     /**

@@ -221,7 +221,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
         signMap.put("channelId", String.valueOf(liveChannelVideoSortRequest.getChannelId()));
         String liveChannelVideoSortResponse = this.basePostJson(url, signMap, liveChannelVideoSortRequest,
                 String.class);
-        return "".equals(liveChannelVideoSortResponse);
+        return "success".equals(liveChannelVideoSortResponse);
     }
     
     /**
@@ -289,7 +289,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_VIDEO_DELETE_URL, liveDeleteChannelVideoRequest.getChannelId());
         String liveDeleteChannelVideoResponse = this.basePost(url, liveDeleteChannelVideoRequest, String.class);
-        return "".equals(liveDeleteChannelVideoResponse);
+        return "success".equals(liveDeleteChannelVideoResponse);
     }
     
     /**
@@ -341,7 +341,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_PLAYBACK_TITLE_URL;
         String liveUpdatePlaybackTitleResponse = this.basePost(url, liveUpdatePlaybackTitleRequest, String.class);
-        return "".equals(liveUpdatePlaybackTitleResponse);
+        return "success".equals(liveUpdatePlaybackTitleResponse);
     }
     
     /**

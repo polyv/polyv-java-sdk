@@ -120,13 +120,13 @@ true为添加成功，false为添加失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 白名单列表【详见[ChannelWhiteList参数描述](webAuth.md?id=polyv53)】 | 
+| contents | false | Array | 白名单列表【详见[ChannelWhiteList参数描述](webAuth.md?id=polyv55)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv53"><a href="#/channelOperate?id=polyv53"data-id="ChannelWhiteList参数描述"class="anchor"><span>ChannelWhiteList参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv55"><a href="#/channelOperate?id=polyv55"data-id="ChannelWhiteList参数描述"class="anchor"><span>ChannelWhiteList参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -190,9 +190,9 @@ true为添加成功，false为添加失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| authSettings | true | Array | 观看条件【详见[AuthSetting参数描述](webAuth.md?id=polyv54)】 | 
+| authSettings | true | Array | 观看条件【详见[AuthSetting参数描述](webAuth.md?id=polyv56)】 | 
 
-<h6 id="polyv54"><a href="#/channelOperate?id=polyv54"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv56"><a href="#/channelOperate?id=polyv56"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -207,7 +207,7 @@ true为添加成功，false为添加失败
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv55)】 | 
+| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv57)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -215,7 +215,7 @@ true为添加成功，false为添加失败
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-<h6 id="polyv55"><a href="#/channelOperate?id=polyv55"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv57"><a href="#/channelOperate?id=polyv57"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -287,10 +287,10 @@ true为添加成功，false为添加失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，不传为全局设置 | 
-| authSettings | true | Array | 观看条件设置【详见[AuthSetting参数描述](webAuth.md?id=polyv56)】 | 
+| authSettings | true | Array | 观看条件设置【详见[AuthSetting参数描述](webAuth.md?id=polyv58)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-<h6 id="polyv56"><a href="#/channelOperate?id=polyv56"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv58"><a href="#/channelOperate?id=polyv58"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -305,7 +305,7 @@ true为添加成功，false为添加失败
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv57)】 | 
+| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv59)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -313,7 +313,7 @@ true为添加成功，false为添加失败
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-<h6 id="polyv57"><a href="#/channelOperate?id=polyv57"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv59"><a href="#/channelOperate?id=polyv59"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -387,9 +387,9 @@ true为设置观看条件成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv58)】 | 
+| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv60)】 | 
 
-<h6 id="polyv58"><a href="#/channelOperate?id=polyv58"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv60"><a href="#/channelOperate?id=polyv60"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -457,9 +457,9 @@ true为设置观看条件成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv59)】 | 
+| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv61)】 | 
 
-<h6 id="polyv59"><a href="#/channelOperate?id=polyv59"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv61"><a href="#/channelOperate?id=polyv61"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -472,7 +472,66 @@ true为设置观看条件成功，false为设置失败
 
 <br /><br />
 
-## 7、设置授权观看类型
+## 7、设置授权认证URL
+### 描述
+```
+设置授权认证URL
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testUpdateChannelAuthUrl() throws Exception, NoSuchAlgorithmException {
+        LiveUpdateChannelAuthUrlRequest liveUpdateChannelAuthUrlRequest = new LiveUpdateChannelAuthUrlRequest();
+        Boolean liveUpdateChannelAuthUrlResponse;
+        try {
+            liveUpdateChannelAuthUrlRequest.setChannelId(createChannel())
+                    .setUrl("http://www.polyv.net")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveUpdateChannelAuthUrlResponse = new LiveWebAuthServiceImpl().updateChannelAuthUrl(
+                    liveUpdateChannelAuthUrlRequest);
+            Assert.assertNotNull(liveUpdateChannelAuthUrlResponse);
+            if (liveUpdateChannelAuthUrlResponse != null) {
+                //to do something ......
+                log.debug("测试设置授权认证URL成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | false | String | 频道号，无该参数为全局设置 | 
+| url | false | String | 授权认证url，为空时清除设置 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为设置成功，false为设置失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 8、设置授权观看类型
 ### 描述
 ```
 设置授权观看类型
@@ -531,7 +590,7 @@ true为授权成功，false为授权失败
 
 <br /><br />
 
-## 8、更新白名单
+## 9、更新白名单
 ### 描述
 ```
 更新白名单
@@ -596,7 +655,7 @@ true为更新成功，false为失败
 
 <br /><br />
 
-## 9、删除白名单
+## 10、删除白名单
 ### 描述
 ```
 用于删除指定观看白名单（支持一键清空）
@@ -659,7 +718,7 @@ true为删除成功，false为失败
 
 <br /><br />
 
-## 10、查询频道或全局登记观看字段
+## 11、查询频道或全局登记观看字段
 ### 描述
 ```
 查询频道或全局登记观看字段
@@ -714,9 +773,9 @@ true为删除成功，false为失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelAuthFields | false | Array | 登记观看字段【详见[ChannelAuthField参数描述](webAuth.md?id=polyv60)】 | 
+| channelAuthFields | false | Array | 登记观看字段【详见[ChannelAuthField参数描述](webAuth.md?id=polyv62)】 | 
 
-<h6 id="polyv60"><a href="#/channelOperate?id=polyv60"data-id="ChannelAuthField参数描述"class="anchor"><span>ChannelAuthField参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv62"><a href="#/channelOperate?id=polyv62"data-id="ChannelAuthField参数描述"class="anchor"><span>ChannelAuthField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -731,7 +790,7 @@ true为删除成功，false为失败
 
 <br /><br />
 
-## 11、查询页面登记观看列表
+## 12、查询页面登记观看列表
 ### 描述
 ```
 查询页面登记观看列表
@@ -784,13 +843,13 @@ true为删除成功，false为失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 页面登记记录【详见[ChannelAuthInfo参数描述](webAuth.md?id=polyv61)】 | 
+| contents | false | Array | 页面登记记录【详见[ChannelAuthInfo参数描述](webAuth.md?id=polyv63)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv61"><a href="#/channelOperate?id=polyv61"data-id="ChannelAuthInfo参数描述"class="anchor"><span>ChannelAuthInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv63"><a href="#/channelOperate?id=polyv63"data-id="ChannelAuthInfo参数描述"class="anchor"><span>ChannelAuthInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -803,7 +862,7 @@ true为删除成功，false为失败
 
 <br /><br />
 
-## 12、下载频道登记观看记录
+## 13、下载频道登记观看记录
 ### 描述
 ```
 接口用于下载频道的登记观看列表，包含登记观看记录字段和数据内容
@@ -866,7 +925,7 @@ true为删除成功，false为失败
 
 <br /><br />
 
-## 13、新增白名单
+## 14、新增白名单
 ### 描述
 ```
 用于设置频道或全局观看条件中的白名单列表
@@ -928,7 +987,7 @@ true为删除成功，false为失败
 
 <br /><br />
 
-## 14、下载频道观看白名单列表
+## 15、下载频道观看白名单列表
 ### 描述
 ```
 用于下载全局或频道的观看条件白名单列表

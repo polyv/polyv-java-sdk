@@ -1,33 +1,44 @@
-## 大会直播
-
 ### 描述
 
-您可以下载我们的 SDK 使用下面简单的代码示例实现大会直播的效果，包括语音、视频、屏幕分享等方式。
+B端用户可以下载**保利威直播Java SDK** 使用简单的示例代码实现大会直播的效果，包括语音、视频、屏幕分享等功能。
 
 ### 效果展示
 
-动态图
+动态效果图，左侧是讲师端，右侧是观看端：
 
 <img src="..\img\videoRoom0.gif" alt="videoRoom0" style="width:calc( 50% - 10px);float:left" /><img src="..\img\videoRoom1.gif" alt="videoRoom1" style="width:50%;float:right;" />
 
-<div style="clear: both;"><div/>
-讲师引导页效果图-电脑端
+
+
+
+
+
+
+
+
+
+
+------------
+
+讲师端引导页效果图：
 
 ![image-20201203150906414](..\img\image-20201203150906414.png)
 
-讲师直播页效果图-电脑端
+讲师端直播页效果图：
 
 ![image-20201203151152583](..\img\image-20201203151152583.png)
 
-观看引导页效果图
+----------
+
+观众观看引导页效果图：
 
 ![image-20201203151512457](..\img\image-20201203151512457.png)
 
-验证码输入效果图-电脑端
+观众端验证码输入效果图：
 
 ![image-20201203152020864](..\img\image-20201203152020864.png)
 
-观看页效果图-电脑端
+观众端观看页效果图：
 
 ![image-20201203153117971](..\img\image-20201203153117971.png)
 
@@ -47,6 +58,9 @@
 | 10       | 验证页图片(可设置公众号二维码，关注公众号获取验证码) |
 | 11       | 验证码观看提示文案                                   |
 
+### 流程图
+
+![image-20201203153827646](..\img\image-20201203153827646.png)
 
 ### 代码示例
 
@@ -81,10 +95,12 @@ public class Demo {
     
     public static void main(String[] args) {
         try {
+        	//-----------------建议全局初始化一次-------------------
             String appId = "xxx";
             String appSecret = "xxx";
             String userId = "xxx";
             LiveGlobalConfig.init(appId, userId, appSecret);
+            //------------------------------------------------------
             log.debug("--初始化完成--");
             String channelId = createChannel();
             log.debug("--创建频道{}完成--", channelId);
@@ -92,8 +108,8 @@ public class Demo {
             log.debug("--设置频道详情成功--");
             updateChannelSetting(channelId);
             log.debug("--修改频道的相关设置成功--");
-            log.info("讲师端地址：https://live.polyv.net/web-start/?channelId={}", channelId);
-            log.info("观众端地址：https://live.polyv.cn/watch/{}", channelId);
+            log.info("讲师端网页开播地址：https://live.polyv.net/web-start/?channelId={}", channelId);
+            log.info("观众端网页观看地址：https://live.polyv.cn/watch/{}", channelId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
             log.error(e.getMessage(), e);
@@ -246,7 +262,3 @@ public class Demo {
 }
 
 ```
-
-### 流程图
-
-![image-20201203153827646](..\img\image-20201203153827646.png)

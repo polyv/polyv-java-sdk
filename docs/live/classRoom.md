@@ -10,9 +10,9 @@ B端用户可以下载**保利威直播Java SDK** 使用简单的示例代码实
 
 <img src="..\img\d.gif" alt="d" style="width:calc( 50% - 10px);float:right" /><img src="..\img\c.gif" alt="c" style="width:50%;float:left;" />
 
-<div style="clear: both;"><div/>
----------------
+<div style="clear:both;" ></div>
 
+-------------------------
 讲师端引导页效果图：
 
 ![image-20201202113227197](..\img\image-20201202113227197.png)

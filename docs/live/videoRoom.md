@@ -8,15 +8,9 @@ B端用户可以下载**保利威直播Java SDK** 使用简单的示例代码实
 
 <img src="..\img\videoRoom0.gif" alt="videoRoom0" style="width:calc( 50% - 10px);float:left" /><img src="..\img\videoRoom1.gif" alt="videoRoom1" style="width:50%;float:right;" />
 
+ 
 
-
-
-
-
-
-
-
-
+<div style="clear:both;" ></div>
 
 ------------
 

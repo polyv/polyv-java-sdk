@@ -111,9 +111,9 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelMenus | false | Array | 频道的菜单信息【详见[ChannelMenu参数描述](webMenu.md?id=polyv67)】 | 
+| channelMenus | false | Array | 频道的菜单信息【详见[ChannelMenu参数描述](webMenu.md?id=polyv69)】 | 
 
-<h6 id="polyv67"><a href="#/channelOperate?id=polyv67"data-id="ChannelMenu参数描述"class="anchor"><span>ChannelMenu参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv69"><a href="#/channelOperate?id=polyv69"data-id="ChannelMenu参数描述"class="anchor"><span>ChannelMenu参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -380,7 +380,7 @@ null
 
 ### 返回对象描述
 
-null
+true为删除成功，false为删除失败
 <br /><br />
 
 ------------------
@@ -440,6 +440,83 @@ null
 ### 返回对象描述
 
 null
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 8、查询频道图文内容列表
+### 描述
+```
+可以开启或关闭咨询提问功能菜单
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testGetChannelImageText() throws Exception, NoSuchAlgorithmException {
+        LiveGetChannelImageTextRequest liveGetChannelImageTextRequest = new LiveGetChannelImageTextRequest();
+        LiveGetChannelImageTextResponse liveGetChannelImageTextResponse;
+        try {
+            liveGetChannelImageTextRequest.setChannelId(createChannel())
+                    .setId(null)
+                    .setImageMode("N")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveGetChannelImageTextResponse = new LiveWebMenuServiceImpl().getChannelImageText(
+                    liveGetChannelImageTextRequest);
+            Assert.assertNotNull(liveGetChannelImageTextResponse);
+            if (liveGetChannelImageTextResponse != null) {
+                //to do something ......
+                log.debug("测试查询频道图文内容列表成功，{}",JSON.toJSONString(liveGetChannelImageTextResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回LiveGetChannelImageTextResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| id | false | Integer | 图文内容的序列号：为空表示获取第一页数据，且同时会返回置顶数据。非空表示获取id比该值小的记录（也就是更早发布的内容），此时不返回置顶列表。 | 
+| imageMode | false | String | 是否为图片模式，Y表示为图片模式，N表示文字加图片的模式，默认为N | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| total | false | Integer | 总的返回结果条数 | 
+| contents | false | ImageTextMsg[] | 图文消息列表【详见[ImageTextMsg[]参数描述](webMenu.md?id=polyv70)】 | 
+| topContents | false | ImageTextMsg[] | 置顶图文消息列表【详见[ImageTextMsg[]参数描述](webMenu.md?id=polyv71)】 | 
+| setting | false | Setting | 设置【详见[Setting参数描述](webMenu.md?id=polyv72)】 | 
+
+<h6 id="polyv72"><a href="#/channelOperate?id=polyv72"data-id="Setting参数描述"class="anchor"><span>Setting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| id | false | Integer | 设置的序列号 | 
+| nickname | false | String | 操作人的昵称 | 
+| actor | false | String | 操作人的头衔 | 
+| avatar | false | String | 操作人的头像 | 
+
 <br /><br />
 
 ------------------

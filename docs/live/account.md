@@ -387,7 +387,7 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | false | Integer | 所属分类id | 
+| categoryId | false | Integer | 所属分类id;new LiveAccountServiceImpl().listCategory()获取 | 
 | watchStatus | false | String | 观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始 | 
 | keyword | false | String | 频道名称，模糊查询 | 
 | currentPage | false | Integer | 页数，默认为1 | 
@@ -502,7 +502,7 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | false | Integer | 所属分类id | 
+| categoryId | false | Integer | 所属分类id；new LiveAccountServiceImpl().listCategory()获取 | 
 | keyword | false | String | 频道名称，模糊查询 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
@@ -728,7 +728,7 @@ true为设置回调成功，false为设置回调失败
                     .setRequestId(LiveSignUtil.generateUUID());
             liveAccountPlaybackCallbackResponse = new LiveAccountServiceImpl().updatePlaybackCallbackUrl(
                     liveAccountPlaybackCallbackRequest);
-            Assert.assertNotNull(liveAccountPlaybackCallbackResponse);
+            Assert.assertTrue(liveAccountPlaybackCallbackResponse);
             if (liveAccountPlaybackCallbackResponse != null) {
                 //to do something ......
                 log.debug("测试设置转存成功回调通知url成功,{}", liveAccountPlaybackCallbackResponse);
@@ -806,7 +806,7 @@ true为设置回调成功，false为设置回调失败
                     .setRequestId(LiveSignUtil.generateUUID());
             liveAccountRecordCallbackResponse = new LiveAccountServiceImpl().updateRecordCallbackUrl(
                     liveAccountRecordCallbackRequest);
-            Assert.assertNotNull(liveAccountRecordCallbackResponse);
+            Assert.assertTrue(liveAccountRecordCallbackResponse);
             if (liveAccountRecordCallbackResponse) {
                 //to do something ......
                 log.debug("测试设置录制回调通知url成功");

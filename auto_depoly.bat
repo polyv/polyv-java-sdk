@@ -1,9 +1,13 @@
 :: 执行集成测试，确认测试没有问题全部通过
 :: mvn clean  test
+:: 请确认请求域名已经替换回  【api.polyv.net】
 
 
 :: @echo off
-:: 调用示例  auto_deploy.bat  1.0.9
+chcp 65001
+echo "请确认请求域名已经替换回  【api.polyv.net】 "
+pause
+:: 调用示例  auto_deploy.bat  1.0.10
 git checkout dev
 :: #同步开发分支所有代码
 git pull
@@ -37,3 +41,4 @@ PAUSE
 :: mvn clean install deploy -Dmaven.test.skip=true -P release
 :: 登录码云重启文档服务，使最新文档生效，并人工确认
 :: 登录 maven 私服更新到中央版本库 ， https://oss.sonatype.org/#stagingRepositories ，并人工确认
+:: 请确认从中央仓库下载的jar包请求域名已经替换回  【api.polyv.net】

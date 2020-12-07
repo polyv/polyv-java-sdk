@@ -410,9 +410,9 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelLikes | false | Array | 频道点赞数和观众热度值【详见[ChannelLikes参数描述](webInfo.md?id=polyv62)】 | 
+| channelLikes | false | Array | 频道点赞数和观众热度值【详见[ChannelLikes参数描述](webInfo.md?id=polyv64)】 | 
 
-<h6 id="polyv62"><a href="#/channelOperate?id=polyv62"data-id="ChannelLikes参数描述"class="anchor"><span>ChannelLikes参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv64"><a href="#/channelOperate?id=polyv64"data-id="ChannelLikes参数描述"class="anchor"><span>ChannelLikes参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -447,7 +447,7 @@ true为设置成功，false为设置失败
                     .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(
                     liveUpdateChannelCountDownRequest);
-            Assert.assertNotNull(liveUpdateChannelCountDownResponse);
+            Assert.assertTrue(liveUpdateChannelCountDownResponse);
             if (liveUpdateChannelCountDownResponse) {
                 //to do something ......
                 log.debug("测试设置频道直播倒计时信息成功");

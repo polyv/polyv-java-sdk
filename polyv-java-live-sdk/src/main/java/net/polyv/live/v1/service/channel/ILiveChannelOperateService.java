@@ -94,8 +94,8 @@ public interface ILiveChannelOperateService {
      * @return 渠道设置信息
      * @throws IOException 异常
      */
-    Boolean updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest) throws IOException,
-            NoSuchAlgorithmException;
+    Boolean updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest)
+            throws IOException, NoSuchAlgorithmException;
     
     /**
      * 设置频道详情

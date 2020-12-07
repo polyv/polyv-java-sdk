@@ -294,7 +294,7 @@ public class LiveWebAuthImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(
                     liveChannelAuthTypeRequest);
-            Assert.assertNotNull(liveChannelAuthTypeResponse);
+            Assert.assertTrue(liveChannelAuthTypeResponse);
             if (liveChannelAuthTypeResponse) {
                 //to do something ......
                 log.debug("测试设置授权观看类型成功");

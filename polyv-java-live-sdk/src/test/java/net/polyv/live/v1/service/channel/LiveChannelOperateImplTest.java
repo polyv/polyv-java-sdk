@@ -1022,7 +1022,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelMaxViewerResponse = new LiveChannelOperateServiceImpl().updateChannelMaxViewer(
                     liveUpdateChannelMaxViewerRequest);
-            Assert.assertNotNull(liveUpdateChannelMaxViewerResponse);
+            Assert.assertTrue(liveUpdateChannelMaxViewerResponse);
             if (liveUpdateChannelMaxViewerResponse) {
                 //to do something ......
                 log.debug("测试设置频道最大在线人数成功");

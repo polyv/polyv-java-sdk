@@ -242,7 +242,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
         String url = LiveURL.getRealUrl(LiveURL.CHAT_SET_ADMIN_DATA_URL, liveSetChatAdminDataRequest.getChannelId());
         Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("avatar", liveSetChatAdminDataRequest.getAvatar());
-        return "修改成功".equals(super.baseUploadFile(url, liveSetChatAdminDataRequest, fileMap, String.class));
+        return "success".equals(super.baseUploadFile(url, liveSetChatAdminDataRequest, fileMap, String.class));
     }
     
     

@@ -137,7 +137,7 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.SET_PLAYER_URL_MARQUEE_URL,liveSetPlayerUrlMarqueeRequest.getChannelId());
         String liveSetPlayerUrlMarqueeResponse = this.basePost(url,liveSetPlayerUrlMarqueeRequest,String.class);
-        return "设置成功".equals(liveSetPlayerUrlMarqueeResponse);
+        return "success".equals(liveSetPlayerUrlMarqueeResponse);
     }
     
     

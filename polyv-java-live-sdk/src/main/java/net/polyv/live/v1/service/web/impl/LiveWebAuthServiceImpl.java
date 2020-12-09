@@ -132,7 +132,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_AUTH_TYPE_URL, liveChannelAuthTypeRequest.getChannelId());
         String liveChannelAuthTypeResponse = this.basePost(url, liveChannelAuthTypeRequest, String.class);
-        return "修改成功".equals(liveChannelAuthTypeResponse);
+        return "success".equals(liveChannelAuthTypeResponse);
     }
     
     /**

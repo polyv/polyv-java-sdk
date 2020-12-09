@@ -30,7 +30,8 @@
         <httpclient.version>4.5</httpclient.version>
         <commons.lang3.version>3.5</commons.lang3.version>
         <fastjson.version>1.2.70</fastjson.version>
-        <hibernate-validator.version>5.0.0.Final</hibernate-validator.version>
+<!--        <hibernate-validator.version>5.0.0.Final</hibernate-validator.version>-->
+        <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
         <java.el.version>3.0.0</java.el.version>
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.10</lombok.version>
@@ -94,6 +95,16 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>3.0.0</version>
         </dependency>
 
         <!--        <dependency>-->

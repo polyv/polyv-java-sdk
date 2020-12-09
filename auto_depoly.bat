@@ -7,7 +7,7 @@
 chcp 65001
 echo "请确认请求域名已经替换回  【api.polyv.net】 "
 pause
-:: 调用示例  auto_deploy.bat  1.0.10
+:: 调用示例  auto_deploy.bat  1.0.11
 git checkout dev
 :: #同步开发分支所有代码
 git pull
@@ -25,7 +25,7 @@ PAUSE
 :: 针对当前分支新建一个版本tag
 git  tag  %1
 :: # 提交master分支到origin远程仓库
-git push origin master
+git push origin master  --tags
 :: # 提交master分支到github远程仓库
 git push github master
 :: # 提交master分支到gitee远程仓库

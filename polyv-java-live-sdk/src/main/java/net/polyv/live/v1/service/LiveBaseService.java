@@ -15,7 +15,8 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.base.HttpUtil;
 import net.polyv.common.v1.exception.PloyvSdkException;
-import net.polyv.common.v1.util.ValidationUtil;
+import net.polyv.common.v1.util.SDKValidateUtil;
+import net.polyv.common.v1.validator.ViolationMsg;
 import net.polyv.live.v1.config.LiveGlobalConfig;
 import net.polyv.live.v1.constant.LiveConstant;
 import net.polyv.live.v1.entity.LiveCommonRequest;
@@ -152,19 +153,27 @@ public class LiveBaseService {
     
     
     /**
-     * 采用hibernate-validator校验入参
+     * 采用SDK-validator校验入参
      * @param e 入参
      * @param <E> 入参泛型
      */
     private <E extends LiveCommonRequest> void validateBean(E e) {
-        ValidationUtil.ValidResult validResult = ValidationUtil.validateBean(e);
-        if (validResult.hasErrors()) {
-            String errors = validResult.getErrors();
+        List<ViolationMsg> violationMsgList = SDKValidateUtil.validateBean(e);
+        if(!violationMsgList.isEmpty()){
+            String errors = SDKValidateUtil.getViolationMsgStr(violationMsgList);
             errors = errors.substring(0, errors.length() - 3);
             errors = "输入参数 [" + e.getClass().getName() + "]对象校验失败 ,失败字段 [" + errors + "]";
             log.error(errors);
             throw new PloyvSdkException(LiveConstant.ERROR_CODE, errors);
         }
+//        ValidationUtil.ValidResult validResult = ValidationUtil.validateBean(e);
+//        if (validResult.hasErrors()) {
+//            String errors = validResult.getErrors();
+//            errors = errors.substring(0, errors.length() - 3);
+//            errors = "输入参数 [" + e.getClass().getName() + "]对象校验失败 ,失败字段 [" + errors + "]";
+//            log.error(errors);
+//            throw new PloyvSdkException(LiveConstant.ERROR_CODE, errors);
+//        }
     }
     
     /**

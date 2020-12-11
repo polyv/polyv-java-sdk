@@ -505,7 +505,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         String url = LiveURL.getRealUrl(LiveURL.UPDATE_CHANNEL_MAX_VIEWER_URL,
                 liveUpdateChannelMaxViewerRequest.getChannelId());
         String liveUpdateChannelMaxViewerResponse = this.basePost(url, liveUpdateChannelMaxViewerRequest, String.class);
-        return "设置成功".equals(liveUpdateChannelMaxViewerResponse);
+        return "success".equals(liveUpdateChannelMaxViewerResponse);
     }
     
     /**

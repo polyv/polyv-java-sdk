@@ -41,7 +41,7 @@ public class HttpUtil {
     public static final String SOURCE = "source";
     private static String SDK = "SDK";
     public static final String VERSION = "version";
-    private static final String CURRENT_VERSION = "1.0.10";
+    private static final String CURRENT_VERSION = "1.0.11";
     private static final String UTF8 = Constant.UTF8;
     private static String APP_ID = "";
     private static String USER_ID = "";

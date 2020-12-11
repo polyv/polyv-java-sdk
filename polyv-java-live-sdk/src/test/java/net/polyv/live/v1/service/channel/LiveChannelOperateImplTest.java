@@ -905,7 +905,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             liveUpdateChannelCallbackSettingRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().updateChannelCallbackSetting(
                     liveUpdateChannelCallbackSettingRequest);
-            Assert.assertNotNull(liveUpdateChannelCallbackSettingResponse);
+            Assert.assertTrue(liveUpdateChannelCallbackSettingResponse);
             if (liveUpdateChannelCallbackSettingResponse) {
                 //to do something ......
                 log.debug("测试设置频道回调设置成功");
@@ -1022,7 +1022,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelMaxViewerResponse = new LiveChannelOperateServiceImpl().updateChannelMaxViewer(
                     liveUpdateChannelMaxViewerRequest);
-            Assert.assertNotNull(liveUpdateChannelMaxViewerResponse);
+            Assert.assertTrue(liveUpdateChannelMaxViewerResponse);
             if (liveUpdateChannelMaxViewerResponse) {
                 //to do something ......
                 log.debug("测试设置频道最大在线人数成功");

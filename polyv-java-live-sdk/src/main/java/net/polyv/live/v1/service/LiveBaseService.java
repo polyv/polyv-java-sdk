@@ -152,7 +152,7 @@ public class LiveBaseService {
     
     
     /**
-     * 采用hibernate-validator校验入参
+     * 采用SDK-validator校验入参
      * @param e 入参
      * @param <E> 入参泛型
      */

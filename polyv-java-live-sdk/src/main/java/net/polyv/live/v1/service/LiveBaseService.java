@@ -157,14 +157,6 @@ public class LiveBaseService {
      * @param <E> 入参泛型
      */
     private <E extends LiveCommonRequest> void validateBean(E e) {
-//        List<ViolationMsg> violationMsgList = SDKValidateUtil.validateBean(e);
-//        if(!violationMsgList.isEmpty()){
-//            String errors = SDKValidateUtil.getViolationMsgStr(violationMsgList);
-//            errors = errors.substring(0, errors.length() - 3);
-//            errors = "输入参数 [" + e.getClass().getName() + "]对象校验失败 ,失败字段 [" + errors + "]";
-//            log.error(errors);
-//            throw new PloyvSdkException(LiveConstant.ERROR_CODE, errors);
-//        }
         ValidationUtil.ValidResult validResult = ValidationUtil.validateBean(e);
         if (validResult.hasErrors()) {
             String errors = validResult.getErrors();

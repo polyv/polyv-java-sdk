@@ -13,7 +13,7 @@ import net.polyv.common.v1.validator.ViolationMsg;
 @Slf4j
 public abstract class Validator {
     
-    protected Validator nextLiveRequestValidator;
+    private Validator nextLiveRequestValidator;
     
     protected Class currentClass;
     
@@ -82,8 +82,17 @@ public abstract class Validator {
     
     
     public static Validator getValidator() {
+        LengthValidator lengthValidator = new LengthValidator();
+        MinValidator minValidator = new MinValidator();
+        minValidator.setNextLiveRequestValidator(lengthValidator);
+        MaxValidator maxValidator = new MaxValidator();
+        maxValidator.setNextLiveRequestValidator(minValidator);
+        NotBlankValidator notBlankValidator = new NotBlankValidator();
+        notBlankValidator.setNextLiveRequestValidator(maxValidator);
+        NotEmptyValidator notEmptyValidator = new NotEmptyValidator();
+        notEmptyValidator.setNextLiveRequestValidator(notBlankValidator);
         NotNullValidator liveRequestNullValidator = new NotNullValidator();
-        liveRequestNullValidator.setNextLiveRequestValidator(new NotEmptyValidator());
+        liveRequestNullValidator.setNextLiveRequestValidator(notEmptyValidator);
         return liveRequestNullValidator;
     }
     

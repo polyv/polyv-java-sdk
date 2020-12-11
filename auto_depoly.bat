@@ -1,7 +1,8 @@
 :: 执行集成测试，确认测试没有问题全部通过
 :: mvn clean  test
 :: 请确认请求域名已经替换回  【api.polyv.net】
-
+:: # 部署到中央版本库
+:: mvn clean install deploy -Dmaven.test.skip=true -P release
 
 :: @echo off
 chcp 65001
@@ -27,9 +28,9 @@ git  tag  %1
 :: # 提交master分支到origin远程仓库
 git push origin master  --tags
 :: # 提交master分支到github远程仓库
-git push github master  --tags
+git push github master --tags
 :: # 提交master分支到gitee远程仓库
-git push gitee master  --tags
+git push gitee master --tags
 :: # 切换回dev分支
 git checkout dev
 PAUSE
@@ -37,8 +38,6 @@ PAUSE
 
 
 :: 剩余工作如下
-:: # 部署到中央版本库
-:: mvn clean install deploy -Dmaven.test.skip=true -P release
 :: 登录码云重启文档服务，使最新文档生效，并人工确认
 :: 登录 maven 私服更新到中央版本库 ， https://oss.sonatype.org/#stagingRepositories ，并人工确认
 :: 请确认从中央仓库下载的jar包请求域名已经替换回  【api.polyv.net】

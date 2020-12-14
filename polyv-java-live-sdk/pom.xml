@@ -13,7 +13,7 @@
 
     <properties>
         <slf4j.version>1.7.30</slf4j.version>
-        <swagger.version>1.5.0</swagger.version>
+        <swagger.version>1.6.2</swagger.version>
         <polyv.version>1.0.11</polyv.version>
     </properties>
     <dependencies>

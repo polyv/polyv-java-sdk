@@ -13,7 +13,7 @@ import net.polyv.common.v1.validator.ViolationMsg;
 @Slf4j
 public abstract class Validator {
     
-    private Validator nextLiveRequestValidator;
+    private Validator nextRequestValidator;
     
     protected Class currentClass;
     
@@ -24,8 +24,8 @@ public abstract class Validator {
         return this;
     }
     
-    public void setNextLiveRequestValidator(Validator nextLiveRequestValidator) {
-        this.nextLiveRequestValidator = nextLiveRequestValidator;
+    public void setNextRequestValidator(Validator nextRequestValidator) {
+        this.nextRequestValidator = nextRequestValidator;
     }
     
     public final List<ViolationMsg> validate(Object data, Class<?>... groups) {
@@ -72,8 +72,8 @@ public abstract class Validator {
             }
             return violationMsgList;
         }
-        if (null != nextLiveRequestValidator) {
-            violationMsgList.addAll(nextLiveRequestValidator.validate(annotation, field, data, groups));
+        if (null != nextRequestValidator) {
+            violationMsgList.addAll(nextRequestValidator.validate(annotation, field, data, groups));
         }
         return violationMsgList;
     }
@@ -84,15 +84,15 @@ public abstract class Validator {
     public static Validator getValidator() {
         LengthValidator lengthValidator = new LengthValidator();
         MinValidator minValidator = new MinValidator();
-        minValidator.setNextLiveRequestValidator(lengthValidator);
+        minValidator.setNextRequestValidator(lengthValidator);
         MaxValidator maxValidator = new MaxValidator();
-        maxValidator.setNextLiveRequestValidator(minValidator);
+        maxValidator.setNextRequestValidator(minValidator);
         NotBlankValidator notBlankValidator = new NotBlankValidator();
-        notBlankValidator.setNextLiveRequestValidator(maxValidator);
+        notBlankValidator.setNextRequestValidator(maxValidator);
         NotEmptyValidator notEmptyValidator = new NotEmptyValidator();
-        notEmptyValidator.setNextLiveRequestValidator(notBlankValidator);
+        notEmptyValidator.setNextRequestValidator(notBlankValidator);
         NotNullValidator liveRequestNullValidator = new NotNullValidator();
-        liveRequestNullValidator.setNextLiveRequestValidator(notEmptyValidator);
+        liveRequestNullValidator.setNextRequestValidator(notEmptyValidator);
         return liveRequestNullValidator;
     }
     

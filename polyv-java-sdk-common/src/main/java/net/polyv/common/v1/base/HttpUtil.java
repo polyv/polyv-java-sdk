@@ -41,6 +41,7 @@ public class HttpUtil {
     public static final String SOURCE = "source";
     private static String SDK = "SDK";
     public static final String VERSION = "version";
+    public static final String USER_AGENT = "User-Agent";
     private static final String CURRENT_VERSION = "1.0.12";
     private static final String UTF8 = Constant.UTF8;
     private static String APP_ID = "";
@@ -110,6 +111,7 @@ public class HttpUtil {
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, SDK);
         httpPost.addHeader(VERSION, CURRENT_VERSION);
+        httpPost.setHeader( USER_AGENT ,  SDK);
         // 装填参数
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         if (params != null) {
@@ -126,7 +128,7 @@ public class HttpUtil {
         // 设置header信息
         // 指定报文头【Content-type】、【User-Agent】
         httpPost.setHeader("Content-type", Constant.APPLICATION_FORM_URLENCODED);
-        httpPost.setHeader("User-Agent", Constant.USER_AGENT_BROWSER);
+        httpPost.setHeader(USER_AGENT, Constant.USER_AGENT_BROWSER);
         // 执行请求操作，并拿到结果（同步阻塞）
         response =  sendRequestAndGetResult(url,httpClient,httpPost);
         // 获取结果实体
@@ -214,6 +216,7 @@ public class HttpUtil {
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, SDK);
         httpPost.addHeader(VERSION, CURRENT_VERSION);
+        httpPost.setHeader( USER_AGENT ,  SDK);
         // 设置参数到请求对象中
         StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
         //  Constant.UTF8
@@ -352,6 +355,7 @@ public class HttpUtil {
         HttpGet httpGet = new HttpGet(url);
         httpGet.addHeader(SOURCE, SDK);
         httpGet.addHeader(VERSION, CURRENT_VERSION);
+        httpGet.setHeader( USER_AGENT ,  SDK);
         httpGet.addHeader("Content-type", Constant.APPLICATION_JSON);
         // 通过请求对象获取响应对象
         CloseableHttpResponse response = sendRequestAndGetResult(url, httpClient, httpGet);
@@ -421,7 +425,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, SDK);
-        
+        httpPost.setHeader( USER_AGENT ,  SDK);
         httpPost.addHeader(VERSION, CURRENT_VERSION);
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
         if (fileMap != null) {
@@ -472,7 +476,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         HttpPost httpPost = new HttpPost(url);
         httpPost.addHeader(SOURCE, SDK);
-        
+        httpPost.setHeader(USER_AGENT,  SDK);
         httpPost.addHeader(VERSION, CURRENT_VERSION);
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
         

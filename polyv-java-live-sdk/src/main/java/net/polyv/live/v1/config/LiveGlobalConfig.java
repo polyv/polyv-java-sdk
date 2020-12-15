@@ -38,7 +38,7 @@ public class LiveGlobalConfig {
         LiveGlobalConfig.APP_ID = appId;
         LiveGlobalConfig.USER_ID = userId;
         LiveGlobalConfig.APP_SECRET = appSecret;
-        HttpUtil.setSDK("LIVE_SDK");
+        HttpUtil.setSDK("JAVA_LIVE_SDK");
         HttpUtil.setAppId(appId);
         HttpUtil.setUserId(userId);
         HttpClientUtil.init();
@@ -58,7 +58,7 @@ public class LiveGlobalConfig {
         LiveGlobalConfig.APP_ID = appId;
         LiveGlobalConfig.USER_ID = userId;
         LiveGlobalConfig.APP_SECRET = appSecret;
-        HttpUtil.setSDK("LIVE_SDK");
+        HttpUtil.setSDK("JAVA_LIVE_SDK");
         HttpUtil.setAppId(appId);
         HttpUtil.setUserId(userId);
         HttpClientUtil.setTimeOut(timeOut);

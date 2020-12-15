@@ -137,9 +137,9 @@ public abstract class Validator {
         notBlankValidator.setNextRequestValidator(maxValidator);
         NotEmptyValidator notEmptyValidator = new NotEmptyValidator();
         notEmptyValidator.setNextRequestValidator(notBlankValidator);
-        NotNullValidator liveRequestNullValidator = new NotNullValidator();
-        liveRequestNullValidator.setNextRequestValidator(notEmptyValidator);
-        return liveRequestNullValidator;
+        NotNullValidator notNullValidator = new NotNullValidator();
+        notNullValidator.setNextRequestValidator(notEmptyValidator);
+        return notNullValidator;
     }
     
     /**

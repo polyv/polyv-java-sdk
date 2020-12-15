@@ -15,7 +15,7 @@ public class LiveGlobalConfig {
     private static String APP_ID = "";
     private static String USER_ID = "";
     private static String APP_SECRET = "";
-    
+    private static final String SDK_NAME="LIVE_SDK";
     public static String getAppId() {
         return APP_ID;
     }
@@ -38,7 +38,7 @@ public class LiveGlobalConfig {
         LiveGlobalConfig.APP_ID = appId;
         LiveGlobalConfig.USER_ID = userId;
         LiveGlobalConfig.APP_SECRET = appSecret;
-        HttpUtil.setSDK("JAVA_LIVE_SDK");
+        HttpUtil.setSDK(SDK_NAME);
         HttpUtil.setAppId(appId);
         HttpUtil.setUserId(userId);
         HttpClientUtil.init();
@@ -58,7 +58,7 @@ public class LiveGlobalConfig {
         LiveGlobalConfig.APP_ID = appId;
         LiveGlobalConfig.USER_ID = userId;
         LiveGlobalConfig.APP_SECRET = appSecret;
-        HttpUtil.setSDK("JAVA_LIVE_SDK");
+        HttpUtil.setSDK(SDK_NAME);
         HttpUtil.setAppId(appId);
         HttpUtil.setUserId(userId);
         HttpClientUtil.setTimeOut(timeOut);

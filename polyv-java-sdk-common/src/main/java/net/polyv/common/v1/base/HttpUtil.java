@@ -128,7 +128,6 @@ public class HttpUtil {
         // 设置header信息
         // 指定报文头【Content-type】、【User-Agent】
         httpPost.setHeader("Content-type", Constant.APPLICATION_FORM_URLENCODED);
-        httpPost.setHeader(USER_AGENT, Constant.USER_AGENT_BROWSER);
         // 执行请求操作，并拿到结果（同步阻塞）
         response =  sendRequestAndGetResult(url,httpClient,httpPost);
         // 获取结果实体

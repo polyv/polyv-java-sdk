@@ -2,7 +2,7 @@ package net.polyv.live.v1.entity.web.info;
 
 import java.io.File;
 
-import javax.validation.constraints.NotNull;
+import net.polyv.common.v1.validator.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

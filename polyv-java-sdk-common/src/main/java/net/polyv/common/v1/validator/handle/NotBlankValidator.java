@@ -20,16 +20,16 @@ public class NotBlankValidator extends Validator {
     protected String dealValidate(Annotation annotation, Field field, Object data, Class<?>... groups) {
         NotBlank cast = NotBlank.class.cast(annotation);
         if (showMsg(groups, cast.groups())) {
-            if(data == null){
+            if (data == null) {
                 return cast.message();
             }
-            if(data instanceof CharSequence){
-                return (data == null || data.toString().trim().length()>0)?cast.message():null;
-            }else{
+            if (data instanceof CharSequence) {
+                return data.toString().trim().length() > 0 ? null : cast.message();
+            } else {
                 //TODO 根据需求继续添加其他类型的验证
                 throw new RuntimeException(field.getName() + " NotBlank validation exception");
             }
-        }else{
+        } else {
             return null;
         }
     }

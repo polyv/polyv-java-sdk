@@ -30,8 +30,6 @@
         <httpclient.version>4.5.13</httpclient.version>
         <commons.lang3.version>3.11</commons.lang3.version>
         <fastjson.version>1.2.70</fastjson.version>
-<!--        <hibernate-validator.version>5.0.0.Final</hibernate-validator.version>-->
-        <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
         <java.el.version>3.0.0</java.el.version>
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.16</lombok.version>
@@ -74,11 +72,6 @@
             <version>${slf4j.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>

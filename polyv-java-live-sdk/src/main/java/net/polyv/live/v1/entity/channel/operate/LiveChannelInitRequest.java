@@ -3,7 +3,7 @@ package net.polyv.live.v1.entity.channel.operate;
 import java.util.Date;
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
+import net.polyv.common.v1.validator.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

@@ -2,7 +2,7 @@ package net.polyv.live.v1.entity.web.info;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotNull;
+import net.polyv.common.v1.validator.constraints.NotNull;
 
 import com.alibaba.fastjson.annotation.JSONField;
 

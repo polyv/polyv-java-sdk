@@ -20,13 +20,13 @@ public class NotEmptyValidator extends Validator {
     protected String dealValidate(Annotation annotation, Field field, Object data, Class<?>... groups) {
         NotEmpty cast = NotEmpty.class.cast(annotation);
         if (showMsg(groups, cast.groups())) {
-            if(data == null){
+            if (data == null) {
                 return cast.message();
             }
             if (data instanceof CharSequence) {
-                return (data == null || ((CharSequence) data).length() <= 0) ? cast.message() : null;
+                return ((CharSequence) data).length() <= 0 ? cast.message() : null;
             } else {//TODO 此处不一定完善，需要根据其他类型进行自定义处理
-               return null;
+                return null;
             }
         } else {
             return null;

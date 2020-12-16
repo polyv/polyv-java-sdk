@@ -37,7 +37,7 @@
         <lombok.version>1.18.16</lombok.version>
         <jacoco.version>0.8.0</jacoco.version>
         <allure-junit4.version>2.13.1</allure-junit4.version>
-        <aspectjweaver.version>1.5.4</aspectjweaver.version>
+        <aspectjweaver.version>1.5.0</aspectjweaver.version>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
     </properties>
 
@@ -271,47 +271,6 @@
                     </properties>
                 </configuration>
             </plugin>
-
-
-            <!--            &lt;!&ndash;检查代码覆盖率的插件配置&ndash;&gt;-->
-            <!--            <plugin>-->
-            <!--                <groupId>org.jacoco</groupId>-->
-            <!--                <artifactId>jacoco-maven-plugin</artifactId>-->
-            <!--                <version>${jacoco.version}</version>-->
-            <!--                <configuration>-->
-            <!--                    <includes>-->
-            <!--                        <include>com/**/*</include>-->
-            <!--                    </includes>-->
-            <!--                    &lt;!&ndash;                    <excludes>&ndash;&gt;-->
-            <!--                    &lt;!&ndash;                        <exclude>com/src/test/**/*</exclude>&ndash;&gt;-->
-            <!--                    &lt;!&ndash;                    </excludes>&ndash;&gt;-->
-            <!--                    <propertyName>jacocoArgLine</propertyName>-->
-            <!--                </configuration>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <id>pre-test</id>-->
-            <!--                        <goals>-->
-            <!--                            <goal>prepare-agent</goal>-->
-            <!--                        </goals>-->
-            <!--                    </execution>-->
-            <!--                    <execution>-->
-            <!--                        <id>post-test</id>-->
-            <!--                        <phase>test</phase>-->
-            <!--                        <goals>-->
-            <!--                            <goal>report</goal>-->
-            <!--                        </goals>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-
-            <!--&lt;!&ndash;                <dependencies>&ndash;&gt;-->
-            <!--&lt;!&ndash;                    <dependency>&ndash;&gt;-->
-            <!--&lt;!&ndash;                        <groupId>org.jacoco</groupId>&ndash;&gt;-->
-            <!--&lt;!&ndash;                        <artifactId>jacoco-maven-plugin</artifactId>&ndash;&gt;-->
-            <!--&lt;!&ndash;                        <version>${jacoco.version}</version>&ndash;&gt;-->
-            <!--&lt;!&ndash;                    </dependency>&ndash;&gt;-->
-            <!--&lt;!&ndash;                </dependencies>&ndash;&gt;-->
-            <!--            </plugin>-->
-
 
         </plugins>
     </build>

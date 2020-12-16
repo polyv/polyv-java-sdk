@@ -42,12 +42,12 @@ public class AddressUtils {
             while (address.hasMoreElements()) {
                 ip = address.nextElement();
                 if (!ip.isSiteLocalAddress() && !ip.isLoopbackAddress() &&
-                        ip.getHostAddress().indexOf(":") == -1) {// 外网IP
+                        ip.getHostAddress().indexOf(':') == -1) {// 外网IP
                     netip = ip.getHostAddress();
                     finded = true;
                     break;
                 } else if (ip.isSiteLocalAddress() && !ip.isLoopbackAddress() &&
-                        ip.getHostAddress().indexOf(":") == -1) {// 内网IP
+                        ip.getHostAddress().indexOf(':') == -1) {// 内网IP
                     localip = ip.getHostAddress();
                 }
             }
@@ -81,7 +81,6 @@ public class AddressUtils {
             while ((read = in.readLine()) != null) {
                 inputLine.append(read + "\r\n");
             }
-            //System.out.println(inputLine.toString());
         } catch (MalformedURLException e) {
             log.error("获取外网ip失败",e);
         } catch (IOException e) {
@@ -100,7 +99,6 @@ public class AddressUtils {
         if (m.find()) {
             String ipstr = m.group(1);
             ip = ipstr;
-            //System.out.println(ipstr);
         }
         return ip;
     }

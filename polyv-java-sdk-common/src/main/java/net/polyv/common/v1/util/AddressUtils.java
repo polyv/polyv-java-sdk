@@ -14,11 +14,14 @@ import java.util.Enumeration;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * * ip地址工具类
  * * @author ACGkaka
  * *
  */
+@Slf4j
 public class AddressUtils {
     
     /**
@@ -80,15 +83,15 @@ public class AddressUtils {
             }
             //System.out.println(inputLine.toString());
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            log.error("获取外网ip失败",e);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("获取外网ip失败",e);
         } finally {
             if (in != null) {
                 try {
                     in.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    log.error("BufferedReader关闭失败",e);
                 }
             }
         }
@@ -140,7 +143,7 @@ public class AddressUtils {
             reader.close();
             return buffer.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("关闭BufferedReader失败",e);
         } finally {
             if (connection != null) {
                 connection.disconnect();// 关闭连接
@@ -162,7 +165,7 @@ public class AddressUtils {
         try {
             ip1 = addressUtils.getInnetIp(); //局域网的ip地址，比如：192.168.1.101
         } catch (SocketException e1) {
-            e1.printStackTrace();
+            log.error("获取外网ip失败",e1);
         }
         System.out.println("内网ip:" + ip1);
         String ip2 = addressUtils.getV4IP(); //用于实际判断地址的ip

@@ -1,6 +1,7 @@
 package net.polyv.common.v1.validator.handle;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.validator.constraints.NotBlank;
@@ -16,18 +17,21 @@ public class NotBlankValidator extends Validator {
     }
     
     @Override
-    protected String dealValidate(Annotation annotation, Object data, Class<?>... groups) {
-        if (data instanceof String) {
-            if (data == null || "".equals(data.toString().trim())) {
-                NotBlank cast = NotBlank.class.cast(annotation);
-                if (showMsg(groups, cast.groups())) {
-                    return cast.message();
-                } else {
-                    return null;
-                }
+    protected String dealValidate(Annotation annotation, Field field, Object data, Class<?>... groups) {
+        NotBlank cast = NotBlank.class.cast(annotation);
+        if (showMsg(groups, cast.groups())) {
+            if(data == null){
+                return cast.message();
             }
+            if(data instanceof CharSequence){
+                return (data == null || data.toString().trim().length()>0)?cast.message():null;
+            }else{
+                //TODO 根据需求继续添加其他类型的验证
+                throw new RuntimeException(field.getName() + " NotBlank validation exception");
+            }
+        }else{
+            return null;
         }
-        return null;
     }
     
 }

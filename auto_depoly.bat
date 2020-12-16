@@ -8,14 +8,7 @@
 chcp 65001
 echo "请确认请求域名已经替换回  【api.polyv.net】 "
 pause
-:: 调用示例  auto_deploy.bat  1.0.12
-git checkout dev
-:: #同步开发分支所有代码
-git pull
-:: git commit -am "JSDK-1 auto_deploy"  &&  git  push
-:: # 切换到master分支
-git checkout master
-PAUSE
+
 :: 同步主分支代码
 git pull origin master
 :: # 合并dev 分支代码

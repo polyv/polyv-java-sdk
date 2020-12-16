@@ -21,9 +21,9 @@ git  tag  %1
 :: # 提交master分支到origin远程仓库
 git push origin master  --tags
 :: # 提交master分支到github远程仓库
-git push github master  --tags
+::git push github master  --tags
 :: # 提交master分支到gitee远程仓库
-git push gitee master  --tags
+::git push gitee master  --tags
 :: # 切换回dev分支
 git checkout dev
 PAUSE

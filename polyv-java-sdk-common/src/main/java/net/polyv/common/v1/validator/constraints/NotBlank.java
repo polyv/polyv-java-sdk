@@ -1,23 +1,16 @@
 package net.polyv.common.v1.validator.constraints;
 
-import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
-import static java.lang.annotation.ElementType.CONSTRUCTOR;
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.PARAMETER;
-import static java.lang.annotation.ElementType.TYPE_USE;
-
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 
-@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
-@NotNull
+@Target(value= ElementType.FIELD)
 @Retention(value = RetentionPolicy.RUNTIME)
 public @interface NotBlank {
     
-    String message() default "";
+    String message() default "去空后不能为空字符串";
     
     Class<?>[] groups() default {};
     

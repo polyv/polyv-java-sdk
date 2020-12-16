@@ -1,6 +1,6 @@
 package net.polyv.live.v1.entity;
 
-import org.hibernate.validator.constraints.NotBlank;
+import net.polyv.common.v1.validator.constraints.NotBlank;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

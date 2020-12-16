@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 public @interface Max {
     
-    String message() default "";
+    String message() default "参数设置超出最大值";
     
     Class<?>[] groups() default {};
     

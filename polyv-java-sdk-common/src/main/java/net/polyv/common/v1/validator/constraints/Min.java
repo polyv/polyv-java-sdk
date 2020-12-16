@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 public @interface Min {
     
-    String message() default "";
+    String message() default "参数设置小于最小值";
     
     Class<?>[] groups() default {};
     

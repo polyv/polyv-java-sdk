@@ -58,7 +58,7 @@ public class VodGlobalConfig {
         VodGlobalConfig.WRITE_TOKEN = writeToken;
         VodGlobalConfig.READ_TOKEN=readToken;
         VodGlobalConfig.SECRET_KEY = secretKey;
-        HttpUtil.setSDK("VOD_SDK");
+        HttpUtil.setSDK("JAVA_VOD_SDK");
         HttpClientUtil.init();
         //全局异常和错误处理配置
         Thread.setDefaultUncaughtExceptionHandler(new GlobalUncaughtExceptionHandler());

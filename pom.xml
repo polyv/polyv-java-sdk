@@ -6,7 +6,7 @@
 
     <groupId>net.polyv</groupId>
     <artifactId>polyv-java-sdk</artifactId>
-    <version>1.0.12</version>
+    <version>1.0.13</version>
     <modules>
         <module>polyv-java-vod-sdk</module>
         <module>polyv-java-live-sdk</module>
@@ -22,21 +22,20 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java-version>1.6</java-version>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
+        <java-version>1.8</java-version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <log4j.version>2.13.2</log4j.version>
         <slf4j.version>1.7.30</slf4j.version>
-        <httpclient.version>4.5</httpclient.version>
-        <commons.lang3.version>3.5</commons.lang3.version>
+        <httpclient.version>4.5.13</httpclient.version>
+        <commons.lang3.version>3.11</commons.lang3.version>
         <fastjson.version>1.2.70</fastjson.version>
-<!--        <hibernate-validator.version>5.0.0.Final</hibernate-validator.version>-->
-        <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
         <java.el.version>3.0.0</java.el.version>
         <junit.version>4.12</junit.version>
-        <lombok.version>1.18.10</lombok.version>
+        <lombok.version>1.18.16</lombok.version>
         <jacoco.version>0.8.0</jacoco.version>
         <allure-junit4.version>2.13.1</allure-junit4.version>
+        <aspectjweaver.version>1.5.0</aspectjweaver.version>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
     </properties>
 
@@ -74,11 +73,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>
-        <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
             <version>${java.el.version}</version>
@@ -97,14 +91,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.el</artifactId>
-            <version>3.0.0</version>
+            <version>${java.el.version}</version>
         </dependency>
 
         <!--        <dependency>-->
@@ -121,7 +110,7 @@
         <dependency>
             <groupId>aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.5.0</version>
+            <version>${aspectjweaver.version}</version>
         </dependency>
     </dependencies>
 
@@ -169,7 +158,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>2.4</version>
+                        <version>3.2.1</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -183,8 +172,8 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-<!--                                                <version>3.2.0</version>-->
-                        <version>2.9</version>
+                        <version>3.2.0</version>
+<!--                        <version>2.9</version>-->
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
@@ -204,7 +193,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.0</version>
+                        <version>1.6</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -275,47 +264,6 @@
                     </properties>
                 </configuration>
             </plugin>
-
-
-            <!--            &lt;!&ndash;检查代码覆盖率的插件配置&ndash;&gt;-->
-            <!--            <plugin>-->
-            <!--                <groupId>org.jacoco</groupId>-->
-            <!--                <artifactId>jacoco-maven-plugin</artifactId>-->
-            <!--                <version>${jacoco.version}</version>-->
-            <!--                <configuration>-->
-            <!--                    <includes>-->
-            <!--                        <include>com/**/*</include>-->
-            <!--                    </includes>-->
-            <!--                    &lt;!&ndash;                    <excludes>&ndash;&gt;-->
-            <!--                    &lt;!&ndash;                        <exclude>com/src/test/**/*</exclude>&ndash;&gt;-->
-            <!--                    &lt;!&ndash;                    </excludes>&ndash;&gt;-->
-            <!--                    <propertyName>jacocoArgLine</propertyName>-->
-            <!--                </configuration>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <id>pre-test</id>-->
-            <!--                        <goals>-->
-            <!--                            <goal>prepare-agent</goal>-->
-            <!--                        </goals>-->
-            <!--                    </execution>-->
-            <!--                    <execution>-->
-            <!--                        <id>post-test</id>-->
-            <!--                        <phase>test</phase>-->
-            <!--                        <goals>-->
-            <!--                            <goal>report</goal>-->
-            <!--                        </goals>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-
-            <!--&lt;!&ndash;                <dependencies>&ndash;&gt;-->
-            <!--&lt;!&ndash;                    <dependency>&ndash;&gt;-->
-            <!--&lt;!&ndash;                        <groupId>org.jacoco</groupId>&ndash;&gt;-->
-            <!--&lt;!&ndash;                        <artifactId>jacoco-maven-plugin</artifactId>&ndash;&gt;-->
-            <!--&lt;!&ndash;                        <version>${jacoco.version}</version>&ndash;&gt;-->
-            <!--&lt;!&ndash;                    </dependency>&ndash;&gt;-->
-            <!--&lt;!&ndash;                </dependencies>&ndash;&gt;-->
-            <!--            </plugin>-->
-
 
         </plugins>
     </build>

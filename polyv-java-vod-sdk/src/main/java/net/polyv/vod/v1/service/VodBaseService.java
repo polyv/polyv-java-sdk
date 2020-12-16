@@ -2,6 +2,7 @@ package net.polyv.vod.v1.service;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -12,7 +13,8 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.base.HttpUtil;
 import net.polyv.common.v1.exception.PloyvSdkException;
-import net.polyv.common.v1.util.ValidationUtil;
+import net.polyv.common.v1.util.SDKValidateUtil;
+import net.polyv.common.v1.validator.ViolationMsg;
 import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodConstant;
 import net.polyv.vod.v1.constant.VodURL;
@@ -106,9 +108,9 @@ public class VodBaseService {
      * @param <E> 入参泛型
      */
     private <E extends VodCommonRequest> void validateBean(E e) {
-        ValidationUtil.ValidResult validResult = ValidationUtil.validateBean(e);
-        if (validResult.hasErrors()) {
-            String errors = validResult.getErrors();
+        List<ViolationMsg> violationMsgList = SDKValidateUtil.validateBean(e);
+        if(!violationMsgList.isEmpty()){
+            String errors = SDKValidateUtil.getViolationMsgStr(violationMsgList);
             errors = errors.substring(0, errors.length() - 3);
             errors = "输入参数 [" + e.getClass().getName() + "]对象校验失败 ,失败字段 [" + errors + "]";
             log.error(errors);

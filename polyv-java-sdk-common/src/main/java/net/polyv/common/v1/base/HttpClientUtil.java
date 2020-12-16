@@ -85,14 +85,15 @@ public class HttpClientUtil {
         TIME_OUT = timeOut < 30000 ? timeOut : 30000 ;
     }
     
+    private HttpClientUtil() {
+    }
     
     /**
      * 获取HTTP 链接池的状态，用于整体监控
      * @return http 链接池状态
      */
     protected static PoolStats getPoolState() {
-        PoolStats poolStats = manager.getTotalStats();
-        return poolStats;
+        return manager.getTotalStats();
     }
     
     public static PoolingHttpClientConnectionManager getManager() {
@@ -103,15 +104,15 @@ public class HttpClientUtil {
      * 以线程安全的方式获取线程池
      * @return CloseableHttpClient  Http client
      */
-    public synchronized static CloseableHttpClient getHttpClient() {
+    public static synchronized CloseableHttpClient getHttpClient() {
         if (httpClient == null) {
-            PloyvSdkException exception = new PloyvSdkException(Constant.BUSINESS_ERROR_CODE, "HTTP连接池未初始化，请调用初始化方法");
-            log.error(exception.getMessage(), exception);
+            String message = "HTTP连接池未初始化，请调用初始化方法";
+            PloyvSdkException exception = new PloyvSdkException(Constant.BUSINESS_ERROR_CODE, message);
+            log.error(message, exception);
             throw exception;
         }
         return httpClient;
     }
-    
     
     
     /**

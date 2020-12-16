@@ -1,14 +1,13 @@
 package net.polyv.live.v1.entity;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-
 import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.Max;
+import net.polyv.common.v1.validator.constraints.Min;
 
 /**
  * 直播分页公共请求实体
@@ -31,6 +30,6 @@ public class LivePageCommonRequest extends LiveCommonRequest{
      */
     @ApiModelProperty(name="pageSize",value  ="每页显示的数据条数，默认每页显示20条数据",dataType = "Integer" ,example = "12" )
     @Max(value = 1000, message = "每页显示的数据条数不能超过1000")
-    @Min(value = 0, message = "每页显示的数据条数不能小于1000")
+    @Min(value = 0, message = "每页显示的数据条数不能小于0")
     private Integer pageSize;
 }

@@ -1,6 +1,6 @@
 package net.polyv.vod.v1.entity;
 
-import javax.validation.constraints.NotNull;
+import net.polyv.common.v1.validator.constraints.NotNull;
 
 import com.alibaba.fastjson.annotation.JSONField;
 

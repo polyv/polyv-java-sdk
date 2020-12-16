@@ -53,15 +53,15 @@ public class HttpClientUtil {
     /**
      * 读写超时时间设置，默认20S
      */
-    private static int TIME_OUT = 20000;
+    private static int timeOut = 20000;
     
     /**
      * 默认线程数
      */
-    private static int MAX_CLIENT_NUM = 100;
+    private static int maxClientNum = 100;
     
     public static int getMaxClientNum() {
-        return MAX_CLIENT_NUM;
+        return maxClientNum;
     }
     
     /**
@@ -69,12 +69,12 @@ public class HttpClientUtil {
      * @param maxClientNum HTTP 链接池最大并发连接数
      */
     public static void setMaxClientNum(int maxClientNum) {
-        MAX_CLIENT_NUM = maxClientNum < 300 ? maxClientNum : 300;
+        HttpClientUtil.maxClientNum = maxClientNum < 300 ? maxClientNum : 300;
     }
     
     
     public static int getTimeOut() {
-        return TIME_OUT;
+        return timeOut;
     }
     
     /**
@@ -82,17 +82,18 @@ public class HttpClientUtil {
      * @param timeOut HTTP 连接超时时间
      */
     public static void setTimeOut(int timeOut) {
-        TIME_OUT = timeOut < 30000 ? timeOut : 30000 ;
+        HttpClientUtil.timeOut = timeOut < 30000 ? timeOut : 30000;
     }
     
+    private HttpClientUtil() {
+    }
     
     /**
      * 获取HTTP 链接池的状态，用于整体监控
      * @return http 链接池状态
      */
     protected static PoolStats getPoolState() {
-        PoolStats poolStats = manager.getTotalStats();
-        return poolStats;
+        return manager.getTotalStats();
     }
     
     public static PoolingHttpClientConnectionManager getManager() {
@@ -103,7 +104,7 @@ public class HttpClientUtil {
      * 以线程安全的方式获取线程池
      * @return CloseableHttpClient  Http client
      */
-    public synchronized static CloseableHttpClient getHttpClient() {
+    public static synchronized CloseableHttpClient getHttpClient() {
         if (httpClient == null) {
             PloyvSdkException exception = new PloyvSdkException(Constant.BUSINESS_ERROR_CODE, "HTTP连接池未初始化，请调用初始化方法");
             log.error(exception.getMessage(), exception);
@@ -111,7 +112,6 @@ public class HttpClientUtil {
         }
         return httpClient;
     }
-    
     
     
     /**
@@ -146,11 +146,11 @@ public class HttpClientUtil {
             SocketConfig defaultSocketConfig = SocketConfig.custom().setTcpNoDelay(true).build();
             manager.setDefaultSocketConfig(defaultSocketConfig);
             //设置整个连接池的最大连接数
-            manager.setMaxTotal(MAX_CLIENT_NUM);
+            manager.setMaxTotal(maxClientNum);
             //每个路由的默认最大连接，每个路由实际最大连接数由DefaultMaxPerRoute控制，而MaxTotal是整个池子的最大数
             //设置过小无法支持大并发(ConnectionPoolTimeoutException) Timeout waiting for connection from pool
             //每个路由的最大连接数
-            manager.setDefaultMaxPerRoute(MAX_CLIENT_NUM);
+            manager.setDefaultMaxPerRoute(maxClientNum);
             //在从连接池获取连接时，连接不活跃多长时间后需要进行一次验证，默认为2s
             manager.setValidateAfterInactivity(5 * 1000);
 
@@ -193,11 +193,11 @@ public class HttpClientUtil {
             //默认请求配置
             RequestConfig defaultRequestConfig = RequestConfig.custom()
                     //设置连接超时时间，5s
-                    .setConnectTimeout(TIME_OUT)
+                    .setConnectTimeout(timeOut)
                     //设置等待数据超时时间，5s
-                    .setSocketTimeout(TIME_OUT)
+                    .setSocketTimeout(timeOut)
                     //设置从连接池获取连接的等待超时时间
-                    .setConnectionRequestTimeout(TIME_OUT).build();
+                    .setConnectionRequestTimeout(timeOut).build();
             
             //创建HttpClient
             httpClient = HttpClients.custom().setConnectionManager(manager)

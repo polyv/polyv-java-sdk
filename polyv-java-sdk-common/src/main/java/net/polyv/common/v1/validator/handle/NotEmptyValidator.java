@@ -25,7 +25,8 @@ public class NotEmptyValidator extends Validator {
             }
             if (data instanceof CharSequence) {
                 return ((CharSequence) data).length() <= 0 ? cast.message() : null;
-            } else {//TODO 此处不一定完善，需要根据其他类型进行自定义处理
+            } else {
+                // 此处不一定完善，需要根据其他类型进行自定义处理
                 return null;
             }
         } else {

@@ -32,7 +32,7 @@ public class LengthValidator extends Validator {
                 length = ((Object[]) data).length;
                 return isValid(cast.min(),cast.max(),length)?null:cast.message();
             } else {
-                //TODO 根据需求继续添加其他类型的验证
+                //  根据需求继续添加其他类型的验证
                 throw new RuntimeException(field.getName() + " Length validation exception");
             }
         } else {

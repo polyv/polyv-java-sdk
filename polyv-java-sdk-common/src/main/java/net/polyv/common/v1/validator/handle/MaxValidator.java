@@ -25,7 +25,7 @@ public class MaxValidator extends Validator {
                 double doubleValue = ((Number) data).doubleValue();
                 return doubleValue > cast.value() ? cast.message() : null;
             } else {
-                //TODO 根据需求继续添加其他类型的验证
+                // 根据需求继续添加其他类型的验证
                 throw new RuntimeException(field.getName() + " Max validation exception");
             }
         } else {

@@ -25,7 +25,7 @@ public class MinValidator extends Validator {
                 long longData = ((Number) data).longValue();
                 return longData < cast.value()?cast.message():null;
             }else{
-                //TODO 根据需求继续添加其他类型的验证
+                //  根据需求继续添加其他类型的验证
                 throw new RuntimeException(field.getName() + " Min validation exception");
             }
         }else{

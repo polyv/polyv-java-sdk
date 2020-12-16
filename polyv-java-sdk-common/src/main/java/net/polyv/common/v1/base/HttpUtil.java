@@ -46,7 +46,7 @@ public class HttpUtil {
     private static final String UTF8 = Constant.UTF8;
     private static String APP_ID = "";
     private static String USER_ID = "";
-    private static final String IP = AddressUtils.getV4IP();
+//    private static final String IP = AddressUtils.getV4IP();
     
     public static String getSDK() {
         return SDK;
@@ -113,7 +113,7 @@ public class HttpUtil {
         httpPost.addHeader(VERSION, CURRENT_VERSION);
         httpPost.setHeader( USER_AGENT ,  SDK);
         // 装填参数
-        List<NameValuePair> nameValuePairs = new ArrayList<>();
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         if (params != null) {
             for (Map.Entry<String, String> entry : params.entrySet()) {
                 String value = entry.getValue();
@@ -401,7 +401,7 @@ public class HttpUtil {
      * @param endTime  结束时间
      */
     private static void collectAPISpendTime(String url, long startTime, long endTime) {
-        log.debug("HTTP请求耗时分析，请求URL: {} ， userId: {} ， appId: {} ， sdk版本: {} ， IP: {} ， 耗时: {} ms", url, getUserId(),getAppId(), CURRENT_VERSION , IP , endTime - startTime);
+        log.debug("HTTP请求耗时分析，请求URL: {} ， userId: {} ， appId: {} ， sdk版本: {} ，   耗时: {} ms", url, getUserId(),getAppId(), CURRENT_VERSION ,   endTime - startTime);
         //save server
     }
     

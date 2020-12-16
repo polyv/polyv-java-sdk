@@ -36,8 +36,8 @@ public class SDKValidatorTest {
     private static final Validator VALIDATOR_MIN = Validator.getValidator(Min.class).setFastFail(false);
     private static final Validator VALIDATOR_LENGTH = Validator.getValidator(Length.class).setFastFail(false);
     private static final String ALL_INFO = "不能为null / year不允许为空 / name不能为empty / name不能为null / file不能为null / " +
-            "englishName不能为empty / englishName不能为blank / password不能为empty / password不能为blank / englishName不能为blank / " +
-            "diy不允许为空 / birthday不允许为空 / relationship不允许为空 / info不允许为空 / 身高height不允许为空";
+            "englishName不能为empty / englishName不能为blank / password不能为empty / password不能为blank / description不能为blank / " +
+            "description1不能为blank / diy不允许为空 / birthday不允许为空 / relationship不允许为空 / info不允许为空 / 身高height不允许为空";
     private static final String NOT_NULL_INFO =
             "不能为null / year不允许为空 / file不能为null / diy不允许为空 / birthday不允许为空 / relationship不允许为空 /" +
                     " info不允许为空 / 身高height不允许为空";
@@ -61,12 +61,11 @@ public class SDKValidatorTest {
         student.setEnglishName(" ");
         student.setPassword("123");
         List<ViolationMsg> validate = VALIDATOR_NOTNULL.validate(student);
-        if (!validate.isEmpty()) {
-            String violationMsgStr = SDKValidateUtil.getViolationMsgStr(validate);
-            String substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
-            log.error("Student验证出错：" + substring);
-            Assert.assertEquals(NOT_NULL_INFO, substring);
-        }
+        Assert.assertTrue(!validate.isEmpty());
+        String violationMsgStr = SDKValidateUtil.getViolationMsgStr(validate);
+        String substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
+        log.info("Student验证出错：" + substring);
+        Assert.assertEquals(NOT_NULL_INFO, substring);
     }
     
     @Test
@@ -76,12 +75,11 @@ public class SDKValidatorTest {
         student.setEnglishName(" ");
         student.setPassword("123");
         List<ViolationMsg> validate = VALIDATOR_NOT_EMPTY.validate(student);
-        if (!validate.isEmpty()) {
-            String violationMsgStr = SDKValidateUtil.getViolationMsgStr(validate);
-            String substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
-            log.error("Student验证出错：" + substring);
-            Assert.assertEquals("name不能为empty", substring);
-        }
+        Assert.assertTrue(!validate.isEmpty());
+        String violationMsgStr = SDKValidateUtil.getViolationMsgStr(validate);
+        String substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
+        log.info("Student验证出错：" + substring);
+        Assert.assertEquals("name不能为empty", substring);
     }
     
     @Test
@@ -95,7 +93,7 @@ public class SDKValidatorTest {
         Assert.assertTrue(!validate.isEmpty());
         String violationMsgStr = SDKValidateUtil.getViolationMsgStr(validate);
         String substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
-        log.error("Student验证出错：" + substring);
+        log.info("Student验证出错：" + substring);
         Assert.assertEquals("englishName不能为blank / password不能为blank / description不能为blank", substring);
     }
     
@@ -108,7 +106,7 @@ public class SDKValidatorTest {
         Assert.assertTrue(!validate.isEmpty());
         String violationMsgStr = SDKValidateUtil.getViolationMsgStr(validate);
         String substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
-        log.error("Student验证出错：" + substring);
+        log.info("Student验证出错：" + substring);
         Assert.assertEquals("income超出最大值20 / pay超出最大值20", substring);
     }
     
@@ -121,7 +119,7 @@ public class SDKValidatorTest {
         Assert.assertTrue(!validate.isEmpty());
         String violationMsgStr = SDKValidateUtil.getViolationMsgStr(validate);
         String substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
-        log.error("Student验证出错：" + substring);
+        log.info("Student验证出错：" + substring);
         Assert.assertEquals("income小于最小值30 / pay小于最小值30", substring);
     }
     
@@ -133,7 +131,7 @@ public class SDKValidatorTest {
         Assert.assertTrue(!validate.isEmpty());
         String violationMsgStr = SDKValidateUtil.getViolationMsgStr(validate);
         String substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
-        log.error("Student验证出错：" + substring);
+        log.info("Student验证出错：" + substring);
         Assert.assertEquals("密码长度必须8到16位", substring);
         
         student = new Student();
@@ -142,7 +140,7 @@ public class SDKValidatorTest {
         Assert.assertTrue(!validate.isEmpty());
         violationMsgStr = SDKValidateUtil.getViolationMsgStr(validate);
         substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
-        log.error("Student验证出错：" + substring);
+        log.info("Student验证出错：" + substring);
         Assert.assertEquals("密码长度必须8到16位", substring);
         
         student = new Student();

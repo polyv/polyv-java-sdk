@@ -31,14 +31,16 @@ public class SDKValidatorTest {
     private static final Validator VALIDATOR = Validator.getValidator().setFastFail(false);
     private static final Validator VALIDATOR_NOTNULL = Validator.getValidator(NotNull.class).setFastFail(false);
     private static final Validator VALIDATOR_NOT_EMPTY = Validator.getValidator(NotEmpty.class).setFastFail(false);
+    private static final Validator VALIDATOR_NOT_BLANK = Validator.getValidator(NotBlank.class).setFastFail(false);
     private static final Validator VALIDATOR_MAX = Validator.getValidator(Max.class).setFastFail(false);
     private static final Validator VALIDATOR_MIN = Validator.getValidator(Min.class).setFastFail(false);
     private static final Validator VALIDATOR_LENGTH = Validator.getValidator(Length.class).setFastFail(false);
     private static final String ALL_INFO = "不能为null / year不允许为空 / name不能为empty / name不能为null / file不能为null / " +
             "englishName不能为empty / englishName不能为blank / password不能为empty / password不能为blank / englishName不能为blank / " +
             "diy不允许为空 / birthday不允许为空 / relationship不允许为空 / info不允许为空 / 身高height不允许为空";
-    private static final String NOT_NULL_INFO = "不能为null / year不允许为空 / file不能为null / diy不允许为空 / birthday不允许为空 / relationship不允许为空 /" +
-            " info不允许为空 / 身高height不允许为空";
+    private static final String NOT_NULL_INFO =
+            "不能为null / year不允许为空 / file不能为null / diy不允许为空 / birthday不允许为空 / relationship不允许为空 /" +
+                    " info不允许为空 / 身高height不允许为空";
     
     @Test
     public void testAllValidator() {
@@ -68,7 +70,7 @@ public class SDKValidatorTest {
     }
     
     @Test
-    public void testNoteEmptyValidator() {
+    public void testNotEmptyValidator() {
         Student student = new Student();
         student.setName("");
         student.setEnglishName(" ");
@@ -83,17 +85,31 @@ public class SDKValidatorTest {
     }
     
     @Test
+    public void testNotBlankValidator() {
+        Student student = new Student();
+        student.setEnglishName(" ");
+        student.setPassword("");
+        student.setDescription(null);
+        student.setDescription1("121");
+        List<ViolationMsg> validate = VALIDATOR_NOT_BLANK.validate(student);
+        Assert.assertTrue(!validate.isEmpty());
+        String violationMsgStr = SDKValidateUtil.getViolationMsgStr(validate);
+        String substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
+        log.error("Student验证出错：" + substring);
+        Assert.assertEquals("englishName不能为blank / password不能为blank / description不能为blank", substring);
+    }
+    
+    @Test
     public void testMaxValidator() {
         Student student = new Student();
         student.setIncome(30l);
         student.setPay(20.5f);
         List<ViolationMsg> validate = VALIDATOR_MAX.validate(student);
-        if (!validate.isEmpty()) {
-            String violationMsgStr = SDKValidateUtil.getViolationMsgStr(validate);
-            String substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
-            log.error("Student验证出错：" + substring);
-            Assert.assertEquals("income超出最大值20 / pay超出最大值20", substring);
-        }
+        Assert.assertTrue(!validate.isEmpty());
+        String violationMsgStr = SDKValidateUtil.getViolationMsgStr(validate);
+        String substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
+        log.error("Student验证出错：" + substring);
+        Assert.assertEquals("income超出最大值20 / pay超出最大值20", substring);
     }
     
     @Test
@@ -110,7 +126,7 @@ public class SDKValidatorTest {
     }
     
     @Test
-    public void testLengthValidator(){
+    public void testLengthValidator() {
         Student student = new Student();
         student.setPassword("1200");
         List<ViolationMsg> validate = VALIDATOR_LENGTH.validate(student);
@@ -119,7 +135,7 @@ public class SDKValidatorTest {
         String substring = violationMsgStr.substring(0, violationMsgStr.length() - 3);
         log.error("Student验证出错：" + substring);
         Assert.assertEquals("密码长度必须8到16位", substring);
-    
+        
         student = new Student();
         student.setPassword("idsaffdadadsa2983209u121dsoi");
         validate = VALIDATOR_LENGTH.validate(student);
@@ -172,11 +188,14 @@ public class SDKValidatorTest {
         
         @NotEmpty(message = "password不能为empty")
         @NotBlank(message = "password不能为blank")
-        @Length(min = 8,max = 16,message = "密码长度必须8到16位")
+        @Length(min = 8, max = 16, message = "密码长度必须8到16位")
         private String password;
         
-        @NotBlank(message = "englishName不能为blank")
+        @NotBlank(message = "description不能为blank")
         private String description;
+        
+        @NotBlank(message = "description1不能为blank")
+        private String description1;
         
         @NotNull(message = "diy不允许为空")
         private StringBuffer diy;

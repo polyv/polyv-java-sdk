@@ -1,14 +1,14 @@
 package net.polyv.live.v1.entity.channel.operate;
 
-import net.polyv.common.v1.validator.constraints.Length;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.Length;
 import net.polyv.common.v1.validator.constraints.Max;
 import net.polyv.common.v1.validator.constraints.Min;
+import net.polyv.common.v1.validator.constraints.NotBlank;
 import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 
@@ -43,7 +43,7 @@ public class LiveChannelRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "channelPasswd", value = "自定义频道密码,终端用户通过该密码进入直播间，长度不能超过16位", required = true, example =
             "666888")
-    @NotNull(message = "属性channelPasswd不能为空")
+    @NotBlank(message = "属性channelPasswd不能为空")
     @Length(max = 16, message = "频道密码不能超过16位")
     private String channelPasswd;
     
@@ -89,6 +89,7 @@ public class LiveChannelRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "linkMicLimit", value = "连麦人数，-1=<取值范围<=账号级的连麦人数，-1：表示使用账号默认的连麦人数，最大16" +
             "人（注：账号级连麦人数需通知平台管理员设置才生效）")
+    @NotNull(message = "属性linkMicLimit不能为空")
     @Max(value = 16, message = "属性linkMicLimit连麦人数不能大于16人")
     @Min(value = -1, message = "属性linkMicLimit连麦人数不能小于-1人")
     private Integer linkMicLimit;

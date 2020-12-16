@@ -2,14 +2,13 @@ package net.polyv.live.v1.entity.channel.operate;
 
 import java.util.List;
 
-import net.polyv.common.v1.validator.constraints.Length;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.common.v1.validator.constraints.NotNull;
+import net.polyv.common.v1.validator.constraints.Length;
+import net.polyv.common.v1.validator.constraints.NotBlank;
 import net.polyv.live.v1.constant.LiveConstant;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 
@@ -44,7 +43,7 @@ public class LiveCreateChannelListRequest extends LiveCommonRequest {
          * 频道密码，长度不能超过16位
          */
         @ApiModelProperty(name = "channelPasswd", value = "频道密码，长度不能超过16位", required = true, example = "12345678")
-        @NotNull(message = "属性channelPasswd不能为空")
+        @NotBlank(message = "属性channelPasswd不能为空")
         @Length(max = 16, message = "频道密码不能超过16位")
         private String channelPasswd;
         

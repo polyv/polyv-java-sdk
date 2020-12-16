@@ -111,7 +111,7 @@ public class HttpUtil {
         httpPost.addHeader(SOURCE, SDK);
         httpPost.addHeader(VERSION, CURRENT_VERSION);
         // 装填参数
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        List<NameValuePair> nameValuePairs = new ArrayList<>();
         if (params != null) {
             for (Map.Entry<String, String> entry : params.entrySet()) {
                 String value = entry.getValue();

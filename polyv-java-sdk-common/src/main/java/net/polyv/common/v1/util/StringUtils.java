@@ -13,10 +13,7 @@ public class StringUtils {
     }
     
     public static boolean isEmpty(String str){
-        if(isNull(str)){
-            return true;
-        }
-        return "".equals(str);
+        return isNull(str) || "".equals(str);
     }
     
     public static boolean isNotEmpty(String str){
@@ -24,10 +21,7 @@ public class StringUtils {
     }
     
     public static boolean isBlank(String str){
-        if(isNull(str)){
-            return true;
-        }
-        return isEmpty(str.trim());
+        return isNull(str) || isEmpty(str.trim());
     }
     
     public static boolean isNotBlank(String str){

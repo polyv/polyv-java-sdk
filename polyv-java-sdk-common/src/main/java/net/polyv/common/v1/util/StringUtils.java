@@ -6,48 +6,55 @@ package net.polyv.common.v1.util;
  **/
 public class StringUtils {
     
-    private StringUtils(){}
+    private StringUtils() {
+    }
     
-    public static boolean isNull(Object str){
+    public static boolean isNull(Object str) {
         return null == str;
     }
     
-    public static boolean isEmpty(String str){
+    public static boolean isEmpty(String str) {
         return isNull(str) || "".equals(str);
     }
     
-    public static boolean isNotEmpty(String str){
+    public static boolean isNotEmpty(String str) {
         return !isEmpty(str);
     }
     
-    public static boolean isBlank(String str){
+    public static boolean isBlank(String str) {
         return isNull(str) || isEmpty(str.trim());
     }
     
-    public static boolean isNotBlank(String str){
+    public static boolean isNotBlank(String str) {
         return !isBlank(str);
     }
     
     public static String join(Object[] array, String separator) {
-        if (array == null)
+        if (array == null) {
             return null;
+        }
         return join(array, separator, 0, array.length);
     }
     
     public static String join(Object[] array, String separator, int startIndex, int endIndex) {
-        if (array == null)
+        if (array == null) {
             return null;
-        if (separator == null)
+        }
+        if (separator == null) {
             separator = "";
+        }
         int noOfItems = endIndex - startIndex;
-        if (noOfItems <= 0)
+        if (noOfItems <= 0) {
             return "";
+        }
         StringBuilder buf = new StringBuilder(noOfItems * 16);
         for (int i = startIndex; i < endIndex; i++) {
-            if (i > startIndex)
+            if (i > startIndex) {
                 buf.append(separator);
-            if (array[i] != null)
+            }
+            if (array[i] != null) {
                 buf.append(array[i]);
+            }
         }
         return buf.toString();
     }

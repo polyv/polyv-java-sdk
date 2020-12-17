@@ -49,10 +49,10 @@ public class StringUtils {
         }
         StringBuilder buf = new StringBuilder(noOfItems * 16);
         for (int i = startIndex; i < endIndex; i++) {
-            if (i > startIndex) {
-                buf.append(separator);
-            }
             if (array[i] != null) {
+                if (i > startIndex) {
+                    buf.append(separator);
+                }
                 buf.append(array[i]);
             }
         }

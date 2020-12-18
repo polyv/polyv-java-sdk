@@ -754,7 +754,7 @@ true 设置讲师信息成功，false 设置讲师信息失败
                     .setAvatar(new File(path))
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
-            Assert.assertNotNull(result);
+            Assert.assertTrue(result);
             if (result != null) {
                 //to do something ......
                 log.debug("测试设置聊天室管理员信息成功{}", JSON.toJSONString(result));

@@ -223,6 +223,8 @@
 | viewerId | false | String | 观众id | 
 | viewerName | false | String | 观众名称 | 
 | logType | false | String | 观看类型：取值vod 表示观看回放，取值live 表示直播 | 
+| param4 | false | String | POLYV系统参数 | 
+| param5 | false | String | POLYV系统参数 | 
 | ipAddress | false | String | IP地址 | 
 | country | false | String | 国家 | 
 | province | false | String | 省份 | 

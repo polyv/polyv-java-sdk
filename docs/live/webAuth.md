@@ -551,7 +551,7 @@ true为设置成功，false为设置失败
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(
                     liveChannelAuthTypeRequest);
-            Assert.assertNotNull(liveChannelAuthTypeResponse);
+            Assert.assertTrue(liveChannelAuthTypeResponse);
             if (liveChannelAuthTypeResponse) {
                 //to do something ......
                 log.debug("测试设置授权观看类型成功");

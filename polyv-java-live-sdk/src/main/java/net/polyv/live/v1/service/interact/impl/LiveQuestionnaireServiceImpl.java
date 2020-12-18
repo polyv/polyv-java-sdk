@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
+import net.polyv.common.v1.util.StringUtils;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.v1.config.LiveGlobalConfig;

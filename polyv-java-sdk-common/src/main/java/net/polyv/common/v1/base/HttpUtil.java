@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
+import net.polyv.common.v1.util.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -43,6 +43,8 @@ public class HttpUtil {
     public static final String VERSION = "version";
     public static final String USER_AGENT = "User-Agent";
     private static final String CURRENT_VERSION = "1.0.12";
+    public static final String APP_ID_NAME="java-sdk-app-id";
+    public static final String USER_ID_NAME="java-sdk-user-id";
     private static final String UTF8 = Constant.UTF8;
     private static String APP_ID = "";
     private static String USER_ID = "";
@@ -109,9 +111,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader(SOURCE, SDK);
-        httpPost.addHeader(VERSION, CURRENT_VERSION);
-        httpPost.setHeader( USER_AGENT ,  SDK);
+        setHttpHeader(httpPost);
         // 装填参数
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         if (params != null) {
@@ -213,9 +213,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建post方式请求对象
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader(SOURCE, SDK);
-        httpPost.addHeader(VERSION, CURRENT_VERSION);
-        httpPost.setHeader( USER_AGENT ,  SDK);
+        setHttpHeader(httpPost);
         // 设置参数到请求对象中
         StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON);
         //  Constant.UTF8
@@ -352,9 +350,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建get方式请求对象
         HttpGet httpGet = new HttpGet(url);
-        httpGet.addHeader(SOURCE, SDK);
-        httpGet.addHeader(VERSION, CURRENT_VERSION);
-        httpGet.setHeader( USER_AGENT ,  SDK);
+        setHttpHeader(httpGet);
         httpGet.addHeader("Content-type", Constant.APPLICATION_JSON);
         // 通过请求对象获取响应对象
         CloseableHttpResponse response = sendRequestAndGetResult(url, httpClient, httpGet);
@@ -423,9 +419,7 @@ public class HttpUtil {
         String result = null;
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader(SOURCE, SDK);
-        httpPost.setHeader( USER_AGENT ,  SDK);
-        httpPost.addHeader(VERSION, CURRENT_VERSION);
+        setHttpHeader(httpPost);
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
         if (fileMap != null) {
             for (Map.Entry<String, File> entry : fileMap.entrySet()) {
@@ -457,6 +451,18 @@ public class HttpUtil {
     }
     
     /**
+     * 设置请求头信息
+     * @param httpUriRequest http request
+     */
+    private static void setHttpHeader(HttpUriRequest httpUriRequest) {
+        httpUriRequest.addHeader(SOURCE, SDK);
+        httpUriRequest.setHeader(USER_AGENT, SDK);
+        httpUriRequest.addHeader(VERSION, CURRENT_VERSION);
+        httpUriRequest.addHeader(APP_ID_NAME, getAppId());
+        httpUriRequest.addHeader(USER_ID_NAME, getUserId());
+    }
+    
+    /**
      * HTTP 多文件传输
      * @param url 服务器地址
      * @param params 需要同步上传的参数
@@ -474,9 +480,7 @@ public class HttpUtil {
         String result = null;
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         HttpPost httpPost = new HttpPost(url);
-        httpPost.addHeader(SOURCE, SDK);
-        httpPost.setHeader(USER_AGENT,  SDK);
-        httpPost.addHeader(VERSION, CURRENT_VERSION);
+        setHttpHeader(httpPost);
         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
         
         ContentType contentType = ContentType.create("text/plain", Charset.forName(encoding));

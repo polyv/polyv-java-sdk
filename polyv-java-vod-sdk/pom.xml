@@ -5,27 +5,15 @@
     <parent>
         <artifactId>polyv-java-sdk</artifactId>
         <groupId>net.polyv</groupId>
-        <version>1.0.13</version>
+        <version>1.0.14</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>polyv-java-vod-sdk</artifactId>
     <properties>
-        <slf4j.version>1.7.30</slf4j.version>
-        <swagger.version>1.6.2</swagger.version>
-        <polyv.version>1.0.13</polyv.version>
+        <polyv.version>1.0.14</polyv.version>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
         <dependency>
             <groupId>net.polyv</groupId>
             <artifactId>polyv-java-sdk-common</artifactId>

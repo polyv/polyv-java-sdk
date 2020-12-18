@@ -15,7 +15,7 @@ public class LiveGlobalConfig {
     private static String APP_ID = "";
     private static String USER_ID = "";
     private static String APP_SECRET = "";
-    private static final String SDK_NAME="LIVE_SDK";
+    private static final String SDK_NAME="JAVA_LIVE_SDK";
     public static String getAppId() {
         return APP_ID;
     }

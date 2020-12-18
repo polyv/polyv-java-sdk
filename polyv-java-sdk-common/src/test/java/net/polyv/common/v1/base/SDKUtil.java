@@ -1,6 +1,6 @@
 package net.polyv.common.v1.base;
 
-import org.apache.commons.lang3.StringUtils;
+import net.polyv.common.v1.util.StringUtils;
 
 /**
  * SDK处理工具类

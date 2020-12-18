@@ -91,6 +91,18 @@ public class LiveChannelViewlogResponse {
         private String logType;
         
         /**
+         * POLYV系统参数
+         */
+        @ApiModelProperty(name = "param4", value = "POLYV系统参数", required = false)
+        private String param4;
+        
+        /**
+         * POLYV系统参数
+         */
+        @ApiModelProperty(name = "param5", value = "POLYV系统参数", required = false)
+        private String param5;
+        
+        /**
          * IP地址
          */
         @ApiModelProperty(name = "ipAddress", value = "IP地址", required = false)

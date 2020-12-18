@@ -22,7 +22,7 @@
 <dependency>
     <groupId>net.polyv</groupId>
     <artifactId>polyv-java-live-sdk</artifactId>
-    <version>1.0.12</version>
+    <version>1.0.15</version>
 </dependency> 
 ```
 

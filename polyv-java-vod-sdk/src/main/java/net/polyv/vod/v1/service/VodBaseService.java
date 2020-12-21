@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
+import net.polyv.common.v1.util.StringUtils;
 import org.apache.http.Consts;
 
 import com.alibaba.fastjson.JSON;

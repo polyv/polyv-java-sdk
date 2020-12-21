@@ -6,7 +6,7 @@
 
     <groupId>net.polyv</groupId>
     <artifactId>polyv-java-sdk</artifactId>
-    <version>1.0.12</version>
+    <version>1.0.14</version>
     <modules>
         <module>polyv-java-vod-sdk</module>
         <module>polyv-java-live-sdk</module>
@@ -25,17 +25,15 @@
         <java-version>1.8</java-version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <log4j.version>2.13.2</log4j.version>
         <slf4j.version>1.7.30</slf4j.version>
         <httpclient.version>4.5.13</httpclient.version>
-        <commons.lang3.version>3.11</commons.lang3.version>
         <fastjson.version>1.2.70</fastjson.version>
-        <java.el.version>3.0.0</java.el.version>
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.16</lombok.version>
         <jacoco.version>0.8.0</jacoco.version>
         <allure-junit4.version>2.13.1</allure-junit4.version>
         <aspectjweaver.version>1.5.0</aspectjweaver.version>
+        <swagger.version>1.6.2</swagger.version>
         <javadoc.opts>-Xdoclint:none</javadoc.opts>
     </properties>
 
@@ -47,7 +45,11 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
@@ -61,21 +63,15 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons.lang3.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>${java.el.version}</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
@@ -90,16 +86,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>${java.el.version}</version>
-        </dependency>
 
         <!--        <dependency>-->
         <!--            <groupId>org.jacoco</groupId>-->
         <!--            <artifactId>jacoco-maven-plugin</artifactId>-->
         <!--            <version>${jacoco.version}</version>-->
+        <!--        <scope>test</scope>-->
         <!--        </dependency>-->
         <dependency>
             <groupId>io.qameta.allure</groupId>
@@ -111,6 +103,7 @@
             <groupId>aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectjweaver.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

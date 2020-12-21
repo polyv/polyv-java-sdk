@@ -29,7 +29,7 @@ public class LengthValidator extends Validator {
             } else if (data.getClass().isArray()) {
                 length = ((Object[]) data).length;
             } else {
-                //TODO 根据需求继续添加其他类型的验证
+                //  根据需求继续添加其他类型的验证
                 throw new RuntimeException(field.getName() + " Length validation exception");
             }
             return getValidMsg(cast, length);

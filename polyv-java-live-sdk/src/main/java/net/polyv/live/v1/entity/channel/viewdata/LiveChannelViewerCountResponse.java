@@ -28,9 +28,9 @@ public class LiveChannelViewerCountResponse {
     public static class ChannelViewerCount{
         
         /**
-         * 统计的时间点（时间格式：12H）
+         * 统计的时间点（时间格式：12H）,如：04:01:38
          */
-        @ApiModelProperty(name = "time", value = "统计的时间点（时间格式：12H）", required = false)
+        @ApiModelProperty(name = "time", value = "统计的时间点（时间格式：12H）,如：04:01:38", required = false)
         private String time;
     
         /**

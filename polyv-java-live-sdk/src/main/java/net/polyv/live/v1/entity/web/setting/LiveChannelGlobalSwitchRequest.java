@@ -31,7 +31,7 @@ public class LiveChannelGlobalSwitchRequest extends LiveCommonRequest {
      * 功能类型
      * {@link LiveConstant.GlobalEnabledType}
      */
-    @ApiModelProperty(name = "globalEnabledType", value = "功能类型", required = true)
+    @ApiModelProperty(name = "globalEnabledType", value = "功能类型，具体选项见：LiveConstant.GlobalEnabledType", required = true)
     @NotNull(message = "属性globalEnabledType不能为空")
     private String globalEnabledType;
     

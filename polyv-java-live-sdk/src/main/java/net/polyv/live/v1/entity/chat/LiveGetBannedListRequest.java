@@ -21,14 +21,14 @@ public class LiveGetBannedListRequest extends LiveCommonRequest {
     /**
      * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "频道号", required = false)
+    @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
     private String channelId;
     
     /**
      * 禁言类型,ip/userId
      */
-    @ApiModelProperty(name = "type", value = "查询禁言类型,ip ： 聊天室用户用户的机器ip ， userId ： 聊天室用户用户的userId", required = false)
+    @ApiModelProperty(name = "type", value = "查询禁言类型,ip ： 聊天室用户用户的机器ip ， userId ： 聊天室用户用户的userId", required = true)
     @NotNull(message = "属性type不能为空")
     private String type;
     

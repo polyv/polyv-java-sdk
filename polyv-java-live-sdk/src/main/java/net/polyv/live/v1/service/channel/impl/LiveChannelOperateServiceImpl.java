@@ -270,6 +270,9 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         String url = LiveURL.CHANNEL_BASIC_INFO_URL;
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = this.basePost(url, liveChannelBasicInfoRequest,
                 LiveChannelBasicInfoResponse.class);
+        if(liveChannelBasicInfoResponse.getStartTime() != null && liveChannelBasicInfoResponse.getStartTime().getTime() == 0){
+            liveChannelBasicInfoResponse.setStartTime(null);
+        }
         return liveChannelBasicInfoResponse;
     }
     

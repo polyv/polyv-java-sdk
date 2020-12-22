@@ -1,12 +1,15 @@
 package net.polyv.live.v1.entity.channel.playback;
 
-import net.polyv.common.v1.validator.constraints.NotNull;
+import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 
 /**
@@ -33,9 +36,10 @@ public class LiveDeleteChannelVideoRequest extends LiveCommonRequest {
     private String sessionId;
     
     /**
-     * 录制视频的开始录制时间，可从 获取频道录制信息接口中获取
+     * 录制视频的开始录制时间，可从 获取频道录制信息 接口中获取
      */
-    @ApiModelProperty(name = "startTime", value = "录制视频的开始录制时间，可从 获取频道录制信息接口中获取", required = false)
-    private String startTime;
+    @ApiModelProperty(name = "startTime", value = "录制视频的开始录制时间，可从 获取频道录制信息 接口中获取", required = false)
+    @JSONField(format = "yyyyMMddHHmmss")
+    private Date startTime;
     
 }

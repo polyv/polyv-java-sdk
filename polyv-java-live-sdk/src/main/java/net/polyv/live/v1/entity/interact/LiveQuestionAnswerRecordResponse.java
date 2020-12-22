@@ -70,9 +70,9 @@ public class LiveQuestionAnswerRecordResponse {
         private Integer count;
     
         /**
-         * 选择该选项的人数百分比
+         * 选择该选项的人数百分比，如：100.00%
          */
-        @ApiModelProperty(name = "percent", value = "选择该选项的人数百分比", required = false)
+        @ApiModelProperty(name = "percent", value = "选择该选项的人数百分比，如：100.00%", required = false)
         private String percent;
     }
     
@@ -112,7 +112,7 @@ public class LiveQuestionAnswerRecordResponse {
         private Boolean corrent;
     
         /**
-         * 答题的用户提交时间，13位毫秒级时间戳
+         * 答题的用户提交时间
          */
         @ApiModelProperty(name = "submitTime", value = "答题的用户提交时间", required = false)
         private Date submitTime;

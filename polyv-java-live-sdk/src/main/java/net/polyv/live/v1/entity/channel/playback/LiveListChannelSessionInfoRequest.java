@@ -2,8 +2,6 @@ package net.polyv.live.v1.entity.channel.playback;
 
 import java.util.Date;
 
-import net.polyv.common.v1.validator.constraints.NotNull;
-
 import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
@@ -11,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.entity.LivePageCommonRequest;
 
 /**
@@ -31,16 +30,16 @@ public class LiveListChannelSessionInfoRequest extends LivePageCommonRequest {
     private String channelId;
     
     /**
-     * 开始日期，格式YYYY-MM-DD
+     * 开始日期
      */
-    @ApiModelProperty(name = "startDate", value = "开始日期，格式YYYY-MM-DD", required = false)
+    @ApiModelProperty(name = "startDate", value = "开始日期", required = false)
     @JSONField(format = "yyyy-MM-dd")
     private Date startDate;
     
     /**
-     * 结束日期，格式YYYY-MM-DD
+     * 结束日期
      */
-    @ApiModelProperty(name = "endDate", value = "结束日期，格式YYYY-MM-DD", required = false)
+    @ApiModelProperty(name = "endDate", value = "结束日期", required = false)
     @JSONField(format = "yyyy-MM-dd")
     private Date endDate;
     

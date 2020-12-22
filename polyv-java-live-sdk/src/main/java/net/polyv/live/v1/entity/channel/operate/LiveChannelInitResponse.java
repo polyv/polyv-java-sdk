@@ -20,9 +20,9 @@ public class LiveChannelInitResponse {
     private String channelId;
     
     /**
-     * 直播用户ID
+     * POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致
      */
-    @ApiModelProperty(name = "userId", value = "直播用户ID", required = false)
+    @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致", required = false)
     private String userId;
     
     /**
@@ -116,9 +116,9 @@ public class LiveChannelInitResponse {
     private String advertType;
     
     /**
-     * 广告时长
+     * 广告时长，单位：秒
      */
-    @ApiModelProperty(name = "advertDuration", value = "广告时长", required = false)
+    @ApiModelProperty(name = "advertDuration", value = "广告时长，单位：秒", required = false)
     private String advertDuration;
     
     /**
@@ -194,9 +194,9 @@ public class LiveChannelInitResponse {
     private String isOnlyAudio;
     
     /**
-     * 低延迟
+     * 低延迟，Y-低延迟，N-非低延迟
      */
-    @ApiModelProperty(name = "isLowLatency", value = "低延迟", required = false)
+    @ApiModelProperty(name = "isLowLatency", value = "低延迟，Y-低延迟，N-非低延迟", required = false)
     private String isLowLatency;
     
     /**

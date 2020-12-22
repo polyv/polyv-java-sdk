@@ -27,9 +27,9 @@ public class LiveCreateCategoryResponse {
     private String categoryName;
     
     /**
-     * POLYV用户ID，可通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
+     * POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致
      */
-    @ApiModelProperty(name = "userId", value = "POLYV用户ID，可通过注册保利威官网获取，路径：官网->登录->直播（开发设置）", required = false)
+    @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致", required = false)
     private String userId;
     
     /**

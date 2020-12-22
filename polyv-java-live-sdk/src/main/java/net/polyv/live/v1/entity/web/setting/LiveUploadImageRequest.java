@@ -44,7 +44,7 @@ public class LiveUploadImageRequest extends LiveCommonRequest {
     /**
      * 图片文件列表，支持同时上传不超过6个
      */
-    @ApiModelProperty(name = "file", value = "图片文件列表，支持同时上传不超过6个")
+    @ApiModelProperty(name = "file", value = "图片文件列表，支持同时上传不超过6个",required = true)
     @NotNull(message = "属性file不能为空")
     private List<File> file;
     

@@ -15,9 +15,9 @@ import lombok.experimental.Accessors;
 public class LiveChannelStreamStatusResponse {
     
     /**
-     * 频道号，整型
+     * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "频道号，整型", required = false)
+    @ApiModelProperty(name = "channelId", value = "频道号", required = false)
     private String channelId;
     
     

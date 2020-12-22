@@ -40,16 +40,16 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
         private String name;
         
         /**
-         * 频道密码,长度不能超过16位
+         * 频道密码,长度不能超过16位，必须同时包含字母和数字
          */
-        @ApiModelProperty(name = "channelPasswd", value = "频道密码,长度不能超过16位", required = true, example = "123321")
+        @ApiModelProperty(name = "channelPasswd", value = "频道密码,长度不能超过16位，必须同时包含字母和数字", required = true, example = "123321")
         @NotNull(message = "属性channelPasswd不能为空")
         private String channelPasswd;
         
         /**
-         * 是否自动播放，0/1，默认1
+         * 是否自动播放，0-不自动播放；1-自动播放，默认1
          */
-        @ApiModelProperty(name = "autoPlay", value = "是否自动播放，0/1，默认1", required = false)
+        @ApiModelProperty(name = "autoPlay", value = "是否自动播放，0-不自动播放；1-自动播放，默认1", required = false)
         private Integer autoPlay;
         
         /**
@@ -77,9 +77,9 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
         private Integer maxViewer;
         
         /**
-         * 直播开始时间，13位时间戳
+         * 直播开始时间
          */
-        @ApiModelProperty(name = "startTime", value = "直播开始时间，13位时间戳", required = false)
+        @ApiModelProperty(name = "startTime", value = "直播开始时间", required = false)
         private Date startTime;
         
         /**
@@ -95,9 +95,9 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
         private String publisher;
         
         /**
-         * 连麦人数，-1：使用账号的连麦人数，范围大于等于-1，小于等于账号的连麦人数，最大16人
+         * 连麦人数(范围大于等于-1，小于等于账号的连麦人数),-1：使用账号的连麦人数，最大16人
          */
-        @ApiModelProperty(name = "linkMicLimit", value = "连麦人数，-1：使用账号的连麦人数，范围大于等于-1，小于等于账号的连麦人数，最大16人", required =
+        @ApiModelProperty(name = "linkMicLimit", value = "连麦人数(范围大于等于-1，小于等于账号的连麦人数),-1：使用账号的连麦人数，最大16人", required =
                 false)
         private Integer linkMicLimit;
         
@@ -160,11 +160,11 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
         private Float price;
         
         /**
-         * 付费观看参数：付费有效截止日期，格式为13位时间戳。watchEndTime和validTimePeriod只能设置一个，当watchEndTime和validTimePeriod都为空时，表示付费永久有效
+         * 付费观看参数：付费有效截止日期。watchEndTime和validTimePeriod只能设置一个，当watchEndTime和validTimePeriod都为空时，表示付费永久有效
          */
-        @ApiModelProperty(name = "watchEndTime", value = "付费观看参数：付费有效截止日期，格式为13位时间戳。watchEndTime和validTimePeriod" +
+        @ApiModelProperty(name = "watchEndTime", value = "付费观看参数：付费有效截止日期。watchEndTime和validTimePeriod" +
                 "只能设置一个，当watchEndTime和validTimePeriod都为空时，表示付费永久有效", required = false)
-        private String watchEndTime;
+        private Date watchEndTime;
         
         /**
          * 付费观看参数：付费有效时长，单位天。当watchEndTime和validTimePeriod都为空时，表示付费永久有效

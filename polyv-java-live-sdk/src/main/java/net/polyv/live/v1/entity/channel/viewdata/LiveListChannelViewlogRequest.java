@@ -2,8 +2,6 @@ package net.polyv.live.v1.entity.channel.viewdata;
 
 import java.util.Date;
 
-import net.polyv.common.v1.validator.constraints.NotNull;
-
 import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
@@ -11,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.entity.LivePageCommonRequest;
 
 /**
@@ -33,21 +32,21 @@ public class LiveListChannelViewlogRequest extends LivePageCommonRequest {
     /**
      * 查询日期，格式：yyyy-MM-dd
      */
-    @ApiModelProperty(name = "currentDay", value = "查询日期，格式：yyyy-MM-dd", required = true)
+    @ApiModelProperty(name = "currentDay", value = "查询日期，格式：yyyy-MM-dd", required = false)
     @JSONField(format = "yyyy-MM-dd")
     private Date currentDay;
     
     /**
-     * 查询开始时间，为13位毫秒级时间戳
+     * 查询开始时间
      */
-    @ApiModelProperty(name = "startTime", value = "查询开始时间，为13位毫秒级时间戳", required = false)
-    private String startTime;
+    @ApiModelProperty(name = "startTime", value = "查询开始时间", required = false)
+    private Date startTime;
     
     /**
-     * 查询结束时间，13位毫秒级时间戳
+     * 查询结束时间
      */
-    @ApiModelProperty(name = "endTime", value = "查询结束时间，13位毫秒级时间戳", required = false)
-    private String endTime;
+    @ApiModelProperty(name = "endTime", value = "查询结束时间", required = false)
+    private Date endTime;
     
     /**
      * 观看用户ID

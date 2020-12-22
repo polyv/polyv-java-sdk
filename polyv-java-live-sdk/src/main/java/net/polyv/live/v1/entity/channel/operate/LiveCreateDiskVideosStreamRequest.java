@@ -2,8 +2,6 @@ package net.polyv.live.v1.entity.channel.operate;
 
 import java.util.Date;
 
-import net.polyv.common.v1.validator.constraints.NotNull;
-
 import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
@@ -11,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 
 /**
@@ -40,9 +39,9 @@ public class LiveCreateDiskVideosStreamRequest extends LiveCommonRequest {
     private String videoIds;
     
     /**
-     * 硬盘推流开始时间，13位毫秒级时间戳
+     * 硬盘推流开始时间
      */
-    @ApiModelProperty(name = "startTimes", value = "硬盘推流开始时间，13位毫秒级时间戳", required = true)
+    @ApiModelProperty(name = "startTimes", value = "硬盘推流开始时间", required = true)
     private Date startTimes;
     
 }

@@ -1,6 +1,9 @@
 package net.polyv.live.v1.entity.channel.playback;
 
+import java.util.Date;
 import java.util.List;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -40,16 +43,18 @@ public class LiveListChannelSessionInfoResponse extends LivePageCommonResponse {
         private String sessionId;
         
         /**
-         * 直播开始时间，13位时间戳
+         * 直播开始时间
          */
-        @ApiModelProperty(name = "startTime", value = "直播开始时间，13位时间戳", required = false)
-        private String startTime;
+        @ApiModelProperty(name = "startTime", value = "直播开始时间", required = false)
+        @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+        private Date startTime;
         
         /**
-         * 直播结束时间，13位时间戳
+         * 直播结束时间
          */
-        @ApiModelProperty(name = "endTime", value = "直播结束时间，13位时间戳", required = false)
-        private String endTime;
+        @ApiModelProperty(name = "endTime", value = "直播结束时间", required = false)
+        @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+        private Date endTime;
         
     }
 }

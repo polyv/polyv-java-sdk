@@ -43,7 +43,7 @@ public class LiveAccountStreamCallbackRequest extends LiveCommonRequest {
          * 频道号
          */
         @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-        private Integer channelId;
+        private String channelId;
         
         /**
          * 直播频道的状态：live正在直播，end直播结束
@@ -70,15 +70,15 @@ public class LiveAccountStreamCallbackRequest extends LiveCommonRequest {
         private String sessionId;
         
         /**
-         * 直播的开始时间,13位的时间戳
+         * 直播的开始时间
          */
-        @ApiModelProperty(name = "startTime", value = "直播的开始时间,13位的时间戳", required = false)
+        @ApiModelProperty(name = "startTime", value = "直播的开始时间", required = false)
         private Date startTime;
         
         /**
-         * 直播的结束时间(当status=end的时候有值，status=live的时候为空值),13位的时间戳
+         * 直播的结束时间(当status=end的时候有值，status=live的时候为空值)
          */
-        @ApiModelProperty(name = "endTime", value = "直播的结束时间(当status=end的时候有值，status=live的时候为空值),13位的时间戳", required = false)
+        @ApiModelProperty(name = "endTime", value = "直播的结束时间(当status=end的时候有值，status=live的时候为空值)", required = false)
         private Date endTime;
         
     }

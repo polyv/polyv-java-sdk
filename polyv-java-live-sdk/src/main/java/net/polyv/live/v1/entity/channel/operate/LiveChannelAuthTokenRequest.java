@@ -20,7 +20,7 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 public class LiveChannelAuthTokenRequest extends LiveCommonRequest {
     
     /**
-     * 观看者用户ID
+     * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
      */
     @ApiModelProperty(hidden = true)
     @NotNull(message = "属性userId不能为空")

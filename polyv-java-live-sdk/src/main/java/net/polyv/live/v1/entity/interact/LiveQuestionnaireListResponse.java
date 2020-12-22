@@ -47,9 +47,9 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
         private String channelId;
         
         /**
-         * 用户ID
+         * POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致
          */
-        @ApiModelProperty(name = "userId", value = "用户Id", required = false)
+        @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致", required = false)
         private String userId;
         
         /**
@@ -69,7 +69,7 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
          * 问卷创建时间
          */
         @ApiModelProperty(name = "createdTime", value = "问卷创建时间", required = false)
-        private Long createdTime;
+        private Date createdTime;
         
         /**
          * 问卷最后修改时间

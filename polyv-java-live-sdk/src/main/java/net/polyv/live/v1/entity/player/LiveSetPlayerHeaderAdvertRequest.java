@@ -50,9 +50,9 @@ public class LiveSetPlayerHeaderAdvertRequest extends LiveCommonRequest {
     private String headAdvertHref;
     
     /**
-     * 广告时长
+     * 广告时长，单位：秒
      */
-    @ApiModelProperty(name = "headAdvertDuration", value = "广告时长", required = false)
+    @ApiModelProperty(name = "headAdvertDuration", value = "广告时长，单位：秒", required = false)
     private Integer headAdvertDuration;
     
     /**

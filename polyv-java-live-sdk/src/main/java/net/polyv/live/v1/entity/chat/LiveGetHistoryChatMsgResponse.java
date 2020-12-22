@@ -19,11 +19,12 @@ import lombok.experimental.Accessors;
 public class LiveGetHistoryChatMsgResponse {
     
     /**
-     * 用户IP
+     * POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致
      */
-    @ApiModelProperty(name = "userId", value = "直播账号userId", required = false)
+    @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致", required = false)
     @JSONField(name = "acountId")
     private String userId;
+    
     /**
      * 用户IP
      */
@@ -59,15 +60,17 @@ public class LiveGetHistoryChatMsgResponse {
      */
     @ApiModelProperty(name = "channelId", value = "聊天记录所在的频道号", required = false)
     private String channelId;
+    
     /**
-     * 图片消息的图片地址
+     * 场次号
      */
     @ApiModelProperty(name = "sessionId", value = "场次号", required = false)
     private String sessionId;
+    
     /**
-     * 发送消息时的时间戳
+     * 发送消息的时间
      */
-    @ApiModelProperty(name = "time", value = "发送消息的时间戳", required = false)
+    @ApiModelProperty(name = "time", value = "发送消息的时间", required = false)
     private Date time;
     
     /**
@@ -76,6 +79,7 @@ public class LiveGetHistoryChatMsgResponse {
     @ApiModelProperty(name = "source", value = "消息来源，目前有public(群聊)、extend（管理员私聊）", required = false)
     @JSONField(name = "sourceType")
     private String source;
+    
     /**
      * 目前取值：redpaper: 红包消息；get_redpaper：领取红包消息；chatImg：图片消息；custom：自定义消息（通过socket发送的自定义消息）；reward
      * ：打赏消息；customerMessage：自定义消息（通过http接口发送的自定义消息）为空（msgType=""）时表示普通聊天消息；
@@ -84,12 +88,14 @@ public class LiveGetHistoryChatMsgResponse {
             "：自定义消息（通过socket发送的自定义消息）；reward：打赏消息；customerMessage：自定义消息（通过http接口发送的自定义消息） 为空（msgType=\"\"）时表示普通聊天消息；"
             , required = false)
     private String msgType;
+    
     /**
      * 审核状态，pass:已审核，censor：审核中，delete：删除
      */
     @ApiModelProperty(name = "status", value = "审核状态，pass:已审核，censor：审核中，delete：删除", required = false)
     private String status;
     
+    @ApiModelProperty(name = "user", value = "发送消息的观众", required = false)
     private User user;
     
     @Data

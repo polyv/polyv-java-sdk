@@ -468,7 +468,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         Boolean liveDeleteChannelVideoResponse;
         try {
             liveDeleteChannelVideoRequest.setChannelId("1951952")
-                    .setStartTime("20201016111234")
+                    .setStartTime(getDate(2020,10,16,11,12,34))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelVideoResponse = new LiveChannelPlaybackServiceImpl().deleteChannelVideo(
                     liveDeleteChannelVideoRequest);

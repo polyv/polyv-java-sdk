@@ -39,14 +39,13 @@ public class LiveChannelRequest extends LiveCommonRequest {
     private String name;
     
     /**
-     * 自定义频道密码,终端用户通过该密码进入直播间，长度不能超过16位
+     * 自定义频道密码，B端讲师通过该密码进入直播间开播，长度不能超过16位,必须同时包含字母和数字
      */
-    @ApiModelProperty(name = "channelPasswd", value = "自定义频道密码,终端用户通过该密码进入直播间，长度不能超过16位", required = true, example =
+    @ApiModelProperty(name = "channelPasswd", value = "自定义频道密码，B端讲师通过该密码进入直播间开播，长度不能超过16位,必须同时包含字母和数字", required = true, example =
             "666888")
     @NotBlank(message = "属性channelPasswd不能为空")
     @Length(max = 16, message = "频道密码不能超过16位")
     private String channelPasswd;
-    
     
     /**
      * 是否自动播放标识，0：关闭自动播放；1：开启，默认取值 1

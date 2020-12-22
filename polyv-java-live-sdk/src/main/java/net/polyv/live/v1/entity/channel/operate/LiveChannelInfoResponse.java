@@ -15,15 +15,15 @@ import lombok.experimental.Accessors;
 public class LiveChannelInfoResponse {
     
     /**
-     * 直播频道号
+     * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "直播频道号", required = false)
+    @ApiModelProperty(name = "channelId", value = "频道号", required = false)
     private String channelId;
     
     /**
-     * 直播用户ID
+     * POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致
      */
-    @ApiModelProperty(name = "userId", value = "直播用户ID", required = false)
+    @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致", required = false)
     private String userId;
     
     /**
@@ -117,9 +117,9 @@ public class LiveChannelInfoResponse {
     private String advertType;
     
     /**
-     * 广告时长
+     * 广告时长，单位：秒
      */
-    @ApiModelProperty(name = "advertDuration", value = "广告时长", required = false)
+    @ApiModelProperty(name = "advertDuration", value = "广告时长，单位：秒", required = false)
     private String advertDuration;
     
     /**

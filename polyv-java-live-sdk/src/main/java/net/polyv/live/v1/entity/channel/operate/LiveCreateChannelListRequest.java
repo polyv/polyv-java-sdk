@@ -40,9 +40,9 @@ public class LiveCreateChannelListRequest extends LiveCommonRequest {
         private String name;
         
         /**
-         * 频道密码，长度不能超过16位
+         * 频道密码，长度不能超过16位，必须同时包含字母和数字
          */
-        @ApiModelProperty(name = "channelPasswd", value = "频道密码，长度不能超过16位", required = true, example = "12345678")
+        @ApiModelProperty(name = "channelPasswd", value = "频道密码，长度不能超过16位，必须同时包含字母和数字", required = true, example = "12345678")
         @NotBlank(message = "属性channelPasswd不能为空")
         @Length(max = 16, message = "频道密码不能超过16位")
         private String channelPasswd;
@@ -69,10 +69,10 @@ public class LiveCreateChannelListRequest extends LiveCommonRequest {
         private String playerColor;
         
         /**
-         * 直播场景
+         * 直播场景,alone 活动拍摄; ppt 三分屏; topclass 大班课
          * @see LiveConstant.SceneType
          */
-        @ApiModelProperty(name = "scene", value = "直播场景，值可查看LiveConstant.SceneType", required = false, example = "alone")
+        @ApiModelProperty(name = "scene", value = "直播场景，alone 活动拍摄; ppt 三分屏; topclass 大班课", required = false, example = "alone")
         private String scene;
         
         /**

@@ -27,10 +27,10 @@ public class LiveChannelDocStatusRequest extends LiveCommonRequest {
     private String channelId;
     
     /**
-     * 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串)
-     * {@link net.polyv.live.service.channel.LiveChannelDocImplTest#testListChannelDoc()}
+     * 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串)，调用new LiveChannelDocServiceImpl().listChannelDoc()获取
      */
-    @ApiModelProperty(name = "fileId", value = "文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串)", required = true)
+    @ApiModelProperty(name = "fileId", value = "文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串)，调用new LiveChannelDocServiceImpl()" +
+            ".listChannelDoc()获取", required = true)
     @NotNull(message = "属性fileId不能为空")
     private String fileId;
     

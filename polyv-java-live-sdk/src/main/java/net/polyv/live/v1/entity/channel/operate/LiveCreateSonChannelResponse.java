@@ -1,5 +1,7 @@
 package net.polyv.live.v1.entity.channel.operate;
 
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -21,9 +23,9 @@ public class LiveCreateSonChannelResponse {
     private String account;
     
     /**
-     * 用户ID
+     * POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致
      */
-    @ApiModelProperty(name = "userId", value = "用户ID", required = false)
+    @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致", required = false)
     private String userId;
     
     /**
@@ -51,22 +53,22 @@ public class LiveCreateSonChannelResponse {
     private String stream;
     
     /**
-     * 助教状态
+     * 助教状态(Y/N)
      */
-    @ApiModelProperty(name = "status", value = "助教状态", required = false)
+    @ApiModelProperty(name = "status", value = "助教状态(Y/N)", required = false)
     private String status;
     
     /**
-     * 创建助教时间，时间戳
+     * 创建助教时间
      */
-    @ApiModelProperty(name = "createdTime", value = "创建助教时间，时间戳", required = false)
-    private String createdTime;
+    @ApiModelProperty(name = "createdTime", value = "创建助教时间", required = false)
+    private Date createdTime;
     
     /**
-     * 助教最后修改时间，时间戳
+     * 助教最后修改时间
      */
-    @ApiModelProperty(name = "lastModified", value = "助教最后修改时间，时间戳", required = false)
-    private String lastModified;
+    @ApiModelProperty(name = "lastModified", value = "助教最后修改时间", required = false)
+    private Date lastModified;
     
     /**
      * 频道中所有助教序号
@@ -87,21 +89,21 @@ public class LiveCreateSonChannelResponse {
     private String pageTurnEnabled;
     
     /**
-     * 发布公告权限
+     * 发布公告权限(Y/N)
      */
-    @ApiModelProperty(name = "notifyEnabled", value = "发布公告权限", required = false)
+    @ApiModelProperty(name = "notifyEnabled", value = "发布公告权限(Y/N)", required = false)
     private String notifyEnabled;
     
     /**
-     * 开启签到权限
+     * 开启签到权限(Y/N)
      */
-    @ApiModelProperty(name = "checkinEnabled", value = "开启签到权限", required = false)
+    @ApiModelProperty(name = "checkinEnabled", value = "开启签到权限(Y/N)", required = false)
     private String checkinEnabled;
     
     /**
-     * 发起投票
+     * 发起投票(Y/N)
      */
-    @ApiModelProperty(name = "voteEnabled", value = "发起投票", required = false)
+    @ApiModelProperty(name = "voteEnabled", value = "发起投票(Y/N)", required = false)
     private String voteEnabled;
     
     /**

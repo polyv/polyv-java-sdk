@@ -269,6 +269,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
+    @Deprecated
     @Override
     public List<LiveGetQuestionStatisticalResponse> getQuestionStatistical(
             LiveGetQuestionStatisticalRequest liveGetQuestionStatisticalRequest)

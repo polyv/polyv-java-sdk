@@ -17,18 +17,17 @@ public class LiveChannelResponse {
     /**
      * 频道号
      */
-    
     @ApiModelProperty(name = "channelId", value = "直播频道号")
     protected String channelId;
     
     /**
-     * 用户Id
+     * POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致
      */
-    @ApiModelProperty(name = "userId", value = "直播用户ID")
+    @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致")
     protected String userId;
     
     /**
-     * 频道名称
+     * 直播频道名称
      */
     @ApiModelProperty(name = "name", value = "直播频道名称")
     protected String name;
@@ -118,9 +117,9 @@ public class LiveChannelResponse {
     protected String advertType;
     
     /**
-     * 广告时长
+     * 广告时长，单位：秒
      */
-    @ApiModelProperty(name = "advertDuration", value = "广告时长")
+    @ApiModelProperty(name = "advertDuration", value = "广告时长，单位：秒")
     protected Integer advertDuration;
     
     /**
@@ -190,15 +189,15 @@ public class LiveChannelResponse {
     protected String passwdEncrypted;
     
     /**
-     * 仅推音频流
+     * 仅推音频流，Y-是，N-否
      */
-    @ApiModelProperty(name = "isOnlyAudio", value = "仅推音频流")
+    @ApiModelProperty(name = "isOnlyAudio", value = "仅推音频流，Y-是，N-否")
     protected String isOnlyAudio;
     
     /**
-     * 低延迟
+     * 低延迟，Y-是，N-否
      */
-    @ApiModelProperty(name = "isLowLatency", value = "低延迟")
+    @ApiModelProperty(name = "isLowLatency", value = "低延迟，Y-是，N-否")
     protected String isLowLatency;
     
     /**

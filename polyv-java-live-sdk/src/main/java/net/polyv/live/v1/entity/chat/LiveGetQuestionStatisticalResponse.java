@@ -16,6 +16,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @ApiModel("查询频道的问答统计结果响应实体")
+@Deprecated
 public class LiveGetQuestionStatisticalResponse {
     /**
      * 题目ID，字符串
@@ -24,9 +25,9 @@ public class LiveGetQuestionStatisticalResponse {
     private String questionId;
     
     /**
-     * 频道号，整型
+     * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "频道号，整型", required = false)
+    @ApiModelProperty(name = "channelId", value = "频道号", required = false)
     private String channelId;
     
     /**
@@ -38,16 +39,16 @@ public class LiveGetQuestionStatisticalResponse {
     /**
      * 开始时间，格式：yyyy-MM-dd HH:mm:ss
      */
-    @ApiModelProperty(name = "startTIme", value = "开始时间，格式：yyyy-MM-dd HH:mm:ss", required = false)
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
-    private Date startTIme;
+    @ApiModelProperty(name = "startTime", value = "开始时间，格式：yyyy-MM-dd HH:mm:ss", required = false)
+    @JSONField(name = "startTIme",format = "yyyy-MM-dd HH:mm:ss")
+    private Date startTime;
     
     /**
      * 结束时间，格式：yyyy-MM-dd HH:mm:ss
      */
-    @ApiModelProperty(name = "endTIme", value = "结束时间，格式：yyyy-MM-dd HH:mm:ss", required = false)
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
-    private Date endTIme;
+    @ApiModelProperty(name = "endTime", value = "结束时间，格式：yyyy-MM-dd HH:mm:ss", required = false)
+    @JSONField(name = "endTIme",format = "yyyy-MM-dd HH:mm:ss")
+    private Date endTime;
     
     /**
      * 第一个选择项的答题人数，如果是判断题就是正确选择项的答题人数

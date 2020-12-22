@@ -27,9 +27,9 @@ public class LiveCreateChannelPPTRecordRequest extends LiveCommonRequest {
     private String channelId;
     
     /**
-     * 回放视频id,从查询视频库列表获取{@link net.polyv.live.service.ChannelTest#testListChannelVideoLibrary()}
+     * 回放视频id,从查询视频库列表获取
      */
-    @ApiModelProperty(name = "videoId", value = "回放视频id", required = true, example = "6ce905500b")
+    @ApiModelProperty(name = "videoId", value = "回放视频id,从查询视频库列表获取", required = true, example = "6ce905500b")
     @NotNull(message = "属性频道号不能为空")
     private String videoId;
     

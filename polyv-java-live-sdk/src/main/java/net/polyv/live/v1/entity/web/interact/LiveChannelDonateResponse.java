@@ -2,8 +2,6 @@ package net.polyv.live.v1.entity.web.interact;
 
 import java.util.List;
 
-import net.polyv.common.v1.validator.constraints.NotNull;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -45,16 +43,16 @@ public class LiveChannelDonateResponse {
     /**
      * 现金打赏数额数组，数组的长度必须为6
      */
-    @ApiModelProperty(name = "cashes", value = "请求体参数，现金打赏数额数组，数组的长度必须为6", required = true)
+    @ApiModelProperty(name = "cashes", value = "请求体参数，现金打赏数额数组，数组的长度必须为6", required = false)
     private List<Double> cashes;
     
     /**
      * 现金打赏自定义最小金额
      */
-    @ApiModelProperty(name = "cashMin", value = "请求体参数，现金打赏自定义最小金额", required = true)
+    @ApiModelProperty(name = "cashMin", value = "请求体参数，现金打赏自定义最小金额", required = false)
     private Double cashMin;
     
-    @ApiModelProperty(name = "goods", value = "道具打赏", required = true)
+    @ApiModelProperty(name = "goods", value = "道具打赏", required = false)
     private List<ChannelGood> goods;
     
     @Data
@@ -65,8 +63,8 @@ public class LiveChannelDonateResponse {
         /**
          * 道具名称，不能超过5个字符
          */
-        @ApiModelProperty(name = "goodName", value = "道具名称，不能超过5个字符", required = true)
-        @NotNull(message = "属性goodName不能为空")
+        @ApiModelProperty(name = "goodName", value = "道具名称，不能超过5个字符", required = false)
+//        @NotNull(message = "属性goodName不能为空")
         private String goodName;
         
         /**
@@ -78,21 +76,21 @@ public class LiveChannelDonateResponse {
         @ApiModelProperty(name = "goodImg", value = "道具图片，不能超过120个字符（通过上传图片接口上传获取图片地址，或者使用默认地址;鲜花：01-flower.png;" +
                 "咖啡:02-coffee.png;点赞:03-good.png;掌声:04-applaud.png;666:05-666.png;小星星:06-star.png;钻石:07-diamond.png;" +
                 "跑车:08-car.png;火箭:09-rocket.png;前缀统一为：//livestatic.videocc" +
-                ".net/uploaded/images/webapp/channel/donate/）", required = true)
-        @NotNull(message = "属性goodImg不能为空")
+                ".net/uploaded/images/webapp/channel/donate/）", required = false)
+//        @NotNull(message = "属性goodImg不能为空")
         private String goodImg;
         
         /**
          * 道具打赏价格
          */
-        @ApiModelProperty(name = "goodPrice", value = "道具打赏价格", required = true)
+        @ApiModelProperty(name = "goodPrice", value = "道具打赏价格", required = false)
         private Double goodPrice;
         
         /**
          * 道具开关，值为 Y/N , Y为开启
          */
-        @ApiModelProperty(name = "goodEnabled", value = "道具开关，值为 Y/N , Y为开启", required = true)
-        @NotNull(message = "属性goodEnabled不能为空")
+        @ApiModelProperty(name = "goodEnabled", value = "道具开关，值为 Y/N , Y为开启", required = false)
+//        @NotNull(message = "属性goodEnabled不能为空")
         private String goodEnabled;
         
     }

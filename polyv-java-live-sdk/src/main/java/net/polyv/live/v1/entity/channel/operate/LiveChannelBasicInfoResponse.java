@@ -1,5 +1,6 @@
 package net.polyv.live.v1.entity.channel.operate;
 
+import java.util.Date;
 import java.util.List;
 
 import io.swagger.annotations.ApiModel;
@@ -41,10 +42,10 @@ public class LiveChannelBasicInfoResponse {
     private String publisher;
     
     /**
-     * 直播开始时间，关闭时为0，开启时为13位毫秒级时间戳
+     * 直播开始时间，关闭时为null
      */
-    @ApiModelProperty(name = "startTime", value = "直播开始时间，关闭时为0，开启时为13位毫秒级时间戳", required = false)
-    private Long startTime;
+    @ApiModelProperty(name = "startTime", value = "直播开始时间，关闭时为null", required = false)
+    private Date startTime;
     
     /**
      * 页面累计观看数
@@ -101,9 +102,9 @@ public class LiveChannelBasicInfoResponse {
     private Integer maxViewer;
     
     /**
-     * 频道的观看页状态，取值为： 频道状态,取值：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播）
+     * 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播）
      */
-    @ApiModelProperty(name = "watchStatus", value = "频道的观看页状态，取值为： 频道状态,取值：live（直播中）、end（直播结束）、playback（回放中）、waiting" +
+    @ApiModelProperty(name = "watchStatus", value = "频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting" +
             "（等待直播）", required = false)
     private String watchStatus;
     
@@ -137,9 +138,9 @@ public class LiveChannelBasicInfoResponse {
         private String categoryName;
         
         /**
-         * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
+         * POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致
          */
-        @ApiModelProperty(name = "userId", value = "POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）", required = false)
+        @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致", required = false)
         private String userId;
         
         /**
@@ -162,9 +163,9 @@ public class LiveChannelBasicInfoResponse {
         private String channelId;
         
         /**
-         * 用户ID
+         * POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致
          */
-        @ApiModelProperty(name = "userId", value = "用户ID", required = false)
+        @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致", required = false)
         private String userId;
         
         /**
@@ -233,12 +234,12 @@ public class LiveChannelBasicInfoResponse {
          * 付费观看，截止时间，为null表示：一次付费，永久有效
          */
         @ApiModelProperty(name = "watchEndTime", value = "付费观看，截止时间，为null表示：一次付费，永久有效", required = false)
-        private String watchEndTime;
+        private Date watchEndTime;
         
         /**
-         * 付费观看的截止时长 （天）
+         * 付费观看的截止时长（天）
          */
-        @ApiModelProperty(name = "validTimePeriod", value = "付费观看的截止时长 （天）", required = false)
+        @ApiModelProperty(name = "validTimePeriod", value = "付费观看的截止时长（天）", required = false)
         private Integer validTimePeriod;
         
         /**

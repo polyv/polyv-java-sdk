@@ -48,7 +48,7 @@
 | -- | -- | -- | -- | 
 | categoryId | false | Integer | 分类id | 
 | categoryName | false | String | 分类名称 | 
-| userId | false | String | POLYV用户ID，可通过注册保利威官网获取，路径：官网->登录->直播（开发设置） | 
+| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
 | rank | false | Integer | 分类排序(从小到大排序) | 
 
 <br /><br />
@@ -112,7 +112,7 @@
 | -- | -- | -- | -- | 
 | categoryId | false | Integer | 分类ID | 
 | categoryName | false | String | 分类名称 | 
-| userId | false | String | POLYV用户ID，可通过注册保利威官网获取，路径：官网->登录->直播（开发设置） | 
+| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
 | rank | false | Integer | 分类排序号，rank=0表示为默认排序 | 
 
 <br /><br />
@@ -331,7 +331,7 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| userId | false | String | 用户ID | 
+| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
 | email | false | String | 邮箱账号 | 
 | maxChannels | false | Integer | 最大可创建频道数 | 
 | totalChannels | false | Integer | 当前已创建频道总数 | 
@@ -409,12 +409,12 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | false | String | 直播频道号 | 
+| channelId | false | String | 频道号 | 
 | name | false | String | 频道名称 | 
 | channelPasswd | false | String | 频道密码 | 
 | categoryId | false | String | 频道分类ID | 
 | scene | false | String | 场景，alone-活动直播，ppt-三分屏，topclass-大班课 | 
-| sceneText | false | String | 场景描述 | 
+| sceneText | false | String | 场景描述，如：大班课 | 
 | watchStatus | false | String | 观看页状态，live-直播中，playback-回放中，end-已结束，waiting-未开始 | 
 | watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
 | watchUrl | false | String | 观看页链接 | 
@@ -426,9 +426,9 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | false | String | 频道名称 | 
+| channelId | false | String | 频道号 | 
 | rank | false | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
-| userId | false | String | 账号ID | 
+| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
 | globalSettingEnabled | false | String | 是否开启全局设置（Y/N） | 
 | enabled | false | String | 是否开启观看条件(Y/N) | 
 | authType | false | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
@@ -439,7 +439,7 @@ true为删除成功，false为删除失败
 | payAuthTips | false | String | 付费观看提示信息 | 
 | price | false | Float | 付费观看的价格 | 
 | validTimePeriod | false | String | 付费观看的截止时长 （天） | 
-| watchEndTime | false | String | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
+| watchEndTime | false | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
 | authTips | false | String | 白名单观看提示信息 | 
 | infoAuthTips | false | String | 登记观看提示信息 | 
 | customKey | false | String | 自定义授权观看的key | 
@@ -450,7 +450,7 @@ true为删除成功，false为删除失败
 | directKey | false | String | 独立授权key | 
 | trialWatchEnabled | false | String | 试看开关，Y:开启试看，N:关闭试看 | 
 | trialWatchTime | false | Integer | 试看时间，单位为分钟 | 
-| trialWatchEndTime | false | String | 试看截止日期，为null 表示对该频道永久有效
+| trialWatchEndTime | false | Date | 试看截止日期，为null 表示对该频道永久有效
  | 
 
 <br /><br />
@@ -693,13 +693,13 @@ true为设置回调成功，false为设置回调失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | false | Integer | 频道号 | 
+| channelId | false | String | 频道号 | 
 | status | false | String | 直播频道的状态：live正在直播，end直播结束 | 
 | timestamp | false | Long | 13位的时间戳 | 
 | sign | false | String | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 | 
 | sessionId | false | String | 直播的场次ID | 
-| startTime | false | Date | 直播的开始时间,13位的时间戳 | 
-| endTime | false | Date | 直播的结束时间(当status=end的时候有值，status=live的时候为空值),13位的时间戳 | 
+| startTime | false | Date | 直播的开始时间 | 
+| endTime | false | Date | 直播的结束时间(当status=end的时候有值，status=live的时候为空值) | 
 
 <br /><br />
 
@@ -765,19 +765,19 @@ true为设置回调成功，false为设置回调失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | false | Integer | 频道号 | 
+| channelId | false | String | 频道号 | 
 | vid | false | String | 转存成功的视频ID | 
 | title | false | String | 视频标题 | 
 | duration | false | String | 视频时长 格式为 hh:mm:ss | 
 | fileSize | false | Long | 视频文件大小，单位为byte | 
-| timestamp | false | Long | 13位的时间戳 | 
-| sign | false | String | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 | 
+| timestamp | false | Long | 13位的时间戳(签名使用) | 
+| sign | false | String | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的密匙 | 
 | sessionIds | false | String | 录制的场次和时间对应的数组字符串，格式：["20190703145126,4,fdqbopvtnv","20190703145126,8,fdqbopvtnv"] ，其中："20190703145126,4,fdqbopvtnv" 第一个字段是开始时间，第二个字段是直播的时长，第三个是对应的sessionId。 | 
 | fileId | false | String | 转存对应的录制文件id | 
 | videoId | false | String | 转存回放唯一的id | 
 | origin | false | String | 转存的录制来源。manual-云录制，auto-自动录制，merge-合并，clip-裁剪 | 
 | sessionId | false | String | 回放对应的单个场次id | 
-| userId | false | String | 账号ID | 
+| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
 | status | false | String | 转存成功返回success | 
 
 <br /><br />
@@ -843,11 +843,11 @@ true为设置回调成功，false为设置回调失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | false | Integer | 频道号 | 
+| channelId | false | String | 频道号 | 
 | fileUrl | false | String | 录制文件地址 | 
 | format | false | String | 文件类型，m3u8或者mp4 | 
-| timestamp | false | Long | 13位的时间戳 | 
-| sign | false | String | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 | 
+| timestamp | false | Long | 13位的时间戳(签名使用) | 
+| sign | false | String | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的密匙 | 
 | fileId | false | String | 录制唯一的id | 
 | origin | false | String | 录制来源。manual-云录制，auto-自动录制，merge-合并，clip-裁剪 | 
 | hasRtcRecord | false | String | （该字段只对开启云录制功能有用），值为 'Y'，表示该场直播录制同时存在云录制和自动录制，值为"N"，该场直播只有自动录制 | 
@@ -1126,7 +1126,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| userId | false | String | 用户ID | 
+| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
 | available | false | Long | 当前可用的分钟数 | 
 | used | false | Long | 历史已经使用的分钟数 | 
 

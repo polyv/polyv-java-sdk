@@ -59,16 +59,16 @@
 | -- | -- | -- | -- | 
 | videoId | false | String | 直播系统生成的id | 
 | videoPoolId | false | String | 点播视频vid | 
-| userId | false | String | 点播后台用户id | 
+| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
 | channelId | false | String | 回放视频对应的直播频道号 | 
 | title | false | String | 视频标题 | 
 | firstImage | false | String | 视频首图 | 
-| duration | false | String | 视频长度 | 
+| duration | false | String | 视频长度，如：00:00:30 | 
 | myBr | false | String | 默认视频的播放清晰度，1为流畅，2为高清，3为超清 | 
 | qid | false | String | 访客信息收集id | 
 | seed | false | String | 视频加密状态，1表示为加密状态，0为非加密 | 
-| createdTime | false | Long | 添加为回放视频的日期 | 
-| lastModified | false | Long | 视频最后修改日期 | 
+| createdTime | false | Date | 添加为回放视频的日期 | 
+| lastModified | false | Date | 视频最后修改日期 | 
 | url | false | String | 视频播放地址，注：如果视频为加密视频，则此地址无法访问 | 
 | channelSessionId | false | String | 用于PPT请求数据，与PPT直播的回放相关，普通直播回放值为null | 
 | mergeInfo | false | String | 视频合并信息 | 
@@ -132,7 +132,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| fileIds | true | String | 要转存的录制视频文件ID，多个id用英文逗号, | 
+| fileIds | true | String | 要转存的录制视频文件ID，多个id用英文逗号,分隔 | 
 | fileName | false | String | 转存后的文件名，目前暂不支持传多个文件名 | 
 | cataId | false | Long | 转存到点播的目录ID, | 
 | callbackUrl | false | String | 转存成功时候回调通知的url，通知的相关参数见附录 | 
@@ -273,17 +273,17 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelVedioInfos | false | Array | 视频库视频信息【详见[ChannelVedioInfo参数描述](channelPlayback.md?id=polyv24)】 | 
+| channelVideoInfos | false | Array | 视频库视频信息【详见[ChannelVideoInfo参数描述](channelPlayback.md?id=polyv24)】 | 
 
-<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="ChannelVedioInfo参数描述"class="anchor"><span>ChannelVedioInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="ChannelVideoInfo参数描述"class="anchor"><span>ChannelVideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | fileId | false | String | 录制文件id | 
 | channelId | false | String | 频道号 | 
 | url | false | String | 录制文件地址，优先返回mp4，若没有MP4会返回m3u8 | 
-| startTime | false | String | 开始录制时间,13位时间戳 | 
-| endTime | false | String | 结束录制时间 | 
+| startTime | false | Date | 开始录制时间 | 
+| endTime | false | Date | 结束录制时间 | 
 | fileSize | false | Long | 录制文件大小（单位：字节） | 
 | duration | false | Integer | 时长（单位：秒） | 
 | bitrate | false | Integer | 录制文件码率（单位：字节） | 
@@ -367,21 +367,21 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | -- | -- | -- | -- | 
 | videoId | false | String | 直播系统生成的id | 
 | videoPoolId | false | String | 点播视频vid | 
-| userId | false | String | 点播后台用户id | 
+| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
 | channelId | false | String | 回放视频对应的直播频道号 | 
 | title | false | String | 视频标题 | 
 | firstImage | false | String | 视频首图 | 
-| duration | false | String | 视频长度 | 
+| duration | false | String | 视频长度，如：00:27:10 | 
 | myBr | false | Integer | 默认视频的播放清晰度，1为流畅，2为高清，3为超清 | 
 | qid | false | String | 访客信息收集id | 
 | seed | false | Integer | 视频加密状态，1表示为加密状态，0为非加密 | 
-| createdTime | false | Long | 添加为回放视频的日期 | 
-| lastModified | false | Long | 视频最后修改日期 | 
+| createdTime | false | Date | 添加为回放视频的日期 | 
+| lastModified | false | Date | 视频最后修改日期 | 
 | asDefault | false | String | 是否为默认播放视频，值为Y/N | 
 | url | false | String | 视频播放地址，注：如果视频为加密视频，则此地址无法访问 | 
 | channelSessionId | false | String | 用于PPT请求数据，与PPT直播的回放相关，普通直播回放值为null | 
 | mergeInfo | false | String | 视频合并信息，后续补充 | 
-| startTime | false | String | 直播开始时间 | 
+| startTime | false | Date | 直播开始时间 | 
 | listType | false | String | playback-回放列表，vod-点播列表; | 
 
 <br /><br />
@@ -441,8 +441,8 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| startDate | false | Date | 开始日期，格式YYYY-MM-DD | 
-| endDate | false | Date | 结束日期，格式YYYY-MM-DD | 
+| startDate | false | Date | 开始日期 | 
+| endDate | false | Date | 结束日期 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
@@ -464,8 +464,8 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号 | 
 | sessionId | false | String | 场次ID | 
-| startTime | false | String | 直播开始时间，13位时间戳 | 
-| endTime | false | String | 直播结束时间，13位时间戳 | 
+| startTime | false | Date | 直播开始时间 | 
+| endTime | false | Date | 直播结束时间 | 
 
 <br /><br />
 
@@ -591,9 +591,9 @@ Y为开启，N为关闭
 | bitrate | false | Integer | 码率 | 
 | channelId | false | String | 频道号 | 
 | channelSessionId | false | String | 频道场次 | 
-| createdTime | false | Long | 创建时间 | 
+| createdTime | false | Date | 创建时间 | 
 | duration | false | Integer | 时长 | 
-| endTime | false | String | 结束时间 | 
+| endTime | false | Date | 结束时间 | 
 | fileId | false | String | 文件ID | 
 | filename | false | String | 文件名 | 
 | filesize | false | Long | 文件大小 | 
@@ -601,8 +601,8 @@ Y为开启，N为关闭
 | liveType | false | String | 直播类型 | 
 | m3u8 | false | String | m3u8文件地址 | 
 | mp4 | false | String | MP4地址 | 
-| startTime | false | String | 开始时间 | 
-| userId | false | String | 用户ID | 
+| startTime | false | Date | 开始时间 | 
+| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
 | width | false | Integer | 宽 | 
 
 <br /><br />
@@ -878,7 +878,7 @@ true为设置成功，false为设置失败
         Boolean liveDeleteChannelVideoResponse;
         try {
             liveDeleteChannelVideoRequest.setChannelId("1951952")
-                    .setStartTime("20201016111234")
+                    .setStartTime(getDate(2020,10,16,11,12,34))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelVideoResponse = new LiveChannelPlaybackServiceImpl().deleteChannelVideo(
                     liveDeleteChannelVideoRequest);
@@ -910,7 +910,7 @@ true为设置成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | sessionId | false | String | 录制视频的场次ID | 
-| startTime | false | String | 录制视频的开始录制时间，可从 获取频道录制信息接口中获取 | 
+| startTime | false | Date | 录制视频的开始录制时间，可从 获取频道录制信息 接口中获取 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述

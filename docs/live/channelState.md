@@ -127,7 +127,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | false | String | 频道号，整型 | 
+| channelId | false | String | 频道号 | 
 | status | false | String | 频道的直播状态，字符串，值包括：live end | 
 
 <br /><br />

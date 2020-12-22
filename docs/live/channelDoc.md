@@ -120,7 +120,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| fileId | true | String | 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串) | 
+| fileId | true | String | 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串)，调用new LiveChannelDocServiceImpl().listChannelDoc()获取 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述

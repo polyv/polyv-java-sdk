@@ -47,9 +47,9 @@ public class LiveQuestionnaireListResponse extends LivePageCommonResponse {
         private String channelId;
         
         /**
-         * POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致
+         * POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）
          */
-        @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致", required = false)
+        @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）", required = false)
         private String userId;
         
         /**

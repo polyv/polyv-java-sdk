@@ -30,16 +30,16 @@ public class LiveListChannelSessionInfoRequest extends LivePageCommonRequest {
     private String channelId;
     
     /**
-     * 开始日期
+     * 开始日期，格式yyyy-MM-dd
      */
-    @ApiModelProperty(name = "startDate", value = "开始日期", required = false)
+    @ApiModelProperty(name = "startDate", value = "开始日期，格式yyyy-MM-dd", required = false)
     @JSONField(format = "yyyy-MM-dd")
     private Date startDate;
     
     /**
-     * 结束日期
+     * 结束日期，格式yyyy-MM-dd
      */
-    @ApiModelProperty(name = "endDate", value = "结束日期", required = false)
+    @ApiModelProperty(name = "endDate", value = "结束日期，格式yyyy-MM-dd", required = false)
     @JSONField(format = "yyyy-MM-dd")
     private Date endDate;
     

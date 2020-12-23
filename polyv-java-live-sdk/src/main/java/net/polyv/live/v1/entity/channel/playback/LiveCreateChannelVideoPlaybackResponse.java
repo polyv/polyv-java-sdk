@@ -29,9 +29,9 @@ public class LiveCreateChannelVideoPlaybackResponse {
     private String videoPoolId;
     
     /**
-     * POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致
+     * 点播后台用户ID
      */
-    @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致", required = false)
+    @ApiModelProperty(name = "userId", value = "点播后台用户ID", required = false)
     private String userId;
     
     /**

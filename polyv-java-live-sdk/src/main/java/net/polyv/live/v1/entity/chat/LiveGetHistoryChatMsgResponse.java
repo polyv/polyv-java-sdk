@@ -19,9 +19,9 @@ import lombok.experimental.Accessors;
 public class LiveGetHistoryChatMsgResponse {
     
     /**
-     * POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致
+     * 直播账号userId
      */
-    @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致", required = false)
+    @ApiModelProperty(name = "userId", value = "直播账号userId", required = false)
     @JSONField(name = "acountId")
     private String userId;
     
@@ -128,7 +128,7 @@ public class LiveGetHistoryChatMsgResponse {
         private String roomId;
         
         /**
-         * 用户唯一标示
+         * 聊天室用户唯一标示
          */
         @ApiModelProperty(name = "userId", value = "聊天室用户唯一标示", required = false)
         private String userId;

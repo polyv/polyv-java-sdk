@@ -277,7 +277,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveChannelAuthTokenRequest.setChannelId(channelId)
+            liveChannelAuthTokenRequest.setUserId(getRandomString(32)).setChannelId(channelId)
                     .setRole(LiveConstant.Role.ADMIN.getDesc())
                     .setOrigin(null)
                     .setRequestId(LiveSignUtil.generateUUID());

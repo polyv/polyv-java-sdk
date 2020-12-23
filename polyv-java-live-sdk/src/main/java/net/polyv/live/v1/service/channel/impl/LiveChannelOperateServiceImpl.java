@@ -288,7 +288,6 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public LiveChannelAuthTokenResponse getChannelAuthToken(LiveChannelAuthTokenRequest liveCreateChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_AUTH_TOKEN_URL;
-        liveCreateChannelTokenRequest.setUserId(LiveGlobalConfig.getUserId());
         LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = this.basePost(url, liveCreateChannelTokenRequest,
                 LiveChannelAuthTokenResponse.class);
         return liveChannelAuthTokenResponse;

@@ -245,7 +245,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveChannelBasicInfoRequest.setChannelId("2041928").setRequestId(LiveSignUtil.generateUUID());
+            liveChannelBasicInfoRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().getChannelBasicInfo(
                     liveChannelBasicInfoRequest);
             Assert.assertNotNull(liveChannelBasicInfoResponse);

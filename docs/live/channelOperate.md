@@ -76,7 +76,7 @@
 | url | false | String | 直播推流地址 | 
 | stream | false | String | 直播流名称 | 
 | logoImage | false | String | 播放器logo | 
-| logoOpacity | false | Integer | Logo不透明度，1表示完全不透明 | 
+| logoOpacity | false | Float | Logo不透明度，1表示完全不透明 | 
 | logoPosition | false | String | Logo位置 | 
 | logoHref | false | String | Logo的跳转链接 | 
 | coverImage | false | String | 播放前显示的封面图 | 
@@ -379,7 +379,7 @@
 | url | false | String | 直播推流地址 | 
 | stream | false | String | 直播流名称 | 
 | logoImage | false | String | 播放器logo | 
-| logoOpacity | false | Integer | Logo不透明度，1表示完全不透明 | 
+| logoOpacity | false | Float | Logo不透明度，1表示完全不透明 | 
 | logoPosition | false | String | Logo位置 | 
 | logoHref | false | String | Logo的跳转链接 | 
 | coverImage | false | String | 播放前显示的封面图 | 
@@ -476,7 +476,7 @@
 | url | false | String | 直播推流地址 | 
 | stream | false | String | 直播流名称 | 
 | logoImage | false | String | 播放器logo | 
-| logoOpacity | false | Integer | Logo不透明度，1表示完全不透明 | 
+| logoOpacity | false | Float | Logo不透明度， 取值【0-1】, 1表示完全不透明 | 
 | logoPosition | false | String | Logo位置 | 
 | logoHref | false | String | Logo的跳转链接 | 
 | coverImage | false | String | 播放前显示的封面图 | 

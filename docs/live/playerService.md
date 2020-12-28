@@ -202,7 +202,7 @@ true 设置成功，false 设置失败
                     .setLogoPosition(LiveConstant.LogoPosition.BL.getPosition())
                     .setLogoImage(
                             "https://c-ssl.duitang.com/uploads/blog/202009/01/20200901155255_e8037.thumb.1000_0.jpg")
-                    .setLogoOpacity(1D)
+                    .setLogoOpacity(0.32f)
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerLogo(liveSetPlayerLogoRequest);
             Assert.assertNotNull(result);
@@ -233,7 +233,7 @@ true 设置成功，false 设置失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | logoImage | true | String | logo图片地址，建议大小为：长方形140x50或正方形50x50 | 
-| logoOpacity | true | Double | logo透明度，取值范围为(0,1]，即大于0，并且小于等于1 | 
+| logoOpacity | true | Float | logo透明度，取值范围为(0,1]，即大于0，并且小于等于1 | 
 | logoPosition | true | String | logo位置，取值为为左上角(tl)、右上角(tr)、左下角(bl)、右下角(br) | 
 | logoHref | false | String | logo图片点击跳转链接 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 

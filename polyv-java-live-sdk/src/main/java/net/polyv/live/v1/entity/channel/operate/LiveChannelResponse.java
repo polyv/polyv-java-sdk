@@ -60,7 +60,7 @@ public class LiveChannelResponse {
      * LOGO透明度
      */
     @ApiModelProperty(name = "logoOpacity", value = "Logo不透明度，1表示完全不透明")
-    protected Integer logoOpacity;
+    protected Float logoOpacity;
     
     /**
      * LOGO位置

@@ -6,8 +6,7 @@
 
 :: @echo off
 chcp 65001
-echo "请确认请求域名已经替换回  【api.polyv.net】 "
-pause
+
 
 :: 同步主分支代码
 git pull origin master
@@ -15,15 +14,16 @@ git pull origin master
 git merge dev --no-ff
 :: 查看同步状态，确认合并完成
 git status
-PAUSE
+echo "请确认请求域名已经替换回  【api.polyv.net】 "
+pause
 :: 针对当前分支新建一个版本tag
 git  tag  %1
 :: # 提交master分支到origin远程仓库
 git push origin master  --tags
 :: # 提交master分支到github远程仓库
-::git push github master  --tags
+::git push github master
 :: # 提交master分支到gitee远程仓库
-::git push gitee master  --tags
+::git push gitee master
 :: # 切换回dev分支
 git checkout dev
 PAUSE

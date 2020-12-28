@@ -154,7 +154,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
                     .setLogoPosition(LiveConstant.LogoPosition.BL.getPosition())
                     .setLogoImage(
                             "https://c-ssl.duitang.com/uploads/blog/202009/01/20200901155255_e8037.thumb.1000_0.jpg")
-                    .setLogoOpacity(1D)
+                    .setLogoOpacity(0.32f)
                     .setRequestId(LiveSignUtil.generateUUID());
             result = new LivePlayerServiceImpl().setPlayerLogo(liveSetPlayerLogoRequest);
             Assert.assertNotNull(result);

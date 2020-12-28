@@ -48,7 +48,7 @@
 | -- | -- | -- | -- | 
 | categoryId | false | Integer | 分类id | 
 | categoryName | false | String | 分类名称 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | rank | false | Integer | 分类排序(从小到大排序) | 
 
 <br /><br />
@@ -112,7 +112,7 @@
 | -- | -- | -- | -- | 
 | categoryId | false | Integer | 分类ID | 
 | categoryName | false | String | 分类名称 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | rank | false | Integer | 分类排序号，rank=0表示为默认排序 | 
 
 <br /><br />
@@ -331,7 +331,7 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | email | false | String | 邮箱账号 | 
 | maxChannels | false | Integer | 最大可创建频道数 | 
 | totalChannels | false | Integer | 当前已创建频道总数 | 
@@ -428,7 +428,7 @@ true为删除成功，false为删除失败
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号 | 
 | rank | false | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | globalSettingEnabled | false | String | 是否开启全局设置（Y/N） | 
 | enabled | false | String | 是否开启观看条件(Y/N) | 
 | authType | false | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
@@ -450,8 +450,7 @@ true为删除成功，false为删除失败
 | directKey | false | String | 独立授权key | 
 | trialWatchEnabled | false | String | 试看开关，Y:开启试看，N:关闭试看 | 
 | trialWatchTime | false | Integer | 试看时间，单位为分钟 | 
-| trialWatchEndTime | false | Date | 试看截止日期，为null 表示对该频道永久有效
- | 
+| trialWatchEndTime | false | Date | 试看截止日期，为null 表示对该频道永久有效 | 
 
 <br /><br />
 
@@ -777,7 +776,7 @@ true为设置回调成功，false为设置回调失败
 | videoId | false | String | 转存回放唯一的id | 
 | origin | false | String | 转存的录制来源。manual-云录制，auto-自动录制，merge-合并，clip-裁剪 | 
 | sessionId | false | String | 回放对应的单个场次id | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | status | false | String | 转存成功返回success | 
 
 <br /><br />
@@ -1126,7 +1125,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | available | false | Long | 当前可用的分钟数 | 
 | used | false | Long | 历史已经使用的分钟数 | 
 

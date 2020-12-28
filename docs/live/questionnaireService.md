@@ -67,7 +67,7 @@
 | -- | -- | -- | -- | 
 | questionnaireId | false | String | 问卷ID | 
 | channelId | false | String | 频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | questionnaireTitle | false | String | 问卷标题 | 
 | status | false | String | 问卷状态，取值：saved(已保存)，published （已发布），forbidden （问卷已完成填写） | 
 | createdTime | false | Date | 问卷创建时间 | 
@@ -142,7 +142,7 @@
 | questionnaireId | false | String | 问卷ID | 
 | customQuestionnaireId | false | String | 用户自定义问卷ID | 
 | channelId | false | String | 频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | questionnaireTitle | false | String | 问卷标题 | 
 | status | false | String | 问卷状态，draft：草稿，send：已发送，delete：已删除 | 
 | createdTime | false | Date | 问卷创建时间 | 

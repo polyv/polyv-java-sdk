@@ -70,7 +70,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 直播频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | name | false | String | 直播频道名称 | 
 | description | false | String | 直播频道描述 | 
 | url | false | String | 直播推流地址 | 
@@ -244,7 +244,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 直播频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | name | false | String | 直播频道名称 | 
 | description | false | String | 直播频道描述 | 
 | url | false | String | 直播推流地址 | 
@@ -373,7 +373,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 直播频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | name | false | String | 直播频道名称 | 
 | description | false | String | 直播频道描述 | 
 | url | false | String | 直播推流地址 | 
@@ -470,7 +470,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | name | false | String | 直播频道名称 | 
 | description | false | String | 直播频道描述 | 
 | url | false | String | 直播推流地址 | 
@@ -537,7 +537,7 @@
         try {
             //准备测试数据
             String channelId = createChannel();
-            liveChannelBasicInfoRequest.setChannelId("2041928").setRequestId(LiveSignUtil.generateUUID());
+            liveChannelBasicInfoRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().getChannelBasicInfo(
                     liveChannelBasicInfoRequest);
             Assert.assertNotNull(liveChannelBasicInfoResponse);
@@ -599,7 +599,7 @@
 | -- | -- | -- | -- | 
 | categoryId | false | Integer | 分类ID | 
 | categoryName | false | String | 分类名称 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | rank | false | Integer | 分类的排序值 | 
 
 <h6 id="polyv14"><a href="#/channelOperate?id=polyv14"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
@@ -607,7 +607,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | rank | false | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
 | globalSettingEnabled | false | String | 是否开启全局设置（Y/N） | 
 | enabled | false | String | 是否开启观看条件(Y/N) | 
@@ -649,7 +649,7 @@
         try {
             //准备测试数据
             String channelId = createChannel();
-            liveChannelAuthTokenRequest.setChannelId(channelId)
+            liveChannelAuthTokenRequest.setUserId(getRandomString(32)).setChannelId(channelId)
                     .setRole(LiveConstant.Role.ADMIN.getDesc())
                     .setOrigin(null)
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -681,6 +681,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
+| userId | true | String | C端观众ID | 
 | channelId | true | String | 频道号 | 
 | role | true | String | 角色，值有：teacher admin guest assistant viewer等 | 
 | origin | false | String | 观看来源,可以有web,client,app等 | 
@@ -1210,7 +1211,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | account | false | String | 助教ID | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | channelId | false | String | 频道号 | 
 | passwd | false | String | 助教密码 | 
 | nickname | false | String | 助教名称 | 
@@ -1300,7 +1301,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | account | false | String | 助教ID | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | channelId | false | String | 频道号 | 
 | passwd | false | String | 助教密码 | 
 | nickname | false | String | 助教名称 | 
@@ -1381,7 +1382,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | account | false | String | 子频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | channelId | false | String | 频道号 | 
 | passwd | false | String | 子频道密码 | 
 | nickname | false | String | 子频道名称 | 
@@ -1465,7 +1466,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | account | false | String | 子频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | channelId | false | String | 频道号 | 
 | passwd | false | String | 子频道密码 | 
 | nickname | false | String | 子频道名称 | 
@@ -2065,7 +2066,7 @@ null
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | account | false | Integer | 助教ID | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | channelId | false | String | 频道号 | 
 | passwd | false | String | 助教密码 | 
 | nickname | false | String | 助教名称 | 

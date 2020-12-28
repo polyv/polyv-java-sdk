@@ -198,7 +198,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | 直播账号userId | 
 | clientIP | false | String | 用户IP | 
 | content | false | String | 聊天内容 | 
 | id | false | String | 聊天消息id | 

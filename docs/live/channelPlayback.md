@@ -59,7 +59,7 @@
 | -- | -- | -- | -- | 
 | videoId | false | String | 直播系统生成的id | 
 | videoPoolId | false | String | 点播视频vid | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | 点播后台用户ID | 
 | channelId | false | String | 回放视频对应的直播频道号 | 
 | title | false | String | 视频标题 | 
 | firstImage | false | String | 视频首图 | 
@@ -367,7 +367,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | -- | -- | -- | -- | 
 | videoId | false | String | 直播系统生成的id | 
 | videoPoolId | false | String | 点播视频vid | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | 点播后台用户ID | 
 | channelId | false | String | 回放视频对应的直播频道号 | 
 | title | false | String | 视频标题 | 
 | firstImage | false | String | 视频首图 | 
@@ -441,8 +441,8 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| startDate | false | Date | 开始日期 | 
-| endDate | false | Date | 结束日期 | 
+| startDate | false | Date | 开始日期，格式yyyy-MM-dd | 
+| endDate | false | Date | 结束日期，格式yyyy-MM-dd | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
@@ -602,7 +602,7 @@ Y为开启，N为关闭
 | m3u8 | false | String | m3u8文件地址 | 
 | mp4 | false | String | MP4地址 | 
 | startTime | false | Date | 开始时间 | 
-| userId | false | String | POLYV用户ID，和保利威官网获取，路径：官网->登录->直播（开发设置）一致 | 
+| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | width | false | Integer | 宽 | 
 
 <br /><br />

@@ -55,18 +55,18 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 签到记录数据数组【详见[CheckinRecord参数描述](checkinService.md?id=polyv36)】 | 
+| contents | false | Array | 签到记录数据数组【详见[CheckinRecord参数描述](checkinService.md?id=polyv37)】 | 
 
-<h6 id="polyv36"><a href="#/channelOperate?id=polyv36"data-id="CheckinRecord参数描述"class="anchor"><span>CheckinRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv37"><a href="#/channelOperate?id=polyv37"data-id="CheckinRecord参数描述"class="anchor"><span>CheckinRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | indate | false | Date | 查询的签到日期，yyyy-MM-dd格式 | 
 | nickname | false | String | 昵称 | 
-| userId | false | String | 用户id | 
+| userId | false | String | C端观众ID | 
 | channelId | false | String | 频道号 | 
-| time | false | Date | 签到的具体时间戳 | 
-| timeFormat | false | Date | 签到的格式化详细日期，yyyy-MM-dd HH:mm | 
+| time | false | Date | 签到时间 | 
+| timeFormat | false | Date | 签到的格式化详细日期，yyyy-MM-dd HH:mm 格式 | 
 | sessionId | false | String | 场次sessionId | 
 | checkinid | false | String | 签到ID | 
 | id | false | String | 签到记录主键 | 
@@ -210,7 +210,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| createtime | false | String | 签到时间 | 
+| createtime | false | Date | 签到时间 | 
 | checkinid | false | String | 签到ID | 
 | sessionId | false | String | 场次号 | 
 | roomid | false | String | 房间号 | 

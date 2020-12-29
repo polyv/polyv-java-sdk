@@ -21,8 +21,8 @@ public class LiveBadWordResponse {
     private Integer count;
     
     /**
-     * 直播账号ID
+     * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
      */
-    @ApiModelProperty(name = "userId", value = "直播账号ID", required = false)
+    @ApiModelProperty(name = "userId", value = "POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）", required = false)
     private String userId;
 }

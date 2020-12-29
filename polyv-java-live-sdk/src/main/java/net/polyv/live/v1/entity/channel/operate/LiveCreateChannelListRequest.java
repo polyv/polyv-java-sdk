@@ -2,14 +2,13 @@ package net.polyv.live.v1.entity.channel.operate;
 
 import java.util.List;
 
-import net.polyv.common.v1.validator.constraints.Length;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.common.v1.validator.constraints.NotNull;
+import net.polyv.common.v1.validator.constraints.Length;
+import net.polyv.common.v1.validator.constraints.NotBlank;
 import net.polyv.live.v1.constant.LiveConstant;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 
@@ -41,10 +40,10 @@ public class LiveCreateChannelListRequest extends LiveCommonRequest {
         private String name;
         
         /**
-         * 频道密码，长度不能超过16位
+         * 频道密码，长度不能超过16位，必须同时包含字母和数字
          */
-        @ApiModelProperty(name = "channelPasswd", value = "频道密码，长度不能超过16位", required = true, example = "12345678")
-        @NotNull(message = "属性channelPasswd不能为空")
+        @ApiModelProperty(name = "channelPasswd", value = "频道密码，长度不能超过16位，必须同时包含字母和数字", required = true, example = "12345678")
+        @NotBlank(message = "属性channelPasswd不能为空")
         @Length(max = 16, message = "频道密码不能超过16位")
         private String channelPasswd;
         
@@ -70,10 +69,10 @@ public class LiveCreateChannelListRequest extends LiveCommonRequest {
         private String playerColor;
         
         /**
-         * 直播场景
+         * 直播场景,alone 活动拍摄; ppt 三分屏; topclass 大班课
          * @see LiveConstant.SceneType
          */
-        @ApiModelProperty(name = "scene", value = "直播场景，值可查看LiveConstant.SceneType", required = false, example = "alone")
+        @ApiModelProperty(name = "scene", value = "直播场景，alone 活动拍摄; ppt 三分屏; topclass 大班课", required = false, example = "alone")
         private String scene;
         
         /**

@@ -1,6 +1,9 @@
 package net.polyv.live.v1.entity.channel.playback;
 
+import java.util.Date;
 import java.util.List;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -39,9 +42,9 @@ public class LiveListChannelVideoLibraryResponse extends LivePageCommonResponse 
         private String videoPoolId;
         
         /**
-         * 点播后台用户id
+         * 点播后台用户ID
          */
-        @ApiModelProperty(name = "userId", value = "点播后台用户id", required = false)
+        @ApiModelProperty(name = "userId", value = "点播后台用户ID", required = false)
         private String userId;
         
         /**
@@ -63,9 +66,9 @@ public class LiveListChannelVideoLibraryResponse extends LivePageCommonResponse 
         private String firstImage;
         
         /**
-         * 视频长度
+         * 视频长度，如：00:27:10
          */
-        @ApiModelProperty(name = "duration", value = "视频长度", required = false)
+        @ApiModelProperty(name = "duration", value = "视频长度，如：00:27:10", required = false)
         private String duration;
         
         /**
@@ -90,13 +93,13 @@ public class LiveListChannelVideoLibraryResponse extends LivePageCommonResponse 
          * 添加为回放视频的日期
          */
         @ApiModelProperty(name = "createdTime", value = "添加为回放视频的日期", required = false)
-        private Long createdTime;
+        private Date createdTime;
         
         /**
          * 视频最后修改日期
          */
         @ApiModelProperty(name = "lastModified", value = "视频最后修改日期", required = false)
-        private Long lastModified;
+        private Date lastModified;
         
         /**
          * 是否为默认播放视频，值为Y/N
@@ -126,7 +129,8 @@ public class LiveListChannelVideoLibraryResponse extends LivePageCommonResponse 
          * 直播开始时间
          */
         @ApiModelProperty(name = "startTime", value = "直播开始时间", required = false)
-        private String startTime;
+        @JSONField(format = "yyyyMMddHHmmss")
+        private Date startTime;
         
         /**
          * playback-回放列表，vod-点播列表;

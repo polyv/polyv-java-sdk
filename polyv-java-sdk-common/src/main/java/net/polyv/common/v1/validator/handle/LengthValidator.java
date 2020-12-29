@@ -15,8 +15,8 @@ public class LengthValidator extends Validator {
     }
     
     @Override
-    protected String dealValidate(Annotation annotation, Field field,Object data, Class<?>... groups) {
-        if(data == null){
+    protected String dealValidate(Annotation annotation, Field field, Object data, Class<?>... groups) {
+        if (data == null) {
             return null;
         }
         Length cast = Length.class.cast(annotation);
@@ -24,20 +24,22 @@ public class LengthValidator extends Validator {
             int length;
             if (data instanceof CharSequence) {
                 length = ((CharSequence) data).length();
-                return isValid(cast.min(),cast.max(),length)?null:cast.message();
             } else if (data instanceof List) {
                 length = ((List) data).size();
-                return isValid(cast.min(),cast.max(),length)?null:cast.message();
             } else if (data.getClass().isArray()) {
                 length = ((Object[]) data).length;
-                return isValid(cast.min(),cast.max(),length)?null:cast.message();
             } else {
                 //  根据需求继续添加其他类型的验证
                 throw new RuntimeException(field.getName() + " Length validation exception");
             }
+            return getValidMsg(cast, length);
         } else {
             return null;
         }
+    }
+    
+    private String getValidMsg(Length cast, long length) {
+        return isValid(cast.min(), cast.max(), length) ? null : cast.message();
     }
     
     private boolean isValid(long min, long max, long length) {

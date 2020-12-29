@@ -49,8 +49,8 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| startTime | true | Date | 开始时间13位毫秒级时间戳 | 
-| endTime | true | Date | 结束时间13位毫秒级时间戳 | 
+| startTime | true | Date | 开始时间 | 
+| endTime | true | Date | 结束时间 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
@@ -188,9 +188,9 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号 | 
-| currentDay | true | Date | 查询日期，格式：yyyy-MM-dd | 
-| startTime | false | String | 查询开始时间，为13位毫秒级时间戳 | 
-| endTime | false | String | 查询结束时间，13位毫秒级时间戳 | 
+| currentDay | false | Date | 查询日期，格式：yyyy-MM-dd | 
+| startTime | false | Date | 查询开始时间 | 
+| endTime | false | Date | 查询结束时间 | 
 | viewerId | false | String | 观看用户ID | 
 | viewerName | false | String | 观看用户名称 | 
 | logType | false | String | 观看日志类型，取值 vod 表示观看回放，取值live 表示直播 | 
@@ -391,7 +391,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号 | 
-| time | false | String | 统计的时间点（时间格式：12H） | 
+| time | false | String | 统计的时间点（时间格式：12H），例：10:58:29 | 
 | count | false | String | 某个时间点实时观看人数 | 
 
 <br /><br />

@@ -29,15 +29,15 @@ public class LiveQuestionnaireListRequest extends LivePageCommonRequest {
     private String channelId;
     
     /**
-     * 查询的记录的开始时间，13位位毫秒级时间戳
+     * 查询的记录的开始时间
      */
-    @ApiModelProperty(name = "startTime", value = "查询的记录的开始时间，13位位毫秒级时间戳", required = false)
+    @ApiModelProperty(name = "startTime", value = "查询的记录的开始时间", required = false)
     private Date startTime;
     
     /**
-     * 查询的记录的结束时间，13位毫秒级时间戳
+     * 查询的记录的结束时间
      */
-    @ApiModelProperty(name = "endTime", value = "查询的记录的结束时间，13位毫秒级时间戳", required = false)
+    @ApiModelProperty(name = "endTime", value = "查询的记录的结束时间", required = false)
     private Date endTime;
     
     

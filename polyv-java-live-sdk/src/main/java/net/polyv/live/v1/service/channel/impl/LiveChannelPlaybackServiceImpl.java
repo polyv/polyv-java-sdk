@@ -124,12 +124,12 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
             throws IOException, NoSuchAlgorithmException {
         liveChannelVideoListRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_RECORD_FILES_URL, liveChannelVideoListRequest.getChannelId());
-        LiveChannelVideoListResponse.ChannelVedioInfo[] channelVedioInfos = this.baseGet(url,
-                liveChannelVideoListRequest, LiveChannelVideoListResponse.ChannelVedioInfo[].class);
+        LiveChannelVideoListResponse.ChannelVideoInfo[] channelVedioInfos = this.baseGet(url,
+                liveChannelVideoListRequest, LiveChannelVideoListResponse.ChannelVideoInfo[].class);
         channelVedioInfos =
-                channelVedioInfos == null ? new LiveChannelVideoListResponse.ChannelVedioInfo[]{} : channelVedioInfos;
+                channelVedioInfos == null ? new LiveChannelVideoListResponse.ChannelVideoInfo[]{} : channelVedioInfos;
         LiveChannelVideoListResponse liveChannelVideoListResponse = new LiveChannelVideoListResponse();
-        liveChannelVideoListResponse.setChannelVedioInfos(Arrays.asList(channelVedioInfos));
+        liveChannelVideoListResponse.setChannelVideoInfos(Arrays.asList(channelVedioInfos));
         return liveChannelVideoListResponse;
     }
     

@@ -1,6 +1,9 @@
 package net.polyv.live.v1.entity.channel.playback;
 
+import java.util.Date;
 import java.util.List;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -16,13 +19,13 @@ import lombok.experimental.Accessors;
 @ApiModel("查询频道录制视频信息返回实体")
 public class LiveChannelVideoListResponse {
     
-    @ApiModelProperty(name = "channelVedioInfos", value = "视频库视频信息", required = false)
-    private List<ChannelVedioInfo> channelVedioInfos;
+    @ApiModelProperty(name = "channelVideoInfos", value = "视频库视频信息", required = false)
+    private List<ChannelVideoInfo> channelVideoInfos;
     
     @Data
     @Accessors(chain = true)
     @ApiModel("直播视频库视频信息")
-    public static class ChannelVedioInfo {
+    public static class ChannelVideoInfo {
         
         /**
          * 录制文件id
@@ -43,16 +46,18 @@ public class LiveChannelVideoListResponse {
         private String url;
         
         /**
-         * 开始录制时间,13位时间戳
+         * 开始录制时间
          */
-        @ApiModelProperty(name = "startTime", value = "开始录制时间,13位时间戳", required = false)
-        private String startTime;
+        @ApiModelProperty(name = "startTime", value = "开始录制时间", required = false)
+        @JSONField(format = "yyyyMMddHHmmss")
+        private Date startTime;
         
         /**
          * 结束录制时间
          */
         @ApiModelProperty(name = "endTime", value = "结束录制时间", required = false)
-        private String endTime;
+        @JSONField(format = "yyyyMMddHHmmss")
+        private Date endTime;
         
         /**
          * 录制文件大小（单位：字节）

@@ -20,9 +20,9 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 public class LiveChannelAuthTokenRequest extends LiveCommonRequest {
     
     /**
-     * 观看者用户ID
+     * C端观众ID
      */
-    @ApiModelProperty(hidden = true)
+    @ApiModelProperty(name = "userId", value = "C端观众ID", required = true)
     @NotNull(message = "属性userId不能为空")
     private String userId;
     

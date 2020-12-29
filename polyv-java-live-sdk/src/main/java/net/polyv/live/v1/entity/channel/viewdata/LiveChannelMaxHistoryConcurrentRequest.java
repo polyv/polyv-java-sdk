@@ -26,15 +26,15 @@ public class LiveChannelMaxHistoryConcurrentRequest extends LiveCommonRequest {
     private String channelId;
     
     /**
-     * 开始时间13位毫秒级时间戳
+     * 开始时间
      */
-    @ApiModelProperty(name = "startTime", value = "开始时间13位毫秒级时间戳", required = true)
+    @ApiModelProperty(name = "startTime", value = "开始时间", required = true)
     private Date startTime;
     
     /**
-     * 结束时间13位毫秒级时间戳
+     * 结束时间
      */
-    @ApiModelProperty(name = "endTime", value = "结束时间13位毫秒级时间戳", required = true)
+    @ApiModelProperty(name = "endTime", value = "结束时间", required = true)
     private Date endTime;
     
 }

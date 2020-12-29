@@ -1,5 +1,6 @@
 package net.polyv.live.v1.entity.interact;
 
+import java.util.Date;
 import java.util.List;
 
 import io.swagger.annotations.ApiModel;
@@ -79,7 +80,7 @@ public class LiveLotteryWinnerDetailResponse extends LivePageCommonResponse {
          * 中奖时间
          */
         @ApiModelProperty(name = "createdTime", value = "中奖时间", required = false)
-        private Long createdTime;
+        private Date createdTime;
         
         /**
          * json 格式的字符串,表示中奖记录的额外拓展信息，对应模型类：WinnerRecordModelExt

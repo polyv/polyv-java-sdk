@@ -18,9 +18,9 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 public class LiveChannelDonateRequest extends LiveCommonRequest {
     
     /**
-     * 频道号，不传为全局设置
+     * 频道号，不传为获取全局设置
      */
-    @ApiModelProperty(name = "channelId", value = "频道号，不传为全局设置", required = false)
+    @ApiModelProperty(name = "channelId", value = "频道号，不传为获取全局设置", required = false)
     private String channelId;
     
 }

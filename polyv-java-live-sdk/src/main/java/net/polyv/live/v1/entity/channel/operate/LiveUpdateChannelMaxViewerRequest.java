@@ -27,7 +27,7 @@ public class LiveUpdateChannelMaxViewerRequest extends LiveCommonRequest {
     private String channelId;
     
     /**
-     * 直播账号ID
+     * POLYV用户ID，可通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
      */
     @ApiModelProperty(hidden = true)
     @NotNull(message = "属性userId不能为空")

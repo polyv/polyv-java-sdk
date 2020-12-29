@@ -30,7 +30,7 @@ public class LiveBadWordRequest extends LiveCommonRequest {
  
     
     /**
-     * 禁言IP列表
+     * 严禁词列表
      */
     @ApiModelProperty(name = "words", value = "严禁词列表", required = true)
     @NotNull(message = "属性words不能为空")

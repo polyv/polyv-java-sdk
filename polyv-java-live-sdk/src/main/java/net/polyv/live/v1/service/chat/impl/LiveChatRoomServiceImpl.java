@@ -201,7 +201,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     }
     
     /**
-     * 查询历史聊天信息，API地址：https://dev.polyv.net/2019/liveproduct/zblts/get-channel-badwords/
+     * 查询历史聊天信息，API地址：https://dev.polyv.net/2017/liveproduct/zblts/gethistorymsg/
      * @param liveGetHistoryChatMsgRequest 查询历史聊天信息请求实体
      * @return 想要实体列表
      * @throws IOException 客户端和服务器读写异常
@@ -269,6 +269,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 异常
      */
+    @Deprecated
     @Override
     public List<LiveGetQuestionStatisticalResponse> getQuestionStatistical(
             LiveGetQuestionStatisticalRequest liveGetQuestionStatisticalRequest)

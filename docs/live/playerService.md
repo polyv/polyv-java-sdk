@@ -306,7 +306,7 @@ true 设置成功， fales 设置失败
 | headAdvertType | false | String | 广告类型,NONE-无广告，IMAGE-图片广告，FLV-视频广告 | 
 | headAdvertMediaUrl | false | String | 广告地址 | 
 | headAdvertHref | false | String | 广告跳转地址 | 
-| headAdvertDuration | false | Integer | 广告时长 | 
+| headAdvertDuration | false | Integer | 广告时长，单位：秒 | 
 | headAdvertWidth | false | Integer | 广告宽度 | 
 | headAdvertHeight | false | Integer | 广告高度 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 

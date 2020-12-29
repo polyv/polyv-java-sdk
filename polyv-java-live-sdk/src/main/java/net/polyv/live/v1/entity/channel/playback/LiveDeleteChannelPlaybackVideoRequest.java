@@ -28,7 +28,6 @@ public class LiveDeleteChannelPlaybackVideoRequest extends LiveCommonRequest {
     
     /**
      * 直播系统生成的id，可在回放列表接口的返回数据获取
-     * {@link net.polyv.live.service.ChannelTest#testListChannelVideoLibrary()}
      */
     @ApiModelProperty(name = "videoId", value = "直播系统生成的id，可在回放列表接口的返回数据获取", required = true)
     @NotNull(message = "属性videoId不能为空")

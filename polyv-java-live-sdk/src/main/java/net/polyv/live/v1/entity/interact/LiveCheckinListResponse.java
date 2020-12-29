@@ -42,9 +42,9 @@ public class LiveCheckinListResponse {
         private String nickname;
         
         /**
-         * 用户id
+         * C端观众ID
          */
-        @ApiModelProperty(name = "userId", value = "用户id", required = false)
+        @ApiModelProperty(name = "userId", value = "C端观众ID", required = false)
         @JSONField(name = "userid")
         private String userId;
         
@@ -55,15 +55,15 @@ public class LiveCheckinListResponse {
         private String channelId;
         
         /**
-         * 签到的具体时间戳
+         * 签到时间
          */
-        @ApiModelProperty(name = "time", value = "签到的具体时间戳", required = false)
+        @ApiModelProperty(name = "time", value = "签到时间", required = false)
         private Date time;
         
         /**
-         * 签到的格式化详细日期，yyyy-MM-dd
+         * 签到的格式化详细日期，yyyy-MM-dd HH:mm 格式
          */
-        @ApiModelProperty(name = "timeFormat", value = "签到的格式化详细日期，yyyy-MM-dd HH:mm", required = false)
+        @ApiModelProperty(name = "timeFormat", value = "签到的格式化详细日期，yyyy-MM-dd HH:mm 格式", required = false)
         private Date timeFormat;
         
         /**
@@ -73,23 +73,22 @@ public class LiveCheckinListResponse {
         private String sessionId;
         
         /**
-         * 场次sessionId
+         * 签到ID，一场签到一个id
          */
         @ApiModelProperty(name = "checkinid", value = "签到ID", required = false)
         private String checkinid;
     
         /**
-         * 场次sessionId
+         * 签到记录主键
          */
         @ApiModelProperty(name = "id", value = "签到记录主键", required = false)
         private String id;
+        
         /**
          * 该场次直播开始时间，如果不传sessionId,startTime为空；传sessionId,startTime显示
          */
         @ApiModelProperty(name = "startTime", value = "该场次直播开始时间，只有请求参数传sessionId,该字段才有值", required = false)
         private Date startTime;
-    
-        
         
         /**
          * 在外部授权、直接（独立）授权情况下传过来的自定义参数
@@ -102,6 +101,7 @@ public class LiveCheckinListResponse {
          */
         @ApiModelProperty(name = "param5", value = "在外部授权、直接（独立）授权情况下传过来的自定义参数", required = false)
         private String param5;
+        
     }
 }
 

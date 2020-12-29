@@ -3,8 +3,6 @@ package net.polyv.live.v1.entity.channel.operate;
 import java.util.Date;
 import java.util.List;
 
-import net.polyv.common.v1.validator.constraints.NotNull;
-
 import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
@@ -12,6 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 
 /**
@@ -54,9 +53,9 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
         private String name;
         
         /**
-         * 频道密码,长度不能超过16位
+         * 频道密码,长度不能超过16位,必须同时包含字母和数字
          */
-        @ApiModelProperty(name = "channelPasswd", value = "频道密码,长度不能超过16位", required = false)
+        @ApiModelProperty(name = "channelPasswd", value = "频道密码,长度不能超过16位,必须同时包含字母和数字", required = false)
         private String channelPasswd;
         
         /**
@@ -132,10 +131,9 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
         private Integer categoryId;
         
         /**
-         * 连麦人数，-1：使用账号的连麦人数，范围大于等于-1，小于等于账号的连麦人数，最大16人
+         * -1<=连麦人数<=账号的连麦人数，-1：使用账号的连麦人数，最大16人
          */
-        @ApiModelProperty(name = "linkMicLimit", value = "连麦人数，-1：使用账号的连麦人数，范围大于等于-1，小于等于账号的连麦人数，最大16人", required =
-                false)
+        @ApiModelProperty(name = "linkMicLimit", value = "-1<=连麦人数<=账号的连麦人数，-1：使用账号的连麦人数，最大16人", required = false)
         private Integer linkMicLimit;
         
         /**
@@ -148,7 +146,8 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
         /**
          * 接收转播频道号，多个频道号用半角逗号,隔开(注：需要开启频道转播功能该参数才生效)
          */
-        @ApiModelProperty(name = "receiveChannelIds", value = "接收转播频道号，多个频道号用半角逗号,隔开(注：需要开启频道转播功能该参数才生效)", required = false)
+        @ApiModelProperty(name = "receiveChannelIds", value = "接收转播频道号，多个频道号用半角逗号,隔开(注：需要开启频道转播功能该参数才生效)", required =
+                false)
         private String receiveChannelIds;
     }
     
@@ -190,10 +189,10 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
         private Float price;
         
         /**
-         * 付费观看参数：付费有效截止日期，格式为yyyy-MM-dd HH:mm。当watchEndTime和validTimePeriod都为空时，表示付费永久有效
+         * 付费观看参数：付费有效截止日期。当watchEndTime和validTimePeriod都为空时，表示付费永久有效
          */
-        @ApiModelProperty(name = "watchEndTime", value = "付费观看参数：付费有效截止日期，格式为yyyy-MM-dd " +
-                "HH:mm。当watchEndTime和validTimePeriod都为空时，表示付费永久有效", required = false)
+        @ApiModelProperty(name = "watchEndTime", value = "付费观看参数：付费有效截止日期。当watchEndTime和validTimePeriod都为空时，表示付费永久有效"
+                , required = false)
         @JSONField(format = "yyyy-MM-dd HH:mm")
         private Date watchEndTime;
         

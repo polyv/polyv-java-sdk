@@ -40,7 +40,7 @@ public class LiveAccountRecordCallbackRequest extends LiveCommonRequest {
          * 频道号
          */
         @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-        private Integer channelId;
+        private String channelId;
     
         /**
          * 录制文件地址
@@ -55,15 +55,15 @@ public class LiveAccountRecordCallbackRequest extends LiveCommonRequest {
         private String format;
     
         /**
-         * 13位的时间戳
+         * 13位的时间戳(签名使用)
          */
-        @ApiModelProperty(name = "timestamp", value = "13位的时间戳", required = false)
+        @ApiModelProperty(name = "timestamp", value = "13位的时间戳(签名使用)", required = false)
         private Long timestamp;
     
         /**
-         * 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙
+         * 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的密匙
          */
-        @ApiModelProperty(name = "sign", value = "校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙", required = false)
+        @ApiModelProperty(name = "sign", value = "校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的密匙", required = false)
         private String sign;
     
         /**

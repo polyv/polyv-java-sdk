@@ -21,9 +21,9 @@ public class LiveChannelSplashResponse {
     private String splashImg;
     
     /**
-     * 引导功能开关
+     * 引导功能开关,Y/N
      */
-    @ApiModelProperty(name = "splashEnabled", value = "引导功能开关", required = false)
+    @ApiModelProperty(name = "splashEnabled", value = "引导功能开关,Y/N", required = false)
     private String splashEnabled;
 
 }

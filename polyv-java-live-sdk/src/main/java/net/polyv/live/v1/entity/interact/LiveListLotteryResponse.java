@@ -1,5 +1,6 @@
 package net.polyv.live.v1.entity.interact;
 
+import java.util.Date;
 import java.util.List;
 
 import io.swagger.annotations.ApiModel;
@@ -80,7 +81,7 @@ public class LiveListLotteryResponse extends LivePageCommonResponse {
          * 抽奖时间
          */
         @ApiModelProperty(name = "createdTime", value = "抽奖时间", required = false)
-        private Long createdTime;
+        private Date createdTime;
         
         /**
          * 实际中奖人数

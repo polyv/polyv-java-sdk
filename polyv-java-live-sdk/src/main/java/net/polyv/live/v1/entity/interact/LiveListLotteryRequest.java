@@ -35,16 +35,16 @@ public class LiveListLotteryRequest extends LivePageCommonRequest {
     private String sessionId;
     
     /**
-     * 查询的开始日期的13位时间戳
+     * 查询的开始日期
      */
-    @ApiModelProperty(name = "startTime", value = "查询的开始日期的13位时间戳", required = true)
+    @ApiModelProperty(name = "startTime", value = "查询的开始日期", required = true)
     @NotNull(message = "属性startTime不允许为空")
     private Date startTime;
     
     /**
-     * 查询的结束日期的13位时间戳
+     * 查询的结束日期
      */
-    @ApiModelProperty(name = "endTime", value = "查询的结束日期的13位时间戳", required = false)
+    @ApiModelProperty(name = "endTime", value = "查询的结束日期", required = false)
     @NotNull(message = "属性endTime不允许为空")
     private Date endTime;
     

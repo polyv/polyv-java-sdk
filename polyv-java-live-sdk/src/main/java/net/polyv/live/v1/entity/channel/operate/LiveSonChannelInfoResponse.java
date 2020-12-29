@@ -1,5 +1,7 @@
 package net.polyv.live.v1.entity.channel.operate;
 
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -21,9 +23,9 @@ public class LiveSonChannelInfoResponse {
     private String account;
     
     /**
-     * 用户ID
+     * POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）
      */
-    @ApiModelProperty(name = "userId", value = "用户ID", required = false)
+    @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）", required = false)
     private String userId;
     
     /**
@@ -60,13 +62,13 @@ public class LiveSonChannelInfoResponse {
      * 创建子频道时间
      */
     @ApiModelProperty(name = "createdTime", value = "创建子频道时间", required = false)
-    private String createdTime;
+    private Date createdTime;
     
     /**
      * 子频道最后修改时间
      */
     @ApiModelProperty(name = "lastModified", value = "子频道最后修改时间", required = false)
-    private String lastModified;
+    private Date lastModified;
     
     /**
      * 频道中所有子频道序号
@@ -87,21 +89,21 @@ public class LiveSonChannelInfoResponse {
     private String pageTurnEnabled;
     
     /**
-     * 发布公告权限
+     * 发布公告权限(Y/N)
      */
-    @ApiModelProperty(name = "notifyEnabled", value = "发布公告权限", required = false)
+    @ApiModelProperty(name = "notifyEnabled", value = "发布公告权限(Y/N)", required = false)
     private String notifyEnabled;
     
     /**
-     * 开启签到权限
+     * 开启签到权限(Y/N)
      */
-    @ApiModelProperty(name = "checkinEnabled", value = "开启签到权限", required = false)
+    @ApiModelProperty(name = "checkinEnabled", value = "开启签到权限(Y/N)", required = false)
     private String checkinEnabled;
     
     /**
-     * 发起投票
+     * 发起投票(Y/N)
      */
-    @ApiModelProperty(name = "voteEnabled", value = "发起投票", required = false)
+    @ApiModelProperty(name = "voteEnabled", value = "发起投票(Y/N)", required = false)
     private String voteEnabled;
     
     /**

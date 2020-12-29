@@ -1,6 +1,9 @@
 package net.polyv.live.v1.entity.channel.operate;
 
+import java.util.Date;
 import java.util.List;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -56,19 +59,21 @@ public class LiveListChannelPPTRecordResponse extends LivePageCommonResponse {
          * 对应回放的直播开始时间,格式为yyyyMMddhhmmss
          */
         @ApiModelProperty(name = "startTime", value = "对应回放的直播开始时间,格式为yyyy-MM-dd HH:mm:ss")
-        private String startTime;
+        @JSONField(format = "yyyyMMddhhmmss")
+        private Date startTime;
         
         /**
-         * @see LiveConstant.PPTStatus
          * 状态值
+         * @see LiveConstant.PPTStatus
          */
-        @ApiModelProperty(name = "sessionId", value = "状态值，分类可见LiveConstant.PPTStatus")
+        @ApiModelProperty(name = "sessionId", value = "状态值，waiting-等待处理；process-处理中；success-重制成功；fail-重制失败；uploaded" +
+                "-上传点播成功；uploadFailed-上传点播失败；")
         private String status;
         
         /**
-         * 重制剩余的过期时间，过期后将无法访问和下载
+         * 重制剩余的过期时间，过期后将无法访问和下载，单位：天
          */
-        @ApiModelProperty(name = "remainDay", value = "重制剩余的过期时间，过期后将无法访问和下载")
+        @ApiModelProperty(name = "remainDay", value = "重制剩余的过期时间，过期后将无法访问和下载，单位：天")
         private Integer remainDay;
         
         /**

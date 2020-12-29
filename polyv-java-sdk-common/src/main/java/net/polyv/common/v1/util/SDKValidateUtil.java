@@ -23,7 +23,7 @@ public class SDKValidateUtil {
     }
     
     public static String getViolationMsgStr(List<ViolationMsg> msgList) {
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
         for (ViolationMsg violationMsg : msgList) {
             stringBuffer.append(violationMsg.getMsg()).append(" / ");
         }

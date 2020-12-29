@@ -1,12 +1,11 @@
 package net.polyv.live.v1.entity.account;
 
-import net.polyv.common.v1.validator.constraints.NotNull;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 
 /**
@@ -41,7 +40,7 @@ public class LiveAccountPlaybackCallbackRequest extends LiveCommonRequest {
          * 频道号
          */
         @ApiModelProperty(name = "channelId", value = "频道号", required = false)
-        private Integer channelId;
+        private String channelId;
         
         /**
          * 转存成功的视频ID
@@ -68,15 +67,15 @@ public class LiveAccountPlaybackCallbackRequest extends LiveCommonRequest {
         private Long fileSize;
         
         /**
-         * 13位的时间戳
+         * 13位的时间戳(签名使用)
          */
-        @ApiModelProperty(name = "timestamp", value = "13位的时间戳", required = false)
+        @ApiModelProperty(name = "timestamp", value = "13位的时间戳(签名使用)", required = false)
         private Long timestamp;
         
         /**
-         * 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙
+         * 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的密匙
          */
-        @ApiModelProperty(name = "sign", value = "校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙",
+        @ApiModelProperty(name = "sign", value = "校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的密匙",
                 required = false)
         private String sign;
         
@@ -114,9 +113,9 @@ public class LiveAccountPlaybackCallbackRequest extends LiveCommonRequest {
         private String sessionId;
         
         /**
-         * 账号ID
+         * POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）
          */
-        @ApiModelProperty(name = "userId", value = "账号ID", required = false)
+        @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）", required = false)
         private String userId;
         
         /**

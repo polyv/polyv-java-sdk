@@ -41,9 +41,9 @@ public class LiveSetTeacherDataRequest   extends LiveCommonRequest {
     private String actor;
     
     /**
-     * 频道密码
+     * 频道密码，长度<=16，必须同时包含字母和数字
      */
-    @ApiModelProperty(name = "passwd", value = "频道密码", required = true)
+    @ApiModelProperty(name = "passwd", value = "频道密码，长度<=16，必须同时包含字母和数字", required = true)
     @NotNull(message = "属性passwd不能为空")
     private String passwd;
     

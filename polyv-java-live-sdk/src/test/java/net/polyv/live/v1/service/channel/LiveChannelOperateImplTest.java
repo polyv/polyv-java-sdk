@@ -115,14 +115,14 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelInitResponse liveChannelInitResponse = null;
         try {
             LiveChannelInitRequest.BasicSetting basicSetting = new LiveChannelInitRequest.BasicSetting().setName(
-                    "创建并初始化频道-验证码观看")
+                    "创建并初始化频道-验证码观看1")
                     .setChannelPasswd("123321")
                     .setAutoPlay(1)
                     .setPlayerColor("#666666")
                     .setScene(LiveConstant.SceneType.ALONE.getDesc())
                     .setCategoryId(340019)
                     .setMaxViewer(0)
-                    .setStartTime(super.getDate(1602306535000l))
+                    .setStartTime(null)
                     .setDesc("这是一个描述")
                     .setPublisher("sadboy主讲")
                     .setLinkMicLimit(-1)
@@ -277,7 +277,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveChannelAuthTokenRequest.setChannelId(channelId)
+            liveChannelAuthTokenRequest.setUserId(getRandomString(32)).setChannelId(channelId)
                     .setRole(LiveConstant.Role.ADMIN.getDesc())
                     .setOrigin(null)
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -321,7 +321,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setPageView(1000)
                     .setLikes(2000)
                     .setCoverImg("https://www.polyv.net/")
-                    .setStartTime(1602306535000l)
+                    .setStartTime(0l)
                     .setDesc("这是一个描述")
                     .setPublisher("sadboy主讲")
                     .setLinkMicLimit(-1)

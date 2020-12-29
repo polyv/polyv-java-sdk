@@ -1,5 +1,9 @@
 package net.polyv.live.v1.entity.channel.playback;
 
+import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -37,7 +41,7 @@ public class LiveChannelVideoOnlyResponse {
      * 创建时间
      */
     @ApiModelProperty(name = "createdTime", value = "创建时间", required = false)
-    private Long createdTime;
+    private Date createdTime;
     
     /**
      * 时长
@@ -49,7 +53,8 @@ public class LiveChannelVideoOnlyResponse {
      * 结束时间
      */
     @ApiModelProperty(name = "endTime", value = "结束时间", required = false)
-    private String endTime;
+    @JSONField(format = "yyyyMMddHHmmss")
+    private Date endTime;
     
     /**
      * 文件ID
@@ -97,12 +102,13 @@ public class LiveChannelVideoOnlyResponse {
      * 开始时间
      */
     @ApiModelProperty(name = "startTime", value = "开始时间", required = false)
-    private String startTime;
+    @JSONField(format = "yyyyMMddHHmmss")
+    private Date startTime;
     
     /**
-     * 用户ID
+     * POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）
      */
-    @ApiModelProperty(name = "userId", value = "用户ID", required = false)
+    @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）", required = false)
     private String userId;
     
     /**

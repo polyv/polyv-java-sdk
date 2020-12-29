@@ -30,6 +30,7 @@ public class LiveConvertChannelVideoRequest extends LiveCommonRequest {
      * 频道号
      */
     @ApiModelProperty(name = "channelId", value = "频道号", required = true)
+    @NotNull(message = "属性channelId不能为空")
     private String channelId;
     
     /**
@@ -41,7 +42,8 @@ public class LiveConvertChannelVideoRequest extends LiveCommonRequest {
     /**
      * 直播场次ID，只传此参数时，可将对应场次的直播录制视频转存到点播（可以同时传fileUrl和sessionId，或必传其中一个）
      */
-    @ApiModelProperty(name = "sessionId", value = "直播场次ID，只传此参数时，可将对应场次的直播录制视频转存到点播（可以同时传fileUrl和sessionId，或必传其中一个）", required = false)
+    @ApiModelProperty(name = "sessionId", value = "直播场次ID，只传此参数时，可将对应场次的直播录制视频转存到点播（可以同时传fileUrl和sessionId，或必传其中一个）",
+            required = false)
     private String sessionId;
     
     /**
@@ -60,19 +62,21 @@ public class LiveConvertChannelVideoRequest extends LiveCommonRequest {
     /**
      * 目录名称，默认值为默认分类，当cataid设置为-1时，会新建一个名称为cataname的目录，并将视频放到该目录下
      */
-    @ApiModelProperty(name = "cataname", value = "目录名称，默认值为默认分类，当cataid设置为-1时，会新建一个名称为cataname的目录，并将视频放到该目录下", required = false)
+    @ApiModelProperty(name = "cataname", value = "目录名称，默认值为默认分类，当cataid设置为-1时，会新建一个名称为cataname的目录，并将视频放到该目录下",
+            required = false)
     private String cataname;
     
     /**
-     * ，取值为Y或N
+     * 是否存放到回放列表，N：不存放；Y：存放，默认为N
      */
-    @ApiModelProperty(name = "toPlayList", value = "，取值为Y或N", required = false)
+    @ApiModelProperty(name = "toPlayList", value = "是否存放到回放列表，N：不存放；Y：存放，默认为N ", required = false)
     private String toPlayList;
     
     /**
-     * ，取值为Y或N
+     * 是否设为默认回放视频，默认值为Y：设置默认回放视频（转存后在回放列表中位于第一个），N：转存后在回放列表位于最后一个。此参数仅在toPlayList=Y 时生效
      */
-    @ApiModelProperty(name = "setAsDefault", value = "，取值为Y或N", required = false)
+    @ApiModelProperty(name = "setAsDefault", value = "是否设为默认回放视频，默认值为Y：设置默认回放视频（转存后在回放列表中位于第一个），N" +
+            "：转存后在回放列表位于最后一个。此参数仅在toPlayList=Y 时生效", required = false)
     private String setAsDefault;
     
 }

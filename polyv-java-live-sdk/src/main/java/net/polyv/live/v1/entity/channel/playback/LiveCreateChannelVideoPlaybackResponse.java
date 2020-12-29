@@ -1,5 +1,7 @@
 package net.polyv.live.v1.entity.channel.playback;
 
+import java.util.Date;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -27,9 +29,9 @@ public class LiveCreateChannelVideoPlaybackResponse {
     private String videoPoolId;
     
     /**
-     * 点播后台用户id
+     * 点播后台用户ID
      */
-    @ApiModelProperty(name = "userId", value = "点播后台用户id", required = false)
+    @ApiModelProperty(name = "userId", value = "点播后台用户ID", required = false)
     private String userId;
     
     /**
@@ -51,9 +53,9 @@ public class LiveCreateChannelVideoPlaybackResponse {
     private String firstImage;
     
     /**
-     * 视频长度
+     * 视频长度，如：00:00:30
      */
-    @ApiModelProperty(name = "duration", value = "视频长度", required = false)
+    @ApiModelProperty(name = "duration", value = "视频长度，如：00:00:30", required = false)
     private String duration;
     
     /**
@@ -78,13 +80,13 @@ public class LiveCreateChannelVideoPlaybackResponse {
      * 添加为回放视频的日期
      */
     @ApiModelProperty(name = "createdTime", value = "添加为回放视频的日期", required = false)
-    private Long createdTime;
+    private Date createdTime;
     
     /**
      * 视频最后修改日期
      */
     @ApiModelProperty(name = "lastModified", value = "视频最后修改日期", required = false)
-    private Long lastModified;
+    private Date lastModified;
     
     /**
      * 视频播放地址，注：如果视频为加密视频，则此地址无法访问

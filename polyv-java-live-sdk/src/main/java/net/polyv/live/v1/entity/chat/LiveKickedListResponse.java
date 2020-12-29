@@ -28,15 +28,15 @@ public class LiveKickedListResponse {
     private String channelId;
     
     /**
-     * 用户ip
+     * C端观众ip
      */
-    @ApiModelProperty(name = "clientIp", value = "用户ip", required = false)
+    @ApiModelProperty(name = "clientIp", value = "C端观众ip", required = false)
     private String clientIp;
     
     /**
      * 踢人方式：userId,
      */
-    @ApiModelProperty(name = "kickRefer", value = "踢人方式：userId : 用户userId, ip : 用户登录IP" , required = false)
+    @ApiModelProperty(name = "kickRefer", value = "踢人方式，userId : 用户userId, ip : 用户登录IP" , required = false)
     private String kickRefer;
     
     /**
@@ -65,9 +65,9 @@ public class LiveKickedListResponse {
     private String uid;
     
     /**
-     * 用户userId
+     * C端观众ID
      */
-    @ApiModelProperty(name = "userId", value = "用户userId", required = false)
+    @ApiModelProperty(name = "userId", value = "C端观众ID", required = false)
     private String userId;
     
     /**

@@ -19,6 +19,7 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("查询频道的问答统计结果请求实体")
+@Deprecated
 public class LiveGetQuestionStatisticalRequest extends LiveCommonRequest {
     
     /**

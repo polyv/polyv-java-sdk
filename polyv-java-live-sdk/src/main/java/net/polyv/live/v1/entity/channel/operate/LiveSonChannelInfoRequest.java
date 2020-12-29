@@ -27,9 +27,9 @@ public class LiveSonChannelInfoRequest extends LiveCommonRequest {
     private String channelId;
     
     /**
-     * 子频道号(不能以数字类型提交，否则可能去掉ID前的00)
+     * 子频道号
      */
-    @ApiModelProperty(name = "account", value = "子频道号(不能以数字类型提交，否则可能去掉ID前的00)", required = true)
+    @ApiModelProperty(name = "account", value = "子频道号", required = true)
     @NotNull(message = "属性account不能为空")
     private String account;
     

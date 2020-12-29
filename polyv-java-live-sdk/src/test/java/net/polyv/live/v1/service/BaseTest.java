@@ -221,8 +221,8 @@ public class BaseTest {
                 new LiveChannelPlaybackServiceImpl().listChannelVideo(
                 liveChannelVideoListRequest);
         Assert.assertNotNull(liveChannelVideoListResponse);
-        List<LiveChannelVideoListResponse.ChannelVedioInfo> channelVedioInfos =
-                liveChannelVideoListResponse.getChannelVedioInfos();
+        List<LiveChannelVideoListResponse.ChannelVideoInfo> channelVedioInfos =
+                liveChannelVideoListResponse.getChannelVideoInfos();
         Assert.assertNotNull(channelVedioInfos);
         Assert.assertTrue(channelVedioInfos.size() > 0);
         return channelVedioInfos.get(0).getUrl();
@@ -302,12 +302,12 @@ public class BaseTest {
                 new LiveChannelPlaybackServiceImpl().listChannelVideo(
                 liveChannelVideoListRequest);
         Assert.assertNotNull(liveChannelVideoListResponse);
-        List<LiveChannelVideoListResponse.ChannelVedioInfo> channelVedioInfos =
-                liveChannelVideoListResponse.getChannelVedioInfos();
+        List<LiveChannelVideoListResponse.ChannelVideoInfo> channelVedioInfos =
+                liveChannelVideoListResponse.getChannelVideoInfos();
         int size = channelVedioInfos.size();
         Assert.assertTrue(size > 0);
         List<String> fileIds = new ArrayList<String>(size);
-        for (LiveChannelVideoListResponse.ChannelVedioInfo temp : channelVedioInfos) {
+        for (LiveChannelVideoListResponse.ChannelVideoInfo temp : channelVedioInfos) {
             fileIds.add(temp.getFileId());
         }
         return fileIds;

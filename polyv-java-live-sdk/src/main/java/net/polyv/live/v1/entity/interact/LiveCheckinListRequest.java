@@ -2,8 +2,6 @@ package net.polyv.live.v1.entity.interact;
 
 import java.util.Date;
 
-import net.polyv.common.v1.validator.constraints.NotNull;
-
 import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
@@ -11,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.entity.LivePageCommonRequest;
 
 /**
@@ -38,7 +37,7 @@ public class LiveCheckinListRequest extends LivePageCommonRequest {
     private Date date;
     
     /**
-     * 场次sessionId,如果传sessionId,
+     * 场次sessionId,如果传sessionId,date参数无效
      */
     @ApiModelProperty(name = "sessionId", value = "场次sessionId,sessionId优先级高于date，如传sessionId，date参数无效", required = false)
     private String sessionId;

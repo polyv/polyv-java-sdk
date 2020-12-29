@@ -32,7 +32,7 @@ public class LiveListAccountDetailResponse extends LivePageCommonResponse{
         /**
          * 频道号
          */
-        @ApiModelProperty(name = "channelId", value = "直播频道号")
+        @ApiModelProperty(name = "channelId", value = "频道号")
         private String channelId;
         
         /**
@@ -60,9 +60,9 @@ public class LiveListAccountDetailResponse extends LivePageCommonResponse{
         private String scene;
         
         /**
-         * 场景描述
+         * 场景描述，如：大班课
          */
-        @ApiModelProperty(name = "sceneText", value = "场景描述")
+        @ApiModelProperty(name = "sceneText", value = "场景描述，如：大班课")
         private String sceneText;
         
         /**
@@ -109,9 +109,9 @@ public class LiveListAccountDetailResponse extends LivePageCommonResponse{
     public static class LiveAuthSetting {
         
         /**
-         * 频道名称
+         * 频道号
          */
-        @ApiModelProperty(name = "name", value = "频道名称")
+        @ApiModelProperty(name = "channelId", value = "频道号")
         private String channelId;
         
         /**
@@ -119,11 +119,11 @@ public class LiveListAccountDetailResponse extends LivePageCommonResponse{
          */
         @ApiModelProperty(name = "rank", value = "用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件）")
         private Integer rank;
-        
+    
         /**
-         * 账号ID
+         * POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）
          */
-        @ApiModelProperty(name = "userId", value = "账号ID")
+        @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）")
         private String userId;
         
         /**
@@ -192,7 +192,7 @@ public class LiveListAccountDetailResponse extends LivePageCommonResponse{
          * 付费观看，截止时间，为null表示：一次付费，永久有效
          */
         @ApiModelProperty(name = "watchEndTime", value = "付费观看，截止时间，为null表示：一次付费，永久有效")
-        private String watchEndTime;
+        private Date watchEndTime;
         
         /**
          * 白名单观看提示信息
@@ -257,8 +257,8 @@ public class LiveListAccountDetailResponse extends LivePageCommonResponse{
         /**
          * 试看截止日期，为null 表示对该频道永久有效
          */
-        @ApiModelProperty(name = "trialWatchEndTime", value = "试看截止日期，为null 表示对该频道永久有效\n")
-        private String trialWatchEndTime;
+        @ApiModelProperty(name = "trialWatchEndTime", value = "试看截止日期，为null 表示对该频道永久有效")
+        private Date trialWatchEndTime;
         
     }
 

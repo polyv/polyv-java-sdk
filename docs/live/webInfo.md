@@ -168,7 +168,7 @@ true为设置成功，false为设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | splashImg | false | String | 引导图片url | 
-| splashEnabled | false | String | 引导功能开关 | 
+| splashEnabled | false | String | 引导功能开关,Y/N | 
 
 <br /><br />
 
@@ -344,7 +344,7 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | false | String | 频道号，非必填，不提交默认为修改该用户的所有频道号的主持人姓名 | 
+| channelId | true | String | 频道号 | 
 | splashEnabled | true | String | 设置开启或关闭引导页Y或N | 
 | imgfile | true | File | 支持jpg、jpeg、png三种格式，大小不能超过4Mb | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
@@ -410,9 +410,9 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelLikes | false | Array | 频道点赞数和观众热度值【详见[ChannelLikes参数描述](webInfo.md?id=polyv64)】 | 
+| channelLikes | false | Array | 频道点赞数和观众热度值【详见[ChannelLikes参数描述](webInfo.md?id=polyv65)】 | 
 
-<h6 id="polyv64"><a href="#/channelOperate?id=polyv64"data-id="ChannelLikes参数描述"class="anchor"><span>ChannelLikes参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv65"><a href="#/channelOperate?id=polyv65"data-id="ChannelLikes参数描述"class="anchor"><span>ChannelLikes参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

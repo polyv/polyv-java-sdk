@@ -28,13 +28,13 @@ public class LiveCreateSonChannelListRequest extends LiveCommonRequest {
     @NotNull(message = "属性channelId不能为空")
     private String channelId;
     
-    @ApiModelProperty(name = "sonChannels", value = "子频道", required = true)
+    @ApiModelProperty(name = "sonChannels", value = "子频道信息", required = true)
     @NotNull(message = "属性sonChannels不能为空")
     private List<SonChannel> sonChannels;
     
     @Data
     @Accessors(chain = true)
-    @ApiModel("子频道")
+    @ApiModel("子频道信息")
     public static class SonChannel{
     
         /**

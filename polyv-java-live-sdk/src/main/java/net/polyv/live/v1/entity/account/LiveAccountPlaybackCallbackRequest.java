@@ -1,7 +1,5 @@
 package net.polyv.live.v1.entity.account;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -60,7 +58,6 @@ public class LiveAccountPlaybackCallbackRequest extends LiveCommonRequest {
          * 视频时长 格式为 hh:mm:ss
          */
         @ApiModelProperty(name = "duration", value = "视频时长 格式为 hh:mm:ss", required = false)
-        @JSONField(format = "hh:mm:ss")
         private String duration;
         
         /**

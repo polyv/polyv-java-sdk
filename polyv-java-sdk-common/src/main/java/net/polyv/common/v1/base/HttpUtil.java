@@ -42,7 +42,7 @@ public class HttpUtil {
     private static String SDK = "SDK";
     public static final String VERSION = "version";
     public static final String USER_AGENT = "User-Agent";
-    private static final String CURRENT_VERSION = "1.0.17";
+    private static final String CURRENT_VERSION = "1.0.18";
     public static final String APP_ID_NAME="java-sdk-app-id";
     public static final String USER_ID_NAME="java-sdk-user-id";
     private static final String UTF8 = Constant.UTF8;

@@ -19,13 +19,13 @@ import lombok.experimental.Accessors;
 @ApiModel("查询频道录制视频信息返回实体")
 public class LiveChannelVideoListResponse {
     
-    @ApiModelProperty(name = "channelVideoInfos", value = "视频库视频信息", required = false)
-    private List<ChannelVideoInfo> channelVideoInfos;
+    @ApiModelProperty(name = "channelVedioInfos", value = "视频库视频信息", required = false)
+    private List<ChannelVedioInfo> channelVedioInfos;
     
     @Data
     @Accessors(chain = true)
     @ApiModel("直播视频库视频信息")
-    public static class ChannelVideoInfo {
+    public static class ChannelVedioInfo {
         
         /**
          * 录制文件id

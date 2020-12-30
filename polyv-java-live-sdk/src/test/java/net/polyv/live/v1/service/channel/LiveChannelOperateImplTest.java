@@ -72,7 +72,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 描述：创建一个直播频道，返回直播频道相关的基础信息。
      * @throws Exception
      */
-//    @Test
+    @Test
     public void testCreateChannel() throws Exception, NoSuchAlgorithmException {
         LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
         LiveChannelResponse liveChannelResponse = null;

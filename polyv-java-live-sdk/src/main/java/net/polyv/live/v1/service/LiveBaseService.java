@@ -273,13 +273,13 @@ public class LiveBaseService {
      * @param url 请求URL
      * @param signMap 需要签名的map
      * @param e 请求参数对象
-     * @param json
+     * @param json json字符串
      * @param tClass 返回对象class类型
      * @param <T> 返回对象泛型
      * @param <E> 请求参数泛型
-     * @return
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
+     * @return 返回内容
+     * @throws IOException IO异常
+     * @throws NoSuchAlgorithmException 签名异常
      */
     protected <T, E extends LiveCommonRequest> T basePostJson(String url, Map<String, String> signMap, E e, String json,
             Class<T> tClass) throws IOException, NoSuchAlgorithmException {

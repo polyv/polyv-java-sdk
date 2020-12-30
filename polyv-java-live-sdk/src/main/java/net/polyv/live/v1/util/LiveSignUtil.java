@@ -35,6 +35,7 @@ public class LiveSignUtil {
      * @param appSecret 保利威用户签名密钥
      * @return  MD5签名字符串
      * @throws NoSuchAlgorithmException 签名异常
+     * @throws UnsupportedEncodingException 编码异常
      */
     public static String setLiveSign(Map<String, String> params, String appId, String appSecret)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -50,6 +51,7 @@ public class LiveSignUtil {
      * @param appSecret 保利威用户签名密钥
      * @return  MD5签名字符串
      * @throws NoSuchAlgorithmException 签名异常
+     *  @throws UnsupportedEncodingException 编码异常
      */
     public static String getSign(Map<String, String> params, String appId, String appSecret)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -90,6 +92,7 @@ public class LiveSignUtil {
      * @param text 待加密的字符串。
      * @return 加密后的字符串。
      * @throws NoSuchAlgorithmException 签名异常
+     *  @throws UnsupportedEncodingException 编码异常
      */
     public static String md5Hex(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException {
          

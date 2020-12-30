@@ -39,7 +39,6 @@ public class LiveSendChannelLikeRequest extends LiveCommonRequest {
      * 点赞的数目，不能超过30，提交后在(times-1)秒后才能再点赞
      */
     @ApiModelProperty(name = "times", value = "点赞的数目，不能超过30，提交后在(times-1)秒后才能再点赞", required = false)
-    @NotNull(message = "属性times不能为空")
     @Max(value = 30,message = "属性times不能超过30")
     @Min(value = 0,message = "属性times不能小于0")
     private Integer times;

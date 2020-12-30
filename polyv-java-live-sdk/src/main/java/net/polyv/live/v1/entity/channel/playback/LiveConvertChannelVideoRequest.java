@@ -17,6 +17,7 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("同步转存录制文件到点播请求实体")
+@Deprecated
 public class LiveConvertChannelVideoRequest extends LiveCommonRequest {
     
     /**

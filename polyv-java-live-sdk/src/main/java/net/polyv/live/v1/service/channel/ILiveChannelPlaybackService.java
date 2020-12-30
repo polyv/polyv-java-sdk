@@ -96,6 +96,7 @@ public interface ILiveChannelPlaybackService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
+    @Deprecated
     String convertChannelVideo(LiveConvertChannelVideoRequest liveConvertChannelVideoRequest)
             throws IOException, NoSuchAlgorithmException;
     

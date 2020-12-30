@@ -142,6 +142,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
+    @Deprecated
     public String convertChannelVideo(LiveConvertChannelVideoRequest liveConvertChannelVideoRequest)
             throws IOException, NoSuchAlgorithmException {
         liveConvertChannelVideoRequest.setUserId(LiveGlobalConfig.getUserId());

@@ -15,13 +15,13 @@
         try {
             liveChannelRequest.setName("Spring 知识精讲")
                     .setChannelPasswd("666888")
-                    .setAutoPlay(LiveConstant.AutoPlay.AOTU_PLAY.getFlag())
-                    .setScene(LiveConstant.SceneType.PPT.getDesc())
-                    .setMaxViewer(300)
-                    .setWatchLayout(LiveConstant.WatchLayout.PPT.getFlag())
+//                    .setAutoPlay(LiveConstant.AutoPlay.AOTU_PLAY.getFlag())
+//                    .setScene(LiveConstant.SceneType.PPT.getDesc())
+//                    .setMaxViewer(300)
+//                    .setWatchLayout(LiveConstant.WatchLayout.PPT.getFlag())
 //                .setLinkMicLimit(2)
 //                .setPureRtcEnabled(LiveConstant.Flag.YES.getFlag())
-                    .setReceive(LiveConstant.Flag.YES.getFlag())
+//                    .setReceive(LiveConstant.Flag.YES.getFlag())
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
             Assert.assertNotNull(liveChannelResponse);

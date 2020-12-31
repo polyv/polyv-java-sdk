@@ -273,9 +273,9 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelVideoInfos | false | Array | 视频库视频信息【详见[ChannelVideoInfo参数描述](channelPlayback.md?id=polyv24)】 | 
+| channelVedioInfos | false | Array | 视频库视频信息【详见[ChannelVedioInfo参数描述](channelPlayback.md?id=polyv24)】 | 
 
-<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="ChannelVideoInfo参数描述"class="anchor"><span>ChannelVideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv24"><a href="#/channelOperate?id=polyv24"data-id="ChannelVedioInfo参数描述"class="anchor"><span>ChannelVedioInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

@@ -111,7 +111,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
         LiveListChannelViewlogResponse liveListChannelViewlogResponse;
         try {
             liveListChannelViewlogRequest.setChannelId(createChannel())
-                    .setCurrentDay(getDate(2020, 10, 14))
+                    .setCurrentDay(getDate(2020, 11, 3))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                     liveListChannelViewlogRequest);

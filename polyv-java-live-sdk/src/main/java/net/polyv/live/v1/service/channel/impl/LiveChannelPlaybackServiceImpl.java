@@ -124,12 +124,12 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
             throws IOException, NoSuchAlgorithmException {
         liveChannelVideoListRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_RECORD_FILES_URL, liveChannelVideoListRequest.getChannelId());
-        LiveChannelVideoListResponse.ChannelVideoInfo[] channelVedioInfos = this.baseGet(url,
-                liveChannelVideoListRequest, LiveChannelVideoListResponse.ChannelVideoInfo[].class);
+        LiveChannelVideoListResponse.ChannelVedioInfo[] channelVedioInfos = this.baseGet(url,
+                liveChannelVideoListRequest, LiveChannelVideoListResponse.ChannelVedioInfo[].class);
         channelVedioInfos =
-                channelVedioInfos == null ? new LiveChannelVideoListResponse.ChannelVideoInfo[]{} : channelVedioInfos;
+                channelVedioInfos == null ? new LiveChannelVideoListResponse.ChannelVedioInfo[]{} : channelVedioInfos;
         LiveChannelVideoListResponse liveChannelVideoListResponse = new LiveChannelVideoListResponse();
-        liveChannelVideoListResponse.setChannelVideoInfos(Arrays.asList(channelVedioInfos));
+        liveChannelVideoListResponse.setChannelVedioInfos(Arrays.asList(channelVedioInfos));
         return liveChannelVideoListResponse;
     }
     
@@ -142,6 +142,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
+    @Deprecated
     public String convertChannelVideo(LiveConvertChannelVideoRequest liveConvertChannelVideoRequest)
             throws IOException, NoSuchAlgorithmException {
         liveConvertChannelVideoRequest.setUserId(LiveGlobalConfig.getUserId());

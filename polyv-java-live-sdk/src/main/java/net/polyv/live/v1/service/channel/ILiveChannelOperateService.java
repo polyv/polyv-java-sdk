@@ -93,6 +93,7 @@ public interface ILiveChannelOperateService {
      * @param liveChannelSettingRequest 修改频道的相关设置请求体
      * @return 渠道设置信息
      * @throws IOException 异常
+     * @throws  NoSuchAlgorithmException 签名异常
      */
     Boolean updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest)
             throws IOException, NoSuchAlgorithmException;

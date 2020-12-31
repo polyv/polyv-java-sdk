@@ -25,7 +25,7 @@ git push origin master  --tags
 :: # 提交master分支到gitee远程仓库
 ::git push gitee master
 :: # 切换回dev分支
-git checkout dev
+:: git checkout dev
 PAUSE
 
 

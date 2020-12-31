@@ -6,7 +6,7 @@ import net.polyv.common.v1.exception.GlobalUncaughtExceptionHandler;
 
 /**
  * @author: thomas
- **/
+ **/  
 public class VodGlobalConfig {
     /**
      * 点播userId

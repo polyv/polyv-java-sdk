@@ -9,8 +9,6 @@ import net.polyv.common.v1.util.FileUtil;
  **/
 @Slf4j
 public class InitConfig {
-    
-//    /**
 //     * 点播初始化
 //     */
 //    public static void initPolyvVod() {

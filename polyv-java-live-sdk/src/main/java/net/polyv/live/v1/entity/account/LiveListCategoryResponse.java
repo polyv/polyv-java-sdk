@@ -36,7 +36,7 @@ public class LiveListCategoryResponse {
         private String categoryName;
         
         /**
-         * POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）
+          *  {@code POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）}
          */
         @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）", required = false)
         private String userId;

@@ -32,8 +32,8 @@ public class InitConfig {
      */
     public static void initPolyvLiveByFile(String path) {
         AccountInfo accountInfo = FileUtil.readConfigFromFile(path);
-        String appId = accountInfo.getLiveConfig().getAppId();
         String userId = accountInfo.getLiveConfig().getUserId();
+        String appId = accountInfo.getLiveConfig().getAppId();
         String appSecret = accountInfo.getLiveConfig().getAppSecret();
         InitConfig.initPolyvLive(appId, userId, appSecret);
     }

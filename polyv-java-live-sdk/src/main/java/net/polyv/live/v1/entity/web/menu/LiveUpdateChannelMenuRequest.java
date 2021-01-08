@@ -27,9 +27,9 @@ public class LiveUpdateChannelMenuRequest extends LiveCommonRequest {
     private String userId;
     
     /**
-     * 频道号，提交后对某频道号设置，不提交则对账号下所有频道号进行设置
+     * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "频道号，提交后对某频道号设置，不提交则对账号下所有频道号进行设置", required = true)
+    @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
     private String channelId;
     

@@ -72,10 +72,57 @@ public class QuickCreatePPTChannelRequest extends LiveCommonRequest {
     @ApiModelProperty(name = "splashImg", value = "引导图地址", required = false)
     private String splashImg;
     
+    
+    /**
+     * 直播开始时间，13位时间戳，设置为0 表示关闭直播开始时间显示
+     */
+    @ApiModelProperty(name = "startTime", value = "直播开始时间，13位时间戳，设置为0 表示关闭直播开始时间显示", required = false)
+    private Long startTime;
+    
     /**
      * 直播介绍
      */
     @ApiModelProperty(name = "desc", value = "直播介绍", required = false)
     private String desc;
+    
+    
+    /**
+     * 讲师昵称
+     */
+    @ApiModelProperty(name = "nickname", value = "讲师昵称", required = true)
+    @NotNull(message = "属性nickname不能为空")
+    private String nickname;
+    
+    /**
+     * 讲师头衔
+     */
+    @ApiModelProperty(name = "actor", value = "讲师头衔", required = true)
+//    @NotNull(message = "属性actor不能为空")
+    private String actor;
+    
+    /**
+     * 头像图片地址
+     */
+    @ApiModelProperty(name = "avatar", value = "头像图片地址", required = false)
+    private String avatar;
+    
+    /**
+     * 暖场图片地址，图片大小建议：800x450，支持PNG、JPEG、GIF格式
+     */
+    @ApiModelProperty(name = "coverImage", value = "暖场图片地址，图片大小建议：800x450，支持PNG、JPEG、GIF格式", required = false)
+    private String coverImage;
+    
+    /**
+     * 暖场图片跳转地址
+     */
+    @ApiModelProperty(name = "coverHref", value = "点击暖场图片后浏览器跳转地址", required = false)
+    private String coverHref;
+    
+    /**
+     * 暖场视频地址(http地址)，移动端不支持FLV视频文件，建议使用MP4视频文件
+     */
+    @ApiModelProperty(name = "warmUpFlv", value = "暖场视频地址(http地址)，移动端不支持FLV视频文件，建议使用MP4视频文件", required = false)
+    private String warmUpFlv;
+    
     
 }

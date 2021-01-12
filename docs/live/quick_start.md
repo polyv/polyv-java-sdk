@@ -45,9 +45,9 @@
      * 初始化配置,请配置自己的账号信息
      */
     public static void initPolyvLive(){
+        String userId = "xxx";
         String appId = "xxx";
         String appSecret = "xxx";
-        String userId = "xxx";
         LiveGlobalConfig.init(appId, userId, appSecret);
         log.debug("--初始化完成--");
     }
@@ -56,9 +56,9 @@
      * 初始化配置并初始化 HTTP CLIENT 连接池超时时间和最大连接数配置,请配置自己的账号信息
      */
     public static void initPolyvLive(){
-        String appId = "xxx";
-        String appSecret = "xxx";
         String userId = "xxx";
+        String appId = "xxx";
+        String appSecret = "xxx";        
         Integer timeOut = 20000;  //HTTP CLIENT 连接池超时时间
         Integer maxClientNum = 100;  //HTTP CLIENT 最大连接数      
         LiveGlobalConfig.init(  appId,  userId,  appSecret,  timeOut ,  maxClientNum);
@@ -88,9 +88,9 @@ public class StartupListener implements ApplicationContextAware {
     
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        String appId = "xxx";
-        String appSecret = "xxx";
         String userId = "xxx";
+        String appId = "xxx";
+        String appSecret = "xxx"; 
         LiveGlobalConfig.init(appId,userId,appSecret);
         log.debug("--初始化完成--");
     }
@@ -122,7 +122,7 @@ public class LiveChannelDemo {
    /**
      * 调用demo，必须处理PloyvSdkException。
      *
-     * 参数合法性校验：SDK采用Hibernate-validator规范对输入参数进行校验，如有参数不合格，将抛出PloyvSdkException异常，exception的message
+     * 参数合法性校验：SDK采用自定义验证框架对输入参数进行校验，如有参数不合格，将抛出PloyvSdkException异常，exception的message
      * 包括具体校验不通过的字段信息，此异常是运行时异常，必须捕获处理相关业务逻辑；
      *
      * 解析返回数据：解析返回数据，如SDK调用正常成功，将封装响应对象，正常返回，如服务器返回错误信息，SDK将将抛出PloyvSdkException异常，exception的message
@@ -131,9 +131,9 @@ public class LiveChannelDemo {
      */
     public static void main(String[] args) {
         //全局初始化，此处应该全局执行一次
+        String userId = "xxx";        
         String appId = "xxx";
         String appSecret = "xxx";
-        String userId = "xxx";
         LiveGlobalConfig.init(appId,userId,appSecret);
         log.debug("--初始化完成--");
         try {

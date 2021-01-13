@@ -38,7 +38,7 @@ public class LiveChannelManagerTest extends BaseTest {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    @Test
+//    @Test
     public void testCreateEasyPPT() throws IOException, NoSuchAlgorithmException {
         QuickCreatePPTChannelRequest quickCreatePPTChannelRequest = new QuickCreatePPTChannelRequest();
         QuickCreateChannelInfoResponse quickCreateChannelInfoResponse;
@@ -114,7 +114,7 @@ public class LiveChannelManagerTest extends BaseTest {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    @Test
+//    @Test
     public void testCreateEasyPPTAndSonChannel() throws IOException, NoSuchAlgorithmException {
         QuickCreatePPTChannelRequest quickCreatePPTChannelRequest = new QuickCreatePPTChannelRequest();
         QuickCreateChannelInfoResponse quickCreateChannelInfoResponse;
@@ -222,7 +222,7 @@ public class LiveChannelManagerTest extends BaseTest {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    @Test
+//    @Test
     public void testCreateEasyVideo() throws IOException, NoSuchAlgorithmException {
         QuickCreateVideoChannelRequest quickCreateVideoChannelRequest = new QuickCreateVideoChannelRequest();
         QuickCreateChannelInfoResponse quickCreateChannelInfoResponse;

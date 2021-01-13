@@ -62,7 +62,7 @@ public class LiveChannelManagerTest extends BaseTest {
                 .setAvatar(
                         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
                                 ".jpg")
-                //设置引导图或者引导视频
+                //设置暖场图或者暖场视频
                 .setCoverImage("https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg")
                 .setCoverHref("https://www.polyv.net")
 //              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");
@@ -112,7 +112,7 @@ public class LiveChannelManagerTest extends BaseTest {
                 .setAvatar(
                         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
                                 ".jpg")
-                //设置引导图或者引导视频
+                //设置暖场图或者暖场视频
                 .setCoverImage("https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg")
                 .setCoverHref("http://www.baidu.com")
 //              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");
@@ -184,7 +184,7 @@ public class LiveChannelManagerTest extends BaseTest {
                 .setAvatar(
                         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
                                 ".jpg")
-                //设置引导图或者引导视频
+                //设置暖场图或者暖场视频
                 .setCoverImage("https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg")
                 .setCoverHref("http://www.baidu.com")
 //              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");

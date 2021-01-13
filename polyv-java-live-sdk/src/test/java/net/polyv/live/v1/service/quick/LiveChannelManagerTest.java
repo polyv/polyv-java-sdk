@@ -122,6 +122,8 @@ public class LiveChannelManagerTest extends BaseTest {
         channelInfo = LiveChannelManager.createEasyPPT(quickCreatePPTChannelRequest, liveCreateSonChannelListRequest);
         Assert.assertNotNull(channelInfo);
         log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(channelInfo));
+//        log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={} ",channelInfo.getLiveChannelBasicInfoResponse().getChannelId());
+//        log.debug("网页观看地址：https://live.polyv.cn/watch/{} ",channelInfo.getChannelId());
     }
     
     /**

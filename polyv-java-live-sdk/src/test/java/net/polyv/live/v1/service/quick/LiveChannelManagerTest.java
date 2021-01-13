@@ -88,7 +88,7 @@ public class LiveChannelManagerTest extends BaseTest {
     public void testCreateEasyPPTAndSonChannel() throws IOException, NoSuchAlgorithmException {
         QuickCreatePPTChannelRequest quickCreatePPTChannelRequest = new QuickCreatePPTChannelRequest();
         LiveChannelManager.ChannelInfo channelInfo;
-        String path = LiveChannelManagerTest.class.getResource("file/PPT.pptx").getPath();
+        String path = LiveChannelManagerTest.class.getResource("/file/PPT.pptx").getPath();
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道

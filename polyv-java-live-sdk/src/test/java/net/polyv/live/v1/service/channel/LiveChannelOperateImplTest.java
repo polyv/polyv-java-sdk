@@ -72,7 +72,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 描述：创建一个直播频道，返回直播频道相关的基础信息。
      * @throws Exception
      */
-//    @Test
+    @Test
     public void testCreateChannel() throws Exception, NoSuchAlgorithmException {
         LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
         LiveChannelResponse liveChannelResponse = null;
@@ -92,7 +92,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             if (liveChannelResponse != null) {
                 //to do something ......
                 log.debug("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
-                log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={} ",liveChannelResponse.getChannelId());
+                log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",liveChannelResponse.getChannelId(),liveChannelRequest.getChannelPasswd());
                 log.debug("网页观看地址：https://live.polyv.cn/watch/{} ",liveChannelResponse.getChannelId());
             }
         } catch (PloyvSdkException e) {

@@ -2,12 +2,9 @@ package net.polyv.live.v1.service.quick;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -37,36 +34,36 @@ public class LiveChannelManagerTest extends BaseTest {
     @Test
     public void testCreateEasyPPT() throws IOException, NoSuchAlgorithmException {
         QuickCreatePPTChannelRequest quickCreatePPTChannelRequest = new QuickCreatePPTChannelRequest();
-        Calendar instance = Calendar.getInstance();
-        instance.set(Calendar.DAY_OF_MONTH,instance.get(Calendar.DAY_OF_MONTH)+1);
         LiveChannelManager.ChannelInfo channelInfo;
+        Calendar instance = Calendar.getInstance();
+        instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
+        //创建频道
         quickCreatePPTChannelRequest.setName("快速创建三分屏频道")
                 .setChannelPasswd(getRandomString(6))
                 .setLinkMicLimit(5)
                 .setPublisher("thomas教授")
                 .setPureRtcEnabled("Y")
                 .setStartTime(instance.getTime().getTime())
+                //修改频道相关设置
                 .setCoverImg("https://wwwimg.polyv.net/assets/dist/images/v2020/page-home/brand-advantage/row-2-3.svg")
                 .setSplashImg(
                         "https://wwwimg.polyv.net/assets/dist/images/v2020/news-info-md/product-dynamic-bg_v3.jpg")
                 .setDesc("POLYV保利威是广州易方信息科技股份有限公司旗下拥有自主知识产权的视频云计算服务平台，其中包含 云点播 、云直播 " +
                         "和其它视频服务，提供API、SDK技术支持，并拥有国家专利级别的PlaySafe®视频版权保护技术及三套CDN加速，致力为用户提供稳定、安全、快速的企业级视频云服务。")
-               
+                //设置讲师信息
                 .setNickname("thomas-gogo")
                 .setActor("大师")
-                .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0.jpg")
-              
+                .setAvatar(
+                        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
+                                ".jpg")
+                //设置引导图或者引导视频
                 .setCoverImage("https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg")
-                .setCoverHref("http://www.baidu.com")
+                .setCoverHref("https://www.polyv.net")
 //              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");
                 .setRequestId(LiveSignUtil.generateUUID());
-        channelInfo = LiveChannelManager.createEasyPPT(quickCreatePPTChannelRequest);
+        channelInfo = new LiveChannelManager().createEasyPPT(quickCreatePPTChannelRequest);
         Assert.assertNotNull(channelInfo);
         log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(channelInfo));
-        
-        
-        
-        
     }
     
     /**
@@ -79,20 +76,28 @@ public class LiveChannelManagerTest extends BaseTest {
         QuickCreatePPTChannelRequest quickCreatePPTChannelRequest = new QuickCreatePPTChannelRequest();
         LiveChannelManager.ChannelInfo channelInfo;
         Calendar instance = Calendar.getInstance();
-        instance.set(Calendar.DAY_OF_MONTH,instance.get(Calendar.DAY_OF_MONTH)+1);
+        instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
+        //创建频道
         quickCreatePPTChannelRequest.setName("快速创建三分屏频道-子频道")
                 .setChannelPasswd(getRandomString(6))
                 .setLinkMicLimit(5)
                 .setPublisher("thomas教授")
                 .setPureRtcEnabled("Y")
                 .setStartTime(instance.getTime().getTime())
+                //修改频道相关设置
                 .setCoverImg("https://wwwimg.polyv.net/assets/dist/images/v2020/page-home/brand-advantage/row-2-3.svg")
                 .setSplashImg(
                         "https://wwwimg.polyv.net/assets/dist/images/v2020/news-info-md/product-dynamic-bg_v3.jpg")
                 .setDesc("POLYV保利威是广州易方信息科技股份有限公司旗下拥有自主知识产权的视频云计算服务平台，其中包含 云点播 、云直播 " +
-                        "和其它视频服务，提供API、SDK技术支持，并拥有国家专利级别的PlaySafe®视频版权保护技术及三套CDN加速，致力为用户提供稳定、安全、快速的企业级视频云服务。") .setNickname("thomas-gogo")
+                        "和其它视频服务，提供API、SDK技术支持，并拥有国家专利级别的PlaySafe®视频版权保护技术及三套CDN加速，致力为用户提供稳定、安全、快速的企业级视频云服务。")
+                .setNickname("thomas-gogo")
+                //设置讲师信息
+                .setNickname("thomas-gogo")
                 .setActor("大师")
-                .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0.jpg")
+                .setAvatar(
+                        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
+                                ".jpg")
+                //设置引导图或者引导视频
                 .setCoverImage("https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg")
                 .setCoverHref("http://www.baidu.com")
 //              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");
@@ -102,6 +107,7 @@ public class LiveChannelManagerTest extends BaseTest {
         List<LiveCreateSonChannelListRequest.SonChannel> sonChannels =
                 new ArrayList<LiveCreateSonChannelListRequest.SonChannel>();
         LiveCreateSonChannelListRequest.SonChannel sonChannel1 = new LiveCreateSonChannelListRequest.SonChannel();
+        //设置子频道信息
         sonChannel1.setRole("Guest")
                 .setNickname("嘉宾大大")
                 .setPasswd(getRandomString(10))
@@ -117,9 +123,9 @@ public class LiveChannelManagerTest extends BaseTest {
                 .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740," +
                         "3965499425&fm=26&gp=0.jpg");
         sonChannels.add(sonChannel1);
-        liveCreateSonChannelListRequest
-                .setSonChannels(sonChannels);
-        channelInfo = LiveChannelManager.createEasyPPT(quickCreatePPTChannelRequest, liveCreateSonChannelListRequest);
+        liveCreateSonChannelListRequest.setSonChannels(sonChannels);
+        channelInfo = new LiveChannelManager().createEasyPPT(quickCreatePPTChannelRequest,
+                liveCreateSonChannelListRequest);
         Assert.assertNotNull(channelInfo);
         log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(channelInfo));
     }
@@ -135,26 +141,32 @@ public class LiveChannelManagerTest extends BaseTest {
         QuickCreateVideoChannelRequest quickCreateVideoChannelRequest = new QuickCreateVideoChannelRequest();
         LiveChannelManager.ChannelInfo channelInfo;
         Calendar instance = Calendar.getInstance();
-        instance.set(Calendar.DAY_OF_MONTH,instance.get(Calendar.DAY_OF_MONTH)+1);
+        instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
+        //创建频道
         quickCreateVideoChannelRequest.setName("快速创建纯视频频道")
                 .setChannelPasswd(getRandomString(6))
                 .setLinkMicLimit(5)
                 .setPublisher("thomas教授")
                 .setStartTime(instance.getTime().getTime())
                 .setPureRtcEnabled("Y")
+                //修改频道相关设置
                 .setCoverImg("https://wwwimg.polyv.net/assets/dist/images/v2020/page-home/brand-advantage/row-2-3.svg")
                 .setSplashImg(
                         "https://wwwimg.polyv.net/assets/dist/images/v2020/news-info-md/product-dynamic-bg_v3.jpg")
                 .setDesc("POLYV保利威是广州易方信息科技股份有限公司旗下拥有自主知识产权的视频云计算服务平台，其中包含 云点播 、云直播 " +
                         "和其它视频服务，提供API、SDK技术支持，并拥有国家专利级别的PlaySafe®视频版权保护技术及三套CDN加速，致力为用户提供稳定、安全、快速的企业级视频云服务。")
+                //设置讲师信息
+                .setNickname("thomas-gogo")
+                .setActor("大师")
+                .setAvatar(
+                        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
+                                ".jpg")
+                //设置引导图或者引导视频
                 .setCoverImage("https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg")
                 .setCoverHref("http://www.baidu.com")
 //              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");
-                .setNickname("thomas-gogo")
-                .setActor("大师")
-                .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0.jpg")
                 .setRequestId(LiveSignUtil.generateUUID());
-        channelInfo = LiveChannelManager.createEasyVideo(quickCreateVideoChannelRequest);
+        channelInfo = new LiveChannelManager().createEasyVideo(quickCreateVideoChannelRequest);
         Assert.assertNotNull(channelInfo);
         log.debug("快速创建纯视频频道成功，{}", JSON.toJSONString(channelInfo));
     }

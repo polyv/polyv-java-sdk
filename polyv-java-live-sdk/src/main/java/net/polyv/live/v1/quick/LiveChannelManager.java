@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import org.junit.Assert;
-
 import com.alibaba.fastjson.JSON;
 
 import io.swagger.annotations.ApiModel;
@@ -34,7 +32,6 @@ import net.polyv.live.v1.entity.quick.QuickCreateVideoChannelRequest;
 import net.polyv.live.v1.service.channel.impl.LiveChannelOperateServiceImpl;
 import net.polyv.live.v1.service.chat.impl.LiveChatRoomServiceImpl;
 import net.polyv.live.v1.service.player.impl.LivePlayerServiceImpl;
-import net.polyv.live.v1.util.LiveSignUtil;
 
 /**
  * 频道快捷操作类
@@ -50,7 +47,7 @@ public class LiveChannelManager {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    public static ChannelInfo createEasyPPT(QuickCreatePPTChannelRequest quickCreateChannelRequest)
+    public ChannelInfo createEasyPPT(QuickCreatePPTChannelRequest quickCreateChannelRequest)
             throws IOException, NoSuchAlgorithmException {
         return createEasyPPT(quickCreateChannelRequest, null);
     }
@@ -63,7 +60,7 @@ public class LiveChannelManager {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    public static ChannelInfo createEasyPPT(QuickCreatePPTChannelRequest quickCreateChannelRequest,
+    public ChannelInfo createEasyPPT(QuickCreatePPTChannelRequest quickCreateChannelRequest,
             LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
         ChannelInfo channelInfo = new ChannelInfo();
@@ -136,7 +133,6 @@ public class LiveChannelManager {
             }
         }
         
-        
         //3、设置讲师信息
         LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
         Boolean result = null;
@@ -147,7 +143,6 @@ public class LiveChannelManager {
                 .setAvatar(quickCreateChannelRequest.getAvatar())
                 .setRequestId(quickCreateChannelRequest.getRequestId());
         result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
-        Assert.assertNotNull(result);
         if (result== null || !result) {
             throw new PloyvSdkException(LiveConstant.ERROR_CODE, "设置讲师信息失败");
         }
@@ -173,7 +168,7 @@ public class LiveChannelManager {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    public static ChannelInfo createEasyVideo(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest)
+    public ChannelInfo createEasyVideo(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest)
             throws IOException, NoSuchAlgorithmException {
         return createEasyVideo(quickCreateVideoChannelRequest,null);
     }
@@ -186,7 +181,7 @@ public class LiveChannelManager {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    public static ChannelInfo createEasyVideo(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest,LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
+    public ChannelInfo createEasyVideo(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest,LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
         ChannelInfo channelInfo = new ChannelInfo();
         String scene = LiveConstant.SceneType.ALONE.getDesc();
@@ -270,7 +265,6 @@ public class LiveChannelManager {
                 .setAvatar(quickCreateVideoChannelRequest.getAvatar())
                 .setRequestId(quickCreateVideoChannelRequest.getRequestId());
         result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
-        Assert.assertNotNull(result);
         if (result== null || !result) {
             throw new PloyvSdkException(LiveConstant.ERROR_CODE, "设置讲师信息失败");
         }
@@ -285,7 +279,7 @@ public class LiveChannelManager {
         return channelInfo;
     }
     
-    private static LiveChannelBasicInfoResponse getLiveChannelBasicInfoResponse(String channelId ,String requestId)
+    private LiveChannelBasicInfoResponse getLiveChannelBasicInfoResponse(String channelId ,String requestId)
             throws IOException, NoSuchAlgorithmException {
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;
         LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
@@ -305,7 +299,7 @@ public class LiveChannelManager {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    private static List<LiveSonChannelInfoResponse> getSonChannelInfoList(String channelId,String requestId)
+    private List<LiveSonChannelInfoResponse> getSonChannelInfoList(String channelId,String requestId)
             throws IOException, NoSuchAlgorithmException {
         LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
         LiveSonChannelInfoListResponse liveSonChannelInfoResponse;
@@ -325,7 +319,7 @@ public class LiveChannelManager {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    private static void createSonChannelList(String channelId,
+    private void createSonChannelList(String channelId,
             LiveCreateSonChannelListRequest liveCreateSonChannelListRequest,String requestId)
             throws IOException, NoSuchAlgorithmException {
         liveCreateSonChannelListRequest.setChannelId(channelId).setRequestId(requestId);
@@ -340,7 +334,7 @@ public class LiveChannelManager {
     @Data
     @Accessors(chain = true)
     @ApiModel("频道信息")
-    public static class ChannelInfo {
+    public class ChannelInfo {
         
         @ApiModelProperty(name = "liveChannelBasicInfoResponse", value = "频道信息")
         private LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;

@@ -92,6 +92,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
             if (liveChannelResponse != null) {
                 //to do something ......
                 log.debug("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
+                log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={} ",liveChannelResponse.getChannelId());
+                log.debug("网页观看地址：https://live.polyv.cn/watch/{} ",liveChannelResponse.getChannelId());
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B

@@ -6,10 +6,6 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSON;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.util.StringUtils;
@@ -50,7 +46,7 @@ public class LiveChannelManager {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    public ChannelInfo createEasyPPT(QuickCreatePPTChannelRequest quickCreateChannelRequest)
+    public QuickCreateChannelInfoResponse createEasyPPT(QuickCreatePPTChannelRequest quickCreateChannelRequest)
             throws IOException, NoSuchAlgorithmException {
         return createEasyPPT(quickCreateChannelRequest, null);
     }
@@ -63,10 +59,10 @@ public class LiveChannelManager {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    public ChannelInfo createEasyPPT(QuickCreatePPTChannelRequest quickCreateChannelRequest,
+    public QuickCreateChannelInfoResponse createEasyPPT(QuickCreatePPTChannelRequest quickCreateChannelRequest,
             LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
-        ChannelInfo channelInfo = new ChannelInfo();
+        QuickCreateChannelInfoResponse quickCreateChannelInfoResponse = new QuickCreateChannelInfoResponse();
         String scene = LiveConstant.SceneType.PPT.getDesc();
         //1、创建频道
         LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
@@ -174,12 +170,12 @@ public class LiveChannelManager {
         //6、查询频道信息
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = getLiveChannelBasicInfoResponse(channelId,
                 quickCreateChannelRequest.getRequestId());
-        channelInfo.setLiveChannelBasicInfoResponse(liveChannelBasicInfoResponse);
+        quickCreateChannelInfoResponse.setLiveChannelBasicInfoResponse(liveChannelBasicInfoResponse);
         //7、查询子频道信息
         List<LiveSonChannelInfoResponse> sonChannelInfoList = getSonChannelInfoList(channelId,
                 quickCreateChannelRequest.getRequestId());
-        channelInfo.setSonChannelInfos(sonChannelInfoList);
-        return channelInfo;
+        quickCreateChannelInfoResponse.setSonChannelInfos(sonChannelInfoList);
+        return quickCreateChannelInfoResponse;
     }
     
     /**
@@ -189,7 +185,7 @@ public class LiveChannelManager {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    public ChannelInfo createEasyVideo(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest)
+    public QuickCreateChannelInfoResponse createEasyVideo(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest)
             throws IOException, NoSuchAlgorithmException {
         return createEasyVideo(quickCreateVideoChannelRequest, null);
     }
@@ -202,10 +198,10 @@ public class LiveChannelManager {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    public ChannelInfo createEasyVideo(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest,
+    public QuickCreateChannelInfoResponse createEasyVideo(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest,
             LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
-        ChannelInfo channelInfo = new ChannelInfo();
+        QuickCreateChannelInfoResponse quickCreateChannelInfoResponse = new QuickCreateChannelInfoResponse();
         String scene = LiveConstant.SceneType.ALONE.getDesc();
         //1、创建频道
         LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
@@ -296,12 +292,12 @@ public class LiveChannelManager {
         //7、查询频道信息
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = getLiveChannelBasicInfoResponse(channelId,
                 quickCreateVideoChannelRequest.getRequestId());
-        channelInfo.setLiveChannelBasicInfoResponse(liveChannelBasicInfoResponse);
+        quickCreateChannelInfoResponse.setLiveChannelBasicInfoResponse(liveChannelBasicInfoResponse);
         //8、查询子频道信息
         List<LiveSonChannelInfoResponse> sonChannelInfoList = getSonChannelInfoList(channelId,
                 quickCreateVideoChannelRequest.getRequestId());
-        channelInfo.setSonChannelInfos(sonChannelInfoList);
-        return channelInfo;
+        quickCreateChannelInfoResponse.setSonChannelInfos(sonChannelInfoList);
+        return quickCreateChannelInfoResponse;
     }
     
     private LiveChannelBasicInfoResponse getLiveChannelBasicInfoResponse(String channelId, String requestId)
@@ -355,16 +351,4 @@ public class LiveChannelManager {
         }
     }
     
-    @Data
-    @Accessors(chain = true)
-    @ApiModel("频道信息")
-    public class ChannelInfo {
-        
-        @ApiModelProperty(name = "liveChannelBasicInfoResponse", value = "频道信息")
-        private LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;
-        
-        @ApiModelProperty(name = "sonChannelInfos", value = "子频道信息")
-        private List<LiveSonChannelInfoResponse> sonChannelInfos;
-        
-    }
 }

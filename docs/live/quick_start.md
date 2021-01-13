@@ -51,7 +51,8 @@
         LiveGlobalConfig.init(appId, userId, appSecret);
         log.debug("--初始化完成--");
     }
-
+````
+````java
  	/**
      * 初始化配置并初始化 HTTP CLIENT 连接池超时时间和最大连接数配置,请配置自己的账号信息
      */
@@ -150,6 +151,8 @@ public class LiveChannelDemo {
             if (liveChannelResponse != null) {
                 //to do something ......
                 log.debug("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
+                log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",liveChannelResponse.getChannelId(),liveChannelRequest.getChannelPasswd());
+                log.debug("网页观看地址：https://live.polyv.cn/watch/{} ",liveChannelResponse.getChannelId());
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

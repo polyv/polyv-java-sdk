@@ -1,5 +1,6 @@
 package net.polyv.live.v1.service.quick;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class LiveChannelManagerTest extends BaseTest {
     public void testCreateEasyPPT() throws IOException, NoSuchAlgorithmException {
         QuickCreatePPTChannelRequest quickCreatePPTChannelRequest = new QuickCreatePPTChannelRequest();
         LiveChannelManager.ChannelInfo channelInfo;
+        String path = LiveChannelManagerTest.class.getResource("/file/PPT.pptx").getPath();
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
@@ -60,6 +62,11 @@ public class LiveChannelManagerTest extends BaseTest {
                 .setCoverImage("https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg")
                 .setCoverHref("https://www.polyv.net")
 //              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");
+                //设置上传文档，File为null或不设置则不上传
+                .setFile(new File(path))
+                .setType("common")
+                .setDocName("葵花宝典")
+                .setCallbackUrl("http://www.baidu.com/callback")
                 .setRequestId(LiveSignUtil.generateUUID());
         channelInfo = new LiveChannelManager().createEasyPPT(quickCreatePPTChannelRequest);
         Assert.assertNotNull(channelInfo);
@@ -75,6 +82,7 @@ public class LiveChannelManagerTest extends BaseTest {
     public void testCreateEasyPPTAndSonChannel() throws IOException, NoSuchAlgorithmException {
         QuickCreatePPTChannelRequest quickCreatePPTChannelRequest = new QuickCreatePPTChannelRequest();
         LiveChannelManager.ChannelInfo channelInfo;
+        String path = LiveChannelManagerTest.class.getResource("file/PPT.pptx").getPath();
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
@@ -101,6 +109,11 @@ public class LiveChannelManagerTest extends BaseTest {
                 .setCoverImage("https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg")
                 .setCoverHref("http://www.baidu.com")
 //              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");
+                //设置上传文档，File为null或不设置则不上传
+                .setFile(new File(path))
+                .setType("common")
+                .setDocName("葵花宝典")
+                .setCallbackUrl("http://www.baidu.com/callback")
                 .setRequestId(LiveSignUtil.generateUUID());
         
         LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();

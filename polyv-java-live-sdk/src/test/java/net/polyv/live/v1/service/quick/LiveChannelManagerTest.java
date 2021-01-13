@@ -89,7 +89,7 @@ public class LiveChannelManagerTest extends BaseTest {
                 //讲课PPT设置-转换类型（‘common’：转普通图片， ‘animate’：转动画效果）
                 .setType("common")
                 //讲课PPT设置-文档名称
-                .setDocName("葵花宝典")
+                .setDocName("直播教学课件")
 //                //讲课PPT设置-文档转换完成后的回调地址，不需要不传
 //                .setCallbackUrl("http://www.baidu.com/callback")
             
@@ -100,6 +100,8 @@ public class LiveChannelManagerTest extends BaseTest {
         log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(quickCreateChannelInfoResponse));
         log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId(),quickCreatePPTChannelRequest.getChannelPasswd());
         log.debug("网页观看地址：https://live.polyv.cn/watch/{} ",quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId());
+        
+        
         /**
          * 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
@@ -108,7 +110,7 @@ public class LiveChannelManagerTest extends BaseTest {
     }
     
     /**
-     * 快速创建三分屏频道并批量创建子频道
+     * 带子频道的直播教学场景
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
@@ -163,7 +165,7 @@ public class LiveChannelManagerTest extends BaseTest {
                 //讲课PPT设置-转换类型（‘common’：转普通图片， ‘animate’：转动画效果）
                 .setType("common")
                 //讲课PPT设置-文档名称
-                .setDocName("葵花宝典")
+                .setDocName("直播教学课件")
 //                //讲课PPT设置-文档转换完成后的回调地址，不需要不传
 //                .setCallbackUrl("http://www.baidu.com/callback")
                 
@@ -187,14 +189,15 @@ public class LiveChannelManagerTest extends BaseTest {
                 //子频道头像
                 .setAvatar("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2480846186,1530344&fm=15&gp=0.jpg");
         sonChannels.add(sonChannel1);
-        sonChannel1 = new LiveCreateSonChannelListRequest.SonChannel();
-        
-        sonChannel1.setRole(null)
+    
+        LiveCreateSonChannelListRequest.SonChannel sonChannel2 = new LiveCreateSonChannelListRequest.SonChannel();
+        sonChannel2.setRole(null)
                 .setNickname("助教-王小姐")
                 .setPasswd(getRandomString(10))
                 .setActor("王老师")
                 .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=356414612,1103487565&fm=15&gp=0.jpg");
-        sonChannels.add(sonChannel1);
+        sonChannels.add(sonChannel2);
+        
         liveCreateSonChannelListRequest.setSonChannels(sonChannels);
         
         quickCreateChannelInfoResponse = new LiveChannelManager().createEasyPPT(quickCreatePPTChannelRequest,
@@ -203,8 +206,11 @@ public class LiveChannelManagerTest extends BaseTest {
         log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(quickCreateChannelInfoResponse));
         log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId(),quickCreatePPTChannelRequest.getChannelPasswd());
         log.debug("网页观看地址：https://live.polyv.cn/watch/{} ",quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId());
+        log.debug("嘉宾进入直播间地址：http://live.polyv.net/web-start/guest?channelId={} ,登录密码： {} ",quickCreateChannelInfoResponse.getSonChannelInfos().get(0).getAccount(),sonChannel1.getPasswd());
+        log.debug("助教进入直播间地址：https://live.polyv.net/teacher.html , 登录频道: {}, 登录密码： {}",quickCreateChannelInfoResponse.getSonChannelInfos().get(1).getAccount(),sonChannel2.getPasswd());
+    
         /**
-         * 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
+         * 现在可以采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
         printViewLog(quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId(),requestId);

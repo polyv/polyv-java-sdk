@@ -3,7 +3,7 @@
   * [简介](/)
   * [全局约束](/limit)
   * [快速接入](/quick_start)
-  * [3分钟玩转一场直播](/playLive)
+  * [10分钟玩转一场直播](/playLive)
   * [使用进阶](/advanceLive)
   * [实现大会直播](/videoRoom)
   * [实现线上教学](/classRoom)

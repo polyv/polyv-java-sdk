@@ -133,19 +133,21 @@ public class LiveChannelManager {
         }
         
         //3、设置讲师信息
-        LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
-        Boolean result = null;
-        liveSetTeacherDataRequest.setChannelId(channelId)
-                .setNickname(quickCreateChannelRequest.getNickname())
-                .setActor(quickCreateChannelRequest.getActor())
-                .setPasswd(quickCreateChannelRequest.getChannelPasswd())
-                .setAvatar(quickCreateChannelRequest.getAvatar())
-                .setRequestId(quickCreateChannelRequest.getRequestId());
-        result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
-        if (result == null || !result) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "设置讲师信息失败");
+        if (StringUtils.isNotBlank(quickCreateChannelRequest.getNickname())) {
+            LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
+            Boolean result = null;
+            liveSetTeacherDataRequest.setChannelId(channelId)
+                    .setNickname(quickCreateChannelRequest.getNickname())
+                    .setActor(quickCreateChannelRequest.getActor())
+                    .setPasswd(quickCreateChannelRequest.getChannelPasswd())
+                    .setAvatar(quickCreateChannelRequest.getAvatar())
+                    .setRequestId(quickCreateChannelRequest.getRequestId());
+            result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
+            if (result == null || !result) {
+                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "设置讲师信息失败");
+            }
+            log.info("设置讲师信息成功");
         }
-        log.info("设置讲师信息成功");
         
         //4、批量创建子频道
         if (liveCreateSonChannelListRequest != null) {
@@ -275,19 +277,21 @@ public class LiveChannelManager {
             }
         }
         //6、设置讲师信息
-        LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
-        Boolean result = null;
-        liveSetTeacherDataRequest.setChannelId(channelId)
-                .setNickname(quickCreateVideoChannelRequest.getNickname())
-                .setActor(quickCreateVideoChannelRequest.getActor())
-                .setPasswd(quickCreateVideoChannelRequest.getChannelPasswd())
-                .setAvatar(quickCreateVideoChannelRequest.getAvatar())
-                .setRequestId(quickCreateVideoChannelRequest.getRequestId());
-        result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
-        if (result == null || !result) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "设置讲师信息失败");
+        if (StringUtils.isNotBlank(quickCreateVideoChannelRequest.getNickname())) {
+            LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
+            Boolean result = null;
+            liveSetTeacherDataRequest.setChannelId(channelId)
+                    .setNickname(quickCreateVideoChannelRequest.getNickname())
+                    .setActor(quickCreateVideoChannelRequest.getActor())
+                    .setPasswd(quickCreateVideoChannelRequest.getChannelPasswd())
+                    .setAvatar(quickCreateVideoChannelRequest.getAvatar())
+                    .setRequestId(quickCreateVideoChannelRequest.getRequestId());
+            result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
+            if (result == null || !result) {
+                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "设置讲师信息失败");
+            }
+            log.info("设置讲师信息成功");
         }
-        log.info("设置讲师信息成功");
         
         //7、查询频道信息
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = getLiveChannelBasicInfoResponse(channelId,

@@ -14,10 +14,13 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.live.v1.entity.channel.operate.LiveCreateSonChannelListRequest;
+import net.polyv.live.v1.entity.channel.viewdata.LiveListChannelViewlogRequest;
+import net.polyv.live.v1.entity.channel.viewdata.LiveListChannelViewlogResponse;
 import net.polyv.live.v1.entity.quick.QuickCreatePPTChannelRequest;
 import net.polyv.live.v1.entity.quick.QuickCreateVideoChannelRequest;
 import net.polyv.live.v1.quick.LiveChannelManager;
 import net.polyv.live.v1.service.BaseTest;
+import net.polyv.live.v1.service.channel.impl.LiveChannelViewdataServiceImpl;
 import net.polyv.live.v1.util.LiveSignUtil;
 
 /**
@@ -40,6 +43,7 @@ public class LiveChannelManagerTest extends BaseTest {
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
+        String requestId = LiveSignUtil.generateUUID();
         quickCreatePPTChannelRequest.setName("快速创建三分屏频道")
                 .setChannelPasswd(getRandomString(6))
                 .setLinkMicLimit(5)
@@ -67,10 +71,12 @@ public class LiveChannelManagerTest extends BaseTest {
                 .setType("common")
                 .setDocName("葵花宝典")
                 .setCallbackUrl("http://www.baidu.com/callback")
-                .setRequestId(LiveSignUtil.generateUUID());
+                .setRequestId(requestId);
         channelInfo = new LiveChannelManager().createEasyPPT(quickCreatePPTChannelRequest);
         Assert.assertNotNull(channelInfo);
         log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(channelInfo));
+        //打印观看日志
+        printViewLog(channelInfo.getLiveChannelBasicInfoResponse().getChannelId(),requestId);
     }
     
     /**
@@ -86,6 +92,7 @@ public class LiveChannelManagerTest extends BaseTest {
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
+        String requestId = LiveSignUtil.generateUUID();
         quickCreatePPTChannelRequest.setName("快速创建三分屏频道-子频道")
                 .setChannelPasswd(getRandomString(6))
                 .setLinkMicLimit(5)
@@ -114,7 +121,7 @@ public class LiveChannelManagerTest extends BaseTest {
                 .setType("common")
                 .setDocName("葵花宝典")
                 .setCallbackUrl("http://www.baidu.com/callback")
-                .setRequestId(LiveSignUtil.generateUUID());
+                .setRequestId(requestId);
         
         LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
         List<LiveCreateSonChannelListRequest.SonChannel> sonChannels =
@@ -141,6 +148,8 @@ public class LiveChannelManagerTest extends BaseTest {
                 liveCreateSonChannelListRequest);
         Assert.assertNotNull(channelInfo);
         log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(channelInfo));
+        //打印观看日志
+        printViewLog(channelInfo.getLiveChannelBasicInfoResponse().getChannelId(),requestId);
     }
     
     /**
@@ -156,6 +165,7 @@ public class LiveChannelManagerTest extends BaseTest {
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
+        String requestId = LiveSignUtil.generateUUID();
         quickCreateVideoChannelRequest.setName("快速创建纯视频频道")
                 .setChannelPasswd(getRandomString(6))
                 .setLinkMicLimit(5)
@@ -178,10 +188,34 @@ public class LiveChannelManagerTest extends BaseTest {
                 .setCoverImage("https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg")
                 .setCoverHref("http://www.baidu.com")
 //              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");
-                .setRequestId(LiveSignUtil.generateUUID());
+                .setRequestId(requestId);
         channelInfo = new LiveChannelManager().createEasyVideo(quickCreateVideoChannelRequest);
         Assert.assertNotNull(channelInfo);
         log.debug("快速创建纯视频频道成功，{}", JSON.toJSONString(channelInfo));
+        //打印观看日志
+        printViewLog(channelInfo.getLiveChannelBasicInfoResponse().getChannelId(),requestId);
+    }
+    
+    /**
+     * 打印频道观看日志
+     * @param channelId
+     * @param requestId
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    private void printViewLog(String channelId,String requestId) throws IOException, NoSuchAlgorithmException {
+        LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
+        LiveListChannelViewlogResponse liveListChannelViewlogResponse;
+            liveListChannelViewlogRequest.setChannelId(channelId)
+                    .setCurrentDay(getDate(2020, 11, 3))
+                    .setRequestId(requestId);
+        liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
+                liveListChannelViewlogRequest);
+        Assert.assertNotNull(liveListChannelViewlogResponse);
+        if (liveListChannelViewlogResponse != null) {
+            //to do something ......
+            log.debug("测试分页查询频道观看日志成功，{}", JSON.toJSONString(liveListChannelViewlogResponse));
+        }
     }
     
     /**

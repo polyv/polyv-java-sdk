@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.util.StringUtils;
 import net.polyv.live.v1.constant.LiveConstant;
+import net.polyv.live.v1.entity.channel.QuickCreateChannelResponse;
 import net.polyv.live.v1.entity.channel.doc.LiveCreateChannelDocRequest;
 import net.polyv.live.v1.entity.channel.doc.LiveCreateChannelDocResponse;
 import net.polyv.live.v1.entity.channel.operate.LiveChannelBasicInfoRequest;
@@ -33,11 +34,11 @@ import net.polyv.live.v1.service.chat.impl.LiveChatRoomServiceImpl;
 import net.polyv.live.v1.service.player.impl.LivePlayerServiceImpl;
 
 /**
- * 频道快捷操作类
+ * 频道快捷创建器
  * @author: sadboy
  **/
 @Slf4j
-public class LiveChannelManager {
+public class LiveChannelQuickCreator {
     
     /**
      * 快速创建简单三分屏频道
@@ -46,9 +47,9 @@ public class LiveChannelManager {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    public QuickCreateChannelInfoResponse createEasyPPT(QuickCreatePPTChannelRequest quickCreateChannelRequest)
+    public QuickCreateChannelResponse quickCreatePPTSence(QuickCreatePPTChannelRequest quickCreateChannelRequest)
             throws IOException, NoSuchAlgorithmException {
-        return createEasyPPT(quickCreateChannelRequest, null);
+        return quickCreatePPTSence(quickCreateChannelRequest, null);
     }
     
     /**
@@ -59,10 +60,10 @@ public class LiveChannelManager {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    public QuickCreateChannelInfoResponse createEasyPPT(QuickCreatePPTChannelRequest quickCreateChannelRequest,
+    public QuickCreateChannelResponse quickCreatePPTSence(QuickCreatePPTChannelRequest quickCreateChannelRequest,
             LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
-        QuickCreateChannelInfoResponse quickCreateChannelInfoResponse = new QuickCreateChannelInfoResponse();
+        QuickCreateChannelResponse quickCreateChannelResponse = new QuickCreateChannelResponse();
         String scene = LiveConstant.SceneType.PPT.getDesc();
         //1、创建频道
         LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
@@ -172,12 +173,12 @@ public class LiveChannelManager {
         //8、查询频道信息
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = getLiveChannelBasicInfoResponse(channelId,
                 quickCreateChannelRequest.getRequestId());
-        quickCreateChannelInfoResponse.setLiveChannelBasicInfoResponse(liveChannelBasicInfoResponse);
+        quickCreateChannelResponse.setLiveChannelBasicInfoResponse(liveChannelBasicInfoResponse);
         //9、查询子频道信息
         List<LiveSonChannelInfoResponse> sonChannelInfoList = getSonChannelInfoList(channelId,
                 quickCreateChannelRequest.getRequestId());
-        quickCreateChannelInfoResponse.setSonChannelInfos(sonChannelInfoList);
-        return quickCreateChannelInfoResponse;
+        quickCreateChannelResponse.setSonChannelInfos(sonChannelInfoList);
+        return quickCreateChannelResponse;
     }
     
     /**
@@ -187,9 +188,9 @@ public class LiveChannelManager {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    public QuickCreateChannelInfoResponse createEasyVideo(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest)
+    public QuickCreateChannelResponse quickCreateVideoSence(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest)
             throws IOException, NoSuchAlgorithmException {
-        return createEasyVideo(quickCreateVideoChannelRequest, null);
+        return quickCreateVideoSence(quickCreateVideoChannelRequest, null);
     }
     
     /**
@@ -200,10 +201,10 @@ public class LiveChannelManager {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    public QuickCreateChannelInfoResponse createEasyVideo(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest,
+    public QuickCreateChannelResponse quickCreateVideoSence(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest,
             LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
-        QuickCreateChannelInfoResponse quickCreateChannelInfoResponse = new QuickCreateChannelInfoResponse();
+        QuickCreateChannelResponse quickCreateChannelResponse = new QuickCreateChannelResponse();
         String scene = LiveConstant.SceneType.ALONE.getDesc();
         //1、创建频道
         LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
@@ -296,12 +297,12 @@ public class LiveChannelManager {
         //7、查询频道信息
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = getLiveChannelBasicInfoResponse(channelId,
                 quickCreateVideoChannelRequest.getRequestId());
-        quickCreateChannelInfoResponse.setLiveChannelBasicInfoResponse(liveChannelBasicInfoResponse);
+        quickCreateChannelResponse.setLiveChannelBasicInfoResponse(liveChannelBasicInfoResponse);
         //8、查询子频道信息
         List<LiveSonChannelInfoResponse> sonChannelInfoList = getSonChannelInfoList(channelId,
                 quickCreateVideoChannelRequest.getRequestId());
-        quickCreateChannelInfoResponse.setSonChannelInfos(sonChannelInfoList);
-        return quickCreateChannelInfoResponse;
+        quickCreateChannelResponse.setSonChannelInfos(sonChannelInfoList);
+        return quickCreateChannelResponse;
     }
     
     private LiveChannelBasicInfoResponse getLiveChannelBasicInfoResponse(String channelId, String requestId)

@@ -1,4 +1,4 @@
-package net.polyv.live.v1.quick;
+package net.polyv.live.v1.entity.channel;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import net.polyv.live.v1.entity.channel.operate.LiveSonChannelInfoResponse;
 @Data
 @Accessors(chain = true)
 @ApiModel("快速创建频道响应实体")
-public class QuickCreateChannelInfoResponse {
+public class QuickCreateChannelResponse {
     
     @ApiModelProperty(name = "liveChannelBasicInfoResponse", value = "频道信息")
     private LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;

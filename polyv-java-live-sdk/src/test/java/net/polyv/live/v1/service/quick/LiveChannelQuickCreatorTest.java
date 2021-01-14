@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
@@ -19,8 +20,8 @@ import net.polyv.live.v1.entity.channel.viewdata.LiveListChannelViewlogRequest;
 import net.polyv.live.v1.entity.channel.viewdata.LiveListChannelViewlogResponse;
 import net.polyv.live.v1.entity.quick.QuickCreatePPTChannelRequest;
 import net.polyv.live.v1.entity.quick.QuickCreateVideoChannelRequest;
-import net.polyv.live.v1.quick.LiveChannelManager;
-import net.polyv.live.v1.quick.QuickCreateChannelInfoResponse;
+import net.polyv.live.v1.quick.LiveChannelQuickCreator;
+import net.polyv.live.v1.entity.channel.QuickCreateChannelResponse;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.channel.impl.LiveChannelViewdataServiceImpl;
 import net.polyv.live.v1.util.LiveSignUtil;
@@ -30,7 +31,7 @@ import net.polyv.live.v1.util.LiveSignUtil;
  * @author: sadboy
  **/
 @Slf4j
-public class LiveChannelManagerTest extends BaseTest {
+public class LiveChannelQuickCreatorTest extends BaseTest {
     
     /**
      * 快速创建三分屏频道，适用于直播教学场景
@@ -38,10 +39,10 @@ public class LiveChannelManagerTest extends BaseTest {
      * @throws NoSuchAlgorithmException 系统异常
      */
 //    @Test
-    public void testCreateEasyPPT() throws IOException, NoSuchAlgorithmException {
+    public void testQuickCreatePPT() throws IOException, NoSuchAlgorithmException {
         QuickCreatePPTChannelRequest quickCreatePPTChannelRequest = new QuickCreatePPTChannelRequest();
-        QuickCreateChannelInfoResponse quickCreateChannelInfoResponse;
-        String path = LiveChannelManagerTest.class.getResource("/file/PPT.pptx").getPath();
+        QuickCreateChannelResponse quickCreateChannelResponse;
+        String path = LiveChannelQuickCreatorTest.class.getResource("/file/PPT.pptx").getPath();
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
@@ -94,21 +95,25 @@ public class LiveChannelManagerTest extends BaseTest {
                 
                 .setRequestId(requestId);
         
-        quickCreateChannelInfoResponse = new LiveChannelManager().createEasyPPT(quickCreatePPTChannelRequest);
-        Assert.assertNotNull(quickCreateChannelInfoResponse);
-        log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(quickCreateChannelInfoResponse));
+        quickCreateChannelResponse = new LiveChannelQuickCreator().quickCreatePPTSence(quickCreatePPTChannelRequest);
+        Assert.assertNotNull(quickCreateChannelResponse);
+        log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(quickCreateChannelResponse));
         log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",
-                quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId(),
+                quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(),
                 quickCreatePPTChannelRequest.getChannelPasswd());
         log.debug("网页观看地址：https://live.polyv.cn/watch/{} ",
-                quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId());
-        
-        
+                quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId());
+    
+    
         /**
-         * 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
+         * todo : B端客户的业务逻辑，将quickCreateChannelResponse的相关信息保持到自己的DB中组织业务逻辑
+         */
+    
+        /**
+         * todo : 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
-        printViewLog(quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
+        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
     }
     
     /**
@@ -117,10 +122,10 @@ public class LiveChannelManagerTest extends BaseTest {
      * @throws NoSuchAlgorithmException 系统异常
      */
 //    @Test
-    public void testCreateEasyPPTAndSonChannel() throws IOException, NoSuchAlgorithmException {
+    public void testQuickCreatePPTAndSonChannel() throws IOException, NoSuchAlgorithmException {
         QuickCreatePPTChannelRequest quickCreatePPTChannelRequest = new QuickCreatePPTChannelRequest();
-        QuickCreateChannelInfoResponse quickCreateChannelInfoResponse;
-        String path = LiveChannelManagerTest.class.getResource("/file/PPT.pptx").getPath();
+        QuickCreateChannelResponse quickCreateChannelResponse;
+        String path = LiveChannelQuickCreatorTest.class.getResource("/file/PPT.pptx").getPath();
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
@@ -174,45 +179,47 @@ public class LiveChannelManagerTest extends BaseTest {
                 .setRequestId(requestId);
         
         LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
-        List<LiveCreateSonChannelListRequest.SonChannel> sonChannels =
-                new ArrayList<LiveCreateSonChannelListRequest.SonChannel>();
+        List<LiveCreateSonChannelListRequest.SonChannel> sonChannels = new ArrayList<LiveCreateSonChannelListRequest.SonChannel>();
         sonChannels.add(setSonChannelsInfo1());
         sonChannels.add(setSonChannelsInfo2());
         liveCreateSonChannelListRequest.setSonChannels(sonChannels);
         
-        quickCreateChannelInfoResponse = new LiveChannelManager().createEasyPPT(quickCreatePPTChannelRequest,
+        quickCreateChannelResponse = new LiveChannelQuickCreator().quickCreatePPTSence(quickCreatePPTChannelRequest,
                 liveCreateSonChannelListRequest);
-        Assert.assertNotNull(quickCreateChannelInfoResponse);
-        log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(quickCreateChannelInfoResponse));
+        Assert.assertNotNull(quickCreateChannelResponse);
+        log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(quickCreateChannelResponse));
         log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",
-                quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId(),
+                quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(),
                 quickCreatePPTChannelRequest.getChannelPasswd());
         log.debug("网页观看地址：https://live.polyv.cn/watch/{} ",
-                quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId());
+                quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId());
         log.debug("嘉宾进入直播间地址：http://live.polyv.net/web-start/guest?channelId={} ,登录密码： {} ",
-                quickCreateChannelInfoResponse.getSonChannelInfos().get(0).getAccount(),
+                quickCreateChannelResponse.getSonChannelInfos().get(0).getAccount(),
                 sonChannels.get(0).getPasswd());
         log.debug("助教进入直播间地址：https://live.polyv.net/teacher.html , 登录频道: {}, 登录密码： {}",
-                quickCreateChannelInfoResponse.getSonChannelInfos().get(1).getAccount(),
+                quickCreateChannelResponse.getSonChannelInfos().get(1).getAccount(),
                 sonChannels.get(1).getPasswd());
-        
         /**
-         * 现在可以采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
+         * todo : B端客户的业务逻辑，将quickCreateChannelResponse的相关信息保持到自己的DB中组织业务逻辑
+         */
+    
+        /**
+         * todo : 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
-        printViewLog(quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
+        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
     }
     
     /**
-     * 快速创建纯视频频道，适合直播带货、会议、年会等直播业务场景
+     * 快速创建纯视频频道，适合直播带货、会议、年会、活动拍摄、大会直播等直播业务场景
      * 约束：2、同时设置暖场图片和暖场视频只生效暖场视频。
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-//    @Test
-    public void testCreateEasyVideo() throws IOException, NoSuchAlgorithmException {
+    @Test
+    public void testQuickCreateVideo() throws IOException, NoSuchAlgorithmException {
         QuickCreateVideoChannelRequest quickCreateVideoChannelRequest = new QuickCreateVideoChannelRequest();
-        QuickCreateChannelInfoResponse quickCreateChannelInfoResponse;
+        QuickCreateChannelResponse quickCreateChannelResponse;
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
@@ -255,31 +262,35 @@ public class LiveChannelManagerTest extends BaseTest {
                         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
                                 ".jpg").setRequestId(requestId);
         
-        quickCreateChannelInfoResponse = new LiveChannelManager().createEasyVideo(quickCreateVideoChannelRequest);
-        Assert.assertNotNull(quickCreateChannelInfoResponse);
-        log.debug("快速创建纯视频频道成功，{}", JSON.toJSONString(quickCreateChannelInfoResponse));
+        quickCreateChannelResponse = new LiveChannelQuickCreator().quickCreateVideoSence(quickCreateVideoChannelRequest);
+        Assert.assertNotNull(quickCreateChannelResponse);
+        log.debug("快速创建纯视频频道成功，{}", JSON.toJSONString(quickCreateChannelResponse));
         log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",
-                quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId(),
+                quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(),
                 quickCreateVideoChannelRequest.getChannelPasswd());
         log.debug("网页观看地址：https://live.polyv.cn/watch/{} ",
-                quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId());
+                quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId());
         /**
-         * 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
+         * todo : B端客户的业务逻辑，将quickCreateChannelResponse的相关信息保持到自己的DB中组织业务逻辑
+         */
+    
+        /**
+         * todo : 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
-        printViewLog(quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
+        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
     }
     
     /**
-     * 快速创建带子频道纯视频频道
+     * 快速创建纯视频频道，适合直播带货、会议、年会、活动拍摄、大会直播等直播业务场景
      * 约束：2、同时设置暖场图片和暖场视频只生效暖场视频。
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-//    @Test
-    public void testCreateEasyVideoAndSonChannel() throws IOException, NoSuchAlgorithmException {
+    @Test
+    public void testQuickCreateVideoAndSonChannel() throws IOException, NoSuchAlgorithmException {
         QuickCreateVideoChannelRequest quickCreateVideoChannelRequest = new QuickCreateVideoChannelRequest();
-        QuickCreateChannelInfoResponse quickCreateChannelInfoResponse;
+        QuickCreateChannelResponse quickCreateChannelResponse;
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
@@ -328,38 +339,45 @@ public class LiveChannelManagerTest extends BaseTest {
         sonChannels.add(setSonChannelsInfo2());
         liveCreateSonChannelListRequest.setSonChannels(sonChannels);
         
-        quickCreateChannelInfoResponse = new LiveChannelManager().createEasyVideo(quickCreateVideoChannelRequest,
+        //请求服务器，创建带子频道的纯视频频道
+        quickCreateChannelResponse = new LiveChannelQuickCreator().quickCreateVideoSence(quickCreateVideoChannelRequest,
                 liveCreateSonChannelListRequest);
-        Assert.assertNotNull(quickCreateChannelInfoResponse);
-        log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(quickCreateChannelInfoResponse));
+        
+        Assert.assertNotNull(quickCreateChannelResponse);
+        log.debug("快速创建纯视频直播频道成功，{}", JSON.toJSONString(quickCreateChannelResponse));
         //无延迟纯视频模式只支持客户端开播
         if (LiveConstant.Flag.YES.getFlag().equals(quickCreateVideoChannelRequest.getPureRtcEnabled())) {
             log.debug("客户端开播地址：https://live.polyv.net/start-client.html?channelId={}  , 登录密码： {}",
-                    quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId(),
+                    quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(),
                     quickCreateVideoChannelRequest.getChannelPasswd());
         } else {
             log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",
-                    quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId(),
+                    quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(),
                     quickCreateVideoChannelRequest.getChannelPasswd());
         }
         log.debug("网页观看地址：https://live.polyv.cn/watch/{} ",
-                quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId());
+                quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId());
         
         //无延迟纯视频模式只支持客户端助教视频连麦
         if (LiveConstant.Flag.YES.getFlag().equals(quickCreateVideoChannelRequest.getPureRtcEnabled())) {
             log.debug("助教客户端进入直播间地址：https://live.polyv.net/teacher.html , 登录频道: {}, 登录密码： {}",
-                    quickCreateChannelInfoResponse.getSonChannelInfos().get(0).getAccount(),
+                    quickCreateChannelResponse.getSonChannelInfos().get(0).getAccount(),
                     sonChannels.get(0).getPasswd());
         } else {
             log.debug("助教进入直播间地址：https://live.polyv.net/teacher.html , 登录频道: {}, 登录密码： {}",
-                    quickCreateChannelInfoResponse.getSonChannelInfos().get(0).getAccount(),
+                    quickCreateChannelResponse.getSonChannelInfos().get(0).getAccount(),
                     sonChannels.get(0).getPasswd());
         }
+    
         /**
-         * 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
+         * todo : B端客户的业务逻辑，将quickCreateChannelResponse的相关信息保持到自己的DB中组织业务逻辑
+         */
+        
+        /**
+         * todo : 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
-        printViewLog(quickCreateChannelInfoResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
+        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
     }
     
     /**

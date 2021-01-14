@@ -151,12 +151,12 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
                 //频道初始化设置-频道描述
                 .setDesc("POLYV保利威是广州易方信息科技股份有限公司旗下拥有自主知识产权的视频云计算服务平台，其中包含 云点播 、云直播 " +
                         "和其它视频服务，提供API、SDK技术支持，并拥有国家专利级别的PlaySafe®视频版权保护技术及三套CDN加速，致力为用户提供稳定、安全、快速的企业级视频云服务。")
-                //频道初始化设置-设置引导图
+                //频道初始化设置-设置暖场图
                 .setCoverImage("https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg")
-                //频道初始化设置-点击引导图跳转的地址
+                //频道初始化设置-点击暖场图跳转的地址
                 .setCoverHref("http://www.baidu.com")
-                //频道初始化设置-引导视频
-//              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");
+                //频道初始化设置-设置暖场视频
+//              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4")
                 //==========================================
                 //聊天室讲师信息-昵称
                 .setNickname("thomas-gogo")
@@ -246,12 +246,12 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
                 //频道初始化设置-频道描述
                 .setDesc("POLYV保利威是广州易方信息科技股份有限公司旗下拥有自主知识产权的视频云计算服务平台，其中包含 云点播 、云直播 " +
                         "和其它视频服务，提供API、SDK技术支持，并拥有国家专利级别的PlaySafe®视频版权保护技术及三套CDN加速，致力为用户提供稳定、安全、快速的企业级视频云服务。")
-                //频道初始化设置-设置引导图
+                //频道初始化设置-设置暖场图
                 .setCoverImage("https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg")
-                //频道初始化设置-点击引导图跳转的地址
+                //频道初始化设置-点击暖场图跳转的地址
                 .setCoverHref("http://www.baidu.com")
-                //频道初始化设置-引导视频
-//              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");
+                //频道初始化设置-设置暖场视频
+//              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4")
                 //==========================================
                 //聊天室讲师信息-昵称
                 .setNickname("thomas-gogo")
@@ -317,12 +317,12 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
                 //频道初始化设置-频道描述
                 .setDesc("POLYV保利威是广州易方信息科技股份有限公司旗下拥有自主知识产权的视频云计算服务平台，其中包含 云点播 、云直播 " +
                         "和其它视频服务，提供API、SDK技术支持，并拥有国家专利级别的PlaySafe®视频版权保护技术及三套CDN加速，致力为用户提供稳定、安全、快速的企业级视频云服务。")
-                //频道初始化设置-设置引导图
+                //频道初始化设置-设置暖场图
                 .setCoverImage("https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg")
-                //频道初始化设置-点击引导图跳转的地址
+                //频道初始化设置-点击暖场图跳转的地址
                 .setCoverHref("http://www.baidu.com")
-                //频道初始化设置-引导视频
-//              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");
+                //频道初始化设置-设置暖场视频
+//              .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4")
                 //==========================================
                 //聊天室讲师信息-昵称
                 .setNickname("thomas-gogo")

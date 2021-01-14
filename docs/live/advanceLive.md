@@ -368,3 +368,6 @@
 .setScene(LiveConstant.SceneType.ALONE.getDesc())
 ```
 
+## 不带子频道场景
+
+不带子频道场景只需要将上述流程和代码里面的子频道创建部分去掉即可

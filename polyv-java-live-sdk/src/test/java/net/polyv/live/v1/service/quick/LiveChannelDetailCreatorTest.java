@@ -1,41 +1,57 @@
-##  目标
+package net.polyv.live.v1.service.quick;
 
-&emsp;&emsp;前一篇文档 [10分钟玩转一场直播](/playLive) 比较适合通用的业务场景，假如要对直播业务进行深入的细节设置，您可以参考本篇文档，本篇文档实现的功能和 [10分钟玩转一场直播](/playLive) 完全相同，区别是本篇文档的参数设置更为丰富，控制更加细致。
+import java.io.File;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
-## 带子频道直播教学场景
+import org.junit.Assert;
+import org.junit.Test;
 
-### 效果
+import com.alibaba.fastjson.JSON;
 
-参考 [10分钟玩转一场直播-带子频道的直播教学场景](/playLive?id=带子频道的直播教学场景)
+import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.common.v1.util.StringUtils;
+import net.polyv.live.v1.constant.LiveConstant;
+import net.polyv.live.v1.entity.channel.QuickCreateChannelResponse;
+import net.polyv.live.v1.entity.channel.doc.LiveCreateChannelDocRequest;
+import net.polyv.live.v1.entity.channel.doc.LiveCreateChannelDocResponse;
+import net.polyv.live.v1.entity.channel.operate.LiveChannelBasicInfoRequest;
+import net.polyv.live.v1.entity.channel.operate.LiveChannelBasicInfoResponse;
+import net.polyv.live.v1.entity.channel.operate.LiveChannelRequest;
+import net.polyv.live.v1.entity.channel.operate.LiveChannelResponse;
+import net.polyv.live.v1.entity.channel.operate.LiveChannelSettingRequest;
+import net.polyv.live.v1.entity.channel.operate.LiveCreateSonChannelListRequest;
+import net.polyv.live.v1.entity.channel.operate.LiveCreateSonChannelListResponse;
+import net.polyv.live.v1.entity.channel.operate.LiveSonChannelInfoListRequest;
+import net.polyv.live.v1.entity.channel.operate.LiveSonChannelInfoListResponse;
+import net.polyv.live.v1.entity.channel.operate.LiveSonChannelInfoResponse;
+import net.polyv.live.v1.entity.channel.viewdata.LiveListChannelViewlogRequest;
+import net.polyv.live.v1.entity.channel.viewdata.LiveListChannelViewlogResponse;
+import net.polyv.live.v1.entity.chat.LiveSetTeacherDataRequest;
+import net.polyv.live.v1.entity.player.LiveSetPlayerImgRequest;
+import net.polyv.live.v1.entity.player.LiveSetWarmupVedioRequest;
+import net.polyv.live.v1.entity.quick.QuickCreatePPTChannelRequest;
+import net.polyv.live.v1.entity.quick.QuickCreateVideoChannelRequest;
+import net.polyv.live.v1.service.BaseTest;
+import net.polyv.live.v1.service.channel.impl.LiveChannelDocServiceImpl;
+import net.polyv.live.v1.service.channel.impl.LiveChannelOperateServiceImpl;
+import net.polyv.live.v1.service.channel.impl.LiveChannelViewdataServiceImpl;
+import net.polyv.live.v1.service.chat.impl.LiveChatRoomServiceImpl;
+import net.polyv.live.v1.service.player.impl.LivePlayerServiceImpl;
+import net.polyv.live.v1.util.LiveSignUtil;
 
-### 流程
-
-![image-20210113164444969](../img/image-20210113164444969.png)
-
-上述流程请求详细描述如下，具体需要配置的参数依据业务实际情况控制，下面的代码示例适用于普通一般情况:
-
-创建频道-[详细描述请参考](/channelOperate?id=_1、创建频道)
-
-初始化频道设置-[详细描述请参考](/channelOperate?id=_2、创建并初始化频道)
-
-暖场图片设置-[详细描述请参考](/playerService?id=_2、设置播放器暖场图片)
-
-暖场视频设置-[详细描述请参考](/playerService?id=_3、设置播放器暖场视频)
-
-讲师信息设置-[详细描述请参考](/chatRoomService?id=_10、设置讲师信息)
-
-子频道创建设置-[详细描述请参考](/channelOperate?id=_13、创建子频道-三分屏添加guest)
-
-课件文档上传-[详细描述请参考](/channelDoc?id=_1、上传频道文档)
-
-查询频道信息-[详细描述请参考](/channelOperate?id=_5、查询频道基本信息)
-
-查询子频道信息-[详细描述请参考](/channelOperate?id=_15、查询子频道信息) 
-
-### 代码示例
-
-```java
- /**
+/**
+ * 创建频道集成详细步骤
+ * @author: thomas
+ **/
+@Slf4j
+public class LiveChannelDetailCreatorTest extends BaseTest {
+    /**
      * 快速创建带子频道的纯视频直播场景或者直播教学场景
      * @return 频道基本信息
      * @throws IOException IO异常
@@ -62,8 +78,8 @@
                 .setPureRtcEnabled(LiveConstant.Flag.YES.getFlag() )
                 //直播教学场景
                 .setScene(LiveConstant.SceneType.PPT.getDesc())
-//                //纯视频直播场景
-//                .setScene(LiveConstant.SceneType.ALONE.getDesc())
+                //纯视频直播场景
+                .setScene(LiveConstant.SceneType.ALONE.getDesc())
                 //请求流水号
                 .setRequestId(requestId );
         LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
@@ -338,33 +354,4 @@
             log.debug("测试分页查询频道观看日志成功，{}", JSON.toJSONString(liveListChannelViewlogResponse));
         }
     }
-```
-
-
-
-## 带子频道纯视频场景
-
-### 效果
-
-参考 [10分钟玩转一场直播-带子频道的纯视频直播场景](/playLive?id=带子频道的纯视频直播场景)
-
-### 流程
-
-和上面的 带子频道直播教学场景  流程一致，只是在频道创建参数配置里面将场景改为[alone 活动拍摄] 即可。
-
-![image-20210114111840747](../img/image-20210114111840747.png)
-
-### 代码示例
-
-和上面的 带子频道直播教学场景  流程一致，只是在频道创建参数配置里面将场景改为[alone 活动拍摄] 即可，具体如下：
-
-```java
-//直播教学场景
-.setScene(LiveConstant.SceneType.PPT.getDesc())
-    
-将上面配置代码修改为下面配置代码即可
-    
-//纯视频直播场景
-.setScene(LiveConstant.SceneType.ALONE.getDesc())
-```
-
+}

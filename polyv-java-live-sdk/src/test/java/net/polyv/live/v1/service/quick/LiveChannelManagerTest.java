@@ -34,7 +34,7 @@ import net.polyv.live.v1.util.LiveSignUtil;
 public class LiveChannelManagerTest extends BaseTest {
     
     /**
-     * 快速创建三分屏频道
+     * 快速创建三分屏频道，适用于直播教学场景
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
@@ -110,7 +110,7 @@ public class LiveChannelManagerTest extends BaseTest {
     }
     
     /**
-     * 带子频道的直播教学场景
+     * 快速创建带子频道的三分屏频道，适用于直播教学场景
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
@@ -217,7 +217,7 @@ public class LiveChannelManagerTest extends BaseTest {
     }
     
     /**
-     * 快速创建纯视频频道
+     * 快速创建纯视频频道，适合直播带货、会议、年会等直播业务场景
      * 约束：2、同时设置暖场图片和暖场视频只生效暖场视频。
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常

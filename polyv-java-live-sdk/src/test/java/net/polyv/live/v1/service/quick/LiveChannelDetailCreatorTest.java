@@ -57,7 +57,7 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    @Test
+//    @Test
     public void testQuickCreateChannel( )
             throws IOException, NoSuchAlgorithmException {
         QuickCreateChannelResponse quickCreateChannelResponse = new QuickCreateChannelResponse();

@@ -216,7 +216,7 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    @Test
+//    @Test
     public void testQuickCreateVideo() throws IOException, NoSuchAlgorithmException {
         QuickCreateVideoChannelRequest quickCreateVideoChannelRequest = new QuickCreateVideoChannelRequest();
         QuickCreateChannelResponse quickCreateChannelResponse;
@@ -287,7 +287,7 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    @Test
+//    @Test
     public void testQuickCreateVideoAndSonChannel() throws IOException, NoSuchAlgorithmException {
         QuickCreateVideoChannelRequest quickCreateVideoChannelRequest = new QuickCreateVideoChannelRequest();
         QuickCreateChannelResponse quickCreateChannelResponse;

@@ -108,7 +108,7 @@ public class LiveChannelManager {
         }
         log.info("修改频道相关设置成功");
         
-        //4、修改暖场图片
+        //3、修改暖场图片
         if (StringUtils.isNotBlank(quickCreateChannelRequest.getCoverImage())) {
             LiveSetPlayerImgRequest liveSetChatAdminDataRequest = new LiveSetPlayerImgRequest();
             liveSetChatAdminDataRequest.setChannelId(channelId)
@@ -120,7 +120,7 @@ public class LiveChannelManager {
                 throw new PloyvSdkException(LiveConstant.ERROR_CODE, "暖场图片设置失败");
             }
         }
-        //5、修改暖场视频
+        //4、修改暖场视频
         if (StringUtils.isNotBlank(quickCreateChannelRequest.getWarmUpFlv())) {
             LiveSetWarmupVedioRequest liveSetWarmupVedioRequest = new LiveSetWarmupVedioRequest();
             liveSetWarmupVedioRequest.setChannelId(channelId)
@@ -132,7 +132,7 @@ public class LiveChannelManager {
             }
         }
         
-        //3、设置讲师信息
+        //5、设置讲师信息
         if (StringUtils.isNotBlank(quickCreateChannelRequest.getNickname())) {
             LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
             Boolean result = null;
@@ -149,11 +149,11 @@ public class LiveChannelManager {
             log.info("设置讲师信息成功");
         }
         
-        //4、批量创建子频道
+        //6、批量创建子频道
         if (liveCreateSonChannelListRequest != null) {
             createSonChannelList(channelId, liveCreateSonChannelListRequest, quickCreateChannelRequest.getRequestId());
         }
-        //5、上传直播文档
+        //7、上传直播文档
         if (quickCreateChannelRequest.getFile() != null) {
             LiveCreateChannelDocRequest liveCreateChannelDocRequest = new LiveCreateChannelDocRequest();
             LiveCreateChannelDocResponse liveCreateChannelDocResponse;
@@ -169,11 +169,11 @@ public class LiveChannelManager {
                 throw new PloyvSdkException(LiveConstant.ERROR_CODE, "上传频道文档失败");
             }
         }
-        //6、查询频道信息
+        //8、查询频道信息
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = getLiveChannelBasicInfoResponse(channelId,
                 quickCreateChannelRequest.getRequestId());
         quickCreateChannelInfoResponse.setLiveChannelBasicInfoResponse(liveChannelBasicInfoResponse);
-        //7、查询子频道信息
+        //9、查询子频道信息
         List<LiveSonChannelInfoResponse> sonChannelInfoList = getSonChannelInfoList(channelId,
                 quickCreateChannelRequest.getRequestId());
         quickCreateChannelInfoResponse.setSonChannelInfos(sonChannelInfoList);

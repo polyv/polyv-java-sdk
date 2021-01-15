@@ -148,9 +148,11 @@
 
 #### 请求描述
 
-
+${QuickCreatePPTChannelRequest}
 
 #### 返回描述
+
+${QuickCreateChannelResponse}
 
 
 
@@ -350,9 +352,11 @@
 
 #### 请求描述
 
-
+${QuickCreatePPTChannelRequest}
 
 #### 返回描述
+
+${QuickCreateChannelResponse}
 
 
 
@@ -490,11 +494,13 @@
 
 ```
 
-####   请求描述
+#### 请求描述
 
-
+${QuickCreateVideoChannelRequest}
 
 #### 返回描述
+
+${QuickCreateChannelResponse}
 
 
 
@@ -676,7 +682,9 @@
 
 #### 请求描述
 
-
+${QuickCreateVideoChannelRequest}
 
 #### 返回描述
+
+${QuickCreateChannelResponse}
 

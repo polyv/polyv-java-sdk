@@ -433,7 +433,7 @@ true为删除成功，false为删除失败
 | enabled | false | String | 是否开启观看条件(Y/N) | 
 | authType | false | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
 | codeAuthTips | false | String | 验证码观看提示信息 | 
-| authCode | false | String | 验证码观看的验证码c | 
+| authCode | false | String | 验证码观看的验证码 | 
 | qcodeTips | false | String | 验证码观看的二维码提示 | 
 | qcodeImg | false | String | 验证码观看的二维码图片 | 
 | payAuthTips | false | String | 付费观看提示信息 | 

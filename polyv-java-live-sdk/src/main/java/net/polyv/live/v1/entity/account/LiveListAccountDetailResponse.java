@@ -155,7 +155,7 @@ public class LiveListAccountDetailResponse extends LivePageCommonResponse{
         /**
          * 验证码观看的验证码
          */
-        @ApiModelProperty(name = "authCode", value = "验证码观看的验证码c")
+        @ApiModelProperty(name = "authCode", value = "验证码观看的验证码")
         private String authCode;
         
         /**

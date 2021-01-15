@@ -1,4 +1,4 @@
-package net.polyv.live.v1.entity.channel;
+package net.polyv.live.v1.entity.quick;
 
 import java.util.List;
 

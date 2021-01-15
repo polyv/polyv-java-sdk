@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
@@ -20,8 +19,8 @@ import net.polyv.live.v1.entity.channel.viewdata.LiveListChannelViewlogRequest;
 import net.polyv.live.v1.entity.channel.viewdata.LiveListChannelViewlogResponse;
 import net.polyv.live.v1.entity.quick.QuickCreatePPTChannelRequest;
 import net.polyv.live.v1.entity.quick.QuickCreateVideoChannelRequest;
-import net.polyv.live.v1.quick.LiveChannelQuickCreator;
-import net.polyv.live.v1.entity.channel.QuickCreateChannelResponse;
+import net.polyv.live.v1.service.quick.impl.LiveChannelQuickCreatorServiceImpl;
+import net.polyv.live.v1.entity.quick.QuickCreateChannelResponse;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.channel.impl.LiveChannelViewdataServiceImpl;
 import net.polyv.live.v1.util.LiveSignUtil;
@@ -95,7 +94,7 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
                 
                 .setRequestId(requestId);
         
-        quickCreateChannelResponse = new LiveChannelQuickCreator().quickCreatePPTSence(quickCreatePPTChannelRequest);
+        quickCreateChannelResponse = new LiveChannelQuickCreatorServiceImpl().quickCreatePPTSence(quickCreatePPTChannelRequest);
         Assert.assertNotNull(quickCreateChannelResponse);
         log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(quickCreateChannelResponse));
         log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",
@@ -184,7 +183,7 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
         sonChannels.add(setSonChannelsInfo2());
         liveCreateSonChannelListRequest.setSonChannels(sonChannels);
         
-        quickCreateChannelResponse = new LiveChannelQuickCreator().quickCreatePPTSence(quickCreatePPTChannelRequest,
+        quickCreateChannelResponse = new LiveChannelQuickCreatorServiceImpl().quickCreatePPTSence(quickCreatePPTChannelRequest,
                 liveCreateSonChannelListRequest);
         Assert.assertNotNull(quickCreateChannelResponse);
         log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(quickCreateChannelResponse));
@@ -262,7 +261,7 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
                         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
                                 ".jpg").setRequestId(requestId);
         
-        quickCreateChannelResponse = new LiveChannelQuickCreator().quickCreateVideoSence(quickCreateVideoChannelRequest);
+        quickCreateChannelResponse = new LiveChannelQuickCreatorServiceImpl().quickCreateVideoSence(quickCreateVideoChannelRequest);
         Assert.assertNotNull(quickCreateChannelResponse);
         log.debug("快速创建纯视频频道成功，{}", JSON.toJSONString(quickCreateChannelResponse));
         log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",
@@ -340,7 +339,7 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
         liveCreateSonChannelListRequest.setSonChannels(sonChannels);
         
         //请求服务器，创建带子频道的纯视频频道
-        quickCreateChannelResponse = new LiveChannelQuickCreator().quickCreateVideoSence(quickCreateVideoChannelRequest,
+        quickCreateChannelResponse = new LiveChannelQuickCreatorServiceImpl().quickCreateVideoSence(quickCreateVideoChannelRequest,
                 liveCreateSonChannelListRequest);
         
         Assert.assertNotNull(quickCreateChannelResponse);

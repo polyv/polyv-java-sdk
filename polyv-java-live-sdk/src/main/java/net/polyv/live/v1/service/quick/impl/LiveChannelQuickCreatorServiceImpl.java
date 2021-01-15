@@ -1,4 +1,4 @@
-package net.polyv.live.v1.quick;
+package net.polyv.live.v1.service.quick.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.util.StringUtils;
 import net.polyv.live.v1.constant.LiveConstant;
-import net.polyv.live.v1.entity.channel.QuickCreateChannelResponse;
+import net.polyv.live.v1.entity.quick.QuickCreateChannelResponse;
 import net.polyv.live.v1.entity.channel.doc.LiveCreateChannelDocRequest;
 import net.polyv.live.v1.entity.channel.doc.LiveCreateChannelDocResponse;
 import net.polyv.live.v1.entity.channel.operate.LiveChannelBasicInfoRequest;
@@ -32,13 +32,14 @@ import net.polyv.live.v1.service.channel.impl.LiveChannelDocServiceImpl;
 import net.polyv.live.v1.service.channel.impl.LiveChannelOperateServiceImpl;
 import net.polyv.live.v1.service.chat.impl.LiveChatRoomServiceImpl;
 import net.polyv.live.v1.service.player.impl.LivePlayerServiceImpl;
+import net.polyv.live.v1.service.quick.ILiveChannelQuickCreatorService;
 
 /**
  * 频道快捷创建器
  * @author: sadboy
  **/
 @Slf4j
-public class LiveChannelQuickCreator {
+public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCreatorService {
     
     /**
      * 快速创建简单三分屏频道
@@ -47,6 +48,7 @@ public class LiveChannelQuickCreator {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
+    @Override
     public QuickCreateChannelResponse quickCreatePPTSence(QuickCreatePPTChannelRequest quickCreateChannelRequest)
             throws IOException, NoSuchAlgorithmException {
         return quickCreatePPTSence(quickCreateChannelRequest, null);
@@ -60,6 +62,7 @@ public class LiveChannelQuickCreator {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
+    @Override
     public QuickCreateChannelResponse quickCreatePPTSence(QuickCreatePPTChannelRequest quickCreateChannelRequest,
             LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
@@ -188,6 +191,7 @@ public class LiveChannelQuickCreator {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
+    @Override
     public QuickCreateChannelResponse quickCreateVideoSence(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest)
             throws IOException, NoSuchAlgorithmException {
         return quickCreateVideoSence(quickCreateVideoChannelRequest, null);
@@ -201,6 +205,7 @@ public class LiveChannelQuickCreator {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
+    @Override
     public QuickCreateChannelResponse quickCreateVideoSence(QuickCreateVideoChannelRequest quickCreateVideoChannelRequest,
             LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
             throws IOException, NoSuchAlgorithmException {

@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
@@ -17,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.util.StringUtils;
 import net.polyv.live.v1.constant.LiveConstant;
-import net.polyv.live.v1.entity.channel.QuickCreateChannelResponse;
+import net.polyv.live.v1.entity.quick.QuickCreateChannelResponse;
 import net.polyv.live.v1.entity.channel.doc.LiveCreateChannelDocRequest;
 import net.polyv.live.v1.entity.channel.doc.LiveCreateChannelDocResponse;
 import net.polyv.live.v1.entity.channel.operate.LiveChannelBasicInfoRequest;
@@ -35,8 +34,6 @@ import net.polyv.live.v1.entity.channel.viewdata.LiveListChannelViewlogResponse;
 import net.polyv.live.v1.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.v1.entity.player.LiveSetPlayerImgRequest;
 import net.polyv.live.v1.entity.player.LiveSetWarmupVedioRequest;
-import net.polyv.live.v1.entity.quick.QuickCreatePPTChannelRequest;
-import net.polyv.live.v1.entity.quick.QuickCreateVideoChannelRequest;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.channel.impl.LiveChannelDocServiceImpl;
 import net.polyv.live.v1.service.channel.impl.LiveChannelOperateServiceImpl;

@@ -65,7 +65,7 @@
 | type | false | String | 题目类型：R为单选，C为多选，Q为问答 | 
 | itemType | false | Integer | 答题类型：1表示问答，0表示答题卡 | 
 
-<h6 id="polyv35"><a href="#/channelOperate?id=polyv35"data-id="Option参数描述"class="anchor"><span>Option参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv35"><a href="#/answerRecordService.md?id=polyv35"data-id="Option参数描述"class="anchor"><span>Option参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -73,7 +73,7 @@
 | count | false | Integer | 选择该选项的人数 | 
 | percent | false | String | 选择该选项的人数百分比，如：100.00% | 
 
-<h6 id="polyv36"><a href="#/channelOperate?id=polyv36"data-id="Record参数描述"class="anchor"><span>Record参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv36"><a href="#/answerRecordService.md?id=polyv36"data-id="Record参数描述"class="anchor"><span>Record参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

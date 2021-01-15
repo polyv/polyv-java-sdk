@@ -61,7 +61,7 @@
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv44"><a href="#/channelOperate?id=polyv44"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv44"><a href="#/questionnaireService.md?id=polyv44"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -149,7 +149,7 @@
 | endTime | false | Date | 停止问卷时间 | 
 | questions | false | Array | 问卷问题列表【详见[QuestionDetail参数描述](questionnaireService.md?id=polyv45)】 | 
 
-<h6 id="polyv45"><a href="#/channelOperate?id=polyv45"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv45"><a href="#/questionnaireService.md?id=polyv45"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -245,14 +245,14 @@
 | questionStats | false | Array | 问卷下各个问题的答题统计【详见[QuestionStats参数描述](questionnaireService.md?id=polyv46)】 | 
 | users | false | Array | 观看端提交答题的用户信息【详见[Users参数描述](questionnaireService.md?id=polyv47)】 | 
 
-<h6 id="polyv46"><a href="#/channelOperate?id=polyv46"data-id="QuestionStats参数描述"class="anchor"><span>QuestionStats参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv46"><a href="#/questionnaireService.md?id=polyv46"data-id="QuestionStats参数描述"class="anchor"><span>QuestionStats参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | total | false | Integer | 题目的答题人数 | 
 | questions | false | Array | 问卷下单个问题的答题统计信息【详见[QuestionStat参数描述](questionnaireService.md?id=polyv48)】 | 
 
-<h6 id="polyv47"><a href="#/channelOperate?id=polyv47"data-id="Users参数描述"class="anchor"><span>Users参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv47"><a href="#/questionnaireService.md?id=polyv47"data-id="Users参数描述"class="anchor"><span>Users参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -264,7 +264,7 @@
 | param4 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
 | param5 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
 
-<h6 id="polyv48"><a href="#/channelOperate?id=polyv48"data-id="QuestionStat参数描述"class="anchor"><span>QuestionStat参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv48"><a href="#/questionnaireService.md?id=polyv48"data-id="QuestionStat参数描述"class="anchor"><span>QuestionStat参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -284,7 +284,7 @@
 | i | false | Integer | 选择项g的答题人数 | 
 | j | false | Integer | 选择项g的答题人数 | 
 
-<h6 id="polyv49"><a href="#/channelOperate?id=polyv49"data-id="Answers参数描述"class="anchor"><span>Answers参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv49"><a href="#/questionnaireService.md?id=polyv49"data-id="Answers参数描述"class="anchor"><span>Answers参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -369,7 +369,7 @@
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv50"><a href="#/channelOperate?id=polyv50"data-id="LiveQuestionnaireResultResponse参数描述"class="anchor"><span>LiveQuestionnaireResultResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv50"><a href="#/questionnaireService.md?id=polyv50"data-id="LiveQuestionnaireResultResponse参数描述"class="anchor"><span>LiveQuestionnaireResultResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -381,14 +381,14 @@
 | questionStats | false | Array | 问卷下各个问题的答题统计【详见[QuestionStats参数描述](questionnaireService.md?id=polyv51)】 | 
 | users | false | Array | 观看端提交答题的用户信息【详见[Users参数描述](questionnaireService.md?id=polyv52)】 | 
 
-<h6 id="polyv51"><a href="#/channelOperate?id=polyv51"data-id="QuestionStats参数描述"class="anchor"><span>QuestionStats参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv51"><a href="#/questionnaireService.md?id=polyv51"data-id="QuestionStats参数描述"class="anchor"><span>QuestionStats参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | total | false | Integer | 题目的答题人数 | 
 | questions | false | Array | 问卷下单个问题的答题统计信息【详见[QuestionStat参数描述](questionnaireService.md?id=polyv53)】 | 
 
-<h6 id="polyv52"><a href="#/channelOperate?id=polyv52"data-id="Users参数描述"class="anchor"><span>Users参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv52"><a href="#/questionnaireService.md?id=polyv52"data-id="Users参数描述"class="anchor"><span>Users参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -400,7 +400,7 @@
 | param4 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
 | param5 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
 
-<h6 id="polyv53"><a href="#/channelOperate?id=polyv53"data-id="QuestionStat参数描述"class="anchor"><span>QuestionStat参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv53"><a href="#/questionnaireService.md?id=polyv53"data-id="QuestionStat参数描述"class="anchor"><span>QuestionStat参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -420,7 +420,7 @@
 | i | false | Integer | 选择项g的答题人数 | 
 | j | false | Integer | 选择项g的答题人数 | 
 
-<h6 id="polyv54"><a href="#/channelOperate?id=polyv54"data-id="Answers参数描述"class="anchor"><span>Answers参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv54"><a href="#/questionnaireService.md?id=polyv54"data-id="Answers参数描述"class="anchor"><span>Answers参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -525,7 +525,7 @@
 | questions | true | Array | 问卷的单个题目详情列表【详见[QuestionDetail参数描述](questionnaireService.md?id=polyv55)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-<h6 id="polyv55"><a href="#/channelOperate?id=polyv55"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv55"><a href="#/questionnaireService.md?id=polyv55"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

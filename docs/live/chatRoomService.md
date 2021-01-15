@@ -213,7 +213,7 @@
 | user | false | User | 发送消息的观众【详见[User参数描述](chatRoomService.md?id=polyv33)】 | 
 | userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
 
-<h6 id="polyv33"><a href="#/channelOperate?id=polyv33"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv33"><a href="#/chatRoomService.md?id=polyv33"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -605,7 +605,7 @@
 | event | false | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
 | userId | false | String | 提问者ID | 
 
-<h6 id="polyv34"><a href="#/channelOperate?id=polyv34"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv34"><a href="#/chatRoomService.md?id=polyv34"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

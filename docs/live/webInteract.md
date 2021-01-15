@@ -58,7 +58,7 @@
 | goods | false | Array | 道具打赏【详见[ChannelGood参数描述](webInteract.md?id=polyv66)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-<h6 id="polyv66"><a href="#/channelOperate?id=polyv66"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv66"><a href="#/webInteract.md?id=polyv66"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -201,7 +201,7 @@ true表示设置成功，false表示设置失败
 | cashMin | false | Double | 请求体参数，现金打赏自定义最小金额 | 
 | goods | false | Array | 道具打赏【详见[ChannelGood参数描述](webInteract.md?id=polyv69)】 | 
 
-<h6 id="polyv69"><a href="#/channelOperate?id=polyv69"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv69"><a href="#/webInteract.md?id=polyv69"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

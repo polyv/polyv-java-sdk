@@ -103,7 +103,7 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | false | String | 频道号，非必填，不提交默认为修改该用户的所有频道号的主持人姓名 | 
+| channelId | true | String | 频道号 | 
 | publisher | true | String | 主持人姓名，不超过20个字符 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
@@ -412,7 +412,7 @@ true为设置成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelLikes | false | Array | 频道点赞数和观众热度值【详见[ChannelLikes参数描述](webInfo.md?id=polyv65)】 | 
 
-<h6 id="polyv65"><a href="#/channelOperate?id=polyv65"data-id="ChannelLikes参数描述"class="anchor"><span>ChannelLikes参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv65"><a href="#/webInfo.md?id=polyv65"data-id="ChannelLikes参数描述"class="anchor"><span>ChannelLikes参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

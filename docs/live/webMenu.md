@@ -46,7 +46,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | true | String | 频道号，提交后对某频道号设置，不提交则对账号下所有频道号进行设置 | 
+| channelId | true | String | 频道号 | 
 | content | true | String | 直播介绍的内容（此处可以填html页面的相关内容，如增加图片、增加文字样式等） | 
 | menuType | true | String | 菜单类型，目前仅支持取值为desc | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
@@ -113,7 +113,7 @@ true为设置成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelMenus | false | Array | 频道的菜单信息【详见[ChannelMenu参数描述](webMenu.md?id=polyv70)】 | 
 
-<h6 id="polyv70"><a href="#/channelOperate?id=polyv70"data-id="ChannelMenu参数描述"class="anchor"><span>ChannelMenu参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv70"><a href="#/webMenu.md?id=polyv70"data-id="ChannelMenu参数描述"class="anchor"><span>ChannelMenu参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -508,7 +508,7 @@ null
 | topContents | false | ImageTextMsg[] | 置顶图文消息列表【详见[ImageTextMsg[]参数描述](webMenu.md?id=polyv71)】 | 
 | setting | false | Setting | 设置【详见[Setting参数描述](webMenu.md?id=polyv72)】 | 
 
-<h6 id="polyv71"><a href="#/channelOperate?id=polyv71"data-id="ImageTextMsg参数描述"class="anchor"><span>ImageTextMsg参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv71"><a href="#/webMenu.md?id=polyv71"data-id="ImageTextMsg参数描述"class="anchor"><span>ImageTextMsg参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -519,7 +519,7 @@ null
 | top | false | String | 是否置顶，Y表示是，N表示否 | 
 | createdTime | false | Date | 内容发送的时间 | 
 
-<h6 id="polyv72"><a href="#/channelOperate?id=polyv72"data-id="Setting参数描述"class="anchor"><span>Setting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv72"><a href="#/webMenu.md?id=polyv72"data-id="Setting参数描述"class="anchor"><span>Setting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

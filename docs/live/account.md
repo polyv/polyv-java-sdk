@@ -106,7 +106,7 @@
 | -- | -- | -- | -- | 
 | liveCategories | false | Array | 频道分类列表【详见[LiveCategory参数描述](account.md?id=polyv0)】 | 
 
-<h6 id="polyv0"><a href="#/channelOperate?id=polyv0"data-id="LiveCategory参数描述"class="anchor"><span>LiveCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv0"><a href="#/account.md?id=polyv0"data-id="LiveCategory参数描述"class="anchor"><span>LiveCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -405,7 +405,7 @@ true为删除成功，false为删除失败
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv1"><a href="#/channelOperate?id=polyv1"data-id="LiveChannelDetail参数描述"class="anchor"><span>LiveChannelDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv1"><a href="#/account.md?id=polyv1"data-id="LiveChannelDetail参数描述"class="anchor"><span>LiveChannelDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -422,7 +422,7 @@ true为删除成功，false为删除失败
 | startTime | false | Date | 直播开始时间 | 
 | authSetting | false | Array | 直播权限设置数据传输对象【详见[LiveAuthSetting参数描述](account.md?id=polyv2)】 | 
 
-<h6 id="polyv2"><a href="#/channelOperate?id=polyv2"data-id="LiveAuthSetting参数描述"class="anchor"><span>LiveAuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv2"><a href="#/account.md?id=polyv2"data-id="LiveAuthSetting参数描述"class="anchor"><span>LiveAuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -974,7 +974,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 | -- | -- | -- | -- | 
 | channelSwitches | false | Array | 频道开关【详见[ChannelSwitch参数描述](account.md?id=polyv3)】 | 
 
-<h6 id="polyv3"><a href="#/channelOperate?id=polyv3"data-id="ChannelSwitch参数描述"class="anchor"><span>ChannelSwitch参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv3"><a href="#/account.md?id=polyv3"data-id="ChannelSwitch参数描述"class="anchor"><span>ChannelSwitch参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1055,7 +1055,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv4"><a href="#/channelOperate?id=polyv4"data-id="ChannelBasicInfo参数描述"class="anchor"><span>ChannelBasicInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv4"><a href="#/account.md?id=polyv4"data-id="ChannelBasicInfo参数描述"class="anchor"><span>ChannelBasicInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1202,7 +1202,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv5"><a href="#/channelOperate?id=polyv5"data-id="ChannelIncomeDetail参数描述"class="anchor"><span>ChannelIncomeDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv5"><a href="#/account.md?id=polyv5"data-id="ChannelIncomeDetail参数描述"class="anchor"><span>ChannelIncomeDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

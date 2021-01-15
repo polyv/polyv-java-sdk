@@ -28,6 +28,8 @@
             if (liveChannelResponse != null) {
                 //to do something ......
                 log.debug("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
+                log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",liveChannelResponse.getChannelId(),liveChannelRequest.getChannelPasswd());
+                log.debug("网页观看地址：https://live.polyv.cn/watch/{} ",liveChannelResponse.getChannelId());
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
@@ -186,7 +188,7 @@
 | authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelOperate.md?id=polyv9)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-<h6 id="polyv8"><a href="#/channelOperate?id=polyv8"data-id="BasicSetting参数描述"class="anchor"><span>BasicSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv8"><a href="#/channelOperate.md?id=polyv8"data-id="BasicSetting参数描述"class="anchor"><span>BasicSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -205,7 +207,7 @@
 | receive | false | String | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) | 
 | receiveChannelIds | false | String | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) | 
 
-<h6 id="polyv9"><a href="#/channelOperate?id=polyv9"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv9"><a href="#/channelOperate.md?id=polyv9"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -228,7 +230,7 @@
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-<h6 id="polyv10"><a href="#/channelOperate?id=polyv10"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv10"><a href="#/channelOperate.md?id=polyv10"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -349,7 +351,7 @@
 | channels | true | Array | 频道列表【详见[LiveChannelBasic参数描述](channelOperate.md?id=polyv11)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-<h6 id="polyv11"><a href="#/channelOperate?id=polyv11"data-id="LiveChannelBasic参数描述"class="anchor"><span>LiveChannelBasic参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv11"><a href="#/channelOperate.md?id=polyv11"data-id="LiveChannelBasic参数描述"class="anchor"><span>LiveChannelBasic参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -368,7 +370,7 @@
 | -- | -- | -- | -- | 
 | channels | false | Array | 频道基本信息【详见[LiveChannelResponse参数描述](channelOperate.md?id=polyv12)】 | 
 
-<h6 id="polyv12"><a href="#/channelOperate?id=polyv12"data-id="LiveChannelResponse参数描述"class="anchor"><span>LiveChannelResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv12"><a href="#/channelOperate.md?id=polyv12"data-id="LiveChannelResponse参数描述"class="anchor"><span>LiveChannelResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -593,7 +595,7 @@
 | userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](channelOperate.md?id=polyv13)】 | 
 | authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](channelOperate.md?id=polyv14)】 | 
 
-<h6 id="polyv13"><a href="#/channelOperate?id=polyv13"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv13"><a href="#/channelOperate.md?id=polyv13"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -602,7 +604,7 @@
 | userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | rank | false | Integer | 分类的排序值 | 
 
-<h6 id="polyv14"><a href="#/channelOperate?id=polyv14"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv14"><a href="#/channelOperate.md?id=polyv14"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -778,7 +780,7 @@
 | authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelOperate.md?id=polyv16)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-<h6 id="polyv15"><a href="#/channelOperate?id=polyv15"data-id="BasicSetting参数描述"class="anchor"><span>BasicSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv15"><a href="#/channelOperate.md?id=polyv15"data-id="BasicSetting参数描述"class="anchor"><span>BasicSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -800,7 +802,7 @@
 | operation | false | String | 是否增加转播关联，Y：表示增加关联，N：表示取消关联 (注：需要开启频道转播功能该参数才生效)(Y、N) | 
 | receiveChannelIds | false | String | 接收转播频道号，多个频道号用半角逗号,隔开(注：需要开启频道转播功能该参数才生效) | 
 
-<h6 id="polyv16"><a href="#/channelOperate?id=polyv16"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv16"><a href="#/channelOperate.md?id=polyv16"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -823,7 +825,7 @@
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-<h6 id="polyv17"><a href="#/channelOperate?id=polyv17"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv17"><a href="#/channelOperate.md?id=polyv17"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1461,7 +1463,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 | -- | -- | -- | -- | 
 | sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](channelOperate.md?id=polyv18)】 | 
 
-<h6 id="polyv18"><a href="#/channelOperate?id=polyv18"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv18"><a href="#/channelOperate.md?id=polyv18"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1818,7 +1820,7 @@ true为创建成功，false为创建失败
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv19"><a href="#/channelOperate?id=polyv19"data-id="LivePPTRecord参数描述"class="anchor"><span>LivePPTRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv19"><a href="#/channelOperate.md?id=polyv19"data-id="LivePPTRecord参数描述"class="anchor"><span>LivePPTRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -2044,7 +2046,7 @@ null
 | sonChannels | true | Array | 子频道信息【详见[SonChannel参数描述](channelOperate.md?id=polyv20)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-<h6 id="polyv20"><a href="#/channelOperate?id=polyv20"data-id="SonChannel参数描述"class="anchor"><span>SonChannel参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv20"><a href="#/channelOperate.md?id=polyv20"data-id="SonChannel参数描述"class="anchor"><span>SonChannel参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -2061,7 +2063,7 @@ null
 | -- | -- | -- | -- | 
 | sonChannelInfos | false | Array | 子频道返回信息【详见[SonChannelInfo参数描述](channelOperate.md?id=polyv21)】 | 
 
-<h6 id="polyv21"><a href="#/channelOperate?id=polyv21"data-id="SonChannelInfo参数描述"class="anchor"><span>SonChannelInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv21"><a href="#/channelOperate.md?id=polyv21"data-id="SonChannelInfo参数描述"class="anchor"><span>SonChannelInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -2145,7 +2147,7 @@ null
 | -- | -- | -- | -- | 
 | channelTransmits | false | Array | 账号或频道转播信息【详见[ChannelTransmit参数描述](channelOperate.md?id=polyv22)】 | 
 
-<h6 id="polyv22"><a href="#/channelOperate?id=polyv22"data-id="ChannelTransmit参数描述"class="anchor"><span>ChannelTransmit参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv22"><a href="#/channelOperate.md?id=polyv22"data-id="ChannelTransmit参数描述"class="anchor"><span>ChannelTransmit参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -2276,7 +2278,7 @@ true为设置成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelAdverts | false | Array | 频道广告【详见[ChannelAdvert参数描述](channelOperate.md?id=polyv23)】 | 
 
-<h6 id="polyv23"><a href="#/channelOperate?id=polyv23"data-id="ChannelAdvert参数描述"class="anchor"><span>ChannelAdvert参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv23"><a href="#/channelOperate.md?id=polyv23"data-id="ChannelAdvert参数描述"class="anchor"><span>ChannelAdvert参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

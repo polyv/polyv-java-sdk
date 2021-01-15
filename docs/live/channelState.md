@@ -123,7 +123,7 @@
 | -- | -- | -- | -- | 
 | channelInfo | false | Array | 频道信息【详见[LiveChannelStreamStatusResponse参数描述](channelState.md?id=polyv27)】 | 
 
-<h6 id="polyv27"><a href="#/channelOperate?id=polyv27"data-id="LiveChannelStreamStatusResponse参数描述"class="anchor"><span>LiveChannelStreamStatusResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv27"><a href="#/channelState.md?id=polyv27"data-id="LiveChannelStreamStatusResponse参数描述"class="anchor"><span>LiveChannelStreamStatusResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

@@ -3,8 +3,8 @@
   * [简介](/)
   * [全局约束](/limit)
   * [快速接入](/quick_start)
-  * [实现大会直播](/videoRoom)
-  * [实现线上教学](/classRoom)
+  * [10分钟玩转一场直播](/playLive)
+  * [使用进阶](/advanceLive)
   * [功能索引](/function_index)
 * 频道管理
 
@@ -22,7 +22,7 @@
   * [页面菜单](webMenu)
   * [页面互动](webInteract)
 * 直播互动
-    
+  
   * [答题卡管理](answerRecordService)
   * [签到管理](checkinService)
   * [问卷管理](questionnaireService)

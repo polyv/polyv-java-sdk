@@ -95,7 +95,7 @@
                 
                 .setRequestId(requestId);
         
-        quickCreateChannelResponse = new LiveChannelQuickCreator().quickCreatePPTSence(quickCreatePPTChannelRequest);
+        quickCreateChannelResponse = new LiveChannelQuickCreatorServiceImpl().quickCreatePPTSence(quickCreatePPTChannelRequest);
         Assert.assertNotNull(quickCreateChannelResponse);
         log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(quickCreateChannelResponse));
         log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",
@@ -115,7 +115,6 @@
         //打印观看日志
         printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
     }
-
 
   
     
@@ -190,7 +189,7 @@
 ####  代码示例
 
 ```java
-    /**
+     /**
      * 快速创建带子频道的三分屏频道，适用于直播教学场景
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
@@ -258,7 +257,7 @@
         sonChannels.add(setSonChannelsInfo2());
         liveCreateSonChannelListRequest.setSonChannels(sonChannels);
         
-        quickCreateChannelResponse = new LiveChannelQuickCreator().quickCreatePPTSence(quickCreatePPTChannelRequest,
+        quickCreateChannelResponse = new LiveChannelQuickCreatorServiceImpl().quickCreatePPTSence(quickCreatePPTChannelRequest,
                 liveCreateSonChannelListRequest);
         Assert.assertNotNull(quickCreateChannelResponse);
         log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(quickCreateChannelResponse));
@@ -282,7 +281,7 @@
          */
         //打印观看日志
         printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
-    } 
+    }
 
  /**
      * 设置子频道信息-嘉宾
@@ -442,7 +441,7 @@
                         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
                                 ".jpg").setRequestId(requestId);
         
-        quickCreateChannelResponse = new LiveChannelQuickCreator().quickCreateVideoSence(quickCreateVideoChannelRequest);
+        quickCreateChannelResponse = new LiveChannelQuickCreatorServiceImpl().quickCreateVideoSence(quickCreateVideoChannelRequest);
         Assert.assertNotNull(quickCreateChannelResponse);
         log.debug("快速创建纯视频频道成功，{}", JSON.toJSONString(quickCreateChannelResponse));
         log.debug("网页开播地址：https://live.polyv.net/web-start/login?channelId={}  , 登录密码： {}",
@@ -531,7 +530,7 @@
 
 #### 代码示例
 ```java
- /**
+/**
      * 快速创建纯视频频道，适合直播带货、会议、年会、活动拍摄、大会直播等直播业务场景
      * 约束：2、同时设置暖场图片和暖场视频只生效暖场视频。
      * @throws IOException IO异常
@@ -590,7 +589,7 @@
         liveCreateSonChannelListRequest.setSonChannels(sonChannels);
         
         //请求服务器，创建带子频道的纯视频频道
-        quickCreateChannelResponse = new LiveChannelQuickCreator().quickCreateVideoSence(quickCreateVideoChannelRequest,
+        quickCreateChannelResponse = new LiveChannelQuickCreatorServiceImpl().quickCreateVideoSence(quickCreateVideoChannelRequest,
                 liveCreateSonChannelListRequest);
         
         Assert.assertNotNull(quickCreateChannelResponse);

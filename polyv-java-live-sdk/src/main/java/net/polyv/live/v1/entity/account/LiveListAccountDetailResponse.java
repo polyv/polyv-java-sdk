@@ -153,21 +153,21 @@ public class LiveListAccountDetailResponse extends LivePageCommonResponse{
         private String codeAuthTips;
         
         /**
-         * 验证码观看的验证码
+         * 验证码观看方式的验证码
          */
-        @ApiModelProperty(name = "authCode", value = "验证码观看的验证码c")
+        @ApiModelProperty(name = "authCode", value = "验证码观看方式的验证码")
         private String authCode;
         
         /**
-         * 验证码观看的二维码提示
+         * 验证码观看方式的二维码提示
          */
-        @ApiModelProperty(name = "qcodeTips", value = "验证码观看的二维码提示")
+        @ApiModelProperty(name = "qcodeTips", value = "验证码观看方式的二维码提示")
         private String qcodeTips;
         
         /**
-         * 验证码观看的二维码图片
+         * 验证码观看方式的二维码图片
          */
-        @ApiModelProperty(name = "qcodeImg", value = "验证码观看的二维码图片")
+        @ApiModelProperty(name = "qcodeImg", value = "验证码观看方式的二维码图片")
         private String qcodeImg;
         
         /**

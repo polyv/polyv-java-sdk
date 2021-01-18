@@ -52,7 +52,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public Boolean createChannelWhiteList(LiveCreateChannelWhiteListRequest liveCreateChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_WHITE_LIST_ADD_URL;
-        String liveCreateChannelWhiteListResponse = this.basePost(url, liveCreateChannelWhiteListRequest, String.class);
+        String liveCreateChannelWhiteListResponse = this.postFormBodyReturnOne(url, liveCreateChannelWhiteListRequest, String.class);
         return "success".equals(liveCreateChannelWhiteListResponse);
     }
     
@@ -73,7 +73,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
         if (channelId != null) {
             signMap.put("channelId", channelId);
         }
-        String liveUpdateChannelAuthResponse = this.basePostJson(url, signMap, liveUpdateChannelAuthRequest,
+        String liveUpdateChannelAuthResponse = this.postJsonBodyReturnOne(url, signMap, liveUpdateChannelAuthRequest,
                 String.class);
         return "true".equals(liveUpdateChannelAuthResponse);
     }
@@ -92,7 +92,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
             throws IOException, NoSuchAlgorithmException {
         liveChannelAuthExternalRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_AUTH_EXTERNAL_URL, liveChannelAuthExternalRequest.getUserId());
-        List<LiveChannelAuthExternalResponse.ChannelAuthExternal> channelAuthExternals = this.basePostReturnArray(url,
+        List<LiveChannelAuthExternalResponse.ChannelAuthExternal> channelAuthExternals = this.postFormBodyReturnList(url,
                 liveChannelAuthExternalRequest, LiveChannelAuthExternalResponse.ChannelAuthExternal.class);
         LiveChannelAuthExternalResponse liveChannelAuthExternalResponse = new LiveChannelAuthExternalResponse();
         liveChannelAuthExternalResponse.setChannelAuthExternals(channelAuthExternals);
@@ -112,7 +112,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
             LiveChannelAuthCustomRequest liveChannelAuthCustomRequest) throws IOException, NoSuchAlgorithmException {
         liveChannelAuthCustomRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_AUTH_CUSTOM_URL, liveChannelAuthCustomRequest.getUserId());
-        List<LiveChannelAuthCustomResponse.ChannelAuthExternal> channelAuthExternals = this.basePostReturnArray(url,
+        List<LiveChannelAuthCustomResponse.ChannelAuthExternal> channelAuthExternals = this.postFormBodyReturnList(url,
                 liveChannelAuthCustomRequest, LiveChannelAuthCustomResponse.ChannelAuthExternal.class);
         LiveChannelAuthCustomResponse liveChannelAuthCustomResponse = new LiveChannelAuthCustomResponse();
         liveChannelAuthCustomResponse.setChannelAuthExternals(channelAuthExternals);
@@ -131,7 +131,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public Boolean updateChannelAuthType(LiveChannelAuthTypeRequest liveChannelAuthTypeRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_AUTH_TYPE_URL, liveChannelAuthTypeRequest.getChannelId());
-        String liveChannelAuthTypeResponse = this.basePost(url, liveChannelAuthTypeRequest, String.class);
+        String liveChannelAuthTypeResponse = this.postFormBodyReturnOne(url, liveChannelAuthTypeRequest, String.class);
         return "success".equals(liveChannelAuthTypeResponse);
     }
     
@@ -147,7 +147,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public LiveChannelAuthResponse getChannelAuth(LiveChannelAuthRequest liveChannelAuthRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_AUTH_GET_URL;
-        List<LiveChannelSettingRequest.AuthSetting> authSettings = this.basePostReturnArray(url, liveChannelAuthRequest,
+        List<LiveChannelSettingRequest.AuthSetting> authSettings = this.postFormBodyReturnList(url, liveChannelAuthRequest,
                 LiveChannelSettingRequest.AuthSetting.class);
         LiveChannelAuthResponse liveChannelAuthResponse = new LiveChannelAuthResponse();
         liveChannelAuthResponse.setAuthSettings(authSettings);
@@ -166,7 +166,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public LiveChannelWhiteListResponse getChannelWhiteList(LiveChannelWhiteListRequest liveChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_WHITE_LIST_GET_URL;
-        return this.baseGet(url, liveChannelWhiteListRequest, LiveChannelWhiteListResponse.class);
+        return this.getReturnOne(url, liveChannelWhiteListRequest, LiveChannelWhiteListResponse.class);
         
     }
     
@@ -182,7 +182,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public Boolean updateChannelAuthUrl(LiveUpdateChannelAuthUrlRequest liveUpdateChannelAuthUrlRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_AUTH_URL_UPDATE_URL;
-        String liveUpdateChannelAuthUrlResponse = this.basePost(url, liveUpdateChannelAuthUrlRequest, String.class);
+        String liveUpdateChannelAuthUrlResponse = this.postFormBodyReturnOne(url, liveUpdateChannelAuthUrlRequest, String.class);
         return "true".equals(liveUpdateChannelAuthUrlResponse);
     }
     
@@ -198,7 +198,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public Boolean updateChannelWhiteList(LiveUpdateChannelWhiteListRequest liveUpdateChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_CHANNEL_WHITE_LIST_URL;
-        String liveUpdateChannelWhiteListResponse = this.basePost(url, liveUpdateChannelWhiteListRequest, String.class);
+        String liveUpdateChannelWhiteListResponse = this.postFormBodyReturnOne(url, liveUpdateChannelWhiteListRequest, String.class);
         return "success".equals(liveUpdateChannelWhiteListResponse);
     }
     
@@ -214,7 +214,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public Boolean deleteChannelWhiteList(LiveDeleteChannelWhiteListRequest liveDeleteChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DELETE_CHANNEL_WHITE_LIST_URL;
-        String liveDeleteChannelWhiteListResponse = this.basePost(url, liveDeleteChannelWhiteListRequest, String.class);
+        String liveDeleteChannelWhiteListResponse = this.postFormBodyReturnOne(url, liveDeleteChannelWhiteListRequest, String.class);
         return "success".equals(liveDeleteChannelWhiteListResponse);
     }
     
@@ -230,7 +230,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public LiveChannelAuthFieldResponse getChannelAuthField(LiveChannelAuthFieldRequest liveChannelAuthFieldRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_AUTH_FIELD_GET_URL;
-        List<LiveChannelAuthFieldResponse.ChannelAuthField> channelAuthFields = this.baseGetReturnArray(url,
+        List<LiveChannelAuthFieldResponse.ChannelAuthField> channelAuthFields = this.getReturnList(url,
                 liveChannelAuthFieldRequest, LiveChannelAuthFieldResponse.ChannelAuthField.class);
         LiveChannelAuthFieldResponse liveChannelAuthFieldResponse = new LiveChannelAuthFieldResponse();
         liveChannelAuthFieldResponse.setChannelAuthFields(channelAuthFields);
@@ -249,7 +249,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public LiveChannelAuthInfoResponse getChannelAuthInfo(LiveChannelAuthInfoRequest liveChannelAuthInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_AUTH_INFO_GET_URL;
-        return this.baseGet(url, liveChannelAuthInfoRequest, LiveChannelAuthInfoResponse.class);
+        return this.getReturnOne(url, liveChannelAuthInfoRequest, LiveChannelAuthInfoResponse.class);
     }
     
     /**
@@ -264,7 +264,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public byte[] downloadChannelAuthInfo(LiveDownloadChannelAuthInfoRequest liveDownloadChannelAuthInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DOWNLOAD_CHANNEL_AUTH_INFO_URL;
-        return this.baseGetReturnArray(url, liveDownloadChannelAuthInfoRequest);
+        return this.getReturnBinary(url, liveDownloadChannelAuthInfoRequest);
     }
     
     /**
@@ -281,7 +281,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
         String url = LiveURL.UPLOAD_WHITE_LIST_URL;
         Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("file", liveUploadWhiteListRequest.getFile());
-        String liveUploadWhiteListResponse = this.baseUploadFile(url, liveUploadWhiteListRequest, fileMap,
+        String liveUploadWhiteListResponse = this.uploadOneFile(url, liveUploadWhiteListRequest, fileMap,
                 String.class);
         return "true".equals(liveUploadWhiteListResponse);
     }
@@ -298,7 +298,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public byte[] downloadChannelWhiteList(LiveDownloadChannelWhiteListRequest liveDownloadChannelWhiteListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DOWNLOAD_CHANNEL_WHITE_LIST_URL;
-        return this.baseGetReturnArray(url,liveDownloadChannelWhiteListRequest);
+        return this.getReturnBinary(url,liveDownloadChannelWhiteListRequest);
     }
     
 }

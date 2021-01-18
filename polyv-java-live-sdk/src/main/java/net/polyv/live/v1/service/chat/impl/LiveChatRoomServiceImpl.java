@@ -56,7 +56,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public LiveSendChatMsgResponse sendChatMsg(LiveSendChatMsgRequest liveSendChatMsgRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_SEND_MSG_URL;
-        return super.basePost(url, liveSendChatMsgRequest, LiveSendChatMsgResponse.class);
+        return super.postFormBodyReturnOne(url, liveSendChatMsgRequest, LiveSendChatMsgResponse.class);
     }
     
     /**
@@ -70,7 +70,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public Boolean setChannelTeacherMsg(LiveSetTeacherDataRequest liveSetTeacherDataRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_SET_TEACHER_URL;
-        return super.basePost(url, liveSetTeacherDataRequest, Boolean.class);
+        return super.postFormBodyReturnOne(url, liveSetTeacherDataRequest, Boolean.class);
     }
     
     /**
@@ -84,7 +84,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public List<String> addBannedIP(LiveChatBannedIPRequest liveChatBannedIPRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_BANNED_IP_URL, liveChatBannedIPRequest.getChannelId());
-        return super.basePostReturnArray(url, liveChatBannedIPRequest, String.class);
+        return super.postFormBodyReturnList(url, liveChatBannedIPRequest, String.class);
     }
     
     /**
@@ -98,7 +98,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public LiveBadWordResponse addBadWord(LiveBadWordRequest liveBadWordRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_SET_BAD_WORD_URL, LiveGlobalConfig.getUserId());
-        return super.basePost(url, liveBadWordRequest, LiveBadWordResponse.class);
+        return super.postFormBodyReturnOne(url, liveBadWordRequest, LiveBadWordResponse.class);
     }
     
     /**
@@ -112,7 +112,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public List<String> getBannedList(LiveGetBannedListRequest liveGetBannedListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_GET_CHANNEL_BANNED_LIST_URL;
-        return super.baseGetReturnArray(url, liveGetBannedListRequest, String.class);
+        return super.getReturnList(url, liveGetBannedListRequest, String.class);
     }
     
     /**
@@ -126,7 +126,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public List<LiveKickedListResponse> getKickedList(LiveKickedListRequest liveKickedListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_LIST_KICKED_URL;
-        return super.basePostReturnArray(url, liveKickedListRequest, LiveKickedListResponse.class);
+        return super.postFormBodyReturnList(url, liveKickedListRequest, LiveKickedListResponse.class);
     }
     
     /**
@@ -140,7 +140,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public Boolean delBanned(LiveDelBannedDataRequest liveDelBannedDataRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_DEL_BANNED_URL, liveDelBannedDataRequest.getChannelId());
-        return "success".equalsIgnoreCase(super.basePost(url, liveDelBannedDataRequest, String.class));
+        return "success".equalsIgnoreCase(super.postFormBodyReturnOne(url, liveDelBannedDataRequest, String.class));
     }
     
     /**
@@ -154,7 +154,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public List<String> getChannelBadworkList(LiveGetBadwordIPRequest liveGetBadwordIPRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_GET_BAKWORD_WORD_IP_URL;
-        return super.basePostReturnArray(url, liveGetBadwordIPRequest, String.class);
+        return super.postFormBodyReturnList(url, liveGetBadwordIPRequest, String.class);
     }
     
     /**
@@ -168,7 +168,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public List<String> getAccountBadworkList(LiveGetAccountBadWordRequest liveGetAccountBadWordRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHAT_GET_ACCOUNT_BAKWORD_WORD_URL;
-        return super.baseGetReturnArray(url, liveGetAccountBadWordRequest, String.class);
+        return super.getReturnList(url, liveGetAccountBadWordRequest, String.class);
     }
     
     /**
@@ -183,7 +183,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_CLEAN_CHANNEL_MSG_URL,
                 liveCleanChannelAllMsgRequest.getChannelId());
-        return super.baseGet(url, liveCleanChannelAllMsgRequest, Boolean.class);
+        return super.getReturnOne(url, liveCleanChannelAllMsgRequest, Boolean.class);
     }
     
     /**
@@ -197,7 +197,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public LiveGetChatAdminDataResponse getChatAdminData(LiveGetChatAdminDataRequest liveGetChatAdminDataRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_ADMIN_URL, liveGetChatAdminDataRequest.getChannelId());
-        return super.basePost(url, liveGetChatAdminDataRequest, LiveGetChatAdminDataResponse.class);
+        return super.postFormBodyReturnOne(url, liveGetChatAdminDataRequest, LiveGetChatAdminDataResponse.class);
     }
     
     /**
@@ -211,7 +211,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public List<LiveGetHistoryChatMsgResponse> getHistoryChatMsg(
             LiveGetHistoryChatMsgRequest liveGetHistoryChatMsgRequest) throws IOException, NoSuchAlgorithmException {
         String url =LiveURL.CHAT_GET_HISTORY_MSG_URL;
-        return super.basePostReturnArray(url, liveGetHistoryChatMsgRequest, LiveGetHistoryChatMsgResponse.class);
+        return super.postFormBodyReturnList(url, liveGetHistoryChatMsgRequest, LiveGetHistoryChatMsgResponse.class);
     }
     
     /**
@@ -226,7 +226,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_DEL_CHANNEL_SINGLE_MSG_URL,
                 liveChatDelSingleMsgRequest.getChannelId());
-        return "success".equalsIgnoreCase(super.baseGet(url, liveChatDelSingleMsgRequest, String.class));
+        return "success".equalsIgnoreCase(super.getReturnOne(url, liveChatDelSingleMsgRequest, String.class));
     }
     
     /**
@@ -242,7 +242,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
         String url = LiveURL.getRealUrl(LiveURL.CHAT_SET_ADMIN_DATA_URL, liveSetChatAdminDataRequest.getChannelId());
         Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("avatar", liveSetChatAdminDataRequest.getAvatar());
-        return "success".equals(super.baseUploadFile(url, liveSetChatAdminDataRequest, fileMap, String.class));
+        return "success".equals(super.uploadOneFile(url, liveSetChatAdminDataRequest, fileMap, String.class));
     }
     
     
@@ -259,7 +259,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_CONSULTING_RECORD_URL,
                 liveGetConsultingRecordRequest.getChannelId());
-        return super.baseGetReturnArray(url, liveGetConsultingRecordRequest, LiveGetConsultingRecordResponse.class);
+        return super.getReturnList(url, liveGetConsultingRecordRequest, LiveGetConsultingRecordResponse.class);
     }
     
     /**
@@ -276,7 +276,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHAT_GET_QUERSTION_STATISTICAL_URL,
                 liveGetQuestionStatisticalRequest.getChannelId());
-        return super.basePostReturnArray(url, liveGetQuestionStatisticalRequest,
+        return super.postFormBodyReturnList(url, liveGetQuestionStatisticalRequest,
                 LiveGetQuestionStatisticalResponse.class);
     }
     
@@ -292,7 +292,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
     public Boolean sendChannelChat(LiveSendChannelChatRequest liveSendChannelChatRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.SEND_ADMIN_MSG_URL;
-        String liveSendChannelChatResponse = this.basePost(url, liveSendChannelChatRequest, String.class);
+        String liveSendChannelChatResponse = this.postFormBodyReturnOne(url, liveSendChannelChatRequest, String.class);
         return "The message send success!".equals(liveSendChannelChatResponse);
     }
     
@@ -309,7 +309,7 @@ public class LiveChatRoomServiceImpl extends LiveBaseService implements ILiveCha
             throws IOException, NoSuchAlgorithmException {
         liveSendCustomChatRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.SEND_CUSTOM_MSG_URL,liveSendCustomChatRequest.getChannelId());
-        String liveSendCustomChatResponse = this.basePost(url,liveSendCustomChatRequest,String.class);
+        String liveSendCustomChatResponse = this.postFormBodyReturnOne(url,liveSendCustomChatRequest,String.class);
         return "success".equals(liveSendCustomChatResponse);
     }
     

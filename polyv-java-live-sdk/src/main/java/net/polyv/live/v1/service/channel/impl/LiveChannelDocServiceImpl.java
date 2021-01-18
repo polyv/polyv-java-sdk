@@ -36,7 +36,7 @@ public class LiveChannelDocServiceImpl extends LiveBaseService implements ILiveC
     public LiveListChannelDocResponse listChannelDoc(LiveListChannelDocRequest liveListChannelDocRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_DOC_LIST_URL;
-        return this.baseGet(url, liveListChannelDocRequest,
+        return this.getReturnOne(url, liveListChannelDocRequest,
                 LiveListChannelDocResponse.class);
          
     }
@@ -53,7 +53,7 @@ public class LiveChannelDocServiceImpl extends LiveBaseService implements ILiveC
     public LiveChannelDocStatusResponse getChannelDocStatus(LiveChannelDocStatusRequest liveChannelDocStatusRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_DOC_STATUS_URL;
-        List<LiveChannelDocStatusResponse.ChannelDocStatus> channelDocStatuses = this.baseGetReturnArray(url,
+        List<LiveChannelDocStatusResponse.ChannelDocStatus> channelDocStatuses = this.getReturnList(url,
                 liveChannelDocStatusRequest, LiveChannelDocStatusResponse.ChannelDocStatus.class);
         LiveChannelDocStatusResponse liveChannelDocStatusResponse = new LiveChannelDocStatusResponse();
         liveChannelDocStatusResponse.setChannelDocStatuses(channelDocStatuses);
@@ -72,7 +72,7 @@ public class LiveChannelDocServiceImpl extends LiveBaseService implements ILiveC
     public Boolean deleteChannelDoc(LiveDeleteChannelDocRequest liveDeleteChannelDocRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_DOC_DELETE_URL;
-        String liveDeleteChannelDocResponse = this.basePost(url, liveDeleteChannelDocRequest, String.class);
+        String liveDeleteChannelDocResponse = this.postFormBodyReturnOne(url, liveDeleteChannelDocRequest, String.class);
         return "success".equals(liveDeleteChannelDocResponse);
     }
     
@@ -90,7 +90,7 @@ public class LiveChannelDocServiceImpl extends LiveBaseService implements ILiveC
         String url = LiveURL.CREATE_CHANNEL_DOC_URL;
         Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("file", liveCreateChannelDocRequest.getFile());
-        return this.baseUploadFile(url,
+        return this.uploadOneFile(url,
                 liveCreateChannelDocRequest, fileMap, LiveCreateChannelDocResponse.class);
         
     }

@@ -39,7 +39,7 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
         liveUpdateChannelMenuRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_MENU_SET_URL, liveUpdateChannelMenuRequest.getUserId(),
                 liveUpdateChannelMenuRequest.getChannelId());
-        String liveUpdateChannelMenuResponse = this.basePost(url, liveUpdateChannelMenuRequest, String.class);
+        String liveUpdateChannelMenuResponse = this.postFormBodyReturnOne(url, liveUpdateChannelMenuRequest, String.class);
         return "success".equals(liveUpdateChannelMenuResponse);
     }
     
@@ -55,7 +55,7 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
     public LiveListChannelMenuResponse listChannelMenu(LiveListChannelMenuRequest liveListChannelMenuRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_MENU_LIST_URL;
-        List<LiveListChannelMenuResponse.ChannelMenu> channelMenus = this.baseGetReturnArray(url,
+        List<LiveListChannelMenuResponse.ChannelMenu> channelMenus = this.getReturnList(url,
                 liveListChannelMenuRequest, LiveListChannelMenuResponse.ChannelMenu.class);
         LiveListChannelMenuResponse liveListChannelMenuResponse = new LiveListChannelMenuResponse();
         liveListChannelMenuResponse.setChannelMenus(channelMenus);
@@ -74,7 +74,7 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
     public LiveAddChannelMenuResponse addChannelMenu(LiveAddChannelMenuRequest liveAddChannelMenuRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ADD_CHANNEL_MENU_URL;
-        return this.basePost(url, liveAddChannelMenuRequest, LiveAddChannelMenuResponse.class);
+        return this.postFormBodyReturnOne(url, liveAddChannelMenuRequest, LiveAddChannelMenuResponse.class);
     }
     
     /**
@@ -89,7 +89,7 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
     public Boolean updateChannelMenuSort(LiveUpdateChannelMenuSortRequest liveUpdateChannelMenuSortRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_CHANNEL_MENU_SORT_URL;
-        String liveUpdateChannelMenuSortResponse = this.basePost(url, liveUpdateChannelMenuSortRequest, String.class);
+        String liveUpdateChannelMenuSortResponse = this.postFormBodyReturnOne(url, liveUpdateChannelMenuSortRequest, String.class);
         return "success".equals(liveUpdateChannelMenuSortResponse);
     }
     
@@ -105,7 +105,7 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
     public Boolean updateChannelMenuInfo(LiveUpdateChannelMenuInfoRequest liveUpdateChannelMenuInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_MENU_UPDATE_URL;
-        String liveUpdateChannelMenuInfoResponse = this.basePost(url, liveUpdateChannelMenuInfoRequest, String.class);
+        String liveUpdateChannelMenuInfoResponse = this.postFormBodyReturnOne(url, liveUpdateChannelMenuInfoRequest, String.class);
         return "success".equals(liveUpdateChannelMenuInfoResponse);
     }
     
@@ -121,7 +121,7 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
     public Boolean deleteChannelMenu(LiveDeleteChannelMenuRequest liveDeleteChannelMenuRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DELETE_CHANNEL_MENU_URL;
-        String liveDeleteChannelMenuResponse = this.basePost(url, liveDeleteChannelMenuRequest, String.class);
+        String liveDeleteChannelMenuResponse = this.postFormBodyReturnOne(url, liveDeleteChannelMenuRequest, String.class);
         return "2".equals(liveDeleteChannelMenuResponse);
     }
     
@@ -138,7 +138,7 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.UPDATE_CHANNEL_CONSULTING_ENABLED_URL,
                 liveSetConsultingEnabledRequest.getChannelId());
-        String liveSetConsultingEnabledResponse = this.basePost(url, liveSetConsultingEnabledRequest, String.class);
+        String liveSetConsultingEnabledResponse = this.postFormBodyReturnOne(url, liveSetConsultingEnabledRequest, String.class);
         return "success".equals(liveSetConsultingEnabledResponse);
     }
     
@@ -155,7 +155,7 @@ public class LiveWebMenuServiceImpl extends LiveBaseService implements ILiveWebM
             LiveGetChannelImageTextRequest liveGetChannelImageTextRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.GET_CHANNEL_IMAGE_TEXT_URL;
-        return this.basePost(url,liveGetChannelImageTextRequest,LiveGetChannelImageTextResponse.class);
+        return this.postFormBodyReturnOne(url,liveGetChannelImageTextRequest,LiveGetChannelImageTextResponse.class);
     }
     
 }

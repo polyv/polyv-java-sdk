@@ -79,7 +79,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             throws IOException, NoSuchAlgorithmException {
         liveChannelRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.CHANNEL_CREATE_URL;
-        LiveChannelResponse liveChannelResponse = this.basePost(url, liveChannelRequest, LiveChannelResponse.class);
+        LiveChannelResponse liveChannelResponse = this.postFormBodyReturnOne(url, liveChannelRequest, LiveChannelResponse.class);
         return liveChannelResponse;
     }
     
@@ -95,7 +95,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public LiveChannelInitResponse createChannelInit(LiveChannelInitRequest liveChannelInitRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_BASIC_CREATE_URL;
-        LiveChannelInitResponse liveChannelInitResponse = this.basePostJson(url, liveChannelInitRequest,
+        LiveChannelInitResponse liveChannelInitResponse = this.postJsonBodyReturnOne(url, liveChannelInitRequest,
                 LiveChannelInitResponse.class);
         return liveChannelInitResponse;
     }
@@ -112,7 +112,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public LiveCreateChannelListResponse createChannelList(LiveCreateChannelListRequest liveCreateChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIST_CREATE_URL;
-        LiveCreateChannelListResponse liveCreateChannelListResponse = this.basePostJson(url,
+        LiveCreateChannelListResponse liveCreateChannelListResponse = this.postJsonBodyReturnOne(url,
                 liveCreateChannelListRequest, LiveCreateChannelListResponse.class);
         return liveCreateChannelListResponse;
     }
@@ -131,7 +131,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         String url = LiveURL.CHANNEL_BASIC_UPDATE_URL;
         Map<String, String> signMap = LiveSignUtil.getSignMap(liveChannelSettingRequest);
         signMap.put("channelId", liveChannelSettingRequest.getChannelId() + "");
-        String liveChannelSettingResponse = this.basePostJson(url, signMap, liveChannelSettingRequest, String.class);
+        String liveChannelSettingResponse = this.postJsonBodyReturnOne(url, signMap, liveChannelSettingRequest, String.class);
         return "success".equals(liveChannelSettingResponse);
     }
     
@@ -152,7 +152,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             liveChannelDetailRequest.setField("password");
         }
         String url = LiveURL.CHANNEL_DETAIL_SET_URL;
-        String liveChannelDetailResponse = this.basePost(url, liveChannelDetailRequest, String.class);
+        String liveChannelDetailResponse = this.postFormBodyReturnOne(url, liveChannelDetailRequest, String.class);
         return "true".equals(liveChannelDetailResponse);
     }
     
@@ -169,7 +169,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             LiveListChannelPPTRecordRequest liveListChannelPPTRecordRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIST_PPTRECORD_URL;
-        return this.baseGet(url, liveListChannelPPTRecordRequest, LiveListChannelPPTRecordResponse.class);
+        return this.getReturnOne(url, liveListChannelPPTRecordRequest, LiveListChannelPPTRecordResponse.class);
     }
     
     /**
@@ -185,7 +185,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             throws IOException, NoSuchAlgorithmException {
         liveChannelPasswordSettingRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PWD_SET_URL, liveChannelPasswordSettingRequest.getUserId());
-        String updateChannelPasswordResponse = this.basePost(url, liveChannelPasswordSettingRequest, String.class);
+        String updateChannelPasswordResponse = this.postFormBodyReturnOne(url, liveChannelPasswordSettingRequest, String.class);
         return "true".equals(updateChannelPasswordResponse);
     }
     
@@ -202,7 +202,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             throws IOException, NoSuchAlgorithmException {
         liveDeleteChannelRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_DELETE_URL, liveDeleteChannelRequest.getChannelId());
-        String liveDeleteChannelResponse = this.basePost(url, liveDeleteChannelRequest, String.class);
+        String liveDeleteChannelResponse = this.postFormBodyReturnOne(url, liveDeleteChannelRequest, String.class);
         return "true".equals(liveDeleteChannelResponse);
     }
     
@@ -218,7 +218,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public Boolean deleteChannelList(LiveDeleteChannelListRequest liveDeleteChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIST_DELETE_URL;
-        String liveDeleteChannelListResponse = this.basePostJson(url, liveDeleteChannelListRequest, String.class);
+        String liveDeleteChannelListResponse = this.postJsonBodyReturnOne(url, liveDeleteChannelListRequest, String.class);
         return "true".equals(liveDeleteChannelListResponse);
     }
     
@@ -234,7 +234,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public Boolean createChannelToken(LiveCreateChannelTokenRequest liveCreateChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_TOKEN_CREATE_URL, liveCreateChannelTokenRequest.getChannelId());
-        String liveCreateChannelTokenResponse = this.basePost(url, liveCreateChannelTokenRequest, String.class);
+        String liveCreateChannelTokenResponse = this.postFormBodyReturnOne(url, liveCreateChannelTokenRequest, String.class);
         String success = "success";
         return success.equals(liveCreateChannelTokenResponse);
     }
@@ -251,7 +251,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public LiveChannelInfoResponse getChannelInfo(LiveChannelInfoRequest liveChannelInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_GET_URL, liveChannelInfoRequest.getChannelId());
-        LiveChannelInfoResponse liveChannelInfoResponse = this.baseGet(url, liveChannelInfoRequest,
+        LiveChannelInfoResponse liveChannelInfoResponse = this.getReturnOne(url, liveChannelInfoRequest,
                 LiveChannelInfoResponse.class);
         return liveChannelInfoResponse;
     }
@@ -268,7 +268,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public LiveChannelBasicInfoResponse getChannelBasicInfo(LiveChannelBasicInfoRequest liveChannelBasicInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_BASIC_INFO_URL;
-        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = this.basePost(url, liveChannelBasicInfoRequest,
+        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = this.postFormBodyReturnOne(url, liveChannelBasicInfoRequest,
                 LiveChannelBasicInfoResponse.class);
         if(liveChannelBasicInfoResponse.getStartTime() != null && liveChannelBasicInfoResponse.getStartTime().getTime() == 0){
             liveChannelBasicInfoResponse.setStartTime(null);
@@ -288,7 +288,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public LiveChannelAuthTokenResponse getChannelAuthToken(LiveChannelAuthTokenRequest liveCreateChannelTokenRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_AUTH_TOKEN_URL;
-        LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = this.basePost(url, liveCreateChannelTokenRequest,
+        LiveChannelAuthTokenResponse liveChannelAuthTokenResponse = this.postFormBodyReturnOne(url, liveCreateChannelTokenRequest,
                 LiveChannelAuthTokenResponse.class);
         return liveChannelAuthTokenResponse;
     }
@@ -305,7 +305,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public LiveCreateSonChannelResponse createSonChannel(LiveCreateSonChannelRequest liveCreateSonChannelRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_CREATE_URL, liveCreateSonChannelRequest.getChannelId());
-        LiveCreateSonChannelResponse liveCreateSonChannelResponse = this.basePost(url, liveCreateSonChannelRequest,
+        LiveCreateSonChannelResponse liveCreateSonChannelResponse = this.postFormBodyReturnOne(url, liveCreateSonChannelRequest,
                 LiveCreateSonChannelResponse.class);
         return liveCreateSonChannelResponse;
     }
@@ -323,7 +323,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_INFO_UPDATE_URL,
                 liveUpdateSonChannelInfoRequest.getChannelId());
-        String updateSonChannelInfoResponse = this.basePost(url, liveUpdateSonChannelInfoRequest, String.class);
+        String updateSonChannelInfoResponse = this.postFormBodyReturnOne(url, liveUpdateSonChannelInfoRequest, String.class);
         return "success".equals(updateSonChannelInfoResponse);
     }
     
@@ -340,7 +340,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_TOKEN_CREATE_URL,
                 liveCreateSonChannelTokenRequest.getAccount());
-        String liveCreateSonChannelTokenResponse = this.basePost(url, liveCreateSonChannelTokenRequest, String.class);
+        String liveCreateSonChannelTokenResponse = this.postFormBodyReturnOne(url, liveCreateSonChannelTokenRequest, String.class);
         return "success".equals(liveCreateSonChannelTokenResponse);
     }
     
@@ -356,7 +356,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public LiveSonChannelInfoResponse getSonChannelInfo(LiveSonChannelInfoRequest liveSonChannelInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_INFO_GET_URL, liveSonChannelInfoRequest.getChannelId());
-        LiveSonChannelInfoResponse liveSonChannelInfoResponse = this.baseGet(url, liveSonChannelInfoRequest,
+        LiveSonChannelInfoResponse liveSonChannelInfoResponse = this.getReturnOne(url, liveSonChannelInfoRequest,
                 LiveSonChannelInfoResponse.class);
         return liveSonChannelInfoResponse;
     }
@@ -373,7 +373,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public LiveSonChannelInfoListResponse getSonChannelInfoList(
             LiveSonChannelInfoListRequest liveSonChannelInfoListRequest) throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_ACCOUNTS_GET_URL, liveSonChannelInfoListRequest.getChannelId());
-        LiveSonChannelInfoResponse[] liveSonChannelInfoResponses = this.baseGet(url, liveSonChannelInfoListRequest,
+        LiveSonChannelInfoResponse[] liveSonChannelInfoResponses = this.getReturnOne(url, liveSonChannelInfoListRequest,
                 LiveSonChannelInfoResponse[].class);
         if (liveSonChannelInfoResponses == null) {
             liveSonChannelInfoResponses = new LiveSonChannelInfoResponse[]{};
@@ -395,7 +395,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public Boolean deleteSonChannel(LiveDeleteSonChannelRequest liveDeleteSonChannelRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.SON_CHANNEL_DELETE_URL, liveDeleteSonChannelRequest.getChannelId());
-        String liveDeleteSonChannelResponse = this.basePost(url, liveDeleteSonChannelRequest, String.class);
+        String liveDeleteSonChannelResponse = this.postFormBodyReturnOne(url, liveDeleteSonChannelRequest, String.class);
         return "true".equals(liveDeleteSonChannelResponse);
     }
     
@@ -411,7 +411,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public Boolean createChannelPPTRecordTask(LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_PPTRECORD_CREATE__URL;
-        String liveCreateChannelPPTRecordResponse = this.basePost(url, liveCreateChannelPPTRecordRequest, String.class);
+        String liveCreateChannelPPTRecordResponse = this.postFormBodyReturnOne(url, liveCreateChannelPPTRecordRequest, String.class);
         return "success".equals(liveCreateChannelPPTRecordResponse);
     }
     
@@ -428,7 +428,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             LiveChannelCallbackSettingRequest liveChannelCallbackSettingRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.GET_CHANNEL_CALLBACK_SETTING_URL;
-        return this.baseGet(url, liveChannelCallbackSettingRequest, LiveChannelCallbackSettingResponse.class);
+        return this.getReturnOne(url, liveChannelCallbackSettingRequest, LiveChannelCallbackSettingResponse.class);
     }
     
     /**
@@ -444,7 +444,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             LiveUpdateChannelCallbackSettingRequest liveUpdateChannelCallbackSettingRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_CHANNEL_CALLBACK_SETTING_URL;
-        String liveUpdateChannelCallbackSettingResponse = this.basePost(url, liveUpdateChannelCallbackSettingRequest,
+        String liveUpdateChannelCallbackSettingResponse = this.postFormBodyReturnOne(url, liveUpdateChannelCallbackSettingRequest,
                 String.class);
         return "success".equals(liveUpdateChannelCallbackSettingResponse);
     }
@@ -464,7 +464,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         String url = LiveURL.CREATE_SON_CHANNEL_LIST_URL;
         Map<String, String> map = LiveSignUtil.getSignMap(liveCreateSonChannelListRequest);
         map.put("channelId", liveCreateSonChannelListRequest.getChannelId());
-        List<LiveCreateSonChannelListResponse.SonChannelInfo> sonChannelInfos = this.basePostJsonReturnArray(url, map,
+        List<LiveCreateSonChannelListResponse.SonChannelInfo> sonChannelInfos = this.postJsonBodyReturnList(url, map,
                 liveCreateSonChannelListRequest, JSON.toJSONString(liveCreateSonChannelListRequest.getSonChannels()),
                 LiveCreateSonChannelListResponse.SonChannelInfo.class);
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse = new LiveCreateSonChannelListResponse();
@@ -485,7 +485,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             LiveChannelTransmitListRequest liveChannelTransmitListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_TRANSMIT_LIST_URL;
-        List<LiveChannelTransmitListResponse.ChannelTransmit> channelTransmits = this.baseGetReturnArray(url,
+        List<LiveChannelTransmitListResponse.ChannelTransmit> channelTransmits = this.getReturnList(url,
                 liveChannelTransmitListRequest, LiveChannelTransmitListResponse.ChannelTransmit.class);
         LiveChannelTransmitListResponse liveChannelTransmitListResponse = new LiveChannelTransmitListResponse();
         liveChannelTransmitListResponse.setChannelTransmits(channelTransmits);
@@ -506,7 +506,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
         liveUpdateChannelMaxViewerRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.UPDATE_CHANNEL_MAX_VIEWER_URL,
                 liveUpdateChannelMaxViewerRequest.getChannelId());
-        String liveUpdateChannelMaxViewerResponse = this.basePost(url, liveUpdateChannelMaxViewerRequest, String.class);
+        String liveUpdateChannelMaxViewerResponse = this.postFormBodyReturnOne(url, liveUpdateChannelMaxViewerRequest, String.class);
         return "success".equals(liveUpdateChannelMaxViewerResponse);
     }
     
@@ -522,7 +522,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public LiveChannelAdvertListResponse getChannelAdvertList(LiveChannelAdvertListRequest liveChannelAdvertListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_ADVERT_LIST_GET_URL;
-        List<LiveChannelAdvertListResponse.ChannelAdvert> channelAdverts = this.baseGetReturnArray(url,
+        List<LiveChannelAdvertListResponse.ChannelAdvert> channelAdverts = this.getReturnList(url,
                 liveChannelAdvertListRequest, LiveChannelAdvertListResponse.ChannelAdvert.class);
         LiveChannelAdvertListResponse liveChannelAdvertListResponse = new LiveChannelAdvertListResponse();
         liveChannelAdvertListResponse.setChannelAdverts(channelAdverts);
@@ -541,7 +541,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public String getChannelCapture(LiveChannelCaptureRequest liveChannelCaptureRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_CAPTURE_URL, liveChannelCaptureRequest.getChannelId());
-        return this.basePost(url, liveChannelCaptureRequest, String.class);
+        return this.postFormBodyReturnOne(url, liveChannelCaptureRequest, String.class);
     }
     
     /**
@@ -556,7 +556,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public Boolean updateChannelStream(LiveUpdateChannelStreamRequest liveUpdateChannelStreamRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_CHANNEL_STREAM_URL;
-        String liveUpdateChannelStreamResponse = this.basePost(url, liveUpdateChannelStreamRequest, String.class);
+        String liveUpdateChannelStreamResponse = this.postFormBodyReturnOne(url, liveUpdateChannelStreamRequest, String.class);
         return "success".equals(liveUpdateChannelStreamResponse);
     }
     
@@ -572,7 +572,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public Boolean createDiskVideosStream(LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_DISK_VIDEOS_STREAM_URL;
-        String liveCreateDiskVideosStreamResponse = this.basePost(url, liveCreateDiskVideosStreamRequest, String.class);
+        String liveCreateDiskVideosStreamResponse = this.postFormBodyReturnOne(url, liveCreateDiskVideosStreamRequest, String.class);
         return "success".equals(liveCreateDiskVideosStreamResponse);
     }
     
@@ -588,7 +588,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public Boolean deleteDiskVideosStream(LiveDeleteDiskVideosStreamRequest liveDeleteDiskVideosStreamRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DELETE_DISK_VIDEOS_STREAM_URL;
-        String liveDeleteDiskVideosStreamResponse = this.basePost(url, liveDeleteDiskVideosStreamRequest, String.class);
+        String liveDeleteDiskVideosStreamResponse = this.postFormBodyReturnOne(url, liveDeleteDiskVideosStreamRequest, String.class);
         return "success".equals(liveDeleteDiskVideosStreamResponse);
     }
     

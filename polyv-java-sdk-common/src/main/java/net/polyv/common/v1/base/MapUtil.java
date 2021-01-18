@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -140,7 +141,7 @@ public class MapUtil {
      * @param valueUrlEncode valueUrlEncode
      * @return string
      */
-    public static String mapJoin(Map<String, String> map, boolean keyLower, boolean valueUrlEncode) {
+    public static String mapJoin_noUser(Map<String, String> map, boolean keyLower, boolean valueUrlEncode) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Map.Entry<String, String> entry : map.entrySet()) {
             String key = entry.getKey();
@@ -209,4 +210,35 @@ public class MapUtil {
     }
     
     
+    /**
+     * 将url与map拼接成 xxx.com?a=a&b=b
+     * @param url 请求url
+     * @param paramMap 需要拼装的map
+     * @return 拼装好的url
+     */
+    public static String appendUrl(String url, Map<String, String> paramMap) {
+        if (paramMap == null) {
+            return url;
+        }
+        StringBuffer paramStringBuffer = new StringBuffer();
+        Iterator<Map.Entry<String, String>> mapIterator = paramMap.entrySet().iterator();
+        while (mapIterator.hasNext()) {
+            Map.Entry<String, String> next = mapIterator.next();
+            paramStringBuffer.append(next.getKey()).append("=").append(next.getValue()).append("&");
+        }
+        String paramStr = paramStringBuffer.toString();
+//        String paramStr = MapUtil.mapJoinNotEncode(paramMap);
+        if (StringUtils.isNotBlank(paramStr)) {
+            if (url.indexOf("?") > 0) {
+                if (url.endsWith("&")) {
+                    url += paramStr.substring(0, paramStr.length() - 1);
+                } else {
+                    url += "&" + paramStr.substring(0, paramStr.length() - 1);
+                }
+            } else {
+                url += "?" + paramStr.substring(0, paramStr.length() - 1);
+            }
+        }
+        return url;
+    }
 }

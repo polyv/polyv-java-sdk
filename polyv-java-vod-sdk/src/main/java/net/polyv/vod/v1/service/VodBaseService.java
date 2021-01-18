@@ -5,7 +5,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 
-import net.polyv.common.v1.util.StringUtils;
 import org.apache.http.Consts;
 
 import com.alibaba.fastjson.JSON;
@@ -14,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.base.HttpUtil;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.util.SDKValidateUtil;
+import net.polyv.common.v1.util.StringUtils;
 import net.polyv.common.v1.validator.ViolationMsg;
 import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodConstant;
@@ -82,7 +82,7 @@ public class VodBaseService {
         validateBean(e);
         String queryStr = MapUtil.mapJoinNotEncode(paramMap);
         url += "?" + queryStr;
-        String response = HttpUtil.sendGetData(url, pathVariable, Consts.UTF_8.toString());
+        String response = HttpUtil.get(url);
         if (StringUtils.isNotBlank(response)) {
             VodCommonResponse VodCommonResponse = JSON.parseObject(response, VodCommonResponse.class);
             if (VodCommonResponse.getCode() != 200) {
@@ -168,7 +168,7 @@ public class VodBaseService {
         }
         paramMap = MapUtil.filterNullValue(paramMap);
         validateBean(e);
-        String response = HttpUtil.sendPostDataByMap(url, pathVariable, paramMap, Consts.UTF_8.toString());
+        String response = HttpUtil.get(url);
         if (StringUtils.isNotBlank(response)) {
             VodCommonResponse VodCommonResponse = JSON.parseObject(response, VodCommonResponse.class);
             if (VodCommonResponse.getCode() != 200) {
@@ -239,7 +239,8 @@ public class VodBaseService {
         paramMap = MapUtil.filterNullValue(paramMap);
         validateBean(e);
         url = url + "?" + MapUtil.mapJoinNotEncode(paramMap);
-        String response = HttpUtil.sendPostDataByJson(url, pathVariable, JSON.toJSONString(e), Consts.UTF_8.toString());
+        url = String.format(url,pathVariable);
+        String response = HttpUtil.postJson(url,JSON.toJSONString(e), Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             VodCommonResponse VodCommonResponse = JSON.parseObject(response, VodCommonResponse.class);
             if (VodCommonResponse.getCode() != 200) {

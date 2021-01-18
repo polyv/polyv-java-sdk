@@ -14,7 +14,7 @@ import net.polyv.live.v1.entity.web.interact.LiveUpdateChannelGoodRequest;
 import net.polyv.live.v1.entity.web.interact.LiveUpdateChannelWxShareRequest;
 import net.polyv.live.v1.service.LiveBaseService;
 import net.polyv.live.v1.service.web.ILiveWebInteractService;
-import net.polyv.live.v1.util.MapUtil;
+import net.polyv.live.v1.util.LiveSignUtil;
 
 /**
  * @author: sadboy
@@ -33,7 +33,7 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
     public Boolean updateChannelGood(LiveUpdateChannelGoodRequest liveUpdateChannelGoodRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.GOOD_DONATE_SET_URL;
-        Map<String, String> signMap = MapUtil.getSignMap(liveUpdateChannelGoodRequest);
+        Map<String, String> signMap = LiveSignUtil.getSignMap(liveUpdateChannelGoodRequest);
         signMap.put("channelId", String.valueOf(liveUpdateChannelGoodRequest.getChannelId()));
         String liveUpdateChannelGoodResponse = this.basePostJson(url, signMap, liveUpdateChannelGoodRequest,
                 String.class);
@@ -52,7 +52,7 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
     public Boolean updateChannelCash(LiveUpdateChannelCashRequest liveUpdateChannelCashRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CASH_DONATE_SET_URL;
-        Map<String, String> signMap = MapUtil.getSignMap(liveUpdateChannelCashRequest);
+        Map<String, String> signMap = LiveSignUtil.getSignMap(liveUpdateChannelCashRequest);
         signMap.put("channelId", String.valueOf(liveUpdateChannelCashRequest.getChannelId()));
         String liveUpdateChannelCashResponse = this.basePostJson(url, signMap, liveUpdateChannelCashRequest,
                 String.class);

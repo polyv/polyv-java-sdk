@@ -33,7 +33,7 @@ import net.polyv.live.v1.entity.web.auth.LiveUpdateChannelWhiteListRequest;
 import net.polyv.live.v1.entity.web.auth.LiveUploadWhiteListRequest;
 import net.polyv.live.v1.service.LiveBaseService;
 import net.polyv.live.v1.service.web.ILiveWebAuthService;
-import net.polyv.live.v1.util.MapUtil;
+import net.polyv.live.v1.util.LiveSignUtil;
 
 /**
  * 直播Web观看页管理
@@ -68,7 +68,7 @@ public class LiveWebAuthServiceImpl extends LiveBaseService implements ILiveWebA
     public Boolean updateChannelAuth(LiveUpdateChannelAuthRequest liveUpdateChannelAuthRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_AUTH_UPDATE_URL;
-        Map<String, String> signMap = MapUtil.getSignMap(liveUpdateChannelAuthRequest);
+        Map<String, String> signMap = LiveSignUtil.getSignMap(liveUpdateChannelAuthRequest);
         String channelId = liveUpdateChannelAuthRequest.getChannelId();
         if (channelId != null) {
             signMap.put("channelId", channelId);

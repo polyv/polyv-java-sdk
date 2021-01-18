@@ -57,7 +57,7 @@ import net.polyv.live.v1.entity.channel.operate.LiveUpdateChannelStreamRequest;
 import net.polyv.live.v1.entity.channel.operate.LiveUpdateSonChannelInfoRequest;
 import net.polyv.live.v1.service.LiveBaseService;
 import net.polyv.live.v1.service.channel.ILiveChannelOperateService;
-import net.polyv.live.v1.util.MapUtil;
+import net.polyv.live.v1.util.LiveSignUtil;
 
 /**
  * 直播频道操作实现类
@@ -129,7 +129,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public Boolean updateChannelSetting(LiveChannelSettingRequest liveChannelSettingRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_BASIC_UPDATE_URL;
-        Map<String, String> signMap = MapUtil.getSignMap(liveChannelSettingRequest);
+        Map<String, String> signMap = LiveSignUtil.getSignMap(liveChannelSettingRequest);
         signMap.put("channelId", liveChannelSettingRequest.getChannelId() + "");
         String liveChannelSettingResponse = this.basePostJson(url, signMap, liveChannelSettingRequest, String.class);
         return "success".equals(liveChannelSettingResponse);
@@ -462,7 +462,7 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
             LiveCreateSonChannelListRequest liveCreateSonChannelListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CREATE_SON_CHANNEL_LIST_URL;
-        Map<String, String> map = MapUtil.getSignMap(liveCreateSonChannelListRequest);
+        Map<String, String> map = LiveSignUtil.getSignMap(liveCreateSonChannelListRequest);
         map.put("channelId", liveCreateSonChannelListRequest.getChannelId());
         List<LiveCreateSonChannelListResponse.SonChannelInfo> sonChannelInfos = this.basePostJsonReturnArray(url, map,
                 liveCreateSonChannelListRequest, JSON.toJSONString(liveCreateSonChannelListRequest.getSonChannels()),

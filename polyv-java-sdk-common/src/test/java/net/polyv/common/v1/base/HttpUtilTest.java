@@ -82,8 +82,7 @@ public class HttpUtilTest {
     public void testHttpGet() throws Exception {
         String url = "https://www.w3school.com.cn/index.html";
         url = "http://47.115.173.234:8001/get";
-        String encoding =  Constant.UTF8;
-        String data = HttpUtil.sendGetData(url, encoding);
+        String data = HttpUtil.get(url);
         Assert.assertNotNull(data);
         System.out.println(data);
     }
@@ -98,7 +97,7 @@ public class HttpUtilTest {
         Map<String, String> param = new HashMap<String, String>();
         param.put("name", "thomas");
         param.put("age", "23");
-        String data = HttpUtil.sendPostDataByMap(url, param, Constant.UTF8);
+        String data = HttpUtil.post(url, param, Constant.UTF8);
         System.out.println(data);
         
     }
@@ -113,7 +112,7 @@ public class HttpUtilTest {
         list.add("hello");
         list.add("thomas");
         list.add("thomas is good man");
-        String data = HttpUtil.sendPostDataByJson(url, JSON.toJSONString(list),  Constant.UTF8);
+        String data = HttpUtil.postJson(url, JSON.toJSONString(list),  Constant.UTF8);
         System.out.println(data);
     }
 

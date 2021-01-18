@@ -4,7 +4,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 import org.junit.Assert;
-import org.junit.Test;
 
 import net.polyv.vod.v1.entity.account.VodAccountSpaceDataRequest;
 import net.polyv.vod.v1.entity.account.VodAccountSpaceDataResponse;
@@ -20,7 +19,7 @@ public class VodAccountServiceImplTest extends BaseTest {
     /**
      * 获取用户空间及流量情况
      */
-    @Test
+//    @Test
     public void testGetAccountSpaceFlow() throws Exception, NoSuchAlgorithmException {
         VodAccountSpaceDataRequest vodAccountSpaceDataRequest = new VodAccountSpaceDataRequest();
         vodAccountSpaceDataRequest.setDate(super.getDate(2020,10,13))

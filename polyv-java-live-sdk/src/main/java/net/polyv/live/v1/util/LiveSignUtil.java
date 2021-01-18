@@ -1,21 +1,22 @@
 package net.polyv.live.v1.util;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import net.polyv.common.v1.util.StringUtils;
-
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.v1.util.StringUtils;
+import net.polyv.live.v1.config.LiveGlobalConfig;
 import net.polyv.live.v1.constant.LiveConstant;
+import net.polyv.live.v1.entity.LiveCommonRequest;
 
 /**
  *  polyv 直播签名工具类
@@ -31,15 +32,14 @@ public class LiveSignUtil {
     /**
      * 获取直播加密字符串，并且假如到参数params中
      * @param params 加密参数
-     * @param appId  保利威用户ID
      * @param appSecret 保利威用户签名密钥
      * @return  MD5签名字符串
      * @throws NoSuchAlgorithmException 签名异常
      * @throws UnsupportedEncodingException 编码异常
      */
-    public static String setLiveSign(Map<String, String> params, String appId, String appSecret)
+    public static String setLiveSign(Map<String, String> params, String appSecret)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        String sign = getSign(params, appId, appSecret);
+        String sign = getSign(params, appSecret);
         params.put("sign", sign);
         return sign;
     }
@@ -56,6 +56,20 @@ public class LiveSignUtil {
     public static String getSign(Map<String, String> params, String appId, String appSecret)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
         params.put("appId", appId);
+        // 32位大写MD5值
+        return getSign(params,appSecret);
+    }
+    
+    /**
+     * 获取直播加密字符串，并且假如到参数params中
+     * @param params 加密参数
+     * @param appSecret 保利威用户签名密钥
+     * @return  MD5签名字符串
+     * @throws NoSuchAlgorithmException 签名异常
+     *  @throws UnsupportedEncodingException 编码异常
+     */
+    public static String getSign(Map<String, String> params, String appSecret)
+            throws NoSuchAlgorithmException, UnsupportedEncodingException {
         // 处理参数，计算MD5哈希值
         log.debug("参与签名参数：{}" , JSON.toJSONString(params));
         String concatStr = concatParams(params);
@@ -124,58 +138,43 @@ public class LiveSignUtil {
         return new String(resultCharArray);
     }
     
-    
     /**
-     * url 参数串连但是不进行参数Encode
+     * 获取签名字段，appId，timestamp，sign，requestId的 map 集合
      * @param map map
-     * @return string
+     * @return map
      */
-    public static String mapJoinNotEncode(Map<String, String> map) {
-        StringBuilder stringBuilder = new StringBuilder();
-        int i = 0;
-        for (Map.Entry<String, String> entry : map.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
-            if (StringUtils.isBlank(value)) {
-                continue;
-            }
-            if (0 != i) {
-                stringBuilder.append("&");
-            }
-            stringBuilder.append(key).append("=").append(map.get(key));
-            i++;
-        }
-        return stringBuilder.toString();
+    public static Map<String, String> getSignMap(Map<String, String> map) {
+        Map<String, String> tempMap = new HashMap<String, String>();
+        String appId = "appId";
+        tempMap.put(appId, map.get(appId));
+        String timestamp = "timestamp";
+        tempMap.put(timestamp, map.get(timestamp));
+        String sign = "sign";
+        tempMap.put(sign, map.get(sign));
+        String requestId = "requestId";
+        tempMap.put(requestId, map.get(requestId));
+        return tempMap;
     }
     
     /**
-     * url 参数串连
-     * @param map map
-     * @param keyLower keyLower
-     * @param valueUrlEncode valueUrlEncode
-     * @return string
-     * @throws UnsupportedEncodingException 编码异常
+     * 获取签名字段，appId，timestamp，requestId的 map 集合,本方法不参与具体签名方法和sign字段设置
+     * @param t 请求体
+     * @param <T> LiveCommonRequest
+     * @return map
      */
-    public static String mapJoinEncode(Map<String, String> map, boolean keyLower, boolean valueUrlEncode)
-            throws UnsupportedEncodingException {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Map.Entry<String, String> entry : map.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
-            if (StringUtils.isBlank(value)) {
-                continue;
-            }
-            String temp = (key.endsWith("_") && key.length() > 1) ? key.substring(0, key.length() - 1) : key;
-            stringBuilder.append(keyLower ? temp.toLowerCase() : temp)
-                    .append("=")
-                    .append(valueUrlEncode ? URLEncoder.encode(value,  LiveConstant.UTF8).replace("+", "%20") : value)
-                    .append("&");
+    public static <T extends LiveCommonRequest> Map<String, String> getSignMap(T t) {
+        if (StringUtils.isBlank(t.getRequestId())) {
+            t.setRequestId(LiveSignUtil.generateUUID());
         }
-        if (stringBuilder.length() > 0) {
-            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        t.setAppId(LiveGlobalConfig.getAppId());
+        if (StringUtils.isBlank(t.getTimestamp())) {
+            t.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
-        return stringBuilder.toString();
+        Map<String, String> tempMap = new HashMap<String, String>();
+        tempMap.put("appId", t.getAppId());
+        tempMap.put("timestamp", t.getTimestamp());
+        tempMap.put("requestId", t.getRequestId());
+        return tempMap;
     }
-    
  
 }

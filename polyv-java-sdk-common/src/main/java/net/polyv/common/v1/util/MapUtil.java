@@ -1,4 +1,4 @@
-package net.polyv.common.v1.base;
+package net.polyv.common.v1.util;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -22,7 +22,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
 
 import net.polyv.common.v1.constant.Constant;
-import net.polyv.common.v1.util.StringUtils;
 
 /**
  * MAP对象和HTTP参数 互相转换对象

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +27,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.constant.Constant;
-import net.polyv.common.v1.util.StringUtils;
+import net.polyv.common.v1.util.MapUtil;
 
 /**
  * 保利威SDK发送HTTP请求工具类

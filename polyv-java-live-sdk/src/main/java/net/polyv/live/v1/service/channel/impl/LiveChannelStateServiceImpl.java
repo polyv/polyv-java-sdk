@@ -38,7 +38,7 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
         liveResumeChannelStreamRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_RESUME_URL,
                 liveResumeChannelStreamRequest.getChannelId());
-        String liveResumeChannelStreamResponse = this.basePost(url, liveResumeChannelStreamRequest, String.class);
+        String liveResumeChannelStreamResponse = this.postFormBodyReturnOne(url, liveResumeChannelStreamRequest, String.class);
         return "success".equals(liveResumeChannelStreamResponse);
     }
     
@@ -57,7 +57,7 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
         liveCutoffChannelStreamRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_CUTOFF_URL,
                 liveCutoffChannelStreamRequest.getChannelId());
-        String liveCutoffChannelStreamResponse = this.basePost(url, liveCutoffChannelStreamRequest, String.class);
+        String liveCutoffChannelStreamResponse = this.postFormBodyReturnOne(url, liveCutoffChannelStreamRequest, String.class);
         return "success".equals(liveCutoffChannelStreamResponse);
     }
     
@@ -74,7 +74,7 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
             LiveListChannelStreamStatusRequest liveListChannelStreamStatusRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIVE_STREAM_STATUS_LIST_URL;
-        LiveChannelStreamStatusResponse[] liveChannelStreamStatusResponses = this.basePost(url,
+        LiveChannelStreamStatusResponse[] liveChannelStreamStatusResponses = this.postFormBodyReturnOne(url,
                 liveListChannelStreamStatusRequest, LiveChannelStreamStatusResponse[].class);
         if (liveChannelStreamStatusResponses == null) {
             liveChannelStreamStatusResponses = new LiveChannelStreamStatusResponse[]{};
@@ -97,7 +97,7 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
     public LiveChannelStreamInfoResponse getChannelStreamInfo(LiveChannelStreamInfoRequest liveChannelStreamInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIVE_STREAM_INFO_URL;
-        LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = this.baseGet(url, liveChannelStreamInfoRequest,
+        LiveChannelStreamInfoResponse liveChannelStreamInfoResponse = this.getReturnOne(url, liveChannelStreamInfoRequest,
                 LiveChannelStreamInfoResponse.class);
         return liveChannelStreamInfoResponse;
     }
@@ -115,7 +115,7 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
             throws IOException, NoSuchAlgorithmException {
         liveChannelStreamLiveRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_LIVE_URL,liveChannelStreamLiveRequest.getChannelId());
-        String liveChannelStreamLiveResponse = this.basePost(url,liveChannelStreamLiveRequest,String.class);
+        String liveChannelStreamLiveResponse = this.postFormBodyReturnOne(url,liveChannelStreamLiveRequest,String.class);
         return "success".equals(liveChannelStreamLiveResponse);
     }
     
@@ -132,7 +132,7 @@ public class LiveChannelStateServiceImpl extends LiveBaseService implements ILiv
             throws IOException, NoSuchAlgorithmException {
         liveChannelStreamEndRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_STREAM_END_URL,liveChannelStreamEndRequest.getChannelId());
-        String liveChannelStreamEndResponse = this.basePost(url,liveChannelStreamEndRequest,String.class);
+        String liveChannelStreamEndResponse = this.postFormBodyReturnOne(url,liveChannelStreamEndRequest,String.class);
         return "success".equals(liveChannelStreamEndResponse);
     }
     

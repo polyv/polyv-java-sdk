@@ -240,7 +240,7 @@ public class VodBaseService {
         validateBean(e);
         url = url + "?" + MapUtil.mapJoinNotEncode(paramMap);
         url = String.format(url,pathVariable);
-        String response = HttpUtil.postJson(url,JSON.toJSONString(e), Consts.UTF_8.toString());
+        String response = HttpUtil.postJsonBody(url,JSON.toJSONString(e), Consts.UTF_8.toString());
         if (StringUtils.isNotBlank(response)) {
             VodCommonResponse VodCommonResponse = JSON.parseObject(response, VodCommonResponse.class);
             if (VodCommonResponse.getCode() != 200) {

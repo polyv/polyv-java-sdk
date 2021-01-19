@@ -39,7 +39,7 @@ public class LiveChannelViewdataServiceImpl extends LiveBaseService implements I
             LiveChannelMaxHistoryConcurrentRequest liveChannelMaxHistoryConcurrentRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_MAX_HISTORY_CONCURRENT_URL;
-        Integer liveChannelMaxHistoryConcurrentResponse = (Integer) this.baseGet(url,
+        Integer liveChannelMaxHistoryConcurrentResponse = (Integer) this.getReturnOne(url,
                 liveChannelMaxHistoryConcurrentRequest, Integer.class);
         return liveChannelMaxHistoryConcurrentResponse;
     }
@@ -56,7 +56,7 @@ public class LiveChannelViewdataServiceImpl extends LiveBaseService implements I
     public LiveListChannelMicResponse listChannelMic(LiveListChannelMicRequest liveListChannelMicRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_MIC_LIST_URL;
-        LiveListChannelMicResponse liveListChannelMicResponse = this.baseGet(url, liveListChannelMicRequest,
+        LiveListChannelMicResponse liveListChannelMicResponse = this.getReturnOne(url, liveListChannelMicRequest,
                 LiveListChannelMicResponse.class);
         return liveListChannelMicResponse;
     }
@@ -76,7 +76,7 @@ public class LiveChannelViewdataServiceImpl extends LiveBaseService implements I
     public LiveListChannelViewlogResponse listChannelViewlog(LiveListChannelViewlogRequest liveChannelViewlogRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_VIEW_LOGS_GET_URL, liveChannelViewlogRequest.getChannelId());
-        LiveListChannelViewlogResponse liveListChannelViewlogResponse = this.baseGet(url, liveChannelViewlogRequest,
+        LiveListChannelViewlogResponse liveListChannelViewlogResponse = this.getReturnOne(url, liveChannelViewlogRequest,
                 LiveListChannelViewlogResponse.class);
         return liveListChannelViewlogResponse;
     }
@@ -95,7 +95,7 @@ public class LiveChannelViewdataServiceImpl extends LiveBaseService implements I
         liveListChannelSummaryRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SUMMARY_LIST_GET_URL,
                 liveListChannelSummaryRequest.getUserId());
-        LiveListChannelSummaryResponse.ChannelSummary[] channelSummaries = this.basePost(url,
+        LiveListChannelSummaryResponse.ChannelSummary[] channelSummaries = this.postFormBodyReturnOne(url,
                 liveListChannelSummaryRequest, LiveListChannelSummaryResponse.ChannelSummary[].class);
         channelSummaries =
                 channelSummaries == null ? new LiveListChannelSummaryResponse.ChannelSummary[]{} : channelSummaries;
@@ -117,7 +117,7 @@ public class LiveChannelViewdataServiceImpl extends LiveBaseService implements I
             LiveListChannelViewerCountRequest liveListChannelViewerCountRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_REAL_TIME_VIEWERS_GET_URL;
-        LiveListChannelViewerCountResponse.ChannelViewerCount[] channelViewerCounts = this.baseGet(url,
+        LiveListChannelViewerCountResponse.ChannelViewerCount[] channelViewerCounts = this.getReturnOne(url,
                 liveListChannelViewerCountRequest, LiveListChannelViewerCountResponse.ChannelViewerCount[].class);
         channelViewerCounts = channelViewerCounts == null ?
                  new LiveListChannelViewerCountResponse.ChannelViewerCount[]{} :
@@ -141,7 +141,7 @@ public class LiveChannelViewdataServiceImpl extends LiveBaseService implements I
             LiveChannelViewerConcurrenceRequest liveChannelViewerConcurrenceRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_VIEWER_CONCURRENCE_URL;
-        LiveChannelViewerConcurrenceResponse.ChannelViewerConcurrence[] channelViewerConcurrences = this.baseGet(url,
+        LiveChannelViewerConcurrenceResponse.ChannelViewerConcurrence[] channelViewerConcurrences = this.getReturnOne(url,
                 liveChannelViewerConcurrenceRequest,
                 LiveChannelViewerConcurrenceResponse.ChannelViewerConcurrence[].class);
         channelViewerConcurrences = channelViewerConcurrences == null ?

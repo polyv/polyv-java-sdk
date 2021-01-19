@@ -34,7 +34,7 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
     public Boolean setPlayerImg(LiveSetPlayerImgRequest liveSetPlayerImgRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.PLAYER_SET_IMG_URL, liveSetPlayerImgRequest.getChannelId());
-        return super.basePost(url, liveSetPlayerImgRequest, Boolean.class);
+        return super.postFormBodyReturnOne(url, liveSetPlayerImgRequest, Boolean.class);
     }
     
     /**
@@ -48,7 +48,7 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
     public Boolean setPlayerWarmupEnable(LiveSetWarmupEnableRequest liveSetWarmupEnableRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.PLAYER_SET_WARMUP_ENABLE_URL;
-        return "success".equalsIgnoreCase(super.basePost(url, liveSetWarmupEnableRequest, String.class));
+        return "success".equalsIgnoreCase(super.postFormBodyReturnOne(url, liveSetWarmupEnableRequest, String.class));
     }
     
     /**
@@ -62,7 +62,7 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
     public Boolean setPlayerLogo(LiveSetPlayerLogoRequest liveSetWarmupEnableRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.PLAYER_SET_CHANNEL_LOGO_URL, liveSetWarmupEnableRequest.getChannelId());
-        return super.basePost(url, liveSetWarmupEnableRequest, Boolean.class);
+        return super.postFormBodyReturnOne(url, liveSetWarmupEnableRequest, Boolean.class);
     }
     
     /**
@@ -77,10 +77,10 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.PLAYER_SET_CHANNEL_PAUSE_ADVERT_URL,
                 liveSetPlayerPauseAdvertRequest.getChannelId());
-        Boolean result = super.basePost(url, liveSetPlayerPauseAdvertRequest, Boolean.class);
+        Boolean result = super.postFormBodyReturnOne(url, liveSetPlayerPauseAdvertRequest, Boolean.class);
         if (result && LiveConstant.Flag.YES.getFlag().equals(liveSetPlayerPauseAdvertRequest.getEnabled())) {
             liveSetPlayerPauseAdvertRequest.setEnabled(null).setTimestamp(null).setSign(null);
-            Boolean paramResult = super.basePost(url, liveSetPlayerPauseAdvertRequest, Boolean.class);
+            Boolean paramResult = super.postFormBodyReturnOne(url, liveSetPlayerPauseAdvertRequest, Boolean.class);
             return  paramResult;
         }else{
             return result ;
@@ -99,11 +99,11 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.PLAYER_SET_CHANNEL_HEADER_ADVERT_URL,
                 liveSetPlayerHeaderAdvertRequest.getChannelId());
-        Boolean result = super.basePost(url, liveSetPlayerHeaderAdvertRequest, Boolean.class);
+        Boolean result = super.postFormBodyReturnOne(url, liveSetPlayerHeaderAdvertRequest, Boolean.class);
         Boolean paramResult = Boolean.FALSE;
         if (result && LiveConstant.Flag.YES.getFlag().equals(liveSetPlayerHeaderAdvertRequest.getEnabled())) {
             liveSetPlayerHeaderAdvertRequest.setEnabled(null).setTimestamp(null).setSign(null);
-            paramResult = super.basePost(url, liveSetPlayerHeaderAdvertRequest, Boolean.class);
+            paramResult = super.postFormBodyReturnOne(url, liveSetPlayerHeaderAdvertRequest, Boolean.class);
             return paramResult;
         }else{
             return result ;
@@ -121,7 +121,7 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
     public Boolean setPlayerWarmUpVedio(LiveSetWarmupVedioRequest liveSetWarmupVedioRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.PLAYER_SET_CHANNEL_WARMUP_VEDIO_URL, liveSetWarmupVedioRequest.getChannelId());
-        return super.basePost(url, liveSetWarmupVedioRequest, Boolean.class);
+        return super.postFormBodyReturnOne(url, liveSetWarmupVedioRequest, Boolean.class);
     }
     
     /**
@@ -136,7 +136,7 @@ public class LivePlayerServiceImpl extends LiveBaseService implements ILivePlaye
     public Boolean setPlayerUrlMarquee(LiveSetPlayerUrlMarqueeRequest liveSetPlayerUrlMarqueeRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.SET_PLAYER_URL_MARQUEE_URL,liveSetPlayerUrlMarqueeRequest.getChannelId());
-        String liveSetPlayerUrlMarqueeResponse = this.basePost(url,liveSetPlayerUrlMarqueeRequest,String.class);
+        String liveSetPlayerUrlMarqueeResponse = this.postFormBodyReturnOne(url,liveSetPlayerUrlMarqueeRequest,String.class);
         return "success".equals(liveSetPlayerUrlMarqueeResponse);
     }
     

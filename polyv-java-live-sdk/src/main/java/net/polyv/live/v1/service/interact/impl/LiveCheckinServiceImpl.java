@@ -37,7 +37,7 @@ public class LiveCheckinServiceImpl extends LiveBaseService
     public LiveCheckinListResponse getCheckinListInfo(LiveCheckinListRequest liveCheckinListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_CHECKIN_LIST_URL;
-        return super.baseGet(url,liveCheckinListRequest,LiveCheckinListResponse.class);
+        return super.getReturnOne(url,liveCheckinListRequest,LiveCheckinListResponse.class);
     }
     /**
      * 查询指定签到ID的签到记录，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/get-checkin/
@@ -50,7 +50,7 @@ public class LiveCheckinServiceImpl extends LiveBaseService
     public List<LiveCheckinResponse> getCheckinInfoById(LiveCheckinRequest liveCheckinRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_CHECKIN_BY_ID_URL;
-        return super.baseGetReturnArray(url,liveCheckinRequest,LiveCheckinResponse.class);
+        return super.getReturnList(url,liveCheckinRequest,LiveCheckinResponse.class);
     }
     /**
      * 依据指定直播场次sessionId查询签到场次信息，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/get-checkin-list-by-sessionid/
@@ -64,6 +64,6 @@ public class LiveCheckinServiceImpl extends LiveBaseService
             LiveCheckinMetadataBySessionIdRequest liveCheckinMetadataBySessionIdRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_CHECKIN_METADATA_BY_SESSIONID_URL;
-        return super.baseGetReturnArray(url,liveCheckinMetadataBySessionIdRequest,LiveCheckinMetadataBySessionIdResponse.class);
+        return super.getReturnList(url,liveCheckinMetadataBySessionIdRequest,LiveCheckinMetadataBySessionIdResponse.class);
     }
 }

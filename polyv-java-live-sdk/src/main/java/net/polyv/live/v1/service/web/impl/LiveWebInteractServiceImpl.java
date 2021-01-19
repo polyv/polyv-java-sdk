@@ -35,7 +35,7 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
         String url = LiveURL.GOOD_DONATE_SET_URL;
         Map<String, String> signMap = LiveSignUtil.getSignMap(liveUpdateChannelGoodRequest);
         signMap.put("channelId", String.valueOf(liveUpdateChannelGoodRequest.getChannelId()));
-        String liveUpdateChannelGoodResponse = this.basePostJson(url, signMap, liveUpdateChannelGoodRequest,
+        String liveUpdateChannelGoodResponse = this.postJsonBodyReturnOne(url, signMap, liveUpdateChannelGoodRequest,
                 String.class);
         return "true".equals(liveUpdateChannelGoodResponse);
     }
@@ -54,7 +54,7 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
         String url = LiveURL.CASH_DONATE_SET_URL;
         Map<String, String> signMap = LiveSignUtil.getSignMap(liveUpdateChannelCashRequest);
         signMap.put("channelId", String.valueOf(liveUpdateChannelCashRequest.getChannelId()));
-        String liveUpdateChannelCashResponse = this.basePostJson(url, signMap, liveUpdateChannelCashRequest,
+        String liveUpdateChannelCashResponse = this.postJsonBodyReturnOne(url, signMap, liveUpdateChannelCashRequest,
                 String.class);
         return "true".equals(liveUpdateChannelCashResponse);
     }
@@ -71,7 +71,7 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
     public LiveChannelDonateResponse getChannelDonate(LiveChannelDonateRequest liveChannelDonateRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_DONATE_GET_URL;
-        LiveChannelDonateResponse liveChannelDonateResponse = this.baseGet(url, liveChannelDonateRequest,
+        LiveChannelDonateResponse liveChannelDonateResponse = this.getReturnOne(url, liveChannelDonateRequest,
                 LiveChannelDonateResponse.class);
         return liveChannelDonateResponse;
     }
@@ -88,7 +88,7 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
     public Boolean updateChannelWxShare(LiveUpdateChannelWxShareRequest liveUpdateChannelWxShareRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_CHANNEL_WX_SHARE_URL;
-        String liveUpdateChannelWxShareResponse = this.basePost(url, liveUpdateChannelWxShareRequest, String.class);
+        String liveUpdateChannelWxShareResponse = this.postFormBodyReturnOne(url, liveUpdateChannelWxShareRequest, String.class);
         return "success".equals(liveUpdateChannelWxShareResponse);
     }
     
@@ -104,7 +104,7 @@ public class LiveWebInteractServiceImpl extends LiveBaseService implements ILive
     public LiveGetChannelWxShareResponse getChannelWxShare(LiveGetChannelWxShareRequest liveGetChannelWxShareRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.GET_CHANNEL_WX_SHARE_URL;
-        return this.baseGet(url,liveGetChannelWxShareRequest,LiveGetChannelWxShareResponse.class);
+        return this.getReturnOne(url,liveGetChannelWxShareRequest,LiveGetChannelWxShareResponse.class);
     }
     
 }

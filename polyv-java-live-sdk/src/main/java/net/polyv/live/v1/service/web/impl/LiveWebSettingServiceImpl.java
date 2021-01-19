@@ -31,7 +31,7 @@ public class LiveWebSettingServiceImpl extends LiveBaseService implements ILiveW
     public Boolean setChannelGlobalSwitch(LiveChannelGlobalSwitchRequest liveChannelGlobalSwitchRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_GLOBAL_SWITCH_URL;
-        String liveChannelGlobalSwitchResponse = this.basePost(url, liveChannelGlobalSwitchRequest, String.class);
+        String liveChannelGlobalSwitchResponse = this.postFormBodyReturnOne(url, liveChannelGlobalSwitchRequest, String.class);
         return "true".equals(liveChannelGlobalSwitchResponse);
     }
     
@@ -49,7 +49,7 @@ public class LiveWebSettingServiceImpl extends LiveBaseService implements ILiveW
         String url = LiveURL.UPDATE_IMAGE_FILE_URL;
         Map<String,List<File>> fileListMap = new HashMap<String, List<File>>();
         fileListMap.put("file",liveUploadImageRequest.getFile());
-        List<String> imgUrls = this.baseUploadFileListReturnArray(url, liveUploadImageRequest, fileListMap,
+        List<String> imgUrls = this.uploadMultipartFile(url, liveUploadImageRequest, fileListMap,
                 String.class);
 //        List<String> imgUrls = this.basePostJsonReturnArray(url, MapUtil.getSignMap(liveUploadImageRequest),
 //                liveUploadImageRequest, String.class);

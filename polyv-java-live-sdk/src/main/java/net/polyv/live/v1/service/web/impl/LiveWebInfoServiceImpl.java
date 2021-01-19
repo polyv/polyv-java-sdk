@@ -41,7 +41,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public Boolean updateChannelName(LiveUpdateChannelNameRequest liveUpdateChannelNameRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_NAME_SET_URL, liveUpdateChannelNameRequest.getChannelId());
-        String liveUpdateChannelNameResponse = this.basePost(url, liveUpdateChannelNameRequest, String.class);
+        String liveUpdateChannelNameResponse = this.postFormBodyReturnOne(url, liveUpdateChannelNameRequest, String.class);
         return "true".equals(liveUpdateChannelNameResponse);
     }
     
@@ -59,7 +59,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
         liveUpdateChannelPublisherRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PUBLISHER_SET_URL,
                 liveUpdateChannelPublisherRequest.getUserId());
-        String liveUpdateChannelPublisherResponse = this.basePost(url, liveUpdateChannelPublisherRequest, String.class);
+        String liveUpdateChannelPublisherResponse = this.postFormBodyReturnOne(url, liveUpdateChannelPublisherRequest, String.class);
         return "true".equals(liveUpdateChannelPublisherResponse);
     }
     
@@ -75,7 +75,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public LiveChannelSplashResponse getChannelSplash(LiveChannelSplashRequest liveChannelSplashRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SPLASH_GET_URL, liveChannelSplashRequest.getChannelId());
-        return this.basePost(url, liveChannelSplashRequest,
+        return this.postFormBodyReturnOne(url, liveChannelSplashRequest,
                 LiveChannelSplashResponse.class);
         
     }
@@ -92,7 +92,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public Boolean updateChannelLikes(LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_LIKES_UPDATE_URL, liveUpdateChannelLikesRequest.getChannelId());
-        String liveUpdateChannelLikesResponse = this.basePost(url, liveUpdateChannelLikesRequest, String.class);
+        String liveUpdateChannelLikesResponse = this.postFormBodyReturnOne(url, liveUpdateChannelLikesRequest, String.class);
         return "success".equals(liveUpdateChannelLikesResponse);
     }
     
@@ -108,7 +108,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public LiveChannelLikesResponse getChannelLikes(LiveChannelLikesRequest liveChannelLikesRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIKES_GET_URL;
-        List<LiveChannelLikesResponse.ChannelLikes> channelLikes = this.basePostReturnArray(url,
+        List<LiveChannelLikesResponse.ChannelLikes> channelLikes = this.postFormBodyReturnList(url,
                 liveChannelLikesRequest, LiveChannelLikesResponse.ChannelLikes.class);
         LiveChannelLikesResponse liveChannelLikesResponse = new LiveChannelLikesResponse();
         liveChannelLikesResponse.setChannelLikes(channelLikes);
@@ -128,7 +128,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_UPDATE_COUNT_DOWN_URL,
                 liveUpdateChannelCountDownRequest.getChannelId());
-        String liveUpdateChannelCountDownResponse = this.basePost(url, liveUpdateChannelCountDownRequest, String.class);
+        String liveUpdateChannelCountDownResponse = this.postFormBodyReturnOne(url, liveUpdateChannelCountDownRequest, String.class);
         return "success".equals(liveUpdateChannelCountDownResponse);
     }
     
@@ -144,7 +144,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public LiveChannelCountDownResponse getChannelCountDown(LiveChannelCountDownRequest liveChannelCountDownRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_COUNT_DOWN_URL, liveChannelCountDownRequest.getChannelId());
-        LiveChannelCountDownResponse liveChannelCountDownResponse = this.basePost(url, liveChannelCountDownRequest,
+        LiveChannelCountDownResponse liveChannelCountDownResponse = this.postFormBodyReturnOne(url, liveChannelCountDownRequest,
                 LiveChannelCountDownResponse.class);
         return liveChannelCountDownResponse;
     }
@@ -163,7 +163,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_LOGO_SET_URL, liveUpdateChannelLogoRequest.getChannelId());
         Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("imgfile", liveUpdateChannelLogoRequest.getImgfile());
-        String liveUpdateChannelLogoResponse = this.baseUploadFile(url, liveUpdateChannelLogoRequest, fileMap,
+        String liveUpdateChannelLogoResponse = this.uploadOneFile(url, liveUpdateChannelLogoRequest, fileMap,
                 String.class);
         return liveUpdateChannelLogoResponse;
     }
@@ -182,7 +182,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SPLASH_SET_URL, liveUpdateChannelSplashRequest.getChannelId());
         Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("imgfile", liveUpdateChannelSplashRequest.getImgfile());
-        String liveUpdateChannelSplashResponse = this.baseUploadFile(url, liveUpdateChannelSplashRequest, fileMap,
+        String liveUpdateChannelSplashResponse = this.uploadOneFile(url, liveUpdateChannelSplashRequest, fileMap,
                 String.class);
         return liveUpdateChannelSplashResponse;
     }

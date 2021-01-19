@@ -56,7 +56,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveListAccountDetailResponse listAccountDetail(LiveListAccountDetailRequest liveListAccountDetailRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_LIST_CHANNEL_DETAIL_URL;
-        LiveListAccountDetailResponse liveListAccountDetailResponse = this.basePost(url, liveListAccountDetailRequest,
+        LiveListAccountDetailResponse liveListAccountDetailResponse = this.postFormBodyReturnOne(url, liveListAccountDetailRequest,
                 LiveListAccountDetailResponse.class);
         for(LiveListAccountDetailResponse.LiveChannelDetail liveChannelDetail:liveListAccountDetailResponse.getContents()){
             Date startTime = liveChannelDetail.getStartTime();
@@ -80,7 +80,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveListAccountResponse listAccount(LiveListAccountRequest liveListAccountRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_LIST_CHANNEL_URL;
-        return this.baseGet(url, liveListAccountRequest, LiveListAccountResponse.class);
+        return this.getReturnOne(url, liveListAccountRequest, LiveListAccountResponse.class);
     }
     
     /**
@@ -95,7 +95,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveAccountMicDurationResponse getMicDuration(LiveAccountMicDurationRequest liveAccountMicDurationRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_MIC_DURATION_URL;
-        return this.baseGet(url, liveAccountMicDurationRequest, LiveAccountMicDurationResponse.class);
+        return this.getReturnOne(url, liveAccountMicDurationRequest, LiveAccountMicDurationResponse.class);
         
     }
     
@@ -111,7 +111,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public Boolean updateAccountSwitch(LiveUpdateAccountSwitchRequest liveUpdateAccountSwitchRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_SWITCH_UPDATE_URL;
-        String liveUpdateAccountSwitchResponse = this.basePost(url, liveUpdateAccountSwitchRequest, String.class);
+        String liveUpdateAccountSwitchResponse = this.postFormBodyReturnOne(url, liveUpdateAccountSwitchRequest, String.class);
         return "true".equals(liveUpdateAccountSwitchResponse);
     }
     
@@ -127,7 +127,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public Boolean createAccountToken(LiveCreateAccountTokenRequest liveCreateAccountTokenRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_TOKEN_CREATE_URL;
-        String liveCreateAccountTokenResponse = this.basePost(url, liveCreateAccountTokenRequest, String.class);
+        String liveCreateAccountTokenResponse = this.postFormBodyReturnOne(url, liveCreateAccountTokenRequest, String.class);
         return "success".equals(liveCreateAccountTokenResponse);
     }
     
@@ -145,7 +145,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         liveAccountStreamCallbackRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_STREAM_CALLBACK_URL,
                 liveAccountStreamCallbackRequest.getUserId());
-        String liveAccountStreamCallbackResponse = this.basePost(url, liveAccountStreamCallbackRequest, String.class);
+        String liveAccountStreamCallbackResponse = this.postFormBodyReturnOne(url, liveAccountStreamCallbackRequest, String.class);
         return "success".equals(liveAccountStreamCallbackResponse);
     }
     
@@ -163,7 +163,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         liveAccountPlaybackCallbackRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_PLAYBACK_CALLBACK_URL,
                 liveAccountPlaybackCallbackRequest.getUserId());
-        String liveAccountPlaybackCallbackResponse = this.basePost(url, liveAccountPlaybackCallbackRequest,
+        String liveAccountPlaybackCallbackResponse = this.postFormBodyReturnOne(url, liveAccountPlaybackCallbackRequest,
                 String.class);
         return "success".equals(liveAccountPlaybackCallbackResponse);
     }
@@ -182,7 +182,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
         liveAccountRecordCallbackRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.ACCOUNT_RECORD_CALLBACK_URL,
                 liveAccountRecordCallbackRequest.getUserId());
-        String liveAccountRecordCallbackResponse = this.basePost(url, liveAccountRecordCallbackRequest, String.class);
+        String liveAccountRecordCallbackResponse = this.postFormBodyReturnOne(url, liveAccountRecordCallbackRequest, String.class);
         return "success".equals(liveAccountRecordCallbackResponse);
     }
     
@@ -199,7 +199,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveAccountSwitchResponse getAccountSwitch(LiveAccountSwitchRequest liveAccountSwitchRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.ACCOUNT_SWITCH_URL;
-        LiveAccountSwitchResponse.ChannelSwitch[] channelSwitches = this.baseGet(url, liveAccountSwitchRequest,
+        LiveAccountSwitchResponse.ChannelSwitch[] channelSwitches = this.getReturnOne(url, liveAccountSwitchRequest,
                 LiveAccountSwitchResponse.ChannelSwitch[].class);
         channelSwitches = channelSwitches == null ? new LiveAccountSwitchResponse.ChannelSwitch[]{} : channelSwitches;
         return new LiveAccountSwitchResponse().setChannelSwitches(Arrays.asList(channelSwitches));
@@ -220,7 +220,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
             LiveListAccountChannelBasicRequest liveListAccountChannelBasicRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LIST_URL;
-        return this.baseGet(url, liveListAccountChannelBasicRequest, LiveListAccountChannelBasicResponse.class);
+        return this.getReturnOne(url, liveListAccountChannelBasicRequest, LiveListAccountChannelBasicResponse.class);
         
     }
     
@@ -236,7 +236,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
             LiveAccountUserDurationsRequest liveAccountUserDurationsRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.USER_DURATION_GET_URL;
-        return this.basePost(url, liveAccountUserDurationsRequest, LiveAccountUserDurationsResponse.class);
+        return this.postFormBodyReturnOne(url, liveAccountUserDurationsRequest, LiveAccountUserDurationsResponse.class);
         
     }
     
@@ -252,7 +252,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveCreateCategoryResponse createCategory(LiveCreateCategoryRequest liveCreateCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CREATE_CHANNEL_CATEGORY_URL;
-        return this.basePost(url, liveCreateCategoryRequest, LiveCreateCategoryResponse.class);
+        return this.postFormBodyReturnOne(url, liveCreateCategoryRequest, LiveCreateCategoryResponse.class);
     }
     
     /**
@@ -267,7 +267,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveListCategoryResponse listCategory(LiveListCategoryRequest liveCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.LIST_CHANNEL_CATEGORY_URL;
-        List<LiveListCategoryResponse.LiveCategory> liveCategories = this.basePostReturnArray(url, liveCategoryRequest,
+        List<LiveListCategoryResponse.LiveCategory> liveCategories = this.postFormBodyReturnList(url, liveCategoryRequest,
                 LiveListCategoryResponse.LiveCategory.class);
         LiveListCategoryResponse liveListCategoryResponse = new LiveListCategoryResponse();
         liveListCategoryResponse.setLiveCategories(liveCategories);
@@ -286,7 +286,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public Boolean updateCategory(LiveUpdateCategoryRequest liveUpdateCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_CHANNEL_CATEGORY_URL;
-        String liveUpdateCategoryResponse = this.basePost(url, liveUpdateCategoryRequest, String.class);
+        String liveUpdateCategoryResponse = this.postFormBodyReturnOne(url, liveUpdateCategoryRequest, String.class);
         return "success".equals(liveUpdateCategoryResponse);
     }
     
@@ -302,7 +302,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public Boolean deleteCategory(LiveDeleteCategoryRequest liveDeleteCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DELETE_CHANNEL_CATEGORY_URL;
-        String liveDeleteCategoryResponse = this.basePost(url,liveDeleteCategoryRequest,String.class);
+        String liveDeleteCategoryResponse = this.postFormBodyReturnOne(url,liveDeleteCategoryRequest,String.class);
         return "success".equals(liveDeleteCategoryResponse);
     }
     
@@ -318,7 +318,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public Boolean updateCategorySort(LiveUpdateCategorySortRequest liveUpdateCategorySortRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.UPDATE_CHANNEL_CATEGORY_SORT_URL;
-        String liveUpdateCategorySortResponse = this.basePost(url, liveUpdateCategorySortRequest, String.class);
+        String liveUpdateCategorySortResponse = this.postFormBodyReturnOne(url, liveUpdateCategorySortRequest, String.class);
         return "success".equals(liveUpdateCategorySortResponse);
     }
     
@@ -334,7 +334,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
     public LiveAccountInfoResponse getAccountInfo(LiveAccountInfoRequest liveAccountInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.GET_ACCOUNT_INFO_URL;
-        return this.baseGet(url, liveAccountInfoRequest, LiveAccountInfoResponse.class);
+        return this.getReturnOne(url, liveAccountInfoRequest, LiveAccountInfoResponse.class);
     }
     
     /**
@@ -351,7 +351,7 @@ public class LiveAccountServiceImpl extends LiveBaseService implements ILiveAcco
             throws IOException, NoSuchAlgorithmException {
         liveChannelIncomeDetailRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.GET_CHANNEL_INCOME_DETAIL_URL,liveChannelIncomeDetailRequest.getUserId());
-        return this.basePost(url,liveChannelIncomeDetailRequest,LiveChannelIncomeDetailResponse.class);
+        return this.postFormBodyReturnOne(url,liveChannelIncomeDetailRequest,LiveChannelIncomeDetailResponse.class);
     }
     
 }

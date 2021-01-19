@@ -33,7 +33,7 @@ public class LiveLotteryServiceImpl  extends LiveBaseService implements ILiveLot
     public LiveListLotteryResponse listLottery(LiveListLotteryRequest liveListLotteryRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LOTTERY_LIST_GET_URL;
-        return this.baseGet(url, liveListLotteryRequest,
+        return this.getReturnOne(url, liveListLotteryRequest,
                 LiveListLotteryResponse.class);
         
     }
@@ -51,7 +51,7 @@ public class LiveLotteryServiceImpl  extends LiveBaseService implements ILiveLot
             LiveLotteryWinnerDetailRequest liveLotteryWinnerDetailRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_LOTTERY_WINNER_DETAIL_GET_URL;
-        return this.baseGet(url,
+        return this.getReturnOne(url,
                 liveLotteryWinnerDetailRequest, LiveLotteryWinnerDetailResponse.class);
         
     }
@@ -68,7 +68,7 @@ public class LiveLotteryServiceImpl  extends LiveBaseService implements ILiveLot
     public Boolean setLotteryWinnerInfo(LiveSetLotteryWinnerInfoRequest liveSetLotteryWinnerInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_SET_LOTTERY_WINNER_INFO_URL;
-        String liveSetLotteryWinnerInfoResponse = this.baseGet(url, liveSetLotteryWinnerInfoRequest, String.class);
+        String liveSetLotteryWinnerInfoResponse = this.getReturnOne(url, liveSetLotteryWinnerInfoRequest, String.class);
         return "success".equals(liveSetLotteryWinnerInfoResponse);
     }
     
@@ -84,7 +84,7 @@ public class LiveLotteryServiceImpl  extends LiveBaseService implements ILiveLot
     public byte[] downloadLotteryDetail(LiveDownloadLotteryDetailRequest liveDownloadLotteryDetailRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.DOWNLOAD_LOTTERY_WINNER_DETAIL_URL;
-        return this.baseGetReturnArray(url,liveDownloadLotteryDetailRequest);
+        return this.getReturnBinary(url,liveDownloadLotteryDetailRequest);
     }
     
     /**
@@ -99,7 +99,7 @@ public class LiveLotteryServiceImpl  extends LiveBaseService implements ILiveLot
     public Integer sendChannelLike(LiveSendChannelLikeRequest liveSendChannelLikeRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.SEND_CHANNEL_LIKE_URL,liveSendChannelLikeRequest.getChannelId());
-        return this.basePost(url,liveSendChannelLikeRequest,Integer.class);
+        return this.postFormBodyReturnOne(url,liveSendChannelLikeRequest,Integer.class);
     }
     
     /**
@@ -114,7 +114,7 @@ public class LiveLotteryServiceImpl  extends LiveBaseService implements ILiveLot
     public Boolean sendChannelRewardMsg(LiveSendChannelRewardMsgRequest liveSendChannelRewardMsgRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.SEND_REWARD_MSG_URL;
-        String liveSendChannelRewardMsgResponse = this.basePost(url,liveSendChannelRewardMsgRequest,String.class);
+        String liveSendChannelRewardMsgResponse = this.postFormBodyReturnOne(url,liveSendChannelRewardMsgRequest,String.class);
         return "0".equals(liveSendChannelRewardMsgResponse);
     }
     

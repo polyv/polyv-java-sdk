@@ -571,7 +571,7 @@ public class LiveAccountImplTest extends BaseTest {
         LiveChannelIncomeDetailRequest liveChannelIncomeDetailRequest = new LiveChannelIncomeDetailRequest();
         LiveChannelIncomeDetailResponse liveChannelIncomeDetailResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveChannelIncomeDetailRequest.setChannelId(channelId)
                     .setStartDate(getDate(2020,10,24))
                     .setEndDate(getDate(2020,11,11))

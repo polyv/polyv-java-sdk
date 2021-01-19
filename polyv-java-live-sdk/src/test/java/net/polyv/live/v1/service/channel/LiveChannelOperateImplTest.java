@@ -214,7 +214,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelInfoResponse liveChannelInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelInfoRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelInfoResponse = new LiveChannelOperateServiceImpl().getChannelInfo(liveChannelInfoRequest);
@@ -245,7 +245,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelBasicInfoRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().getChannelBasicInfo(
@@ -277,7 +277,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelAuthTokenResponse liveChannelAuthTokenResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelAuthTokenRequest.setUserId(getRandomString(32)).setChannelId(channelId)
                     .setRole(LiveConstant.Role.ADMIN.getDesc())
@@ -371,7 +371,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveChannelDetailResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             String newPassword = getRandomString(16);
             liveChannelDetailRequest.setChannelId(channelId)
@@ -408,7 +408,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean updateChannelPasswordResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelPasswordSettingRequest.setChannelId(channelId)
                     .setPasswd("987654")
@@ -443,7 +443,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveCreateChannelTokenResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveCreateChannelTokenRequest.setChannelId(channelId)
                     .setToken(LiveSignUtil.generateUUID())
@@ -476,7 +476,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveDeleteChannelResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveDeleteChannelRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelResponse = new LiveChannelOperateServiceImpl().deleteChannel(liveDeleteChannelRequest);
@@ -508,7 +508,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveDeleteChannelListResponse;
         try {
             //准备测试数据
-            String[] channelIds = new String[]{createChannel(), createChannel(), createChannel()};
+            String[] channelIds = new String[]{super.createChannel(), super.createChannel(), super.createChannel()};
             
             liveDeleteChannelListRequest.setChannelIds(channelIds).setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelListResponse = new LiveChannelOperateServiceImpl().deleteChannelList(
@@ -540,7 +540,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateSonChannelResponse liveCreateSonChannelResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             List<String> sonChannelIds = getDelSonChannelIds();
             for (String temp : sonChannelIds) {
                 deleteSonChannel(temp);
@@ -581,7 +581,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateSonChannelResponse liveCreateSonChannelResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             List<String> sonChannelIds = getDelSonChannelIds();
             for (String temp : sonChannelIds) {
                 deleteSonChannel(temp);
@@ -622,7 +622,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveSonChannelInfoResponse liveSonChannelInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String sonChannelId = createSonChannel(channelId);
             
             liveSonChannelInfoRequest.setAccount(sonChannelId)
@@ -655,7 +655,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveSonChannelInfoListResponse liveSonChannelInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveSonChannelInfoListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfoList(
@@ -688,7 +688,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean updateSonChannelInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String sonChannelId = createSonChannel(channelId);
             
             liveUpdateSonChannelInfoRequest.setChannelId(channelId)
@@ -730,7 +730,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveCreateSonChannelTokenResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String sonChannelId = createSonChannel(channelId);
             
             liveCreateSonChannelTokenRequest.setAccount(sonChannelId)
@@ -766,7 +766,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveDeleteSonChannelResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String sonChannelId = createSonChannel(channelId);
             
             liveDeleteSonChannelRequest.setChannelId(channelId)
@@ -801,7 +801,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest = new LiveCreateChannelPPTRecordRequest();
         Boolean liveCreateChannelPPTRecordResponse;
         try {
-             String channel = createChannel();
+             String channel = super.createChannel();
             List<String> videoIds = listChannelVideoIds(channel);
             liveCreateChannelPPTRecordRequest.setChannelId(channel)
                     .setVideoId(videoIds.get(1))
@@ -834,7 +834,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveListChannelPPTRecordRequest.setChannelId(channelId)
                     .setStartTime(getDate(2020, 1, 1))
@@ -869,7 +869,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelCallbackSettingResponse liveChannelCallbackSettingResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelCallbackSettingRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().getChannelCallbackSetting(
@@ -902,7 +902,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveUpdateChannelCallbackSettingResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveUpdateChannelCallbackSettingRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().updateChannelCallbackSetting(
@@ -934,7 +934,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             List<LiveCreateSonChannelListRequest.SonChannel> sonChannels =
                     new ArrayList<LiveCreateSonChannelListRequest.SonChannel>();
@@ -985,7 +985,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelTransmitListResponse liveChannelTransmitListResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelTransmitListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelTransmitListResponse = new LiveChannelOperateServiceImpl().getChannelTransmitList(
@@ -1017,7 +1017,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveUpdateChannelMaxViewerResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveUpdateChannelMaxViewerRequest.setChannelId(channelId)
                     .setMaxViewer(Integer.MAX_VALUE)
@@ -1051,7 +1051,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelAdvertListResponse liveChannelAdvertListResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelAdvertListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelAdvertListResponse = new LiveChannelOperateServiceImpl().getChannelAdvertList(
@@ -1084,7 +1084,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         String liveChannelCaptureResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelCaptureRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelCaptureResponse = new LiveChannelOperateServiceImpl().getChannelCapture(
@@ -1117,7 +1117,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveUpdateChannelStreamResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveUpdateChannelStreamRequest.setStreamType("disk")
                     .setChannelId(channelId)
@@ -1153,7 +1153,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveCreateDiskVideosStreamResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String videoId = listChannelVideoPoolIds(channelId).get(0);
             
             liveCreateDiskVideosStreamRequest.setVideoIds(videoId)
@@ -1190,7 +1190,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveDeleteDiskVideosStreamResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveDeleteDiskVideosStreamRequest.setVideoIds("f1574595e1")
                     .setChannelId(channelId)

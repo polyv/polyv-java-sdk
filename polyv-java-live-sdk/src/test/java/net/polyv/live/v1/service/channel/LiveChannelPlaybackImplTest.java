@@ -295,7 +295,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest = new LiveChannelVideoOnlyRequest();
         LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String fileId = listChannelFileIds(channelId).get(0);
             liveChannelVideoOnlyRequest.setChannelId(channelId)
                     .setFileId(fileId)
@@ -329,7 +329,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest;
         Boolean liveChannelPlaybackSettingResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             List<String> videoIds = listChannelVideoIds(channelId);
             liveChannelPlaybackSettingRequest = new LiveChannelPlaybackSettingRequest();
             liveChannelPlaybackSettingRequest.setChannelId(channelId)
@@ -500,7 +500,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
                 new LiveDeleteChannelPlaybackVideoRequest();
         Boolean liveDeleteChannelPlaybackVideoResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String videoId = "07f5bbeb67";
             liveDeleteChannelPlaybackVideoRequest.setChannelId(channelId)
                     .setVideoId(videoId)
@@ -535,7 +535,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveUpdatePlaybackTitleRequest liveUpdatePlaybackTitleRequest = new LiveUpdatePlaybackTitleRequest();
         Boolean liveUpdatePlaybackTitleResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String videoId = "992d36fa40";
             liveUpdatePlaybackTitleRequest.setChannelId(channelId)
                     .setVideoId(videoId)
@@ -576,7 +576,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveMergeMp4RecordRequest liveMergeMp4RecordRequest = new LiveMergeMp4RecordRequest();
         LiveMergeMp4RecordResponse liveMergeMp4RecordResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveMergeMp4RecordRequest.setChannelId(channelId)
                     .setStartTime(super.getDate(1603848613000l))
                     .setEndTime(super.getDate(1603854259000l))

@@ -146,7 +146,7 @@ public class LiveWebMenuImplTest extends BaseTest {
         LiveUpdateChannelMenuSortRequest liveUpdateChannelMenuSortRequest = new LiveUpdateChannelMenuSortRequest();
         Boolean liveUpdateChannelMenuSortResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             List<String> menuIds = listChannelMenuIds(channelId);
             Collections.shuffle(menuIds);
             String menuIdsStr = StringUtils.join(menuIds.toArray(), ",");

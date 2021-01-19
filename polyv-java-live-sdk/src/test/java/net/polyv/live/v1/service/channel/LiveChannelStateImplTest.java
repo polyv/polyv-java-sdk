@@ -71,7 +71,7 @@ public class LiveChannelStateImplTest extends BaseTest {
         LiveListChannelStreamStatusResponse liveListChannelStreamStatusResponse;
         try {
             //准备测试数据
-            String channelId0 = createChannel();
+            String channelId0 = super.createChannel();
             String channelId1 = getAloneChannelId();
             
             liveListChannelStreamStatusRequest.setChannelIds(String.format("%s,%s", channelId0, channelId1))
@@ -106,7 +106,7 @@ public class LiveChannelStateImplTest extends BaseTest {
         Boolean liveCutoffChannelStreamResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveCutoffChannelStreamRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveCutoffChannelStreamResponse = new LiveChannelStateServiceImpl().cutoffChannelStream(
@@ -139,7 +139,7 @@ public class LiveChannelStateImplTest extends BaseTest {
         Boolean liveResumeChannelStreamResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveResumeChannelStreamRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveResumeChannelStreamResponse = new LiveChannelStateServiceImpl().resumeChannelStream(
@@ -172,7 +172,7 @@ public class LiveChannelStateImplTest extends BaseTest {
         Boolean liveChannelStreamLiveResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelStreamLiveRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelStreamLiveResponse = new LiveChannelStateServiceImpl().setChannelStreamLive(
@@ -205,7 +205,7 @@ public class LiveChannelStateImplTest extends BaseTest {
         Boolean liveChannelStreamEndResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
     
             liveChannelStreamEndRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelStreamEndResponse = new LiveChannelStateServiceImpl().setChannelStreamEnd(

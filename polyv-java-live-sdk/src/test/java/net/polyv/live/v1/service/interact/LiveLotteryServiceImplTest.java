@@ -33,7 +33,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
     
     /**
      * 测试获取频道抽奖记录列表
-     * TODO 等待数据验证
+     * 描述：获取频道抽奖记录列表（通过直播端发起抽奖）
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -44,7 +44,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
         try {
             liveListLotteryRequest.setChannelId(super.createChannel())
                     .setStartTime(super.getDate(1601481600000l))
-                    .setEndTime(super.getDate(1605024000000l))
+                    .setEndTime(super.getDate(2021,1,21))
                     .setPageSize(1)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListLotteryResponse = new LiveLotteryServiceImpl().listLottery(liveListLotteryRequest);
@@ -66,7 +66,6 @@ public class LiveLotteryServiceImplTest extends BaseTest {
     
     /**
      * 测试获取频道单场抽奖的中奖记录
-     * TODO 等待数据验证
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -76,7 +75,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
         LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
         try {
             liveLotteryWinnerDetailRequest.setChannelId(super.createChannel())
-                    .setLotteryId("1211")
+                    .setLotteryId("fv3hogjmh3")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveLotteryWinnerDetailResponse = new LiveLotteryServiceImpl().getLotteryWinnerDetail(
                     liveLotteryWinnerDetailRequest);
@@ -140,19 +139,18 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * 测试导出频道单场抽奖的中奖记录
      * 描述：用于下载频道的单场抽奖的中奖记录
      * 返回：返回的byte[]可以按照单元测试示例进行保存，也可以自行处理。
-     * TODO 未测试通过
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testSkipDownloadLotteryDetail() throws Exception, NoSuchAlgorithmException {
+    public void testDownloadLotteryDetail() throws Exception, NoSuchAlgorithmException {
         LiveDownloadLotteryDetailRequest liveDownloadLotteryDetailRequest = new LiveDownloadLotteryDetailRequest();
         byte[] liveDownloadLotteryDetailResponse;
         try {
             //path设置为下载文件路径
             String path = getClass().getResource("/file/").getPath() + "downLoadLotteryWinner.xlsx";
             liveDownloadLotteryDetailRequest.setChannelId(createChannel())
-                    .setLotteryId("")
+                    .setLotteryId("fv3hogjmh3")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveDownloadLotteryDetailResponse = new LiveLotteryServiceImpl().downloadLotteryDetail(
                     liveDownloadLotteryDetailRequest);

@@ -405,7 +405,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     @Test
     public void testUpdateChannelPassword() throws Exception, NoSuchAlgorithmException {
         LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest = new LiveChannelPasswordSettingRequest();
-        Boolean updateChannelPasswordResponse;
+        Boolean liveChannelPasswordSettingResponse;
         try {
             //准备测试数据
             String channelId = super.createChannel();
@@ -413,10 +413,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
             liveChannelPasswordSettingRequest.setChannelId(channelId)
                     .setPasswd("987654")
                     .setRequestId(LiveSignUtil.generateUUID());
-            updateChannelPasswordResponse = new LiveChannelOperateServiceImpl().updateChannelPassword(
+            liveChannelPasswordSettingResponse = new LiveChannelOperateServiceImpl().updateChannelPassword(
                     liveChannelPasswordSettingRequest);
-            Assert.assertNotNull(updateChannelPasswordResponse);
-            if (updateChannelPasswordResponse) {
+            Assert.assertNotNull(liveChannelPasswordSettingResponse);
+            if (liveChannelPasswordSettingResponse) {
                 //to do something ......
                 log.debug("设置频道密码成功");
             }
@@ -685,7 +685,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     @Test
     public void testUpdateSonChannelInfo() throws Exception, NoSuchAlgorithmException {
         LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest = new LiveUpdateSonChannelInfoRequest();
-        Boolean updateSonChannelInfoResponse;
+        Boolean liveUpdateSonChannelInfoResponse;
         try {
             //准备测试数据
             String channelId = super.createChannel();
@@ -700,10 +700,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setPageTurnEnabled("Y")
                     .setNotifyEnabled("Y")
                     .setRequestId(LiveSignUtil.generateUUID());
-            updateSonChannelInfoResponse = new LiveChannelOperateServiceImpl().updateSonChannelInfo(
+            liveUpdateSonChannelInfoResponse = new LiveChannelOperateServiceImpl().updateSonChannelInfo(
                     liveUpdateSonChannelInfoRequest);
-            Assert.assertNotNull(updateSonChannelInfoResponse);
-            if (updateSonChannelInfoResponse) {
+            Assert.assertNotNull(liveUpdateSonChannelInfoResponse);
+            if (liveUpdateSonChannelInfoResponse) {
                 //to do something ......
                 log.debug("设置子频道信息成功");
             }

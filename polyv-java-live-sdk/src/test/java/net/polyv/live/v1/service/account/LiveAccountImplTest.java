@@ -61,7 +61,7 @@ public class LiveAccountImplTest extends BaseTest {
         try {
             liveCreateCategoryRequest.setCategoryName("分类1").setRequestId(LiveSignUtil.generateUUID());
             liveCreateCategoryResponse = new LiveAccountServiceImpl().createCategory(liveCreateCategoryRequest);
-            Assert.assertNotNull(liveCreateCategoryRequest);
+            Assert.assertNotNull(liveCreateCategoryResponse);
             log.debug("测试创建账号下直播分类成功,{}", JSON.toJSONString(liveCreateCategoryResponse));
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

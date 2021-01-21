@@ -75,7 +75,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
         LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
         try {
             liveLotteryWinnerDetailRequest.setChannelId(super.createChannel())
-                    .setLotteryId("fv3hogjmh3")
+                    .setLotteryId("fv3mao43u6")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveLotteryWinnerDetailResponse = new LiveLotteryServiceImpl().getLotteryWinnerDetail(
                     liveLotteryWinnerDetailRequest);
@@ -110,12 +110,12 @@ public class LiveLotteryServiceImplTest extends BaseTest {
         Boolean liveSetLotteryWinnerInfoResponse;
         try {
             liveSetLotteryWinnerInfoRequest.setChannelId(super.createChannel())
-                    .setLotteryId("")
-                    .setWinnerCode("")
-                    .setViewerId("")
-                    .setName("")
-                    .setTelephone("")
-                    .setReceiveInfo("")
+                    .setLotteryId("fv3mao43u6")
+                    .setWinnerCode("wMpUjVSi")
+                    .setViewerId("asdadsdas")
+                    .setName("sadboy")
+                    .setTelephone("18974718689")
+                    .setReceiveInfo("[{\"field\":\"姓名\",\"value\":\"测试\"},{\"field\":\"手机\",\"value\":\"13412345678\"}]")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveSetLotteryWinnerInfoResponse = new LiveLotteryServiceImpl().setLotteryWinnerInfo(
                     liveSetLotteryWinnerInfoRequest);

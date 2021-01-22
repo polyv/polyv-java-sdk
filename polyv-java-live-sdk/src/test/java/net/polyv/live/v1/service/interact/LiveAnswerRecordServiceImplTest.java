@@ -27,6 +27,7 @@ public class LiveAnswerRecordServiceImplTest extends BaseTest {
     
     /**
      * 查询频道答题卡答题结果
+     * API地址：CHANNEL_QUESTION_ANSWER_RECORD_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

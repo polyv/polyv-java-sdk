@@ -34,6 +34,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
     /**
      * 测试获取频道抽奖记录列表
      * 描述：获取频道抽奖记录列表（通过直播端发起抽奖）
+     * API地址：CHANNEL_LOTTERY_LIST_GET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -66,6 +67,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
     
     /**
      * 测试获取频道单场抽奖的中奖记录
+     * API地址：CHANNEL_LOTTERY_WINNER_DETAIL_GET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -101,6 +103,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * 描述：用于提交中奖者填写的信息
      * 约束：2.只能成功保存一次观众中奖信息
      * 约束：3.中奖信息需在7天内提交保存，否则会失效
+     * API地址：CHANNEL_SET_LOTTERY_WINNER_INFO_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -139,6 +142,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * 测试导出频道单场抽奖的中奖记录
      * 描述：用于下载频道的单场抽奖的中奖记录
      * 返回：返回的byte[]可以按照单元测试示例进行保存，也可以自行处理。
+     * API地址：DOWNLOAD_LOTTERY_WINNER_DETAIL_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -178,6 +182,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * 约束：3、如果有需求支持同时点多个赞，可提交非必填参数times，times最大不能超过30。*如果提交次数为n，则需n-1秒才能继续点赞
      * 约束：4、viewerId由调用端去进行区分用户即可
      * 返回：点赞数
+     * API地址：SEND_CHANNEL_LIKE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -213,6 +218,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * 约束：viewerId需要是在线的viewerId
      * 返回：true为发送成功，false为发送失败
      * TODO 未测试通过，等后台回复如何获取在线viewerId
+     * API地址：SEND_REWARD_MSG_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */

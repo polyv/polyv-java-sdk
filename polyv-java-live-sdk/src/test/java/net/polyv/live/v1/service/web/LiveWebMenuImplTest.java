@@ -5,7 +5,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 import java.util.List;
 
-import net.polyv.common.v1.util.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,6 +12,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.common.v1.util.StringUtils;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveAddChannelMenuResponse;
 import net.polyv.live.v1.entity.web.menu.LiveDeleteChannelMenuRequest;
@@ -39,6 +39,7 @@ public class LiveWebMenuImplTest extends BaseTest {
      * 测试设置自定义菜单直播介绍
      * 描述：设置自定义菜单中用户设置菜单的直播介绍
      * 返回：true为设置成功，false为设置失败
+     * API地址：CHANNEL_MENU_SET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -73,6 +74,7 @@ public class LiveWebMenuImplTest extends BaseTest {
     /**
      * 测试查询频道的菜单信息
      * 描述：获取频道的菜单信息
+     * API地址：CHANNEL_MENU_LIST_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -103,6 +105,7 @@ public class LiveWebMenuImplTest extends BaseTest {
      * 测试添加频道菜单
      * 约束：2、如果desc类型的菜单已经存在，会抛出“menu already exist”异常。
      * 描述：添加一个频道菜单
+     * API地址：ADD_CHANNEL_MENU_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -138,6 +141,7 @@ public class LiveWebMenuImplTest extends BaseTest {
      * 测试设置频道菜单排序
      * 约束：2、频道菜单ID列表，必须是完整的列表（不能多也不能少）
      * 描述：设置直播频道的菜单的顺序
+     * API地址：UPDATE_CHANNEL_MENU_SORT_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -175,6 +179,7 @@ public class LiveWebMenuImplTest extends BaseTest {
     /**
      * 测试设置指定菜单id的频道菜单信息
      * 约束：2、互动聊天或咨询提问的菜单ID不允许设置
+     * API地址：CHANNEL_MENU_UPDATE_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -209,6 +214,7 @@ public class LiveWebMenuImplTest extends BaseTest {
      * 测试删除频道菜单
      * 描述：删除指定的频道菜单，支持批量
      * 返回：true为删除成功，false为删除失败
+     * API地址：DELETE_CHANNEL_MENU_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -239,6 +245,7 @@ public class LiveWebMenuImplTest extends BaseTest {
     /**
      * 测试设置提问功能显示开关
      * 描述：可以开启或关闭咨询提问功能菜单
+     * API地址：UPDATE_CHANNEL_CONSULTING_ENABLED_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -271,6 +278,7 @@ public class LiveWebMenuImplTest extends BaseTest {
     /**
      * 测试查询频道图文内容列表
      * 描述：可以开启或关闭咨询提问功能菜单
+     * API地址：GET_CHANNEL_IMAGE_TEXT_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

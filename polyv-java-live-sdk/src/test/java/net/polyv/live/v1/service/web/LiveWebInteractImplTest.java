@@ -33,6 +33,7 @@ public class LiveWebInteractImplTest extends BaseTest {
     /**
      * 测试设置道具打赏
      * 返回：true代表设置成功，false代表设置失败
+     * API地址：GOOD_DONATE_SET_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -76,6 +77,7 @@ public class LiveWebInteractImplTest extends BaseTest {
      * 描述：用于设置频道或者全局现金打赏
      * 约束：2.带上频道号为设置频道现金打赏，不带频道号默认为全局现金打赏设置
      * 返回：true表示设置成功，false表示设置失败
+     * API地址：CASH_DONATE_SET_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -111,6 +113,7 @@ public class LiveWebInteractImplTest extends BaseTest {
     
     /**
      * 测试查询打赏设置
+     * API地址：CHANNEL_DONATE_GET_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -141,6 +144,7 @@ public class LiveWebInteractImplTest extends BaseTest {
      * 测试设置频道微信分享信息
      * 描述：用于修改频道的微信分享相关设置
      * 返回：true为设置成功，false为设置失败
+     * API地址：UPDATE_CHANNEL_WX_SHARE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -174,6 +178,7 @@ public class LiveWebInteractImplTest extends BaseTest {
     /**
      * 测试查询频道微信分享信息
      * 描述：获取频道的微信分享设置信息
+     * API地址：GET_CHANNEL_WX_SHARE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */

@@ -51,6 +51,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     /**
      * 测试添加单个白名单
      * 返回：true为添加成功，false为添加失败
+     * API地址：CHANNEL_WHITE_LIST_ADD_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -84,6 +85,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     /**
      * 测试查询频道观看白名单列表
      * 用于获取全局或频道的观看条件白名单列表
+     * API地址：CHANNEL_WHITE_LIST_GET_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -117,6 +119,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     
     /**
      * 测试查询直播频道观看条件
+     * API地址：CHANNEL_AUTH_GET_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -146,6 +149,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     /**
      * 测试设置观看条件
      * 返回：true为设置观看条件成功，false为设置失败
+     * API地址：CHANNEL_AUTH_UPDATE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -186,6 +190,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     
     /**
      * 测试通过接口设置外部授权
+     * API地址：CHANNEL_AUTH_EXTERNAL_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -217,6 +222,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     
     /**
      * 测试设置自定义授权地址
+     * API地址：CHANNEL_AUTH_CUSTOM_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -249,6 +255,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     /**
      * 测试设置授权认证URL
      * 返回：true为设置成功，false为设置失败
+     * API地址：CHANNEL_AUTH_URL_UPDATE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -281,6 +288,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     /**
      * 测试设置授权观看类型
      * 返回：true为授权成功，false为授权失败
+     * API地址：CHANNEL_AUTH_TYPE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -313,6 +321,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     /**
      * 测试更新白名单
      * 返回：true为更新成功，false为失败
+     * API地址：UPDATE_CHANNEL_WHITE_LIST_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -349,6 +358,7 @@ public class LiveWebAuthImplTest extends BaseTest {
      * 测试删除白名单
      * 描述：用于删除指定观看白名单（支持一键清空）
      * 返回：true为删除成功，false为失败
+     * API地址：DELETE_CHANNEL_WHITE_LIST_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -382,6 +392,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     
     /**
      * 测试查询频道或全局登记观看字段
+     * API地址：CHANNEL_AUTH_FIELD_GET_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -413,6 +424,7 @@ public class LiveWebAuthImplTest extends BaseTest {
     
     /**
      * 测试查询页面登记观看列表
+     * API地址：CHANNEL_AUTH_INFO_GET_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -443,6 +455,7 @@ public class LiveWebAuthImplTest extends BaseTest {
      * 测试下载频道登记观看记录
      * 描述：接口用于下载频道的登记观看列表，包含登记观看记录字段和数据内容
      * 返回：返回的byte[]可以按照单元测试示例进行保存，也可以自行处理。
+     * API地址：DOWNLOAD_CHANNEL_AUTH_INFO_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -480,6 +493,7 @@ public class LiveWebAuthImplTest extends BaseTest {
      * 测试新增白名单
      * 描述：用于设置频道或全局观看条件中的白名单列表
      * 返回：如导入数据与现有列表数据会员码一致，则会以导入昵称覆盖现有昵称。
+     * API地址：UPLOAD_WHITE_LIST_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -515,6 +529,7 @@ public class LiveWebAuthImplTest extends BaseTest {
      * 测试下载频道观看白名单列表
      * 描述：用于下载全局或频道的观看条件白名单列表
      * 返回：返回的byte[]可以按照单元测试示例进行保存，也可以自行处理。
+     * API地址：DOWNLOAD_CHANNEL_WHITE_LIST_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */

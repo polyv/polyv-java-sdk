@@ -32,6 +32,7 @@ public class LiveChannelStateImplTest extends BaseTest {
     /**
      * 测试查询频道实时推流信息
      * 约束：2、讲师未进入直播间或未开启上课等情况，将抛出"channel status not live"异常
+     * API地址：CHANNEL_LIVE_STREAM_INFO_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -61,6 +62,7 @@ public class LiveChannelStateImplTest extends BaseTest {
     
     /**
      * 批量查询频道直播流状态
+     * API地址：CHANNEL_LIVE_STREAM_STATUS_LIST_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -97,6 +99,7 @@ public class LiveChannelStateImplTest extends BaseTest {
     /**
      * 禁止直播频道推流
      * 返回：true为禁止推流成功，false为失败
+     * API地址：CHANNEL_STREAM_CUTOFF_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -130,6 +133,7 @@ public class LiveChannelStateImplTest extends BaseTest {
     /**
      * 测试恢复直播频道推流
      * 返回：true为恢复成功，false为恢复失败
+     * API地址：CHANNEL_STREAM_RESUME_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -163,6 +167,7 @@ public class LiveChannelStateImplTest extends BaseTest {
     /**
      * 测试设置频道流状态为直播中
      * 返回：true为设置成功，false为设置失败
+     * API地址：CHANNEL_STREAM_LIVE_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -196,6 +201,7 @@ public class LiveChannelStateImplTest extends BaseTest {
     /**
      * 测试设置频道为无直播状态
      * 返回：true为设置成功，false为设置失败
+     * API地址：CHANNEL_STREAM_END_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

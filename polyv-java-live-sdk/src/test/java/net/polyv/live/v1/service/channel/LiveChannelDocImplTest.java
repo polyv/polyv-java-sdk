@@ -31,6 +31,7 @@ public class LiveChannelDocImplTest extends BaseTest {
     
     /**
      * 测试上传频道文档
+     * API地址：CREATE_CHANNEL_DOC_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -66,6 +67,7 @@ public class LiveChannelDocImplTest extends BaseTest {
     
     /**
      * 测试查询频道文档转换状态
+     * API地址：CHANNEL_DOC_STATUS_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -99,6 +101,7 @@ public class LiveChannelDocImplTest extends BaseTest {
     
     /**
      * 测试获取频道文档列表
+     * API地址：CHANNEL_DOC_LIST_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -132,6 +135,7 @@ public class LiveChannelDocImplTest extends BaseTest {
     /**
      * 测试删除频道文档
      * 返回：true为删除文档成功，false为删除文档失败
+     * API地址：CHANNEL_DOC_DELETE_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

@@ -31,6 +31,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
     
     /**
      * 查询签到结果
+     * API地址：CHANNEL_CHECKIN_LIST_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -63,6 +64,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
     /**
      * 查询指定签到ID的签到记录
      * 描述：通过签到ID获取该次签到记录
+     * API地址：CHANNEL_CHECKIN_BY_ID_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -95,6 +97,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
     /**
      * 依据指定直播场次sessionId查询签到场次信息
      * 描述：通过直播场次sessionId获取直播发起签到记录
+     * API地址：CHANNEL_CHECKIN_METADATA_BY_SESSIONID_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

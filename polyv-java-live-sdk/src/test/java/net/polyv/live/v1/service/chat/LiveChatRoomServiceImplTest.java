@@ -50,6 +50,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 批量导入频道严禁词
+     * API地址：CHAT_SET_BAD_WORD_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -82,6 +83,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 通过HTTP接口发送聊天消息
      * 描述：可指定发言者的头像、头衔、昵称，无需连接聊天室，通过HTTP接口发送聊天文本内容
+     * API地址：CHAT_SEND_MSG_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -118,6 +120,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 查询历史聊天信息
      * 描述：查询一段时间内的聊天记录，时间格式为yyyy-MM-dd 或 yyyy-MM-dd HH:mm:ss。如未提交具体时间，只提交了日期，开始时间默认为日期当天的 00:00:00，结束时间为日期当天的23:59:59
+     * API地址：CHAT_GET_HISTORY_MSG_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -152,6 +155,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 查询聊天室管理员信息
+     * API地址：CHAT_GET_ADMIN_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -182,6 +186,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 查询频道禁言列表
      * 返回：返回当前频道的禁言列表
+     * API地址：CHAT_GET_CHANNEL_BANNED_LIST_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -213,6 +218,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 查询频道踢人列表
+     * API地址：CHAT_LIST_KICKED_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -244,6 +250,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * 查询频道严禁词/禁言IP列表
      * 描述：接口用于获取频道的严禁词或者禁言IP列表
      * 返回：获取当前频道的严禁词/禁言IP列表
+     * API地址：CHAT_GET_BAKWORD_WORD_IP_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -277,6 +284,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * 查询账号严禁词列表
      * 描述：接口用于获取账号下通用设置的严禁词列表
      * 返回：当前保利威账号下通用设置的严禁词列表
+     * API地址：CHAT_GET_ACCOUNT_BAKWORD_WORD_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -306,6 +314,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     
     /**
      * 查询咨询提问记录
+     * API地址：CHAT_GET_CONSULTING_RECORD_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -339,6 +348,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 设置讲师信息
      * 返回：true 设置讲师信息成功，false 设置讲师信息失败
+     * API地址：CHAT_SET_TEACHER_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -375,6 +385,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 设置聊天室禁言ip
      * 返回：当前所有的禁言ip列表
+     * API地址：CHAT_BANNED_IP_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -407,6 +418,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 设置聊天室管理员信息
      * 返回：true 设置成功，false 设置失败
+     * API地址：CHAT_SET_ADMIN_DATA_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -444,6 +456,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 删除禁言IP/严禁词
      * 返回：true 删除成功 ，false 删除失败
+     * API地址：CHAT_DEL_BANNED_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -478,6 +491,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
      * 删除单条聊天记录
      * 描述：根据聊天的id删除对应聊天记录
      * 返回：true 删除成功， false 删除失败
+     * API地址：CHAT_SEND_MSG_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -530,6 +544,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 删除频道聊天记录
      * 返回：true 删除成功， false 删除失败
+     * API地址：CHAT_CLEAN_CHANNEL_MSG_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -560,6 +575,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 测试管理员发送频道聊天信息
      * 返回：true 发送成功， false 发送失败
+     * API地址：SEND_ADMIN_MSG_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -593,6 +609,7 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
     /**
      * 测试发送自定义聊天信息
      * 返回：true 发送成功， false 发送失败
+     * API地址：SEND_CUSTOM_MSG_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */

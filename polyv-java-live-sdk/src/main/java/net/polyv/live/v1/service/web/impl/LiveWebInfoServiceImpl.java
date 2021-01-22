@@ -3,6 +3,7 @@ package net.polyv.live.v1.service.web.impl;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -126,6 +127,8 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     @Override
     public Boolean updateChannelCountDown(LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest)
             throws IOException, NoSuchAlgorithmException {
+        List<Object> list = new ArrayList<>();
+        list.add(new HashMap<String,String>(){{put("realUrl","");put("apiUrl","");put("desc","");}});
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_UPDATE_COUNT_DOWN_URL,
                 liveUpdateChannelCountDownRequest.getChannelId());
         String liveUpdateChannelCountDownResponse = this.postFormBodyReturnOne(url, liveUpdateChannelCountDownRequest, String.class);

@@ -36,6 +36,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
      * 测试获取频道一定时间范围之内的历史最高并发人数
      * 描述：获取频道一定时间范围之内的历史最高并发人数，粒度可以支持到分钟
      * 返回：返回时间区间内的最高并发人数
+     * API地址：CHANNEL_MAX_HISTORY_CONCURRENT_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -71,6 +72,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
     
     /**
      * 测试分页获取连麦情况使用详情
+     * API地址：CHANNEL_MIC_LIST_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -102,6 +104,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
     
     /**
      * 测试分页查询频道观看日志
+     * API地址：CHANNEL_VIEW_LOGS_GET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -133,6 +136,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
     
     /**
      * 测试查询多个频道汇总的统计数据
+     * API地址：CHANNEL_SUMMARY_LIST_GET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -165,6 +169,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
     
     /**
      * 测试查询多个频道的实时在线人数
+     * API地址：CHANNEL_REAL_TIME_VIEWERS_GET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -195,6 +200,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
     
     /**
      * 测试查询频道的历史并发人数
+     * API地址：CHANNEL_VIEWER_CONCURRENCE_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

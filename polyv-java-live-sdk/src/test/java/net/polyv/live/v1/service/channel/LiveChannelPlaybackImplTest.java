@@ -50,6 +50,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     /**
      * 测试将点播中的视频添加到视频库
      * 约束：2、点播视频得设置标签为频道号，多个用英文逗号分隔
+     * API地址：CHANNEL_VIDEO_PLAYBACK_ADD_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -84,6 +85,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     /**
      * 测试异步批量转存录制文件到点播
      * 返回：true为提交成功，false为提交失败，具体转存是否成功以回调为准
+     * API地址：CHANNEL_RECORD_CONVERT_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -120,6 +122,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     /**
      * 测试异步合并直播录制文件
      * 返回：true为提交成功，false为提交失败，具体合并是否成功以回调为准
+     * API地址：CHANNEL_RECORD_FILE_MERGE_ASYNC_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -155,6 +158,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     
     /**
      * 测试查询频道录制视频信息
+     * API地址：CHANNEL_RECORD_FILES_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -188,6 +192,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     
     /**
      * 测试查询视频库列表
+     * API地址：CHANNEL_PLAYBACK_LIST_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -220,6 +225,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     
     /**
      * 测试查询频道直播场次信息
+     * API地址：CHANNEL_SESSION_INFO_LIST_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -256,6 +262,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     /**
      * 测试查询频道的回放开关状态
      * 返回：Y为开启，N为关闭
+     * API地址：CHANNEL_PLAYBACK_ENABLED_INFO_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -287,6 +294,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     
     /**
      * 测试查询指定文件ID的录制文件信息
+     * API地址：CHANNEL_RECORD_GET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -321,6 +329,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     /**
      * 测试设置频道回放设置
      * 返回：true为设置成功，false为设置失败
+     * API地址：CHANNEL_PLAYBACK_SETTING_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -359,6 +368,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     /**
      * 测试设置后台回放开关
      * 返回：成功返回频道号
+     * API地址：CHANNEL_PLAYBACK_SET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -391,6 +401,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     /**
      * 测试设置视频库列表排序
      * 返回：true为设置成功，false为设置失败
+     * API地址：CHANNEL_VIDEO_SORT_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -426,6 +437,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     /**
      * 测试设置视频库列表的默认视频
      * 返回：true为设置成功，false为设置失败
+     * API地址：CHANNEL_PLAYBACK_SET_DEFAULT_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -459,6 +471,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     /**
      * 测试删除直播暂存中的录制文件
      * 返回：true为删除成功，false为删除失败
+     * API地址：CHANNEL_VIDEO_DELETE_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -491,6 +504,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     /**
      * 测试删除视频库列表中的视频
      * 返回：true为删除成功，false为删除失败
+     * API地址：CHANNEL_PLAYBACK_DELETE_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -527,6 +541,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     /**
      * 测试修改回放视频名称
      * 返回：true为修改成功，false为修改失败
+     * API地址：UPDATE_PLAYBACK_TITLE_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -568,6 +583,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * 约束：5、mp4下载地址30天内有效，超出后需要重新导出
      * 回调说明：该接口为异步处理，如果需要获取合并的结果，可以在请求接口时提交callbackUrl 参数，在程序合并成功后，会对callbackUrl 进行回调通知
      * 回调对象：net.polyv.live.v1.entity.channel.playback.LiveMergeMp4RecordResponse$MergeMp4RecordCallback
+     * API地址：CHANNEL_RECORD_MERGE_MP4_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

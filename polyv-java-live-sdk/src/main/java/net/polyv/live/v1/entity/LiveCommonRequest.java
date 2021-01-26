@@ -28,7 +28,7 @@ public class LiveCommonRequest extends CommonReqeust {
      */
     @ApiModelProperty(hidden = true )
     @NotBlank(message = "属性timestamp不能为空")
-    private Long timestamp;
+    private String timestamp;
     /**
      * 数据MD5签名，系统自动生成
      */

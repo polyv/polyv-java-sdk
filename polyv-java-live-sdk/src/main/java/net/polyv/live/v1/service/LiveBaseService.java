@@ -330,8 +330,8 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> Map<String, String> commonRequestLogic(Map<String, String> signMap,E e)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
         e.setAppId(LiveGlobalConfig.getAppId());
-        if (e.getTimestamp() == null) {
-            e.setTimestamp(System.currentTimeMillis());
+        if (StringUtils.isBlank(e.getTimestamp())) {
+            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
         if(signMap==null){
             signMap = MapUtil.objectToMap(e);

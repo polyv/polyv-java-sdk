@@ -6,16 +6,17 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
-import net.polyv.common.v1.util.StringUtils;
 
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.constant.Constant;
+import net.polyv.common.v1.util.StringUtils;
+import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
  * polyv 直播签名工具类
@@ -134,6 +135,25 @@ public class VodSignUtil {
             stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         }
         return stringBuilder.toString();
+    }
+    
+    /**
+     * 获取签名字段，appId，timestamp，requestId的 map 集合,本方法不参与具体签名方法和sign字段设置
+     * @param t 请求体
+     * @param <T> LiveCommonRequest
+     * @return map
+     */
+    public static <T extends VodCommonRequest> Map<String, String> getSignMap(T t) {
+        if (StringUtils.isBlank(t.getRequestId())) {
+            t.setRequestId(VodSignUtil.generateUUID());
+        }
+        if (StringUtils.isBlank(t.getTimestamp())) {
+            t.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        }
+        Map<String, String> tempMap = new HashMap<String, String>();
+        tempMap.put("ptime", t.getTimestamp());
+        tempMap.put("requestId", t.getRequestId());
+        return tempMap;
     }
     
 }

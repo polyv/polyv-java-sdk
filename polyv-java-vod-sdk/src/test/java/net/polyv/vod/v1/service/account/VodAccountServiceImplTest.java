@@ -16,7 +16,7 @@ import net.polyv.vod.v1.service.account.impl.VodAccountServiceImpl;
 import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
- * 获取用户空间及流量情况
+ * 账户管理
  * @author: thomas
  **/
 @Slf4j

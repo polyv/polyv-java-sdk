@@ -220,6 +220,7 @@ public class LiveChannelPlaybackServiceImpl extends LiveBaseService implements I
         String url = LiveURL.CHANNEL_VIDEO_SORT_URL;
         Map<String, String> signMap = LiveSignUtil.getSignMap(liveChannelVideoSortRequest);
         signMap.put("channelId", String.valueOf(liveChannelVideoSortRequest.getChannelId()));
+        signMap.put("listType", String.valueOf(liveChannelVideoSortRequest.getListType()));
         String liveChannelVideoSortResponse = this.postJsonBodyReturnOne(url, signMap, liveChannelVideoSortRequest,
                 String.class);
         return "success".equals(liveChannelVideoSortResponse);

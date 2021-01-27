@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POLYV JAVA 点播 SDK</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="Description">
+    <link rel="icon" href="//dev.polyv.net/favicon.ico" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+
+
+    <style>
+        #toc_container li,
+        #toc_container ul {
+            margin: 0;
+            padding: 0
+        }
+
+        #toc_container.no_bullets li,
+        #toc_container.no_bullets ul,
+        #toc_container.no_bullets ul li,
+        .toc_widget_list.no_bullets li {
+            background: 0 0;
+            list-style-type: none;
+            list-style: none
+        }
+
+        #toc_container.have_bullets li {
+            padding-left: 12px
+        }
+
+        #toc_container ul ul {
+            margin-left: 1.5em
+        }
+
+        #toc_container .toc_list a{
+            color: #505d6b;
+        }
+        #toc_container {
+            background: #f9f9f9;
+            border: 1px solid #aaa;
+            padding: 10px;
+            margin-bottom: 1em;
+            width: auto;
+            display: table;
+            font-size: 95%;
+        }
+
+        #toc_container p.toc_title {
+            text-align: center;
+            font-weight: 700;
+            margin: 0;
+            padding: 0
+        }
+
+        #toc_container.toc_black p.toc_title {
+            color: #aaa
+        }
+
+        #toc_container span.toc_toggle {
+            font-weight: 400;
+            font-size: 90%
+        }
+
+        #toc_container p.toc_title + ul.toc_list {
+            margin-top: 1em
+        }
+
+        #toc_container a {
+            text-decoration: none;
+            text-shadow: none
+        }
+
+        #toc_container a:hover {
+            text-decoration: underline
+        }
+
+        #toc_container {
+            position: fixed;
+            z-index: 999;
+            right: 25px;
+            top: 70px;
+        }
+        #toc_container .menuActive {
+            color:#42b983 !important;
+        }
+    </style>
+    <!--
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css">
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css">
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/pure.css">
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css">
+ -->
+
+</head>
+<body onscroll="scroll()">
+<div id="app">保利威直点播JAVA SDK</div>
+
+<script>
+
+    window.$docsify = {
+        name: '保利威点播Java SDK',
+        repo: 'https://github.com/polyv/polyv-java-sdk.git',
+        loadSidebar: true,
+        subMaxLevel: 2,
+        copyCode: {
+            buttonText: '复制',
+            errorText: '复制失败',
+            successText: '复制成功'
+        },
+        // autoHeader: false,
+        // logo:'../img/logo.png',
+        // auto2top:true,
+        // themeColor: 'green',
+        // mergeNavbar: true,
+        // formatUpdated: '{MM}/{DD} {HH}:{mm}',
+        // formatUpdated: function (time) {
+        //     return time;
+        // },
+
+
+        // search: 'auto', // 默认值
+
+        // 完整配置参数
+        search: {
+            maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+            paths: 'auto',
+            placeholder: '搜索',
+            noData: '查找不到内容!',
+            // 搜索标题的最大层级, 1 - 6
+            depth: 6,
+            hideOtherSidebarContent: false, // 是否隐藏其他侧边栏内容
+        },
+        count: {
+            countable: true,
+            fontsize: '0.9em',
+            color: 'rgb(90,90,90)',
+            language: 'chinese',
+            float: 'right'
+        }
+        /**
+         swagger: {
+			cache: true,
+			tableWidth: "auto",
+			i18n: {
+			  "en": {
+				request: "Request parameters",
+				response: "Response parameters",
+				name: "Name",
+				type: "Type",
+				required: "Required",
+				description: "Description",
+				none: "None"
+			  },
+			  fallback: "en"
+			}
+		}
+         */
+
+    }
+
+</script>
+<script src="https://libs.baidu.com/jquery/1.7.0/jquery.min.js"></script>
+<script src="https://www.jq22.com/demo/Ryuk87-jquery-goup/jquery.goup.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.goup({
+            trigger: 100,
+            bottomOffset: 32,
+            locationOffset: 32,
+            title: 'TOP',
+            titleAsText: true
+        });
+        var h1s = $("body").find("h2");
+        console.log(h1s)
+    });
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+<script src="//unpkg.com/docsify-swagger/dist/docsify-swagger.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-javadoc.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+<script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+<script id="menuHtml" type="text/template">
+    <!-- 模板部分 -->
+    <div id="toc_container" class="no_bullets" style="width: auto; display: table;">
+        <p class="toc_title">
+            文章目录
+            <span class="toc_toggle">
+			[
+			<a id="hiddenBtn" href="javascript:void(0);" onclick="menuHidden()">
+				点击显示
+			</a>
+			]
+		</span>
+        </p>
+        <ul class="toc_list" style="display: none;max-height: 300px;overflow-y: auto;">
+            #liHtml#
+        </ul>
+    </div>
+    <!-- 模板结束 -->
+</script>
+<script id="titleHtml" type="text/template">
+    <li>
+        <a href="#href#" id="menu#i#" class="menu">
+            #title#
+        </a>
+    </li>
+    <!-- 模板结束 -->
+</script>
+<script>
+    function getElementTop(elem) {
+        var elemTop = elem.offsetTop;
+        elem = elem.offsetParent;
+        while (elem != null) {
+            elemTop += elem.offsetTop;
+            elem = elem.offsetParent;
+        }
+        return elemTop;
+    }
+
+    //滚动右侧菜单同步移动
+    function scroll() {
+        var h3 = $("h2");
+        var lastH = 0;
+        for (var i = 0; i < h3.length; i++) {
+            var elemTop = getElementTop(h3[i]);
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+            console.log(scrollTop +"---"+elemTop+"--"+i);
+            if (scrollTop >= elemTop - 1) {
+                lastH = i;
+                console.log(i);
+            }
+        }
+        $(".menu").removeClass("menuActive");
+        $("#menu"+lastH).addClass("menuActive");
+    }
+
+    //点击隐藏方法
+    function menuHidden() {
+        var menuUl = $("#toc_container .toc_list");
+        if (menuUl.is(":hidden")) {
+            menuUl.show();
+            $("#hiddenBtn").text("点击隐藏");
+        } else {
+            menuUl.hide();
+            $("#hiddenBtn").text("点击显示");
+        }
+    }
+
+    //自定义悬浮菜单插件
+    function plugin(hook, vm) {
+        let articleTitle;
+        hook.beforeEach(function (content) {
+            // Match regex every time you start parsing .md
+            articleTitle = content.match(/##(\s)(.*)、(.*)/g);
+            return content
+        })
+
+        hook.afterEach(function (html, next) {
+            let menuHtml = $("#menuHtml").html();
+            let titleHtml = $("#titleHtml").html();
+            if (articleTitle) {
+                let liHtml = "";
+                let baseUrl = window.location.href.split("?")[0];
+                $.each(articleTitle, function (index, value) {
+                    let title = value.split(" ")[1];
+                    liHtml += titleHtml.replace("#title#", title).replace("#href#", baseUrl + "?id=_" + title).replace("#i#",index);
+                });
+                html += menuHtml.replace("#liHtml#", liHtml);
+            }
+            return next(html);
+        })
+    }
+
+    window.$docsify.plugins = [].concat(plugin, window.$docsify.plugins)
+</script>
+
+</body>
+</html>

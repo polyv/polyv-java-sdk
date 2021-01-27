@@ -210,7 +210,7 @@ public class MapUtil {
     
     
     /**
-     * 将url与map拼接成 xxx.com?a=a&b=b
+     * 将url与map拼接成HTTP查询字符串
      * @param url 请求url
      * @param paramMap 需要拼装的map
      * @return 拼装好的url

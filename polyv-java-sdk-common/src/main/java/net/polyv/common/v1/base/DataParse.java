@@ -9,7 +9,13 @@ import org.apache.http.HttpEntity;
  * @param <T>
  */
 public interface DataParse<T> {
-    
+    /**
+     *  解析返回数据
+     * @param httpEntity 返回实体
+     * @param encoding 编码
+     * @return 实际解析返回内容
+     * @throws IOException io异常
+     */
     T parseData(HttpEntity httpEntity, String encoding) throws IOException;
     
 }

@@ -5,7 +5,7 @@ package net.polyv.vod.v1.constant;
  **/
 public class VodURL {
     public static final String BASE_URI = "https://api.polyv.net/";
-    public static final String BASE_URI_V = "https://v.polyv.net/";
+//    public static final String BASE_URI_V = "https://v.polyv.net/";
     
     /**
      * url 替换通配符

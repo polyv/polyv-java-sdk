@@ -180,6 +180,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
     /**
      * 设置播放器片头广告
      * 描述：设置某频道播放器的片头广告
+     * 约束：2、设置片头广告并不一定会展示，需要调用 设置频道默认项开关 把广告通用设置开关关闭
      * 返回：true 设置成功，false 设置失败
      * API地址：PLAYER_SET_CHANNEL_HEADER_ADVERT_URL
      * @throws IOException
@@ -223,6 +224,7 @@ public class LivePlayerServiceImplTest extends BaseTest {
     /**
      * 设置播放器暂停广告
      * 描述：用于设置某频道播放器的暂停广告
+     * 约束：2、设置暂停广告并不一定会展示，需要调用 设置频道默认项开关 把广告通用设置开关关闭
      * 返回：true 设置成功，false 设置失败
      * API地址：PLAYER_SET_CHANNEL_PAUSE_ADVERT_URL
      * @throws IOException

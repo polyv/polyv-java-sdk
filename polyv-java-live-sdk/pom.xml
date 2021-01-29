@@ -5,14 +5,14 @@
     <parent>
         <artifactId>polyv-java-sdk</artifactId>
         <groupId>net.polyv</groupId>
-        <version>1.0.20</version>
+        <version>1.0.22</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>polyv-java-live-sdk</artifactId>
 
     <properties>
-        <polyv.version>1.0.20</polyv.version>
+        <polyv.version>1.0.22</polyv.version>
     </properties>
     <dependencies>
         <dependency>

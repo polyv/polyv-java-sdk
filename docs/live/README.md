@@ -6,7 +6,7 @@
 
 &emsp;&emsp;**保利威直播Java SDK**依托保利威直播API实现，对其进行包装和优化。解放B端用户的共性工作。将API调用逻辑和异常处理进行了封装优化，B端用户只需将请求参数封装后，交给**保利威直播Java SDK**处理即可，**保利威直播Java SDK**处理完成后返回结果，B端依据返回数据继续完成B段业务逻辑。现阶段**保利威直播Java SDK**涵盖了频道管理、观看管理、直播互动、聊天室、播放器 等 绝大部分经常使用的API操作。
 
-&emsp;&emsp;如果您在使用**保利威直播Java SDK**的过程中遇到任何问题，欢迎前往保利威视频云[官网在线咨询反馈](https://www.polyv.net/)提问。请将问题的运行环境、操作步骤、错误反馈信息、联系方式同步提交，便于问题的快速定位和解决； 
+&emsp;&emsp;如果您在使用**保利威直播Java SDK**的过程中遇到任何问题，直接使用右下角**在线客服**找到售后技术支持提问。请将问题的运行环境、操作步骤、错误反馈信息、联系方式同步提交，便于问题的快速定位和解决； 
 
 <img src="../img/image-20201022183926158.png" alt="image-20201022183926158" style="zoom: 67%;" />
 
@@ -38,11 +38,11 @@
 
 &emsp;* 签名生成：SDK采用MD5算法签名规则，生成签名；
 
-&emsp;* 参数合法性校验：SDK采用Hibernate-validator规范对输入参数进行校验，<font color=#FF0000 >如有参数不合格，将抛出BusinessionException异常，exception的message包括具体校验不通过的字段信息，此异常是运行时异常，必须捕获处理相关业务逻辑；</font>
+&emsp;* 参数合法性校验：SDK采用Hibernate-validator规范对输入参数进行校验，<font color=#FF0000 >如有参数不合格，将抛出PloyvSdkException异常，exception的message包括具体校验不通过的字段信息，此异常是运行时异常，必须捕获处理相关业务逻辑；</font>
 
 &emsp;* 发送HTTP请求，获取返回数据：SDK在初始化阶段初始化了一个HTTP链接池，所有SDK请求都是通过改链接池来发送请求；
 
-&emsp;* 解析返回数据：解析返回数据，如SDK调用正常成功，将封装响应对象，正常返回，<font color=#FF0000 >如服务器返回错误信息，SDK将将抛出BusinessionException异常，exception的message包括具体服务器执行错误信息，此异常是运行时异常，必须捕获处理相关业务逻辑；</font>
+&emsp;* 解析返回数据：解析返回数据，如SDK调用正常成功，将封装响应对象，正常返回，<font color=#FF0000 >如服务器返回错误信息，SDK将将抛出PloyvSdkException异常，exception的message包括具体服务器执行错误信息，此异常是运行时异常，必须捕获处理相关业务逻辑；</font>
 
 ## 5.调用流程模板
 

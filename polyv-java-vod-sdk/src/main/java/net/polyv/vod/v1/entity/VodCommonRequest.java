@@ -18,7 +18,13 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 public class VodCommonRequest extends CommonReqeust {
-
+    /**
+     * POLYV用户userid，通过注册保利威官网获取，路径：官网->登录->点播（API接口）
+     */
+    @ApiModelProperty(hidden = true )
+    @NotNull(message = "属性userid不能为空")
+    private String userid;
+    
     /**
      * 请求发送当时的时间戳（ms)，系统自动生成
      */

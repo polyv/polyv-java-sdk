@@ -285,5 +285,38 @@
     window.$docsify.plugins = [].concat(plugin, window.$docsify.plugins)
 </script>
 
+
+<!--智齿 html标签-->
+<script>
+    (function (w, d, e, x) {
+        w[e] = function () {
+            w.cbk = w.cbk || []
+            w.cbk.push(arguments);
+        }
+        x = d.createElement("script");
+        x.async = true;
+        x.id = "zhichiScript";
+        x.className = "polyvBizQQWPA"; //该class绑定到自定义按钮上 第一步
+        // ***为您的自定义域名
+        x.src = "https://www.sobot.com/chat/frame/js/entrance.js?sysNum=42a9433fd0b245f6aef3e3f9c01fa25c";
+        d.body.appendChild(x);
+    })(window, document, "zc");
+
+    // action数组中前一个数组元素溢出时会自动把客户交到后一个数组元素中
+    var action = [
+        {
+            "actionType":"to_group",
+            "optionId":"3",
+            "deciId":"b9bf21af5ebb4a8cbf5a7c38fdd26958",
+            "spillId":"4"
+        }
+    ];
+    var payload = JSON.stringify(action);
+    zc("config",{
+        transfer_action:payload,
+    })
+</script>
+<!--智齿 html标签-->
+
 </body>
 </html>

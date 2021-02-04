@@ -127,8 +127,6 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     @Override
     public Boolean updateChannelCountDown(LiveUpdateChannelCountDownRequest liveUpdateChannelCountDownRequest)
             throws IOException, NoSuchAlgorithmException {
-        List<Object> list = new ArrayList<>();
-        list.add(new HashMap<String,String>(){{put("realUrl","");put("apiUrl","");put("desc","");}});
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_UPDATE_COUNT_DOWN_URL,
                 liveUpdateChannelCountDownRequest.getChannelId());
         String liveUpdateChannelCountDownResponse = this.postFormBodyReturnOne(url, liveUpdateChannelCountDownRequest, String.class);

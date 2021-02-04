@@ -333,7 +333,7 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
                                 ".jpg").setRequestId(requestId);
         
         LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
-        List<LiveCreateSonChannelListRequest.SonChannel> sonChannels = new ArrayList<>();
+        List<LiveCreateSonChannelListRequest.SonChannel> sonChannels = new ArrayList<LiveCreateSonChannelListRequest.SonChannel>();
         //纯视频场景只能创建助教，不允许创建嘉宾
         sonChannels.add(setSonChannelsInfo2());
         liveCreateSonChannelListRequest.setSonChannels(sonChannels);

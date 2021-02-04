@@ -41,7 +41,7 @@ public class HttpUtil {
     public static final String USER_AGENT = "User-Agent";
     public static final String APP_ID_NAME = "java-sdk-app-id";
     public static final String USER_ID_NAME = "java-sdk-user-id";
-    private static final String CURRENT_VERSION = "1.0.19";
+    private static final String CURRENT_VERSION = "1.0.22";
     private static final String UTF8 = Constant.UTF8;
     private static String SDK = "SDK";
     private static String APP_ID = "";
@@ -323,7 +323,7 @@ public class HttpUtil {
             Map<String, List<File>> fileListMap = new HashMap<String, List<File>>();
             for (Map.Entry<String, File> entry : fileMap.entrySet()) {
                 File file = entry.getValue();
-                List<File> fileList = new ArrayList<>();
+                List<File> fileList = new ArrayList<File>();
                 fileList.add(file);
                 fileListMap.put(entry.getKey(), fileList);
             }

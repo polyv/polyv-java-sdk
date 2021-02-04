@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import net.polyv.live.v1.entity.LivePageCommonResponse;
 
 /**
  * 查询签到结果响应实体
@@ -17,7 +18,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @ApiModel("查询签到结果响应实体")
-public class LiveCheckinListResponse {
+public class LiveCheckinListResponse extends LivePageCommonResponse {
     /**
      * 签到记录数据数组
      */

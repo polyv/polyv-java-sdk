@@ -37,6 +37,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     /**
      * 测试设置频道名称
      * 返回：true为设置成功，false为设置失败
+     * API地址：CHANNEL_NAME_SET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -69,6 +70,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     /**
      * 测试设置主持人姓名
      * 返回：true为设置成功，false为设置失败
+     * API地址：CHANNEL_PUBLISHER_SET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -100,6 +102,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     
     /**
      * 测试查询直播引导图开关状态及URL
+     * API地址：CHANNEL_SPLASH_GET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -129,6 +132,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     /**
      * 测试设置频道点赞数和观看热度值
      * 返回：true为设置成功，false为设置失败
+     * API地址：CHANNEL_LIKES_UPDATE_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -162,6 +166,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     /**
      * 测试设置频道图标
      * 返回：成功返回图标地址，如://livestatic.videocc.net/uploaded/images/2017/03/******.jpg
+     * API地址：CHANNEL_LOGO_SET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -196,6 +201,7 @@ public class LiveWebInfoImplTest extends BaseTest {
      * 测试设置引导开关以及引导图片
      * 返回：设置引导页未上传图片，成功返回success；
      * 返回：设置引导页同时上传图片;成功返回地址，如：//xxx.videocc.net/uploaded/images/2017/03/******.jpg
+     * API地址：CHANNEL_SPLASH_SET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -228,6 +234,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     
     /**
      * 测试查询频道点赞数和观众热度值
+     * API地址：CHANNEL_LIKES_GET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -257,6 +264,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     /**
      * 测试设置频道直播倒计时信息
      * 返回：true为设置成功，false为设置失败
+     * API地址：CHANNEL_UPDATE_COUNT_DOWN_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -289,6 +297,7 @@ public class LiveWebInfoImplTest extends BaseTest {
     
     /**
      * 测试查询频道直播倒计时信息
+     * API地址：CHANNEL_COUNT_DOWN_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

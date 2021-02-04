@@ -14,7 +14,7 @@ public class BaseTest {
     /**
      * 系统默认初始化
      */
-    BaseTest() {
+    public BaseTest() {
         InitConfig.initPolyvVodByFile(null);
     }
     

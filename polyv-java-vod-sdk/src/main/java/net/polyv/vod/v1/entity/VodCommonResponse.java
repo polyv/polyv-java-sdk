@@ -1,5 +1,7 @@
 package net.polyv.vod.v1.entity;
 
+import java.util.List;
+
 import com.alibaba.fastjson.JSON;
 
 import lombok.Data;
@@ -38,11 +40,18 @@ public class VodCommonResponse {
      */
     protected String data;
     
-    
-    public  <T> T parseData(Class<T> dataClass) {
-        return JSON.parseObject(this.data , dataClass);
+    public <T> T parseData(Class<T> dataClass) {
+        if (dataClass == String.class) {
+            return (T) this.data;
+        }
+        return JSON.parseObject(this.data, dataClass);
     }
-   
+    
+    public  <T> List<T> parseArray(Class<T> dataClass) {
+        return JSON.parseArray(this.data, dataClass);
+        
+    }
+    
     /**
      * 判断请求是否成功
      * @return true/false

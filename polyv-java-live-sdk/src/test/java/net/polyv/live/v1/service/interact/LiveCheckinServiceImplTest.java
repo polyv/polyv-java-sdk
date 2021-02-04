@@ -31,23 +31,24 @@ public class LiveCheckinServiceImplTest extends BaseTest {
     
     /**
      * 查询签到结果
+     * API地址：CHANNEL_CHECKIN_LIST_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
     @Test
     public void testGetCheckinListInfo() throws Exception, NoSuchAlgorithmException {
         LiveCheckinListRequest liveCheckinListRequest = new LiveCheckinListRequest();
-        LiveCheckinListResponse checkinListInfo = null;
+        LiveCheckinListResponse liveCheckinListResponse = null;
         try {
             String channelId = super.createChannel();
             
             liveCheckinListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveCheckinListRequest.setDate(getDate(2020,10,20)).setSessionId("fs9v9y4nxf");
-            checkinListInfo = new LiveCheckinServiceImpl().getCheckinListInfo(liveCheckinListRequest);
-            Assert.assertNotNull(checkinListInfo);
-            if (checkinListInfo != null) {
+            liveCheckinListResponse = new LiveCheckinServiceImpl().getCheckinListInfo(liveCheckinListRequest);
+            Assert.assertNotNull(liveCheckinListResponse);
+            if (liveCheckinListResponse != null) {
                 //to do something ......
-                log.debug("测试查询签到结果成功{}", JSON.toJSONString(checkinListInfo));
+                log.debug("测试查询签到结果成功{}", JSON.toJSONString(liveCheckinListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -63,6 +64,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
     /**
      * 查询指定签到ID的签到记录
      * 描述：通过签到ID获取该次签到记录
+     * API地址：CHANNEL_CHECKIN_BY_ID_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -95,6 +97,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
     /**
      * 依据指定直播场次sessionId查询签到场次信息
      * 描述：通过直播场次sessionId获取直播发起签到记录
+     * API地址：CHANNEL_CHECKIN_METADATA_BY_SESSIONID_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

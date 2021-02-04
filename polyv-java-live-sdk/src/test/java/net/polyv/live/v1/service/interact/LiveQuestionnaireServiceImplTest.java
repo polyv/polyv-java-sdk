@@ -37,6 +37,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
     /**
      * 查询频道问卷列表
      * 描述：接口用于获取频道的问卷列表
+     * API地址：CHANNEL_QUESTIONNAIRE_LIST_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -69,6 +70,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
      * 查询频道问卷详情
      * 描述：1、接口用于查询频道问卷详情
      * 描述：2、问卷ID 可以从获取频道问卷列表中获取
+     * API地址：CHANNEL_QUESTIONNAIRE_DETAIL_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -103,6 +105,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
     /**
      * 查询频道问卷结果
      * 描述：接口用于查询直播问卷的答题结果及统计
+     * API地址：CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -136,6 +139,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
     /**
      * 分页查询问卷结果
      * 描述：分页查询直播问卷的答题结果及统计
+     * API地址：CHANNEL_QUESTIONNAIRE_ANSWER_RECORD_PAGE_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -173,6 +177,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
     /**
      * 设置频道问卷信息
      * 描述：接口用于编辑或添加问卷信息，为全量增加或修改
+     * API地址：CHANNEL_QUESTIONNAIRE_DETAIL_SET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

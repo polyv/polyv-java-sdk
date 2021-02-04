@@ -52,6 +52,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试创建账号下直播分类
+     * API地址：CREATE_CHANNEL_CATEGORY_URL
      * @throws Exception
      */
 //    @Test
@@ -61,7 +62,7 @@ public class LiveAccountImplTest extends BaseTest {
         try {
             liveCreateCategoryRequest.setCategoryName("分类1").setRequestId(LiveSignUtil.generateUUID());
             liveCreateCategoryResponse = new LiveAccountServiceImpl().createCategory(liveCreateCategoryRequest);
-            Assert.assertNotNull(liveCreateCategoryRequest);
+            Assert.assertNotNull(liveCreateCategoryResponse);
             log.debug("测试创建账号下直播分类成功,{}", JSON.toJSONString(liveCreateCategoryResponse));
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -76,6 +77,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试查询账号下直播分类
+     * API地址：LIST_CHANNEL_CATEGORY_URL
      * @throws Exception
      */
     @Test
@@ -100,6 +102,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试修改直播频道分类名称
+     * API地址：UPDATE_CHANNEL_CATEGORY_URL
      * 返回：true为修改成功，false为修改失败
      * @throws Exception
      */
@@ -127,6 +130,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试修改直播频道分类顺序
+     * API地址：UPDATE_CHANNEL_CATEGORY_SORT_URL
      * 返回：true为修改排序成功，false为修改排序失败
      * @throws Exception
      */
@@ -155,6 +159,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试删除直播频道分类
+     * API地址：DELETE_CHANNEL_CATEGORY_URL
      * 返回：true为删除成功，false为删除失败
      * @throws Exception
      */
@@ -180,6 +185,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试获取直播用户账号信息接口
+     * API地址：GET_ACCOUNT_INFO_URL
      * @throws Exception
      */
     @Test
@@ -204,6 +210,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 查询账号下所有频道详细信息
+     * API地址：ACCOUNT_LIST_CHANNEL_DETAIL_URL
      * @throws IOException
      */
     @Test
@@ -232,6 +239,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试查询账号下的频道列表
+     * API地址：ACCOUNT_LIST_CHANNEL_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -260,6 +268,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试获取账号连麦分钟数使用量与剩余量
+     * API地址：ACCOUNT_MIC_DURATION_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -290,6 +299,7 @@ public class LiveAccountImplTest extends BaseTest {
      * 测试设置账号单点登录的token
      * 返回：true为设置成功，false为设置失败
      * 约束：2、token 参数请勿过于简单，建议使用16位随机字符串
+     * API地址：ACCOUNT_TOKEN_CREATE_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -326,6 +336,7 @@ public class LiveAccountImplTest extends BaseTest {
      * 回调说明：方式提交到给用户自定义的回调接口进行通知，如：http://abc.com/test.do?channelId=123456&status=live&timestamp=1557976774000
      * 回调说明：&sign=xxdxxxxx&sessionId=xxxxxddd&startTime=1557976777111&endTime=1557976777111
      * 回调对象：net.polyv.live.v1.entity.account.LiveAccountStreamCallbackRequest$LiveStateChangeCallback
+     * API地址：ACCOUNT_STREAM_CALLBACK_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -364,6 +375,7 @@ public class LiveAccountImplTest extends BaseTest {
      * 回调说明：&timestamp=1557976774000&sign=xxxxxxxxxx&fileId=359a81ed8fd8cb83d88ddcd97d9e8a2b&videoId=b1c6f3ad2c&origin
      * 回调说明：=auto&sessionIds=["20190703145126,4,fdqbopvtnv","20190703145126,8,fdqbopvtnv"]
      * 回调对象：net.polyv.live.v1.entity.account.LiveAccountPlaybackCallbackRequest$PlaybackCallBack
+     * API地址：ACCOUNT_PLAYBACK_CALLBACK_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -402,6 +414,7 @@ public class LiveAccountImplTest extends BaseTest {
      * 回调说明：.net/i6ro0hxj0020150529112242035/recordf.i6ro0hxj0020150529112242035_20170120184803
      * 回调说明：.m3u8&origin=auto&fileId=072c36138cfbd3e546cda227dc273951&timestamp=1557976774000&sign=xxxxxxxxxx
      * 回调对象：net.polyv.live.v1.entity.account.LiveAccountRecordCallbackRequest$RecordCallback
+     * API地址：ACCOUNT_RECORD_CALLBACK_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -436,6 +449,7 @@ public class LiveAccountImplTest extends BaseTest {
      * 返回：true为设置成功，false为设置失败
      * 约束：2、isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;
      * 约束：closeChaterList当enabled值为Y时，表示的是关闭在线列表
+     * API地址：ACCOUNT_SWITCH_UPDATE_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -470,6 +484,7 @@ public class LiveAccountImplTest extends BaseTest {
      * 描述：接口用于获取开关设置，可获取全局开关设置或频道开关设置
      * 约束：2、isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;
      * 约束：closeChaterList当enabled值为Y时，表示的是关闭在线列表
+     * API地址：ACCOUNT_SWITCH_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -498,6 +513,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试查询账号下所有频道缩略信息
+     * API地址：CHANNEL_LIST_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -533,6 +549,7 @@ public class LiveAccountImplTest extends BaseTest {
     
     /**
      * 测试查询账户分钟数
+     * API地址：USER_DURATION_GET_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -563,6 +580,7 @@ public class LiveAccountImplTest extends BaseTest {
     /**
      * 测试查询账号下所有/某个频道号收入详情
      * 约束：根据是否提交channelId来获取全部频道/某个频道的收入详情数据
+     * API地址：GET_CHANNEL_INCOME_DETAIL_URL
      * @return
      * @throws Exception
      */
@@ -571,10 +589,10 @@ public class LiveAccountImplTest extends BaseTest {
         LiveChannelIncomeDetailRequest liveChannelIncomeDetailRequest = new LiveChannelIncomeDetailRequest();
         LiveChannelIncomeDetailResponse liveChannelIncomeDetailResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveChannelIncomeDetailRequest.setChannelId(channelId)
-                    .setStartDate(getDate(2020,10,24))
-                    .setEndDate(getDate(2020,11,11))
+                    .setStartDate(getDate(2019,10,24))
+                    .setEndDate(getDate(2021,11,11))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelIncomeDetailResponse = new LiveAccountServiceImpl().getChannelIncomeDetail(
                     liveChannelIncomeDetailRequest);

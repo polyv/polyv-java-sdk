@@ -70,6 +70,8 @@ public class VodGlobalConfig {
      * @param writeToken 写入操作密钥
      * @param readToken 读取操作密钥
      * @param secretKey 鉴权密钥
+     * @param timeOut HTTP连接超时时间
+     * @param maxClientNum 连接池最大并发连接数
      */
     public static void  init(String userId,String writeToken,String readToken,String secretKey,Integer timeOut ,Integer maxClientNum){
         VodGlobalConfig.USER_ID = userId;

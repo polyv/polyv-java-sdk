@@ -70,6 +70,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试创建频道
      * 描述：创建一个直播频道，返回直播频道相关的基础信息。
+     * API地址：CHANNEL_CREATE_URL
      * @throws Exception
      */
 //    @Test
@@ -109,7 +110,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试创建并初始化频道
      * 约束：2、AuthSetting中AuthType不能直接设置白名单观看，需要先创建频道后再设置观看条件
-     * @throws Exception 异常
+     * API地址：CHANNEL_BASIC_CREATE_URL
+     * @throws Exception
      */
     @Test
     public void testCreateChannelInit() throws Exception, NoSuchAlgorithmException {
@@ -161,6 +163,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试批量创建频道
+     * API地址：CHANNEL_LIST_CREATE_URL
      * @throws Exception
      */
 //    @Test
@@ -205,6 +208,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试查询频道信息
+     * API地址：CHANNEL_GET_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -214,7 +218,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelInfoResponse liveChannelInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelInfoRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelInfoResponse = new LiveChannelOperateServiceImpl().getChannelInfo(liveChannelInfoRequest);
@@ -236,6 +240,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试查询频道基本信息
+     * API地址：CHANNEL_BASIC_INFO_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -245,7 +250,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelBasicInfoRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().getChannelBasicInfo(
@@ -268,6 +273,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试查询授权和连麦的token
+     * API地址：CHANNEL_AUTH_TOKEN_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -277,7 +283,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelAuthTokenResponse liveChannelAuthTokenResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelAuthTokenRequest.setUserId(getRandomString(32)).setChannelId(channelId)
                     .setRole(LiveConstant.Role.ADMIN.getDesc())
@@ -304,6 +310,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试修改频道的相关设置
      * 返回：true为设置成功，false为设置失败
+     * API地址：CHANNEL_BASIC_UPDATE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -363,6 +370,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置频道详情
      * 返回：true为修改成功，false为修改失败
+     * API地址：CHANNEL_DETAIL_SET_URL
      * @throws Exception
      */
     @Test
@@ -371,7 +379,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveChannelDetailResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             String newPassword = getRandomString(16);
             liveChannelDetailRequest.setChannelId(channelId)
@@ -399,24 +407,25 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置频道密码
      * 返回：true为设置密码成功，false为设置失败
+     * API地址：CHANNEL_PWD_SET_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
     public void testUpdateChannelPassword() throws Exception, NoSuchAlgorithmException {
         LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest = new LiveChannelPasswordSettingRequest();
-        Boolean updateChannelPasswordResponse;
+        Boolean liveChannelPasswordSettingResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelPasswordSettingRequest.setChannelId(channelId)
                     .setPasswd("987654")
                     .setRequestId(LiveSignUtil.generateUUID());
-            updateChannelPasswordResponse = new LiveChannelOperateServiceImpl().updateChannelPassword(
+            liveChannelPasswordSettingResponse = new LiveChannelOperateServiceImpl().updateChannelPassword(
                     liveChannelPasswordSettingRequest);
-            Assert.assertNotNull(updateChannelPasswordResponse);
-            if (updateChannelPasswordResponse) {
+            Assert.assertNotNull(liveChannelPasswordSettingResponse);
+            if (liveChannelPasswordSettingResponse) {
                 //to do something ......
                 log.debug("设置频道密码成功");
             }
@@ -434,6 +443,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置频道单点登陆token
      * 返回：true为设置token成功，false为设置失败
+     * API地址：CHANNEL_TOKEN_CREATE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -443,7 +453,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveCreateChannelTokenResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveCreateChannelTokenRequest.setChannelId(channelId)
                     .setToken(LiveSignUtil.generateUUID())
@@ -469,6 +479,9 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 删除直播频道
      * 返回：true为删除成功，false为删除失败
+     * API地址：CHANNEL_DELETE_URL
+     * @throws Exception
+     * @throws NoSuchAlgorithmException
      */
 //    @Test
     public void testDeleteChannel() throws Exception, NoSuchAlgorithmException {
@@ -476,7 +489,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveDeleteChannelResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveDeleteChannelRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelResponse = new LiveChannelOperateServiceImpl().deleteChannel(liveDeleteChannelRequest);
@@ -499,6 +512,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 批量删除频道
      * 返回：true为批量删除成功，false为批量删除失败，不存在部分成功
+     * API地址：CHANNEL_LIST_DELETE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -508,7 +522,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveDeleteChannelListResponse;
         try {
             //准备测试数据
-            String[] channelIds = new String[]{createChannel(), createChannel(), createChannel()};
+            String[] channelIds = new String[]{super.createChannel(), super.createChannel(), super.createChannel()};
             
             liveDeleteChannelListRequest.setChannelIds(channelIds).setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelListResponse = new LiveChannelOperateServiceImpl().deleteChannelList(
@@ -531,6 +545,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试创建子频道-三分屏添加Guest
+     * API地址：SON_CHANNEL_CREATE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -540,7 +555,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateSonChannelResponse liveCreateSonChannelResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             List<String> sonChannelIds = getDelSonChannelIds();
             for (String temp : sonChannelIds) {
                 deleteSonChannel(temp);
@@ -572,6 +587,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试创建子频道-非三分屏添加助教
+     * API地址：SON_CHANNEL_CREATE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -581,7 +597,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateSonChannelResponse liveCreateSonChannelResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             List<String> sonChannelIds = getDelSonChannelIds();
             for (String temp : sonChannelIds) {
                 deleteSonChannel(temp);
@@ -613,6 +629,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试查询子频道信息
+     * API地址：SON_CHANNEL_INFO_GET_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -622,7 +639,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveSonChannelInfoResponse liveSonChannelInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String sonChannelId = createSonChannel(channelId);
             
             liveSonChannelInfoRequest.setAccount(sonChannelId)
@@ -648,6 +665,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试查询频道号下所有子频道信息
+     * API地址：CHANNEL_ACCOUNTS_GET_URL
      */
     @Test
     public void testGetSonChannelInfoList() throws Exception, NoSuchAlgorithmException {
@@ -655,7 +673,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveSonChannelInfoListResponse liveSonChannelInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveSonChannelInfoListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfoList(
@@ -679,16 +697,17 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置子频道信息
      * 返回：true为设置成功，false为设置失败
+     * API地址：SON_CHANNEL_INFO_UPDATE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
     @Test
     public void testUpdateSonChannelInfo() throws Exception, NoSuchAlgorithmException {
         LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest = new LiveUpdateSonChannelInfoRequest();
-        Boolean updateSonChannelInfoResponse;
+        Boolean liveUpdateSonChannelInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String sonChannelId = createSonChannel(channelId);
             
             liveUpdateSonChannelInfoRequest.setChannelId(channelId)
@@ -700,10 +719,10 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setPageTurnEnabled("Y")
                     .setNotifyEnabled("Y")
                     .setRequestId(LiveSignUtil.generateUUID());
-            updateSonChannelInfoResponse = new LiveChannelOperateServiceImpl().updateSonChannelInfo(
+            liveUpdateSonChannelInfoResponse = new LiveChannelOperateServiceImpl().updateSonChannelInfo(
                     liveUpdateSonChannelInfoRequest);
-            Assert.assertNotNull(updateSonChannelInfoResponse);
-            if (updateSonChannelInfoResponse) {
+            Assert.assertNotNull(liveUpdateSonChannelInfoResponse);
+            if (liveUpdateSonChannelInfoResponse) {
                 //to do something ......
                 log.debug("设置子频道信息成功");
             }
@@ -721,6 +740,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置子频道单点登陆token
      * 返回：true为设置子频道token成功，false为设置失败
+     * API地址：SON_CHANNEL_TOKEN_CREATE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -730,7 +750,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveCreateSonChannelTokenResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String sonChannelId = createSonChannel(channelId);
             
             liveCreateSonChannelTokenRequest.setAccount(sonChannelId)
@@ -757,6 +777,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试删除子频道
      * 返回：true为删除成功，false为删除失败
+     * API地址：SON_CHANNEL_DELETE_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -766,7 +787,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveDeleteSonChannelResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String sonChannelId = createSonChannel(channelId);
             
             liveDeleteSonChannelRequest.setChannelId(channelId)
@@ -793,6 +814,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试创建重制课件任务
      * 返回：true为创建成功，false为创建失败
+     * API地址：CHANNEL_PPTRECORD_CREATE__URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
@@ -801,7 +823,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest = new LiveCreateChannelPPTRecordRequest();
         Boolean liveCreateChannelPPTRecordResponse;
         try {
-             String channel = createChannel();
+             String channel = super.createChannel();
             List<String> videoIds = listChannelVideoIds(channel);
             liveCreateChannelPPTRecordRequest.setChannelId(channel)
                     .setVideoId(videoIds.get(1))
@@ -826,6 +848,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 查询课件重制任务列表
+     * API地址：CHANNEL_LIST_PPTRECORD_URL
      * @throws Exception
      */
     @Test
@@ -834,7 +857,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveListChannelPPTRecordRequest.setChannelId(channelId)
                     .setStartTime(getDate(2020, 1, 1))
@@ -861,6 +884,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试查询频道回调设置接口
+     * API地址：GET_CHANNEL_CALLBACK_SETTING_URL
      * @throws Exception
      */
     @Test
@@ -869,7 +893,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelCallbackSettingResponse liveChannelCallbackSettingResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelCallbackSettingRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().getChannelCallbackSetting(
@@ -893,6 +917,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置频道回调设置
      * 约束：2、如频道需要跟随用户设置，可以调用设置频道默认项开关接口
+     * API地址：UPDATE_CHANNEL_CALLBACK_SETTING_URL
      * @throws Exception
      */
     @Test
@@ -902,7 +927,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveUpdateChannelCallbackSettingResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveUpdateChannelCallbackSettingRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().updateChannelCallbackSetting(
@@ -926,6 +951,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试批量创建子频道
      * 约束：2、批量创建子频道，子频道角色支持guest(嘉宾，只支持三分屏场景)、assistant(助教)
+     * API地址：CREATE_SON_CHANNEL_LIST_URL
      * @throws Exception
      */
     @Test
@@ -934,7 +960,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             List<LiveCreateSonChannelListRequest.SonChannel> sonChannels =
                     new ArrayList<LiveCreateSonChannelListRequest.SonChannel>();
@@ -977,6 +1003,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     
     /**
      * 测试获取账号或频道转播列表信息
+     * API地址：CHANNEL_TRANSMIT_LIST_URL
      * @throws Exception
      */
     @Test
@@ -985,7 +1012,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelTransmitListResponse liveChannelTransmitListResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelTransmitListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelTransmitListResponse = new LiveChannelOperateServiceImpl().getChannelTransmitList(
@@ -1009,6 +1036,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试设置频道最大在线人数
      * 返回：true为设置成功，false为设置失败
+     * API地址：UPDATE_CHANNEL_MAX_VIEWER_URL
      * @throws Exception
      */
     @Test
@@ -1017,7 +1045,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveUpdateChannelMaxViewerResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveUpdateChannelMaxViewerRequest.setChannelId(channelId)
                     .setMaxViewer(Integer.MAX_VALUE)
@@ -1043,6 +1071,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试查询频道广告列表
      * 约束：2、提供查询频道轮播广告列表信息，频道广告为空时，获取全局广告
+     * API地址：CHANNEL_ADVERT_LIST_GET_URL
      * @throws Exception
      */
     @Test
@@ -1051,7 +1080,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         LiveChannelAdvertListResponse liveChannelAdvertListResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelAdvertListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelAdvertListResponse = new LiveChannelOperateServiceImpl().getChannelAdvertList(
@@ -1076,6 +1105,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 测试查询频道直播截图
      * 约束：2、如果直播未开启，将抛出"channel is not live."异常
      * 返回：返回图片http地址，
+     * API地址：CHANNEL_CAPTURE_URL
      * @throws Exception
      */
 //    @Test
@@ -1084,7 +1114,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         String liveChannelCaptureResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveChannelCaptureRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelCaptureResponse = new LiveChannelOperateServiceImpl().getChannelCapture(
@@ -1109,6 +1139,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 测试修改直播推流方式
      * 约束：2、直播过程中不允许修改直播方式
      * 返回：true为修改推流方式成功，false为修改失败
+     * API地址：UPDATE_CHANNEL_STREAM_URL
      * @throws Exception
      */
 //    @Test
@@ -1117,7 +1148,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveUpdateChannelStreamResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveUpdateChannelStreamRequest.setStreamType("disk")
                     .setChannelId(channelId)
@@ -1145,6 +1176,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 约束：2、调用接口后，如果当前频道未在直播中，会自动设置直播方式为“硬盘推流”。如果当前使用其他直播推流方式直播中，则需要在直播结束后，调用《修改直播推流方式》修改为硬盘推流，才会在所设置的开始时间进行直播
      * 返回：true为设置硬盘推流直播成功，false为修改失败
      * TODO 测试未通过
+     * API地址：UPDATE_DISK_VIDEOS_STREAM_URL
      * @throws Exception
      */
 //    @Test
@@ -1153,7 +1185,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveCreateDiskVideosStreamResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String videoId = listChannelVideoPoolIds(channelId).get(0);
             
             liveCreateDiskVideosStreamRequest.setVideoIds(videoId)
@@ -1182,6 +1214,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * 测试删除硬盘推流的视频
      * 约束：2、调用接口后，如果当前频道未在直播中，会自动设置直播方式为“硬盘推流”。如果当前使用其他直播推流方式直播中，则需要在直播结束后，调用《修改直播推流方式》修改为硬盘推流，才会在所设置的开始时间进行直播
      * 返回：true为删除硬盘推流直播成功，false为删除失败
+     * API地址：DELETE_DISK_VIDEOS_STREAM_URL
      * @throws Exception
      */
     @Test
@@ -1190,7 +1223,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         Boolean liveDeleteDiskVideosStreamResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             
             liveDeleteDiskVideosStreamRequest.setVideoIds("f1574595e1")
                     .setChannelId(channelId)

@@ -147,7 +147,7 @@ public abstract class Validator {
         Validator validator;
         if (clazz != null) {
             Map<Class, Validator> validatorMap = getValidatorMap();
-            List<Validator> validatorList = new ArrayList<>();
+            List<Validator> validatorList = new ArrayList<Validator>();
             for (Class temp : clazz) {
                 Validator tempValidator = validatorMap.get(temp);
                 if (tempValidator != null) {
@@ -182,7 +182,7 @@ public abstract class Validator {
      * @return
      */
     private static Map<Class, Validator> getValidatorMap() {
-        Map<Class, Validator> validatorMap = new HashMap<>();
+        Map<Class, Validator> validatorMap = new HashMap<Class, Validator>();
         for (Validator validator : getValidatorList()) {
             validatorMap.put(validator.getCurrentClass(), validator);
         }

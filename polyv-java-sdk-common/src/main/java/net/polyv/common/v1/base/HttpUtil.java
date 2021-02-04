@@ -323,7 +323,7 @@ public class HttpUtil {
             Map<String, List<File>> fileListMap = new HashMap<String, List<File>>();
             for (Map.Entry<String, File> entry : fileMap.entrySet()) {
                 File file = entry.getValue();
-                List<File> fileList = new ArrayList<>();
+                List<File> fileList = new ArrayList<File>();
                 fileList.add(file);
                 fileListMap.put(entry.getKey(), fileList);
             }

@@ -19,7 +19,7 @@ import net.polyv.common.v1.util.StringUtils;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * polyv 直播签名工具类
+ * polyv 点播签名工具类
  * @author: thomas
  **/
 @Slf4j

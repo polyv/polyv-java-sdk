@@ -1186,7 +1186,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         try {
             //准备测试数据
             String channelId = super.createChannel();
-            String videoId = listChannelVideoPoolIds(channelId).get(0);
+            String videoId = listChannelVideoIds(channelId).get(0);
             
             liveCreateDiskVideosStreamRequest.setVideoIds(videoId)
                     .setStartTimes(super.getDate(System.currentTimeMillis() + 3000000))

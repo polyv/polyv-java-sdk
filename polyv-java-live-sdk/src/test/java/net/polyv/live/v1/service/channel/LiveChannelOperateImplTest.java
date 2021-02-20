@@ -131,7 +131,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setPublisher("sadboy主讲")
                     .setLinkMicLimit(-1)
                     .setPureRtcEnabled("N")
-                    .setReceiveChannelIds("213");
+                    .setReceiveChannelIds("213")
+                    .setOnlyOneLiveEnabled("N");
             liveChannelInitRequest.setBasicSetting(basicSetting).setRequestId(LiveSignUtil.generateUUID());
             //验证码观看
             LiveChannelInitRequest.AuthSetting codeAuthSettings = new LiveChannelInitRequest.AuthSetting().setRank(1)

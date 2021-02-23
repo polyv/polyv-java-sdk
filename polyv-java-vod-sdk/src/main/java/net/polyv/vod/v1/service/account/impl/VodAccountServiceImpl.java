@@ -24,8 +24,7 @@ public class VodAccountServiceImpl extends VodBaseService implements IVodAccount
     @Override
     public VodAccountSpaceDataResponse getAccountSpaceFlow(VodAccountSpaceDataRequest vodAccountSpaceDataRequest)
             throws IOException, NoSuchAlgorithmException {
-        vodAccountSpaceDataRequest.setUserid(VodGlobalConfig.getUserId());
-        String url = VodURL.getRealUrl(VodURL.ACCOUNT_SPACE_FLOW_URL,vodAccountSpaceDataRequest.getUserid());
+        String url = VodURL.getRealUrl(VodURL.ACCOUNT_SPACE_FLOW_URL);
         return this.postFormBodyReturnOne(url,vodAccountSpaceDataRequest,VodAccountSpaceDataResponse.class);
     }
 }

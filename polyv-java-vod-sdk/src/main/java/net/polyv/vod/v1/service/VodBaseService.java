@@ -330,6 +330,7 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> Map<String, String> commonRequestLogic(Map<String, String> signMap,E e)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        e.setAppId(VodGlobalConfig.getAppId());
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
@@ -364,7 +365,7 @@ public class VodBaseService {
      * 把http请求结果转换为LiveCommonResponse对象
      * @param response http请求返回值
      * @param requestId 该请求的
-     * @return 直播标准返回参数
+     * @return 点播标准返回参数
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */

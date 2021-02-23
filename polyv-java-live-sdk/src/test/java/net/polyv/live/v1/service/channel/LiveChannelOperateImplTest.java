@@ -131,7 +131,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setPublisher("sadboy主讲")
                     .setLinkMicLimit(-1)
                     .setPureRtcEnabled("N")
-                    .setReceiveChannelIds("213");
+                    .setReceiveChannelIds("213")
+                    .setOnlyOneLiveEnabled("N");
             liveChannelInitRequest.setBasicSetting(basicSetting).setRequestId(LiveSignUtil.generateUUID());
             //验证码观看
             LiveChannelInitRequest.AuthSetting codeAuthSettings = new LiveChannelInitRequest.AuthSetting().setRank(1)
@@ -1186,7 +1187,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         try {
             //准备测试数据
             String channelId = super.createChannel();
-            String videoId = listChannelVideoPoolIds(channelId).get(0);
+            String videoId = listChannelVideoIds(channelId).get(0);
             
             liveCreateDiskVideosStreamRequest.setVideoIds(videoId)
                     .setStartTimes(super.getDate(System.currentTimeMillis() + 3000000))

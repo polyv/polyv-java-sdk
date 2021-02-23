@@ -1,5 +1,7 @@
 package net.polyv.vod.v1.constant;
 
+import net.polyv.vod.v1.config.VodGlobalConfig;
+
 /**
  * @author: thomas
  **/
@@ -26,5 +28,12 @@ public class VodURL {
     public static String getRealUrl(String format, Object... param) {
         return String.format(format, param);
     }
-    
+    /**
+     * 获取替换参数后的URL地址
+     * @param format 格式化
+     * @return 格式化后字符串
+     */
+    public static String getRealUrl(String format) {
+        return String.format(format, VodGlobalConfig.getUserId());
+    }
 }

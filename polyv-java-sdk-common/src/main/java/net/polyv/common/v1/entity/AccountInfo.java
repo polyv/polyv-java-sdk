@@ -55,6 +55,7 @@ public class AccountInfo {
     }
     public  class VodConfig{
         private  String userId;
+        private String appId;
         private  String writeToken;
         private  String readToken;
         private String secretKey;
@@ -89,6 +90,14 @@ public class AccountInfo {
     
         public void setReadToken(String readToken) {
             this.readToken = readToken;
+        }
+    
+        public String getAppId() {
+            return appId;
+        }
+    
+        public void setAppId(String appId) {
+            this.appId = appId;
         }
     }
     

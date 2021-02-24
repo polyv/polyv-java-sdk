@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageUrlRequest;
+import net.polyv.vod.v1.entity.upload.VodUploadWatermarkRequest;
 
 /**
  * @author: sadboy
@@ -31,6 +32,17 @@ public interface IVodUploadService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean uploadCoverImageUrl(VodUploadCoverImageUrlRequest vodUploadCoverImageUrlRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 上传视频水印
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-upload/upload-watermark-by-category/
+     * @param vodUploadWatermarkRequest 上传视频水印请求实体
+     * @return 上传视频水印返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean uploadWatermark(VodUploadWatermarkRequest vodUploadWatermarkRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

@@ -9,6 +9,7 @@ import org.junit.Test;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageRequest;
+import net.polyv.vod.v1.entity.upload.VodUploadCoverImageUrlRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.upload.impl.VodUploadServiceImpl;
 import net.polyv.vod.v1.util.VodSignUtil;
@@ -40,6 +41,39 @@ public class VodUploadServiceImplTest extends BaseTest {
             if (vodUploadCoverImageResponse) {
                 //to do something ......
                 log.debug("测试上传多个视频的预览图成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 上传多个视频的预览图URL
+     * 约束：2、图片资源不支持https的协议
+     * 约束：3、当传了videoIds参数，以videoIds为准，当videoIds不传，以categoryIds为准，两个参数不能同时为空。
+     * 返回：true：上传成功；false：上传失败
+     * TODO {"code":500,"status":"fail","message":"上传失败,请查看日志."}
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testUploadCoverImageUrl() throws IOException, NoSuchAlgorithmException {
+        VodUploadCoverImageUrlRequest vodUploadCoverImageUrlRequest = new VodUploadCoverImageUrlRequest();
+        Boolean vodUploadCoverImageUrlResponse = null;
+        try {
+            vodUploadCoverImageUrlRequest.setImageUrl("http//img.videocc.net/uimage/1/1b448be323/5/1b448be32340ff32f52c5db0f9e06a75_0_b.jpg")
+                    .setCategoryIds("1602300731843")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUploadCoverImageUrlResponse = new VodUploadServiceImpl().uploadCoverImageUrl(vodUploadCoverImageUrlRequest);
+            if (vodUploadCoverImageUrlResponse) {
+                //to do something ......
+                log.debug("上传多个视频的预览图URL");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

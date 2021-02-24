@@ -20,6 +20,11 @@ public class VodURL {
     public static final  String ACCOUNT_SPACE_FLOW_URL= BASE_URI + "v2/user/" + PARAM_REPLACE_CHAR + "/main";
     
     /**
+     * 上传多个视频的预览图
+     */
+    public static final  String UPLOAD_COVER_IMAGE_URL= BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/uploadCoverImage";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

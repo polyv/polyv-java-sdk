@@ -12,6 +12,7 @@ import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageUrlRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadHttpVideoListRequest;
+import net.polyv.vod.v1.entity.upload.VodUploadPPTRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadWatermarkRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.upload.impl.VodUploadServiceImpl;
@@ -153,6 +154,39 @@ public class VodUploadServiceImplTest extends BaseTest {
                     vodUploadHttpVideoListRequest);
             Assert.assertTrue(vodUploadHttpVideoListResponse);
             if (vodUploadHttpVideoListResponse) {
+                //to do something ......
+                log.debug("测试上传视频水印成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试上传PPT文件
+     * 约束：2、txt文件格式示例如下，每一行为：“秒数”+“:”+“标题”（注：txt文件必须是UTF-8的编码格式，否则课件的章节标题会显示为乱码）
+     * TODO 暂未测试
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testUploadPPT() throws IOException, NoSuchAlgorithmException {
+        VodUploadPPTRequest vodUploadPPTRequest = new VodUploadPPTRequest();
+        Boolean vodUploadPPTResponse = null;
+        try {
+            vodUploadPPTRequest.setVideoId("")
+                    .setPpt(new File(""))
+                    .setControlFile(new File(""))
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUploadPPTResponse = new VodUploadServiceImpl().uploadPPT(vodUploadPPTRequest);
+            Assert.assertTrue(vodUploadPPTResponse);
+            if (vodUploadPPTResponse) {
                 //to do something ......
                 log.debug("测试上传视频水印成功");
             }

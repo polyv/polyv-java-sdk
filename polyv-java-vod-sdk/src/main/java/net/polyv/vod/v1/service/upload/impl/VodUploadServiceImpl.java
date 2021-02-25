@@ -10,6 +10,7 @@ import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageUrlRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadHttpVideoListRequest;
+import net.polyv.vod.v1.entity.upload.VodUploadPPTRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadWatermarkRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.upload.IVodUploadService;
@@ -84,6 +85,21 @@ public class VodUploadServiceImpl extends VodBaseService implements IVodUploadSe
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPLOAD_HTTP_VIDEO_LIST_URL);
         super.postFormBodyReturnOne(url,vodUploadHttpVideoListRequest,String.class);
+        return true;
+    }
+    
+    /**
+     * 上传PPT文件
+     * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-upload/uploadppt/
+     * @param vodUploadPPTRequest 上传PPT文件请求实体
+     * @return 上传PPT文件返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean uploadPPT(VodUploadPPTRequest vodUploadPPTRequest) throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.UPLOAD_PPT_URL);
+        super.postFormBodyReturnOne(url,vodUploadPPTRequest,String.class);
         return true;
     }
     

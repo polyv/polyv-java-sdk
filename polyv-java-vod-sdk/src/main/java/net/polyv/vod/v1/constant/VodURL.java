@@ -41,6 +41,11 @@ public class VodURL {
     public static final  String UPLOAD_HTTP_VIDEO_LIST_URL= BASE_URI + "v2/video/grab/" + PARAM_REPLACE_CHAR + "/upload/multi";
     
     /**
+     * 上传PPT文件
+     */
+    public static final  String UPLOAD_PPT_URL= BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/uploadPPT";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

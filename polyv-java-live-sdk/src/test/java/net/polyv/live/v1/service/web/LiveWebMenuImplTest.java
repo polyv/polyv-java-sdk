@@ -50,8 +50,7 @@ public class LiveWebMenuImplTest extends BaseTest {
         try {
             liveUpdateChannelMenuRequest.setChannelId(createChannel())
                     .setMenuType("desc")
-                    .setContent("<html><body><h1>hello world</h1><button onclick=\"console.log('hello world')" +
-                            "\"></button></body></html>")
+                    .setContent("<html><body><h1>hello world</h1></body></html>")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelMenuResponse = new LiveWebMenuServiceImpl().updateChannelMenu(
                     liveUpdateChannelMenuRequest);

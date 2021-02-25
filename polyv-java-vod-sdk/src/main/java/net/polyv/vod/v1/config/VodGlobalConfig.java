@@ -13,6 +13,8 @@ public class VodGlobalConfig {
      */
     private static String USER_ID;
     
+    private static String APP_ID = "";
+    
     /**
      * 写入密钥
      */
@@ -34,6 +36,10 @@ public class VodGlobalConfig {
         return USER_ID;
     }
     
+    public static String getAppId() {
+        return APP_ID;
+    }
+    
     public static String getWriteToken() {
         return WRITE_TOKEN;
     }
@@ -53,8 +59,9 @@ public class VodGlobalConfig {
      * @param readToken 读取操作密钥
      * @param secretKey 鉴权密钥
      */
-    public static void  init(String userId,String writeToken,String readToken,String secretKey){
+    public static void  init(String userId,String appId,String writeToken,String readToken,String secretKey){
         VodGlobalConfig.USER_ID = userId;
+        VodGlobalConfig.APP_ID = appId;
         VodGlobalConfig.WRITE_TOKEN = writeToken;
         VodGlobalConfig.READ_TOKEN=readToken;
         VodGlobalConfig.SECRET_KEY = secretKey;
@@ -73,8 +80,9 @@ public class VodGlobalConfig {
      * @param timeOut HTTP连接超时时间
      * @param maxClientNum 连接池最大并发连接数
      */
-    public static void  init(String userId,String writeToken,String readToken,String secretKey,Integer timeOut ,Integer maxClientNum){
+    public static void  init(String userId,String appId,String writeToken,String readToken,String secretKey,Integer timeOut ,Integer maxClientNum){
         VodGlobalConfig.USER_ID = userId;
+        VodGlobalConfig.APP_ID = appId;
         VodGlobalConfig.WRITE_TOKEN = writeToken;
         VodGlobalConfig.READ_TOKEN=readToken;
         VodGlobalConfig.SECRET_KEY = secretKey;

@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageUrlRequest;
+import net.polyv.vod.v1.entity.upload.VodUploadHttpVideoListRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadWatermarkRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.upload.impl.VodUploadServiceImpl;
@@ -71,13 +72,13 @@ public class VodUploadServiceImplTest extends BaseTest {
         Boolean vodUploadCoverImageUrlResponse = null;
         try {
             //https://img.videocc.net/uimage/1/1b448be323/c/1b448be32343357d5c4784d9ffd1bf5c_0.jpg
-            String imageUrl = "https://dss0.bdstatic.com/6Ox1bjeh1BF3odCf/it/u=3438467544," +
-                    "1763107832&fm=218&app=92&f=JPEG";
-            vodUploadCoverImageUrlRequest.setImageUrl(
-                    imageUrl)
+            String imageUrl =
+                    "https://dss0.bdstatic.com/6Ox1bjeh1BF3odCf/it/u=3438467544," + "1763107832&fm=218&app=92&f=JPEG";
+            vodUploadCoverImageUrlRequest.setImageUrl(imageUrl)
                     .setCategoryIds("1602300731843")
                     .setRequestId(VodSignUtil.generateUUID());
-            vodUploadCoverImageUrlResponse = new VodUploadServiceImpl().uploadCoverImageUrl(vodUploadCoverImageUrlRequest);
+            vodUploadCoverImageUrlResponse = new VodUploadServiceImpl().uploadCoverImageUrl(
+                    vodUploadCoverImageUrlRequest);
             Assert.assertTrue(vodUploadCoverImageUrlResponse);
             if (vodUploadCoverImageUrlResponse) {
                 //to do something ......
@@ -113,6 +114,45 @@ public class VodUploadServiceImplTest extends BaseTest {
             vodUploadWatermarkResponse = new VodUploadServiceImpl().uploadWatermark(vodUploadWatermarkRequest);
             Assert.assertTrue(vodUploadWatermarkResponse);
             if (vodUploadWatermarkResponse) {
+                //to do something ......
+                log.debug("测试上传视频水印成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 远程批量上传视频
+     * 描述：批量上传远程视频（异步上传）
+     * 返回：true提交异步上传成功，false提交异步上传失败
+     * TODO url参数带?参数签名失败；异步上传回调在文档中未描述。
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testUploadHttpVideoList() throws IOException, NoSuchAlgorithmException {
+        VodUploadHttpVideoListRequest vodUploadHttpVideoListRequest = new VodUploadHttpVideoListRequest();
+        Boolean vodUploadHttpVideoListResponse = null;
+        try {
+            vodUploadHttpVideoListRequest.setFileUrl("https://v.cnezsoft.com/zentao/introduction_catelog" +
+                    ".mp4?sign=d9b7cf5583d4c6959bad10b717449ee9&t=60376e2d")
+                    .setTitle("禅道项目管理系列教程")
+                    .setCategoryId("1602300731843")
+                    .setScreenCap(0)
+                    .setWatermark("http://pm.igeeker.org/secure/projectavatar")
+                    .setWatermarkLocation("1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUploadHttpVideoListResponse = new VodUploadServiceImpl().uploadHttpVideoList(
+                    vodUploadHttpVideoListRequest);
+            Assert.assertTrue(vodUploadHttpVideoListResponse);
+            if (vodUploadHttpVideoListResponse) {
                 //to do something ......
                 log.debug("测试上传视频水印成功");
             }

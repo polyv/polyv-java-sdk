@@ -9,6 +9,7 @@ import java.util.Map;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageUrlRequest;
+import net.polyv.vod.v1.entity.upload.VodUploadHttpVideoListRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadWatermarkRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.upload.IVodUploadService;
@@ -67,6 +68,22 @@ public class VodUploadServiceImpl extends VodBaseService implements IVodUploadSe
         Map<String,File> fileMap =new HashMap<String,File>();
         fileMap.put("image",vodUploadWatermarkRequest.getImage());
         this.uploadOneFile(url,vodUploadWatermarkRequest,fileMap,String.class);
+        return true;
+    }
+    
+    /**
+     * 远程批量上传视频
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-upload/grab-upload-multi/
+     * @param vodUploadHttpVideoListRequest 远程批量上传视频请求实体
+     * @return 远程批量上传视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean uploadHttpVideoList(VodUploadHttpVideoListRequest vodUploadHttpVideoListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.UPLOAD_HTTP_VIDEO_LIST_URL);
+        super.postFormBodyReturnOne(url,vodUploadHttpVideoListRequest,String.class);
         return true;
     }
     

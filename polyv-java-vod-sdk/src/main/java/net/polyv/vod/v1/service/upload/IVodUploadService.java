@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadCoverImageUrlRequest;
+import net.polyv.vod.v1.entity.upload.VodUploadHttpVideoListRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadWatermarkRequest;
 
 /**
@@ -43,6 +44,17 @@ public interface IVodUploadService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean uploadWatermark(VodUploadWatermarkRequest vodUploadWatermarkRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 远程批量上传视频
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-upload/grab-upload-multi/
+     * @param vodUploadHttpVideoListRequest 远程批量上传视频请求实体
+     * @return 远程批量上传视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean uploadHttpVideoList(VodUploadHttpVideoListRequest vodUploadHttpVideoListRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

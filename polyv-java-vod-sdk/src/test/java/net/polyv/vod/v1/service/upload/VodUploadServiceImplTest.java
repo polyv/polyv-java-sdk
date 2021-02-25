@@ -61,7 +61,7 @@ public class VodUploadServiceImplTest extends BaseTest {
      * 约束：2、图片资源不支持https的协议
      * 约束：3、当传了videoIds参数，以videoIds为准，当videoIds不传，以categoryIds为准，两个参数不能同时为空。
      * 返回：true：上传成功；false：上传失败
-     * TODO {"code":500,"status":"fail","message":"上传失败,请查看日志."}
+     * TODO 图片暂时不能设置带&拼接符的链接
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -70,7 +70,11 @@ public class VodUploadServiceImplTest extends BaseTest {
         VodUploadCoverImageUrlRequest vodUploadCoverImageUrlRequest = new VodUploadCoverImageUrlRequest();
         Boolean vodUploadCoverImageUrlResponse = null;
         try {
-            vodUploadCoverImageUrlRequest.setImageUrl("http//img.videocc.net/uimage/1/1b448be323/5/1b448be32340ff32f52c5db0f9e06a75_0_b.jpg")
+            //https://img.videocc.net/uimage/1/1b448be323/c/1b448be32343357d5c4784d9ffd1bf5c_0.jpg
+            String imageUrl = "https://dss0.bdstatic.com/6Ox1bjeh1BF3odCf/it/u=3438467544," +
+                    "1763107832&fm=218&app=92&f=JPEG";
+            vodUploadCoverImageUrlRequest.setImageUrl(
+                    imageUrl)
                     .setCategoryIds("1602300731843")
                     .setRequestId(VodSignUtil.generateUUID());
             vodUploadCoverImageUrlResponse = new VodUploadServiceImpl().uploadCoverImageUrl(vodUploadCoverImageUrlRequest);
@@ -94,16 +98,15 @@ public class VodUploadServiceImplTest extends BaseTest {
      * 上传视频水印
      * 描述：上传某一级分类或用户级别的视频水印
      * 返回：true：上传成功；false：上传失败
-     * TODO {"code":400,"status":"error","message":"上传水印出错","data":""}
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testUploadWatermark() throws IOException, NoSuchAlgorithmException {
         VodUploadWatermarkRequest vodUploadWatermarkRequest = new VodUploadWatermarkRequest();
         Boolean vodUploadWatermarkResponse = null;
         try {
-            String path = getClass().getResource("/img/polyv.jpg").getPath();
+            String path = getClass().getResource("/img/water.jpg").getPath();
             vodUploadWatermarkRequest.setImage(new File(path))
                     .setCategoryId("1602300731843")
                     .setRequestId(VodSignUtil.generateUUID());

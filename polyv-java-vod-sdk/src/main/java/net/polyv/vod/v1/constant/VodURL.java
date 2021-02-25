@@ -7,6 +7,7 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
  **/
 public class VodURL {
     public static final String BASE_URI = "https://api.polyv.net/";
+//    public static final String BASE_URI = "http://a.polyv.net:8080/vod/";
 //    public static final String BASE_URI_V = "https://v.polyv.net/";
     
     /**

@@ -2,14 +2,10 @@ package net.polyv.live.v1.service.interact.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.polyv.common.v1.util.StringUtils;
-
 import lombok.extern.slf4j.Slf4j;
-import net.polyv.live.v1.config.LiveGlobalConfig;
 import net.polyv.live.v1.constant.LiveURL;
 import net.polyv.live.v1.entity.interact.LiveQuestionnaireDetailRequest;
 import net.polyv.live.v1.entity.interact.LiveQuestionnaireDetailResponse;
@@ -66,28 +62,6 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
     }
     
     /**
-     * 获取签名字段
-     * @param liveQuestionnaireDetailSetRequest signmap 来源
-     * @return 签名字段MAP
-     */
-    private Map<String, String> getSignMap(LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest) {
-        if (StringUtils.isBlank(liveQuestionnaireDetailSetRequest.getRequestId())) {
-            liveQuestionnaireDetailSetRequest.setRequestId(LiveSignUtil.generateUUID());
-        }
-        
-        liveQuestionnaireDetailSetRequest.setAppId(LiveGlobalConfig.getAppId());
-        if (StringUtils.isBlank(liveQuestionnaireDetailSetRequest.getTimestamp())) {
-            liveQuestionnaireDetailSetRequest.setTimestamp(String.valueOf(System.currentTimeMillis()));
-        }
-        Map<String, String> tempMap = new HashMap<String, String>();
-        tempMap.put("appId", liveQuestionnaireDetailSetRequest.getAppId());
-        tempMap.put("timestamp", liveQuestionnaireDetailSetRequest.getTimestamp());
-        tempMap.put("requestId", liveQuestionnaireDetailSetRequest.getRequestId());
-        tempMap.put("channelId", liveQuestionnaireDetailSetRequest.getChannelId());
-        return tempMap;
-    }
-    
-    /**
      * 设置频道问卷信息，API地址：https://dev.polyv.net/2019/liveproduct/l-api/zbhd/add-edit-questionnaire/
      * @param liveQuestionnaireDetailSetRequest 设置频道问卷信息请求实体
      * @return 设置频道问卷信息响应实体
@@ -99,7 +73,8 @@ public class LiveQuestionnaireServiceImpl extends LiveBaseService implements ILi
             LiveQuestionnaireDetailSetRequest liveQuestionnaireDetailSetRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_QUESTIONNAIRE_DETAIL_SET_URL;
-        Map<String, String> signMap = getSignMap(liveQuestionnaireDetailSetRequest);
+        Map<String, String> signMap = LiveSignUtil.getSignMap(liveQuestionnaireDetailSetRequest);
+        signMap.put("channelId", liveQuestionnaireDetailSetRequest.getChannelId());
         return this.postJsonBodyReturnOne(url, signMap,
                 liveQuestionnaireDetailSetRequest, LiveQuestionnaireDetailSetResponse.class);
      

@@ -330,6 +330,7 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> Map<String, String> commonRequestLogic(Map<String, String> signMap,E e)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        e.setAppId(VodGlobalConfig.getAppId());
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }

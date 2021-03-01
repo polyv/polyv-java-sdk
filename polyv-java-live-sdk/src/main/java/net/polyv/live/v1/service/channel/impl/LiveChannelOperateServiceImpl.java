@@ -9,6 +9,7 @@ import java.util.Map;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.v1.util.StringUtils;
 import net.polyv.live.v1.config.LiveGlobalConfig;
 import net.polyv.live.v1.constant.LiveURL;
 import net.polyv.live.v1.entity.channel.operate.LiveChannelAdvertListRequest;
@@ -95,6 +96,10 @@ public class LiveChannelOperateServiceImpl extends LiveBaseService implements IL
     public LiveChannelInitResponse createChannelInit(LiveChannelInitRequest liveChannelInitRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.CHANNEL_BASIC_CREATE_URL;
+        if (liveChannelInitRequest != null && liveChannelInitRequest.getBasicSetting() != null &&
+                StringUtils.isBlank(liveChannelInitRequest.getBasicSetting().getOnlyOneLiveEnabled())) {
+            liveChannelInitRequest.getBasicSetting().setOnlyOneLiveEnabled("N");
+        }
         LiveChannelInitResponse liveChannelInitResponse = this.postJsonBodyReturnOne(url, liveChannelInitRequest,
                 LiveChannelInitResponse.class);
         return liveChannelInitResponse;

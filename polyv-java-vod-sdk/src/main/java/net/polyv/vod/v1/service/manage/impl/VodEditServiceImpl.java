@@ -7,6 +7,7 @@ import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
+import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodEditService;
@@ -59,6 +60,22 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.CONCAT_VIDEO_URL);
         return super.postFormBodyReturnOne(url, vodConcatVideoRequest, VodConcatVideoResponse.class);
+    }
+    
+    /**
+     * 设置视频打点
+     * URL地址：https://dev.polyv.net/2013/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/setkeyframe/
+     * @param vodSaveVideoKeyFrameRequest 设置视频打点请求实体
+     * @return 设置视频打点返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean saveVideoKeyFrame(VodSaveVideoKeyFrameRequest vodSaveVideoKeyFrameRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.SAVE_KEY_FRAME_URL);
+        super.postFormBodyReturnOne(url, vodSaveVideoKeyFrameRequest, String.class);
+        return true;
     }
     
 }

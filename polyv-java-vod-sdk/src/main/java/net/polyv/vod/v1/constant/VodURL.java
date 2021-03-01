@@ -74,6 +74,11 @@ public class VodURL {
      */
     public static final String CONCAT_VIDEO_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/concat";
     
+    /**
+     * 设置视频打点
+     */
+    public static final String SAVE_KEY_FRAME_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/saveKeyFrame";
+    
     
     
     /**

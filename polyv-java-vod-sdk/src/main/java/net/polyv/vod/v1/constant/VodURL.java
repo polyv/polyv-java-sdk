@@ -65,6 +65,13 @@ public class VodURL {
     public static final String UPDATE_VIDEO_PLAY_STATUS_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/authplay-status";
     
     /**
+     * 提交视频裁剪任务
+     */
+    public static final String CLIP_VIDEO_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/clip";
+    
+    
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

@@ -60,6 +60,11 @@ public class VodURL {
     public static final String SEARCH_VIDEO_LIST_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/search";
     
     /**
+     * 根据vid批量修改视频的授权播放开关状态
+     */
+    public static final String UPDATE_VIDEO_PLAY_STATUS_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/authplay-status";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

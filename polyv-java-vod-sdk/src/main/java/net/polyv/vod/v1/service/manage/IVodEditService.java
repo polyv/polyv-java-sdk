@@ -8,6 +8,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
 
 /**
@@ -69,4 +70,14 @@ public interface IVodEditService {
     Boolean deleteVideoKeyFrame(VodDeleteVideoKeyFrameRequest vodDeleteVideoKeyFrameRequest)
             throws IOException, NoSuchAlgorithmException;
     
+    /**
+     * 设置视频的播放预览时长
+     * URL地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/setting-preview-duration/
+     * @param vodSetVideoPreviewDurationRequest 设置视频的播放预览时长请求实体
+     * @return 设置视频的播放预览时长返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean setVideoPreviewDuration(VodSetVideoPreviewDurationRequest vodSetVideoPreviewDurationRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

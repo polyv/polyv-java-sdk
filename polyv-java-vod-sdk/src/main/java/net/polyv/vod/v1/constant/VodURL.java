@@ -84,6 +84,11 @@ public class VodURL {
      */
     public static final String DELETE_KEY_FRAME_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deleteKeyFrameByTime";
     
+    /**
+     * 设置视频的播放预览时长
+     */
+    public static final String SET_PREVIEW_DURATION_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/set-preview-duration";
+    
     
     
     /**

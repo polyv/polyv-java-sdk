@@ -13,6 +13,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.manage.impl.VodEditServiceImpl;
@@ -176,10 +177,44 @@ public class VodEditServiceImplTest extends BaseTest {
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setTimes("24,120")
                     .setRequestId(VodSignUtil.generateUUID());
-            vodDeleteVideoKeyFrameResponse = new VodEditServiceImpl().deleteVideoKeyFrame(vodDeleteVideoKeyFrameRequest);
+            vodDeleteVideoKeyFrameResponse = new VodEditServiceImpl().deleteVideoKeyFrame(
+                    vodDeleteVideoKeyFrameRequest);
             Assert.assertTrue(vodDeleteVideoKeyFrameResponse);
             if (vodDeleteVideoKeyFrameResponse) {
                 log.debug("测试删除视频指定时间点的打点信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试设置视频的播放预览时长
+     * 返回：true为设置成功，false为设置失败
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testSetVideoPreviewDuration() throws IOException, NoSuchAlgorithmException {
+        VodSetVideoPreviewDurationRequest vodSetVideoPreviewDurationRequest = new VodSetVideoPreviewDurationRequest();
+        Boolean vodSetVideoPreviewDurationResponse = null;
+        try {
+            vodSetVideoPreviewDurationRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setDuration(60)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodSetVideoPreviewDurationResponse = new VodEditServiceImpl().setVideoPreviewDuration(
+                    vodSetVideoPreviewDurationRequest);
+            Assert.assertTrue(vodSetVideoPreviewDurationResponse);
+            if (vodSetVideoPreviewDurationResponse) {
+                log.debug("测试设置视频的播放预览时长成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

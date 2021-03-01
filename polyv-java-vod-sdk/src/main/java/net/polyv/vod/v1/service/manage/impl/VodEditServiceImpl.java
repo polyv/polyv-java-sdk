@@ -9,6 +9,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodEditService;
@@ -91,7 +92,23 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
     public Boolean deleteVideoKeyFrame(VodDeleteVideoKeyFrameRequest vodDeleteVideoKeyFrameRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.DELETE_KEY_FRAME_URL);
-        super.postFormBodyReturnOne(url,vodDeleteVideoKeyFrameRequest,String.class);
+        super.postFormBodyReturnOne(url, vodDeleteVideoKeyFrameRequest, String.class);
+        return true;
+    }
+    
+    /**
+     * 设置视频的播放预览时长
+     * URL地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/setting-preview-duration/
+     * @param vodSetVideoPreviewDurationRequest 设置视频的播放预览时长请求实体
+     * @return 设置视频的播放预览时长返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean setVideoPreviewDuration(VodSetVideoPreviewDurationRequest vodSetVideoPreviewDurationRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.SET_PREVIEW_DURATION_URL);
+        super.postFormBodyReturnOne(url,vodSetVideoPreviewDurationRequest,String.class);
         return true;
     }
     

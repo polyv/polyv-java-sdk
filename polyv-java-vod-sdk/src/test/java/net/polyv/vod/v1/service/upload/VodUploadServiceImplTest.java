@@ -28,7 +28,7 @@ public class VodUploadServiceImplTest extends BaseTest {
     /**
      * 上传多个视频的预览图
      * 描述：上传一张本地图片作为多个视频或多个分类的预览图
-     * 约束：2、当传了vids参数，以vids为准，当vids不传，以cataids为准，两个参数不能同时为空。
+     * 约束：2、当传了videoIds参数，以videoIds为准，当videoIds不传，以categoryIds为准，两个参数不能同时为空。
      * 返回：true：上传成功；false：上传失败
      * TODO 分类使用接口查询，不写死;api请求时间17秒，此处应该能优化
      */

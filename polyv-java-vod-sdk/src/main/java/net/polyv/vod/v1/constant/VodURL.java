@@ -89,6 +89,11 @@ public class VodURL {
      */
     public static final String SET_PREVIEW_DURATION_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/set-preview-duration";
     
+    /**
+     * 视频禁播与解禁
+     */
+    public static final String SET_VIDEO_FORBIDDEN_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/forbidden";
+    
     
     
     /**

@@ -9,6 +9,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -109,6 +110,22 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.SET_PREVIEW_DURATION_URL);
         super.postFormBodyReturnOne(url,vodSetVideoPreviewDurationRequest,String.class);
+        return true;
+    }
+    
+    /**
+     * 视频禁播与解禁
+     * URL地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/set-forbidden-status/
+     * @param vodSetVideoForbiddenRequest 视频禁播与解禁请求实体
+     * @return 视频禁播与解禁返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean setVideoForbidden(VodSetVideoForbiddenRequest vodSetVideoForbiddenRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.SET_VIDEO_FORBIDDEN_URL);
+        super.postFormBodyReturnOne(url,vodSetVideoForbiddenRequest,String.class);
         return true;
     }
     

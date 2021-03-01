@@ -11,6 +11,7 @@ import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
 import net.polyv.vod.v1.service.BaseTest;
@@ -129,7 +130,7 @@ public class VodEditServiceImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testSaveVideoKeyFrame() throws IOException, NoSuchAlgorithmException {
         VodSaveVideoKeyFrameRequest vodSaveVideoKeyFrameRequest = new VodSaveVideoKeyFrameRequest();
         Boolean vodSaveVideoKeyFrameResponse = null;
@@ -137,16 +138,48 @@ public class VodEditServiceImplTest extends BaseTest {
             vodSaveVideoKeyFrameRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setDesc("junit测试打点1,junit测试打点2")
-                    .setSeconds("24,60")
+                    .setDesc("junit测试打点1,junit测试打点2,junit测试打点3")
+                    .setSeconds("24,60,120")
                     .setBtnSettingSwitch("Y")
-                    .setBtnDesc("这是打点设置的开关")
+                    .setBtnDesc("保利威")
                     .setBtnHref("http://www.polyv.net")
                     .setRequestId(VodSignUtil.generateUUID());
             vodSaveVideoKeyFrameResponse = new VodEditServiceImpl().saveVideoKeyFrame(vodSaveVideoKeyFrameRequest);
             Assert.assertTrue(vodSaveVideoKeyFrameResponse);
             if (vodSaveVideoKeyFrameResponse) {
                 log.debug("测试合并视频成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试删除视频指定时间点的打点信息
+     * 返回：true为删除成功，false为删除失败
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testDeleteVideoKeyFrame() throws IOException, NoSuchAlgorithmException {
+        VodDeleteVideoKeyFrameRequest vodDeleteVideoKeyFrameRequest = new VodDeleteVideoKeyFrameRequest();
+        Boolean vodDeleteVideoKeyFrameResponse = null;
+        try {
+            vodDeleteVideoKeyFrameRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setTimes("24,120")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodDeleteVideoKeyFrameResponse = new VodEditServiceImpl().deleteVideoKeyFrame(vodDeleteVideoKeyFrameRequest);
+            Assert.assertTrue(vodDeleteVideoKeyFrameResponse);
+            if (vodDeleteVideoKeyFrameResponse) {
+                log.debug("测试删除视频指定时间点的打点信息成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

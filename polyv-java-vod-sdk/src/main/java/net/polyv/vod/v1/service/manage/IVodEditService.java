@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
 
@@ -55,6 +56,17 @@ public interface IVodEditService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean saveVideoKeyFrame(VodSaveVideoKeyFrameRequest vodSaveVideoKeyFrameRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 删除视频指定时间点的打点信息
+     * URL地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/deletekeyframebytime/
+     * @param vodDeleteVideoKeyFrameRequest 删除视频指定时间点的打点信息请求实体
+     * @return 删除视频指定时间点的打点信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean deleteVideoKeyFrame(VodDeleteVideoKeyFrameRequest vodDeleteVideoKeyFrameRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

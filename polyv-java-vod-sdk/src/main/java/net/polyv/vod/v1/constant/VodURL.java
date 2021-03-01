@@ -79,6 +79,11 @@ public class VodURL {
      */
     public static final String SAVE_KEY_FRAME_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/saveKeyFrame";
     
+    /**
+     * 删除视频指定时间点的打点信息
+     */
+    public static final String DELETE_KEY_FRAME_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deleteKeyFrameByTime";
+    
     
     
     /**

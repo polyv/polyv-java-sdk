@@ -33,7 +33,7 @@ public class VodQueryServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void queryVideoList() throws IOException, NoSuchAlgorithmException {
+    public void testQueryVideoList() throws IOException, NoSuchAlgorithmException {
         VodQueryVideoListRequest vodQueryVideoListRequest = new VodQueryVideoListRequest();
         VodQueryVideoListResponse vodQueryVideoListResponse = null;
         try {
@@ -61,7 +61,7 @@ public class VodQueryServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException
      */
     @Test
-    public void searchVideoList() throws IOException, NoSuchAlgorithmException {
+    public void testSearchVideoList() throws IOException, NoSuchAlgorithmException {
         VodSearchVideoListRequest vodSearchVideoListRequest = new VodSearchVideoListRequest();
         List<VodSearchVideoListResponse> vodSearchVideoListResponse = null;
         try {

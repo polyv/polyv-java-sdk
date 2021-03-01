@@ -5,6 +5,8 @@ import java.security.NoSuchAlgorithmException;
 
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodEditService;
@@ -26,7 +28,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
     public Boolean updateVideoPlayStatus(VodUpdateVideoPlayStatusRequest vodUpdateVideoPlayStatusRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPDATE_VIDEO_PLAY_STATUS_URL);
-        super.postFormBodyReturnOne(url,vodUpdateVideoPlayStatusRequest,String.class);
+        super.postFormBodyReturnOne(url, vodUpdateVideoPlayStatusRequest, String.class);
         return true;
     }
     
@@ -41,7 +43,22 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
     @Override
     public String clipVideo(VodClipVideoRequest vodClipVideoRequest) throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.CLIP_VIDEO_URL);
-        return super.postFormBodyReturnOne(url,vodClipVideoRequest,String.class);
+        return super.postFormBodyReturnOne(url, vodClipVideoRequest, String.class);
+    }
+    
+    /**
+     * 合并视频
+     * URL地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/videoconcat/
+     * @param vodConcatVideoRequest 合并视频请求实体
+     * @return 合并视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public VodConcatVideoResponse concatVideo(VodConcatVideoRequest vodConcatVideoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.CONCAT_VIDEO_URL);
+        return super.postFormBodyReturnOne(url, vodConcatVideoRequest, VodConcatVideoResponse.class);
     }
     
 }

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
 
 /**
@@ -31,5 +33,16 @@ public interface IVodEditService {
      * @throws NoSuchAlgorithmException 异常
      */
     String clipVideo(VodClipVideoRequest vodClipVideoRequest) throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 合并视频
+     * URL地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/videoconcat/
+     * @param vodConcatVideoRequest 合并视频请求实体
+     * @return 合并视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    VodConcatVideoResponse concatVideo(VodConcatVideoRequest vodConcatVideoRequest)
+            throws IOException, NoSuchAlgorithmException;
     
 }

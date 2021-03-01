@@ -69,6 +69,11 @@ public class VodURL {
      */
     public static final String CLIP_VIDEO_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/clip";
     
+    /**
+     * 合并视频
+     */
+    public static final String CONCAT_VIDEO_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/concat";
+    
     
     
     /**

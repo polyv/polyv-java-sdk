@@ -15,6 +15,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoSettingRequest;
 
 /**
  * @author: sadboy
@@ -128,5 +129,16 @@ public interface IVodEditService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean deleteVideo(VodDeleteVideoRequest vodDeleteVideoRequest) throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 修改视频密码
+     * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/video-setting-save/
+     * @param vodUpdateVideoSettingRequest 修改视频密码请求实体
+     * @return 修改视频密码返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateVideoSetting(VodUpdateVideoSettingRequest vodUpdateVideoSettingRequest)
+            throws IOException, NoSuchAlgorithmException;
     
 }

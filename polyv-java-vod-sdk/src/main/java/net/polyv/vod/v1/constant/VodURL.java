@@ -109,6 +109,11 @@ public class VodURL {
      */
     public static final String DELETE_VIDEO_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/del-video";
     
+    /**
+     * 修改视频密码
+     */
+    public static final String UPDATE_VIDEO_SETTING = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/video-setting-save";
+    
     
     
     /**

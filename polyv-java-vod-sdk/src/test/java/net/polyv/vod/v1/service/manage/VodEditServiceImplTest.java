@@ -20,6 +20,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoSettingRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.manage.impl.VodEditServiceImpl;
 import net.polyv.vod.v1.util.VodSignUtil;
@@ -303,6 +304,7 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试编辑单个视频的信息
+     * TODO 确认返回值是对象还是数组问题
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -353,6 +355,40 @@ public class VodEditServiceImplTest extends BaseTest {
             Assert.assertTrue(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse) {
                 log.debug("测试编辑单个视频的信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试修改视频密码
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateVideoSetting() throws IOException, NoSuchAlgorithmException {
+        VodUpdateVideoSettingRequest vodUpdateVideoSettingRequest = new VodUpdateVideoSettingRequest();
+        Boolean vodUpdateVideoSettingResponse = null;
+        try {
+            vodUpdateVideoSettingRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoIds("1b448be32355403dad586f7468e63e23_1,1b448be323a9076c9941604ac1c667f9_1")
+                    .setPassword(super.getRandomString(10))
+                    .setPublishUrl(null)
+                    .setTag("junit")
+                    .setTitle("junit测试")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUpdateVideoSettingResponse = new VodEditServiceImpl().updateVideoSetting(vodUpdateVideoSettingRequest);
+            Assert.assertTrue(vodUpdateVideoSettingResponse);
+            if (vodUpdateVideoSettingResponse) {
+                log.debug("测试修改视频密码成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

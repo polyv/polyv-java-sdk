@@ -22,7 +22,7 @@ public class VodPageCommonRequest extends VodCommonRequest {
      * 页数，默认为1
      */
     @ApiModelProperty(name="currentPage",value  ="页数，默认为1",dataType = "Integer" ,example = "1" )
-    @JSONField(name="page")
+    @JSONField(name="pageNum")
     private Integer currentPage;
     
     /**
@@ -31,6 +31,7 @@ public class VodPageCommonRequest extends VodCommonRequest {
     @ApiModelProperty(name="pageSize",value  ="每页显示的数据条数，默认每页显示20条数据",dataType = "Integer" ,example = "12" )
     @Max(value = 1000, message = "每页显示的数据条数不能超过1000")
     @Min(value = 0, message = "每页显示的数据条数不能小于0")
+    @JSONField(name = "numPerPage")
     private Integer pageSize=20;
     
 }

@@ -8,6 +8,7 @@ import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoAllKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoRequest;
@@ -196,6 +197,22 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPDATE_VIDEO_SETTING);
         super.postFormBodyReturnOne(url,vodUpdateVideoSettingRequest,String.class);
+        return true;
+    }
+    
+    /**
+     * 删除视频的全部打点信息
+     * URL地址：https://dev.polyv.net/2016/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/deletekeyframe/
+     * @param vodDeleteVideoAllKeyFrameRequest 删除视频的全部打点信息请求实体
+     * @return 删除视频的全部打点信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean deleteVideoAllKeyFrame(VodDeleteVideoAllKeyFrameRequest vodDeleteVideoAllKeyFrameRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.DELETE_VIDEO_ALL_KEY_FRAME);
+        super.postFormBodyReturnOne(url,vodDeleteVideoAllKeyFrameRequest,String.class);
         return true;
     }
     

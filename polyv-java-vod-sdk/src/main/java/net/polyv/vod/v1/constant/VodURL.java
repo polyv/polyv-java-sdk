@@ -62,7 +62,8 @@ public class VodURL {
     /**
      * 根据vid批量修改视频的授权播放开关状态
      */
-    public static final String UPDATE_VIDEO_PLAY_STATUS_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/authplay-status";
+    public static final String UPDATE_VIDEO_PLAY_STATUS_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/authplay-status";
     
     /**
      * 提交视频裁剪任务
@@ -82,12 +83,14 @@ public class VodURL {
     /**
      * 删除视频指定时间点的打点信息
      */
-    public static final String DELETE_KEY_FRAME_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deleteKeyFrameByTime";
+    public static final String DELETE_KEY_FRAME_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deleteKeyFrameByTime";
     
     /**
      * 设置视频的播放预览时长
      */
-    public static final String SET_PREVIEW_DURATION_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/set-preview-duration";
+    public static final String SET_PREVIEW_DURATION_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/set-preview-duration";
     
     /**
      * 视频禁播与解禁
@@ -112,8 +115,14 @@ public class VodURL {
     /**
      * 修改视频密码
      */
-    public static final String UPDATE_VIDEO_SETTING = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/video-setting-save";
+    public static final String UPDATE_VIDEO_SETTING =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/video-setting-save";
     
+    /**
+     * 删除视频的全部打点信息
+     */
+    public static final String DELETE_VIDEO_ALL_KEY_FRAME =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deleteKeyFrame";
     
     
     /**

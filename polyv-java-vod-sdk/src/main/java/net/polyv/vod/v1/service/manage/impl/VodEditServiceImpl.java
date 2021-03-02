@@ -10,6 +10,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
@@ -144,7 +145,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
     @Override
     public Boolean deleteVideoList(VodDeleteVideoListRequest vodDeleteVideoListRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = VodURL.DELETE_VIDEO_URL;
+        String url = VodURL.DELETE_VIDEO_LIST_URL;
         vodDeleteVideoListRequest.setUserId(VodGlobalConfig.getUserId());
         super.postFormBodyReturnOne(url,vodDeleteVideoListRequest,String.class);
         return true;
@@ -163,6 +164,22 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPDATE_VIDEO_INFO_URL);
         return super.postFormBodyReturnOne(url,vodUpdateVideoInfoRequest,VodUpdateVideoInfoResponse.class);
+    }
+    
+    /**
+     * 删除视频
+     * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/del-video/
+     * @param vodDeleteVideoRequest 删除视频请求实体
+     * @return 删除视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean deleteVideo(VodDeleteVideoRequest vodDeleteVideoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.DELETE_VIDEO_URL);
+        super.postFormBodyReturnOne(url,vodDeleteVideoRequest,String.class);
+        return true;
     }
     
 }

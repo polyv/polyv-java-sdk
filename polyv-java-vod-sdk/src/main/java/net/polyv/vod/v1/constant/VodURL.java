@@ -97,12 +97,17 @@ public class VodURL {
     /**
      * 批量删除视频
      */
-    public static final String DELETE_VIDEO_URL = BASE_URI + "v2/video/del-videos";
+    public static final String DELETE_VIDEO_LIST_URL = BASE_URI + "v2/video/del-videos";
     
     /**
      * 编辑单个视频的信息
      */
     public static final String UPDATE_VIDEO_INFO_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/video-info";
+    
+    /**
+     * 删除视频
+     */
+    public static final String DELETE_VIDEO_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/del-video";
     
     
     

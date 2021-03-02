@@ -8,6 +8,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
@@ -117,5 +118,15 @@ public interface IVodEditService {
      */
     VodUpdateVideoInfoResponse updateVideoInfo(VodUpdateVideoInfoRequest vodUpdateVideoInfoRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 删除视频
+     * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/del-video/
+     * @param vodDeleteVideoRequest 删除视频请求实体
+     * @return 删除视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean deleteVideo(VodDeleteVideoRequest vodDeleteVideoRequest) throws IOException, NoSuchAlgorithmException;
     
 }

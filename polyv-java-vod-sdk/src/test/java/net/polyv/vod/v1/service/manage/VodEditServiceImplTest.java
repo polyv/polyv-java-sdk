@@ -13,6 +13,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
@@ -321,6 +322,37 @@ public class VodEditServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodUpdateVideoInfoResponse);
             if (vodUpdateVideoInfoResponse != null) {
                 log.debug("测试编辑单个视频的信息成功，{}", vodUpdateVideoInfoResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试删除视频
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testDeleteVideo() throws IOException, NoSuchAlgorithmException {
+        VodDeleteVideoRequest vodDeleteVideoRequest = new VodDeleteVideoRequest();
+        Boolean vodDeleteVideoResponse = null;
+        try {
+            vodDeleteVideoRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoId("1b448be3238ae0aa1020ac2807c9e8c9_1")
+                    .setDeleteType(1)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodDeleteVideoResponse = new VodEditServiceImpl().deleteVideo(vodDeleteVideoRequest);
+            Assert.assertTrue(vodDeleteVideoResponse);
+            if (vodDeleteVideoResponse) {
+                log.debug("测试编辑单个视频的信息成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

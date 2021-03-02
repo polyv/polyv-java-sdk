@@ -13,6 +13,8 @@ import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodEditService;
@@ -146,6 +148,21 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
         vodDeleteVideoListRequest.setUserId(VodGlobalConfig.getUserId());
         super.postFormBodyReturnOne(url,vodDeleteVideoListRequest,String.class);
         return true;
+    }
+    
+    /**
+     * 编辑单个视频的信息
+     * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/video-info/
+     * @param vodUpdateVideoInfoRequest 编辑单个视频的信息请求实体
+     * @return 编辑单个视频的信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public VodUpdateVideoInfoResponse updateVideoInfo(VodUpdateVideoInfoRequest vodUpdateVideoInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.UPDATE_VIDEO_INFO_URL);
+        return super.postFormBodyReturnOne(url,vodUpdateVideoInfoRequest,VodUpdateVideoInfoResponse.class);
     }
     
 }

@@ -16,6 +16,8 @@ import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.manage.impl.VodEditServiceImpl;
@@ -286,6 +288,39 @@ public class VodEditServiceImplTest extends BaseTest {
             Assert.assertTrue(vodDeleteVideoListResponse);
             if (vodDeleteVideoListResponse) {
                 log.debug("测试批量删除视频成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试编辑单个视频的信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateVideoInfo() throws IOException, NoSuchAlgorithmException {
+        VodUpdateVideoInfoRequest vodUpdateVideoInfoRequest = new VodUpdateVideoInfoRequest();
+        VodUpdateVideoInfoResponse vodUpdateVideoInfoResponse = null;
+        try {
+            vodUpdateVideoInfoRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setDesc("这是一个通过junit合并的视频")
+                    .setTag("junit测试")
+                    .setTitle("junit合并并修改")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUpdateVideoInfoResponse = new VodEditServiceImpl().updateVideoInfo(vodUpdateVideoInfoRequest);
+            Assert.assertNotNull(vodUpdateVideoInfoResponse);
+            if (vodUpdateVideoInfoResponse != null) {
+                log.debug("测试编辑单个视频的信息成功，{}", vodUpdateVideoInfoResponse);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -3,11 +3,13 @@ package net.polyv.vod.v1.service.manage.impl;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
@@ -109,7 +111,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
     public Boolean setVideoPreviewDuration(VodSetVideoPreviewDurationRequest vodSetVideoPreviewDurationRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.SET_PREVIEW_DURATION_URL);
-        super.postFormBodyReturnOne(url,vodSetVideoPreviewDurationRequest,String.class);
+        super.postFormBodyReturnOne(url, vodSetVideoPreviewDurationRequest, String.class);
         return true;
     }
     
@@ -125,7 +127,24 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
     public Boolean setVideoForbidden(VodSetVideoForbiddenRequest vodSetVideoForbiddenRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.SET_VIDEO_FORBIDDEN_URL);
-        super.postFormBodyReturnOne(url,vodSetVideoForbiddenRequest,String.class);
+        super.postFormBodyReturnOne(url, vodSetVideoForbiddenRequest, String.class);
+        return true;
+    }
+    
+    /**
+     * 批量删除视频
+     * URl地址：https://dev.polyv.net/2021/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/del-videos/
+     * @param vodDeleteVideoListRequest 批量删除视频请求实体
+     * @return 批量删除视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean deleteVideoList(VodDeleteVideoListRequest vodDeleteVideoListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.DELETE_VIDEO_URL;
+        vodDeleteVideoListRequest.setUserId(VodGlobalConfig.getUserId());
+        super.postFormBodyReturnOne(url,vodDeleteVideoListRequest,String.class);
         return true;
     }
     

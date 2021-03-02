@@ -94,6 +94,11 @@ public class VodURL {
      */
     public static final String SET_VIDEO_FORBIDDEN_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/forbidden";
     
+    /**
+     * 批量删除视频
+     */
+    public static final String DELETE_VIDEO_URL = BASE_URI + "v2/video/del-videos";
+    
     
     
     /**

@@ -8,6 +8,8 @@ import org.junit.Test;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameResponse;
@@ -69,6 +71,35 @@ public class VodInfoServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodGetVideoPlayStatusResponse);
             if (vodGetVideoPlayStatusResponse != null) {
                 log.debug("测试根据视频vid查询视频的授权播放开关状态成功,{}", vodGetVideoPlayStatusResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试批量获取答题日志
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetVideoExamLog() throws IOException, NoSuchAlgorithmException {
+        VodGetVideoExamLogRequest vodGetVideoExamLogRequest = new VodGetVideoExamLogRequest();
+        VodGetVideoExamLogResponse vodGetVideoExamLogResponse = null;
+        try {
+            vodGetVideoExamLogRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoIds("1b448be32343357d5c4784d9ffd1bf5c_1").setRequestId(VodSignUtil.generateUUID());
+            vodGetVideoExamLogResponse = new VodInfoServiceImpl().getVideoExamLog(vodGetVideoExamLogRequest);
+            Assert.assertNotNull(vodGetVideoExamLogResponse);
+            if (vodGetVideoExamLogResponse != null) {
+                log.debug("测试批量获取答题日志成功,{}", vodGetVideoExamLogResponse);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

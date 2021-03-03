@@ -141,6 +141,11 @@ public class VodURL {
     public static final String GET_VIDEO_PLAY_STATUS_URL =
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/authplay-status";
     
+    /**
+     * 批量获取答题日志
+     */
+    public static final String GET_VIDEO_EXAM_LOG_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/video-exam-log";
+    
     
     /**
      * 获取替换参数后的URL地址

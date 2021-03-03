@@ -129,6 +129,12 @@ public class VodURL {
      */
     public static final String UPDATE_VIDEO_HLS_LEVEL_URL = BASE_URI + "v2/config/" + PARAM_REPLACE_CHAR + "/hlslevel";
     
+    /**
+     * 获取单个视频的打点信息
+     */
+    public static final String LIST_VIDEO_KEY_FRAME_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/keyframe/" + PARAM_REPLACE_CHAR;
+    
     
     /**
      * 获取替换参数后的URL地址

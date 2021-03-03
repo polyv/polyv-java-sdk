@@ -135,6 +135,12 @@ public class VodURL {
     public static final String LIST_VIDEO_KEY_FRAME_URL =
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/keyframe/" + PARAM_REPLACE_CHAR;
     
+    /**
+     * 根据视频vid查询视频的授权播放开关状态
+     */
+    public static final String GET_VIDEO_PLAY_STATUS_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/authplay-status";
+    
     
     /**
      * 获取替换参数后的URL地址

@@ -124,6 +124,11 @@ public class VodURL {
     public static final String DELETE_VIDEO_ALL_KEY_FRAME =
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deleteKeyFrame";
     
+    /**
+     * 批量修改视频的授权方式
+     */
+    public static final String UPDATE_VIDEO_HLS_LEVEL_URL = BASE_URI + "v2/config/" + PARAM_REPLACE_CHAR + "/hlslevel";
+    
     
     /**
      * 获取替换参数后的URL地址

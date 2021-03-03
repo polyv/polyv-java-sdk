@@ -18,6 +18,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoHlsLevelListRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
@@ -414,13 +415,45 @@ public class VodEditServiceImplTest extends BaseTest {
         try {
             vodDeleteVideoAllKeyFrameRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
-                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1").setRequestId(VodSignUtil.generateUUID());
             vodDeleteVideoAllKeyFrameResponse = new VodEditServiceImpl().deleteVideoAllKeyFrame(
                     vodDeleteVideoAllKeyFrameRequest);
             Assert.assertTrue(vodDeleteVideoAllKeyFrameResponse);
             if (vodDeleteVideoAllKeyFrameResponse) {
                 log.debug("测试删除视频的全部打点信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试批量修改视频的授权方式
+     * 描述：通过videoIds批量修改视频的授权方式
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateVideoHlsLevelList() throws IOException, NoSuchAlgorithmException {
+        VodUpdateVideoHlsLevelListRequest vodUpdateVideoHlsLevelListRequest = new VodUpdateVideoHlsLevelListRequest();
+        Boolean vodUpdateVideoHlsLevelListResponse = null;
+        try {
+            vodUpdateVideoHlsLevelListRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoIds("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setHlsLevel("open")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUpdateVideoHlsLevelListResponse = new VodEditServiceImpl().updateVideoHlsLevelList(
+                    vodUpdateVideoHlsLevelListRequest);
+            Assert.assertTrue(vodUpdateVideoHlsLevelListResponse);
+            if (vodUpdateVideoHlsLevelListResponse) {
+                log.debug("测试批量修改视频的授权方式成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -124,6 +124,11 @@ public class VodURL {
     public static final String DELETE_VIDEO_ALL_KEY_FRAME =
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deleteKeyFrame";
     
+    /**
+     * 搜索视频
+     */
+    public static final String LIST_VIDEO_URL = BASE_URI + "/v3/video/list-video";
+    
     
     /**
      * 获取替换参数后的URL地址

@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteVideoRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
@@ -148,6 +149,35 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
             Assert.assertTrue(vodUpdateVideoCategoryResponse);
             if (vodUpdateVideoCategoryResponse) {
                 log.debug("批量修改视频所属分类成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试删除视频
+     * 描述：根据视频ID删除视频
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testDeleteVideo() throws IOException, NoSuchAlgorithmException {
+        VodDeleteVideoRequest vodDeleteVideoRequest = new VodDeleteVideoRequest();
+        Boolean vodDeleteVideoResponse = null;
+        try {
+            vodDeleteVideoRequest.setVideoId("1b448be3238415eee2fa40753737255b_1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodDeleteVideoResponse = new VodSubAccountServiceImpl().deleteVideo(vodDeleteVideoRequest);
+            Assert.assertTrue(vodDeleteVideoResponse);
+            if (vodDeleteVideoResponse) {
+                log.debug("删除视频成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

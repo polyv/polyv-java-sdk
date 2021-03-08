@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoResponse;
@@ -115,6 +116,38 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
             Assert.assertTrue(vodUpdateVideoInfoResponse);
             if (vodUpdateVideoInfoResponse) {
                 log.debug("测试修改视频信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试批量修改视频所属分类
+     * 描述：根据视频ID批量修改视频所属分类
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testUpdateVideoCategory() throws IOException, NoSuchAlgorithmException {
+        VodUpdateVideoCategoryRequest vodUpdateVideoCategoryRequest = new VodUpdateVideoCategoryRequest();
+        Boolean vodUpdateVideoCategoryResponse = null;
+        try {
+            vodUpdateVideoCategoryRequest.setVideoIds(
+                    "1b448be323a146649ad0cc89d0faed9c_1,1b448be32389b93ea8be08bf0d257043_1")
+                    .setCategoryId(1602300731843L)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUpdateVideoCategoryResponse = new VodSubAccountServiceImpl().updateVideoCategory(
+                    vodUpdateVideoCategoryRequest);
+            Assert.assertTrue(vodUpdateVideoCategoryResponse);
+            if (vodUpdateVideoCategoryResponse) {
+                log.debug("批量修改视频所属分类成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

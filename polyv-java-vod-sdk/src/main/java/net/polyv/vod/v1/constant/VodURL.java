@@ -140,6 +140,11 @@ public class VodURL {
     public static final String UPDATE_INFO_URL = BASE_URI + "/v3/video/update-info";
     
     /**
+     * 批量修改视频所属分类
+     */
+    public static final String UPDATE_VIDEO_CATEGORY = BASE_URI + "/v3/video/update-category";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

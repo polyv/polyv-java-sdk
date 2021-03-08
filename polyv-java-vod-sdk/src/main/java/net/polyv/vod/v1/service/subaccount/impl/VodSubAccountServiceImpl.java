@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import net.polyv.vod.v1.constant.VodURL;
+import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoResponse;
@@ -60,6 +61,21 @@ public class VodSubAccountServiceImpl extends VodBaseService implements IVodSubA
     public Boolean updateVideoInfo(VodUpdateVideoInfoRequest vodUpdateVideoInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         super.postFormBodyReturnOne(VodURL.UPDATE_INFO_URL, vodUpdateVideoInfoRequest, String.class);
+        return true;
+    }
+    
+    /**
+     * 批量修改视频所属分类请求实体
+     * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/update-video-category/
+     * @param vodUpdateVideoCategoryRequest 批量修改视频所属分类请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateVideoCategory(VodUpdateVideoCategoryRequest vodUpdateVideoCategoryRequest)
+            throws IOException, NoSuchAlgorithmException {
+        super.postFormBodyReturnOne(VodURL.UPDATE_VIDEO_CATEGORY, vodUpdateVideoCategoryRequest, String.class);
         return true;
     }
     

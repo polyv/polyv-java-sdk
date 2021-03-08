@@ -2,6 +2,7 @@ package net.polyv.vod.v1.service.subaccount;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,6 +11,8 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
+import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoResponse;
 import net.polyv.vod.v1.entity.subaccount.query.VodSearchVideoListRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodSearchVideoListResponse;
 import net.polyv.vod.v1.service.SubBaseTest;
@@ -47,6 +50,37 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
             Assert.assertNotNull(vodSearchVideoListResponse);
             if (vodSearchVideoListResponse != null) {
                 log.debug("测试搜索视频成功,{}", JSON.toJSONString(vodSearchVideoListResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询视频信息
+     * 描述：按视频ID查询视频信息
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetVideoInfo() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoInfoRequest vodQueryVideoInfoRequest = new VodQueryVideoInfoRequest();
+        List<VodQueryVideoInfoResponse> vodQueryVideoInfoResponse = null;
+        try {
+            vodQueryVideoInfoRequest.setVideoIds(
+                    "1b448be32355403dad586f7468e63e23_1,1b448be323a146649ad0cc89d0faed9c_1")
+                    .setFilters("basicInfo,metaData,transcodeInfo,snapshotInfo")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoInfoResponse = new VodSubAccountServiceImpl().getVideoInfo(vodQueryVideoInfoRequest);
+            Assert.assertNotNull(vodQueryVideoInfoResponse);
+            if (vodQueryVideoInfoResponse != null) {
+                log.debug("测试查询视频信息,{}", JSON.toJSONString(vodQueryVideoInfoResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

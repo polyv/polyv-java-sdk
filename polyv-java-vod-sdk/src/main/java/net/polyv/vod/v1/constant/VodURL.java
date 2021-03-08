@@ -129,6 +129,11 @@ public class VodURL {
      */
     public static final String LIST_VIDEO_URL = BASE_URI + "/v3/video/list-video";
     
+    /**
+     * 查询视频信息
+     */
+    public static final String GET_VIDEO_INFO_URL = BASE_URI + "/v3/video/get-video-info";
+    
     
     /**
      * 获取替换参数后的URL地址

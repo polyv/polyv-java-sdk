@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import net.polyv.vod.v1.constant.VodURL;
+import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoResponse;
 import net.polyv.vod.v1.entity.subaccount.query.VodSearchVideoListRequest;
@@ -45,6 +46,21 @@ public class VodSubAccountServiceImpl extends VodBaseService implements IVodSubA
             throws IOException, NoSuchAlgorithmException {
         return super.getReturnList(VodURL.GET_VIDEO_INFO_URL, vodQueryVideoInfoRequest,
                 VodQueryVideoInfoResponse.class);
+    }
+    
+    /**
+     * 修改视频信息
+     * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/update-video-info/
+     * @param vodUpdateVideoInfoRequest 修改视频信息请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateVideoInfo(VodUpdateVideoInfoRequest vodUpdateVideoInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        super.postFormBodyReturnOne(VodURL.UPDATE_INFO_URL, vodUpdateVideoInfoRequest, String.class);
+        return true;
     }
     
 }

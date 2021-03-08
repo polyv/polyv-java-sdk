@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import net.polyv.vod.v1.entity.VodCommonResponse;
+import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoResponse;
 import net.polyv.vod.v1.entity.subaccount.query.VodSearchVideoListRequest;
@@ -37,4 +39,14 @@ public interface IVodSubAccountService {
     List<VodQueryVideoInfoResponse> getVideoInfo(VodQueryVideoInfoRequest vodQueryVideoInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
+    /**
+     * 修改视频信息
+     * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/update-video-info/
+     * @param vodUpdateVideoInfoRequest 修改视频信息请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateVideoInfo(VodUpdateVideoInfoRequest vodUpdateVideoInfoRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

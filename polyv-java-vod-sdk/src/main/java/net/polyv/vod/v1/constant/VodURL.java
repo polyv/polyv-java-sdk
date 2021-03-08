@@ -134,6 +134,10 @@ public class VodURL {
      */
     public static final String GET_VIDEO_INFO_URL = BASE_URI + "/v3/video/get-video-info";
     
+    /**
+     * 修改视频信息
+     */
+    public static final String UPDATE_INFO_URL = BASE_URI + "/v3/video/update-info";
     
     /**
      * 获取替换参数后的URL地址

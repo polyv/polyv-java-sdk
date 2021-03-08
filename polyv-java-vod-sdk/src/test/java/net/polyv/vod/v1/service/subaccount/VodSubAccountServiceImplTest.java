@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoResponse;
 import net.polyv.vod.v1.entity.subaccount.query.VodSearchVideoListRequest;
@@ -81,6 +82,39 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
             Assert.assertNotNull(vodQueryVideoInfoResponse);
             if (vodQueryVideoInfoResponse != null) {
                 log.debug("测试查询视频信息,{}", JSON.toJSONString(vodQueryVideoInfoResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试修改视频信息
+     * 描述：根据视频ID修改视频信息
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testUpdateVideoInfo() throws IOException, NoSuchAlgorithmException {
+        VodUpdateVideoInfoRequest vodUpdateVideoInfoRequest = new VodUpdateVideoInfoRequest();
+        Boolean vodUpdateVideoInfoResponse = null;
+        try {
+            vodUpdateVideoInfoRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setTitle("junit合并并修改_1")
+                    .setDesc("这是一个通过junit合并的视频_1")
+                    .setTag("junit测试_1")
+                    .setPublishUrl(null)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUpdateVideoInfoResponse = new VodSubAccountServiceImpl().updateVideoInfo(vodUpdateVideoInfoRequest);
+            Assert.assertTrue(vodUpdateVideoInfoResponse);
+            if (vodUpdateVideoInfoResponse) {
+                log.debug("测试修改视频信息成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

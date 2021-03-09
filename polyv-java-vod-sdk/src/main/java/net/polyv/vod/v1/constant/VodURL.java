@@ -125,6 +125,30 @@ public class VodURL {
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deleteKeyFrame";
     
     /**
+     * 搜索视频
+     */
+    public static final String LIST_VIDEO_URL = BASE_URI + "/v3/video/list-video";
+    
+    /**
+     * 查询视频信息
+     */
+    public static final String GET_VIDEO_INFO_URL = BASE_URI + "/v3/video/get-video-info";
+    
+    /**
+     * 修改视频信息
+     */
+    public static final String UPDATE_INFO_URL = BASE_URI + "/v3/video/update-info";
+    
+    /**
+     * 批量修改视频所属分类
+     */
+    public static final String UPDATE_VIDEO_CATEGORY = BASE_URI + "/v3/video/update-category";
+    
+    /**
+     * 删除视频
+     */
+    public static final String DELETE_VIDEO = BASE_URI + "/v3/video/delete-video";
+    /**
      * 批量修改视频的授权方式
      */
     public static final String UPDATE_VIDEO_HLS_LEVEL_URL = BASE_URI + "v2/config/" + PARAM_REPLACE_CHAR + "/hlslevel";

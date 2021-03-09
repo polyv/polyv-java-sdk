@@ -8,6 +8,8 @@ import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteVideoRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoInfoRequest;
+import net.polyv.vod.v1.entity.subaccount.query.VodQueryCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.query.VodQueryCategoryResponse;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoResponse;
 import net.polyv.vod.v1.entity.subaccount.query.VodSearchVideoListRequest;
@@ -93,6 +95,20 @@ public class VodSubAccountServiceImpl extends VodBaseService implements IVodSubA
             throws IOException, NoSuchAlgorithmException {
         super.postFormBodyReturnOne(VodURL.DELETE_VIDEO, vodDeleteVideoRequest, String.class);
         return true;
+    }
+    
+    /**
+     * 查询视频分类
+     * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/get-category/
+     * @param vodQueryCategoryRequest 查询视频分类请求实体
+     * @return 查询视频分类返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public VodQueryCategoryResponse queryCategory(VodQueryCategoryRequest vodQueryCategoryRequest)
+            throws IOException, NoSuchAlgorithmException {
+        return super.getReturnOne(VodURL.GET_CATEGORY_URL, vodQueryCategoryRequest, VodQueryCategoryResponse.class);
     }
     
 }

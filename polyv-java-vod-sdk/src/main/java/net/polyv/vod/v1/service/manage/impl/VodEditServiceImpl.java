@@ -15,6 +15,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoHlsLevelListRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
@@ -213,6 +214,22 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.DELETE_VIDEO_ALL_KEY_FRAME);
         super.postFormBodyReturnOne(url,vodDeleteVideoAllKeyFrameRequest,String.class);
+        return true;
+    }
+    
+    /**
+     * 批量修改视频的授权方式
+     * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/hlslevel/
+     * @param vodUpdateVideoHlsLevelListRequest 批量修改视频的授权方式请求实体
+     * @return 批量修改视频的授权方式返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateVideoHlsLevelList(VodUpdateVideoHlsLevelListRequest vodUpdateVideoHlsLevelListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.UPDATE_VIDEO_HLS_LEVEL_URL);
+        super.postFormBodyReturnOne(url,vodUpdateVideoHlsLevelListRequest,String.class);
         return true;
     }
     

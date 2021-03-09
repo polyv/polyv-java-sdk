@@ -148,6 +148,28 @@ public class VodURL {
      * 删除视频
      */
     public static final String DELETE_VIDEO = BASE_URI + "/v3/video/delete-video";
+    /**
+     * 批量修改视频的授权方式
+     */
+    public static final String UPDATE_VIDEO_HLS_LEVEL_URL = BASE_URI + "v2/config/" + PARAM_REPLACE_CHAR + "/hlslevel";
+    
+    /**
+     * 获取单个视频的打点信息
+     */
+    public static final String LIST_VIDEO_KEY_FRAME_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/keyframe/" + PARAM_REPLACE_CHAR;
+    
+    /**
+     * 根据视频vid查询视频的授权播放开关状态
+     */
+    public static final String GET_VIDEO_PLAY_STATUS_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/authplay-status";
+    
+    /**
+     * 批量获取答题日志
+     */
+    public static final String GET_VIDEO_EXAM_LOG_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/video-exam-log";
+    
     
     /**
      * 查询视频分类

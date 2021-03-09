@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.vod.v1.entity.VodCommonResponse;
 import net.polyv.vod.v1.entity.subaccount.edit.VodAddCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteVideoRequest;
@@ -232,19 +233,20 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    @Test
-    public void testAddCategory() throws IOException, NoSuchAlgorithmException {
+//    @Test
+    public String testAddCategory() throws IOException, NoSuchAlgorithmException {
         VodAddCategoryRequest vodAddCategoryRequest = new VodAddCategoryRequest();
-        Boolean vodDeleteVideoResponse = null;
+        String vodDeleteVideoResponse = null;
         try {
             vodAddCategoryRequest.setName("junit测试新增分类20210309")
                     .setParentId(null)
                     .setRequestId(VodSignUtil.generateUUID());
             vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodAddCategoryRequest);
-            Assert.assertTrue(vodDeleteVideoResponse);
-            if (vodDeleteVideoResponse) {
+            Assert.assertNotNull(vodDeleteVideoResponse);
+            if (vodDeleteVideoResponse != null) {
                 log.debug("新增视频分类成功");
             }
+            return vodDeleteVideoResponse;
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
@@ -295,7 +297,9 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
         VodDeleteCategoryRequest vodDeleteCategoryRequest = new VodDeleteCategoryRequest();
         Boolean vodDeleteCategoryResponse = null;
         try {
-            vodDeleteCategoryRequest.setCategoryId("1615280628329").setRequestId(VodSignUtil.generateUUID());
+            //生成测试数据
+            String categoryId = this.testAddCategory();
+            vodDeleteCategoryRequest.setCategoryId(categoryId).setRequestId(VodSignUtil.generateUUID());
             vodDeleteCategoryResponse = new VodSubAccountServiceImpl().deleteCategory(vodDeleteCategoryRequest);
             Assert.assertTrue(vodDeleteCategoryResponse);
             if (vodDeleteCategoryResponse) {

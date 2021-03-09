@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import net.polyv.vod.v1.entity.VodCommonResponse;
 import net.polyv.vod.v1.entity.subaccount.edit.VodAddCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteVideoRequest;
@@ -92,11 +93,11 @@ public interface IVodSubAccountService {
      * 新增视频分类
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/add-category/
      * @param vodAddCategoryRequest 新增视频分类请求实体
-     * @return Boolean
+     * @return String
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean addCategory(VodAddCategoryRequest vodAddCategoryRequest) throws IOException, NoSuchAlgorithmException;
+    String addCategory(VodAddCategoryRequest vodAddCategoryRequest) throws IOException, NoSuchAlgorithmException;
     
     /**
      * 修改视频分类信息

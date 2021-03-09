@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.subaccount.edit.VodAddCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteVideoRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoCategoryRequest;
@@ -237,7 +238,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
         Boolean vodDeleteVideoResponse = null;
         try {
             vodAddCategoryRequest.setName("junit测试新增分类20210309")
-                    .setParentId("1602671097888")
+                    .setParentId(null)
                     .setRequestId(VodSignUtil.generateUUID());
             vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodAddCategoryRequest);
             Assert.assertTrue(vodDeleteVideoResponse);
@@ -272,6 +273,33 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
             Assert.assertTrue(vodUpdateCategoryResponse);
             if (vodUpdateCategoryResponse) {
                 log.debug("修改视频分类信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试删除视频分类
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testDeleteCategory() throws IOException, NoSuchAlgorithmException {
+        VodDeleteCategoryRequest vodDeleteCategoryRequest = new VodDeleteCategoryRequest();
+        Boolean vodDeleteCategoryResponse = null;
+        try {
+            vodDeleteCategoryRequest.setCategoryId("1615280628329").setRequestId(VodSignUtil.generateUUID());
+            vodDeleteCategoryResponse = new VodSubAccountServiceImpl().deleteCategory(vodDeleteCategoryRequest);
+            Assert.assertTrue(vodDeleteCategoryResponse);
+            if (vodDeleteCategoryResponse) {
+                log.debug("删除视频分类成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

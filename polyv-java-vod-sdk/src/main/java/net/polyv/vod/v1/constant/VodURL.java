@@ -170,11 +170,15 @@ public class VodURL {
      */
     public static final String GET_VIDEO_EXAM_LOG_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/video-exam-log";
     
-    
     /**
      * 查询视频分类
      */
     public static final String GET_CATEGORY_URL = BASE_URI + "/v3/category/get";
+    
+    /**
+     * 新增视频分类
+     */
+    public static final String ADD_CATEGORY_URL = BASE_URI + "/v3/category/add";
     
     /**
      * 获取替换参数后的URL地址

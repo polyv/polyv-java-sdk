@@ -181,6 +181,11 @@ public class VodURL {
     public static final String ADD_CATEGORY_URL = BASE_URI + "/v3/category/add";
     
     /**
+     * 修改视频分类信息
+     */
+    public static final String UPDATE_CATEGORY_URL = BASE_URI + "/v3/category/update-info";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

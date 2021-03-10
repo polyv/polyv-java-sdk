@@ -144,7 +144,8 @@
                     .setPublisher("sadboy主讲")
                     .setLinkMicLimit(-1)
                     .setPureRtcEnabled("N")
-                    .setReceiveChannelIds("213");
+                    .setReceiveChannelIds("213")
+                    .setOnlyOneLiveEnabled("N");
             liveChannelInitRequest.setBasicSetting(basicSetting).setRequestId(LiveSignUtil.generateUUID());
             //验证码观看
             LiveChannelInitRequest.AuthSetting codeAuthSettings = new LiveChannelInitRequest.AuthSetting().setRank(1)
@@ -206,6 +207,7 @@
 | pureRtcEnabled | false | String | 是否为无延时直播，Y 表示开启，默认为N | 
 | receive | false | String | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) | 
 | receiveChannelIds | false | String | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) | 
+| onlyOneLiveEnabled | false | String | 频道是否只能直播一次，Y是，N否, 默认为N | 
 
 <h6 id="polyv9"><a href="#/channelOperate.md?id=polyv9"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -434,7 +436,7 @@
         LiveChannelInfoResponse liveChannelInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveChannelInfoRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelInfoResponse = new LiveChannelOperateServiceImpl().getChannelInfo(liveChannelInfoRequest);
             Assert.assertNotNull(liveChannelInfoResponse);
@@ -538,7 +540,7 @@
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveChannelBasicInfoRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().getChannelBasicInfo(
                     liveChannelBasicInfoRequest);
@@ -650,7 +652,7 @@
         LiveChannelAuthTokenResponse liveChannelAuthTokenResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveChannelAuthTokenRequest.setUserId(getRandomString(32)).setChannelId(channelId)
                     .setRole(LiveConstant.Role.ADMIN.getDesc())
                     .setOrigin(null)
@@ -860,7 +862,7 @@ true为设置成功，false为设置失败
         Boolean liveChannelDetailResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String newPassword = getRandomString(16);
             liveChannelDetailRequest.setChannelId(channelId)
                     .setField("channelPasswd")
@@ -921,17 +923,17 @@ true为修改成功，false为修改失败
 	@Test
 	public void testUpdateChannelPassword() throws Exception, NoSuchAlgorithmException {
         LiveChannelPasswordSettingRequest liveChannelPasswordSettingRequest = new LiveChannelPasswordSettingRequest();
-        Boolean updateChannelPasswordResponse;
+        Boolean liveChannelPasswordSettingResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveChannelPasswordSettingRequest.setChannelId(channelId)
                     .setPasswd("987654")
                     .setRequestId(LiveSignUtil.generateUUID());
-            updateChannelPasswordResponse = new LiveChannelOperateServiceImpl().updateChannelPassword(
+            liveChannelPasswordSettingResponse = new LiveChannelOperateServiceImpl().updateChannelPassword(
                     liveChannelPasswordSettingRequest);
-            Assert.assertNotNull(updateChannelPasswordResponse);
-            if (updateChannelPasswordResponse) {
+            Assert.assertNotNull(liveChannelPasswordSettingResponse);
+            if (liveChannelPasswordSettingResponse) {
                 //to do something ......
                 log.debug("设置频道密码成功");
             }
@@ -985,7 +987,7 @@ true为设置密码成功，false为设置失败
         Boolean liveCreateChannelTokenResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveCreateChannelTokenRequest.setChannelId(channelId)
                     .setToken(LiveSignUtil.generateUUID())
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -1046,7 +1048,7 @@ true为设置token成功，false为设置失败
         Boolean liveDeleteChannelResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveDeleteChannelRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelResponse = new LiveChannelOperateServiceImpl().deleteChannel(liveDeleteChannelRequest);
             Assert.assertNotNull(liveDeleteChannelResponse);
@@ -1103,7 +1105,7 @@ true为删除成功，false为删除失败
         Boolean liveDeleteChannelListResponse;
         try {
             //准备测试数据
-            String[] channelIds = new String[]{createChannel(), createChannel(), createChannel()};
+            String[] channelIds = new String[]{super.createChannel(), super.createChannel(), super.createChannel()};
             liveDeleteChannelListRequest.setChannelIds(channelIds).setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelListResponse = new LiveChannelOperateServiceImpl().deleteChannelList(
                     liveDeleteChannelListRequest);
@@ -1161,7 +1163,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
         LiveCreateSonChannelResponse liveCreateSonChannelResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             List<String> sonChannelIds = getDelSonChannelIds();
             for (String temp : sonChannelIds) {
                 deleteSonChannel(temp);
@@ -1251,7 +1253,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
         LiveCreateSonChannelResponse liveCreateSonChannelResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             List<String> sonChannelIds = getDelSonChannelIds();
             for (String temp : sonChannelIds) {
                 deleteSonChannel(temp);
@@ -1341,7 +1343,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
         LiveSonChannelInfoResponse liveSonChannelInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String sonChannelId = createSonChannel(channelId);
             liveSonChannelInfoRequest.setAccount(sonChannelId)
                     .setChannelId(channelId)
@@ -1423,7 +1425,7 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
         LiveSonChannelInfoListResponse liveSonChannelInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveSonChannelInfoListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfoList(
                     liveSonChannelInfoListRequest);
@@ -1504,10 +1506,10 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 	@Test
 	public void testUpdateSonChannelInfo() throws Exception, NoSuchAlgorithmException {
         LiveUpdateSonChannelInfoRequest liveUpdateSonChannelInfoRequest = new LiveUpdateSonChannelInfoRequest();
-        Boolean updateSonChannelInfoResponse;
+        Boolean liveUpdateSonChannelInfoResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String sonChannelId = createSonChannel(channelId);
             liveUpdateSonChannelInfoRequest.setChannelId(channelId)
                     .setAccount(sonChannelId)
@@ -1518,10 +1520,10 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
                     .setPageTurnEnabled("Y")
                     .setNotifyEnabled("Y")
                     .setRequestId(LiveSignUtil.generateUUID());
-            updateSonChannelInfoResponse = new LiveChannelOperateServiceImpl().updateSonChannelInfo(
+            liveUpdateSonChannelInfoResponse = new LiveChannelOperateServiceImpl().updateSonChannelInfo(
                     liveUpdateSonChannelInfoRequest);
-            Assert.assertNotNull(updateSonChannelInfoResponse);
-            if (updateSonChannelInfoResponse) {
+            Assert.assertNotNull(liveUpdateSonChannelInfoResponse);
+            if (liveUpdateSonChannelInfoResponse) {
                 //to do something ......
                 log.debug("设置子频道信息成功");
             }
@@ -1581,7 +1583,7 @@ true为设置成功，false为设置失败
         Boolean liveCreateSonChannelTokenResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String sonChannelId = createSonChannel(channelId);
             liveCreateSonChannelTokenRequest.setAccount(sonChannelId)
                     .setToken(LiveSignUtil.generateUUID())
@@ -1643,7 +1645,7 @@ true为设置子频道token成功，false为设置失败
         Boolean liveDeleteSonChannelResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String sonChannelId = createSonChannel(channelId);
             liveDeleteSonChannelRequest.setChannelId(channelId)
                     .setAccount(sonChannelId)
@@ -1704,7 +1706,7 @@ true为删除成功，false为删除失败
         LiveCreateChannelPPTRecordRequest liveCreateChannelPPTRecordRequest = new LiveCreateChannelPPTRecordRequest();
         Boolean liveCreateChannelPPTRecordResponse;
         try {
-             String channel = createChannel();
+             String channel = super.createChannel();
             List<String> videoIds = listChannelVideoIds(channel);
             liveCreateChannelPPTRecordRequest.setChannelId(channel)
                     .setVideoId(videoIds.get(1))
@@ -1766,7 +1768,7 @@ true为创建成功，false为创建失败
         LiveListChannelPPTRecordResponse liveListChannelPPTRecordResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveListChannelPPTRecordRequest.setChannelId(channelId)
                     .setStartTime(getDate(2020, 1, 1))
                     .setEndTime(getDate(2020, 11, 11))
@@ -1855,7 +1857,7 @@ true为创建成功，false为创建失败
         LiveChannelCallbackSettingResponse liveChannelCallbackSettingResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveChannelCallbackSettingRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().getChannelCallbackSetting(
                     liveChannelCallbackSettingRequest);
@@ -1926,7 +1928,7 @@ true为创建成功，false为创建失败
         Boolean liveUpdateChannelCallbackSettingResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveUpdateChannelCallbackSettingRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelCallbackSettingResponse = new LiveChannelOperateServiceImpl().updateChannelCallbackSetting(
                     liveUpdateChannelCallbackSettingRequest);
@@ -1992,7 +1994,7 @@ null
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             List<LiveCreateSonChannelListRequest.SonChannel> sonChannels =
                     new ArrayList<LiveCreateSonChannelListRequest.SonChannel>();
             LiveCreateSonChannelListRequest.SonChannel sonChannel1 = new LiveCreateSonChannelListRequest.SonChannel();
@@ -2107,7 +2109,7 @@ null
         LiveChannelTransmitListResponse liveChannelTransmitListResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveChannelTransmitListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelTransmitListResponse = new LiveChannelOperateServiceImpl().getChannelTransmitList(
                     liveChannelTransmitListRequest);
@@ -2176,7 +2178,7 @@ null
         Boolean liveUpdateChannelMaxViewerResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveUpdateChannelMaxViewerRequest.setChannelId(channelId)
                     .setMaxViewer(Integer.MAX_VALUE)
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -2238,7 +2240,7 @@ true为设置成功，false为设置失败
         LiveChannelAdvertListResponse liveChannelAdvertListResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveChannelAdvertListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelAdvertListResponse = new LiveChannelOperateServiceImpl().getChannelAdvertList(
                     liveChannelAdvertListRequest);
@@ -2309,7 +2311,7 @@ true为设置成功，false为设置失败
         String liveChannelCaptureResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveChannelCaptureRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveChannelCaptureResponse = new LiveChannelOperateServiceImpl().getChannelCapture(
                     liveChannelCaptureRequest);
@@ -2368,7 +2370,7 @@ true为设置成功，false为设置失败
         Boolean liveUpdateChannelStreamResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveUpdateChannelStreamRequest.setStreamType("disk")
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
@@ -2430,7 +2432,7 @@ true为修改推流方式成功，false为修改失败
         Boolean liveDeleteDiskVideosStreamResponse;
         try {
             //准备测试数据
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveDeleteDiskVideosStreamRequest.setVideoIds("f1574595e1")
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());

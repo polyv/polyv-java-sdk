@@ -15,7 +15,7 @@
         try {
             liveCreateCategoryRequest.setCategoryName("分类1").setRequestId(LiveSignUtil.generateUUID());
             liveCreateCategoryResponse = new LiveAccountServiceImpl().createCategory(liveCreateCategoryRequest);
-            Assert.assertNotNull(liveCreateCategoryRequest);
+            Assert.assertNotNull(liveCreateCategoryResponse);
             log.debug("测试创建账号下直播分类成功,{}", JSON.toJSONString(liveCreateCategoryResponse));
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -1151,10 +1151,10 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
         LiveChannelIncomeDetailRequest liveChannelIncomeDetailRequest = new LiveChannelIncomeDetailRequest();
         LiveChannelIncomeDetailResponse liveChannelIncomeDetailResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveChannelIncomeDetailRequest.setChannelId(channelId)
-                    .setStartDate(getDate(2020,10,24))
-                    .setEndDate(getDate(2020,11,11))
+                    .setStartDate(getDate(2019,10,24))
+                    .setEndDate(getDate(2021,11,11))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelIncomeDetailResponse = new LiveAccountServiceImpl().getChannelIncomeDetail(
                     liveChannelIncomeDetailRequest);

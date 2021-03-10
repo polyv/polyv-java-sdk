@@ -8,6 +8,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.live.v1.entity.LivePageCommonResponse;
 
@@ -17,6 +18,7 @@ import net.polyv.live.v1.entity.LivePageCommonResponse;
  **/
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
 @ApiModel("查询签到结果响应实体")
 public class LiveCheckinListResponse extends LivePageCommonResponse {
     /**

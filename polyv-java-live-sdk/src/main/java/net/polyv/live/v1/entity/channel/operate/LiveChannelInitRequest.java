@@ -121,6 +121,12 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
                 "(注：需要开启频道转播功能该参数才生效)", required = false)
         private String receiveChannelIds;
         
+        /**
+         * 频道是否只能直播一次，Y是，N否, 默认为N
+         */
+        @ApiModelProperty(name = "onlyOneLiveEnabled", value = "频道是否只能直播一次，Y是，N否, 默认为N", required = false)
+        private String onlyOneLiveEnabled;
+        
     }
     
     @Data

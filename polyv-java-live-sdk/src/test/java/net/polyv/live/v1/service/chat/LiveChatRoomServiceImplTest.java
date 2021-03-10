@@ -500,27 +500,10 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         LiveChatDelSingleMsgRequest liveChatDelSingleMsgRequest = new LiveChatDelSingleMsgRequest();
         Boolean liveChatDelSingleMsgResponse = null;
         
-        //获取已经存在的消息id开始
-        String msgId = "";
-        LiveSendChatMsgRequest liveSendChatMsgRequest = new LiveSendChatMsgRequest();
-        LiveSendChatMsgResponse liveSendChatMsgResponse = null;
         String channelId = super.createChannel();
-        liveSendChatMsgRequest.setChannelId(channelId)
-                .setMsg("hello 大家好-通过API发过来的测试信息")
-                .setPic("https://5b0988e595225.cdn.sohucs.com/q_70,c_zoom," +
-                        "w_640/images/20190129/e3b0d6311b1a411fa68125fc03b8ef67.jpeg")
-                .setNickName("thomas")
-                .setFreeReview(LiveConstant.Flag.YES.getFlag())
-                .setRequestId(LiveSignUtil.generateUUID());
-        liveSendChatMsgResponse = new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest);
-        Assert.assertNotNull(liveSendChatMsgResponse);
-        if (liveSendChatMsgResponse != null) {
-            //to do something ......
-            msgId = liveSendChatMsgResponse.getMsgId();
-            log.debug("测试通过HTTP接口发送聊天消息成功,消息ID {}", msgId);
-        }
-        Assert.assertNotEquals(0, msgId.trim().length());
-        //获取已经存在的消息id结束
+        //获取已经存在的消息id
+        //new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest)
+        String msgId = getMsgId(channelId);
         
         try {
             liveChatDelSingleMsgRequest.setId(msgId).setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());

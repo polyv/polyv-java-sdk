@@ -16,6 +16,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.live.v1.config.InitConfig;
+import net.polyv.live.v1.constant.LiveConstant;
 import net.polyv.live.v1.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.v1.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.v1.entity.channel.operate.LiveCreateSonChannelRequest;
@@ -29,10 +30,13 @@ import net.polyv.live.v1.entity.channel.playback.LiveChannelVideoListRequest;
 import net.polyv.live.v1.entity.channel.playback.LiveChannelVideoListResponse;
 import net.polyv.live.v1.entity.channel.playback.LiveListChannelVideoLibraryRequest;
 import net.polyv.live.v1.entity.channel.playback.LiveListChannelVideoLibraryResponse;
+import net.polyv.live.v1.entity.chat.LiveSendChatMsgRequest;
+import net.polyv.live.v1.entity.chat.LiveSendChatMsgResponse;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveListChannelMenuResponse;
 import net.polyv.live.v1.service.channel.impl.LiveChannelOperateServiceImpl;
 import net.polyv.live.v1.service.channel.impl.LiveChannelPlaybackServiceImpl;
+import net.polyv.live.v1.service.chat.impl.LiveChatRoomServiceImpl;
 import net.polyv.live.v1.service.web.impl.LiveWebMenuServiceImpl;
 import net.polyv.live.v1.util.LiveSignUtil;
 
@@ -325,6 +329,28 @@ public class BaseTest {
             menuList.add(temp.getMenuId());
         }
         return menuList;
+    }
+    
+    protected String getMsgId(String channelId) throws IOException, NoSuchAlgorithmException {
+        String msgId = "";
+        LiveSendChatMsgRequest liveSendChatMsgRequest = new LiveSendChatMsgRequest();
+        LiveSendChatMsgResponse liveSendChatMsgResponse = null;
+        liveSendChatMsgRequest.setChannelId(channelId)
+                .setMsg("hello 大家好-通过API发过来的测试信息")
+                .setPic("https://5b0988e595225.cdn.sohucs.com/q_70,c_zoom," +
+                        "w_640/images/20190129/e3b0d6311b1a411fa68125fc03b8ef67.jpeg")
+                .setNickName("thomas")
+                .setFreeReview(LiveConstant.Flag.YES.getFlag())
+                .setRequestId(LiveSignUtil.generateUUID());
+        liveSendChatMsgResponse = new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest);
+        Assert.assertNotNull(liveSendChatMsgResponse);
+        if (liveSendChatMsgResponse != null) {
+            //to do something ......
+            msgId = liveSendChatMsgResponse.getMsgId();
+            log.debug("测试通过HTTP接口发送聊天消息成功,消息ID {}", msgId);
+        }
+        Assert.assertNotEquals(0, msgId.trim().length());
+        return msgId;
     }
     
     /**

@@ -127,12 +127,6 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
         @ApiModelProperty(name = "onlyOneLiveEnabled", value = "频道是否只能直播一次，Y是，N否, 默认为N", required = false)
         private String onlyOneLiveEnabled;
         
-        /**
-         * 频道是否只能直播一次，Y是，N否, 默认为N
-         */
-        @ApiModelProperty(name = "onlyOneLiveEnabled", value = "频道是否只能直播一次，Y是，N否, 默认为N", required = false)
-        private String onlyOneLiveEnabled;
-        
     }
     
     @Data

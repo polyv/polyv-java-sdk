@@ -465,6 +465,9 @@ public class LiveChatRoomServiceImplTest extends BaseTest {
         LiveDelBannedDataRequest liveDelBannedDataRequest = new LiveDelBannedDataRequest();
         Boolean liveDelBannedDataResponse = null;
         try {
+            //创建一个禁言IP（192.168.1.1）用于测试，实际业务过程中，此代码可以删除
+            testAddBannedIP();
+            //正式业务逻辑
             String channelId = super.createChannel();
             liveDelBannedDataRequest.setContent("192.168.1.1")
                     .setChannelId(channelId)

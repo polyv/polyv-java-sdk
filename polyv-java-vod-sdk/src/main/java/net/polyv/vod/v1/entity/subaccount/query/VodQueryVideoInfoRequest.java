@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
@@ -22,6 +23,7 @@ public class VodQueryVideoInfoRequest extends VodCommonRequest {
      * 视频ID，多个视频ID用英文逗号分隔
      */
     @ApiModelProperty(name = "videoIds", value = "视频ID，多个视频ID用英文逗号分隔", required = true)
+    @NotNull(message = "属性videoIds不能为空")
     @JSONField(name = "vids")
     private String videoIds;
     

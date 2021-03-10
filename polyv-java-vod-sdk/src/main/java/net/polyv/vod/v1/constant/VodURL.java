@@ -196,6 +196,11 @@ public class VodURL {
     public static final String UPDATE_CATEGORY_PROFILE_URL = BASE_URI + "/v3/category/update-profile";
     
     /**
+     * 获取某一天视频观看日志
+     */
+    public static final String QUERY_VIEW_LOG_BY_DAY_URL = BASE_URI + "v2/data/" + PARAM_REPLACE_CHAR + "/viewlog";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

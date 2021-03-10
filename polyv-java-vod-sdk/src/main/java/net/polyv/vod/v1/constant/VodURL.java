@@ -201,6 +201,11 @@ public class VodURL {
     public static final String QUERY_VIEW_LOG_BY_DAY_URL = BASE_URI + "v2/data/" + PARAM_REPLACE_CHAR + "/viewlog";
     
     /**
+     * 根据分类批量获取视频时长和大小
+     */
+    public static final String GET_VIDEO_SIZE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/getSizeByCata";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

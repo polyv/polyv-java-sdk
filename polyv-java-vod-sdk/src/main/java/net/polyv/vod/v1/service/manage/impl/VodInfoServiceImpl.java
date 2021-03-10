@@ -9,6 +9,8 @@ import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeResponse;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameResponse;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -67,6 +69,21 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
                 VodGetVideoExamLogResponse.ExamLog.class);
         vodGetVideoExamLogResponse.setContents(returnList);
         return vodGetVideoExamLogResponse;
+    }
+    
+    /**
+     * 根据分类批量获取视频时长和大小
+     * URL地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/get-duration-by-category/
+     * @param vodGetVideoSizeRequest
+     * @return 根据分类批量获取视频时长和大小返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<VodGetVideoSizeResponse> getVideoSize(VodGetVideoSizeRequest vodGetVideoSizeRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.GET_VIDEO_SIZE_URL);
+        return super.getReturnList(url, vodGetVideoSizeRequest, VodGetVideoSizeResponse.class);
     }
     
 }

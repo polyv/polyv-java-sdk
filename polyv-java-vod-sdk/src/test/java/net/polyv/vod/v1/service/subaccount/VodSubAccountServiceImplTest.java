@@ -81,16 +81,16 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
     @Test
     public void testGetVideoInfo() throws IOException, NoSuchAlgorithmException {
         VodQueryVideoInfoRequest vodQueryVideoInfoRequest = new VodQueryVideoInfoRequest();
-        List<VodQueryVideoInfoResponse> vodQueryVideoInfoResponse = null;
+        List<VodQueryVideoInfoResponse> vodQueryVideoInfoResponseList = null;
         try {
             vodQueryVideoInfoRequest.setVideoIds(
                     "1b448be32355403dad586f7468e63e23_1,1b448be323a146649ad0cc89d0faed9c_1")
                     .setFilters("basicInfo,metaData,transcodeInfo,snapshotInfo")
                     .setRequestId(VodSignUtil.generateUUID());
-            vodQueryVideoInfoResponse = new VodSubAccountServiceImpl().getVideoInfo(vodQueryVideoInfoRequest);
-            Assert.assertNotNull(vodQueryVideoInfoResponse);
-            if (vodQueryVideoInfoResponse != null) {
-                log.debug("测试查询视频信息,{}", JSON.toJSONString(vodQueryVideoInfoResponse));
+            vodQueryVideoInfoResponseList = new VodSubAccountServiceImpl().getVideoInfo(vodQueryVideoInfoRequest);
+            Assert.assertNotNull(vodQueryVideoInfoResponseList);
+            if (vodQueryVideoInfoResponseList != null) {
+                log.debug("测试查询视频信息,{}", JSON.toJSONString(vodQueryVideoInfoResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

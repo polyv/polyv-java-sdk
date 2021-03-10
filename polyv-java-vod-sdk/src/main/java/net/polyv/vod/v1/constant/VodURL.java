@@ -206,6 +206,12 @@ public class VodURL {
     public static final String GET_VIDEO_SIZE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/getSizeByCata";
     
     /**
+     * 根据分类批量获取视频时长和大小
+     */
+    public static final String GET_WECHAT_SHARE_VIDEO_INFO_URL =
+            BASE_URI + "v2/video/wechat-share/" + PARAM_REPLACE_CHAR + "/video-info";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

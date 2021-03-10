@@ -11,6 +11,8 @@ import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeResponse;
+import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameResponse;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -84,6 +86,22 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.GET_VIDEO_SIZE_URL);
         return super.getReturnList(url, vodGetVideoSizeRequest, VodGetVideoSizeResponse.class);
+    }
+    
+    /**
+     * 获取微信分享页的视频相关信息接口
+     * URL地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/wechat-video-info/
+     * @param vodGetWeChatShareVideoInfoRequest
+     * @return 获取微信分享页的视频相关信息接口返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public VodGetWeChatShareVideoInfoResponse getWeChatShareVideoInfo(
+            VodGetWeChatShareVideoInfoRequest vodGetWeChatShareVideoInfoRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.GET_WECHAT_SHARE_VIDEO_INFO_URL);
+        return super.getReturnOne(url, vodGetWeChatShareVideoInfoRequest, VodGetWeChatShareVideoInfoResponse.class);
     }
     
 }

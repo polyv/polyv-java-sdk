@@ -9,6 +9,8 @@ import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeResponse;
+import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameResponse;
 
@@ -56,6 +58,18 @@ public interface IVodInfoService {
      * @throws NoSuchAlgorithmException 异常
      */
     List<VodGetVideoSizeResponse> getVideoSize(VodGetVideoSizeRequest vodGetVideoSizeRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取微信分享页的视频相关信息接口
+     * URL地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/wechat-video-info/
+     * @param vodGetWeChatShareVideoInfoRequest
+     * @return 获取微信分享页的视频相关信息接口返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    VodGetWeChatShareVideoInfoResponse getWeChatShareVideoInfo(
+            VodGetWeChatShareVideoInfoRequest vodGetWeChatShareVideoInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

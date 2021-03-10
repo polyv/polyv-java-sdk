@@ -11,16 +11,16 @@
 	@Test
 	public void testGetCheckinListInfo() throws Exception, NoSuchAlgorithmException {
         LiveCheckinListRequest liveCheckinListRequest = new LiveCheckinListRequest();
-        LiveCheckinListResponse checkinListInfo = null;
+        LiveCheckinListResponse liveCheckinListResponse = null;
         try {
             String channelId = super.createChannel();
             liveCheckinListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
             liveCheckinListRequest.setDate(getDate(2020,10,20)).setSessionId("fs9v9y4nxf");
-            checkinListInfo = new LiveCheckinServiceImpl().getCheckinListInfo(liveCheckinListRequest);
-            Assert.assertNotNull(checkinListInfo);
-            if (checkinListInfo != null) {
+            liveCheckinListResponse = new LiveCheckinServiceImpl().getCheckinListInfo(liveCheckinListRequest);
+            Assert.assertNotNull(liveCheckinListResponse);
+            if (liveCheckinListResponse != null) {
                 //to do something ......
-                log.debug("测试查询签到结果成功{}", JSON.toJSONString(checkinListInfo));
+                log.debug("测试查询签到结果成功{}", JSON.toJSONString(liveCheckinListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -56,6 +56,10 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | contents | false | Array | 签到记录数据数组【详见[CheckinRecord参数描述](checkinService.md?id=polyv37)】 | 
+| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | false | Integer | 当前页 | 
+| totalItems | false | Integer | 记录总条数 | 
+| totalPage | false | Integer | 总页数 | 
 
 <h6 id="polyv37"><a href="#/checkinService.md?id=polyv37"data-id="CheckinRecord参数描述"class="anchor"><span>CheckinRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
 

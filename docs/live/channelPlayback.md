@@ -546,7 +546,7 @@ Y为开启，N为关闭
         LiveChannelVideoOnlyRequest liveChannelVideoOnlyRequest = new LiveChannelVideoOnlyRequest();
         LiveChannelVideoOnlyResponse liveChannelVideoOnlyResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String fileId = listChannelFileIds(channelId).get(0);
             liveChannelVideoOnlyRequest.setChannelId(channelId)
                     .setFileId(fileId)
@@ -626,7 +626,7 @@ Y为开启，N为关闭
         LiveChannelPlaybackSettingRequest liveChannelPlaybackSettingRequest;
         Boolean liveChannelPlaybackSettingResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             List<String> videoIds = listChannelVideoIds(channelId);
             liveChannelPlaybackSettingRequest = new LiveChannelPlaybackSettingRequest();
             liveChannelPlaybackSettingRequest.setChannelId(channelId)
@@ -938,7 +938,7 @@ true为删除成功，false为删除失败
                 new LiveDeleteChannelPlaybackVideoRequest();
         Boolean liveDeleteChannelPlaybackVideoResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String videoId = "07f5bbeb67";
             liveDeleteChannelPlaybackVideoRequest.setChannelId(channelId)
                     .setVideoId(videoId)
@@ -1001,7 +1001,7 @@ true为删除成功，false为删除失败
         LiveUpdatePlaybackTitleRequest liveUpdatePlaybackTitleRequest = new LiveUpdatePlaybackTitleRequest();
         Boolean liveUpdatePlaybackTitleResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             String videoId = "992d36fa40";
             liveUpdatePlaybackTitleRequest.setChannelId(channelId)
                     .setVideoId(videoId)
@@ -1068,7 +1068,7 @@ true为修改成功，false为修改失败
         LiveMergeMp4RecordRequest liveMergeMp4RecordRequest = new LiveMergeMp4RecordRequest();
         LiveMergeMp4RecordResponse liveMergeMp4RecordResponse;
         try {
-            String channelId = createChannel();
+            String channelId = super.createChannel();
             liveMergeMp4RecordRequest.setChannelId(channelId)
                     .setStartTime(super.getDate(1603848613000l))
                     .setEndTime(super.getDate(1603854259000l))

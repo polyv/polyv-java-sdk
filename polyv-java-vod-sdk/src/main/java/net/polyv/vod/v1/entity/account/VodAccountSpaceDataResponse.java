@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
+ * 获取用户空间及流量情况返回实体
  * @author: thomas
  **/
 @Data

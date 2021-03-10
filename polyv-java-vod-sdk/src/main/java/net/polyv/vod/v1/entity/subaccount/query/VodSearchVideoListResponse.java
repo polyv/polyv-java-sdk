@@ -62,7 +62,7 @@ public class VodSearchVideoListResponse extends VodPageCommonResponse {
          * 源视频时长，单位：秒
          */
         @ApiModelProperty(name = "duration", value = "源视频时长，单位：秒", required = false)
-        private Float duration;
+        private Integer duration;
         
         /**
          * 首图地址，大图
@@ -93,7 +93,7 @@ public class VodSearchVideoListResponse extends VodPageCommonResponse {
          */
         @ApiModelProperty(name = "status", value = "视频状态码;60/61:已发布;10:等待编码;20:正在编码;50:等待审核;51:审核不通过;-1:已删除;",
                 required = false)
-        private Long status;
+        private Integer status;
         
         /**
          * 分类id, 如1为根目录

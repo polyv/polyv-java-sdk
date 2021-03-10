@@ -52,15 +52,15 @@ public class VodSearchVideoListRequest extends VodPageCommonRequest {
     private String containSubCate;
     
     /**
-     * 按创建时间范围查询，起始时间戳，13位时间戳
+     * 按创建时间范围查询，格式为yyyy-MM-dd HH:mm:ss
      */
-    @ApiModelProperty(name = "startTime", value = "按创建时间范围查询，起始时间", required = false)
+    @ApiModelProperty(name = "startTime", value = "按创建时间范围查询，起始时间，格式为yyyy-MM-dd HH:mm:ss", required = false)
     private Date startTime;
     
     /**
-     * 结束时间戳，13位时间戳
+     * 结束时间戳，格式为yyyy-MM-dd HH:mm:ss
      */
-    @ApiModelProperty(name = "endTime", value = "结束时间", required = false)
+    @ApiModelProperty(name = "endTime", value = "结束时间，格式为yyyy-MM-dd HH:mm:ss", required = false)
     private Date endTime;
     
     /**

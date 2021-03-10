@@ -7,6 +7,7 @@ import java.util.List;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoPreviewDurationRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
@@ -72,4 +73,14 @@ public interface IVodInfoService {
             VodGetWeChatShareVideoInfoRequest vodGetWeChatShareVideoInfoRequest)
             throws IOException, NoSuchAlgorithmException;
     
+    /**
+     * 获取视频播放预览时长接口
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/get-preview-duration/
+     * @param vodGetVideoPreviewDurationRequest 获取视频播放预览时长接口请求实体
+     * @return Integer
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Integer getVideoPreviewDuration(VodGetVideoPreviewDurationRequest vodGetVideoPreviewDurationRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

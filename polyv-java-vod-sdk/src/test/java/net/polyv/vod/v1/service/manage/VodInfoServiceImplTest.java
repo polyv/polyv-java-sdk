@@ -14,6 +14,7 @@ import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoPreviewDurationRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
@@ -165,6 +166,35 @@ public class VodInfoServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodGetWeChatShareVideoInfoResponse);
             if (vodGetWeChatShareVideoInfoResponse != null) {
                 log.debug("测试获取微信分享页的视频相关信息接口成功,{}", JSON.toJSONString(vodGetWeChatShareVideoInfoResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试获取视频播放预览时长接口
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetVideoPreviewDuration() throws IOException, NoSuchAlgorithmException {
+        VodGetVideoPreviewDurationRequest vodGetVideoPreviewDurationRequest = new VodGetVideoPreviewDurationRequest();
+        Integer vodGetVideoPreviewDurationResponse = null;
+        try {
+            vodGetVideoPreviewDurationRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetVideoPreviewDurationResponse = new VodInfoServiceImpl().getVideoPreviewDuration(
+                    vodGetVideoPreviewDurationRequest);
+            Assert.assertNotNull(vodGetVideoPreviewDurationResponse);
+            if (vodGetVideoPreviewDurationResponse != null) {
+                log.debug("测试获取视频播放预览时长接口成功,{}", JSON.toJSONString(vodGetVideoPreviewDurationResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

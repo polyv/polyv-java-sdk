@@ -212,6 +212,12 @@ public class VodURL {
             BASE_URI + "v2/video/wechat-share/" + PARAM_REPLACE_CHAR + "/video-info";
     
     /**
+     * 获取视频播放预览时长接口
+     */
+    public static final String GET_VIDEO_PREVIEW_DURATION_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-preview-duration";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

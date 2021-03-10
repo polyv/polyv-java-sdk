@@ -9,6 +9,7 @@ import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoPreviewDurationRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
@@ -102,6 +103,21 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.GET_WECHAT_SHARE_VIDEO_INFO_URL);
         return super.getReturnOne(url, vodGetWeChatShareVideoInfoRequest, VodGetWeChatShareVideoInfoResponse.class);
+    }
+    
+    /**
+     * 获取视频播放预览时长接口
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/get-preview-duration/
+     * @param vodGetVideoPreviewDurationRequest 获取视频播放预览时长接口请求实体
+     * @return Integer
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Integer getVideoPreviewDuration(VodGetVideoPreviewDurationRequest vodGetVideoPreviewDurationRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.GET_VIDEO_PREVIEW_DURATION_URL);
+        return super.getReturnOne(url, vodGetVideoPreviewDurationRequest, Integer.class);
     }
     
 }

@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import net.polyv.vod.v1.entity.VodCommonResponse;
 import net.polyv.vod.v1.entity.subaccount.edit.VodAddCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteVideoRequest;
+import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoInfoRequest;
@@ -119,5 +119,16 @@ public interface IVodSubAccountService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean deleteCategory(VodDeleteCategoryRequest vodDeleteCategoryRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 修改视频分类属性设置
+     * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/update-category-profile/
+     * @param vodUpdateCategoryProfileRequest 修改视频分类属性设置请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateCategoryProfile(VodUpdateCategoryProfileRequest vodUpdateCategoryProfileRequest)
             throws IOException, NoSuchAlgorithmException;
 }

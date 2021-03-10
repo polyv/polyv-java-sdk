@@ -15,6 +15,7 @@ import net.polyv.vod.v1.entity.VodCommonResponse;
 import net.polyv.vod.v1.entity.subaccount.edit.VodAddCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteVideoRequest;
+import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoInfoRequest;
@@ -304,6 +305,42 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
             Assert.assertTrue(vodDeleteCategoryResponse);
             if (vodDeleteCategoryResponse) {
                 log.debug("删除视频分类成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试修改视频分类属性设置
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testUpdateCategoryProfile() throws IOException, NoSuchAlgorithmException {
+        VodUpdateCategoryProfileRequest vodUpdateCategoryProfileRequest = new VodUpdateCategoryProfileRequest();
+        Boolean vodUpdateCategoryProfileResponse = null;
+        try {
+            vodUpdateCategoryProfileRequest.setCategoryId("1615286323771")
+                    .setUserId("1b448be323")
+                    .setEnabled("Y")
+                    .setKeepSource(0)
+                    .setEncrypt(0)
+                    .setEncryptLevel("open")
+                    .setIsEdu(0)
+                    .setEncodeAAC(0)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUpdateCategoryProfileResponse = new VodSubAccountServiceImpl().updateCategoryProfile(
+                    vodUpdateCategoryProfileRequest);
+            Assert.assertTrue(vodUpdateCategoryProfileResponse);
+            if (vodUpdateCategoryProfileResponse) {
+                log.debug("修改视频分类属性设置成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -191,6 +191,11 @@ public class VodURL {
     public static final String DELETE_CATEGORY_URL = BASE_URI + "/v3/category/delete";
     
     /**
+     * 修改视频分类属性设置
+     */
+    public static final String UPDATE_CATEGORY_PROFILE_URL = BASE_URI + "/v3/category/update-profile";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

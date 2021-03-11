@@ -328,7 +328,6 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
         Boolean vodUpdateCategoryProfileResponse = null;
         try {
             vodUpdateCategoryProfileRequest.setCategoryId("1615286323771")
-                    .setUserId("1b448be323")
                     .setEnabled("Y")
                     .setKeepSource(0)
                     .setEncrypt(0)

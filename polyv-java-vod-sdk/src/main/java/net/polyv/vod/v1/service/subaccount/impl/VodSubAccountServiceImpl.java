@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import net.polyv.vod.v1.config.VodGlobalConfig;
+import net.polyv.vod.v1.constant.VodConstant;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.VodCommonResponse;
 import net.polyv.vod.v1.entity.subaccount.edit.VodAddCategoryRequest;
@@ -171,6 +173,7 @@ public class VodSubAccountServiceImpl extends VodBaseService implements IVodSubA
     @Override
     public Boolean updateCategoryProfile(VodUpdateCategoryProfileRequest vodUpdateCategoryProfileRequest)
             throws IOException, NoSuchAlgorithmException {
+        vodUpdateCategoryProfileRequest.setUserId(VodGlobalConfig.getUserId());
         super.postFormBodyReturnOne(VodURL.UPDATE_CATEGORY_PROFILE_URL, vodUpdateCategoryProfileRequest, String.class);
         return true;
     }

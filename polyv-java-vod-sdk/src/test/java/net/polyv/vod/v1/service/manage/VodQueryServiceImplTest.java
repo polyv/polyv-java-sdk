@@ -69,7 +69,7 @@ public class VodQueryServiceImplTest extends BaseTest {
             vodSearchVideoListResponse = new VodQueryServiceImpl().searchVideoList(vodSearchVideoListRequest);
             Assert.assertNotNull(vodSearchVideoListResponse);
             if (vodSearchVideoListResponse != null) {
-                log.debug("测试根据授权播放开关状态查询视频成功,{}", JSON.toJSONString(vodSearchVideoListResponse));
+                log.debug("测试查找视频成功,{}", JSON.toJSONString(vodSearchVideoListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -20,15 +20,15 @@ public class CommonParseUtil {
     public static void testCreateFields() {
         Boolean req = null;//判断是生成请求还是响应
         String fieldsStr = "";
-        fieldsStr = "questionId\tstring\t题目ID\n" + "times\tint\t第几次发送题目，用于区分相同题目重复发送的情况\n" + "answer\tstring\t题目的答案\n" +
+        /*fieldsStr = "questionId\tstring\t题目ID\n" + "times\tint\t第几次发送题目，用于区分相同题目重复发送的情况\n" + "answer\tstring\t题目的答案\n" +
                 "total\tint\t答题人数\n" + "options\tarray\t题目选项信息列表\n" + "title\tstring\t选项标题\n" +
                 "count\tint\t选择该选项的人数\n" + "percent\tstring\t选择该选项的人数百分比\n" + "records\tarray\t答题的用户列表\n" +
                 "viewerId\tstring\t答题的用户ID\n" + "nickname\tstring\t答题的用户昵称\n" + "answer\tstring\t答题的用户提交的答案\n" +
                 "corrent\tboolean\t答题的用户提交的答案是否正确：false不正确，true正确\n" + "submitTime\ttimestamp\t答题的用户提交时间，13位毫秒级时间戳\n" +
-                "type\tstring\t题目类型：R为单选，C为多选，Q为问答\n" + "itemType\tint\t答题类型：1表示问答，0表示答题卡";
+                "type\tstring\t题目类型：R为单选，C为多选，Q为问答\n" + "itemType\tint\t答题类型：1表示问答，0表示答题卡";*/
 
 
-//        fieldsStr = readFileString("C:\\Users\\T460\\Desktop\\fields.txt");
+        fieldsStr = readFileString("D:\\data\\fields.txt");
         
         String[] lineStr = fieldsStr.split("\n");
         for (String temp : lineStr) {

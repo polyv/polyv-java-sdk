@@ -4,21 +4,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-import lombok.extern.slf4j.Slf4j;
 import net.polyv.vod.v1.config.InitConfig;
 
 /**
- * @author: thomas
- **/
-@Slf4j
-public class BaseTest {
-    /**
-     * 系统默认初始化
-     */
-    public BaseTest() {
-        InitConfig.initPolyvVodByFile(null);
-    }
+ * 子账号测试基类
+ * @author: fangyan
+ */
+public class SubBaseTest {
     
+    public SubBaseTest() {
+        InitConfig.initPolyvVodByFile("/data/password/password_sub.txt");
+    }
     
     /**
      * 获取Date对象
@@ -28,24 +24,24 @@ public class BaseTest {
      * @param time 时分秒整形数组
      * @return
      */
-    public Date getDate(int year, int month,int day, int... time) {
+    public Date getDate(int year, int month, int day, int... time) {
         Calendar instance = Calendar.getInstance();
-        instance.set(year,month,day);
-        if(time.length>0){
-            instance.set(Calendar.HOUR_OF_DAY,time[0]);
+        instance.set(year, month, day);
+        if (time.length > 0) {
+            instance.set(Calendar.HOUR_OF_DAY, time[0]);
         }
-        if(time.length>1){
-            instance.set(Calendar.MINUTE,time[1]);
+        if (time.length > 1) {
+            instance.set(Calendar.MINUTE, time[1]);
         }
-        if(time.length>2){
-            instance.set(Calendar.SECOND,time[2]);
+        if (time.length > 2) {
+            instance.set(Calendar.SECOND, time[2]);
         }
         return instance.getTime();
     }
     
     /**
      * 获取Date对象
-     * @param  timestamp 时间戳
+     * @param timestamp 时间戳
      * @return
      */
     public Date getDate(Long timestamp) {
@@ -66,7 +62,7 @@ public class BaseTest {
         Random random = new Random();
         int letterLength = random.nextInt(length - 2) + 1;
         int numLength = length - letterLength;
-        if(letterLength== 0 || letterLength == length){
+        if (letterLength == 0 || letterLength == length) {
             throw new RuntimeException("error");
         }
         StringBuffer sb = new StringBuffer();
@@ -113,5 +109,4 @@ public class BaseTest {
         }
         return sb.toString();
     }
-    
 }

@@ -1,4 +1,4 @@
-package net.polyv.vod.v1.entity.manage.query;
+package net.polyv.vod.v1.entity.manage.edit;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -8,13 +8,26 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 查找视频返回实体
+ * 编辑单个视频的信息返回实体
  * @author: sadboy
  **/
 @Data
 @Accessors(chain = true)
-@ApiModel("查找视频返回实体")
-public class VodSearchVideoListResponse {
+@ApiModel("编辑单个视频的信息返回实体")
+public class VodUpdateVideoInfoResponse {
+    
+    /**
+     * 视频截图大图地址
+     */
+    @ApiModelProperty(name = "imagesBig", value = "视频截图大图地址", required = false)
+    @JSONField(name = "images_b")
+    private String[] imagesBig;
+    
+    /**
+     * 视频截图小图地址
+     */
+    @ApiModelProperty(name = "images", value = "视频截图小图地址", required = false)
+    private String[] images;
     
     /**
      * 视频标签
@@ -23,15 +36,9 @@ public class VodSearchVideoListResponse {
     private String tag;
     
     /**
-     * MP4源文件
+     * 视频标题
      */
-    @ApiModelProperty(name = "mp4", value = "MP4源文件", required = false)
-    private String mp4;
-    
-    /**
-     * 标题
-     */
-    @ApiModelProperty(name = "title", value = "标题", required = false)
+    @ApiModelProperty(name = "title", value = "视频标题", required = false)
     private String title;
     
     /**
@@ -82,17 +89,16 @@ public class VodSearchVideoListResponse {
     private String categoryId;
     
     /**
-     * 返回视频flash链接
+     * 返回flash连接
      */
-    @ApiModelProperty(name = "swfLink", value = "返回视频flash链接", required = false)
+    @ApiModelProperty(name = "swfLink", value = "返回flash连接", required = false)
     @JSONField(name = "swf_link")
     private String swfLink;
     
     /**
-     * 视频状态码（60/61：已发布；10：等待编码；20：正在编码；50：等待审核；51：审核不通过，-1：已删除；）
+     * 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除；
      */
-    @ApiModelProperty(name = "status", value = "视频状态码视频状态码（60/61：已发布；10：等待编码；20：正在编码；50：等待审核；51：审核不通过，-1：已删除；）",
-            required = false)
+    @ApiModelProperty(name = "status", value = "视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除；", required = false)
     private String status;
     
     /**
@@ -102,6 +108,34 @@ public class VodSearchVideoListResponse {
     private Integer seed;
     
     /**
+     * 流畅码率flv格式视频地址
+     */
+    @ApiModelProperty(name = "SDFlv", value = "流畅码率flv格式视频地址", required = false)
+    @JSONField(name = "flv1")
+    private String SDFlv;
+    
+    /**
+     * 高清码率flv格式视频地址
+     */
+    @ApiModelProperty(name = "HDFlv", value = "高清码率flv格式视频地址", required = false)
+    @JSONField(name = "flv2")
+    private String HDFlv;
+    
+    /**
+     * 超清码率flv格式视频地址
+     */
+    @ApiModelProperty(name = "FHDFlv", value = "超清码率flv格式视频地址", required = false)
+    @JSONField(name = "flv3")
+    private String FHDFlv;
+    
+    /**
+     * 源文件
+     */
+    @ApiModelProperty(name = "sourceFile", value = "源文件", required = false)
+    @JSONField(name = "sourcefile")
+    private String sourceFile;
+    
+    /**
      * 视频宽度
      */
     @ApiModelProperty(name = "playerWidth", value = "视频宽度", required = false)
@@ -109,9 +143,16 @@ public class VodSearchVideoListResponse {
     private String playerWidth;
     
     /**
-     * 时长,如：00:15:46
+     * 用户默认播放视频
      */
-    @ApiModelProperty(name = "duration", value = "时长,如：00:15:46", required = false)
+    @ApiModelProperty(name = "defaultVideo", value = "用户默认播放视频", required = false)
+    @JSONField(name = "default_video")
+    private String defaultVideo;
+    
+    /**
+     * 视频时长,如：00:00:48
+     */
+    @ApiModelProperty(name = "duration", value = "视频时长,如：00:00:48", required = false)
     private String duration;
     
     /**
@@ -142,38 +183,44 @@ public class VodSearchVideoListResponse {
     private String playerHeight;
     
     /**
-     * 视频上传日期
+     * 上传时间
      */
-    @ApiModelProperty(name = "uploadTime", value = "视频上传日期", required = false)
+    @ApiModelProperty(name = "uploadTime", value = "上传时间", required = false)
     @JSONField(name = "ptime")
     private String uploadTime;
     
     /**
-     * 源视频文件大小
-     * TODO 单位**
+     * 源文件大小
      */
-    @ApiModelProperty(name = "source_filesize", value = "源视频文件大小,单位**", required = false)
+    @ApiModelProperty(name = "sourceFilesize", value = "源文件大小", required = false)
     @JSONField(name = "source_filesize")
-    private Integer sourceFilesize;
+    private String sourceFilesize;
     
     /**
-     * 分别为 流畅、高清、超清 视频文件大小
+     * 编码后各个清晰度视频的文件大小，类型为array
      */
-    @ApiModelProperty(name = "filesize", value = "分别为 流畅、高清、超清 视频文件大小", required = false)
-    private Integer[] filesize;
+    @ApiModelProperty(name = "filesize", value = "编码后各个清晰度视频的文件大小，类型为array", required = false)
+    private String[] filesize;
     
     /**
-     * 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整
+     * md5校验值
      */
-    @ApiModelProperty(name = "md5Checksum", value = "上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整", required = false)
+    @ApiModelProperty(name = "md5Checksum", value = "md5校验值", required = false)
     @JSONField(name = "md5checksum")
     private String md5Checksum;
     
     /**
-     * 流畅、高清、超清清晰度的m3u8d地址
+     * 编码后各个清晰度视频的m3u8地址，类型为array
      */
-    @ApiModelProperty(name = "hls", value = "流畅、高清、超清清晰度的m3u8地址", required = false)
+    @ApiModelProperty(name = "hls", value = "编码后各个清晰度视频的m3u8地址，类型为array", required = false)
     private String[] hls;
+    
+    /**
+     * 是否为源文件，否：0,是：1
+     */
+    @ApiModelProperty(name = "keepSource", value = "是否为源文件，否：0,是：1", required = false)
+    @JSONField(name = "keepsource")
+    private String keepSource;
     
     /**
      * 上传者信息
@@ -182,11 +229,10 @@ public class VodSearchVideoListResponse {
     private Uploader uploader;
     
     /**
-     * 是否为源文件，否：0,是：1
+     * 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权
      */
-    @ApiModelProperty(name = "keepSource", value = "是否为源文件，否：0,是：1", required = false)
-    @JSONField(name = "keepsource")
-    private String keepSource;
+    @ApiModelProperty(name = "hlsLevel", value = "加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权", required = false)
+    private String hlsLevel;
     
     /**
      * 分类名称
@@ -219,4 +265,5 @@ public class VodSearchVideoListResponse {
         private String role;
         
     }
+
 }

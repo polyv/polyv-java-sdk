@@ -47,7 +47,7 @@ public class VodGetVideoSizeResponse extends VodCommonResponse {
         private String videoId;
         
         /**
-         * 时长，格式为时分秒
+         * 时长，格式为时分秒。例如 00:03:11
          */
         @ApiModelProperty(name = "duration", value = "时长，格式为时分秒")
         private String duration;

@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoFirstImageRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPreviewDurationRequest;
@@ -261,6 +263,34 @@ public class VodInfoServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodGetVideoFirstImageResponse);
             if (vodGetVideoFirstImageResponse != null) {
                 log.debug("测试获取单个视频的首图成功,{}", vodGetVideoFirstImageResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试获取单个视频的问答题目
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetVideoExam() throws IOException, NoSuchAlgorithmException {
+        VodGetVideoExamRequest vodGetVideoExamRequest = new VodGetVideoExamRequest();
+        List<VodGetVideoExamResponse> vodGetVideoExamResponseList = null;
+        try {
+            vodGetVideoExamRequest.setVideoId("1b448be3230a0194d959426ae005645f_1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetVideoExamResponseList = new VodInfoServiceImpl().getVideoExam(vodGetVideoExamRequest);
+            Assert.assertNotNull(vodGetVideoExamResponseList);
+            if (vodGetVideoExamResponseList != null) {
+                log.debug("测试获取单个视频的问答题目成功,{}", JSON.toJSONString(vodGetVideoExamResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

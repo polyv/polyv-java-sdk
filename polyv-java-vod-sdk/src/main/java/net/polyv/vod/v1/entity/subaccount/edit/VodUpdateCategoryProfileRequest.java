@@ -36,41 +36,41 @@ public class VodUpdateCategoryProfileRequest extends VodCommonRequest {
     private String userId;
     
     /**
-     * 是否启用分类设置 Y:启用, N:关闭
+     * 是否启用分类设置 Y:启用, N:关闭，默认值为N:关闭
      */
-    @ApiModelProperty(name = "enabled", value = "是否启用分类设置 Y:启用, N:关闭", required = false)
+    @ApiModelProperty(name = "enabled", value = "是否启用分类设置 Y:启用, N:关闭，默认值为N:关闭", required = false)
     private String enabled;
     
     /**
-     * 1:源文件播放;0:非源文件播放，如果为源文件播放，encrypt、encryptLevel、isEdu、encodeAAC参数不生效
+     * 1:源文件播放;0:非源文件播放，如果为源文件播放，encrypt、encryptLevel、isEdu、encodeAAC参数不生效，默认值为0:非源文件播放
      */
     @ApiModelProperty(name = "keepSource", value = "1:源文件播放;0:非源文件播放，如果为源文件播放，encrypt、encryptLevel、isEdu、encodeAAC" +
-            "参数不生效", required = false)
+            "参数不生效，默认值为0:非源文件播放", required = false)
     private Integer keepSource;
     
     /**
-     * 1:开启视频加密,0:不加密
+     * 1:开启视频加密,0:不加密，默认值为0:不加密
      */
-    @ApiModelProperty(name = "encrypt", value = "1:开启视频加密,0:不加密", required = false)
+    @ApiModelProperty(name = "encrypt", value = "1:开启视频加密,0:不加密，默认值为0:不加密", required = false)
     private Integer encrypt;
     
     /**
-     * 加密等级，取值有: open、web、app、wxa_app,分别代表非加密授权,Web授权,APP授权,小程序授权
+     * 加密等级，取值有: open、web、app、wxa_app,分别代表非加密授权,Web授权,APP授权,小程序授权，默认值为open：非加密授权
      */
-    @ApiModelProperty(name = "encryptLevel", value = "加密等级，取值有: open、web、app、wxa_app,分别代表非加密授权,Web授权,APP授权,小程序授权",
+    @ApiModelProperty(name = "encryptLevel", value = "加密等级，取值有: open、web、app、wxa_app,分别代表非加密授权,Web授权,APP授权,小程序授权，默认值为open：非加密授权",
             required = false)
     private String encryptLevel;
     
     /**
-     * 1:启用录屏优化, 0:关闭
+     * 1:启用录屏优化, 0:关闭，默认值为0:关闭
      */
-    @ApiModelProperty(name = "isEdu", value = "1:启用录屏优化, 0:关闭", required = false)
+    @ApiModelProperty(name = "isEdu", value = "1:启用录屏优化, 0:关闭，默认值为0:关闭", required = false)
     private Integer isEdu;
     
     /**
-     * 1:生成aac, 0:不生成，默认为0
+     * 1:生成aac, 0:不生成，默认为0:不生成
      */
-    @ApiModelProperty(name = "encodeAAC", value = "1:生成aac, 0:不生成，默认为0", required = false)
+    @ApiModelProperty(name = "encodeAAC", value = "1:生成aac, 0:不生成，默认为0:不生成", required = false)
     private Integer encodeAAC;
     
 }

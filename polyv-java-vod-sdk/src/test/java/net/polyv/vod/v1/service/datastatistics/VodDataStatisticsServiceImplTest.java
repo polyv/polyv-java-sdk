@@ -28,6 +28,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
      * 测试获取某一天视频观看日志
      * 约束：2、从播放行为产生到数据可查询的间隔时间为1~2小时。但是每条观看记录所消耗的流量计算（flowSize字段）依赖于CDN日志，为了保证数据完整性，流量数据需要间隔一个自然日才会生成。例如1号产生的流量消耗，会在2
      * 约束：号晚上汇总计算，在3号才可查询到流量数据。
+     * 约束：3、注意视频ID和分类ID为空时，获取账号当天所有视频日志；当视频ID为空、分类ID不为空时，查询对应分类ID下的日志；当视频ID不为空时查询对应视频ID的日志
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -36,7 +37,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
         VodQueryViewLogByDayRequest vodQueryViewLogByDayRequest = new VodQueryViewLogByDayRequest();
         List<VodQueryViewLogByDayResponse> vodQueryViewLogByDayResponse = null;
         try {
-            vodQueryViewLogByDayRequest.setDay("20210304")
+            vodQueryViewLogByDayRequest.setDay(super.getDate(2021, 2, 4))
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setCategoryId("1602300731843")
                     .setSessionId(null)

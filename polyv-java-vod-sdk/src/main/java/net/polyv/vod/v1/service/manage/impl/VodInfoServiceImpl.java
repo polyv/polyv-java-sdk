@@ -8,6 +8,8 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoFirstImageRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPreviewDurationRequest;
@@ -155,6 +157,21 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.GET_VIDEO_FIRST_IMAGE_URL);
         return super.getReturnOne(url, vodGetVideoFirstImageRequest, String.class);
+    }
+    
+    /**
+     * 获取单个视频的问答题目
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/get-video-exam/
+     * @param vodGetVideoExamRequest 获取单个视频的问答题目请求实体
+     * @return List
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Override
+    public List<VodGetVideoExamResponse> getVideoExam(VodGetVideoExamRequest vodGetVideoExamRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.GET_VIDEO_EXAM_URL);
+        return super.getReturnList(url, vodGetVideoExamRequest, VodGetVideoExamResponse.class);
     }
     
 }

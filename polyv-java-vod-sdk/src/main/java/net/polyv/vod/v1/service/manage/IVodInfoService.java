@@ -6,6 +6,7 @@ import java.util.List;
 
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoFirstImageRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPreviewDurationRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoRequest;
@@ -95,4 +96,15 @@ public interface IVodInfoService {
      * @throws NoSuchAlgorithmException 异常
      */
     VodGetVideoResponse getVideo(VodGetVideoRequest vodGetVideoRequest) throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取单个视频的首图
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/get-image/
+     * @param vodGetVideoFirstImageRequest 获取单个视频的首图请求实体
+     * @return String
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    String getVideoFirstImage(VodGetVideoFirstImageRequest vodGetVideoFirstImageRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

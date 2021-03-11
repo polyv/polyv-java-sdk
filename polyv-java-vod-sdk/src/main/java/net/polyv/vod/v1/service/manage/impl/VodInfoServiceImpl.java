@@ -8,6 +8,7 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoFirstImageRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPreviewDurationRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoRequest;
@@ -139,6 +140,21 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
             return null;
         }
         return returnList.get(0);
+    }
+    
+    /**
+     * 获取单个视频的首图
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/get-image/
+     * @param vodGetVideoFirstImageRequest 获取单个视频的首图请求实体
+     * @return String
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String getVideoFirstImage(VodGetVideoFirstImageRequest vodGetVideoFirstImageRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.GET_VIDEO_FIRST_IMAGE_URL);
+        return super.getReturnOne(url, vodGetVideoFirstImageRequest, String.class);
     }
     
 }

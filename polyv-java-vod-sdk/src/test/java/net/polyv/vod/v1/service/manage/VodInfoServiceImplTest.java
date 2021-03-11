@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoFirstImageRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPreviewDurationRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoRequest;
@@ -225,6 +226,36 @@ public class VodInfoServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodGetVideoResponse);
             if (vodGetVideoResponse != null) {
                 log.debug("测试获取单个视频信息成功,{}", JSON.toJSONString(vodGetVideoResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试获取单个视频的首图
+     * 返回：首图地址
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetVideoFirstImage() throws IOException, NoSuchAlgorithmException {
+        VodGetVideoFirstImageRequest vodGetVideoFirstImageRequest = new VodGetVideoFirstImageRequest();
+        String vodGetVideoFirstImageResponse = null;
+        try {
+            vodGetVideoFirstImageRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setThumbnail(1)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetVideoFirstImageResponse = new VodInfoServiceImpl().getVideoFirstImage(vodGetVideoFirstImageRequest);
+            Assert.assertNotNull(vodGetVideoFirstImageResponse);
+            if (vodGetVideoFirstImageResponse != null) {
+                log.debug("测试获取单个视频的首图成功,{}", vodGetVideoFirstImageResponse);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

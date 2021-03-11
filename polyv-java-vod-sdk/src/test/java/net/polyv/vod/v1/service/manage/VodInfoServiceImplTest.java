@@ -185,7 +185,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     
     /**
      * 测试获取视频播放预览时长接口
-     * 返回：视频播放预览时长
+     * 返回：视频播放预览时长，单位：秒
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

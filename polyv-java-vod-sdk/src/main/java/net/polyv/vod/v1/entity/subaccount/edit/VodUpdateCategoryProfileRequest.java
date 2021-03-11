@@ -31,7 +31,7 @@ public class VodUpdateCategoryProfileRequest extends VodCommonRequest {
     /**
      * 用户id
      */
-    @ApiModelProperty(name = "userId", value = "用户id", required = true)
+    @ApiModelProperty(required = true, hidden = true)
     @NotNull(message = "属性userId不能为空")
     private String userId;
     
@@ -44,7 +44,8 @@ public class VodUpdateCategoryProfileRequest extends VodCommonRequest {
     /**
      * 1:源文件播放;0:非源文件播放，如果为源文件播放，encrypt、encryptLevel、isEdu、encodeAAC参数不生效
      */
-    @ApiModelProperty(name = "keepSource", value = "1:源文件播放;0:非源文件播放，如果为源文件播放，encrypt、encryptLevel、isEdu、encodeAAC参数不生效", required = false)
+    @ApiModelProperty(name = "keepSource", value = "1:源文件播放;0:非源文件播放，如果为源文件播放，encrypt、encryptLevel、isEdu、encodeAAC" +
+            "参数不生效", required = false)
     private Integer keepSource;
     
     /**
@@ -56,7 +57,8 @@ public class VodUpdateCategoryProfileRequest extends VodCommonRequest {
     /**
      * 加密等级，取值有: open、web、app、wxa_app,分别代表非加密授权,Web授权,APP授权,小程序授权
      */
-    @ApiModelProperty(name = "encryptLevel", value = "加密等级，取值有: open、web、app、wxa_app,分别代表非加密授权,Web授权,APP授权,小程序授权", required = false)
+    @ApiModelProperty(name = "encryptLevel", value = "加密等级，取值有: open、web、app、wxa_app,分别代表非加密授权,Web授权,APP授权,小程序授权",
+            required = false)
     private String encryptLevel;
     
     /**

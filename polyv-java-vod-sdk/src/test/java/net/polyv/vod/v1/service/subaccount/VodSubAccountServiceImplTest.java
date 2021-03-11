@@ -261,6 +261,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
     
     /**
      * 测试修改视频分类信息
+     * 返回：true为修改成功，false为修改失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

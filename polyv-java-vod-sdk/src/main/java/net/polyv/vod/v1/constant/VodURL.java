@@ -218,6 +218,11 @@ public class VodURL {
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-preview-duration";
     
     /**
+     * 获取单个视频信息
+     */
+    public static final String GET_VIDEO_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-video-msg";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

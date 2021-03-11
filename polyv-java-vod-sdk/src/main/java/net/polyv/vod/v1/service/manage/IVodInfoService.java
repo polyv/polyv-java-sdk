@@ -8,6 +8,8 @@ import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPlayStatusRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoPreviewDurationRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideoResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
@@ -83,4 +85,14 @@ public interface IVodInfoService {
      */
     Integer getVideoPreviewDuration(VodGetVideoPreviewDurationRequest vodGetVideoPreviewDurationRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取单个视频信息
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/get-video-msg/
+     * @param vodGetVideoRequest 获取单个视频信息请求实体
+     * @return 获取单个视频信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    VodGetVideoResponse getVideo(VodGetVideoRequest vodGetVideoRequest) throws IOException, NoSuchAlgorithmException;
 }

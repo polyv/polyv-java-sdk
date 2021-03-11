@@ -228,6 +228,11 @@ public class VodURL {
     public static final String GET_VIDEO_FIRST_IMAGE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-image";
     
     /**
+     * 获取单个视频的问答题目
+     */
+    public static final String GET_VIDEO_EXAM_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-video-exam";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

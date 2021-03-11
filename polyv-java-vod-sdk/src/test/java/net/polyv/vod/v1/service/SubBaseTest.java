@@ -1,19 +1,58 @@
 package net.polyv.vod.v1.service;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
+import org.junit.Assert;
+
+import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.config.InitConfig;
+import net.polyv.vod.v1.entity.subaccount.edit.VodAddCategoryRequest;
+import net.polyv.vod.v1.service.subaccount.impl.VodSubAccountServiceImpl;
+import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 子账号测试基类
  * @author: fangyan
  */
+@Slf4j
 public class SubBaseTest {
     
     public SubBaseTest() {
         InitConfig.initPolyvVodByFile("/data/password/password_sub.txt");
+    }
+    
+    /**
+     * 测试新增视频分类
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    public String addCategory() throws IOException, NoSuchAlgorithmException {
+        VodAddCategoryRequest vodAddCategoryRequest = new VodAddCategoryRequest();
+        String vodDeleteVideoResponse = null;
+        try {
+            vodAddCategoryRequest.setName("junit测试新增分类20210309")
+                    .setParentId(null)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodAddCategoryRequest);
+            Assert.assertNotNull(vodDeleteVideoResponse);
+            if (vodDeleteVideoResponse != null) {
+                log.debug("新增视频分类成功");
+            }
+            return vodDeleteVideoResponse;
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
     }
     
     /**

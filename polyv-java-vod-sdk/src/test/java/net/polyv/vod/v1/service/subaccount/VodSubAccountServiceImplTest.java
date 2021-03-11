@@ -235,7 +235,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
      * @throws NoSuchAlgorithmException 异常
      */
 //    @Test
-    public String testAddCategory() throws IOException, NoSuchAlgorithmException {
+    public void testAddCategory() throws IOException, NoSuchAlgorithmException {
         VodAddCategoryRequest vodAddCategoryRequest = new VodAddCategoryRequest();
         String vodDeleteVideoResponse = null;
         try {
@@ -247,7 +247,6 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
             if (vodDeleteVideoResponse != null) {
                 log.debug("新增视频分类成功");
             }
-            return vodDeleteVideoResponse;
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);
@@ -300,7 +299,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
         Boolean vodDeleteCategoryResponse = null;
         try {
             //生成测试数据
-            String categoryId = this.testAddCategory();
+            String categoryId = super.addCategory();
             vodDeleteCategoryRequest.setCategoryId(categoryId).setRequestId(VodSignUtil.generateUUID());
             vodDeleteCategoryResponse = new VodSubAccountServiceImpl().deleteCategory(vodDeleteCategoryRequest);
             Assert.assertTrue(vodDeleteCategoryResponse);

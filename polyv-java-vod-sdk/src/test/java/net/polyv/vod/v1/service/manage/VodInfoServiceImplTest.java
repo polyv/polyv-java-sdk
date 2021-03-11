@@ -131,15 +131,15 @@ public class VodInfoServiceImplTest extends BaseTest {
     @Test
     public void testGetVideoSize() throws IOException, NoSuchAlgorithmException {
         VodGetVideoSizeRequest vodGetVideoSizeRequest = new VodGetVideoSizeRequest();
-        List<VodGetVideoSizeResponse> vodGetVideoSizeResponse = null;
+        List<VodGetVideoSizeResponse> vodGetVideoSizeResponseList = null;
         try {
             vodGetVideoSizeRequest.setVideoIds("1b448be323a146649ad0cc89d0faed9c_1")
                     .setCategoryIds("1602300731843")
                     .setRequestId(VodSignUtil.generateUUID());
-            vodGetVideoSizeResponse = new VodInfoServiceImpl().getVideoSize(vodGetVideoSizeRequest);
-            Assert.assertNotNull(vodGetVideoSizeResponse);
-            if (vodGetVideoSizeResponse != null) {
-                log.debug("测试根据分类批量获取视频时长和大小成功,{}", JSON.toJSONString(vodGetVideoSizeResponse));
+            vodGetVideoSizeResponseList = new VodInfoServiceImpl().getVideoSize(vodGetVideoSizeRequest);
+            Assert.assertNotNull(vodGetVideoSizeResponseList);
+            if (vodGetVideoSizeResponseList != null) {
+                log.debug("测试根据分类批量获取视频时长和大小成功,{}", JSON.toJSONString(vodGetVideoSizeResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

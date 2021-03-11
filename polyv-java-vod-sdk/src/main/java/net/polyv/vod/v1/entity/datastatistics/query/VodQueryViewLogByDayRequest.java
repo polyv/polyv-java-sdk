@@ -1,5 +1,7 @@
 package net.polyv.vod.v1.entity.datastatistics.query;
 
+import java.util.Date;
+
 import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
@@ -25,7 +27,8 @@ public class VodQueryViewLogByDayRequest extends VodCommonRequest {
      */
     @ApiModelProperty(name = "day", value = "查询某天的日志时间，格式：yyyyMMdd", required = true)
     @NotNull(message = "属性day不能为空")
-    private String day;
+    @JSONField(format = "yyyyMMdd")
+    private Date day;
     
     /**
      * 视频ID
@@ -35,17 +38,17 @@ public class VodQueryViewLogByDayRequest extends VodCommonRequest {
     private String videoId;
     
     /**
-     * 分类ID，注意视频ID（vid）和分类ID（cataid）为空时，获取账号当天所有视频日志；当vid为空、cataid不为空时，查询对应cataid下的日志；当vid不为空时查询对应vid的日志
+     * 分类ID
      */
-    @ApiModelProperty(name = "categoryId", value = "分类ID，注意视频ID（vid）和分类ID（cataid）为空时，获取账号当天所有视频日志；当vid为空、cataid" +
-            "不为空时，查询对应cataid下的日志；当vid不为空时查询对应vid的日志", required = false)
+    @ApiModelProperty(name = "categoryId", value = "分类ID", required = false)
     @JSONField(name = "cataid")
     private String categoryId;
     
     /**
-     * 用户自定义ID
+     * 用户自定义ID，自定义值（比如，表示学员信息的学员ID）
      */
-    @ApiModelProperty(name = "sessionId", value = "用户自定义ID", required = false)
+    @ApiModelProperty(name = "sessionId", value = "用户自定义ID，自定义值（比如，表示学员信息的学员ID），最长不能超过50个英文字符。", required
+            = false)
     private String sessionId;
     
     /**

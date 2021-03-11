@@ -2,6 +2,7 @@ package net.polyv.vod.v1.service.manage.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
@@ -166,7 +167,12 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
     public VodUpdateVideoInfoResponse updateVideoInfo(VodUpdateVideoInfoRequest vodUpdateVideoInfoRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPDATE_VIDEO_INFO_URL);
-        return super.postFormBodyReturnOne(url, vodUpdateVideoInfoRequest, VodUpdateVideoInfoResponse.class);
+        List<VodUpdateVideoInfoResponse> vodUpdateVideoInfoResponses = super.postFormBodyReturnList(url,
+                vodUpdateVideoInfoRequest, VodUpdateVideoInfoResponse.class);
+        if(vodUpdateVideoInfoResponses.isEmpty()){
+            return null;
+        }
+        return vodUpdateVideoInfoResponses.get(0);
     }
     
     /**

@@ -32,5 +32,5 @@ public class VodUpdateVideoCategoryRequest extends VodCommonRequest {
      */
     @ApiModelProperty(name = "categoryId", value = "视频分类ID", required = false)
     @JSONField(name = "cateId")
-    private Long categoryId;
+    private String categoryId;
 }

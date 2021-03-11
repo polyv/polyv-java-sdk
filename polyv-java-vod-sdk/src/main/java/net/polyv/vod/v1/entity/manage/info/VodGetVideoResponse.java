@@ -81,9 +81,9 @@ public class VodGetVideoResponse {
     private String context;
     
     /**
-     * 最佳分辨率
+     * 最佳分辨率，如：1280x720
      */
-    @ApiModelProperty(name = "originalDefinition", value = "最佳分辨率", required = false)
+    @ApiModelProperty(name = "originalDefinition", value = "最佳分辨率，如：1280x720", required = false)
     @JSONField(name = "original_definition")
     private String originalDefinition;
     

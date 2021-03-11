@@ -51,7 +51,7 @@ public class VodInfoServiceImplTest extends BaseTest {
             vodListVideoKeyFrameResponse = new VodInfoServiceImpl().listVideoKeyFrame(vodListVideoKeyFrameRequest);
             Assert.assertNotNull(vodListVideoKeyFrameResponse);
             if (vodListVideoKeyFrameResponse != null) {
-                log.debug("测试获取单个视频的打点信息成功,{}", vodListVideoKeyFrameResponse);
+                log.debug("测试获取单个视频的打点信息成功,{}", JSON.toJSONString(vodListVideoKeyFrameResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -79,9 +79,9 @@ public class VodInfoServiceImplTest extends BaseTest {
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
                     .setVideoId("1b448be32343357d5c4784d9ffd1bf5c_1").setRequestId(VodSignUtil.generateUUID());
             vodGetVideoPlayStatusResponse = new VodInfoServiceImpl().getVideoPlayStatus(vodGetVideoPlayStatusRequest);
-            Assert.assertNotNull(vodGetVideoPlayStatusResponse);
-            if (vodGetVideoPlayStatusResponse != null) {
-                log.debug("测试根据视频vid查询视频的授权播放开关状态成功,{}", vodGetVideoPlayStatusResponse);
+            Assert.assertTrue(vodGetVideoPlayStatusResponse);
+            if (vodGetVideoPlayStatusResponse) {
+                log.debug("测试根据视频vid查询视频的授权播放开关状态成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -106,11 +106,14 @@ public class VodInfoServiceImplTest extends BaseTest {
         try {
             vodGetVideoExamLogRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
-                    .setVideoIds("1b448be32343357d5c4784d9ffd1bf5c_1").setRequestId(VodSignUtil.generateUUID());
+                    .setVideoIds("1b448be3230a0194d959426ae005645f_1")
+                    .setStart(super.getDate(2021, 2, 1))
+                    .setEnd(super.getDate(2021, 3, 12))
+                    .setRequestId(VodSignUtil.generateUUID());
             vodGetVideoExamLogResponse = new VodInfoServiceImpl().getVideoExamLog(vodGetVideoExamLogRequest);
             Assert.assertNotNull(vodGetVideoExamLogResponse);
             if (vodGetVideoExamLogResponse != null) {
-                log.debug("测试批量获取答题日志成功,{}", vodGetVideoExamLogResponse);
+                log.debug("测试批量获取答题日志成功,{}", JSON.toJSONString(vodGetVideoExamLogResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -125,6 +128,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     
     /**
      * 测试根据分类批量获取视频时长和大小
+     * 约束：当传了videoIds时，按照videoIds查询；当仅传categoryIds时，按照categoryIds查询；videoIds和categoryIds不能同时为空；同时传以videoIds为准
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -183,7 +187,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     
     /**
      * 测试获取视频播放预览时长接口
-     * 返回：视频播放预览时长
+     * 返回：视频播放预览时长，单位：秒
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

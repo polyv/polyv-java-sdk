@@ -6,6 +6,8 @@ import java.security.NoSuchAlgorithmException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
@@ -68,7 +70,7 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试提交视频裁剪任务
-     * 返回：接口请求成功会返回裁剪后新视频的vid
+     * 返回：接口请求成功会返回裁剪后新视频的videoId
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -86,7 +88,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodClipVideoResponse = new VodEditServiceImpl().clipVideo(vodClipVideoRequest);
             Assert.assertNotNull(vodClipVideoResponse);
             if (vodClipVideoResponse != null) {
-                log.debug("测试提交视频裁剪任务成功,{}", vodClipVideoResponse);
+                log.debug("测试提交视频裁剪任务成功,{}", JSON.toJSONString(vodClipVideoResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -119,7 +121,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodConcatVideoResponse = new VodEditServiceImpl().concatVideo(vodConcatVideoRequest);
             Assert.assertNotNull(vodConcatVideoResponse);
             if (vodConcatVideoResponse != null) {
-                log.debug("测试合并视频成功,{}", vodConcatVideoResponse);
+                log.debug("测试合并视频成功,{}", JSON.toJSONString(vodConcatVideoResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -136,6 +138,7 @@ public class VodEditServiceImplTest extends BaseTest {
      * 测试设置视频打点
      * 约束：2、seconds(打点秒数【第seconds秒】)必须要小于视频长度;
      * 约束：3、desc(打点描述)的个数必须要和seconds的个数相同。
+     * 返回：true为打点成功，false为打点失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -258,7 +261,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodSetVideoForbiddenResponse = new VodEditServiceImpl().setVideoForbidden(vodSetVideoForbiddenRequest);
             Assert.assertTrue(vodSetVideoForbiddenResponse);
             if (vodSetVideoForbiddenResponse) {
-                log.debug("测试设置视频的播放预览时长成功");
+                log.debug("测试视频禁播与解禁成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -306,7 +309,6 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试编辑单个视频的信息
-     * TODO 确认返回值是对象还是数组问题
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -325,7 +327,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodUpdateVideoInfoResponse = new VodEditServiceImpl().updateVideoInfo(vodUpdateVideoInfoRequest);
             Assert.assertNotNull(vodUpdateVideoInfoResponse);
             if (vodUpdateVideoInfoResponse != null) {
-                log.debug("测试编辑单个视频的信息成功，{}", vodUpdateVideoInfoResponse);
+                log.debug("测试编辑单个视频的信息成功，{}", JSON.toJSONString(vodUpdateVideoInfoResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -340,6 +342,7 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试删除视频
+     * 返回：true为删除成功，false为删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -356,7 +359,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodDeleteVideoResponse = new VodEditServiceImpl().deleteVideo(vodDeleteVideoRequest);
             Assert.assertTrue(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse) {
-                log.debug("测试编辑单个视频的信息成功");
+                log.debug("测试删除视频成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -371,6 +374,7 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试修改视频密码
+     * 返回：true为修改成功，false为删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -405,6 +409,7 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 删除视频的全部打点信息
+     * 返回：true为删除全部打点信息成功，false为删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -436,6 +441,7 @@ public class VodEditServiceImplTest extends BaseTest {
     /**
      * 测试批量修改视频的授权方式
      * 描述：通过videoIds批量修改视频的授权方式
+     * 返回：true为修改视频授权方式成功，false为修改授权方式失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

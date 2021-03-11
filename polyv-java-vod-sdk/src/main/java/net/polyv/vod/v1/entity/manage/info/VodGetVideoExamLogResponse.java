@@ -1,5 +1,6 @@
 package net.polyv.vod.v1.entity.manage.info;
 
+import java.util.Date;
 import java.util.List;
 
 import com.alibaba.fastjson.annotation.JSONField;
@@ -43,9 +44,9 @@ public class VodGetVideoExamLogResponse extends VodPageCommonResponse {
         private String examId;
         
         /**
-         * 用户ID
+         * 观众ID
          */
-        @ApiModelProperty(name = "userId", value = "用户ID", required = false)
+        @ApiModelProperty(name = "userId", value = "观众ID", required = false)
         private String userId;
         
         /**
@@ -62,15 +63,15 @@ public class VodGetVideoExamLogResponse extends VodPageCommonResponse {
         private String question;
         
         /**
-         * 问答的正确答案
+         * 观众回答的答案
          */
-        @ApiModelProperty(name = "answer", value = "问答的正确答案", required = false)
+        @ApiModelProperty(name = "answer", value = "观众回答的答案", required = false)
         private String answer;
         
         /**
-         * 是否回答正确
+         * 是否回答正确，1：回答正确；0：回答错误
          */
-        @ApiModelProperty(name = "isCorrect", value = "是否回答正确", required = false)
+        @ApiModelProperty(name = "isCorrect", value = "是否回答正确，1：回答正确；0：回答错误", required = false)
         private Integer isCorrect;
         
         /**
@@ -86,39 +87,39 @@ public class VodGetVideoExamLogResponse extends VodPageCommonResponse {
         private String ipAddress;
         
         /**
-         * 省份
+         * 观众的省份
          */
-        @ApiModelProperty(name = "province", value = "省份", required = false)
+        @ApiModelProperty(name = "province", value = "观众的省份", required = false)
         private String province;
         
         /**
-         * ISP运营商
+         * 观众使用的ISP运营商
          */
-        @ApiModelProperty(name = "isp", value = "ISP运营商", required = false)
+        @ApiModelProperty(name = "isp", value = "观众使用的ISP运营商", required = false)
         private String isp;
         
         /**
-         * 操作系统
+         * 观众的操作系统
          */
-        @ApiModelProperty(name = "operatingSystem", value = "操作系统", required = false)
+        @ApiModelProperty(name = "operatingSystem", value = "观众的操作系统", required = false)
         private String operatingSystem;
         
         /**
-         * 浏览器
+         * 观众使用的浏览器
          */
-        @ApiModelProperty(name = "browser", value = "浏览器", required = false)
+        @ApiModelProperty(name = "browser", value = "观众使用的浏览器", required = false)
         private String browser;
         
         /**
-         * 回答该问题的日期（时间戳形式）
+         * 回答该问题的日期，格式：yyyy-MM-dd HH:mm:ss
          */
-        @ApiModelProperty(name = "dateAdded", value = "回答该问题的日期（时间戳形式）", required = false)
-        private Long dateAdded;
+        @ApiModelProperty(name = "dateAdded", value = "回答该问题的日期，格式：yyyy-MM-dd HH:mm:ss", required = false)
+        private Date dateAdded;
         
         /**
-         * 自定义用户id
+         * 自定义观众id
          */
-        @ApiModelProperty(name = "viewerId", value = "自定义用户id", required = false)
+        @ApiModelProperty(name = "viewerId", value = "自定义观众id", required = false)
         @JSONField(name = "viewerid")
         private String viewerId;
         

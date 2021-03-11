@@ -31,17 +31,17 @@ public class VodGetVideoExamLogRequest extends VodPageCommonRequest {
     private String videoIds;
     
     /**
-     * 查询的开始日期，格式 YYYY-MM-DD
+     * 查询的开始日期，格式：yyyy-MM-dd
      */
-    @ApiModelProperty(name = "start", value = "查询的开始日期，格式 YYYY-MM-DD", required = false)
-    @JSONField(format = "yyyy-MM-DD")
+    @ApiModelProperty(name = "start", value = "查询的开始日期，格式：yyyy-MM-dd", required = false)
+    @JSONField(format = "yyyy-MM-dd")
     private Date start;
     
     /**
-     * 查询的结束日期，格式 YYYY-MM-DD
+     * 查询的结束日期，格式：yyyy-MM-dd
      */
-    @ApiModelProperty(name = "end", value = "查询的结束日期，格式 YYYY-MM-DD", required = false)
-    @JSONField(format = "yyyy-MM-DD")
+    @ApiModelProperty(name = "end", value = "查询的结束日期，格式：yyyy-MM-dd", required = false)
+    @JSONField(format = "yyyy-MM-dd")
     private Date end;
 
 }

@@ -36,8 +36,9 @@ public class VodGetVideoExamResponse extends VodCommonRequest {
     /**
      * 视频的id
      */
-    @ApiModelProperty(name = "videoPoolId", value = "视频的id", required = false)
-    private String videoPoolId;
+    @ApiModelProperty(name = "videoId", value = "视频的id", required = false)
+    @JSONField(name = "videoPoolId")
+    private String videoId;
     
     /**
      * 问答题目开始显示的时间，格式：时分秒

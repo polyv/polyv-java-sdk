@@ -6,11 +6,18 @@ import java.security.NoSuchAlgorithmException;
 import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoAllKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoHlsLevelListRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoSettingRequest;
 
 /**
  * @author: sadboy
@@ -91,6 +98,71 @@ public interface IVodEditService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean setVideoForbidden(VodSetVideoForbiddenRequest vodSetVideoForbiddenRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 批量删除视频
+     * URl地址：https://dev.polyv.net/2021/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/del-videos/
+     * @param vodDeleteVideoListRequest 批量删除视频请求实体
+     * @return 批量删除视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean deleteVideoList(VodDeleteVideoListRequest vodDeleteVideoListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 编辑单个视频的信息
+     * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/video-info/
+     * @param vodUpdateVideoInfoRequest 编辑单个视频的信息请求实体
+     * @return 编辑单个视频的信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    VodUpdateVideoInfoResponse updateVideoInfo(VodUpdateVideoInfoRequest vodUpdateVideoInfoRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 删除视频
+     * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/del-video/
+     * @param vodDeleteVideoRequest 删除视频请求实体
+     * @return 删除视频返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean deleteVideo(VodDeleteVideoRequest vodDeleteVideoRequest) throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 修改视频密码
+     * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/video-setting-save/
+     * @param vodUpdateVideoSettingRequest 修改视频密码请求实体
+     * @return 修改视频密码返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateVideoSetting(VodUpdateVideoSettingRequest vodUpdateVideoSettingRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 删除视频的全部打点信息
+     * URL地址：https://dev.polyv.net/2016/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/deletekeyframe/
+     * @param vodDeleteVideoAllKeyFrameRequest 删除视频的全部打点信息请求实体
+     * @return 删除视频的全部打点信息返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean deleteVideoAllKeyFrame(VodDeleteVideoAllKeyFrameRequest vodDeleteVideoAllKeyFrameRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 批量修改视频的授权方式
+     * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/hlslevel/
+     * @param vodUpdateVideoHlsLevelListRequest 批量修改视频的授权方式请求实体
+     * @return 批量修改视频的授权方式返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateVideoHlsLevelList(VodUpdateVideoHlsLevelListRequest vodUpdateVideoHlsLevelListRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

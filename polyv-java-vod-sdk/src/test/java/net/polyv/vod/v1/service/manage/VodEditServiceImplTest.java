@@ -11,11 +11,18 @@ import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoAllKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoHlsLevelListRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoPlayStatusRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodUpdateVideoSettingRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.manage.impl.VodEditServiceImpl;
 import net.polyv.vod.v1.util.VodSignUtil;
@@ -253,6 +260,201 @@ public class VodEditServiceImplTest extends BaseTest {
             Assert.assertTrue(vodSetVideoForbiddenResponse);
             if (vodSetVideoForbiddenResponse) {
                 log.debug("测试设置视频的播放预览时长成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试批量删除视频
+     * 约束：2、视频id一次最多提交500个；
+     * 返回：true为批量删除成功，false为批量删除失败
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testDeleteVideoList() throws IOException, NoSuchAlgorithmException {
+        VodDeleteVideoListRequest vodDeleteVideolistRequest = new VodDeleteVideoListRequest();
+        Boolean vodDeleteVideoListResponse = null;
+        try {
+            vodDeleteVideolistRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoIds("1b448be3238ae0aa1020ac2807c9e8c9_1,1b448be323c12aa5e048c3fb5e10ca99_1")
+                    .setDeleteType(1)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodDeleteVideoListResponse = new VodEditServiceImpl().deleteVideoList(vodDeleteVideolistRequest);
+            Assert.assertTrue(vodDeleteVideoListResponse);
+            if (vodDeleteVideoListResponse) {
+                log.debug("测试批量删除视频成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试编辑单个视频的信息
+     * TODO 确认返回值是对象还是数组问题
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateVideoInfo() throws IOException, NoSuchAlgorithmException {
+        VodUpdateVideoInfoRequest vodUpdateVideoInfoRequest = new VodUpdateVideoInfoRequest();
+        VodUpdateVideoInfoResponse vodUpdateVideoInfoResponse = null;
+        try {
+            vodUpdateVideoInfoRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setDesc("这是一个通过junit合并的视频")
+                    .setTag("junit测试")
+                    .setTitle("junit合并并修改")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUpdateVideoInfoResponse = new VodEditServiceImpl().updateVideoInfo(vodUpdateVideoInfoRequest);
+            Assert.assertNotNull(vodUpdateVideoInfoResponse);
+            if (vodUpdateVideoInfoResponse != null) {
+                log.debug("测试编辑单个视频的信息成功，{}", vodUpdateVideoInfoResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试删除视频
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+//    @Test
+    public void testDeleteVideo() throws IOException, NoSuchAlgorithmException {
+        VodDeleteVideoRequest vodDeleteVideoRequest = new VodDeleteVideoRequest();
+        Boolean vodDeleteVideoResponse = null;
+        try {
+            vodDeleteVideoRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoId("1b448be3238ae0aa1020ac2807c9e8c9_1")
+                    .setDeleteType(1)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodDeleteVideoResponse = new VodEditServiceImpl().deleteVideo(vodDeleteVideoRequest);
+            Assert.assertTrue(vodDeleteVideoResponse);
+            if (vodDeleteVideoResponse) {
+                log.debug("测试编辑单个视频的信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试修改视频密码
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateVideoSetting() throws IOException, NoSuchAlgorithmException {
+        VodUpdateVideoSettingRequest vodUpdateVideoSettingRequest = new VodUpdateVideoSettingRequest();
+        Boolean vodUpdateVideoSettingResponse = null;
+        try {
+            vodUpdateVideoSettingRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoIds("1b448be32355403dad586f7468e63e23_1,1b448be323a9076c9941604ac1c667f9_1")
+                    .setPassword(super.getRandomString(10))
+                    .setPublishUrl(null)
+                    .setTag("junit")
+                    .setTitle("junit测试")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUpdateVideoSettingResponse = new VodEditServiceImpl().updateVideoSetting(vodUpdateVideoSettingRequest);
+            Assert.assertTrue(vodUpdateVideoSettingResponse);
+            if (vodUpdateVideoSettingResponse) {
+                log.debug("测试修改视频密码成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 删除视频的全部打点信息
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testDeleteVideoAllKeyFrame() throws IOException, NoSuchAlgorithmException {
+        VodDeleteVideoAllKeyFrameRequest vodDeleteVideoAllKeyFrameRequest = new VodDeleteVideoAllKeyFrameRequest();
+        Boolean vodDeleteVideoAllKeyFrameResponse = null;
+        try {
+            vodDeleteVideoAllKeyFrameRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1").setRequestId(VodSignUtil.generateUUID());
+            vodDeleteVideoAllKeyFrameResponse = new VodEditServiceImpl().deleteVideoAllKeyFrame(
+                    vodDeleteVideoAllKeyFrameRequest);
+            Assert.assertTrue(vodDeleteVideoAllKeyFrameResponse);
+            if (vodDeleteVideoAllKeyFrameResponse) {
+                log.debug("测试删除视频的全部打点信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试批量修改视频的授权方式
+     * 描述：通过videoIds批量修改视频的授权方式
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testUpdateVideoHlsLevelList() throws IOException, NoSuchAlgorithmException {
+        VodUpdateVideoHlsLevelListRequest vodUpdateVideoHlsLevelListRequest = new VodUpdateVideoHlsLevelListRequest();
+        Boolean vodUpdateVideoHlsLevelListResponse = null;
+        try {
+            vodUpdateVideoHlsLevelListRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoIds("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setHlsLevel("open")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUpdateVideoHlsLevelListResponse = new VodEditServiceImpl().updateVideoHlsLevelList(
+                    vodUpdateVideoHlsLevelListRequest);
+            Assert.assertTrue(vodUpdateVideoHlsLevelListResponse);
+            if (vodUpdateVideoHlsLevelListResponse) {
+                log.debug("测试批量修改视频的授权方式成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

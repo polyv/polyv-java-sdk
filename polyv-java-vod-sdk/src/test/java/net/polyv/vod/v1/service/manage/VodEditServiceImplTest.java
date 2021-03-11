@@ -129,6 +129,7 @@ public class VodEditServiceImplTest extends BaseTest {
      * 测试设置视频打点
      * 约束：2、seconds(打点秒数【第seconds秒】)必须要小于视频长度;
      * 约束：3、desc(打点描述)的个数必须要和seconds的个数相同。
+     * 返回：true为设置成功，false为设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

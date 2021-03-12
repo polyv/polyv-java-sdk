@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 
 /**
  * 视频分类
@@ -20,4 +21,16 @@ public interface IVodCategoryService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean moveCategory(VodMoveCategoryRequest vodMoveCategoryRequest) throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 设置分类属性
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/setting-category
+     * -properties/
+     * @param vodUpdateCategoryProfileRequest 设置分类属性请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateCategoryProfile(VodUpdateCategoryProfileRequest vodUpdateCategoryProfileRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

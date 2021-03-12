@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodCategoryService;
 
@@ -27,5 +28,21 @@ public class VodCategoryServiceImpl extends VodBaseService implements IVodCatego
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.MOVE_CATEGORY_URL);
         return super.postFormBodyReturnOne(url, vodMoveCategoryRequest, Boolean.class);
+    }
+    
+    /**
+     * 设置分类属性
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/setting-category
+     * -properties/
+     * @param vodUpdateCategoryProfileRequest 设置分类属性请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateCategoryProfile(VodUpdateCategoryProfileRequest vodUpdateCategoryProfileRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_UPDATE_CATEGORY_PROFILE_URL);
+        return super.postFormBodyReturnOne(url, vodUpdateCategoryProfileRequest, Boolean.class);
     }
 }

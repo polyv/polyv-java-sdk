@@ -20,8 +20,6 @@ import net.polyv.vod.v1.util.VodSignUtil;
 @Slf4j
 public class VodCategoryServiceImplTest extends BaseTest {
     
-    private static boolean testMoveCategoryFlag;
-    
     /**
      * 测试移动视频分类接口
      * 返回：true为修改成功，false为修改失败
@@ -33,25 +31,13 @@ public class VodCategoryServiceImplTest extends BaseTest {
         VodMoveCategoryRequest vodMoveCategoryRequest = new VodMoveCategoryRequest();
         Boolean vodMoveCategoryResponse = null;
         try {
-            // testMoveCategoryFlag为false则移动目标目录
-            // testMoveCategoryFlag为true则恢复目标目录
-            if (testMoveCategoryFlag) {
-                vodMoveCategoryRequest.setCategoryId("1615536384688")
-                        .setDestCategoryId("1")
-                        .setRequestId(VodSignUtil.generateUUID());
-            } else {
-                vodMoveCategoryRequest.setCategoryId("1615536384688")
-                        .setDestCategoryId("1602671097888")
-                        .setRequestId(VodSignUtil.generateUUID());
-            }
+            vodMoveCategoryRequest.setCategoryId("1615536384688")
+                    .setDestCategoryId("1")
+                    .setRequestId(VodSignUtil.generateUUID());
             vodMoveCategoryResponse = new VodCategoryServiceImpl().moveCategory(vodMoveCategoryRequest);
             Assert.assertTrue(vodMoveCategoryResponse);
             if (vodMoveCategoryResponse) {
                 log.debug("测试移动视频分类接口成功");
-            }
-            if (testMoveCategoryFlag == false) {
-                testMoveCategoryFlag = true;
-                testMoveCategory();
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

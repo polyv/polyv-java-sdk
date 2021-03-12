@@ -233,7 +233,7 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
     @Override
     public List<VodGetVideosSizeResponse> getVideosSize(VodGetVideosSizeRequest vodGetVideosSizeRequest)
             throws IOException, NoSuchAlgorithmException {
-        String url = VodURL.getRealUrl(VodURL.GET_VIDEOS_SIZE_URL_URL);
+        String url = VodURL.getRealUrl(VodURL.GET_VIDEOS_SIZE_URL);
         return super.getReturnList(url, vodGetVideosSizeRequest, VodGetVideosSizeResponse.class);
     }
     

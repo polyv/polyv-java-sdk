@@ -241,7 +241,7 @@ public class VodURL {
     /**
      * 批量获取视频的时长和大小
      */
-    public static final String GET_VIDEOS_SIZE_URL_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/info";
+    public static final String GET_VIDEOS_SIZE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/info";
     
     /**
      * 批量获取视频播放次数

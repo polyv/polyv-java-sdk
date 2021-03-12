@@ -19,7 +19,13 @@ import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameResponse;
+import net.polyv.vod.v1.entity.manage.info.VodQueryVideoPasswordRequest;
+import net.polyv.vod.v1.entity.manage.info.VodQueryVideoPasswordResponse;
 
+/**
+ * 视频信息
+ * @author: fangyan
+ **/
 public interface IVodInfoService {
     
     /**
@@ -118,5 +124,17 @@ public interface IVodInfoService {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    List<VodGetVideoExamResponse> getVideoExam(VodGetVideoExamRequest vodGetVideoExamRequest)throws IOException, NoSuchAlgorithmException;
+    List<VodGetVideoExamResponse> getVideoExam(VodGetVideoExamRequest vodGetVideoExamRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询视频密码
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/video-setting-page/
+     * @param vodQueryVideoPasswordRequest 查询视频密码请求实体
+     * @return 查询视频密码返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    VodQueryVideoPasswordResponse queryVideoPassword(VodQueryVideoPasswordRequest vodQueryVideoPasswordRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

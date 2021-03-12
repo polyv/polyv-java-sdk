@@ -233,6 +233,12 @@ public class VodURL {
     public static final String GET_VIDEO_EXAM_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-video-exam";
     
     /**
+     * 查询视频密码
+     */
+    public static final String QUERY_VIDEO_PASSWORD_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/video-setting-page";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

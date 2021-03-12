@@ -26,6 +26,8 @@ import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameResponse;
+import net.polyv.vod.v1.entity.manage.info.VodQueryVideoPasswordRequest;
+import net.polyv.vod.v1.entity.manage.info.VodQueryVideoPasswordResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.manage.impl.VodInfoServiceImpl;
 import net.polyv.vod.v1.util.VodSignUtil;
@@ -291,6 +293,35 @@ public class VodInfoServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodGetVideoExamResponseList);
             if (vodGetVideoExamResponseList != null) {
                 log.debug("测试获取单个视频的问答题目成功,{}", JSON.toJSONString(vodGetVideoExamResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询视频密码
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testQueryVideoPassword() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoPasswordRequest vodQueryVideoPasswordRequest = new VodQueryVideoPasswordRequest();
+        VodQueryVideoPasswordResponse vodQueryVideoPasswordResponse = null;
+        try {
+            vodQueryVideoPasswordRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1,1b448be3234134f5a73bdddd6e88a9a5_1")
+//            vodQueryVideoPasswordRequest.setVideoId("1b448be3234134f5a73bdddd6e88a9a5_1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoPasswordResponse = new VodInfoServiceImpl().queryVideoPassword(vodQueryVideoPasswordRequest);
+            Assert.assertNotNull(vodQueryVideoPasswordResponse);
+            if (vodQueryVideoPasswordResponse != null) {
+                log.debug("测试查询视频密码成功,{}", JSON.toJSONString(vodQueryVideoPasswordResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -21,6 +21,9 @@ import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameResponse;
+import net.polyv.vod.v1.entity.manage.info.VodQueryVideoPasswordRequest;
+import net.polyv.vod.v1.entity.manage.info.VodQueryVideoPasswordResponse;
+import net.polyv.vod.v1.entity.manage.info.VodQueryVideoPasswordVO;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodInfoService;
 
@@ -172,6 +175,47 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.GET_VIDEO_EXAM_URL);
         return super.getReturnList(url, vodGetVideoExamRequest, VodGetVideoExamResponse.class);
+    }
+    
+    /**
+     * 查询视频密码
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/video-setting-page/
+     * @param vodQueryVideoPasswordRequest 查询视频密码请求实体
+     * @return 查询视频密码返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public VodQueryVideoPasswordResponse queryVideoPassword(VodQueryVideoPasswordRequest vodQueryVideoPasswordRequest)
+            throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoPasswordResponse vodQueryVideoPasswordResponse = new VodQueryVideoPasswordResponse();
+        String url = VodURL.getRealUrl(VodURL.QUERY_VIDEO_PASSWORD_URL);
+        VodQueryVideoPasswordVO vodQueryVideoPasswordVO = super.getReturnOne(url, vodQueryVideoPasswordRequest,
+                VodQueryVideoPasswordVO.class);
+        if (vodQueryVideoPasswordVO == null) {
+            return null;
+        }
+        if (vodQueryVideoPasswordVO.getIsShowPassword() != null) {
+            vodQueryVideoPasswordResponse.setIsShowPassword(vodQueryVideoPasswordVO.getIsShowPassword());
+        }
+        if (vodQueryVideoPasswordVO.getVideoId() != null) {
+            vodQueryVideoPasswordResponse.setVideoId(vodQueryVideoPasswordVO.getVideoId());
+        }
+        // 是否含有视频信息
+        boolean hasVideoInfo = vodQueryVideoPasswordVO.getVideoInfo() != null;
+        // 是否含有视频扩展信息
+        boolean hasVideoInfoExt = hasVideoInfo && vodQueryVideoPasswordVO.getVideoInfo().getVideoInfoExt() != null;
+        // 是否含有密码信息
+        boolean hasPassword =
+                hasVideoInfoExt && vodQueryVideoPasswordVO.getVideoInfo().getVideoInfoExt().getPassword() != null;
+        if (hasVideoInfo && vodQueryVideoPasswordVO.getVideoInfo().getTitle() != null) {
+            vodQueryVideoPasswordResponse.setTitle(vodQueryVideoPasswordVO.getVideoInfo().getTitle());
+        }
+        if (hasPassword) {
+            vodQueryVideoPasswordResponse.setPassword(
+                    vodQueryVideoPasswordVO.getVideoInfo().getVideoInfoExt().getPassword());
+        }
+        return vodQueryVideoPasswordResponse;
     }
     
 }

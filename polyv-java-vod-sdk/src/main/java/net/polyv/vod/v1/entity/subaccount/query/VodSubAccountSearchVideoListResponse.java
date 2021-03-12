@@ -20,7 +20,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("搜索视频返回实体")
-public class VodSearchVideoListResponse extends VodPageCommonResponse {
+public class VodSubAccountSearchVideoListResponse extends VodPageCommonResponse {
     
     @ApiModelProperty(name = "contents", value = "查询的结果列表", required = false)
     private List<VodSearchVideoList> contents;

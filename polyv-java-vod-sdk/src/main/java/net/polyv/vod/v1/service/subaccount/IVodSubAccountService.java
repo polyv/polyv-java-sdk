@@ -15,8 +15,8 @@ import net.polyv.vod.v1.entity.subaccount.query.VodQueryCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryCategoryResponse;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoResponse;
-import net.polyv.vod.v1.entity.subaccount.query.VodSearchVideoListRequest;
-import net.polyv.vod.v1.entity.subaccount.query.VodSearchVideoListResponse;
+import net.polyv.vod.v1.entity.subaccount.query.VodSubAccountSearchVideoListRequest;
+import net.polyv.vod.v1.entity.subaccount.query.VodSubAccountSearchVideoListResponse;
 
 /**
  * 子账号相关
@@ -27,12 +27,12 @@ public interface IVodSubAccountService {
     /**
      * 搜索视频
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/list-video/
-     * @param vodSearchVideoListRequest 搜索视频请求实体
+     * @param vodSubAccountSearchVideoListRequest 搜索视频请求实体
      * @return 搜索视频返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    VodSearchVideoListResponse searchVideoList(VodSearchVideoListRequest vodSearchVideoListRequest)
+    VodSubAccountSearchVideoListResponse searchVideoList(VodSubAccountSearchVideoListRequest vodSubAccountSearchVideoListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

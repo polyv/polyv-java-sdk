@@ -19,7 +19,7 @@ import net.polyv.vod.v1.entity.VodPageCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("搜索视频请求实体")
-public class VodSearchVideoListRequest extends VodPageCommonRequest {
+public class VodSubAccountSearchVideoListRequest extends VodPageCommonRequest {
     /**
      * 视频分类ID
      */

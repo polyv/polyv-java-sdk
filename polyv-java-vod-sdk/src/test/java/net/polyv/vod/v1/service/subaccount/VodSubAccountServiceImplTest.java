@@ -11,7 +11,6 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
-import net.polyv.vod.v1.entity.VodCommonResponse;
 import net.polyv.vod.v1.entity.subaccount.edit.VodAddCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteVideoRequest;
@@ -23,8 +22,8 @@ import net.polyv.vod.v1.entity.subaccount.query.VodQueryCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryCategoryResponse;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoResponse;
-import net.polyv.vod.v1.entity.subaccount.query.VodSearchVideoListRequest;
-import net.polyv.vod.v1.entity.subaccount.query.VodSearchVideoListResponse;
+import net.polyv.vod.v1.entity.subaccount.query.VodSubAccountSearchVideoListRequest;
+import net.polyv.vod.v1.entity.subaccount.query.VodSubAccountSearchVideoListResponse;
 import net.polyv.vod.v1.service.SubBaseTest;
 import net.polyv.vod.v1.service.subaccount.impl.VodSubAccountServiceImpl;
 import net.polyv.vod.v1.util.VodSignUtil;
@@ -44,10 +43,10 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
      */
     @Test
     public void testSearchVideoList() throws IOException, NoSuchAlgorithmException {
-        VodSearchVideoListRequest vodSearchVideoListRequest = new VodSearchVideoListRequest();
-        VodSearchVideoListResponse vodSearchVideoListResponse = null;
+        VodSubAccountSearchVideoListRequest vodSubAccountSearchVideoListRequest = new VodSubAccountSearchVideoListRequest();
+        VodSubAccountSearchVideoListResponse vodSubAccountSearchVideoListResponse = null;
         try {
-            vodSearchVideoListRequest.setCategoryId("1602300731843")
+            vodSubAccountSearchVideoListRequest.setCategoryId("1602300731843")
                     .setTitle("学习英语")
                     .setUploader("主账号")
                     .setStatus("61")
@@ -56,10 +55,11 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setEndTime(super.getDate(2021, 2, 5, 10, 35))
                     .setSort("creationTimeDesc")
                     .setRequestId(VodSignUtil.generateUUID());
-            vodSearchVideoListResponse = new VodSubAccountServiceImpl().searchVideoList(vodSearchVideoListRequest);
-            Assert.assertNotNull(vodSearchVideoListResponse);
-            if (vodSearchVideoListResponse != null) {
-                log.debug("测试搜索视频成功,{}", JSON.toJSONString(vodSearchVideoListResponse));
+            vodSubAccountSearchVideoListResponse = new VodSubAccountServiceImpl().searchVideoList(
+                    vodSubAccountSearchVideoListRequest);
+            Assert.assertNotNull(vodSubAccountSearchVideoListResponse);
+            if (vodSubAccountSearchVideoListResponse != null) {
+                log.debug("测试搜索视频成功,{}", JSON.toJSONString(vodSubAccountSearchVideoListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

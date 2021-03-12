@@ -5,9 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import net.polyv.vod.v1.config.VodGlobalConfig;
-import net.polyv.vod.v1.constant.VodConstant;
 import net.polyv.vod.v1.constant.VodURL;
-import net.polyv.vod.v1.entity.VodCommonResponse;
 import net.polyv.vod.v1.entity.subaccount.edit.VodAddCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteVideoRequest;
@@ -19,8 +17,8 @@ import net.polyv.vod.v1.entity.subaccount.query.VodQueryCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryCategoryResponse;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoResponse;
-import net.polyv.vod.v1.entity.subaccount.query.VodSearchVideoListRequest;
-import net.polyv.vod.v1.entity.subaccount.query.VodSearchVideoListResponse;
+import net.polyv.vod.v1.entity.subaccount.query.VodSubAccountSearchVideoListRequest;
+import net.polyv.vod.v1.entity.subaccount.query.VodSubAccountSearchVideoListResponse;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.subaccount.IVodSubAccountService;
 
@@ -33,15 +31,16 @@ public class VodSubAccountServiceImpl extends VodBaseService implements IVodSubA
     /**
      * 搜索视频
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/list-video/
-     * @param vodSearchVideoListRequest 搜索视频请求实体
+     * @param vodSubAccountSearchVideoListRequest 搜索视频请求实体
      * @return 搜索视频返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public VodSearchVideoListResponse searchVideoList(VodSearchVideoListRequest vodSearchVideoListRequest)
+    public VodSubAccountSearchVideoListResponse searchVideoList(
+            VodSubAccountSearchVideoListRequest vodSubAccountSearchVideoListRequest)
             throws IOException, NoSuchAlgorithmException {
-        return super.getReturnOne(VodURL.LIST_VIDEO_URL, vodSearchVideoListRequest, VodSearchVideoListResponse.class);
+        return super.getReturnOne(VodURL.LIST_VIDEO_URL, vodSubAccountSearchVideoListRequest, VodSubAccountSearchVideoListResponse.class);
     }
     
     /**

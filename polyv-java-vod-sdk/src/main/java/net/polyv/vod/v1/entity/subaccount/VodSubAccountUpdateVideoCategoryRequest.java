@@ -1,4 +1,4 @@
-package net.polyv.vod.v1.entity.subaccount.edit;
+package net.polyv.vod.v1.entity.subaccount;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -18,7 +18,7 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("批量修改视频所属分类请求实体")
-public class VodUpdateVideoCategoryRequest extends VodCommonRequest {
+public class VodSubAccountUpdateVideoCategoryRequest extends VodCommonRequest {
     /**
      * 视频ID串，多个视频ID之间用英文逗号(,)分隔
      */

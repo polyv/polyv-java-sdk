@@ -1,4 +1,4 @@
-package net.polyv.vod.v1.entity.subaccount.query;
+package net.polyv.vod.v1.entity.subaccount;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @ApiModel("查询视频信息返回实体")
-public class VodQueryVideoInfoResponse {
+public class VodSubAccountQueryVideoInfoResponse {
     
     /**
      * 视频id

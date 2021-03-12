@@ -1,4 +1,4 @@
-package net.polyv.vod.v1.entity.subaccount.query;
+package net.polyv.vod.v1.entity.subaccount;
 
 import java.util.Date;
 

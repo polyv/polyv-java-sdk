@@ -1,4 +1,4 @@
-package net.polyv.vod.v1.entity.subaccount.edit;
+package net.polyv.vod.v1.entity.subaccount;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -16,7 +16,7 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("新增视频分类请求实体")
-public class VodAddCategoryRequest extends VodCommonRequest {
+public class VodSubAccountAddCategoryRequest extends VodCommonRequest {
     
     /**
      * 分类名

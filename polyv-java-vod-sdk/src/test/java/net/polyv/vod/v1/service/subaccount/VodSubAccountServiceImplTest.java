@@ -11,19 +11,19 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
-import net.polyv.vod.v1.entity.subaccount.edit.VodAddCategoryRequest;
-import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteCategoryRequest;
-import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteVideoRequest;
-import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateCategoryProfileRequest;
-import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateCategoryRequest;
-import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoCategoryRequest;
-import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoInfoRequest;
-import net.polyv.vod.v1.entity.subaccount.query.VodQueryCategoryRequest;
-import net.polyv.vod.v1.entity.subaccount.query.VodQueryCategoryResponse;
-import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
-import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoResponse;
-import net.polyv.vod.v1.entity.subaccount.query.VodSubAccountSearchVideoListRequest;
-import net.polyv.vod.v1.entity.subaccount.query.VodSubAccountSearchVideoListResponse;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountAddCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountDeleteCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountDeleteVideoRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateCategoryProfileRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateVideoCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateVideoInfoRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryCategoryResponse;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryVideoInfoRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryVideoInfoResponse;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountSearchVideoListRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountSearchVideoListResponse;
 import net.polyv.vod.v1.service.SubBaseTest;
 import net.polyv.vod.v1.service.subaccount.impl.VodSubAccountServiceImpl;
 import net.polyv.vod.v1.util.VodSignUtil;
@@ -80,17 +80,18 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
      */
     @Test
     public void testGetVideoInfo() throws IOException, NoSuchAlgorithmException {
-        VodQueryVideoInfoRequest vodQueryVideoInfoRequest = new VodQueryVideoInfoRequest();
-        List<VodQueryVideoInfoResponse> vodQueryVideoInfoResponseList = null;
+        VodSubAccountQueryVideoInfoRequest vodSubAccountQueryVideoInfoRequest = new VodSubAccountQueryVideoInfoRequest();
+        List<VodSubAccountQueryVideoInfoResponse> vodSubAccountQueryVideoInfoResponseList = null;
         try {
-            vodQueryVideoInfoRequest.setVideoIds(
+            vodSubAccountQueryVideoInfoRequest.setVideoIds(
                     "1b448be32355403dad586f7468e63e23_1,1b448be323a146649ad0cc89d0faed9c_1")
                     .setFilters("basicInfo,metaData,transcodeInfo,snapshotInfo")
                     .setRequestId(VodSignUtil.generateUUID());
-            vodQueryVideoInfoResponseList = new VodSubAccountServiceImpl().getVideoInfo(vodQueryVideoInfoRequest);
-            Assert.assertNotNull(vodQueryVideoInfoResponseList);
-            if (vodQueryVideoInfoResponseList != null) {
-                log.debug("测试查询视频信息,{}", JSON.toJSONString(vodQueryVideoInfoResponseList));
+            vodSubAccountQueryVideoInfoResponseList = new VodSubAccountServiceImpl().getVideoInfo(
+                    vodSubAccountQueryVideoInfoRequest);
+            Assert.assertNotNull(vodSubAccountQueryVideoInfoResponseList);
+            if (vodSubAccountQueryVideoInfoResponseList != null) {
+                log.debug("测试查询视频信息,{}", JSON.toJSONString(vodSubAccountQueryVideoInfoResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -111,16 +112,17 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
      */
     @Test
     public void testUpdateVideoInfo() throws IOException, NoSuchAlgorithmException {
-        VodUpdateVideoInfoRequest vodUpdateVideoInfoRequest = new VodUpdateVideoInfoRequest();
+        VodSubAccountUpdateVideoInfoRequest vodSubAccountUpdateVideoInfoRequest = new VodSubAccountUpdateVideoInfoRequest();
         Boolean vodUpdateVideoInfoResponse = null;
         try {
-            vodUpdateVideoInfoRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
+            vodSubAccountUpdateVideoInfoRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setTitle("junit合并并修改_1")
                     .setDesc("这是一个通过junit合并的视频_1")
                     .setTag("junit测试_1")
                     .setPublishUrl(null)
                     .setRequestId(VodSignUtil.generateUUID());
-            vodUpdateVideoInfoResponse = new VodSubAccountServiceImpl().updateVideoInfo(vodUpdateVideoInfoRequest);
+            vodUpdateVideoInfoResponse = new VodSubAccountServiceImpl().updateVideoInfo(
+                    vodSubAccountUpdateVideoInfoRequest);
             Assert.assertTrue(vodUpdateVideoInfoResponse);
             if (vodUpdateVideoInfoResponse) {
                 log.debug("测试修改视频信息成功");
@@ -144,15 +146,15 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
      */
     @Test
     public void testUpdateVideoCategory() throws IOException, NoSuchAlgorithmException {
-        VodUpdateVideoCategoryRequest vodUpdateVideoCategoryRequest = new VodUpdateVideoCategoryRequest();
+        VodSubAccountUpdateVideoCategoryRequest vodSubAccountUpdateVideoCategoryRequest = new VodSubAccountUpdateVideoCategoryRequest();
         Boolean vodUpdateVideoCategoryResponse = null;
         try {
-            vodUpdateVideoCategoryRequest.setVideoIds(
+            vodSubAccountUpdateVideoCategoryRequest.setVideoIds(
                     "1b448be323a146649ad0cc89d0faed9c_1,1b448be32389b93ea8be08bf0d257043_1")
                     .setCategoryId("1602300731843")
                     .setRequestId(VodSignUtil.generateUUID());
             vodUpdateVideoCategoryResponse = new VodSubAccountServiceImpl().updateVideoCategory(
-                    vodUpdateVideoCategoryRequest);
+                    vodSubAccountUpdateVideoCategoryRequest);
             Assert.assertTrue(vodUpdateVideoCategoryResponse);
             if (vodUpdateVideoCategoryResponse) {
                 log.debug("批量修改视频所属分类成功");
@@ -177,12 +179,12 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
      */
 //    @Test
     public void testDeleteVideo() throws IOException, NoSuchAlgorithmException {
-        VodDeleteVideoRequest vodDeleteVideoRequest = new VodDeleteVideoRequest();
+        VodSubAccountDeleteVideoRequest vodSubAccountDeleteVideoRequest = new VodSubAccountDeleteVideoRequest();
         Boolean vodDeleteVideoResponse = null;
         try {
-            vodDeleteVideoRequest.setVideoId("1b448be3238415eee2fa40753737255b_1")
+            vodSubAccountDeleteVideoRequest.setVideoId("1b448be3238415eee2fa40753737255b_1")
                     .setRequestId(VodSignUtil.generateUUID());
-            vodDeleteVideoResponse = new VodSubAccountServiceImpl().deleteVideo(vodDeleteVideoRequest);
+            vodDeleteVideoResponse = new VodSubAccountServiceImpl().deleteVideo(vodSubAccountDeleteVideoRequest);
             Assert.assertTrue(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse) {
                 log.debug("删除视频成功");
@@ -206,17 +208,17 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
      */
     @Test
     public void testQueryCategory() throws IOException, NoSuchAlgorithmException {
-        VodQueryCategoryRequest vodQueryCategoryRequest = new VodQueryCategoryRequest();
-        VodQueryCategoryResponse vodQueryCategoryResponse = null;
+        VodSubAccountQueryCategoryRequest vodSubAccountQueryCategoryRequest = new VodSubAccountQueryCategoryRequest();
+        VodSubAccountQueryCategoryResponse vodSubAccountQueryCategoryResponse = null;
         try {
-            vodQueryCategoryRequest.setCategoryId("1608891483165")
+            vodSubAccountQueryCategoryRequest.setCategoryId("1608891483165")
                     .setCurrentPage(1)
                     .setPageSize(20)
                     .setRequestId(VodSignUtil.generateUUID());
-            vodQueryCategoryResponse = new VodSubAccountServiceImpl().queryCategory(vodQueryCategoryRequest);
-            Assert.assertNotNull(vodQueryCategoryResponse);
-            if (vodQueryCategoryResponse != null) {
-                log.debug("测试查询视频分类成功,{}", JSON.toJSONString(vodQueryCategoryResponse));
+            vodSubAccountQueryCategoryResponse = new VodSubAccountServiceImpl().queryCategory(vodSubAccountQueryCategoryRequest);
+            Assert.assertNotNull(vodSubAccountQueryCategoryResponse);
+            if (vodSubAccountQueryCategoryResponse != null) {
+                log.debug("测试查询视频分类成功,{}", JSON.toJSONString(vodSubAccountQueryCategoryResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -236,13 +238,13 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
      */
 //    @Test
     public void testAddCategory() throws IOException, NoSuchAlgorithmException {
-        VodAddCategoryRequest vodAddCategoryRequest = new VodAddCategoryRequest();
+        VodSubAccountAddCategoryRequest vodSubAccountAddCategoryRequest = new VodSubAccountAddCategoryRequest();
         String vodDeleteVideoResponse = null;
         try {
-            vodAddCategoryRequest.setName("junit测试新增分类20210309")
+            vodSubAccountAddCategoryRequest.setName("junit测试新增分类20210309")
                     .setParentId(null)
                     .setRequestId(VodSignUtil.generateUUID());
-            vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodAddCategoryRequest);
+            vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodSubAccountAddCategoryRequest);
             Assert.assertNotNull(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse != null) {
                 log.debug("新增视频分类成功");
@@ -266,13 +268,14 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
      */
     @Test
     public void testUpdateCategory() throws IOException, NoSuchAlgorithmException {
-        VodUpdateCategoryRequest vodUpdateCategoryRequest = new VodUpdateCategoryRequest();
+        VodSubAccountUpdateCategoryRequest vodSubAccountUpdateCategoryRequest = new VodSubAccountUpdateCategoryRequest();
         Boolean vodUpdateCategoryResponse = null;
         try {
-            vodUpdateCategoryRequest.setCategoryId("1602671097888")
+            vodSubAccountUpdateCategoryRequest.setCategoryId("1602671097888")
                     .setCategoryName("Junit测试(勿删)_1")
                     .setRequestId(VodSignUtil.generateUUID());
-            vodUpdateCategoryResponse = new VodSubAccountServiceImpl().updateCategory(vodUpdateCategoryRequest);
+            vodUpdateCategoryResponse = new VodSubAccountServiceImpl().updateCategory(
+                    vodSubAccountUpdateCategoryRequest);
             Assert.assertTrue(vodUpdateCategoryResponse);
             if (vodUpdateCategoryResponse) {
                 log.debug("修改视频分类信息成功");
@@ -295,13 +298,14 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
      */
     @Test
     public void testDeleteCategory() throws IOException, NoSuchAlgorithmException {
-        VodDeleteCategoryRequest vodDeleteCategoryRequest = new VodDeleteCategoryRequest();
+        VodSubAccountDeleteCategoryRequest vodSubAccountDeleteCategoryRequest = new VodSubAccountDeleteCategoryRequest();
         Boolean vodDeleteCategoryResponse = null;
         try {
             //生成测试数据
             String categoryId = super.addCategory();
-            vodDeleteCategoryRequest.setCategoryId(categoryId).setRequestId(VodSignUtil.generateUUID());
-            vodDeleteCategoryResponse = new VodSubAccountServiceImpl().deleteCategory(vodDeleteCategoryRequest);
+            vodSubAccountDeleteCategoryRequest.setCategoryId(categoryId).setRequestId(VodSignUtil.generateUUID());
+            vodDeleteCategoryResponse = new VodSubAccountServiceImpl().deleteCategory(
+                    vodSubAccountDeleteCategoryRequest);
             Assert.assertTrue(vodDeleteCategoryResponse);
             if (vodDeleteCategoryResponse) {
                 log.debug("删除视频分类成功");
@@ -324,10 +328,10 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
      */
     @Test
     public void testUpdateCategoryProfile() throws IOException, NoSuchAlgorithmException {
-        VodUpdateCategoryProfileRequest vodUpdateCategoryProfileRequest = new VodUpdateCategoryProfileRequest();
+        VodSubAccountUpdateCategoryProfileRequest vodSubAccountUpdateCategoryProfileRequest = new VodSubAccountUpdateCategoryProfileRequest();
         Boolean vodUpdateCategoryProfileResponse = null;
         try {
-            vodUpdateCategoryProfileRequest.setCategoryId("1615286323771")
+            vodSubAccountUpdateCategoryProfileRequest.setCategoryId("1615286323771")
                     .setEnabled("Y")
                     .setKeepSource(0)
                     .setEncrypt(0)
@@ -336,7 +340,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setEncodeAAC(0)
                     .setRequestId(VodSignUtil.generateUUID());
             vodUpdateCategoryProfileResponse = new VodSubAccountServiceImpl().updateCategoryProfile(
-                    vodUpdateCategoryProfileRequest);
+                    vodSubAccountUpdateCategoryProfileRequest);
             Assert.assertTrue(vodUpdateCategoryProfileResponse);
             if (vodUpdateCategoryProfileResponse) {
                 log.debug("修改视频分类属性设置成功");

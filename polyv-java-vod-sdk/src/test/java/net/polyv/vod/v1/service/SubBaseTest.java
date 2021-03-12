@@ -11,7 +11,7 @@ import org.junit.Assert;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.config.InitConfig;
-import net.polyv.vod.v1.entity.subaccount.edit.VodAddCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountAddCategoryRequest;
 import net.polyv.vod.v1.service.subaccount.impl.VodSubAccountServiceImpl;
 import net.polyv.vod.v1.util.VodSignUtil;
 
@@ -32,13 +32,13 @@ public class SubBaseTest {
      * @throws NoSuchAlgorithmException 异常
      */
     public String addCategory() throws IOException, NoSuchAlgorithmException {
-        VodAddCategoryRequest vodAddCategoryRequest = new VodAddCategoryRequest();
+        VodSubAccountAddCategoryRequest vodSubAccountAddCategoryRequest = new VodSubAccountAddCategoryRequest();
         String vodDeleteVideoResponse = null;
         try {
-            vodAddCategoryRequest.setName("junit测试新增分类20210309")
+            vodSubAccountAddCategoryRequest.setName("junit测试新增分类20210309")
                     .setParentId(null)
                     .setRequestId(VodSignUtil.generateUUID());
-            vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodAddCategoryRequest);
+            vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodSubAccountAddCategoryRequest);
             Assert.assertNotNull(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse != null) {
                 log.debug("新增视频分类成功");

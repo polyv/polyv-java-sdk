@@ -1,4 +1,7 @@
-package net.polyv.vod.v1.entity.subaccount.query;
+package net.polyv.vod.v1.entity.subaccount;
+
+import java.util.Date;
+import java.util.List;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -8,9 +11,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.vod.v1.entity.VodPageCommonResponse;
-
-import java.util.Date;
-import java.util.List;
 
 /**
  * 搜索视频返回实体

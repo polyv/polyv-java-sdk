@@ -1,4 +1,4 @@
-package net.polyv.vod.v1.entity.subaccount.query;
+package net.polyv.vod.v1.entity.subaccount;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @ApiModel("查询视频分类返回实体")
-public class VodQueryCategoryResponse {
+public class VodSubAccountQueryCategoryResponse {
     
     /**
      * 当前分类

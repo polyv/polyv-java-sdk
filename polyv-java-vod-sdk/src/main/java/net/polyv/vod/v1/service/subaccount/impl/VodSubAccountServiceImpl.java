@@ -6,19 +6,19 @@ import java.util.List;
 
 import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
-import net.polyv.vod.v1.entity.subaccount.edit.VodAddCategoryRequest;
-import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteCategoryRequest;
-import net.polyv.vod.v1.entity.subaccount.edit.VodDeleteVideoRequest;
-import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateCategoryProfileRequest;
-import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateCategoryRequest;
-import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoCategoryRequest;
-import net.polyv.vod.v1.entity.subaccount.edit.VodUpdateVideoInfoRequest;
-import net.polyv.vod.v1.entity.subaccount.query.VodQueryCategoryRequest;
-import net.polyv.vod.v1.entity.subaccount.query.VodQueryCategoryResponse;
-import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoRequest;
-import net.polyv.vod.v1.entity.subaccount.query.VodQueryVideoInfoResponse;
-import net.polyv.vod.v1.entity.subaccount.query.VodSubAccountSearchVideoListRequest;
-import net.polyv.vod.v1.entity.subaccount.query.VodSubAccountSearchVideoListResponse;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountAddCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountDeleteCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountDeleteVideoRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateCategoryProfileRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateVideoCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateVideoInfoRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryCategoryResponse;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryVideoInfoRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryVideoInfoResponse;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountSearchVideoListRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountSearchVideoListResponse;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.subaccount.IVodSubAccountService;
 
@@ -46,134 +46,136 @@ public class VodSubAccountServiceImpl extends VodBaseService implements IVodSubA
     /**
      * 查询视频信息
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/get-video-info/
-     * @param vodQueryVideoInfoRequest 查询视频信息请求实体
+     * @param vodSubAccountQueryVideoInfoRequest 查询视频信息请求实体
      * @return 查询视频信息返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public List<VodQueryVideoInfoResponse> getVideoInfo(VodQueryVideoInfoRequest vodQueryVideoInfoRequest)
+    public List<VodSubAccountQueryVideoInfoResponse> getVideoInfo(
+            VodSubAccountQueryVideoInfoRequest vodSubAccountQueryVideoInfoRequest)
             throws IOException, NoSuchAlgorithmException {
-        return super.getReturnList(VodURL.GET_VIDEO_INFO_URL, vodQueryVideoInfoRequest,
-                VodQueryVideoInfoResponse.class);
+        return super.getReturnList(VodURL.GET_VIDEO_INFO_URL, vodSubAccountQueryVideoInfoRequest,
+                VodSubAccountQueryVideoInfoResponse.class);
     }
     
     /**
      * 修改视频信息
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/update-video-info/
-     * @param vodUpdateVideoInfoRequest 修改视频信息请求实体
+     * @param vodSubAccountUpdateVideoInfoRequest 修改视频信息请求实体
      * @return Boolean
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Boolean updateVideoInfo(VodUpdateVideoInfoRequest vodUpdateVideoInfoRequest)
+    public Boolean updateVideoInfo(VodSubAccountUpdateVideoInfoRequest vodSubAccountUpdateVideoInfoRequest)
             throws IOException, NoSuchAlgorithmException {
-        super.postFormBodyReturnOne(VodURL.UPDATE_INFO_URL, vodUpdateVideoInfoRequest, String.class);
+        super.postFormBodyReturnOne(VodURL.UPDATE_INFO_URL, vodSubAccountUpdateVideoInfoRequest, String.class);
         return true;
     }
     
     /**
      * 批量修改视频所属分类请求实体
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/update-video-category/
-     * @param vodUpdateVideoCategoryRequest 批量修改视频所属分类请求实体
+     * @param vodSubAccountUpdateVideoCategoryRequest 批量修改视频所属分类请求实体
      * @return Boolean
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Boolean updateVideoCategory(VodUpdateVideoCategoryRequest vodUpdateVideoCategoryRequest)
+    public Boolean updateVideoCategory(VodSubAccountUpdateVideoCategoryRequest vodSubAccountUpdateVideoCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
-        super.postFormBodyReturnOne(VodURL.UPDATE_VIDEO_CATEGORY, vodUpdateVideoCategoryRequest, String.class);
+        super.postFormBodyReturnOne(VodURL.UPDATE_VIDEO_CATEGORY, vodSubAccountUpdateVideoCategoryRequest, String.class);
         return true;
     }
     
     /**
      * 删除视频
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/delete-video/
-     * @param vodDeleteVideoRequest 删除视频请求实体
+     * @param vodSubAccountDeleteVideoRequest 删除视频请求实体
      * @return Boolean
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Boolean deleteVideo(VodDeleteVideoRequest vodDeleteVideoRequest)
+    public Boolean deleteVideo(VodSubAccountDeleteVideoRequest vodSubAccountDeleteVideoRequest)
             throws IOException, NoSuchAlgorithmException {
-        super.postFormBodyReturnOne(VodURL.DELETE_VIDEO, vodDeleteVideoRequest, String.class);
+        super.postFormBodyReturnOne(VodURL.DELETE_VIDEO, vodSubAccountDeleteVideoRequest, String.class);
         return true;
     }
     
     /**
      * 查询视频分类
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/get-category/
-     * @param vodQueryCategoryRequest 查询视频分类请求实体
+     * @param vodSubAccountQueryCategoryRequest 查询视频分类请求实体
      * @return 查询视频分类返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public VodQueryCategoryResponse queryCategory(VodQueryCategoryRequest vodQueryCategoryRequest)
+    public VodSubAccountQueryCategoryResponse queryCategory(VodSubAccountQueryCategoryRequest vodSubAccountQueryCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
-        return super.getReturnOne(VodURL.GET_CATEGORY_URL, vodQueryCategoryRequest, VodQueryCategoryResponse.class);
+        return super.getReturnOne(VodURL.GET_CATEGORY_URL, vodSubAccountQueryCategoryRequest, VodSubAccountQueryCategoryResponse.class);
     }
     
     /**
      * 新增视频分类
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/add-category/
-     * @param vodAddCategoryRequest 新增视频分类请求实体
+     * @param vodSubAccountAddCategoryRequest 新增视频分类请求实体
      * @return String
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String addCategory(VodAddCategoryRequest vodAddCategoryRequest)
+    public String addCategory(VodSubAccountAddCategoryRequest vodSubAccountAddCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
-        return super.postFormBodyReturnOne(VodURL.ADD_CATEGORY_URL, vodAddCategoryRequest, String.class);
+        return super.postFormBodyReturnOne(VodURL.ADD_CATEGORY_URL, vodSubAccountAddCategoryRequest, String.class);
     }
     
     /**
      * 修改视频分类信息
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/update-category-info/
-     * @param vodUpdateCategoryRequest 新增视频分类请求实体
+     * @param vodSubAccountUpdateCategoryRequest 新增视频分类请求实体
      * @return Boolean
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Boolean updateCategory(VodUpdateCategoryRequest vodUpdateCategoryRequest)
+    public Boolean updateCategory(VodSubAccountUpdateCategoryRequest vodSubAccountUpdateCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
-        super.postFormBodyReturnOne(VodURL.UPDATE_CATEGORY_URL, vodUpdateCategoryRequest, String.class);
+        super.postFormBodyReturnOne(VodURL.UPDATE_CATEGORY_URL, vodSubAccountUpdateCategoryRequest, String.class);
         return true;
     }
     
     /**
      * 删除视频分类
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/delete-video-category/
-     * @param vodDeleteCategoryRequest 删除视频分类请求实体
+     * @param vodSubAccountDeleteCategoryRequest 删除视频分类请求实体
      * @return Boolean
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Boolean deleteCategory(VodDeleteCategoryRequest vodDeleteCategoryRequest)
+    public Boolean deleteCategory(VodSubAccountDeleteCategoryRequest vodSubAccountDeleteCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
-        super.postFormBodyReturnOne(VodURL.DELETE_CATEGORY_URL, vodDeleteCategoryRequest, String.class);
+        super.postFormBodyReturnOne(VodURL.DELETE_CATEGORY_URL, vodSubAccountDeleteCategoryRequest, String.class);
         return true;
     }
     
     /**
      * 修改视频分类属性设置
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-subaccount/update-category-profile/
-     * @param vodUpdateCategoryProfileRequest 修改视频分类属性设置请求实体
+     * @param vodSubAccountUpdateCategoryProfileRequest 修改视频分类属性设置请求实体
      * @return Boolean
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public Boolean updateCategoryProfile(VodUpdateCategoryProfileRequest vodUpdateCategoryProfileRequest)
+    public Boolean updateCategoryProfile(
+            VodSubAccountUpdateCategoryProfileRequest vodSubAccountUpdateCategoryProfileRequest)
             throws IOException, NoSuchAlgorithmException {
-        vodUpdateCategoryProfileRequest.setUserId(VodGlobalConfig.getUserId());
-        super.postFormBodyReturnOne(VodURL.UPDATE_CATEGORY_PROFILE_URL, vodUpdateCategoryProfileRequest, String.class);
+        vodSubAccountUpdateCategoryProfileRequest.setUserId(VodGlobalConfig.getUserId());
+        super.postFormBodyReturnOne(VodURL.UPDATE_CATEGORY_PROFILE_URL, vodSubAccountUpdateCategoryProfileRequest, String.class);
         return true;
     }
     

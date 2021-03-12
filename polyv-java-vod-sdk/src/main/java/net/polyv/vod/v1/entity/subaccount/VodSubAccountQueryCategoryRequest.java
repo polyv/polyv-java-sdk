@@ -1,6 +1,4 @@
-package net.polyv.vod.v1.entity.subaccount.query;
-
-import java.util.Date;
+package net.polyv.vod.v1.entity.subaccount;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -19,7 +17,7 @@ import net.polyv.vod.v1.entity.VodPageCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("查询视频分类请求实体")
-public class VodQueryCategoryRequest extends VodPageCommonRequest {
+public class VodSubAccountQueryCategoryRequest extends VodPageCommonRequest {
     
     /**
      * 分类id

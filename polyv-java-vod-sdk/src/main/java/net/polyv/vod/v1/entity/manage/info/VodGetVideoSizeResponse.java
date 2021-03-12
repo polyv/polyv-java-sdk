@@ -53,19 +53,19 @@ public class VodGetVideoSizeResponse {
          * 编码后码率1FLV的大小
          */
         @ApiModelProperty(name = "filesize1", value = "编码后码率1FLV的大小")
-        private Integer filesize1;
+        private Long filesize1;
         
         /**
          * 编码后码率2FLV的大小
          */
         @ApiModelProperty(name = "filesize2", value = "编码后码率2FLV的大小")
-        private Integer filesize2;
+        private Long filesize2;
         
         /**
          * 编码后码率3FLV的大小
          */
         @ApiModelProperty(name = "filesize3", value = "编码后码率3FLV的大小")
-        private Integer filesize3;
+        private Long filesize3;
     }
     
 }

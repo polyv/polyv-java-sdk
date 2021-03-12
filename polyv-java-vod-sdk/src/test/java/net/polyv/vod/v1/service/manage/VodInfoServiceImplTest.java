@@ -22,6 +22,8 @@ import net.polyv.vod.v1.entity.manage.info.VodGetVideoRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeResponse;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideosSizeRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideosSizeResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameRequest;
@@ -315,7 +317,8 @@ public class VodInfoServiceImplTest extends BaseTest {
         VodQueryVideoPasswordRequest vodQueryVideoPasswordRequest = new VodQueryVideoPasswordRequest();
         VodQueryVideoPasswordResponse vodQueryVideoPasswordResponse = null;
         try {
-            vodQueryVideoPasswordRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1,1b448be3234134f5a73bdddd6e88a9a5_1")
+            vodQueryVideoPasswordRequest.setVideoId(
+                    "1b448be323a146649ad0cc89d0faed9c_1,1b448be3234134f5a73bdddd6e88a9a5_1")
 //            vodQueryVideoPasswordRequest.setVideoId("1b448be3234134f5a73bdddd6e88a9a5_1")
                     .setRequestId(VodSignUtil.generateUUID());
             vodQueryVideoPasswordResponse = new VodInfoServiceImpl().queryVideoPassword(vodQueryVideoPasswordRequest);
@@ -334,4 +337,31 @@ public class VodInfoServiceImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 批量获取视频的时长和大小
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetVideosSize() throws IOException, NoSuchAlgorithmException {
+        VodGetVideosSizeRequest vodGetVideosSizeRequest = new VodGetVideosSizeRequest();
+        List<VodGetVideosSizeResponse> vodGetVideosSizeResponseList = null;
+        try {
+            vodGetVideosSizeRequest.setVideoIds("1b448be323a146649ad0cc89d0faed9c_1,1b448be32389b93ea8be08bf0d257043_1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetVideosSizeResponseList = new VodInfoServiceImpl().getVideosSize(vodGetVideosSizeRequest);
+            Assert.assertNotNull(vodGetVideosSizeResponseList);
+            if (vodGetVideosSizeResponseList != null) {
+                log.debug("测试批量获取视频的时长和大小成功,{}", JSON.toJSONString(vodGetVideosSizeResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
 }

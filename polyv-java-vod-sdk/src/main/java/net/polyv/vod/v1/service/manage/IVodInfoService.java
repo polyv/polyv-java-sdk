@@ -15,6 +15,8 @@ import net.polyv.vod.v1.entity.manage.info.VodGetVideoRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeResponse;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideosSizeRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideosSizeResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoResponse;
 import net.polyv.vod.v1.entity.manage.info.VodListVideoKeyFrameRequest;
@@ -136,5 +138,16 @@ public interface IVodInfoService {
      * @throws NoSuchAlgorithmException 异常
      */
     VodQueryVideoPasswordResponse queryVideoPassword(VodQueryVideoPasswordRequest vodQueryVideoPasswordRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 批量获取视频的时长和大小
+     * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/info/
+     * @param vodGetVideosSizeRequest 批量获取视频的时长和大小请求实体
+     * @return 批量获取视频的时长和大小返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    List<VodGetVideosSizeResponse> getVideosSize(VodGetVideosSizeRequest vodGetVideosSizeRequest)
             throws IOException, NoSuchAlgorithmException;
 }

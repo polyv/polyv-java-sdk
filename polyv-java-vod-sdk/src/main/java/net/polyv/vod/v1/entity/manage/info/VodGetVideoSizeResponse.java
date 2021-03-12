@@ -7,19 +7,16 @@ import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.vod.v1.entity.VodCommonResponse;
 
 /**
  * 根据分类批量获取视频时长和大小返回实体
  * @author: fangyan
  **/
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("根据分类批量获取视频时长和大小返回实体")
-public class VodGetVideoSizeResponse extends VodCommonResponse {
+public class VodGetVideoSizeResponse {
     
     /**
      * 分类ID

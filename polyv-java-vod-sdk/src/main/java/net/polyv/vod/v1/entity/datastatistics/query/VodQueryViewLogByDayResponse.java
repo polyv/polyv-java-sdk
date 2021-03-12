@@ -7,19 +7,16 @@ import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.vod.v1.entity.VodCommonResponse;
 
 /**
  * 获取某一天视频观看日志返回实体
  * @author: fangyan
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("获取某一天视频观看日志返回实体")
-public class VodQueryViewLogByDayResponse extends VodCommonResponse {
+public class VodQueryViewLogByDayResponse {
     
     /**
      * 表示此次播放动作的ID

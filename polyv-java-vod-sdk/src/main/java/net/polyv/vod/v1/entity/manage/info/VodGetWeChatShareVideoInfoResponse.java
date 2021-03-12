@@ -3,19 +3,16 @@ package net.polyv.vod.v1.entity.manage.info;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.vod.v1.entity.VodCommonResponse;
 
 /**
  * 获取微信分享页的视频相关信息接口返回实体
  * @author: fangyan
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("获取微信分享页的视频相关信息接口返回实体")
-public class VodGetWeChatShareVideoInfoResponse extends VodCommonResponse {
+public class VodGetWeChatShareVideoInfoResponse {
     
     /**
      * 视频封面图

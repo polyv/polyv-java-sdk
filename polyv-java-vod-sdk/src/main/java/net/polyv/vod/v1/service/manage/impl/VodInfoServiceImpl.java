@@ -17,6 +17,8 @@ import net.polyv.vod.v1.entity.manage.info.VodGetVideoRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeResponse;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideosPlayTimesRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideosPlayTimesResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideosSizeRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideosSizeResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
@@ -233,6 +235,21 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.GET_VIDEOS_SIZE_URL_URL);
         return super.getReturnList(url, vodGetVideosSizeRequest, VodGetVideosSizeResponse.class);
+    }
+    
+    /**
+     * 批量获取视频播放次数
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/getplaytimes/
+     * @param vodGetVideosPlayTimesRequest 批量获取视频播放次数请求实体
+     * @return 批量获取视频播放次数返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<VodGetVideosPlayTimesResponse> getVideosPlayTimes(
+            VodGetVideosPlayTimesRequest vodGetVideosPlayTimesRequest) throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.GET_VIDEOS_PLAY_SIZE_URL);
+        return super.getReturnList(url, vodGetVideosPlayTimesRequest, VodGetVideosPlayTimesResponse.class);
     }
     
 }

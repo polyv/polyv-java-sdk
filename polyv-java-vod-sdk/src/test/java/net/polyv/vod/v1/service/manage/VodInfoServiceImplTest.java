@@ -22,6 +22,8 @@ import net.polyv.vod.v1.entity.manage.info.VodGetVideoRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoSizeResponse;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideosPlayTimesRequest;
+import net.polyv.vod.v1.entity.manage.info.VodGetVideosPlayTimesResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideosSizeRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideosSizeResponse;
 import net.polyv.vod.v1.entity.manage.info.VodGetWeChatShareVideoInfoRequest;
@@ -352,6 +354,37 @@ public class VodInfoServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodGetVideosSizeResponseList);
             if (vodGetVideosSizeResponseList != null) {
                 log.debug("测试批量获取视频的时长和大小成功,{}", JSON.toJSONString(vodGetVideosSizeResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 批量获取视频播放次数
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetVideosPlayTimes() throws IOException, NoSuchAlgorithmException {
+        VodGetVideosPlayTimesRequest vodGetVideosPlayTimesRequest = new VodGetVideosPlayTimesRequest();
+        List<VodGetVideosPlayTimesResponse> vodGetVideosPlayTimesResponseList = null;
+        try {
+            vodGetVideosPlayTimesRequest.setVideoIds(
+                    "1b448be3230a0194d959426ae005645f_1,1b448be323a146649ad0cc89d0faed9c_1")
+                    .setRealTime(0)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetVideosPlayTimesResponseList = new VodInfoServiceImpl().getVideosPlayTimes(
+                    vodGetVideosPlayTimesRequest);
+            Assert.assertNotNull(vodGetVideosPlayTimesResponseList);
+            if (vodGetVideosPlayTimesResponseList != null) {
+                log.debug("测试批量获取视频播放次数成功,{}", JSON.toJSONString(vodGetVideosPlayTimesResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

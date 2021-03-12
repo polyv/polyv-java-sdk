@@ -244,6 +244,11 @@ public class VodURL {
     public static final String GET_VIDEOS_SIZE_URL_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/info";
     
     /**
+     * 批量获取视频播放次数
+     */
+    public static final String GET_VIDEOS_PLAY_SIZE_URL = BASE_URI + "v2/data/" + PARAM_REPLACE_CHAR + "/play-times";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

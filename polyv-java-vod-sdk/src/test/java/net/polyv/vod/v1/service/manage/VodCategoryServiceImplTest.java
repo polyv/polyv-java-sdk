@@ -2,12 +2,19 @@ package net.polyv.vod.v1.service.manage;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodGetCategoryResponse;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.service.BaseTest;
@@ -75,6 +82,92 @@ public class VodCategoryServiceImplTest extends BaseTest {
             Assert.assertTrue(vodUpdateCategoryProfileResponse);
             if (vodUpdateCategoryProfileResponse) {
                 log.debug("测试设置分类属性成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试新建视频分类
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+//    @Test
+    public void testCreateCategory() throws IOException, NoSuchAlgorithmException {
+        VodCreateCategoryRequest vodCreateCategoryRequest = new VodCreateCategoryRequest();
+        String vodCreateCategoryResponse = null;
+        try {
+            vodCreateCategoryRequest.setCategoryName("Junit测试")
+                    .setParentId("1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodCreateCategoryResponse = new VodCategoryServiceImpl().createCategory(vodCreateCategoryRequest);
+            Assert.assertNotNull(vodCreateCategoryResponse);
+            if (vodCreateCategoryResponse != null) {
+                log.debug("测试新建视频分类成功，{}", vodCreateCategoryResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试删除分类
+     * 返回：true为删除成功，false为删除失败
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testDeleteCategory() throws IOException, NoSuchAlgorithmException {
+        VodDeleteCategoryRequest vodDeleteCategoryRequest = new VodDeleteCategoryRequest();
+        Boolean vodDeleteCategoryResponse = null;
+        try {
+            //准备测试数据
+            String categoryID = super.createCategory();
+            vodDeleteCategoryRequest.setCategoryId(categoryID).setRequestId(VodSignUtil.generateUUID());
+            vodDeleteCategoryResponse = new VodCategoryServiceImpl().deleteCategory(vodDeleteCategoryRequest);
+            Assert.assertTrue(vodDeleteCategoryResponse);
+            if (vodDeleteCategoryResponse) {
+                log.debug("测试删除分类成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试获取视频分类目录
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetCategory() throws IOException, NoSuchAlgorithmException {
+        VodGetCategoryRequest vodGetCategoryRequest = new VodGetCategoryRequest();
+        List<VodGetCategoryResponse> vodGetCategoryResponseList = null;
+        try {
+            vodGetCategoryRequest.setCategoryId("1").setRequestId(VodSignUtil.generateUUID());
+            vodGetCategoryResponseList = new VodCategoryServiceImpl().getCategory(vodGetCategoryRequest);
+            Assert.assertNotNull(vodGetCategoryResponseList);
+            if (vodGetCategoryResponseList != null) {
+                log.debug("测试获取视频分类目录成功,{}", JSON.toJSONString(vodGetCategoryResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

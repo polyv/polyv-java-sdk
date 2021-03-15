@@ -256,7 +256,23 @@ public class VodURL {
     /**
      * 设置分类属性
      */
-    public static final String VOD_UPDATE_CATEGORY_PROFILE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/updateCataProfile";
+    public static final String VOD_UPDATE_CATEGORY_PROFILE_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/updateCataProfile";
+    
+    /**
+     * 新建视频分类
+     */
+    public static final String VOD_CREATE_CATEGORY_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/addCata";
+    
+    /**
+     * 删除分类
+     */
+    public static final String VOD_DELETE_CATEGORY_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deleteCata";
+    
+    /**
+     * 获取视频分类目录
+     */
+    public static final String VOD_GET_CATEGORY_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/cataJson";
     
     /**
      * 获取替换参数后的URL地址

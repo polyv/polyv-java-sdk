@@ -291,6 +291,12 @@ public class VodURL {
     public static final String VOD_GET_CATEGORY_SIZE_URL = BASE_URI + "v2/cata/size";
     
     /**
+     * 获取某分类下某子账号的视频列表
+     */
+    public static final String VOD_GET_BY_UPLOADER_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-by-uploader";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

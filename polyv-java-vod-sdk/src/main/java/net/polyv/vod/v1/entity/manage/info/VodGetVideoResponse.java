@@ -1,6 +1,7 @@
 package net.polyv.vod.v1.entity.manage.info;
 
 import java.util.Date;
+import java.util.List;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
@@ -254,6 +255,26 @@ public class VodGetVideoResponse {
     @ApiModelProperty(name = "categoryName", value = "分类名称", required = false)
     @JSONField(name = "cataname")
     private String categoryName;
+    
+    /**
+     * 视频截图小图url
+     */
+    @ApiModelProperty(name = "imageUrls", value = "视频截图小图url", required = false)
+    private List<String> imageUrls;
+    
+    /**
+     * 源视频文件大小，单位为：byte
+     */
+    @ApiModelProperty(name = "sourceFileSize", value = "源视频文件大小，单位为：byte", required = false)
+    @JSONField(name = "source_filesize")
+    private String sourceFileSize;
+    
+    /**
+     * 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整
+     */
+    @ApiModelProperty(name = "md5CheckSum", value = "上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整", required = false)
+    @JSONField(name = "md5checksum")
+    private String md5CheckSum;
     
     @Data
     @Accessors(chain = true)

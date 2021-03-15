@@ -122,6 +122,10 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
     /**
      * 测试异步合并直播录制文件
      * 返回：true为提交成功，false为提交失败，具体合并是否成功以回调为准
+     * 回调说明：该接口为异步处理，如果需要获取转存的结果，可以在请求接口时提交callbackUrl 参数，在程序转存成功后，会对callbackUrl 进行回调通知
+     * 回调说明：转存成功回调参数；转存成功回调参数参照 http://dev.polyv.net/2018/liveproduct/l-manual/l-function-intro/development-settings
+     * 回调说明：/playback-callback-url/
+     * 回调对象：net.polyv.live.v1.entity.channel.playback.LiveMergeChannelVideoAsyncRequest$LiveMergeChannelVideoCallback
      * API地址：CHANNEL_RECORD_FILE_MERGE_ASYNC_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -168,8 +172,8 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveChannelVideoListResponse liveChannelVideoListResponse;
         try {
             liveChannelVideoListRequest.setChannelId("1951952")
-                    .setStartDate(getDate(2020,1,1))
-                    .setEndDate(getDate(2020,10,14))
+                    .setStartDate(getDate(2020, 1, 1))
+                    .setEndDate(getDate(2020, 10, 14))
                     .setSessionId(null)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelVideoListResponse = new LiveChannelPlaybackServiceImpl().listChannelVideo(
@@ -235,7 +239,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse;
         try {
             Calendar instance = Calendar.getInstance();
-            instance.set(2020,10,1);
+            instance.set(2020, 10, 1);
             liveListChannelSessionInfoRequest.setChannelId(createChannel())
                     .setStartDate(instance.getTime())
                     .setEndDate(new Date())
@@ -380,7 +384,8 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
             liveChannelPlaybackEnabledRequest.setChannelId(createChannel())
                     .setPlayBackEnabled("Y")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelPlaybackEnabledResponse = new LiveChannelPlaybackServiceImpl().updateChannelPlayBackEnabledSetting(
+            liveChannelPlaybackEnabledResponse =
+                    new LiveChannelPlaybackServiceImpl().updateChannelPlayBackEnabledSetting(
                     liveChannelPlaybackEnabledRequest);
             Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
             if (liveChannelPlaybackEnabledResponse != null) {
@@ -481,7 +486,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         Boolean liveDeleteChannelVideoResponse;
         try {
             liveDeleteChannelVideoRequest.setChannelId("1951952")
-                    .setStartTime(getDate(2020,10,16,11,12,34))
+                    .setStartTime(getDate(2020, 10, 16, 11, 12, 34))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelVideoResponse = new LiveChannelPlaybackServiceImpl().deleteChannelVideo(
                     liveDeleteChannelVideoRequest);

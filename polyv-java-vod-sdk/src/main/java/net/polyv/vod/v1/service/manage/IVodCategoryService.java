@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 
@@ -44,5 +45,16 @@ public interface IVodCategoryService {
      * @throws NoSuchAlgorithmException 异常
      */
     String createCategory(VodCreateCategoryRequest vodCreateCategoryRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 删除分类
+     * API地址：https://dev.polyv.net/2013/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/deletecata/
+     * @param vodDeleteCategoryRequest 删除分类请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean deleteCategory(VodDeleteCategoryRequest vodDeleteCategoryRequest)
             throws IOException, NoSuchAlgorithmException;
 }

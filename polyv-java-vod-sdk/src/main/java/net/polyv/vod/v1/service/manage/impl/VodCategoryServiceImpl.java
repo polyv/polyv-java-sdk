@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryVO;
+import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -66,5 +67,20 @@ public class VodCategoryServiceImpl extends VodBaseService implements IVodCatego
             return vodCreateCategoryVO.getCategoryId();
         }
         return null;
+    }
+    
+    /**
+     * 删除分类
+     * API地址：https://dev.polyv.net/2013/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/deletecata/
+     * @param vodDeleteCategoryRequest 删除分类请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean deleteCategory(VodDeleteCategoryRequest vodDeleteCategoryRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_DELETE_CATEGORY_URL);
+        return super.postFormBodyReturnOne(url, vodDeleteCategoryRequest, Boolean.class);
     }
 }

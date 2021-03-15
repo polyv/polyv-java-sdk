@@ -265,6 +265,11 @@ public class VodURL {
     public static final String VOD_CREATE_CATEGORY_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/addCata";
     
     /**
+     * 删除分类
+     */
+    public static final String VOD_DELETE_CATEGORY_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deleteCata";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

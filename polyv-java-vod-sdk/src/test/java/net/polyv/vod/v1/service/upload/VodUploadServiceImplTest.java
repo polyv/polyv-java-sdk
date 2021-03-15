@@ -130,13 +130,13 @@ public class VodUploadServiceImplTest extends BaseTest {
     
     /**
      * 远程批量上传视频
-     * 描述：批量上传远程视频（异步上传）
+     * 描述：批量上传远程视频（异步上传），具体上传情况可调用“分页获取视频同步列表”查看
+     * 约束：2、水印链接必须png格式
      * 返回：true提交异步上传成功，false提交异步上传失败
-     * TODO 异步上传回调在文档中未描述。
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    @Test
+//    @Test
     public void testUploadHttpVideoList() throws IOException, NoSuchAlgorithmException {
         VodUploadHttpVideoListRequest vodUploadHttpVideoListRequest = new VodUploadHttpVideoListRequest();
         Boolean vodUploadHttpVideoListResponse = null;
@@ -145,7 +145,7 @@ public class VodUploadServiceImplTest extends BaseTest {
                     .setTitle("junit-远程批量上传视频")
                     .setCategoryId("1602300731843")
                     .setScreenCap(0)
-                    .setWatermark("https://wwwimg.polyv.net/assets/dist/images/v2020/page-home/products/icon-class.svg?v=2.0")
+                    .setWatermark("http://sadboytest.oss-cn-shenzhen.aliyuncs.com/a.png")
                     .setWatermarkLocation("1")
                     .setRequestId(VodSignUtil.generateUUID());
             vodUploadHttpVideoListResponse = new VodUploadServiceImpl().uploadHttpVideoList(

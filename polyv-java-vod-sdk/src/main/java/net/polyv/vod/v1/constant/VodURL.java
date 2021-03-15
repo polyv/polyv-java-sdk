@@ -281,6 +281,11 @@ public class VodURL {
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/updateCata";
     
     /**
+     * 移动视频到指定分类
+     */
+    public static final String VOD_MOVE_VIDEO_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/changeCata";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

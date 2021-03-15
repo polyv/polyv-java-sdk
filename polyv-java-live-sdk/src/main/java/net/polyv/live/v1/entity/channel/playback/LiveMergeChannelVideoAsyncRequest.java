@@ -56,5 +56,33 @@ public class LiveMergeChannelVideoAsyncRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "mergeMp4", value = "传Y合并MP4文件，传N或者不传合并m3u8文件", required = false)
     private String mergeMp4;
+    
+    @Data
+    @Accessors(chain = true)
+    @ApiModel("异步合并直播录制文件回调返回实体")
+    public static class LiveMergeChannelVideoCallback{
+        
+        @ApiModelProperty(name = "status", value = "接口处理结果，取值：success（成功），error（出错）")
+        private String status;
+        
+        @ApiModelProperty(name = "code", value = "错误码,userExpired-用户已过期；spaceOverSize-点播空间不足；unknown-未知异常")
+        private String code;
+        
+        @ApiModelProperty(name = "userId", value = "用户id")
+        private String userId;
+        
+        @ApiModelProperty(name = "channelId", value = "频道号")
+        private String channelId;
+        
+        @ApiModelProperty(name = "fileId", value = "转存的文件ID")
+        private String fileId;
+        
+        @ApiModelProperty(name = "sign", value = "校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙")
+        private String sign;
+    
+        @ApiModelProperty(name = "timestamp", value = "13位毫秒时间戳")
+        private String timestamp;
+        
+    }
 
 }

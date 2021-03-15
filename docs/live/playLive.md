@@ -178,10 +178,10 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| liveChannelBasicInfoResponse | false | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv75)】 | 
-| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv76)】 | 
+| liveChannelBasicInfoResponse | false | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv71)】 | 
+| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv72)】 | 
 
-<h6 id="polyv75"><a href="#/playLive.md?id=polyv75"data-id="LiveChannelBasicInfoResponse参数描述"class="anchor"><span>LiveChannelBasicInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv71"><a href="#/playLive.md?id=polyv71"data-id="LiveChannelBasicInfoResponse参数描述"class="anchor"><span>LiveChannelBasicInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -201,10 +201,10 @@
 | maxViewer | false | Integer | 最大在线观看人数 | 
 | watchStatus | false | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
 | watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
-| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv77)】 | 
-| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv78)】 | 
+| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv73)】 | 
+| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv74)】 | 
 
-<h6 id="polyv76"><a href="#/playLive.md?id=polyv76"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv72"><a href="#/playLive.md?id=polyv72"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -226,7 +226,7 @@
 | role | false | String | 子频道角色 | 
 | pushUrl | false | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
 
-<h6 id="polyv77"><a href="#/playLive.md?id=polyv77"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv73"><a href="#/playLive.md?id=polyv73"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -235,7 +235,7 @@
 | userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | rank | false | Integer | 分类的排序值 | 
 
-<h6 id="polyv78"><a href="#/playLive.md?id=polyv78"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv74"><a href="#/playLive.md?id=polyv74"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -488,10 +488,10 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| liveChannelBasicInfoResponse | false | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv80)】 | 
-| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv81)】 | 
+| liveChannelBasicInfoResponse | false | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv76)】 | 
+| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv77)】 | 
 
-<h6 id="polyv80"><a href="#/playLive.md?id=polyv80"data-id="LiveChannelBasicInfoResponse参数描述"class="anchor"><span>LiveChannelBasicInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv76"><a href="#/playLive.md?id=polyv76"data-id="LiveChannelBasicInfoResponse参数描述"class="anchor"><span>LiveChannelBasicInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -511,10 +511,10 @@
 | maxViewer | false | Integer | 最大在线观看人数 | 
 | watchStatus | false | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
 | watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
-| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv82)】 | 
-| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv83)】 | 
+| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv78)】 | 
+| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv79)】 | 
 
-<h6 id="polyv81"><a href="#/playLive.md?id=polyv81"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv77"><a href="#/playLive.md?id=polyv77"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -536,7 +536,7 @@
 | role | false | String | 子频道角色 | 
 | pushUrl | false | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
 
-<h6 id="polyv82"><a href="#/playLive.md?id=polyv82"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv78"><a href="#/playLive.md?id=polyv78"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -545,7 +545,7 @@
 | userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | rank | false | Integer | 分类的排序值 | 
 
-<h6 id="polyv83"><a href="#/playLive.md?id=polyv83"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv79"><a href="#/playLive.md?id=polyv79"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -734,10 +734,10 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| liveChannelBasicInfoResponse | false | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv85)】 | 
-| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv86)】 | 
+| liveChannelBasicInfoResponse | false | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv81)】 | 
+| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv82)】 | 
 
-<h6 id="polyv85"><a href="#/playLive.md?id=polyv85"data-id="LiveChannelBasicInfoResponse参数描述"class="anchor"><span>LiveChannelBasicInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv81"><a href="#/playLive.md?id=polyv81"data-id="LiveChannelBasicInfoResponse参数描述"class="anchor"><span>LiveChannelBasicInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -757,10 +757,10 @@
 | maxViewer | false | Integer | 最大在线观看人数 | 
 | watchStatus | false | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
 | watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
-| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv87)】 | 
-| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv88)】 | 
+| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv83)】 | 
+| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv84)】 | 
 
-<h6 id="polyv86"><a href="#/playLive.md?id=polyv86"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv82"><a href="#/playLive.md?id=polyv82"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -782,7 +782,7 @@
 | role | false | String | 子频道角色 | 
 | pushUrl | false | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
 
-<h6 id="polyv87"><a href="#/playLive.md?id=polyv87"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv83"><a href="#/playLive.md?id=polyv83"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -791,7 +791,7 @@
 | userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | rank | false | Integer | 分类的排序值 | 
 
-<h6 id="polyv88"><a href="#/playLive.md?id=polyv88"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv84"><a href="#/playLive.md?id=polyv84"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1022,10 +1022,10 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| liveChannelBasicInfoResponse | false | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv90)】 | 
-| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv91)】 | 
+| liveChannelBasicInfoResponse | false | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv86)】 | 
+| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv87)】 | 
 
-<h6 id="polyv90"><a href="#/playLive.md?id=polyv90"data-id="LiveChannelBasicInfoResponse参数描述"class="anchor"><span>LiveChannelBasicInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv86"><a href="#/playLive.md?id=polyv86"data-id="LiveChannelBasicInfoResponse参数描述"class="anchor"><span>LiveChannelBasicInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1045,10 +1045,10 @@
 | maxViewer | false | Integer | 最大在线观看人数 | 
 | watchStatus | false | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
 | watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
-| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv92)】 | 
-| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv93)】 | 
+| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv88)】 | 
+| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv89)】 | 
 
-<h6 id="polyv91"><a href="#/playLive.md?id=polyv91"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv87"><a href="#/playLive.md?id=polyv87"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1070,7 +1070,7 @@
 | role | false | String | 子频道角色 | 
 | pushUrl | false | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
 
-<h6 id="polyv92"><a href="#/playLive.md?id=polyv92"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv88"><a href="#/playLive.md?id=polyv88"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1079,7 +1079,7 @@
 | userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | rank | false | Integer | 分类的排序值 | 
 
-<h6 id="polyv93"><a href="#/playLive.md?id=polyv93"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv89"><a href="#/playLive.md?id=polyv89"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

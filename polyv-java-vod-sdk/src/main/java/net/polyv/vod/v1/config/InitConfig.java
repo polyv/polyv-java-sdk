@@ -30,10 +30,11 @@ public class InitConfig {
         AccountInfo accountInfo = FileUtil.readConfigFromFile(path);
         String userId = accountInfo.getVodConfig().getUserId();
         String appId = accountInfo.getVodConfig().getAppId();
-        String writeToken = accountInfo.getVodConfig().getWriteToken();
-        String readToken = accountInfo.getVodConfig().getReadToken();
+//        String writeToken = accountInfo.getVodConfig().getWriteToken();
+//        String readToken = accountInfo.getVodConfig().getReadToken();
         String secretKey = accountInfo.getVodConfig().getSecretKey();
-        VodGlobalConfig.init(userId, appId, writeToken, readToken, secretKey);
+//        VodGlobalConfig.init(userId, appId, writeToken, readToken, secretKey);
+        VodGlobalConfig.init(userId, appId,  secretKey);
         log.debug("--初始化完成--");
     }
     

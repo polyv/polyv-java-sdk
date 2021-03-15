@@ -311,17 +311,17 @@
 	@Test
 	public void testGetBannedList() throws Exception, NoSuchAlgorithmException {
         LiveGetBannedListRequest liveGetBannedListRequest = new LiveGetBannedListRequest();
-        List<String> result = null;
+        List<String> liveGetBannedListResponseList = null;
         try {
             String channelId = super.createChannel();
             liveGetBannedListRequest.setChannelId(channelId)
                     .setType(LiveConstant.BannedType.IP.getType())
                     .setRequestId(LiveSignUtil.generateUUID());
-            result = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
-            Assert.assertNotNull(result);
-            if (result != null) {
+            liveGetBannedListResponseList = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
+            Assert.assertNotNull(liveGetBannedListResponseList);
+            if (liveGetBannedListResponseList != null) {
                 //to do something ......
-                log.debug("测试查询频道禁言列表成功{}", JSON.toJSONString(result));
+                log.debug("测试查询频道禁言列表成功{}", JSON.toJSONString(liveGetBannedListResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -440,17 +440,17 @@
 	@Test
 	public void testGetChannelBadworkList() throws Exception, NoSuchAlgorithmException {
         LiveGetBadwordIPRequest liveGetBadwordIPRequest = new LiveGetBadwordIPRequest();
-        List<String> result = null;
+        List<String> liveGetBadwordIPResponseList = null;
         try {
             String channelId = super.createChannel();
             liveGetBadwordIPRequest.setChannelId(channelId)
                     .setType(LiveConstant.BannedType.IP.getType())
                     .setRequestId(LiveSignUtil.generateUUID());
-            result = new LiveChatRoomServiceImpl().getChannelBadworkList(liveGetBadwordIPRequest);
-            Assert.assertNotNull(result);
-            if (result != null) {
+            liveGetBadwordIPResponseList = new LiveChatRoomServiceImpl().getChannelBadworkList(liveGetBadwordIPRequest);
+            Assert.assertNotNull(liveGetBadwordIPResponseList);
+            if (liveGetBadwordIPResponseList != null) {
                 //to do something ......
-                log.debug("测试查询频道严禁词/禁言IP列表成功{}", JSON.toJSONString(result));
+                log.debug("测试查询频道严禁词/禁言IP列表成功{}", JSON.toJSONString(liveGetBadwordIPResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -499,15 +499,15 @@
 	@Test
 	public void testGetAccountBadworkList() throws Exception, NoSuchAlgorithmException {
         LiveGetAccountBadWordRequest liveGetAccountBadWordRequest = new LiveGetAccountBadWordRequest();
-        List<String> result = null;
+        List<String> liveGetAccountBadWordResponseList = null;
         try {
             liveGetAccountBadWordRequest.setRequestId(LiveSignUtil.generateUUID());
             String channelId = super.createChannel();
-            result = new LiveChatRoomServiceImpl().getAccountBadworkList(liveGetAccountBadWordRequest);
-            Assert.assertNotNull(result);
-            if (result != null) {
+            liveGetAccountBadWordResponseList = new LiveChatRoomServiceImpl().getAccountBadworkList(liveGetAccountBadWordRequest);
+            Assert.assertNotNull(liveGetAccountBadWordResponseList);
+            if (liveGetAccountBadWordResponseList != null) {
                 //to do something ......
-                log.debug("测试查询账号严禁词列表成功{}", JSON.toJSONString(result));
+                log.debug("测试查询账号严禁词列表成功{}", JSON.toJSONString(liveGetAccountBadWordResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -554,18 +554,18 @@
 	@Test
 	public void testGetConsultingRecord() throws Exception, NoSuchAlgorithmException {
         LiveGetConsultingRecordRequest liveGetConsultingRecordRequest = new LiveGetConsultingRecordRequest();
-        List<LiveGetConsultingRecordResponse> responses = null;
+        List<LiveGetConsultingRecordResponse> liveGetConsultingRecordResponseList = null;
         try {
             String channelId = super.createChannel();
             liveGetConsultingRecordRequest.setChannelId(channelId)
                     .setBegin(0)
                     .setEnd(10)
                     .setRequestId(LiveSignUtil.generateUUID());
-            responses = new LiveChatRoomServiceImpl().getConsultingRecord(liveGetConsultingRecordRequest);
-            Assert.assertNotNull(responses);
-            if (responses != null) {
+            liveGetConsultingRecordResponseList = new LiveChatRoomServiceImpl().getConsultingRecord(liveGetConsultingRecordRequest);
+            Assert.assertNotNull(liveGetConsultingRecordResponseList);
+            if (liveGetConsultingRecordResponseList != null) {
                 //to do something ......
-                log.debug("测试查询咨询提问记录成功{}", JSON.toJSONString(responses));
+                log.debug("测试查询咨询提问记录成功{}", JSON.toJSONString(liveGetConsultingRecordResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -636,7 +636,7 @@
 	@Test
 	public void testSetChannelTeacherMsg() throws Exception, NoSuchAlgorithmException {
         LiveSetTeacherDataRequest liveSetTeacherDataRequest = new LiveSetTeacherDataRequest();
-        Boolean result = null;
+        Boolean liveSetTeacherDataResponse = null;
         try {
             String channelId = super.createChannel();
             liveSetTeacherDataRequest.setChannelId(channelId)
@@ -646,11 +646,11 @@
                     .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740," +
                             "3965499425&fm=26&gp=0" + ".jpg")
                     .setRequestId(LiveSignUtil.generateUUID());
-            result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
-            Assert.assertNotNull(result);
-            if (result != null) {
+            liveSetTeacherDataResponse = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
+            Assert.assertNotNull(liveSetTeacherDataResponse);
+            if (liveSetTeacherDataResponse != null) {
                 //to do something ......
-                log.debug("测试设置讲师信息成功{}", JSON.toJSONString(result));
+                log.debug("测试设置讲师信息成功{}", JSON.toJSONString(liveSetTeacherDataResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -702,17 +702,17 @@ true 设置讲师信息成功，false 设置讲师信息失败
 	@Test
 	public void testAddBannedIP() throws Exception, NoSuchAlgorithmException {
         LiveChatBannedIPRequest liveChatBannedIPRequest = new LiveChatBannedIPRequest();
-        List<String> bannedIPList = null;
+        List<String> liveChatBannedIPResponseList = null;
         try {
             String channelId = super.createChannel();
             liveChatBannedIPRequest.setIp("192.168.1.1")
                     .setChannelId(channelId)
                     .setRequestId(LiveSignUtil.generateUUID());
-            bannedIPList = new LiveChatRoomServiceImpl().addBannedIP(liveChatBannedIPRequest);
-            Assert.assertNotNull(bannedIPList);
-            if (bannedIPList != null) {
+            liveChatBannedIPResponseList = new LiveChatRoomServiceImpl().addBannedIP(liveChatBannedIPRequest);
+            Assert.assertNotNull(liveChatBannedIPResponseList);
+            if (liveChatBannedIPResponseList != null) {
                 //to do something ......
-                log.debug("测试设置聊天室禁言ip成功{}", JSON.toJSONString(bannedIPList));
+                log.debug("测试设置聊天室禁言ip成功{}", JSON.toJSONString(liveChatBannedIPResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -761,7 +761,7 @@ true 设置讲师信息成功，false 设置讲师信息失败
 	@Test
 	public void testSetChatAdminData() throws Exception, NoSuchAlgorithmException, URISyntaxException {
         LiveSetChatAdminDataRequest liveSetChatAdminDataRequest = new LiveSetChatAdminDataRequest();
-        Boolean result = null;
+        Boolean liveSetChatAdminDataResponse = null;
         try {
             String channelId = super.createChannel();
             String path = getClass().getResource("/img/b.jpg").getPath();
@@ -770,11 +770,11 @@ true 设置讲师信息成功，false 设置讲师信息失败
                     .setActor("娇娇")
                     .setAvatar(new File(path))
                     .setRequestId(LiveSignUtil.generateUUID());
-            result = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
-            Assert.assertTrue(result);
-            if (result != null) {
+            liveSetChatAdminDataResponse = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
+            Assert.assertTrue(liveSetChatAdminDataResponse);
+            if (liveSetChatAdminDataResponse != null) {
                 //to do something ......
-                log.debug("测试设置聊天室管理员信息成功{}", JSON.toJSONString(result));
+                log.debug("测试设置聊天室管理员信息成功{}", JSON.toJSONString(liveSetChatAdminDataResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -825,18 +825,18 @@ true 设置成功，false 设置失败
 	@Test
 	public void testDelBanned() throws Exception, NoSuchAlgorithmException {
         LiveDelBannedDataRequest liveDelBannedDataRequest = new LiveDelBannedDataRequest();
-        Boolean result = null;
+        Boolean liveDelBannedDataResponse = null;
         try {
             String channelId = super.createChannel();
             liveDelBannedDataRequest.setContent("192.168.1.1")
                     .setChannelId(channelId)
                     .setType(LiveConstant.BannedType.IP.getType())
                     .setRequestId(LiveSignUtil.generateUUID());
-            result = new LiveChatRoomServiceImpl().delBanned(liveDelBannedDataRequest);
-            Assert.assertNotNull(result);
-            if (result != null) {
+            liveDelBannedDataResponse = new LiveChatRoomServiceImpl().delBanned(liveDelBannedDataRequest);
+            Assert.assertNotNull(liveDelBannedDataResponse);
+            if (liveDelBannedDataResponse != null) {
                 //to do something ......
-                log.debug("测试删除禁言IP/严禁词成功{}", JSON.toJSONString(result));
+                log.debug("测试删除禁言IP/严禁词成功{}", JSON.toJSONString(liveDelBannedDataResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -886,35 +886,18 @@ true 删除成功 ，false 删除失败
 	@Test
 	public void testDelChatSingleMsg() throws Exception, NoSuchAlgorithmException {
         LiveChatDelSingleMsgRequest liveChatDelSingleMsgRequest = new LiveChatDelSingleMsgRequest();
-        Boolean result = null;
-        //获取已经存在的消息id开始
-        String msgId = "";
-        LiveSendChatMsgRequest liveSendChatMsgRequest = new LiveSendChatMsgRequest();
-        LiveSendChatMsgResponse liveSendChatMsgResponse = null;
+        Boolean liveChatDelSingleMsgResponse = null;
         String channelId = super.createChannel();
-        liveSendChatMsgRequest.setChannelId(channelId)
-                .setMsg("hello 大家好-通过API发过来的测试信息")
-                .setPic("https://5b0988e595225.cdn.sohucs.com/q_70,c_zoom," +
-                        "w_640/images/20190129/e3b0d6311b1a411fa68125fc03b8ef67.jpeg")
-                .setNickName("thomas")
-                .setFreeReview(LiveConstant.Flag.YES.getFlag())
-                .setRequestId(LiveSignUtil.generateUUID());
-        liveSendChatMsgResponse = new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest);
-        Assert.assertNotNull(liveSendChatMsgResponse);
-        if (liveSendChatMsgResponse != null) {
-            //to do something ......
-            msgId = liveSendChatMsgResponse.getMsgId();
-            log.debug("测试通过HTTP接口发送聊天消息成功,消息ID {}", msgId);
-        }
-        Assert.assertNotEquals(0, msgId.trim().length());
-        //获取已经存在的消息id结束
+        //获取已经存在的消息id
+        //new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest)
+        String msgId = getMsgId(channelId);
         try {
             liveChatDelSingleMsgRequest.setId(msgId).setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            result = new LiveChatRoomServiceImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
-            Assert.assertNotNull(result);
-            if (result != null) {
+            liveChatDelSingleMsgResponse = new LiveChatRoomServiceImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
+            Assert.assertNotNull(liveChatDelSingleMsgResponse);
+            if (liveChatDelSingleMsgResponse != null) {
                 //to do something ......
-                log.debug("测试删除单条聊天记录成功{}", JSON.toJSONString(result));
+                log.debug("测试删除单条聊天记录成功{}", JSON.toJSONString(liveChatDelSingleMsgResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -963,15 +946,15 @@ true 删除成功， false 删除失败
 	@Test
 	public void testCleanChannelAllMsg() throws Exception, NoSuchAlgorithmException {
         LiveCleanChannelAllMsgRequest liveCleanChannelAllMsgRequest = new LiveCleanChannelAllMsgRequest();
-        Boolean result = null;
+        Boolean liveCleanChannelAllMsgResponse = null;
         try {
             String channelId = super.createChannel();
             liveCleanChannelAllMsgRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
-            result = new LiveChatRoomServiceImpl().cleanChannelAllMsg(liveCleanChannelAllMsgRequest);
-            Assert.assertNotNull(result);
-            if (result != null) {
+            liveCleanChannelAllMsgResponse = new LiveChatRoomServiceImpl().cleanChannelAllMsg(liveCleanChannelAllMsgRequest);
+            Assert.assertNotNull(liveCleanChannelAllMsgResponse);
+            if (liveCleanChannelAllMsgResponse != null) {
                 //to do something ......
-                log.debug("测试删除频道聊天记录成功{}", JSON.toJSONString(result));
+                log.debug("测试删除频道聊天记录成功{}", JSON.toJSONString(liveCleanChannelAllMsgResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

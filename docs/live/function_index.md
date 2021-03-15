@@ -149,7 +149,8 @@
 |             |             | [获取频道抽奖记录列表](lotteryService?id=_1、获取频道抽奖记录列表) |             | 
 |             |             | [获取频道单场抽奖的中奖记录](lotteryService?id=_2、获取频道单场抽奖的中奖记录) |             | 
 |             |             | [设置抽奖中奖者信息](lotteryService?id=_3、设置抽奖中奖者信息) |             | 
-|             |             | [发送点赞](lotteryService?id=_4、发送点赞) |             | 
+|             |             | [导出频道单场抽奖的中奖记录](lotteryService?id=_4、导出频道单场抽奖的中奖记录) |             | 
+|             |             | [发送点赞](lotteryService?id=_5、发送点赞) |             | 
 | ▼聊天室    |               |                                            |      |
 |             |             | [批量导入频道严禁词](chatRoomService?id=_1、批量导入频道严禁词) |             | 
 |             |             | [通过HTTP接口发送聊天消息](chatRoomService?id=_2、通过HTTP接口发送聊天消息) |             | 

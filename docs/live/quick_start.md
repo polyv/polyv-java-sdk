@@ -22,11 +22,11 @@
 <dependency>
     <groupId>net.polyv</groupId>
     <artifactId>polyv-java-live-sdk</artifactId>
-    <version>1.0.22</version>
+    <version>1.0.23</version>
 </dependency> 
 ```
 
-> 注意：<font color=#FF0000 >为了消除Java的冗长代码  ,SDK使用了jdk1.8的最新特性lombok，请在IntelliJ或者Eclipse 中配置对lombok的支持 </font>
+> 注意：为了<font color=#FF0000 >消除Java的冗长代码  ,SDK使用了jdk1.8的最新特性lombok，请在IntelliJ或者Eclipse 中配置对lombok的支持 </font>
 
 ```xml
 <dependency>

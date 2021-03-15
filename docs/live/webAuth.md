@@ -120,13 +120,13 @@ true为添加成功，false为添加失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 白名单列表【详见[ChannelWhiteList参数描述](webAuth.md?id=polyv56)】 | 
+| contents | false | Array | 白名单列表【详见[ChannelWhiteList参数描述](webAuth.md?id=polyv54)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv56"><a href="#/webAuth.md?id=polyv56"data-id="ChannelWhiteList参数描述"class="anchor"><span>ChannelWhiteList参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv54"><a href="#/webAuth.md?id=polyv54"data-id="ChannelWhiteList参数描述"class="anchor"><span>ChannelWhiteList参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -190,9 +190,9 @@ true为添加成功，false为添加失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| authSettings | true | Array | 观看条件【详见[AuthSetting参数描述](webAuth.md?id=polyv57)】 | 
+| authSettings | true | Array | 观看条件【详见[AuthSetting参数描述](webAuth.md?id=polyv55)】 | 
 
-<h6 id="polyv57"><a href="#/webAuth.md?id=polyv57"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv55"><a href="#/webAuth.md?id=polyv55"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -207,7 +207,7 @@ true为添加成功，false为添加失败
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv58)】 | 
+| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv56)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -215,7 +215,7 @@ true为添加成功，false为添加失败
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-<h6 id="polyv58"><a href="#/webAuth.md?id=polyv58"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv56"><a href="#/webAuth.md?id=polyv56"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -287,10 +287,10 @@ true为添加成功，false为添加失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，不传为全局设置 | 
-| authSettings | true | Array | 观看条件设置【详见[AuthSetting参数描述](webAuth.md?id=polyv59)】 | 
+| authSettings | true | Array | 观看条件设置【详见[AuthSetting参数描述](webAuth.md?id=polyv57)】 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
-<h6 id="polyv59"><a href="#/webAuth.md?id=polyv59"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv57"><a href="#/webAuth.md?id=polyv57"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -305,7 +305,7 @@ true为添加成功，false为添加失败
 | qcodeTips | false | String | 验证码观看参数：提示文案 | 
 | qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
 | authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv60)】 | 
+| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv58)】 | 
 | externalKey | false | String | 外部授权参数：SecretKey | 
 | externalUri | false | String | 外部授权参数：自定义url | 
 | externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
@@ -313,7 +313,7 @@ true为添加成功，false为添加失败
 | customUri | false | String | 自定义授权参数：自定义url | 
 | directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
-<h6 id="polyv60"><a href="#/webAuth.md?id=polyv60"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv58"><a href="#/webAuth.md?id=polyv58"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -387,9 +387,9 @@ true为设置观看条件成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv61)】 | 
+| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv59)】 | 
 
-<h6 id="polyv61"><a href="#/webAuth.md?id=polyv61"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv59"><a href="#/webAuth.md?id=polyv59"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -457,9 +457,9 @@ true为设置观看条件成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv62)】 | 
+| channelAuthExternals | false | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv60)】 | 
 
-<h6 id="polyv62"><a href="#/webAuth.md?id=polyv62"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv60"><a href="#/webAuth.md?id=polyv60"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -773,9 +773,9 @@ true为删除成功，false为失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelAuthFields | false | Array | 登记观看字段【详见[ChannelAuthField参数描述](webAuth.md?id=polyv63)】 | 
+| channelAuthFields | false | Array | 登记观看字段【详见[ChannelAuthField参数描述](webAuth.md?id=polyv61)】 | 
 
-<h6 id="polyv63"><a href="#/webAuth.md?id=polyv63"data-id="ChannelAuthField参数描述"class="anchor"><span>ChannelAuthField参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv61"><a href="#/webAuth.md?id=polyv61"data-id="ChannelAuthField参数描述"class="anchor"><span>ChannelAuthField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -843,13 +843,13 @@ true为删除成功，false为失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 页面登记记录【详见[ChannelAuthInfo参数描述](webAuth.md?id=polyv64)】 | 
+| contents | false | Array | 页面登记记录【详见[ChannelAuthInfo参数描述](webAuth.md?id=polyv62)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv64"><a href="#/webAuth.md?id=polyv64"data-id="ChannelAuthInfo参数描述"class="anchor"><span>ChannelAuthInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv62"><a href="#/webAuth.md?id=polyv62"data-id="ChannelAuthInfo参数描述"class="anchor"><span>ChannelAuthInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

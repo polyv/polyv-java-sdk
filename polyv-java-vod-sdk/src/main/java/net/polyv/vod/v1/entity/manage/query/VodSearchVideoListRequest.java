@@ -40,9 +40,9 @@ public class VodSearchVideoListRequest extends VodPageCommonRequest {
     private String tag;
     
     /**
-     * 视频是否加密，1:加密，0:非加密
+     * 视频是否加密，1:加密，0:非加密，默认查询所有
      */
-    @ApiModelProperty(name = "encrypt", value = "视频是否加密，1:加密，0:非加密，默认所有", required = false)
+    @ApiModelProperty(name = "encrypt", value = "视频是否加密，1:加密，0:非加密，默认查询所有", required = false)
     private Integer encrypt;
     
     /**

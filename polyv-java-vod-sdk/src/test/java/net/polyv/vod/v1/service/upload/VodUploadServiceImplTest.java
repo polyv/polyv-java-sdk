@@ -63,11 +63,10 @@ public class VodUploadServiceImplTest extends BaseTest {
      * 约束：2、图片资源不支持https的协议
      * 约束：3、当传了videoIds参数，以videoIds为准，当videoIds不传，以categoryIds为准，两个参数不能同时为空。
      * 返回：true：上传成功；false：上传失败
-     * TODO 图片暂时不能设置带&拼接符的链接
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testUploadCoverImageUrl() throws IOException, NoSuchAlgorithmException {
         VodUploadCoverImageUrlRequest vodUploadCoverImageUrlRequest = new VodUploadCoverImageUrlRequest();
         Boolean vodUploadCoverImageUrlResponse = null;
@@ -133,21 +132,20 @@ public class VodUploadServiceImplTest extends BaseTest {
      * 远程批量上传视频
      * 描述：批量上传远程视频（异步上传）
      * 返回：true提交异步上传成功，false提交异步上传失败
-     * TODO url参数带?参数签名失败；异步上传回调在文档中未描述。
+     * TODO 异步上传回调在文档中未描述。
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testUploadHttpVideoList() throws IOException, NoSuchAlgorithmException {
         VodUploadHttpVideoListRequest vodUploadHttpVideoListRequest = new VodUploadHttpVideoListRequest();
         Boolean vodUploadHttpVideoListResponse = null;
         try {
-            vodUploadHttpVideoListRequest.setFileUrl("https://v.cnezsoft.com/zentao/introduction_catelog" +
-                    ".mp4?sign=d9b7cf5583d4c6959bad10b717449ee9&t=60376e2d")
-                    .setTitle("禅道项目管理系列教程")
+            vodUploadHttpVideoListRequest.setFileUrl("http://sadboytest.oss-cn-shenzhen.aliyuncs.com/test.mp4")
+                    .setTitle("junit-远程批量上传视频")
                     .setCategoryId("1602300731843")
                     .setScreenCap(0)
-                    .setWatermark("http://pm.igeeker.org/secure/projectavatar")
+                    .setWatermark("https://wwwimg.polyv.net/assets/dist/images/v2020/page-home/products/icon-class.svg?v=2.0")
                     .setWatermarkLocation("1")
                     .setRequestId(VodSignUtil.generateUUID());
             vodUploadHttpVideoListResponse = new VodUploadServiceImpl().uploadHttpVideoList(
@@ -155,7 +153,7 @@ public class VodUploadServiceImplTest extends BaseTest {
             Assert.assertTrue(vodUploadHttpVideoListResponse);
             if (vodUploadHttpVideoListResponse) {
                 //to do something ......
-                log.debug("测试上传视频水印成功");
+                log.debug("测试远程批量上传视频成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

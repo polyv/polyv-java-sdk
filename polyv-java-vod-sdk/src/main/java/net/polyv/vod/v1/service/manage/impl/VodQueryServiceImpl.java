@@ -2,7 +2,6 @@ package net.polyv.vod.v1.service.manage.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.query.VodQueryVideoListRequest;
@@ -29,7 +28,10 @@ public class VodQueryServiceImpl extends VodBaseService implements IVodQueryServ
     public VodQueryVideoListResponse queryVideoList(VodQueryVideoListRequest vodQueryVideoListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.QUERY_VIDEO_LIST_URL);
-        return super.getReturnOne(url, vodQueryVideoListRequest, VodQueryVideoListResponse.class);
+        VodQueryVideoListResponse vodQueryVideoListResponse = super.getReturnOne(url, vodQueryVideoListRequest,
+                VodQueryVideoListResponse.class);
+        vodQueryVideoListResponse.setPageSize(vodQueryVideoListRequest.getPageSize());
+        return vodQueryVideoListResponse;
     }
     
     /**
@@ -41,10 +43,9 @@ public class VodQueryServiceImpl extends VodBaseService implements IVodQueryServ
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public List<VodSearchVideoListResponse> searchVideoList(VodSearchVideoListRequest vodSearchVideoListRequest)
+    public VodSearchVideoListResponse searchVideoList(VodSearchVideoListRequest vodSearchVideoListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.SEARCH_VIDEO_LIST_URL);
-        return super.postFormBodyReturnList(url, vodSearchVideoListRequest, VodSearchVideoListResponse.class);
-//        return super.postFormBodyReturnOne(url, vodSearchVideoListRequest, VodSearchVideoListResponse.class);
+        return super.postFormBodyReturnOne(url, vodSearchVideoListRequest, VodSearchVideoListResponse.class);
     }
 }

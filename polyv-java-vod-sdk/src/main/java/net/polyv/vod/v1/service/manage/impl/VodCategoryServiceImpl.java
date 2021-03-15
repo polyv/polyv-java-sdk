@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import net.polyv.vod.v1.constant.VodURL;
+import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryVO;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -44,5 +46,25 @@ public class VodCategoryServiceImpl extends VodBaseService implements IVodCatego
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_UPDATE_CATEGORY_PROFILE_URL);
         return super.postFormBodyReturnOne(url, vodUpdateCategoryProfileRequest, Boolean.class);
+    }
+    
+    /**
+     * 新建视频分类
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/addcata/
+     * @param vodCreateCategoryRequest 新建视频分类请求实体
+     * @return String
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public String createCategory(VodCreateCategoryRequest vodCreateCategoryRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_CREATE_CATEGORY_URL);
+        VodCreateCategoryVO vodCreateCategoryVO = super.postFormBodyReturnOne(url, vodCreateCategoryRequest,
+                VodCreateCategoryVO.class);
+        if (vodCreateCategoryVO != null && vodCreateCategoryVO.getCategoryId() != null) {
+            return vodCreateCategoryVO.getCategoryId();
+        }
+        return null;
     }
 }

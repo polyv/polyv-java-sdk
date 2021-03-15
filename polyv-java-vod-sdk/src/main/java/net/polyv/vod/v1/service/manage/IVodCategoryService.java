@@ -9,7 +9,9 @@ import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryResponse;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodMoveVideoRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
+import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryNameRequest;
 
 /**
  * 视频分类
@@ -71,4 +73,25 @@ public interface IVodCategoryService {
      */
     List<VodGetCategoryResponse> getCategory(VodGetCategoryRequest vodGetCategoryRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 修改分类名称
+     * API地址：https://dev.polyv.net/2013/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/updatecata/
+     * @param vodUpdateCategoryNameRequest 修改分类名称请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateCategoryName(VodUpdateCategoryNameRequest vodUpdateCategoryNameRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 移动视频到指定分类
+     * API地址：https://dev.polyv.net/2013/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/changecata/
+     * @param vodMoveVideoRequest 移动视频到指定分类请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean moveVideo(VodMoveVideoRequest vodMoveVideoRequest) throws IOException, NoSuchAlgorithmException;
 }

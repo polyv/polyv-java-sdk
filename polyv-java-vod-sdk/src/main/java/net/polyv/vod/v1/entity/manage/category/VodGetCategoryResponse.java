@@ -7,19 +7,16 @@ import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
  * 获取视频分类目录返回实体
  * @author: fangyan
  **/
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("获取视频分类目录返回实体")
-public class VodGetCategoryResponse extends VodCommonRequest {
+public class VodGetCategoryResponse {
     /**
      * 分类名和该分类下视频总数的组合，例如 测试分类 (4)
      */

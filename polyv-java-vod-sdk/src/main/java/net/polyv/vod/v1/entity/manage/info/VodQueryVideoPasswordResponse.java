@@ -3,19 +3,16 @@ package net.polyv.vod.v1.entity.manage.info;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
  * 查询视频密码返回实体
  * @author: fangyan
  **/
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("查询视频密码返回实体")
-public class VodQueryVideoPasswordResponse extends VodCommonRequest {
+public class VodQueryVideoPasswordResponse {
     /**
      * 是否显示密码，默认为否
      */

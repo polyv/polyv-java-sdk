@@ -7,20 +7,16 @@ import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.common.v1.validator.constraints.NotNull;
-import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
  * 获取单个视频的问答题目返回实体
  * @author: fangyan
  **/
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("获取单个视频的问答题目返回实体")
-public class VodGetVideoExamResponse extends VodCommonRequest {
+public class VodGetVideoExamResponse {
     /**
      * 问答题目的id
      */

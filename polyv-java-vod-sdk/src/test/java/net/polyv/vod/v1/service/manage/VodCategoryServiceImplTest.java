@@ -16,6 +16,7 @@ import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryResponse;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryNameRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.manage.impl.VodCategoryServiceImpl;
@@ -168,6 +169,37 @@ public class VodCategoryServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodGetCategoryResponseList);
             if (vodGetCategoryResponseList != null) {
                 log.debug("测试获取视频分类目录成功,{}", JSON.toJSONString(vodGetCategoryResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试修改分类名称
+     * 返回：true为修改成功，false为修改失败
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testUpdateCategoryName() throws IOException, NoSuchAlgorithmException {
+        VodUpdateCategoryNameRequest vodUpdateCategoryNameRequest = new VodUpdateCategoryNameRequest();
+        Boolean vodUpdateCategoryNameResponse = null;
+        try {
+            vodUpdateCategoryNameRequest.setCategoryId("1615536384688")
+                    .setCategoryName("Junit测试(勿删)_3")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUpdateCategoryNameResponse = new VodCategoryServiceImpl().updateCategoryName(
+                    vodUpdateCategoryNameRequest);
+            Assert.assertTrue(vodUpdateCategoryNameResponse);
+            if (vodUpdateCategoryNameResponse) {
+                log.debug("测试修改分类名称成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

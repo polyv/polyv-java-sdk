@@ -12,6 +12,7 @@ import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryResponse;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
+import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryNameRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodCategoryService;
 
@@ -100,5 +101,20 @@ public class VodCategoryServiceImpl extends VodBaseService implements IVodCatego
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_GET_CATEGORY_URL);
         return super.postFormBodyReturnList(url, vodGetCategoryRequest, VodGetCategoryResponse.class);
+    }
+    
+    /**
+     * 修改分类名称
+     * API地址：https://dev.polyv.net/2013/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/updatecata/
+     * @param vodUpdateCategoryNameRequest 修改分类名称请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateCategoryName(VodUpdateCategoryNameRequest vodUpdateCategoryNameRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_UPDATE_CATEGORY_NAME_URL);
+        return super.postFormBodyReturnOne(url, vodUpdateCategoryNameRequest, Boolean.class);
     }
 }

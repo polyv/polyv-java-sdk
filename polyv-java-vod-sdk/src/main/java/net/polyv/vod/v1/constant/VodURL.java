@@ -275,6 +275,12 @@ public class VodURL {
     public static final String VOD_GET_CATEGORY_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/cataJson";
     
     /**
+     * 修改分类名称
+     */
+    public static final String VOD_UPDATE_CATEGORY_NAME_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/updateCata";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

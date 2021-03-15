@@ -2,8 +2,6 @@ package net.polyv.live.v1.entity.interact;
 
 import java.util.Date;
 
-import net.polyv.common.v1.validator.constraints.NotNull;
-
 import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
@@ -11,7 +9,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.live.v1.entity.LivePageCommonRequest;
+import net.polyv.common.v1.validator.constraints.NotNull;
+import net.polyv.live.v1.entity.LiveCommonRequest;
 
 /**
  * 查询频道答题卡答题结果
@@ -21,7 +20,7 @@ import net.polyv.live.v1.entity.LivePageCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("查询频道答题卡答题结果请求实体")
-public class LiveQuestionAnswerRecordRequest extends LivePageCommonRequest {
+public class LiveQuestionAnswerRecordRequest extends LiveCommonRequest {
     /**
      * 频道号
      */

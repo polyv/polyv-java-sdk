@@ -1,7 +1,7 @@
 ## 1、获取频道抽奖记录列表
 ### 描述
 ```
-获取频道抽奖记录列表
+获取频道抽奖记录列表（通过直播端发起抽奖）
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -15,7 +15,7 @@
         try {
             liveListLotteryRequest.setChannelId(super.createChannel())
                     .setStartTime(super.getDate(1601481600000l))
-                    .setEndTime(super.getDate(1605024000000l))
+                    .setEndTime(super.getDate(2021,1,21))
                     .setPageSize(1)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveListLotteryResponse = new LiveLotteryServiceImpl().listLottery(liveListLotteryRequest);
@@ -78,20 +78,7 @@
 | preset | false | Integer | 预设中奖观众ID，多个ID 用英文逗号分开 | 
 | createdTime | false | Date | 抽奖时间 | 
 | winnerCount | false | Integer | 实际中奖人数 | 
-| ext | false | CollectInfo | 表示抽奖的额外拓展信息【详见[CollectInfo参数描述](lotteryService.md?id=polyv39)】 | 
-
-<h6 id="polyv39"><a href="#/lotteryService.md?id=polyv39"data-id="CollectInfo参数描述"class="anchor"><span>CollectInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](lotteryService.md?id=polyv40)】 | 
-
-<h6 id="polyv40"><a href="#/lotteryService.md?id=polyv40"data-id="CollectInfoFieldModel参数描述"class="anchor"><span>CollectInfoFieldModel参数描述</span></a></h6> <!-- {docsify-ignore} -->
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| field | false | String | 填写的字段名 | 
-| tips | false | String | 填写的字段提示 | 
+| ext | false | String | 表示抽奖的额外拓展信息 | 
 
 <br /><br />
 
@@ -115,7 +102,7 @@
         LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
         try {
             liveLotteryWinnerDetailRequest.setChannelId(super.createChannel())
-                    .setLotteryId("1211")
+                    .setLotteryId("fv3mao43u6")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveLotteryWinnerDetailResponse = new LiveLotteryServiceImpl().getLotteryWinnerDetail(
                     liveLotteryWinnerDetailRequest);
@@ -156,13 +143,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| contents | false | Array | 中奖记录表【详见[LotteryWinnerDetail参数描述](lotteryService.md?id=polyv41)】 | 
+| contents | false | Array | 中奖记录表【详见[LotteryWinnerDetail参数描述](lotteryService.md?id=polyv39)】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | false | Integer | 当前页 | 
 | totalItems | false | Integer | 记录总条数 | 
 | totalPage | false | Integer | 总页数 | 
 
-<h6 id="polyv41"><a href="#/lotteryService.md?id=polyv41"data-id="LotteryWinnerDetail参数描述"class="anchor"><span>LotteryWinnerDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv39"><a href="#/lotteryService.md?id=polyv39"data-id="LotteryWinnerDetail参数描述"class="anchor"><span>LotteryWinnerDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -175,15 +162,15 @@
 | winnerCode | false | String | 中奖码 | 
 | prize | false | String | 奖品名称 | 
 | createdTime | false | Date | 中奖时间 | 
-| ext | false | CollectInfo | json 格式的字符串,表示中奖记录的额外拓展信息，对应模型类：WinnerRecordModelExt【详见[CollectInfo参数描述](lotteryService.md?id=polyv42)】 | 
+| ext | false | CollectInfo | json 格式的字符串,表示中奖记录的额外拓展信息，对应模型类：WinnerRecordModelExt【详见[CollectInfo参数描述](lotteryService.md?id=polyv40)】 | 
 
-<h6 id="polyv42"><a href="#/lotteryService.md?id=polyv42"data-id="CollectInfo参数描述"class="anchor"><span>CollectInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv40"><a href="#/lotteryService.md?id=polyv40"data-id="CollectInfo参数描述"class="anchor"><span>CollectInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](lotteryService.md?id=polyv43)】 | 
+| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](lotteryService.md?id=polyv41)】 | 
 
-<h6 id="polyv43"><a href="#/lotteryService.md?id=polyv43"data-id="CollectInfoFieldModel参数描述"class="anchor"><span>CollectInfoFieldModel参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv41"><a href="#/lotteryService.md?id=polyv41"data-id="CollectInfoFieldModel参数描述"class="anchor"><span>CollectInfoFieldModel参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -214,12 +201,12 @@
         Boolean liveSetLotteryWinnerInfoResponse;
         try {
             liveSetLotteryWinnerInfoRequest.setChannelId(super.createChannel())
-                    .setLotteryId("")
-                    .setWinnerCode("")
-                    .setViewerId("")
-                    .setName("")
-                    .setTelephone("")
-                    .setReceiveInfo("")
+                    .setLotteryId("fv3mao43u6")
+                    .setWinnerCode("wMpUjVSi")
+                    .setViewerId("asdadsdas")
+                    .setName("sadboy")
+                    .setTelephone("18974718689")
+                    .setReceiveInfo("[{\"field\":\"姓名\",\"value\":\"测试\"},{\"field\":\"手机\",\"value\":\"13412345678\"}]")
                     .setRequestId(LiveSignUtil.generateUUID());
             liveSetLotteryWinnerInfoResponse = new LiveLotteryServiceImpl().setLotteryWinnerInfo(
                     liveSetLotteryWinnerInfoRequest);
@@ -267,7 +254,69 @@ null
 
 <br /><br />
 
-## 4、发送点赞
+## 4、导出频道单场抽奖的中奖记录
+### 描述
+```
+用于下载频道的单场抽奖的中奖记录
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testDownloadLotteryDetail() throws Exception, NoSuchAlgorithmException {
+        LiveDownloadLotteryDetailRequest liveDownloadLotteryDetailRequest = new LiveDownloadLotteryDetailRequest();
+        byte[] liveDownloadLotteryDetailResponse;
+        try {
+            //path设置为下载文件路径
+            String path = getClass().getResource("/file/").getPath() + "downLoadLotteryWinner.xlsx";
+            liveDownloadLotteryDetailRequest.setChannelId(createChannel())
+                    .setLotteryId("fv3hogjmh3")
+                    .setRequestId(LiveSignUtil.generateUUID());
+            liveDownloadLotteryDetailResponse = new LiveLotteryServiceImpl().downloadLotteryDetail(
+                    liveDownloadLotteryDetailRequest);
+            Assert.assertNotNull(liveDownloadLotteryDetailResponse);
+            if (liveDownloadLotteryDetailResponse != null) {
+                FileUtil.writeFile(liveDownloadLotteryDetailResponse, path);
+                //to do something ......
+                log.debug("测试导出频道单场抽奖的中奖记录成功, 文件长度 {}", liveDownloadLotteryDetailResponse.length);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回byte[]对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| channelId | true | String | 频道号 | 
+| lotteryId | true | String | 抽奖ID | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+返回的byte[]可以按照单元测试示例进行保存，也可以自行处理。
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 5、发送点赞
 ### 描述
 ```
 用于实现用户自开发观看页点赞效果，通过调用接口可以进行点赞，默认每次请求都是一次点赞

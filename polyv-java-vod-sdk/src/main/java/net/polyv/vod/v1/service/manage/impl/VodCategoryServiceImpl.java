@@ -4,16 +4,18 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryVO;
 import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryResponse;
+import net.polyv.vod.v1.entity.manage.category.VodGetCategorySizeRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveVideoRequest;
-import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryNameRequest;
+import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodCategoryService;
 
@@ -131,5 +133,20 @@ public class VodCategoryServiceImpl extends VodBaseService implements IVodCatego
     public Boolean moveVideo(VodMoveVideoRequest vodMoveVideoRequest) throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_MOVE_VIDEO_URL);
         return super.postFormBodyReturnOne(url, vodMoveVideoRequest, Boolean.class);
+    }
+    
+    /**
+     * 通过cataid获取视频目录空间
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/getsize/
+     * @param vodGetCategorySizeRequest 通过cataid获取视频目录空间请求实体
+     * @return Long
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Long getCategorySize(VodGetCategorySizeRequest vodGetCategorySizeRequest)
+            throws IOException, NoSuchAlgorithmException {
+        vodGetCategorySizeRequest.setUserId(VodGlobalConfig.getUserId());
+        return super.postFormBodyReturnOne(VodURL.VOD_GET_CATEGORY_SIZE_URL, vodGetCategorySizeRequest, Long.class);
     }
 }

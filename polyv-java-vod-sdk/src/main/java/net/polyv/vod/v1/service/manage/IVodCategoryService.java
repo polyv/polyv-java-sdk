@@ -8,6 +8,7 @@ import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryResponse;
+import net.polyv.vod.v1.entity.manage.category.VodGetCategorySizeRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveVideoRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
@@ -94,4 +95,15 @@ public interface IVodCategoryService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean moveVideo(VodMoveVideoRequest vodMoveVideoRequest) throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 通过cataid获取视频目录空间
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/getsize/
+     * @param vodGetCategorySizeRequest 通过cataid获取视频目录空间请求实体
+     * @return Long
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Long getCategorySize(VodGetCategorySizeRequest vodGetCategorySizeRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

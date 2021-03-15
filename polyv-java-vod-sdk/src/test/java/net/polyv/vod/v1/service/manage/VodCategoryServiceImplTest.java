@@ -15,6 +15,7 @@ import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryResponse;
+import net.polyv.vod.v1.entity.manage.category.VodGetCategorySizeRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveVideoRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryNameRequest;
@@ -231,6 +232,34 @@ public class VodCategoryServiceImplTest extends BaseTest {
             Assert.assertTrue(vodMoveVideoResponse);
             if (vodMoveVideoResponse) {
                 log.debug("测试移动视频到指定分类成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试通过cataid获取视频目录空间
+     * 返回：分类下的视频大小，单位为byte
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetCategorySize() throws IOException, NoSuchAlgorithmException {
+        VodGetCategorySizeRequest vodGetCategorySizeRequest = new VodGetCategorySizeRequest();
+        Long vodGetCategorySizeResponse = null;
+        try {
+            vodGetCategorySizeRequest.setCategoryId("1602671097888").setRequestId(VodSignUtil.generateUUID());
+            vodGetCategorySizeResponse = new VodCategoryServiceImpl().getCategorySize(vodGetCategorySizeRequest);
+            Assert.assertNotNull(vodGetCategorySizeResponse);
+            if (vodGetCategorySizeResponse != null) {
+                log.debug("测试通过cataid获取视频目录空间成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

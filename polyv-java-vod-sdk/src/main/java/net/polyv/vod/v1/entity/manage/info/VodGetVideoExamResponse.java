@@ -115,4 +115,22 @@ public class VodGetVideoExamResponse {
     @ApiModelProperty(name = "groupId", value = "问答所在的问卷的ID", required = false)
     private String groupId;
     
+    /**
+     * 是否有效，1：有效，0：无效，默认为1
+     */
+    @ApiModelProperty(name = "status", value = "是否有效，1：有效，0：无效，默认为1", required = false)
+    private Integer status;
+    
+    /**
+     * 题目类型，0：选择题，1：听力题（听力题即将下线）
+     */
+    @ApiModelProperty(name = "type", value = "题目类型，0：选择题，1：听力题（听力题即将下线）", required = false)
+    private Integer type;
+    
+    /**
+     * 听力题的mp3音频文件url（听力题即将下线）
+     */
+    @ApiModelProperty(name = "type", value = "听力题的mp3音频文件url（听力题即将下线）", required = false)
+    private String mp3url;
+    
 }

@@ -2,7 +2,6 @@ package net.polyv.vod.v1.service.manage;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 import net.polyv.vod.v1.entity.manage.query.VodQueryVideoListRequest;
 import net.polyv.vod.v1.entity.manage.query.VodQueryVideoListResponse;
@@ -33,7 +32,7 @@ public interface IVodQueryService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    List<VodSearchVideoListResponse> searchVideoList(VodSearchVideoListRequest vodSearchVideoListRequest)
+    VodSearchVideoListResponse searchVideoList(VodSearchVideoListRequest vodSearchVideoListRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

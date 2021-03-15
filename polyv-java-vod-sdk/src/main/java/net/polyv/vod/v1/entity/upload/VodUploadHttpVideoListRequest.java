@@ -38,6 +38,7 @@ public class VodUploadHttpVideoListRequest extends VodCommonRequest {
      * 设定上传视频的分类，当categoryId值为1时，表示用户上传空间的根目录。
      */
     @ApiModelProperty(name = "categoryId", value = "设定上传视频的分类，当categoryId值为1时，表示用户上传空间的根目录。", required = false)
+    @JSONField(name = "cataid")
     private String categoryId;
     
     /**

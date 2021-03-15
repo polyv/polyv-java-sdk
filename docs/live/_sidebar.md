@@ -35,6 +35,7 @@
   * [播放器](playerService)
 * 使用帮助
 
+  * [更新日志](versionNoteSDK)
   * [常见程序异常](exceptionDoc)
   * [温馨提示](tips)
   * []()

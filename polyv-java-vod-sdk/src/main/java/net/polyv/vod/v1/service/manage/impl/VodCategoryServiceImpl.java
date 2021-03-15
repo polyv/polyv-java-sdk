@@ -2,11 +2,14 @@ package net.polyv.vod.v1.service.manage.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryVO;
 import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodGetCategoryResponse;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -82,5 +85,20 @@ public class VodCategoryServiceImpl extends VodBaseService implements IVodCatego
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_DELETE_CATEGORY_URL);
         return super.postFormBodyReturnOne(url, vodDeleteCategoryRequest, Boolean.class);
+    }
+    
+    /**
+     * 获取视频分类目录
+     * API地址：https://dev.polyv.net/2013/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/catajson/
+     * @param vodGetCategoryRequest 获取视频分类目录请求实体
+     * @return 获取视频分类目录返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<VodGetCategoryResponse> getCategory(VodGetCategoryRequest vodGetCategoryRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_GET_CATEGORY_URL);
+        return super.postFormBodyReturnList(url, vodGetCategoryRequest, VodGetCategoryResponse.class);
     }
 }

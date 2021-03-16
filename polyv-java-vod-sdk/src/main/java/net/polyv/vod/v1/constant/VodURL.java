@@ -323,6 +323,11 @@ public class VodURL {
     public static final String VOD_GET_TASK_LIST_URL = BASE_URI + "v2/video/grab/" + PARAM_REPLACE_CHAR + "/list";
     
     /**
+     * 删除抓取视频任务
+     */
+    public static final String VOD_DELETE_TASK_URL = BASE_URI + "v2/video/grab/" + PARAM_REPLACE_CHAR + "/delete";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

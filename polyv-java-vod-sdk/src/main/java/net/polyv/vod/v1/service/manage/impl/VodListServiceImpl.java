@@ -12,6 +12,8 @@ import net.polyv.vod.v1.entity.manage.list.VodGetDelListRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetDelListResponse;
 import net.polyv.vod.v1.entity.manage.list.VodGetHotListRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetHotListResponse;
+import net.polyv.vod.v1.entity.manage.list.VodGetIllegalListRequest;
+import net.polyv.vod.v1.entity.manage.list.VodGetIllegalListResponse;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListResponse;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -84,5 +86,21 @@ public class VodListServiceImpl extends VodBaseService implements IVodListServic
         String url = VodURL.getRealUrl(VodURL.VOD_GET_DEL_LIST_URL);
         vodGetDelListRequest.setUserId(VodGlobalConfig.getUserId());
         return super.postFormBodyReturnList(url, vodGetDelListRequest, VodGetDelListResponse.class);
+    }
+    
+    /**
+     * 获取不通过视频列表
+     * API地址：https://dev.polyv.net/2013/videoproduct/v-api/v-api-vmanage/v-api-vmanage-list/getnotpasslist/
+     * @param vodGetIllegalListRequest 获取不通过视频列表请求实体
+     * @return 获取不通过视频列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<VodGetIllegalListResponse> getIllegalList(VodGetIllegalListRequest vodGetIllegalListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_GET_ILLEGAL_LIST_URL);
+        vodGetIllegalListRequest.setUserId(VodGlobalConfig.getUserId());
+        return super.postFormBodyReturnList(url, vodGetIllegalListRequest, VodGetIllegalListResponse.class);
     }
 }

@@ -17,6 +17,8 @@ import net.polyv.vod.v1.entity.manage.list.VodGetDelListRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetDelListResponse;
 import net.polyv.vod.v1.entity.manage.list.VodGetHotListRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetHotListResponse;
+import net.polyv.vod.v1.entity.manage.list.VodGetIllegalListRequest;
+import net.polyv.vod.v1.entity.manage.list.VodGetIllegalListResponse;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListResponse;
 import net.polyv.vod.v1.service.BaseTest;
@@ -144,6 +146,33 @@ public class VodListServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodGetDelListResponseList);
             if (vodGetDelListResponseList != null) {
                 log.debug("测试获取视频回收站列表成功，{}", JSON.toJSONString(vodGetDelListResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试获取不通过视频列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetIllegalList() throws IOException, NoSuchAlgorithmException {
+        VodGetIllegalListRequest vodGetIllegalListRequest = new VodGetIllegalListRequest();
+        List<VodGetIllegalListResponse> vodGetIllegalListResponseList = null;
+        try {
+            vodGetIllegalListRequest.setPageNum(1).setNumPerPage(99).setRequestId(VodSignUtil.generateUUID());
+            vodGetIllegalListResponseList = new VodListServiceImpl().getIllegalList(vodGetIllegalListRequest);
+            Assert.assertNotNull(vodGetIllegalListResponseList);
+            if (vodGetIllegalListResponseList != null) {
+                log.debug("测试获取不通过视频列表成功，{}", JSON.toJSONString(vodGetIllegalListResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

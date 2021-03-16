@@ -31,12 +31,14 @@ public class VodGetHotListRequest extends VodCommonRequest {
     /**
      * 平均每页取多少条数据
      */
-    @ApiModelProperty(name = "numPerPage", value = "平均每页取多少条数据", required = false)
+    @ApiModelProperty(name = "numPerPage", value = "平均每页取多少条数据", required = true)
+    @NotNull(message = "属性numPerPage不能为空")
     private Integer numPerPage;
     
     /**
      * 取第几页
      */
-    @ApiModelProperty(name = "pageNum", value = "取第几页", required = false)
+    @ApiModelProperty(name = "pageNum", value = "取第几页", required = true)
+    @NotNull(message = "属性pageNum不能为空")
     private Integer pageNum;
 }

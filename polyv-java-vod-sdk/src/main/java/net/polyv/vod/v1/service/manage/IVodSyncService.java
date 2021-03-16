@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import net.polyv.vod.v1.entity.manage.sync.VodDeleteTaskRequest;
+import net.polyv.vod.v1.entity.manage.sync.VodExportTaskRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListResponse;
 
@@ -32,4 +33,14 @@ public interface IVodSyncService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean deleteTask(VodDeleteTaskRequest vodDeleteTaskRequest) throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 导出视频同步任务
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/v-api-vmanage-grab/export-grab-list/
+     * @param vodExportTaskRequest 导出视频同步任务请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean exportTask(VodExportTaskRequest vodExportTaskRequest) throws IOException, NoSuchAlgorithmException;
 }

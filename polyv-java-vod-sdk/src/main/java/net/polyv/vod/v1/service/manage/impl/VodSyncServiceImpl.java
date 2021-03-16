@@ -1,10 +1,14 @@
 package net.polyv.vod.v1.service.manage.impl;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.sync.VodDeleteTaskRequest;
+import net.polyv.vod.v1.entity.manage.sync.VodExportTaskRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListResponse;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -16,6 +20,7 @@ import net.polyv.vod.v1.service.manage.IVodSyncService;
  */
 public class VodSyncServiceImpl extends VodBaseService implements IVodSyncService {
     public static final String DELETE_SUCCESS_MSG = "成功";
+    public static final String EXPORT_TASK_PATH = "/data/polyvVideoSyncTaskExport.csv";
     
     /**
      * 分页获取视频同步列表
@@ -48,5 +53,28 @@ public class VodSyncServiceImpl extends VodBaseService implements IVodSyncServic
             return true;
         }
         return false;
+    }
+    
+    /**
+     * 导出视频同步任务
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/v-api-vmanage-grab/export-grab-list/
+     * @param vodExportTaskRequest 导出视频同步任务请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean exportTask(VodExportTaskRequest vodExportTaskRequest) throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_EXPORT_TASK_URL);
+        byte[] returnBinary = super.getReturnBinary(url, vodExportTaskRequest);
+        if (returnBinary.length <= 0) {
+            return Boolean.FALSE;
+        }
+        Path exportTaskPath = Paths.get(EXPORT_TASK_PATH);
+        if (Files.exists(exportTaskPath)) {
+            Files.delete(exportTaskPath);
+        }
+        Files.write(exportTaskPath, returnBinary);
+        return Boolean.TRUE;
     }
 }

@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderResponse;
+import net.polyv.vod.v1.entity.manage.list.VodGetHotListRequest;
+import net.polyv.vod.v1.entity.manage.list.VodGetHotListResponse;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListResponse;
 import net.polyv.vod.v1.service.BaseTest;
@@ -86,6 +88,33 @@ public class VodListServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodGetNewListResponseList);
             if (vodGetNewListResponseList != null) {
                 log.debug("测试获取最新视频/全部视频列表成功，{}", JSON.toJSONString(vodGetNewListResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试获取最热视频列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetHotList() throws IOException, NoSuchAlgorithmException {
+        VodGetHotListRequest vodGetHotListRequest = new VodGetHotListRequest();
+        List<VodGetHotListResponse> vodGetHotListResponseList = null;
+        try {
+            vodGetHotListRequest.setPageNum(1).setNumPerPage(99).setRequestId(VodSignUtil.generateUUID());
+            vodGetHotListResponseList = new VodListServiceImpl().getHotList(vodGetHotListRequest);
+            Assert.assertNotNull(vodGetHotListResponseList);
+            if (vodGetHotListResponseList != null) {
+                log.debug("测试获取最热视频列表成功，{}", JSON.toJSONString(vodGetHotListResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -8,6 +8,8 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderResponse;
+import net.polyv.vod.v1.entity.manage.list.VodGetHotListRequest;
+import net.polyv.vod.v1.entity.manage.list.VodGetHotListResponse;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListResponse;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -48,5 +50,21 @@ public class VodListServiceImpl extends VodBaseService implements IVodListServic
         String url = VodURL.getRealUrl(VodURL.VOD_GET_NEW_LIST_URL);
         vodGetNewListRequest.setUserId(VodGlobalConfig.getUserId());
         return super.postFormBodyReturnList(url, vodGetNewListRequest, VodGetNewListResponse.class);
+    }
+    
+    /**
+     * 获取最热视频列表
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-list/get-host-list/
+     * @param vodGetHotListRequest 获取最热视频列表请求实体
+     * @return 获取最热视频列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<VodGetHotListResponse> getHotList(VodGetHotListRequest vodGetHotListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_GET_HOT_LIST_URL);
+        vodGetHotListRequest.setUserId(VodGlobalConfig.getUserId());
+        return super.postFormBodyReturnList(url, vodGetHotListRequest, VodGetHotListResponse.class);
     }
 }

@@ -6,6 +6,8 @@ import java.util.List;
 
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderResponse;
+import net.polyv.vod.v1.entity.manage.list.VodGetHotListRequest;
+import net.polyv.vod.v1.entity.manage.list.VodGetHotListResponse;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListResponse;
 
@@ -35,5 +37,16 @@ public interface IVodListService {
      * @throws NoSuchAlgorithmException 异常
      */
     List<VodGetNewListResponse> getNewList(VodGetNewListRequest vodGetNewListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取最热视频列表
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-list/get-host-list/
+     * @param vodGetHotListRequest 获取最热视频列表请求实体
+     * @return 获取最热视频列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    List<VodGetHotListResponse> getHotList(VodGetHotListRequest vodGetHotListRequest)
             throws IOException, NoSuchAlgorithmException;
 }

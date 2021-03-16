@@ -307,6 +307,11 @@ public class VodURL {
     public static final String VOD_GET_HOT_LIST_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-host-list";
     
     /**
+     * 获取最热视频列表
+     */
+    public static final String VOD_GET_DEL_LIST_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-del-list";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

@@ -6,6 +6,8 @@ import java.util.List;
 
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderResponse;
+import net.polyv.vod.v1.entity.manage.list.VodGetDelListRequest;
+import net.polyv.vod.v1.entity.manage.list.VodGetDelListResponse;
 import net.polyv.vod.v1.entity.manage.list.VodGetHotListRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetHotListResponse;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListRequest;
@@ -48,5 +50,16 @@ public interface IVodListService {
      * @throws NoSuchAlgorithmException 异常
      */
     List<VodGetHotListResponse> getHotList(VodGetHotListRequest vodGetHotListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取视频回收站列表
+     * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-list/get-del-list/
+     * @param vodGetDelListRequest 获取视频回收站列表请求实体
+     * @return 获取视频回收站列表返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    List<VodGetDelListResponse> getDelList(VodGetDelListRequest vodGetDelListRequest)
             throws IOException, NoSuchAlgorithmException;
 }

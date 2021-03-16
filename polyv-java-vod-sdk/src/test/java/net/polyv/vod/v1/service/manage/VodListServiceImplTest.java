@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderResponse;
+import net.polyv.vod.v1.entity.manage.list.VodGetDelListRequest;
+import net.polyv.vod.v1.entity.manage.list.VodGetDelListResponse;
 import net.polyv.vod.v1.entity.manage.list.VodGetHotListRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetHotListResponse;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListRequest;
@@ -115,6 +117,33 @@ public class VodListServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodGetHotListResponseList);
             if (vodGetHotListResponseList != null) {
                 log.debug("测试获取最热视频列表成功，{}", JSON.toJSONString(vodGetHotListResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试获取视频回收站列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetDelList() throws IOException, NoSuchAlgorithmException {
+        VodGetDelListRequest vodGetDelListRequest = new VodGetDelListRequest();
+        List<VodGetDelListResponse> vodGetDelListResponseList = null;
+        try {
+            vodGetDelListRequest.setPageNum(1).setNumPerPage(99).setRequestId(VodSignUtil.generateUUID());
+            vodGetDelListResponseList = new VodListServiceImpl().getDelList(vodGetDelListRequest);
+            Assert.assertNotNull(vodGetDelListResponseList);
+            if (vodGetDelListResponseList != null) {
+                log.debug("测试获取视频回收站列表成功，{}", JSON.toJSONString(vodGetDelListResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

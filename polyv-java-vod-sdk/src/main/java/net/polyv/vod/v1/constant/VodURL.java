@@ -314,7 +314,13 @@ public class VodURL {
     /**
      * 获取不通过视频列表
      */
-    public static final String VOD_GET_ILLEGAL_LIST_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-illegal-list";
+    public static final String VOD_GET_ILLEGAL_LIST_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-illegal-list";
+    
+    /**
+     * 分页获取视频同步列表
+     */
+    public static final String VOD_GET_TASK_LIST_URL = BASE_URI + "v2/video/grab/" + PARAM_REPLACE_CHAR + "/list";
     
     /**
      * 获取替换参数后的URL地址

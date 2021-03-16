@@ -37,6 +37,7 @@ public class VodGetDelListRequest extends VodCommonRequest {
     /**
      * 取第几页
      */
-    @ApiModelProperty(name = "pageNum", value = "取第几页", required = false)
+    @ApiModelProperty(name = "pageNum", value = "取第几页", required = true)
+    @NotNull(message = "属性pageNum不能为空")
     private Integer pageNum;
 }

@@ -297,6 +297,11 @@ public class VodURL {
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-by-uploader";
     
     /**
+     * 获取最新视频/全部视频列表
+     */
+    public static final String VOD_GET_NEW_LIST_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-new-list";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

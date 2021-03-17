@@ -99,10 +99,11 @@ public class VodSubtitleServiceImplTest extends BaseTest {
         Boolean vodDeleteSubtitleResponse = null;
         try {
             //准备测试数据
+            String videoId = "1b448be32399ac90f523f76c7430c9a5_1";
             String srtCN = getClass().getResource("/subtitle/srt(zh_CN).srt").getPath();
             String srtUS = getClass().getResource("/subtitle/srt(en_US).srt").getPath();
-            Boolean uploadSubtitleCN = super.uploadSubtitle(srtCN);
-            Boolean uploadSubtitleUS = super.uploadSubtitle(srtUS);
+            Boolean uploadSubtitleCN = super.uploadSubtitle(srtCN, videoId, "srtCN");
+            Boolean uploadSubtitleUS = super.uploadSubtitle(srtUS, videoId, "srtUS");
             if (uploadSubtitleCN == Boolean.FALSE && uploadSubtitleUS == Boolean.FALSE) {
                 return;
             }
@@ -115,9 +116,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
                     .map((subtitle) -> subtitle.getRank().toString().trim())
                     .collect(Collectors.joining(","));
             
-            vodDeleteSubtitleRequest.setVideoId("1b448be32399ac90f523f76c7430c9a5_1")
-                    .setRanks(ranks)
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodDeleteSubtitleRequest.setVideoId(videoId).setRanks(ranks).setRequestId(VodSignUtil.generateUUID());
             vodDeleteSubtitleResponse = new VodSubtitleServiceImpl().deleteSubtitle(vodDeleteSubtitleRequest);
             Assert.assertTrue(vodDeleteSubtitleResponse);
             if (vodDeleteSubtitleResponse) {

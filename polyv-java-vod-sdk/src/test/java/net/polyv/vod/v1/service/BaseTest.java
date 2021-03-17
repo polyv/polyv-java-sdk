@@ -197,8 +197,15 @@ public class BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    public Boolean uploadSubtitle(String filePath) throws IOException, NoSuchAlgorithmException {
+    public Boolean uploadSubtitle(String filePath, String videoId, String title)
+            throws IOException, NoSuchAlgorithmException {
         if (filePath == null || filePath.isEmpty()) {
+            return Boolean.FALSE;
+        }
+        if (videoId == null || videoId.isEmpty()) {
+            return Boolean.FALSE;
+        }
+        if (title == null || title.isEmpty()) {
             return Boolean.FALSE;
         }
         File file = new File(filePath);
@@ -208,10 +215,10 @@ public class BaseTest {
         VodUploadSubtitleRequest vodUploadSubtitleRequest = new VodUploadSubtitleRequest();
         Boolean vodUploadSubtitleResponse = null;
         try {
-            vodUploadSubtitleRequest.setVideoId("1b448be32399ac90f523f76c7430c9a5_1")
+            vodUploadSubtitleRequest.setVideoId(videoId)
                     .setFile(file)
                     .setAsDefault("N")
-                    .setTitle("subtitle")
+                    .setTitle(title)
                     .setLanguage(null)
                     .setRequestId(VodSignUtil.generateUUID());
             vodUploadSubtitleResponse = new VodSubtitleServiceImpl().uploadSubtitle(vodUploadSubtitleRequest);

@@ -1,11 +1,15 @@
 package net.polyv.vod.v1.service.manage.impl;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListResponse;
+import net.polyv.vod.v1.entity.manage.subtitle.VodUploadSubtitleRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodSubtitleService;
 
@@ -28,5 +32,26 @@ public class VodSubtitleServiceImpl extends VodBaseService implements IVodSubtit
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_GET_SUBTITLE_LIST_URL);
         return super.getReturnOne(url, vodGetSubtitleListRequest, VodGetSubtitleListResponse.class);
+    }
+    
+    /**
+     * 上传点播视频字幕文件
+     * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-vmanage/srt/srt-upload/
+     * @param vodUploadSubtitleRequest 上传点播视频字幕文件请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean uploadSubtitle(VodUploadSubtitleRequest vodUploadSubtitleRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_UPLOAD_SUBTITLE_URL);
+        HashMap files = new HashMap<String, File>(1);
+        if (vodUploadSubtitleRequest.getFile() == null || !vodUploadSubtitleRequest.getFile().exists()) {
+            throw new FileNotFoundException("文件不存在");
+        }
+        files.put(vodUploadSubtitleRequest.FILE_NAME, vodUploadSubtitleRequest.getFile());
+        super.uploadOneFile(url, vodUploadSubtitleRequest, files, String.class);
+        return Boolean.TRUE;
     }
 }

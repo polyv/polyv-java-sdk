@@ -339,6 +339,11 @@ public class VodURL {
     public static final String VOD_GET_SUBTITLE_LIST_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/srt/list";
     
     /**
+     * 上传点播视频字幕文件
+     */
+    public static final String VOD_UPLOAD_SUBTITLE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/srt/upload";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

@@ -10,6 +10,7 @@ import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.subtitle.VodDeleteSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListResponse;
+import net.polyv.vod.v1.entity.manage.subtitle.VodMergeSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodUploadSubtitleRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodSubtitleService;
@@ -71,4 +72,21 @@ public class VodSubtitleServiceImpl extends VodBaseService implements IVodSubtit
         super.postFormBodyReturnOne(url, vodDeleteSubtitleRequest, String.class);
         return Boolean.TRUE;
     }
+    
+    /**
+     * 合并字幕文件
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-vmanage/srt/srt-merge/
+     * @param vodMergeSubtitleRequest 合并字幕文件请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean mergeSubtitle(VodMergeSubtitleRequest vodMergeSubtitleRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_MERGE_SUBTITLE_URL);
+        super.getReturnOne(url, vodMergeSubtitleRequest, String.class);
+        return Boolean.TRUE;
+    }
+    
 }

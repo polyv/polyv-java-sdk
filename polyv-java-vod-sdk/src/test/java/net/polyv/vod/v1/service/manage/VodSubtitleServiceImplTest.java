@@ -14,6 +14,7 @@ import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.manage.subtitle.VodDeleteSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListResponse;
+import net.polyv.vod.v1.entity.manage.subtitle.VodMergeSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodUploadSubtitleRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.manage.impl.VodSubtitleServiceImpl;
@@ -106,6 +107,42 @@ public class VodSubtitleServiceImplTest extends BaseTest {
             Assert.assertTrue(vodDeleteSubtitleResponse);
             if (vodDeleteSubtitleResponse) {
                 log.debug("测试删除视频字幕成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试合并字幕文件
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testMergeSubtitle() throws IOException, NoSuchAlgorithmException {
+        VodMergeSubtitleRequest vodMergeSubtitleRequest = new VodMergeSubtitleRequest();
+        Boolean vodMergeSubtitleResponse = null;
+        try {
+            String videoId = "1b448be3235dc575fa8f9e7f380be9cc_1";
+            //准备测试数据
+            uploadSubtitle(videoId, true);
+            String sourceSubtitleNames = super.getSubtitleNames(videoId);
+            
+            vodMergeSubtitleRequest.setVideoId(videoId)
+                    .setSourceSubtitleNames(sourceSubtitleNames)
+                    .setMergedSubtitleName("双语")
+                    .setSetAsDefault(Boolean.TRUE)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodMergeSubtitleResponse = new VodSubtitleServiceImpl().mergeSubtitle(vodMergeSubtitleRequest);
+            Assert.assertTrue(vodMergeSubtitleResponse);
+            if (vodMergeSubtitleResponse) {
+                log.debug("测试合并字幕文件成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

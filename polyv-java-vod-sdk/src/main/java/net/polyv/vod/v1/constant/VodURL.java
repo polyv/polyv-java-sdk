@@ -349,6 +349,11 @@ public class VodURL {
     public static final String VOD_DELETE_SUBTITLE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/srt/delete";
     
     /**
+     * 合并字幕文件
+     */
+    public static final String VOD_MERGE_SUBTITLE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/srt/merge";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

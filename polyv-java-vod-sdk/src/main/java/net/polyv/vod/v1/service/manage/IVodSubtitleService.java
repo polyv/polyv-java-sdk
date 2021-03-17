@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import net.polyv.vod.v1.entity.manage.subtitle.VodDeleteSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListResponse;
+import net.polyv.vod.v1.entity.manage.subtitle.VodMergeSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodUploadSubtitleRequest;
 
 /**
@@ -45,4 +46,14 @@ public interface IVodSubtitleService {
      */
     Boolean deleteSubtitle(VodDeleteSubtitleRequest vodDeleteSubtitleRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 合并字幕文件
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-vmanage/srt/srt-merge/
+     * @param vodMergeSubtitleRequest 合并字幕文件请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean mergeSubtitle(VodMergeSubtitleRequest vodMergeSubtitleRequest) throws IOException, NoSuchAlgorithmException;
 }

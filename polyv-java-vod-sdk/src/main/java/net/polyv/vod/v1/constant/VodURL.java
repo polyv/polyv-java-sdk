@@ -334,6 +334,21 @@ public class VodURL {
             BASE_URI + "v2/video/grab/" + PARAM_REPLACE_CHAR + "/listVideos/export";
     
     /**
+     * 获取视频字幕
+     */
+    public static final String VOD_GET_SUBTITLE_LIST_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/srt/list";
+    
+    /**
+     * 上传点播视频字幕文件
+     */
+    public static final String VOD_UPLOAD_SUBTITLE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/srt/upload";
+    
+    /**
+     * 删除视频字幕
+     */
+    public static final String VOD_DELETE_SUBTITLE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/srt/delete";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

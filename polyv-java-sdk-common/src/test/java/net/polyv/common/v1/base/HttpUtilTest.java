@@ -97,7 +97,7 @@ public class HttpUtilTest {
         Map<String, String> param = new HashMap<String, String>();
         param.put("name", "thomas");
         param.put("age", "23");
-        String data = HttpUtil.postFormBody(url, param, Constant.UTF8);
+        String data = HttpUtil.postFormBody(url, param,null, Constant.UTF8);
         System.out.println(data);
         
     }
@@ -112,7 +112,7 @@ public class HttpUtilTest {
         list.add("hello");
         list.add("thomas");
         list.add("thomas is good man");
-        String data = HttpUtil.postJsonBody(url, JSON.toJSONString(list),  Constant.UTF8);
+        String data = HttpUtil.postJsonBody(url,null, JSON.toJSONString(list),  Constant.UTF8);
         System.out.println(data);
     }
 

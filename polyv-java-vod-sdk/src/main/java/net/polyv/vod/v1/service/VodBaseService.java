@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -81,9 +82,9 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> VodCommonResponse baseGet(String url, E e)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-        String response = HttpUtil.get(url, paramMap);
-        return responseConversion(response,e.getRequestId());
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        String response = HttpUtil.get(url, paramMap, getHttpHeadMap());
+        return responseConversion(response, e.getRequestId());
     }
     
     /**
@@ -97,9 +98,9 @@ public class VodBaseService {
      */
     protected <E extends VodCommonRequest> byte[] getReturnBinary(String url, E e)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
+        Map<String, String> paramMap = commonRequestLogic(null, e);
         
-        byte[] response = HttpUtil.getBinary(url, paramMap, null);
+        byte[] response = HttpUtil.getBinary(url, paramMap, getHttpHeadMap(), null);
         if (response == null) {
             String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
             PloyvSdkException exception = new PloyvSdkException(VodConstant.ERROR_CODE, message);
@@ -160,9 +161,9 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> VodCommonResponse basePostFormBody(String url, E e)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-        String response = HttpUtil.postFormBody(url, paramMap);
-        return responseConversion(response,e.getRequestId());
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        String response = HttpUtil.postFormBody(url, paramMap, getHttpHeadMap());
+        return responseConversion(response, e.getRequestId());
     }
     
     /**
@@ -226,16 +227,16 @@ public class VodBaseService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    private <E extends VodCommonRequest> VodCommonResponse basePostJsonBody(String url, Map<String, String> signMap, E e,
-            String json) throws IOException, NoSuchAlgorithmException {
-        signMap = commonRequestLogic(signMap,e);
+    private <E extends VodCommonRequest> VodCommonResponse basePostJsonBody(String url, Map<String, String> signMap,
+            E e, String json) throws IOException, NoSuchAlgorithmException {
+        signMap = commonRequestLogic(signMap, e);
         validateBean(e);
-        url = net.polyv.common.v1.util.MapUtil.appendUrl(url,signMap);
+        url = net.polyv.common.v1.util.MapUtil.appendUrl(url, signMap);
         if (StringUtils.isBlank(json)) {
             json = JSON.toJSONString(e);
         }
-        String response = HttpUtil.postJsonBody(url, json, null);
-        return responseConversion(response,e.getRequestId());
+        String response = HttpUtil.postJsonBody(url, getHttpHeadMap(), json, null);
+        return responseConversion(response, e.getRequestId());
     }
     
     /**
@@ -262,6 +263,7 @@ public class VodBaseService {
             Class<T> tClass) throws IOException, NoSuchAlgorithmException {
         return this.uploadOneFile(url, e, fileMap).parseData(tClass);
     }
+    
     /**
      * HTTP POST 上传文件公共请求
      * @param url 请求URL
@@ -274,10 +276,11 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> VodCommonResponse uploadOneFile(String url, E e, Map<String, File> fileMap)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-        String response = HttpUtil.postFile(url, paramMap, fileMap, null);
-        return responseConversion(response,e.getRequestId());
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        String response = HttpUtil.postFile(url, paramMap, fileMap, getHttpHeadMap(), null);
+        return responseConversion(response, e.getRequestId());
     }
+    
     /**
      * HTTP POST 上传文件公共请求
      * @param url 请求URL
@@ -307,9 +310,9 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> VodCommonResponse uploadMultipartFile(String url, E e,
             Map<String, List<File>> fileMap) throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-        String response = HttpUtil.postMultipleFile(url, paramMap, fileMap, null);
-        return responseConversion(response,e.getRequestId());
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        String response = HttpUtil.postMultipleFile(url, paramMap, fileMap, getHttpHeadMap(), null);
+        return responseConversion(response, e.getRequestId());
     }
     
     /**
@@ -328,13 +331,13 @@ public class VodBaseService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    private <E extends VodCommonRequest> Map<String, String> commonRequestLogic(Map<String, String> signMap,E e)
+    private <E extends VodCommonRequest> Map<String, String> commonRequestLogic(Map<String, String> signMap, E e)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
         e.setAppId(VodGlobalConfig.getAppId());
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
-        if(signMap==null){
+        if (signMap == null) {
             signMap = MapUtil.objectToMap(e);
         }
         signMap = MapUtil.filterNullValue(signMap);
@@ -352,7 +355,7 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> void validateBean(E e) {
         List<ViolationMsg> violationMsgList = SDKValidateUtil.validateBean(e);
-        if(!violationMsgList.isEmpty()){
+        if (!violationMsgList.isEmpty()) {
             String errors = SDKValidateUtil.getViolationMsgStr(violationMsgList);
             errors = errors.substring(0, errors.length() - 3);
             errors = "输入参数 [" + e.getClass().getName() + "]对象校验失败 ,失败字段 [" + errors + "]";
@@ -369,7 +372,8 @@ public class VodBaseService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    private VodCommonResponse responseConversion(String response,String requestId) throws IOException, NoSuchAlgorithmException {
+    private VodCommonResponse responseConversion(String response, String requestId)
+            throws IOException, NoSuchAlgorithmException {
         VodCommonResponse vodCommonResponse;
         if (StringUtils.isNotBlank(response)) {
             vodCommonResponse = JSON.parseObject(response, VodCommonResponse.class);
@@ -388,7 +392,14 @@ public class VodBaseService {
         return vodCommonResponse;
     }
     
-    
+    private Map<String, String> getHttpHeadMap() {
+        Map<String, String> headMap = new HashMap<String, String>();
+        headMap.put(HttpUtil.SOURCE, VodGlobalConfig.SDK_NAME);
+        headMap.put(HttpUtil.VERSION, HttpUtil.CURRENT_VERSION);
+        headMap.put(HttpUtil.APP_ID_NAME, VodGlobalConfig.getAppId());
+        headMap.put(HttpUtil.USER_ID_NAME, VodGlobalConfig.getUserId());
+        return headMap;
+    }
     
     /**
      * 公共方法结束

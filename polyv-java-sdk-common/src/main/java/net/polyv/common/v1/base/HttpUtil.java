@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -41,11 +43,8 @@ public class HttpUtil {
     public static final String USER_AGENT = "User-Agent";
     public static final String APP_ID_NAME = "java-sdk-app-id";
     public static final String USER_ID_NAME = "java-sdk-user-id";
-    private static final String CURRENT_VERSION = "1.0.23";
+    public static final String CURRENT_VERSION = "1.0.23";
     private static final String UTF8 = Constant.UTF8;
-    private static String SDK = "SDK";
-    private static String APP_ID = "";
-    private static String USER_ID = "";
     
     private HttpUtil() {
     }
@@ -57,7 +56,7 @@ public class HttpUtil {
      * @throws IOException 读写异常
      */
     public static String get(String url) throws IOException {
-        return get(url, null);
+        return get(url, null,new HashMap<>());
     }
     
     /**
@@ -67,8 +66,8 @@ public class HttpUtil {
      * @return 请求返回的数据
      * @throws IOException 读写异常
      */
-    public static String get(String url, Map<String, String> paramMap) throws IOException {
-        return get(url, paramMap, UTF8);
+    public static String get(String url, Map<String, String> paramMap, Map<String, String> headMap) throws IOException {
+        return get(url, paramMap,headMap, UTF8);
     }
     
     /**
@@ -79,13 +78,13 @@ public class HttpUtil {
      * @return 请求返回的数据
      * @throws IOException 读写异常
      */
-    public static String get(String url, Map<String, String> paramMap, String encoding) throws IOException {
+    public static String get(String url, Map<String, String> paramMap,Map<String, String> headMap, String encoding) throws IOException {
         encoding = encoding == null ? UTF8 : encoding;
         url = MapUtil.appendUrl(url, paramMap);
-        return get(url, encoding, new DataParse<String>() {
+        return get(url,headMap, encoding, new DataParse<String>() {
             @Override
             public String parseData(HttpEntity httpEntity, String encoding) throws IOException {
-                return EntityUtils.toString(httpEntity,encoding);
+                return EntityUtils.toString(httpEntity, encoding);
             }
         });
     }
@@ -98,17 +97,17 @@ public class HttpUtil {
      * @return 请求返回的字节数组，一般用于文件下载
      * @throws IOException 读写异常
      */
-    public static byte[] getBinary(String url, Map<String, String> paramMap, String encoding) throws IOException {
+    public static byte[] getBinary(String url, Map<String, String> paramMap,Map<String, String> headMap, String encoding) throws IOException {
         encoding = encoding == null ? UTF8 : encoding;
         url = MapUtil.appendUrl(url, paramMap);
-        return get(url, encoding, new DataParse< byte[]>() {
+        return get(url,headMap, encoding, new DataParse<byte[]>() {
             @Override
-            public  byte[] parseData(HttpEntity httpEntity, String encoding) throws IOException {
+            public byte[] parseData(HttpEntity httpEntity, String encoding) throws IOException {
                 return EntityUtils.toByteArray(httpEntity);
             }
         });
     }
- 
+    
     
     /**
      * HTTP GET 内部公共请求处理逻辑
@@ -118,7 +117,7 @@ public class HttpUtil {
      * @return HTTP 返回的内容
      * @throws IOException 客户端和服务器读写通讯异常
      */
-    private static <T> T get(String url, String encoding, DataParse<T> dataParse) throws IOException {
+    private static <T> T get(String url,Map<String, String> headMap, String encoding, DataParse<T> dataParse) throws IOException {
         log.debug("http 请求 url: {}", url);
         T result = null;
         // 创建httpclient对象
@@ -126,6 +125,14 @@ public class HttpUtil {
         // 创建get方式请求对象
         HttpGet httpGet = new HttpGet(url);
         httpGet.addHeader("Content-type", Constant.APPLICATION_JSON);
+        if(headMap != null){
+            Set<Map.Entry<String, String>> entries = headMap.entrySet();
+            Iterator<Map.Entry<String, String>> iterator = entries.iterator();
+            while (iterator.hasNext()){
+                Map.Entry<String, String> next = iterator.next();
+                httpGet.addHeader(next.getKey(),next.getValue());
+            }
+        }
         // 通过请求对象获取响应对象
         CloseableHttpResponse response = sendRequestAndGetResult(url, httpClient, httpGet);
         // 获取结果实体
@@ -144,7 +151,7 @@ public class HttpUtil {
         }
         return result;
     }
-  
+    
     
     /**
      * 向url发送post请求
@@ -153,8 +160,8 @@ public class HttpUtil {
      * @return 请求返回的数据
      * @throws IOException 读写异常
      */
-    public static String postFormBody(String url, Map<String, String> paramMap) throws IOException {
-        return postFormBody(url, paramMap, null);
+    public static String postFormBody(String url, Map<String, String> paramMap, Map<String, String> headMap) throws IOException {
+        return postFormBody(url, paramMap,headMap, null);
     }
     
     /**
@@ -165,8 +172,8 @@ public class HttpUtil {
      * @return 请求返回的数据
      * @throws IOException 读写异常
      */
-    public static String postFormBody(String url, Map<String, String> paramMap, String encoding) throws IOException {
-        return post(url, paramMap, encoding);
+    public static String postFormBody(String url, Map<String, String> paramMap,Map<String, String> headMap, String encoding) throws IOException {
+        return post(url, paramMap,headMap, encoding);
     }
     
     
@@ -178,7 +185,7 @@ public class HttpUtil {
      * @return 请求返回的数据
      * @throws IOException 读写异常
      */
-    private static String post(String url, Map<String, String> paramMap, String encoding) throws IOException {
+    private static String post(String url, Map<String, String> paramMap,Map<String, String> headMap, String encoding) throws IOException {
         log.debug("http 请求 url: {} , 请求参数: {}", url, JSON.toJSONString(paramMap));
         encoding = encoding == null ? UTF8 : encoding;
         // 创建post方式请求对象
@@ -199,10 +206,10 @@ public class HttpUtil {
         // 设置header信息
         // 指定报文头【Content-type】、【User-Agent】
         httpPost.setHeader("Content-type", Constant.APPLICATION_FORM_URLENCODED);
-        return post(url, httpPost, encoding, new DataParse<String>() {
+        return post(url,headMap, httpPost, encoding, new DataParse<String>() {
             @Override
             public String parseData(HttpEntity httpEntity, String encoding) throws IOException {
-                return EntityUtils.toString(httpEntity,encoding);
+                return EntityUtils.toString(httpEntity, encoding);
             }
         });
     }
@@ -215,7 +222,7 @@ public class HttpUtil {
      * @return 请求返回的数据
      * @throws IOException 读写异常
      */
-    public static String postJsonBody(String url, String json, String encoding) throws IOException {
+    public static String postJsonBody(String url,Map<String, String> headMap, String json, String encoding) throws IOException {
         log.debug("http 请求 url: {} , 请求参数: {}", url, json);
         encoding = encoding == null ? UTF8 : encoding;
         // 创建post方式请求对象
@@ -225,10 +232,10 @@ public class HttpUtil {
         //  Constant.UTF8
         stringEntity.setContentEncoding(encoding);
         httpPost.setEntity(stringEntity);
-        String result = post(url, httpPost, encoding, new DataParse<String>() {
+        String result = post(url, headMap,httpPost, encoding, new DataParse<String>() {
             @Override
             public String parseData(HttpEntity httpEntity, String encoding) throws IOException {
-                return EntityUtils.toString(httpEntity,encoding);
+                return EntityUtils.toString(httpEntity, encoding);
             }
         });
         return result;
@@ -241,12 +248,20 @@ public class HttpUtil {
      * @return 请求返回的数据
      * @throws IOException 读写异常
      */
-    private static <T> T post(String url, HttpPost httpPost, String encoding, DataParse<T> dataParse)
+    private static <T> T post(String url,Map<String, String> headMap, HttpPost httpPost, String encoding, DataParse<T> dataParse)
             throws IOException {
         T result = null;
         CloseableHttpResponse response = null;
         // 创建httpclient对象
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
+        if(headMap != null){
+            Set<Map.Entry<String, String>> entries = headMap.entrySet();
+            Iterator<Map.Entry<String, String>> iterator = entries.iterator();
+            while (iterator.hasNext()){
+                Map.Entry<String, String> next = iterator.next();
+                httpPost.addHeader(next.getKey(),next.getValue());
+            }
+        }
         // 执行请求操作，并拿到结果（同步阻塞）
         response = sendRequestAndGetResult(url, httpClient, httpPost);
         // 获取结果实体
@@ -267,19 +282,7 @@ public class HttpUtil {
     }
     
     /**
-     * 全局设置http头信息
-     * @param httpUriRequest
-     */
-    private static void setHttpHeader(HttpUriRequest httpUriRequest) {
-        httpUriRequest.addHeader(SOURCE, SDK);
-        httpUriRequest.setHeader(USER_AGENT, SDK);
-        httpUriRequest.addHeader(VERSION, CURRENT_VERSION);
-        httpUriRequest.addHeader(APP_ID_NAME, getAppId());
-        httpUriRequest.addHeader(USER_ID_NAME, getUserId());
-    }
-    
-    /**
-     * 设置http头，发送http请求，打印请求耗时
+     * 发送http请求，打印请求耗时、请求头信息
      * @param url 请求url
      * @param httpClient httpClient
      * @param httpUriRequest httpUriRequest
@@ -288,11 +291,10 @@ public class HttpUtil {
      */
     private static CloseableHttpResponse sendRequestAndGetResult(String url, CloseableHttpClient httpClient,
             HttpUriRequest httpUriRequest) throws IOException {
-        setHttpHeader(httpUriRequest);
         long startTime = System.currentTimeMillis();
         CloseableHttpResponse response = httpClient.execute(httpUriRequest);
         long endTime = System.currentTimeMillis();
-        collectAPISpendTime(url, startTime, endTime);
+        collectAPISpendTime(url, startTime, endTime,httpUriRequest);
         return response;
     }
     
@@ -302,9 +304,8 @@ public class HttpUtil {
      * @param startTime 请求开始时间
      * @param endTime 请求结束时间
      */
-    private static void collectAPISpendTime(String url, long startTime, long endTime) {
-        log.debug("HTTP请求耗时分析，请求URL: {} ， userId: {} ， appId: {} ， sdk版本: {} ，   耗时: {} ms", url, getUserId(),
-                getAppId(), CURRENT_VERSION, endTime - startTime);
+    private static void collectAPISpendTime(String url, long startTime, long endTime,HttpUriRequest httpUriRequest) {
+        log.debug("HTTP请求耗时分析，请求URL: {} ， 请求头信息：{} ，   耗时: {} ms", url, JSON.toJSONString(httpUriRequest.getAllHeaders()), endTime - startTime);
         //save server
     }
     
@@ -317,7 +318,7 @@ public class HttpUtil {
      * @return 请求返回的数据
      * @throws IOException 读写异常
      */
-    public static String postFile(String url, Map<String, String> paramMap, Map<String, File> fileMap, String encoding)
+    public static String postFile(String url, Map<String, String> paramMap, Map<String, File> fileMap,Map<String, String> headMap, String encoding)
             throws IOException {
         if (fileMap != null) {
             Map<String, List<File>> fileListMap = new HashMap<String, List<File>>();
@@ -327,9 +328,9 @@ public class HttpUtil {
                 fileList.add(file);
                 fileListMap.put(entry.getKey(), fileList);
             }
-            return postMultipleFile(url, paramMap, fileListMap, encoding);
+            return postMultipleFile(url, paramMap, fileListMap,headMap, encoding);
         }
-        return postMultipleFile(url, paramMap, null, encoding);
+        return postMultipleFile(url, paramMap, null,headMap, encoding);
     }
     
     /**
@@ -342,9 +343,9 @@ public class HttpUtil {
      * @return 请求返回的数据
      * @throws IOException 读写异常
      */
-    public static String postMultipleFile(String url, Map<String, String> paramMap, Map<String, List<File>> fileListMap,
+    public static String postMultipleFile(String url, Map<String, String> paramMap, Map<String, List<File>> fileListMap,Map<String, String> headMap,
             String encoding) throws IOException {
-        return postFileBody(url, paramMap, fileListMap, encoding, new DataParse<String>() {
+        return postFileBody(url, paramMap, fileListMap,headMap, encoding, new DataParse<String>() {
             @Override
             public String parseData(HttpEntity httpEntity, String encoding) throws IOException {
                 return EntityUtils.toString(httpEntity, encoding);
@@ -362,7 +363,7 @@ public class HttpUtil {
      * @return 请求返回的数据
      * @throws IOException 读写异常
      */
-    private static <T> T postFileBody(String url, Map<String, String> paramMap, Map<String, List<File>> fileListMap,
+    private static <T> T postFileBody(String url, Map<String, String> paramMap, Map<String, List<File>> fileListMap,Map<String, String> headMap,
             String encoding, DataParse<T> dataParse) throws IOException {
         log.debug("http 请求 url: {} , 请求参数: {}", url, JSON.toJSONString(paramMap));
         encoding = encoding == null ? UTF8 : encoding;
@@ -391,6 +392,14 @@ public class HttpUtil {
         
         HttpEntity entity = entityBuilder.build();
         httpPost.setEntity(entity);
+        if(headMap != null){
+            Set<Map.Entry<String, String>> entries = headMap.entrySet();
+            Iterator<Map.Entry<String, String>> iterator = entries.iterator();
+            while (iterator.hasNext()){
+                Map.Entry<String, String> next = iterator.next();
+                httpPost.addHeader(next.getKey(),next.getValue());
+            }
+        }
         CloseableHttpResponse response = sendRequestAndGetResult(url, httpClient, httpPost);
         if (null != response) {
             result = dataParse.parseData(response.getEntity(), encoding);
@@ -406,28 +415,4 @@ public class HttpUtil {
         return result;
     }
     
-    
-    public static String getSDK() {
-        return SDK;
-    }
-    
-    public static void setSDK(String SDK) {
-        HttpUtil.SDK = SDK;
-    }
-    
-    public static String getAppId() {
-        return APP_ID;
-    }
-    
-    public static void setAppId(String appId) {
-        APP_ID = appId;
-    }
-    
-    public static String getUserId() {
-        return USER_ID;
-    }
-    
-    public static void setUserId(String userId) {
-        USER_ID = userId;
-    }
 }

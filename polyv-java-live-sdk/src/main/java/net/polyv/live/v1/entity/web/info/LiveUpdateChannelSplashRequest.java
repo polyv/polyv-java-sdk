@@ -38,8 +38,7 @@ public class LiveUpdateChannelSplashRequest extends LiveCommonRequest {
     /**
      * 支持jpg、jpeg、png三种格式，大小不能超过4Mb
      */
-    @ApiModelProperty(name = "imgfile", value = "支持jpg、jpeg、png三种格式，大小不能超过4Mb", required = true)
-    @NotNull(message = "属性imgfile不能为空")
+    @ApiModelProperty(name = "imgfile", value = "支持jpg、jpeg、png三种格式，大小不能超过4Mb", required = false)
     private File imgfile;
     
 }

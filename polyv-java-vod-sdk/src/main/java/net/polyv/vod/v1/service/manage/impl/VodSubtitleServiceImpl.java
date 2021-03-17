@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
 import net.polyv.vod.v1.constant.VodURL;
+import net.polyv.vod.v1.entity.manage.subtitle.VodDeleteSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListResponse;
 import net.polyv.vod.v1.entity.manage.subtitle.VodUploadSubtitleRequest;
@@ -52,6 +53,22 @@ public class VodSubtitleServiceImpl extends VodBaseService implements IVodSubtit
         }
         files.put(vodUploadSubtitleRequest.FILE_NAME, vodUploadSubtitleRequest.getFile());
         super.uploadOneFile(url, vodUploadSubtitleRequest, files, String.class);
+        return Boolean.TRUE;
+    }
+    
+    /**
+     * 删除视频字幕
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/srt/delete/
+     * @param vodDeleteSubtitleRequest 删除视频字幕请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean deleteSubtitle(VodDeleteSubtitleRequest vodDeleteSubtitleRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_DELETE_SUBTITLE_URL);
+        super.postFormBodyReturnOne(url, vodDeleteSubtitleRequest, String.class);
         return Boolean.TRUE;
     }
 }

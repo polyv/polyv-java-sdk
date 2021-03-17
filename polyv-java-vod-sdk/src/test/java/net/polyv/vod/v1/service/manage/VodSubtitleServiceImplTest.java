@@ -3,8 +3,6 @@ package net.polyv.vod.v1.service.manage;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -100,21 +98,8 @@ public class VodSubtitleServiceImplTest extends BaseTest {
         try {
             //准备测试数据
             String videoId = "1b448be32399ac90f523f76c7430c9a5_1";
-            String srtCN = getClass().getResource("/subtitle/srt(zh_CN).srt").getPath();
-            String srtUS = getClass().getResource("/subtitle/srt(en_US).srt").getPath();
-            Boolean uploadSubtitleCN = super.uploadSubtitle(srtCN, videoId, "srtCN");
-            Boolean uploadSubtitleUS = super.uploadSubtitle(srtUS, videoId, "srtUS");
-            if (uploadSubtitleCN == Boolean.FALSE && uploadSubtitleUS == Boolean.FALSE) {
-                return;
-            }
-            List<VodGetSubtitleListResponse.Subtitle> subtitleList = super.getSubtitleList();
-            if (subtitleList == null || subtitleList.isEmpty()) {
-                return;
-            }
-            String ranks = subtitleList.stream()
-                    .filter((subtitle) -> subtitle.getRank() != null)
-                    .map((subtitle) -> subtitle.getRank().toString().trim())
-                    .collect(Collectors.joining(","));
+            uploadSubtitle(videoId, false);
+            String ranks = getRanks(videoId);
             
             vodDeleteSubtitleRequest.setVideoId(videoId).setRanks(ranks).setRequestId(VodSignUtil.generateUUID());
             vodDeleteSubtitleResponse = new VodSubtitleServiceImpl().deleteSubtitle(vodDeleteSubtitleRequest);

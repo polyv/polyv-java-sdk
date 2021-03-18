@@ -3,6 +3,8 @@ package net.polyv.vod.v1.service.manage;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageRequest;
+import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageResponse;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListResponse;
 import net.polyv.vod.v1.entity.manage.barrage.VodUploadBarrageRequest;
@@ -32,4 +34,15 @@ public interface IVodBarrageService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean uploadBarrage(VodUploadBarrageRequest vodUploadBarrageRequest) throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 创建视频弹幕接口
+     * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-vmanage/danmu/danmu-add/
+     * @param vodCreateBarrageRequest 上传点播弹幕文件接口请求实体
+     * @return 上传点播弹幕文件接口返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    VodCreateBarrageResponse createBarrage(VodCreateBarrageRequest vodCreateBarrageRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

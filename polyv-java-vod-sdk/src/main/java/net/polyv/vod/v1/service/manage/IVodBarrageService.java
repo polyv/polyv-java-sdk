@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageResponse;
+import net.polyv.vod.v1.entity.manage.barrage.VodDeleteBarrageRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListResponse;
 import net.polyv.vod.v1.entity.manage.barrage.VodUploadBarrageRequest;
@@ -45,4 +46,14 @@ public interface IVodBarrageService {
      */
     VodCreateBarrageResponse createBarrage(VodCreateBarrageRequest vodCreateBarrageRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 批量删除弹幕信息
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/danmu/danmu-delete/
+     * @param vodDeleteBarrageRequest 上传点播弹幕文件接口请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean deleteBarrage(VodDeleteBarrageRequest vodDeleteBarrageRequest) throws IOException, NoSuchAlgorithmException;
 }

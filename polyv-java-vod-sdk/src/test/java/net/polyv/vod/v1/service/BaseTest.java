@@ -16,6 +16,10 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.config.InitConfig;
+import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageRequest;
+import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageResponse;
+import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListRequest;
+import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListResponse;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodDeleteSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListRequest;
@@ -23,6 +27,7 @@ import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListResponse;
 import net.polyv.vod.v1.entity.manage.subtitle.VodUploadSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListResponse;
+import net.polyv.vod.v1.service.manage.impl.VodBarrageServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodCategoryServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodSubtitleServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodSyncServiceImpl;
@@ -353,5 +358,87 @@ public class BaseTest {
             throw e;
         }
         return Boolean.FALSE;
+    }
+    
+    /**
+     * 通过创建获取弹幕ID
+     * @return String
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    public String getBarrageIdsByCreate() throws IOException, NoSuchAlgorithmException {
+        createBarrage();
+        return queryBarrageIds();
+    }
+    
+    /**
+     * 创建弹幕
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    public void createBarrage() throws IOException, NoSuchAlgorithmException {
+        VodCreateBarrageRequest vodCreateBarrageRequest = new VodCreateBarrageRequest();
+        VodCreateBarrageResponse vodCreateBarrageResponse = null;
+        try {
+            vodCreateBarrageRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
+                    .setMsg("测试弹幕消息")
+                    .setTime("00:00:08")
+                    .setSessionId("88888888")
+                    .setParam2("777777777")
+                    .setFontSize(18)
+                    .setFontMode("roll")
+                    .setFontColor("0xFFFFFF")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodCreateBarrageResponse = new VodBarrageServiceImpl().createBarrage(vodCreateBarrageRequest);
+            Assert.assertNotNull(vodCreateBarrageResponse);
+            if (vodCreateBarrageResponse != null) {
+                log.debug("测试创建视频弹幕接口成功，{}", JSON.toJSONString(vodCreateBarrageResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 查询弹幕id
+     * @return String
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    public String queryBarrageIds() throws IOException, NoSuchAlgorithmException {
+        VodQueryBarrageListRequest vodQueryBarrageListRequest = new VodQueryBarrageListRequest();
+        VodQueryBarrageListResponse vodQueryBarrageListResponse = null;
+        try {
+            vodQueryBarrageListRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryBarrageListResponse = new VodBarrageServiceImpl().queryBarrageList(vodQueryBarrageListRequest);
+            Assert.assertNotNull(vodQueryBarrageListResponse);
+            if (vodQueryBarrageListResponse != null) {
+                log.debug("测试分页查询用户下所有弹幕信息成功,{}", JSON.toJSONString(vodQueryBarrageListResponse));
+            }
+            List<VodQueryBarrageListResponse.BarrageInfo> contents = vodQueryBarrageListResponse.getContents();
+            if (contents == null || contents.isEmpty()) {
+                return null;
+            }
+            String barrageIds = contents.stream()
+                    .filter((barrage) -> barrage.getId() != null)
+                    .map((barrage) -> barrage.getId().toString().trim())
+                    .collect(Collectors.joining(","));
+            return barrageIds;
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
     }
 }

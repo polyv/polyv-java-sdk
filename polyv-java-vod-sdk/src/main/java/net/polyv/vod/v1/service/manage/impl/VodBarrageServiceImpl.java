@@ -10,6 +10,7 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageResponse;
+import net.polyv.vod.v1.entity.manage.barrage.VodDeleteBarrageRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListResponse;
 import net.polyv.vod.v1.entity.manage.barrage.VodUploadBarrageRequest;
@@ -77,5 +78,22 @@ public class VodBarrageServiceImpl extends VodBaseService implements IVodBarrage
         String url = VodURL.getRealUrl(VodURL.VOD_CREATE_BARRAGE_URL);
         vodCreateBarrageRequest.setUserId(VodGlobalConfig.getUserId());
         return super.postFormBodyReturnOne(url, vodCreateBarrageRequest, VodCreateBarrageResponse.class);
+    }
+    
+    /**
+     * 批量删除弹幕信息
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/danmu/danmu-delete/
+     * @param vodDeleteBarrageRequest 上传点播弹幕文件接口请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean deleteBarrage(VodDeleteBarrageRequest vodDeleteBarrageRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_DELETE_BARRAGE_URL);
+        vodDeleteBarrageRequest.setUserId(VodGlobalConfig.getUserId());
+        super.postFormBodyReturnOne(url, vodDeleteBarrageRequest, String.class);
+        return Boolean.TRUE;
     }
 }

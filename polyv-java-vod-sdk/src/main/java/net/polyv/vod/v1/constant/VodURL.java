@@ -361,12 +361,17 @@ public class VodURL {
     /**
      * 上传点播弹幕文件接口
      */
-    public static final String VOD_UPLOAD_BARRAGE_URL = BASE_URI + "v2/danmu/" + PARAM_REPLACE_CHAR+"/upload";
+    public static final String VOD_UPLOAD_BARRAGE_URL = BASE_URI + "v2/danmu/" + PARAM_REPLACE_CHAR + "/upload";
     
     /**
      * 创建视频弹幕接口
      */
-    public static final String VOD_CREATE_BARRAGE_URL = BASE_URI + "v2/danmu/" + PARAM_REPLACE_CHAR+"/add";
+    public static final String VOD_CREATE_BARRAGE_URL = BASE_URI + "v2/danmu/" + PARAM_REPLACE_CHAR + "/add";
+    
+    /**
+     * 批量删除弹幕信息
+     */
+    public static final String VOD_DELETE_BARRAGE_URL = BASE_URI + "v2/danmu/" + PARAM_REPLACE_CHAR + "/delete";
     
     /**
      * 获取替换参数后的URL地址

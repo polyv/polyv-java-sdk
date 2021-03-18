@@ -380,6 +380,12 @@ public class VodURL {
             BASE_URI + "v2/video/snapshot/" + PARAM_REPLACE_CHAR + "/addTask";
     
     /**
+     * 获取截图任务状态
+     */
+    public static final String VOD_GET_SCREENSHOT_TASK_STATUS_URL =
+            BASE_URI + "v2/video/snapshot/" + PARAM_REPLACE_CHAR + "/getTaskStatus";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

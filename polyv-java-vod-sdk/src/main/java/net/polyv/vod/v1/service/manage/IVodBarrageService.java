@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListResponse;
+import net.polyv.vod.v1.entity.manage.barrage.VodUploadBarrageRequest;
 
 /**
  * 视频弹幕
@@ -21,4 +22,14 @@ public interface IVodBarrageService {
      */
     VodQueryBarrageListResponse queryBarrageList(VodQueryBarrageListRequest vodQueryBarrageListRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 上传点播弹幕文件接口
+     * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-vmanage/danmu/upload-danmu/
+     * @param vodUploadBarrageRequest 上传点播弹幕文件接口请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean uploadBarrage(VodUploadBarrageRequest vodUploadBarrageRequest) throws IOException, NoSuchAlgorithmException;
 }

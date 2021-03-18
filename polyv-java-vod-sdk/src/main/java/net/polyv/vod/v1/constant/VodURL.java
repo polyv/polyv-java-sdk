@@ -359,6 +359,11 @@ public class VodURL {
     public static final String VOD_QUERY_BARRAGE_LIST_URL = BASE_URI + "v2/danmu/" + PARAM_REPLACE_CHAR;
     
     /**
+     * 上传点播弹幕文件接口
+     */
+    public static final String VOD_UPLOAD_BARRAGE_URL = BASE_URI + "v2/danmu/" + PARAM_REPLACE_CHAR+"/upload";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

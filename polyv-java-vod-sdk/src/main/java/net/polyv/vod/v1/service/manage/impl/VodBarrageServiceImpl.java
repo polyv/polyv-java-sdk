@@ -1,12 +1,16 @@
 package net.polyv.vod.v1.service.manage.impl;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 
 import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListResponse;
+import net.polyv.vod.v1.entity.manage.barrage.VodUploadBarrageRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodBarrageService;
 
@@ -33,5 +37,27 @@ public class VodBarrageServiceImpl extends VodBaseService implements IVodBarrage
                 VodQueryBarrageListResponse.class);
         vodQueryBarrageListResponse.setPageSize(vodQueryBarrageListRequest.getPageSize());
         return vodQueryBarrageListResponse;
+    }
+    
+    /**
+     * 上传点播弹幕文件接口
+     * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-vmanage/danmu/upload-danmu/
+     * @param vodUploadBarrageRequest 上传点播弹幕文件接口请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean uploadBarrage(VodUploadBarrageRequest vodUploadBarrageRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_UPLOAD_BARRAGE_URL);
+        vodUploadBarrageRequest.setUserId(VodGlobalConfig.getUserId());
+        if (vodUploadBarrageRequest.getFile() == null || !vodUploadBarrageRequest.getFile().exists()) {
+            throw new FileNotFoundException("文件不存在");
+        }
+        HashMap files = new HashMap<String, File>(1);
+        files.put(vodUploadBarrageRequest.FILE_NAME, vodUploadBarrageRequest.getFile());
+        super.uploadOneFile(url, vodUploadBarrageRequest, files, String.class);
+        return Boolean.TRUE;
     }
 }

@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.common.v1.validator.constraints.NotNull;
-import net.polyv.vod.v1.entity.VodCommonRequest;
+import net.polyv.vod.v1.entity.VodPageCommonRequest;
 
 /**
  * 获取最热视频列表请求实体
@@ -18,7 +18,7 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("获取最热视频列表请求实体")
-public class VodGetHotListRequest extends VodCommonRequest {
+public class VodGetHotListRequest extends VodPageCommonRequest {
     
     /**
      * 用户的id
@@ -27,18 +27,4 @@ public class VodGetHotListRequest extends VodCommonRequest {
     @NotNull(message = "属性userid不能为空")
     @JSONField(name = "userid")
     private String userId;
-    
-    /**
-     * 平均每页取多少条数据
-     */
-    @ApiModelProperty(name = "numPerPage", value = "平均每页取多少条数据", required = true)
-    @NotNull(message = "属性numPerPage不能为空")
-    private Integer numPerPage;
-    
-    /**
-     * 取第几页
-     */
-    @ApiModelProperty(name = "pageNum", value = "取第几页", required = true)
-    @NotNull(message = "属性pageNum不能为空")
-    private Integer pageNum;
 }

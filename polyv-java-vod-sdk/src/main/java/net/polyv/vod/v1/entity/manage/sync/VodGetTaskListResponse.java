@@ -28,48 +28,6 @@ public class VodGetTaskListResponse extends VodPageCommonResponse {
     @ApiModelProperty(name = "contents", value = "查询的结果列表", required = false)
     private List<Task> contents;
     
-    /**
-     * 当前页第一条记录在总抓取记录中的位置
-     */
-    @ApiModelProperty(name = "startRow", value = "当前页第一条记录在总抓取记录中的位置", required = false)
-    private Integer startRow;
-    
-    /**
-     * 当前页最后一条记录在总抓取记录中的位置
-     */
-    @ApiModelProperty(name = "endRow", value = "当前页最后一条记录在总抓取记录中的位置", required = false)
-    private Integer endRow;
-    
-    /**
-     * 是否为第一页，值为：true/false
-     */
-    @ApiModelProperty(name = "firstPage", value = "是否为第一页，值为：true/false", required = false)
-    private Boolean firstPage;
-    
-    /**
-     * 是否为最后一页，值为：true/false
-     */
-    @ApiModelProperty(name = "lastPage", value = "是否为最后一页，值为：true/false", required = false)
-    private Boolean lastPage;
-    
-    /**
-     * 下一页编号
-     */
-    @ApiModelProperty(name = "nextPageNumber", value = "下一页编号", required = false)
-    private Integer nextPageNumber;
-    
-    /**
-     * 上一页编号
-     */
-    @ApiModelProperty(name = "prePageNumber", value = "上一页编号", required = false)
-    private Integer prePageNumber;
-    
-    /**
-     * 当前页抓取任务记录个数
-     */
-    @ApiModelProperty(name = "limit", value = "当前页抓取任务记录个数", required = false)
-    private Integer limit;
-    
     @Data
     @Accessors(chain = true)
     @ApiModel("任务信息")

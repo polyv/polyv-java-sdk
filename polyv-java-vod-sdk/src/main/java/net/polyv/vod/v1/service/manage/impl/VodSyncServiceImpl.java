@@ -34,7 +34,10 @@ public class VodSyncServiceImpl extends VodBaseService implements IVodSyncServic
     public VodGetTaskListResponse getTaskList(VodGetTaskListRequest vodGetTaskListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_GET_TASK_LIST_URL);
-        return super.getReturnOne(url, vodGetTaskListRequest, VodGetTaskListResponse.class);
+        VodGetTaskListResponse vodGetTaskListResponse = super.getReturnOne(url, vodGetTaskListRequest,
+                VodGetTaskListResponse.class);
+        vodGetTaskListResponse.setPageSize(vodGetTaskListRequest.getPageSize());
+        return vodGetTaskListResponse;
     }
     
     /**

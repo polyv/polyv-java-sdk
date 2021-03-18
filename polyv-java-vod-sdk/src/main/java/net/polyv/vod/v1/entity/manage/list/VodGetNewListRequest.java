@@ -10,7 +10,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.common.v1.validator.constraints.NotNull;
-import net.polyv.vod.v1.entity.VodCommonRequest;
+import net.polyv.vod.v1.entity.VodPageCommonRequest;
 
 /**
  * 获取最新视频/全部视频列表请求实体
@@ -20,7 +20,7 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("获取最新视频/全部视频列表请求实体")
-public class VodGetNewListRequest extends VodCommonRequest {
+public class VodGetNewListRequest extends VodPageCommonRequest {
     
     /**
      * 用户的id
@@ -36,18 +36,6 @@ public class VodGetNewListRequest extends VodCommonRequest {
     @ApiModelProperty(name = "catatree", value = "视频所在分类树，默认为1", required = false)
     @JSONField(name = "catatree")
     private String categoryTree;
-    
-    /**
-     * 平均每页取多少条数据
-     */
-    @ApiModelProperty(name = "numPerPage", value = "平均每页取多少条数据", required = false)
-    private Integer numPerPage;
-    
-    /**
-     * 取第几页
-     */
-    @ApiModelProperty(name = "pageNum", value = "取第几页", required = false)
-    private Integer pageNum;
     
     /**
      * 开始日期，格式：yyyy-MM-dd

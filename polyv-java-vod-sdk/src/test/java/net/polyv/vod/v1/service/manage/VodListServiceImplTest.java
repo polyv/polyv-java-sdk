@@ -85,8 +85,8 @@ public class VodListServiceImplTest extends BaseTest {
                     .setEndDate(null)
                     .setCategoryTree("1")
                     .setPublished(0)
-                    .setPageNum(1)
-                    .setNumPerPage(99)
+                    .setCurrentPage(1)
+                    .setPageSize(10)
                     .setRequestId(VodSignUtil.generateUUID());
             vodGetNewListResponseList = new VodListServiceImpl().getNewList(vodGetNewListRequest);
             Assert.assertNotNull(vodGetNewListResponseList);
@@ -114,7 +114,7 @@ public class VodListServiceImplTest extends BaseTest {
         VodGetHotListRequest vodGetHotListRequest = new VodGetHotListRequest();
         List<VodGetHotListResponse> vodGetHotListResponseList = null;
         try {
-            vodGetHotListRequest.setPageNum(1).setNumPerPage(99).setRequestId(VodSignUtil.generateUUID());
+            vodGetHotListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
             vodGetHotListResponseList = new VodListServiceImpl().getHotList(vodGetHotListRequest);
             Assert.assertNotNull(vodGetHotListResponseList);
             if (vodGetHotListResponseList != null) {
@@ -141,7 +141,7 @@ public class VodListServiceImplTest extends BaseTest {
         VodGetDelListRequest vodGetDelListRequest = new VodGetDelListRequest();
         List<VodGetDelListResponse> vodGetDelListResponseList = null;
         try {
-            vodGetDelListRequest.setPageNum(1).setNumPerPage(99).setRequestId(VodSignUtil.generateUUID());
+            vodGetDelListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
             vodGetDelListResponseList = new VodListServiceImpl().getDelList(vodGetDelListRequest);
             Assert.assertNotNull(vodGetDelListResponseList);
             if (vodGetDelListResponseList != null) {
@@ -168,7 +168,7 @@ public class VodListServiceImplTest extends BaseTest {
         VodGetIllegalListRequest vodGetIllegalListRequest = new VodGetIllegalListRequest();
         List<VodGetIllegalListResponse> vodGetIllegalListResponseList = null;
         try {
-            vodGetIllegalListRequest.setPageNum(1).setNumPerPage(99).setRequestId(VodSignUtil.generateUUID());
+            vodGetIllegalListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
             vodGetIllegalListResponseList = new VodListServiceImpl().getIllegalList(vodGetIllegalListRequest);
             Assert.assertNotNull(vodGetIllegalListResponseList);
             if (vodGetIllegalListResponseList != null) {

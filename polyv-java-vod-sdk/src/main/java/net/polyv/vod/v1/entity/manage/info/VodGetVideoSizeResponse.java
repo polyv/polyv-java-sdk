@@ -44,9 +44,9 @@ public class VodGetVideoSizeResponse {
         private String videoId;
         
         /**
-         * 时长，格式为时分秒。例如 00:03:11
+         * 时长，格式为hh:mm:ss。例如 00:03:11
          */
-        @ApiModelProperty(name = "duration", value = "时长，格式为时分秒")
+        @ApiModelProperty(name = "duration", value = "时长，格式为hh:mm:ss。例如 00:03:11")
         private String duration;
         
         /**

@@ -28,6 +28,7 @@ public class SubBaseTest {
     
     /**
      * 测试新增视频分类
+     * 返回：分类ID
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

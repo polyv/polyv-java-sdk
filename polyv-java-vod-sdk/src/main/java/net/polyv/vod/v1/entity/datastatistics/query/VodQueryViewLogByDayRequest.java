@@ -23,9 +23,9 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 public class VodQueryViewLogByDayRequest extends VodCommonRequest {
     
     /**
-     * 查询某天的日志时间，格式：yyyyMMdd
+     * 查询某天的日志时间，格式：yyyy-MM-dd
      */
-    @ApiModelProperty(name = "day", value = "查询某天的日志时间，格式：yyyyMMdd", required = true)
+    @ApiModelProperty(name = "day", value = "查询某天的日志时间，格式：yyyy-MM-dd", required = true)
     @NotNull(message = "属性day不能为空")
     @JSONField(format = "yyyyMMdd")
     private Date day;
@@ -47,8 +47,7 @@ public class VodQueryViewLogByDayRequest extends VodCommonRequest {
     /**
      * 用户自定义ID，自定义值（比如，表示学员信息的学员ID）
      */
-    @ApiModelProperty(name = "sessionId", value = "用户自定义ID，自定义值（比如，表示学员信息的学员ID），最长不能超过50个英文字符。", required
-            = false)
+    @ApiModelProperty(name = "sessionId", value = "用户自定义ID，自定义值（比如，表示学员信息的学员ID），最长不能超过50个英文字符。", required = false)
     private String sessionId;
     
     /**

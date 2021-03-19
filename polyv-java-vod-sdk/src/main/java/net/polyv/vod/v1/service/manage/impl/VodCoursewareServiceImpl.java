@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
+import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
+import net.polyv.vod.v1.entity.manage.courseware.VodDeleteCoursewareRequest;
 import net.polyv.vod.v1.entity.manage.courseware.VodUploadCoursewareRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodCoursewareService;
@@ -36,6 +38,23 @@ public class VodCoursewareServiceImpl extends VodBaseService implements IVodCour
         HashMap files = new HashMap<String, File>(1);
         files.put(vodUploadCoursewareRequest.FILE_NAME, vodUploadCoursewareRequest.getCourseware());
         super.uploadOneFile(url, vodUploadCoursewareRequest, files, String.class);
+        return Boolean.TRUE;
+    }
+    
+    /**
+     * 删除视频关联的课件
+     * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-vmanage/v-api-vmanage-courseware/delete-ppt/
+     * @param vodDeleteCoursewareRequest 删除视频关联的课件请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean deleteCourseware(VodDeleteCoursewareRequest vodDeleteCoursewareRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_DELETE_COURSEWARE_URL);
+        vodDeleteCoursewareRequest.setUserId(VodGlobalConfig.getUserId());
+        super.postFormBodyReturnOne(url, vodDeleteCoursewareRequest, String.class);
         return Boolean.TRUE;
     }
 }

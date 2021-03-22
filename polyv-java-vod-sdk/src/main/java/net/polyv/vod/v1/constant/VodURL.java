@@ -402,7 +402,7 @@ public class VodURL {
     public static final String VOD_QUERY_COURSEWARE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/getPPTPage";
     
     /**
-     * 查询视频关联的课件
+     * 获取单个播放列表
      */
     public static final String VOD_GET_ONE_PLAY_LIST_URL =
             BASE_URI + "v2/play/" + PARAM_REPLACE_CHAR + "/list/" + PARAM_REPLACE_CHAR;

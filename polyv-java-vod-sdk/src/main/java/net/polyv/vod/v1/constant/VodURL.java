@@ -402,6 +402,12 @@ public class VodURL {
     public static final String VOD_QUERY_COURSEWARE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/getPPTPage";
     
     /**
+     * 查询视频关联的课件
+     */
+    public static final String VOD_GET_ONE_PLAY_LIST_URL =
+            BASE_URI + "v2/play/" + PARAM_REPLACE_CHAR + "/list/" + PARAM_REPLACE_CHAR;
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

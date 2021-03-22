@@ -5,10 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 
 import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.courseware.VodDeleteCoursewareRequest;
+import net.polyv.vod.v1.entity.manage.courseware.VodQueryCoursewareRequest;
+import net.polyv.vod.v1.entity.manage.courseware.VodQueryCoursewareResponse;
 import net.polyv.vod.v1.entity.manage.courseware.VodUploadCoursewareRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.manage.IVodCoursewareService;
@@ -56,5 +59,21 @@ public class VodCoursewareServiceImpl extends VodBaseService implements IVodCour
         vodDeleteCoursewareRequest.setUserId(VodGlobalConfig.getUserId());
         super.postFormBodyReturnOne(url, vodDeleteCoursewareRequest, String.class);
         return Boolean.TRUE;
+    }
+    
+    /**
+     * 查询视频关联的课件
+     * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-vmanage/v-api-vmanage-courseware/get-ppt-page/
+     * @param vodQueryCoursewareRequest 查询视频关联的课件请求实体
+     * @return 查询视频关联的课件返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<VodQueryCoursewareResponse> queryCourseware(VodQueryCoursewareRequest vodQueryCoursewareRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_QUERY_COURSEWARE_URL);
+        vodQueryCoursewareRequest.setUserId(VodGlobalConfig.getUserId());
+        return super.getReturnList(url, vodQueryCoursewareRequest, VodQueryCoursewareResponse.class);
     }
 }

@@ -397,6 +397,11 @@ public class VodURL {
     public static final String VOD_DELETE_COURSEWARE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deletePPT";
     
     /**
+     * 查询视频关联的课件
+     */
+    public static final String VOD_QUERY_COURSEWARE_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/getPPTPage";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

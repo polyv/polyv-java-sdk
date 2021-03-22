@@ -3,13 +3,18 @@ package net.polyv.vod.v1.service.manage;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.manage.courseware.VodDeleteCoursewareRequest;
+import net.polyv.vod.v1.entity.manage.courseware.VodQueryCoursewareRequest;
+import net.polyv.vod.v1.entity.manage.courseware.VodQueryCoursewareResponse;
 import net.polyv.vod.v1.entity.manage.courseware.VodUploadCoursewareRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.manage.impl.VodCoursewareServiceImpl;
@@ -56,8 +61,8 @@ public class VodCoursewareServiceImplTest extends BaseTest {
     /**
      * 测试删除视频关联的课件
      * @throws IOException
-     * TODO 响应超时，解决后再修改
      * @throws NoSuchAlgorithmException
+     * TODO 响应超时，解决后再修改
      */
 //    @Test
     public void testDeleteCourseware() throws IOException, NoSuchAlgorithmException {
@@ -70,6 +75,34 @@ public class VodCoursewareServiceImplTest extends BaseTest {
             Assert.assertTrue(vodDeleteCoursewareResponse);
             if (vodDeleteCoursewareResponse) {
                 log.debug("测试删除视频关联的课件成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询视频关联的课件
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testQueryCourseware() throws IOException, NoSuchAlgorithmException {
+        VodQueryCoursewareRequest vodQueryCoursewareRequest = new VodQueryCoursewareRequest();
+        List<VodQueryCoursewareResponse> vodQueryCoursewareResponseList = null;
+        try {
+            vodQueryCoursewareRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryCoursewareResponseList = new VodCoursewareServiceImpl().queryCourseware(vodQueryCoursewareRequest);
+            Assert.assertNotNull(vodQueryCoursewareResponseList);
+            if (vodQueryCoursewareResponseList != null) {
+                log.debug("测试查询视频关联的课件成功,{}", JSON.toJSONString(vodQueryCoursewareResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

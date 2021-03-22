@@ -7,6 +7,8 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.encryptionsettings.VodGetEncryptionSettingsRequest;
 import net.polyv.vod.v1.entity.encryptionsettings.VodGetEncryptionSettingsResponse;
+import net.polyv.vod.v1.entity.encryptionsettings.VodUpdateEncryptionSettingsRequest;
+import net.polyv.vod.v1.entity.encryptionsettings.VodUpdateEncryptionSettingsResponse;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.encryptionsettings.IVodEncryptionSettingsService;
 
@@ -30,5 +32,23 @@ public class VodEncryptionSettingsServiceImpl extends VodBaseService implements 
         String url = VodURL.getRealUrl(VodURL.VOD_GET_ENCRYPTION_SETTINGS_URL, VodGlobalConfig.getUserId());
         vodGetEncryptionSettingsRequest.setUserId(VodGlobalConfig.getUserId());
         return super.getReturnOne(url, vodGetEncryptionSettingsRequest, VodGetEncryptionSettingsResponse.class);
+    }
+    
+    /**
+     * 设置账号加密设置
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-encryptionsetting/set-playsafe/
+     * @param vodUpdateEncryptionSettingsRequest 设置账号加密设置请求实体
+     * @return 设置账号加密设置返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public VodUpdateEncryptionSettingsResponse updateEncryptionSettings(
+            VodUpdateEncryptionSettingsRequest vodUpdateEncryptionSettingsRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_UPDATE_ENCRYPTION_SETTINGS_URL, VodGlobalConfig.getUserId());
+        vodUpdateEncryptionSettingsRequest.setUserId(VodGlobalConfig.getUserId());
+        return super.postFormBodyReturnOne(url, vodUpdateEncryptionSettingsRequest,
+                VodUpdateEncryptionSettingsResponse.class);
     }
 }

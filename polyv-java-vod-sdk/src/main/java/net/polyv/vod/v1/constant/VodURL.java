@@ -419,6 +419,12 @@ public class VodURL {
             BASE_URI + "v2/setting/" + PARAM_REPLACE_CHAR + "/get-playsafe";
     
     /**
+     * 设置账号加密设置
+     */
+    public static final String VOD_UPDATE_ENCRYPTION_SETTINGS_URL =
+            BASE_URI + "v2/setting/" + PARAM_REPLACE_CHAR + "/set-playsafe";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

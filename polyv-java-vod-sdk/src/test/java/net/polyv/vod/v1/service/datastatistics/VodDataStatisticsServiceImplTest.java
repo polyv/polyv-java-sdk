@@ -77,6 +77,8 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     .setEndTime(super.getDate(2021, 2, 31))
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setCurrentDay(null)
+                    .setCurrentPage(1)
+                    .setPageSize(10)
                     .setRequestId(VodSignUtil.generateUUID());
             vodGetVideoPlayLogResponse = new VodDataStatisticsServiceImpl().getVideoPlayLog(vodGetVideoPlayLogRequest);
             Assert.assertNotNull(vodGetVideoPlayLogResponse);

@@ -75,10 +75,10 @@ public class VodGetVideoPlayLogResponse extends VodPageCommonResponse {
         private Integer duration;
         
         /**
-         * 流量大小
+         * 流量大小，单位：Bytes
          */
-        @ApiModelProperty(name = "flowSize", value = "流量大小", required = false)
-        private Integer flowSize;
+        @ApiModelProperty(name = "flowSize", value = "流量大小，单位：Bytes", required = false)
+        private Long flowSize;
         
         /**
          * 用户自定义参数，如学员ID等 ,该参数做了UrlSafeBase64的加密，需要做解密

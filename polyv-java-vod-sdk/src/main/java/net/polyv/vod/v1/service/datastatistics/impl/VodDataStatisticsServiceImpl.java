@@ -51,6 +51,9 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(VodGetVideoPlayLogRequest.MONTH_FORMAT);
         String url = VodURL.getRealUrl(VodURL.VOD_GET_VIDEO_PLAY_LOG_URL, VodGlobalConfig.getUserId(),
                 simpleDateFormat.format(vodGetVideoPlayLogRequest.getMonth()));
-        return super.getReturnOne(url, vodGetVideoPlayLogRequest, VodGetVideoPlayLogResponse.class);
+        VodGetVideoPlayLogResponse vodGetVideoPlayLogResponse = super.getReturnOne(url, vodGetVideoPlayLogRequest,
+                VodGetVideoPlayLogResponse.class);
+        vodGetVideoPlayLogResponse.setPageSize(vodGetVideoPlayLogRequest.getPageSize());
+        return vodGetVideoPlayLogResponse;
     }
 }

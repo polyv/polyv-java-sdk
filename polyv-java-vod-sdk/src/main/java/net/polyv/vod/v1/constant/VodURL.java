@@ -448,6 +448,12 @@ public class VodURL {
     public static final String VOD_UPDATE_ADVERTISING_URL = BASE_URI + "v2/advertising/" + PARAM_REPLACE_CHAR + "/edit";
     
     /**
+     * 批量获取视频观看日志
+     */
+    public static final String VOD_GET_VIDEO_PLAY_LOG_URL =
+            BASE_URI + "v2/viewlog/" + PARAM_REPLACE_CHAR + "/monthly/" + PARAM_REPLACE_CHAR;
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

@@ -11,6 +11,8 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
 import net.polyv.vod.v1.service.BaseTest;
@@ -35,7 +37,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     @Test
     public void testQueryViewLogByDay() throws IOException, NoSuchAlgorithmException {
         VodQueryViewLogByDayRequest vodQueryViewLogByDayRequest = new VodQueryViewLogByDayRequest();
-        List<VodQueryViewLogByDayResponse> vodQueryViewLogByDayResponse = null;
+        List<VodQueryViewLogByDayResponse> vodQueryViewLogByDayResponseList = null;
         try {
             vodQueryViewLogByDayRequest.setDay(super.getDate(2021, 2, 4))
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
@@ -43,11 +45,43 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     .setSessionId(null)
                     .setViewerId(null)
                     .setRequestId(VodSignUtil.generateUUID());
-            vodQueryViewLogByDayResponse = new VodDataStatisticsServiceImpl().queryViewLogByDay(
+            vodQueryViewLogByDayResponseList = new VodDataStatisticsServiceImpl().queryViewLogByDay(
                     vodQueryViewLogByDayRequest);
-            Assert.assertNotNull(vodQueryViewLogByDayResponse);
-            if (vodQueryViewLogByDayResponse != null) {
-                log.debug("测试获取某一天视频观看日志成功,{}", JSON.toJSONString(vodQueryViewLogByDayResponse));
+            Assert.assertNotNull(vodQueryViewLogByDayResponseList);
+            if (vodQueryViewLogByDayResponseList != null) {
+                log.debug("测试获取某一天视频观看日志成功,{}", JSON.toJSONString(vodQueryViewLogByDayResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试批量获取视频观看日志
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetVideoPlayLog() throws IOException, NoSuchAlgorithmException {
+        VodGetVideoPlayLogRequest vodGetVideoPlayLogRequest = new VodGetVideoPlayLogRequest();
+        VodGetVideoPlayLogResponse vodGetVideoPlayLogResponse = null;
+        try {
+            vodGetVideoPlayLogRequest.setMonth(super.getDate(2021, 2, 1))
+                    .setStartTime(super.getDate(2021, 2, 1))
+                    .setEndTime(super.getDate(2021, 2, 31))
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setCurrentDay(null)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetVideoPlayLogResponse = new VodDataStatisticsServiceImpl().getVideoPlayLog(vodGetVideoPlayLogRequest);
+            Assert.assertNotNull(vodGetVideoPlayLogResponse);
+            if (vodGetVideoPlayLogResponse != null) {
+                log.debug("测试批量获取视频观看日志成功,{}", JSON.toJSONString(vodGetVideoPlayLogResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -20,8 +20,6 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @ApiModel("删除视频广告请求实体")
 public class VodDeleteAdvertisingRequest extends VodCommonRequest {
     
-    public final String FILE_NAME = "file";
-    
     /**
      * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
      */

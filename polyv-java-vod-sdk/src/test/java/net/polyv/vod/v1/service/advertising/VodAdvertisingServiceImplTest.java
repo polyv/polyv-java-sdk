@@ -7,10 +7,14 @@ import java.security.NoSuchAlgorithmException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.advertising.VodCreateAdvertisingRequest;
 import net.polyv.vod.v1.entity.advertising.VodDeleteAdvertisingRequest;
+import net.polyv.vod.v1.entity.advertising.VodGetAdvertisingListRequest;
+import net.polyv.vod.v1.entity.advertising.VodGetAdvertisingListResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.advertising.impl.VodAdvertisingServiceImpl;
 import net.polyv.vod.v1.util.VodSignUtil;
@@ -85,6 +89,34 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
             Assert.assertTrue(vodDeleteAdvertisingResponse);
             if (vodDeleteAdvertisingResponse) {
                 log.debug("测试删除视频广告成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试获取视频广告列表
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testGetAdvertisingList() throws IOException, NoSuchAlgorithmException {
+        VodGetAdvertisingListRequest vodGetAdvertisingListRequest = new VodGetAdvertisingListRequest();
+        VodGetAdvertisingListResponse vodGetAdvertisingListResponse = null;
+        try {
+            vodGetAdvertisingListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
+            vodGetAdvertisingListResponse = new VodAdvertisingServiceImpl().getAdvertisingList(
+                    vodGetAdvertisingListRequest);
+            Assert.assertNotNull(vodGetAdvertisingListResponse);
+            if (vodGetAdvertisingListResponse != null) {
+                log.debug("测试删除视频广告成功,{}", JSON.toJSONString(vodGetAdvertisingListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

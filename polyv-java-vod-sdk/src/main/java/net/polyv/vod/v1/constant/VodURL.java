@@ -431,6 +431,12 @@ public class VodURL {
             BASE_URI + "v2/advertising/" + PARAM_REPLACE_CHAR + "/create";
     
     /**
+     * 删除视频广告
+     */
+    public static final String VOD_DELETE_ADVERTISING_URL =
+            BASE_URI + "v2/advertising/" + PARAM_REPLACE_CHAR + "/delete";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

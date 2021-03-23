@@ -10,6 +10,7 @@ import org.junit.Test;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.advertising.VodCreateAdvertisingRequest;
+import net.polyv.vod.v1.entity.advertising.VodDeleteAdvertisingRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.advertising.impl.VodAdvertisingServiceImpl;
 import net.polyv.vod.v1.util.VodSignUtil;
@@ -26,7 +27,7 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    @Test
+//    @Test
     public void testCreateAdvertising() throws IOException, NoSuchAlgorithmException {
         VodCreateAdvertisingRequest vodCreateAdvertisingRequest = new VodCreateAdvertisingRequest();
         String vodCreateAdvertisingResponse = null;
@@ -52,6 +53,38 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodCreateAdvertisingResponse);
             if (vodCreateAdvertisingResponse != null) {
                 log.debug("测试创建视频广告成功,{}", vodCreateAdvertisingResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试删除视频广告
+     * 返回：true为删除成功，false为删除失败
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testDeleteAdvertising() throws IOException, NoSuchAlgorithmException {
+        VodDeleteAdvertisingRequest vodDeleteAdvertisingRequest = new VodDeleteAdvertisingRequest();
+        Boolean vodDeleteAdvertisingResponse = null;
+        try {
+            //准备测试数据
+            String advertisingId = super.createAdvertising();
+            
+            vodDeleteAdvertisingRequest.setAdvertisingId(advertisingId).setRequestId(VodSignUtil.generateUUID());
+            vodDeleteAdvertisingResponse = new VodAdvertisingServiceImpl().deleteAdvertising(
+                    vodDeleteAdvertisingRequest);
+            Assert.assertTrue(vodDeleteAdvertisingResponse);
+            if (vodDeleteAdvertisingResponse) {
+                log.debug("测试删除视频广告成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

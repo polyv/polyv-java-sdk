@@ -9,6 +9,7 @@ import java.util.HashMap;
 import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.advertising.VodCreateAdvertisingRequest;
+import net.polyv.vod.v1.entity.advertising.VodDeleteAdvertisingRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.advertising.IVodAdvertisingService;
 
@@ -36,5 +37,21 @@ public class VodAdvertisingServiceImpl extends VodBaseService implements IVodAdv
         HashMap files = new HashMap<String, File>(1);
         files.put(vodCreateAdvertisingRequest.FILE_NAME, vodCreateAdvertisingRequest.getFile());
         return super.uploadOneFile(url, vodCreateAdvertisingRequest, files, String.class);
+    }
+    
+    /**
+     * 删除视频广告
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/ad-management/delet-advertising/
+     * @param vodDeleteAdvertisingRequest 删除视频广告请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean deleteAdvertising(VodDeleteAdvertisingRequest vodDeleteAdvertisingRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_DELETE_ADVERTISING_URL, VodGlobalConfig.getUserId());
+        vodDeleteAdvertisingRequest.setUserId(VodGlobalConfig.getUserId());
+        return super.postFormBodyReturnOne(url, vodDeleteAdvertisingRequest, Boolean.class);
     }
 }

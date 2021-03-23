@@ -16,6 +16,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.config.InitConfig;
+import net.polyv.vod.v1.entity.advertising.VodCreateAdvertisingRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageResponse;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListRequest;
@@ -27,6 +28,7 @@ import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListResponse;
 import net.polyv.vod.v1.entity.manage.subtitle.VodUploadSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListResponse;
+import net.polyv.vod.v1.service.advertising.impl.VodAdvertisingServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodBarrageServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodCategoryServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodSubtitleServiceImpl;
@@ -431,6 +433,41 @@ public class BaseTest {
                     .map((barrage) -> barrage.getId().toString().trim())
                     .collect(Collectors.joining(","));
             return barrageIds;
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试创建视频广告
+     * 返回：广告ID
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    public String createAdvertising() throws IOException, NoSuchAlgorithmException {
+        VodCreateAdvertisingRequest vodCreateAdvertisingRequest = new VodCreateAdvertisingRequest();
+        String vodCreateAdvertisingResponse = null;
+        try {
+            String filePath = getClass().getResource("/img/cover.jpg").getPath();
+            vodCreateAdvertisingRequest.setStartDate(getDate(2021, 2, 22))
+                    .setEndDate(getDate(2021, 3, 22))
+                    .setTitle("测试广告")
+                    .setFile(new File(filePath))
+                    .setSize(2)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodCreateAdvertisingResponse = new VodAdvertisingServiceImpl().createAdvertising(
+                    vodCreateAdvertisingRequest);
+            Assert.assertNotNull(vodCreateAdvertisingResponse);
+            if (vodCreateAdvertisingResponse != null) {
+                log.debug("测试创建视频广告成功,{}", vodCreateAdvertisingResponse);
+            }
+            return vodCreateAdvertisingResponse;
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);

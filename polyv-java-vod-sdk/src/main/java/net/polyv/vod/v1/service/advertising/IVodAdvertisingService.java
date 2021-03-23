@@ -7,6 +7,7 @@ import net.polyv.vod.v1.entity.advertising.VodCreateAdvertisingRequest;
 import net.polyv.vod.v1.entity.advertising.VodDeleteAdvertisingRequest;
 import net.polyv.vod.v1.entity.advertising.VodGetAdvertisingListRequest;
 import net.polyv.vod.v1.entity.advertising.VodGetAdvertisingListResponse;
+import net.polyv.vod.v1.entity.advertising.VodUpdateAdvertisingRequest;
 
 /**
  * 广告管理
@@ -44,5 +45,16 @@ public interface IVodAdvertisingService {
      * @throws NoSuchAlgorithmException 异常
      */
     VodGetAdvertisingListResponse getAdvertisingList(VodGetAdvertisingListRequest vodGetAdvertisingListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 修改视频广告
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/ad-management/edit/
+     * @param vodUpdateAdvertisingRequest 修改视频广告请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean updateAdvertising(VodUpdateAdvertisingRequest vodUpdateAdvertisingRequest)
             throws IOException, NoSuchAlgorithmException;
 }

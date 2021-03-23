@@ -12,6 +12,7 @@ import net.polyv.vod.v1.entity.advertising.VodCreateAdvertisingRequest;
 import net.polyv.vod.v1.entity.advertising.VodDeleteAdvertisingRequest;
 import net.polyv.vod.v1.entity.advertising.VodGetAdvertisingListRequest;
 import net.polyv.vod.v1.entity.advertising.VodGetAdvertisingListResponse;
+import net.polyv.vod.v1.entity.advertising.VodUpdateAdvertisingRequest;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.advertising.IVodAdvertisingService;
 
@@ -71,5 +72,21 @@ public class VodAdvertisingServiceImpl extends VodBaseService implements IVodAdv
         String url = VodURL.getRealUrl(VodURL.VOD_GET_ADVERTISING_LIST_URL, VodGlobalConfig.getUserId());
         vodGetAdvertisingListRequest.setUserId(VodGlobalConfig.getUserId());
         return super.getReturnOne(url, vodGetAdvertisingListRequest, VodGetAdvertisingListResponse.class);
+    }
+    
+    /**
+     * 修改视频广告
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/ad-management/edit/
+     * @param vodUpdateAdvertisingRequest 修改视频广告请求实体
+     * @return Boolean
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean updateAdvertising(VodUpdateAdvertisingRequest vodUpdateAdvertisingRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_UPDATE_ADVERTISING_URL, VodGlobalConfig.getUserId());
+        vodUpdateAdvertisingRequest.setUserId(VodGlobalConfig.getUserId());
+        return super.postFormBodyReturnOne(url, vodUpdateAdvertisingRequest, Boolean.class);
     }
 }

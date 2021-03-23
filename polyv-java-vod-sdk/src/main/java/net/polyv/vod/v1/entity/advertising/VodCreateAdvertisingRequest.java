@@ -96,7 +96,7 @@ public class VodCreateAdvertisingRequest extends VodCommonRequest {
     private Integer popUpTime;
     
     /**
-     * 广告状态，已上线10,待上线1,已下线0;默认为已上线。默认为10：已上线
+     * 广告状态，已上线10,待上线1,已下线0;默认为10：已上线
      */
     @ApiModelProperty(name = "status", value = "广告状态，已上线10,待上线1,已下线0;默认为10：已上线", required = false)
     private Integer status;

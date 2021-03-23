@@ -117,7 +117,7 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
                     vodGetAdvertisingListRequest);
             Assert.assertNotNull(vodGetAdvertisingListResponse);
             if (vodGetAdvertisingListResponse != null) {
-                log.debug("测试删除视频广告成功,{}", JSON.toJSONString(vodGetAdvertisingListResponse));
+                log.debug("测试获取视频广告列表成功,{}", JSON.toJSONString(vodGetAdvertisingListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

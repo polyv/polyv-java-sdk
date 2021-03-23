@@ -2,14 +2,12 @@ package net.polyv.vod.v1.service.datastatistics.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.vod.v1.constant.VodURL;
-import net.polyv.vod.v1.entity.datastatistics.query.VodQueryViewLogByDayRequest;
-import net.polyv.vod.v1.entity.datastatistics.query.VodQueryViewLogByDayResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.datastatistics.IVodDataStatisticsService;
 

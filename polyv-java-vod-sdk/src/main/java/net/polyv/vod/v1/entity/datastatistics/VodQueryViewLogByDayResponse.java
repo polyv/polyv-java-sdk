@@ -1,4 +1,4 @@
-package net.polyv.vod.v1.entity.datastatistics.query;
+package net.polyv.vod.v1.entity.datastatistics;
 
 import java.util.Date;
 

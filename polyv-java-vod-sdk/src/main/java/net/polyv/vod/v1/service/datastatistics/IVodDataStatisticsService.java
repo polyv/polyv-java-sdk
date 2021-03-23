@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import net.polyv.vod.v1.entity.datastatistics.query.VodQueryViewLogByDayRequest;
-import net.polyv.vod.v1.entity.datastatistics.query.VodQueryViewLogByDayResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
 
 /**
  * 数据统计

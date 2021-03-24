@@ -18,6 +18,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingReques
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
 
@@ -119,4 +121,15 @@ public interface IVodDataStatisticsService {
     List<VodQueryVideoGeographicStatisticsResponse> queryVideoGeographicStatistics(
             VodQueryVideoGeographicStatisticsRequest vodQueryVideoGeographicStatisticsRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询视频观众量统计数据
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/data-visitor/
+     * @param vodQueryVideoViewershipRequest 查询视频观众量统计数据请求实体
+     * @return 查询视频观众量统计数据返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    List<VodQueryVideoViewershipResponse> queryVideoViewership(
+            VodQueryVideoViewershipRequest vodQueryVideoViewershipRequest) throws IOException, NoSuchAlgorithmException;
 }

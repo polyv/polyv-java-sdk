@@ -22,6 +22,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingReques
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -168,5 +170,21 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
         String url = VodURL.getRealUrl(VodURL.VOD_QUERY_VIDEO_GEOGRAPHIC_STATISTICS_URL);
         return super.getReturnList(url, vodQueryVideoGeographicStatisticsRequest,
                 VodQueryVideoGeographicStatisticsResponse.class);
+    }
+    
+    /**
+     * 查询视频观众量统计数据
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/data-visitor/
+     * @param vodQueryVideoViewershipRequest 查询视频观众量统计数据请求实体
+     * @return 查询视频观众量统计数据返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<VodQueryVideoViewershipResponse> queryVideoViewership(
+            VodQueryVideoViewershipRequest vodQueryVideoViewershipRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_QUERY_VIDEO_VIEWERSHIP_URL);
+        return super.getReturnList(url, vodQueryVideoViewershipRequest, VodQueryVideoViewershipResponse.class);
     }
 }

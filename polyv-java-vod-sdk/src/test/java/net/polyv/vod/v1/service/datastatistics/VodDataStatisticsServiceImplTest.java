@@ -25,6 +25,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingReques
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
 import net.polyv.vod.v1.service.BaseTest;
@@ -297,6 +299,39 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodQueryVideoGeographicStatisticsResponseList);
             if (vodQueryVideoGeographicStatisticsResponseList != null) {
                 log.debug("测试查询视频播放地理位置统计数据成功,{}", JSON.toJSONString(vodQueryVideoGeographicStatisticsResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询视频观众量统计数据
+     * 约束：2、按照日期区间或区段及视频ID查询视频的观众量统计数据，不传vid参数就表示查询用户下所有视频的观众量。
+     * 约束：2、从播放行为产生到数据可查询的间隔时间为1~2小时。
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testQueryVideoViewership() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoViewershipRequest vodQueryVideoViewershipRequest = new VodQueryVideoViewershipRequest();
+        List<VodQueryVideoViewershipResponse> vodQueryVideoViewershipResponseList = null;
+        try {
+            vodQueryVideoViewershipRequest.setDr("7days")
+                    .setStartTime(super.getDate(2021, 2, 18))
+                    .setEndTime(super.getDate(2021, 2, 24))
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoViewershipResponseList = new VodDataStatisticsServiceImpl().queryVideoViewership(
+                    vodQueryVideoViewershipRequest);
+            Assert.assertNotNull(vodQueryVideoViewershipResponseList);
+            if (vodQueryVideoViewershipResponseList != null) {
+                log.debug("测试查询视频观众量统计数据成功,{}", JSON.toJSONString(vodQueryVideoViewershipResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

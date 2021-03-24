@@ -10,6 +10,8 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -55,5 +57,22 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
                 VodGetVideoPlayLogResponse.class);
         vodGetVideoPlayLogResponse.setPageSize(vodGetVideoPlayLogRequest.getPageSize());
         return vodGetVideoPlayLogResponse;
+    }
+    
+    /**
+     * 查询视频播放量统计数据接口
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/videoview/
+     * @param vodQueryVideoPlaybackStatisticsRequest 查询视频播放量统计数据接口请求实体
+     * @return 查询视频播放量统计数据接口返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<VodQueryVideoPlaybackStatisticsResponse> queryVideoPlaybackStatistics(
+            VodQueryVideoPlaybackStatisticsRequest vodQueryVideoPlaybackStatisticsRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_QUERY_VIDEO_PLAYBACK_STATISTICS_URL);
+        return super.getReturnList(url, vodQueryVideoPlaybackStatisticsRequest,
+                VodQueryVideoPlaybackStatisticsResponse.class);
     }
 }

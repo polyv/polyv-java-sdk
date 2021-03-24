@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
 import net.polyv.vod.v1.service.BaseTest;
@@ -84,6 +86,39 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodGetVideoPlayLogResponse);
             if (vodGetVideoPlayLogResponse != null) {
                 log.debug("测试批量获取视频观看日志成功,{}", JSON.toJSONString(vodGetVideoPlayLogResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询视频播放量统计数据接口
+     * 约束：2、查询视频播放量统计数据接口，从播放行为产生到数据可查询的间隔时间为1~2小时。
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testQueryVideoPlaybackStatistics() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoPlaybackStatisticsRequest vodQueryVideoPlaybackStatisticsRequest =
+                new VodQueryVideoPlaybackStatisticsRequest();
+        List<VodQueryVideoPlaybackStatisticsResponse> vodQueryVideoPlaybackStatisticsResponseList = null;
+        try {
+            vodQueryVideoPlaybackStatisticsRequest.setDr("7days")
+                    .setPeriod("daily")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoPlaybackStatisticsResponseList =
+                    new VodDataStatisticsServiceImpl().queryVideoPlaybackStatistics(
+                    vodQueryVideoPlaybackStatisticsRequest);
+            Assert.assertNotNull(vodQueryVideoPlaybackStatisticsResponseList);
+            if (vodQueryVideoPlaybackStatisticsResponseList != null) {
+                log.debug("测试查询视频播放量统计数据接口成功,{}", JSON.toJSONString(vodQueryVideoPlaybackStatisticsResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

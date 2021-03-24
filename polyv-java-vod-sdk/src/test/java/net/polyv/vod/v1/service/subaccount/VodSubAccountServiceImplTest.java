@@ -107,6 +107,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
     /**
      * 测试修改视频信息
      * 描述：根据视频ID修改视频信息
+     * 返回：true为修改成功，false为修改失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -141,6 +142,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
     /**
      * 测试批量修改视频所属分类
      * 描述：根据视频ID批量修改视频所属分类
+     * 返回：true为修改成功，false为修改失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -293,6 +295,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
     
     /**
      * 测试删除视频分类
+     * 返回：true为删除成功，false为删除失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -323,6 +326,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
     
     /**
      * 测试修改视频分类属性设置
+     * 返回：true为修改成功，false为修改失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

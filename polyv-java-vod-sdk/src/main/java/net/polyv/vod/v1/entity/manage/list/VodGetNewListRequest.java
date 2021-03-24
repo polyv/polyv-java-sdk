@@ -26,7 +26,7 @@ public class VodGetNewListRequest extends VodPageCommonRequest {
      * 用户的id
      */
     @ApiModelProperty(hidden = true)
-    @NotNull(message = "属性userid不能为空")
+    @NotNull(message = "属性userId不能为空")
     @JSONField(name = "userid")
     private String userId;
     

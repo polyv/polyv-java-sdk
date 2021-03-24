@@ -10,6 +10,8 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsRequest;
@@ -92,5 +94,22 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_QUERY_VIDEO_PLAYBACK_RANKING_URL);
         return super.getReturnOne(url, vodQueryVideoPlaybackRankingRequest, VodQueryVideoPlaybackRankingResponse.class);
+    }
+    
+    /**
+     * 查询播放域名统计数据接口
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/domainstats/
+     * @param vodQueryPlayDomainNameStatisticsRequest 查询播放域名统计数据接口请求实体
+     * @return 查询播放域名统计数据接口返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<VodQueryPlayDomainNameStatisticsResponse> queryPlayDomainNameStatistics(
+            VodQueryPlayDomainNameStatisticsRequest vodQueryPlayDomainNameStatisticsRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_QUERY_PLAY_DOMAIN_NAME_STATISTICS_URL);
+        return super.getReturnList(url, vodQueryPlayDomainNameStatisticsRequest,
+                VodQueryPlayDomainNameStatisticsResponse.class);
     }
 }

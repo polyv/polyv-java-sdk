@@ -6,6 +6,8 @@ import java.util.List;
 
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsRequest;
@@ -62,5 +64,17 @@ public interface IVodDataStatisticsService {
      */
     VodQueryVideoPlaybackRankingResponse queryVideoPlaybackRanking(
             VodQueryVideoPlaybackRankingRequest vodQueryVideoPlaybackRankingRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询播放域名统计数据接口
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/domainstats/
+     * @param vodQueryPlayDomainNameStatisticsRequest 查询播放域名统计数据接口请求实体
+     * @return 查询播放域名统计数据接口返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    List<VodQueryPlayDomainNameStatisticsResponse> queryPlayDomainNameStatistics(
+            VodQueryPlayDomainNameStatisticsRequest vodQueryPlayDomainNameStatisticsRequest)
             throws IOException, NoSuchAlgorithmException;
 }

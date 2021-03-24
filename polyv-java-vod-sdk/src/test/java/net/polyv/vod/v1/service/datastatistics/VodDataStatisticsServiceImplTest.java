@@ -15,6 +15,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsRequest;
@@ -191,6 +193,39 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodQueryPlayDomainNameStatisticsResponseList);
             if (vodQueryPlayDomainNameStatisticsResponseList != null) {
                 log.debug("测试查询播放域名统计数据接口成功,{}", JSON.toJSONString(vodQueryPlayDomainNameStatisticsResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询视频终端环境统计数据
+     * 约束：2、查询视频终端环境统计数据，包括浏览器环境，操作系统环境，终端环境。从播放行为产生到数据可查询的间隔时间为1~2小时。
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testQueryVideoDeviceStatistics() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoDeviceStatisticsRequest vodQueryVideoDeviceStatisticsRequest =
+                new VodQueryVideoDeviceStatisticsRequest();
+        VodQueryVideoDeviceStatisticsResponse vodQueryVideoDeviceStatisticsResponse = null;
+        try {
+            vodQueryVideoDeviceStatisticsRequest.setDr("7days")
+                    .setStartTime(super.getDate(2021, 2, 18))
+                    .setEndTime(super.getDate(2021, 2, 24))
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoDeviceStatisticsResponse = new VodDataStatisticsServiceImpl().queryVideoDeviceStatistics(
+                    vodQueryVideoDeviceStatisticsRequest);
+            Assert.assertNotNull(vodQueryVideoDeviceStatisticsResponse);
+            if (vodQueryVideoDeviceStatisticsResponse != null) {
+                log.debug("测试查询视频终端环境统计数据成功,{}", JSON.toJSONString(vodQueryVideoDeviceStatisticsResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -17,6 +17,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRe
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackHourlyStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackHourlyStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingRequest;
@@ -260,6 +262,41 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodQueryVideoPlaybackHourlyStatisticsResponseList);
             if (vodQueryVideoPlaybackHourlyStatisticsResponseList != null) {
                 log.debug("测试查询视频播放时段统计数据成功,{}", JSON.toJSONString(vodQueryVideoPlaybackHourlyStatisticsResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询视频播放地理位置统计数据
+     * 约束：2、从播放行为产生到数据可查询的间隔时间为1~2小时，但是统计结果中流量消耗（PCFlowSize、mobileFlowSize字段）的计算依赖于CDN
+     * 约束：2、日志，为了保证数据完整性，流量数据需要间隔一个自然日才会生成。例如1号产生的流量消耗，会在2号晚上汇总计算，在3号才可查询到流量数据。
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testQueryVideoGeographicStatistics() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoGeographicStatisticsRequest vodQueryVideoGeographicStatisticsRequest =
+                new VodQueryVideoGeographicStatisticsRequest();
+        List<VodQueryVideoGeographicStatisticsResponse> vodQueryVideoGeographicStatisticsResponseList = null;
+        try {
+            vodQueryVideoGeographicStatisticsRequest.setDr("7days")
+                    .setStartTime(super.getDate(2021, 2, 18))
+                    .setEndTime(super.getDate(2021, 2, 24))
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoGeographicStatisticsResponseList =
+                    new VodDataStatisticsServiceImpl().queryVideoGeographicStatistics(
+                    vodQueryVideoGeographicStatisticsRequest);
+            Assert.assertNotNull(vodQueryVideoGeographicStatisticsResponseList);
+            if (vodQueryVideoGeographicStatisticsResponseList != null) {
+                log.debug("测试查询视频播放地理位置统计数据成功,{}", JSON.toJSONString(vodQueryVideoGeographicStatisticsResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -10,6 +10,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRe
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackHourlyStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackHourlyStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingRequest;
@@ -104,5 +106,17 @@ public interface IVodDataStatisticsService {
      */
     List<VodQueryVideoPlaybackHourlyStatisticsResponse> queryVideoPlaybackHourlyStatistics(
             VodQueryVideoPlaybackHourlyStatisticsRequest vodQueryVideoPlaybackHourlyStatisticsRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询视频播放地理位置统计数据
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/geo/
+     * @param vodQueryVideoGeographicStatisticsRequest 查询视频播放地理位置统计数据请求实体
+     * @return 查询视频播放地理位置统计数据返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    List<VodQueryVideoGeographicStatisticsResponse> queryVideoGeographicStatistics(
+            VodQueryVideoGeographicStatisticsRequest vodQueryVideoGeographicStatisticsRequest)
             throws IOException, NoSuchAlgorithmException;
 }

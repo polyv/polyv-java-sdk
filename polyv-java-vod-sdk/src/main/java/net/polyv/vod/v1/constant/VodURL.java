@@ -482,6 +482,11 @@ public class VodURL {
             BASE_URI + "v2/hourly/" + PARAM_REPLACE_CHAR;
     
     /**
+     * 查询视频播放地理位置统计数据
+     */
+    public static final String VOD_QUERY_VIDEO_GEOGRAPHIC_STATISTICS_URL = BASE_URI + "v2/geo/" + PARAM_REPLACE_CHAR;
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

@@ -319,8 +319,7 @@ public class VodInfoServiceImplTest extends BaseTest {
         VodQueryVideoPasswordRequest vodQueryVideoPasswordRequest = new VodQueryVideoPasswordRequest();
         VodQueryVideoPasswordResponse vodQueryVideoPasswordResponse = null;
         try {
-            vodQueryVideoPasswordRequest.setVideoId(
-                    "1b448be323a146649ad0cc89d0faed9c_1,1b448be3234134f5a73bdddd6e88a9a5_1")
+            vodQueryVideoPasswordRequest.setVideoId("1b448be3234134f5a73bdddd6e88a9a5_1")
                     .setRequestId(VodSignUtil.generateUUID());
             vodQueryVideoPasswordResponse = new VodInfoServiceImpl().queryVideoPassword(vodQueryVideoPasswordRequest);
             Assert.assertNotNull(vodQueryVideoPasswordResponse);

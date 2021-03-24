@@ -12,6 +12,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsReque
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackFlowSizeStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackFlowSizeStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackHourlyStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackHourlyStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingRequest;
@@ -132,4 +134,16 @@ public interface IVodDataStatisticsService {
      */
     List<VodQueryVideoViewershipResponse> queryVideoViewership(
             VodQueryVideoViewershipRequest vodQueryVideoViewershipRequest) throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询视频某个时段的播放流量统计数据
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/traffic-video/
+     * @param vodQueryVideoPlaybackFlowSizeStatisticsRequest 查询视频某个时段的播放流量统计数据请求实体
+     * @return 查询视频某个时段的播放流量统计数据返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    List<VodQueryVideoPlaybackFlowSizeStatisticsResponse> queryVideoPlaybackFlowSizeStatistics(
+            VodQueryVideoPlaybackFlowSizeStatisticsRequest vodQueryVideoPlaybackFlowSizeStatisticsRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
@@ -119,6 +121,38 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodQueryVideoPlaybackStatisticsResponseList);
             if (vodQueryVideoPlaybackStatisticsResponseList != null) {
                 log.debug("测试查询视频播放量统计数据接口成功,{}", JSON.toJSONString(vodQueryVideoPlaybackStatisticsResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询视频播放量排行接口
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testQueryVideoPlaybackRanking() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoPlaybackRankingRequest vodQueryVideoPlaybackRankingRequest =
+                new VodQueryVideoPlaybackRankingRequest();
+        VodQueryVideoPlaybackRankingResponse vodQueryVideoPlaybackRankingResponse = null;
+        try {
+            vodQueryVideoPlaybackRankingRequest.setDr("7days")
+                    .setStartTime(super.getDate(2021, 2, 18))
+                    .setEndTime(super.getDate(2021, 2, 24))
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoPlaybackRankingResponse = new VodDataStatisticsServiceImpl().queryVideoPlaybackRanking(
+                    vodQueryVideoPlaybackRankingRequest);
+            Assert.assertNotNull(vodQueryVideoPlaybackRankingResponse);
+            if (vodQueryVideoPlaybackRankingResponse != null) {
+                log.debug("测试查询视频播放量排行接口成功,{}", JSON.toJSONString(vodQueryVideoPlaybackRankingResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

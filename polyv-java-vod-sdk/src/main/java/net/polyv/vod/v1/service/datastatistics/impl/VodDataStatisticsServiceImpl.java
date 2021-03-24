@@ -10,6 +10,8 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackRankingResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
@@ -74,5 +76,21 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
         String url = VodURL.getRealUrl(VodURL.VOD_QUERY_VIDEO_PLAYBACK_STATISTICS_URL);
         return super.getReturnList(url, vodQueryVideoPlaybackStatisticsRequest,
                 VodQueryVideoPlaybackStatisticsResponse.class);
+    }
+    
+    /**
+     * 查询视频播放量排行接口
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/ranklist/
+     * @param vodQueryVideoPlaybackRankingRequest 查询视频播放量排行接口请求实体
+     * @return 查询视频播放量排行接口返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public VodQueryVideoPlaybackRankingResponse queryVideoPlaybackRanking(
+            VodQueryVideoPlaybackRankingRequest vodQueryVideoPlaybackRankingRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_QUERY_VIDEO_PLAYBACK_RANKING_URL);
+        return super.getReturnOne(url, vodQueryVideoPlaybackRankingRequest, VodQueryVideoPlaybackRankingResponse.class);
     }
 }

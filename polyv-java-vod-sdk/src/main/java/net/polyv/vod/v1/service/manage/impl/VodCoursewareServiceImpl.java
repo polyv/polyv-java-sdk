@@ -7,7 +7,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 
-import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.courseware.VodDeleteCoursewareRequest;
 import net.polyv.vod.v1.entity.manage.courseware.VodQueryCoursewareRequest;
@@ -56,7 +55,6 @@ public class VodCoursewareServiceImpl extends VodBaseService implements IVodCour
     public Boolean deleteCourseware(VodDeleteCoursewareRequest vodDeleteCoursewareRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_DELETE_COURSEWARE_URL);
-        vodDeleteCoursewareRequest.setUserId(VodGlobalConfig.getUserId());
         super.postFormBodyReturnOne(url, vodDeleteCoursewareRequest, String.class);
         return Boolean.TRUE;
     }
@@ -73,7 +71,6 @@ public class VodCoursewareServiceImpl extends VodBaseService implements IVodCour
     public List<VodQueryCoursewareResponse> queryCourseware(VodQueryCoursewareRequest vodQueryCoursewareRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_QUERY_COURSEWARE_URL);
-        vodQueryCoursewareRequest.setUserId(VodGlobalConfig.getUserId());
         return super.getReturnList(url, vodQueryCoursewareRequest, VodQueryCoursewareResponse.class);
     }
 }

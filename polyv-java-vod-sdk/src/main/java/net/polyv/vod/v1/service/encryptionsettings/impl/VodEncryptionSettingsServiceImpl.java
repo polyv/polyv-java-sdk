@@ -30,7 +30,6 @@ public class VodEncryptionSettingsServiceImpl extends VodBaseService implements 
             VodGetEncryptionSettingsRequest vodGetEncryptionSettingsRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_GET_ENCRYPTION_SETTINGS_URL, VodGlobalConfig.getUserId());
-        vodGetEncryptionSettingsRequest.setUserId(VodGlobalConfig.getUserId());
         return super.getReturnOne(url, vodGetEncryptionSettingsRequest, VodGetEncryptionSettingsResponse.class);
     }
     
@@ -47,7 +46,6 @@ public class VodEncryptionSettingsServiceImpl extends VodBaseService implements 
             VodUpdateEncryptionSettingsRequest vodUpdateEncryptionSettingsRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_UPDATE_ENCRYPTION_SETTINGS_URL, VodGlobalConfig.getUserId());
-        vodUpdateEncryptionSettingsRequest.setUserId(VodGlobalConfig.getUserId());
         return super.postFormBodyReturnOne(url, vodUpdateEncryptionSettingsRequest,
                 VodUpdateEncryptionSettingsResponse.class);
     }

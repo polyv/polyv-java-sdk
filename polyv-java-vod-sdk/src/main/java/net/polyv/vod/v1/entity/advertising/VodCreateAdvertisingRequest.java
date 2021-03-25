@@ -25,13 +25,6 @@ public class VodCreateAdvertisingRequest extends VodCommonRequest {
     
     public final String FILE_NAME = "file";
     
-    /**
-     * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
-     */
-    @ApiModelProperty(hidden = true)
-    @NotNull(message = "属性userId不能为空")
-    @JSONField(name = "userid")
-    private String userId;
     
     /**
      * 广告开始日期,格式为yyyy-MM-dd

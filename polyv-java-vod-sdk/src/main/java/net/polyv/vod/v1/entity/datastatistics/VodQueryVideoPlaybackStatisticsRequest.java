@@ -7,7 +7,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
@@ -19,13 +18,6 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @Accessors(chain = true)
 @ApiModel("查询视频播放量统计数据接口请求实体")
 public class VodQueryVideoPlaybackStatisticsRequest extends VodCommonRequest {
-    /**
-     * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
-     */
-    @ApiModelProperty(hidden = true)
-    @NotNull(message = "属性userId不能为空")
-    @JSONField(name = "userid")
-    private String userId;
     
     /**
      * 视频ID，不填vid会查所有视频的播放量统计数据

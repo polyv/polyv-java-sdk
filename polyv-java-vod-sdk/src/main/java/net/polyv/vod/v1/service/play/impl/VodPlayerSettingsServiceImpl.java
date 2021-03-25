@@ -29,7 +29,6 @@ public class VodPlayerSettingsServiceImpl extends VodBaseService implements IVod
     public List<VodGetPlayerListResponse> getPlayerList(VodGetPlayerListRequest vodGetPlayerListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_GET_PLAYER_LIST_URL, VodGlobalConfig.getUserId());
-        vodGetPlayerListRequest.setUserId(VodGlobalConfig.getUserId());
         return super.getReturnList(url, vodGetPlayerListRequest, VodGetPlayerListResponse.class);
     }
 }

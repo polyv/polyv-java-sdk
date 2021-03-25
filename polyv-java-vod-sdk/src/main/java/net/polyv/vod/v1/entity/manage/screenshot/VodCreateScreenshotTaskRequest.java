@@ -19,13 +19,6 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @Accessors(chain = true)
 @ApiModel("添加指定时间点截图任务请求实体")
 public class VodCreateScreenshotTaskRequest extends VodCommonRequest {
-    /**
-     * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
-     */
-    @ApiModelProperty(hidden = true)
-    @NotNull(message = "属性userId不能为空")
-    @JSONField(name = "userid")
-    private String userId;
     
     /**
      * 上传时间，格式：yyyy-MM-dd HH:mm:ss

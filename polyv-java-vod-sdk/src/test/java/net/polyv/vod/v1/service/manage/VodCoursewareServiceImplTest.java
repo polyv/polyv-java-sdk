@@ -60,15 +60,18 @@ public class VodCoursewareServiceImplTest extends BaseTest {
     
     /**
      * 测试删除视频关联的课件
+     * 返回：true为删除成功，false为删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
-     * TODO 响应超时，解决后再修改
      */
-//    @Test
+    @Test
     public void testDeleteCourseware() throws IOException, NoSuchAlgorithmException {
         VodDeleteCoursewareRequest vodDeleteCoursewareRequest = new VodDeleteCoursewareRequest();
         Boolean vodDeleteCoursewareResponse = null;
         try {
+            //准备测试数据
+            uploadCourseware();
+            
             vodDeleteCoursewareRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
                     .setRequestId(VodSignUtil.generateUUID());
             vodDeleteCoursewareResponse = new VodCoursewareServiceImpl().deleteCourseware(vodDeleteCoursewareRequest);

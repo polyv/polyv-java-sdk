@@ -30,7 +30,6 @@ public class VodPlayListServiceImpl extends VodBaseService implements IVodPlayLi
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_GET_ONE_PLAY_LIST_URL, VodGlobalConfig.getUserId(),
                 vodGetOnePlayListRequest.getId());
-        vodGetOnePlayListRequest.setUserId(VodGlobalConfig.getUserId());
         return super.getReturnList(url, vodGetOnePlayListRequest, VodGetOnePlayListResponse.class);
     }
 }

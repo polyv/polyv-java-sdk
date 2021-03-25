@@ -23,6 +23,7 @@ import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageResponse;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListResponse;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
+import net.polyv.vod.v1.entity.manage.courseware.VodUploadCoursewareRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodDeleteSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListResponse;
@@ -33,6 +34,7 @@ import net.polyv.vod.v1.entity.upload.VodUploadHttpVideoListRequest;
 import net.polyv.vod.v1.service.advertising.impl.VodAdvertisingServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodBarrageServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodCategoryServiceImpl;
+import net.polyv.vod.v1.service.manage.impl.VodCoursewareServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodSubtitleServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodSyncServiceImpl;
 import net.polyv.vod.v1.service.upload.impl.VodUploadServiceImpl;
@@ -527,6 +529,37 @@ public class BaseTest {
                 log.debug("测试创建视频广告成功,{}", vodCreateAdvertisingResponse);
             }
             return vodCreateAdvertisingResponse;
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试上传课件
+     * 说明：1、上传课件，支持ppt、pptx及pdf文件格式。
+     * 说明：2、接口只返回上传结果，课件转换结果需通过事件回调获取，详见：回调通知说明.http://dev.polyv.net/2020/videoproduct/v-api/v-api-callback/callbackref/
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    public void uploadCourseware() throws IOException, NoSuchAlgorithmException {
+        VodUploadCoursewareRequest vodUploadCoursewareRequest = new VodUploadCoursewareRequest();
+        Boolean vodUploadCoursewareResponse = null;
+        try {
+            String coursewareFile = getClass().getResource("/courseware/Courseware.ppt").getPath();
+            vodUploadCoursewareRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
+                    .setCourseware(new File(coursewareFile))
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUploadCoursewareResponse = new VodCoursewareServiceImpl().uploadCourseware(vodUploadCoursewareRequest);
+            Assert.assertTrue(vodUploadCoursewareResponse);
+            if (vodUploadCoursewareResponse) {
+                log.debug("测试上传课件成功");
+            }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);

@@ -33,7 +33,6 @@ public class VodAdvertisingServiceImpl extends VodBaseService implements IVodAdv
     public String createAdvertising(VodCreateAdvertisingRequest vodCreateAdvertisingRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_CREATE_ADVERTISING_URL, VodGlobalConfig.getUserId());
-        vodCreateAdvertisingRequest.setUserId(VodGlobalConfig.getUserId());
         if (vodCreateAdvertisingRequest.getFile() == null || !vodCreateAdvertisingRequest.getFile().exists()) {
             throw new FileNotFoundException("文件不存在");
         }
@@ -54,7 +53,6 @@ public class VodAdvertisingServiceImpl extends VodBaseService implements IVodAdv
     public Boolean deleteAdvertising(VodDeleteAdvertisingRequest vodDeleteAdvertisingRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_DELETE_ADVERTISING_URL, VodGlobalConfig.getUserId());
-        vodDeleteAdvertisingRequest.setUserId(VodGlobalConfig.getUserId());
         return super.postFormBodyReturnOne(url, vodDeleteAdvertisingRequest, Boolean.class);
     }
     
@@ -70,7 +68,6 @@ public class VodAdvertisingServiceImpl extends VodBaseService implements IVodAdv
     public VodGetAdvertisingListResponse getAdvertisingList(VodGetAdvertisingListRequest vodGetAdvertisingListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_GET_ADVERTISING_LIST_URL, VodGlobalConfig.getUserId());
-        vodGetAdvertisingListRequest.setUserId(VodGlobalConfig.getUserId());
         return super.getReturnOne(url, vodGetAdvertisingListRequest, VodGetAdvertisingListResponse.class);
     }
     
@@ -86,7 +83,6 @@ public class VodAdvertisingServiceImpl extends VodBaseService implements IVodAdv
     public Boolean updateAdvertising(VodUpdateAdvertisingRequest vodUpdateAdvertisingRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_UPDATE_ADVERTISING_URL, VodGlobalConfig.getUserId());
-        vodUpdateAdvertisingRequest.setUserId(VodGlobalConfig.getUserId());
         return super.postFormBodyReturnOne(url, vodUpdateAdvertisingRequest, Boolean.class);
     }
 }

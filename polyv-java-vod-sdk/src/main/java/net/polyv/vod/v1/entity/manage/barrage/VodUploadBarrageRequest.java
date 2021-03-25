@@ -38,11 +38,4 @@ public class VodUploadBarrageRequest extends VodCommonRequest {
     @ApiModelProperty(name = "file", value = "弹幕文件，文件格式为srt，支持utf-8编码", required = true)
     @NotNull(message = "属性file不能为空")
     private File file;
-    
-    /**
-     * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
-     */
-    @ApiModelProperty(hidden = true)
-    @NotNull(message = "属性userId不能为空")
-    private String userId;
 }

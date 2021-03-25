@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
-import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageResponse;
@@ -52,7 +51,6 @@ public class VodBarrageServiceImpl extends VodBaseService implements IVodBarrage
     public Boolean uploadBarrage(VodUploadBarrageRequest vodUploadBarrageRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_UPLOAD_BARRAGE_URL);
-        vodUploadBarrageRequest.setUserId(VodGlobalConfig.getUserId());
         HashMap files = new HashMap<String, File>(1);
         files.put(vodUploadBarrageRequest.FILE_NAME, vodUploadBarrageRequest.getFile());
         super.uploadOneFile(url, vodUploadBarrageRequest, files, String.class);
@@ -86,7 +84,6 @@ public class VodBarrageServiceImpl extends VodBaseService implements IVodBarrage
     public Boolean deleteBarrage(VodDeleteBarrageRequest vodDeleteBarrageRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_DELETE_BARRAGE_URL);
-        vodDeleteBarrageRequest.setUserId(VodGlobalConfig.getUserId());
         super.postFormBodyReturnOne(url, vodDeleteBarrageRequest, String.class);
         return Boolean.TRUE;
     }

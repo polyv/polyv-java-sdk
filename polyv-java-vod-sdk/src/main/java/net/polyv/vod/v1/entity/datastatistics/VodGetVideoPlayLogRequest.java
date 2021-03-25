@@ -28,14 +28,6 @@ public class VodGetVideoPlayLogRequest extends VodPageCommonRequest {
     public static final String MONTH_FORMAT = "yyyyMM";
     
     /**
-     * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
-     */
-    @ApiModelProperty(hidden = true)
-    @NotNull(message = "属性userId不能为空")
-    @JSONField(name = "userid")
-    private String userId;
-    
-    /**
      * 查询月份，格式为yyyyMM
      */
     @ApiModelProperty(name = "month", value = "查询月份，格式为yyyyMM", required = true)

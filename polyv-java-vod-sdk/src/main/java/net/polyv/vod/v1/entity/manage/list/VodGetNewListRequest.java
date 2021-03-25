@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodPageCommonRequest;
 
 /**
@@ -21,14 +20,6 @@ import net.polyv.vod.v1.entity.VodPageCommonRequest;
 @Accessors(chain = true)
 @ApiModel("获取最新视频/全部视频列表请求实体")
 public class VodGetNewListRequest extends VodPageCommonRequest {
-    
-    /**
-     * 用户的id
-     */
-    @ApiModelProperty(hidden = true)
-    @NotNull(message = "属性userId不能为空")
-    @JSONField(name = "userid")
-    private String userId;
     
     /**
      * 视频所在分类树ID，默认为1，多个ID以英文逗号分割（状态为半角）例如 1,1615286323771

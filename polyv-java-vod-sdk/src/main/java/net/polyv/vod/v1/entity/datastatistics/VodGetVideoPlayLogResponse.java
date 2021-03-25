@@ -8,6 +8,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.vod.v1.entity.VodPageCommonResponse;
 
@@ -16,6 +17,7 @@ import net.polyv.vod.v1.entity.VodPageCommonResponse;
  * @author: fangyan
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("批量获取视频观看日志返回实体")
 public class VodGetVideoPlayLogResponse extends VodPageCommonResponse {

@@ -99,6 +99,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
     
     /**
      * 测试新建视频分类
+     * 返回：新建视频分类ID
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

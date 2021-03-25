@@ -42,5 +42,5 @@ public interface IVodSyncService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    Boolean exportTask(VodExportTaskRequest vodExportTaskRequest) throws IOException, NoSuchAlgorithmException;
+    byte[] exportTask(VodExportTaskRequest vodExportTaskRequest) throws IOException, NoSuchAlgorithmException;
 }

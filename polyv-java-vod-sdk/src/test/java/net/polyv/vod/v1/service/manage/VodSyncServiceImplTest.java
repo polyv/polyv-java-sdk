@@ -10,6 +10,7 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.common.v1.util.FileUtil;
 import net.polyv.vod.v1.entity.manage.sync.VodDeleteTaskRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodExportTaskRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListRequest;
@@ -63,12 +64,8 @@ public class VodSyncServiceImplTest extends BaseTest {
         Boolean vodDeleteTaskResponse = null;
         try {
             //准备测试数据
-            VodGetTaskListResponse.Task task = super.getTask();
+            VodGetTaskListResponse.Task task = super.getTask(true);
             
-            if (task == null || task.getTaskId() == null) {
-                //无测试数据或测试数据异常
-                return;
-            }
             vodDeleteTaskRequest.setTaskId(task.getTaskId()).setRequestId(VodSignUtil.generateUUID());
             vodDeleteTaskResponse = new VodSyncServiceImpl().deleteTask(vodDeleteTaskRequest);
             Assert.assertTrue(vodDeleteTaskResponse);
@@ -88,29 +85,26 @@ public class VodSyncServiceImplTest extends BaseTest {
     
     /**
      * 测试导出视频同步任务
-     * 返回：1、true为删除成功，false为删除失败。
-     * 返回：2、导出视频同步任务文件相对地址为：/data/polyv_task_export.csv
-     * 返回：3、导出视频同步任务文件会覆盖上一次的导出文件
+     * 返回：返回的byte[]可以按照单元测试示例进行保存，也可以自行处理。
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
     @Test
     public void testExportTask() throws IOException, NoSuchAlgorithmException {
         VodExportTaskRequest vodExportTaskRequest = new VodExportTaskRequest();
-        Boolean vodExportTaskResponse = null;
+        byte[] vodExportTaskResponse = null;
         try {
             //准备测试数据
-            VodGetTaskListResponse.Task task = super.getTask();
+            VodGetTaskListResponse.Task task = super.getTask(false);
             
-            if (task == null || task.getTaskId() == null) {
-                //无测试数据或测试数据异常
-                return;
-            }
+            //path设置为下载文件路径
+            String path = getClass().getResource("/file/").getPath() + "download.csv";
             vodExportTaskRequest.setTaskId(task.getTaskId()).setRequestId(VodSignUtil.generateUUID());
             vodExportTaskResponse = new VodSyncServiceImpl().exportTask(vodExportTaskRequest);
-            Assert.assertTrue(vodExportTaskResponse);
-            if (vodExportTaskResponse) {
-                log.debug("测试导出视频同步任务成功");
+            Assert.assertNotNull(vodExportTaskResponse);
+            if (vodExportTaskResponse != null) {
+                FileUtil.writeFile(vodExportTaskResponse, path);
+                log.debug("测试导出视频同步任务成功,文件长度{}", vodExportTaskResponse.length);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -20,17 +20,17 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @ApiModel("查询视频信息请求实体")
 public class VodSubAccountQueryVideoInfoRequest extends VodCommonRequest {
     /**
-     * 视频ID，多个视频ID用英文逗号分隔
+     * 视频ID，多个视频ID用英文逗号分隔(状态为半角)，例如 1b8be3,239c2e
      */
-    @ApiModelProperty(name = "videoIds", value = "视频ID，多个视频ID用英文逗号分隔", required = true)
+    @ApiModelProperty(name = "videoIds", value = "视频ID，多个视频ID用英文逗号分隔(状态为半角)，例如 1b8be3,239c2e", required = true)
     @NotNull(message = "属性videoIds不能为空")
     @JSONField(name = "vids")
     private String videoIds;
     
     /**
-     * 选择需要返回的视频信息，多个以英文逗号分隔，取值：basicInfo,metaData,transcodeInfo,snapshotInfo, 分别代表基础信息、元数据、转码信息、截图信息，为空则返回基础信息
+     * 选择需要返回的视频信息，多个以英文逗号分隔(状态为半角,例如 basicInfo,metaData)，取值：basicInfo,metaData,transcodeInfo,snapshotInfo, 分别代表基础信息、元数据、转码信息、截图信息，为空则返回基础信息
      */
-    @ApiModelProperty(name = "filters", value = "选择需要返回的视频信息，多个以英文逗号分隔，取值：basicInfo,metaData,transcodeInfo,snapshotInfo, 分别代表基础信息、元数据、转码信息、截图信息，为空则返回基础信息", required = false)
+    @ApiModelProperty(name = "filters", value = "选择需要返回的视频信息，多个以英文逗号分隔(状态为半角,例如 basicInfo,metaData)，取值：basicInfo,metaData,transcodeInfo,snapshotInfo, 分别代表基础信息、元数据、转码信息、截图信息，为空则返回基础信息", required = false)
     @JSONField(name = "filter")
     private String filters;
 }

@@ -20,16 +20,16 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 public class VodUploadCoverImageUrlRequest extends VodCommonRequest {
     
     /**
-     * 多个视频id用逗号隔开
+     * 多个视频id用英文逗号隔开(状态为半角)，例如 1b8be3,239c2e
      */
-    @ApiModelProperty(name = "videoIds", value = "多个视频id用逗号隔开", required = false)
+    @ApiModelProperty(name = "videoIds", value = "多个视频id用英文逗号隔开(状态为半角)，例如 1b8be3,239c2e", required = false)
     @JSONField(name = "vids")
     private String videoIds;
     
     /**
-     * 多个分类id用逗号隔开
+     * 多个分类id用英文逗号隔开(状态为半角)，例如 1b8be3,239c2e
      */
-    @ApiModelProperty(name = "categoryIds", value = "多个分类id用逗号隔开", required = false)
+    @ApiModelProperty(name = "categoryIds", value = "多个分类id用英文逗号隔开(状态为半角)，例如 1b8be3,239c2e", required = false)
     @JSONField(name="cataids")
     private String categoryIds;
     

@@ -24,10 +24,11 @@ public class VodGetVideoExamResponse {
     private String examId;
     
     /**
-     * 用户的id
+     * 用户Id
      */
-    @ApiModelProperty(name = "userid", value = "用户的id", required = false)
-    private String userid;
+    @ApiModelProperty(name = "userId", value = "用户Id", required = false)
+    @JSONField(name = "userid")
+    private String userId;
     
     /**
      * 视频的id
@@ -37,9 +38,9 @@ public class VodGetVideoExamResponse {
     private String videoId;
     
     /**
-     * 问答题目开始显示的时间，格式：时分秒
+     * 问答题目开始显示的时间，格式 hh:mm:ss 例如 00:03:11
      */
-    @ApiModelProperty(name = "showTime", value = "问答题目开始显示的时间，格式：时分秒", required = false)
+    @ApiModelProperty(name = "showTime", value = "问答题目开始显示的时间，格式 hh:mm:ss 例如 00:03:11", required = false)
     private String showTime;
     
     /**
@@ -97,9 +98,9 @@ public class VodGetVideoExamResponse {
     private Integer wrongTime;
     
     /**
-     * 回答错误是否提示
+     * 回答错误是否提示。1：提示，0：不提示，默认为1：提示
      */
-    @ApiModelProperty(name = "wrongShow", value = "回答错误是否提示", required = false)
+    @ApiModelProperty(name = "wrongShow", value = "回答错误是否提示。1：提示，0：不提示，默认为1：提示", required = false)
     private Integer wrongShow;
     
     /**

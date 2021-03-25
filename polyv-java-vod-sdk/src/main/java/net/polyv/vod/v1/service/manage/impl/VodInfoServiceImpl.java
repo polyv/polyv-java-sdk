@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.config.VodGlobalConfig;
+import net.polyv.vod.v1.constant.VodConstant;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogRequest;
 import net.polyv.vod.v1.entity.manage.info.VodGetVideoExamLogResponse;
@@ -145,8 +147,8 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.GET_VIDEO_URL);
         List<VodGetVideoResponse> returnList = super.getReturnList(url, vodGetVideoRequest, VodGetVideoResponse.class);
-        if (returnList.isEmpty()) {
-            return null;
+        if (returnList == null || returnList.isEmpty()) {
+            throw new PloyvSdkException(VodConstant.ERROR_CODE, "获取单个视频信息失败");
         }
         return returnList.get(0);
     }
@@ -197,7 +199,7 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
         VodQueryVideoPasswordVO vodQueryVideoPasswordVO = super.getReturnOne(url, vodQueryVideoPasswordRequest,
                 VodQueryVideoPasswordVO.class);
         if (vodQueryVideoPasswordVO == null) {
-            return null;
+            throw new PloyvSdkException(VodConstant.ERROR_CODE, "查询视频密码失败");
         }
         if (vodQueryVideoPasswordVO.getIsShowPassword() != null) {
             vodQueryVideoPasswordResponse.setIsShowPassword(vodQueryVideoPasswordVO.getIsShowPassword());

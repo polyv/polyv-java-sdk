@@ -8,6 +8,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.vod.v1.entity.VodPageCommonResponse;
 
@@ -16,6 +17,7 @@ import net.polyv.vod.v1.entity.VodPageCommonResponse;
  * @author: fangyan
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("获取某分类下某子账号的视频列表返回实体")
 public class VodGetByUploaderResponse extends VodPageCommonResponse {
@@ -93,7 +95,7 @@ public class VodGetByUploaderResponse extends VodPageCommonResponse {
         /**
          * 上传时间，格式 yyyy-MM-dd HH:mm
          */
-        @ApiModelProperty(name = "ptime", value = "上传时间，格式 yyyy-MM-dd HH:mm", required = false)
+        @ApiModelProperty(name = "uploadTime", value = "上传时间，格式 yyyy-MM-dd HH:mm", required = false)
         @JSONField(name = "ptime", format = "yyyy-MM-dd HH:mm")
         private Date uploadTime;
     }

@@ -31,9 +31,9 @@ public class VodGetNewListRequest extends VodPageCommonRequest {
     private String userId;
     
     /**
-     * 视频所在分类树，默认为1
+     * 视频所在分类树ID，默认为1，多个ID以英文逗号分割（状态为半角）例如 1,1615286323771
      */
-    @ApiModelProperty(name = "catatree", value = "视频所在分类树，默认为1", required = false)
+    @ApiModelProperty(name = "categoryTree", value = "视频所在分类树ID，默认为1，多个ID以英文逗号分割（状态为半角）例如 1,1615286323771", required = false)
     @JSONField(name = "catatree")
     private String categoryTree;
     

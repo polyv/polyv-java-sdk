@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.config.VodGlobalConfig;
+import net.polyv.vod.v1.constant.VodConstant;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryVO;
@@ -73,7 +75,7 @@ public class VodCategoryServiceImpl extends VodBaseService implements IVodCatego
         if (vodCreateCategoryVO != null && vodCreateCategoryVO.getCategoryId() != null) {
             return vodCreateCategoryVO.getCategoryId();
         }
-        return null;
+        throw new PloyvSdkException(VodConstant.ERROR_CODE, "新建视频分类失败");
     }
     
     /**

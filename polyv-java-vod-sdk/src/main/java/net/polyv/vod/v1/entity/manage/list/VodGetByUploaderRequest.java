@@ -35,14 +35,14 @@ public class VodGetByUploaderRequest extends VodPageCommonRequest {
     /**
      * 分类id,默认为查询所有分类
      */
-    @ApiModelProperty(name = "categoryIds", value = "分类id,默认为查询所有分类", required = false)
+    @ApiModelProperty(name = "categoryId", value = "分类id,默认为查询所有分类", required = false)
     @JSONField(name = "cataid")
     private String categoryId;
     
     /**
      * 1表示结果包含子分类，0表示结果不包含子分类，默认为0结果不包含子分类
      */
-    @ApiModelProperty(name = "containSubCata", value = "1表示结果包含子分类，0表示结果不包含子分类，默认为0结果不包含子分类", required = false)
+    @ApiModelProperty(name = "containSubCategory", value = "1表示结果包含子分类，0表示结果不包含子分类，默认为0结果不包含子分类", required = false)
     @JSONField(name = "containSubCata")
     private Integer containSubCategory;
     

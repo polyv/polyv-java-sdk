@@ -16,6 +16,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.config.InitConfig;
+import net.polyv.vod.v1.constant.VodConstant;
 import net.polyv.vod.v1.entity.advertising.VodCreateAdvertisingRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageResponse;
@@ -28,11 +29,13 @@ import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListResponse;
 import net.polyv.vod.v1.entity.manage.subtitle.VodUploadSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListResponse;
+import net.polyv.vod.v1.entity.upload.VodUploadHttpVideoListRequest;
 import net.polyv.vod.v1.service.advertising.impl.VodAdvertisingServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodBarrageServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodCategoryServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodSubtitleServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodSyncServiceImpl;
+import net.polyv.vod.v1.service.upload.impl.VodUploadServiceImpl;
 import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
@@ -172,14 +175,56 @@ public class BaseTest {
     }
     
     /**
+     * 远程批量上传视频
+     * 描述：批量上传远程视频（异步上传），具体上传情况可调用“分页获取视频同步列表”查看
+     * 约束：2、水印链接必须png格式
+     * 返回：true提交异步上传成功，false提交异步上传失败
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    public void uploadHttpVideoList() throws IOException, NoSuchAlgorithmException {
+        VodUploadHttpVideoListRequest vodUploadHttpVideoListRequest = new VodUploadHttpVideoListRequest();
+        Boolean vodUploadHttpVideoListResponse = null;
+        try {
+            vodUploadHttpVideoListRequest.setFileUrl("http://sadboytest.oss-cn-shenzhen.aliyuncs.com/test.mp4")
+                    .setTitle("junit-远程批量上传视频")
+                    .setCategoryId("1602300731843")
+                    .setScreenCap(0)
+                    .setWatermark("http://sadboytest.oss-cn-shenzhen.aliyuncs.com/a.png")
+                    .setWatermarkLocation("1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUploadHttpVideoListResponse = new VodUploadServiceImpl().uploadHttpVideoList(
+                    vodUploadHttpVideoListRequest);
+            Assert.assertTrue(vodUploadHttpVideoListResponse);
+            if (vodUploadHttpVideoListResponse) {
+                //to do something ......
+                log.debug("测试远程批量上传视频成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
      * 测试分页获取视频同步列表
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    public VodGetTaskListResponse.Task getTask() throws IOException, NoSuchAlgorithmException {
+    public VodGetTaskListResponse.Task getTask(boolean uploadBefore) throws IOException, NoSuchAlgorithmException {
         VodGetTaskListRequest vodGetTaskListRequest = new VodGetTaskListRequest();
         VodGetTaskListResponse vodGetTaskListResponse = null;
         try {
+            //准备测试数据
+            if (uploadBefore) {
+                uploadHttpVideoList();
+            }
+            
             vodGetTaskListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
             vodGetTaskListResponse = new VodSyncServiceImpl().getTaskList(vodGetTaskListRequest);
             Assert.assertNotNull(vodGetTaskListResponse);
@@ -187,7 +232,7 @@ public class BaseTest {
                 log.debug("测试分页获取视频同步列表成功，{}", JSON.toJSONString(vodGetTaskListResponse));
             }
             if (vodGetTaskListResponse.getContents().isEmpty()) {
-                return null;
+                throw new PloyvSdkException(VodConstant.ERROR_CODE, "分页获取视频同步列表结果为空");
             }
             return vodGetTaskListResponse.getContents().get(0);
         } catch (PloyvSdkException e) {

@@ -21,9 +21,9 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 public class VodGetVideosSizeRequest extends VodCommonRequest {
     
     /**
-     * 多个视频ID(逗号分割)
+     * 多个视频ID(英文逗号分割 状态为半角)，例如 1b8be3,239c2e
      */
-    @ApiModelProperty(name = "videoIds", value = "多个视频ID(逗号分割)", required = true)
+    @ApiModelProperty(name = "videoIds", value = "多个视频ID(英文逗号分割 状态为半角)，例如 1b8be3,239c2e", required = true)
     @NotNull(message = "属性videoIds不能为空")
     @JSONField(name = "vids")
     private String videoIds;

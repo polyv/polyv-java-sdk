@@ -54,8 +54,9 @@ public class VodGetCategoryResponse {
     /**
      * 此分类及其子分类视频总数
      */
-    @ApiModelProperty(name = "videos", value = "此分类及其子分类视频总数", required = false)
-    private Integer videos;
+    @ApiModelProperty(name = "videoNums", value = "此分类及其子分类视频总数", required = false)
+    @JSONField(name = "videos")
+    private Integer videoNums;
     
     /**
      * 该分类的子分类

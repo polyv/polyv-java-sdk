@@ -24,9 +24,9 @@ public class VodCreateCategoryVO {
     private String categoryId;
     
     /**
-     * 新建的分类目录树，逗号分割
+     * 新建的分类目录树，逗号分割(状态为半角)，例如 1b8be3,239c2e
      */
-    @ApiModelProperty(name = "categoryTree", value = "新建的分类目录树，逗号分割", required = false)
+    @ApiModelProperty(name = "categoryTree", value = "新建的分类目录树，逗号分割(状态为半角)，例如 1b8be3,239c2e", required = false)
     @JSONField(name = "catatree")
     private String categoryTree;
 }

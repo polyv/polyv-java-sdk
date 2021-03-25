@@ -18,11 +18,6 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @Accessors(chain = true)
 @ApiModel("查询视频密码VO实体")
 public class VodQueryVideoPasswordVO extends VodCommonRequest {
-    /**
-     * 问卷调查
-     */
-    @ApiModelProperty(name = "questionnaire", value = "问卷调查", required = false)
-    Questionnaire questionnaire;
     
     /**
      * 是否显示密码，默认为否
@@ -47,21 +42,9 @@ public class VodQueryVideoPasswordVO extends VodCommonRequest {
     /**
      * 问卷调查ID
      */
-    @ApiModelProperty(name = "qid", value = "问卷调查ID", required = false)
-    private String qid;
-    
-    @Data
-    @Accessors(chain = true)
-    @ApiModel("问卷调查")
-    public static class Questionnaire {
-        
-        /**
-         * 问卷调查ID
-         */
-        @ApiModelProperty(name = "qid", value = "问卷调查ID", required = false)
-        private String qid;
-        
-    }
+    @ApiModelProperty(name = "questionnaireId", value = "问卷调查ID", required = false)
+    @JSONField(name = "qid")
+    private String questionnaireId;
     
     @Data
     @Accessors(chain = true)

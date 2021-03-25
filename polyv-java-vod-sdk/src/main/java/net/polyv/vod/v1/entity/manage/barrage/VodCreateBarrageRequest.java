@@ -21,13 +21,6 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 public class VodCreateBarrageRequest extends VodCommonRequest {
     
     /**
-     * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
-     */
-    @ApiModelProperty(hidden = true)
-    @NotNull(message = "属性userId不能为空")
-    private String userId;
-    
-    /**
      * 视频ID
      */
     @ApiModelProperty(name = "videoId", value = "视频ID", required = true)

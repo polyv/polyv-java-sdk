@@ -1,7 +1,6 @@
 package net.polyv.vod.v1.service.manage.impl;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -49,9 +48,6 @@ public class VodSubtitleServiceImpl extends VodBaseService implements IVodSubtit
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_UPLOAD_SUBTITLE_URL);
         HashMap files = new HashMap<String, File>(1);
-        if (vodUploadSubtitleRequest.getFile() == null || !vodUploadSubtitleRequest.getFile().exists()) {
-            throw new FileNotFoundException("文件不存在");
-        }
         files.put(vodUploadSubtitleRequest.FILE_NAME, vodUploadSubtitleRequest.getFile());
         super.uploadOneFile(url, vodUploadSubtitleRequest, files, String.class);
         return Boolean.TRUE;

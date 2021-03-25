@@ -123,6 +123,7 @@ public class VodBarrageServiceImplTest extends BaseTest {
     
     /**
      * 测试批量删除弹幕信息
+     * 返回：true为批量删除弹幕成功，false为批量删除弹幕失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

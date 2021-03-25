@@ -248,6 +248,7 @@ public class BaseTest {
     
     /**
      * 测试上传点播视频字幕文件
+     * 返回：true为上传成功，false为上传失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -264,6 +265,7 @@ public class BaseTest {
     
     /**
      * 测试上传点播视频字幕文件
+     * 返回：true为上传成功，false为上传失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -372,6 +374,18 @@ public class BaseTest {
                 .map((subtitle) -> subtitle.getName())
                 .collect(Collectors.joining(","));
         return sourceSubtitleNames;
+    }
+    
+    /**
+     * 获取合并字幕名列表，以英文逗号分隔，例如 a,b
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    public String getSourceSubtitleNames(String videoId) throws IOException, NoSuchAlgorithmException {
+        //上传中英字幕，上传之前先清空该视频下所有字幕
+        uploadSubtitle(videoId, true);
+        //查询合并字幕列表
+        return getSubtitleNames(videoId);
     }
     
     /**

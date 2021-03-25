@@ -36,5 +36,6 @@ public class VodUploadCoursewareRequest extends VodCommonRequest {
      * 上传课件
      */
     @ApiModelProperty(name = "courseware", value = "上传课件", required = true)
+    @NotNull(message = "属性courseware不能为空")
     private File courseware;
 }

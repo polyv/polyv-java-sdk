@@ -36,6 +36,7 @@ public class VodUploadBarrageRequest extends VodCommonRequest {
      * 弹幕文件，文件格式为srt，支持utf-8编码
      */
     @ApiModelProperty(name = "file", value = "弹幕文件，文件格式为srt，支持utf-8编码", required = true)
+    @NotNull(message = "属性file不能为空")
     private File file;
     
     /**

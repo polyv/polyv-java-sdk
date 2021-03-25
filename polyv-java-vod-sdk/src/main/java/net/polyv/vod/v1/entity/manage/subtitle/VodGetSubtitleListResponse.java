@@ -20,7 +20,7 @@ public class VodGetSubtitleListResponse {
     /**
      * 查询的结果列表
      */
-    @ApiModelProperty(name = "Subtitles", value = "查询的结果列表", required = false)
+    @ApiModelProperty(name = "subtitles", value = "查询的结果列表", required = false)
     @JSONField(name = "srts")
     private List<Subtitle> subtitles;
     

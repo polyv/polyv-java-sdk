@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.common.v1.validator.constraints.NotBlank;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
@@ -34,6 +35,7 @@ public class VodUploadPPTRequest extends VodCommonRequest {
      * ppt文件
      */
     @ApiModelProperty(name = "ppt", value = "ppt文件", required = true)
+    @NotNull(message = "属性ppt不能为空")
     private File ppt;
     
     /**

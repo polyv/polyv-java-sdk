@@ -65,16 +65,16 @@ public class VodQueryBarrageListResponse extends VodPageCommonResponse {
         private String time;
         
         /**
-         * 弹幕内容的字体大小
+         * 弹幕内容的字体大小，例如 18
          */
-        @ApiModelProperty(name = "fontSize", value = "弹幕内容的字体大小", required = false)
+        @ApiModelProperty(name = "fontSize", value = "弹幕内容的字体大小，例如 18", required = false)
         @JSONField(name = "fontsize")
         private String fontSize;
         
         /**
-         * 弹幕内容滚动方式
+         * 弹幕内容滚动方式，顶部：top，底部：bottom，滚动：roll(默认)
          */
-        @ApiModelProperty(name = "fontMode", value = "弹幕内容滚动方式", required = false)
+        @ApiModelProperty(name = "fontMode", value = "弹幕内容滚动方式，顶部：top，底部：bottom，滚动：roll(默认)", required = false)
         @JSONField(name = "fontmode")
         private String fontMode;
         

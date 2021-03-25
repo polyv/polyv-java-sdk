@@ -39,6 +39,7 @@ public class LiveUploadWhiteListRequest extends LiveCommonRequest {
      */
     @ApiModelProperty(name = "file", value = "白名单文件（[白名单模板](http://dev.polyv" +
             ".net/wp-content/uploads/2018/06/WhiteListTemplate.xls)）", required = true)
+    @NotNull(message = "属性file不能为空")
     private File file;
     
 }

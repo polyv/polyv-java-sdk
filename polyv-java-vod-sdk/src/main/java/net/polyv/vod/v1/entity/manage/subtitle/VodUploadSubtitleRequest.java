@@ -43,6 +43,7 @@ public class VodUploadSubtitleRequest extends VodCommonRequest {
      * 字幕文件，支持utf-8编码
      */
     @ApiModelProperty(name = "file", value = "字幕文件，支持utf-8编码", required = true)
+    @NotNull(message = "属性file不能为空")
     private File file;
     
     /**

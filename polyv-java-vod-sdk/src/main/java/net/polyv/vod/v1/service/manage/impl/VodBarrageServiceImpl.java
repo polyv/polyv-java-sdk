@@ -1,7 +1,6 @@
 package net.polyv.vod.v1.service.manage.impl;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -35,7 +34,6 @@ public class VodBarrageServiceImpl extends VodBaseService implements IVodBarrage
     public VodQueryBarrageListResponse queryBarrageList(VodQueryBarrageListRequest vodQueryBarrageListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_QUERY_BARRAGE_LIST_URL);
-        vodQueryBarrageListRequest.setUserId(VodGlobalConfig.getUserId());
         VodQueryBarrageListResponse vodQueryBarrageListResponse = super.getReturnOne(url, vodQueryBarrageListRequest,
                 VodQueryBarrageListResponse.class);
         vodQueryBarrageListResponse.setPageSize(vodQueryBarrageListRequest.getPageSize());
@@ -55,9 +53,6 @@ public class VodBarrageServiceImpl extends VodBaseService implements IVodBarrage
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_UPLOAD_BARRAGE_URL);
         vodUploadBarrageRequest.setUserId(VodGlobalConfig.getUserId());
-        if (vodUploadBarrageRequest.getFile() == null || !vodUploadBarrageRequest.getFile().exists()) {
-            throw new FileNotFoundException("文件不存在");
-        }
         HashMap files = new HashMap<String, File>(1);
         files.put(vodUploadBarrageRequest.FILE_NAME, vodUploadBarrageRequest.getFile());
         super.uploadOneFile(url, vodUploadBarrageRequest, files, String.class);
@@ -76,7 +71,6 @@ public class VodBarrageServiceImpl extends VodBaseService implements IVodBarrage
     public VodCreateBarrageResponse createBarrage(VodCreateBarrageRequest vodCreateBarrageRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_CREATE_BARRAGE_URL);
-        vodCreateBarrageRequest.setUserId(VodGlobalConfig.getUserId());
         return super.postFormBodyReturnOne(url, vodCreateBarrageRequest, VodCreateBarrageResponse.class);
     }
     

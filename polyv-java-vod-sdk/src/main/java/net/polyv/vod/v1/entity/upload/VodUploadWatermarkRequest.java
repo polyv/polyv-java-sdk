@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
@@ -25,6 +26,7 @@ public class VodUploadWatermarkRequest extends VodCommonRequest {
      * 上传的水印图片
      */
     @ApiModelProperty(name = "image", value = "上传的水印图片", required = true)
+    @NotNull(message = "属性image不能为空")
     private File image;
     
     /**

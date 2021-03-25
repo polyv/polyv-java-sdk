@@ -56,6 +56,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
     
     /**
      * 测试上传点播视频字幕文件
+     * 返回：true为上传成功，false为上传失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -89,6 +90,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
     
     /**
      * 测试删除视频字幕
+     * 返回：true为删除字幕成功，false为删除字幕失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -121,6 +123,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
     
     /**
      * 测试合并字幕文件
+     * 返回：true为合并字幕文件成功，false为合并字幕文件失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -131,8 +134,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
         try {
             String videoId = "1b448be3235dc575fa8f9e7f380be9cc_1";
             //准备测试数据
-            uploadSubtitle(videoId, true);
-            String sourceSubtitleNames = super.getSubtitleNames(videoId);
+            String sourceSubtitleNames = super.getSourceSubtitleNames(videoId);
             
             vodMergeSubtitleRequest.setVideoId(videoId)
                     .setSourceSubtitleNames(sourceSubtitleNames)

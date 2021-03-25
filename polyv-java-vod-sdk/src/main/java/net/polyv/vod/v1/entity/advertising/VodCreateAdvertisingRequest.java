@@ -61,6 +61,7 @@ public class VodCreateAdvertisingRequest extends VodCommonRequest {
      */
     @ApiModelProperty(name = "file", value = "广告素材，片头、片尾广告素材支持：JPEG,GIF,PNG,FLV,MP4;暂停广告支持：SWF,PNG,JPEG,GIF;" +
             "弹窗广告支持PNG,JPEG,GIF.", required = true)
+    @NotNull(message = "属性file不能为空")
     private File file;
     
     /**

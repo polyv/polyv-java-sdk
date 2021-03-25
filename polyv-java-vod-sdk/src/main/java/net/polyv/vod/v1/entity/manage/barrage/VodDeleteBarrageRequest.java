@@ -28,9 +28,9 @@ public class VodDeleteBarrageRequest extends VodCommonRequest {
     private String userId;
     
     /**
-     * 多个弹幕信息ID，用逗号隔开
+     * 多个弹幕信息ID，用逗号隔开(英文逗号分割 状态为半角)，例如 123,456
      */
-    @ApiModelProperty(name = "videoId", value = "多个弹幕信息ID，用逗号隔开", required = true)
+    @ApiModelProperty(name = "videoId", value = "多个弹幕信息ID，用逗号隔开(英文逗号分割 状态为半角)，例如 123,456", required = true)
     @NotNull(message = "属性barrageIds不能为空")
     @JSONField(name = "danmuIds")
     private String barrageIds;

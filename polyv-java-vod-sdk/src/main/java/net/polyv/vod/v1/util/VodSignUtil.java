@@ -53,12 +53,15 @@ public class VodSignUtil {
         String plain = "";
         for (String key : keys) {
             if (null != params.get(key) && params.get(key).length() > 0) {
-                plain += key + params.get(key);
+                plain += key + "=" + params.get(key) + "&";
             }
         }
-        plain = secretKey+plain+secretKey;
+        if (StringUtils.isNotBlank(plain)) {
+            plain = plain.substring(0, plain.length() - 1);
+        }
+        plain += secretKey;
         log.debug("签名原始字符串：{}", plain);
-        String sign = md5Hex(plain).toUpperCase();
+        String sign = getSha1(plain).toUpperCase();
         log.debug("签名结果：{}", sign);
         return sign;
     }
@@ -130,7 +133,6 @@ public class VodSignUtil {
         }
         Map<String, String> tempMap = new HashMap<String, String>();
         tempMap.put("ptime", t.getTimestamp());
-        tempMap.put("appId", t.getAppId());
         tempMap.put("requestId", t.getRequestId());
         return tempMap;
     }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodGetVideoViewingCompletionRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsRequest;
@@ -187,5 +188,16 @@ public interface IVodDataStatisticsService {
      */
     List<VodQueryVideoViewingRatioStatisticsResponse> queryVideoViewingRatioStatistics(
             VodQueryVideoViewingRatioStatisticsRequest vodQueryVideoViewingRatioStatisticsRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取视频观看完成度
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-data/engagement-get/
+     * @param vodGetVideoViewingCompletionRequest 获取视频观看完成度请求实体
+     * @return Integer
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Float getVideoViewingCompletion(VodGetVideoViewingCompletionRequest vodGetVideoViewingCompletionRequest)
             throws IOException, NoSuchAlgorithmException;
 }

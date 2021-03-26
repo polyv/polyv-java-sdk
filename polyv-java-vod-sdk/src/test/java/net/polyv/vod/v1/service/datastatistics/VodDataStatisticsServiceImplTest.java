@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodGetVideoViewingCompletionRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsRequest;
@@ -480,6 +481,43 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodQueryVideoViewingRatioStatisticsResponseList);
             if (vodQueryVideoViewingRatioStatisticsResponseList != null) {
                 log.debug("测试查询视频的观看比例统计数据成功,{}", JSON.toJSONString(vodQueryVideoViewingRatioStatisticsResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试获取视频观看完成度
+     * 约束：2、该接口可查看某一观众累计观看某一视频的完成度情况。无论观众使用哪种终端、分多少次观看，接口返回的是最终的汇总的完成度。比如，视频A时长为50分钟，观众使用PC
+     * 约束：2、H5观看了第0~20分钟，使用手机H5观看了第10~30分钟，又使用APP观看了第40~50分钟，累计观看时长为20+20+10=50分钟，但观看的视频内容是 0~30 和 40~50
+     * 约束：2、的部分。虽然累计观看时长与视频时长相同，但完成度为 (30+10)/50=80%。
+     * 约束：3、数据隔天更新一次
+     * 约束：4、该接口需联系客服开通后才能使用
+     * 返回：已完成进度比例
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetVideoViewingCompletion() throws IOException, NoSuchAlgorithmException {
+        VodGetVideoViewingCompletionRequest vodGetVideoViewingCompletionRequest =
+                new VodGetVideoViewingCompletionRequest();
+        Float vodGetVideoViewingCompletionResponse = null;
+        try {
+            vodGetVideoViewingCompletionRequest.setVideoId("1b448be3230a0194d959426ae005645f_1")
+                    .setViewerId("1555313336634")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetVideoViewingCompletionResponse = new VodDataStatisticsServiceImpl().getVideoViewingCompletion(
+                    vodGetVideoViewingCompletionRequest);
+            Assert.assertNotNull(vodGetVideoViewingCompletionResponse);
+            if (vodGetVideoViewingCompletionResponse != null) {
+                log.debug("测试获取视频观看完成度成功,已完成进度比例{}", vodGetVideoViewingCompletionResponse);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -10,6 +10,7 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodGetVideoViewingCompletionRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsRequest;
@@ -265,5 +266,20 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
                 VodGlobalConfig.getUserId());
         return super.getReturnList(url, vodQueryVideoViewingRatioStatisticsRequest,
                 VodQueryVideoViewingRatioStatisticsResponse.class);
+    }
+    
+    /**
+     * 获取视频观看完成度
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-data/engagement-get/
+     * @param vodGetVideoViewingCompletionRequest 获取视频观看完成度请求实体
+     * @return Integer
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Float getVideoViewingCompletion(VodGetVideoViewingCompletionRequest vodGetVideoViewingCompletionRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_GET_VIDEO_VIEWING_COMPLETION_URL, VodGlobalConfig.getUserId());
+        return super.getReturnOne(url, vodGetVideoViewingCompletionRequest, Float.class);
     }
 }

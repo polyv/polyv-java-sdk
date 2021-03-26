@@ -516,6 +516,12 @@ public class VodURL {
             BASE_URI + "v2/play-ratio/" + PARAM_REPLACE_CHAR;
     
     /**
+     * 获取视频观看完成度
+     */
+    public static final String VOD_GET_VIDEO_VIEWING_COMPLETION_URL =
+            BASE_URI + "v2/video/engagement/" + PARAM_REPLACE_CHAR + "/get";
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

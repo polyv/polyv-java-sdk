@@ -16,6 +16,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsReque
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlayTimeStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlayTimeStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackFlowSizeStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackFlowSizeStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackHourlyStatisticsRequest;
@@ -206,5 +208,22 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
                 VodGlobalConfig.getUserId(), vodQueryVideoPlaybackFlowSizeStatisticsRequest.getVideoId());
         return super.getReturnList(url, vodQueryVideoPlaybackFlowSizeStatisticsRequest,
                 VodQueryVideoPlaybackFlowSizeStatisticsResponse.class);
+    }
+    
+    /**
+     * 查询视频观众量统计数据
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/play-duration/
+     * @param vodQueryVideoPlayTimeStatisticsRequest 查询视频观众量统计数据请求实体
+     * @return 查询视频观众量统计数据返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<VodQueryVideoPlayTimeStatisticsResponse> queryVideoPlayTimeStatistics(
+            VodQueryVideoPlayTimeStatisticsRequest vodQueryVideoPlayTimeStatisticsRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_QUERY_VIDEO_PLAY_TIME_STATISTICS_URL, VodGlobalConfig.getUserId());
+        return super.getReturnList(url, vodQueryVideoPlayTimeStatisticsRequest,
+                VodQueryVideoPlayTimeStatisticsResponse.class);
     }
 }

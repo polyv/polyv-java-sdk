@@ -498,6 +498,12 @@ public class VodURL {
             BASE_URI + "v2/traffic/" + PARAM_REPLACE_CHAR + "/video/" + PARAM_REPLACE_CHAR;
     
     /**
+     * 查询视频的播放时长统计数据返回实体
+     */
+    public static final String VOD_QUERY_VIDEO_PLAY_TIME_STATISTICS_URL =
+            BASE_URI + "v2//play-duration/" + PARAM_REPLACE_CHAR;
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

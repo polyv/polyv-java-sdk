@@ -12,6 +12,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsReque
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlayTimeStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlayTimeStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackFlowSizeStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackFlowSizeStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackHourlyStatisticsRequest;
@@ -145,5 +147,17 @@ public interface IVodDataStatisticsService {
      */
     List<VodQueryVideoPlaybackFlowSizeStatisticsResponse> queryVideoPlaybackFlowSizeStatistics(
             VodQueryVideoPlaybackFlowSizeStatisticsRequest vodQueryVideoPlaybackFlowSizeStatisticsRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 查询视频的播放时长统计数据返回实体
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/play-duration/
+     * @param vodQueryVideoPlayTimeStatisticsRequest 查询视频的播放时长统计数据返回实体请求实体
+     * @return 查询视频的播放时长统计数据返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    List<VodQueryVideoPlayTimeStatisticsResponse> queryVideoPlayTimeStatistics(
+            VodQueryVideoPlayTimeStatisticsRequest vodQueryVideoPlayTimeStatisticsRequest)
             throws IOException, NoSuchAlgorithmException;
 }

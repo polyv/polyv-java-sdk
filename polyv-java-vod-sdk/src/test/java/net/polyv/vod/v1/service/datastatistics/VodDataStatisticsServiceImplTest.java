@@ -19,6 +19,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsReque
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlayTimeStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlayTimeStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackFlowSizeStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackFlowSizeStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackHourlyStatisticsRequest;
@@ -372,6 +374,41 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             if (vodQueryVideoPlaybackFlowSizeStatisticsResponseList != null) {
                 log.debug("测试查询视频某个时段的播放流量统计数据成功,{}",
                         JSON.toJSONString(vodQueryVideoPlaybackFlowSizeStatisticsResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询视频的播放时长统计数据返回实体
+     * 约束：2、按照日期区间或时段查询视频播放时长统计数据，从播放行为产生到数据可查询的间隔时间为1~2小时。
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testQueryVideoPlayTimeStatistics() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoPlayTimeStatisticsRequest vodQueryVideoPlayTimeStatisticsRequest =
+                new VodQueryVideoPlayTimeStatisticsRequest();
+        List<VodQueryVideoPlayTimeStatisticsResponse> vodQueryVideoPlayTimeStatisticsResponseList = null;
+        try {
+            vodQueryVideoPlayTimeStatisticsRequest.setDr("7days")
+                    .setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
+                    .setStartTime(super.getDate(2021, 2, 18))
+                    .setEndTime(super.getDate(2021, 2, 24))
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoPlayTimeStatisticsResponseList =
+                    new VodDataStatisticsServiceImpl().queryVideoPlayTimeStatistics(
+                    vodQueryVideoPlayTimeStatisticsRequest);
+            Assert.assertNotNull(vodQueryVideoPlayTimeStatisticsResponseList);
+            if (vodQueryVideoPlayTimeStatisticsResponseList != null) {
+                log.debug("测试查询视频的播放时长统计数据返回实体成功,{}", JSON.toJSONString(vodQueryVideoPlayTimeStatisticsResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

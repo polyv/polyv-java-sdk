@@ -20,7 +20,7 @@ public class VodQueryVideoViewershipResponse {
     /**
      * 日期，格式 yyyy-MM-dd 例如 2021-03-24
      */
-    @ApiModelProperty(name = "pcUniqueViewer", value = "日期，格式 yyyy-MM-dd 例如 2021-03-24", required = false)
+    @ApiModelProperty(name = "date", value = "日期，格式 yyyy-MM-dd 例如 2021-03-24", required = false)
     @JSONField(format = "yyyy-MM-dd")
     private Date date;
     /**

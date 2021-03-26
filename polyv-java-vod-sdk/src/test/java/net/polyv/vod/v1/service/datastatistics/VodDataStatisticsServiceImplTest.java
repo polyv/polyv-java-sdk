@@ -31,6 +31,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsReq
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingHotspotStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingHotspotStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
 import net.polyv.vod.v1.service.BaseTest;
@@ -409,6 +411,42 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodQueryVideoPlayTimeStatisticsResponseList);
             if (vodQueryVideoPlayTimeStatisticsResponseList != null) {
                 log.debug("测试查询视频的播放时长统计数据返回实体成功,{}", JSON.toJSONString(vodQueryVideoPlayTimeStatisticsResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询单个视频的观看热点统计数据
+     * 约束：2、按照日期区间或时间段查询单个视频的观看热点统计数据，从播放行为产生到数据可查询的间隔时间为1~2小时。
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testQueryVideoViewingHotspotStatistics() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoViewingHotspotStatisticsRequest vodQueryVideoViewingHotspotStatisticsRequest =
+                new VodQueryVideoViewingHotspotStatisticsRequest();
+        List<VodQueryVideoViewingHotspotStatisticsResponse> vodQueryVideoViewingHotspotStatisticsResponseList = null;
+        try {
+            vodQueryVideoViewingHotspotStatisticsRequest.setDr("7days")
+                    .setVideoId("1b448be3230a0194d959426ae005645f_1")
+                    .setStartTime(super.getDate(2021, 2, 18))
+                    .setEndTime(super.getDate(2021, 2, 24))
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoViewingHotspotStatisticsResponseList =
+                    new VodDataStatisticsServiceImpl().queryVideoViewingHotspotStatistics(
+                    vodQueryVideoViewingHotspotStatisticsRequest);
+            Assert.assertNotNull(vodQueryVideoViewingHotspotStatisticsResponseList);
+            if (vodQueryVideoViewingHotspotStatisticsResponseList != null) {
+                log.debug("测试查询单个视频的观看热点统计数据成功,{}",
+                        JSON.toJSONString(vodQueryVideoViewingHotspotStatisticsResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

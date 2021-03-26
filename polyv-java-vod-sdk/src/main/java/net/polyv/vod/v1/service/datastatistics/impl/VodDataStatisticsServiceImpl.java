@@ -28,6 +28,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsReq
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoPlaybackStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingHotspotStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingHotspotStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -225,5 +227,23 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
         String url = VodURL.getRealUrl(VodURL.VOD_QUERY_VIDEO_PLAY_TIME_STATISTICS_URL, VodGlobalConfig.getUserId());
         return super.getReturnList(url, vodQueryVideoPlayTimeStatisticsRequest,
                 VodQueryVideoPlayTimeStatisticsResponse.class);
+    }
+    
+    /**
+     * 查询单个视频的观看热点统计数据
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/videohot/
+     * @param vodQueryVideoViewingHotspotStatisticsRequest 查询单个视频的观看热点统计数据请求实体
+     * @return 查询单个视频的观看热点统计数据返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<VodQueryVideoViewingHotspotStatisticsResponse> queryVideoViewingHotspotStatistics(
+            VodQueryVideoViewingHotspotStatisticsRequest vodQueryVideoViewingHotspotStatisticsRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_QUERY_VIDEO_VIEWING_HOTSPOT_STATISTICS_URL,
+                VodGlobalConfig.getUserId());
+        return super.getReturnList(url, vodQueryVideoViewingHotspotStatisticsRequest,
+                VodQueryVideoViewingHotspotStatisticsResponse.class);
     }
 }

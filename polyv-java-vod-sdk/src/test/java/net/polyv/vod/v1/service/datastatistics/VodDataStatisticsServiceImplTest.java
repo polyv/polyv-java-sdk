@@ -389,7 +389,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试查询视频的播放时长统计数据返回实体
+     * 测试查询视频的播放时长统计数据
      * 约束：2、按照日期区间或时段查询视频播放时长统计数据，从播放行为产生到数据可查询的间隔时间为1~2小时。
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -410,7 +410,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     vodQueryVideoPlayTimeStatisticsRequest);
             Assert.assertNotNull(vodQueryVideoPlayTimeStatisticsResponseList);
             if (vodQueryVideoPlayTimeStatisticsResponseList != null) {
-                log.debug("测试查询视频的播放时长统计数据返回实体成功,{}", JSON.toJSONString(vodQueryVideoPlayTimeStatisticsResponseList));
+                log.debug("测试查询视频的播放时长统计数据成功,{}", JSON.toJSONString(vodQueryVideoPlayTimeStatisticsResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

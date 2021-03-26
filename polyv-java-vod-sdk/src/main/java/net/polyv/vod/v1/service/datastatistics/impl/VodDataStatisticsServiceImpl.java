@@ -213,10 +213,10 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
     }
     
     /**
-     * 查询视频观众量统计数据
+     * 查询视频的播放时长统计数据
      * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/play-duration/
-     * @param vodQueryVideoPlayTimeStatisticsRequest 查询视频观众量统计数据请求实体
-     * @return 查询视频观众量统计数据返回实体列表
+     * @param vodQueryVideoPlayTimeStatisticsRequest 查询视频的播放时长统计数据请求实体
+     * @return 查询视频的播放时长统计数据返回实体列表
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

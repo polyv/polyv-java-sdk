@@ -30,6 +30,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingHotspotStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingHotspotStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingRatioStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingRatioStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
 import net.polyv.vod.v1.service.VodBaseService;
@@ -245,5 +247,23 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
                 VodGlobalConfig.getUserId());
         return super.getReturnList(url, vodQueryVideoViewingHotspotStatisticsRequest,
                 VodQueryVideoViewingHotspotStatisticsResponse.class);
+    }
+    
+    /**
+     * 查询视频的观看比例统计数据
+     * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/play-ratio/
+     * @param vodQueryVideoViewingRatioStatisticsRequest 查询视频的观看比例统计数据请求实体
+     * @return 查询视频的观看比例统计数据返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public List<VodQueryVideoViewingRatioStatisticsResponse> queryVideoViewingRatioStatistics(
+            VodQueryVideoViewingRatioStatisticsRequest vodQueryVideoViewingRatioStatisticsRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_QUERY_VIDEO_VIEWING_RATIO_STATISTICS_URL,
+                VodGlobalConfig.getUserId());
+        return super.getReturnList(url, vodQueryVideoViewingRatioStatisticsRequest,
+                VodQueryVideoViewingRatioStatisticsResponse.class);
     }
 }

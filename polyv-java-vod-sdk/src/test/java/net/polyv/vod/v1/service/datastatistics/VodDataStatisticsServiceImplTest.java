@@ -33,6 +33,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewershipResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingHotspotStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingHotspotStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingRatioStatisticsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingRatioStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
 import net.polyv.vod.v1.service.BaseTest;
@@ -447,6 +449,37 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             if (vodQueryVideoViewingHotspotStatisticsResponseList != null) {
                 log.debug("测试查询单个视频的观看热点统计数据成功,{}",
                         JSON.toJSONString(vodQueryVideoViewingHotspotStatisticsResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试查询视频的观看比例统计数据
+     * 约束：2、查询单个视频或全部视频在一定时间范围内的观看比例统计数据，从播放行为产生到数据可查询的间隔时间为1~2小时。
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testQueryVideoViewingRatioStatistics() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoViewingRatioStatisticsRequest vodQueryVideoViewingRatioStatisticsRequest =
+                new VodQueryVideoViewingRatioStatisticsRequest();
+        List<VodQueryVideoViewingRatioStatisticsResponse> vodQueryVideoViewingRatioStatisticsResponseList = null;
+        try {
+            vodQueryVideoViewingRatioStatisticsRequest.setDr("7days").setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoViewingRatioStatisticsResponseList =
+                    new VodDataStatisticsServiceImpl().queryVideoViewingRatioStatistics(
+                    vodQueryVideoViewingRatioStatisticsRequest);
+            Assert.assertNotNull(vodQueryVideoViewingRatioStatisticsResponseList);
+            if (vodQueryVideoViewingRatioStatisticsResponseList != null) {
+                log.debug("测试查询视频的观看比例统计数据成功,{}", JSON.toJSONString(vodQueryVideoViewingRatioStatisticsResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

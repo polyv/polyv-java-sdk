@@ -501,7 +501,7 @@ public class VodURL {
      * 查询视频的播放时长统计数据
      */
     public static final String VOD_QUERY_VIDEO_PLAY_TIME_STATISTICS_URL =
-            BASE_URI + "v2//play-duration/" + PARAM_REPLACE_CHAR;
+            BASE_URI + "v2/play-duration/" + PARAM_REPLACE_CHAR;
     
     /**
      * 查询单个视频的观看热点统计数据

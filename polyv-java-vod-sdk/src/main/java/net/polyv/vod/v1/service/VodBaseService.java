@@ -21,6 +21,8 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodConstant;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 import net.polyv.vod.v1.entity.VodCommonResponse;
+import net.polyv.vod.v1.entity.VodSubCommonRequest;
+import net.polyv.vod.v1.entity.VodSubPageCommonRequest;
 import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
@@ -333,16 +335,44 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> Map<String, String> commonRequestLogic(Map<String, String> signMap, E e)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        if (StringUtils.isBlank(e.getTimestamp())) {
-            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        if (StringUtils.isBlank(e.getPtime())) {
+            e.setPtime(String.valueOf(System.currentTimeMillis()));
         }
+        String secretKey, sign;
+        if(e instanceof VodSubCommonRequest){//子账号相关
+            VodSubCommonRequest vodSubCommonRequest = (VodSubCommonRequest) e;
+            secretKey = vodSubCommonRequest.getSecretKey();
+            vodSubCommonRequest.setTimestamp(String.valueOf(System.currentTimeMillis()));
+            signMap = getNotNullMap(signMap, e);
+            sign = VodSignUtil.setVodMd5Sign(signMap,secretKey);
+        }else if(e instanceof VodSubPageCommonRequest){//子账号分页相关
+            VodSubPageCommonRequest subPageCommonRequest = (VodSubPageCommonRequest) e;
+            secretKey = subPageCommonRequest.getSecretKey();
+            subPageCommonRequest.setTimestamp(String.valueOf(System.currentTimeMillis()));
+            signMap = getNotNullMap(signMap, e);
+            sign = VodSignUtil.setVodMd5Sign(signMap,secretKey);
+        }else{
+            signMap = getNotNullMap(signMap, e);
+            secretKey = VodGlobalConfig.getSecretKey();
+            sign = VodSignUtil.setVodSign(signMap, secretKey);
+        }
+        e.setSign(sign);
+        validateBean(e);
+        return signMap;
+    }
+    
+    /**
+     * 当signMap为空时，将e非空属性转换为map返回
+     * @param signMap 签名的map
+     * @param e 请求对象
+     * @param <E> VodCommonRequest
+     * @return 签名map
+     */
+    private <E extends VodCommonRequest> Map<String, String> getNotNullMap(Map<String, String> signMap, E e) {
         if (signMap == null) {
             signMap = MapUtil.objectToMap(e);
         }
         signMap = MapUtil.filterNullValue(signMap);
-        String secretKey = VodGlobalConfig.getSecretKey();
-        String sign = VodSignUtil.setVodSign(signMap, secretKey);
-        e.setSign(sign);
         return signMap;
     }
     

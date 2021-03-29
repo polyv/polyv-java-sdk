@@ -9,7 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.vod.v1.entity.VodPageCommonRequest;
+import net.polyv.vod.v1.entity.VodSubPageCommonRequest;
 
 /**
  * 搜索视频请求实体
@@ -19,7 +19,7 @@ import net.polyv.vod.v1.entity.VodPageCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("搜索视频请求实体")
-public class VodSubAccountSearchVideoListRequest extends VodPageCommonRequest {
+public class VodSubAccountSearchVideoListRequest extends VodSubPageCommonRequest {
     /**
      * 视频分类ID
      */

@@ -2,7 +2,6 @@ package net.polyv.vod.v1.service.manage.impl;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderRequest;
@@ -48,10 +47,10 @@ public class VodListServiceImpl extends VodBaseService implements IVodListServic
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public List<VodGetNewListResponse> getNewList(VodGetNewListRequest vodGetNewListRequest)
+    public VodGetNewListResponse getNewList(VodGetNewListRequest vodGetNewListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_GET_NEW_LIST_URL);
-        return super.postFormBodyReturnList(url, vodGetNewListRequest, VodGetNewListResponse.class);
+        return super.postFormBodyReturnOne(url, vodGetNewListRequest, VodGetNewListResponse.class);
     }
     
     /**
@@ -63,10 +62,10 @@ public class VodListServiceImpl extends VodBaseService implements IVodListServic
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public List<VodGetHotListResponse> getHotList(VodGetHotListRequest vodGetHotListRequest)
+    public VodGetHotListResponse getHotList(VodGetHotListRequest vodGetHotListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_GET_HOT_LIST_URL);
-        return super.postFormBodyReturnList(url, vodGetHotListRequest, VodGetHotListResponse.class);
+        return super.postFormBodyReturnOne(url, vodGetHotListRequest, VodGetHotListResponse.class);
     }
     
     /**
@@ -78,10 +77,10 @@ public class VodListServiceImpl extends VodBaseService implements IVodListServic
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public List<VodGetDelListResponse> getDelList(VodGetDelListRequest vodGetDelListRequest)
+    public VodGetDelListResponse getDelList(VodGetDelListRequest vodGetDelListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_GET_DEL_LIST_URL);
-        return super.postFormBodyReturnList(url, vodGetDelListRequest, VodGetDelListResponse.class);
+        return super.postFormBodyReturnOne(url, vodGetDelListRequest, VodGetDelListResponse.class);
     }
     
     /**
@@ -93,9 +92,9 @@ public class VodListServiceImpl extends VodBaseService implements IVodListServic
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public List<VodGetIllegalListResponse> getIllegalList(VodGetIllegalListRequest vodGetIllegalListRequest)
+    public VodGetIllegalListResponse getIllegalList(VodGetIllegalListRequest vodGetIllegalListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_GET_ILLEGAL_LIST_URL);
-        return super.postFormBodyReturnList(url, vodGetIllegalListRequest, VodGetIllegalListResponse.class);
+        return super.postFormBodyReturnOne(url, vodGetIllegalListRequest, VodGetIllegalListResponse.class);
     }
 }

@@ -2,7 +2,6 @@ package net.polyv.vod.v1.service.manage;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetByUploaderResponse;
@@ -40,7 +39,7 @@ public interface IVodListService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    List<VodGetNewListResponse> getNewList(VodGetNewListRequest vodGetNewListRequest)
+    VodGetNewListResponse getNewList(VodGetNewListRequest vodGetNewListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -51,7 +50,7 @@ public interface IVodListService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    List<VodGetHotListResponse> getHotList(VodGetHotListRequest vodGetHotListRequest)
+    VodGetHotListResponse getHotList(VodGetHotListRequest vodGetHotListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -62,7 +61,7 @@ public interface IVodListService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    List<VodGetDelListResponse> getDelList(VodGetDelListRequest vodGetDelListRequest)
+    VodGetDelListResponse getDelList(VodGetDelListRequest vodGetDelListRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -73,6 +72,6 @@ public interface IVodListService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    List<VodGetIllegalListResponse> getIllegalList(VodGetIllegalListRequest vodGetIllegalListRequest)
+    VodGetIllegalListResponse getIllegalList(VodGetIllegalListRequest vodGetIllegalListRequest)
             throws IOException, NoSuchAlgorithmException;
 }

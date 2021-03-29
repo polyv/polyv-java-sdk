@@ -89,7 +89,7 @@ public class VodSyncServiceImplTest extends BaseTest {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    @Test
+//    @Test
     public void testExportTask() throws IOException, NoSuchAlgorithmException {
         VodExportTaskRequest vodExportTaskRequest = new VodExportTaskRequest();
         byte[] vodExportTaskResponse = null;

@@ -140,6 +140,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
         try {
             //准备测试数据
             String categoryID = super.createCategory();
+            
             vodDeleteCategoryRequest.setCategoryId(categoryID).setRequestId(VodSignUtil.generateUUID());
             vodDeleteCategoryResponse = new VodCategoryServiceImpl().deleteCategory(vodDeleteCategoryRequest);
             Assert.assertTrue(vodDeleteCategoryResponse);

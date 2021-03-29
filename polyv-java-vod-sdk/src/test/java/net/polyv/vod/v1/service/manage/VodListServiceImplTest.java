@@ -2,7 +2,6 @@ package net.polyv.vod.v1.service.manage;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -77,7 +76,7 @@ public class VodListServiceImplTest extends BaseTest {
     @Test
     public void testGetNewList() throws IOException, NoSuchAlgorithmException {
         VodGetNewListRequest vodGetNewListRequest = new VodGetNewListRequest();
-        List<VodGetNewListResponse> vodGetNewListResponseList = null;
+        VodGetNewListResponse vodGetNewListResponse = null;
         try {
             vodGetNewListRequest.setStartTime(super.getDate(2021, 1, 15, 9, 15, 15))
                     .setEndTime(super.getDate(2021, 3, 15, 9, 15, 15))
@@ -88,10 +87,10 @@ public class VodListServiceImplTest extends BaseTest {
                     .setCurrentPage(1)
                     .setPageSize(10)
                     .setRequestId(VodSignUtil.generateUUID());
-            vodGetNewListResponseList = new VodListServiceImpl().getNewList(vodGetNewListRequest);
-            Assert.assertNotNull(vodGetNewListResponseList);
-            if (vodGetNewListResponseList != null) {
-                log.debug("测试获取最新视频/全部视频列表成功，{}", JSON.toJSONString(vodGetNewListResponseList));
+            vodGetNewListResponse = new VodListServiceImpl().getNewList(vodGetNewListRequest);
+            Assert.assertNotNull(vodGetNewListResponse);
+            if (vodGetNewListResponse != null) {
+                log.debug("测试获取最新视频/全部视频列表成功，{}", JSON.toJSONString(vodGetNewListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -112,13 +111,13 @@ public class VodListServiceImplTest extends BaseTest {
     @Test
     public void testGetHotList() throws IOException, NoSuchAlgorithmException {
         VodGetHotListRequest vodGetHotListRequest = new VodGetHotListRequest();
-        List<VodGetHotListResponse> vodGetHotListResponseList = null;
+        VodGetHotListResponse vodGetHotListResponse = null;
         try {
             vodGetHotListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
-            vodGetHotListResponseList = new VodListServiceImpl().getHotList(vodGetHotListRequest);
-            Assert.assertNotNull(vodGetHotListResponseList);
-            if (vodGetHotListResponseList != null) {
-                log.debug("测试获取最热视频列表成功，{}", JSON.toJSONString(vodGetHotListResponseList));
+            vodGetHotListResponse = new VodListServiceImpl().getHotList(vodGetHotListRequest);
+            Assert.assertNotNull(vodGetHotListResponse);
+            if (vodGetHotListResponse != null) {
+                log.debug("测试获取最热视频列表成功，{}", JSON.toJSONString(vodGetHotListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -139,13 +138,13 @@ public class VodListServiceImplTest extends BaseTest {
     @Test
     public void testGetDelList() throws IOException, NoSuchAlgorithmException {
         VodGetDelListRequest vodGetDelListRequest = new VodGetDelListRequest();
-        List<VodGetDelListResponse> vodGetDelListResponseList = null;
+        VodGetDelListResponse vodGetDelListResponse = null;
         try {
             vodGetDelListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
-            vodGetDelListResponseList = new VodListServiceImpl().getDelList(vodGetDelListRequest);
-            Assert.assertNotNull(vodGetDelListResponseList);
-            if (vodGetDelListResponseList != null) {
-                log.debug("测试获取视频回收站列表成功，{}", JSON.toJSONString(vodGetDelListResponseList));
+            vodGetDelListResponse = new VodListServiceImpl().getDelList(vodGetDelListRequest);
+            Assert.assertNotNull(vodGetDelListResponse);
+            if (vodGetDelListResponse != null) {
+                log.debug("测试获取视频回收站列表成功，{}", JSON.toJSONString(vodGetDelListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -166,13 +165,13 @@ public class VodListServiceImplTest extends BaseTest {
     @Test
     public void testGetIllegalList() throws IOException, NoSuchAlgorithmException {
         VodGetIllegalListRequest vodGetIllegalListRequest = new VodGetIllegalListRequest();
-        List<VodGetIllegalListResponse> vodGetIllegalListResponseList = null;
+        VodGetIllegalListResponse vodGetIllegalListResponse = null;
         try {
             vodGetIllegalListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
-            vodGetIllegalListResponseList = new VodListServiceImpl().getIllegalList(vodGetIllegalListRequest);
-            Assert.assertNotNull(vodGetIllegalListResponseList);
-            if (vodGetIllegalListResponseList != null) {
-                log.debug("测试获取不通过视频列表成功，{}", JSON.toJSONString(vodGetIllegalListResponseList));
+            vodGetIllegalListResponse = new VodListServiceImpl().getIllegalList(vodGetIllegalListRequest);
+            Assert.assertNotNull(vodGetIllegalListResponse);
+            if (vodGetIllegalListResponse != null) {
+                log.debug("测试获取不通过视频列表成功，{}", JSON.toJSONString(vodGetIllegalListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

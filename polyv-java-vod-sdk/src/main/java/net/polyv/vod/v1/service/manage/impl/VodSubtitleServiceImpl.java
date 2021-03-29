@@ -48,7 +48,7 @@ public class VodSubtitleServiceImpl extends VodBaseService implements IVodSubtit
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_UPLOAD_SUBTITLE_URL);
         HashMap files = new HashMap<String, File>(1);
-        files.put(vodUploadSubtitleRequest.FILE_NAME, vodUploadSubtitleRequest.getFile());
+        files.put(VodUploadSubtitleRequest.FILE_NAME, vodUploadSubtitleRequest.getFile());
         super.uploadOneFile(url, vodUploadSubtitleRequest, files, String.class);
         return Boolean.TRUE;
     }

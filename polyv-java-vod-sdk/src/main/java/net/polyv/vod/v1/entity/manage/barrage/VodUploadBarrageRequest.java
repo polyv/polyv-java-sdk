@@ -22,7 +22,7 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @ApiModel("上传点播弹幕文件接口请求实体")
 public class VodUploadBarrageRequest extends VodCommonRequest {
     
-    public final String FILE_NAME = "file";
+    public static final String FILE_NAME = "file";
     
     /**
      * 视频ID

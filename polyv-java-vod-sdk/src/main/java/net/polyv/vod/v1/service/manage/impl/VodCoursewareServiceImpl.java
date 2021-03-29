@@ -38,7 +38,7 @@ public class VodCoursewareServiceImpl extends VodBaseService implements IVodCour
             throw new FileNotFoundException("文件不存在");
         }
         HashMap files = new HashMap<String, File>(1);
-        files.put(vodUploadCoursewareRequest.FILE_NAME, vodUploadCoursewareRequest.getCourseware());
+        files.put(VodUploadCoursewareRequest.FILE_NAME, vodUploadCoursewareRequest.getCourseware());
         super.uploadOneFile(url, vodUploadCoursewareRequest, files, String.class);
         return Boolean.TRUE;
     }

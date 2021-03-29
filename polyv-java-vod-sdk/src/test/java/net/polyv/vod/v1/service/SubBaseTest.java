@@ -9,7 +9,9 @@ import java.util.Random;
 import org.junit.Assert;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.v1.entity.AccountInfo;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.common.v1.util.FileUtil;
 import net.polyv.vod.v1.config.InitConfig;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountAddCategoryRequest;
 import net.polyv.vod.v1.service.subaccount.impl.VodSubAccountServiceImpl;
@@ -21,6 +23,17 @@ import net.polyv.vod.v1.util.VodSignUtil;
  */
 @Slf4j
 public class SubBaseTest {
+    
+    protected static final String APP_ID;
+    protected static final String USER_ID;
+    protected static final String SECRET_KEY;
+    
+    static {
+        AccountInfo accountInfo = FileUtil.readConfigFromFile("/data/password/password_sub.txt");
+        APP_ID = accountInfo.getVodConfig().getAppId();
+        USER_ID = accountInfo.getVodConfig().getUserId();
+        SECRET_KEY = accountInfo.getVodConfig().getSecretKey();
+    }
     
     public SubBaseTest() {
         InitConfig.initPolyvVodByFile("/data/password/password_sub.txt");
@@ -38,6 +51,9 @@ public class SubBaseTest {
         try {
             vodSubAccountAddCategoryRequest.setName("junit测试新增分类20210309")
                     .setParentId(null)
+                    //设置子账号相关
+                    .setAppId(APP_ID)
+                    .setSecretKey(SECRET_KEY)
                     .setRequestId(VodSignUtil.generateUUID());
             vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodSubAccountAddCategoryRequest);
             Assert.assertNotNull(vodDeleteVideoResponse);

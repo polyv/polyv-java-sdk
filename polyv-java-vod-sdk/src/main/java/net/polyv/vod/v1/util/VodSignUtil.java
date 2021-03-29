@@ -39,6 +39,16 @@ public class VodSignUtil {
     }
     
     /**
+     * 获取加密串
+     */
+    public static String setVodMd5Sign(Map<String, String> params, String appSecret)
+            throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        String sign = getMd5Sign(params, appSecret);
+        params.put("sign", sign);
+        return sign;
+    }
+    
+    /**
      * 点播签名方法
      * @param params 签名参数
      * @param secretKey 签名密钥
@@ -63,6 +73,31 @@ public class VodSignUtil {
         log.debug("签名原始字符串：{}", plain);
         String sign = getSha1(plain).toUpperCase();
         log.debug("签名结果：{}", sign);
+        return sign;
+    }
+    
+    /**
+     * 点播签名方法
+     * @param params 签名参数
+     * @param secretKey 签名密钥
+     * @return 签名
+     * @throws NoSuchAlgorithmException 异常异常
+     */
+    public static String getMd5Sign(Map<String, String> params, String secretKey)
+            throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        log.debug("参与签名参数：{}", JSON.toJSONString(params));
+        List<String> keys = new ArrayList<String>(params.keySet());
+        Collections.sort(keys);
+        String plain = "";
+        for (String key : keys) {
+            if (null != params.get(key) && params.get(key).length() > 0) {
+                plain += key + params.get(key);
+            }
+        }
+        plain = secretKey+plain+secretKey;
+        log.debug("签名原始字符串：{}", plain);
+        String sign = md5Hex(plain).toUpperCase();
+        log.debug("md5签名结果：{}", sign);
         return sign;
     }
     
@@ -128,11 +163,11 @@ public class VodSignUtil {
         if (StringUtils.isBlank(t.getRequestId())) {
             t.setRequestId(VodSignUtil.generateUUID());
         }
-        if (StringUtils.isBlank(t.getTimestamp())) {
-            t.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        if (StringUtils.isBlank(t.getPtime())) {
+            t.setPtime(String.valueOf(System.currentTimeMillis()));
         }
         Map<String, String> tempMap = new HashMap<String, String>();
-        tempMap.put("ptime", t.getTimestamp());
+        tempMap.put("ptime", t.getPtime());
         tempMap.put("requestId", t.getRequestId());
         return tempMap;
     }

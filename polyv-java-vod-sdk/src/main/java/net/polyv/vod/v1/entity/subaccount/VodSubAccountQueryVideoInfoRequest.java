@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.common.v1.validator.constraints.NotNull;
-import net.polyv.vod.v1.entity.VodCommonRequest;
+import net.polyv.vod.v1.entity.VodSubCommonRequest;
 
 /**
  * 查询视频信息请求实体
@@ -18,7 +18,7 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("查询视频信息请求实体")
-public class VodSubAccountQueryVideoInfoRequest extends VodCommonRequest {
+public class VodSubAccountQueryVideoInfoRequest extends VodSubCommonRequest {
     /**
      * 视频ID，多个视频ID用英文逗号分隔(状态为半角)，例如 1b8be3,239c2e
      */

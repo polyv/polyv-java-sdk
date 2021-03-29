@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.common.v1.validator.constraints.NotNull;
-import net.polyv.vod.v1.entity.VodCommonRequest;
+import net.polyv.vod.v1.entity.VodSubCommonRequest;
 
 /**
  * 批量修改视频所属分类请求实体
@@ -18,7 +18,7 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("批量修改视频所属分类请求实体")
-public class VodSubAccountUpdateVideoCategoryRequest extends VodCommonRequest {
+public class VodSubAccountUpdateVideoCategoryRequest extends VodSubCommonRequest {
     /**
      * 视频ID串，多个视频ID之间用英文逗号分隔(状态为半角)，例如 1b8be3,239c2e
      */

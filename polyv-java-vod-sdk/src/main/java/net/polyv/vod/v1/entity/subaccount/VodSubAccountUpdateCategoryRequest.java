@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.common.v1.validator.constraints.NotNull;
-import net.polyv.vod.v1.entity.VodCommonRequest;
+import net.polyv.vod.v1.entity.VodSubCommonRequest;
 
 /**
  * 修改视频分类信息请求实体
@@ -18,7 +18,7 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("修改视频分类信息请求实体")
-public class VodSubAccountUpdateCategoryRequest extends VodCommonRequest {
+public class VodSubAccountUpdateCategoryRequest extends VodSubCommonRequest {
     
     /**
      * 分类id

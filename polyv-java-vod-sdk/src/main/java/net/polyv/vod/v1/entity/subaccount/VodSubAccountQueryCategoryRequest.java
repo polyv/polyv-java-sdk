@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import net.polyv.vod.v1.entity.VodPageCommonRequest;
+import net.polyv.vod.v1.entity.VodSubPageCommonRequest;
 
 /**
  * 查询视频分类请求实体
@@ -17,7 +17,7 @@ import net.polyv.vod.v1.entity.VodPageCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("查询视频分类请求实体")
-public class VodSubAccountQueryCategoryRequest extends VodPageCommonRequest {
+public class VodSubAccountQueryCategoryRequest extends VodSubPageCommonRequest {
     
     /**
      * 分类id

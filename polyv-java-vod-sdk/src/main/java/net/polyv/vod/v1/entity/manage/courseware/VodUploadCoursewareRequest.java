@@ -22,7 +22,7 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @ApiModel("上传课件请求实体")
 public class VodUploadCoursewareRequest extends VodCommonRequest {
     
-    public final String FILE_NAME = "courseware";
+    public static final String FILE_NAME = "courseware";
     
     /**
      * 视频ID

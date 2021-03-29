@@ -23,7 +23,7 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @ApiModel("创建视频广告请求实体")
 public class VodCreateAdvertisingRequest extends VodCommonRequest {
     
-    public final String FILE_NAME = "file";
+    public static final String FILE_NAME = "file";
     
     
     /**

@@ -37,7 +37,7 @@ public class VodAdvertisingServiceImpl extends VodBaseService implements IVodAdv
             throw new FileNotFoundException("文件不存在");
         }
         HashMap files = new HashMap<String, File>(1);
-        files.put(vodCreateAdvertisingRequest.FILE_NAME, vodCreateAdvertisingRequest.getFile());
+        files.put(VodCreateAdvertisingRequest.FILE_NAME, vodCreateAdvertisingRequest.getFile());
         return super.uploadOneFile(url, vodCreateAdvertisingRequest, files, String.class);
     }
     

@@ -22,7 +22,7 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @ApiModel("获取视频字幕请求实体")
 public class VodUploadSubtitleRequest extends VodCommonRequest {
     
-    public final String FILE_NAME = "file";
+    public static final String FILE_NAME = "file";
     
     /**
      * 视频ID

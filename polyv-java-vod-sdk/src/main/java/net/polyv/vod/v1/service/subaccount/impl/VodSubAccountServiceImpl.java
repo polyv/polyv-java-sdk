@@ -40,7 +40,8 @@ public class VodSubAccountServiceImpl extends VodBaseService implements IVodSubA
     public VodSubAccountSearchVideoListResponse searchVideoList(
             VodSubAccountSearchVideoListRequest vodSubAccountSearchVideoListRequest)
             throws IOException, NoSuchAlgorithmException {
-        return super.getReturnOne(VodURL.LIST_VIDEO_URL, vodSubAccountSearchVideoListRequest, VodSubAccountSearchVideoListResponse.class);
+        return super.getReturnOne(VodURL.LIST_VIDEO_URL, vodSubAccountSearchVideoListRequest,
+                VodSubAccountSearchVideoListResponse.class);
     }
     
     /**
@@ -85,7 +86,8 @@ public class VodSubAccountServiceImpl extends VodBaseService implements IVodSubA
     @Override
     public Boolean updateVideoCategory(VodSubAccountUpdateVideoCategoryRequest vodSubAccountUpdateVideoCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
-        super.postFormBodyReturnOne(VodURL.UPDATE_VIDEO_CATEGORY, vodSubAccountUpdateVideoCategoryRequest, String.class);
+        super.postFormBodyReturnOne(VodURL.UPDATE_VIDEO_CATEGORY, vodSubAccountUpdateVideoCategoryRequest,
+                String.class);
         return Boolean.TRUE;
     }
     
@@ -113,9 +115,11 @@ public class VodSubAccountServiceImpl extends VodBaseService implements IVodSubA
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public VodSubAccountQueryCategoryResponse queryCategory(VodSubAccountQueryCategoryRequest vodSubAccountQueryCategoryRequest)
+    public VodSubAccountQueryCategoryResponse queryCategory(
+            VodSubAccountQueryCategoryRequest vodSubAccountQueryCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
-        return super.getReturnOne(VodURL.GET_CATEGORY_URL, vodSubAccountQueryCategoryRequest, VodSubAccountQueryCategoryResponse.class);
+        return super.getReturnOne(VodURL.GET_CATEGORY_URL, vodSubAccountQueryCategoryRequest,
+                VodSubAccountQueryCategoryResponse.class);
     }
     
     /**
@@ -175,7 +179,8 @@ public class VodSubAccountServiceImpl extends VodBaseService implements IVodSubA
             VodSubAccountUpdateCategoryProfileRequest vodSubAccountUpdateCategoryProfileRequest)
             throws IOException, NoSuchAlgorithmException {
         vodSubAccountUpdateCategoryProfileRequest.setUserId(VodGlobalConfig.getUserId());
-        super.postFormBodyReturnOne(VodURL.UPDATE_CATEGORY_PROFILE_URL, vodSubAccountUpdateCategoryProfileRequest, String.class);
+        super.postFormBodyReturnOne(VodURL.UPDATE_CATEGORY_PROFILE_URL, vodSubAccountUpdateCategoryProfileRequest,
+                String.class);
         return Boolean.TRUE;
     }
     

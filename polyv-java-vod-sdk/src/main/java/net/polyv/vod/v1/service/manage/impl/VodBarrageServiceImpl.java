@@ -52,7 +52,7 @@ public class VodBarrageServiceImpl extends VodBaseService implements IVodBarrage
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_UPLOAD_BARRAGE_URL);
         HashMap files = new HashMap<String, File>(1);
-        files.put(vodUploadBarrageRequest.FILE_NAME, vodUploadBarrageRequest.getFile());
+        files.put(VodUploadBarrageRequest.FILE_NAME, vodUploadBarrageRequest.getFile());
         super.uploadOneFile(url, vodUploadBarrageRequest, files, String.class);
         return Boolean.TRUE;
     }

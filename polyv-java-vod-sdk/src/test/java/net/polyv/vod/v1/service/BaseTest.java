@@ -156,7 +156,7 @@ public class BaseTest {
         VodCreateCategoryRequest vodCreateCategoryRequest = new VodCreateCategoryRequest();
         String vodCreateCategoryResponse = null;
         try {
-            vodCreateCategoryRequest.setCategoryName("Junit测试")
+            vodCreateCategoryRequest.setCategoryName("Junit测试"+getRandomString(3))
                     .setParentId("1")
                     .setRequestId(VodSignUtil.generateUUID());
             vodCreateCategoryResponse = new VodCategoryServiceImpl().createCategory(vodCreateCategoryRequest);

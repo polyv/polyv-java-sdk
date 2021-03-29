@@ -35,7 +35,7 @@ public class VodUploadServiceImpl extends VodBaseService implements IVodUploadSe
         Map<String, File> fileMap = new HashMap<String, File>();
         fileMap.put("image",vodUploadCoverImageRequest.getImage());
         super.uploadOneFile(url,vodUploadCoverImageRequest,fileMap,String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -51,7 +51,7 @@ public class VodUploadServiceImpl extends VodBaseService implements IVodUploadSe
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPLOAD_COVER_IMAGE_URL_URL);
         super.postFormBodyReturnOne(url,vodUploadCoverImageUrlRequest,String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -69,7 +69,7 @@ public class VodUploadServiceImpl extends VodBaseService implements IVodUploadSe
         Map<String,File> fileMap =new HashMap<String,File>();
         fileMap.put("image",vodUploadWatermarkRequest.getImage());
         this.uploadOneFile(url,vodUploadWatermarkRequest,fileMap,String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -85,7 +85,7 @@ public class VodUploadServiceImpl extends VodBaseService implements IVodUploadSe
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPLOAD_HTTP_VIDEO_LIST_URL);
         super.postFormBodyReturnOne(url,vodUploadHttpVideoListRequest,String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -100,7 +100,7 @@ public class VodUploadServiceImpl extends VodBaseService implements IVodUploadSe
     public Boolean uploadPPT(VodUploadPPTRequest vodUploadPPTRequest) throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPLOAD_PPT_URL);
         super.postFormBodyReturnOne(url,vodUploadPPTRequest,String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
 }

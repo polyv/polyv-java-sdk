@@ -42,7 +42,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPDATE_VIDEO_PLAY_STATUS_URL);
         super.postFormBodyReturnOne(url, vodUpdateVideoPlayStatusRequest, String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -87,7 +87,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.SAVE_KEY_FRAME_URL);
         super.postFormBodyReturnOne(url, vodSaveVideoKeyFrameRequest, String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -103,7 +103,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.DELETE_KEY_FRAME_URL);
         super.postFormBodyReturnOne(url, vodDeleteVideoKeyFrameRequest, String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -119,7 +119,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.SET_PREVIEW_DURATION_URL);
         super.postFormBodyReturnOne(url, vodSetVideoPreviewDurationRequest, String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -135,7 +135,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.SET_VIDEO_FORBIDDEN_URL);
         super.postFormBodyReturnOne(url, vodSetVideoForbiddenRequest, String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -152,7 +152,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
         String url = VodURL.DELETE_VIDEO_LIST_URL;
         vodDeleteVideoListRequest.setUserId(VodGlobalConfig.getUserId());
         super.postFormBodyReturnOne(url, vodDeleteVideoListRequest, String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -188,7 +188,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.DELETE_VIDEO_URL);
         super.postFormBodyReturnOne(url, vodDeleteVideoRequest, String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -204,7 +204,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPDATE_VIDEO_SETTING);
         super.postFormBodyReturnOne(url,vodUpdateVideoSettingRequest,String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -220,7 +220,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.DELETE_VIDEO_ALL_KEY_FRAME);
         super.postFormBodyReturnOne(url,vodDeleteVideoAllKeyFrameRequest,String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
     /**
@@ -236,7 +236,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPDATE_VIDEO_HLS_LEVEL_URL);
         super.postFormBodyReturnOne(url,vodUpdateVideoHlsLevelListRequest,String.class);
-        return true;
+        return Boolean.TRUE;
     }
     
 }

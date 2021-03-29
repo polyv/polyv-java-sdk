@@ -9,6 +9,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoViewingCompletionRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoAnalysisDataRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoAnalysisDataResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsRequest;
@@ -215,4 +217,15 @@ public interface IVodDataStatisticsService {
             VodQueryViewingBehaviorListRequest vodQueryViewingBehaviorListRequest)
             throws IOException, NoSuchAlgorithmException;
     
+    /**
+     * 高级分析–根据视频id查询视频分析数据
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-data/data-advance-video/
+     * @param vodQueryVideoAnalysisDataRequest 高级分析-根据视频id查询视频分析数据请求实体
+     * @return 高级分析-根据视频id查询视频分析数据返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    VodQueryVideoAnalysisDataResponse queryVideoAnalysisData(
+            VodQueryVideoAnalysisDataRequest vodQueryVideoAnalysisDataRequest)
+            throws IOException, NoSuchAlgorithmException;
 }

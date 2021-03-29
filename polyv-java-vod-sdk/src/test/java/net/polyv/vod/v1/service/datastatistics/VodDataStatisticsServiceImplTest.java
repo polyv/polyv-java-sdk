@@ -16,6 +16,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoViewingCompletionRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoAnalysisDataRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoAnalysisDataResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsRequest;
@@ -560,6 +562,38 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodQueryViewingBehaviorListResponse);
             if (vodQueryViewingBehaviorListResponse != null) {
                 log.debug("测试高级分析-分页查询观看行为列表成功{}", JSON.toJSONString(vodQueryViewingBehaviorListResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试高级分析–根据视频id查询视频分析数据
+     * 说明：2、高级分析功能介绍详见：http://dev.polyv.net/2019/videoproduct/v-manual/v-manual-statistic/advance-analysis/
+     * 说明：3、由于数据量和计算量大，数据分析结果次日才可查询。
+     * TODO 时效性为隔天，暂无数据
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+//    @Test
+    public void testQueryVideoAnalysisData() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoAnalysisDataRequest vodQueryVideoAnalysisDataRequest = new VodQueryVideoAnalysisDataRequest();
+        VodQueryVideoAnalysisDataResponse vodQueryVideoAnalysisDataResponse = null;
+        try {
+            vodQueryVideoAnalysisDataRequest.setVideoId("1b448be3230a0194d959426ae005645f_1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoAnalysisDataResponse = new VodDataStatisticsServiceImpl().queryVideoAnalysisData(
+                    vodQueryVideoAnalysisDataRequest);
+            Assert.assertNotNull(vodQueryVideoAnalysisDataResponse);
+            if (vodQueryVideoAnalysisDataResponse != null) {
+                log.debug("测试高级分析–根据视频id查询视频分析数据成功{}", JSON.toJSONString(vodQueryVideoAnalysisDataResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

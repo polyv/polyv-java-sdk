@@ -13,6 +13,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoViewingCompletionRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoAnalysisDataRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoAnalysisDataResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsRequest;
@@ -302,5 +304,21 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
                 vodQueryViewingBehaviorListRequest, VodQueryViewingBehaviorListResponse.class);
         vodQueryViewingBehaviorListResponse.setPageSize(vodQueryViewingBehaviorListRequest.getPageSize());
         return vodQueryViewingBehaviorListResponse;
+    }
+    
+    /**
+     * 高级分析–根据视频id查询视频分析数据
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-data/data-advance-video/
+     * @param vodQueryVideoAnalysisDataRequest 高级分析-根据视频id查询视频分析数据请求实体
+     * @return 高级分析-根据视频id查询视频分析数据返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public VodQueryVideoAnalysisDataResponse queryVideoAnalysisData(
+            VodQueryVideoAnalysisDataRequest vodQueryVideoAnalysisDataRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_QUERY_VIDEO_ANALYSIS_DATA_URL, VodGlobalConfig.getUserId());
+        return super.getReturnOne(url, vodQueryVideoAnalysisDataRequest, VodQueryVideoAnalysisDataResponse.class);
     }
 }

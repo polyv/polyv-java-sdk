@@ -35,6 +35,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingRatioStatistic
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingRatioStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryViewingBehaviorListRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryViewingBehaviorListResponse;
 import net.polyv.vod.v1.service.VodBaseService;
 import net.polyv.vod.v1.service.datastatistics.IVodDataStatisticsService;
 
@@ -281,5 +283,24 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_GET_VIDEO_VIEWING_COMPLETION_URL, VodGlobalConfig.getUserId());
         return super.getReturnOne(url, vodGetVideoViewingCompletionRequest, Float.class);
+    }
+    
+    /**
+     * 高级分析-分页查询观看行为列表
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-data/data-advance-detail/
+     * @param vodQueryViewingBehaviorListRequest 高级分析-分页查询观看行为列表请求实体
+     * @return 高级分析-分页查询观看行为列表返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public VodQueryViewingBehaviorListResponse queryViewingBehaviorList(
+            VodQueryViewingBehaviorListRequest vodQueryViewingBehaviorListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.VOD_QUERY_VIEWING_BEHAVIOR_LIST_URL, VodGlobalConfig.getUserId());
+        VodQueryViewingBehaviorListResponse vodQueryViewingBehaviorListResponse = super.getReturnOne(url,
+                vodQueryViewingBehaviorListRequest, VodQueryViewingBehaviorListResponse.class);
+        vodQueryViewingBehaviorListResponse.setPageSize(vodQueryViewingBehaviorListRequest.getPageSize());
+        return vodQueryViewingBehaviorListResponse;
     }
 }

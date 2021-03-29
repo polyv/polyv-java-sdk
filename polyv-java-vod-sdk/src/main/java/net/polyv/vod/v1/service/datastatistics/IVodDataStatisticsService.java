@@ -31,6 +31,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingRatioStatistic
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingRatioStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryViewingBehaviorListRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryViewingBehaviorListResponse;
 
 /**
  * 数据统计
@@ -200,4 +202,17 @@ public interface IVodDataStatisticsService {
      */
     Float getVideoViewingCompletion(VodGetVideoViewingCompletionRequest vodGetVideoViewingCompletionRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 高级分析-分页查询观看行为列表
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-data/data-advance-detail/
+     * @param vodQueryViewingBehaviorListRequest 高级分析-分页查询观看行为列表请求实体
+     * @return 高级分析-分页查询观看行为列表返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    VodQueryViewingBehaviorListResponse queryViewingBehaviorList(
+            VodQueryViewingBehaviorListRequest vodQueryViewingBehaviorListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
 }

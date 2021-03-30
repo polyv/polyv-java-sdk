@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -26,9 +27,11 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.constant.Constant;
+import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.util.MapUtil;
 
 /**
@@ -124,7 +127,7 @@ public class HttpUtil {
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建get方式请求对象
         HttpGet httpGet = new HttpGet(url);
-        httpGet.addHeader("Content-type", Constant.APPLICATION_JSON);
+        httpGet.addHeader(Constant.CONTENT_TYPE, Constant.APPLICATION_JSON);
         if(headMap != null){
             Set<Map.Entry<String, String>> entries = headMap.entrySet();
             Iterator<Map.Entry<String, String>> iterator = entries.iterator();
@@ -140,6 +143,19 @@ public class HttpUtil {
             result = dataParse.parseData(response.getEntity(), encoding);
             if (!(result instanceof byte[])) {
                 log.debug("http 请求结果: {}", result);
+            }else{
+                Header[] headers = response.getHeaders(Constant.CONTENT_TYPE);
+                for (Header responseHead : headers) {
+                    String headStr = responseHead.getValue();
+                    if (headStr.startsWith("application/json")) {
+                        String json = new String((byte[]) result);
+                        JSONObject jsonObject = JSON.parseObject(json);
+                        String message = jsonObject.getString("message");
+                        Integer code = jsonObject.getInteger("code");
+                        response.close();
+                        throw new PloyvSdkException(code, message);
+                    }
+                }
             }
         }
         try {
@@ -205,7 +221,7 @@ public class HttpUtil {
         httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, encoding));
         // 设置header信息
         // 指定报文头【Content-type】、【User-Agent】
-        httpPost.setHeader("Content-type", Constant.APPLICATION_FORM_URLENCODED);
+        httpPost.setHeader(Constant.CONTENT_TYPE, Constant.APPLICATION_FORM_URLENCODED);
         return post(url,headMap, httpPost, encoding, new DataParse<String>() {
             @Override
             public String parseData(HttpEntity httpEntity, String encoding) throws IOException {

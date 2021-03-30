@@ -340,6 +340,7 @@ public class LiveBaseService {
         signMap = MapUtil.filterNullValue(signMap);
         String sign = LiveSignUtil.setLiveSign(signMap, LiveGlobalConfig.getAppSecret());
         e.setSign(sign);
+        validateBean(e);
         return signMap;
     }
     

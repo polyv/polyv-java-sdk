@@ -7,8 +7,12 @@ import java.util.List;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoViewingCompletionRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryAudienceAnalysisResultsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryAudienceAnalysisResultsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoAnalysisDataRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoAnalysisDataResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoDeviceStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoGeographicStatisticsRequest;
@@ -31,6 +35,8 @@ import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingRatioStatistic
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoViewingRatioStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayResponse;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryViewingBehaviorListRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryViewingBehaviorListResponse;
 
 /**
  * 数据统计
@@ -199,5 +205,41 @@ public interface IVodDataStatisticsService {
      * @throws NoSuchAlgorithmException 异常
      */
     Float getVideoViewingCompletion(VodGetVideoViewingCompletionRequest vodGetVideoViewingCompletionRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 高级分析-分页查询观看行为列表
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-data/data-advance-detail/
+     * @param vodQueryViewingBehaviorListRequest 高级分析-分页查询观看行为列表请求实体
+     * @return 高级分析-分页查询观看行为列表返回实体列表
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    VodQueryViewingBehaviorListResponse queryViewingBehaviorList(
+            VodQueryViewingBehaviorListRequest vodQueryViewingBehaviorListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 高级分析–根据视频id查询视频分析数据
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-data/data-advance-video/
+     * @param vodQueryVideoAnalysisDataRequest 高级分析-根据视频id查询视频分析数据请求实体
+     * @return 高级分析-根据视频id查询视频分析数据返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    VodQueryVideoAnalysisDataResponse queryVideoAnalysisData(
+            VodQueryVideoAnalysisDataRequest vodQueryVideoAnalysisDataRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 高级分析–根据观众id查询观众分析结果
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-data/data-advance-viewer/
+     * @param vodQueryAudienceAnalysisResultsRequest 高级分析–根据观众id查询观众分析结果请求实体
+     * @return 高级分析–根据观众id查询观众分析结果返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    VodQueryAudienceAnalysisResultsResponse queryAudienceAnalysisResults(
+            VodQueryAudienceAnalysisResultsRequest vodQueryAudienceAnalysisResultsRequest)
             throws IOException, NoSuchAlgorithmException;
 }

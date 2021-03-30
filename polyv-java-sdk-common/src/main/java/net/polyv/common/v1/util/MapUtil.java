@@ -90,7 +90,7 @@ public class MapUtil {
                                 //按照固定格式格式化数据
                                 value = JSON.toJSONStringWithDateFormat(o, jsonField.format());
                                 //待优化
-                                value = value.replace("\"","");
+                                value = value.replace("\"", "");
                             } else {
                                 value = JSON.toJSONString(o);
                             }
@@ -215,7 +215,7 @@ public class MapUtil {
      * @param paramMap 需要拼装的map
      * @return 拼装好的url
      */
-    public static String appendUrl(String url, Map<String, String> paramMap) {
+    public static String appendUrl(String url, Map<String, String> paramMap) throws UnsupportedEncodingException {
         if (paramMap == null) {
             return url;
         }
@@ -223,7 +223,10 @@ public class MapUtil {
         Iterator<Map.Entry<String, String>> mapIterator = paramMap.entrySet().iterator();
         while (mapIterator.hasNext()) {
             Map.Entry<String, String> next = mapIterator.next();
-            paramStringBuffer.append(next.getKey()).append("=").append(next.getValue()).append("&");
+            paramStringBuffer.append(next.getKey())
+                    .append("=")
+                    .append(URLEncoder.encode(next.getValue(), Constant.UTF8))
+                    .append("&");
         }
         String paramStr = paramStringBuffer.toString();
 //        String paramStr = MapUtil.mapJoinNotEncode(paramMap);

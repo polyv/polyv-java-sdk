@@ -522,6 +522,22 @@ public class VodURL {
             BASE_URI + "v2/video/engagement/" + PARAM_REPLACE_CHAR + "/get";
     
     /**
+     * 高级分析-分页查询观看行为列表
+     */
+    public static final String VOD_QUERY_VIEWING_BEHAVIOR_LIST_URL = BASE_URI + "v2/advance/play/" + PARAM_REPLACE_CHAR;
+    
+    /**
+     * 高级分析–根据视频id查询视频分析数据
+     */
+    public static final String VOD_QUERY_VIDEO_ANALYSIS_DATA_URL = BASE_URI + "v2/advance/video/" + PARAM_REPLACE_CHAR;
+    
+    /**
+     * 高级分析–根据观众id查询观众分析结果
+     */
+    public static final String VOD_QUERY_AUDIENCE_ANALYSIS_RESULTS_URL =
+            BASE_URI + "v2/advance/viewer/" + PARAM_REPLACE_CHAR;
+    
+    /**
      * 获取替换参数后的URL地址
      * @param format 格式化
      * @param param 格式参数

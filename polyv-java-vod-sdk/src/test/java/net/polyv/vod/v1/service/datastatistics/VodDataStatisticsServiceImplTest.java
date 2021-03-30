@@ -580,11 +580,10 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
      * 测试高级分析–根据视频id查询视频分析数据
      * 说明：2、高级分析功能介绍详见：http://dev.polyv.net/2019/videoproduct/v-manual/v-manual-statistic/advance-analysis/
      * 说明：3、由于数据量和计算量大，数据分析结果次日才可查询。
-     * TODO 时效性为隔天，暂无数据
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-//    @Test
+    @Test
     public void testQueryVideoAnalysisData() throws IOException, NoSuchAlgorithmException {
         VodQueryVideoAnalysisDataRequest vodQueryVideoAnalysisDataRequest = new VodQueryVideoAnalysisDataRequest();
         VodQueryVideoAnalysisDataResponse vodQueryVideoAnalysisDataResponse = null;

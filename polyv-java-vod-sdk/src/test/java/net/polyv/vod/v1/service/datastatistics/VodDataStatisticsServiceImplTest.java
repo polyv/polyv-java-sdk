@@ -14,6 +14,8 @@ import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoPlayLogResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodGetVideoViewingCompletionRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryAudienceAnalysisResultsRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryAudienceAnalysisResultsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsRequest;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryPlayDomainNameStatisticsResponse;
 import net.polyv.vod.v1.entity.datastatistics.VodQueryVideoAnalysisDataRequest;
@@ -552,7 +554,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
         VodQueryViewingBehaviorListResponse vodQueryViewingBehaviorListResponse = null;
         try {
             vodQueryViewingBehaviorListRequest.setStartTime(super.getDate(2021, 2, 1))
-                    .setEndTime(super.getDate(2021, 2, 24))
+                    .setEndTime(super.getDate(2021, 2, 30))
                     .setVideoId("1b448be3230a0194d959426ae005645f_1")
                     .setCurrentPage(1)
                     .setPageSize(10)
@@ -594,6 +596,38 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodQueryVideoAnalysisDataResponse);
             if (vodQueryVideoAnalysisDataResponse != null) {
                 log.debug("测试高级分析–根据视频id查询视频分析数据成功{}", JSON.toJSONString(vodQueryVideoAnalysisDataResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试高级分析–根据观众id查询观众分析结果
+     * 说明：2、高级分析功能介绍详见：http://dev.polyv.net/2019/videoproduct/v-manual/v-manual-statistic/advance-analysis/
+     * 说明：3、由于数据量和计算量大，数据分析结果次日才可查询。
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testQueryAudienceAnalysisResults() throws IOException, NoSuchAlgorithmException {
+        VodQueryAudienceAnalysisResultsRequest vodQueryAudienceAnalysisResultsRequest =
+                new VodQueryAudienceAnalysisResultsRequest();
+        VodQueryAudienceAnalysisResultsResponse vodQueryAudienceAnalysisResultsResponse = null;
+        try {
+            vodQueryAudienceAnalysisResultsRequest.setViewerId("1555313336634")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryAudienceAnalysisResultsResponse = new VodDataStatisticsServiceImpl().queryAudienceAnalysisResults(
+                    vodQueryAudienceAnalysisResultsRequest);
+            Assert.assertNotNull(vodQueryAudienceAnalysisResultsResponse);
+            if (vodQueryAudienceAnalysisResultsResponse != null) {
+                log.debug("测试高级分析–根据观众id查询观众分析结果成功{}", JSON.toJSONString(vodQueryAudienceAnalysisResultsResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

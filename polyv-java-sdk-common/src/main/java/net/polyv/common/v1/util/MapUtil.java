@@ -223,10 +223,13 @@ public class MapUtil {
         Iterator<Map.Entry<String, String>> mapIterator = paramMap.entrySet().iterator();
         while (mapIterator.hasNext()) {
             Map.Entry<String, String> next = mapIterator.next();
-            paramStringBuffer.append(next.getKey())
-                    .append("=")
-                    .append(URLEncoder.encode(next.getValue(), Constant.UTF8))
-                    .append("&");
+            String value = next.getValue();
+            if (StringUtils.isNotBlank(value)) {
+                paramStringBuffer.append(next.getKey())
+                        .append("=")
+                        .append(URLEncoder.encode(value, Constant.UTF8))
+                        .append("&");
+            }
         }
         String paramStr = paramStringBuffer.toString();
 //        String paramStr = MapUtil.mapJoinNotEncode(paramMap);

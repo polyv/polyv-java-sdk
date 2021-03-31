@@ -50,21 +50,21 @@ public class VodGetVideoSizeResponse {
         private String duration;
         
         /**
-         * 编码后码率1FLV的大小
+         * 编码后码率1FLV的大小，单位为Bytes：字节
          */
-        @ApiModelProperty(name = "filesize1", value = "编码后码率1FLV的大小")
+        @ApiModelProperty(name = "filesize1", value = "编码后码率1FLV的大小，单位为Bytes：字节")
         private Long filesize1;
         
         /**
-         * 编码后码率2FLV的大小
+         * 编码后码率2FLV的大小，单位为Bytes：字节
          */
-        @ApiModelProperty(name = "filesize2", value = "编码后码率2FLV的大小")
+        @ApiModelProperty(name = "filesize2", value = "编码后码率2FLV的大小，单位为Bytes：字节")
         private Long filesize2;
         
         /**
-         * 编码后码率3FLV的大小
+         * 编码后码率3FLV的大小，单位为Bytes：字节
          */
-        @ApiModelProperty(name = "filesize3", value = "编码后码率3FLV的大小")
+        @ApiModelProperty(name = "filesize3", value = "编码后码率3FLV的大小，单位为Bytes：字节")
         private Long filesize3;
     }
     

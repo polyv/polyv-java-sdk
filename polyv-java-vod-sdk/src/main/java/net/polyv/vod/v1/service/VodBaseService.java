@@ -345,74 +345,74 @@ public class VodBaseService {
             e.setPtime(String.valueOf(System.currentTimeMillis()));
         }
         String secretKey, sign;
-        if(e instanceof VodSubCommonRequest){//子账号相关
+        if (e instanceof VodSubCommonRequest) {//子账号相关
             VodSubCommonRequest vodSubCommonRequest = (VodSubCommonRequest) e;
             secretKey = vodSubCommonRequest.getSecretKey();
             vodSubCommonRequest.setTimestamp(String.valueOf(System.currentTimeMillis()));
             signMap = getNotNullMap(signMap, e);
-            sign = VodSignUtil.setVodMd5Sign(signMap,secretKey);
-        }else if(e instanceof VodSubPageCommonRequest){//子账号分页相关
+            sign = VodSignUtil.setVodMd5Sign(signMap, secretKey);
+        } else if (e instanceof VodSubPageCommonRequest) {//子账号分页相关
             VodSubPageCommonRequest subPageCommonRequest = (VodSubPageCommonRequest) e;
             secretKey = subPageCommonRequest.getSecretKey();
             subPageCommonRequest.setTimestamp(String.valueOf(System.currentTimeMillis()));
             signMap = getNotNullMap(signMap, e);
-            sign = VodSignUtil.setVodMd5Sign(signMap,secretKey);
-        }else if(e instanceof VodQueryViewLogByDayRequest){//个性化签名（为了兼容后端特殊签名算法）
+            sign = VodSignUtil.setVodMd5Sign(signMap, secretKey);
+        } else if (e instanceof VodQueryViewLogByDayRequest) {//个性化签名（为了兼容后端特殊签名算法）
             signMap = MapUtil.objectToMap(e);
-            Map<String,String> innerMap = new HashMap<String,String>();
-            innerMap.put("userid",VodGlobalConfig.getUserId());
-            innerMap.put("day",signMap.get("day"));
-            innerMap.put("ptime",signMap.get("ptime"));
+            Map<String, String> innerMap = new HashMap<String, String>();
+            innerMap.put("userid", VodGlobalConfig.getUserId());
+            innerMap.put("day", signMap.get("day"));
+            innerMap.put("ptime", signMap.get("ptime"));
             secretKey = VodGlobalConfig.getSecretKey();
             sign = VodSignUtil.setVodSign(innerMap, secretKey);
-            signMap.put("sign",sign);
-        }else if(e instanceof VodDeleteCategoryRequest){//个性化签名（为了兼容后端特殊签名算法）
+            signMap.put("sign", sign);
+        } else if (e instanceof VodDeleteCategoryRequest) {//个性化签名（为了兼容后端特殊签名算法）
             signMap = MapUtil.objectToMap(e);
-            Map<String,String> innerMap = new HashMap<String,String>();
-            innerMap.put("userid",VodGlobalConfig.getUserId());
-            innerMap.put("cataid",signMap.get("cataid"));
-            innerMap.put("ptime",signMap.get("ptime"));
+            Map<String, String> innerMap = new HashMap<String, String>();
+            innerMap.put("userid", VodGlobalConfig.getUserId());
+            innerMap.put("cataid", signMap.get("cataid"));
+            innerMap.put("ptime", signMap.get("ptime"));
             secretKey = VodGlobalConfig.getSecretKey();
             sign = VodSignUtil.setVodSign(innerMap, secretKey);
-            signMap.put("sign",sign);
-        }else if(e instanceof VodGetCategoryRequest){//个性化签名（为了兼容后端特殊签名算法）
+            signMap.put("sign", sign);
+        } else if (e instanceof VodGetCategoryRequest) {//个性化签名（为了兼容后端特殊签名算法）
             signMap = MapUtil.objectToMap(e);
-            Map<String,String> innerMap = new HashMap<String,String>();
-            innerMap.put("userid",VodGlobalConfig.getUserId());
-            innerMap.put("ptime",signMap.get("ptime"));
+            Map<String, String> innerMap = new HashMap<String, String>();
+            innerMap.put("userid", VodGlobalConfig.getUserId());
+            innerMap.put("ptime", signMap.get("ptime"));
             secretKey = VodGlobalConfig.getSecretKey();
             sign = VodSignUtil.setVodSign(innerMap, secretKey);
-            signMap.put("sign",sign);
-        }else if(e instanceof VodMoveVideoRequest){//个性化签名（为了兼容后端特殊签名算法）
+            signMap.put("sign", sign);
+        } else if (e instanceof VodMoveVideoRequest) {//个性化签名（为了兼容后端特殊签名算法）
             signMap = MapUtil.objectToMap(e);
-            Map<String,String> innerMap = new HashMap<String,String>();
-            innerMap.put("userid",VodGlobalConfig.getUserId());
-            innerMap.put("vids",signMap.get("vids"));
-            innerMap.put("cataid",signMap.get("cataid"));
-            innerMap.put("ptime",signMap.get("ptime"));
+            Map<String, String> innerMap = new HashMap<String, String>();
+            innerMap.put("userid", VodGlobalConfig.getUserId());
+            innerMap.put("vids", signMap.get("vids"));
+            innerMap.put("cataid", signMap.get("cataid"));
+            innerMap.put("ptime", signMap.get("ptime"));
             secretKey = VodGlobalConfig.getSecretKey();
             sign = VodSignUtil.setVodSign(innerMap, secretKey);
-            signMap.put("sign",sign);
-        }else if(e instanceof VodUpdateCategoryNameRequest){//个性化签名（为了兼容后端特殊签名算法）
+            signMap.put("sign", sign);
+        } else if (e instanceof VodUpdateCategoryNameRequest) {//个性化签名（为了兼容后端特殊签名算法）
             signMap = MapUtil.objectToMap(e);
-            Map<String,String> innerMap = new HashMap<String,String>();
-            innerMap.put("userid",VodGlobalConfig.getUserId());
-            innerMap.put("cataname",signMap.get("cataname"));
-            innerMap.put("cataid",signMap.get("cataid"));
-            innerMap.put("ptime",signMap.get("ptime"));
+            Map<String, String> innerMap = new HashMap<String, String>();
+            innerMap.put("userid", VodGlobalConfig.getUserId());
+            innerMap.put("cataname", signMap.get("cataname"));
+            innerMap.put("cataid", signMap.get("cataid"));
+            innerMap.put("ptime", signMap.get("ptime"));
             secretKey = VodGlobalConfig.getSecretKey();
             sign = VodSignUtil.setVodSign(innerMap, secretKey);
-            signMap.put("sign",sign);
-        }else if(e instanceof VodSaveVideoKeyFrameRequest){//个性化签名（为了兼容后端特殊签名算法）
+            signMap.put("sign", sign);
+        } else if (e instanceof VodSaveVideoKeyFrameRequest) {//个性化签名（为了兼容后端特殊签名算法）
             signMap = MapUtil.objectToMap(e);
-            Map<String,String> innerMap = new HashMap<String,String>();
-            innerMap.put("userid",VodGlobalConfig.getUserId());
-            innerMap.put("vid",signMap.get("vid"));
-            innerMap.put("ptime",signMap.get("ptime"));
+            Map<String, String> innerMap = new HashMap<String, String>();
+            innerMap.put("userid", VodGlobalConfig.getUserId());
+            innerMap.put("vid", signMap.get("vid"));
+            innerMap.put("ptime", signMap.get("ptime"));
             secretKey = VodGlobalConfig.getSecretKey();
             sign = VodSignUtil.setVodSign(innerMap, secretKey);
-            signMap.put("sign",sign);
-        }else{
+            signMap.put("sign", sign);
+        } else {
             signMap = getNotNullMap(signMap, e);
             secretKey = VodGlobalConfig.getSecretKey();
             sign = VodSignUtil.setVodSign(signMap, secretKey);
@@ -485,6 +485,7 @@ public class VodBaseService {
     private Map<String, String> getHttpHeadMap() {
         Map<String, String> headMap = new HashMap<String, String>();
         headMap.put(HttpUtil.SOURCE, VodGlobalConfig.SDK_NAME);
+        headMap.put(HttpUtil.USER_AGENT, VodGlobalConfig.SDK_NAME);
         headMap.put(HttpUtil.VERSION, HttpUtil.CURRENT_VERSION);
         headMap.put(HttpUtil.USER_ID_NAME, VodGlobalConfig.getUserId());
         return headMap;

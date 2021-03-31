@@ -81,9 +81,9 @@ public class LiveBaseService {
      */
     private <E extends LiveCommonRequest> LiveCommonResponse baseGet(String url, E e)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-        String response = HttpUtil.get(url, paramMap,getHttpHeadMap());
-        return responseConversion(response,e.getRequestId());
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        String response = HttpUtil.get(url, paramMap, getHttpHeadMap());
+        return responseConversion(response, e.getRequestId());
     }
     
     /**
@@ -97,9 +97,9 @@ public class LiveBaseService {
      */
     protected <E extends LiveCommonRequest> byte[] getReturnBinary(String url, E e)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-
-        byte[] response = HttpUtil.getBinary(url, paramMap,getHttpHeadMap(), null);
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        
+        byte[] response = HttpUtil.getBinary(url, paramMap, getHttpHeadMap(), null);
         if (response == null) {
             String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
             PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
@@ -160,9 +160,9 @@ public class LiveBaseService {
      */
     private <E extends LiveCommonRequest> LiveCommonResponse basePostFormBody(String url, E e)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-        String response = HttpUtil.postFormBody(url, paramMap,getHttpHeadMap());
-        return responseConversion(response,e.getRequestId());
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        String response = HttpUtil.postFormBody(url, paramMap, getHttpHeadMap());
+        return responseConversion(response, e.getRequestId());
     }
     
     /**
@@ -226,16 +226,16 @@ public class LiveBaseService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    private <E extends LiveCommonRequest> LiveCommonResponse basePostJsonBody(String url, Map<String, String> signMap, E e,
-            String json) throws IOException, NoSuchAlgorithmException {
-        signMap = commonRequestLogic(signMap,e);
+    private <E extends LiveCommonRequest> LiveCommonResponse basePostJsonBody(String url, Map<String, String> signMap,
+            E e, String json) throws IOException, NoSuchAlgorithmException {
+        signMap = commonRequestLogic(signMap, e);
         validateBean(e);
-        url = MapUtil.appendUrl(url,signMap);
+        url = MapUtil.appendUrl(url, signMap);
         if (StringUtils.isBlank(json)) {
             json = JSON.toJSONString(e);
         }
-        String response = HttpUtil.postJsonBody(url,getHttpHeadMap(), json, null);
-        return responseConversion(response,e.getRequestId());
+        String response = HttpUtil.postJsonBody(url, getHttpHeadMap(), json, null);
+        return responseConversion(response, e.getRequestId());
     }
     
     /**
@@ -262,6 +262,7 @@ public class LiveBaseService {
             Class<T> tClass) throws IOException, NoSuchAlgorithmException {
         return this.uploadOneFile(url, e, fileMap).parseData(tClass);
     }
+    
     /**
      * HTTP POST 上传文件公共请求
      * @param url 请求URL
@@ -274,10 +275,11 @@ public class LiveBaseService {
      */
     private <E extends LiveCommonRequest> LiveCommonResponse uploadOneFile(String url, E e, Map<String, File> fileMap)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-        String response = HttpUtil.postFile(url, paramMap, fileMap,getHttpHeadMap(), null);
-        return responseConversion(response,e.getRequestId());
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        String response = HttpUtil.postFile(url, paramMap, fileMap, getHttpHeadMap(), null);
+        return responseConversion(response, e.getRequestId());
     }
+    
     /**
      * HTTP POST 上传文件公共请求
      * @param url 请求URL
@@ -307,9 +309,9 @@ public class LiveBaseService {
      */
     private <E extends LiveCommonRequest> LiveCommonResponse uploadMultipartFile(String url, E e,
             Map<String, List<File>> fileMap) throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-        String response = HttpUtil.postMultipleFile(url, paramMap, fileMap,getHttpHeadMap(), null);
-        return responseConversion(response,e.getRequestId());
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        String response = HttpUtil.postMultipleFile(url, paramMap, fileMap, getHttpHeadMap(), null);
+        return responseConversion(response, e.getRequestId());
     }
     
     /**
@@ -328,13 +330,13 @@ public class LiveBaseService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    private <E extends LiveCommonRequest> Map<String, String> commonRequestLogic(Map<String, String> signMap,E e)
+    private <E extends LiveCommonRequest> Map<String, String> commonRequestLogic(Map<String, String> signMap, E e)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
         e.setAppId(LiveGlobalConfig.getAppId());
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
-        if(signMap==null){
+        if (signMap == null) {
             signMap = MapUtil.objectToMap(e);
         }
         signMap = MapUtil.filterNullValue(signMap);
@@ -352,7 +354,7 @@ public class LiveBaseService {
      */
     private <E extends LiveCommonRequest> void validateBean(E e) {
         List<ViolationMsg> violationMsgList = SDKValidateUtil.validateBean(e);
-        if(!violationMsgList.isEmpty()){
+        if (!violationMsgList.isEmpty()) {
             String errors = SDKValidateUtil.getViolationMsgStr(violationMsgList);
             errors = errors.substring(0, errors.length() - 3);
             errors = "输入参数 [" + e.getClass().getName() + "]对象校验失败 ,失败字段 [" + errors + "]";
@@ -369,7 +371,8 @@ public class LiveBaseService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    private LiveCommonResponse responseConversion(String response,String requestId) throws IOException, NoSuchAlgorithmException {
+    private LiveCommonResponse responseConversion(String response, String requestId)
+            throws IOException, NoSuchAlgorithmException {
         LiveCommonResponse liveCommonResponse;
         if (StringUtils.isNotBlank(response)) {
             liveCommonResponse = JSON.parseObject(response, LiveCommonResponse.class);
@@ -388,14 +391,15 @@ public class LiveBaseService {
         return liveCommonResponse;
     }
     
-   private Map<String,String> getHttpHeadMap(){
-       Map<String,String> headMap = new HashMap<String,String>();
-       headMap.put(HttpUtil.SOURCE,LiveGlobalConfig.SDK_NAME);
-       headMap.put(HttpUtil.VERSION, HttpUtil.CURRENT_VERSION);
-       headMap.put(HttpUtil.APP_ID_NAME, LiveGlobalConfig.getAppId());
-       headMap.put(HttpUtil.USER_ID_NAME, LiveGlobalConfig.getUserId());
-       return headMap;
-   }
+    private Map<String, String> getHttpHeadMap() {
+        Map<String, String> headMap = new HashMap<String, String>();
+        headMap.put(HttpUtil.SOURCE, LiveGlobalConfig.SDK_NAME);
+        headMap.put(HttpUtil.USER_AGENT, LiveGlobalConfig.SDK_NAME);
+        headMap.put(HttpUtil.VERSION, HttpUtil.CURRENT_VERSION);
+        headMap.put(HttpUtil.APP_ID_NAME, LiveGlobalConfig.getAppId());
+        headMap.put(HttpUtil.USER_ID_NAME, LiveGlobalConfig.getUserId());
+        return headMap;
+    }
     
     /**
      * 公共方法结束

@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.config.VodGlobalConfig;
+import net.polyv.vod.v1.constant.VodConstant;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
@@ -170,7 +172,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
         List<VodUpdateVideoInfoResponse> vodUpdateVideoInfoResponses = super.postFormBodyReturnList(url,
                 vodUpdateVideoInfoRequest, VodUpdateVideoInfoResponse.class);
         if(vodUpdateVideoInfoResponses.isEmpty()){
-            return null;
+            throw new PloyvSdkException(VodConstant.ERROR_CODE, "编辑单个视频的信息失败");
         }
         return vodUpdateVideoInfoResponses.get(0);
     }

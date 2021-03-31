@@ -42,7 +42,7 @@ public class VodScreenshotServiceImplTest extends BaseTest {
         Integer vodCreateScreenshotTaskResponse = null;
         try {
             vodCreateScreenshotTaskRequest.setUploadTime(new Date())
-                    .setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setOffsetTimes("8")
                     .setRequestId(VodSignUtil.generateUUID());
             vodCreateScreenshotTaskResponse = new VodScreenshotServiceImpl().createScreenshotTask(

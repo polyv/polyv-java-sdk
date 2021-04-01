@@ -58,6 +58,7 @@ public class VodBarrageServiceImplTest extends BaseTest {
     
     /**
      * 测试上传点播弹幕文件接口
+     * 返回：true为上传弹幕文件成功，false为上传弹幕文件失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

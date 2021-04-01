@@ -57,7 +57,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodQueryViewLogByDayResponse&gt;，**VodQueryViewLogByDayResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -261,7 +261,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodQueryVideoPlaybackStatisticsResponse&gt;，**VodQueryVideoPlaybackStatisticsResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -410,7 +410,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodQueryPlayDomainNameStatisticsResponse&gt;，**VodQueryPlayDomainNameStatisticsResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -588,7 +588,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodQueryVideoPlaybackHourlyStatisticsResponse&gt;，**VodQueryVideoPlaybackHourlyStatisticsResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -666,7 +666,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodQueryVideoGeographicStatisticsResponse&gt;，**VodQueryVideoGeographicStatisticsResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -743,7 +743,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodQueryVideoViewershipResponse&gt;，**VodQueryVideoViewershipResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -818,7 +818,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodQueryVideoPlaybackFlowSizeStatisticsResponse&gt;，**VodQueryVideoPlaybackFlowSizeStatisticsResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -890,7 +890,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodQueryVideoPlayTimeStatisticsResponse&gt;，**VodQueryVideoPlayTimeStatisticsResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -972,7 +972,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodQueryVideoViewingHotspotStatisticsResponse&gt;，**VodQueryVideoViewingHotspotStatisticsResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -1038,7 +1038,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodQueryVideoViewingRatioStatisticsResponse&gt;，**VodQueryVideoViewingRatioStatisticsResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

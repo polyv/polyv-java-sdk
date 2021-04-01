@@ -263,7 +263,7 @@ true为开关开启，false为开关关闭
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodGetVideoSizeResponse&gt;，**VodGetVideoSizeResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -616,7 +616,7 @@ true为开关开启，false为开关关闭
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodGetVideoExamResponse&gt;，**VodGetVideoExamResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -755,7 +755,7 @@ true为开关开启，false为开关关闭
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodGetVideosSizeResponse&gt;，**VodGetVideosSizeResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -822,7 +822,7 @@ true为开关开启，false为开关关闭
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodGetVideosPlayTimesResponse&gt;，**VodGetVideosPlayTimesResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

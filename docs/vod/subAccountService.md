@@ -165,7 +165,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodSubAccountQueryVideoInfoResponse&gt;，**VodSubAccountQueryVideoInfoResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -420,7 +420,7 @@ true为修改成功，false为修改失败
 
 ### 返回对象描述
 
-null
+true为删除视频成功，false为删除视频失败
 <br /><br />
 
 ------------------
@@ -561,7 +561,7 @@ null
 
 ### 返回对象描述
 
-null
+新增成功返回新增的分类id
 <br /><br />
 
 ------------------

@@ -49,7 +49,7 @@
 
 ### 返回对象描述
 
-null
+true为上传课件成功，false为上传课件失败
 <br /><br />
 
 ------------------
@@ -161,7 +161,7 @@ true为删除成功，false为删除失败
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;VodQueryCoursewareResponse&gt;，**VodQueryCoursewareResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

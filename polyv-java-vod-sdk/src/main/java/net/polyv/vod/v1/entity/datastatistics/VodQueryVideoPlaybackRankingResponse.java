@@ -50,7 +50,7 @@ public class VodQueryVideoPlaybackRankingResponse {
         /**
          * 视频vid
          */
-        @ApiModelProperty(name = "videoId", value = "视频vid", required = false)
+        @ApiModelProperty(name = "videoId", value = "视频videoId", required = false)
         private String videoId;
         
         /**

@@ -5,6 +5,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
@@ -14,6 +15,7 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
  * @author: fangyan
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("高级分析-根据视频id查询视频分析数据请求实体")
 public class VodQueryVideoAnalysisDataRequest extends VodCommonRequest {

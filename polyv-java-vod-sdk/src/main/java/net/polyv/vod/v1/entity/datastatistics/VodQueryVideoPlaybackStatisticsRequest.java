@@ -22,7 +22,7 @@ public class VodQueryVideoPlaybackStatisticsRequest extends VodCommonRequest {
     /**
      * 视频ID，不填vid会查所有视频的播放量统计数据
      */
-    @ApiModelProperty(name = "videoId", value = "视频ID，不填vid会查所有视频的播放量统计数据", required = false)
+    @ApiModelProperty(name = "videoId", value = "视频videoId，不填vid会查所有视频的播放量统计数据", required = false)
     @JSONField(name = "vid")
     private String videoId;
     

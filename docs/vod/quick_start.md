@@ -4,9 +4,9 @@
 
 - 安装Java环境。
 
-  **保利威直播Java SDK**支持1.8或更高版本。
+  **保利威点播Java SDK**支持1.8或更高版本。
 
-- 注册[保利威账号](https://www.polyv.net/)并获取[访问密钥信息](http://live.polyv.net/#/develop/appId)（UserId  、 AppId 、 AppSecret）。            
+- 注册[保利威账号](https://www.polyv.net/)并获取[访问密钥信息](http://live.polyv.net/#/develop/appId)（userId  、 secretKey）。            
 
   
   

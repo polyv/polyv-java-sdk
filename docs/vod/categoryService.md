@@ -1,0 +1,473 @@
+## 1、移动视频分类接口
+### 描述
+```
+移动视频分类接口
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testMoveCategory() throws IOException, NoSuchAlgorithmException {
+        VodMoveCategoryRequest vodMoveCategoryRequest = new VodMoveCategoryRequest();
+        Boolean vodMoveCategoryResponse = null;
+        try {
+            vodMoveCategoryRequest.setCategoryId("1615536384688")
+                    .setDestCategoryId("1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodMoveCategoryResponse = new VodCategoryServiceImpl().moveCategory(vodMoveCategoryRequest);
+            Assert.assertTrue(vodMoveCategoryResponse);
+            if (vodMoveCategoryResponse) {
+                log.debug("测试移动视频分类接口成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| categoryId | true | String | 需要移动的目录分类id, (id=1，表示默认分类) | 
+| destCategoryId | true | String | 移动到的目录分类id, (id=1，表示默认分类) | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为修改成功，false为修改失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 2、设置分类属性
+### 描述
+```
+设置分类属性
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testUpdateCategoryProfile() throws IOException, NoSuchAlgorithmException {
+        VodUpdateCategoryProfileRequest vodUpdateCategoryProfileRequest = new VodUpdateCategoryProfileRequest();
+        Boolean vodUpdateCategoryProfileResponse = null;
+        try {
+            vodUpdateCategoryProfileRequest.setCategoryId("1615536384688")
+                    .setIsSettings("Y")
+                    .setKeepSource(0)
+                    .setEncrypt(0)
+                    .setHlsLevel("open")
+                    .setIsEdu(0)
+                    .setEncodeAAC(0)
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUpdateCategoryProfileResponse = new VodCategoryServiceImpl().updateCategoryProfile(
+                    vodUpdateCategoryProfileRequest);
+            Assert.assertTrue(vodUpdateCategoryProfileResponse);
+            if (vodUpdateCategoryProfileResponse) {
+                log.debug("测试设置分类属性成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| categoryId | true | String | 分类ID，仅能设置一级分类的属性 | 
+| isSettings | false | String | 是否启用分类设置 Y:启用, N:关闭，默认值为Y:启用 | 
+| keepSource | false | Integer | 源文件播放，1为开启，0为关闭；开启时不对视频进行转码（仅对新上传视频有效），默认值为0:非源文件播放 | 
+| encrypt | true | Integer | 视频加密设置开关（仅对新上传视频有效）,1：打开，0：关闭，默认值为0:关闭 | 
+| hlsLevel | false | String | 移动端加密设置，有效取值为 open: 非加密授权；web: WEB授权；app: APP授权；wxa_app：小程序授权；默认值为open：非加密授权 | 
+| isEdu | false | Integer | 视频优化，1为开启，0为关闭（仅对新上传视频生效）;默认值为0:关闭 | 
+| encodeAAC | false | Integer | 生成音频文件，1为开启，0为关闭（该功能只对部分有权限用户开放，且只对新上传视频生效），默认为0:不生成 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为修改成功，false为修改失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 3、新建视频分类
+### 描述
+```
+新建视频分类
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testCreateCategory() throws IOException, NoSuchAlgorithmException {
+        VodCreateCategoryRequest vodCreateCategoryRequest = new VodCreateCategoryRequest();
+        String vodCreateCategoryResponse = null;
+        try {
+            vodCreateCategoryRequest.setCategoryName("Junit测试")
+                    .setParentId("1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodCreateCategoryResponse = new VodCategoryServiceImpl().createCategory(vodCreateCategoryRequest);
+            Assert.assertNotNull(vodCreateCategoryResponse);
+            if (vodCreateCategoryResponse != null) {
+                log.debug("测试新建视频分类成功，{}", vodCreateCategoryResponse);
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| categoryName | true | String | 分类名称 ,不超过40个字符 | 
+| parentId | true | String | 新建的分类目录的上一级目录，值为1时表示根目录 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+新建视频分类ID
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 4、删除分类
+### 描述
+```
+删除分类
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testDeleteCategory() throws IOException, NoSuchAlgorithmException {
+        VodDeleteCategoryRequest vodDeleteCategoryRequest = new VodDeleteCategoryRequest();
+        Boolean vodDeleteCategoryResponse = null;
+        try {
+            //准备测试数据
+            String categoryID = super.createCategory();
+            vodDeleteCategoryRequest.setCategoryId(categoryID).setRequestId(VodSignUtil.generateUUID());
+            vodDeleteCategoryResponse = new VodCategoryServiceImpl().deleteCategory(vodDeleteCategoryRequest);
+            Assert.assertTrue(vodDeleteCategoryResponse);
+            if (vodDeleteCategoryResponse) {
+                log.debug("测试删除分类成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| categoryId | true | String | 视频分类ID | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为删除成功，false为删除失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 5、获取视频分类目录
+### 描述
+```
+获取视频分类目录
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testGetCategory() throws IOException, NoSuchAlgorithmException {
+        VodGetCategoryRequest vodGetCategoryRequest = new VodGetCategoryRequest();
+        List<VodGetCategoryResponse> vodGetCategoryResponseList = null;
+        try {
+            vodGetCategoryRequest.setCategoryId("1").setRequestId(VodSignUtil.generateUUID());
+            vodGetCategoryResponseList = new VodCategoryServiceImpl().getCategory(vodGetCategoryRequest);
+            Assert.assertNotNull(vodGetCategoryResponseList);
+            if (vodGetCategoryResponseList != null) {
+                log.debug("测试获取视频分类目录成功,{}", JSON.toJSONString(vodGetCategoryResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回VodGetCategoryResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| categoryId | false | String | 分类id，默认为根目录，获取该分类下的树结构 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+返回对象是List,具体元素内容如下：
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| text | false | String | 分类名和该分类下视频总数的组合，例如 测试分类 (4)  | 
+| categoryName | false | String | 分类名称 | 
+| categoryTree | false | String | 分类树，显示从根目录到该目录每一层的分类id,例如 1,1474873756622 | 
+| categoryId | false | String | 分类id，如果为1则是根目录 | 
+| parentId | false | String | 上一级分类id，根目录的上一级分类为0 | 
+| videoNums | false | Integer | 此分类及其子分类视频总数 | 
+| nodes | false | Array | 该分类的子分类【详见[VodGetCategoryResponse参数描述](categoryService.md?id=polyv9)】 | 
+
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 6、修改分类名称
+### 描述
+```
+修改分类名称
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testUpdateCategoryName() throws IOException, NoSuchAlgorithmException {
+        VodUpdateCategoryNameRequest vodUpdateCategoryNameRequest = new VodUpdateCategoryNameRequest();
+        Boolean vodUpdateCategoryNameResponse = null;
+        try {
+            vodUpdateCategoryNameRequest.setCategoryId("1615536384688")
+                    .setCategoryName("Junit测试(勿删)_3")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodUpdateCategoryNameResponse = new VodCategoryServiceImpl().updateCategoryName(
+                    vodUpdateCategoryNameRequest);
+            Assert.assertTrue(vodUpdateCategoryNameResponse);
+            if (vodUpdateCategoryNameResponse) {
+                log.debug("测试修改分类名称成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| categoryId | true | String | 分类id | 
+| categoryName | true | String | 修改后的分类名称 | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为修改成功，false为修改失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 7、移动视频到指定分类
+### 描述
+```
+移动视频到指定分类
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testMoveVideo() throws IOException, NoSuchAlgorithmException {
+        VodMoveVideoRequest vodMoveVideoRequest = new VodMoveVideoRequest();
+        Boolean vodMoveVideoResponse = null;
+        try {
+            vodMoveVideoRequest.setCategoryId("1602300731843")
+                    .setVideoIds("1b448be3230a0194d959426ae005645f_1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodMoveVideoResponse = new VodCategoryServiceImpl().moveVideo(vodMoveVideoRequest);
+            Assert.assertTrue(vodMoveVideoResponse);
+            if (vodMoveVideoResponse) {
+                log.debug("测试移动视频到指定分类成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| videoIds | true | String | 视频的ID,可以选择多个视频，逗号分割，例如 e2e85038_e,e2e85039_e | 
+| categoryId | true | String | 视频将要移动到的目标分类ID | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+true为修改成功，false为修改失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 8、通过cataid获取视频目录空间
+### 描述
+```
+通过cataid获取视频目录空间
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testGetCategorySize() throws IOException, NoSuchAlgorithmException {
+        VodGetCategorySizeRequest vodGetCategorySizeRequest = new VodGetCategorySizeRequest();
+        Long vodGetCategorySizeResponse = null;
+        try {
+            vodGetCategorySizeRequest.setCategoryId("1602671097888").setRequestId(VodSignUtil.generateUUID());
+            vodGetCategorySizeResponse = new VodCategoryServiceImpl().getCategorySize(vodGetCategorySizeRequest);
+            Assert.assertNotNull(vodGetCategorySizeResponse);
+            if (vodGetCategorySizeResponse != null) {
+                log.debug("测试通过cataid获取视频目录空间成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+}
+```
+### 单元测试说明
+1、请求正确，返回Long对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| categoryId | true | String | 目录分类id, (id=1，表示默认分类) | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+
+分类下的视频大小，单位为byte
+<br /><br />
+
+------------------
+
+<br /><br />
+
+

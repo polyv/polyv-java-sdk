@@ -5,7 +5,7 @@
     <title>POLYV JAVA 点播 SDK</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="description" content="Description">
-    <link rel="icon" href="//dev.polyv.net/favicon.ico" />
+    <link rel="icon" href="//dev.polyv.net/favicon.ico"/>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
@@ -36,9 +36,10 @@
             margin-left: 1.5em
         }
 
-        #toc_container .toc_list a{
+        #toc_container .toc_list a {
             color: #505d6b;
         }
+
         #toc_container {
             background: #f9f9f9;
             border: 1px solid #aaa;
@@ -84,8 +85,18 @@
             right: 25px;
             top: 70px;
         }
+
         #toc_container .menuActive {
-            color:#42b983 !important;
+            color: #42b983 !important;
+        }
+
+        .goup-container {
+            bottom: 98px !important;
+            right: 52px !important;
+        }
+        .goup-text{
+            bottom: 78px !important;
+            right: 30px !important;
         }
     </style>
     <!--
@@ -235,14 +246,14 @@
         for (var i = 0; i < h3.length; i++) {
             var elemTop = getElementTop(h3[i]);
             var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-            console.log(scrollTop +"---"+elemTop+"--"+i);
+            console.log(scrollTop + "---" + elemTop + "--" + i);
             if (scrollTop >= elemTop - 1) {
                 lastH = i;
                 console.log(i);
             }
         }
         $(".menu").removeClass("menuActive");
-        $("#menu"+lastH).addClass("menuActive");
+        $("#menu" + lastH).addClass("menuActive");
     }
 
     //点击隐藏方法
@@ -274,7 +285,7 @@
                 let baseUrl = window.location.href.split("?")[0];
                 $.each(articleTitle, function (index, value) {
                     let title = value.split(" ")[1];
-                    liHtml += titleHtml.replace("#title#", title).replace("#href#", baseUrl + "?id=_" + title).replace("#i#",index);
+                    liHtml += titleHtml.replace("#title#", title).replace("#href#", baseUrl + "?id=_" + title).replace("#i#", index);
                 });
                 html += menuHtml.replace("#liHtml#", liHtml);
             }
@@ -305,15 +316,15 @@
     // action数组中前一个数组元素溢出时会自动把客户交到后一个数组元素中
     var action = [
         {
-            "actionType":"to_group",
-            "optionId":"3",
-            "deciId":"b9bf21af5ebb4a8cbf5a7c38fdd26958",
-            "spillId":"4"
+            "actionType": "to_group",
+            "optionId": "3",
+            "deciId": "b9bf21af5ebb4a8cbf5a7c38fdd26958",
+            "spillId": "4"
         }
     ];
     var payload = JSON.stringify(action);
-    zc("config",{
-        transfer_action:payload,
+    zc("config", {
+        transfer_action: payload,
     })
 </script>
 <!--智齿 html标签-->

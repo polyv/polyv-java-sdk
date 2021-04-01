@@ -169,7 +169,7 @@ public class VodUploadServiceImplTest extends BaseTest {
     /**
      * 测试上传PPT文件
      * 约束：2、txt文件格式示例如下，每一行为：“秒数”+“:”+“标题”（注：txt文件必须是UTF-8的编码格式，否则课件的章节标题会显示为乱码）
-     * TODO 暂未测试
+     * 返回：true为上传成功，false为上传失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -178,9 +178,11 @@ public class VodUploadServiceImplTest extends BaseTest {
         VodUploadPPTRequest vodUploadPPTRequest = new VodUploadPPTRequest();
         Boolean vodUploadPPTResponse = null;
         try {
-            vodUploadPPTRequest.setVideoId("")
-                    .setPpt(new File(""))
-                    .setControlFile(new File(""))
+            String pptFile = getClass().getResource("/file/PPT.pptx").getPath();
+            String controlFile = getClass().getResource("/file/controlFile.txt").getPath();
+            vodUploadPPTRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setPpt(new File(pptFile))
+                    .setControlFile(new File(controlFile))
                     .setRequestId(VodSignUtil.generateUUID());
             vodUploadPPTResponse = new VodUploadServiceImpl().uploadPPT(vodUploadPPTRequest);
             Assert.assertTrue(vodUploadPPTResponse);

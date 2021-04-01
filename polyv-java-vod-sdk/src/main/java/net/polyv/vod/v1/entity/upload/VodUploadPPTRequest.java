@@ -42,7 +42,6 @@ public class VodUploadPPTRequest extends VodCommonRequest {
      * ppt控制文件,格式见约束
      */
     @ApiModelProperty(name = "controlFile", value = "ppt控制文件,格式见约束", required = true)
-    @JSONField(name = "txt")
     private File controlFile;
 
 }

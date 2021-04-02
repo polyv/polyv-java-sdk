@@ -123,7 +123,6 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
      * 测试异步合并直播录制文件
      * 返回：true为提交成功，false为提交失败，具体合并是否成功以回调为准
      * 回调说明：该接口为异步处理，如果需要获取转存的结果，可以在请求接口时提交callbackUrl 参数，在程序转存成功后，会对callbackUrl 进行回调通知
-     * 回调说明：转存成功回调参数；转存成功回调参数参照 http://dev.polyv.net/2018/liveproduct/l-manual/l-function-intro/development-settings
      * 回调说明：/playback-callback-url/
      * 回调对象：net.polyv.live.v1.entity.channel.playback.LiveMergeChannelVideoAsyncRequest$LiveMergeChannelVideoCallback
      * API地址：CHANNEL_RECORD_FILE_MERGE_ASYNC_URL

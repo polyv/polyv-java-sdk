@@ -14,9 +14,9 @@ import org.junit.Assert;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.v1.constant.Constant;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.config.InitConfig;
-import net.polyv.vod.v1.constant.VodConstant;
 import net.polyv.vod.v1.entity.advertising.VodCreateAdvertisingRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageResponse;

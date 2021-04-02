@@ -31,7 +31,8 @@ public class LiveUpdateChannelSplashRequest extends LiveCommonRequest {
     /**
      * 设置开启或关闭引导页Y或N
      */
-    @ApiModelProperty(name = "splashEnabled", value = "设置开启或关闭引导页Y或N", required = false)
+    @ApiModelProperty(name = "splashEnabled", value = "设置开启或关闭引导页Y或N", required = true)
+    @NotNull(message = "属性splashEnabled不能为空")
     private String splashEnabled;
     
     /**

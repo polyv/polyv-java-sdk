@@ -27,6 +27,8 @@ public class Constant {
     
     public static  final Integer BUSINESS_ERROR_CODE = 500;
     
+    public static  final Integer ERROR_CODE = 400;
+    
     public static  final Integer CLIENT_ERROR_CODE = 900;
     
     public static  final String UTF8 = "UTF-8";

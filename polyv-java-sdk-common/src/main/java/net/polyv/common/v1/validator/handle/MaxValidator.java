@@ -3,6 +3,8 @@ package net.polyv.common.v1.validator.handle;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
+import net.polyv.common.v1.constant.Constant;
+import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.validator.constraints.Max;
 
 /**
@@ -26,7 +28,7 @@ public class MaxValidator extends Validator {
                 return doubleValue > cast.value() ? cast.message() : null;
             } else {
                 // 根据需求继续添加其他类型的验证
-                throw new RuntimeException(field.getName() + " Max validation exception");
+                throw new PloyvSdkException(Constant.ERROR_CODE, field.getName() + " Max validation exception");
             }
         } else {
             return null;

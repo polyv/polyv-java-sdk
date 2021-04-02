@@ -928,7 +928,7 @@ true为修改成功，false为修改失败
             //准备测试数据
             String channelId = super.createChannel();
             liveChannelPasswordSettingRequest.setChannelId(channelId)
-                    .setPasswd("987654")
+                    .setPasswd(getRandomString(6))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelPasswordSettingResponse = new LiveChannelOperateServiceImpl().updateChannelPassword(
                     liveChannelPasswordSettingRequest);

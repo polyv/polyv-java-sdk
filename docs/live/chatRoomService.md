@@ -194,7 +194,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;LiveGetHistoryChatMsgResponse&gt;，**LiveGetHistoryChatMsgResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -350,7 +350,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;String&gt;，**String**具体元素内容如下：
 返回当前频道的禁言列表
 <br /><br />
 
@@ -406,7 +406,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;LiveKickedListResponse&gt;，**LiveKickedListResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -478,7 +478,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;String&gt;，**String**具体元素内容如下：
 获取当前频道的严禁词/禁言IP列表
 <br /><br />
 
@@ -533,7 +533,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;String&gt;，**String**具体元素内容如下：
 当前保利威账号下通用设置的严禁词列表
 <br /><br />
 
@@ -594,7 +594,7 @@
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;LiveGetConsultingRecordResponse&gt;，**LiveGetConsultingRecordResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
@@ -740,7 +740,7 @@ true 设置讲师信息成功，false 设置讲师信息失败
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;String&gt;，**String**具体元素内容如下：
 当前所有的禁言ip列表
 <br /><br />
 
@@ -827,6 +827,9 @@ true 设置成功，false 设置失败
         LiveDelBannedDataRequest liveDelBannedDataRequest = new LiveDelBannedDataRequest();
         Boolean liveDelBannedDataResponse = null;
         try {
+            //创建一个禁言IP（192.168.1.1）用于测试，实际业务过程中，此代码可以删除
+            testAddBannedIP();
+            //正式业务逻辑
             String channelId = super.createChannel();
             liveDelBannedDataRequest.setContent("192.168.1.1")
                     .setChannelId(channelId)

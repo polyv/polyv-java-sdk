@@ -314,8 +314,8 @@ true为设置成功，false为设置失败
         try {
             String path = getClass().getResource("/img/elephant.png").getPath();
             liveUpdateChannelSplashRequest.setChannelId(createChannel())
-                    .setSplashEnabled("N")
-                    .setImgfile(new File(path))
+                    .setSplashEnabled("Y")
+//                    .setImgfile(new File(path))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
                     liveUpdateChannelSplashRequest);
@@ -345,8 +345,8 @@ true为设置成功，false为设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| splashEnabled | true | String | 设置开启或关闭引导页Y或N | 
-| imgfile | true | File | 支持jpg、jpeg、png三种格式，大小不能超过4Mb | 
+| splashEnabled | false | String | 设置开启或关闭引导页Y或N | 
+| imgfile | false | File | 支持jpg、jpeg、png三种格式，大小不能超过4Mb | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述

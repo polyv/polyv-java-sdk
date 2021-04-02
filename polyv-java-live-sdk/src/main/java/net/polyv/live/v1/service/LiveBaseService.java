@@ -12,13 +12,13 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.base.HttpUtil;
-import net.polyv.common.v1.util.MapUtil;
+import net.polyv.common.v1.constant.Constant;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.common.v1.util.MapUtil;
 import net.polyv.common.v1.util.SDKValidateUtil;
 import net.polyv.common.v1.util.StringUtils;
 import net.polyv.common.v1.validator.ViolationMsg;
 import net.polyv.live.v1.config.LiveGlobalConfig;
-import net.polyv.live.v1.constant.LiveConstant;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 import net.polyv.live.v1.entity.LiveCommonResponse;
 import net.polyv.live.v1.util.LiveSignUtil;

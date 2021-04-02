@@ -208,6 +208,19 @@ true为提交成功，false为提交失败，具体转存是否成功以回调�
 ### 返回对象描述
 
 true为提交成功，false为提交失败，具体合并是否成功以回调为准
+### 回调说明
+&emsp;&emsp;该接口为异步处理，如果需要获取转存的结果，可以在请求接口时提交callbackUrl 参数，在程序转存成功后，会对callbackUrl 进行回调通知/playback-callback-url/
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| status | false | String | 接口处理结果，取值：success（成功），error（出错） | 
+| code | false | String | 错误码,userExpired-用户已过期；spaceOverSize-点播空间不足；unknown-未知异常 | 
+| userId | false | String | 用户id | 
+| channelId | false | String | 频道号 | 
+| fileId | false | String | 转存的文件ID | 
+| sign | false | String | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 | 
+| timestamp | false | String | 13位毫秒时间戳 | 
+
 <br /><br />
 
 ------------------
@@ -230,8 +243,8 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
         LiveChannelVideoListResponse liveChannelVideoListResponse;
         try {
             liveChannelVideoListRequest.setChannelId("1951952")
-                    .setStartDate(getDate(2020,1,1))
-                    .setEndDate(getDate(2020,10,14))
+                    .setStartDate(getDate(2020, 1, 1))
+                    .setEndDate(getDate(2020, 10, 14))
                     .setSessionId(null)
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelVideoListResponse = new LiveChannelPlaybackServiceImpl().listChannelVideo(
@@ -406,7 +419,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
         LiveListChannelSessionInfoResponse liveListChannelSessionInfoResponse;
         try {
             Calendar instance = Calendar.getInstance();
-            instance.set(2020,10,1);
+            instance.set(2020, 10, 1);
             liveListChannelSessionInfoRequest.setChannelId(createChannel())
                     .setStartDate(instance.getTime())
                     .setEndDate(new Date())
@@ -697,7 +710,8 @@ true为设置成功，false为设置失败
             liveChannelPlaybackEnabledRequest.setChannelId(createChannel())
                     .setPlayBackEnabled("Y")
                     .setRequestId(LiveSignUtil.generateUUID());
-            liveChannelPlaybackEnabledResponse = new LiveChannelPlaybackServiceImpl().updateChannelPlayBackEnabledSetting(
+            liveChannelPlaybackEnabledResponse =
+                    new LiveChannelPlaybackServiceImpl().updateChannelPlayBackEnabledSetting(
                     liveChannelPlaybackEnabledRequest);
             Assert.assertNotNull(liveChannelPlaybackEnabledResponse);
             if (liveChannelPlaybackEnabledResponse != null) {
@@ -878,7 +892,7 @@ true为设置成功，false为设置失败
         Boolean liveDeleteChannelVideoResponse;
         try {
             liveDeleteChannelVideoRequest.setChannelId("1951952")
-                    .setStartTime(getDate(2020,10,16,11,12,34))
+                    .setStartTime(getDate(2020, 10, 16, 11, 12, 34))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveDeleteChannelVideoResponse = new LiveChannelPlaybackServiceImpl().deleteChannelVideo(
                     liveDeleteChannelVideoRequest);

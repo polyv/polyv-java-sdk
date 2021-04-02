@@ -46,12 +46,10 @@
 | channelId | true | String | 频道号 | 
 | startDate | false | Date | 查询的开始时间，格式要求：yyyy-MM-dd | 
 | endDate | false | Date | 查询的结束时间，格式要求：yyyy-MM-dd | 
-| currentPage | false | Integer | 页数，默认为1 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
-返回对象是List,具体元素内容如下：
+返回对象是List&lt;LiveQuestionAnswerRecordResponse&gt;，**LiveQuestionAnswerRecordResponse**具体元素内容如下：
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

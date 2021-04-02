@@ -234,7 +234,7 @@ public class BaseTest {
                 log.debug("测试分页获取视频同步列表成功，{}", JSON.toJSONString(vodGetTaskListResponse));
             }
             if (vodGetTaskListResponse.getContents() == null || vodGetTaskListResponse.getContents().isEmpty()) {
-                throw new PloyvSdkException(VodConstant.ERROR_CODE, "分页获取视频同步列表结果为空");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "分页获取视频同步列表结果为空");
             }
             return vodGetTaskListResponse.getContents().get(0);
         } catch (PloyvSdkException e) {
@@ -321,7 +321,7 @@ public class BaseTest {
     public List<VodGetSubtitleListResponse.Subtitle> getSubtitleList(String videoId)
             throws IOException, NoSuchAlgorithmException {
         if (videoId == null || videoId.isEmpty()) {
-            throw new PloyvSdkException(VodConstant.ERROR_CODE, "属性videoId为空");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "属性videoId为空");
         }
         VodGetSubtitleListRequest vodGetSubtitleListRequest = new VodGetSubtitleListRequest();
         VodGetSubtitleListResponse vodGetSubtitleListResponse = null;
@@ -330,7 +330,7 @@ public class BaseTest {
             vodGetSubtitleListResponse = new VodSubtitleServiceImpl().getSubtitleList(vodGetSubtitleListRequest);
             Assert.assertNotNull(vodGetSubtitleListResponse);
             if (vodGetSubtitleListResponse.getSubtitles() == null) {
-                throw new PloyvSdkException(VodConstant.ERROR_CODE, "获取视频字幕失败");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "获取视频字幕失败");
             }
             return vodGetSubtitleListResponse.getSubtitles();
         } catch (PloyvSdkException e) {

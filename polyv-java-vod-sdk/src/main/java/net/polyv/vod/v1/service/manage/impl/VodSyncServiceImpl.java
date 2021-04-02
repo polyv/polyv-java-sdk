@@ -64,7 +64,7 @@ public class VodSyncServiceImpl extends VodBaseService implements IVodSyncServic
         String url = VodURL.getRealUrl(VodURL.VOD_EXPORT_TASK_URL);
         byte[] returnBinary = super.getReturnBinary(url, vodExportTaskRequest);
         if (returnBinary.length <= 0) {
-            throw new PloyvSdkException(VodConstant.ERROR_CODE, "导出视频同步任务失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "导出视频同步任务失败");
         }
         return returnBinary;
     }

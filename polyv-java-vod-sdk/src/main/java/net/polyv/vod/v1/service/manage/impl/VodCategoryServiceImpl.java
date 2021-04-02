@@ -75,7 +75,7 @@ public class VodCategoryServiceImpl extends VodBaseService implements IVodCatego
         if (vodCreateCategoryVO != null && vodCreateCategoryVO.getCategoryId() != null) {
             return vodCreateCategoryVO.getCategoryId();
         }
-        throw new PloyvSdkException(VodConstant.ERROR_CODE, "新建视频分类失败");
+        throw new PloyvSdkException(Constant.ERROR_CODE, "新建视频分类失败");
     }
     
     /**

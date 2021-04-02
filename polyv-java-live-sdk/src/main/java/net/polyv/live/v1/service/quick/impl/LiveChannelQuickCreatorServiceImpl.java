@@ -77,7 +77,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                 .setRequestId(quickCreateChannelRequest.getRequestId());
         LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         if (liveChannelResponse == null) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "创建频道失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "创建频道失败");
         }
         log.info("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
         String channelId = liveChannelResponse.getChannelId();
@@ -108,7 +108,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
         Boolean liveChannelSettingResponse = new LiveChannelOperateServiceImpl().updateChannelSetting(
                 liveChannelSettingRequest);
         if (!liveChannelSettingResponse) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "修改频道的相关设置失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "修改频道的相关设置失败");
         }
         log.info("修改频道相关设置成功");
         
@@ -121,7 +121,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                     .setRequestId(quickCreateChannelRequest.getRequestId());
             Boolean result = new LivePlayerServiceImpl().setPlayerImg(liveSetChatAdminDataRequest);
             if (result == null || !result) {
-                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "暖场图片设置失败");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "暖场图片设置失败");
             }
         }
         //4、修改暖场视频
@@ -132,7 +132,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                     .setRequestId(quickCreateChannelRequest.getRequestId());
             Boolean result = new LivePlayerServiceImpl().setPlayerWarmUpVedio(liveSetWarmupVedioRequest);
             if (result == null || !result) {
-                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "暖场视频设置失败");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "暖场视频设置失败");
             }
         }
         
@@ -148,7 +148,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                     .setRequestId(quickCreateChannelRequest.getRequestId());
             result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
             if (result == null || !result) {
-                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "设置讲师信息失败");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "设置讲师信息失败");
             }
             log.info("设置讲师信息成功");
         }
@@ -170,7 +170,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
             liveCreateChannelDocResponse = new LiveChannelDocServiceImpl().createChannelDoc(
                     liveCreateChannelDocRequest);
             if (liveCreateChannelDocResponse == null) {
-                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "上传频道文档失败");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "上传频道文档失败");
             }
         }
         //8、查询频道信息
@@ -220,7 +220,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                 .setRequestId(quickCreateVideoChannelRequest.getRequestId());
         LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         if (liveChannelResponse == null) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "创建频道失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "创建频道失败");
         }
         log.info("频道创建成功{}", JSON.toJSONString(liveChannelResponse));
         String channelId = liveChannelResponse.getChannelId();
@@ -251,7 +251,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
         Boolean liveChannelSettingResponse = new LiveChannelOperateServiceImpl().updateChannelSetting(
                 liveChannelSettingRequest);
         if (!liveChannelSettingResponse) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "修改频道的相关设置失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "修改频道的相关设置失败");
         }
         log.info("修改频道相关设置成功");
         //3、批量创建子频道
@@ -268,7 +268,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                     .setRequestId(quickCreateVideoChannelRequest.getRequestId());
             Boolean result = new LivePlayerServiceImpl().setPlayerImg(liveSetChatAdminDataRequest);
             if (result == null || !result) {
-                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "暖场图片设置失败");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "暖场图片设置失败");
             }
         }
         //5、修改暖场视频
@@ -279,7 +279,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                     .setRequestId(quickCreateVideoChannelRequest.getRequestId());
             Boolean result = new LivePlayerServiceImpl().setPlayerWarmUpVedio(liveSetWarmupVedioRequest);
             if (result == null || !result) {
-                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "暖场视频设置失败");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "暖场视频设置失败");
             }
         }
         //6、设置讲师信息
@@ -294,7 +294,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                     .setRequestId(quickCreateVideoChannelRequest.getRequestId());
             result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
             if (result == null || !result) {
-                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "设置讲师信息失败");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "设置讲师信息失败");
             }
             log.info("设置讲师信息成功");
         }
@@ -318,7 +318,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
         liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().getChannelBasicInfo(
                 liveChannelBasicInfoRequest);
         if (liveChannelBasicInfoResponse == null) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "查询频道基本信息失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "查询频道基本信息失败");
         }
         return liveChannelBasicInfoResponse;
     }
@@ -338,7 +338,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
         liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfoList(
                 liveSonChannelInfoListRequest);
         if (liveSonChannelInfoResponse == null) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "查询子频道信息失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "查询子频道信息失败");
         }
         return liveSonChannelInfoResponse.getSonChannelInfos();
     }
@@ -357,7 +357,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                 new LiveChannelOperateServiceImpl().createSonChannelList(
                 liveCreateSonChannelListRequest);
         if (liveCreateSonChannelListResponse == null) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "批量创建子频道失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "批量创建子频道失败");
         }
     }
     

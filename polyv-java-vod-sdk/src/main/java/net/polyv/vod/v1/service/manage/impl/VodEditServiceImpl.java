@@ -172,7 +172,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
         List<VodUpdateVideoInfoResponse> vodUpdateVideoInfoResponses = super.postFormBodyReturnList(url,
                 vodUpdateVideoInfoRequest, VodUpdateVideoInfoResponse.class);
         if(vodUpdateVideoInfoResponses.isEmpty()){
-            throw new PloyvSdkException(VodConstant.ERROR_CODE, "编辑单个视频的信息失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "编辑单个视频的信息失败");
         }
         return vodUpdateVideoInfoResponses.get(0);
     }

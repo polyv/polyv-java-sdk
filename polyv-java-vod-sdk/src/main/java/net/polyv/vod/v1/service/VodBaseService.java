@@ -111,7 +111,7 @@ public class VodBaseService {
         byte[] response = HttpUtil.getBinary(url, paramMap, getHttpHeadMap(), null);
         if (response == null) {
             String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
-            PloyvSdkException exception = new PloyvSdkException(VodConstant.ERROR_CODE, message);
+            PloyvSdkException exception = new PloyvSdkException(Constant.ERROR_CODE, message);
             log.error(message, exception);
             throw exception;
         }
@@ -450,7 +450,7 @@ public class VodBaseService {
             errors = errors.substring(0, errors.length() - 3);
             errors = "输入参数 [" + e.getClass().getName() + "]对象校验失败 ,失败字段 [" + errors + "]";
             log.error(errors);
-            throw new PloyvSdkException(VodConstant.ERROR_CODE, errors);
+            throw new PloyvSdkException(Constant.ERROR_CODE, errors);
         }
     }
     
@@ -475,7 +475,7 @@ public class VodBaseService {
             }
         } else {
             String message = ERROR_PREFIX + requestId + ERROR_SUFFIX;
-            PloyvSdkException exception = new PloyvSdkException(VodConstant.ERROR_CODE, message);
+            PloyvSdkException exception = new PloyvSdkException(Constant.ERROR_CODE, message);
             log.error(message, exception);
             throw exception;
         }

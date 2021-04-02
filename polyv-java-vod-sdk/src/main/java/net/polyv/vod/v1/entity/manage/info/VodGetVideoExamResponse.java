@@ -64,8 +64,8 @@ public class VodGetVideoExamResponse {
     /**
      * 问题
      */
-    @ApiModelProperty(name = "questions", value = "问题", required = false)
-    private String questions;
+    @ApiModelProperty(name = "question", value = "问题", required = false)
+    private String question;
     
     /**
      * 选项

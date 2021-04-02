@@ -99,7 +99,10 @@ public class VodUploadServiceImpl extends VodBaseService implements IVodUploadSe
     @Override
     public Boolean uploadPPT(VodUploadPPTRequest vodUploadPPTRequest) throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPLOAD_PPT_URL);
-        super.postFormBodyReturnOne(url,vodUploadPPTRequest,String.class);
+        Map<String,File> fileMap = new HashMap<>();
+        fileMap.put("ppt",vodUploadPPTRequest.getPpt());
+        fileMap.put("txt",vodUploadPPTRequest.getControlFile());
+        super.uploadOneFile(url,vodUploadPPTRequest,fileMap,String.class);
         return Boolean.TRUE;
     }
     

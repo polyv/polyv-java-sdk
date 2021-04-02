@@ -123,6 +123,7 @@ public class HttpUtil {
     private static <T> T get(String url,Map<String, String> headMap, String encoding, DataParse<T> dataParse) throws IOException {
         log.debug("http 请求 url: {}", url);
         T result = null;
+        PloyvSdkException ployvSdkException = null;
         // 创建httpclient对象
         CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
         // 创建get方式请求对象
@@ -144,6 +145,7 @@ public class HttpUtil {
             if (!(result instanceof byte[])) {
                 log.debug("http 请求结果: {}", result);
             }else{
+                //返回文件时，参数验证错误处理逻辑
                 Header[] headers = response.getHeaders(Constant.CONTENT_TYPE);
                 for (Header responseHead : headers) {
                     String headStr = responseHead.getValue();
@@ -152,8 +154,7 @@ public class HttpUtil {
                         JSONObject jsonObject = JSON.parseObject(json);
                         String message = jsonObject.getString("message");
                         Integer code = jsonObject.getInteger("code");
-                        response.close();
-                        throw new PloyvSdkException(code, message);
+                        ployvSdkException =  new PloyvSdkException(code, message);
                     }
                 }
             }
@@ -164,6 +165,9 @@ public class HttpUtil {
             }
         } catch (IOException ex) {
             log.error(ex.getMessage(), ex);
+        }
+        if( ployvSdkException != null){
+            throw  ployvSdkException ;
         }
         return result;
     }

@@ -32,7 +32,8 @@ public class VodScreenshotServiceImplTest extends BaseTest {
      * 回调说明：。如vid="e6b23c6f51350f106556806a576b1942_e"，secretKey="testKey"，那么sign="3adb60893894d422d00ed2efae8c41f3"
      * 回调说明：(小写md5)。最终回调的url为http://example.polyv.net/snapshot-callback.do?sign=3adb60893894d422d00ed2efae8c41f3
      * 约束：2、接口用于添加时间点截图任务，每个任务允许截图20张
-     * 返回：任务id
+     * 约束：3、禁播的视频不允许截图操作
+     * 返回：添加成功返回截图任务id
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -42,7 +43,7 @@ public class VodScreenshotServiceImplTest extends BaseTest {
         Integer vodCreateScreenshotTaskResponse = null;
         try {
             vodCreateScreenshotTaskRequest.setUploadTime(new Date())
-                    .setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setOffsetTimes("8")
                     .setRequestId(VodSignUtil.generateUUID());
             vodCreateScreenshotTaskResponse = new VodScreenshotServiceImpl().createScreenshotTask(

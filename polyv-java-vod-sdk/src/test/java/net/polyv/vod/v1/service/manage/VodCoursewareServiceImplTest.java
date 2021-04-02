@@ -30,6 +30,7 @@ public class VodCoursewareServiceImplTest extends BaseTest {
      * 测试上传课件
      * 说明：1、上传课件，支持ppt、pptx及pdf文件格式。
      * 说明：2、接口只返回上传结果，课件转换结果需通过事件回调获取，详见：回调通知说明.http://dev.polyv.net/2020/videoproduct/v-api/v-api-callback/callbackref/
+     * 返回：true为上传课件成功，false为上传课件失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

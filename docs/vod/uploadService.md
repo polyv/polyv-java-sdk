@@ -45,8 +45,8 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | false | String | 多个视频id用逗号隔开 | 
-| categoryIds | false | String | 多个分类id用逗号隔开 | 
+| videoIds | false | String | 多个视频id用逗号隔开(状态为半角)，例如 1b8be3,239c2e | 
+| categoryIds | false | String | 多个分类id用逗号隔开(状态为半角)，例如 1b8be3,239c2e | 
 | image | true | File | 视频预览图片 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
@@ -110,8 +110,8 @@ true：上传成功；false：上传失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | false | String | 多个视频id用逗号隔开 | 
-| categoryIds | false | String | 多个分类id用逗号隔开 | 
+| videoIds | false | String | 多个视频id用英文逗号隔开(状态为半角)，例如 1b8be3,239c2e | 
+| categoryIds | false | String | 多个分类id用英文逗号隔开(状态为半角)，例如 1b8be3,239c2e | 
 | imageUrl | true | String | 视频预览图片http地址 | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
@@ -187,11 +187,12 @@ true：上传成功；false：上传失败
 ## 4、远程批量上传视频
 ### 描述
 ```
-批量上传远程视频（异步上传）
+批量上传远程视频（异步上传），具体上传情况可调用“分页获取视频同步列表”查看
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
+2、水印链接必须png格式
 ### 单元测试
 ```java
 	@Test
@@ -199,12 +200,11 @@ true：上传成功；false：上传失败
         VodUploadHttpVideoListRequest vodUploadHttpVideoListRequest = new VodUploadHttpVideoListRequest();
         Boolean vodUploadHttpVideoListResponse = null;
         try {
-            vodUploadHttpVideoListRequest.setFileUrl("https://v.cnezsoft.com/zentao/introduction_catelog" +
-                    ".mp4?sign=d9b7cf5583d4c6959bad10b717449ee9&t=60376e2d")
-                    .setTitle("禅道项目管理系列教程")
+            vodUploadHttpVideoListRequest.setFileUrl("http://sadboytest.oss-cn-shenzhen.aliyuncs.com/test.mp4")
+                    .setTitle("junit-远程批量上传视频")
                     .setCategoryId("1602300731843")
                     .setScreenCap(0)
-                    .setWatermark("http://pm.igeeker.org/secure/projectavatar")
+                    .setWatermark("http://sadboytest.oss-cn-shenzhen.aliyuncs.com/a.png")
                     .setWatermarkLocation("1")
                     .setRequestId(VodSignUtil.generateUUID());
             vodUploadHttpVideoListResponse = new VodUploadServiceImpl().uploadHttpVideoList(
@@ -212,7 +212,7 @@ true：上传成功；false：上传失败
             Assert.assertTrue(vodUploadHttpVideoListResponse);
             if (vodUploadHttpVideoListResponse) {
                 //to do something ......
-                log.debug("测试上传视频水印成功");
+                log.debug("测试远程批量上传视频成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -268,9 +268,11 @@ true提交异步上传成功，false提交异步上传失败
         VodUploadPPTRequest vodUploadPPTRequest = new VodUploadPPTRequest();
         Boolean vodUploadPPTResponse = null;
         try {
-            vodUploadPPTRequest.setVideoId("")
-                    .setPpt(new File(""))
-                    .setControlFile(new File(""))
+            String pptFile = getClass().getResource("/file/PPT.pptx").getPath();
+            String controlFile = getClass().getResource("/file/controlFile.txt").getPath();
+            vodUploadPPTRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setPpt(new File(pptFile))
+                    .setControlFile(new File(controlFile))
                     .setRequestId(VodSignUtil.generateUUID());
             vodUploadPPTResponse = new VodUploadServiceImpl().uploadPPT(vodUploadPPTRequest);
             Assert.assertTrue(vodUploadPPTResponse);
@@ -306,7 +308,7 @@ true提交异步上传成功，false提交异步上传失败
 
 ### 返回对象描述
 
-null
+true为上传成功，false为上传失败
 <br /><br />
 
 ------------------

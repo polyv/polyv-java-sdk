@@ -28,7 +28,7 @@ import net.polyv.vod.v1.util.VodSignUtil;
 public class VodAdvertisingServiceImplTest extends BaseTest {
     /**
      * 测试创建视频广告
-     * 返回：广告ID
+     * 返回：创建成功返回视频广告ID
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

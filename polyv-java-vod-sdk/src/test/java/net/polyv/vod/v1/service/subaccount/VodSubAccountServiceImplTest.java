@@ -191,6 +191,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
     /**
      * 测试删除视频
      * 描述：根据视频ID删除视频
+     * 返回：true为删除视频成功，false为删除视频失败
      * TODO 老版本上传视频无法使用，上传视频完成后再修改
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -258,6 +259,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
     
     /**
      * 测试新增视频分类
+     * 返回：新增成功返回新增的分类id
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

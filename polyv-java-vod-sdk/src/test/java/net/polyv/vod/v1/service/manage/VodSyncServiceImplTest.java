@@ -116,4 +116,8 @@ public class VodSyncServiceImplTest extends BaseTest {
             throw e;
         }
     }
+    
+    /**
+     * 测试用例结束
+     */
 }

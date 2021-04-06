@@ -175,4 +175,8 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
             throw e;
         }
     }
+    
+    /**
+     * 测试用例结束
+     */
 }

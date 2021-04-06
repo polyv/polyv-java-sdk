@@ -90,4 +90,8 @@ public class VodScreenshotServiceImplTest extends BaseTest {
             throw e;
         }
     }
+    
+    /**
+     * 测试用例结束
+     */
 }

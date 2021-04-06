@@ -82,4 +82,8 @@ public class VodEncryptionSettingsServiceImplTest extends BaseTest {
             throw e;
         }
     }
+    
+    /**
+     * 测试用例结束
+     */
 }

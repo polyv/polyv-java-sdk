@@ -92,7 +92,6 @@
             throw e;
         }
     }
-}
 ```
 ### 单元测试说明
 1、请求正确，返回VodUpdateEncryptionSettingsResponse对象，B端依据此对象处理业务逻辑；

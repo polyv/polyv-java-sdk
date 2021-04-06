@@ -3,8 +3,8 @@ package net.polyv.vod.v1.service.manage.impl;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import net.polyv.common.v1.constant.Constant;
 import net.polyv.common.v1.exception.PloyvSdkException;
-import net.polyv.vod.v1.constant.VodConstant;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.sync.VodDeleteTaskRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodExportTaskRequest;

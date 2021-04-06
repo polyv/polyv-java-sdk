@@ -107,7 +107,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| taskId | true | Integer | 视频ID | 
+| taskId | true | Integer | 任务ID | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述

@@ -255,7 +255,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | false | String | 视频ID，不填vid会查所有视频的播放量统计数据 | 
+| videoId | false | String | 视频videoId，不填vid会查所有视频的播放量统计数据 | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
 | period | false | String | 显示周期，具体为以下几个值：daily（按日显示），weekly（按周显示），monthly（按月显示）。默认值为daily：按日显示。period的值受限于dr的值，当dr的值为today，yesterday，this_week，last_week，7days时，period只能为daily，当dr的值为this_month，last_month时，period只能为daily或者weekly | 
 | requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
@@ -341,7 +341,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | false | String | 视频vid | 
+| videoId | false | String | 视频videoId | 
 | title | false | String | 视频标题 | 
 | duration | false | String | 播放时长，格式 hh:mm:ss 例如 00:03:11 | 
 | pcVideoView | false | Integer | pc端播放量 | 

@@ -4,7 +4,6 @@
   * [全局约束](/limit)
   * [快速接入](/quick_start)
   * [10分钟玩转一场点播](/playLive)
-  * [使用进阶](/advanceLive)
   * [功能索引](/function_index)
 * 频道管理
 

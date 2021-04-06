@@ -49,9 +49,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| subtitles | false | Array | 查询的结果列表【详见[Subtitle参数描述](subtitleService.md?id=polyv30)】 | 
+| subtitles | false | Array | 查询的结果列表【详见[Subtitle参数描述](subtitleService.md?id=polyv29)】 | 
 
-<h6 id="polyv30"><a href="#/subtitleService.md?id=polyv30"data-id="Subtitle参数描述"class="anchor"><span>Subtitle参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv29"><a href="#/subtitleService.md?id=polyv29"data-id="Subtitle参数描述"class="anchor"><span>Subtitle参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

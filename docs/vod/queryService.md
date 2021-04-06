@@ -165,14 +165,14 @@
 | playerHeight | false | Integer | 视频高度 | 
 | uploadTime | false | Date | 视频上传日期 | 
 | sourceFilesize | false | Integer | 源视频文件大小，单位为byte | 
-| filesize | false | Integer[] | 编码后各个码率的视频文件大小，按顺序依次为流畅、高清、超清的视频文件大小，单位为byte【详见[Integer[]参数描述](queryService.md?id=polyv27)】 | 
+| filesize | false | Integer[] | 编码后各个码率的视频文件大小，按顺序依次为流畅、高清、超清的视频文件大小，单位为byte | 
 | md5Checksum | false | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整 | 
 | hls | false | String[] | 流畅、高清、超清清晰度的m3u8地址 | 
-| uploader | false | Uploader | 上传者信息【详见[Uploader参数描述](queryService.md?id=polyv28)】 | 
+| uploader | false | Uploader | 上传者信息【详见[Uploader参数描述](queryService.md?id=polyv27)】 | 
 | keepSource | false | Integer | 是否为源文件，否：0,是：1 | 
 | categoryName | false | String | 分类名称 | 
 
-<h6 id="polyv28"><a href="#/queryService.md?id=polyv28"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv27"><a href="#/queryService.md?id=polyv27"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

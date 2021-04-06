@@ -55,9 +55,9 @@
 | videoCount | false | Integer | 视频数量 | 
 | videoId | false | String | 视频列表ID | 
 | createTime | false | Date | 创建时间，时间格式 yyyy-MM-dd HH:mm:ss | 
-| videoList | false | Array | 视频集合【详见[VideoInfo参数描述](playListService.md?id=polyv32)】 | 
+| videoList | false | Array | 视频集合【详见[VideoInfo参数描述](playListService.md?id=polyv31)】 | 
 
-<h6 id="polyv32"><a href="#/playListService.md?id=polyv32"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv31"><a href="#/playListService.md?id=polyv31"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 

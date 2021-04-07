@@ -136,7 +136,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     
     /**
      * 测试根据分类批量获取视频时长和大小
-     * 约束：当传了videoIds时，按照videoIds查询；当仅传categoryIds时，按照categoryIds查询；videoIds和categoryIds不能同时为空；同时传以videoIds为准
+     * 约束：2、当传了videoIds时，按照videoIds查询；当仅传categoryIds时，按照categoryIds查询；videoIds和categoryIds不能同时为空；同时传以videoIds为准
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

@@ -8,8 +8,6 @@
 
 &emsp;&emsp;如果您在使用**保利威直播Java SDK**的过程中遇到任何问题，直接使用<a href="javascript:void(0);" onclick="$('#zhichiBtnBox').click()">在线客服</a>找到售后技术支持提问。请将问题的运行环境、操作步骤、错误反馈信息、联系方式同步提交，便于问题的快速定位和解决； 
 
-<img src="../img/image-20201022183926158.png" alt="image-20201022183926158" style="zoom: 67%;" />
-
 ## 2.SDK整体设计
 
 <img src="../img/image-20201023100552660.png" alt="image-20201023100552660" style="zoom: 80%;" />

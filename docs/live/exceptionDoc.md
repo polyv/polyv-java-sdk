@@ -4,9 +4,9 @@
 
 ### 发生异常 -- Timeout waiting for connection from pool
 
-解决方案：由于**保利威直播Java SDK**采用HTTP线程池设计，<font color="red">线程池默认初始化大小未100，超时时间20s</font>，如您的服务并发请求较多。可以调整<font color="red">线程池参数大小，最大300</font>，具体参考：[快速对接-初始化系统](/quick_start?id=_2初始化系统)
+解决方案：由于**保利威直播Java SDK**采用HTTP线程池设计，<font color="red">线程池默认初始化大小为100，超时时间20s</font>，如您的服务并发请求较多。可以调整<font color="red">线程池参数大小，最大300</font>，具体参考：[快速对接-初始化系统](/quick_start?id=_2初始化系统)
 
 ### 发生异常 --  java.net.SocketTimeoutException: Read timed out
 
-解决方案：由于**保利威直播Java SDK**采用HTTP线程池设计，<font color="red">线程池默认初始化大小未100，超时时间20s</font>，如您的网络情况不理想，请调整您的网络。确保和保利威服务器域名【api.polyv.net】网络稳定，或者可以调整<font color="red">超时时间大小，最大30s</font>，具体参考：[快速对接-初始化系统](/quick_start?id=_2初始化系统)
+解决方案：由于**保利威直播Java SDK**采用HTTP线程池设计，<font color="red">线程池默认初始化大小为100，超时时间20s</font>，如您的网络情况不理想，请调整您的网络。确保和保利威服务器域名【api.polyv.net】网络稳定，或者可以调整<font color="red">超时时间大小，最大30s</font>，具体参考：[快速对接-初始化系统](/quick_start?id=_2初始化系统)
 

@@ -12,6 +12,10 @@
     <artifactId>polyv-java-vod-sdk</artifactId>
     <properties>
         <polyv.version>1.0.23</polyv.version>
+        <ali.ram>3.0.0</ali.ram>
+        <ali.sts>3.0.0</ali.sts>
+        <ali.oss>3.0.0</ali.oss>
+        <ali.core>3.0.7</ali.core>
     </properties>
     <dependencies>
         <dependency>
@@ -19,6 +23,27 @@
             <artifactId>polyv-java-sdk-common</artifactId>
             <version>${polyv.version}</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-ram</artifactId>
+            <version>${ali.ram}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-sts</artifactId>
+            <version>${ali.sts}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>${ali.oss}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>${ali.core}</version>
         </dependency>
     </dependencies>
 

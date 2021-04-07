@@ -79,9 +79,9 @@ true：上传成功；false：上传失败
         VodUploadCoverImageUrlRequest vodUploadCoverImageUrlRequest = new VodUploadCoverImageUrlRequest();
         Boolean vodUploadCoverImageUrlResponse = null;
         try {
-            //https://img.videocc.net/uimage/1/1b448be323/c/1b448be32343357d5c4784d9ffd1bf5c_0.jpg
+            //http://img.videocc.net/uimage/1/1b448be323/c/1b448be32343357d5c4784d9ffd1bf5c_0.jpg
             String imageUrl =
-                    "https://dss0.bdstatic.com/6Ox1bjeh1BF3odCf/it/u=3438467544," + "1763107832&fm=218&app=92&f=JPEG";
+                    "http://img.videocc.net/uimage/1/1b448be323/c/1b448be32343357d5c4784d9ffd1bf5c_0.jpg";
             vodUploadCoverImageUrlRequest.setImageUrl(imageUrl)
                     .setCategoryIds("1602300731843")
                     .setRequestId(VodSignUtil.generateUUID());

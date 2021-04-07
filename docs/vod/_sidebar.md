@@ -5,7 +5,7 @@
   * [快速接入](/quick_start)
   * [10分钟玩转一场点播](/playLive)
   * [功能索引](/function_index)
-* 频道管理
+* 视频管理
 
   * [账户管理](accountService)
   * [上传视频](uploadService)

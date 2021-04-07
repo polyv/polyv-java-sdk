@@ -169,7 +169,7 @@ public class VodVideoDemo {
 2021-04-02 11:31:47:367 +0800 [main] DEBUG net.polyv.vod.v1.service.VodVideoDemo - 测试获取用户空间及流量情况成功,{"email":"sdk-demo@polyv.net","totalFlow":21474836480,"totalSpace":21474836480,"usedFlow":0,"usedSpace":0,"userId":"1b448be323"}
 ```
 
-&emsp;&emsp;至此，B端已经完成**保利威点播Java SDK**安装配置，可以使用点播SDK进行其他功能开发和测试，如B端接入过程有任何问题，直接使用右下角**在线客服**找到售后技术支持提问 ，请将问题的运行环境、操作步骤、错误反馈信息、联系方式同步反馈，便于问题的快速定位和解决； 
+&emsp;&emsp;至此，B端已经完成**保利威点播Java SDK**安装配置，可以使用点播SDK进行其他功能开发和测试，如B端接入过程有任何问题，直接使用<a href="javascript:void(0);" onclick="$('#zhichiBtnBox').click()">在线客服</a>找到售后技术支持提问 ，请将问题的运行环境、操作步骤、错误反馈信息、联系方式同步反馈，便于问题的快速定位和解决； 
 
 
 

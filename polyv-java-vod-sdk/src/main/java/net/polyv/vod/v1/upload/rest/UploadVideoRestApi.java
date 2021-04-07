@@ -7,13 +7,14 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
+
 import net.polyv.common.v1.util.StringUtils;
 import net.polyv.vod.v1.upload.bean.vo.UploadConfigResponseData;
 import net.polyv.vod.v1.upload.bean.vo.VideoInfo;
 import net.polyv.vod.v1.upload.bean.vo.WrappedResponse;
 import net.polyv.vod.v1.upload.config.PolyvUserConfig;
 import net.polyv.vod.v1.upload.utils.HttpClientUtil;
-import net.polyv.vod.v1.upload.utils.JsonUtil;
 
 
 /**
@@ -56,7 +57,7 @@ public class UploadVideoRestApi extends BasicRestApi {
         String url = String.format(INIT_UPLOAD_TASK_URI, config.getUserId());
         WrappedResponse response = HttpClientUtil.getInstance().sendHttpPost(url, map, retry);
         if (response != null && response.isSuccess()) {
-            return JsonUtil.stringToBean(JsonUtil.jsonToString(response.getData()), UploadConfigResponseData.class);
+            return JSON.parseObject(JSON.toJSONString(response.getData()),UploadConfigResponseData.class);
         }
         logger.error("initUploadQueue failed. response={}", response);
         return null;
@@ -78,7 +79,7 @@ public class UploadVideoRestApi extends BasicRestApi {
         url += "?ptime=" + ptime + "&sign=" + calculateSign(map, config.getSecretKey());
         WrappedResponse response = HttpClientUtil.getInstance().sendHttpGet(url, retry);
         if (response != null && response.isSuccess()) {
-            return JsonUtil.stringToBean(JsonUtil.jsonToString(response.getData()), UploadConfigResponseData.class);
+            return JSON.parseObject(JSON.toJSONString(response.getData()),UploadConfigResponseData.class);
         }
         logger.error("get token failed. response={}", response);
         return null;

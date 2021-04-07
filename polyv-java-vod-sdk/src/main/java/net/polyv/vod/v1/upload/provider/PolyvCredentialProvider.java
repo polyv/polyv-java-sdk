@@ -1,12 +1,12 @@
 package net.polyv.vod.v1.upload.provider;
 
-import org.apache.http.auth.Credentials;
-import org.apache.http.auth.InvalidCredentialsException;
-import org.apache.http.client.CredentialsProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.aliyun.oss.common.auth.Credentials;
+import com.aliyun.oss.common.auth.CredentialsProvider;
 import com.aliyun.oss.common.auth.DefaultCredentials;
+import com.aliyun.oss.common.auth.InvalidCredentialsException;
 
 import net.polyv.vod.v1.upload.bean.vo.UploadConfigResponseData;
 import net.polyv.vod.v1.upload.config.PolyvUserConfig;

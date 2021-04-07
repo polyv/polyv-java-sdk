@@ -3,11 +3,14 @@ package net.polyv.vod.v1.upload.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
 import com.aliyun.oss.ClientBuilderConfiguration;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSException;
+import com.aliyun.oss.event.ProgressEvent;
 import com.aliyun.oss.event.ProgressEventType;
+import com.aliyun.oss.event.ProgressListener;
 import com.aliyun.oss.model.Callback;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.UploadFileRequest;
@@ -20,9 +23,6 @@ import net.polyv.vod.v1.upload.config.PolyvUserConfig;
 import net.polyv.vod.v1.upload.enumeration.UploadErrorMsg;
 import net.polyv.vod.v1.upload.provider.PolyvCredentialProvider;
 import net.polyv.vod.v1.upload.rest.UploadVideoRestApi;
-import net.polyv.vod.v1.upload.utils.JsonUtil;
-import sun.net.ProgressEvent;
-import sun.net.ProgressListener;
 
 /**
  * 上传视频服务
@@ -84,7 +84,7 @@ public class PolyvUploadService {
         long validityTime = uploadConfig.getValidityTime();
         
         String objectName =
-                uploadConfig.getDir() + videoInfo.getVideoPoolId() + "." + FilenameUtils.getExtension(videoInfo.getFileLocation());
+                uploadConfig.getDir() + videoInfo.getVideoPoolId() + "." + getExtension(videoInfo.getFileLocation());
         String fileLocation = videoInfo.getFileLocation();
         long partitionSize = uploadConfig.getPartitionSize() == null ? 1024 * 1024 : uploadConfig.getPartitionSize();
         String checkpoint = uploadConfig.getCheckPointDir() + "/" + videoInfo.getVideoPoolId() + ".ucp";
@@ -110,7 +110,8 @@ public class PolyvUploadService {
         // 文件的元数据。
         uploadFileRequest.setObjectMetadata(meta);
         // 设置上传成功回调，参数为Callback类型。
-        Callback callback = JsonUtil.stringToBean(videoInfo.getCallBack(), Callback.class);
+        
+        Callback callback = JSON.parseObject(videoInfo.getCallBack(), Callback.class);
         uploadFileRequest.setCallback(callback);
         uploadFileRequest.setProgressListener(new ProgressListener() {
             private long bytesWritten = 0;
@@ -243,5 +244,17 @@ public class PolyvUploadService {
         ossConfig.setSupportCname(true);
         return new OSSClient(endpoint, new PolyvCredentialProvider(accessKeyId, accessKeySecret, securityToken,
                 expireTime, userConfig), ossConfig);
+    }
+    
+    private String getExtension(String filename){
+        if (filename == null) {
+            return "";
+        } else {
+            int extensionPos = filename.lastIndexOf(46);
+            if(extensionPos < 0){
+                return "";
+            }
+            return filename.substring(extensionPos+1);
+        }
     }
 }

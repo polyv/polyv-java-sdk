@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.polyv.utils.EncryptUtil;
+import net.polyv.vod.v1.upload.utils.EncryptUtil;
+
 
 public class BasicRestApi {
     

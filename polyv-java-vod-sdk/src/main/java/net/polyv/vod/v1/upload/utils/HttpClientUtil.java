@@ -32,6 +32,8 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
+
 import net.polyv.vod.v1.upload.bean.vo.WrappedResponse;
 
 /**
@@ -117,7 +119,7 @@ public class HttpClientUtil {
         }
         
         String result = sendHttpPost(httpPost);
-        WrappedResponse response = JsonUtil.stringToBean(result, WrappedResponse.class);
+        WrappedResponse response = JSON.parseObject(result, WrappedResponse.class);
         if (response == null && retry > 0) {
             logger.error("response is null, url={}, retry={}, result:【{}】", httpUrl, retry, result);
             return sendHttpPost(httpUrl, maps, --retry);
@@ -189,7 +191,7 @@ public class HttpClientUtil {
     public WrappedResponse sendHttpGet(String httpUrl, int retry) {
         HttpGet httpGet = new HttpGet(httpUrl);// 创建get请求
         String result = sendHttpGet(httpGet);
-        WrappedResponse response = JsonUtil.stringToBean(result, WrappedResponse.class);
+        WrappedResponse response = JSON.parseObject(result, WrappedResponse.class);
         if (response == null && retry > 0) {
             logger.error("response is null, url={}, retry={}, result:【{}】", httpUrl, retry, result);
             return sendHttpGet(httpUrl, --retry);
@@ -204,7 +206,7 @@ public class HttpClientUtil {
     public WrappedResponse sendHttpsGet(String httpUrl) {
         HttpGet httpGet = new HttpGet(httpUrl);// 创建get请求
         String result = sendHttpsGet(httpGet);
-        return JsonUtil.stringToBean(result, WrappedResponse.class);
+        return JSON.parseObject(result, WrappedResponse.class);
     }
     
     /**

@@ -52,30 +52,30 @@ public class UploadVideoSample {
         }, false));
 
 //         当上传中断，重新恢复的时候，可以指定vid来恢复上传 videoInfo.setVideoPoolId("xxxxxxxxxxx");
-             videoInfo = new VideoInfo();
-             videoInfo.setFileLocation("C:\\Users\\T460\\Desktop\\pro_compress-w431sfrmnq.mp4");
-             videoInfo.setVideoPoolId("1b448be32326e0790a376a1405de83d0_1");
-             System.out.println("vid=" + client.uploadVideoParts(videoInfo, new UploadCallBack() {
-                 @Override
-                 public void start(String s) {
-                     System.out.println("start=" + s);
-                 }
-                 @Override
-                 public void process(String s, long l, long l1) {
-                     System.out.println("process=" + s + ",uploaded=" + l + ", total=" + l1);
-                 }
-                 @Override
-                 public void complete(String s) {
-                     System.out.println("complete=" + s);
-                 }
-                 @Override
-                 public void success(String s) {
-                     System.out.println("success=" + s);
-                 }
-                 @Override
-                 public void error(String s, UploadErrorMsg uploadErrorMsg) {
-                     System.out.println("error=" + s + ", message=" + uploadErrorMsg.getMessage());
-                 }
-             }, true));
+//             videoInfo = new VideoInfo();
+//             videoInfo.setFileLocation("C:\\Users\\T460\\Desktop\\pro_compress-w431sfrmnq.mp4");
+//             videoInfo.setVideoPoolId("1b448be32326e0790a376a1405de83d0_1");
+//             System.out.println("vid=" + client.uploadVideoParts(videoInfo, new UploadCallBack() {
+//                 @Override
+//                 public void start(String s) {
+//                     System.out.println("start=" + s);
+//                 }
+//                 @Override
+//                 public void process(String s, long l, long l1) {
+//                     System.out.println("process=" + s + ",uploaded=" + l + ", total=" + l1);
+//                 }
+//                 @Override
+//                 public void complete(String s) {
+//                     System.out.println("complete=" + s);
+//                 }
+//                 @Override
+//                 public void success(String s) {
+//                     System.out.println("success=" + s);
+//                 }
+//                 @Override
+//                 public void error(String s, UploadErrorMsg uploadErrorMsg) {
+//                     System.out.println("error=" + s + ", message=" + uploadErrorMsg.getMessage());
+//                 }
+//             }, true));
     }
 }

@@ -23,6 +23,7 @@ import net.polyv.vod.v1.entity.manage.barrage.VodCreateBarrageResponse;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListRequest;
 import net.polyv.vod.v1.entity.manage.barrage.VodQueryBarrageListResponse;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryResponse;
 import net.polyv.vod.v1.entity.manage.courseware.VodUploadCoursewareRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodDeleteSubtitleRequest;
 import net.polyv.vod.v1.entity.manage.subtitle.VodGetSubtitleListRequest;
@@ -154,9 +155,9 @@ public class BaseTest {
      */
     public String createCategory() throws IOException, NoSuchAlgorithmException {
         VodCreateCategoryRequest vodCreateCategoryRequest = new VodCreateCategoryRequest();
-        String vodCreateCategoryResponse = null;
+        VodCreateCategoryResponse vodCreateCategoryResponse = null;
         try {
-            vodCreateCategoryRequest.setCategoryName("Junit测试"+getRandomString(3))
+            vodCreateCategoryRequest.setCategoryName("Junit测试" + getRandomString(3))
                     .setParentId("1")
                     .setRequestId(VodSignUtil.generateUUID());
             vodCreateCategoryResponse = new VodCategoryServiceImpl().createCategory(vodCreateCategoryRequest);
@@ -164,7 +165,7 @@ public class BaseTest {
             if (vodCreateCategoryResponse != null) {
                 log.debug("测试新建视频分类成功，{}", vodCreateCategoryResponse);
             }
-            return vodCreateCategoryResponse;
+            return vodCreateCategoryResponse.getCategoryId();
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);

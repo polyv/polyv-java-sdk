@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryResponse;
 import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryResponse;
@@ -106,7 +107,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
 //    @Test
     public void testCreateCategory() throws IOException, NoSuchAlgorithmException {
         VodCreateCategoryRequest vodCreateCategoryRequest = new VodCreateCategoryRequest();
-        String vodCreateCategoryResponse = null;
+        VodCreateCategoryResponse vodCreateCategoryResponse = null;
         try {
             vodCreateCategoryRequest.setCategoryName("Junit测试")
                     .setParentId("1")

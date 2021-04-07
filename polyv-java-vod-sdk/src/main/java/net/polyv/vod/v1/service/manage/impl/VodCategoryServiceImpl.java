@@ -4,12 +4,10 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import net.polyv.common.v1.constant.Constant;
-import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
-import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryVO;
+import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryResponse;
 import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryResponse;
@@ -67,15 +65,10 @@ public class VodCategoryServiceImpl extends VodBaseService implements IVodCatego
      * @throws NoSuchAlgorithmException 异常
      */
     @Override
-    public String createCategory(VodCreateCategoryRequest vodCreateCategoryRequest)
+    public VodCreateCategoryResponse createCategory(VodCreateCategoryRequest vodCreateCategoryRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.VOD_CREATE_CATEGORY_URL);
-        VodCreateCategoryVO vodCreateCategoryVO = super.postFormBodyReturnOne(url, vodCreateCategoryRequest,
-                VodCreateCategoryVO.class);
-        if (vodCreateCategoryVO != null && vodCreateCategoryVO.getCategoryId() != null) {
-            return vodCreateCategoryVO.getCategoryId();
-        }
-        throw new PloyvSdkException(Constant.ERROR_CODE, "新建视频分类失败");
+        return super.postFormBodyReturnOne(url, vodCreateCategoryRequest, VodCreateCategoryResponse.class);
     }
     
     /**

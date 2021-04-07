@@ -5,14 +5,15 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryResponse;
 import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryResponse;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategorySizeRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveVideoRequest;
-import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryNameRequest;
+import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 
 /**
  * 视频分类
@@ -50,7 +51,7 @@ public interface IVodCategoryService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String createCategory(VodCreateCategoryRequest vodCreateCategoryRequest)
+    VodCreateCategoryResponse createCategory(VodCreateCategoryRequest vodCreateCategoryRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**

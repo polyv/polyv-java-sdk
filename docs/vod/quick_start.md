@@ -20,7 +20,7 @@
 <dependency>
     <groupId>net.polyv</groupId>
     <artifactId>polyv-java-vod-sdk</artifactId>
-    <version>1.0.20</version>
+    <version>1.0.23</version>
 </dependency> 
 ```
 

@@ -24,7 +24,7 @@
 </dependency> 
 ```
 
-> 注意：<font color=#FF0000 >为了消除Java的冗长代码  ,SDK使用了jdk1.8的最新特性lombok，请在IntelliJ或者Eclipse 中配置对lombok的支持 </font>
+> 注意：<font color=#FF0000 >为了消除Java的冗长代码，SDK使用了Lombok框架，请在IntelliJ或者Eclipse 中配置对Lombok的支持</font>
 
 ```xml
 <dependency>

@@ -1,5 +1,8 @@
 package net.polyv.vod.v1.upload.provider;
 
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,36 +11,37 @@ import com.aliyun.oss.common.auth.CredentialsProvider;
 import com.aliyun.oss.common.auth.DefaultCredentials;
 import com.aliyun.oss.common.auth.InvalidCredentialsException;
 
-import net.polyv.vod.v1.upload.bean.vo.UploadConfigResponseData;
+import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.v1.constant.Constant;
+import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.vod.v1.upload.bean.vo.UploadConfigResponse;
 import net.polyv.vod.v1.upload.config.PolyvUserConfig;
-import net.polyv.vod.v1.upload.rest.UploadVideoRestApi;
+import net.polyv.vod.v1.upload.rest.VodUploadVideoService;
 
 /**
  * 自定义认证提供服务
  */
+@Slf4j
 public class PolyvCredentialProvider implements CredentialsProvider {
     
     private static final Logger logger = LoggerFactory.getLogger(PolyvCredentialProvider.class);
     
     private volatile long expireTime;
     private volatile Credentials creds;
-    private PolyvUserConfig config;
     
     public PolyvCredentialProvider(Credentials creds) {
         setCredentials(creds);
     }
     
     public PolyvCredentialProvider(String accessKeyId, String secretAccessKey, long expireTime,
-                                   PolyvUserConfig config) {
-        this(accessKeyId, secretAccessKey, null, expireTime, config);
+            PolyvUserConfig config) {
+        this(accessKeyId, secretAccessKey, null, expireTime);
     }
     
-    public PolyvCredentialProvider(String accessKeyId, String secretAccessKey, String securityToken, long expireTime,
-                                   PolyvUserConfig config) {
+    public PolyvCredentialProvider(String accessKeyId, String secretAccessKey, String securityToken, long expireTime) {
         checkCredentials(accessKeyId, secretAccessKey);
         setCredentials(new DefaultCredentials(accessKeyId, secretAccessKey, securityToken));
         setExpireTime(expireTime);
-        setConfig(config);
     }
     
     @Override
@@ -58,7 +62,16 @@ public class PolyvCredentialProvider implements CredentialsProvider {
         if ((expireTime - System.currentTimeMillis()) < 60000L) {
             logger.error("the token has expired. expireTime={}, rebuild the credential.", expireTime);
             long currentTime = System.currentTimeMillis();
-            UploadConfigResponseData result = UploadVideoRestApi.getUploadToken(config, 3);
+            UploadConfigResponse result = null;
+            try {
+                result = new VodUploadVideoService().getUploadToken(3);
+            } catch (IOException e) {
+                log.error("获取上传token失败", e);
+                throw new PloyvSdkException(Constant.ERROR_CODE, "获取上传token失败");
+            } catch (NoSuchAlgorithmException e) {
+                log.error("获取上传token失败", e);
+                throw new PloyvSdkException(Constant.ERROR_CODE, "获取上传token失败");
+            }
             if (result == null) {
                 throw new InvalidCredentialsException("Invalid credentials");
             }
@@ -82,11 +95,4 @@ public class PolyvCredentialProvider implements CredentialsProvider {
         this.expireTime = expireTime;
     }
     
-    public PolyvUserConfig getConfig() {
-        return config;
-    }
-    
-    public void setConfig(PolyvUserConfig config) {
-        this.config = config;
-    }
 }

@@ -8,7 +8,7 @@ import lombok.Data;
  * 上传token接口响应体vo
  */
 @Data
-public class UploadConfigResponseData implements Serializable {
+public class UploadConfigResponse implements Serializable {
     
     private static final long serialVersionUID = 5981397967769448910L;
     private String dir;

@@ -27,7 +27,7 @@ public class NotNullValidator extends Validator {
                 return cast.message();
             }
             if (!((File) data).exists()) {
-                throw new PloyvSdkException(Constant.ERROR_CODE, "文件不存在");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "文件不存在，路径："+((File) data).getPath());
             }
             return null;
         } else if (showMsg(groups, cast.groups())) {

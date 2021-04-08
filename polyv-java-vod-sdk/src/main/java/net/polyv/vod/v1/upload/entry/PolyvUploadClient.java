@@ -5,13 +5,15 @@ import java.io.File;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.polyv.common.v1.constant.Constant;
+import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.util.StringUtils;
 import net.polyv.vod.v1.upload.bean.vo.VideoInfo;
 import net.polyv.vod.v1.upload.callback.UploadCallBack;
 import net.polyv.vod.v1.upload.config.PolyvUploadChunkConfig;
-import net.polyv.vod.v1.upload.config.PolyvUserConfig;
 import net.polyv.vod.v1.upload.enumeration.UploadErrorMsg;
 import net.polyv.vod.v1.upload.service.PolyvUploadService;
+
 
 /**
  * 常规视频上传的入口
@@ -19,20 +21,20 @@ import net.polyv.vod.v1.upload.service.PolyvUploadService;
  */
 public class PolyvUploadClient extends PolyvBasicClient {
     
+    protected PolyvUploadChunkConfig polyvUploadChunkConfig; // 分片上传的配置
+    
+    protected PolyvUploadService polyvUploadService;
     private static final Logger logger = LoggerFactory.getLogger(PolyvUploadClient.class);
     
     /**
      * 初始化入口client
-     * @param userId polyv账号id
-     * @param secretKey polyv账号的secretKey
      * @param partitionSize 分片大小
      * @param checkpoint checkpoint文件夹
      * @param threadNum 处理线程数
      */
-    public PolyvUploadClient(String userId, String secretKey, int partitionSize, String checkpoint, int threadNum) {
-        this.polyvUserConfig = new PolyvUserConfig(userId, secretKey);
+    public PolyvUploadClient(int partitionSize, String checkpoint, int threadNum) {
         this.polyvUploadChunkConfig = new PolyvUploadChunkConfig(partitionSize, checkpoint, threadNum);
-        this.polyvUploadService = new PolyvUploadService(polyvUserConfig, partitionSize, checkpoint, threadNum);
+        this.polyvUploadService = new PolyvUploadService(partitionSize, checkpoint, threadNum);
     }
     
     /**
@@ -44,32 +46,29 @@ public class PolyvUploadClient extends PolyvBasicClient {
         long startTime = System.currentTimeMillis();
         if (StringUtils.isBlank(polyvUploadChunkConfig.getCheckPointDir())) {
             logger.error("checkpoint dir is blank");
-            return null;
+            throw new PloyvSdkException(Constant.ERROR_CODE, "checkpoint dir is blank");
         }
         File check = new File(polyvUploadChunkConfig.getCheckPointDir());
         if (!check.exists() && !check.mkdirs()) {
             logger.error("checkpoint dir created failed. please check check the permissions");
-            return null;
+            throw new PloyvSdkException(Constant.ERROR_CODE, "checkpoint dir created failed. please check check the permissions");
+        }
+    
+        File file = videoInfo.getFile();
+        if (file == null || !file.exists()) {
+            logger.error("file is null or not exist");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "file is null or not exist");
         }
         
-        String fileLocation = videoInfo.getFileLocation();
-        if (StringUtils.isBlank(fileLocation)) {
-            logger.error("file location is blank");
-            return null;
-        }
-        File file = new File(fileLocation);
-        if (!file.exists()) {
-            logger.error("file location is blank or not exist");
-            return null;
-        }
         if (videoInfo.getFileSize() == null || videoInfo.getFileSize() == 0) {
             videoInfo.setFileSize(file.length());
         }
+        
         if (StringUtils.isBlank(videoInfo.getTitle())) {
             videoInfo.setTitle(file.getName());
         }
-        if (videoInfo.getCataId() == null || videoInfo.getCataId() == 0) {
-            videoInfo.setCataId(1L);
+        if (videoInfo.getCataId() == null || "0".equals(videoInfo.getCataId())) {
+            videoInfo.setCataId("1");
         }
         
         //初始化任务

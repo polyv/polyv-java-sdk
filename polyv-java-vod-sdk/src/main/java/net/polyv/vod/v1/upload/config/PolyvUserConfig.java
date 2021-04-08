@@ -14,14 +14,14 @@ public class PolyvUserConfig implements Serializable {
     
     private String userId;
     private String secretKey;
-    private String writeToken;
-    private String readToken;
+//    private String writeToken;
+//    private String readToken;
     
     public PolyvUserConfig(String userId, String secretKey, String writeToken, String readToken) {
         this.userId = userId;
         this.secretKey = secretKey;
-        this.writeToken = writeToken;
-        this.readToken = readToken;
+//        this.writeToken = writeToken;
+//        this.readToken = readToken;
     }
     
     public PolyvUserConfig(String userId, String secretKey) {

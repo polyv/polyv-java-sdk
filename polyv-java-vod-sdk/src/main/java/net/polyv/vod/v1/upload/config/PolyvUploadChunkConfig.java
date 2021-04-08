@@ -3,6 +3,7 @@ package net.polyv.vod.v1.upload.config;
 import java.io.Serializable;
 
 import lombok.Data;
+import net.polyv.vod.v1.upload.bean.vo.UploadConfigResponse;
 
 /**
  * polyv视频断点上传的配置，分片大小，checkpoint地址，回调函数等
@@ -29,6 +30,19 @@ public class PolyvUploadChunkConfig implements Serializable {
         this.partitionSize = partitionSize;
         this.checkPointDir = checkPointDir;
         this.threadNum = threadNum;
+    }
+    
+    public PolyvUploadChunkConfig setAliOssArgument(UploadConfigResponse uploadConfigResponse){
+        this.setAccessId(uploadConfigResponse.getAccessId());
+        this.setAccessKey(uploadConfigResponse.getAccessKey());
+        this.setBucket(uploadConfigResponse.getBucketName());
+        this.setEndpoint(uploadConfigResponse.getEndpoint());
+        this.setToken(uploadConfigResponse.getToken());
+        this.setExpiration(uploadConfigResponse.getExpiration());
+        this.setDir(uploadConfigResponse.getDir());
+        this.setDomain(uploadConfigResponse.getDomain());
+        this.setValidityTime(uploadConfigResponse.getValidityTime());
+        return this;
     }
     
 }

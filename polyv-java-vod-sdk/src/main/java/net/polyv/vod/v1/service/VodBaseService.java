@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.base.HttpUtil;
 import net.polyv.common.v1.constant.Constant;
+import net.polyv.common.v1.entity.CommonReqeust;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.util.MapUtil;
 import net.polyv.common.v1.util.SDKValidateUtil;
@@ -443,7 +444,7 @@ public class VodBaseService {
      * @param e 入参
      * @param <E> 入参泛型
      */
-    private <E extends VodCommonRequest> void validateBean(E e) {
+    protected <E extends CommonReqeust> void validateBean(E e) {
         List<ViolationMsg> violationMsgList = SDKValidateUtil.validateBean(e);
         if (!violationMsgList.isEmpty()) {
             String errors = SDKValidateUtil.getViolationMsgStr(violationMsgList);

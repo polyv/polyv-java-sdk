@@ -1,7 +1,7 @@
 package net.polyv.vod.v1.upload.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 import com.alibaba.fastjson.JSON;
 import com.aliyun.oss.ClientBuilderConfiguration;
@@ -15,29 +15,28 @@ import com.aliyun.oss.model.Callback;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.UploadFileRequest;
 
-import net.polyv.vod.v1.upload.bean.vo.UploadConfigResponseData;
+import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.v1.constant.Constant;
+import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.vod.v1.upload.bean.vo.UploadConfigResponse;
 import net.polyv.vod.v1.upload.bean.vo.VideoInfo;
 import net.polyv.vod.v1.upload.callback.UploadCallBack;
 import net.polyv.vod.v1.upload.config.PolyvUploadChunkConfig;
-import net.polyv.vod.v1.upload.config.PolyvUserConfig;
 import net.polyv.vod.v1.upload.enumeration.UploadErrorMsg;
 import net.polyv.vod.v1.upload.provider.PolyvCredentialProvider;
-import net.polyv.vod.v1.upload.rest.UploadVideoRestApi;
+import net.polyv.vod.v1.upload.rest.VodUploadVideoService;
 
 /**
  * 上传视频服务
  */
+@Slf4j
 public class PolyvUploadService {
     
-    private static final Logger logger = LoggerFactory.getLogger(PolyvUploadService.class);
-    
-    private PolyvUserConfig userConfig;
     private long partitionSize;
     private String checkpoint;
     private int threadNum;
     
-    public PolyvUploadService(PolyvUserConfig userConfig, long partitionSize, String checkpoint, int threadNum) {
-        this.userConfig = userConfig;
+    public PolyvUploadService(long partitionSize, String checkpoint, int threadNum) {
         this.partitionSize = partitionSize;
         this.checkpoint = checkpoint;
         this.threadNum = threadNum;
@@ -48,22 +47,23 @@ public class PolyvUploadService {
      * @return
      */
     public boolean initUploadTask(VideoInfo videoInfo) {
-        UploadConfigResponseData result = UploadVideoRestApi.initUploadQueue(videoInfo, userConfig, 3);
-        if (result == null) {
-            return false;
+        UploadConfigResponse uploadConfigResponse = null;
+        try {
+            uploadConfigResponse = new VodUploadVideoService().initUploadQueue(videoInfo, 3);
+            if (uploadConfigResponse == null) {
+                throw new PloyvSdkException(Constant.ERROR_CODE, "初始化UploadTask失败");
+            }
+        } catch (IOException e) {
+            log.info("上传配置失败", e);
+            throw new PloyvSdkException(Constant.ERROR_CODE, "上传配置失败");
+        } catch (NoSuchAlgorithmException e) {
+            log.info("上传配置失败", e);
+            throw new PloyvSdkException(Constant.ERROR_CODE, "上传配置失败");
         }
         PolyvUploadChunkConfig uploadConfig = new PolyvUploadChunkConfig(partitionSize, checkpoint, threadNum);
-        uploadConfig.setAccessId(result.getAccessId());
-        uploadConfig.setAccessKey(result.getAccessKey());
-        uploadConfig.setBucket(result.getBucketName());
-        uploadConfig.setEndpoint(result.getEndpoint());
-        uploadConfig.setToken(result.getToken());
-        uploadConfig.setExpiration(result.getExpiration());
-        uploadConfig.setDir(result.getDir());
-        uploadConfig.setDomain(result.getDomain());
-        uploadConfig.setValidityTime(result.getValidityTime());
-        videoInfo.setVideoPoolId(result.getVid());
-        videoInfo.setCallBack(result.getCallback());
+        uploadConfig = uploadConfig.setAliOssArgument(uploadConfigResponse);
+        videoInfo.setVideoPoolId(uploadConfigResponse.getVid());
+        videoInfo.setCallBack(uploadConfigResponse.getCallback());
         videoInfo.setPolyvUploadChunkConfig(uploadConfig);
         videoInfo.setStartTime(System.currentTimeMillis());
         return true;
@@ -84,15 +84,15 @@ public class PolyvUploadService {
         long validityTime = uploadConfig.getValidityTime();
         
         String objectName =
-                uploadConfig.getDir() + videoInfo.getVideoPoolId() + "." + getExtension(videoInfo.getFileLocation());
-        String fileLocation = videoInfo.getFileLocation();
+                uploadConfig.getDir() + videoInfo.getVideoPoolId() + "." + getExtension(videoInfo.getFile().getPath());
+        String fileLocation = videoInfo.getFile().getPath();
         long partitionSize = uploadConfig.getPartitionSize() == null ? 1024 * 1024 : uploadConfig.getPartitionSize();
         String checkpoint = uploadConfig.getCheckPointDir() + "/" + videoInfo.getVideoPoolId() + ".ucp";
         
         
         OSS ossClient = buildOssClient(domain, accessKeyId, accessKeySecret, securityToken,
                 videoInfo.getStartTime() + validityTime * 1000);
-
+        
         ObjectMetadata meta = new ObjectMetadata();
         meta.setContentType("text/plain");
         
@@ -127,53 +127,52 @@ public class PolyvUploadService {
                 switch (eventType) {
                     case TRANSFER_STARTED_EVENT:
                         eventCallBack.start(videoPoolId);
-                        if(!printProcessLog){
+                        if (!printProcessLog) {
                             break;
                         }
-                        logger.info("【{}】vid={}, Start to upload......", videoInfo.getTitle(),
-                                videoInfo.getVideoPoolId());
-                        logger.info("【{}】File size is {} bytes", videoPoolId, this.totalFileSize);
+                        log.info("【{}】vid={}, Start to upload......", videoInfo.getTitle(), videoInfo.getVideoPoolId());
+                        log.info("【{}】File size is {} bytes", videoPoolId, this.totalFileSize);
                         break;
                     case REQUEST_CONTENT_LENGTH_EVENT:
                         this.totalBytes = bytes;
-                        if(!printProcessLog){
+                        if (!printProcessLog) {
                             break;
                         }
-                        logger.info("【{}】{} bytes in total will be uploaded to Server", videoPoolId, this.totalBytes);
+                        log.info("【{}】{} bytes in total will be uploaded to Server", videoPoolId, this.totalBytes);
                         break;
                     case REQUEST_BYTE_TRANSFER_EVENT:
                         this.bytesWritten += bytes;
                         eventCallBack.process(videoPoolId, totalFileSize - totalBytes + this.bytesWritten,
                                 this.totalFileSize);
-                        if(!printProcessLog){
+                        if (!printProcessLog) {
                             break;
                         }
                         if (this.totalBytes != -1) {
-                            int percent =
-                                    (int) ((totalFileSize - totalBytes + this.bytesWritten) * 100.0 / this.totalFileSize);
-                            logger.info("【{}】{} bytes have been written at this time, upload progress: {}%({}/{})",
+                            int percent = (int) ((totalFileSize - totalBytes + this.bytesWritten) * 100.0 /
+                                    this.totalFileSize);
+                            log.info("【{}】{} bytes have been written at this time, upload progress: {}%({}/{})",
                                     videoPoolId, bytes, percent, totalFileSize - totalBytes + this.bytesWritten,
                                     this.totalFileSize);
                         } else {
-                            logger.info("【{}】{} bytes have been written at this time, upload ratio: unknown({}/...)",
+                            log.info("【{}】{} bytes have been written at this time, upload ratio: unknown({}/...)",
                                     videoPoolId, bytes, totalFileSize - totalBytes + this.bytesWritten);
                         }
                         break;
                     case TRANSFER_COMPLETED_EVENT:
                         this.succeed = true;
                         eventCallBack.complete(videoPoolId);
-                        if(!printProcessLog){
+                        if (!printProcessLog) {
                             break;
                         }
-                        logger.info("【{}】Succeed to upload, {} bytes have been transferred in total", videoPoolId,
+                        log.info("【{}】Succeed to upload, {} bytes have been transferred in total", videoPoolId,
                                 totalFileSize - totalBytes + this.bytesWritten);
                         break;
                     case TRANSFER_FAILED_EVENT:
                         eventCallBack.error(videoPoolId, UploadErrorMsg.ERROR_UPLOAD_PART);
-                        if(!printProcessLog){
+                        if (!printProcessLog) {
                             break;
                         }
-                        logger.info("【{}】Failed to upload, {} bytes have been transferred", videoPoolId,
+                        log.info("【{}】Failed to upload, {} bytes have been transferred", videoPoolId,
                                 totalFileSize - totalBytes + this.bytesWritten);
                         break;
                     default:
@@ -190,7 +189,7 @@ public class PolyvUploadService {
      * 触发上传接口
      */
     private boolean triggerUpload(String videoPoolId, OSS ossClient, UploadFileRequest uploadFileRequest, int retry,
-                                  UploadCallBack eventCallBack) {
+            UploadCallBack eventCallBack) {
         try {
             ossClient.uploadFile(uploadFileRequest);
             // 关闭OSSClient。
@@ -199,15 +198,16 @@ public class PolyvUploadService {
             return true;
         } catch (OSSException e) {
             //假如是token过期，需要更新token再重传
-            if (("InvalidAccessKeyId".equals(e.getErrorCode()) || "SecurityTokenExpired".equals(e.getErrorCode())) && retry > 0) {
-                logger.info("token is expired. reupload the video. retry={}, requestId={}", retry, e.getRequestId());
+            if (("InvalidAccessKeyId".equals(e.getErrorCode()) || "SecurityTokenExpired".equals(e.getErrorCode())) &&
+                    retry > 0) {
+                log.info("token is expired. reupload the video. retry={}, requestId={}", retry, e.getRequestId());
                 ossClient = reBuildOssClient();
                 return triggerUpload(videoPoolId, ossClient, uploadFileRequest, --retry, eventCallBack);
             }
-            logger.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             eventCallBack.error(videoPoolId, UploadErrorMsg.ERROR_UPLOAD_TOKEN_EXPIRE);
         } catch (Throwable throwable) {
-            logger.error(throwable.getMessage(), throwable);
+            log.error(throwable.getMessage(), throwable);
             eventCallBack.error(videoPoolId, UploadErrorMsg.ERROR_UPLOAD_EXCEPTION);
         }
         // 关闭OSSClient。
@@ -221,40 +221,49 @@ public class PolyvUploadService {
      */
     private OSS reBuildOssClient() {
         //重新请求getToken获取新的上传参数
-        long currentTime = System.currentTimeMillis();
-        UploadConfigResponseData result = UploadVideoRestApi.getUploadToken(userConfig, 3);
-        if (result == null) {
-            return null;
+        UploadConfigResponse uploadConfigResponse = null;
+        try {
+            uploadConfigResponse = new VodUploadVideoService().getUploadToken(3);
+            if (uploadConfigResponse == null) {
+                throw new PloyvSdkException(Constant.ERROR_CODE, "重建OssClient失败");
+            }
+        } catch (IOException e) {
+            log.error("获取上传token失败", e);
+            throw new PloyvSdkException(Constant.ERROR_CODE, "获取上传token失败");
+        } catch (NoSuchAlgorithmException e) {
+            log.error("获取上传token失败", e);
+            throw new PloyvSdkException(Constant.ERROR_CODE, "获取上传token失败");
         }
         
-        String accessKeyId = result.getAccessId();
-        String accessKeySecret = result.getAccessKey();
-        String securityToken = result.getToken();
-        String domain = result.getDomain();
-        long validityTime = result.getValidityTime();
+        String accessKeyId = uploadConfigResponse.getAccessId();
+        String accessKeySecret = uploadConfigResponse.getAccessKey();
+        String securityToken = uploadConfigResponse.getToken();
+        String domain = uploadConfigResponse.getDomain();
+        long validityTime = uploadConfigResponse.getValidityTime();
         
         // 创建OSSClient实例。
-        return buildOssClient(domain, accessKeyId, accessKeySecret, securityToken, currentTime + validityTime);
+        return buildOssClient(domain, accessKeyId, accessKeySecret, securityToken,
+                System.currentTimeMillis() + validityTime);
     }
     
     private OSS buildOssClient(String endpoint, String accessKeyId, String accessKeySecret, String securityToken,
-                               long expireTime) {
+            long expireTime) {
         
         ClientBuilderConfiguration ossConfig = new ClientBuilderConfiguration();
         ossConfig.setSupportCname(true);
-        return new OSSClient(endpoint, new PolyvCredentialProvider(accessKeyId, accessKeySecret, securityToken,
-                expireTime, userConfig), ossConfig);
+        return new OSSClient(endpoint,
+                new PolyvCredentialProvider(accessKeyId, accessKeySecret, securityToken, expireTime), ossConfig);
     }
     
-    private String getExtension(String filename){
+    private String getExtension(String filename) {
         if (filename == null) {
             return "";
         } else {
             int extensionPos = filename.lastIndexOf(46);
-            if(extensionPos < 0){
+            if (extensionPos < 0) {
                 return "";
             }
-            return filename.substring(extensionPos+1);
+            return filename.substring(extensionPos + 1);
         }
     }
 }

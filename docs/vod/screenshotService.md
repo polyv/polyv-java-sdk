@@ -114,22 +114,22 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| taskId | false | Integer | 任务id | 
-| vid | false | String | 视频vid | 
-| status | false | String | 任务状态，waiting-等待截图,processing-截图处理中,success-任务成功,fail-任务失败 | 
-| createTime | false | Date | 任务创建时间,时间格式 yyyy-MM-dd HH:mm:ss | 
-| beginProcessTime | false | Date | 开始截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
-| finishProcessTime | false | Date | 完成截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
-| screenshots | false | Array | 截图信息组，失败或未开始时为空【详见[Screenshot参数描述](screenshotService.md?id=polyv28)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| taskId | Integer | 任务id | 
+| vid | String | 视频vid | 
+| status | String | 任务状态，waiting-等待截图,processing-截图处理中,success-任务成功,fail-任务失败 | 
+| createTime | Date | 任务创建时间,时间格式 yyyy-MM-dd HH:mm:ss | 
+| beginProcessTime | Date | 开始截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
+| finishProcessTime | Date | 完成截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
+| screenshots | Array | 截图信息组，失败或未开始时为空【详见[Screenshot参数描述](screenshotService.md?id=polyv28)】 | 
 
 <h6 id="polyv28"><a href="#/screenshotService.md?id=polyv28"data-id="Screenshot参数描述"class="anchor"><span>Screenshot参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| offsetTime | false | Integer | 截图时间点，单位：秒 | 
-| imageUrl | false | String | 截图访问的url | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| offsetTime | Integer | 截图时间点，单位：秒 | 
+| imageUrl | String | 截图访问的url | 
 
 <br /><br />
 

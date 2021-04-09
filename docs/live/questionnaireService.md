@@ -53,27 +53,27 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 问卷数据列表【详见[QuestionDetail参数描述](questionnaireService.md?id=polyv42)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 问卷数据列表【详见[QuestionDetail参数描述](questionnaireService.md?id=polyv42)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv42"><a href="#/questionnaireService.md?id=polyv42"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| questionnaireId | false | String | 问卷ID | 
-| channelId | false | String | 频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| questionnaireTitle | false | String | 问卷标题 | 
-| status | false | String | 问卷状态，取值：saved(已保存)，published （已发布），forbidden （问卷已完成填写） | 
-| createdTime | false | Date | 问卷创建时间 | 
-| lastModified | false | Date | 问卷最后修改时间 | 
-| endTime | false | Date | 停止提交问卷时间 | 
-| customQuestionnaireId | false | String | 用户自定义问卷ID | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| questionnaireId | String | 问卷ID | 
+| channelId | String | 频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| questionnaireTitle | String | 问卷标题 | 
+| status | String | 问卷状态，取值：saved(已保存)，published （已发布），forbidden （问卷已完成填写） | 
+| createdTime | Date | 问卷创建时间 | 
+| lastModified | Date | 问卷最后修改时间 | 
+| endTime | Date | 停止提交问卷时间 | 
+| customQuestionnaireId | String | 用户自定义问卷ID | 
 
 <br /><br />
 
@@ -137,41 +137,41 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| questionnaireId | false | String | 问卷ID | 
-| customQuestionnaireId | false | String | 用户自定义问卷ID | 
-| channelId | false | String | 频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| questionnaireTitle | false | String | 问卷标题 | 
-| status | false | String | 问卷状态，draft：草稿，send：已发送，delete：已删除 | 
-| createdTime | false | Date | 问卷创建时间 | 
-| endTime | false | Date | 停止问卷时间 | 
-| questions | false | Array | 问卷问题列表【详见[QuestionDetail参数描述](questionnaireService.md?id=polyv43)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| questionnaireId | String | 问卷ID | 
+| customQuestionnaireId | String | 用户自定义问卷ID | 
+| channelId | String | 频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| questionnaireTitle | String | 问卷标题 | 
+| status | String | 问卷状态，draft：草稿，send：已发送，delete：已删除 | 
+| createdTime | Date | 问卷创建时间 | 
+| endTime | Date | 停止问卷时间 | 
+| questions | Array | 问卷问题列表【详见[QuestionDetail参数描述](questionnaireService.md?id=polyv43)】 | 
 
 <h6 id="polyv43"><a href="#/questionnaireService.md?id=polyv43"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| questionId | false | String | 问题ID | 
-| name | false | String | 问题题目 | 
-| type | false | String | 问题类型，取值：R 单选；C 多选；S 评星题；Q 问答 | 
-| option1 | false | String | 选项A | 
-| option2 | false | String | 选项B | 
-| option3 | false | String | 选项C | 
-| option4 | false | String | 选项D | 
-| option5 | false | String | 选项E | 
-| option6 | false | String | 选项F | 
-| option7 | false | String | 选项G | 
-| option8 | false | String | 选项H | 
-| option9 | false | String | 选项I | 
-| option10 | false | String | 选项J | 
-| createdTime | false | Date | 创建时间 | 
-| lastModified | false | Date | 最后修改时间 | 
-| scoreEnabled | false | String | 是否计分，取值： Y 计分 、N  不计分，默认N | 
-| score | false | Integer | 题目分值 | 
-| required | false | String | 是否必答，取值Y 必填 、N 非必填 ，默认 N | 
-| answer | false | String | 问题答案 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| questionId | String | 问题ID | 
+| name | String | 问题题目 | 
+| type | String | 问题类型，取值：R 单选；C 多选；S 评星题；Q 问答 | 
+| option1 | String | 选项A | 
+| option2 | String | 选项B | 
+| option3 | String | 选项C | 
+| option4 | String | 选项D | 
+| option5 | String | 选项E | 
+| option6 | String | 选项F | 
+| option7 | String | 选项G | 
+| option8 | String | 选项H | 
+| option9 | String | 选项I | 
+| option10 | String | 选项J | 
+| createdTime | Date | 创建时间 | 
+| lastModified | Date | 最后修改时间 | 
+| scoreEnabled | String | 是否计分，取值： Y 计分 、N  不计分，默认N | 
+| score | Integer | 题目分值 | 
+| required | String | 是否必答，取值Y 必填 、N 非必填 ，默认 N | 
+| answer | String | 问题答案 | 
 
 <br /><br />
 
@@ -235,64 +235,64 @@
 ### 返回对象描述
 返回对象是List&lt;LiveQuestionnaireResultResponse&gt;，**LiveQuestionnaireResultResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| questionnaireId | false | String | 问卷ID | 
-| customQuestionnaireId | false | String | 用户自定义问卷ID | 
-| questionnaireTitle | false | String | 问卷名称 | 
-| lastModified | false | Date | 问卷最后修改时间 | 
-| endTime | false | Date | 问卷最后修改时间 | 
-| questionStats | false | Array | 问卷下各个问题的答题统计【详见[QuestionStats参数描述](questionnaireService.md?id=polyv44)】 | 
-| users | false | Array | 观看端提交答题的用户信息【详见[Users参数描述](questionnaireService.md?id=polyv45)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| questionnaireId | String | 问卷ID | 
+| customQuestionnaireId | String | 用户自定义问卷ID | 
+| questionnaireTitle | String | 问卷名称 | 
+| lastModified | Date | 问卷最后修改时间 | 
+| endTime | Date | 问卷最后修改时间 | 
+| questionStats | Array | 问卷下各个问题的答题统计【详见[QuestionStats参数描述](questionnaireService.md?id=polyv44)】 | 
+| users | Array | 观看端提交答题的用户信息【详见[Users参数描述](questionnaireService.md?id=polyv45)】 | 
 
 <h6 id="polyv44"><a href="#/questionnaireService.md?id=polyv44"data-id="QuestionStats参数描述"class="anchor"><span>QuestionStats参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| total | false | Integer | 题目的答题人数 | 
-| questions | false | Array | 问卷下单个问题的答题统计信息【详见[QuestionStat参数描述](questionnaireService.md?id=polyv46)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| total | Integer | 题目的答题人数 | 
+| questions | Array | 问卷下单个问题的答题统计信息【详见[QuestionStat参数描述](questionnaireService.md?id=polyv46)】 | 
 
 <h6 id="polyv45"><a href="#/questionnaireService.md?id=polyv45"data-id="Users参数描述"class="anchor"><span>Users参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| viewerId | false | String | 提交问卷的用户ID | 
-| nickname | false | String | 提交问卷的用户昵称 | 
-| submitTime | false | Date | 提交问卷时间 | 
-| totalScore | false | String | 提交问卷的用户的总得分 | 
-| answers | false | Array | 用户每道题目的答题情况【详见[Answers参数描述](questionnaireService.md?id=polyv47)】 | 
-| param4 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
-| param5 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| viewerId | String | 提交问卷的用户ID | 
+| nickname | String | 提交问卷的用户昵称 | 
+| submitTime | Date | 提交问卷时间 | 
+| totalScore | String | 提交问卷的用户的总得分 | 
+| answers | Array | 用户每道题目的答题情况【详见[Answers参数描述](questionnaireService.md?id=polyv47)】 | 
+| param4 | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
+| param5 | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
 
 <h6 id="polyv46"><a href="#/questionnaireService.md?id=polyv46"data-id="QuestionStat参数描述"class="anchor"><span>QuestionStat参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| questionId | false | String | 题目ID, | 
-| questionName | false | String | 题目名称 | 
-| score | false | Integer | 题目分数 | 
-| totalScore | false | Integer | 题目的总得分 | 
-| correctCount | false | Integer | 题目的答对人数 | 
-| a | false | Integer | 选择项a的答题人数 | 
-| b | false | Integer | 选择项b的答题人数 | 
-| c | false | Integer | 选择项c的答题人数 | 
-| d | false | Integer | 选择项d的答题人数 | 
-| e | false | Integer | 选择项e的答题人数 | 
-| f | false | Integer | 选择项f的答题人数 | 
-| g | false | Integer | 选择项g的答题人数 | 
-| h | false | Integer | 选择项g的答题人数 | 
-| i | false | Integer | 选择项g的答题人数 | 
-| j | false | Integer | 选择项g的答题人数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| questionId | String | 题目ID, | 
+| questionName | String | 题目名称 | 
+| score | Integer | 题目分数 | 
+| totalScore | Integer | 题目的总得分 | 
+| correctCount | Integer | 题目的答对人数 | 
+| a | Integer | 选择项a的答题人数 | 
+| b | Integer | 选择项b的答题人数 | 
+| c | Integer | 选择项c的答题人数 | 
+| d | Integer | 选择项d的答题人数 | 
+| e | Integer | 选择项e的答题人数 | 
+| f | Integer | 选择项f的答题人数 | 
+| g | Integer | 选择项g的答题人数 | 
+| h | Integer | 选择项g的答题人数 | 
+| i | Integer | 选择项g的答题人数 | 
+| j | Integer | 选择项g的答题人数 | 
 
 <h6 id="polyv47"><a href="#/questionnaireService.md?id=polyv47"data-id="Answers参数描述"class="anchor"><span>Answers参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| questionId | false | String | 题目ID | 
-| questionName | false | String | 题目名称 | 
-| answer | false | String | 提交的题目答案 | 
-| score | false | String | 用户答题的得分 | 
-| type | false | String | 题目的类型，R | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| questionId | String | 题目ID | 
+| questionName | String | 题目名称 | 
+| answer | String | 提交的题目答案 | 
+| score | String | 用户答题的得分 | 
+| type | String | 题目的类型，R | 
 
 <br /><br />
 
@@ -361,74 +361,74 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 频道的问卷信息和统计结果列表【详见[LiveQuestionnaireResultResponse参数描述](questionnaireService.md?id=polyv48)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 频道的问卷信息和统计结果列表【详见[LiveQuestionnaireResultResponse参数描述](questionnaireService.md?id=polyv48)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv48"><a href="#/questionnaireService.md?id=polyv48"data-id="LiveQuestionnaireResultResponse参数描述"class="anchor"><span>LiveQuestionnaireResultResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| questionnaireId | false | String | 问卷ID | 
-| customQuestionnaireId | false | String | 用户自定义问卷ID | 
-| questionnaireTitle | false | String | 问卷名称 | 
-| lastModified | false | Date | 问卷最后修改时间 | 
-| endTime | false | Date | 问卷最后修改时间 | 
-| questionStats | false | Array | 问卷下各个问题的答题统计【详见[QuestionStats参数描述](questionnaireService.md?id=polyv49)】 | 
-| users | false | Array | 观看端提交答题的用户信息【详见[Users参数描述](questionnaireService.md?id=polyv50)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| questionnaireId | String | 问卷ID | 
+| customQuestionnaireId | String | 用户自定义问卷ID | 
+| questionnaireTitle | String | 问卷名称 | 
+| lastModified | Date | 问卷最后修改时间 | 
+| endTime | Date | 问卷最后修改时间 | 
+| questionStats | Array | 问卷下各个问题的答题统计【详见[QuestionStats参数描述](questionnaireService.md?id=polyv49)】 | 
+| users | Array | 观看端提交答题的用户信息【详见[Users参数描述](questionnaireService.md?id=polyv50)】 | 
 
 <h6 id="polyv49"><a href="#/questionnaireService.md?id=polyv49"data-id="QuestionStats参数描述"class="anchor"><span>QuestionStats参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| total | false | Integer | 题目的答题人数 | 
-| questions | false | Array | 问卷下单个问题的答题统计信息【详见[QuestionStat参数描述](questionnaireService.md?id=polyv51)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| total | Integer | 题目的答题人数 | 
+| questions | Array | 问卷下单个问题的答题统计信息【详见[QuestionStat参数描述](questionnaireService.md?id=polyv51)】 | 
 
 <h6 id="polyv50"><a href="#/questionnaireService.md?id=polyv50"data-id="Users参数描述"class="anchor"><span>Users参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| viewerId | false | String | 提交问卷的用户ID | 
-| nickname | false | String | 提交问卷的用户昵称 | 
-| submitTime | false | Date | 提交问卷时间 | 
-| totalScore | false | String | 提交问卷的用户的总得分 | 
-| answers | false | Array | 用户每道题目的答题情况【详见[Answers参数描述](questionnaireService.md?id=polyv52)】 | 
-| param4 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
-| param5 | false | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| viewerId | String | 提交问卷的用户ID | 
+| nickname | String | 提交问卷的用户昵称 | 
+| submitTime | Date | 提交问卷时间 | 
+| totalScore | String | 提交问卷的用户的总得分 | 
+| answers | Array | 用户每道题目的答题情况【详见[Answers参数描述](questionnaireService.md?id=polyv52)】 | 
+| param4 | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
+| param5 | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数，同步回传 | 
 
 <h6 id="polyv51"><a href="#/questionnaireService.md?id=polyv51"data-id="QuestionStat参数描述"class="anchor"><span>QuestionStat参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| questionId | false | String | 题目ID, | 
-| questionName | false | String | 题目名称 | 
-| score | false | Integer | 题目分数 | 
-| totalScore | false | Integer | 题目的总得分 | 
-| correctCount | false | Integer | 题目的答对人数 | 
-| a | false | Integer | 选择项a的答题人数 | 
-| b | false | Integer | 选择项b的答题人数 | 
-| c | false | Integer | 选择项c的答题人数 | 
-| d | false | Integer | 选择项d的答题人数 | 
-| e | false | Integer | 选择项e的答题人数 | 
-| f | false | Integer | 选择项f的答题人数 | 
-| g | false | Integer | 选择项g的答题人数 | 
-| h | false | Integer | 选择项g的答题人数 | 
-| i | false | Integer | 选择项g的答题人数 | 
-| j | false | Integer | 选择项g的答题人数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| questionId | String | 题目ID, | 
+| questionName | String | 题目名称 | 
+| score | Integer | 题目分数 | 
+| totalScore | Integer | 题目的总得分 | 
+| correctCount | Integer | 题目的答对人数 | 
+| a | Integer | 选择项a的答题人数 | 
+| b | Integer | 选择项b的答题人数 | 
+| c | Integer | 选择项c的答题人数 | 
+| d | Integer | 选择项d的答题人数 | 
+| e | Integer | 选择项e的答题人数 | 
+| f | Integer | 选择项f的答题人数 | 
+| g | Integer | 选择项g的答题人数 | 
+| h | Integer | 选择项g的答题人数 | 
+| i | Integer | 选择项g的答题人数 | 
+| j | Integer | 选择项g的答题人数 | 
 
 <h6 id="polyv52"><a href="#/questionnaireService.md?id=polyv52"data-id="Answers参数描述"class="anchor"><span>Answers参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| questionId | false | String | 题目ID | 
-| questionName | false | String | 题目名称 | 
-| answer | false | String | 提交的题目答案 | 
-| score | false | String | 用户答题的得分 | 
-| type | false | String | 题目的类型，R | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| questionId | String | 题目ID | 
+| questionName | String | 题目名称 | 
+| answer | String | 提交的题目答案 | 
+| score | String | 用户答题的得分 | 
+| type | String | 题目的类型，R | 
 
 <br /><br />
 
@@ -527,25 +527,25 @@
 
 <h6 id="polyv53"><a href="#/questionnaireService.md?id=polyv53"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| questionId | false | String | 题目id，新增时为null，修改问卷必须传 | 
-| score | false | Integer | 题目分值，自动化打分使用 | 
-| name | true | String | 题目信息描述 | 
-| type | true | String | 题目类型,R为单选，C为多选，Q为问答 | 
-| scoreEnabled | false | String | 题目是否需要评分，Y为需要，N为不需要，默认为N | 
-| answer | false | String | 选择题答案，需要评分的选择题才有答案，填入对应选项序号，如：A或AB | 
-| required | false | String | 题目是否为必答，Y为必答，N为非必答，默认为N | 
-| options | false | Array | 题目为单选题或多选题的选项数据列表，选项数组下标0-9对应答案A-J | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| questionId | String | 题目id，新增时为null，修改问卷必须传 | 
+| score | Integer | 题目分值，自动化打分使用 | 
+| name | String | 题目信息描述 | 
+| type | String | 题目类型,R为单选，C为多选，Q为问答 | 
+| scoreEnabled | String | 题目是否需要评分，Y为需要，N为不需要，默认为N | 
+| answer | String | 选择题答案，需要评分的选择题才有答案，填入对应选项序号，如：A或AB | 
+| required | String | 题目是否为必答，Y为必答，N为非必答，默认为N | 
+| options | Array | 题目为单选题或多选题的选项数据列表，选项数组下标0-9对应答案A-J | 
 
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| questionnaireId | false | String | 问卷id | 
-| questionIds | false | Array | 同一个问卷下题目的问题id数组 | 
-| questionnaireTitle | false | String | 问卷标题 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| questionnaireId | String | 问卷id | 
+| questionIds | Array | 同一个问卷下题目的问题id数组 | 
+| questionnaireTitle | String | 问卷标题 | 
 
 <br /><br />
 

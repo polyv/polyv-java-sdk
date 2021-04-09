@@ -47,28 +47,28 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 查询的结果列表【详见[Task参数描述](syncService.md?id=polyv30)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 查询的结果列表【详见[Task参数描述](syncService.md?id=polyv30)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv30"><a href="#/syncService.md?id=polyv30"data-id="Task参数描述"class="anchor"><span>Task参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| taskId | false | String | 抓取任务对应的ID | 
-| userId | false | String | 点播用户的ID | 
-| originalName | false | String | 上传的抓取任务csv文件的标题 | 
-| fileUrl | false | String | 抓取任务的csv文件地址 | 
-| successCount | false | Integer | 抓取成功的数量 | 
-| totalCount | false | Integer | 此任务内总抓取数 | 
-| failCount | false | Integer | 抓取失败的数量 | 
-| status | false | String | 抓取任务完成状态 | 
-| endTime | false | Date | 任务完成时间，格式：yyyy-MM-dd HH:mm:ss | 
-| createTime | false | Date | 任务创建时间，格式：yyyy-MM-dd HH:mm:ss | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| taskId | String | 抓取任务对应的ID | 
+| userId | String | 点播用户的ID | 
+| originalName | String | 上传的抓取任务csv文件的标题 | 
+| fileUrl | String | 抓取任务的csv文件地址 | 
+| successCount | Integer | 抓取成功的数量 | 
+| totalCount | Integer | 此任务内总抓取数 | 
+| failCount | Integer | 抓取失败的数量 | 
+| status | String | 抓取任务完成状态 | 
+| endTime | Date | 任务完成时间，格式：yyyy-MM-dd HH:mm:ss | 
+| createTime | Date | 任务创建时间，格式：yyyy-MM-dd HH:mm:ss | 
 
 <br /><br />
 

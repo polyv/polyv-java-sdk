@@ -1,7 +1,7 @@
-## 1、根据vid批量修改视频的授权播放开关状态
+## 1、根据videoIds批量修改视频的授权播放开关状态
 ### 描述
 ```
-根据vid设置单个视频/多个视频的授权播放开关状态
+根据videoIds设置单个视频/多个视频的授权播放开关状态
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -22,7 +22,7 @@
                     vodUpdateVideoPlayStatusRequest);
             Assert.assertTrue(vodUpdateVideoPlayStatusResponse);
             if (vodUpdateVideoPlayStatusResponse) {
-                log.debug("测试根据vid批量修改视频的授权播放开关状态成功");
+                log.debug("测试根据videoIds批量修改视频的授权播放开关状态成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -176,9 +176,9 @@ true为修改成功，false为修改失败
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| concatVideoId | false | String | 合并后的视频videoId | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| concatVideoId | String | 合并后的视频videoId | 
 
 <br /><br />
 
@@ -217,7 +217,7 @@ true为修改成功，false为修改失败
             vodSaveVideoKeyFrameResponse = new VodEditServiceImpl().saveVideoKeyFrame(vodSaveVideoKeyFrameRequest);
             Assert.assertTrue(vodSaveVideoKeyFrameResponse);
             if (vodSaveVideoKeyFrameResponse) {
-                log.debug("测试合并视频成功");
+                log.debug("测试设置视频打点成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -317,7 +317,7 @@ true为删除成功，false为删除失败
 
 <br /><br />
 
-## 6、设置视频的播放预览时长
+## 6、修改视频的播放预览时长
 ### 描述
 ```
 设置视频预览时长，使用点播后台视频列表，选择视频，复制右侧预览代码即可播放预览视频
@@ -341,7 +341,7 @@ true为删除成功，false为删除失败
                     vodSetVideoPreviewDurationRequest);
             Assert.assertTrue(vodSetVideoPreviewDurationResponse);
             if (vodSetVideoPreviewDurationResponse) {
-                log.debug("测试设置视频的播放预览时长成功");
+                log.debug("测试修改视频的播放预览时长成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -503,10 +503,10 @@ true为批量删除成功，false为批量删除失败
 
 <br /><br />
 
-## 9、编辑单个视频的信息
+## 9、修改单个视频的信息
 ### 描述
 ```
-编辑单个视频的信息
+修改单个视频的信息
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -528,7 +528,7 @@ true为批量删除成功，false为批量删除失败
             vodUpdateVideoInfoResponse = new VodEditServiceImpl().updateVideoInfo(vodUpdateVideoInfoRequest);
             Assert.assertNotNull(vodUpdateVideoInfoResponse);
             if (vodUpdateVideoInfoResponse != null) {
-                log.debug("测试编辑单个视频的信息成功，{}", JSON.toJSONString(vodUpdateVideoInfoResponse));
+                log.debug("测试修改单个视频的信息成功，{}", JSON.toJSONString(vodUpdateVideoInfoResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -561,50 +561,50 @@ true为批量删除成功，false为批量删除失败
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| imagesBig | false | String[] | 视频截图大图地址 | 
-| images | false | String[] | 视频截图小图地址 | 
-| tag | false | String | 视频标签 | 
-| title | false | String | 视频标题 | 
-| df | false | Integer | 视频码率数 | 
-| times | false | String | 播放次数 | 
-| videoId | false | String | 视频id | 
-| SDMp4 | false | String | 流畅码率mp4格式视频地址 | 
-| HDmp4 | false | String | 高清码率mp4格式视频地址 | 
-| FHDmp4 | false | String | 超清码率mp4格式视频地址 | 
-| categoryId | false | String | 分类id， 如1为根目录 | 
-| swfLink | false | String | 返回flash连接 | 
-| status | false | String | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
-| seed | false | Integer | 加密视频为1，非加密为0 | 
-| SDFlv | false | String | 流畅码率flv格式视频地址 | 
-| HDFlv | false | String | 高清码率flv格式视频地址 | 
-| FHDFlv | false | String | 超清码率flv格式视频地址 | 
-| sourceFile | false | String | 源文件 | 
-| playerWidth | false | String | 视频宽度 | 
-| defaultVideo | false | String | 用户默认播放视频 | 
-| duration | false | String | 视频时长,如：00:00:48 | 
-| firstImage | false | String | 视频首图 | 
-| originalDefinition | false | String | 最佳分辨率 | 
-| context | false | String | 视频描述 | 
-| playerHeight | false | String | 视频高度 | 
-| uploadTime | false | String | 上传时间 | 
-| sourceFilesize | false | String | 源文件大小 | 
-| filesize | false | String[] | 编码后各个清晰度视频的文件大小，类型为array | 
-| md5Checksum | false | String | md5校验值 | 
-| hls | false | String[] | 编码后各个清晰度视频的m3u8地址，类型为array | 
-| keepSource | false | String | 是否为源文件，否：0,是：1 | 
-| uploader | false | Uploader | 上传者信息【详见[Uploader参数描述](editService.md?id=polyv10)】 | 
-| hlsLevel | false | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
-| categoryName | false | String | 分类名称 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| imagesBig | String[] | 视频截图大图地址 | 
+| images | String[] | 视频截图小图地址 | 
+| tag | String | 视频标签 | 
+| title | String | 视频标题 | 
+| df | Integer | 视频码率数 | 
+| times | String | 播放次数 | 
+| videoId | String | 视频id | 
+| SDMp4 | String | 流畅码率mp4格式视频地址 | 
+| HDmp4 | String | 高清码率mp4格式视频地址 | 
+| FHDmp4 | String | 超清码率mp4格式视频地址 | 
+| categoryId | String | 分类id， 如1为根目录 | 
+| swfLink | String | 返回flash连接 | 
+| status | String | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
+| seed | Integer | 加密视频为1，非加密为0 | 
+| SDFlv | String | 流畅码率flv格式视频地址 | 
+| HDFlv | String | 高清码率flv格式视频地址 | 
+| FHDFlv | String | 超清码率flv格式视频地址 | 
+| sourceFile | String | 源文件 | 
+| playerWidth | String | 视频宽度 | 
+| defaultVideo | String | 用户默认播放视频 | 
+| duration | String | 视频时长,如：00:00:48 | 
+| firstImage | String | 视频首图 | 
+| originalDefinition | String | 最佳分辨率 | 
+| context | String | 视频描述 | 
+| playerHeight | String | 视频高度 | 
+| uploadTime | String | 上传时间 | 
+| sourceFilesize | String | 源文件大小 | 
+| filesize | String[] | 编码后各个清晰度视频的文件大小，类型为array | 
+| md5Checksum | String | md5校验值 | 
+| hls | String[] | 编码后各个清晰度视频的m3u8地址，类型为array | 
+| keepSource | String | 是否为源文件，否：0,是：1 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](editService.md?id=polyv10)】 | 
+| hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
+| categoryName | String | 分类名称 | 
 
 <h6 id="polyv10"><a href="#/editService.md?id=polyv10"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| email | false | String | 上传者邮箱 | 
-| name | false | String | 上传者名称 | 
-| role | false | String | 上传者角色,如管理员,上传者,主账号 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| email | String | 上传者邮箱 | 
+| name | String | 上传者名称 | 
+| role | String | 上传者角色,如管理员,上传者,主账号 | 
 
 <br /><br />
 

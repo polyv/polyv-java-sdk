@@ -46,14 +46,14 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| totalFlow | false | Long | 用户总流量，单位为byte | 
-| usedSpace | false | Long | 已用空间，单位为byte | 
-| usedFlow | false | Long | 已用流量，单位为byte | 
-| totalSpace | false | Long | 用户总空间，单位为byte | 
-| userId | false | String | POLYV用户ID | 
-| email | false | String | POLYV用户邮箱 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| totalFlow | Long | 用户总流量，单位为byte | 
+| usedSpace | Long | 已用空间，单位为byte | 
+| usedFlow | Long | 已用流量，单位为byte | 
+| totalSpace | Long | 用户总空间，单位为byte | 
+| userId | String | POLYV用户ID | 
+| email | String | POLYV用户邮箱 | 
 
 <br /><br />
 

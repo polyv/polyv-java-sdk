@@ -51,35 +51,35 @@
 ### 返回对象描述
 返回对象是List&lt;LiveQuestionAnswerRecordResponse&gt;，**LiveQuestionAnswerRecordResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| questionId | false | String | 题目ID | 
-| questionTitle | false | String | 题目标题 | 
-| times | false | Integer | 第几次发送题目，用于区分相同题目重复发送的情况 | 
-| answer | false | String | 题目的答案 | 
-| total | false | Integer | 答题人数 | 
-| options | false | Array | 题目选项信息列表【详见[Option参数描述](answerRecordService.md?id=polyv35)】 | 
-| records | false | Array | 答题的用户列表【详见[Record参数描述](answerRecordService.md?id=polyv36)】 | 
-| type | false | String | 题目类型：R为单选，C为多选，Q为问答 | 
-| itemType | false | Integer | 答题类型：1表示问答，0表示答题卡 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| questionId | String | 题目ID | 
+| questionTitle | String | 题目标题 | 
+| times | Integer | 第几次发送题目，用于区分相同题目重复发送的情况 | 
+| answer | String | 题目的答案 | 
+| total | Integer | 答题人数 | 
+| options | Array | 题目选项信息列表【详见[Option参数描述](answerRecordService.md?id=polyv35)】 | 
+| records | Array | 答题的用户列表【详见[Record参数描述](answerRecordService.md?id=polyv36)】 | 
+| type | String | 题目类型：R为单选，C为多选，Q为问答 | 
+| itemType | Integer | 答题类型：1表示问答，0表示答题卡 | 
 
 <h6 id="polyv35"><a href="#/answerRecordService.md?id=polyv35"data-id="Option参数描述"class="anchor"><span>Option参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| title | false | String | 选项标题 | 
-| count | false | Integer | 选择该选项的人数 | 
-| percent | false | String | 选择该选项的人数百分比，如：100.00% | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| title | String | 选项标题 | 
+| count | Integer | 选择该选项的人数 | 
+| percent | String | 选择该选项的人数百分比，如：100.00% | 
 
 <h6 id="polyv36"><a href="#/answerRecordService.md?id=polyv36"data-id="Record参数描述"class="anchor"><span>Record参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| viewerId | false | String | 答题的用户ID | 
-| nickname | false | String | 答题的用户昵称 | 
-| answer | false | String | 答题的用户提交的答案 | 
-| corrent | false | Boolean | 答题的用户提交的答案是否正确：false不正确，true正确 | 
-| submitTime | false | Date | 答题的用户提交时间 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| viewerId | String | 答题的用户ID | 
+| nickname | String | 答题的用户昵称 | 
+| answer | String | 答题的用户提交的答案 | 
+| corrent | Boolean | 答题的用户提交的答案是否正确：false不正确，true正确 | 
+| submitTime | Date | 答题的用户提交时间 | 
 
 <br /><br />
 

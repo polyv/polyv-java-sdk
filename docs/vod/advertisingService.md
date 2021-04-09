@@ -190,37 +190,37 @@ true为删除成功，false为删除失败
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 返回的结果集【详见[AdvertisingInfo参数描述](advertisingService.md?id=polyv0)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 返回的结果集【详见[AdvertisingInfo参数描述](advertisingService.md?id=polyv0)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv0"><a href="#/advertisingService.md?id=polyv0"data-id="AdvertisingInfo参数描述"class="anchor"><span>AdvertisingInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| advertisingId | false | String | 广告ID | 
-| title | false | String | 广告标题 | 
-| note | false | String | 广告描述 | 
-| userId | false | String | 用户ID | 
-| location | false | Integer | 广告类型（片头1， 暂停2，片尾3，弹窗4） | 
-| matterUrl | false | String | 广告素材地址 | 
-| size | false | Integer | 广告时长(s) | 
-| playNum | false | Integer | 播放次数 | 
-| addrUrl | false | String | 链接地址 | 
-| stasis | false | Integer | 广告是否悬浮（是为1，不是为2），默认为2：否 | 
-| upTime | false | Date | 投放开始时间，格式 HH:mm:ss | 
-| offTime | false | Date | 投放结束时间，格式 HH:mm:ss | 
-| startDate | false | Date | 投放开始日期，格式为：yyyy-MM-dd | 
-| endDate | false | Date | 投放结束日期，格式为：yyyy-MM-dd | 
-| lastModified | false | Date | 修改时间 | 
-| status | false | Integer | 投放状态（已上线10，待下线1，已下线0），默认为10：已上线 | 
-| popUptime | false | Integer | 弹窗出现的时间,单位秒 | 
-| categoryIds | false | String | 内容分类，关联多分类时，以英文逗号分隔，默认值为默认分类1 | 
-| popLocation | false | Integer | 弹窗位置（右下角1，右上角2，左下角3，左上角4） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| advertisingId | String | 广告ID | 
+| title | String | 广告标题 | 
+| note | String | 广告描述 | 
+| userId | String | 用户ID | 
+| location | Integer | 广告类型（片头1， 暂停2，片尾3，弹窗4） | 
+| matterUrl | String | 广告素材地址 | 
+| size | Integer | 广告时长(s) | 
+| playNum | Integer | 播放次数 | 
+| addrUrl | String | 链接地址 | 
+| stasis | Integer | 广告是否悬浮（是为1，不是为2），默认为2：否 | 
+| upTime | Date | 投放开始时间，格式 HH:mm:ss | 
+| offTime | Date | 投放结束时间，格式 HH:mm:ss | 
+| startDate | Date | 投放开始日期，格式为：yyyy-MM-dd | 
+| endDate | Date | 投放结束日期，格式为：yyyy-MM-dd | 
+| lastModified | Date | 修改时间 | 
+| status | Integer | 投放状态（已上线10，待下线1，已下线0），默认为10：已上线 | 
+| popUptime | Integer | 弹窗出现的时间,单位秒 | 
+| categoryIds | String | 内容分类，关联多分类时，以英文逗号分隔，默认值为默认分类1 | 
+| popLocation | Integer | 弹窗位置（右下角1，右上角2，左下角3，左上角4） | 
 
 <br /><br />
 

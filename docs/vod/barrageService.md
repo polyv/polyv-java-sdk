@@ -49,29 +49,29 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 返回的结果集【详见[BarrageInfo参数描述](barrageService.md?id=polyv8)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 返回的结果集【详见[BarrageInfo参数描述](barrageService.md?id=polyv8)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv8"><a href="#/barrageService.md?id=polyv8"data-id="BarrageInfo参数描述"class="anchor"><span>BarrageInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| id | false | Integer | 弹幕信息的唯一标识 | 
-| videoId | false | String | 视频ID | 
-| userId | false | String | 用户ID | 
-| msg | false | String | 弹幕信息内容 | 
-| time | false | String | 弹幕出现的时间点，格式 时：分：秒 ，例如00：03：05 | 
-| fontSize | false | String | 弹幕内容的字体大小，例如 18 | 
-| fontMode | false | String | 弹幕内容滚动方式，顶部：top，底部：bottom，滚动：roll(默认) | 
-| fontcolor | false | String | 弹幕内容字体颜色 | 
-| createTime | false | Date | 弹幕内容出现的完整时间，格式为：yyyy-MM-dd HH:mm:ss | 
-| sessionId | false | String | 自定义参数（不能超过64位的字符串），添加弹幕传入的自定义参数（例如客户自己的用户ID资料等） | 
-| param2 | false | String | 自定义参数（不能超过64位的字符串），添加弹幕传入的自定义参数（例如客户自己的用户ID资料等） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| id | Integer | 弹幕信息的唯一标识 | 
+| videoId | String | 视频ID | 
+| userId | String | 用户ID | 
+| msg | String | 弹幕信息内容 | 
+| time | String | 弹幕出现的时间点，格式 时：分：秒 ，例如00：03：05 | 
+| fontSize | String | 弹幕内容的字体大小，例如 18 | 
+| fontMode | String | 弹幕内容滚动方式，顶部：top，底部：bottom，滚动：roll(默认) | 
+| fontcolor | String | 弹幕内容字体颜色 | 
+| createTime | Date | 弹幕内容出现的完整时间，格式为：yyyy-MM-dd HH:mm:ss | 
+| sessionId | String | 自定义参数（不能超过64位的字符串），添加弹幕传入的自定义参数（例如客户自己的用户ID资料等） | 
+| param2 | String | 自定义参数（不能超过64位的字符串），添加弹幕传入的自定义参数（例如客户自己的用户ID资料等） | 
 
 <br /><br />
 
@@ -79,10 +79,10 @@
 
 <br /><br />
 
-## 2、上传点播弹幕文件接口
+## 2、上传点播弹幕文件
 ### 描述
 ```
-上传点播弹幕文件接口
+上传点播弹幕文件
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -101,7 +101,7 @@
             vodUploadBarrageResponse = new VodBarrageServiceImpl().uploadBarrage(vodUploadBarrageRequest);
             Assert.assertTrue(vodUploadBarrageResponse);
             if (vodUploadBarrageResponse) {
-                log.debug("测试上传点播弹幕文件接口成功");
+                log.debug("测试上传点播弹幕文件成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -137,10 +137,10 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
 
 <br /><br />
 
-## 3、创建视频弹幕接口
+## 3、创建视频弹幕
 ### 描述
 ```
-创建视频弹幕接口
+创建视频弹幕
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -164,7 +164,7 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
             vodCreateBarrageResponse = new VodBarrageServiceImpl().createBarrage(vodCreateBarrageRequest);
             Assert.assertNotNull(vodCreateBarrageResponse);
             if (vodCreateBarrageResponse != null) {
-                log.debug("测试创建视频弹幕接口成功，{}", JSON.toJSONString(vodCreateBarrageResponse));
+                log.debug("测试创建视频弹幕成功，{}", JSON.toJSONString(vodCreateBarrageResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -200,9 +200,9 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| id | false | String | 弹幕ID | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| id | String | 弹幕ID | 
 
 <br /><br />
 

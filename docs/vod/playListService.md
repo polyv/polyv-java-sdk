@@ -46,27 +46,27 @@
 ### 返回对象描述
 返回对象是List&lt;VodGetOnePlayListResponse&gt;，**VodGetOnePlayListResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| desc | false | String | 详细介绍 | 
-| tag | false | String | 标签 | 
-| title | false | String | 播放列表标题 | 
-| lastModify | false | Date | 最后修改时间，时间格式 yyyy-MM-dd HH:mm:ss | 
-| videoCount | false | Integer | 视频数量 | 
-| videoId | false | String | 视频列表ID | 
-| createTime | false | Date | 创建时间，时间格式 yyyy-MM-dd HH:mm:ss | 
-| videoList | false | Array | 视频集合【详见[VideoInfo参数描述](playListService.md?id=polyv31)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| desc | String | 详细介绍 | 
+| tag | String | 标签 | 
+| title | String | 播放列表标题 | 
+| lastModify | Date | 最后修改时间，时间格式 yyyy-MM-dd HH:mm:ss | 
+| videoCount | Integer | 视频数量 | 
+| videoId | String | 视频列表ID | 
+| createTime | Date | 创建时间，时间格式 yyyy-MM-dd HH:mm:ss | 
+| videoList | Array | 视频集合【详见[VideoInfo参数描述](playListService.md?id=polyv31)】 | 
 
 <h6 id="polyv31"><a href="#/playListService.md?id=polyv31"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | false | String | 视频id | 
-| title | false | String | 视频标题 | 
-| duration | false | String | 视频时长，格式 HH:mm:ss。例如 00:03:11 | 
-| publishUrl | false | String | 外链地址 | 
-| firstImage | false | String | 视频首图 | 
-| defaultVideoLink | false | String | 默认视频链接地址 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| videoId | String | 视频id | 
+| title | String | 视频标题 | 
+| duration | String | 视频时长，格式 HH:mm:ss。例如 00:03:11 | 
+| publishUrl | String | 外链地址 | 
+| firstImage | String | 视频首图 | 
+| defaultVideoLink | String | 默认视频链接地址 | 
 
 <br /><br />
 

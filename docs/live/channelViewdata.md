@@ -118,22 +118,22 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 列表信息【详见[ChannelMic参数描述](channelViewdata.md?id=polyv28)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 列表信息【详见[ChannelMic参数描述](channelViewdata.md?id=polyv28)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv28"><a href="#/channelViewdata.md?id=polyv28"data-id="ChannelMic参数描述"class="anchor"><span>ChannelMic参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| userId | false | String | 用户userId | 
-| channelId | false | String | 频道号 | 
-| currentDay | false | Date | 当天，如：2019-10-25 | 
-| history | false | Integer | 使用连麦分钟数，单位：分钟 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| userId | String | 用户userId | 
+| channelId | String | 频道号 | 
+| currentDay | Date | 当天，如：2019-10-25 | 
+| history | Integer | 使用连麦分钟数，单位：分钟 | 
 
 <br /><br />
 
@@ -201,43 +201,43 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 频道观看日志【详见[LiveChannelViewlog参数描述](channelViewdata.md?id=polyv29)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 频道观看日志【详见[LiveChannelViewlog参数描述](channelViewdata.md?id=polyv29)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv29"><a href="#/channelViewdata.md?id=polyv29"data-id="LiveChannelViewlog参数描述"class="anchor"><span>LiveChannelViewlog参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| playId | false | String | 表示此次播放动作的ID | 
-| userId | false | String | 用户ID | 
-| channelId | false | String | 频道号 | 
-| playDuration | false | Integer | 播放时长，单位：秒 | 
-| stayDuration | false | Integer | 停留时长，单位：秒 | 
-| flowSize | false | Long | 流量大小 | 
-| sessionId | false | String | 直播的场次ID | 
-| viewerId | false | String | 观众id | 
-| viewerName | false | String | 观众名称 | 
-| logType | false | String | 观看类型：取值vod 表示观看回放，取值live 表示直播 | 
-| param4 | false | String | POLYV系统参数 | 
-| param5 | false | String | POLYV系统参数 | 
-| ipAddress | false | String | IP地址 | 
-| country | false | String | 国家 | 
-| province | false | String | 省份 | 
-| city | false | String | 城市 | 
-| isp | false | String | ISP运营商 | 
-| referer | false | String | 播放视频页面地址 | 
-| userAgent | false | String | 用户设备 | 
-| operatingSystem | false | String | 操作系统 | 
-| browser | false | String | 浏览器 | 
-| isMobile | false | String | 是否为移动端,Y:移动端，N：非移动端 | 
-| currentDay | false | Date | 日志查询日期 | 
-| createdTime | false | Date | 日志创建日期 | 
-| lastModified | false | Date | 日志更新日期 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| playId | String | 表示此次播放动作的ID | 
+| userId | String | 用户ID | 
+| channelId | String | 频道号 | 
+| playDuration | Integer | 播放时长，单位：秒 | 
+| stayDuration | Integer | 停留时长，单位：秒 | 
+| flowSize | Long | 流量大小 | 
+| sessionId | String | 直播的场次ID | 
+| viewerId | String | 观众id | 
+| viewerName | String | 观众名称 | 
+| logType | String | 观看类型：取值vod 表示观看回放，取值live 表示直播 | 
+| param4 | String | POLYV系统参数 | 
+| param5 | String | POLYV系统参数 | 
+| ipAddress | String | IP地址 | 
+| country | String | 国家 | 
+| province | String | 省份 | 
+| city | String | 城市 | 
+| isp | String | ISP运营商 | 
+| referer | String | 播放视频页面地址 | 
+| userAgent | String | 用户设备 | 
+| operatingSystem | String | 操作系统 | 
+| browser | String | 浏览器 | 
+| isMobile | String | 是否为移动端,Y:移动端，N：非移动端 | 
+| currentDay | Date | 日志查询日期 | 
+| createdTime | Date | 日志创建日期 | 
+| lastModified | Date | 日志更新日期 | 
 
 <br /><br />
 
@@ -300,30 +300,30 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelSummarys | false | Array | 统计数据【详见[ChannelSummary参数描述](channelViewdata.md?id=polyv30)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelSummarys | Array | 统计数据【详见[ChannelSummary参数描述](channelViewdata.md?id=polyv30)】 | 
 
 <h6 id="polyv30"><a href="#/channelViewdata.md?id=polyv30"data-id="ChannelSummary参数描述"class="anchor"><span>ChannelSummary参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| name | false | String | 频道名称 | 
-| pcPlayDuration | false | Integer | pc端播放时长，单位：分钟 | 
-| pcFlowSize | false | Long | pc端播放流量，单位为Byte | 
-| pcVideoView | false | Integer | pc视频播放量 | 
-| pcUniqueViewer | false | Integer | pc端唯一观众数 | 
-| mobilePlayDuration | false | Long | 移动端播放时长，单位：分钟 | 
-| mobileFlowSize | false | Long | 移动端播放流量，单位为Byte | 
-| mobileVideoView | false | Integer | 移动端播放量 | 
-| mobileUniqueViewer | false | Integer | 移动端唯一观众数 | 
-| livePcPlayDuration | false | Integer | PC直播播放时长，单位为分钟 | 
-| playbackPcPlayDuration | false | Long | PC回放播放时长，单位为分钟 | 
-| liveMobilePlayDuration | false | Integer | 移动端直播播放时长，单位为分钟 | 
-| playbackMobilePlayDuration | false | Long | 移动端回放播放时长，单位为分钟 | 
-| unknownPcPlayDuration | false | Integer | pc其他播放时长，单位为分钟 | 
-| unknownMobilePlayDuration | false | Integer | 移动端其他播放时长，单位为分钟 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| name | String | 频道名称 | 
+| pcPlayDuration | Integer | pc端播放时长，单位：分钟 | 
+| pcFlowSize | Long | pc端播放流量，单位为Byte | 
+| pcVideoView | Integer | pc视频播放量 | 
+| pcUniqueViewer | Integer | pc端唯一观众数 | 
+| mobilePlayDuration | Long | 移动端播放时长，单位：分钟 | 
+| mobileFlowSize | Long | 移动端播放流量，单位为Byte | 
+| mobileVideoView | Integer | 移动端播放量 | 
+| mobileUniqueViewer | Integer | 移动端唯一观众数 | 
+| livePcPlayDuration | Integer | PC直播播放时长，单位为分钟 | 
+| playbackPcPlayDuration | Long | PC回放播放时长，单位为分钟 | 
+| liveMobilePlayDuration | Integer | 移动端直播播放时长，单位为分钟 | 
+| playbackMobilePlayDuration | Long | 移动端回放播放时长，单位为分钟 | 
+| unknownPcPlayDuration | Integer | pc其他播放时长，单位为分钟 | 
+| unknownMobilePlayDuration | Integer | 移动端其他播放时长，单位为分钟 | 
 
 <br /><br />
 
@@ -382,17 +382,17 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelViewerCounts | false | Array | 频道实时在线人数【详见[ChannelViewerCount参数描述](channelViewdata.md?id=polyv31)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelViewerCounts | Array | 频道实时在线人数【详见[ChannelViewerCount参数描述](channelViewdata.md?id=polyv31)】 | 
 
 <h6 id="polyv31"><a href="#/channelViewdata.md?id=polyv31"data-id="ChannelViewerCount参数描述"class="anchor"><span>ChannelViewerCount参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| time | false | String | 统计的时间点（时间格式：12H），例：10:58:29 | 
-| count | false | String | 某个时间点实时观看人数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| time | String | 统计的时间点（时间格式：12H），例：10:58:29 | 
+| count | String | 某个时间点实时观看人数 | 
 
 <br /><br />
 
@@ -456,17 +456,17 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelViewerConcurrences | false | Array | 频道并发在线人数【详见[ChannelViewerConcurrence参数描述](channelViewdata.md?id=polyv32)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelViewerConcurrences | Array | 频道并发在线人数【详见[ChannelViewerConcurrence参数描述](channelViewdata.md?id=polyv32)】 | 
 
 <h6 id="polyv32"><a href="#/channelViewdata.md?id=polyv32"data-id="ChannelViewerConcurrence参数描述"class="anchor"><span>ChannelViewerConcurrence参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| day | false | Date | 统计的日期（时间格式：yyyy-MM-dd,例：2019-04-10） | 
-| minute | false | String | 统计的时间点（时间格式：12H，例：10:30） | 
-| viewers | false | String | 某个时间点实时观看人数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| day | Date | 统计的日期（时间格式：yyyy-MM-dd,例：2019-04-10） | 
+| minute | String | 统计的时间点（时间格式：12H，例：10:30） | 
+| viewers | String | 某个时间点实时观看人数 | 
 
 <br /><br />
 

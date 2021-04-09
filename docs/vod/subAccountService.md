@@ -70,37 +70,37 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 查询的结果列表【详见[VodSearchVideoList参数描述](subAccountService.md?id=polyv32)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 查询的结果列表【详见[VodSearchVideoList参数描述](subAccountService.md?id=polyv32)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv32"><a href="#/subAccountService.md?id=polyv32"data-id="VodSearchVideoList参数描述"class="anchor"><span>VodSearchVideoList参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | false | String | 视频id | 
-| basicInfo | false | BasicInfo | 查询的视频基本信息【详见[BasicInfo参数描述](subAccountService.md?id=polyv33)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| videoId | String | 视频id | 
+| basicInfo | BasicInfo | 查询的视频基本信息【详见[BasicInfo参数描述](subAccountService.md?id=polyv33)】 | 
 
 <h6 id="polyv33"><a href="#/subAccountService.md?id=polyv33"data-id="BasicInfo参数描述"class="anchor"><span>BasicInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| title | false | String | 视频标题 | 
-| description | false | String | 视频描述 | 
-| duration | false | Integer | 源视频时长，单位：秒 | 
-| coverURL | false | String | 首图地址，大图 | 
-| creationTime | false | Date | 创建时间 | 
-| updateTime | false | Date | 更新时间 | 
-| size | false | Long | 源文件大小，单位：Bytes | 
-| status | false | Integer | 视频状态码;60/61:已发布;10:等待编码;20:正在编码;50:等待审核;51:审核不通过;-1:已删除; | 
-| categoryId | false | String | 分类id, 如1为根目录 | 
-| categoryName | false | String | 分类名称 | 
-| tags | false | String | 标签 | 
-| uploader | false | String | 上传者 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| title | String | 视频标题 | 
+| description | String | 视频描述 | 
+| duration | Integer | 源视频时长，单位：秒 | 
+| coverURL | String | 首图地址，大图 | 
+| creationTime | Date | 创建时间 | 
+| updateTime | Date | 更新时间 | 
+| size | Long | 源文件大小，单位：Bytes | 
+| status | Integer | 视频状态码;60/61:已发布;10:等待编码;20:正在编码;50:等待审核;51:审核不通过;-1:已删除; | 
+| categoryId | String | 分类id, 如1为根目录 | 
+| categoryName | String | 分类名称 | 
+| tags | String | 标签 | 
+| uploader | String | 上传者 | 
 
 <br /><br />
 
@@ -167,64 +167,64 @@
 ### 返回对象描述
 返回对象是List&lt;VodSubAccountQueryVideoInfoResponse&gt;，**VodSubAccountQueryVideoInfoResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | false | String | 视频id | 
-| basicInfo | false | BasicInfo | 查询的视频基本信息【详见[BasicInfo参数描述](subAccountService.md?id=polyv34)】 | 
-| transcodeInfos | false | Array | 查询的视频转码信息【详见[TranscodeInfos参数描述](subAccountService.md?id=polyv35)】 | 
-| metaData | false | MetaData | 查询的视频元数据【详见[MetaData参数描述](subAccountService.md?id=polyv36)】 | 
-| snapshotInfo | false | SnapshotInfo | 查询的视频截图【详见[SnapshotInfo参数描述](subAccountService.md?id=polyv37)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| videoId | String | 视频id | 
+| basicInfo | BasicInfo | 查询的视频基本信息【详见[BasicInfo参数描述](subAccountService.md?id=polyv34)】 | 
+| transcodeInfos | Array | 查询的视频转码信息【详见[TranscodeInfos参数描述](subAccountService.md?id=polyv35)】 | 
+| metaData | MetaData | 查询的视频元数据【详见[MetaData参数描述](subAccountService.md?id=polyv36)】 | 
+| snapshotInfo | SnapshotInfo | 查询的视频截图【详见[SnapshotInfo参数描述](subAccountService.md?id=polyv37)】 | 
 
 <h6 id="polyv34"><a href="#/subAccountService.md?id=polyv34"data-id="BasicInfo参数描述"class="anchor"><span>BasicInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| title | false | String | 视频标题 | 
-| description | false | String | 视频描述 | 
-| duration | false | Integer | 源视频时长，单位：秒 | 
-| coverURL | false | String | 首图地址，大图 | 
-| creationTime | false | Date | 创建时间 | 
-| updateTime | false | Date | 更新时间 | 
-| size | false | Long | 源文件大小，单位：Bytes | 
-| status | false | Integer | 视频状态码;60/61:已发布;10:等待编码;20:正在编码;50:等待审核;51:审核不通过;-1:已删除; | 
-| categoryId | false | String | 分类id, 如1为根目录 | 
-| categoryName | false | String | 分类名称 | 
-| tags | false | String | 标签 | 
-| uploader | false | String | 上传者 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| title | String | 视频标题 | 
+| description | String | 视频描述 | 
+| duration | Integer | 源视频时长，单位：秒 | 
+| coverURL | String | 首图地址，大图 | 
+| creationTime | Date | 创建时间 | 
+| updateTime | Date | 更新时间 | 
+| size | Long | 源文件大小，单位：Bytes | 
+| status | Integer | 视频状态码;60/61:已发布;10:等待编码;20:正在编码;50:等待审核;51:审核不通过;-1:已删除; | 
+| categoryId | String | 分类id, 如1为根目录 | 
+| categoryName | String | 分类名称 | 
+| tags | String | 标签 | 
+| uploader | String | 上传者 | 
 
 <h6 id="polyv35"><a href="#/subAccountService.md?id=polyv35"data-id="TranscodeInfos参数描述"class="anchor"><span>TranscodeInfos参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| playUrl | false | String | 播放地址 | 
-| definition | false | String | 清晰度，SOURCE:原清晰度,LD:普清,SD:标清,HD:高清 | 
-| duration | false | Integer | 时长，秒 | 
-| encrypt | false | Boolean | 加密视频为1，非加密为0 | 
-| format | false | String | 转码格式，如mp4、flv、pdx、hls | 
-| fps | false | Integer | 视频帧率 | 
-| bitrate | false | Integer | 码率kbps | 
-| height | false | Integer | 分辨率高，单位：px | 
-| width | false | Integer | 分辨率宽，单位：px | 
-| status | false | String | 视频状态, normal:可以正常播放,unavailable:不能正常播放 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| playUrl | String | 播放地址 | 
+| definition | String | 清晰度，SOURCE:原清晰度,LD:普清,SD:标清,HD:高清 | 
+| duration | Integer | 时长，秒 | 
+| encrypt | Boolean | 加密视频为1，非加密为0 | 
+| format | String | 转码格式，如mp4、flv、pdx、hls | 
+| fps | Integer | 视频帧率 | 
+| bitrate | Integer | 码率kbps | 
+| height | Integer | 分辨率高，单位：px | 
+| width | Integer | 分辨率宽，单位：px | 
+| status | String | 视频状态, normal:可以正常播放,unavailable:不能正常播放 | 
 
 <h6 id="polyv36"><a href="#/subAccountService.md?id=polyv36"data-id="MetaData参数描述"class="anchor"><span>MetaData参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| size | false | Long | 源文件大小，单位：Bytes | 
-| format | false | String | 视频容器类型，如mp4、flv等 | 
-| duration | false | Integer | 源视频时长，单位：秒 | 
-| bitrate | false | Integer | 视频码率，单位：bps | 
-| fps | false | Integer | 视频帧率 | 
-| height | false | Integer | 分辨率高，单位：px | 
-| width | false | Integer | 分辨率宽，单位：px | 
-| codec | false | String | 编码格式，如h264、h265等 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| size | Long | 源文件大小，单位：Bytes | 
+| format | String | 视频容器类型，如mp4、flv等 | 
+| duration | Integer | 源视频时长，单位：秒 | 
+| bitrate | Integer | 视频码率，单位：bps | 
+| fps | Integer | 视频帧率 | 
+| height | Integer | 分辨率高，单位：px | 
+| width | Integer | 分辨率宽，单位：px | 
+| codec | String | 编码格式，如h264、h265等 | 
 
 <h6 id="polyv37"><a href="#/subAccountService.md?id=polyv37"data-id="SnapshotInfo参数描述"class="anchor"><span>SnapshotInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| imageUrl | false | Array | 截图url数组 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| imageUrl | Array | 截图url数组 | 
 
 <br /><br />
 
@@ -486,19 +486,19 @@ true为删除视频成功，false为删除视频失败
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| category | false | Category | 当前分类【详见[Category参数描述](subAccountService.md?id=polyv38)】 | 
-| subCategoryTotal | false | Integer | 下一级子分类个数 | 
-| subCategories | false | Array | 下一级子分类列表【详见[Category参数描述](subAccountService.md?id=polyv39)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| category | Category | 当前分类【详见[Category参数描述](subAccountService.md?id=polyv38)】 | 
+| subCategoryTotal | Integer | 下一级子分类个数 | 
+| subCategories | Array | 下一级子分类列表【详见[Category参数描述](subAccountService.md?id=polyv39)】 | 
 
 <h6 id="polyv39"><a href="#/subAccountService.md?id=polyv39"data-id="Category参数描述"class="anchor"><span>Category参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| categoryId | false | String | 分类id | 
-| categoryName | false | String | 分类名称 | 
-| parentId | false | String | 父分类id | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| categoryId | String | 分类id | 
+| categoryName | String | 分类名称 | 
+| parentId | String | 父分类id | 
 
 <br /><br />
 

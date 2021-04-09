@@ -47,16 +47,16 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| subtitles | false | Array | 查询的结果列表【详见[Subtitle参数描述](subtitleService.md?id=polyv29)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| subtitles | Array | 查询的结果列表【详见[Subtitle参数描述](subtitleService.md?id=polyv29)】 | 
 
 <h6 id="polyv29"><a href="#/subtitleService.md?id=polyv29"data-id="Subtitle参数描述"class="anchor"><span>Subtitle参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| rank | false | Integer | 序号，从1开始 | 
-| name | false | String | 字幕名称 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| rank | Integer | 序号，从1开始 | 
+| name | String | 字幕名称 | 
 
 <br /><br />
 

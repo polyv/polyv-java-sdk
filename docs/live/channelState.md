@@ -49,14 +49,14 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| deployAddress | false | String | 推送的CDN节点IP，可能会为null | 
-| inAddress | false | String | 推流出口ip，可能会为null | 
-| streamName | false | String | 流名 | 
-| fps | false | String | 推流帧率 | 
-| lfr | false | String | 推流丢帧率，可能会为null | 
-| inBandWidth | false | String | 推流码率 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| deployAddress | String | 推送的CDN节点IP，可能会为null | 
+| inAddress | String | 推流出口ip，可能会为null | 
+| streamName | String | 流名 | 
+| fps | String | 推流帧率 | 
+| lfr | String | 推流丢帧率，可能会为null | 
+| inBandWidth | String | 推流码率 | 
 
 <br /><br />
 
@@ -119,16 +119,16 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelInfo | false | Array | 频道信息【详见[LiveChannelStreamStatusResponse参数描述](channelState.md?id=polyv27)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelInfo | Array | 频道信息【详见[LiveChannelStreamStatusResponse参数描述](channelState.md?id=polyv27)】 | 
 
 <h6 id="polyv27"><a href="#/channelState.md?id=polyv27"data-id="LiveChannelStreamStatusResponse参数描述"class="anchor"><span>LiveChannelStreamStatusResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| status | false | String | 频道的直播状态，字符串，值包括：live end | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| status | String | 频道的直播状态，字符串，值包括：live end | 
 
 <br /><br />
 

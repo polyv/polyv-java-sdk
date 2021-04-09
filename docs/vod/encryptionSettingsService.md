@@ -46,10 +46,10 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| encrypt | false | Integer | 是否开启加密，1为开启，0为关闭 | 
-| hlsLevel | false | String | 加密授权参数，值为open/web/app/wxa_app之一，open为开放授权，web为WEB授权，app为APP授权，wxa_app为小程序授权 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| encrypt | Integer | 是否开启加密，1为开启，0为关闭 | 
+| hlsLevel | String | 加密授权参数，值为open/web/app/wxa_app之一，open为开放授权，web为WEB授权，app为APP授权，wxa_app为小程序授权 | 
 
 <br /><br />
 
@@ -57,10 +57,10 @@
 
 <br /><br />
 
-## 2、设置账号加密设置
+## 2、修改账号加密设置
 ### 描述
 ```
-设置账号加密设置
+修改账号加密设置
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -80,7 +80,7 @@
                     vodUpdateEncryptionSettingsRequest);
             Assert.assertNotNull(vodUpdateEncryptionSettingsResponse);
             if (vodUpdateEncryptionSettingsResponse != null) {
-                log.debug("测试设置账号加密设置成功,{}", JSON.toJSONString(vodUpdateEncryptionSettingsResponse));
+                log.debug("测试修改账号加密设置成功,{}", JSON.toJSONString(vodUpdateEncryptionSettingsResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -110,10 +110,10 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| encrypt | false | Integer | 是否开启加密，1为开启，0为关闭 | 
-| hlsLevel | false | String | 加密授权参数，值为open/web/app/wxa_app之一，open为开放授权，web为WEB授权，app为APP授权，wxa_app为小程序授权 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| encrypt | Integer | 是否开启加密，1为开启，0为关闭 | 
+| hlsLevel | String | 加密授权参数，值为open/web/app/wxa_app之一，open为开放授权，web为WEB授权，app为APP授权，wxa_app为小程序授权 | 
 
 <br /><br />
 

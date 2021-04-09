@@ -56,29 +56,29 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 抽奖记录列表【详见[LotteryListModel参数描述](lotteryService.md?id=polyv38)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 抽奖记录列表【详见[LotteryListModel参数描述](lotteryService.md?id=polyv38)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv38"><a href="#/lotteryService.md?id=polyv38"data-id="LotteryListModel参数描述"class="anchor"><span>LotteryListModel参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| lotteryId | false | String | 抽奖场次ID | 
-| channelId | false | String | 频道号 | 
-| sessionId | false | String | 抽奖时的直播场次ID | 
-| lotteryRange | false | String | 抽奖范围，取值：所有观众：all;当场直播未中奖用户：notWinning;已签到用户：signed；头衔：actor；已填问卷用户:questionnaire | 
-| actor | false | String | 抽奖范围为按头衔抽奖时的头衔 | 
-| prize | false | String | 奖品名称 | 
-| amount | false | Integer | 预设中奖人数 | 
-| preset | false | Integer | 预设中奖观众ID，多个ID 用英文逗号分开 | 
-| createdTime | false | Date | 抽奖时间 | 
-| winnerCount | false | Integer | 实际中奖人数 | 
-| ext | false | String | 表示抽奖的额外拓展信息 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| lotteryId | String | 抽奖场次ID | 
+| channelId | String | 频道号 | 
+| sessionId | String | 抽奖时的直播场次ID | 
+| lotteryRange | String | 抽奖范围，取值：所有观众：all;当场直播未中奖用户：notWinning;已签到用户：signed；头衔：actor；已填问卷用户:questionnaire | 
+| actor | String | 抽奖范围为按头衔抽奖时的头衔 | 
+| prize | String | 奖品名称 | 
+| amount | Integer | 预设中奖人数 | 
+| preset | Integer | 预设中奖观众ID，多个ID 用英文逗号分开 | 
+| createdTime | Date | 抽奖时间 | 
+| winnerCount | Integer | 实际中奖人数 | 
+| ext | String | 表示抽奖的额外拓展信息 | 
 
 <br /><br />
 
@@ -141,41 +141,41 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 中奖记录表【详见[LotteryWinnerDetail参数描述](lotteryService.md?id=polyv39)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 中奖记录表【详见[LotteryWinnerDetail参数描述](lotteryService.md?id=polyv39)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv39"><a href="#/lotteryService.md?id=polyv39"data-id="LotteryWinnerDetail参数描述"class="anchor"><span>LotteryWinnerDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| recordId | false | String | 中奖记录ID | 
-| channelId | false | String | 频道号 | 
-| sessionId | false | String | 抽奖时的直播场次ID | 
-| lotteryId | false | String | 抽奖ID | 
-| viewerId | false | String | 中奖用户ID | 
-| viewerName | false | String | 中奖用户昵称 | 
-| winnerCode | false | String | 中奖码 | 
-| prize | false | String | 奖品名称 | 
-| createdTime | false | Date | 中奖时间 | 
-| ext | false | CollectInfo | json 格式的字符串,表示中奖记录的额外拓展信息，对应模型类：WinnerRecordModelExt【详见[CollectInfo参数描述](lotteryService.md?id=polyv40)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| recordId | String | 中奖记录ID | 
+| channelId | String | 频道号 | 
+| sessionId | String | 抽奖时的直播场次ID | 
+| lotteryId | String | 抽奖ID | 
+| viewerId | String | 中奖用户ID | 
+| viewerName | String | 中奖用户昵称 | 
+| winnerCode | String | 中奖码 | 
+| prize | String | 奖品名称 | 
+| createdTime | Date | 中奖时间 | 
+| ext | CollectInfo | json 格式的字符串,表示中奖记录的额外拓展信息，对应模型类：WinnerRecordModelExt【详见[CollectInfo参数描述](lotteryService.md?id=polyv40)】 | 
 
 <h6 id="polyv40"><a href="#/lotteryService.md?id=polyv40"data-id="CollectInfo参数描述"class="anchor"><span>CollectInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](lotteryService.md?id=polyv41)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| collectInfo | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](lotteryService.md?id=polyv41)】 | 
 
 <h6 id="polyv41"><a href="#/lotteryService.md?id=polyv41"data-id="CollectInfoFieldModel参数描述"class="anchor"><span>CollectInfoFieldModel参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| field | false | String | 填写的字段名 | 
-| tips | false | String | 填写的字段提示 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| field | String | 填写的字段名 | 
+| tips | String | 填写的字段提示 | 
 
 <br /><br />
 

@@ -73,7 +73,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试根据视频vid查询视频的授权播放开关状态
+     * 测试根据视频videoId查询视频的授权播放开关状态
      * 返回：true为开关开启，false为开关关闭
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -89,7 +89,7 @@ public class VodInfoServiceImplTest extends BaseTest {
             vodGetVideoPlayStatusResponse = new VodInfoServiceImpl().getVideoPlayStatus(vodGetVideoPlayStatusRequest);
             Assert.assertTrue(vodGetVideoPlayStatusResponse);
             if (vodGetVideoPlayStatusResponse) {
-                log.debug("测试根据视频vid查询视频的授权播放开关状态成功");
+                log.debug("测试根据视频videoId查询视频的授权播放开关状态成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -165,7 +165,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试获取微信分享页的视频相关信息接口
+     * 测试获取微信分享页的视频相关信息
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -180,7 +180,7 @@ public class VodInfoServiceImplTest extends BaseTest {
                     vodGetWeChatShareVideoInfoRequest);
             Assert.assertNotNull(vodGetWeChatShareVideoInfoResponse);
             if (vodGetWeChatShareVideoInfoResponse != null) {
-                log.debug("测试获取微信分享页的视频相关信息接口成功,{}", JSON.toJSONString(vodGetWeChatShareVideoInfoResponse));
+                log.debug("测试获取微信分享页的视频相关信息成功,{}", JSON.toJSONString(vodGetWeChatShareVideoInfoResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -194,7 +194,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试获取视频播放预览时长接口
+     * 测试获取视频播放预览时长
      * 返回：视频播放预览时长，单位：秒
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -210,7 +210,7 @@ public class VodInfoServiceImplTest extends BaseTest {
                     vodGetVideoPreviewDurationRequest);
             Assert.assertNotNull(vodGetVideoPreviewDurationResponse);
             if (vodGetVideoPreviewDurationResponse != null) {
-                log.debug("测试获取视频播放预览时长接口成功,{}", JSON.toJSONString(vodGetVideoPreviewDurationResponse));
+                log.debug("测试获取视频播放预览时长成功,{}", JSON.toJSONString(vodGetVideoPreviewDurationResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -12,13 +12,13 @@ import lombok.experimental.Accessors;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * 查询视频播放量排行接口请求实体
+ * 查询视频播放量排行请求实体
  * @author: fangyan
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("查询视频播放量排行接口请求实体")
+@ApiModel("查询视频播放量排行请求实体")
 public class VodQueryVideoPlaybackRankingRequest extends VodCommonRequest {
     
     /**

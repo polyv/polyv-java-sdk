@@ -60,7 +60,7 @@ public class VodURL {
     public static final String SEARCH_VIDEO_LIST_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/search";
     
     /**
-     * 根据vid批量修改视频的授权播放开关状态
+     * 根据videoIds批量修改视频的授权播放开关状态
      */
     public static final String UPDATE_VIDEO_PLAY_STATUS_URL =
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/authplay-status";
@@ -87,7 +87,7 @@ public class VodURL {
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deleteKeyFrameByTime";
     
     /**
-     * 设置视频的播放预览时长
+     * 修改视频的播放预览时长
      */
     public static final String SET_PREVIEW_DURATION_URL =
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/set-preview-duration";
@@ -103,7 +103,7 @@ public class VodURL {
     public static final String DELETE_VIDEO_LIST_URL = BASE_URI + "v2/video/del-videos";
     
     /**
-     * 编辑单个视频的信息
+     * 修改单个视频的信息
      */
     public static final String UPDATE_VIDEO_INFO_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/video-info";
     
@@ -160,7 +160,7 @@ public class VodURL {
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/keyframe/" + PARAM_REPLACE_CHAR;
     
     /**
-     * 根据视频vid查询视频的授权播放开关状态
+     * 根据视频videoId查询视频的授权播放开关状态
      */
     public static final String GET_VIDEO_PLAY_STATUS_URL =
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/authplay-status";
@@ -212,7 +212,7 @@ public class VodURL {
             BASE_URI + "v2/video/wechat-share/" + PARAM_REPLACE_CHAR + "/video-info";
     
     /**
-     * 获取视频播放预览时长接口
+     * 获取视频播放预览时长
      */
     public static final String GET_VIDEO_PREVIEW_DURATION_URL =
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/get-preview-duration";
@@ -249,12 +249,12 @@ public class VodURL {
     public static final String GET_VIDEOS_PLAY_SIZE_URL = BASE_URI + "v2/data/" + PARAM_REPLACE_CHAR + "/play-times";
     
     /**
-     * 移动视频分类接口
+     * 移动视频分类
      */
     public static final String MOVE_CATEGORY_URL = BASE_URI + "v2/cata/" + PARAM_REPLACE_CHAR + "/change";
     
     /**
-     * 设置分类属性
+     * 修改分类属性
      */
     public static final String VOD_UPDATE_CATEGORY_PROFILE_URL =
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/updateCataProfile";
@@ -286,7 +286,7 @@ public class VodURL {
     public static final String VOD_MOVE_VIDEO_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/changeCata";
     
     /**
-     * 通过cataid获取视频目录空间
+     * 通过categoryId获取视频目录空间
      */
     public static final String VOD_GET_CATEGORY_SIZE_URL = BASE_URI + "v2/cata/size";
     
@@ -359,12 +359,12 @@ public class VodURL {
     public static final String VOD_QUERY_BARRAGE_LIST_URL = BASE_URI + "v2/danmu/" + PARAM_REPLACE_CHAR;
     
     /**
-     * 上传点播弹幕文件接口
+     * 上传点播弹幕文件
      */
     public static final String VOD_UPLOAD_BARRAGE_URL = BASE_URI + "v2/danmu/" + PARAM_REPLACE_CHAR + "/upload";
     
     /**
-     * 创建视频弹幕接口
+     * 创建视频弹幕
      */
     public static final String VOD_CREATE_BARRAGE_URL = BASE_URI + "v2/danmu/" + PARAM_REPLACE_CHAR + "/add";
     
@@ -408,7 +408,7 @@ public class VodURL {
             BASE_URI + "v2/play/" + PARAM_REPLACE_CHAR + "/list/" + PARAM_REPLACE_CHAR;
     
     /**
-     * 获取用户下所有播放器列表接口
+     * 获取用户下所有播放器列表
      */
     public static final String VOD_GET_PLAYER_LIST_URL = BASE_URI + "v2/play/" + PARAM_REPLACE_CHAR + "/player-list";
     
@@ -419,7 +419,7 @@ public class VodURL {
             BASE_URI + "v2/setting/" + PARAM_REPLACE_CHAR + "/get-playsafe";
     
     /**
-     * 设置账号加密设置
+     * 修改账号加密设置
      */
     public static final String VOD_UPDATE_ENCRYPTION_SETTINGS_URL =
             BASE_URI + "v2/setting/" + PARAM_REPLACE_CHAR + "/set-playsafe";
@@ -454,19 +454,19 @@ public class VodURL {
             BASE_URI + "v2/viewlog/" + PARAM_REPLACE_CHAR + "/monthly/" + PARAM_REPLACE_CHAR;
     
     /**
-     * 查询视频播放量统计数据接口
+     * 查询视频播放量统计数据
      */
     public static final String VOD_QUERY_VIDEO_PLAYBACK_STATISTICS_URL =
             BASE_URI + "v2/videoview/" + PARAM_REPLACE_CHAR;
     
     /**
-     * 查询视频播放量排行接口
+     * 查询视频播放量排行
      */
     public static final String VOD_QUERY_VIDEO_PLAYBACK_RANKING_URL =
             BASE_URI + "v2/videoview/" + PARAM_REPLACE_CHAR + "/ranklist";
     
     /**
-     * 查询播放域名统计数据接口
+     * 查询播放域名统计数据
      */
     public static final String VOD_QUERY_PLAY_DOMAIN_NAME_STATISTICS_URL = BASE_URI + "v2/domain/" + PARAM_REPLACE_CHAR;
     

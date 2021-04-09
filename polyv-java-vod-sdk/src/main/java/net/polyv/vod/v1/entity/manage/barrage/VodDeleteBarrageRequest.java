@@ -11,13 +11,13 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * 上传点播弹幕文件接口请求实体
+ * 上传点播弹幕文件请求实体
  * @author: fangyan
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("上传点播弹幕文件接口请求实体")
+@ApiModel("上传点播弹幕文件请求实体")
 public class VodDeleteBarrageRequest extends VodCommonRequest {
     
     /**

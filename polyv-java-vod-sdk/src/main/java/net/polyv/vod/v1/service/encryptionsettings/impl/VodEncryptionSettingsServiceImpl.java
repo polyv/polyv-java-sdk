@@ -34,10 +34,10 @@ public class VodEncryptionSettingsServiceImpl extends VodBaseService implements 
     }
     
     /**
-     * 设置账号加密设置
+     * 修改账号加密设置
      * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-encryptionsetting/set-playsafe/
-     * @param vodUpdateEncryptionSettingsRequest 设置账号加密设置请求实体
-     * @return 设置账号加密设置返回实体
+     * @param vodUpdateEncryptionSettingsRequest 修改账号加密设置请求实体
+     * @return 修改账号加密设置返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

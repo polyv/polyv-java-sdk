@@ -32,10 +32,10 @@ import net.polyv.vod.v1.service.manage.IVodEditService;
 public class VodEditServiceImpl extends VodBaseService implements IVodEditService {
     
     /**
-     * 根据vid批量修改视频的授权播放开关状态
+     * 根据videoIds批量修改视频的授权播放开关状态
      * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/set-authplay/
-     * @param vodUpdateVideoPlayStatusRequest 根据vid批量修改视频的授权播放开关状态请求实体
-     * @return 根据vid批量修改视频的授权播放开关状态返回实体
+     * @param vodUpdateVideoPlayStatusRequest 根据videoIds批量修改视频的授权播放开关状态请求实体
+     * @return 根据videoIds批量修改视频的授权播放开关状态返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -109,10 +109,10 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
     }
     
     /**
-     * 设置视频的播放预览时长
+     * 修改视频的播放预览时长
      * URL地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/setting-preview-duration/
-     * @param vodSetVideoPreviewDurationRequest 设置视频的播放预览时长请求实体
-     * @return 设置视频的播放预览时长返回实体
+     * @param vodSetVideoPreviewDurationRequest 修改视频的播放预览时长请求实体
+     * @return 修改视频的播放预览时长返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -158,10 +158,10 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
     }
     
     /**
-     * 编辑单个视频的信息
+     * 修改单个视频的信息
      * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/video-info/
-     * @param vodUpdateVideoInfoRequest 编辑单个视频的信息请求实体
-     * @return 编辑单个视频的信息返回实体
+     * @param vodUpdateVideoInfoRequest 修改单个视频的信息请求实体
+     * @return 修改单个视频的信息返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -172,7 +172,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
         List<VodUpdateVideoInfoResponse> vodUpdateVideoInfoResponses = super.postFormBodyReturnList(url,
                 vodUpdateVideoInfoRequest, VodUpdateVideoInfoResponse.class);
         if(vodUpdateVideoInfoResponses.isEmpty()){
-            throw new PloyvSdkException(Constant.ERROR_CODE, "编辑单个视频的信息失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "修改单个视频的信息失败");
         }
         return vodUpdateVideoInfoResponses.get(0);
     }

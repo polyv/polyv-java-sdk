@@ -11,13 +11,13 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * 编辑单个视频的信息请求实体
+ * 修改单个视频的信息请求实体
  * @author: sadboy
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("编辑单个视频的信息请求实体")
+@ApiModel("修改单个视频的信息请求实体")
 public class VodUpdateVideoInfoRequest extends VodCommonRequest {
     
     /**

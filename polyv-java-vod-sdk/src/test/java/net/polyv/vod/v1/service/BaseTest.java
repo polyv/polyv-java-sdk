@@ -456,7 +456,7 @@ public class BaseTest {
             vodCreateBarrageResponse = new VodBarrageServiceImpl().createBarrage(vodCreateBarrageRequest);
             Assert.assertNotNull(vodCreateBarrageResponse);
             if (vodCreateBarrageResponse != null) {
-                log.debug("测试创建视频弹幕接口成功，{}", JSON.toJSONString(vodCreateBarrageResponse));
+                log.debug("测试创建视频弹幕成功，{}", JSON.toJSONString(vodCreateBarrageResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

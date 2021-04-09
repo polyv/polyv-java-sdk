@@ -8,12 +8,12 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 编辑单个视频的信息返回实体
+ * 修改单个视频的信息返回实体
  * @author: sadboy
  **/
 @Data
 @Accessors(chain = true)
-@ApiModel("编辑单个视频的信息返回实体")
+@ApiModel("修改单个视频的信息返回实体")
 public class VodUpdateVideoInfoResponse {
     
     /**

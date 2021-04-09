@@ -126,8 +126,8 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试查询视频播放量统计数据接口
-     * 约束：2、查询视频播放量统计数据接口，从播放行为产生到数据可查询的间隔时间为1~2小时。
+     * 测试查询视频播放量统计数据
+     * 约束：2、查询视频播放量统计数据，从播放行为产生到数据可查询的间隔时间为1~2小时。
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -145,7 +145,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     vodQueryVideoPlaybackStatisticsRequest);
             Assert.assertNotNull(vodQueryVideoPlaybackStatisticsResponseList);
             if (vodQueryVideoPlaybackStatisticsResponseList != null) {
-                log.debug("测试查询视频播放量统计数据接口成功,{}", JSON.toJSONString(vodQueryVideoPlaybackStatisticsResponseList));
+                log.debug("测试查询视频播放量统计数据成功,{}", JSON.toJSONString(vodQueryVideoPlaybackStatisticsResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -159,7 +159,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试查询视频播放量排行接口
+     * 测试查询视频播放量排行
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -177,7 +177,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     vodQueryVideoPlaybackRankingRequest);
             Assert.assertNotNull(vodQueryVideoPlaybackRankingResponse);
             if (vodQueryVideoPlaybackRankingResponse != null) {
-                log.debug("测试查询视频播放量排行接口成功,{}", JSON.toJSONString(vodQueryVideoPlaybackRankingResponse));
+                log.debug("测试查询视频播放量排行成功,{}", JSON.toJSONString(vodQueryVideoPlaybackRankingResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -191,8 +191,8 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试查询播放域名统计数据接口
-     * 约束：2、查询播放域名统计数据接口
+     * 测试查询播放域名统计数据
+     * 约束：2、查询播放域名统计数据
      * 约束：3、从播放行为产生到数据可查询的间隔时间为1~2小时。但是消耗流量（PCFlowSize字段）的计算依赖于CDN日志，为了保证数据完整性，流量数据需要间隔一个自然日才会生成。例如1号产生的流量消耗，会在2
      * 约束：3、号晚上汇总计算，在3号才可查询到流量数据。
      * @throws IOException 异常
@@ -213,7 +213,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     vodQueryPlayDomainNameStatisticsRequest);
             Assert.assertNotNull(vodQueryPlayDomainNameStatisticsResponseList);
             if (vodQueryPlayDomainNameStatisticsResponseList != null) {
-                log.debug("测试查询播放域名统计数据接口成功,{}", JSON.toJSONString(vodQueryPlayDomainNameStatisticsResponseList));
+                log.debug("测试查询播放域名统计数据成功,{}", JSON.toJSONString(vodQueryPlayDomainNameStatisticsResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

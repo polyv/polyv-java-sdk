@@ -17,7 +17,6 @@ import net.polyv.live.v1.entity.web.setting.LiveUploadImageRequest;
 import net.polyv.live.v1.entity.web.setting.LiveUploadImageResponse;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.web.impl.LiveWebSettingServiceImpl;
-import net.polyv.live.v1.util.LiveSignUtil;
 
 /**
  * 快捷设置
@@ -40,8 +39,7 @@ public class LiveWebSettingImplTest extends BaseTest {
         try {
             liveChannelGlobalSwitchRequest.setChannelId(createChannel())
                     .setGlobalEnabledType(LiveConstant.GlobalEnabledType.CALLBACK.getDesc())
-                    .setEnabled("N")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setEnabled("N");
             liveChannelGlobalSwitchResponse = new LiveWebSettingServiceImpl().setChannelGlobalSwitch(
                     liveChannelGlobalSwitchRequest);
             Assert.assertNotNull(liveChannelGlobalSwitchResponse);
@@ -76,8 +74,7 @@ public class LiveWebSettingImplTest extends BaseTest {
             List<File> fileList = new ArrayList<File>();
             fileList.add(new File(path));
             liveUploadImageRequest.setType("coverImage")
-                    .setFile(fileList)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setFile(fileList);
             liveUploadImageResponse = new LiveWebSettingServiceImpl().uploadImage(
                     liveUploadImageRequest);
             Assert.assertNotNull(liveUploadImageResponse);

@@ -47,8 +47,7 @@ public class LiveWebInfoImplTest extends BaseTest {
         Boolean liveUpdateChannelNameResponse;
         try {
             liveUpdateChannelNameRequest.setChannelId(createChannel())
-                    .setName("Junit测试(勿删)")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setName("Junit测试(勿删)");
             liveUpdateChannelNameResponse = new LiveWebInfoServiceImpl().updateChannelName(
                     liveUpdateChannelNameRequest);
             Assert.assertNotNull(liveUpdateChannelNameResponse);
@@ -80,8 +79,7 @@ public class LiveWebInfoImplTest extends BaseTest {
         Boolean liveUpdateChannelPublisherResponse;
         try {
             liveUpdateChannelPublisherRequest.setChannelId(createChannel())
-                    .setPublisher("主讲人sadboy")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setPublisher("主讲人sadboy");
             liveUpdateChannelPublisherResponse = new LiveWebInfoServiceImpl().updateChannelPublisher(
                     liveUpdateChannelPublisherRequest);
             Assert.assertNotNull(liveUpdateChannelPublisherResponse);
@@ -111,7 +109,7 @@ public class LiveWebInfoImplTest extends BaseTest {
         LiveChannelSplashRequest liveChannelSplashRequest = new LiveChannelSplashRequest();
         LiveChannelSplashResponse liveChannelSplashResponse;
         try {
-            liveChannelSplashRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelSplashRequest.setChannelId(createChannel());
             liveChannelSplashResponse = new LiveWebInfoServiceImpl().getChannelSplash(liveChannelSplashRequest);
             Assert.assertNotNull(liveChannelSplashResponse);
             if (liveChannelSplashResponse != null) {
@@ -143,8 +141,7 @@ public class LiveWebInfoImplTest extends BaseTest {
         try {
             liveUpdateChannelLikesRequest.setChannelId(createChannel())
                     .setLikes(9999)
-                    .setViewers(9999)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setViewers(9999);
             liveUpdateChannelLikesResponse = new LiveWebInfoServiceImpl().updateChannelLikes(
                     liveUpdateChannelLikesRequest);
             Assert.assertNotNull(liveUpdateChannelLikesResponse);
@@ -177,8 +174,7 @@ public class LiveWebInfoImplTest extends BaseTest {
         try {
             String path = getClass().getResource("/img/elephant.png").getPath();
             liveUpdateChannelLogoRequest.setChannelId(createChannel())
-                    .setImgfile(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setImgfile(new File(path));
             liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(
                     liveUpdateChannelLogoRequest);
             Assert.assertNotNull(liveUpdateChannelLogoResponse);
@@ -212,9 +208,8 @@ public class LiveWebInfoImplTest extends BaseTest {
         try {
             String path = getClass().getResource("/img/elephant.png").getPath();
             liveUpdateChannelSplashRequest.setChannelId(createChannel())
-                    .setSplashEnabled("Y")
 //                    .setImgfile(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setSplashEnabled("Y");
             liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
                     liveUpdateChannelSplashRequest);
             Assert.assertNotNull(liveUpdateChannelSplashResponse);
@@ -243,7 +238,7 @@ public class LiveWebInfoImplTest extends BaseTest {
         LiveChannelLikesRequest liveChannelLikesRequest = new LiveChannelLikesRequest();
         LiveChannelLikesResponse liveChannelLikesResponse;
         try {
-            liveChannelLikesRequest.setChannelIds("1965681").setRequestId(LiveSignUtil.generateUUID());
+            liveChannelLikesRequest.setChannelIds("1965681");
             liveChannelLikesResponse = new LiveWebInfoServiceImpl().getChannelLikes(liveChannelLikesRequest);
             Assert.assertNotNull(liveChannelLikesResponse);
             if (liveChannelLikesResponse != null) {
@@ -275,8 +270,7 @@ public class LiveWebInfoImplTest extends BaseTest {
         try {
             liveUpdateChannelCountDownRequest.setChannelId(createChannel())
                     .setBookingEnabled("Y")
-                    .setStartTime(getDate(2020, 11, 11, 11, 11, 11))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setStartTime(getDate(2020, 11, 11, 11, 11, 11));
             liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(
                     liveUpdateChannelCountDownRequest);
             Assert.assertTrue(liveUpdateChannelCountDownResponse);
@@ -306,7 +300,7 @@ public class LiveWebInfoImplTest extends BaseTest {
         LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
         LiveChannelCountDownResponse liveChannelCountDownResponse;
         try {
-            liveChannelCountDownRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelCountDownRequest.setChannelId(createChannel());
             liveChannelCountDownResponse = new LiveWebInfoServiceImpl().getChannelCountDown(
                     liveChannelCountDownRequest);
             Assert.assertNotNull(liveChannelCountDownResponse);

@@ -41,7 +41,7 @@ public class LiveChannelStateImplTest extends BaseTest {
         LiveChannelStreamInfoRequest liveChannelStreamInfoRequest = new LiveChannelStreamInfoRequest();
         LiveChannelStreamInfoResponse liveChannelStreamInfoResponse;
         try {
-            liveChannelStreamInfoRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelStreamInfoRequest.setChannelId(createChannel());
             liveChannelStreamInfoResponse = new LiveChannelStateServiceImpl().getChannelStreamInfo(
                     liveChannelStreamInfoRequest);
             Assert.assertNotNull(liveChannelStreamInfoResponse);
@@ -76,8 +76,7 @@ public class LiveChannelStateImplTest extends BaseTest {
             String channelId0 = super.createChannel();
             String channelId1 = getAloneChannelId();
             
-            liveListChannelStreamStatusRequest.setChannelIds(String.format("%s,%s", channelId0, channelId1))
-                    .setRequestId(LiveSignUtil.generateUUID());
+            liveListChannelStreamStatusRequest.setChannelIds(String.format("%s,%s", channelId0, channelId1));
             liveListChannelStreamStatusResponse = new LiveChannelStateServiceImpl().listChannelLiveStream(
                     liveListChannelStreamStatusRequest);
             Assert.assertNotNull(liveListChannelStreamStatusResponse);
@@ -111,7 +110,7 @@ public class LiveChannelStateImplTest extends BaseTest {
             //准备测试数据
             String channelId = super.createChannel();
             
-            liveCutoffChannelStreamRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveCutoffChannelStreamRequest.setChannelId(channelId);
             liveCutoffChannelStreamResponse = new LiveChannelStateServiceImpl().cutoffChannelStream(
                     liveCutoffChannelStreamRequest);
             Assert.assertNotNull(liveCutoffChannelStreamResponse);
@@ -145,7 +144,7 @@ public class LiveChannelStateImplTest extends BaseTest {
             //准备测试数据
             String channelId = super.createChannel();
             
-            liveResumeChannelStreamRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveResumeChannelStreamRequest.setChannelId(channelId);
             liveResumeChannelStreamResponse = new LiveChannelStateServiceImpl().resumeChannelStream(
                     liveResumeChannelStreamRequest);
             Assert.assertNotNull(liveResumeChannelStreamResponse);
@@ -179,7 +178,7 @@ public class LiveChannelStateImplTest extends BaseTest {
             //准备测试数据
             String channelId = super.createChannel();
             
-            liveChannelStreamLiveRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelStreamLiveRequest.setChannelId(channelId);
             liveChannelStreamLiveResponse = new LiveChannelStateServiceImpl().setChannelStreamLive(
                     liveChannelStreamLiveRequest);
             Assert.assertNotNull(liveChannelStreamLiveResponse);
@@ -213,7 +212,7 @@ public class LiveChannelStateImplTest extends BaseTest {
             //准备测试数据
             String channelId = super.createChannel();
     
-            liveChannelStreamEndRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelStreamEndRequest.setChannelId(channelId);
             liveChannelStreamEndResponse = new LiveChannelStateServiceImpl().setChannelStreamEnd(
                     liveChannelStreamEndRequest);
             Assert.assertNotNull(liveChannelStreamEndResponse);

@@ -15,8 +15,7 @@
         try {
             liveUpdateChannelMenuRequest.setChannelId(createChannel())
                     .setMenuType("desc")
-                    .setContent("<html><body><h1>hello world</h1></body></html>")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setContent("<html><body><h1>hello world</h1></body></html>");
             liveUpdateChannelMenuResponse = new LiveWebMenuServiceImpl().updateChannelMenu(
                     liveUpdateChannelMenuRequest);
             Assert.assertNotNull(liveUpdateChannelMenuResponse);
@@ -74,7 +73,7 @@ true为设置成功，false为设置失败
         LiveListChannelMenuRequest liveListChannelMenuRequest = new LiveListChannelMenuRequest();
         LiveListChannelMenuResponse liveListChannelMenuResponse;
         try {
-            liveListChannelMenuRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveListChannelMenuRequest.setChannelId(createChannel());
             liveListChannelMenuResponse = new LiveWebMenuServiceImpl().listChannelMenu(liveListChannelMenuRequest);
             Assert.assertNotNull(liveListChannelMenuResponse);
             if (liveListChannelMenuResponse != null) {
@@ -148,8 +147,7 @@ true为设置成功，false为设置失败
                     .setName("推广2")
                     .setType("iframe")
                     .setContent("http://live.polyv.net")
-                    .setLang("zh_CN")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setLang("zh_CN");
             liveAddChannelMenuResponse = new LiveWebMenuServiceImpl().addChannelMenu(liveAddChannelMenuRequest);
             Assert.assertNotNull(liveAddChannelMenuResponse);
             if (liveAddChannelMenuResponse != null) {
@@ -224,8 +222,7 @@ true为设置成功，false为设置失败
             String menuIdsStr = StringUtils.join(menuIds.toArray(), ",");
             liveUpdateChannelMenuSortRequest.setChannelId(channelId)
                     .setMenuIds(menuIdsStr)
-                    .setLang("zh_CN")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setLang("zh_CN");
             liveUpdateChannelMenuSortResponse = new LiveWebMenuServiceImpl().updateChannelMenuSort(
                     liveUpdateChannelMenuSortRequest);
             Assert.assertNotNull(liveUpdateChannelMenuSortResponse);
@@ -286,8 +283,7 @@ null
         try {
             liveUpdateChannelMenuInfoRequest.setMenuId("3e687a3575")
                     .setContent("XXX生财之道(Junit勿删)")
-                    .setLang("zh_CN")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setLang("zh_CN");
             liveUpdateChannelMenuInfoResponse = new LiveWebMenuServiceImpl().updateChannelMenuInfo(
                     liveUpdateChannelMenuInfoRequest);
             Assert.assertNotNull(liveUpdateChannelMenuInfoResponse);
@@ -345,7 +341,7 @@ null
         LiveDeleteChannelMenuRequest liveDeleteChannelMenuRequest = new LiveDeleteChannelMenuRequest();
         Boolean liveDeleteChannelMenuResponse;
         try {
-            liveDeleteChannelMenuRequest.setMenuIds("db1663823d,d9ba333cdc").setRequestId(LiveSignUtil.generateUUID());
+            liveDeleteChannelMenuRequest.setMenuIds("db1663823d,d9ba333cdc");
             liveDeleteChannelMenuResponse = new LiveWebMenuServiceImpl().deleteChannelMenu(
                     liveDeleteChannelMenuRequest);
             Assert.assertTrue(liveDeleteChannelMenuResponse);
@@ -402,8 +398,7 @@ true为删除成功，false为删除失败
         Boolean liveSetConsultingEnabledResponse;
         try {
             liveSetConsultingEnabledRequest.setChannelId(createChannel())
-                    .setEnabled("N")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setEnabled("N");
             liveSetConsultingEnabledResponse = new LiveWebMenuServiceImpl().setConsultingEnabled(
                     liveSetConsultingEnabledRequest);
             Assert.assertTrue(liveSetConsultingEnabledResponse);
@@ -462,8 +457,7 @@ null
         try {
             liveGetChannelImageTextRequest.setChannelId(createChannel())
                     .setId(null)
-                    .setImageMode("N")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setImageMode("N");
             liveGetChannelImageTextResponse = new LiveWebMenuServiceImpl().getChannelImageText(
                     liveGetChannelImageTextRequest);
             Assert.assertNotNull(liveGetChannelImageTextResponse);

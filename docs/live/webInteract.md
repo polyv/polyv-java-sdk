@@ -23,8 +23,7 @@
             channelGoods.add(channelGood);
             liveUpdateChannelGoodRequest.setChannelId(createChannel())
                     .setEnabled("Y")
-                    .setGoods(channelGoods)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setGoods(channelGoods);
             liveUpdateChannelGoodResponse = new LiveWebInteractServiceImpl().updateChannelGood(
                     liveUpdateChannelGoodRequest);
             Assert.assertNotNull(liveUpdateChannelGoodResponse);
@@ -97,8 +96,7 @@ true代表设置成功，false代表设置失败
             liveUpdateChannelCashRequest.setChannelId(createChannel())
                     .setCashes(cashes)
                     .setCashMin(0.02d)
-                    .setEnabled("Y")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setEnabled("Y");
             liveUpdateChannelCashResponse = new LiveWebInteractServiceImpl().updateChannelCash(
                     liveUpdateChannelCashRequest);
             Assert.assertNotNull(liveUpdateChannelCashResponse);
@@ -157,7 +155,7 @@ true表示设置成功，false表示设置失败
         LiveChannelDonateRequest liveChannelDonateRequest = new LiveChannelDonateRequest();
         LiveChannelDonateResponse liveChannelDonateResponse;
         try {
-            liveChannelDonateRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelDonateRequest.setChannelId(createChannel());
             liveChannelDonateResponse = new LiveWebInteractServiceImpl().getChannelDonate(liveChannelDonateRequest);
             Assert.assertNotNull(liveChannelDonateResponse);
             if (liveChannelDonateResponse != null) {
@@ -233,8 +231,7 @@ true表示设置成功，false表示设置失败
         try {
             liveUpdateChannelWxShareRequest.setChannelId(createChannel())
                     .setWxShareTitle("赚钱之道（第一场）")
-                    .setWxShareDesc("XXX带你钱生钱")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setWxShareDesc("XXX带你钱生钱");
             liveUpdateChannelWxShareResponse = new LiveWebInteractServiceImpl().updateChannelWxShare(
                     liveUpdateChannelWxShareRequest);
             Assert.assertTrue(liveUpdateChannelWxShareResponse);
@@ -292,7 +289,7 @@ true为设置成功，false为设置失败
         LiveGetChannelWxShareRequest liveGetChannelWxShareRequest = new LiveGetChannelWxShareRequest();
         LiveGetChannelWxShareResponse liveGetChannelWxShareResponse;
         try {
-            liveGetChannelWxShareRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveGetChannelWxShareRequest.setChannelId(createChannel());
             liveGetChannelWxShareResponse = new LiveWebInteractServiceImpl().getChannelWxShare(
                     liveGetChannelWxShareRequest);
             Assert.assertNotNull(liveGetChannelWxShareResponse);

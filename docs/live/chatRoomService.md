@@ -15,8 +15,7 @@
         try {
             String channelId = super.createChannel();
             liveBadWordRequest.setChannelId(channelId)
-                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"}))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"}));
             liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
             Assert.assertNotNull(liveBadWordResponse);
             if (liveBadWordResponse != null) {
@@ -83,8 +82,7 @@
                     .setPic("https://5b0988e595225.cdn.sohucs.com/q_70,c_zoom," +
                             "w_640/images/20190129/e3b0d6311b1a411fa68125fc03b8ef67.jpeg")
                     .setNickName("thomas")
-                    .setFreeReview(LiveConstant.Flag.YES.getFlag())
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setFreeReview(LiveConstant.Flag.YES.getFlag());
             liveSendChatMsgResponse = new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest);
             Assert.assertNotNull(liveSendChatMsgResponse);
             if (liveSendChatMsgResponse != null) {
@@ -153,8 +151,7 @@
             liveGetHistoryChatMsgRequest.setChannelId(channelId)
                     .setStartDay(getDate(2020, 10, 01))
                     .setEndDay(getDate(2099, 12, 12))
-                    .setPageSize(2)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setPageSize(2);
             liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistoryChatMsg(
                     liveGetHistoryChatMsgRequest);
             Assert.assertNotNull(liveGetHistoryChatMsgResponsesList);
@@ -251,7 +248,7 @@
         LiveGetChatAdminDataResponse liveGetChatAdminDataResponse = null;
         try {
             String channelId = super.createChannel();
-            liveGetChatAdminDataRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveGetChatAdminDataRequest.setChannelId(channelId);
             liveGetChatAdminDataResponse = new LiveChatRoomServiceImpl().getChatAdminData(liveGetChatAdminDataRequest);
             Assert.assertNotNull(liveGetChatAdminDataResponse);
             if (liveGetChatAdminDataResponse != null) {
@@ -315,8 +312,7 @@
         try {
             String channelId = super.createChannel();
             liveGetBannedListRequest.setChannelId(channelId)
-                    .setType(LiveConstant.BannedType.IP.getType())
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setType(LiveConstant.BannedType.IP.getType());
             liveGetBannedListResponseList = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
             Assert.assertNotNull(liveGetBannedListResponseList);
             if (liveGetBannedListResponseList != null) {
@@ -374,7 +370,7 @@
         List<LiveKickedListResponse> liveKickedListResponsesList = null;
         try {
             String channelId = super.createChannel();
-            liveKickedListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveKickedListRequest.setChannelId(channelId);
             liveKickedListResponsesList = new LiveChatRoomServiceImpl().getKickedList(liveKickedListRequest);
             Assert.assertNotNull(liveKickedListResponsesList);
             if (liveKickedListResponsesList != null) {
@@ -444,8 +440,7 @@
         try {
             String channelId = super.createChannel();
             liveGetBadwordIPRequest.setChannelId(channelId)
-                    .setType(LiveConstant.BannedType.IP.getType())
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setType(LiveConstant.BannedType.IP.getType());
             liveGetBadwordIPResponseList = new LiveChatRoomServiceImpl().getChannelBadworkList(liveGetBadwordIPRequest);
             Assert.assertNotNull(liveGetBadwordIPResponseList);
             if (liveGetBadwordIPResponseList != null) {
@@ -501,8 +496,6 @@
         LiveGetAccountBadWordRequest liveGetAccountBadWordRequest = new LiveGetAccountBadWordRequest();
         List<String> liveGetAccountBadWordResponseList = null;
         try {
-            liveGetAccountBadWordRequest.setRequestId(LiveSignUtil.generateUUID());
-            String channelId = super.createChannel();
             liveGetAccountBadWordResponseList = new LiveChatRoomServiceImpl().getAccountBadworkList(liveGetAccountBadWordRequest);
             Assert.assertNotNull(liveGetAccountBadWordResponseList);
             if (liveGetAccountBadWordResponseList != null) {
@@ -559,8 +552,7 @@
             String channelId = super.createChannel();
             liveGetConsultingRecordRequest.setChannelId(channelId)
                     .setBegin(0)
-                    .setEnd(10)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setEnd(10);
             liveGetConsultingRecordResponseList = new LiveChatRoomServiceImpl().getConsultingRecord(liveGetConsultingRecordRequest);
             Assert.assertNotNull(liveGetConsultingRecordResponseList);
             if (liveGetConsultingRecordResponseList != null) {
@@ -644,8 +636,7 @@
                     .setActor("大师")
                     .setPasswd("123456")
                     .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740," +
-                            "3965499425&fm=26&gp=0" + ".jpg")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                            "3965499425&fm=26&gp=0" + ".jpg");
             liveSetTeacherDataResponse = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
             Assert.assertNotNull(liveSetTeacherDataResponse);
             if (liveSetTeacherDataResponse != null) {
@@ -706,8 +697,7 @@ true 设置讲师信息成功，false 设置讲师信息失败
         try {
             String channelId = super.createChannel();
             liveChatBannedIPRequest.setIp("192.168.1.1")
-                    .setChannelId(channelId)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setChannelId(channelId);
             liveChatBannedIPResponseList = new LiveChatRoomServiceImpl().addBannedIP(liveChatBannedIPRequest);
             Assert.assertNotNull(liveChatBannedIPResponseList);
             if (liveChatBannedIPResponseList != null) {
@@ -768,8 +758,7 @@ true 设置讲师信息成功，false 设置讲师信息失败
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setNickname("你个老头")
                     .setActor("娇娇")
-                    .setAvatar(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setAvatar(new File(path));
             liveSetChatAdminDataResponse = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
             Assert.assertTrue(liveSetChatAdminDataResponse);
             if (liveSetChatAdminDataResponse != null) {
@@ -833,8 +822,7 @@ true 设置成功，false 设置失败
             String channelId = super.createChannel();
             liveDelBannedDataRequest.setContent("192.168.1.1")
                     .setChannelId(channelId)
-                    .setType(LiveConstant.BannedType.IP.getType())
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setType(LiveConstant.BannedType.IP.getType());
             liveDelBannedDataResponse = new LiveChatRoomServiceImpl().delBanned(liveDelBannedDataRequest);
             Assert.assertNotNull(liveDelBannedDataResponse);
             if (liveDelBannedDataResponse != null) {
@@ -895,7 +883,7 @@ true 删除成功 ，false 删除失败
         //new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest)
         String msgId = getMsgId(channelId);
         try {
-            liveChatDelSingleMsgRequest.setId(msgId).setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChatDelSingleMsgRequest.setId(msgId).setChannelId(channelId);
             liveChatDelSingleMsgResponse = new LiveChatRoomServiceImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
             Assert.assertNotNull(liveChatDelSingleMsgResponse);
             if (liveChatDelSingleMsgResponse != null) {
@@ -952,7 +940,7 @@ true 删除成功， false 删除失败
         Boolean liveCleanChannelAllMsgResponse = null;
         try {
             String channelId = super.createChannel();
-            liveCleanChannelAllMsgRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveCleanChannelAllMsgRequest.setChannelId(channelId);
             liveCleanChannelAllMsgResponse = new LiveChatRoomServiceImpl().cleanChannelAllMsg(liveCleanChannelAllMsgRequest);
             Assert.assertNotNull(liveCleanChannelAllMsgResponse);
             if (liveCleanChannelAllMsgResponse != null) {
@@ -1010,8 +998,7 @@ true 删除成功， false 删除失败
             String channelId = super.createChannel();
             liveSendChannelChatRequest.setChannelId(channelId)
                     .setContent("请同学们认真学习")
-                    .setRole("ADMIN")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setRole("ADMIN");
             liveSendChannelChatResponse = new LiveChatRoomServiceImpl().sendChannelChat(liveSendChannelChatRequest);
             Assert.assertTrue(liveSendChannelChatResponse);
             if (liveSendChannelChatResponse) {
@@ -1070,8 +1057,7 @@ true 发送成功， false 发送失败
         try {
             String channelId = super.createChannel();
             liveSendCustomChatRequest.setChannelId(channelId)
-                    .setContent("请同学们认真学习")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setContent("请同学们认真学习");
             liveSendCustomChatResponse = new LiveChatRoomServiceImpl().sendCustomChat(liveSendCustomChatRequest);
             Assert.assertTrue(liveSendCustomChatResponse);
             if (liveSendCustomChatResponse) {

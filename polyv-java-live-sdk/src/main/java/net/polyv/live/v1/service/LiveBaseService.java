@@ -229,7 +229,6 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse basePostJsonBody(String url, Map<String, String> signMap,
             E e, String json) throws IOException, NoSuchAlgorithmException {
         signMap = commonRequestLogic(signMap, e);
-        validateBean(e);
         url = MapUtil.appendUrl(url, signMap);
         if (StringUtils.isBlank(json)) {
             json = JSON.toJSONString(e);
@@ -335,6 +334,9 @@ public class LiveBaseService {
         e.setAppId(LiveGlobalConfig.getAppId());
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        }
+        if (StringUtils.isBlank(e.getRequestId())) {
+            e.setRequestId(LiveSignUtil.generateUUID());
         }
         if (signMap == null) {
             signMap = MapUtil.objectToMap(e);

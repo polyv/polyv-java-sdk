@@ -27,8 +27,7 @@
                     .setNote("测试广告描述")
                     .setSkipAd("Y")
                     .setSkipOffset(1)
-                    .setSkipButtonLabel("跳过广告")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSkipButtonLabel("跳过广告");
             vodCreateAdvertisingResponse = new VodAdvertisingServiceImpl().createAdvertising(
                     vodCreateAdvertisingRequest);
             Assert.assertNotNull(vodCreateAdvertisingResponse);
@@ -100,7 +99,7 @@
         try {
             //准备测试数据
             String advertisingId = super.createAdvertising();
-            vodDeleteAdvertisingRequest.setAdvertisingId(advertisingId).setRequestId(VodSignUtil.generateUUID());
+            vodDeleteAdvertisingRequest.setAdvertisingId(advertisingId);
             vodDeleteAdvertisingResponse = new VodAdvertisingServiceImpl().deleteAdvertising(
                     vodDeleteAdvertisingRequest);
             Assert.assertTrue(vodDeleteAdvertisingResponse);
@@ -155,7 +154,7 @@ true为删除成功，false为删除失败
         VodGetAdvertisingListRequest vodGetAdvertisingListRequest = new VodGetAdvertisingListRequest();
         VodGetAdvertisingListResponse vodGetAdvertisingListResponse = null;
         try {
-            vodGetAdvertisingListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
+            vodGetAdvertisingListRequest.setCurrentPage(1).setPageSize(10);
             vodGetAdvertisingListResponse = new VodAdvertisingServiceImpl().getAdvertisingList(
                     vodGetAdvertisingListRequest);
             Assert.assertNotNull(vodGetAdvertisingListResponse);
@@ -259,8 +258,7 @@ true为删除成功，false为删除失败
                     .setNote("测试广告描述")
                     .setSkipAd("Y")
                     .setSkipOffset(1)
-                    .setSkipButtonLabel("跳过广告")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSkipButtonLabel("跳过广告");
             vodUpdateAdvertisingResponse = new VodAdvertisingServiceImpl().updateAdvertising(
                     vodUpdateAdvertisingRequest);
             Assert.assertTrue(vodUpdateAdvertisingResponse);

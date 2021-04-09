@@ -51,8 +51,7 @@ public class VodEditServiceImplTest extends BaseTest {
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setDesc("这是一个通过junit合并的视频")
                     .setTag("junit测试")
-                    .setTitle("junit合并并修改")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setTitle("junit合并并修改");
             vodUpdateVideoInfoResponse = new VodEditServiceImpl().updateVideoInfo(vodUpdateVideoInfoRequest);
             Assert.assertNotNull(vodUpdateVideoInfoResponse);
             if (vodUpdateVideoInfoResponse != null) {
@@ -82,8 +81,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodUpdateVideoPlayStatusRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
                     .setVideoIds("1b448be3238618df117f9302327f28d6_1")
-                    .setPlayAuth(1)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setPlayAuth(1);
             vodUpdateVideoPlayStatusResponse = new VodEditServiceImpl().updateVideoPlayStatus(
                     vodUpdateVideoPlayStatusRequest);
             Assert.assertTrue(vodUpdateVideoPlayStatusResponse);
@@ -116,8 +114,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodUpdateVideoHlsLevelListRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
                     .setVideoIds("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setHlsLevel("open")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setHlsLevel("open");
             vodUpdateVideoHlsLevelListResponse = new VodEditServiceImpl().updateVideoHlsLevelList(
                     vodUpdateVideoHlsLevelListRequest);
             Assert.assertTrue(vodUpdateVideoHlsLevelListResponse);
@@ -150,8 +147,7 @@ public class VodEditServiceImplTest extends BaseTest {
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
                     .setVideoId("1b448be3238618df117f9302327f28d6_1")
                     .setTitle("junit裁剪")
-                    .setTimeFrame("[{\"start\":1,\"end\":6}]")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setTimeFrame("[{\"start\":1,\"end\":6}]");
             vodClipVideoResponse = new VodEditServiceImpl().clipVideo(vodClipVideoRequest);
             Assert.assertNotNull(vodClipVideoResponse);
             if (vodClipVideoResponse != null) {
@@ -183,8 +179,7 @@ public class VodEditServiceImplTest extends BaseTest {
                     .setVideoIds("1b448be3238618df117f9302327f28d6_1,1b448be3234134f5a73bdddd6e88a9a5_1")
                     .setTitle("junit合并")
                     .setCategoryId("1602300731843")
-                    .setScreenCap(1)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setScreenCap(1);
             vodConcatVideoResponse = new VodEditServiceImpl().concatVideo(vodConcatVideoRequest);
             Assert.assertNotNull(vodConcatVideoResponse);
             if (vodConcatVideoResponse != null) {
@@ -221,8 +216,7 @@ public class VodEditServiceImplTest extends BaseTest {
                     .setSeconds("24,60,120")
                     .setBtnSettingSwitch("Y")
                     .setBtnDesc("保利威")
-                    .setBtnHref("http://www.polyv.net")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setBtnHref("http://www.polyv.net");
             vodSaveVideoKeyFrameResponse = new VodEditServiceImpl().saveVideoKeyFrame(vodSaveVideoKeyFrameRequest);
             Assert.assertTrue(vodSaveVideoKeyFrameResponse);
             if (vodSaveVideoKeyFrameResponse) {
@@ -253,8 +247,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodDeleteVideoKeyFrameRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setTimes("24,120")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setTimes("24,120");
             vodDeleteVideoKeyFrameResponse = new VodEditServiceImpl().deleteVideoKeyFrame(
                     vodDeleteVideoKeyFrameRequest);
             Assert.assertTrue(vodDeleteVideoKeyFrameResponse);
@@ -285,7 +278,7 @@ public class VodEditServiceImplTest extends BaseTest {
         try {
             vodDeleteVideoAllKeyFrameRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
-                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1").setRequestId(VodSignUtil.generateUUID());
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1");
             vodDeleteVideoAllKeyFrameResponse = new VodEditServiceImpl().deleteVideoAllKeyFrame(
                     vodDeleteVideoAllKeyFrameRequest);
             Assert.assertTrue(vodDeleteVideoAllKeyFrameResponse);
@@ -318,8 +311,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodSetVideoPreviewDurationRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setDuration(60)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setDuration(60);
             vodSetVideoPreviewDurationResponse = new VodEditServiceImpl().setVideoPreviewDuration(
                     vodSetVideoPreviewDurationRequest);
             Assert.assertTrue(vodSetVideoPreviewDurationResponse);
@@ -354,8 +346,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodSetVideoForbiddenRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
                     .setVideoIds("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setForbidden(0)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setForbidden(0);
             vodSetVideoForbiddenResponse = new VodEditServiceImpl().setVideoForbidden(vodSetVideoForbiddenRequest);
             Assert.assertTrue(vodSetVideoForbiddenResponse);
             if (vodSetVideoForbiddenResponse) {
@@ -387,8 +378,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodDeleteVideolistRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
                     .setVideoIds("1b448be3238ae0aa1020ac2807c9e8c9_1,1b448be323c12aa5e048c3fb5e10ca99_1")
-                    .setDeleteType(1)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setDeleteType(1);
             vodDeleteVideoListResponse = new VodEditServiceImpl().deleteVideoList(vodDeleteVideolistRequest);
             Assert.assertTrue(vodDeleteVideoListResponse);
             if (vodDeleteVideoListResponse) {
@@ -419,8 +409,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodDeleteVideoRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
                     .setVideoId("1b448be3238ae0aa1020ac2807c9e8c9_1")
-                    .setDeleteType(1)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setDeleteType(1);
             vodDeleteVideoResponse = new VodEditServiceImpl().deleteVideo(vodDeleteVideoRequest);
             Assert.assertTrue(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse) {
@@ -454,8 +443,7 @@ public class VodEditServiceImplTest extends BaseTest {
                     .setPassword(super.getRandomString(10))
                     .setPublishUrl(null)
                     .setTag("junit")
-                    .setTitle("junit测试")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setTitle("junit测试");
             vodUpdateVideoSettingResponse = new VodEditServiceImpl().updateVideoSetting(vodUpdateVideoSettingRequest);
             Assert.assertTrue(vodUpdateVideoSettingResponse);
             if (vodUpdateVideoSettingResponse) {

@@ -13,8 +13,7 @@
         VodQueryBarrageListRequest vodQueryBarrageListRequest = new VodQueryBarrageListRequest();
         VodQueryBarrageListResponse vodQueryBarrageListResponse = null;
         try {
-            vodQueryBarrageListRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryBarrageListRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1");
             vodQueryBarrageListResponse = new VodBarrageServiceImpl().queryBarrageList(vodQueryBarrageListRequest);
             Assert.assertNotNull(vodQueryBarrageListResponse);
             if (vodQueryBarrageListResponse != null) {
@@ -96,8 +95,7 @@
         try {
             String srtCN = getClass().getResource("/subtitle/srt(zh_CN).srt").getPath();
             vodUploadBarrageRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
-                    .setFile(new File(srtCN))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setFile(new File(srtCN));
             vodUploadBarrageResponse = new VodBarrageServiceImpl().uploadBarrage(vodUploadBarrageRequest);
             Assert.assertTrue(vodUploadBarrageResponse);
             if (vodUploadBarrageResponse) {
@@ -159,8 +157,7 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
                     .setParam2("777777777")
                     .setFontSize(18)
                     .setFontMode("roll")
-                    .setFontColor("0xFFFFFF")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setFontColor("0xFFFFFF");
             vodCreateBarrageResponse = new VodBarrageServiceImpl().createBarrage(vodCreateBarrageRequest);
             Assert.assertNotNull(vodCreateBarrageResponse);
             if (vodCreateBarrageResponse != null) {
@@ -227,7 +224,7 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
         try {
             //准备测试数据
             String barrageIds = super.getBarrageIdsByCreate();
-            vodDeleteBarrageRequest.setBarrageIds(barrageIds).setRequestId(VodSignUtil.generateUUID());
+            vodDeleteBarrageRequest.setBarrageIds(barrageIds);
             vodDeleteBarrageResponse = new VodBarrageServiceImpl().deleteBarrage(vodDeleteBarrageRequest);
             Assert.assertTrue(vodDeleteBarrageResponse);
             if (vodDeleteBarrageResponse) {

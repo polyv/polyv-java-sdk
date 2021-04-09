@@ -34,7 +34,6 @@ public class VodEncryptionSettingsServiceImplTest extends BaseTest {
         VodGetEncryptionSettingsRequest vodGetEncryptionSettingsRequest = new VodGetEncryptionSettingsRequest();
         VodGetEncryptionSettingsResponse vodGetEncryptionSettingsResponse = null;
         try {
-            vodGetEncryptionSettingsRequest.setRequestId(VodSignUtil.generateUUID());
             vodGetEncryptionSettingsResponse = new VodEncryptionSettingsServiceImpl().getEncryptionSettings(
                     vodGetEncryptionSettingsRequest);
             Assert.assertNotNull(vodGetEncryptionSettingsResponse);
@@ -64,8 +63,7 @@ public class VodEncryptionSettingsServiceImplTest extends BaseTest {
         VodUpdateEncryptionSettingsResponse vodUpdateEncryptionSettingsResponse = null;
         try {
             vodUpdateEncryptionSettingsRequest.setEncrypt(1)
-                    .setHlsLevel("open")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setHlsLevel("open");
             vodUpdateEncryptionSettingsResponse = new VodEncryptionSettingsServiceImpl().updateEncryptionSettings(
                     vodUpdateEncryptionSettingsRequest);
             Assert.assertNotNull(vodUpdateEncryptionSettingsResponse);

@@ -19,8 +19,7 @@
         try {
             vodCreateScreenshotTaskRequest.setUploadTime(new Date())
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setOffsetTimes("8")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setOffsetTimes("8");
             vodCreateScreenshotTaskResponse = new VodScreenshotServiceImpl().createScreenshotTask(
                     vodCreateScreenshotTaskRequest);
             Assert.assertNotNull(vodCreateScreenshotTaskResponse);
@@ -80,7 +79,7 @@
         VodGetScreenshotTaskStatusRequest vodGetScreenshotTaskStatusRequest = new VodGetScreenshotTaskStatusRequest();
         VodGetScreenshotTaskStatusResponse vodGetScreenshotTaskStatusResponse = null;
         try {
-            vodGetScreenshotTaskStatusRequest.setTaskId(1146).setRequestId(VodSignUtil.generateUUID());
+            vodGetScreenshotTaskStatusRequest.setTaskId(1146);
             vodGetScreenshotTaskStatusResponse = new VodScreenshotServiceImpl().getScreenshotTaskStatus(
                     vodGetScreenshotTaskStatusRequest);
             Assert.assertNotNull(vodGetScreenshotTaskStatusResponse);

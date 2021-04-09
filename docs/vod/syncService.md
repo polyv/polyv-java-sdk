@@ -13,7 +13,7 @@
         VodGetTaskListRequest vodGetTaskListRequest = new VodGetTaskListRequest();
         VodGetTaskListResponse vodGetTaskListResponse = null;
         try {
-            vodGetTaskListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
+            vodGetTaskListRequest.setCurrentPage(1).setPageSize(10);
             vodGetTaskListResponse = new VodSyncServiceImpl().getTaskList(vodGetTaskListRequest);
             Assert.assertNotNull(vodGetTaskListResponse);
             if (vodGetTaskListResponse != null) {
@@ -93,7 +93,7 @@
         try {
             //准备测试数据
             VodGetTaskListResponse.Task task = super.getTask(true);
-            vodDeleteTaskRequest.setTaskId(task.getTaskId()).setRequestId(VodSignUtil.generateUUID());
+            vodDeleteTaskRequest.setTaskId(task.getTaskId());
             vodDeleteTaskResponse = new VodSyncServiceImpl().deleteTask(vodDeleteTaskRequest);
             Assert.assertTrue(vodDeleteTaskResponse);
             if (vodDeleteTaskResponse) {
@@ -151,7 +151,7 @@ true为删除成功，false为删除失败
             VodGetTaskListResponse.Task task = super.getTask(false);
             //path设置为下载文件路径
             String path = getClass().getResource("/file/").getPath() + "download.csv";
-            vodExportTaskRequest.setTaskId(task.getTaskId()).setRequestId(VodSignUtil.generateUUID());
+            vodExportTaskRequest.setTaskId(task.getTaskId());
             vodExportTaskResponse = new VodSyncServiceImpl().exportTask(vodExportTaskRequest);
             Assert.assertNotNull(vodExportTaskResponse);
             if (vodExportTaskResponse != null) {

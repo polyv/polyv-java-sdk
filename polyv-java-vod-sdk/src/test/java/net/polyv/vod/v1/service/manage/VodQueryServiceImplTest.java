@@ -16,7 +16,6 @@ import net.polyv.vod.v1.entity.manage.query.VodSearchVideoListRequest;
 import net.polyv.vod.v1.entity.manage.query.VodSearchVideoListResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.manage.impl.VodQueryServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 查找视频
@@ -36,7 +35,7 @@ public class VodQueryServiceImplTest extends BaseTest {
         VodSearchVideoListRequest vodSearchVideoListRequest = new VodSearchVideoListRequest();
         VodSearchVideoListResponse vodSearchVideoListResponse = null;
         try {
-            vodSearchVideoListRequest.setCategoryId("1602300731843").setRequestId(VodSignUtil.generateUUID());
+            vodSearchVideoListRequest.setCategoryId("1602300731843");
             vodSearchVideoListResponse = new VodQueryServiceImpl().searchVideoList(vodSearchVideoListRequest);
             Assert.assertNotNull(vodSearchVideoListResponse);
             if (vodSearchVideoListResponse != null) {
@@ -63,7 +62,7 @@ public class VodQueryServiceImplTest extends BaseTest {
         VodQueryVideoListRequest vodQueryVideoListRequest = new VodQueryVideoListRequest();
         VodQueryVideoListResponse vodQueryVideoListResponse = null;
         try {
-            vodQueryVideoListRequest.setPlayAuth(1).setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoListRequest.setPlayAuth(1);
             vodQueryVideoListResponse = new VodQueryServiceImpl().queryVideoList(vodQueryVideoListRequest);
             Assert.assertNotNull(vodQueryVideoListResponse);
             if (vodQueryVideoListResponse != null) {

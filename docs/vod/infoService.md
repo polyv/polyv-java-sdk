@@ -15,7 +15,7 @@
         try {
             vodListVideoKeyFrameRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
-                    .setVideoId("1b448be32343357d5c4784d9ffd1bf5c_1").setRequestId(VodSignUtil.generateUUID());
+                    .setVideoId("1b448be32343357d5c4784d9ffd1bf5c_1");
             vodListVideoKeyFrameResponse = new VodInfoServiceImpl().listVideoKeyFrame(vodListVideoKeyFrameRequest);
             Assert.assertNotNull(vodListVideoKeyFrameResponse);
             if (vodListVideoKeyFrameResponse != null) {
@@ -83,7 +83,7 @@
         try {
             vodGetVideoPlayStatusRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
-                    .setVideoId("1b448be32343357d5c4784d9ffd1bf5c_1").setRequestId(VodSignUtil.generateUUID());
+                    .setVideoId("1b448be32343357d5c4784d9ffd1bf5c_1");
             vodGetVideoPlayStatusResponse = new VodInfoServiceImpl().getVideoPlayStatus(vodGetVideoPlayStatusRequest);
             Assert.assertTrue(vodGetVideoPlayStatusResponse);
             if (vodGetVideoPlayStatusResponse) {
@@ -141,8 +141,7 @@ true为开关开启，false为开关关闭
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
                     .setVideoIds("1b448be3230a0194d959426ae005645f_1")
                     .setStart(super.getDate(2021, 2, 1))
-                    .setEnd(super.getDate(2021, 3, 12))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEnd(super.getDate(2021, 3, 12));
             vodGetVideoExamLogResponse = new VodInfoServiceImpl().getVideoExamLog(vodGetVideoExamLogRequest);
             Assert.assertNotNull(vodGetVideoExamLogResponse);
             if (vodGetVideoExamLogResponse != null) {
@@ -213,7 +212,144 @@ true为开关开启，false为开关关闭
 
 <br /><br />
 
-## 4、根据分类批量获取视频时长和大小
+## 4、获取单个视频的问答题目
+### 描述
+```
+获取单个视频的问答题目
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testGetVideoExam() throws IOException, NoSuchAlgorithmException {
+        VodGetVideoExamRequest vodGetVideoExamRequest = new VodGetVideoExamRequest();
+        List<VodGetVideoExamResponse> vodGetVideoExamResponseList = null;
+        try {
+            vodGetVideoExamRequest.setVideoId("1b448be3230a0194d959426ae005645f_1");
+            vodGetVideoExamResponseList = new VodInfoServiceImpl().getVideoExam(vodGetVideoExamRequest);
+            Assert.assertNotNull(vodGetVideoExamResponseList);
+            if (vodGetVideoExamResponseList != null) {
+                log.debug("测试获取单个视频的问答题目成功,{}", JSON.toJSONString(vodGetVideoExamResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回VodGetVideoExamResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| videoId | true | String | 视频ID | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+返回对象是List&lt;VodGetVideoExamResponse&gt;，**VodGetVideoExamResponse**具体元素内容如下：
+
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| examId | String | 问答题目的id | 
+| userId | String | 用户Id | 
+| videoId | String | 视频的id | 
+| showTime | String | 问答题目开始显示的时间，格式 hh:mm:ss 例如 00:03:11 | 
+| hours | Integer | 时 | 
+| minute | Integer | 分 | 
+| seconds | Integer | 秒 | 
+| question | String | 问题 | 
+| choices | String | 选项 | 
+| answer | String | 回答正确提示语 | 
+| wrongAnswer | String | 回答错误提示语 | 
+| skip | Boolean | 能否跳过问答 | 
+| wrongTime | Integer | 回答错误后跳回到第几秒，-1指不退回 | 
+| wrongShow | Integer | 回答错误是否提示。1：提示，0：不提示，默认为1：提示 | 
+| createdTime | Date | 创建问答题目的时间，格式：yyyy-MM-dd HH:mm | 
+| groupId | String | 问答所在的问卷的ID | 
+| status | Integer | 是否有效，1：有效，0：无效，默认为1 | 
+| type | Integer | 题目类型，0：选择题，1：听力题（听力题即将下线） | 
+| mp3url | String | 听力题的mp3音频文件url（听力题即将下线） | 
+
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 5、批量获取视频的时长和大小
+### 描述
+```
+批量获取视频的时长和大小
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testGetVideosSize() throws IOException, NoSuchAlgorithmException {
+        VodGetVideosSizeRequest vodGetVideosSizeRequest = new VodGetVideosSizeRequest();
+        List<VodGetVideosSizeResponse> vodGetVideosSizeResponseList = null;
+        try {
+            vodGetVideosSizeRequest.setVideoIds("1b448be323a146649ad0cc89d0faed9c_1,1b448be32389b93ea8be08bf0d257043_1");
+            vodGetVideosSizeResponseList = new VodInfoServiceImpl().getVideosSize(vodGetVideosSizeRequest);
+            Assert.assertNotNull(vodGetVideosSizeResponseList);
+            if (vodGetVideosSizeResponseList != null) {
+                log.debug("测试批量获取视频的时长和大小成功,{}", JSON.toJSONString(vodGetVideosSizeResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回VodGetVideosSizeResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| videoIds | true | String | 多个视频ID(英文逗号分割 状态为半角)，例如 1b8be3,239c2e | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+返回对象是List&lt;VodGetVideosSizeResponse&gt;，**VodGetVideosSizeResponse**具体元素内容如下：
+
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| videoId | String | 视频ID | 
+| duration | String | 时长，格式为时分秒。例如 00:03:11 | 
+| filesize1 | Long | 编码后码率1FLV的大小，单位为Bytes：字节 | 
+| filesize2 | Long | 编码后码率2FLV的大小，单位为Bytes：字节 | 
+
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 6、根据分类批量获取视频时长和大小
 ### 描述
 ```
 根据分类批量获取视频时长和大小
@@ -231,8 +367,7 @@ true为开关开启，false为开关关闭
         List<VodGetVideoSizeResponse> vodGetVideoSizeResponseList = null;
         try {
             vodGetVideoSizeRequest.setVideoIds("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setCategoryIds("1602300731843")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setCategoryIds("1602300731843");
             vodGetVideoSizeResponseList = new VodInfoServiceImpl().getVideoSize(vodGetVideoSizeRequest);
             Assert.assertNotNull(vodGetVideoSizeResponseList);
             if (vodGetVideoSizeResponseList != null) {
@@ -287,7 +422,7 @@ true为开关开启，false为开关关闭
 
 <br /><br />
 
-## 5、获取微信分享页的视频相关信息
+## 7、获取微信分享页的视频相关信息
 ### 描述
 ```
 获取微信分享页的视频相关信息
@@ -302,8 +437,7 @@ true为开关开启，false为开关关闭
         VodGetWeChatShareVideoInfoRequest vodGetWeChatShareVideoInfoRequest = new VodGetWeChatShareVideoInfoRequest();
         VodGetWeChatShareVideoInfoResponse vodGetWeChatShareVideoInfoResponse = null;
         try {
-            vodGetWeChatShareVideoInfoRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetWeChatShareVideoInfoRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1");
             vodGetWeChatShareVideoInfoResponse = new VodInfoServiceImpl().getWeChatShareVideoInfo(
                     vodGetWeChatShareVideoInfoRequest);
             Assert.assertNotNull(vodGetWeChatShareVideoInfoResponse);
@@ -352,7 +486,7 @@ true为开关开启，false为开关关闭
 
 <br /><br />
 
-## 6、获取视频播放预览时长
+## 8、获取视频播放预览时长
 ### 描述
 ```
 获取视频播放预览时长
@@ -367,8 +501,7 @@ true为开关开启，false为开关关闭
         VodGetVideoPreviewDurationRequest vodGetVideoPreviewDurationRequest = new VodGetVideoPreviewDurationRequest();
         Integer vodGetVideoPreviewDurationResponse = null;
         try {
-            vodGetVideoPreviewDurationRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetVideoPreviewDurationRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1");
             vodGetVideoPreviewDurationResponse = new VodInfoServiceImpl().getVideoPreviewDuration(
                     vodGetVideoPreviewDurationRequest);
             Assert.assertNotNull(vodGetVideoPreviewDurationResponse);
@@ -408,7 +541,7 @@ true为开关开启，false为开关关闭
 
 <br /><br />
 
-## 7、获取单个视频信息
+## 9、获取单个视频信息
 ### 描述
 ```
 获取单个视频信息
@@ -423,8 +556,7 @@ true为开关开启，false为开关关闭
         VodGetVideoRequest vodGetVideoRequest = new VodGetVideoRequest();
         VodGetVideoResponse vodGetVideoResponse = null;
         try {
-            vodGetVideoRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetVideoRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1");
             vodGetVideoResponse = new VodInfoServiceImpl().getVideo(vodGetVideoRequest);
             Assert.assertNotNull(vodGetVideoResponse);
             if (vodGetVideoResponse != null) {
@@ -513,7 +645,7 @@ true为开关开启，false为开关关闭
 
 <br /><br />
 
-## 8、获取单个视频的首图
+## 10、获取单个视频的首图
 ### 描述
 ```
 获取单个视频的首图
@@ -529,8 +661,7 @@ true为开关开启，false为开关关闭
         String vodGetVideoFirstImageResponse = null;
         try {
             vodGetVideoFirstImageRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setThumbnail(1)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setThumbnail(1);
             vodGetVideoFirstImageResponse = new VodInfoServiceImpl().getVideoFirstImage(vodGetVideoFirstImageRequest);
             Assert.assertNotNull(vodGetVideoFirstImageResponse);
             if (vodGetVideoFirstImageResponse != null) {
@@ -570,84 +701,7 @@ true为开关开启，false为开关关闭
 
 <br /><br />
 
-## 9、获取单个视频的问答题目
-### 描述
-```
-获取单个视频的问答题目
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
-### 单元测试
-```java
-	@Test
-	public void testGetVideoExam() throws IOException, NoSuchAlgorithmException {
-        VodGetVideoExamRequest vodGetVideoExamRequest = new VodGetVideoExamRequest();
-        List<VodGetVideoExamResponse> vodGetVideoExamResponseList = null;
-        try {
-            vodGetVideoExamRequest.setVideoId("1b448be3230a0194d959426ae005645f_1")
-                    .setRequestId(VodSignUtil.generateUUID());
-            vodGetVideoExamResponseList = new VodInfoServiceImpl().getVideoExam(vodGetVideoExamRequest);
-            Assert.assertNotNull(vodGetVideoExamResponseList);
-            if (vodGetVideoExamResponseList != null) {
-                log.debug("测试获取单个视频的问答题目成功,{}", JSON.toJSONString(vodGetVideoExamResponseList));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回VodGetVideoExamResponse对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-返回对象是List&lt;VodGetVideoExamResponse&gt;，**VodGetVideoExamResponse**具体元素内容如下：
-
-| 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
-| examId | String | 问答题目的id | 
-| userId | String | 用户Id | 
-| videoId | String | 视频的id | 
-| showTime | String | 问答题目开始显示的时间，格式 hh:mm:ss 例如 00:03:11 | 
-| hours | Integer | 时 | 
-| minute | Integer | 分 | 
-| seconds | Integer | 秒 | 
-| question | String | 问题 | 
-| choices | String | 选项 | 
-| answer | String | 回答正确提示语 | 
-| wrongAnswer | String | 回答错误提示语 | 
-| skip | Boolean | 能否跳过问答 | 
-| wrongTime | Integer | 回答错误后跳回到第几秒，-1指不退回 | 
-| wrongShow | Integer | 回答错误是否提示。1：提示，0：不提示，默认为1：提示 | 
-| createdTime | Date | 创建问答题目的时间，格式：yyyy-MM-dd HH:mm | 
-| groupId | String | 问答所在的问卷的ID | 
-| status | Integer | 是否有效，1：有效，0：无效，默认为1 | 
-| type | Integer | 题目类型，0：选择题，1：听力题（听力题即将下线） | 
-| mp3url | String | 听力题的mp3音频文件url（听力题即将下线） | 
-
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 10、查询视频密码
+## 11、查询视频密码
 ### 描述
 ```
 查询视频密码
@@ -662,8 +716,7 @@ true为开关开启，false为开关关闭
         VodQueryVideoPasswordRequest vodQueryVideoPasswordRequest = new VodQueryVideoPasswordRequest();
         VodQueryVideoPasswordResponse vodQueryVideoPasswordResponse = null;
         try {
-            vodQueryVideoPasswordRequest.setVideoId("1b448be3234134f5a73bdddd6e88a9a5_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoPasswordRequest.setVideoId("1b448be3234134f5a73bdddd6e88a9a5_1");
             vodQueryVideoPasswordResponse = new VodInfoServiceImpl().queryVideoPassword(vodQueryVideoPasswordRequest);
             Assert.assertNotNull(vodQueryVideoPasswordResponse);
             if (vodQueryVideoPasswordResponse != null) {
@@ -709,68 +762,6 @@ true为开关开启，false为开关关闭
 
 <br /><br />
 
-## 11、批量获取视频的时长和大小
-### 描述
-```
-批量获取视频的时长和大小
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
-### 单元测试
-```java
-	@Test
-	public void testGetVideosSize() throws IOException, NoSuchAlgorithmException {
-        VodGetVideosSizeRequest vodGetVideosSizeRequest = new VodGetVideosSizeRequest();
-        List<VodGetVideosSizeResponse> vodGetVideosSizeResponseList = null;
-        try {
-            vodGetVideosSizeRequest.setVideoIds("1b448be323a146649ad0cc89d0faed9c_1,1b448be32389b93ea8be08bf0d257043_1")
-                    .setRequestId(VodSignUtil.generateUUID());
-            vodGetVideosSizeResponseList = new VodInfoServiceImpl().getVideosSize(vodGetVideosSizeRequest);
-            Assert.assertNotNull(vodGetVideosSizeResponseList);
-            if (vodGetVideosSizeResponseList != null) {
-                log.debug("测试批量获取视频的时长和大小成功,{}", JSON.toJSONString(vodGetVideosSizeResponseList));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回VodGetVideosSizeResponse对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoIds | true | String | 多个视频ID(英文逗号分割 状态为半角)，例如 1b8be3,239c2e | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-返回对象是List&lt;VodGetVideosSizeResponse&gt;，**VodGetVideosSizeResponse**具体元素内容如下：
-
-| 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
-| videoId | String | 视频ID | 
-| duration | String | 时长，格式为时分秒。例如 00:03:11 | 
-| filesize1 | Long | 编码后码率1FLV的大小，单位为Bytes：字节 | 
-| filesize2 | Long | 编码后码率2FLV的大小，单位为Bytes：字节 | 
-
-<br /><br />
-
-------------------
-
-<br /><br />
-
 ## 12、批量获取视频播放次数
 ### 描述
 ```
@@ -788,8 +779,7 @@ true为开关开启，false为开关关闭
         try {
             vodGetVideosPlayTimesRequest.setVideoIds(
                     "1b448be3230a0194d959426ae005645f_1,1b448be323a146649ad0cc89d0faed9c_1")
-                    .setRealTime(0)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setRealTime(0);
             vodGetVideosPlayTimesResponseList = new VodInfoServiceImpl().getVideosPlayTimes(
                     vodGetVideosPlayTimesRequest);
             Assert.assertNotNull(vodGetVideosPlayTimesResponseList);

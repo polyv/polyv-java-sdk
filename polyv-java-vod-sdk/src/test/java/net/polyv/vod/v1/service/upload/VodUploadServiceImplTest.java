@@ -39,8 +39,7 @@ public class VodUploadServiceImplTest extends BaseTest {
         try {
             String path = getClass().getResource("/img/cover.jpg").getPath();
             vodUploadCoverImageRequest.setImage(new File(path))
-                    .setCategoryIds("1602300731843")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setCategoryIds("1602300731843");
             vodUploadCoverImageResponse = new VodUploadServiceImpl().uploadCoverImage(vodUploadCoverImageRequest);
             Assert.assertTrue(vodUploadCoverImageResponse);
             if (vodUploadCoverImageResponse) {
@@ -75,8 +74,7 @@ public class VodUploadServiceImplTest extends BaseTest {
             String imageUrl =
                     "http://img.videocc.net/uimage/1/1b448be323/c/1b448be32343357d5c4784d9ffd1bf5c_0.jpg";
             vodUploadCoverImageUrlRequest.setImageUrl(imageUrl)
-                    .setCategoryIds("1602300731843")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setCategoryIds("1602300731843");
             vodUploadCoverImageUrlResponse = new VodUploadServiceImpl().uploadCoverImageUrl(
                     vodUploadCoverImageUrlRequest);
             Assert.assertTrue(vodUploadCoverImageUrlResponse);
@@ -109,8 +107,7 @@ public class VodUploadServiceImplTest extends BaseTest {
         try {
             String path = getClass().getResource("/img/water.jpg").getPath();
             vodUploadWatermarkRequest.setImage(new File(path))
-                    .setCategoryId("1602300731843")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setCategoryId("1602300731843");
             vodUploadWatermarkResponse = new VodUploadServiceImpl().uploadWatermark(vodUploadWatermarkRequest);
             Assert.assertTrue(vodUploadWatermarkResponse);
             if (vodUploadWatermarkResponse) {
@@ -146,8 +143,7 @@ public class VodUploadServiceImplTest extends BaseTest {
                     .setCategoryId("1602300731843")
                     .setScreenCap(0)
                     .setWatermark("http://sadboytest.oss-cn-shenzhen.aliyuncs.com/a.png")
-                    .setWatermarkLocation("1")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setWatermarkLocation("1");
             vodUploadHttpVideoListResponse = new VodUploadServiceImpl().uploadHttpVideoList(
                     vodUploadHttpVideoListRequest);
             Assert.assertTrue(vodUploadHttpVideoListResponse);
@@ -182,8 +178,7 @@ public class VodUploadServiceImplTest extends BaseTest {
             String controlFile = getClass().getResource("/file/controlFile.txt").getPath();
             vodUploadPPTRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setPpt(new File(pptFile))
-                    .setControlFile(new File(controlFile))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setControlFile(new File(controlFile));
             vodUploadPPTResponse = new VodUploadServiceImpl().uploadPPT(vodUploadPPTRequest);
             Assert.assertTrue(vodUploadPPTResponse);
             if (vodUploadPPTResponse) {

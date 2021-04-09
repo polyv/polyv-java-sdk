@@ -72,8 +72,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setCategoryId("1602300731843")
                     .setSessionId(null)
-                    .setViewerId(null)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setViewerId(null);
             vodQueryViewLogByDayResponseList = new VodDataStatisticsServiceImpl().queryViewLogByDay(
                     vodQueryViewLogByDayRequest);
             Assert.assertNotNull(vodQueryViewLogByDayResponseList);
@@ -107,8 +106,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setCurrentDay(null)
                     .setCurrentPage(1)
-                    .setPageSize(10)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setPageSize(10);
             vodGetVideoPlayLogResponse = new VodDataStatisticsServiceImpl().getVideoPlayLog(vodGetVideoPlayLogRequest);
             Assert.assertNotNull(vodGetVideoPlayLogResponse);
             if (vodGetVideoPlayLogResponse != null) {
@@ -138,8 +136,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
         try {
             vodQueryVideoPlaybackRankingRequest.setDr("7days")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoPlaybackRankingResponse = new VodDataStatisticsServiceImpl().queryVideoPlaybackRanking(
                     vodQueryVideoPlaybackRankingRequest);
             Assert.assertNotNull(vodQueryVideoPlaybackRankingResponse);
@@ -170,8 +167,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
         List<VodQueryVideoPlaybackStatisticsResponse> vodQueryVideoPlaybackStatisticsResponseList = null;
         try {
             vodQueryVideoPlaybackStatisticsRequest.setDr("7days")
-                    .setPeriod("daily")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setPeriod("daily");
             vodQueryVideoPlaybackStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryVideoPlaybackStatistics(
                     vodQueryVideoPlaybackStatisticsRequest);
@@ -206,8 +202,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
         try {
             vodQueryPlayDomainNameStatisticsRequest.setDr("7days")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryPlayDomainNameStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryPlayDomainNameStatistics(
                     vodQueryPlayDomainNameStatisticsRequest);
@@ -240,8 +235,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
         try {
             vodQueryVideoDeviceStatisticsRequest.setDr("7days")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoDeviceStatisticsResponse = new VodDataStatisticsServiceImpl().queryVideoDeviceStatistics(
                     vodQueryVideoDeviceStatisticsRequest);
             Assert.assertNotNull(vodQueryVideoDeviceStatisticsResponse);
@@ -272,7 +266,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                 new VodQueryVideoPlaybackHourlyStatisticsRequest();
         List<VodQueryVideoPlaybackHourlyStatisticsResponse> vodQueryVideoPlaybackHourlyStatisticsResponseList = null;
         try {
-            vodQueryVideoPlaybackHourlyStatisticsRequest.setDr("7days").setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoPlaybackHourlyStatisticsRequest.setDr("7days");
             vodQueryVideoPlaybackHourlyStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryVideoPlaybackHourlyStatistics(
                     vodQueryVideoPlaybackHourlyStatisticsRequest);
@@ -308,8 +302,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             vodQueryVideoPlaybackFlowSizeStatisticsRequest.setDr("7days")
                     .setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoPlaybackFlowSizeStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryVideoPlaybackFlowSizeStatistics(
                             vodQueryVideoPlaybackFlowSizeStatisticsRequest);
@@ -344,8 +337,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
         try {
             vodQueryVideoGeographicStatisticsRequest.setDr("7days")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoGeographicStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryVideoGeographicStatistics(
                     vodQueryVideoGeographicStatisticsRequest);
@@ -378,8 +370,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
         try {
             vodQueryVideoViewershipRequest.setDr("7days")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoViewershipResponseList = new VodDataStatisticsServiceImpl().queryVideoViewership(
                     vodQueryVideoViewershipRequest);
             Assert.assertNotNull(vodQueryVideoViewershipResponseList);
@@ -412,8 +403,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             vodQueryVideoPlayTimeStatisticsRequest.setDr("7days")
                     .setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoPlayTimeStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryVideoPlayTimeStatistics(
                     vodQueryVideoPlayTimeStatisticsRequest);
@@ -447,8 +437,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             vodQueryVideoViewingHotspotStatisticsRequest.setDr("7days")
                     .setVideoId("1b448be3230a0194d959426ae005645f_1")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoViewingHotspotStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryVideoViewingHotspotStatistics(
                     vodQueryVideoViewingHotspotStatisticsRequest);
@@ -480,7 +469,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                 new VodQueryVideoViewingRatioStatisticsRequest();
         List<VodQueryVideoViewingRatioStatisticsResponse> vodQueryVideoViewingRatioStatisticsResponseList = null;
         try {
-            vodQueryVideoViewingRatioStatisticsRequest.setDr("7days").setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoViewingRatioStatisticsRequest.setDr("7days");
             vodQueryVideoViewingRatioStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryVideoViewingRatioStatistics(
                     vodQueryVideoViewingRatioStatisticsRequest);
@@ -517,8 +506,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
         Float vodGetVideoViewingCompletionResponse = null;
         try {
             vodGetVideoViewingCompletionRequest.setVideoId("1b448be3230a0194d959426ae005645f_1")
-                    .setViewerId("1555313336634")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setViewerId("1555313336634");
             vodGetVideoViewingCompletionResponse = new VodDataStatisticsServiceImpl().getVideoViewingCompletion(
                     vodGetVideoViewingCompletionRequest);
             Assert.assertNotNull(vodGetVideoViewingCompletionResponse);
@@ -557,8 +545,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     .setEndTime(super.getDate(2021, 2, 30))
                     .setVideoId("1b448be3230a0194d959426ae005645f_1")
                     .setCurrentPage(1)
-                    .setPageSize(10)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setPageSize(10);
             vodQueryViewingBehaviorListResponse = new VodDataStatisticsServiceImpl().queryViewingBehaviorList(
                     vodQueryViewingBehaviorListRequest);
             Assert.assertNotNull(vodQueryViewingBehaviorListResponse);
@@ -588,8 +575,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
         VodQueryVideoAnalysisDataRequest vodQueryVideoAnalysisDataRequest = new VodQueryVideoAnalysisDataRequest();
         VodQueryVideoAnalysisDataResponse vodQueryVideoAnalysisDataResponse = null;
         try {
-            vodQueryVideoAnalysisDataRequest.setVideoId("1b448be3230a0194d959426ae005645f_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoAnalysisDataRequest.setVideoId("1b448be3230a0194d959426ae005645f_1");
             vodQueryVideoAnalysisDataResponse = new VodDataStatisticsServiceImpl().queryVideoAnalysisData(
                     vodQueryVideoAnalysisDataRequest);
             Assert.assertNotNull(vodQueryVideoAnalysisDataResponse);
@@ -620,8 +606,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                 new VodQueryAudienceAnalysisResultsRequest();
         VodQueryAudienceAnalysisResultsResponse vodQueryAudienceAnalysisResultsResponse = null;
         try {
-            vodQueryAudienceAnalysisResultsRequest.setViewerId("1555313336634")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryAudienceAnalysisResultsRequest.setViewerId("1555313336634");
             vodQueryAudienceAnalysisResultsResponse = new VodDataStatisticsServiceImpl().queryAudienceAnalysisResults(
                     vodQueryAudienceAnalysisResultsRequest);
             Assert.assertNotNull(vodQueryAudienceAnalysisResultsResponse);

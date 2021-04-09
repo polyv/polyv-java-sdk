@@ -15,7 +15,6 @@ import net.polyv.vod.v1.entity.play.payersettings.VodGetPlayerListRequest;
 import net.polyv.vod.v1.entity.play.payersettings.VodGetPlayerListResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.play.impl.VodPlayerSettingsServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 播放器设置
@@ -33,7 +32,6 @@ public class VodPlayerSettingsServiceImplTest extends BaseTest {
         VodGetPlayerListRequest vodGetPlayerListRequest = new VodGetPlayerListRequest();
         List<VodGetPlayerListResponse> vodGetPlayerListResponseList = null;
         try {
-            vodGetPlayerListRequest.setRequestId(VodSignUtil.generateUUID());
             vodGetPlayerListResponseList = new VodPlayerSettingsServiceImpl().getPlayerList(vodGetPlayerListRequest);
             Assert.assertNotNull(vodGetPlayerListResponseList);
             if (vodGetPlayerListResponseList != null) {

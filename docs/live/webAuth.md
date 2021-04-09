@@ -15,8 +15,7 @@
         try {
             liveCreateChannelWhiteListRequest.setRank(1)
                     .setCode(String.valueOf(System.currentTimeMillis()))
-                    .setName("sadboy")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setName("sadboy");
             liveCreateChannelWhiteListResponse = new LiveWebAuthServiceImpl().createChannelWhiteList(
                     liveCreateChannelWhiteListRequest);
             Assert.assertNotNull(liveCreateChannelWhiteListResponse);
@@ -78,8 +77,7 @@ true为添加成功，false为添加失败
             liveChannelWhiteListRequest.setChannelId(null)
                     .setRank(1)
                     .setKeyword(null)
-                    .setPageSize(1)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setPageSize(1);
             liveChannelWhiteListResponse = new LiveWebAuthServiceImpl().getChannelWhiteList(
                     liveChannelWhiteListRequest);
             Assert.assertNotNull(liveChannelWhiteListResponse);
@@ -154,7 +152,7 @@ true为添加成功，false为添加失败
         LiveChannelAuthRequest liveChannelAuthRequest = new LiveChannelAuthRequest();
         LiveChannelAuthResponse liveChannelAuthResponse;
         try {
-            liveChannelAuthRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelAuthRequest.setChannelId(createChannel());
             liveChannelAuthResponse = new LiveWebAuthServiceImpl().getChannelAuth(liveChannelAuthRequest);
             Assert.assertNotNull(liveChannelAuthResponse);
             if (liveChannelAuthResponse != null) {
@@ -257,8 +255,7 @@ true为添加成功，false为添加失败
                     new ArrayList<LiveChannelSettingRequest.AuthSetting>();
             authSettings.add(authSetting);
             liveUpdateChannelAuthRequest.setChannelId(createChannel())
-                    .setAuthSettings(authSettings)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setAuthSettings(authSettings);
             liveUpdateChannelAuthResponse = new LiveWebAuthServiceImpl().updateChannelAuth(
                     liveUpdateChannelAuthRequest);
             Assert.assertNotNull(liveUpdateChannelAuthResponse);
@@ -348,8 +345,7 @@ true为设置观看条件成功，false为设置失败
         LiveChannelAuthExternalResponse liveChannelAuthExternalResponse;
         try {
             liveChannelAuthExternalRequest.setChannelId(createChannel())
-                    .setExternalUri("https://dev.polyv.net/")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setExternalUri("https://dev.polyv.net/");
             liveChannelAuthExternalResponse = new LiveWebAuthServiceImpl().updateChannelAuthExternal(
                     liveChannelAuthExternalRequest);
             Assert.assertNotNull(liveChannelAuthExternalResponse);
@@ -418,8 +414,7 @@ true为设置观看条件成功，false为设置失败
         LiveChannelAuthCustomResponse liveChannelAuthCustomResponse;
         try {
             liveChannelAuthCustomRequest.setChannelId(createChannel())
-                    .setCustomUri("https://dev.polyv.net/")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setCustomUri("https://dev.polyv.net/");
             liveChannelAuthCustomResponse = new LiveWebAuthServiceImpl().updateChannelAuthCustom(
                     liveChannelAuthCustomRequest);
             Assert.assertNotNull(liveChannelAuthCustomResponse);
@@ -488,8 +483,7 @@ true为设置观看条件成功，false为设置失败
         Boolean liveUpdateChannelAuthUrlResponse;
         try {
             liveUpdateChannelAuthUrlRequest.setChannelId(createChannel())
-                    .setUrl("http://www.polyv.net")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setUrl("http://www.polyv.net");
             liveUpdateChannelAuthUrlResponse = new LiveWebAuthServiceImpl().updateChannelAuthUrl(
                     liveUpdateChannelAuthUrlRequest);
             Assert.assertNotNull(liveUpdateChannelAuthUrlResponse);
@@ -547,8 +541,7 @@ true为设置成功，false为设置失败
         Boolean liveChannelAuthTypeResponse;
         try {
             liveChannelAuthTypeRequest.setChannelId(createChannel())
-                    .setAuthType("none")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setAuthType("none");
             liveChannelAuthTypeResponse = new LiveWebAuthServiceImpl().updateChannelAuthType(
                     liveChannelAuthTypeRequest);
             Assert.assertTrue(liveChannelAuthTypeResponse);
@@ -609,8 +602,7 @@ true为授权成功，false为授权失败
                     .setRank(1)
                     .setOldCode("1605067278063")
                     .setCode("1605067278063")
-                    .setName("sadboyChange")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setName("sadboyChange");
             liveUpdateChannelWhiteListResponse = new LiveWebAuthServiceImpl().updateChannelWhiteList(
                     liveUpdateChannelWhiteListRequest);
             Assert.assertNotNull(liveUpdateChannelWhiteListResponse);
@@ -673,8 +665,7 @@ true为更新成功，false为失败
             liveDeleteChannelWhiteListRequest.setChannelId(null)
                     .setRank(1)
                     .setIsClear("N")
-                    .setCode("1605052902421")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setCode("1605052902421");
             liveDeleteChannelWhiteListResponse = new LiveWebAuthServiceImpl().deleteChannelWhiteList(
                     liveDeleteChannelWhiteListRequest);
             Assert.assertNotNull(liveDeleteChannelWhiteListResponse);
@@ -734,8 +725,7 @@ true为删除成功，false为失败
         LiveChannelAuthFieldResponse liveChannelAuthFieldResponse;
         try {
             liveChannelAuthFieldRequest.setChannelId(createChannel())
-                    .setRank(1)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setRank(1);
             liveChannelAuthFieldResponse = new LiveWebAuthServiceImpl().getChannelAuthField(
                     liveChannelAuthFieldRequest);
             Assert.assertNotNull(liveChannelAuthFieldResponse);
@@ -805,7 +795,7 @@ true为删除成功，false为失败
         LiveChannelAuthInfoRequest liveChannelAuthInfoRequest = new LiveChannelAuthInfoRequest();
         LiveChannelAuthInfoResponse liveChannelAuthInfoResponse;
         try {
-            liveChannelAuthInfoRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelAuthInfoRequest.setChannelId(createChannel());
             liveChannelAuthInfoResponse = new LiveWebAuthServiceImpl().getChannelAuthInfo(liveChannelAuthInfoRequest);
             Assert.assertNotNull(liveChannelAuthInfoResponse);
             if (liveChannelAuthInfoResponse != null) {
@@ -881,8 +871,7 @@ true为删除成功，false为失败
             //path设置为下载文件路径
             String path = getClass().getResource("/file/").getPath() + "downLoad.xlsx";
             liveDownloadChannelAuthInfoRequest.setChannelId(createChannel())
-                    .setRank(1)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setRank(1);
             liveDownloadChannelAuthInfoResponse = new LiveWebAuthServiceImpl().downloadChannelAuthInfo(
                     liveDownloadChannelAuthInfoRequest);
             Assert.assertNotNull(liveDownloadChannelAuthInfoResponse);
@@ -944,8 +933,7 @@ true为删除成功，false为失败
             String path = getClass().getResource("/file/WhiteListTemplate.xls").getPath();
             liveUploadWhiteListRequest.setChannelId(createChannel())
                     .setRank(1)
-                    .setFile(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setFile(new File(path));
             liveUploadWhiteListResponse = new LiveWebAuthServiceImpl().uploadWhiteList(liveUploadWhiteListRequest);
             Assert.assertTrue(liveUploadWhiteListResponse);
             if (liveUploadWhiteListResponse) {
@@ -1005,8 +993,7 @@ true为删除成功，false为失败
             //path设置为下载文件路径
             String path = getClass().getResource("/file/").getPath() + "downLoadWhiteList.xlsx";
             liveDownloadChannelWhiteListRequest.setChannelId(createChannel())
-                    .setRank(1)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setRank(1);
             liveDownloadChannelWhiteListResponse = new LiveWebAuthServiceImpl().downloadChannelWhiteList(
                     liveDownloadChannelWhiteListRequest);
             Assert.assertNotNull(liveDownloadChannelWhiteListResponse);

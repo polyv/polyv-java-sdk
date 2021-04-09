@@ -23,8 +23,7 @@
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setCategoryId("1602300731843")
                     .setSessionId(null)
-                    .setViewerId(null)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setViewerId(null);
             vodQueryViewLogByDayResponseList = new VodDataStatisticsServiceImpl().queryViewLogByDay(
                     vodQueryViewLogByDayRequest);
             Assert.assertNotNull(vodQueryViewLogByDayResponseList);
@@ -121,8 +120,7 @@
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setCurrentDay(null)
                     .setCurrentPage(1)
-                    .setPageSize(10)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setPageSize(10);
             vodGetVideoPlayLogResponse = new VodDataStatisticsServiceImpl().getVideoPlayLog(vodGetVideoPlayLogRequest);
             Assert.assertNotNull(vodGetVideoPlayLogResponse);
             if (vodGetVideoPlayLogResponse != null) {
@@ -210,76 +208,7 @@
 
 <br /><br />
 
-## 3、查询视频播放量统计数据
-### 描述
-```
-查询视频播放量统计数据
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
-
-2、查询视频播放量统计数据，从播放行为产生到数据可查询的间隔时间为1~2小时。
-### 单元测试
-```java
-	@Test
-	public void testQueryVideoPlaybackStatistics() throws IOException, NoSuchAlgorithmException {
-        VodQueryVideoPlaybackStatisticsRequest vodQueryVideoPlaybackStatisticsRequest =
-                new VodQueryVideoPlaybackStatisticsRequest();
-        List<VodQueryVideoPlaybackStatisticsResponse> vodQueryVideoPlaybackStatisticsResponseList = null;
-        try {
-            vodQueryVideoPlaybackStatisticsRequest.setDr("7days")
-                    .setPeriod("daily")
-                    .setRequestId(VodSignUtil.generateUUID());
-            vodQueryVideoPlaybackStatisticsResponseList =
-                    new VodDataStatisticsServiceImpl().queryVideoPlaybackStatistics(
-                    vodQueryVideoPlaybackStatisticsRequest);
-            Assert.assertNotNull(vodQueryVideoPlaybackStatisticsResponseList);
-            if (vodQueryVideoPlaybackStatisticsResponseList != null) {
-                log.debug("测试查询视频播放量统计数据成功,{}", JSON.toJSONString(vodQueryVideoPlaybackStatisticsResponseList));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回VodQueryVideoPlaybackStatisticsResponse对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | false | String | 视频videoId，不填vid会查所有视频的播放量统计数据 | 
-| dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
-| period | false | String | 显示周期，具体为以下几个值：daily（按日显示），weekly（按周显示），monthly（按月显示）。默认值为daily：按日显示。period的值受限于dr的值，当dr的值为today，yesterday，this_week，last_week，7days时，period只能为daily，当dr的值为this_month，last_month时，period只能为daily或者weekly | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-返回对象是List&lt;VodQueryVideoPlaybackStatisticsResponse&gt;，**VodQueryVideoPlaybackStatisticsResponse**具体元素内容如下：
-
-| 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
-| currentTime | Date | 当前日期，格式为：yyyy-MM-dd | 
-| pcVideoView | Integer | pc端播放量 | 
-| mobileVideoView | Integer | 移动端播放量 | 
-
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 4、查询视频播放量排行
+## 3、查询视频播放量排行
 ### 描述
 ```
 查询视频播放量排行
@@ -297,8 +226,7 @@
         try {
             vodQueryVideoPlaybackRankingRequest.setDr("7days")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoPlaybackRankingResponse = new VodDataStatisticsServiceImpl().queryVideoPlaybackRanking(
                     vodQueryVideoPlaybackRankingRequest);
             Assert.assertNotNull(vodQueryVideoPlaybackRankingResponse);
@@ -357,6 +285,74 @@
 
 <br /><br />
 
+## 4、查询视频播放量统计数据
+### 描述
+```
+查询视频播放量统计数据
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+
+2、查询视频播放量统计数据，从播放行为产生到数据可查询的间隔时间为1~2小时。
+### 单元测试
+```java
+	@Test
+	public void testQueryVideoPlaybackStatistics() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoPlaybackStatisticsRequest vodQueryVideoPlaybackStatisticsRequest =
+                new VodQueryVideoPlaybackStatisticsRequest();
+        List<VodQueryVideoPlaybackStatisticsResponse> vodQueryVideoPlaybackStatisticsResponseList = null;
+        try {
+            vodQueryVideoPlaybackStatisticsRequest.setDr("7days")
+                    .setPeriod("daily");
+            vodQueryVideoPlaybackStatisticsResponseList =
+                    new VodDataStatisticsServiceImpl().queryVideoPlaybackStatistics(
+                    vodQueryVideoPlaybackStatisticsRequest);
+            Assert.assertNotNull(vodQueryVideoPlaybackStatisticsResponseList);
+            if (vodQueryVideoPlaybackStatisticsResponseList != null) {
+                log.debug("测试查询视频播放量统计数据成功,{}", JSON.toJSONString(vodQueryVideoPlaybackStatisticsResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回VodQueryVideoPlaybackStatisticsResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| videoId | false | String | 视频videoId，不填vid会查所有视频的播放量统计数据 | 
+| dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
+| period | false | String | 显示周期，具体为以下几个值：daily（按日显示），weekly（按周显示），monthly（按月显示）。默认值为daily：按日显示。period的值受限于dr的值，当dr的值为today，yesterday，this_week，last_week，7days时，period只能为daily，当dr的值为this_month，last_month时，period只能为daily或者weekly | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+返回对象是List&lt;VodQueryVideoPlaybackStatisticsResponse&gt;，**VodQueryVideoPlaybackStatisticsResponse**具体元素内容如下：
+
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| currentTime | Date | 当前日期，格式为：yyyy-MM-dd | 
+| pcVideoView | Integer | pc端播放量 | 
+| mobileVideoView | Integer | 移动端播放量 | 
+
+<br /><br />
+
+------------------
+
+<br /><br />
+
 ## 5、查询播放域名统计数据
 ### 描述
 ```
@@ -381,8 +377,7 @@
         try {
             vodQueryPlayDomainNameStatisticsRequest.setDr("7days")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryPlayDomainNameStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryPlayDomainNameStatistics(
                     vodQueryPlayDomainNameStatisticsRequest);
@@ -456,8 +451,7 @@
         try {
             vodQueryVideoDeviceStatisticsRequest.setDr("7days")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoDeviceStatisticsResponse = new VodDataStatisticsServiceImpl().queryVideoDeviceStatistics(
                     vodQueryVideoDeviceStatisticsRequest);
             Assert.assertNotNull(vodQueryVideoDeviceStatisticsResponse);
@@ -563,7 +557,7 @@
                 new VodQueryVideoPlaybackHourlyStatisticsRequest();
         List<VodQueryVideoPlaybackHourlyStatisticsResponse> vodQueryVideoPlaybackHourlyStatisticsResponseList = null;
         try {
-            vodQueryVideoPlaybackHourlyStatisticsRequest.setDr("7days").setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoPlaybackHourlyStatisticsRequest.setDr("7days");
             vodQueryVideoPlaybackHourlyStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryVideoPlaybackHourlyStatistics(
                     vodQueryVideoPlaybackHourlyStatisticsRequest);
@@ -620,7 +614,83 @@
 
 <br /><br />
 
-## 8、查询视频播放地理位置统计数据
+## 8、查询视频某个时段的播放流量统计数据
+### 描述
+```
+查询视频某个时段的播放流量统计数据
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+
+2、自2018年7月10日起，才可以统计到单个视频的移动端流量数据，在此之前没有移动端流量数据
+
+3、流量消耗的计算依赖于CDN日志，为了保证数据完整性，流量数据需要间隔一个自然日才会生成。例如1号产生的流量消耗，会在2号晚上汇总计算，在3号才可查询到流量数据
+### 单元测试
+```java
+	@Test
+	public void testQueryVideoPlaybackFlowSizeStatistics() throws IOException, NoSuchAlgorithmException {
+        VodQueryVideoPlaybackFlowSizeStatisticsRequest vodQueryVideoPlaybackFlowSizeStatisticsRequest =
+                new VodQueryVideoPlaybackFlowSizeStatisticsRequest();
+        List<VodQueryVideoPlaybackFlowSizeStatisticsResponse> vodQueryVideoPlaybackFlowSizeStatisticsResponseList =
+                null;
+        try {
+            vodQueryVideoPlaybackFlowSizeStatisticsRequest.setDr("7days")
+                    .setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
+                    .setStartTime(super.getDate(2021, 2, 18))
+                    .setEndTime(super.getDate(2021, 2, 24));
+            vodQueryVideoPlaybackFlowSizeStatisticsResponseList =
+                    new VodDataStatisticsServiceImpl().queryVideoPlaybackFlowSizeStatistics(
+                            vodQueryVideoPlaybackFlowSizeStatisticsRequest);
+            Assert.assertNotNull(vodQueryVideoPlaybackFlowSizeStatisticsResponseList);
+            if (vodQueryVideoPlaybackFlowSizeStatisticsResponseList != null) {
+                log.debug("测试查询视频某个时段的播放流量统计数据成功,{}",
+                        JSON.toJSONString(vodQueryVideoPlaybackFlowSizeStatisticsResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回VodQueryVideoPlaybackFlowSizeStatisticsResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| videoId | true | String | 视频ID | 
+| dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
+| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
+| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
+| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+
+### 返回对象描述
+返回对象是List&lt;VodQueryVideoPlaybackFlowSizeStatisticsResponse&gt;，**VodQueryVideoPlaybackFlowSizeStatisticsResponse**具体元素内容如下：
+
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| currentDay | Date | 日期，格式 yyyy-MM-dd 例如 2021-03-24 | 
+| pcFlowSize | Long | PC端消耗流量,单位字节 | 
+| mobileFlowSize | Long | 移动端消耗流量，单位字节 | 
+| totalFlowSize | Long | 总流量消耗，单位字节 | 
+
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 9、查询视频播放地理位置统计数据
 ### 描述
 ```
 查询视频播放地理位置统计数据
@@ -642,8 +712,7 @@
         try {
             vodQueryVideoGeographicStatisticsRequest.setDr("7days")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoGeographicStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryVideoGeographicStatistics(
                     vodQueryVideoGeographicStatisticsRequest);
@@ -700,7 +769,7 @@
 
 <br /><br />
 
-## 9、查询视频观众量统计数据
+## 10、查询视频观众量统计数据
 ### 描述
 ```
 查询视频观众量统计数据
@@ -721,8 +790,7 @@
         try {
             vodQueryVideoViewershipRequest.setDr("7days")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoViewershipResponseList = new VodDataStatisticsServiceImpl().queryVideoViewership(
                     vodQueryVideoViewershipRequest);
             Assert.assertNotNull(vodQueryVideoViewershipResponseList);
@@ -772,83 +840,6 @@
 
 <br /><br />
 
-## 10、查询视频某个时段的播放流量统计数据
-### 描述
-```
-查询视频某个时段的播放流量统计数据
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
-
-2、自2018年7月10日起，才可以统计到单个视频的移动端流量数据，在此之前没有移动端流量数据
-
-3、流量消耗的计算依赖于CDN日志，为了保证数据完整性，流量数据需要间隔一个自然日才会生成。例如1号产生的流量消耗，会在2号晚上汇总计算，在3号才可查询到流量数据
-### 单元测试
-```java
-	@Test
-	public void testQueryVideoPlaybackFlowSizeStatistics() throws IOException, NoSuchAlgorithmException {
-        VodQueryVideoPlaybackFlowSizeStatisticsRequest vodQueryVideoPlaybackFlowSizeStatisticsRequest =
-                new VodQueryVideoPlaybackFlowSizeStatisticsRequest();
-        List<VodQueryVideoPlaybackFlowSizeStatisticsResponse> vodQueryVideoPlaybackFlowSizeStatisticsResponseList =
-                null;
-        try {
-            vodQueryVideoPlaybackFlowSizeStatisticsRequest.setDr("7days")
-                    .setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
-                    .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
-            vodQueryVideoPlaybackFlowSizeStatisticsResponseList =
-                    new VodDataStatisticsServiceImpl().queryVideoPlaybackFlowSizeStatistics(
-                    vodQueryVideoPlaybackFlowSizeStatisticsRequest);
-            Assert.assertNotNull(vodQueryVideoPlaybackFlowSizeStatisticsResponseList);
-            if (vodQueryVideoPlaybackFlowSizeStatisticsResponseList != null) {
-                log.debug("测试查询视频某个时段的播放流量统计数据成功,{}",
-                        JSON.toJSONString(vodQueryVideoPlaybackFlowSizeStatisticsResponseList));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回VodQueryVideoPlaybackFlowSizeStatisticsResponse对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
-| dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-返回对象是List&lt;VodQueryVideoPlaybackFlowSizeStatisticsResponse&gt;，**VodQueryVideoPlaybackFlowSizeStatisticsResponse**具体元素内容如下：
-
-| 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
-| currentDay | Date | 日期，格式 yyyy-MM-dd 例如 2021-03-24 | 
-| pcFlowSize | Long | PC端消耗流量,单位字节 | 
-| mobileFlowSize | Long | 移动端消耗流量，单位字节 | 
-| totalFlowSize | Long | 总流量消耗，单位字节 | 
-
-<br /><br />
-
-------------------
-
-<br /><br />
-
 ## 11、查询视频的播放时长统计数据
 ### 描述
 ```
@@ -870,8 +861,7 @@
             vodQueryVideoPlayTimeStatisticsRequest.setDr("7days")
                     .setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoPlayTimeStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryVideoPlayTimeStatistics(
                     vodQueryVideoPlayTimeStatisticsRequest);
@@ -952,8 +942,7 @@
             vodQueryVideoViewingHotspotStatisticsRequest.setDr("7days")
                     .setVideoId("1b448be3230a0194d959426ae005645f_1")
                     .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEndTime(super.getDate(2021, 2, 24));
             vodQueryVideoViewingHotspotStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryVideoViewingHotspotStatistics(
                     vodQueryVideoViewingHotspotStatisticsRequest);
@@ -1021,7 +1010,7 @@
                 new VodQueryVideoViewingRatioStatisticsRequest();
         List<VodQueryVideoViewingRatioStatisticsResponse> vodQueryVideoViewingRatioStatisticsResponseList = null;
         try {
-            vodQueryVideoViewingRatioStatisticsRequest.setDr("7days").setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoViewingRatioStatisticsRequest.setDr("7days");
             vodQueryVideoViewingRatioStatisticsResponseList =
                     new VodDataStatisticsServiceImpl().queryVideoViewingRatioStatistics(
                     vodQueryVideoViewingRatioStatisticsRequest);
@@ -1097,8 +1086,7 @@
         Float vodGetVideoViewingCompletionResponse = null;
         try {
             vodGetVideoViewingCompletionRequest.setVideoId("1b448be3230a0194d959426ae005645f_1")
-                    .setViewerId("1555313336634")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setViewerId("1555313336634");
             vodGetVideoViewingCompletionResponse = new VodDataStatisticsServiceImpl().getVideoViewingCompletion(
                     vodGetVideoViewingCompletionRequest);
             Assert.assertNotNull(vodGetVideoViewingCompletionResponse);
@@ -1171,8 +1159,7 @@
                     .setEndTime(super.getDate(2021, 2, 30))
                     .setVideoId("1b448be3230a0194d959426ae005645f_1")
                     .setCurrentPage(1)
-                    .setPageSize(10)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setPageSize(10);
             vodQueryViewingBehaviorListResponse = new VodDataStatisticsServiceImpl().queryViewingBehaviorList(
                     vodQueryViewingBehaviorListRequest);
             Assert.assertNotNull(vodQueryViewingBehaviorListResponse);
@@ -1270,8 +1257,7 @@
         VodQueryVideoAnalysisDataRequest vodQueryVideoAnalysisDataRequest = new VodQueryVideoAnalysisDataRequest();
         VodQueryVideoAnalysisDataResponse vodQueryVideoAnalysisDataResponse = null;
         try {
-            vodQueryVideoAnalysisDataRequest.setVideoId("1b448be3230a0194d959426ae005645f_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryVideoAnalysisDataRequest.setVideoId("1b448be3230a0194d959426ae005645f_1");
             vodQueryVideoAnalysisDataResponse = new VodDataStatisticsServiceImpl().queryVideoAnalysisData(
                     vodQueryVideoAnalysisDataRequest);
             Assert.assertNotNull(vodQueryVideoAnalysisDataResponse);
@@ -1338,8 +1324,7 @@
                 new VodQueryAudienceAnalysisResultsRequest();
         VodQueryAudienceAnalysisResultsResponse vodQueryAudienceAnalysisResultsResponse = null;
         try {
-            vodQueryAudienceAnalysisResultsRequest.setViewerId("1555313336634")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryAudienceAnalysisResultsRequest.setViewerId("1555313336634");
             vodQueryAudienceAnalysisResultsResponse = new VodDataStatisticsServiceImpl().queryAudienceAnalysisResults(
                     vodQueryAudienceAnalysisResultsRequest);
             Assert.assertNotNull(vodQueryAudienceAnalysisResultsResponse);

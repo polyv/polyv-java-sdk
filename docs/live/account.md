@@ -13,7 +13,7 @@
         LiveCreateCategoryRequest liveCreateCategoryRequest = new LiveCreateCategoryRequest();
         LiveCreateCategoryResponse liveCreateCategoryResponse;
         try {
-            liveCreateCategoryRequest.setCategoryName("分类1").setRequestId(LiveSignUtil.generateUUID());
+            liveCreateCategoryRequest.setCategoryName("分类1");
             liveCreateCategoryResponse = new LiveAccountServiceImpl().createCategory(liveCreateCategoryRequest);
             Assert.assertNotNull(liveCreateCategoryResponse);
             log.debug("测试创建账号下直播分类成功,{}", JSON.toJSONString(liveCreateCategoryResponse));
@@ -72,7 +72,6 @@
         LiveListCategoryRequest liveListCategoryRequest = new LiveListCategoryRequest();
         LiveListCategoryResponse liveListCategoryResponse;
         try {
-            liveListCategoryRequest.setRequestId(LiveSignUtil.generateUUID());
             liveListCategoryResponse = new LiveAccountServiceImpl().listCategory(liveListCategoryRequest);
             Assert.assertNotNull(liveListCategoryResponse);
             log.debug("测试查询账号下直播分类成功,{}", JSON.toJSONString(liveListCategoryResponse));
@@ -137,8 +136,7 @@
         Boolean liveUpdateCategoryResponse;
         try {
             liveUpdateCategoryRequest.setCategoryId(345111)
-                    .setCategoryName("测试分类")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setCategoryName("测试分类");
             liveUpdateCategoryResponse = new LiveAccountServiceImpl().updateCategory(liveUpdateCategoryRequest);
             Assert.assertTrue(liveUpdateCategoryResponse);
             log.debug("测试修改直播频道分类名称成功");
@@ -192,8 +190,7 @@ true为修改成功，false为修改失败
         Boolean liveUpdateCategorySortResponse;
         try {
             liveUpdateCategorySortRequest.setCategoryId(345111)
-                    .setAfterCategoryId(345134)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setAfterCategoryId(345134);
             liveUpdateCategorySortResponse = new LiveAccountServiceImpl().updateCategorySort(
                     liveUpdateCategorySortRequest);
             Assert.assertTrue(liveUpdateCategorySortResponse);
@@ -247,7 +244,7 @@ true为修改排序成功，false为修改排序失败
         LiveDeleteCategoryRequest liveDeleteCategoryRequest = new LiveDeleteCategoryRequest();
         Boolean liveDeleteCategoryResponse;
         try {
-            liveDeleteCategoryRequest.setCategoryId(345128).setRequestId(LiveSignUtil.generateUUID());
+            liveDeleteCategoryRequest.setCategoryId(345128);
             liveDeleteCategoryResponse = new LiveAccountServiceImpl().deleteCategory(liveDeleteCategoryRequest);
             Assert.assertTrue(liveDeleteCategoryResponse);
             log.debug("测试删除直播频道分类成功");
@@ -299,7 +296,6 @@ true为删除成功，false为删除失败
         LiveAccountInfoRequest liveAccountInfoRequest = new LiveAccountInfoRequest();
         LiveAccountInfoResponse liveAccountInfoResponse;
         try {
-            liveAccountInfoRequest.setRequestId(LiveSignUtil.generateUUID());
             liveAccountInfoResponse = new LiveAccountServiceImpl().getAccountInfo(liveAccountInfoRequest);
             Assert.assertNotNull(liveAccountInfoResponse);
             log.debug("测试获取直播用户账号信息接口成功,{}", JSON.toJSONString(liveAccountInfoResponse));
@@ -358,7 +354,7 @@ true为删除成功，false为删除失败
         LiveListAccountDetailRequest liveListAccountDetailRequest = new LiveListAccountDetailRequest();
         LiveListAccountDetailResponse liveListAccountDetailResponse;
         try {
-            liveListAccountDetailRequest.setCurrentPage(1).setRequestId(LiveSignUtil.generateUUID());
+            liveListAccountDetailRequest.setCurrentPage(1);
             liveListAccountDetailResponse = new LiveAccountServiceImpl().listAccountDetail(
                     liveListAccountDetailRequest);
             Assert.assertNotNull(liveListAccountDetailResponse);
@@ -473,7 +469,7 @@ true为删除成功，false为删除失败
         LiveListAccountRequest liveListAccountRequest = new LiveListAccountRequest();
         LiveListAccountResponse liveListAccountResponse;
         try {
-            liveListAccountRequest.setCategoryId(null).setKeyword(null).setRequestId(LiveSignUtil.generateUUID());
+            liveListAccountRequest.setCategoryId(null).setKeyword(null);
             liveListAccountResponse = new LiveAccountServiceImpl().listAccount(liveListAccountRequest);
             Assert.assertNotNull(liveListAccountResponse);
             if (liveListAccountResponse != null) {
@@ -533,7 +529,6 @@ true为删除成功，false为删除失败
         LiveAccountMicDurationRequest liveAccountMicDurationRequest = new LiveAccountMicDurationRequest();
         LiveAccountMicDurationResponse liveAccountMicDurationResponse;
         try {
-            liveAccountMicDurationRequest.setRequestId(LiveSignUtil.generateUUID());
             liveAccountMicDurationResponse = new LiveAccountServiceImpl().getMicDuration(liveAccountMicDurationRequest);
             Assert.assertNotNull(liveAccountMicDurationResponse);
             if (liveAccountMicDurationResponse != null) {
@@ -593,8 +588,7 @@ true为删除成功，false为删除失败
         LiveCreateAccountTokenRequest liveCreateAccountTokenRequest = new LiveCreateAccountTokenRequest();
         Boolean liveCreateAccountTokenResponse;
         try {
-            liveCreateAccountTokenRequest.setToken(LiveSignUtil.generateUUID())
-                    .setRequestId(LiveSignUtil.generateUUID());
+            liveCreateAccountTokenRequest.setToken(LiveSignUtil.generateUUID());
             liveCreateAccountTokenResponse = new LiveAccountServiceImpl().createAccountToken(
                     liveCreateAccountTokenRequest);
             Assert.assertNotNull(liveCreateAccountTokenResponse);
@@ -651,8 +645,7 @@ true为设置成功，false为设置失败
         LiveAccountStreamCallbackRequest liveAccountStreamCallbackRequest = new LiveAccountStreamCallbackRequest();
         Boolean liveAccountStreamCallbackResponse;
         try {
-            liveAccountStreamCallbackRequest.setUrl("http://www.abc.com/callback")
-                    .setRequestId(LiveSignUtil.generateUUID());
+            liveAccountStreamCallbackRequest.setUrl("http://www.abc.com/callback");
             liveAccountStreamCallbackResponse = new LiveAccountServiceImpl().updateStreamCallbackUrl(
                     liveAccountStreamCallbackRequest);
             Assert.assertNotNull(liveAccountStreamCallbackResponse);
@@ -723,8 +716,7 @@ true为设置回调成功，false为设置回调失败
                 new LiveAccountPlaybackCallbackRequest();
         Boolean liveAccountPlaybackCallbackResponse;
         try {
-            liveAccountPlaybackCallbackRequest.setUrl("http://www.abc.com/callback")
-                    .setRequestId(LiveSignUtil.generateUUID());
+            liveAccountPlaybackCallbackRequest.setUrl("http://www.abc.com/callback");
             liveAccountPlaybackCallbackResponse = new LiveAccountServiceImpl().updatePlaybackCallbackUrl(
                     liveAccountPlaybackCallbackRequest);
             Assert.assertTrue(liveAccountPlaybackCallbackResponse);
@@ -801,8 +793,7 @@ true为设置回调成功，false为设置回调失败
         LiveAccountRecordCallbackRequest liveAccountRecordCallbackRequest = new LiveAccountRecordCallbackRequest();
         Boolean liveAccountRecordCallbackResponse;
         try {
-            liveAccountRecordCallbackRequest.setUrl("http://www.abc.com/callback")
-                    .setRequestId(LiveSignUtil.generateUUID());
+            liveAccountRecordCallbackRequest.setUrl("http://www.abc.com/callback");
             liveAccountRecordCallbackResponse = new LiveAccountServiceImpl().updateRecordCallbackUrl(
                     liveAccountRecordCallbackRequest);
             Assert.assertTrue(liveAccountRecordCallbackResponse);
@@ -875,8 +866,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
         Boolean liveUpdateAccountSwitchResponse;
         try {
             liveUpdateAccountSwitchRequest.setType(LiveConstant.ChannelSwitch.AUTO_PLAY.getDesc())
-                    .setEnabled("N")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setEnabled("N");
             liveUpdateAccountSwitchResponse = new LiveAccountServiceImpl().updateAccountSwitch(
                     liveUpdateAccountSwitchRequest);
             Assert.assertNotNull(liveUpdateAccountSwitchResponse);
@@ -936,7 +926,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
         LiveAccountSwitchRequest liveAccountSwitchRequest = new LiveAccountSwitchRequest();
         LiveAccountSwitchResponse liveAccountSwitchResponse;
         try {
-            liveAccountSwitchRequest.setChannelId(null).setRequestId(LiveSignUtil.generateUUID());
+            liveAccountSwitchRequest.setChannelId(null);
             liveAccountSwitchResponse = new LiveAccountServiceImpl().getAccountSwitch(liveAccountSwitchRequest);
             Assert.assertNotNull(liveAccountSwitchResponse);
             if (liveAccountSwitchResponse != null) {
@@ -1007,8 +997,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
                     .setWatchStatus("end")
                     .setKeyword("勿删")
                     .setPageSize(null)
-                    .setCurrentPage(1)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setCurrentPage(1);
             liveListAccountChannelBasicResponse = new LiveAccountServiceImpl().listChannelBasic(
                     liveListAccountChannelBasicRequest);
             Assert.assertNotNull(liveListAccountChannelBasicResponse);
@@ -1089,7 +1078,6 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
         LiveAccountUserDurationsRequest liveAccountUserDurationsRequest = new LiveAccountUserDurationsRequest();
         LiveAccountUserDurationsResponse liveAccountUserDurationsResponse;
         try {
-            liveAccountUserDurationsRequest.setRequestId(LiveSignUtil.generateUUID());
             liveAccountUserDurationsResponse = new LiveAccountServiceImpl().getUserDurations(
                     liveAccountUserDurationsRequest);
             Assert.assertNotNull(liveAccountUserDurationsResponse);
@@ -1154,8 +1142,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
             String channelId = super.createChannel();
             liveChannelIncomeDetailRequest.setChannelId(channelId)
                     .setStartDate(getDate(2019,10,24))
-                    .setEndDate(getDate(2021,11,11))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setEndDate(getDate(2021,11,11));
             liveChannelIncomeDetailResponse = new LiveAccountServiceImpl().getChannelIncomeDetail(
                     liveChannelIncomeDetailRequest);
             Assert.assertNotNull(liveChannelIncomeDetailResponse);

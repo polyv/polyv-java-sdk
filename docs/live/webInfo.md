@@ -14,8 +14,7 @@
         Boolean liveUpdateChannelNameResponse;
         try {
             liveUpdateChannelNameRequest.setChannelId(createChannel())
-                    .setName("Junit测试(勿删)")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setName("Junit测试(勿删)");
             liveUpdateChannelNameResponse = new LiveWebInfoServiceImpl().updateChannelName(
                     liveUpdateChannelNameRequest);
             Assert.assertNotNull(liveUpdateChannelNameResponse);
@@ -73,8 +72,7 @@ true为设置成功，false为设置失败
         Boolean liveUpdateChannelPublisherResponse;
         try {
             liveUpdateChannelPublisherRequest.setChannelId(createChannel())
-                    .setPublisher("主讲人sadboy")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setPublisher("主讲人sadboy");
             liveUpdateChannelPublisherResponse = new LiveWebInfoServiceImpl().updateChannelPublisher(
                     liveUpdateChannelPublisherRequest);
             Assert.assertNotNull(liveUpdateChannelPublisherResponse);
@@ -131,7 +129,7 @@ true为设置成功，false为设置失败
         LiveChannelSplashRequest liveChannelSplashRequest = new LiveChannelSplashRequest();
         LiveChannelSplashResponse liveChannelSplashResponse;
         try {
-            liveChannelSplashRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelSplashRequest.setChannelId(createChannel());
             liveChannelSplashResponse = new LiveWebInfoServiceImpl().getChannelSplash(liveChannelSplashRequest);
             Assert.assertNotNull(liveChannelSplashResponse);
             if (liveChannelSplashResponse != null) {
@@ -193,8 +191,7 @@ true为设置成功，false为设置失败
         try {
             liveUpdateChannelLikesRequest.setChannelId(createChannel())
                     .setLikes(9999)
-                    .setViewers(9999)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setViewers(9999);
             liveUpdateChannelLikesResponse = new LiveWebInfoServiceImpl().updateChannelLikes(
                     liveUpdateChannelLikesRequest);
             Assert.assertNotNull(liveUpdateChannelLikesResponse);
@@ -254,8 +251,7 @@ true为设置成功，false为设置失败
         try {
             String path = getClass().getResource("/img/elephant.png").getPath();
             liveUpdateChannelLogoRequest.setChannelId(createChannel())
-                    .setImgfile(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setImgfile(new File(path));
             liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(
                     liveUpdateChannelLogoRequest);
             Assert.assertNotNull(liveUpdateChannelLogoResponse);
@@ -314,9 +310,8 @@ true为设置成功，false为设置失败
         try {
             String path = getClass().getResource("/img/elephant.png").getPath();
             liveUpdateChannelSplashRequest.setChannelId(createChannel())
-                    .setSplashEnabled("Y")
 //                    .setImgfile(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setSplashEnabled("Y");
             liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
                     liveUpdateChannelSplashRequest);
             Assert.assertNotNull(liveUpdateChannelSplashResponse);
@@ -374,7 +369,7 @@ true为设置成功，false为设置失败
         LiveChannelLikesRequest liveChannelLikesRequest = new LiveChannelLikesRequest();
         LiveChannelLikesResponse liveChannelLikesResponse;
         try {
-            liveChannelLikesRequest.setChannelIds("1965681").setRequestId(LiveSignUtil.generateUUID());
+            liveChannelLikesRequest.setChannelIds("1965681");
             liveChannelLikesResponse = new LiveWebInfoServiceImpl().getChannelLikes(liveChannelLikesRequest);
             Assert.assertNotNull(liveChannelLikesResponse);
             if (liveChannelLikesResponse != null) {
@@ -443,8 +438,7 @@ true为设置成功，false为设置失败
         try {
             liveUpdateChannelCountDownRequest.setChannelId(createChannel())
                     .setBookingEnabled("Y")
-                    .setStartTime(getDate(2020, 11, 11, 11, 11, 11))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setStartTime(getDate(2020, 11, 11, 11, 11, 11));
             liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(
                     liveUpdateChannelCountDownRequest);
             Assert.assertTrue(liveUpdateChannelCountDownResponse);
@@ -502,7 +496,7 @@ true为设置成功，false为设置失败
         LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
         LiveChannelCountDownResponse liveChannelCountDownResponse;
         try {
-            liveChannelCountDownRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelCountDownRequest.setChannelId(createChannel());
             liveChannelCountDownResponse = new LiveWebInfoServiceImpl().getChannelCountDown(
                     liveChannelCountDownRequest);
             Assert.assertNotNull(liveChannelCountDownResponse);

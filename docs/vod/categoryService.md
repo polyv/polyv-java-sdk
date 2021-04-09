@@ -14,8 +14,7 @@
         Boolean vodMoveCategoryResponse = null;
         try {
             vodMoveCategoryRequest.setCategoryId("1615536384688")
-                    .setDestCategoryId("1")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setDestCategoryId("1");
             vodMoveCategoryResponse = new VodCategoryServiceImpl().moveCategory(vodMoveCategoryRequest);
             Assert.assertTrue(vodMoveCategoryResponse);
             if (vodMoveCategoryResponse) {
@@ -76,8 +75,7 @@ true为修改成功，false为修改失败
                     .setEncrypt(0)
                     .setHlsLevel("open")
                     .setIsEdu(0)
-                    .setEncodeAAC(0)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setEncodeAAC(0);
             vodUpdateCategoryProfileResponse = new VodCategoryServiceImpl().updateCategoryProfile(
                     vodUpdateCategoryProfileRequest);
             Assert.assertTrue(vodUpdateCategoryProfileResponse);
@@ -139,8 +137,7 @@ true为修改成功，false为修改失败
         VodCreateCategoryResponse vodCreateCategoryResponse = null;
         try {
             vodCreateCategoryRequest.setCategoryName("Junit测试")
-                    .setParentId("1")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setParentId("1");
             vodCreateCategoryResponse = new VodCategoryServiceImpl().createCategory(vodCreateCategoryRequest);
             Assert.assertNotNull(vodCreateCategoryResponse);
             if (vodCreateCategoryResponse != null) {
@@ -202,7 +199,7 @@ true为修改成功，false为修改失败
         try {
             //准备测试数据
             String categoryID = super.createCategory();
-            vodDeleteCategoryRequest.setCategoryId(categoryID).setRequestId(VodSignUtil.generateUUID());
+            vodDeleteCategoryRequest.setCategoryId(categoryID);
             vodDeleteCategoryResponse = new VodCategoryServiceImpl().deleteCategory(vodDeleteCategoryRequest);
             Assert.assertTrue(vodDeleteCategoryResponse);
             if (vodDeleteCategoryResponse) {
@@ -256,7 +253,7 @@ true为删除成功，false为删除失败
         VodGetCategoryRequest vodGetCategoryRequest = new VodGetCategoryRequest();
         List<VodGetCategoryResponse> vodGetCategoryResponseList = null;
         try {
-            vodGetCategoryRequest.setCategoryId("1").setRequestId(VodSignUtil.generateUUID());
+            vodGetCategoryRequest.setCategoryId("1");
             vodGetCategoryResponseList = new VodCategoryServiceImpl().getCategory(vodGetCategoryRequest);
             Assert.assertNotNull(vodGetCategoryResponseList);
             if (vodGetCategoryResponseList != null) {
@@ -321,8 +318,7 @@ true为删除成功，false为删除失败
         Boolean vodUpdateCategoryNameResponse = null;
         try {
             vodUpdateCategoryNameRequest.setCategoryId("1615536384688")
-                    .setCategoryName("Junit测试(勿删)_3")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setCategoryName("Junit测试(勿删)_3");
             vodUpdateCategoryNameResponse = new VodCategoryServiceImpl().updateCategoryName(
                     vodUpdateCategoryNameRequest);
             Assert.assertTrue(vodUpdateCategoryNameResponse);
@@ -379,8 +375,7 @@ true为修改成功，false为修改失败
         Boolean vodMoveVideoResponse = null;
         try {
             vodMoveVideoRequest.setCategoryId("1602300731843")
-                    .setVideoIds("1b448be3230a0194d959426ae005645f_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setVideoIds("1b448be3230a0194d959426ae005645f_1");
             vodMoveVideoResponse = new VodCategoryServiceImpl().moveVideo(vodMoveVideoRequest);
             Assert.assertTrue(vodMoveVideoResponse);
             if (vodMoveVideoResponse) {
@@ -435,7 +430,7 @@ true为修改成功，false为修改失败
         VodGetCategorySizeRequest vodGetCategorySizeRequest = new VodGetCategorySizeRequest();
         Long vodGetCategorySizeResponse = null;
         try {
-            vodGetCategorySizeRequest.setCategoryId("1602671097888").setRequestId(VodSignUtil.generateUUID());
+            vodGetCategorySizeRequest.setCategoryId("1602671097888");
             vodGetCategorySizeResponse = new VodCategoryServiceImpl().getCategorySize(vodGetCategorySizeRequest);
             Assert.assertNotNull(vodGetCategorySizeResponse);
             if (vodGetCategorySizeResponse != null) {

@@ -13,7 +13,6 @@
         VodGetPlayerListRequest vodGetPlayerListRequest = new VodGetPlayerListRequest();
         List<VodGetPlayerListResponse> vodGetPlayerListResponseList = null;
         try {
-            vodGetPlayerListRequest.setRequestId(VodSignUtil.generateUUID());
             vodGetPlayerListResponseList = new VodPlayerSettingsServiceImpl().getPlayerList(vodGetPlayerListRequest);
             Assert.assertNotNull(vodGetPlayerListResponseList);
             if (vodGetPlayerListResponseList != null) {

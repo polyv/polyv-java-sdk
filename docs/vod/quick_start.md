@@ -142,7 +142,7 @@ public class VodVideoDemo {
       instance.set(2020, 10, 13);
       VodAccountSpaceDataRequest vodAccountSpaceDataRequest = new VodAccountSpaceDataRequest();
       VodAccountSpaceDataResponse vodAccountSpaceDataResponse;
-      vodAccountSpaceDataRequest.setDate(instance.getTime()).setRequestId(VodSignUtil.generateUUID());
+      vodAccountSpaceDataRequest.setDate(instance.getTime());
       vodAccountSpaceDataResponse = new VodAccountServiceImpl().getAccountSpaceFlow(vodAccountSpaceDataRequest);
       Assert.assertNotNull(vodAccountSpaceDataResponse);
       if (vodAccountSpaceDataResponse != null) {

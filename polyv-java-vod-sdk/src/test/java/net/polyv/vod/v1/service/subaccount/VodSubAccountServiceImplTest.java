@@ -57,8 +57,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setSort("creationTimeDesc")
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodSubAccountSearchVideoListResponse = new VodSubAccountServiceImpl().searchVideoList(
                     vodSubAccountSearchVideoListRequest);
             Assert.assertNotNull(vodSubAccountSearchVideoListResponse);
@@ -93,8 +92,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setFilters("basicInfo,metaData,transcodeInfo,snapshotInfo")
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodSubAccountQueryVideoInfoResponseList = new VodSubAccountServiceImpl().getVideoInfo(
                     vodSubAccountQueryVideoInfoRequest);
             Assert.assertNotNull(vodSubAccountQueryVideoInfoResponseList);
@@ -132,8 +130,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setPublishUrl(null)
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodUpdateVideoInfoResponse = new VodSubAccountServiceImpl().updateVideoInfo(
                     vodSubAccountUpdateVideoInfoRequest);
             Assert.assertTrue(vodUpdateVideoInfoResponse);
@@ -167,8 +164,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
             vodSubAccountDeleteVideoRequest.setVideoId("1b448be3238415eee2fa40753737255b_1")
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodDeleteVideoResponse = new VodSubAccountServiceImpl().deleteVideo(vodSubAccountDeleteVideoRequest);
             Assert.assertTrue(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse) {
@@ -203,8 +199,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setCategoryId("1602300731843")
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodUpdateVideoCategoryResponse = new VodSubAccountServiceImpl().updateVideoCategory(
                     vodSubAccountUpdateVideoCategoryRequest);
             Assert.assertTrue(vodUpdateVideoCategoryResponse);
@@ -238,8 +233,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setAppId(APP_ID)
                     .setSecretKey(SECRET_KEY)
                     .setCurrentPage(1)
-                    .setPageSize(20)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setPageSize(20);
             vodSubAccountQueryCategoryResponse = new VodSubAccountServiceImpl().queryCategory(
                     vodSubAccountQueryCategoryRequest);
             Assert.assertNotNull(vodSubAccountQueryCategoryResponse);
@@ -272,8 +266,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setParentId(null)
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodSubAccountAddCategoryRequest);
             Assert.assertNotNull(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse != null) {
@@ -306,8 +299,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setCategoryName("Junit测试(勿删)_1")
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodUpdateCategoryResponse = new VodSubAccountServiceImpl().updateCategory(
                     vodSubAccountUpdateCategoryRequest);
             Assert.assertTrue(vodUpdateCategoryResponse);
@@ -342,8 +334,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
             vodSubAccountDeleteCategoryRequest.setCategoryId(categoryId)
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodDeleteCategoryResponse = new VodSubAccountServiceImpl().deleteCategory(
                     vodSubAccountDeleteCategoryRequest);
             Assert.assertTrue(vodDeleteCategoryResponse);
@@ -382,8 +373,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setEncodeAAC(0)
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodUpdateCategoryProfileResponse = new VodSubAccountServiceImpl().updateCategoryProfile(
                     vodSubAccountUpdateCategoryProfileRequest);
             Assert.assertTrue(vodUpdateCategoryProfileResponse);

@@ -15,8 +15,7 @@
         try {
             liveChannelGlobalSwitchRequest.setChannelId(createChannel())
                     .setGlobalEnabledType(LiveConstant.GlobalEnabledType.CALLBACK.getDesc())
-                    .setEnabled("N")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setEnabled("N");
             liveChannelGlobalSwitchResponse = new LiveWebSettingServiceImpl().setChannelGlobalSwitch(
                     liveChannelGlobalSwitchRequest);
             Assert.assertNotNull(liveChannelGlobalSwitchResponse);
@@ -78,8 +77,7 @@ true为设置成功，false为设置失败
             List<File> fileList = new ArrayList<File>();
             fileList.add(new File(path));
             liveUploadImageRequest.setType("coverImage")
-                    .setFile(fileList)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setFile(fileList);
             liveUploadImageResponse = new LiveWebSettingServiceImpl().uploadImage(
                     liveUploadImageRequest);
             Assert.assertNotNull(liveUploadImageResponse);

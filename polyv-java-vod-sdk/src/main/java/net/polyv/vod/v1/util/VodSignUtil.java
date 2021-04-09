@@ -160,9 +160,6 @@ public class VodSignUtil {
      * @return map
      */
     public static <T extends VodCommonRequest> Map<String, String> getSignMap(T t) {
-        if (StringUtils.isBlank(t.getRequestId())) {
-            t.setRequestId(VodSignUtil.generateUUID());
-        }
         if (StringUtils.isBlank(t.getPtime())) {
             t.setPtime(String.valueOf(System.currentTimeMillis()));
         }

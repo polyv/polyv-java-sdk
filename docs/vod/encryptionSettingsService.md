@@ -13,7 +13,6 @@
         VodGetEncryptionSettingsRequest vodGetEncryptionSettingsRequest = new VodGetEncryptionSettingsRequest();
         VodGetEncryptionSettingsResponse vodGetEncryptionSettingsResponse = null;
         try {
-            vodGetEncryptionSettingsRequest.setRequestId(VodSignUtil.generateUUID());
             vodGetEncryptionSettingsResponse = new VodEncryptionSettingsServiceImpl().getEncryptionSettings(
                     vodGetEncryptionSettingsRequest);
             Assert.assertNotNull(vodGetEncryptionSettingsResponse);
@@ -74,8 +73,7 @@
         VodUpdateEncryptionSettingsResponse vodUpdateEncryptionSettingsResponse = null;
         try {
             vodUpdateEncryptionSettingsRequest.setEncrypt(1)
-                    .setHlsLevel("open")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setHlsLevel("open");
             vodUpdateEncryptionSettingsResponse = new VodEncryptionSettingsServiceImpl().updateEncryptionSettings(
                     vodUpdateEncryptionSettingsRequest);
             Assert.assertNotNull(vodUpdateEncryptionSettingsResponse);

@@ -158,8 +158,7 @@ public class BaseTest {
         VodCreateCategoryResponse vodCreateCategoryResponse = null;
         try {
             vodCreateCategoryRequest.setCategoryName("Junit测试" + getRandomString(3))
-                    .setParentId("1")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setParentId("1");
             vodCreateCategoryResponse = new VodCategoryServiceImpl().createCategory(vodCreateCategoryRequest);
             Assert.assertNotNull(vodCreateCategoryResponse);
             if (vodCreateCategoryResponse != null) {
@@ -194,8 +193,7 @@ public class BaseTest {
                     .setCategoryId("1602300731843")
                     .setScreenCap(0)
                     .setWatermark("http://sadboytest.oss-cn-shenzhen.aliyuncs.com/a.png")
-                    .setWatermarkLocation("1")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setWatermarkLocation("1");
             vodUploadHttpVideoListResponse = new VodUploadServiceImpl().uploadHttpVideoList(
                     vodUploadHttpVideoListRequest);
             Assert.assertTrue(vodUploadHttpVideoListResponse);
@@ -228,7 +226,7 @@ public class BaseTest {
                 uploadHttpVideoList();
             }
             
-            vodGetTaskListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
+            vodGetTaskListRequest.setCurrentPage(1).setPageSize(10);
             vodGetTaskListResponse = new VodSyncServiceImpl().getTaskList(vodGetTaskListRequest);
             Assert.assertNotNull(vodGetTaskListResponse);
             if (vodGetTaskListResponse != null) {
@@ -294,8 +292,7 @@ public class BaseTest {
                     .setFile(file)
                     .setAsDefault("N")
                     .setTitle(title)
-                    .setLanguage(null)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setLanguage(null);
             vodUploadSubtitleResponse = new VodSubtitleServiceImpl().uploadSubtitle(vodUploadSubtitleRequest);
             Assert.assertTrue(vodUploadSubtitleResponse);
             if (vodUploadSubtitleResponse) {
@@ -327,7 +324,7 @@ public class BaseTest {
         VodGetSubtitleListRequest vodGetSubtitleListRequest = new VodGetSubtitleListRequest();
         VodGetSubtitleListResponse vodGetSubtitleListResponse = null;
         try {
-            vodGetSubtitleListRequest.setVideoId(videoId).setRequestId(VodSignUtil.generateUUID());
+            vodGetSubtitleListRequest.setVideoId(videoId);
             vodGetSubtitleListResponse = new VodSubtitleServiceImpl().getSubtitleList(vodGetSubtitleListRequest);
             Assert.assertNotNull(vodGetSubtitleListResponse);
             if (vodGetSubtitleListResponse.getSubtitles() == null) {
@@ -408,7 +405,7 @@ public class BaseTest {
                         .filter((subtitle) -> subtitle.getRank() != null)
                         .map((subtitle) -> subtitle.getRank().toString().trim())
                         .collect(Collectors.joining(","));
-                vodDeleteSubtitleRequest.setVideoId(videoId).setRanks(ranks).setRequestId(VodSignUtil.generateUUID());
+                vodDeleteSubtitleRequest.setVideoId(videoId).setRanks(ranks);
                 new VodSubtitleServiceImpl().deleteSubtitle(vodDeleteSubtitleRequest);
                 return Boolean.TRUE;
             }
@@ -451,8 +448,7 @@ public class BaseTest {
                     .setParam2("777777777")
                     .setFontSize(18)
                     .setFontMode("roll")
-                    .setFontColor("0xFFFFFF")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setFontColor("0xFFFFFF");
             vodCreateBarrageResponse = new VodBarrageServiceImpl().createBarrage(vodCreateBarrageRequest);
             Assert.assertNotNull(vodCreateBarrageResponse);
             if (vodCreateBarrageResponse != null) {
@@ -479,8 +475,7 @@ public class BaseTest {
         VodQueryBarrageListRequest vodQueryBarrageListRequest = new VodQueryBarrageListRequest();
         VodQueryBarrageListResponse vodQueryBarrageListResponse = null;
         try {
-            vodQueryBarrageListRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryBarrageListRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1");
             vodQueryBarrageListResponse = new VodBarrageServiceImpl().queryBarrageList(vodQueryBarrageListRequest);
             Assert.assertNotNull(vodQueryBarrageListResponse);
             if (vodQueryBarrageListResponse != null) {
@@ -521,8 +516,7 @@ public class BaseTest {
                     .setEndDate(getDate(2021, 3, 22))
                     .setTitle("测试广告")
                     .setFile(new File(filePath))
-                    .setSize(2)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSize(2);
             vodCreateAdvertisingResponse = new VodAdvertisingServiceImpl().createAdvertising(
                     vodCreateAdvertisingRequest);
             Assert.assertNotNull(vodCreateAdvertisingResponse);
@@ -554,8 +548,7 @@ public class BaseTest {
         try {
             String coursewareFile = getClass().getResource("/courseware/Courseware.ppt").getPath();
             vodUploadCoursewareRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
-                    .setCourseware(new File(coursewareFile))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setCourseware(new File(coursewareFile));
             vodUploadCoursewareResponse = new VodCoursewareServiceImpl().uploadCourseware(vodUploadCoursewareRequest);
             Assert.assertTrue(vodUploadCoursewareResponse);
             if (vodUploadCoursewareResponse) {

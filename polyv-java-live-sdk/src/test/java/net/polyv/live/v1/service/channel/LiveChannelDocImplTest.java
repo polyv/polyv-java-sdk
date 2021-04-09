@@ -20,7 +20,6 @@ import net.polyv.live.v1.entity.channel.doc.LiveListChannelDocRequest;
 import net.polyv.live.v1.entity.channel.doc.LiveListChannelDocResponse;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.channel.impl.LiveChannelDocServiceImpl;
-import net.polyv.live.v1.util.LiveSignUtil;
 
 /**
  * 文档管理
@@ -45,8 +44,7 @@ public class LiveChannelDocImplTest extends BaseTest {
                     .setType("common")
                     .setFile(new File(path))
                     .setDocName("葵花宝典")
-                    .setCallbackUrl("http://www.baidu.com/callback")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setCallbackUrl("http://www.baidu.com/callback");
             liveCreateChannelDocResponse = new LiveChannelDocServiceImpl().createChannelDoc(
                     liveCreateChannelDocRequest);
             Assert.assertNotNull(liveCreateChannelDocResponse);
@@ -79,8 +77,7 @@ public class LiveChannelDocImplTest extends BaseTest {
             String channelId = super.createChannel();
             liveChannelDocStatusRequest.setChannelId(channelId)
                     .setFileId("c2d585857870f4eff024976e3a265c0b1965681common," +
-                            "6e0603f6c8ec6113b87f69a7191d22021965681common")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                            "6e0603f6c8ec6113b87f69a7191d22021965681common");
             liveChannelDocStatusResponse = new LiveChannelDocServiceImpl().getChannelDocStatus(
                     liveChannelDocStatusRequest);
             Assert.assertNotNull(liveChannelDocStatusResponse);
@@ -113,8 +110,7 @@ public class LiveChannelDocImplTest extends BaseTest {
             String channelId = super.createChannel();
             liveListChannelDocRequest.setChannelId(channelId)
                     .setIsShowUrl("Y")
-                    .setStatus(null)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setStatus(null);
             liveListChannelDocResponse = new LiveChannelDocServiceImpl().listChannelDoc(liveListChannelDocRequest);
             Assert.assertNotNull(liveListChannelDocResponse);
             if (liveListChannelDocResponse != null) {
@@ -147,8 +143,7 @@ public class LiveChannelDocImplTest extends BaseTest {
             String channelId = super.createChannel();
             liveDeleteChannelDocRequest.setChannelId(channelId)
                     .setFileId("6897d12bd284dd1e9b8b8534b6af91c31965681common")
-                    .setType("new")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setType("new");
             liveDeleteChannelDocResponse = new LiveChannelDocServiceImpl().deleteChannelDoc(
                     liveDeleteChannelDocRequest);
             Assert.assertTrue(liveDeleteChannelDocResponse);

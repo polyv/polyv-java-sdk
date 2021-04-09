@@ -168,7 +168,7 @@ public class VodUploadServiceImplTest extends BaseTest {
     
     /**
      * 测试上传PPT文件
-     * 约束：2、txt文件格式示例如下，每一行为：“秒数”+“:”+“标题”（注：txt文件必须是UTF-8的编码格式，否则课件的章节标题会显示为乱码）
+     * 约束：2、ppt控制文件格式示例如下，每一行为：“秒数”+“:”+“标题”（注：ppt控制文件必须是UTF-8的编码格式，否则课件的章节标题会显示为乱码）
      * 返回：true为上传成功，false为上传失败
      * @throws IOException
      * @throws NoSuchAlgorithmException

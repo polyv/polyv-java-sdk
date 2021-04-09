@@ -207,7 +207,7 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试设置视频的播放预览时长
-     * 描述：设置视频预览时长，使用点播后台视频列表，选择视频，复制右侧预览代码即可播放预览视频
+     * 描述：设置视频预览时长，进入播放页可以预览的视频时长。
      * 返回：true为设置成功，false为设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException

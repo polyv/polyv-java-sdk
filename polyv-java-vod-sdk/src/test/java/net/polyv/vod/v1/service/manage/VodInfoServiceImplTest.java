@@ -135,6 +135,62 @@ public class VodInfoServiceImplTest extends BaseTest {
     }
     
     /**
+     * 测试获取单个视频的问答题目
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetVideoExam() throws IOException, NoSuchAlgorithmException {
+        VodGetVideoExamRequest vodGetVideoExamRequest = new VodGetVideoExamRequest();
+        List<VodGetVideoExamResponse> vodGetVideoExamResponseList = null;
+        try {
+            vodGetVideoExamRequest.setVideoId("1b448be3230a0194d959426ae005645f_1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetVideoExamResponseList = new VodInfoServiceImpl().getVideoExam(vodGetVideoExamRequest);
+            Assert.assertNotNull(vodGetVideoExamResponseList);
+            if (vodGetVideoExamResponseList != null) {
+                log.debug("测试获取单个视频的问答题目成功,{}", JSON.toJSONString(vodGetVideoExamResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 批量获取视频的时长和大小
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetVideosSize() throws IOException, NoSuchAlgorithmException {
+        VodGetVideosSizeRequest vodGetVideosSizeRequest = new VodGetVideosSizeRequest();
+        List<VodGetVideosSizeResponse> vodGetVideosSizeResponseList = null;
+        try {
+            vodGetVideosSizeRequest.setVideoIds("1b448be323a146649ad0cc89d0faed9c_1,1b448be32389b93ea8be08bf0d257043_1")
+                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetVideosSizeResponseList = new VodInfoServiceImpl().getVideosSize(vodGetVideosSizeRequest);
+            Assert.assertNotNull(vodGetVideosSizeResponseList);
+            if (vodGetVideosSizeResponseList != null) {
+                log.debug("测试批量获取视频的时长和大小成功,{}", JSON.toJSONString(vodGetVideosSizeResponseList));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
      * 测试根据分类批量获取视频时长和大小
      * 约束：2、当传了videoIds时，按照videoIds查询；当仅传categoryIds时，按照categoryIds查询；videoIds和categoryIds不能同时为空；同时传以videoIds为准
      * @throws IOException 异常
@@ -282,34 +338,6 @@ public class VodInfoServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试获取单个视频的问答题目
-     * @throws IOException 异常
-     * @throws NoSuchAlgorithmException 异常
-     */
-    @Test
-    public void testGetVideoExam() throws IOException, NoSuchAlgorithmException {
-        VodGetVideoExamRequest vodGetVideoExamRequest = new VodGetVideoExamRequest();
-        List<VodGetVideoExamResponse> vodGetVideoExamResponseList = null;
-        try {
-            vodGetVideoExamRequest.setVideoId("1b448be3230a0194d959426ae005645f_1")
-                    .setRequestId(VodSignUtil.generateUUID());
-            vodGetVideoExamResponseList = new VodInfoServiceImpl().getVideoExam(vodGetVideoExamRequest);
-            Assert.assertNotNull(vodGetVideoExamResponseList);
-            if (vodGetVideoExamResponseList != null) {
-                log.debug("测试获取单个视频的问答题目成功,{}", JSON.toJSONString(vodGetVideoExamResponseList));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
      * 测试查询视频密码
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -325,34 +353,6 @@ public class VodInfoServiceImplTest extends BaseTest {
             Assert.assertNotNull(vodQueryVideoPasswordResponse);
             if (vodQueryVideoPasswordResponse != null) {
                 log.debug("测试查询视频密码成功,{}", JSON.toJSONString(vodQueryVideoPasswordResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 批量获取视频的时长和大小
-     * @throws IOException 异常
-     * @throws NoSuchAlgorithmException 异常
-     */
-    @Test
-    public void testGetVideosSize() throws IOException, NoSuchAlgorithmException {
-        VodGetVideosSizeRequest vodGetVideosSizeRequest = new VodGetVideosSizeRequest();
-        List<VodGetVideosSizeResponse> vodGetVideosSizeResponseList = null;
-        try {
-            vodGetVideosSizeRequest.setVideoIds("1b448be323a146649ad0cc89d0faed9c_1,1b448be32389b93ea8be08bf0d257043_1")
-                    .setRequestId(VodSignUtil.generateUUID());
-            vodGetVideosSizeResponseList = new VodInfoServiceImpl().getVideosSize(vodGetVideosSizeRequest);
-            Assert.assertNotNull(vodGetVideosSizeResponseList);
-            if (vodGetVideosSizeResponseList != null) {
-                log.debug("测试批量获取视频的时长和大小成功,{}", JSON.toJSONString(vodGetVideosSizeResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

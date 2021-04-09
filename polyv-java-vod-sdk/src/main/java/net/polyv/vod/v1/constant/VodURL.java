@@ -50,12 +50,12 @@ public class VodURL {
     public static final String UPLOAD_PPT_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/uploadPPT";
     
     /**
-     * 根据授权播放开关状态查询视频
+     * 根据授权播放开关状态查找视频
      */
     public static final String QUERY_VIDEO_LIST_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/list";
     
     /**
-     * 根据授权播放开关状态查询视频
+     * 根据授权播放开关状态查找视频
      */
     public static final String SEARCH_VIDEO_LIST_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/search";
     

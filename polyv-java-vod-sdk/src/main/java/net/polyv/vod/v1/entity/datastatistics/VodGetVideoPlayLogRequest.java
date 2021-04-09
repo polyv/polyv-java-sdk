@@ -59,7 +59,7 @@ public class VodGetVideoPlayLogRequest extends VodPageCommonRequest {
     /**
      * 用户自定义ID，自定义值（比如，表示学员信息的学员ID）
      */
-    @ApiModelProperty(name = "sessionId", value = "用户自定义ID，自定义值（比如，表示学员信息的学员ID）", required = false)
+    @ApiModelProperty(name = "sessionId", value = "用户自定义ID，自定义值", required = false)
     private String sessionId;
     
     /**

@@ -148,7 +148,7 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
         String url = VodURL.getRealUrl(VodURL.GET_VIDEO_URL);
         List<VodGetVideoResponse> returnList = super.getReturnList(url, vodGetVideoRequest, VodGetVideoResponse.class);
         if (returnList == null || returnList.isEmpty()) {
-            throw new PloyvSdkException(Constant.ERROR_CODE, "获取单个视频信息失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "获取单个视频信息失败，业务请求流水号："+vodGetVideoRequest.getRequestId());
         }
         return returnList.get(0);
     }

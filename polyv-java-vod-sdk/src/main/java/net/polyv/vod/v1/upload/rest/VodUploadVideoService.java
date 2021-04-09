@@ -31,7 +31,6 @@ public class VodUploadVideoService extends VodBaseService {
     public UploadConfigResponse initUploadQueue(VideoInfo videoInfo, int retry)
             throws IOException, NoSuchAlgorithmException {
         UploadConfigRequest uploadConfigRequest = videoInfo.convert();
-        uploadConfigRequest.setRequestId(VodSignUtil.generateUUID());
         String url = String.format(INIT_UPLOAD_TASK_URI, VodGlobalConfig.getUserId());
         UploadConfigResponse uploadConfigResponse = super.postFormBodyReturnOne(url, uploadConfigRequest,
                 UploadConfigResponse.class);

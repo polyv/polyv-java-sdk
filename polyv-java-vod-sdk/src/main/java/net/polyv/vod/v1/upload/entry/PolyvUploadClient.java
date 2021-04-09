@@ -26,6 +26,11 @@ public class PolyvUploadClient extends PolyvBasicClient {
     protected PolyvUploadService polyvUploadService;
     private static final Logger logger = LoggerFactory.getLogger(PolyvUploadClient.class);
     
+    public PolyvUploadClient() {
+        this.polyvUploadChunkConfig = new PolyvUploadChunkConfig(1024*1024, "checkpoint_location", 5);
+        this.polyvUploadService = new PolyvUploadService(1024*1024, "checkpoint_location", 5);
+    }
+    
     /**
      * 初始化入口client
      * @param partitionSize 分片大小

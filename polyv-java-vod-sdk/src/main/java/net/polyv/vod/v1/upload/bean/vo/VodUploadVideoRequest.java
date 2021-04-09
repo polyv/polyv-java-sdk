@@ -65,7 +65,18 @@ public class VodUploadVideoRequest extends CommonReqeust implements Serializable
     @NotNull(message = "属性file不能为空")
     private File file;
     
+    /**
+     * 如果提交了该字段，会在上传完成的事件回调中透传返回
+     */
+    @ApiModelProperty(name = "state", value = "如果提交了该字段，会在上传完成的事件回调中透传返回", required = false)
     private String state;
+    
+    /**
+     * 每次请求的业务流水号，便于客户端/服务器端排查问题
+     */
+    @ApiModelProperty(name="requestId",value  ="每次请求的业务流水号，便于客户端/服务器端排查问题",dataType = "String" ,required = true,example = "1234567" )
+    @NotNull(message = "属性requestId不能为空")
+    private String requestId;
     
     public VodUploadVideoRequest setCategoryId(String categoryId) {
         if (categoryId == null || "0".equals(categoryId)) {
@@ -104,7 +115,7 @@ public class VodUploadVideoRequest extends CommonReqeust implements Serializable
         videoInfo.setLuping(this.getScreenCap());
         videoInfo.setKeepSource(this.getKeepSource());
         videoInfo.setFile(this.getFile());
-        videoInfo.setState(this.getState());
+        videoInfo.setRequestId(this.getRequestId());
         videoInfo.setState(this.getState());
         return videoInfo;
     }

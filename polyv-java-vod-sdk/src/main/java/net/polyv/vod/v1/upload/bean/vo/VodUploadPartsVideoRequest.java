@@ -31,11 +31,18 @@ public class VodUploadPartsVideoRequest extends CommonReqeust {
     @ApiModelProperty(name = "videoPoolId", value = "视频id", required = true)
     private String videoPoolId;
     
+    /**
+     * 每次请求的业务流水号，便于客户端/服务器端排查问题
+     */
+    @ApiModelProperty(name="requestId",value  ="每次请求的业务流水号，便于客户端/服务器端排查问题",dataType = "String" ,required = true,example = "1234567" )
+    @NotNull(message = "属性requestId不能为空")
+    private String requestId;
+    
     public VideoInfo convert() {
         VideoInfo videoInfo = new VideoInfo();
-        videoInfo.setFileSize(this.getFile().length());
         videoInfo.setFile(this.getFile());
-        videoInfo.setTitle(this.getFile().getName());
+        videoInfo.setVideoPoolId(this.getVideoPoolId());
+        videoInfo.setRequestId(this.getRequestId());
         return videoInfo;
     }
 }

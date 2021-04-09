@@ -4,6 +4,7 @@ import java.io.File;
 
 import net.polyv.vod.v1.config.InitConfig;
 import net.polyv.vod.v1.upload.bean.vo.VideoInfo;
+import net.polyv.vod.v1.upload.bean.vo.VodUploadPartsVideoRequest;
 import net.polyv.vod.v1.upload.bean.vo.VodUploadVideoRequest;
 import net.polyv.vod.v1.upload.callback.UploadCallBack;
 import net.polyv.vod.v1.upload.entry.PolyvUploadClient;
@@ -24,7 +25,7 @@ public class UploadVideoSample {
                 .setCategoryId("1")
                 .setTitle("test（需删除）")
                 .setDescribe("描述213");
-
+        
         /**
          * 传入 分片大小（默认为1MB,大小限定为100KB~5GB），checkpoint文件夹路径，上传线程数（默认为5个）
          */
@@ -60,30 +61,35 @@ public class UploadVideoSample {
 
 //         当上传中断，重新恢复的时候，可以指定vid来恢复上传 uploadVideoRequest.setVideoPoolId("xxxxxxxxxxx");
 //            PolyvUploadClient client = new PolyvUploadClient(100 * 1024, "checkpoint_location", 5);
-            videoInfo = new VideoInfo();
-            videoInfo.setFile(new File("C:\\Users\\T460\\Desktop\\pro_compress-w431sfrmnq.mp4"));
-            videoInfo.setVideoPoolId("1b448be3237bee6bb673b35452ff0bf4_1");
-             System.out.println("vid=" + client.uploadVideoParts(videoInfo, new UploadCallBack() {
-                 @Override
-                 public void start(String s) {
-                     System.out.println("start=" + s);
-                 }
-                 @Override
-                 public void process(String s, long l, long l1) {
-                     System.out.println("process=" + s + ",uploaded=" + l + ", total=" + l1);
-                 }
-                 @Override
-                 public void complete(String s) {
-                     System.out.println("complete=" + s);
-                 }
-                 @Override
-                 public void success(String s) {
-                     System.out.println("success=" + s);
-                 }
-                 @Override
-                 public void error(String s, UploadErrorMsg uploadErrorMsg) {
-                     System.out.println("error=" + s + ", message=" + uploadErrorMsg.getMessage());
-                 }
-             }, true));
+        VodUploadPartsVideoRequest vodUploadPartsVideoRequest = new VodUploadPartsVideoRequest();
+        vodUploadPartsVideoRequest.setVideoPoolId("1b448be3238b18db5342b62614b9c4e1_1")
+                .setFile(new File("C:\\Users\\T460\\Desktop\\pro_compress-w431sfrmnq.mp4"));
+        videoInfo = vodUploadPartsVideoRequest.convert();
+        System.out.println("vid=" + client.uploadVideoParts(videoInfo, new UploadCallBack() {
+            @Override
+            public void start(String s) {
+                System.out.println("start=" + s);
+            }
+            
+            @Override
+            public void process(String s, long l, long l1) {
+                System.out.println("process=" + s + ",uploaded=" + l + ", total=" + l1);
+            }
+            
+            @Override
+            public void complete(String s) {
+                System.out.println("complete=" + s);
+            }
+            
+            @Override
+            public void success(String s) {
+                System.out.println("success=" + s);
+            }
+            
+            @Override
+            public void error(String s, UploadErrorMsg uploadErrorMsg) {
+                System.out.println("error=" + s + ", message=" + uploadErrorMsg.getMessage());
+            }
+        }, true));
     }
 }

@@ -30,6 +30,7 @@ public class VideoInfo implements Serializable {
     private String checkpoint;
     private Long startTime;
     private String state;
+    private String requestId;
     
     private PolyvUploadChunkConfig polyvUploadChunkConfig;
     
@@ -54,6 +55,7 @@ public class VideoInfo implements Serializable {
         } else {
             videoInfoRequest.setAutoId(1);
         }
+        videoInfoRequest.setRequestId(this.getRequestId());
         return videoInfoRequest;
     }
 }

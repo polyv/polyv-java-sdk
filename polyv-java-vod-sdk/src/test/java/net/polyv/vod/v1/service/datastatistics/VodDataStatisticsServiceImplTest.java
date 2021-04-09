@@ -255,7 +255,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     /**
      * 测试查询视频播放时段统计数据
      * 约束：2、从播放行为产生到数据可查询的间隔时间为1~2小时，但是统计结果中流量消耗（PCFlowSize、mobileFlowSize字段）的计算依赖于CDN
-     * 约束：2、日志，为了保证数据完整性，流量数据需要间隔一个自然日才会生成。例如1号产生的流量消耗，会在2号晚上汇总计算，在3号才可查询到流量数据。
+     * 约束：日志，为了保证数据完整性，流量数据需要间隔一个自然日才会生成。例如1号产生的流量消耗，会在2号晚上汇总计算，在3号才可查询到流量数据。
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -324,7 +324,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     /**
      * 测试查询视频播放地理位置统计数据
      * 约束：2、从播放行为产生到数据可查询的间隔时间为1~2小时，但是统计结果中流量消耗（PCFlowSize、mobileFlowSize字段）的计算依赖于CDN
-     * 约束：2、日志，为了保证数据完整性，流量数据需要间隔一个自然日才会生成。例如1号产生的流量消耗，会在2号晚上汇总计算，在3号才可查询到流量数据。
+     * 约束：日志，为了保证数据完整性，流量数据需要间隔一个自然日才会生成。例如1号产生的流量消耗，会在2号晚上汇总计算，在3号才可查询到流量数据。
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

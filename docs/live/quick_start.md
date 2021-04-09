@@ -117,7 +117,6 @@ import net.polyv.live.v1.config.LiveGlobalConfig;
 import net.polyv.live.v1.entity.channel.operate.LiveChannelRequest;
 import net.polyv.live.v1.entity.channel.operate.LiveChannelResponse;
 import net.polyv.live.v1.service.channel.impl.LiveChannelOperateServiceImpl;
-import net.polyv.live.v1.util.LiveSignUtil;
 
 /**
  * @author: thomas
@@ -144,8 +143,7 @@ public class LiveChannelDemo {
       //封装API请求对象
       LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
       liveChannelRequest.setName("Spring 知识精讲") //设置频道主题信息
-              .setChannelPasswd("666888")   //设置频道密码
-              .setRequestId(LiveSignUtil.generateUUID()); // 设置请求流水号
+              .setChannelPasswd("666888");   //设置频道密码
       //调用SDK请求保利威服务器
       LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(
               liveChannelRequest);

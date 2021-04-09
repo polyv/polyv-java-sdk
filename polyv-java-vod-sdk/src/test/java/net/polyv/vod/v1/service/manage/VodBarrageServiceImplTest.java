@@ -57,7 +57,7 @@ public class VodBarrageServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试上传点播弹幕文件接口
+     * 测试上传点播弹幕文件
      * 返回：true为上传弹幕文件成功，false为上传弹幕文件失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -74,7 +74,7 @@ public class VodBarrageServiceImplTest extends BaseTest {
             vodUploadBarrageResponse = new VodBarrageServiceImpl().uploadBarrage(vodUploadBarrageRequest);
             Assert.assertTrue(vodUploadBarrageResponse);
             if (vodUploadBarrageResponse) {
-                log.debug("测试上传点播弹幕文件接口成功");
+                log.debug("测试上传点播弹幕文件成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -88,7 +88,7 @@ public class VodBarrageServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试创建视频弹幕接口
+     * 测试创建视频弹幕
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -109,7 +109,7 @@ public class VodBarrageServiceImplTest extends BaseTest {
             vodCreateBarrageResponse = new VodBarrageServiceImpl().createBarrage(vodCreateBarrageRequest);
             Assert.assertNotNull(vodCreateBarrageResponse);
             if (vodCreateBarrageResponse != null) {
-                log.debug("测试创建视频弹幕接口成功，{}", JSON.toJSONString(vodCreateBarrageResponse));
+                log.debug("测试创建视频弹幕成功，{}", JSON.toJSONString(vodCreateBarrageResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

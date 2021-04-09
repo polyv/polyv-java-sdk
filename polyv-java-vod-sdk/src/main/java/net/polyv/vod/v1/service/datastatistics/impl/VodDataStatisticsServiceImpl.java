@@ -87,10 +87,10 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
     }
     
     /**
-     * 查询视频播放量统计数据接口
+     * 查询视频播放量统计数据
      * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/videoview/
-     * @param vodQueryVideoPlaybackStatisticsRequest 查询视频播放量统计数据接口请求实体
-     * @return 查询视频播放量统计数据接口返回实体列表
+     * @param vodQueryVideoPlaybackStatisticsRequest 查询视频播放量统计数据请求实体
+     * @return 查询视频播放量统计数据返回实体列表
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -104,10 +104,10 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
     }
     
     /**
-     * 查询视频播放量排行接口
+     * 查询视频播放量排行
      * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/ranklist/
-     * @param vodQueryVideoPlaybackRankingRequest 查询视频播放量排行接口请求实体
-     * @return 查询视频播放量排行接口返回实体
+     * @param vodQueryVideoPlaybackRankingRequest 查询视频播放量排行请求实体
+     * @return 查询视频播放量排行返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -120,10 +120,10 @@ public class VodDataStatisticsServiceImpl extends VodBaseService implements IVod
     }
     
     /**
-     * 查询播放域名统计数据接口
+     * 查询播放域名统计数据
      * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-data/domainstats/
-     * @param vodQueryPlayDomainNameStatisticsRequest 查询播放域名统计数据接口请求实体
-     * @return 查询播放域名统计数据接口返回实体列表
+     * @param vodQueryPlayDomainNameStatisticsRequest 查询播放域名统计数据请求实体
+     * @return 查询播放域名统计数据返回实体列表
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

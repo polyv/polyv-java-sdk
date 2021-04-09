@@ -11,13 +11,13 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * 移动视频分类接口请求实体
+ * 移动视频分类请求实体
  * @author: fangyan
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("移动视频分类接口请求实体")
+@ApiModel("移动视频分类请求实体")
 public class VodMoveCategoryRequest extends VodCommonRequest {
     
     /**

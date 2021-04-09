@@ -11,13 +11,13 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodPageCommonRequest;
 
 /**
- * 根据授权播放开关状态查询视频请求实体
+ * 根据授权播放开关状态查找视频请求实体
  * @author: sadboy
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("根据授权播放开关状态查询视频请求实体")
+@ApiModel("根据授权播放开关状态查找视频请求实体")
 public class VodQueryVideoListRequest extends VodPageCommonRequest {
     
     /**

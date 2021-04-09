@@ -11,13 +11,13 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * 设置账号加密设置请求实体
+ * 修改账号加密设置请求实体
  * @author: fangyan
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("设置账号加密设置请求实体")
+@ApiModel("修改账号加密设置请求实体")
 public class VodUpdateEncryptionSettingsRequest extends VodCommonRequest {
     
     /**

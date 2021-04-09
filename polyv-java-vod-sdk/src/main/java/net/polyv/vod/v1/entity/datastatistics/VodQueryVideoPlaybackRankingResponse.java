@@ -10,12 +10,12 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 查询视频播放量排行接口返回实体
+ * 查询视频播放量排行返回实体
  * @author: fangyan
  */
 @Data
 @Accessors(chain = true)
-@ApiModel("查询视频播放量排行接口返回实体")
+@ApiModel("查询视频播放量排行返回实体")
 public class VodQueryVideoPlaybackRankingResponse {
     /**
      * pc端总播放量

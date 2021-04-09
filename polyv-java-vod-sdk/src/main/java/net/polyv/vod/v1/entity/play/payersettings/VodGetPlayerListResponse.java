@@ -10,12 +10,12 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 获取用户下所有播放器列表接口返回实体
+ * 获取用户下所有播放器列表返回实体
  * @author: fangyan
  */
 @Data
 @Accessors(chain = true)
-@ApiModel("获取用户下所有播放器列表接口返回实体")
+@ApiModel("获取用户下所有播放器列表返回实体")
 public class VodGetPlayerListResponse {
     /**
      * 播放器名称

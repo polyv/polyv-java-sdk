@@ -17,10 +17,10 @@ import net.polyv.vod.v1.service.manage.IVodQueryService;
 public class VodQueryServiceImpl extends VodBaseService implements IVodQueryService {
     
     /**
-     * 根据授权播放开关状态查询视频
+     * 根据授权播放开关状态查找视频
      * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-search/list-by-playauth/
-     * @param vodQueryVideoListRequest 根据授权播放开关状态查询视频请求实体
-     * @return 根据授权播放开关状态查询视频返回实体
+     * @param vodQueryVideoListRequest 根据授权播放开关状态查找视频请求实体
+     * @return 根据授权播放开关状态查找视频返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

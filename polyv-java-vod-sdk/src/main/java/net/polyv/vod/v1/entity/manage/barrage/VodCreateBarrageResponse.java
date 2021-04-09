@@ -8,12 +8,12 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 上传点播弹幕文件接口返回实体
+ * 上传点播弹幕文件返回实体
  * @author: fangyan
  */
 @Data
 @Accessors(chain = true)
-@ApiModel("上传点播弹幕文件接口返回实体")
+@ApiModel("上传点播弹幕文件返回实体")
 public class VodCreateBarrageResponse {
     /**
      * 弹幕ID

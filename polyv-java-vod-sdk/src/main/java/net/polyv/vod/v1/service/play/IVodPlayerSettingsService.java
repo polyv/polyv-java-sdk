@@ -13,10 +13,10 @@ import net.polyv.vod.v1.entity.play.payersettings.VodGetPlayerListResponse;
  */
 public interface IVodPlayerSettingsService {
     /**
-     * 获取用户下所有播放器列表接口
+     * 获取用户下所有播放器列表
      * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-play/v-api-play-player/player-list/
-     * @param vodGetPlayerListRequest 获取用户下所有播放器列表接口请求实体
-     * @return 获取用户下所有播放器列表接口返回实体列表
+     * @param vodGetPlayerListRequest 获取用户下所有播放器列表请求实体
+     * @return 获取用户下所有播放器列表返回实体列表
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

@@ -26,9 +26,9 @@ import net.polyv.vod.v1.service.manage.IVodCategoryService;
 public class VodCategoryServiceImpl extends VodBaseService implements IVodCategoryService {
     
     /**
-     * 移动视频分类接口
+     * 移动视频分类
      * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/change/
-     * @param vodMoveCategoryRequest 移动视频分类接口请求实体
+     * @param vodMoveCategoryRequest 移动视频分类请求实体
      * @return Boolean
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -41,10 +41,10 @@ public class VodCategoryServiceImpl extends VodBaseService implements IVodCatego
     }
     
     /**
-     * 设置分类属性
+     * 修改分类属性
      * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/setting-category
      * -properties/
-     * @param vodUpdateCategoryProfileRequest 设置分类属性请求实体
+     * @param vodUpdateCategoryProfileRequest 修改分类属性请求实体
      * @return Boolean
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -131,9 +131,9 @@ public class VodCategoryServiceImpl extends VodBaseService implements IVodCatego
     }
     
     /**
-     * 通过cataid获取视频目录空间
+     * 通过categoryId获取视频目录空间
      * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/getsize/
-     * @param vodGetCategorySizeRequest 通过cataid获取视频目录空间请求实体
+     * @param vodGetCategorySizeRequest 通过categoryId获取视频目录空间请求实体
      * @return Long
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常

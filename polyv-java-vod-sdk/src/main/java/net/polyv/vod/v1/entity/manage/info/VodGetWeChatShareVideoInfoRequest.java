@@ -11,13 +11,13 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * 获取微信分享页的视频相关信息接口请求实体
+ * 获取微信分享页的视频相关信息请求实体
  * @author: fangyan
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("获取微信分享页的视频相关信息接口请求实体")
+@ApiModel("获取微信分享页的视频相关信息请求实体")
 public class VodGetWeChatShareVideoInfoRequest extends VodCommonRequest {
     
     /**

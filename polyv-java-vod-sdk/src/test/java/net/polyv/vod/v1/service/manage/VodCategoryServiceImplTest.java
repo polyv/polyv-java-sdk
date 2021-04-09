@@ -33,7 +33,7 @@ import net.polyv.vod.v1.util.VodSignUtil;
 public class VodCategoryServiceImplTest extends BaseTest {
     
     /**
-     * 测试移动视频分类接口
+     * 测试移动视频分类
      * 返回：true为修改成功，false为修改失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -49,7 +49,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
             vodMoveCategoryResponse = new VodCategoryServiceImpl().moveCategory(vodMoveCategoryRequest);
             Assert.assertTrue(vodMoveCategoryResponse);
             if (vodMoveCategoryResponse) {
-                log.debug("测试移动视频分类接口成功");
+                log.debug("测试移动视频分类成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -63,7 +63,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试设置分类属性
+     * 测试修改分类属性
      * 返回：true为修改成功，false为修改失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -85,7 +85,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
                     vodUpdateCategoryProfileRequest);
             Assert.assertTrue(vodUpdateCategoryProfileResponse);
             if (vodUpdateCategoryProfileResponse) {
-                log.debug("测试设置分类属性成功");
+                log.debug("测试修改分类属性成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -248,7 +248,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试通过cataid获取视频目录空间
+     * 测试通过categoryId获取视频目录空间
      * 返回：分类下的视频大小，单位为byte
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -262,7 +262,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
             vodGetCategorySizeResponse = new VodCategoryServiceImpl().getCategorySize(vodGetCategorySizeRequest);
             Assert.assertNotNull(vodGetCategorySizeResponse);
             if (vodGetCategorySizeResponse != null) {
-                log.debug("测试通过cataid获取视频目录空间成功");
+                log.debug("测试通过categoryId获取视频目录空间成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

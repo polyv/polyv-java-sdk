@@ -62,37 +62,37 @@
 ### 返回对象描述
 返回对象是List&lt;VodQueryViewLogByDayResponse&gt;，**VodQueryViewLogByDayResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| playId | false | String | 表示此次播放动作的ID | 
-| userId | false | String | 用户ID | 
-| videoId | false | String | 视频ID | 
-| playDuration | false | Integer | 播放时长，单位为秒 (用户观看的总时间 ，例如：18：00开始看一个视频，看到了18：30，这30分钟就是播放时长) | 
-| stayDuration | false | Integer | 缓存时长，单位为秒 | 
-| currentTimes | false | Integer | 播放时间，单位为秒 （用户观看的最后时间，例如：停止观看视频的时候，进度条最后的分钟数为35分钟，播放时间就是35分钟） | 
-| duration | false | Integer | 视频总时长，单位为秒 | 
-| flowSize | false | Long | 流量大小，单位为字节 | 
-| sessionId | false | String | 用户自定义参数，如学员ID等 | 
-| param1 | false | String | POLYV系统参数 | 
-| param2 | false | String | POLYV系统参数 | 
-| param3 | false | String | POLYV系统参数 | 
-| param4 | false | String | POLYV系统参数 | 
-| param5 | false | String | POLYV系统参数 | 
-| ipAddress | false | String | IP地址 | 
-| country | false | String | 国家 | 
-| province | false | String | 省份 | 
-| city | false | String | 城市 | 
-| isp | false | String | ISP运营商 | 
-| referer | false | String | 播放视频页面地址 | 
-| userAgent | false | String | 用户设备 | 
-| operatingSystem | false | String | 操作系统 | 
-| browser | false | String | 浏览器 | 
-| isMobile | false | String | 是否为移动端，Y:是；N：否 | 
-| currentDay | false | Date | 日志查询日期 (格式为：yyyy-MM-dd) | 
-| currentHour | false | Integer | 日志查看时间，单位为小时 | 
-| viewSource | false | String | 用户观看渠道，取值有：vod_ios_sdk：ios端、vod_android_sdk：安卓端、vod_flash：flash、vod_wechat_mini_program：微信小程序;vod_pc_html5：pc端web、vod_mobile_html5：移动端web、vod_mobile_html5_v2：移动端web v2 | 
-| createdTime | false | Date | 日志创建时间，格式：yyyy-MM-dd HH:mm | 
-| lastModified | false | Date | 日志更新日期，格式：yyyy-MM-dd HH:mm | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| playId | String | 表示此次播放动作的ID | 
+| userId | String | 用户ID | 
+| videoId | String | 视频ID | 
+| playDuration | Integer | 播放时长，单位为秒 (用户观看的总时间 ，例如：18：00开始看一个视频，看到了18：30，这30分钟就是播放时长) | 
+| stayDuration | Integer | 缓存时长，单位为秒 | 
+| currentTimes | Integer | 播放时间，单位为秒 （用户观看的最后时间，例如：停止观看视频的时候，进度条最后的分钟数为35分钟，播放时间就是35分钟） | 
+| duration | Integer | 视频总时长，单位为秒 | 
+| flowSize | Long | 流量大小，单位为字节 | 
+| sessionId | String | 用户自定义参数，如学员ID等 | 
+| param1 | String | POLYV系统参数 | 
+| param2 | String | POLYV系统参数 | 
+| param3 | String | POLYV系统参数 | 
+| param4 | String | POLYV系统参数 | 
+| param5 | String | POLYV系统参数 | 
+| ipAddress | String | IP地址 | 
+| country | String | 国家 | 
+| province | String | 省份 | 
+| city | String | 城市 | 
+| isp | String | ISP运营商 | 
+| referer | String | 播放视频页面地址 | 
+| userAgent | String | 用户设备 | 
+| operatingSystem | String | 操作系统 | 
+| browser | String | 浏览器 | 
+| isMobile | String | 是否为移动端，Y:是；N：否 | 
+| currentDay | Date | 日志查询日期 (格式为：yyyy-MM-dd) | 
+| currentHour | Integer | 日志查看时间，单位为小时 | 
+| viewSource | String | 用户观看渠道，取值有：vod_ios_sdk：ios端、vod_android_sdk：安卓端、vod_flash：flash、vod_wechat_mini_program：微信小程序;vod_pc_html5：pc端web、vod_mobile_html5：移动端web、vod_mobile_html5_v2：移动端web v2 | 
+| createdTime | Date | 日志创建时间，格式：yyyy-MM-dd HH:mm | 
+| lastModified | Date | 日志更新日期，格式：yyyy-MM-dd HH:mm | 
 
 <br /><br />
 
@@ -162,47 +162,47 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 返回的结果集【详见[VideoPlayLog参数描述](dataStatisticsService.md?id=polyv1)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 返回的结果集【详见[VideoPlayLog参数描述](dataStatisticsService.md?id=polyv1)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv1"><a href="#/dataStatisticsService.md?id=polyv1"data-id="VideoPlayLog参数描述"class="anchor"><span>VideoPlayLog参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| playId | false | String | 表示此次播放动作的ID | 
-| userId | false | String | 用户ID | 
-| videoId | false | String | 视频ID | 
-| playDuration | false | Integer | 播放时长 (用户观看的总时间 ，例如：18：00开始看一个视频，看到了18：30，这30分钟就是播放时长)。单位：秒 | 
-| stayDuration | false | Integer | 缓存时长。单位：秒 | 
-| currentTimes | false | Integer | 播放时间 （用户观看的最后时间，例如：停止观看视频的时候，进度条最后的分钟数为35分钟，播放时间就是35分钟）。单位：秒 | 
-| duration | false | Integer | 视频总时长。单位：秒 | 
-| flowSize | false | Long | 流量大小，单位：Bytes | 
-| sessionId | false | String | 用户自定义参数，如学员ID等 ,该参数做了UrlSafeBase64的加密，需要做解密 | 
-| param1 | false | String | POLYV系统参数 | 
-| param2 | false | String | POLYV系统参数 | 
-| param3 | false | String | POLYV系统参数 | 
-| param4 | false | String | POLYV系统参数 | 
-| param5 | false | String | POLYV系统参数 | 
-| ipAddress | false | String | IP地址 | 
-| country | false | String | 国家 | 
-| province | false | String | 省份 | 
-| city | false | String | 城市 | 
-| isp | false | String | ISP运营商 | 
-| referer | false | String | 播放视频页面地址 | 
-| userAgent | false | String | 用户设备 | 
-| operatingSystem | false | String | 操作系统 | 
-| browser | false | String | 浏览器 | 
-| isMobile | false | String | 是否为移动端 | 
-| currentDay | false | Date | 日志查询日期 (格式为：yyyy-MM-dd) | 
-| currentHour | false | Integer | 日志查看时间。单位：小时 | 
-| viewSource | false | String | 用户观看渠道，取值有：vod_ios_sdk、vod_android_sdk、vod_flash、vod_pc_html5、vod_wechat_mini_program、vod_mobile_html5 | 
-| createdTime | false | Date | 日志创建时间 | 
-| lastModified | false | Date | 日志更新日期 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| playId | String | 表示此次播放动作的ID | 
+| userId | String | 用户ID | 
+| videoId | String | 视频ID | 
+| playDuration | Integer | 播放时长 (用户观看的总时间 ，例如：18：00开始看一个视频，看到了18：30，这30分钟就是播放时长)。单位：秒 | 
+| stayDuration | Integer | 缓存时长。单位：秒 | 
+| currentTimes | Integer | 播放时间 （用户观看的最后时间，例如：停止观看视频的时候，进度条最后的分钟数为35分钟，播放时间就是35分钟）。单位：秒 | 
+| duration | Integer | 视频总时长。单位：秒 | 
+| flowSize | Long | 流量大小，单位：Bytes | 
+| sessionId | String | 用户自定义参数，如学员ID等 ,该参数做了UrlSafeBase64的加密，需要做解密 | 
+| param1 | String | POLYV系统参数 | 
+| param2 | String | POLYV系统参数 | 
+| param3 | String | POLYV系统参数 | 
+| param4 | String | POLYV系统参数 | 
+| param5 | String | POLYV系统参数 | 
+| ipAddress | String | IP地址 | 
+| country | String | 国家 | 
+| province | String | 省份 | 
+| city | String | 城市 | 
+| isp | String | ISP运营商 | 
+| referer | String | 播放视频页面地址 | 
+| userAgent | String | 用户设备 | 
+| operatingSystem | String | 操作系统 | 
+| browser | String | 浏览器 | 
+| isMobile | String | 是否为移动端 | 
+| currentDay | Date | 日志查询日期 (格式为：yyyy-MM-dd) | 
+| currentHour | Integer | 日志查看时间。单位：小时 | 
+| viewSource | String | 用户观看渠道，取值有：vod_ios_sdk、vod_android_sdk、vod_flash、vod_pc_html5、vod_wechat_mini_program、vod_mobile_html5 | 
+| createdTime | Date | 日志创建时间 | 
+| lastModified | Date | 日志更新日期 | 
 
 <br /><br />
 
@@ -210,16 +210,16 @@
 
 <br /><br />
 
-## 3、查询视频播放量统计数据接口
+## 3、查询视频播放量统计数据
 ### 描述
 ```
-查询视频播放量统计数据接口
+查询视频播放量统计数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 
-2、查询视频播放量统计数据接口，从播放行为产生到数据可查询的间隔时间为1~2小时。
+2、查询视频播放量统计数据，从播放行为产生到数据可查询的间隔时间为1~2小时。
 ### 单元测试
 ```java
 	@Test
@@ -236,7 +236,7 @@
                     vodQueryVideoPlaybackStatisticsRequest);
             Assert.assertNotNull(vodQueryVideoPlaybackStatisticsResponseList);
             if (vodQueryVideoPlaybackStatisticsResponseList != null) {
-                log.debug("测试查询视频播放量统计数据接口成功,{}", JSON.toJSONString(vodQueryVideoPlaybackStatisticsResponseList));
+                log.debug("测试查询视频播放量统计数据成功,{}", JSON.toJSONString(vodQueryVideoPlaybackStatisticsResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -267,11 +267,11 @@
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoPlaybackStatisticsResponse&gt;，**VodQueryVideoPlaybackStatisticsResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| currentTime | false | Date | 当前日期，格式为：yyyy-MM-dd | 
-| pcVideoView | false | Integer | pc端播放量 | 
-| mobileVideoView | false | Integer | 移动端播放量 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| currentTime | Date | 当前日期，格式为：yyyy-MM-dd | 
+| pcVideoView | Integer | pc端播放量 | 
+| mobileVideoView | Integer | 移动端播放量 | 
 
 <br /><br />
 
@@ -279,10 +279,10 @@
 
 <br /><br />
 
-## 4、查询视频播放量排行接口
+## 4、查询视频播放量排行
 ### 描述
 ```
-查询视频播放量排行接口
+查询视频播放量排行
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -303,7 +303,7 @@
                     vodQueryVideoPlaybackRankingRequest);
             Assert.assertNotNull(vodQueryVideoPlaybackRankingResponse);
             if (vodQueryVideoPlaybackRankingResponse != null) {
-                log.debug("测试查询视频播放量排行接口成功,{}", JSON.toJSONString(vodQueryVideoPlaybackRankingResponse));
+                log.debug("测试查询视频播放量排行成功,{}", JSON.toJSONString(vodQueryVideoPlaybackRankingResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -334,22 +334,22 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| totalPcVideoView | false | Integer | pc端总播放量 | 
-| totalMoVideoView | false | Integer | 移动端总播放量 | 
-| pcVideoDaily | false | Array | pc端播放量排行列表【详见[VideoDaily参数描述](dataStatisticsService.md?id=polyv2)】 | 
-| moVideoDaily | false | Array | 移动端播放量排行列表【详见[VideoDaily参数描述](dataStatisticsService.md?id=polyv3)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| totalPcVideoView | Integer | pc端总播放量 | 
+| totalMoVideoView | Integer | 移动端总播放量 | 
+| pcVideoDaily | Array | pc端播放量排行列表【详见[VideoDaily参数描述](dataStatisticsService.md?id=polyv2)】 | 
+| moVideoDaily | Array | 移动端播放量排行列表【详见[VideoDaily参数描述](dataStatisticsService.md?id=polyv3)】 | 
 
 <h6 id="polyv3"><a href="#/dataStatisticsService.md?id=polyv3"data-id="VideoDaily参数描述"class="anchor"><span>VideoDaily参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | false | String | 视频videoId | 
-| title | false | String | 视频标题 | 
-| duration | false | String | 播放时长，格式 hh:mm:ss 例如 00:03:11 | 
-| pcVideoView | false | Integer | pc端播放量 | 
-| mobileVideoView | false | Integer | 移动端播放量 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| videoId | String | 视频videoId | 
+| title | String | 视频标题 | 
+| duration | String | 播放时长，格式 hh:mm:ss 例如 00:03:11 | 
+| pcVideoView | Integer | pc端播放量 | 
+| mobileVideoView | Integer | 移动端播放量 | 
 
 <br /><br />
 
@@ -357,16 +357,16 @@
 
 <br /><br />
 
-## 5、查询播放域名统计数据接口
+## 5、查询播放域名统计数据
 ### 描述
 ```
-查询播放域名统计数据接口
+查询播放域名统计数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
 
-2、查询播放域名统计数据接口
+2、查询播放域名统计数据
 
 3、从播放行为产生到数据可查询的间隔时间为1~2小时。但是消耗流量（PCFlowSize字段）的计算依赖于CDN日志，为了保证数据完整性，流量数据需要间隔一个自然日才会生成。例如1号产生的流量消耗，会在2
 
@@ -388,7 +388,7 @@
                     vodQueryPlayDomainNameStatisticsRequest);
             Assert.assertNotNull(vodQueryPlayDomainNameStatisticsResponseList);
             if (vodQueryPlayDomainNameStatisticsResponseList != null) {
-                log.debug("测试查询播放域名统计数据接口成功,{}", JSON.toJSONString(vodQueryPlayDomainNameStatisticsResponseList));
+                log.debug("测试查询播放域名统计数据成功,{}", JSON.toJSONString(vodQueryPlayDomainNameStatisticsResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -419,16 +419,16 @@
 ### 返回对象描述
 返回对象是List&lt;VodQueryPlayDomainNameStatisticsResponse&gt;，**VodQueryPlayDomainNameStatisticsResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| domain | false | String | 域名 | 
-| pcPlayDuration | false | Integer | PC端播放时长（单位：秒） | 
-| pcFlowSize | false | Long | PC端消耗流量（单位：字节） | 
-| pcVideoView | false | Integer | PC端总播放量 | 
-| pcUniqueViewer | false | Integer | PC端唯一观众数 | 
-| mobilePlayDuration | false | Integer | 移动端播放时长（单位：秒） | 
-| mobileVideoView | false | Integer | 移动端播放量 | 
-| mobileUniqueViewer | false | Integer | 移动端播放者数量 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| domain | String | 域名 | 
+| pcPlayDuration | Integer | PC端播放时长（单位：秒） | 
+| pcFlowSize | Long | PC端消耗流量（单位：字节） | 
+| pcVideoView | Integer | PC端总播放量 | 
+| pcUniqueViewer | Integer | PC端唯一观众数 | 
+| mobilePlayDuration | Integer | 移动端播放时长（单位：秒） | 
+| mobileVideoView | Integer | 移动端播放量 | 
+| mobileUniqueViewer | Integer | 移动端播放者数量 | 
 
 <br /><br />
 
@@ -493,49 +493,49 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| device | false | Array | 终端环境统计数据【详见[Device参数描述](dataStatisticsService.md?id=polyv4)】 | 
-| operatingSystem | false | Array | 操作系统环境统计数据【详见[OperatingSystem参数描述](dataStatisticsService.md?id=polyv5)】 | 
-| browser | false | Array | 浏览器环境统计数据【详见[Browser参数描述](dataStatisticsService.md?id=polyv6)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| device | Array | 终端环境统计数据【详见[Device参数描述](dataStatisticsService.md?id=polyv4)】 | 
+| operatingSystem | Array | 操作系统环境统计数据【详见[OperatingSystem参数描述](dataStatisticsService.md?id=polyv5)】 | 
+| browser | Array | 浏览器环境统计数据【详见[Browser参数描述](dataStatisticsService.md?id=polyv6)】 | 
 
 <h6 id="polyv4"><a href="#/dataStatisticsService.md?id=polyv4"data-id="Device参数描述"class="anchor"><span>Device参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| deviceName | false | String | 终端环境名称，PC端或移动端 | 
-| videoView | false | Integer | 视频总播放量 | 
-| formatPlayDuration | false | String | 视频总播放时长，格式 hh:mm:ss 例如00:03:22 | 
-| playDuration | false | Integer | 视频总播放时长，单位：秒 | 
-| uniqueViewer | false | Integer | 视频总观众数 | 
-| percentage | false | Float | 总占比 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| deviceName | String | 终端环境名称，PC端或移动端 | 
+| videoView | Integer | 视频总播放量 | 
+| formatPlayDuration | String | 视频总播放时长，格式 hh:mm:ss 例如00:03:22 | 
+| playDuration | Integer | 视频总播放时长，单位：秒 | 
+| uniqueViewer | Integer | 视频总观众数 | 
+| percentage | Float | 总占比 | 
 
 <h6 id="polyv5"><a href="#/dataStatisticsService.md?id=polyv5"data-id="OperatingSystem参数描述"class="anchor"><span>OperatingSystem参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| operateSystemName | false | String | 操作系统环境名称 | 
-| videoView | false | Integer | 视频总播放量 | 
-| formatPlayDuration | false | String | 视频总播放时长，格式 hh:mm:ss 例如00:03:22 | 
-| playDuration | false | String | 视频总播放时长，格式 hh:mm:ss 例如00:03:22 | 
-| uniqueViewer | false | Integer | 视频总观众数 | 
-| percentage | false | Float | 总占比 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| operateSystemName | String | 操作系统环境名称 | 
+| videoView | Integer | 视频总播放量 | 
+| formatPlayDuration | String | 视频总播放时长，格式 hh:mm:ss 例如00:03:22 | 
+| playDuration | String | 视频总播放时长，格式 hh:mm:ss 例如00:03:22 | 
+| uniqueViewer | Integer | 视频总观众数 | 
+| percentage | Float | 总占比 | 
 
 <h6 id="polyv6"><a href="#/dataStatisticsService.md?id=polyv6"data-id="Browser参数描述"class="anchor"><span>Browser参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| browserName | false | String | 浏览器环境名称 | 
-| formatPcPlayDuration | false | String | 格式化的PC播放时长，格式 hh:mm:ss 例如00:00:00 | 
-| pcPlayDuration | false | Integer | PC端播放时长，单位秒 | 
-| pcVideoView | false | Integer | PC端播放量 | 
-| pcUniqueViewer | false | Integer | PC端唯一观众数 | 
-| formatMobilePlayDuration | false | String | 格式化的移动端播放时长，格式 hh:mm:ss 例如00:00:00 | 
-| mobilePlayDuration | false | Integer | 移动端播放时长，单位秒 | 
-| mobileVideoView | false | Integer | 移动端播放量 | 
-| mobileUniqueViewer | false | Integer | 移动端播放量 | 
-| pcPercentage | false | Float | PC端数据占比 | 
-| mobilePercentage | false | Float | 移动端数据占比 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| browserName | String | 浏览器环境名称 | 
+| formatPcPlayDuration | String | 格式化的PC播放时长，格式 hh:mm:ss 例如00:00:00 | 
+| pcPlayDuration | Integer | PC端播放时长，单位秒 | 
+| pcVideoView | Integer | PC端播放量 | 
+| pcUniqueViewer | Integer | PC端唯一观众数 | 
+| formatMobilePlayDuration | String | 格式化的移动端播放时长，格式 hh:mm:ss 例如00:00:00 | 
+| mobilePlayDuration | Integer | 移动端播放时长，单位秒 | 
+| mobileVideoView | Integer | 移动端播放量 | 
+| mobileUniqueViewer | Integer | 移动端播放量 | 
+| pcPercentage | Float | PC端数据占比 | 
+| mobilePercentage | Float | 移动端数据占比 | 
 
 <br /><br />
 
@@ -600,19 +600,19 @@
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoPlaybackHourlyStatisticsResponse&gt;，**VodQueryVideoPlaybackHourlyStatisticsResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| currentHour | false | Integer | 时间段，24小时制，例如 18 | 
-| pcPlayDuration | false | Integer | pc播放时长,单位为秒 | 
-| formatPcPlayDuration | false | String | pc播放时长，格式 hh:mm:ss 例如03：02：22 | 
-| pcFlowSize | false | Long | pc消耗流量,单位为字节 | 
-| pcVideoView | false | Integer | pc端播放量 | 
-| pcUniqueViewer | false | Integer | pc端观众量 | 
-| mobilePlayDuration | false | Integer | 移动端播放时长，单位为秒 | 
-| formatMobilePlayDuration | false | String | 移动端播放时长，格式 hh:mm:ss 例如03：02：22 | 
-| mobileFlowSize | false | Long | 移动端消耗流量,单位为字节 | 
-| mobileVideoView | false | Integer | 移动端播放量 | 
-| mobileUniqueViewer | false | Integer | 移动端观众量 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| currentHour | Integer | 时间段，24小时制，例如 18 | 
+| pcPlayDuration | Integer | pc播放时长,单位为秒 | 
+| formatPcPlayDuration | String | pc播放时长，格式 hh:mm:ss 例如03：02：22 | 
+| pcFlowSize | Long | pc消耗流量,单位为字节 | 
+| pcVideoView | Integer | pc端播放量 | 
+| pcUniqueViewer | Integer | pc端观众量 | 
+| mobilePlayDuration | Integer | 移动端播放时长，单位为秒 | 
+| formatMobilePlayDuration | String | 移动端播放时长，格式 hh:mm:ss 例如03：02：22 | 
+| mobileFlowSize | Long | 移动端消耗流量,单位为字节 | 
+| mobileVideoView | Integer | 移动端播放量 | 
+| mobileUniqueViewer | Integer | 移动端观众量 | 
 
 <br /><br />
 
@@ -680,19 +680,19 @@
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoGeographicStatisticsResponse&gt;，**VodQueryVideoGeographicStatisticsResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| province | false | String | 省份 | 
-| pcPlayDuration | false | Integer | pc端播放时长，单位为秒 | 
-| formatPcPlayDuration | false | String | 播放时长，格式 hh:mm:ss 例如00:03:22 | 
-| pcFlowSize | false | Long | PC端消耗流量,单位字节 | 
-| pcVideoView | false | Integer | PC端播放量 | 
-| pcUniqueViewer | false | Integer | PC端观众量 | 
-| mobilePlayDuration | false | Integer | 移动端播放时长，单位为秒 | 
-| formatMobilePlayDuration | false | String | 移动端播放时长，格式 hh:mm:ss 例如00:03:22 | 
-| mobileFlowSize | false | Long | 移动端消耗流量,单位字节 | 
-| mobileVideoView | false | Integer | 移动端播放量 | 
-| mobileUniqueViewer | false | Integer | 移动端观众量 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| province | String | 省份 | 
+| pcPlayDuration | Integer | pc端播放时长，单位为秒 | 
+| formatPcPlayDuration | String | 播放时长，格式 hh:mm:ss 例如00:03:22 | 
+| pcFlowSize | Long | PC端消耗流量,单位字节 | 
+| pcVideoView | Integer | PC端播放量 | 
+| pcUniqueViewer | Integer | PC端观众量 | 
+| mobilePlayDuration | Integer | 移动端播放时长，单位为秒 | 
+| formatMobilePlayDuration | String | 移动端播放时长，格式 hh:mm:ss 例如00:03:22 | 
+| mobileFlowSize | Long | 移动端消耗流量,单位字节 | 
+| mobileVideoView | Integer | 移动端播放量 | 
+| mobileUniqueViewer | Integer | 移动端观众量 | 
 
 <br /><br />
 
@@ -759,12 +759,12 @@
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoViewershipResponse&gt;，**VodQueryVideoViewershipResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| date | false | Date | 日期，格式 yyyy-MM-dd 例如 2021-03-24 | 
-| pcUniqueViewer | false | Integer | pc端的观看量 | 
-| mobileUniqueViewer | false | Integer | 移动端的观看量 | 
-| totalUniqueViewer | false | Integer | 总的观众量 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| date | Date | 日期，格式 yyyy-MM-dd 例如 2021-03-24 | 
+| pcUniqueViewer | Integer | pc端的观看量 | 
+| mobileUniqueViewer | Integer | 移动端的观看量 | 
+| totalUniqueViewer | Integer | 总的观众量 | 
 
 <br /><br />
 
@@ -836,12 +836,12 @@
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoPlaybackFlowSizeStatisticsResponse&gt;，**VodQueryVideoPlaybackFlowSizeStatisticsResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| currentDay | false | Date | 日期，格式 yyyy-MM-dd 例如 2021-03-24 | 
-| pcFlowSize | false | Long | PC端消耗流量,单位字节 | 
-| mobileFlowSize | false | Long | 移动端消耗流量，单位字节 | 
-| totalFlowSize | false | Long | 总流量消耗，单位字节 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| currentDay | Date | 日期，格式 yyyy-MM-dd 例如 2021-03-24 | 
+| pcFlowSize | Long | PC端消耗流量,单位字节 | 
+| mobileFlowSize | Long | 移动端消耗流量，单位字节 | 
+| totalFlowSize | Long | 总流量消耗，单位字节 | 
 
 <br /><br />
 
@@ -909,21 +909,21 @@
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoPlayTimeStatisticsResponse&gt;，**VodQueryVideoPlayTimeStatisticsResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| currentDay | false | Date | 日期，格式 yyyy-MM-dd 例如 2021-03-24 | 
-| pcPlayDuration | false | Integer | PC端播放时长（单位：秒） | 
-| formatPcPlayDuration | false | String | 格式化pc端播放时长，格式 hh:mm:ss 例如00:03:22 | 
-| pcPlayDurationVideoAvg | false | Integer | PC端视频平均播放时长，单位秒 | 
-| formatPcPlayDurationVideoAvg | false | String | 格式化PC端视频平均播放时长，格式 hh:mm:ss 例如00:03:22 | 
-| pcPlayDurationPersonAvg | false | Integer | PC端人均播放时长，单位秒 | 
-| formatPcPlayDurationPersonAvg | false | String | 格式化PC端人均播放时长，格式 hh:mm:ss 例如00:03:22 | 
-| mobilePlayDuration | false | Integer | 移动端播放时长，单位秒 | 
-| formatMobilePlayDuration | false | String | 格式化移动端播放时长，格式 hh:mm:ss 例如00:03:22 | 
-| mobilePlayDurationVideoAvg | false | Integer | 移动端视频平均播放时长，单位秒 | 
-| formatMobilePlayDurationVideoAvg | false | String | 格式化移动端视频平均播放时长，格式 hh:mm:ss 例如00:03:22 | 
-| mobilePlayDurationPersonAvg | false | Integer | 移动端人均播放时长，单位秒 | 
-| formatMobilePlayDurationPersonAvg | false | String | 格式化移动端人均播放时长，格式 hh:mm:ss 例如00:03:22 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| currentDay | Date | 日期，格式 yyyy-MM-dd 例如 2021-03-24 | 
+| pcPlayDuration | Integer | PC端播放时长（单位：秒） | 
+| formatPcPlayDuration | String | 格式化pc端播放时长，格式 hh:mm:ss 例如00:03:22 | 
+| pcPlayDurationVideoAvg | Integer | PC端视频平均播放时长，单位秒 | 
+| formatPcPlayDurationVideoAvg | String | 格式化PC端视频平均播放时长，格式 hh:mm:ss 例如00:03:22 | 
+| pcPlayDurationPersonAvg | Integer | PC端人均播放时长，单位秒 | 
+| formatPcPlayDurationPersonAvg | String | 格式化PC端人均播放时长，格式 hh:mm:ss 例如00:03:22 | 
+| mobilePlayDuration | Integer | 移动端播放时长，单位秒 | 
+| formatMobilePlayDuration | String | 格式化移动端播放时长，格式 hh:mm:ss 例如00:03:22 | 
+| mobilePlayDurationVideoAvg | Integer | 移动端视频平均播放时长，单位秒 | 
+| formatMobilePlayDurationVideoAvg | String | 格式化移动端视频平均播放时长，格式 hh:mm:ss 例如00:03:22 | 
+| mobilePlayDurationPersonAvg | Integer | 移动端人均播放时长，单位秒 | 
+| formatMobilePlayDurationPersonAvg | String | 格式化移动端人均播放时长，格式 hh:mm:ss 例如00:03:22 | 
 
 <br /><br />
 
@@ -992,10 +992,10 @@
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoViewingHotspotStatisticsResponse&gt;，**VodQueryVideoViewingHotspotStatisticsResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| second | false | Integer | 视频时长（单位：秒） | 
-| viewCount | false | Integer | 播放量 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| second | Integer | 视频时长（单位：秒） | 
+| viewCount | Integer | 播放量 | 
 
 <br /><br />
 
@@ -1059,10 +1059,10 @@
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoViewingRatioStatisticsResponse&gt;，**VodQueryVideoViewingRatioStatisticsResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| percentage | false | String | 观看比例范围，单位：% 例如 70-80 | 
-| playCount | false | Integer | 观看数量 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| percentage | String | 观看比例范围，单位：% 例如 70-80 | 
+| playCount | Integer | 观看数量 | 
 
 <br /><br />
 
@@ -1213,41 +1213,41 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 返回的结果集【详见[ViewingBehaviorInfo参数描述](dataStatisticsService.md?id=polyv7)】 | 
-| token | false | String | 查询下一页时传的凭证 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 返回的结果集【详见[ViewingBehaviorInfo参数描述](dataStatisticsService.md?id=polyv7)】 | 
+| token | String | 查询下一页时传的凭证 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv7"><a href="#/dataStatisticsService.md?id=polyv7"data-id="ViewingBehaviorInfo参数描述"class="anchor"><span>ViewingBehaviorInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| startTime | false | Date | 首次观看日期，格式yyyy-MM-dd HH:mm:ss 例如 2019-10-01 11:12:05 | 
-| videoId | false | String | 视频id | 
-| videoName | false | String | 视频名称 | 
-| videoImage | false | String | 视频首图（没有添加协议头） | 
-| videoDuration | false | Integer | 视频时长，单位：秒 | 
-| deviceClass | false | String | 设备名称 | 
-| osName | false | String | 操作系统 | 
-| agentName | false | String | 终端名称 | 
-| agentVersion | false | String | 终端版本 | 
-| referer | false | String | 来源 | 
-| ip | false | String | ip地址 | 
-| country | false | String | 国家 | 
-| province | false | String | 省份 | 
-| city | false | String | 地区 | 
-| isp | false | String | 运营商 | 
-| viewerId | false | String | 观众id | 
-| viewerNickName | false | String | 观众昵称 | 
-| viewerAvatar | false | String | 观众头像 | 
-| totalVideoCount | false | Integer | 观众看的视频总量 | 
-| heatmap | false | String | 热力图（["0-1:1","3-4:2"]表示视频的0到1秒有1次观看，3到4秒有2次观看） | 
-| completionRate | false | Float | 观看完成度 | 
-| status | false | Integer | 视频的状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| startTime | Date | 首次观看日期，格式yyyy-MM-dd HH:mm:ss 例如 2019-10-01 11:12:05 | 
+| videoId | String | 视频id | 
+| videoName | String | 视频名称 | 
+| videoImage | String | 视频首图（没有添加协议头） | 
+| videoDuration | Integer | 视频时长，单位：秒 | 
+| deviceClass | String | 设备名称 | 
+| osName | String | 操作系统 | 
+| agentName | String | 终端名称 | 
+| agentVersion | String | 终端版本 | 
+| referer | String | 来源 | 
+| ip | String | ip地址 | 
+| country | String | 国家 | 
+| province | String | 省份 | 
+| city | String | 地区 | 
+| isp | String | 运营商 | 
+| viewerId | String | 观众id | 
+| viewerNickName | String | 观众昵称 | 
+| viewerAvatar | String | 观众头像 | 
+| totalVideoCount | Integer | 观众看的视频总量 | 
+| heatmap | String | 热力图（["0-1:1","3-4:2"]表示视频的0到1秒有1次观看，3到4秒有2次观看） | 
+| completionRate | Float | 观看完成度 | 
+| status | Integer | 视频的状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
 
 <br /><br />
 
@@ -1305,16 +1305,16 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | false | String | 视频id | 
-| videoName | false | String | 视频名称 | 
-| duration | false | Integer | 视频时长，单位：秒 | 
-| playTimes | false | Integer | 播放次数 | 
-| uniqueViewerCount | false | Integer | 唯一观众数 | 
-| avgCompletionRate | false | Float | 平均观看完成度 | 
-| viewHeatmap | false | String | 观看热力图，例如["0-20:662","21-100:665"]代表视频内容的0~20秒有662次观看，21~100秒有665次观看 | 
-| uniqueViewHeatmap | false | String | 唯一观看热力图，例如["0-20:614","21-100:615"]代表视频内容的0~20秒有614个观众观看，21~100秒有615个观众观看 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| videoId | String | 视频id | 
+| videoName | String | 视频名称 | 
+| duration | Integer | 视频时长，单位：秒 | 
+| playTimes | Integer | 播放次数 | 
+| uniqueViewerCount | Integer | 唯一观众数 | 
+| avgCompletionRate | Float | 平均观看完成度 | 
+| viewHeatmap | String | 观看热力图，例如["0-20:662","21-100:665"]代表视频内容的0~20秒有662次观看，21~100秒有665次观看 | 
+| uniqueViewHeatmap | String | 唯一观看热力图，例如["0-20:614","21-100:615"]代表视频内容的0~20秒有614个观众观看，21~100秒有615个观众观看 | 
 
 <br /><br />
 
@@ -1373,18 +1373,18 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| userId | false | String | 用户id | 
-| viewerId | false | String | 观众id | 
-| viewerNickName | false | String | 观众昵称 | 
-| viewerAvatar | false | String | 观众头像 | 
-| ip | false | String | ip地址 | 
-| firstWatchTime | false | Date | 首次观看时间，格式 yyyy-MM-dd HH:mm:ss | 
-| lastWatchTime | false | Date | 最后观看时间，格式 yyyy-MM-dd HH:mm:ss | 
-| totalVideoCount | false | Integer | 观看视频总数 | 
-| totalWatchDuration | false | Integer | 观众总时长（秒） | 
-| avgCompletionRate | false | Float | 平均观看完成度 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| userId | String | 用户id | 
+| viewerId | String | 观众id | 
+| viewerNickName | String | 观众昵称 | 
+| viewerAvatar | String | 观众头像 | 
+| ip | String | ip地址 | 
+| firstWatchTime | Date | 首次观看时间，格式 yyyy-MM-dd HH:mm:ss | 
+| lastWatchTime | Date | 最后观看时间，格式 yyyy-MM-dd HH:mm:ss | 
+| totalVideoCount | Integer | 观看视频总数 | 
+| totalWatchDuration | Integer | 观众总时长（秒） | 
+| avgCompletionRate | Float | 平均观看完成度 | 
 
 <br /><br />
 

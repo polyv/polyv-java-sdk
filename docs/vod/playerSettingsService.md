@@ -1,7 +1,7 @@
-## 1、获取用户下所有播放器列表接口
+## 1、获取用户下所有播放器列表
 ### 描述
 ```
-获取用户下所有播放器列表接口
+获取用户下所有播放器列表
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -17,7 +17,7 @@
             vodGetPlayerListResponseList = new VodPlayerSettingsServiceImpl().getPlayerList(vodGetPlayerListRequest);
             Assert.assertNotNull(vodGetPlayerListResponseList);
             if (vodGetPlayerListResponseList != null) {
-                log.debug("测试获取用户下所有播放器列表接口成功,{}", JSON.toJSONString(vodGetPlayerListResponseList));
+                log.debug("测试获取用户下所有播放器列表成功,{}", JSON.toJSONString(vodGetPlayerListResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -45,12 +45,12 @@
 ### 返回对象描述
 返回对象是List&lt;VodGetPlayerListResponse&gt;，**VodGetPlayerListResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| playerName | false | String | 播放器名称 | 
-| playerId | false | String | 播放器id | 
-| createTime | false | Date | 创建时间，格式：yyyy-MM-dd HH:mm:ss | 
-| isDefault | false | Integer | 是否是默认播放器，是：1， 否：0 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| playerName | String | 播放器名称 | 
+| playerId | String | 播放器id | 
+| createTime | Date | 创建时间，格式：yyyy-MM-dd HH:mm:ss | 
+| isDefault | Integer | 是否是默认播放器，是：1， 否：0 | 
 
 <br /><br />
 

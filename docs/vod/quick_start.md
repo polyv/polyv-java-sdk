@@ -97,7 +97,7 @@ public class StartupListener implements ApplicationContextAware {
 
 ## 3.执行测试代码
 
-&emsp;&emsp;测试创建一个直播频道，单元测试代码如下：
+&emsp;&emsp;测试获取用户空间及流量情况，单元测试代码如下：
 
 ```java
 package net.polyv.vod.v1.service;

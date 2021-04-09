@@ -51,10 +51,10 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| count | false | Integer | 请求参设设置了频道号，count则为该频道严禁词的数量，如果没有设置频道号，count为该该账户严禁词的数量 | 
-| userId | false | String | POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| count | Integer | 请求参设设置了频道号，count则为该频道严禁词的数量，如果没有设置频道号，count为该该账户严禁词的数量 | 
+| userId | String | POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置） | 
 
 <br /><br />
 
@@ -124,9 +124,9 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| msgId | false | String | 发送消息ID | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| msgId | String | 发送消息ID | 
 
 <br /><br />
 
@@ -196,38 +196,38 @@
 ### 返回对象描述
 返回对象是List&lt;LiveGetHistoryChatMsgResponse&gt;，**LiveGetHistoryChatMsgResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| userId | false | String | 直播账号userId | 
-| clientIP | false | String | 用户IP | 
-| content | false | String | 聊天内容 | 
-| id | false | String | 聊天消息id | 
-| image | false | String | 图片消息的图片地址 | 
-| roomId | false | Integer | 聊天记录所在的房间号 | 
-| channelId | false | String | 聊天记录所在的频道号 | 
-| sessionId | false | String | 场次号 | 
-| time | false | Date | 发送消息的时间 | 
-| source | false | String | 消息来源，目前有public(群聊)、extend（管理员私聊） | 
-| msgType | false | String | 消息类型，目前取值：redpaper: 红包消息；get_redpaper：领取红包消息；chatImg：图片消息；custom：自定义消息（通过socket发送的自定义消息）；reward：打赏消息；customerMessage：自定义消息（通过http接口发送的自定义消息） 为空（msgType=""）时表示普通聊天消息； | 
-| status | false | String | 审核状态，pass:已审核，censor：审核中，delete：删除 | 
-| user | false | User | 发送消息的观众【详见[User参数描述](chatRoomService.md?id=polyv33)】 | 
-| userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| userId | String | 直播账号userId | 
+| clientIP | String | 用户IP | 
+| content | String | 聊天内容 | 
+| id | String | 聊天消息id | 
+| image | String | 图片消息的图片地址 | 
+| roomId | Integer | 聊天记录所在的房间号 | 
+| channelId | String | 聊天记录所在的频道号 | 
+| sessionId | String | 场次号 | 
+| time | Date | 发送消息的时间 | 
+| source | String | 消息来源，目前有public(群聊)、extend（管理员私聊） | 
+| msgType | String | 消息类型，目前取值：redpaper: 红包消息；get_redpaper：领取红包消息；chatImg：图片消息；custom：自定义消息（通过socket发送的自定义消息）；reward：打赏消息；customerMessage：自定义消息（通过http接口发送的自定义消息） 为空（msgType=""）时表示普通聊天消息； | 
+| status | String | 审核状态，pass:已审核，censor：审核中，delete：删除 | 
+| user | User | 发送消息的观众【详见[User参数描述](chatRoomService.md?id=polyv33)】 | 
+| userType | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
 
 <h6 id="polyv33"><a href="#/chatRoomService.md?id=polyv33"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| clientIp | false | String | 用户IP | 
-| nickname | false | String | 观众昵称 | 
-| pic | false | String | 观众头像 | 
-| roomId | false | String | 用户登陆的房间号 | 
-| userId | false | String | 聊天室用户唯一标示 | 
-| uid | false | String | socketId | 
-| sessionId | false | String | 场次号 | 
-| channelId | false | String | 频道号 | 
-| banned | false | Boolean | 是否禁言 | 
-| actor | false | String | 角色 | 
-| userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| clientIp | String | 用户IP | 
+| nickname | String | 观众昵称 | 
+| pic | String | 观众头像 | 
+| roomId | String | 用户登陆的房间号 | 
+| userId | String | 聊天室用户唯一标示 | 
+| uid | String | socketId | 
+| sessionId | String | 场次号 | 
+| channelId | String | 频道号 | 
+| banned | Boolean | 是否禁言 | 
+| actor | String | 角色 | 
+| userType | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
 
 <br /><br />
 
@@ -285,12 +285,12 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| nickname | false | String | 讲师昵称 | 
-| actor | false | String | 讲师头衔 | 
-| avatar | false | String | 头像图片地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| nickname | String | 讲师昵称 | 
+| actor | String | 讲师头衔 | 
+| avatar | String | 头像图片地址 | 
+| requestId | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <br /><br />
 
@@ -408,18 +408,18 @@
 ### 返回对象描述
 返回对象是List&lt;LiveKickedListResponse&gt;，**LiveKickedListResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| banned | false | Boolean | 是否禁言 | 
-| channelId | false | String | 频道号 | 
-| clientIp | false | String | C端观众ip | 
-| kickRefer | false | String | 踢人方式，userId : 用户userId, ip : 用户登录IP | 
-| nickname | false | String | 昵称 | 
-| pic | false | String | 头像图片地址 | 
-| roomId | false | Integer | 房间号 | 
-| uid | false | String | 聊天室socketid | 
-| userId | false | String | C端观众ID | 
-| userType | false | String |  用户身份：管理员 manager，讲师 teacher， 助教 assistant， 嘉宾 guest，参与者 viewer，观看者 slice/student | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| banned | Boolean | 是否禁言 | 
+| channelId | String | 频道号 | 
+| clientIp | String | C端观众ip | 
+| kickRefer | String | 踢人方式，userId : 用户userId, ip : 用户登录IP | 
+| nickname | String | 昵称 | 
+| pic | String | 头像图片地址 | 
+| roomId | Integer | 房间号 | 
+| uid | String | 聊天室socketid | 
+| userId | String | C端观众ID | 
+| userType | String |  用户身份：管理员 manager，讲师 teacher， 助教 assistant， 嘉宾 guest，参与者 viewer，观看者 slice/student | 
 
 <br /><br />
 
@@ -596,26 +596,26 @@
 ### 返回对象描述
 返回对象是List&lt;LiveGetConsultingRecordResponse&gt;，**LiveGetConsultingRecordResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| id | false | String | 信息id | 
-| content | false | String | 内容 | 
-| time | false | Date | 发言时间 | 
-| user | false | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv34)】 | 
-| event | false | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
-| userId | false | String | 提问者ID | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| id | String | 信息id | 
+| content | String | 内容 | 
+| time | Date | 发言时间 | 
+| user | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv34)】 | 
+| event | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
+| userId | String | 提问者ID | 
 
 <h6 id="polyv34"><a href="#/chatRoomService.md?id=polyv34"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| nick | false | String | 观众昵称 | 
-| pic | false | String | 观众头像 | 
-| userId | false | String | 用户唯一标示 | 
-| sessionId | false | String | 场次号 | 
-| channelId | false | String | 频道号 | 
-| banned | false | Boolean | 是否禁言 | 
-| userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| nick | String | 观众昵称 | 
+| pic | String | 观众头像 | 
+| userId | String | 用户唯一标示 | 
+| sessionId | String | 场次号 | 
+| channelId | String | 频道号 | 
+| banned | Boolean | 是否禁言 | 
+| userType | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
 
 <br /><br />
 

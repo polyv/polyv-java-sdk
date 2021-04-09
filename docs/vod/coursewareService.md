@@ -164,13 +164,13 @@ true为删除成功，false为删除失败
 ### 返回对象描述
 返回对象是List&lt;VodQueryCoursewareResponse&gt;，**VodQueryCoursewareResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| pageNo | false | Integer | 课件页码 | 
-| pageTitle | false | String | 页面标题 | 
-| pageImage | false | String | 转码后的图片URL | 
-| pageThumbnail | false | String | 缩略图URL | 
-| showTime | false | Integer | 视频播放到第几秒时显示该页PPT，单位：秒 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| pageNo | Integer | 课件页码 | 
+| pageTitle | String | 页面标题 | 
+| pageImage | String | 转码后的图片URL | 
+| pageThumbnail | String | 缩略图URL | 
+| showTime | Integer | 视频播放到第几秒时显示该页PPT，单位：秒 | 
 
 <br /><br />
 

@@ -165,10 +165,10 @@ true为设置成功，false为设置失败
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| splashImg | false | String | 引导图片url | 
-| splashEnabled | false | String | 引导功能开关,Y/N | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| splashImg | String | 引导图片url | 
+| splashEnabled | String | 引导功能开关,Y/N | 
 
 <br /><br />
 
@@ -408,17 +408,17 @@ true为设置成功，false为设置失败
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelLikes | false | Array | 频道点赞数和观众热度值【详见[ChannelLikes参数描述](webInfo.md?id=polyv63)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelLikes | Array | 频道点赞数和观众热度值【详见[ChannelLikes参数描述](webInfo.md?id=polyv63)】 | 
 
 <h6 id="polyv63"><a href="#/webInfo.md?id=polyv63"data-id="ChannelLikes参数描述"class="anchor"><span>ChannelLikes参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| likes | false | Integer | 频道点赞数 | 
-| viewers | false | Integer | 频道观看热度 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| likes | Integer | 频道点赞数 | 
+| viewers | Integer | 频道观看热度 | 
 
 <br /><br />
 
@@ -537,10 +537,10 @@ true为设置成功，false为设置失败
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| bookingEnabled | false | String | 预约观看开关Y或N | 
-| startTime | false | Date | 直播开始时间,为空则没有直播开始时间 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| bookingEnabled | String | 预约观看开关Y或N | 
+| startTime | Date | 直播开始时间,为空则没有直播开始时间 | 
 
 <br /><br />
 

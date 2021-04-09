@@ -48,28 +48,28 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 视频信息【详见[VodQueryVideoList参数描述](queryService.md?id=polyv25)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 视频信息【详见[VodQueryVideoList参数描述](queryService.md?id=polyv25)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv25"><a href="#/queryService.md?id=polyv25"data-id="VodQueryVideoList参数描述"class="anchor"><span>VodQueryVideoList参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| duration | false | String | 视频时长，格式为 时:分:秒，如：00:59:54 | 
-| vid | false | String | 视频ID | 
-| date | false | Date | 最后修改时间，格式为：yyyy-MM-dd HH:mm | 
-| uploader | false | String | 上传者，取值：主账号、API、${子账号名称} | 
-| categoryId | false | String | 分类ID | 
-| categoryName | false | String | 分类名称 | 
-| sourceFileSize | false | String | 原文件大小，单位有：Bytes、KB、 MB、GB，例：227.61 MB | 
-| firstImage | false | String | 首图地址 | 
-| title | false | String | 视频标题 | 
-| status | false | String | 视频状态，如：已发布 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| duration | String | 视频时长，格式为 时:分:秒，如：00:59:54 | 
+| vid | String | 视频ID | 
+| date | Date | 最后修改时间，格式为：yyyy-MM-dd HH:mm | 
+| uploader | String | 上传者，取值：主账号、API、${子账号名称} | 
+| categoryId | String | 分类ID | 
+| categoryName | String | 分类名称 | 
+| sourceFileSize | String | 原文件大小，单位有：Bytes、KB、 MB、GB，例：227.61 MB | 
+| firstImage | String | 首图地址 | 
+| title | String | 视频标题 | 
+| status | String | 视频状态，如：已发布 | 
 
 <br /><br />
 
@@ -132,53 +132,53 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 视频信息【详见[VodSearchVideoList参数描述](queryService.md?id=polyv26)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 视频信息【详见[VodSearchVideoList参数描述](queryService.md?id=polyv26)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv26"><a href="#/queryService.md?id=polyv26"data-id="VodSearchVideoList参数描述"class="anchor"><span>VodSearchVideoList参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| tag | false | String | 视频标签 | 
-| mp4 | false | String | MP4源文件 | 
-| title | false | String | 标题 | 
-| df | false | Integer | 视频码率数 | 
-| times | false | Integer | 播放次数 | 
-| videoId | false | String | 视频id | 
-| SDMp4 | false | String | 流畅码率mp4格式视频地址 | 
-| HDmp4 | false | String | 高清码率mp4格式视频地址 | 
-| FHDmp4 | false | String | 超清码率mp4格式视频地址 | 
-| categoryId | false | String | 分类id， 如1为根目录 | 
-| swfLink | false | String | 返回视频flash链接 | 
-| status | false | Integer | 视频状态码视频状态码（60/61：已发布；10：等待编码；20：正在编码；50：等待审核；51：审核不通过，-1：已删除；） | 
-| seed | false | Integer | 加密视频为1，非加密为0 | 
-| playerWidth | false | Integer | 视频宽度 | 
-| duration | false | String | 时长,如：00:15:46 | 
-| firstImage | false | String | 视频首图 | 
-| originalDefinition | false | String | 最佳分辨率 | 
-| context | false | String | 视频描述 | 
-| playerHeight | false | Integer | 视频高度 | 
-| uploadTime | false | Date | 视频上传日期 | 
-| sourceFilesize | false | Integer | 源视频文件大小，单位为byte | 
-| filesize | false | Integer[] | 编码后各个码率的视频文件大小，按顺序依次为流畅、高清、超清的视频文件大小，单位为byte | 
-| md5Checksum | false | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整 | 
-| hls | false | String[] | 流畅、高清、超清清晰度的m3u8地址 | 
-| uploader | false | Uploader | 上传者信息【详见[Uploader参数描述](queryService.md?id=polyv27)】 | 
-| keepSource | false | Integer | 是否为源文件，否：0,是：1 | 
-| categoryName | false | String | 分类名称 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| tag | String | 视频标签 | 
+| mp4 | String | MP4源文件 | 
+| title | String | 标题 | 
+| df | Integer | 视频码率数 | 
+| times | Integer | 播放次数 | 
+| videoId | String | 视频id | 
+| SDMp4 | String | 流畅码率mp4格式视频地址 | 
+| HDmp4 | String | 高清码率mp4格式视频地址 | 
+| FHDmp4 | String | 超清码率mp4格式视频地址 | 
+| categoryId | String | 分类id， 如1为根目录 | 
+| swfLink | String | 返回视频flash链接 | 
+| status | Integer | 视频状态码视频状态码（60/61：已发布；10：等待编码；20：正在编码；50：等待审核；51：审核不通过，-1：已删除；） | 
+| seed | Integer | 加密视频为1，非加密为0 | 
+| playerWidth | Integer | 视频宽度 | 
+| duration | String | 时长,如：00:15:46 | 
+| firstImage | String | 视频首图 | 
+| originalDefinition | String | 最佳分辨率 | 
+| context | String | 视频描述 | 
+| playerHeight | Integer | 视频高度 | 
+| uploadTime | Date | 视频上传日期 | 
+| sourceFilesize | Integer | 源视频文件大小，单位为byte | 
+| filesize | Integer[] | 编码后各个码率的视频文件大小，按顺序依次为流畅、高清、超清的视频文件大小，单位为byte | 
+| md5Checksum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整 | 
+| hls | String[] | 流畅、高清、超清清晰度的m3u8地址 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](queryService.md?id=polyv27)】 | 
+| keepSource | Integer | 是否为源文件，否：0,是：1 | 
+| categoryName | String | 分类名称 | 
 
 <h6 id="polyv27"><a href="#/queryService.md?id=polyv27"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| email | false | String | 上传者邮箱 | 
-| name | false | String | 上传者名称 | 
-| role | false | String | 上传者角色,如管理员,上传者,主账号 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| email | String | 上传者邮箱 | 
+| name | String | 上传者名称 | 
+| role | String | 上传者角色,如管理员,上传者,主账号 | 
 
 <br /><br />
 

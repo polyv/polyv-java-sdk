@@ -55,25 +55,25 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | false | String | 直播系统生成的id | 
-| videoPoolId | false | String | 点播视频vid | 
-| userId | false | String | 点播后台用户ID | 
-| channelId | false | String | 回放视频对应的直播频道号 | 
-| title | false | String | 视频标题 | 
-| firstImage | false | String | 视频首图 | 
-| duration | false | String | 视频长度，如：00:00:30 | 
-| myBr | false | String | 默认视频的播放清晰度，1为流畅，2为高清，3为超清 | 
-| qid | false | String | 访客信息收集id | 
-| seed | false | String | 视频加密状态，1表示为加密状态，0为非加密 | 
-| createdTime | false | Date | 添加为回放视频的日期 | 
-| lastModified | false | Date | 视频最后修改日期 | 
-| url | false | String | 视频播放地址，注：如果视频为加密视频，则此地址无法访问 | 
-| channelSessionId | false | String | 用于PPT请求数据，与PPT直播的回放相关，普通直播回放值为null | 
-| mergeInfo | false | String | 视频合并信息 | 
-| startTime | false | String | 直播开始时间 | 
-| liveType | false | String | 回放视频的场景类型 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| videoId | String | 直播系统生成的id | 
+| videoPoolId | String | 点播视频vid | 
+| userId | String | 点播后台用户ID | 
+| channelId | String | 回放视频对应的直播频道号 | 
+| title | String | 视频标题 | 
+| firstImage | String | 视频首图 | 
+| duration | String | 视频长度，如：00:00:30 | 
+| myBr | String | 默认视频的播放清晰度，1为流畅，2为高清，3为超清 | 
+| qid | String | 访客信息收集id | 
+| seed | String | 视频加密状态，1表示为加密状态，0为非加密 | 
+| createdTime | Date | 添加为回放视频的日期 | 
+| lastModified | Date | 视频最后修改日期 | 
+| url | String | 视频播放地址，注：如果视频为加密视频，则此地址无法访问 | 
+| channelSessionId | String | 用于PPT请求数据，与PPT直播的回放相关，普通直播回放值为null | 
+| mergeInfo | String | 视频合并信息 | 
+| startTime | String | 直播开始时间 | 
+| liveType | String | 回放视频的场景类型 | 
 
 <br /><br />
 
@@ -211,15 +211,15 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 回调说明
 &emsp;&emsp;该接口为异步处理，如果需要获取转存的结果，可以在请求接口时提交callbackUrl 参数，在程序转存成功或失败后，会对callbackUrl 进行回调通知
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| status | false | String | 接口处理结果，取值：success（成功），error（出错） | 
-| code | false | String | 错误码,userExpired-用户已过期；spaceOverSize-点播空间不足；unknown-未知异常 | 
-| userId | false | String | 用户id | 
-| channelId | false | String | 频道号 | 
-| fileId | false | String | 转存的文件ID | 
-| sign | false | String | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 | 
-| timestamp | false | String | 13位毫秒时间戳 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| status | String | 接口处理结果，取值：success（成功），error（出错） | 
+| code | String | 错误码,userExpired-用户已过期；spaceOverSize-点播空间不足；unknown-未知异常 | 
+| userId | String | 用户id | 
+| channelId | String | 频道号 | 
+| fileId | String | 转存的文件ID | 
+| sign | String | 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙 | 
+| timestamp | String | 13位毫秒时间戳 | 
 
 <br /><br />
 
@@ -284,25 +284,25 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelVedioInfos | false | Array | 视频库视频信息【详见[ChannelVedioInfo参数描述](channelPlayback.md?id=polyv24)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelVedioInfos | Array | 视频库视频信息【详见[ChannelVedioInfo参数描述](channelPlayback.md?id=polyv24)】 | 
 
 <h6 id="polyv24"><a href="#/channelPlayback.md?id=polyv24"data-id="ChannelVedioInfo参数描述"class="anchor"><span>ChannelVedioInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| fileId | false | String | 录制文件id | 
-| channelId | false | String | 频道号 | 
-| url | false | String | 录制文件地址，优先返回mp4，若没有MP4会返回m3u8 | 
-| startTime | false | Date | 开始录制时间 | 
-| endTime | false | Date | 结束录制时间 | 
-| fileSize | false | Long | 录制文件大小（单位：字节） | 
-| duration | false | Integer | 时长（单位：秒） | 
-| bitrate | false | Integer | 录制文件码率（单位：字节） | 
-| resolution | false | String | 分辨率 | 
-| channelSessionId | false | String | 直播的场次ID | 
-| fileName | false | String | 录制文件名称 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| fileId | String | 录制文件id | 
+| channelId | String | 频道号 | 
+| url | String | 录制文件地址，优先返回mp4，若没有MP4会返回m3u8 | 
+| startTime | Date | 开始录制时间 | 
+| endTime | Date | 结束录制时间 | 
+| fileSize | Long | 录制文件大小（单位：字节） | 
+| duration | Integer | 时长（单位：秒） | 
+| bitrate | Integer | 录制文件码率（单位：字节） | 
+| resolution | String | 分辨率 | 
+| channelSessionId | String | 直播的场次ID | 
+| fileName | String | 录制文件名称 | 
 
 <br /><br />
 
@@ -366,36 +366,36 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 视频库视频信息【详见[ChannelVideoLibrary参数描述](channelPlayback.md?id=polyv25)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 视频库视频信息【详见[ChannelVideoLibrary参数描述](channelPlayback.md?id=polyv25)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv25"><a href="#/channelPlayback.md?id=polyv25"data-id="ChannelVideoLibrary参数描述"class="anchor"><span>ChannelVideoLibrary参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | false | String | 直播系统生成的id | 
-| videoPoolId | false | String | 点播视频vid | 
-| userId | false | String | 点播后台用户ID | 
-| channelId | false | String | 回放视频对应的直播频道号 | 
-| title | false | String | 视频标题 | 
-| firstImage | false | String | 视频首图 | 
-| duration | false | String | 视频长度，如：00:27:10 | 
-| myBr | false | Integer | 默认视频的播放清晰度，1为流畅，2为高清，3为超清 | 
-| qid | false | String | 访客信息收集id | 
-| seed | false | Integer | 视频加密状态，1表示为加密状态，0为非加密 | 
-| createdTime | false | Date | 添加为回放视频的日期 | 
-| lastModified | false | Date | 视频最后修改日期 | 
-| asDefault | false | String | 是否为默认播放视频，值为Y/N | 
-| url | false | String | 视频播放地址，注：如果视频为加密视频，则此地址无法访问 | 
-| channelSessionId | false | String | 用于PPT请求数据，与PPT直播的回放相关，普通直播回放值为null | 
-| mergeInfo | false | String | 视频合并信息，后续补充 | 
-| startTime | false | Date | 直播开始时间 | 
-| listType | false | String | playback-回放列表，vod-点播列表; | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| videoId | String | 直播系统生成的id | 
+| videoPoolId | String | 点播视频vid | 
+| userId | String | 点播后台用户ID | 
+| channelId | String | 回放视频对应的直播频道号 | 
+| title | String | 视频标题 | 
+| firstImage | String | 视频首图 | 
+| duration | String | 视频长度，如：00:27:10 | 
+| myBr | Integer | 默认视频的播放清晰度，1为流畅，2为高清，3为超清 | 
+| qid | String | 访客信息收集id | 
+| seed | Integer | 视频加密状态，1表示为加密状态，0为非加密 | 
+| createdTime | Date | 添加为回放视频的日期 | 
+| lastModified | Date | 视频最后修改日期 | 
+| asDefault | String | 是否为默认播放视频，值为Y/N | 
+| url | String | 视频播放地址，注：如果视频为加密视频，则此地址无法访问 | 
+| channelSessionId | String | 用于PPT请求数据，与PPT直播的回放相关，普通直播回放值为null | 
+| mergeInfo | String | 视频合并信息，后续补充 | 
+| startTime | Date | 直播开始时间 | 
+| listType | String | playback-回放列表，vod-点播列表; | 
 
 <br /><br />
 
@@ -463,22 +463,22 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 频道直播场次信息【详见[ChannelSessionInfo参数描述](channelPlayback.md?id=polyv26)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 频道直播场次信息【详见[ChannelSessionInfo参数描述](channelPlayback.md?id=polyv26)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv26"><a href="#/channelPlayback.md?id=polyv26"data-id="ChannelSessionInfo参数描述"class="anchor"><span>ChannelSessionInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| sessionId | false | String | 场次ID | 
-| startTime | false | Date | 直播开始时间 | 
-| endTime | false | Date | 直播结束时间 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| sessionId | String | 场次ID | 
+| startTime | Date | 直播开始时间 | 
+| endTime | Date | 直播结束时间 | 
 
 <br /><br />
 
@@ -599,24 +599,24 @@ Y为开启，N为关闭
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| bitrate | false | Integer | 码率 | 
-| channelId | false | String | 频道号 | 
-| channelSessionId | false | String | 频道场次 | 
-| createdTime | false | Date | 创建时间 | 
-| duration | false | Integer | 时长 | 
-| endTime | false | Date | 结束时间 | 
-| fileId | false | String | 文件ID | 
-| filename | false | String | 文件名 | 
-| filesize | false | Long | 文件大小 | 
-| height | false | Integer | 高 | 
-| liveType | false | String | 直播类型 | 
-| m3u8 | false | String | m3u8文件地址 | 
-| mp4 | false | String | MP4地址 | 
-| startTime | false | Date | 开始时间 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| width | false | Integer | 宽 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| bitrate | Integer | 码率 | 
+| channelId | String | 频道号 | 
+| channelSessionId | String | 频道场次 | 
+| createdTime | Date | 创建时间 | 
+| duration | Integer | 时长 | 
+| endTime | Date | 结束时间 | 
+| fileId | String | 文件ID | 
+| filename | String | 文件名 | 
+| filesize | Long | 文件大小 | 
+| height | Integer | 高 | 
+| liveType | String | 直播类型 | 
+| m3u8 | String | m3u8文件地址 | 
+| mp4 | String | MP4地址 | 
+| startTime | Date | 开始时间 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| width | Integer | 宽 | 
 
 <br /><br />
 
@@ -1126,22 +1126,22 @@ true为修改成功，false为修改失败
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| fileId | false | String | 文件ID | 
-| fileUrl | false | String | 已合并返回文件地址，合并中返回空字符串 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| fileId | String | 文件ID | 
+| fileUrl | String | 已合并返回文件地址，合并中返回空字符串 | 
 
 ### 回调说明
 &emsp;&emsp;该接口为异步处理，如果需要获取合并的结果，可以在请求接口时提交callbackUrl 参数，在程序合并成功后，会对callbackUrl 进行回调通知
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| status | false | String | 接口处理结果，取值：success（成功），error（出错） | 
-| channelId | false | String | 频道号，成功时返回 | 
-| fileId | false | String | 合并后的文件ID，成功时返回 | 
-| fileIds | false | String | 合并前的所有文件ID，成功时返回 | 
-| fileUrl | false | String | 合并后的MP4的地址，成功时返回 | 
-| fileName | false | String | 合并后的文件名称，成功时返回 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| status | String | 接口处理结果，取值：success（成功），error（出错） | 
+| channelId | String | 频道号，成功时返回 | 
+| fileId | String | 合并后的文件ID，成功时返回 | 
+| fileIds | String | 合并前的所有文件ID，成功时返回 | 
+| fileUrl | String | 合并后的MP4的地址，成功时返回 | 
+| fileName | String | 合并后的文件名称，成功时返回 | 
 
 <br /><br />
 

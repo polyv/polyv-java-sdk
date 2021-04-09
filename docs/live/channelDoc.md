@@ -58,12 +58,12 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| fileId | false | String | 成功时返回文件ID | 
-| autoId | false | Integer | 成功时返回文件记录自增标识id | 
-| type | false | String | 转换类型（common：转普通图片，animate：转动画效果）只有ppt，pptx会转动画，其中会自动转成普通，转动画转失败也会直接把类型转为普通 | 
-| status | false | String | 文件转换状态（normal：正常,waitConvert:转换PPT中,failConvert:转换PPT失败） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| fileId | String | 成功时返回文件ID | 
+| autoId | Integer | 成功时返回文件记录自增标识id | 
+| type | String | 转换类型（common：转普通图片，animate：转动画效果）只有ppt，pptx会转动画，其中会自动转成普通，转动画转失败也会直接把类型转为普通 | 
+| status | String | 文件转换状态（normal：正常,waitConvert:转换PPT中,failConvert:转换PPT失败） | 
 
 <br /><br />
 
@@ -126,22 +126,22 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelDocStatuses | false | Array | 频道文档列表转换信息【详见[ChannelDocStatus参数描述](channelDoc.md?id=polyv6)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelDocStatuses | Array | 频道文档列表转换信息【详见[ChannelDocStatus参数描述](channelDoc.md?id=polyv6)】 | 
 
 <h6 id="polyv6"><a href="#/channelDoc.md?id=polyv6"data-id="ChannelDocStatus参数描述"class="anchor"><span>ChannelDocStatus参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| convertStatus | false | String | 转换状态. (“normal”：正常。”failUpload“： 上传失败。“waitConvert”： 转换PPT中。“failConvert”： 转换失败，失败原因会返回在data[0].errorMsg字段中展示） | 
-| errorMsg | false | String | 错误信息（转换失败原因，convertStatus=“failConvert” 返回） | 
-| totalPage | false | Integer | 总页数（convertStatus=“normal” 返回） | 
-| images | false | Array | 大图地址数组，(convertStatus=“normal” 返回) | 
-| smallImages | false | Array | 小图地址数组，(convertStatus=“normal” 返回) | 
-| imageCount | false | Integer | 大图图片数量，(convertStatus=“normal” 返回) | 
-| htmlUrl | false | String | 动画PPT地址，（convertStatus=“normal” 返回) | 
-| fileId | false | String | 文件ID | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| convertStatus | String | 转换状态. (“normal”：正常。”failUpload“： 上传失败。“waitConvert”： 转换PPT中。“failConvert”： 转换失败，失败原因会返回在data[0].errorMsg字段中展示） | 
+| errorMsg | String | 错误信息（转换失败原因，convertStatus=“failConvert” 返回） | 
+| totalPage | Integer | 总页数（convertStatus=“normal” 返回） | 
+| images | Array | 大图地址数组，(convertStatus=“normal” 返回) | 
+| smallImages | Array | 小图地址数组，(convertStatus=“normal” 返回) | 
+| imageCount | Integer | 大图图片数量，(convertStatus=“normal” 返回) | 
+| htmlUrl | String | 动画PPT地址，（convertStatus=“normal” 返回) | 
+| fileId | String | 文件ID | 
 
 <br /><br />
 
@@ -206,30 +206,30 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 频道文档【详见[ChannelDoc参数描述](channelDoc.md?id=polyv7)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 频道文档【详见[ChannelDoc参数描述](channelDoc.md?id=polyv7)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv7"><a href="#/channelDoc.md?id=polyv7"data-id="ChannelDoc参数描述"class="anchor"><span>ChannelDoc参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| autoId | false | Integer | 文档ID | 
-| fileId | false | String | 文件ID | 
-| fileName | false | String | 文件名 | 
-| fileUrl | false | String | 文件url(isShowUrl为'Y'的时候返回文件地址) | 
-| fileType | false | String | 文件类型，如：.pdf | 
-| totalPage | false | Integer | PPT总页数 | 
-| channelId | false | String | 频道号 | 
-| status | false | String | ppt转换状态（“normal”：正常，“waitUpload”：等待上传,failUpload：上传失败，waitConvert:转换PPT中,failConvert:转换PPT失败） | 
-| createTime | false | Date | 创建时间 | 
-| convertType | false | String | 转换类型（common：普通PPT，animate：动画PPT） | 
-| type | false | String | 类型，区分旧版PPT还是新版PPT，新版值为“new”，旧版值为“old” | 
-| previewImage | false | String | ppt预览小图地址，如：http://doc-2.polyv.net/x/xxx_0.jpeg | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| autoId | Integer | 文档ID | 
+| fileId | String | 文件ID | 
+| fileName | String | 文件名 | 
+| fileUrl | String | 文件url(isShowUrl为'Y'的时候返回文件地址) | 
+| fileType | String | 文件类型，如：.pdf | 
+| totalPage | Integer | PPT总页数 | 
+| channelId | String | 频道号 | 
+| status | String | ppt转换状态（“normal”：正常，“waitUpload”：等待上传,failUpload：上传失败，waitConvert:转换PPT中,failConvert:转换PPT失败） | 
+| createTime | Date | 创建时间 | 
+| convertType | String | 转换类型（common：普通PPT，animate：动画PPT） | 
+| type | String | 类型，区分旧版PPT还是新版PPT，新版值为“new”，旧版值为“old” | 
+| previewImage | String | ppt预览小图地址，如：http://doc-2.polyv.net/x/xxx_0.jpeg | 
 
 <br /><br />
 

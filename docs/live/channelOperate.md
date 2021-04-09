@@ -69,45 +69,45 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 直播频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| name | false | String | 直播频道名称 | 
-| description | false | String | 直播频道描述 | 
-| url | false | String | 直播推流地址 | 
-| stream | false | String | 直播流名称 | 
-| logoImage | false | String | 播放器logo | 
-| logoOpacity | false | Float | Logo不透明度，1表示完全不透明 | 
-| logoPosition | false | String | Logo位置 | 
-| logoHref | false | String | Logo的跳转链接 | 
-| coverImage | false | String | 播放前显示的封面图 | 
-| coverHref | false | String | 封面图的跳转链接 | 
-| waitImage | false | String | 等待推流时的显示图片 | 
-| waitHref | false | String | 等待推流时显示图片的跳转链接 | 
-| cutoffImage | false | String | 切断流时的显示图片 | 
-| cutoffHref | false | String | 切断流时显示图片的跳转链接 | 
-| advertType | false | String | 广告类型 | 
-| advertDuration | false | Integer | 广告时长，单位：秒 | 
-| advertWidth | false | Integer | 广告区域宽度 | 
-| advertHeight | false | Integer | 广告区域高度 | 
-| advertImage | false | String | 图片广告 | 
-| advertHref | false | String | 广告的跳转链接 | 
-| advertFlvVid | false | String | 视频广告ID | 
-| advertFlvUrl | false | String | 视频广告链接 | 
-| playerColor | false | String | 播放器控制栏颜色 | 
-| autoPlay | false | Boolean | 自动播放，true为自动播放，false为关闭 | 
-| warmUpFlv | false | String | 一开始的暖场视频 | 
-| passwdRestrict | false | Boolean | 观看密码限制，需要输入观看密码才能播放流 | 
-| passwdEncrypted | false | String | 观看密码加密后的密文 | 
-| isOnlyAudio | false | String | 仅推音频流，Y-是，N-否 | 
-| isLowLatency | false | String | 低延迟，Y-是，N-否 | 
-| m3u8Url | false | String | 直播拉流（播放）m3u8地址 | 
-| m3u8Url1 | false | String | 直播拉流（播放）m3u8地址1 | 
-| m3u8Url2 | false | String | 直播拉流（播放）m3u8地址2 | 
-| m3u8Url3 | false | String | 直播拉流（播放）m3u8地址3 | 
-| currentTimeMillis | false | Long | 服务器返回的时间戳（毫秒） | 
-| linkMicLimit | false | Integer | 连麦人数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 直播频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| name | String | 直播频道名称 | 
+| description | String | 直播频道描述 | 
+| url | String | 直播推流地址 | 
+| stream | String | 直播流名称 | 
+| logoImage | String | 播放器logo | 
+| logoOpacity | Float | Logo不透明度，1表示完全不透明 | 
+| logoPosition | String | Logo位置 | 
+| logoHref | String | Logo的跳转链接 | 
+| coverImage | String | 播放前显示的封面图 | 
+| coverHref | String | 封面图的跳转链接 | 
+| waitImage | String | 等待推流时的显示图片 | 
+| waitHref | String | 等待推流时显示图片的跳转链接 | 
+| cutoffImage | String | 切断流时的显示图片 | 
+| cutoffHref | String | 切断流时显示图片的跳转链接 | 
+| advertType | String | 广告类型 | 
+| advertDuration | Integer | 广告时长，单位：秒 | 
+| advertWidth | Integer | 广告区域宽度 | 
+| advertHeight | Integer | 广告区域高度 | 
+| advertImage | String | 图片广告 | 
+| advertHref | String | 广告的跳转链接 | 
+| advertFlvVid | String | 视频广告ID | 
+| advertFlvUrl | String | 视频广告链接 | 
+| playerColor | String | 播放器控制栏颜色 | 
+| autoPlay | Boolean | 自动播放，true为自动播放，false为关闭 | 
+| warmUpFlv | String | 一开始的暖场视频 | 
+| passwdRestrict | Boolean | 观看密码限制，需要输入观看密码才能播放流 | 
+| passwdEncrypted | String | 观看密码加密后的密文 | 
+| isOnlyAudio | String | 仅推音频流，Y-是，N-否 | 
+| isLowLatency | String | 低延迟，Y-是，N-否 | 
+| m3u8Url | String | 直播拉流（播放）m3u8地址 | 
+| m3u8Url1 | String | 直播拉流（播放）m3u8地址1 | 
+| m3u8Url2 | String | 直播拉流（播放）m3u8地址2 | 
+| m3u8Url3 | String | 直播拉流（播放）m3u8地址3 | 
+| currentTimeMillis | Long | 服务器返回的时间戳（毫秒） | 
+| linkMicLimit | Integer | 连麦人数 | 
 
 <br /><br />
 
@@ -191,98 +191,98 @@
 
 <h6 id="polyv8"><a href="#/channelOperate.md?id=polyv8"data-id="BasicSetting参数描述"class="anchor"><span>BasicSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| name | true | String | 频道名称 | 
-| channelPasswd | true | String | 频道密码,长度不能超过16位，必须同时包含字母和数字 | 
-| autoPlay | false | Integer | 是否自动播放，0-不自动播放；1-自动播放，默认1 | 
-| playerColor | false | String | 播放器控制栏颜色，默认：#666666 | 
-| scene | false | String | 直播场景：alone 活动拍摄；ppt 三分屏；topclass 大班课 | 
-| categoryId | false | Integer | 新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） | 
-| maxViewer | false | Integer | 最大同时在线人数 | 
-| startTime | false | Date | 直播开始时间 | 
-| desc | false | String | 直播介绍的内容 | 
-| publisher | false | String | 主持人 | 
-| linkMicLimit | false | Integer | 连麦人数(范围大于等于-1，小于等于账号的连麦人数),-1：使用账号的连麦人数，最大16人 | 
-| pureRtcEnabled | false | String | 是否为无延时直播，Y 表示开启，默认为N | 
-| receive | false | String | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) | 
-| receiveChannelIds | false | String | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) | 
-| onlyOneLiveEnabled | false | String | 频道是否只能直播一次，Y是，N否, 默认为N | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| name | String | 频道名称 | 
+| channelPasswd | String | 频道密码,长度不能超过16位，必须同时包含字母和数字 | 
+| autoPlay | Integer | 是否自动播放，0-不自动播放；1-自动播放，默认1 | 
+| playerColor | String | 播放器控制栏颜色，默认：#666666 | 
+| scene | String | 直播场景：alone 活动拍摄；ppt 三分屏；topclass 大班课 | 
+| categoryId | Integer | 新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） | 
+| maxViewer | Integer | 最大同时在线人数 | 
+| startTime | Date | 直播开始时间 | 
+| desc | String | 直播介绍的内容 | 
+| publisher | String | 主持人 | 
+| linkMicLimit | Integer | 连麦人数(范围大于等于-1，小于等于账号的连麦人数),-1：使用账号的连麦人数，最大16人 | 
+| pureRtcEnabled | String | 是否为无延时直播，Y 表示开启，默认为N | 
+| receive | String | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) | 
+| receiveChannelIds | String | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) | 
+| onlyOneLiveEnabled | String | 频道是否只能直播一次，Y是，N否, 默认为N | 
 
 <h6 id="polyv9"><a href="#/channelOperate.md?id=polyv9"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| rank | true | Integer | 通用参数：主要观看条件为1，次要观看条件为2 | 
-| enabled | true | String | 通用参数：是否开启，Y为开启，N为关闭 | 
-| authType | false | String | 通用参数：付费观看-pay，验证码观看-code，白名单观看-phone，登记观看-info，自定义授权观看-custom，外部授权-external,直接授权-direct | 
-| payAuthTips | false | String | 付费观看参数：欢迎语标题 | 
-| price | false | Float | 付费观看参数：价格，单位为元 | 
-| watchEndTime | false | Date | 付费观看参数：付费有效截止日期。watchEndTime和validTimePeriod只能设置一个，当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
-| validTimePeriod | false | Integer | 付费观看参数：付费有效时长，单位天。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
-| authCode | false | String | 验证码观看参数：验证码 | 
-| qcodeTips | false | String | 验证码观看参数：提示文案 | 
-| qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
-| authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数【详见[InfoField参数描述](channelOperate.md?id=polyv10)】 | 
-| externalKey | false | String | 外部授权参数：SecretKey | 
-| externalUri | false | String | 外部授权参数：自定义url | 
-| externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
-| customKey | false | String | 自定义授权参数：SecretKey | 
-| customUri | false | String | 自定义授权参数：自定义url | 
-| directKey | false | String | 直接授权参数：直接授权SecretKey | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| rank | Integer | 通用参数：主要观看条件为1，次要观看条件为2 | 
+| enabled | String | 通用参数：是否开启，Y为开启，N为关闭 | 
+| authType | String | 通用参数：付费观看-pay，验证码观看-code，白名单观看-phone，登记观看-info，自定义授权观看-custom，外部授权-external,直接授权-direct | 
+| payAuthTips | String | 付费观看参数：欢迎语标题 | 
+| price | Float | 付费观看参数：价格，单位为元 | 
+| watchEndTime | Date | 付费观看参数：付费有效截止日期。watchEndTime和validTimePeriod只能设置一个，当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
+| validTimePeriod | Integer | 付费观看参数：付费有效时长，单位天。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
+| authCode | String | 验证码观看参数：验证码 | 
+| qcodeTips | String | 验证码观看参数：提示文案 | 
+| qcodeImg | String | 验证码观看参数：公众号二维码地址 | 
+| authTips | String | 白名单观看参数：提示文案 | 
+| infoFields | Array | 登记观看参数【详见[InfoField参数描述](channelOperate.md?id=polyv10)】 | 
+| externalKey | String | 外部授权参数：SecretKey | 
+| externalUri | String | 外部授权参数：自定义url | 
+| externalRedirectUri | String | 外部授权参数：跳转地址 | 
+| customKey | String | 自定义授权参数：SecretKey | 
+| customUri | String | 自定义授权参数：自定义url | 
+| directKey | String | 直接授权参数：直接授权SecretKey | 
 
 <h6 id="polyv10"><a href="#/channelOperate.md?id=polyv10"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| name | false | String | 登记信息名，最多为8字符 | 
-| type | true | String | 登记类型，姓名-name，文本-text，手机号码-mobile，数字-number，下拉选项-option | 
-| options | false | String | 下拉选项时，下拉的选项值，以英文逗号分割。选项个数上限为8个；选项内容最多为8字符 | 
-| placeholder | false | String | 文本框输入提示，最多为8字符 | 
-| sms | false | String | 短信验证开关，Y 开启，N 关闭 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| name | String | 登记信息名，最多为8字符 | 
+| type | String | 登记类型，姓名-name，文本-text，手机号码-mobile，数字-number，下拉选项-option | 
+| options | String | 下拉选项时，下拉的选项值，以英文逗号分割。选项个数上限为8个；选项内容最多为8字符 | 
+| placeholder | String | 文本框输入提示，最多为8字符 | 
+| sms | String | 短信验证开关，Y 开启，N 关闭 | 
 
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 直播频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| name | false | String | 直播频道名称 | 
-| description | false | String | 直播频道描述 | 
-| url | false | String | 直播推流地址 | 
-| stream | false | String | 直播流名称 | 
-| logoImage | false | String | 播放器logo | 
-| logoOpacity | false | Float | Logo不透明度，1表示完全不透明 | 
-| logoPosition | false | String | Logo位置 | 
-| logoHref | false | String | Logo的跳转链接 | 
-| coverImage | false | String | 播放前显示的封面图 | 
-| coverHref | false | String | 封面图的跳转链接 | 
-| waitImage | false | String | 等待推流时的显示图片 | 
-| waitHref | false | String | 等待推流时显示图片的跳转链接 | 
-| cutoffImage | false | String | 切断流时的显示图片 | 
-| cutoffHref | false | String | 切断流时显示图片的跳转链接 | 
-| advertType | false | String | 广告类型 | 
-| advertDuration | false | String | 广告时长，单位：秒 | 
-| advertWidth | false | String | 广告区域宽度 | 
-| advertHeight | false | String | 广告区域高度 | 
-| advertImage | false | String | 图片广告 | 
-| advertHref | false | String | 广告的跳转链接 | 
-| advertFlvVid | false | String | 视频广告ID | 
-| advertFlvUrl | false | String | 视频广告链接 | 
-| playerColor | false | String | 播放器控制栏颜色 | 
-| autoPlay | false | Boolean | 自动播放 | 
-| warmUpFlv | false | String | 一开始的暖场视频 | 
-| passwdRestrict | false | Boolean | 观看密码限制，需要输入观看密码才能播放流 | 
-| passwdEncrypted | false | String | 观看密码加密后的密文 | 
-| isOnlyAudio | false | String | 仅推音频流 | 
-| isLowLatency | false | String | 低延迟，Y-低延迟，N-非低延迟 | 
-| m3u8Url | false | String | 直播拉流（播放）m3u8地址 | 
-| m3u8Url1 | false | String | 直播拉流（播放）m3u8地址1 | 
-| m3u8Url2 | false | String | 直播拉流（播放）m3u8地址2 | 
-| m3u8Url3 | false | String | 直播拉流（播放）m3u8地址3 | 
-| currentTimeMillis | false | Long | 服务器返回的时间戳（毫秒） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 直播频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| name | String | 直播频道名称 | 
+| description | String | 直播频道描述 | 
+| url | String | 直播推流地址 | 
+| stream | String | 直播流名称 | 
+| logoImage | String | 播放器logo | 
+| logoOpacity | Float | Logo不透明度，1表示完全不透明 | 
+| logoPosition | String | Logo位置 | 
+| logoHref | String | Logo的跳转链接 | 
+| coverImage | String | 播放前显示的封面图 | 
+| coverHref | String | 封面图的跳转链接 | 
+| waitImage | String | 等待推流时的显示图片 | 
+| waitHref | String | 等待推流时显示图片的跳转链接 | 
+| cutoffImage | String | 切断流时的显示图片 | 
+| cutoffHref | String | 切断流时显示图片的跳转链接 | 
+| advertType | String | 广告类型 | 
+| advertDuration | String | 广告时长，单位：秒 | 
+| advertWidth | String | 广告区域宽度 | 
+| advertHeight | String | 广告区域高度 | 
+| advertImage | String | 图片广告 | 
+| advertHref | String | 广告的跳转链接 | 
+| advertFlvVid | String | 视频广告ID | 
+| advertFlvUrl | String | 视频广告链接 | 
+| playerColor | String | 播放器控制栏颜色 | 
+| autoPlay | Boolean | 自动播放 | 
+| warmUpFlv | String | 一开始的暖场视频 | 
+| passwdRestrict | Boolean | 观看密码限制，需要输入观看密码才能播放流 | 
+| passwdEncrypted | String | 观看密码加密后的密文 | 
+| isOnlyAudio | String | 仅推音频流 | 
+| isLowLatency | String | 低延迟，Y-低延迟，N-非低延迟 | 
+| m3u8Url | String | 直播拉流（播放）m3u8地址 | 
+| m3u8Url1 | String | 直播拉流（播放）m3u8地址1 | 
+| m3u8Url2 | String | 直播拉流（播放）m3u8地址2 | 
+| m3u8Url3 | String | 直播拉流（播放）m3u8地址3 | 
+| currentTimeMillis | Long | 服务器返回的时间戳（毫秒） | 
 
 <br /><br />
 
@@ -355,64 +355,64 @@
 
 <h6 id="polyv11"><a href="#/channelOperate.md?id=polyv11"data-id="LiveChannelBasic参数描述"class="anchor"><span>LiveChannelBasic参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| name | true | String | 频道名称 | 
-| channelPasswd | true | String | 频道密码，长度不能超过16位，必须同时包含字母和数字 | 
-| courseId | false | String | 课程号 | 
-| autoPlay | false | Integer | 是否自动播放，0/1，默认1.注意，如果该值为空，则该频道会使用全局的“功能开关设置”。如果非空，则会使用频道的“功能开关设置”。 | 
-| playerColor | false | String | 播放器控制栏颜色，默认：#666666 | 
-| scene | false | String | 直播场景，alone 活动拍摄; ppt 三分屏; topclass 大班课 | 
-| categoryId | false | Integer | 新建频道的所属分类，如果不提交，则为默认分类。分类ID可通过“获取直播分类”接口得到 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| name | String | 频道名称 | 
+| channelPasswd | String | 频道密码，长度不能超过16位，必须同时包含字母和数字 | 
+| courseId | String | 课程号 | 
+| autoPlay | Integer | 是否自动播放，0/1，默认1.注意，如果该值为空，则该频道会使用全局的“功能开关设置”。如果非空，则会使用频道的“功能开关设置”。 | 
+| playerColor | String | 播放器控制栏颜色，默认：#666666 | 
+| scene | String | 直播场景，alone 活动拍摄; ppt 三分屏; topclass 大班课 | 
+| categoryId | Integer | 新建频道的所属分类，如果不提交，则为默认分类。分类ID可通过“获取直播分类”接口得到 | 
 
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channels | false | Array | 频道基本信息【详见[LiveChannelResponse参数描述](channelOperate.md?id=polyv12)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channels | Array | 频道基本信息【详见[LiveChannelResponse参数描述](channelOperate.md?id=polyv12)】 | 
 
 <h6 id="polyv12"><a href="#/channelOperate.md?id=polyv12"data-id="LiveChannelResponse参数描述"class="anchor"><span>LiveChannelResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 直播频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| name | false | String | 直播频道名称 | 
-| description | false | String | 直播频道描述 | 
-| url | false | String | 直播推流地址 | 
-| stream | false | String | 直播流名称 | 
-| logoImage | false | String | 播放器logo | 
-| logoOpacity | false | Float | Logo不透明度，1表示完全不透明 | 
-| logoPosition | false | String | Logo位置 | 
-| logoHref | false | String | Logo的跳转链接 | 
-| coverImage | false | String | 播放前显示的封面图 | 
-| coverHref | false | String | 封面图的跳转链接 | 
-| waitImage | false | String | 等待推流时的显示图片 | 
-| waitHref | false | String | 等待推流时显示图片的跳转链接 | 
-| cutoffImage | false | String | 切断流时的显示图片 | 
-| cutoffHref | false | String | 切断流时显示图片的跳转链接 | 
-| advertType | false | String | 广告类型 | 
-| advertDuration | false | Integer | 广告时长，单位：秒 | 
-| advertWidth | false | Integer | 广告区域宽度 | 
-| advertHeight | false | Integer | 广告区域高度 | 
-| advertImage | false | String | 图片广告 | 
-| advertHref | false | String | 广告的跳转链接 | 
-| advertFlvVid | false | String | 视频广告ID | 
-| advertFlvUrl | false | String | 视频广告链接 | 
-| playerColor | false | String | 播放器控制栏颜色 | 
-| autoPlay | false | Boolean | 自动播放，true为自动播放，false为关闭 | 
-| warmUpFlv | false | String | 一开始的暖场视频 | 
-| passwdRestrict | false | Boolean | 观看密码限制，需要输入观看密码才能播放流 | 
-| passwdEncrypted | false | String | 观看密码加密后的密文 | 
-| isOnlyAudio | false | String | 仅推音频流，Y-是，N-否 | 
-| isLowLatency | false | String | 低延迟，Y-是，N-否 | 
-| m3u8Url | false | String | 直播拉流（播放）m3u8地址 | 
-| m3u8Url1 | false | String | 直播拉流（播放）m3u8地址1 | 
-| m3u8Url2 | false | String | 直播拉流（播放）m3u8地址2 | 
-| m3u8Url3 | false | String | 直播拉流（播放）m3u8地址3 | 
-| currentTimeMillis | false | Long | 服务器返回的时间戳（毫秒） | 
-| linkMicLimit | false | Integer | 连麦人数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 直播频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| name | String | 直播频道名称 | 
+| description | String | 直播频道描述 | 
+| url | String | 直播推流地址 | 
+| stream | String | 直播流名称 | 
+| logoImage | String | 播放器logo | 
+| logoOpacity | Float | Logo不透明度，1表示完全不透明 | 
+| logoPosition | String | Logo位置 | 
+| logoHref | String | Logo的跳转链接 | 
+| coverImage | String | 播放前显示的封面图 | 
+| coverHref | String | 封面图的跳转链接 | 
+| waitImage | String | 等待推流时的显示图片 | 
+| waitHref | String | 等待推流时显示图片的跳转链接 | 
+| cutoffImage | String | 切断流时的显示图片 | 
+| cutoffHref | String | 切断流时显示图片的跳转链接 | 
+| advertType | String | 广告类型 | 
+| advertDuration | Integer | 广告时长，单位：秒 | 
+| advertWidth | Integer | 广告区域宽度 | 
+| advertHeight | Integer | 广告区域高度 | 
+| advertImage | String | 图片广告 | 
+| advertHref | String | 广告的跳转链接 | 
+| advertFlvVid | String | 视频广告ID | 
+| advertFlvUrl | String | 视频广告链接 | 
+| playerColor | String | 播放器控制栏颜色 | 
+| autoPlay | Boolean | 自动播放，true为自动播放，false为关闭 | 
+| warmUpFlv | String | 一开始的暖场视频 | 
+| passwdRestrict | Boolean | 观看密码限制，需要输入观看密码才能播放流 | 
+| passwdEncrypted | String | 观看密码加密后的密文 | 
+| isOnlyAudio | String | 仅推音频流，Y-是，N-否 | 
+| isLowLatency | String | 低延迟，Y-是，N-否 | 
+| m3u8Url | String | 直播拉流（播放）m3u8地址 | 
+| m3u8Url1 | String | 直播拉流（播放）m3u8地址1 | 
+| m3u8Url2 | String | 直播拉流（播放）m3u8地址2 | 
+| m3u8Url3 | String | 直播拉流（播放）m3u8地址3 | 
+| currentTimeMillis | Long | 服务器返回的时间戳（毫秒） | 
+| linkMicLimit | Integer | 连麦人数 | 
 
 <br /><br />
 
@@ -471,52 +471,52 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| name | false | String | 直播频道名称 | 
-| description | false | String | 直播频道描述 | 
-| url | false | String | 直播推流地址 | 
-| stream | false | String | 直播流名称 | 
-| logoImage | false | String | 播放器logo | 
-| logoOpacity | false | Float | Logo不透明度， 取值【0-1】, 1表示完全不透明 | 
-| logoPosition | false | String | Logo位置 | 
-| logoHref | false | String | Logo的跳转链接 | 
-| coverImage | false | String | 播放前显示的封面图 | 
-| coverHref | false | String | 封面图的跳转链接 | 
-| waitImage | false | String | 等待推流时的显示图片 | 
-| waitHref | false | String | 等待推流时显示图片的跳转链接 | 
-| cutoffImage | false | String | 切断流时的显示图片 | 
-| cutoffHref | false | String | 切断流时显示图片的跳转链接 | 
-| advertType | false | String | 广告类型 | 
-| advertDuration | false | String | 广告时长，单位：秒 | 
-| advertWidth | false | String | 广告区域宽度 | 
-| advertHeight | false | String | 广告区域高度 | 
-| advertImage | false | String | 图片广告 | 
-| advertHref | false | String | 广告的跳转链接 | 
-| advertFlvVid | false | String | 视频广告ID | 
-| advertFlvUrl | false | String | 视频广告链接 | 
-| playerColor | false | String | 播放器控制栏颜色 | 
-| autoPlay | false | Boolean | 自动播放 | 
-| warmUpFlv | false | String | 一开始的暖场视频 | 
-| passwdRestrict | false | Boolean | 观看密码限制，需要输入观看密码才能播放流 | 
-| passwdEncrypted | false | String | 观看密码加密后的密文 | 
-| isOnlyAudio | false | String | 仅推音频流 | 
-| isLowLatency | false | String | 低延迟 | 
-| m3u8Url | false | String | 直播拉流（播放）m3u8地址 | 
-| m3u8Url1 | false | String | 直播拉流（播放）m3u8地址1 | 
-| m3u8Url2 | false | String | 直播拉流（播放）m3u8地址2 | 
-| m3u8Url3 | false | String | 直播拉流（播放）m3u8地址3 | 
-| currentTimeMillis | false | Long | 服务器返回的时间戳（毫秒） | 
-| channelLogoImage | false | String | 频道的图标 | 
-| code | false | String | 异常错误代码 | 
-| msg | false | String | 异常消息 | 
-| publisher | false | String | 主持人姓名 | 
-| scene | false | String | 直播场景：alone 活动直播, topclass 大班课, ppt 三分屏 | 
-| categoryId | false | String | 所属分类Id | 
-| categoryName | false | String | 所属分类名称 | 
-| channelPasswd | false | String | 频道密码 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| name | String | 直播频道名称 | 
+| description | String | 直播频道描述 | 
+| url | String | 直播推流地址 | 
+| stream | String | 直播流名称 | 
+| logoImage | String | 播放器logo | 
+| logoOpacity | Float | Logo不透明度， 取值【0-1】, 1表示完全不透明 | 
+| logoPosition | String | Logo位置 | 
+| logoHref | String | Logo的跳转链接 | 
+| coverImage | String | 播放前显示的封面图 | 
+| coverHref | String | 封面图的跳转链接 | 
+| waitImage | String | 等待推流时的显示图片 | 
+| waitHref | String | 等待推流时显示图片的跳转链接 | 
+| cutoffImage | String | 切断流时的显示图片 | 
+| cutoffHref | String | 切断流时显示图片的跳转链接 | 
+| advertType | String | 广告类型 | 
+| advertDuration | String | 广告时长，单位：秒 | 
+| advertWidth | String | 广告区域宽度 | 
+| advertHeight | String | 广告区域高度 | 
+| advertImage | String | 图片广告 | 
+| advertHref | String | 广告的跳转链接 | 
+| advertFlvVid | String | 视频广告ID | 
+| advertFlvUrl | String | 视频广告链接 | 
+| playerColor | String | 播放器控制栏颜色 | 
+| autoPlay | Boolean | 自动播放 | 
+| warmUpFlv | String | 一开始的暖场视频 | 
+| passwdRestrict | Boolean | 观看密码限制，需要输入观看密码才能播放流 | 
+| passwdEncrypted | String | 观看密码加密后的密文 | 
+| isOnlyAudio | String | 仅推音频流 | 
+| isLowLatency | String | 低延迟 | 
+| m3u8Url | String | 直播拉流（播放）m3u8地址 | 
+| m3u8Url1 | String | 直播拉流（播放）m3u8地址1 | 
+| m3u8Url2 | String | 直播拉流（播放）m3u8地址2 | 
+| m3u8Url3 | String | 直播拉流（播放）m3u8地址3 | 
+| currentTimeMillis | Long | 服务器返回的时间戳（毫秒） | 
+| channelLogoImage | String | 频道的图标 | 
+| code | String | 异常错误代码 | 
+| msg | String | 异常消息 | 
+| publisher | String | 主持人姓名 | 
+| scene | String | 直播场景：alone 活动直播, topclass 大班课, ppt 三分屏 | 
+| categoryId | String | 所属分类Id | 
+| categoryName | String | 所属分类名称 | 
+| channelPasswd | String | 频道密码 | 
 
 <br /><br />
 
@@ -576,59 +576,59 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| name | false | String | 频道名称 | 
-| channelPasswd | false | String | 频道密码 | 
-| publisher | false | String | 主持人名称 | 
-| startTime | false | Date | 直播开始时间，关闭时为null | 
-| pageView | false | Integer | 页面累计观看数 | 
-| likes | false | Integer | 观看页点赞数 | 
-| coverImg | false | String | 频道图标url | 
-| splashImg | false | String | 频道引导图url | 
-| splashEnabled | false | String | 引导页开关（取值为Y/N） | 
-| desc | false | String | 直播介绍 | 
-| consultingMenuEnabled | false | String | 咨询提问开关（取值为Y/N） | 
-| maxViewerRestrict | false | String | 限制最大在线观看人数开关（取值为Y/N） | 
-| maxViewer | false | Integer | 最大在线观看人数 | 
-| watchStatus | false | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
-| watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
-| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](channelOperate.md?id=polyv13)】 | 
-| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](channelOperate.md?id=polyv14)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| name | String | 频道名称 | 
+| channelPasswd | String | 频道密码 | 
+| publisher | String | 主持人名称 | 
+| startTime | Date | 直播开始时间，关闭时为null | 
+| pageView | Integer | 页面累计观看数 | 
+| likes | Integer | 观看页点赞数 | 
+| coverImg | String | 频道图标url | 
+| splashImg | String | 频道引导图url | 
+| splashEnabled | String | 引导页开关（取值为Y/N） | 
+| desc | String | 直播介绍 | 
+| consultingMenuEnabled | String | 咨询提问开关（取值为Y/N） | 
+| maxViewerRestrict | String | 限制最大在线观看人数开关（取值为Y/N） | 
+| maxViewer | Integer | 最大在线观看人数 | 
+| watchStatus | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
+| watchStatusText | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
+| userCategory | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](channelOperate.md?id=polyv13)】 | 
+| authSettings | Array | 直播观看条件列表【详见[AuthSetting参数描述](channelOperate.md?id=polyv14)】 | 
 
 <h6 id="polyv13"><a href="#/channelOperate.md?id=polyv13"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| categoryId | false | Integer | 分类ID | 
-| categoryName | false | String | 分类名称 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| rank | false | Integer | 分类的排序值 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| categoryId | Integer | 分类ID | 
+| categoryName | String | 分类名称 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| rank | Integer | 分类的排序值 | 
 
 <h6 id="polyv14"><a href="#/channelOperate.md?id=polyv14"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| rank | false | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
-| globalSettingEnabled | false | String | 是否开启全局设置（Y/N） | 
-| enabled | false | String | 是否开启观看条件(Y/N) | 
-| authType | false | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
-| authTips | false | String | 白名单观看提示信息 | 
-| payAuthTips | false | String | 付费观看提示信息 | 
-| authCode | false | String | 验证码观看方式的验证码 | 
-| qcodeTips | false | String | 验证码观看方式的二维码提示 | 
-| qcodeImg | false | String | 验证码观看方式的二维码图片 | 
-| price | false | Integer | 付费观看的价格 | 
-| watchEndTime | false | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
-| validTimePeriod | false | Integer | 付费观看的截止时长（天） | 
-| customKey | false | String | 自定义授权观看的key | 
-| customUri | false | String | 自定义授权观看的接口地址 | 
-| externalKey | false | String | 外部授权观看的key | 
-| externalUri | false | String | 外部授权观看的接口地址 | 
-| externalRedirectUri | false | String | 外部授权观看，用户直接访问观看页时的跳转地址 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| rank | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
+| globalSettingEnabled | String | 是否开启全局设置（Y/N） | 
+| enabled | String | 是否开启观看条件(Y/N) | 
+| authType | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
+| authTips | String | 白名单观看提示信息 | 
+| payAuthTips | String | 付费观看提示信息 | 
+| authCode | String | 验证码观看方式的验证码 | 
+| qcodeTips | String | 验证码观看方式的二维码提示 | 
+| qcodeImg | String | 验证码观看方式的二维码图片 | 
+| price | Integer | 付费观看的价格 | 
+| watchEndTime | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
+| validTimePeriod | Integer | 付费观看的截止时长（天） | 
+| customKey | String | 自定义授权观看的key | 
+| customUri | String | 自定义授权观看的接口地址 | 
+| externalKey | String | 外部授权观看的key | 
+| externalUri | String | 外部授权观看的接口地址 | 
+| externalRedirectUri | String | 外部授权观看，用户直接访问观看页时的跳转地址 | 
 
 <br /><br />
 
@@ -694,10 +694,10 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| token | false | String | 链接接口需要的token值 | 
-| mediaChannelKey | false | String | 连麦需要的key | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| token | String | 链接接口需要的token值 | 
+| mediaChannelKey | String | 连麦需要的key | 
 
 <br /><br />
 
@@ -784,58 +784,58 @@
 
 <h6 id="polyv15"><a href="#/channelOperate.md?id=polyv15"data-id="BasicSetting参数描述"class="anchor"><span>BasicSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| name | false | String | 频道名称 | 
-| channelPasswd | false | String | 频道密码,长度不能超过16位,必须同时包含字母和数字 | 
-| publisher | false | String | 主持人名称 | 
-| startTime | false | Long | 直播开始时间，13位时间戳，设置为0 表示关闭直播开始时间显示 | 
-| pageView | false | Integer | 累积观看数 | 
-| likes | false | Integer | 点赞数 | 
-| coverImg | false | String | 封面图片地址 | 
-| splashImg | false | String | 引导图地址 | 
-| splashEnabled | false | String | 引导页开关(Y、N) | 
-| desc | false | String | 直播介绍 | 
-| consultingMenuEnabled | false | String | 咨询提问开关(Y、N) | 
-| maxViewerRestrict | false | String | 是否限制最大观看人数(Y、N) | 
-| maxViewer | false | Integer | 最大在线人数 | 
-| categoryId | false | Integer | 频道的所属分类（分类ID可通过“获取直播分类”接口得到） | 
-| linkMicLimit | false | Integer | -1<=连麦人数<=账号的连麦人数，-1：使用账号的连麦人数，最大16人 | 
-| operation | false | String | 是否增加转播关联，Y：表示增加关联，N：表示取消关联 (注：需要开启频道转播功能该参数才生效)(Y、N) | 
-| receiveChannelIds | false | String | 接收转播频道号，多个频道号用半角逗号,隔开(注：需要开启频道转播功能该参数才生效) | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| name | String | 频道名称 | 
+| channelPasswd | String | 频道密码,长度不能超过16位,必须同时包含字母和数字 | 
+| publisher | String | 主持人名称 | 
+| startTime | Long | 直播开始时间，13位时间戳，设置为0 表示关闭直播开始时间显示 | 
+| pageView | Integer | 累积观看数 | 
+| likes | Integer | 点赞数 | 
+| coverImg | String | 封面图片地址 | 
+| splashImg | String | 引导图地址 | 
+| splashEnabled | String | 引导页开关(Y、N) | 
+| desc | String | 直播介绍 | 
+| consultingMenuEnabled | String | 咨询提问开关(Y、N) | 
+| maxViewerRestrict | String | 是否限制最大观看人数(Y、N) | 
+| maxViewer | Integer | 最大在线人数 | 
+| categoryId | Integer | 频道的所属分类（分类ID可通过“获取直播分类”接口得到） | 
+| linkMicLimit | Integer | -1<=连麦人数<=账号的连麦人数，-1：使用账号的连麦人数，最大16人 | 
+| operation | String | 是否增加转播关联，Y：表示增加关联，N：表示取消关联 (注：需要开启频道转播功能该参数才生效)(Y、N) | 
+| receiveChannelIds | String | 接收转播频道号，多个频道号用半角逗号,隔开(注：需要开启频道转播功能该参数才生效) | 
 
 <h6 id="polyv16"><a href="#/channelOperate.md?id=polyv16"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| rank | true | Integer | 通用参数：主要观看条件为1，次要观看条件为2 | 
-| enabled | true | String | 通用参数：是否开启，Y为开启，N为关闭 | 
-| authType | false | String | 通用参数：付费观看-pay，验证码观看-code，白名单观看-phone，登记观看-info，自定义授权观看-custom，外部授权-external,直接授权-direct | 
-| payAuthTips | false | String | 付费观看参数：欢迎语标题 | 
-| price | false | Float | 付费观看参数：价格，单位为元 | 
-| watchEndTime | false | Date | 付费观看参数：付费有效截止日期。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
-| validTimePeriod | false | Integer | 付费观看参数：付费有效时长，单位天。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
-| authCode | false | String | 验证码观看参数：验证码 | 
-| qcodeTips | false | String | 验证码观看参数：提示文案 | 
-| qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
-| authTips | false | String | 白名单观看参数：提示文案 | 
-| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](channelOperate.md?id=polyv17)】 | 
-| externalKey | false | String | 外部授权参数：SecretKey | 
-| externalUri | false | String | 外部授权参数：自定义url | 
-| externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
-| customKey | false | String | 自定义授权参数：SecretKey | 
-| customUri | false | String | 自定义授权参数：自定义url | 
-| directKey | false | String | 直接授权参数：直接授权SecretKey | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| rank | Integer | 通用参数：主要观看条件为1，次要观看条件为2 | 
+| enabled | String | 通用参数：是否开启，Y为开启，N为关闭 | 
+| authType | String | 通用参数：付费观看-pay，验证码观看-code，白名单观看-phone，登记观看-info，自定义授权观看-custom，外部授权-external,直接授权-direct | 
+| payAuthTips | String | 付费观看参数：欢迎语标题 | 
+| price | Float | 付费观看参数：价格，单位为元 | 
+| watchEndTime | Date | 付费观看参数：付费有效截止日期。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
+| validTimePeriod | Integer | 付费观看参数：付费有效时长，单位天。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
+| authCode | String | 验证码观看参数：验证码 | 
+| qcodeTips | String | 验证码观看参数：提示文案 | 
+| qcodeImg | String | 验证码观看参数：公众号二维码地址 | 
+| authTips | String | 白名单观看参数：提示文案 | 
+| infoFields | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](channelOperate.md?id=polyv17)】 | 
+| externalKey | String | 外部授权参数：SecretKey | 
+| externalUri | String | 外部授权参数：自定义url | 
+| externalRedirectUri | String | 外部授权参数：跳转地址 | 
+| customKey | String | 自定义授权参数：SecretKey | 
+| customUri | String | 自定义授权参数：自定义url | 
+| directKey | String | 直接授权参数：直接授权SecretKey | 
 
 <h6 id="polyv17"><a href="#/channelOperate.md?id=polyv17"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| name | false | String | 登记信息名，最多为8字符 | 
-| type | true | String | 登记类型，姓名-name，文本-text，手机号码-mobile，数字-number，下拉选项-option | 
-| options | false | String | 下拉选项时，下拉的选项值，以英文逗号分割。选项个数上限为8个；选项内容最多为8字符 | 
-| placeholder | false | String | 文本框输入提示，最多为8字符 | 
-| sms | false | String | 短信验证开关，Y 开启，N 关闭 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| name | String | 登记信息名，最多为8字符 | 
+| type | String | 登记类型，姓名-name，文本-text，手机号码-mobile，数字-number，下拉选项-option | 
+| options | String | 下拉选项时，下拉的选项值，以英文逗号分割。选项个数上限为8个；选项内容最多为8字符 | 
+| placeholder | String | 文本框输入提示，最多为8字符 | 
+| sms | String | 短信验证开关，Y 开启，N 关闭 | 
 
 ### 返回对象描述
 
@@ -1212,24 +1212,24 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| account | false | String | 助教ID | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| channelId | false | String | 频道号 | 
-| passwd | false | String | 助教密码 | 
-| nickname | false | String | 助教名称 | 
-| stream | false | String | 助教流名（单独使用无效） | 
-| status | false | String | 助教状态(Y/N) | 
-| createdTime | false | Date | 创建助教时间 | 
-| lastModified | false | Date | 助教最后修改时间 | 
-| sort | false | Integer | 频道中所有助教序号 | 
-| avatar | false | String | 助教头像 | 
-| pageTurnEnabled | false | String | 助教翻页权限（只能一个助教有,Y或N） | 
-| notifyEnabled | false | String | 发布公告权限(Y/N) | 
-| checkinEnabled | false | String | 开启签到权限(Y/N) | 
-| voteEnabled | false | String | 发起投票(Y/N) | 
-| role | false | String | 子频道角色 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| account | String | 助教ID | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| channelId | String | 频道号 | 
+| passwd | String | 助教密码 | 
+| nickname | String | 助教名称 | 
+| stream | String | 助教流名（单独使用无效） | 
+| status | String | 助教状态(Y/N) | 
+| createdTime | Date | 创建助教时间 | 
+| lastModified | Date | 助教最后修改时间 | 
+| sort | Integer | 频道中所有助教序号 | 
+| avatar | String | 助教头像 | 
+| pageTurnEnabled | String | 助教翻页权限（只能一个助教有,Y或N） | 
+| notifyEnabled | String | 发布公告权限(Y/N) | 
+| checkinEnabled | String | 开启签到权限(Y/N) | 
+| voteEnabled | String | 发起投票(Y/N) | 
+| role | String | 子频道角色 | 
 
 <br /><br />
 
@@ -1302,24 +1302,24 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| account | false | String | 助教ID | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| channelId | false | String | 频道号 | 
-| passwd | false | String | 助教密码 | 
-| nickname | false | String | 助教名称 | 
-| stream | false | String | 助教流名（单独使用无效） | 
-| status | false | String | 助教状态(Y/N) | 
-| createdTime | false | Date | 创建助教时间 | 
-| lastModified | false | Date | 助教最后修改时间 | 
-| sort | false | Integer | 频道中所有助教序号 | 
-| avatar | false | String | 助教头像 | 
-| pageTurnEnabled | false | String | 助教翻页权限（只能一个助教有,Y或N） | 
-| notifyEnabled | false | String | 发布公告权限(Y/N) | 
-| checkinEnabled | false | String | 开启签到权限(Y/N) | 
-| voteEnabled | false | String | 发起投票(Y/N) | 
-| role | false | String | 子频道角色 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| account | String | 助教ID | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| channelId | String | 频道号 | 
+| passwd | String | 助教密码 | 
+| nickname | String | 助教名称 | 
+| stream | String | 助教流名（单独使用无效） | 
+| status | String | 助教状态(Y/N) | 
+| createdTime | Date | 创建助教时间 | 
+| lastModified | Date | 助教最后修改时间 | 
+| sort | Integer | 频道中所有助教序号 | 
+| avatar | String | 助教头像 | 
+| pageTurnEnabled | String | 助教翻页权限（只能一个助教有,Y或N） | 
+| notifyEnabled | String | 发布公告权限(Y/N) | 
+| checkinEnabled | String | 开启签到权限(Y/N) | 
+| voteEnabled | String | 发起投票(Y/N) | 
+| role | String | 子频道角色 | 
 
 <br /><br />
 
@@ -1383,25 +1383,25 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| account | false | String | 子频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| channelId | false | String | 频道号 | 
-| passwd | false | String | 子频道密码 | 
-| nickname | false | String | 子频道名称 | 
-| stream | false | String | 子频道流名（单独使用无效） | 
-| status | false | String | 子频道状态 | 
-| createdTime | false | Date | 创建子频道时间 | 
-| lastModified | false | Date | 子频道最后修改时间 | 
-| sort | false | Integer | 频道中所有子频道序号 | 
-| avatar | false | String | 子频道头像 | 
-| pageTurnEnabled | false | String | 子频道翻页权限（只能一个子频道有） | 
-| notifyEnabled | false | String | 发布公告权限(Y/N) | 
-| checkinEnabled | false | String | 开启签到权限(Y/N) | 
-| voteEnabled | false | String | 发起投票(Y/N) | 
-| role | false | String | 子频道角色 | 
-| pushUrl | false | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| account | String | 子频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| channelId | String | 频道号 | 
+| passwd | String | 子频道密码 | 
+| nickname | String | 子频道名称 | 
+| stream | String | 子频道流名（单独使用无效） | 
+| status | String | 子频道状态 | 
+| createdTime | Date | 创建子频道时间 | 
+| lastModified | Date | 子频道最后修改时间 | 
+| sort | Integer | 频道中所有子频道序号 | 
+| avatar | String | 子频道头像 | 
+| pageTurnEnabled | String | 子频道翻页权限（只能一个子频道有） | 
+| notifyEnabled | String | 发布公告权限(Y/N) | 
+| checkinEnabled | String | 开启签到权限(Y/N) | 
+| voteEnabled | String | 发起投票(Y/N) | 
+| role | String | 子频道角色 | 
+| pushUrl | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
 
 <br /><br />
 
@@ -1461,31 +1461,31 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](channelOperate.md?id=polyv18)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| sonChannelInfos | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](channelOperate.md?id=polyv18)】 | 
 
 <h6 id="polyv18"><a href="#/channelOperate.md?id=polyv18"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| account | false | String | 子频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| channelId | false | String | 频道号 | 
-| passwd | false | String | 子频道密码 | 
-| nickname | false | String | 子频道名称 | 
-| stream | false | String | 子频道流名（单独使用无效） | 
-| status | false | String | 子频道状态 | 
-| createdTime | false | Date | 创建子频道时间 | 
-| lastModified | false | Date | 子频道最后修改时间 | 
-| sort | false | Integer | 频道中所有子频道序号 | 
-| avatar | false | String | 子频道头像 | 
-| pageTurnEnabled | false | String | 子频道翻页权限（只能一个子频道有） | 
-| notifyEnabled | false | String | 发布公告权限(Y/N) | 
-| checkinEnabled | false | String | 开启签到权限(Y/N) | 
-| voteEnabled | false | String | 发起投票(Y/N) | 
-| role | false | String | 子频道角色 | 
-| pushUrl | false | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| account | String | 子频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| channelId | String | 频道号 | 
+| passwd | String | 子频道密码 | 
+| nickname | String | 子频道名称 | 
+| stream | String | 子频道流名（单独使用无效） | 
+| status | String | 子频道状态 | 
+| createdTime | Date | 创建子频道时间 | 
+| lastModified | Date | 子频道最后修改时间 | 
+| sort | Integer | 频道中所有子频道序号 | 
+| avatar | String | 子频道头像 | 
+| pageTurnEnabled | String | 子频道翻页权限（只能一个子频道有） | 
+| notifyEnabled | String | 发布公告权限(Y/N) | 
+| checkinEnabled | String | 开启签到权限(Y/N) | 
+| voteEnabled | String | 发起投票(Y/N) | 
+| role | String | 子频道角色 | 
+| pushUrl | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
 
 <br /><br />
 
@@ -1814,26 +1814,26 @@ true为创建成功，false为创建失败
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 课件重制任务列表【详见[LivePPTRecord参数描述](channelOperate.md?id=polyv19)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 课件重制任务列表【详见[LivePPTRecord参数描述](channelOperate.md?id=polyv19)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv19"><a href="#/channelOperate.md?id=polyv19"data-id="LivePPTRecord参数描述"class="anchor"><span>LivePPTRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 直播频道号 | 
-| title | false | String | 对应回放的名称 | 
-| url | false | String | 重制mp4下载地址，有24小时的防盗链超时时间 | 
-| sessionId | false | String | 场次id | 
-| startTime | false | Date | 对应回放的直播开始时间,格式为yyyy-MM-dd HH:mm:ss | 
-| status | false | String | 状态值，waiting-等待处理；process-处理中；success-重制成功；fail-重制失败；uploaded-上传点播成功；uploadFailed-上传点播失败； | 
-| remainDay | false | Integer | 重制剩余的过期时间，过期后将无法访问和下载，单位：天 | 
-| duration | false | Integer | 重制的视频时长，单位秒 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 直播频道号 | 
+| title | String | 对应回放的名称 | 
+| url | String | 重制mp4下载地址，有24小时的防盗链超时时间 | 
+| sessionId | String | 场次id | 
+| startTime | Date | 对应回放的直播开始时间,格式为yyyy-MM-dd HH:mm:ss | 
+| status | String | 状态值，waiting-等待处理；process-处理中；success-重制成功；fail-重制失败；uploaded-上传点播成功；uploadFailed-上传点播失败； | 
+| remainDay | Integer | 重制剩余的过期时间，过期后将无法访问和下载，单位：天 | 
+| duration | Integer | 重制的视频时长，单位秒 | 
 
 <br /><br />
 
@@ -1893,16 +1893,16 @@ true为创建成功，false为创建失败
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| recordCallbackUrl | false | String | 录制生成回调URL | 
-| playbackCallbackUrl | false | String | 录制视频转存成功回调URL | 
-| streamCallbackUrl | false | String | 流状态回调URL | 
-| liveScanCallbackUrl | false | String | 直播内容审核回调URL | 
-| recordCallbackVideoType | false | String | 录制回调的视频类型,多个视频类型用,分隔 | 
-| playbackCacheCallbackUrl | false | String | 回放缓存生成成功的回调URL | 
-| pptRecordCallbackUrl | false | String | 课件重制成功回调URL | 
-| globalSettingEnabled | false | String | 是否应用全局设置开关，Y走用户回调设置，N走频道设置 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| recordCallbackUrl | String | 录制生成回调URL | 
+| playbackCallbackUrl | String | 录制视频转存成功回调URL | 
+| streamCallbackUrl | String | 流状态回调URL | 
+| liveScanCallbackUrl | String | 直播内容审核回调URL | 
+| recordCallbackVideoType | String | 录制回调的视频类型,多个视频类型用,分隔 | 
+| playbackCacheCallbackUrl | String | 回放缓存生成成功的回调URL | 
+| pptRecordCallbackUrl | String | 课件重制成功回调URL | 
+| globalSettingEnabled | String | 是否应用全局设置开关，Y走用户回调设置，N走频道设置 | 
 
 <br /><br />
 
@@ -2050,42 +2050,42 @@ null
 
 <h6 id="polyv20"><a href="#/channelOperate.md?id=polyv20"data-id="SonChannel参数描述"class="anchor"><span>SonChannel参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| role | false | String | 默认不传为助教，传Guest为嘉宾 | 
-| nickname | false | String | 创建的助教或嘉宾昵称 | 
-| passwd | true | String | 子频道密码 | 
-| actor | true | String | 创建的助教或嘉宾头衔 | 
-| avatar | true | String | 创建的助教或嘉宾头像 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| role | String | 默认不传为助教，传Guest为嘉宾 | 
+| nickname | String | 创建的助教或嘉宾昵称 | 
+| passwd | String | 子频道密码 | 
+| actor | String | 创建的助教或嘉宾头衔 | 
+| avatar | String | 创建的助教或嘉宾头像 | 
 
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| sonChannelInfos | false | Array | 子频道返回信息【详见[SonChannelInfo参数描述](channelOperate.md?id=polyv21)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| sonChannelInfos | Array | 子频道返回信息【详见[SonChannelInfo参数描述](channelOperate.md?id=polyv21)】 | 
 
 <h6 id="polyv21"><a href="#/channelOperate.md?id=polyv21"data-id="SonChannelInfo参数描述"class="anchor"><span>SonChannelInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| account | false | Integer | 助教ID | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| channelId | false | String | 频道号 | 
-| passwd | false | String | 助教密码 | 
-| nickname | false | String | 助教名称 | 
-| stream | false | String | 助教流名（单独使用无效） | 
-| status | false | String | 助教状态(Y/N) | 
-| createdTime | false | Date | 创建助教时间 | 
-| lastModified | false | Date | 助教最后修改时间 | 
-| sort | false | Integer | 频道中所有助教序号 | 
-| avatar | false | String | 助教头像 | 
-| pageTurnEnabled | false | String | 助教翻页权限（只能一个助教有） | 
-| notifyEnabled | false | String | 发布公告权限(Y/N) | 
-| checkinEnabled | false | String | 开启签到权限(Y/N) | 
-| voteEnabled | false | String | 发起投票(Y/N) | 
-| role | false | String | 子频道角色,guest等 | 
-| loginUrl | false | String | 子账号（嘉宾）登陆地址 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| account | Integer | 助教ID | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| channelId | String | 频道号 | 
+| passwd | String | 助教密码 | 
+| nickname | String | 助教名称 | 
+| stream | String | 助教流名（单独使用无效） | 
+| status | String | 助教状态(Y/N) | 
+| createdTime | Date | 创建助教时间 | 
+| lastModified | Date | 助教最后修改时间 | 
+| sort | Integer | 频道中所有助教序号 | 
+| avatar | String | 助教头像 | 
+| pageTurnEnabled | String | 助教翻页权限（只能一个助教有） | 
+| notifyEnabled | String | 发布公告权限(Y/N) | 
+| checkinEnabled | String | 开启签到权限(Y/N) | 
+| voteEnabled | String | 发起投票(Y/N) | 
+| role | String | 子频道角色,guest等 | 
+| loginUrl | String | 子账号（嘉宾）登陆地址 | 
 
 <br /><br />
 
@@ -2145,16 +2145,16 @@ null
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelTransmits | false | Array | 账号或频道转播信息【详见[ChannelTransmit参数描述](channelOperate.md?id=polyv22)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelTransmits | Array | 账号或频道转播信息【详见[ChannelTransmit参数描述](channelOperate.md?id=polyv22)】 | 
 
 <h6 id="polyv22"><a href="#/channelOperate.md?id=polyv22"data-id="ChannelTransmit参数描述"class="anchor"><span>ChannelTransmit参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 发起转播频道号，如果一个接收转播频道没有关联主频道，则该值为null | 
-| receiveChannelId | false | String | 接收转播频道号 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 发起转播频道号，如果一个接收转播频道没有关联主频道，则该值为null | 
+| receiveChannelId | String | 接收转播频道号 | 
 
 <br /><br />
 
@@ -2276,17 +2276,17 @@ true为设置成功，false为设置失败
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelAdverts | false | Array | 频道广告【详见[ChannelAdvert参数描述](channelOperate.md?id=polyv23)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelAdverts | Array | 频道广告【详见[ChannelAdvert参数描述](channelOperate.md?id=polyv23)】 | 
 
 <h6 id="polyv23"><a href="#/channelOperate.md?id=polyv23"data-id="ChannelAdvert参数描述"class="anchor"><span>ChannelAdvert参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| text | false | String | 文本广告内容 | 
-| img | false | String | 图片广告链接 | 
-| href | false | String | 跳转链接 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| text | String | 文本广告内容 | 
+| img | String | 图片广告链接 | 
+| href | String | 跳转链接 | 
 
 <br /><br />
 

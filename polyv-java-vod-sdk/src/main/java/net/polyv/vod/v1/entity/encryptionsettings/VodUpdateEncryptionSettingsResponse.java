@@ -8,12 +8,12 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 设置账号加密设置返回实体
+ * 修改账号加密设置返回实体
  * @author: fangyan
  */
 @Data
 @Accessors(chain = true)
-@ApiModel("设置账号加密设置返回实体")
+@ApiModel("修改账号加密设置返回实体")
 public class VodUpdateEncryptionSettingsResponse {
     
     /**

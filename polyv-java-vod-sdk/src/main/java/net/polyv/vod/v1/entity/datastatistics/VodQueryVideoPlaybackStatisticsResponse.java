@@ -10,12 +10,12 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 查询视频播放量统计数据接口返回实体
+ * 查询视频播放量统计数据返回实体
  * @author: fangyan
  */
 @Data
 @Accessors(chain = true)
-@ApiModel("查询视频播放量统计数据接口返回实体")
+@ApiModel("查询视频播放量统计数据返回实体")
 public class VodQueryVideoPlaybackStatisticsResponse {
     /**
      * 当前日期，格式为：yyyy-MM-dd

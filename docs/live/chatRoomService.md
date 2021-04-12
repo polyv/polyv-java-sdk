@@ -15,8 +15,7 @@
         try {
             String channelId = super.createChannel();
             liveBadWordRequest.setChannelId(channelId)
-                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"}))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setWords(Arrays.asList(new String[]{"你好", "逗逼", "傻子"}));
             liveBadWordResponse = new LiveChatRoomServiceImpl().addBadWord(liveBadWordRequest);
             Assert.assertNotNull(liveBadWordResponse);
             if (liveBadWordResponse != null) {
@@ -37,9 +36,9 @@
 ### 单元测试说明
 1、请求正确，返回LiveBadWordResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -51,10 +50,10 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| count | false | Integer | 请求参设设置了频道号，count则为该频道严禁词的数量，如果没有设置频道号，count为该该账户严禁词的数量 | 
-| userId | false | String | POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| count | Integer | 请求参设设置了频道号，count则为该频道严禁词的数量，如果没有设置频道号，count为该该账户严禁词的数量 | 
+| userId | String | POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置） | 
 
 <br /><br />
 
@@ -83,8 +82,7 @@
                     .setPic("https://5b0988e595225.cdn.sohucs.com/q_70,c_zoom," +
                             "w_640/images/20190129/e3b0d6311b1a411fa68125fc03b8ef67.jpeg")
                     .setNickName("thomas")
-                    .setFreeReview(LiveConstant.Flag.YES.getFlag())
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setFreeReview(LiveConstant.Flag.YES.getFlag());
             liveSendChatMsgResponse = new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest);
             Assert.assertNotNull(liveSendChatMsgResponse);
             if (liveSendChatMsgResponse != null) {
@@ -105,9 +103,9 @@
 ### 单元测试说明
 1、请求正确，返回LiveSendChatMsgResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -124,9 +122,9 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| msgId | false | String | 发送消息ID | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| msgId | String | 发送消息ID | 
 
 <br /><br />
 
@@ -153,8 +151,7 @@
             liveGetHistoryChatMsgRequest.setChannelId(channelId)
                     .setStartDay(getDate(2020, 10, 01))
                     .setEndDay(getDate(2099, 12, 12))
-                    .setPageSize(2)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setPageSize(2);
             liveGetHistoryChatMsgResponsesList = new LiveChatRoomServiceImpl().getHistoryChatMsg(
                     liveGetHistoryChatMsgRequest);
             Assert.assertNotNull(liveGetHistoryChatMsgResponsesList);
@@ -176,9 +173,9 @@
 ### 单元测试说明
 1、请求正确，返回LiveGetHistoryChatMsgResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -196,38 +193,38 @@
 ### 返回对象描述
 返回对象是List&lt;LiveGetHistoryChatMsgResponse&gt;，**LiveGetHistoryChatMsgResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| userId | false | String | 直播账号userId | 
-| clientIP | false | String | 用户IP | 
-| content | false | String | 聊天内容 | 
-| id | false | String | 聊天消息id | 
-| image | false | String | 图片消息的图片地址 | 
-| roomId | false | Integer | 聊天记录所在的房间号 | 
-| channelId | false | String | 聊天记录所在的频道号 | 
-| sessionId | false | String | 场次号 | 
-| time | false | Date | 发送消息的时间 | 
-| source | false | String | 消息来源，目前有public(群聊)、extend（管理员私聊） | 
-| msgType | false | String | 消息类型，目前取值：redpaper: 红包消息；get_redpaper：领取红包消息；chatImg：图片消息；custom：自定义消息（通过socket发送的自定义消息）；reward：打赏消息；customerMessage：自定义消息（通过http接口发送的自定义消息） 为空（msgType=""）时表示普通聊天消息； | 
-| status | false | String | 审核状态，pass:已审核，censor：审核中，delete：删除 | 
-| user | false | User | 发送消息的观众【详见[User参数描述](chatRoomService.md?id=polyv33)】 | 
-| userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| userId | String | 直播账号userId | 
+| clientIP | String | 用户IP | 
+| content | String | 聊天内容 | 
+| id | String | 聊天消息id | 
+| image | String | 图片消息的图片地址 | 
+| roomId | Integer | 聊天记录所在的房间号 | 
+| channelId | String | 聊天记录所在的频道号 | 
+| sessionId | String | 场次号 | 
+| time | Date | 发送消息的时间 | 
+| source | String | 消息来源，目前有public(群聊)、extend（管理员私聊） | 
+| msgType | String | 消息类型，目前取值：redpaper: 红包消息；get_redpaper：领取红包消息；chatImg：图片消息；custom：自定义消息（通过socket发送的自定义消息）；reward：打赏消息；customerMessage：自定义消息（通过http接口发送的自定义消息） 为空（msgType=""）时表示普通聊天消息； | 
+| status | String | 审核状态，pass:已审核，censor：审核中，delete：删除 | 
+| user | User | 发送消息的观众【详见[User参数描述](chatRoomService.md?id=polyv33)】 | 
+| userType | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
 
 <h6 id="polyv33"><a href="#/chatRoomService.md?id=polyv33"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| clientIp | false | String | 用户IP | 
-| nickname | false | String | 观众昵称 | 
-| pic | false | String | 观众头像 | 
-| roomId | false | String | 用户登陆的房间号 | 
-| userId | false | String | 聊天室用户唯一标示 | 
-| uid | false | String | socketId | 
-| sessionId | false | String | 场次号 | 
-| channelId | false | String | 频道号 | 
-| banned | false | Boolean | 是否禁言 | 
-| actor | false | String | 角色 | 
-| userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| clientIp | String | 用户IP | 
+| nickname | String | 观众昵称 | 
+| pic | String | 观众头像 | 
+| roomId | String | 用户登陆的房间号 | 
+| userId | String | 聊天室用户唯一标示 | 
+| uid | String | socketId | 
+| sessionId | String | 场次号 | 
+| channelId | String | 频道号 | 
+| banned | Boolean | 是否禁言 | 
+| actor | String | 角色 | 
+| userType | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
 
 <br /><br />
 
@@ -251,7 +248,7 @@
         LiveGetChatAdminDataResponse liveGetChatAdminDataResponse = null;
         try {
             String channelId = super.createChannel();
-            liveGetChatAdminDataRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveGetChatAdminDataRequest.setChannelId(channelId);
             liveGetChatAdminDataResponse = new LiveChatRoomServiceImpl().getChatAdminData(liveGetChatAdminDataRequest);
             Assert.assertNotNull(liveGetChatAdminDataResponse);
             if (liveGetChatAdminDataResponse != null) {
@@ -272,9 +269,9 @@
 ### 单元测试说明
 1、请求正确，返回LiveGetChatAdminDataResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -285,12 +282,12 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| nickname | false | String | 讲师昵称 | 
-| actor | false | String | 讲师头衔 | 
-| avatar | false | String | 头像图片地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| nickname | String | 讲师昵称 | 
+| actor | String | 讲师头衔 | 
+| avatar | String | 头像图片地址 | 
+| requestId | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <br /><br />
 
@@ -315,8 +312,7 @@
         try {
             String channelId = super.createChannel();
             liveGetBannedListRequest.setChannelId(channelId)
-                    .setType(LiveConstant.BannedType.IP.getType())
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setType(LiveConstant.BannedType.IP.getType());
             liveGetBannedListResponseList = new LiveChatRoomServiceImpl().getBannedList(liveGetBannedListRequest);
             Assert.assertNotNull(liveGetBannedListResponseList);
             if (liveGetBannedListResponseList != null) {
@@ -337,9 +333,9 @@
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -374,7 +370,7 @@
         List<LiveKickedListResponse> liveKickedListResponsesList = null;
         try {
             String channelId = super.createChannel();
-            liveKickedListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveKickedListRequest.setChannelId(channelId);
             liveKickedListResponsesList = new LiveChatRoomServiceImpl().getKickedList(liveKickedListRequest);
             Assert.assertNotNull(liveKickedListResponsesList);
             if (liveKickedListResponsesList != null) {
@@ -395,9 +391,9 @@
 ### 单元测试说明
 1、请求正确，返回LiveKickedListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -408,18 +404,18 @@
 ### 返回对象描述
 返回对象是List&lt;LiveKickedListResponse&gt;，**LiveKickedListResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| banned | false | Boolean | 是否禁言 | 
-| channelId | false | String | 频道号 | 
-| clientIp | false | String | C端观众ip | 
-| kickRefer | false | String | 踢人方式，userId : 用户userId, ip : 用户登录IP | 
-| nickname | false | String | 昵称 | 
-| pic | false | String | 头像图片地址 | 
-| roomId | false | Integer | 房间号 | 
-| uid | false | String | 聊天室socketid | 
-| userId | false | String | C端观众ID | 
-| userType | false | String |  用户身份：管理员 manager，讲师 teacher， 助教 assistant， 嘉宾 guest，参与者 viewer，观看者 slice/student | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| banned | Boolean | 是否禁言 | 
+| channelId | String | 频道号 | 
+| clientIp | String | C端观众ip | 
+| kickRefer | String | 踢人方式，userId : 用户userId, ip : 用户登录IP | 
+| nickname | String | 昵称 | 
+| pic | String | 头像图片地址 | 
+| roomId | Integer | 房间号 | 
+| uid | String | 聊天室socketid | 
+| userId | String | C端观众ID | 
+| userType | String |  用户身份：管理员 manager，讲师 teacher， 助教 assistant， 嘉宾 guest，参与者 viewer，观看者 slice/student | 
 
 <br /><br />
 
@@ -444,8 +440,7 @@
         try {
             String channelId = super.createChannel();
             liveGetBadwordIPRequest.setChannelId(channelId)
-                    .setType(LiveConstant.BannedType.IP.getType())
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setType(LiveConstant.BannedType.IP.getType());
             liveGetBadwordIPResponseList = new LiveChatRoomServiceImpl().getChannelBadworkList(liveGetBadwordIPRequest);
             Assert.assertNotNull(liveGetBadwordIPResponseList);
             if (liveGetBadwordIPResponseList != null) {
@@ -466,9 +461,9 @@
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -501,8 +496,6 @@
         LiveGetAccountBadWordRequest liveGetAccountBadWordRequest = new LiveGetAccountBadWordRequest();
         List<String> liveGetAccountBadWordResponseList = null;
         try {
-            liveGetAccountBadWordRequest.setRequestId(LiveSignUtil.generateUUID());
-            String channelId = super.createChannel();
             liveGetAccountBadWordResponseList = new LiveChatRoomServiceImpl().getAccountBadworkList(liveGetAccountBadWordRequest);
             Assert.assertNotNull(liveGetAccountBadWordResponseList);
             if (liveGetAccountBadWordResponseList != null) {
@@ -523,9 +516,9 @@
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -559,8 +552,7 @@
             String channelId = super.createChannel();
             liveGetConsultingRecordRequest.setChannelId(channelId)
                     .setBegin(0)
-                    .setEnd(10)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setEnd(10);
             liveGetConsultingRecordResponseList = new LiveChatRoomServiceImpl().getConsultingRecord(liveGetConsultingRecordRequest);
             Assert.assertNotNull(liveGetConsultingRecordResponseList);
             if (liveGetConsultingRecordResponseList != null) {
@@ -581,9 +573,9 @@
 ### 单元测试说明
 1、请求正确，返回LiveGetConsultingRecordResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -596,26 +588,26 @@
 ### 返回对象描述
 返回对象是List&lt;LiveGetConsultingRecordResponse&gt;，**LiveGetConsultingRecordResponse**具体元素内容如下：
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| id | false | String | 信息id | 
-| content | false | String | 内容 | 
-| time | false | Date | 发言时间 | 
-| user | false | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv34)】 | 
-| event | false | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
-| userId | false | String | 提问者ID | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| id | String | 信息id | 
+| content | String | 内容 | 
+| time | Date | 发言时间 | 
+| user | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv34)】 | 
+| event | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
+| userId | String | 提问者ID | 
 
 <h6 id="polyv34"><a href="#/chatRoomService.md?id=polyv34"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| nick | false | String | 观众昵称 | 
-| pic | false | String | 观众头像 | 
-| userId | false | String | 用户唯一标示 | 
-| sessionId | false | String | 场次号 | 
-| channelId | false | String | 频道号 | 
-| banned | false | Boolean | 是否禁言 | 
-| userType | false | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| nick | String | 观众昵称 | 
+| pic | String | 观众头像 | 
+| userId | String | 用户唯一标示 | 
+| sessionId | String | 场次号 | 
+| channelId | String | 频道号 | 
+| banned | Boolean | 是否禁言 | 
+| userType | String | 用户类型，目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
 
 <br /><br />
 
@@ -644,8 +636,7 @@
                     .setActor("大师")
                     .setPasswd("123456")
                     .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740," +
-                            "3965499425&fm=26&gp=0" + ".jpg")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                            "3965499425&fm=26&gp=0" + ".jpg");
             liveSetTeacherDataResponse = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
             Assert.assertNotNull(liveSetTeacherDataResponse);
             if (liveSetTeacherDataResponse != null) {
@@ -666,9 +657,9 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -706,8 +697,7 @@ true 设置讲师信息成功，false 设置讲师信息失败
         try {
             String channelId = super.createChannel();
             liveChatBannedIPRequest.setIp("192.168.1.1")
-                    .setChannelId(channelId)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setChannelId(channelId);
             liveChatBannedIPResponseList = new LiveChatRoomServiceImpl().addBannedIP(liveChatBannedIPRequest);
             Assert.assertNotNull(liveChatBannedIPResponseList);
             if (liveChatBannedIPResponseList != null) {
@@ -728,9 +718,9 @@ true 设置讲师信息成功，false 设置讲师信息失败
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -768,8 +758,7 @@ true 设置讲师信息成功，false 设置讲师信息失败
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setNickname("你个老头")
                     .setActor("娇娇")
-                    .setAvatar(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setAvatar(new File(path));
             liveSetChatAdminDataResponse = new LiveChatRoomServiceImpl().setChatAdminData(liveSetChatAdminDataRequest);
             Assert.assertTrue(liveSetChatAdminDataResponse);
             if (liveSetChatAdminDataResponse != null) {
@@ -790,9 +779,9 @@ true 设置讲师信息成功，false 设置讲师信息失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -833,8 +822,7 @@ true 设置成功，false 设置失败
             String channelId = super.createChannel();
             liveDelBannedDataRequest.setContent("192.168.1.1")
                     .setChannelId(channelId)
-                    .setType(LiveConstant.BannedType.IP.getType())
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setType(LiveConstant.BannedType.IP.getType());
             liveDelBannedDataResponse = new LiveChatRoomServiceImpl().delBanned(liveDelBannedDataRequest);
             Assert.assertNotNull(liveDelBannedDataResponse);
             if (liveDelBannedDataResponse != null) {
@@ -855,9 +843,9 @@ true 设置成功，false 设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -895,7 +883,7 @@ true 删除成功 ，false 删除失败
         //new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest)
         String msgId = getMsgId(channelId);
         try {
-            liveChatDelSingleMsgRequest.setId(msgId).setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveChatDelSingleMsgRequest.setId(msgId).setChannelId(channelId);
             liveChatDelSingleMsgResponse = new LiveChatRoomServiceImpl().delChatSingleMsg(liveChatDelSingleMsgRequest);
             Assert.assertNotNull(liveChatDelSingleMsgResponse);
             if (liveChatDelSingleMsgResponse != null) {
@@ -916,9 +904,9 @@ true 删除成功 ，false 删除失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -952,7 +940,7 @@ true 删除成功， false 删除失败
         Boolean liveCleanChannelAllMsgResponse = null;
         try {
             String channelId = super.createChannel();
-            liveCleanChannelAllMsgRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveCleanChannelAllMsgRequest.setChannelId(channelId);
             liveCleanChannelAllMsgResponse = new LiveChatRoomServiceImpl().cleanChannelAllMsg(liveCleanChannelAllMsgRequest);
             Assert.assertNotNull(liveCleanChannelAllMsgResponse);
             if (liveCleanChannelAllMsgResponse != null) {
@@ -973,9 +961,9 @@ true 删除成功， false 删除失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -1010,8 +998,7 @@ true 删除成功， false 删除失败
             String channelId = super.createChannel();
             liveSendChannelChatRequest.setChannelId(channelId)
                     .setContent("请同学们认真学习")
-                    .setRole("ADMIN")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setRole("ADMIN");
             liveSendChannelChatResponse = new LiveChatRoomServiceImpl().sendChannelChat(liveSendChannelChatRequest);
             Assert.assertTrue(liveSendChannelChatResponse);
             if (liveSendChannelChatResponse) {
@@ -1032,9 +1019,9 @@ true 删除成功， false 删除失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -1070,8 +1057,7 @@ true 发送成功， false 发送失败
         try {
             String channelId = super.createChannel();
             liveSendCustomChatRequest.setChannelId(channelId)
-                    .setContent("请同学们认真学习")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setContent("请同学们认真学习");
             liveSendCustomChatResponse = new LiveChatRoomServiceImpl().sendCustomChat(liveSendCustomChatRequest);
             Assert.assertTrue(liveSendCustomChatResponse);
             if (liveSendCustomChatResponse) {
@@ -1092,9 +1078,9 @@ true 发送成功， false 发送失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 

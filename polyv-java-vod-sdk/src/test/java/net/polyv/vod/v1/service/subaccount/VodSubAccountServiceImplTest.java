@@ -57,8 +57,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setSort("creationTimeDesc")
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodSubAccountSearchVideoListResponse = new VodSubAccountServiceImpl().searchVideoList(
                     vodSubAccountSearchVideoListRequest);
             Assert.assertNotNull(vodSubAccountSearchVideoListResponse);
@@ -93,8 +92,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setFilters("basicInfo,metaData,transcodeInfo,snapshotInfo")
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodSubAccountQueryVideoInfoResponseList = new VodSubAccountServiceImpl().getVideoInfo(
                     vodSubAccountQueryVideoInfoRequest);
             Assert.assertNotNull(vodSubAccountQueryVideoInfoResponseList);
@@ -132,13 +130,45 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setPublishUrl(null)
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodUpdateVideoInfoResponse = new VodSubAccountServiceImpl().updateVideoInfo(
                     vodSubAccountUpdateVideoInfoRequest);
             Assert.assertTrue(vodUpdateVideoInfoResponse);
             if (vodUpdateVideoInfoResponse) {
                 log.debug("测试修改视频信息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试删除视频
+     * 描述：根据视频ID删除视频
+     * 返回：true为删除视频成功，false为删除视频失败
+     * TODO 老版本上传视频无法使用，上传视频完成后再修改
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+//    @Test
+    public void testDeleteVideo() throws IOException, NoSuchAlgorithmException {
+        VodSubAccountDeleteVideoRequest vodSubAccountDeleteVideoRequest = new VodSubAccountDeleteVideoRequest();
+        Boolean vodDeleteVideoResponse = null;
+        try {
+            vodSubAccountDeleteVideoRequest.setVideoId("1b448be3238415eee2fa40753737255b_1")
+                    //设置子账号相关
+                    .setAppId(APP_ID)
+                    .setSecretKey(SECRET_KEY);
+            vodDeleteVideoResponse = new VodSubAccountServiceImpl().deleteVideo(vodSubAccountDeleteVideoRequest);
+            Assert.assertTrue(vodDeleteVideoResponse);
+            if (vodDeleteVideoResponse) {
+                log.debug("删除视频成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -169,47 +199,12 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setCategoryId("1602300731843")
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodUpdateVideoCategoryResponse = new VodSubAccountServiceImpl().updateVideoCategory(
                     vodSubAccountUpdateVideoCategoryRequest);
             Assert.assertTrue(vodUpdateVideoCategoryResponse);
             if (vodUpdateVideoCategoryResponse) {
                 log.debug("批量修改视频所属分类成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 测试删除视频
-     * 描述：根据视频ID删除视频
-     * 返回：true为删除视频成功，false为删除视频失败
-     * TODO 老版本上传视频无法使用，上传视频完成后再修改
-     * @throws IOException 异常
-     * @throws NoSuchAlgorithmException 异常
-     */
-//    @Test
-    public void testDeleteVideo() throws IOException, NoSuchAlgorithmException {
-        VodSubAccountDeleteVideoRequest vodSubAccountDeleteVideoRequest = new VodSubAccountDeleteVideoRequest();
-        Boolean vodDeleteVideoResponse = null;
-        try {
-            vodSubAccountDeleteVideoRequest.setVideoId("1b448be3238415eee2fa40753737255b_1")
-                    //设置子账号相关
-                    .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
-            vodDeleteVideoResponse = new VodSubAccountServiceImpl().deleteVideo(vodSubAccountDeleteVideoRequest);
-            Assert.assertTrue(vodDeleteVideoResponse);
-            if (vodDeleteVideoResponse) {
-                log.debug("删除视频成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -238,8 +233,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setAppId(APP_ID)
                     .setSecretKey(SECRET_KEY)
                     .setCurrentPage(1)
-                    .setPageSize(20)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setPageSize(20);
             vodSubAccountQueryCategoryResponse = new VodSubAccountServiceImpl().queryCategory(
                     vodSubAccountQueryCategoryRequest);
             Assert.assertNotNull(vodSubAccountQueryCategoryResponse);
@@ -272,8 +266,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setParentId(null)
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodSubAccountAddCategoryRequest);
             Assert.assertNotNull(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse != null) {
@@ -306,8 +299,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setCategoryName("Junit测试(勿删)_1")
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodUpdateCategoryResponse = new VodSubAccountServiceImpl().updateCategory(
                     vodSubAccountUpdateCategoryRequest);
             Assert.assertTrue(vodUpdateCategoryResponse);
@@ -342,8 +334,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
             vodSubAccountDeleteCategoryRequest.setCategoryId(categoryId)
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodDeleteCategoryResponse = new VodSubAccountServiceImpl().deleteCategory(
                     vodSubAccountDeleteCategoryRequest);
             Assert.assertTrue(vodDeleteCategoryResponse);
@@ -382,8 +373,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                     .setEncodeAAC(0)
                     //设置子账号相关
                     .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSecretKey(SECRET_KEY);
             vodUpdateCategoryProfileResponse = new VodSubAccountServiceImpl().updateCategoryProfile(
                     vodSubAccountUpdateCategoryProfileRequest);
             Assert.assertTrue(vodUpdateCategoryProfileResponse);

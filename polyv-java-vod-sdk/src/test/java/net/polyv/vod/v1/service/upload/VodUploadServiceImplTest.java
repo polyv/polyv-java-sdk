@@ -44,8 +44,7 @@ public class VodUploadServiceImplTest extends BaseTest {
         try {
             String path = getClass().getResource("/img/cover.jpg").getPath();
             vodUploadCoverImageRequest.setImage(new File(path))
-                    .setCategoryIds("1602300731843")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setCategoryIds("1602300731843");
             vodUploadCoverImageResponse = new VodUploadServiceImpl().uploadCoverImage(vodUploadCoverImageRequest);
             Assert.assertTrue(vodUploadCoverImageResponse);
             if (vodUploadCoverImageResponse) {
@@ -76,12 +75,11 @@ public class VodUploadServiceImplTest extends BaseTest {
         VodUploadCoverImageUrlRequest vodUploadCoverImageUrlRequest = new VodUploadCoverImageUrlRequest();
         Boolean vodUploadCoverImageUrlResponse = null;
         try {
-            //https://img.videocc.net/uimage/1/1b448be323/c/1b448be32343357d5c4784d9ffd1bf5c_0.jpg
+            //http://img.videocc.net/uimage/1/1b448be323/c/1b448be32343357d5c4784d9ffd1bf5c_0.jpg
             String imageUrl =
-                    "https://dss0.bdstatic.com/6Ox1bjeh1BF3odCf/it/u=3438467544," + "1763107832&fm=218&app=92&f=JPEG";
+                    "http://img.videocc.net/uimage/1/1b448be323/c/1b448be32343357d5c4784d9ffd1bf5c_0.jpg";
             vodUploadCoverImageUrlRequest.setImageUrl(imageUrl)
-                    .setCategoryIds("1602300731843")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setCategoryIds("1602300731843");
             vodUploadCoverImageUrlResponse = new VodUploadServiceImpl().uploadCoverImageUrl(
                     vodUploadCoverImageUrlRequest);
             Assert.assertTrue(vodUploadCoverImageUrlResponse);
@@ -114,8 +112,7 @@ public class VodUploadServiceImplTest extends BaseTest {
         try {
             String path = getClass().getResource("/img/water.jpg").getPath();
             vodUploadWatermarkRequest.setImage(new File(path))
-                    .setCategoryId("1602300731843")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setCategoryId("1602300731843");
             vodUploadWatermarkResponse = new VodUploadServiceImpl().uploadWatermark(vodUploadWatermarkRequest);
             Assert.assertTrue(vodUploadWatermarkResponse);
             if (vodUploadWatermarkResponse) {
@@ -151,8 +148,7 @@ public class VodUploadServiceImplTest extends BaseTest {
                     .setCategoryId("1602300731843")
                     .setScreenCap(0)
                     .setWatermark("http://sadboytest.oss-cn-shenzhen.aliyuncs.com/a.png")
-                    .setWatermarkLocation("1")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setWatermarkLocation("1");
             vodUploadHttpVideoListResponse = new VodUploadServiceImpl().uploadHttpVideoList(
                     vodUploadHttpVideoListRequest);
             Assert.assertTrue(vodUploadHttpVideoListResponse);
@@ -173,7 +169,7 @@ public class VodUploadServiceImplTest extends BaseTest {
     
     /**
      * 测试上传PPT文件
-     * 约束：2、txt文件格式示例如下，每一行为：“秒数”+“:”+“标题”（注：txt文件必须是UTF-8的编码格式，否则课件的章节标题会显示为乱码）
+     * 约束：2、ppt控制文件格式示例如下，每一行为：“秒数”+“:”+“标题”（注：ppt控制文件必须是UTF-8的编码格式，否则课件的章节标题会显示为乱码）
      * 返回：true为上传成功，false为上传失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -187,8 +183,7 @@ public class VodUploadServiceImplTest extends BaseTest {
             String controlFile = getClass().getResource("/file/controlFile.txt").getPath();
             vodUploadPPTRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
                     .setPpt(new File(pptFile))
-                    .setControlFile(new File(controlFile))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setControlFile(new File(controlFile));
             vodUploadPPTResponse = new VodUploadServiceImpl().uploadPPT(vodUploadPPTRequest);
             Assert.assertTrue(vodUploadPPTResponse);
             if (vodUploadPPTResponse) {

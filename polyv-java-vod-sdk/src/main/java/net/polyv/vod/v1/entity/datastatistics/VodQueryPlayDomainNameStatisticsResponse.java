@@ -6,12 +6,12 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 查询播放域名统计数据接口返回实体
+ * 查询播放域名统计数据返回实体
  * @author: fangyan
  */
 @Data
 @Accessors(chain = true)
-@ApiModel("查询播放域名统计数据接口返回实体")
+@ApiModel("查询播放域名统计数据返回实体")
 public class VodQueryPlayDomainNameStatisticsResponse {
     /**
      * 域名

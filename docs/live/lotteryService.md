@@ -16,8 +16,7 @@
             liveListLotteryRequest.setChannelId(super.createChannel())
                     .setStartTime(super.getDate(1601481600000l))
                     .setEndTime(super.getDate(2021,1,21))
-                    .setPageSize(1)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setPageSize(1);
             liveListLotteryResponse = new LiveLotteryServiceImpl().listLottery(liveListLotteryRequest);
             Assert.assertNotNull(liveListLotteryResponse);
             if (liveListLotteryResponse != null) {
@@ -38,9 +37,9 @@
 ### 单元测试说明
 1、请求正确，返回LiveListLotteryResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -56,29 +55,29 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 抽奖记录列表【详见[LotteryListModel参数描述](lotteryService.md?id=polyv38)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 抽奖记录列表【详见[LotteryListModel参数描述](lotteryService.md?id=polyv38)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv38"><a href="#/lotteryService.md?id=polyv38"data-id="LotteryListModel参数描述"class="anchor"><span>LotteryListModel参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| lotteryId | false | String | 抽奖场次ID | 
-| channelId | false | String | 频道号 | 
-| sessionId | false | String | 抽奖时的直播场次ID | 
-| lotteryRange | false | String | 抽奖范围，取值：所有观众：all;当场直播未中奖用户：notWinning;已签到用户：signed；头衔：actor；已填问卷用户:questionnaire | 
-| actor | false | String | 抽奖范围为按头衔抽奖时的头衔 | 
-| prize | false | String | 奖品名称 | 
-| amount | false | Integer | 预设中奖人数 | 
-| preset | false | Integer | 预设中奖观众ID，多个ID 用英文逗号分开 | 
-| createdTime | false | Date | 抽奖时间 | 
-| winnerCount | false | Integer | 实际中奖人数 | 
-| ext | false | String | 表示抽奖的额外拓展信息 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| lotteryId | String | 抽奖场次ID | 
+| channelId | String | 频道号 | 
+| sessionId | String | 抽奖时的直播场次ID | 
+| lotteryRange | String | 抽奖范围，取值：所有观众：all;当场直播未中奖用户：notWinning;已签到用户：signed；头衔：actor；已填问卷用户:questionnaire | 
+| actor | String | 抽奖范围为按头衔抽奖时的头衔 | 
+| prize | String | 奖品名称 | 
+| amount | Integer | 预设中奖人数 | 
+| preset | Integer | 预设中奖观众ID，多个ID 用英文逗号分开 | 
+| createdTime | Date | 抽奖时间 | 
+| winnerCount | Integer | 实际中奖人数 | 
+| ext | String | 表示抽奖的额外拓展信息 | 
 
 <br /><br />
 
@@ -102,8 +101,7 @@
         LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
         try {
             liveLotteryWinnerDetailRequest.setChannelId(super.createChannel())
-                    .setLotteryId("fv3mao43u6")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setLotteryId("fv3mao43u6");
             liveLotteryWinnerDetailResponse = new LiveLotteryServiceImpl().getLotteryWinnerDetail(
                     liveLotteryWinnerDetailRequest);
             Assert.assertNotNull(liveLotteryWinnerDetailResponse);
@@ -125,9 +123,9 @@
 ### 单元测试说明
 1、请求正确，返回LiveLotteryWinnerDetailResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -141,41 +139,41 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 中奖记录表【详见[LotteryWinnerDetail参数描述](lotteryService.md?id=polyv39)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 中奖记录表【详见[LotteryWinnerDetail参数描述](lotteryService.md?id=polyv39)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv39"><a href="#/lotteryService.md?id=polyv39"data-id="LotteryWinnerDetail参数描述"class="anchor"><span>LotteryWinnerDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| recordId | false | String | 中奖记录ID | 
-| channelId | false | String | 频道号 | 
-| sessionId | false | String | 抽奖时的直播场次ID | 
-| lotteryId | false | String | 抽奖ID | 
-| viewerId | false | String | 中奖用户ID | 
-| viewerName | false | String | 中奖用户昵称 | 
-| winnerCode | false | String | 中奖码 | 
-| prize | false | String | 奖品名称 | 
-| createdTime | false | Date | 中奖时间 | 
-| ext | false | CollectInfo | json 格式的字符串,表示中奖记录的额外拓展信息，对应模型类：WinnerRecordModelExt【详见[CollectInfo参数描述](lotteryService.md?id=polyv40)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| recordId | String | 中奖记录ID | 
+| channelId | String | 频道号 | 
+| sessionId | String | 抽奖时的直播场次ID | 
+| lotteryId | String | 抽奖ID | 
+| viewerId | String | 中奖用户ID | 
+| viewerName | String | 中奖用户昵称 | 
+| winnerCode | String | 中奖码 | 
+| prize | String | 奖品名称 | 
+| createdTime | Date | 中奖时间 | 
+| ext | CollectInfo | json 格式的字符串,表示中奖记录的额外拓展信息，对应模型类：WinnerRecordModelExt【详见[CollectInfo参数描述](lotteryService.md?id=polyv40)】 | 
 
 <h6 id="polyv40"><a href="#/lotteryService.md?id=polyv40"data-id="CollectInfo参数描述"class="anchor"><span>CollectInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| collectInfo | false | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](lotteryService.md?id=polyv41)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| collectInfo | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](lotteryService.md?id=polyv41)】 | 
 
 <h6 id="polyv41"><a href="#/lotteryService.md?id=polyv41"data-id="CollectInfoFieldModel参数描述"class="anchor"><span>CollectInfoFieldModel参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| field | false | String | 填写的字段名 | 
-| tips | false | String | 填写的字段提示 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| field | String | 填写的字段名 | 
+| tips | String | 填写的字段提示 | 
 
 <br /><br />
 
@@ -206,8 +204,7 @@
                     .setViewerId("asdadsdas")
                     .setName("sadboy")
                     .setTelephone("18974718689")
-                    .setReceiveInfo("[{\"field\":\"姓名\",\"value\":\"测试\"},{\"field\":\"手机\",\"value\":\"13412345678\"}]")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setReceiveInfo("[{\"field\":\"姓名\",\"value\":\"测试\"},{\"field\":\"手机\",\"value\":\"13412345678\"}]");
             liveSetLotteryWinnerInfoResponse = new LiveLotteryServiceImpl().setLotteryWinnerInfo(
                     liveSetLotteryWinnerInfoRequest);
             Assert.assertNotNull(liveSetLotteryWinnerInfoResponse);
@@ -229,9 +226,9 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -272,8 +269,7 @@ null
             //path设置为下载文件路径
             String path = getClass().getResource("/file/").getPath() + "downLoadLotteryWinner.xlsx";
             liveDownloadLotteryDetailRequest.setChannelId(createChannel())
-                    .setLotteryId("fv3hogjmh3")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setLotteryId("fv3hogjmh3");
             liveDownloadLotteryDetailResponse = new LiveLotteryServiceImpl().downloadLotteryDetail(
                     liveDownloadLotteryDetailRequest);
             Assert.assertNotNull(liveDownloadLotteryDetailResponse);
@@ -296,9 +292,9 @@ null
 ### 单元测试说明
 1、请求正确，返回byte[]对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -336,8 +332,7 @@ null
         try {
             liveSendChannelLikeRequest.setChannelId(createChannel())
                     .setViewerId(getRandomString(16))
-                    .setTimes(13)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setTimes(13);
             liveSendChannelLikeResponse = new LiveLotteryServiceImpl().sendChannelLike(liveSendChannelLikeRequest);
             Assert.assertNotNull(liveSendChannelLikeResponse);
             if (liveSendChannelLikeResponse != null) {
@@ -358,9 +353,9 @@ null
 ### 单元测试说明
 1、请求正确，返回Integer对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 

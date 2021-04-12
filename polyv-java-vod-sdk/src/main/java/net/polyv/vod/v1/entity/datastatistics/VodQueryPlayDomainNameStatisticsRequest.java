@@ -12,13 +12,13 @@ import lombok.experimental.Accessors;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * 查询播放域名统计数据接口请求实体
+ * 查询播放域名统计数据请求实体
  * @author: fangyan
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("查询播放域名统计数据接口请求实体")
+@ApiModel("查询播放域名统计数据请求实体")
 public class VodQueryPlayDomainNameStatisticsRequest extends VodCommonRequest {
     
     /**

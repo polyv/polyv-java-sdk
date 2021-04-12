@@ -96,7 +96,7 @@ public class BaseTest {
      */
     protected void deleteChannel(String channelId) throws Exception, NoSuchAlgorithmException {
         LiveDeleteChannelRequest liveDeleteChannelRequest = new LiveDeleteChannelRequest();
-        liveDeleteChannelRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+        liveDeleteChannelRequest.setChannelId(channelId);
         Boolean deleteChannel = new LiveChannelOperateServiceImpl().deleteChannel(liveDeleteChannelRequest);
         Assert.assertTrue(deleteChannel);
         log.debug("BaseTest删除频道成功");
@@ -132,8 +132,7 @@ public class BaseTest {
 //                .setRole("Guest")
 //                .setNickname("sadboy")
 //                .setActor("教授")
-//                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0")
-//                .setRequestId(LiveSignUtil.generateUUID());
+//                .setAvatar("https://www.polyv.net/assets/dist/images/web3.0/c-header/hd-logo.svg?v=2.0");
 //        return createSonChannel(liveCreateSonChannelRequest);
     }
     
@@ -148,7 +147,7 @@ public class BaseTest {
             //准备测试数据
             String channelId = createChannel();
             
-            liveSonChannelInfoListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveSonChannelInfoListRequest.setChannelId(channelId);
             liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfoList(
                     liveSonChannelInfoListRequest);
             Assert.assertNotNull(liveSonChannelInfoResponse);
@@ -188,8 +187,7 @@ public class BaseTest {
             String channelId = createChannel();
             
             liveDeleteSonChannelRequest.setChannelId(channelId)
-                    .setAccount(sonChannelId)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setAccount(sonChannelId);
             liveDeleteSonChannelResponse = new LiveChannelOperateServiceImpl().deleteSonChannel(
                     liveDeleteSonChannelRequest);
             Assert.assertNotNull(liveDeleteSonChannelResponse);
@@ -243,8 +241,7 @@ public class BaseTest {
         LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
                 new LiveListChannelVideoLibraryRequest();
         liveListChannelVideoLibraryRequest.setChannelId(channelId)
-                .setListType("playback")
-                .setRequestId(LiveSignUtil.generateUUID());
+                .setListType("playback");
         LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse =
                 new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary(
                 liveListChannelVideoLibraryRequest);
@@ -271,8 +268,7 @@ public class BaseTest {
         LiveListChannelVideoLibraryRequest liveListChannelVideoLibraryRequest =
                 new LiveListChannelVideoLibraryRequest();
         liveListChannelVideoLibraryRequest.setChannelId(channelId)
-                .setListType("playback")
-                .setRequestId(LiveSignUtil.generateUUID());
+                .setListType("playback");
         LiveListChannelVideoLibraryResponse liveListChannelVideoLibraryResponse =
                 new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary(
                 liveListChannelVideoLibraryRequest);
@@ -300,8 +296,7 @@ public class BaseTest {
         liveChannelVideoListRequest.setChannelId(channelId)
                 .setStartDate(getDate(2020, 1, 1))
                 .setEndDate(getDate(2020, 11, 11))
-                .setSessionId(null)
-                .setRequestId(LiveSignUtil.generateUUID());
+                .setSessionId(null);
         LiveChannelVideoListResponse liveChannelVideoListResponse =
                 new LiveChannelPlaybackServiceImpl().listChannelVideo(
                 liveChannelVideoListRequest);
@@ -320,7 +315,7 @@ public class BaseTest {
     protected List<String> listChannelMenuIds(String channelId) throws IOException, NoSuchAlgorithmException {
         LiveListChannelMenuRequest liveListChannelMenuRequest = new LiveListChannelMenuRequest();
         LiveListChannelMenuResponse liveListChannelMenuResponse;
-        liveListChannelMenuRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+        liveListChannelMenuRequest.setChannelId(createChannel());
         liveListChannelMenuResponse = new LiveWebMenuServiceImpl().listChannelMenu(liveListChannelMenuRequest);
         Assert.assertNotNull(liveListChannelMenuResponse);
         List<LiveListChannelMenuResponse.ChannelMenu> channelMenus = liveListChannelMenuResponse.getChannelMenus();
@@ -340,8 +335,7 @@ public class BaseTest {
                 .setPic("https://5b0988e595225.cdn.sohucs.com/q_70,c_zoom," +
                         "w_640/images/20190129/e3b0d6311b1a411fa68125fc03b8ef67.jpeg")
                 .setNickName("thomas")
-                .setFreeReview(LiveConstant.Flag.YES.getFlag())
-                .setRequestId(LiveSignUtil.generateUUID());
+                .setFreeReview(LiveConstant.Flag.YES.getFlag());
         liveSendChatMsgResponse = new LiveChatRoomServiceImpl().sendChatMsg(liveSendChatMsgRequest);
         Assert.assertNotNull(liveSendChatMsgResponse);
         if (liveSendChatMsgResponse != null) {

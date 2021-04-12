@@ -13,8 +13,7 @@
         VodGetSubtitleListRequest vodGetSubtitleListRequest = new VodGetSubtitleListRequest();
         VodGetSubtitleListResponse vodGetSubtitleListResponse = null;
         try {
-            vodGetSubtitleListRequest.setVideoId("1b448be32399ac90f523f76c7430c9a5_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetSubtitleListRequest.setVideoId("1b448be32399ac90f523f76c7430c9a5_1");
             vodGetSubtitleListResponse = new VodSubtitleServiceImpl().getSubtitleList(vodGetSubtitleListRequest);
             Assert.assertNotNull(vodGetSubtitleListResponse);
             if (vodGetSubtitleListResponse != null) {
@@ -34,9 +33,9 @@
 ### 单元测试说明
 1、请求正确，返回VodGetSubtitleListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -47,16 +46,16 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| subtitles | false | Array | 查询的结果列表【详见[Subtitle参数描述](subtitleService.md?id=polyv29)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| subtitles | Array | 查询的结果列表【详见[Subtitle参数描述](subtitleService.md?id=polyv29)】 | 
 
 <h6 id="polyv29"><a href="#/subtitleService.md?id=polyv29"data-id="Subtitle参数描述"class="anchor"><span>Subtitle参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| rank | false | Integer | 序号，从1开始 | 
-| name | false | String | 字幕名称 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| rank | Integer | 序号，从1开始 | 
+| name | String | 字幕名称 | 
 
 <br /><br />
 
@@ -84,8 +83,7 @@
                     .setFile(new File(srtCN))
                     .setAsDefault("N")
                     .setTitle("subtitle")
-                    .setLanguage(null)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setLanguage(null);
             vodUploadSubtitleResponse = new VodSubtitleServiceImpl().uploadSubtitle(vodUploadSubtitleRequest);
             Assert.assertTrue(vodUploadSubtitleResponse);
             if (vodUploadSubtitleResponse) {
@@ -105,9 +103,9 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -147,7 +145,7 @@ true为上传成功，false为上传失败
             String videoId = "1b448be32399ac90f523f76c7430c9a5_1";
             uploadSubtitle(videoId, false);
             String ranks = getRanks(videoId);
-            vodDeleteSubtitleRequest.setVideoId(videoId).setRanks(ranks).setRequestId(VodSignUtil.generateUUID());
+            vodDeleteSubtitleRequest.setVideoId(videoId).setRanks(ranks);
             vodDeleteSubtitleResponse = new VodSubtitleServiceImpl().deleteSubtitle(vodDeleteSubtitleRequest);
             Assert.assertTrue(vodDeleteSubtitleResponse);
             if (vodDeleteSubtitleResponse) {
@@ -167,9 +165,9 @@ true为上传成功，false为上传失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -208,8 +206,7 @@ true为删除字幕成功，false为删除字幕失败
             vodMergeSubtitleRequest.setVideoId(videoId)
                     .setSourceSubtitleNames(sourceSubtitleNames)
                     .setMergedSubtitleName("双语")
-                    .setSetAsDefault(Boolean.TRUE)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSetAsDefault(Boolean.TRUE);
             vodMergeSubtitleResponse = new VodSubtitleServiceImpl().mergeSubtitle(vodMergeSubtitleRequest);
             Assert.assertTrue(vodMergeSubtitleResponse);
             if (vodMergeSubtitleResponse) {
@@ -229,9 +226,9 @@ true为删除字幕成功，false为删除字幕失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 

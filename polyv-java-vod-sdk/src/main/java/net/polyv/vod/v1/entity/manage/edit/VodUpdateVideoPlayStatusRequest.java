@@ -11,13 +11,13 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * 根据vid批量修改视频的授权播放开关状态请求实体
+ * 根据videoIds批量修改视频的授权播放开关状态请求实体
  * @author: sadboy
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("根据vid批量修改视频的授权播放开关状态请求实体")
+@ApiModel("根据videoIds批量修改视频的授权播放开关状态请求实体")
 public class VodUpdateVideoPlayStatusRequest extends VodCommonRequest {
     
     /**

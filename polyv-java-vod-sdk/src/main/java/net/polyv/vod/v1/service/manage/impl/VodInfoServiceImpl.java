@@ -55,10 +55,10 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
     }
     
     /**
-     * 根据视频vid查询视频的授权播放开关状态
+     * 根据视频videoId查询视频的授权播放开关状态
      * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/authplay-status/
-     * @param vodGetVideoPlayStatusRequest 根据视频vid查询视频的授权播放开关状态请求实体
-     * @return 根据视频vid查询视频的授权播放开关状态返回实体
+     * @param vodGetVideoPlayStatusRequest 根据视频videoId查询视频的授权播放开关状态请求实体
+     * @return 根据视频videoId查询视频的授权播放开关状态返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -104,10 +104,10 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
     }
     
     /**
-     * 获取微信分享页的视频相关信息接口
+     * 获取微信分享页的视频相关信息
      * URL地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/wechat-video-info/
      * @param vodGetWeChatShareVideoInfoRequest
-     * @return 获取微信分享页的视频相关信息接口返回实体
+     * @return 获取微信分享页的视频相关信息返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -120,9 +120,9 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
     }
     
     /**
-     * 获取视频播放预览时长接口
+     * 获取视频播放预览时长
      * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-vmanage/v-api-vmanage-info/get-preview-duration/
-     * @param vodGetVideoPreviewDurationRequest 获取视频播放预览时长接口请求实体
+     * @param vodGetVideoPreviewDurationRequest 获取视频播放预览时长请求实体
      * @return Integer
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -148,7 +148,7 @@ public class VodInfoServiceImpl extends VodBaseService implements IVodInfoServic
         String url = VodURL.getRealUrl(VodURL.GET_VIDEO_URL);
         List<VodGetVideoResponse> returnList = super.getReturnList(url, vodGetVideoRequest, VodGetVideoResponse.class);
         if (returnList == null || returnList.isEmpty()) {
-            throw new PloyvSdkException(Constant.ERROR_CODE, "获取单个视频信息失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "获取单个视频信息失败，业务请求流水号："+vodGetVideoRequest.getRequestId());
         }
         return returnList.get(0);
     }

@@ -345,6 +345,9 @@ public class VodBaseService {
         if (StringUtils.isBlank(e.getPtime())) {
             e.setPtime(String.valueOf(System.currentTimeMillis()));
         }
+        if (StringUtils.isBlank(e.getRequestId())) {
+            e.setRequestId(VodSignUtil.generateUUID());
+        }
         String secretKey, sign;
         if (e instanceof VodSubCommonRequest) {//子账号相关
             VodSubCommonRequest vodSubCommonRequest = (VodSubCommonRequest) e;

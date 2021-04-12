@@ -11,13 +11,13 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * 设置分类属性请求实体
+ * 修改分类属性请求实体
  * @author: fangyan
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("设置分类属性请求实体")
+@ApiModel("修改分类属性请求实体")
 public class VodUpdateCategoryProfileRequest extends VodCommonRequest {
     
     /**

@@ -36,8 +36,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
         VodGetSubtitleListRequest vodGetSubtitleListRequest = new VodGetSubtitleListRequest();
         VodGetSubtitleListResponse vodGetSubtitleListResponse = null;
         try {
-            vodGetSubtitleListRequest.setVideoId("1b448be32399ac90f523f76c7430c9a5_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodGetSubtitleListRequest.setVideoId("1b448be32399ac90f523f76c7430c9a5_1");
             vodGetSubtitleListResponse = new VodSubtitleServiceImpl().getSubtitleList(vodGetSubtitleListRequest);
             Assert.assertNotNull(vodGetSubtitleListResponse);
             if (vodGetSubtitleListResponse != null) {
@@ -70,8 +69,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
                     .setFile(new File(srtCN))
                     .setAsDefault("N")
                     .setTitle("subtitle")
-                    .setLanguage(null)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setLanguage(null);
             vodUploadSubtitleResponse = new VodSubtitleServiceImpl().uploadSubtitle(vodUploadSubtitleRequest);
             Assert.assertTrue(vodUploadSubtitleResponse);
             if (vodUploadSubtitleResponse) {
@@ -104,7 +102,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
             uploadSubtitle(videoId, false);
             String ranks = getRanks(videoId);
             
-            vodDeleteSubtitleRequest.setVideoId(videoId).setRanks(ranks).setRequestId(VodSignUtil.generateUUID());
+            vodDeleteSubtitleRequest.setVideoId(videoId).setRanks(ranks);
             vodDeleteSubtitleResponse = new VodSubtitleServiceImpl().deleteSubtitle(vodDeleteSubtitleRequest);
             Assert.assertTrue(vodDeleteSubtitleResponse);
             if (vodDeleteSubtitleResponse) {
@@ -139,8 +137,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
             vodMergeSubtitleRequest.setVideoId(videoId)
                     .setSourceSubtitleNames(sourceSubtitleNames)
                     .setMergedSubtitleName("双语")
-                    .setSetAsDefault(Boolean.TRUE)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSetAsDefault(Boolean.TRUE);
             vodMergeSubtitleResponse = new VodSubtitleServiceImpl().mergeSubtitle(vodMergeSubtitleRequest);
             Assert.assertTrue(vodMergeSubtitleResponse);
             if (vodMergeSubtitleResponse) {

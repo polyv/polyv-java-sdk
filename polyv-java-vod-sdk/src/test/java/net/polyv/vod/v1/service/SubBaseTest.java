@@ -51,7 +51,7 @@ public class SubBaseTest {
         try {
             vodSubAccountAddCategoryRequest.setName("junit测试新增分类" + getRandomString(3)).setParentId(null)
                     //设置子账号相关
-                    .setAppId(APP_ID).setSecretKey(SECRET_KEY).setRequestId(VodSignUtil.generateUUID());
+                    .setAppId(APP_ID).setSecretKey(SECRET_KEY);
             vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodSubAccountAddCategoryRequest);
             Assert.assertNotNull(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse != null) {

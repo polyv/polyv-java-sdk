@@ -8,13 +8,13 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 新建视频分类VO实体
+ * 新建视频分类返回实体
  * @author: fangyan
  */
 @Data
 @Accessors(chain = true)
-@ApiModel("新建视频分类VO实体")
-public class VodCreateCategoryVO {
+@ApiModel("新建视频分类返回实体")
+public class VodCreateCategoryResponse {
     
     /**
      * 新建的分类目录ID

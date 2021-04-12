@@ -13,7 +13,7 @@
         VodAccountSpaceDataRequest vodAccountSpaceDataRequest = new VodAccountSpaceDataRequest();
         VodAccountSpaceDataResponse vodAccountSpaceDataResponse;
         try {
-            vodAccountSpaceDataRequest.setDate(super.getDate(2020, 10, 13)).setRequestId(VodSignUtil.generateUUID());
+            vodAccountSpaceDataRequest.setDate(super.getDate(2020, 10, 13));
             vodAccountSpaceDataResponse = new VodAccountServiceImpl().getAccountSpaceFlow(vodAccountSpaceDataRequest);
             Assert.assertNotNull(vodAccountSpaceDataResponse);
             if (vodAccountSpaceDataResponse != null) {
@@ -33,9 +33,9 @@
 ### 单元测试说明
 1、请求正确，返回VodAccountSpaceDataResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -46,14 +46,14 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| totalFlow | false | Long | 用户总流量 | 
-| usedSpace | false | Long | 已用空间 | 
-| usedFlow | false | Long | 已用流量 | 
-| totalSpace | false | Long | 用户总空间 | 
-| userId | false | String | POLYV用户ID | 
-| email | false | String | POLYV用户邮箱 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| totalFlow | Long | 用户总流量，单位为byte | 
+| usedSpace | Long | 已用空间，单位为byte | 
+| usedFlow | Long | 已用流量，单位为byte | 
+| totalSpace | Long | 用户总空间，单位为byte | 
+| userId | String | POLYV用户ID | 
+| email | String | POLYV用户邮箱 | 
 
 <br /><br />
 

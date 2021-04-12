@@ -18,7 +18,6 @@ import net.polyv.vod.v1.entity.advertising.VodGetAdvertisingListResponse;
 import net.polyv.vod.v1.entity.advertising.VodUpdateAdvertisingRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.advertising.impl.VodAdvertisingServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 广告管理
@@ -51,8 +50,7 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
                     .setNote("测试广告描述")
                     .setSkipAd("Y")
                     .setSkipOffset(1)
-                    .setSkipButtonLabel("跳过广告")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSkipButtonLabel("跳过广告");
             vodCreateAdvertisingResponse = new VodAdvertisingServiceImpl().createAdvertising(
                     vodCreateAdvertisingRequest);
             Assert.assertNotNull(vodCreateAdvertisingResponse);
@@ -84,7 +82,7 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
             //准备测试数据
             String advertisingId = super.createAdvertising();
             
-            vodDeleteAdvertisingRequest.setAdvertisingId(advertisingId).setRequestId(VodSignUtil.generateUUID());
+            vodDeleteAdvertisingRequest.setAdvertisingId(advertisingId);
             vodDeleteAdvertisingResponse = new VodAdvertisingServiceImpl().deleteAdvertising(
                     vodDeleteAdvertisingRequest);
             Assert.assertTrue(vodDeleteAdvertisingResponse);
@@ -112,7 +110,7 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
         VodGetAdvertisingListRequest vodGetAdvertisingListRequest = new VodGetAdvertisingListRequest();
         VodGetAdvertisingListResponse vodGetAdvertisingListResponse = null;
         try {
-            vodGetAdvertisingListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
+            vodGetAdvertisingListRequest.setCurrentPage(1).setPageSize(10);
             vodGetAdvertisingListResponse = new VodAdvertisingServiceImpl().getAdvertisingList(
                     vodGetAdvertisingListRequest);
             Assert.assertNotNull(vodGetAdvertisingListResponse);
@@ -157,8 +155,7 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
                     .setNote("测试广告描述")
                     .setSkipAd("Y")
                     .setSkipOffset(1)
-                    .setSkipButtonLabel("跳过广告")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setSkipButtonLabel("跳过广告");
             vodUpdateAdvertisingResponse = new VodAdvertisingServiceImpl().updateAdvertising(
                     vodUpdateAdvertisingRequest);
             Assert.assertTrue(vodUpdateAdvertisingResponse);

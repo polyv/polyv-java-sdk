@@ -22,7 +22,6 @@ import net.polyv.vod.v1.entity.manage.list.VodGetNewListRequest;
 import net.polyv.vod.v1.entity.manage.list.VodGetNewListResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.manage.impl.VodListServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 视频列表
@@ -45,8 +44,7 @@ public class VodListServiceImplTest extends BaseTest {
                     .setOrderType(1)
                     .setCategoryId("1615536384688")
                     .setContainSubCategory(0)
-                    .setPublished(0)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setPublished(0);
             vodGetByUploaderResponse = new VodListServiceImpl().getByUploader(vodGetByUploaderRequest);
             Assert.assertNotNull(vodGetByUploaderResponse);
             if (vodGetByUploaderResponse != null) {
@@ -85,8 +83,7 @@ public class VodListServiceImplTest extends BaseTest {
                     .setCategoryTree("1")
                     .setPublished(0)
                     .setCurrentPage(1)
-                    .setPageSize(10)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setPageSize(10);
             vodGetNewListResponse = new VodListServiceImpl().getNewList(vodGetNewListRequest);
             Assert.assertNotNull(vodGetNewListResponse);
             if (vodGetNewListResponse != null) {
@@ -113,7 +110,7 @@ public class VodListServiceImplTest extends BaseTest {
         VodGetHotListRequest vodGetHotListRequest = new VodGetHotListRequest();
         VodGetHotListResponse vodGetHotListResponse = null;
         try {
-            vodGetHotListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
+            vodGetHotListRequest.setCurrentPage(1).setPageSize(10);
             vodGetHotListResponse = new VodListServiceImpl().getHotList(vodGetHotListRequest);
             Assert.assertNotNull(vodGetHotListResponse);
             if (vodGetHotListResponse != null) {
@@ -140,7 +137,7 @@ public class VodListServiceImplTest extends BaseTest {
         VodGetDelListRequest vodGetDelListRequest = new VodGetDelListRequest();
         VodGetDelListResponse vodGetDelListResponse = null;
         try {
-            vodGetDelListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
+            vodGetDelListRequest.setCurrentPage(1).setPageSize(10);
             vodGetDelListResponse = new VodListServiceImpl().getDelList(vodGetDelListRequest);
             Assert.assertNotNull(vodGetDelListResponse);
             if (vodGetDelListResponse != null) {
@@ -167,7 +164,7 @@ public class VodListServiceImplTest extends BaseTest {
         VodGetIllegalListRequest vodGetIllegalListRequest = new VodGetIllegalListRequest();
         VodGetIllegalListResponse vodGetIllegalListResponse = null;
         try {
-            vodGetIllegalListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
+            vodGetIllegalListRequest.setCurrentPage(1).setPageSize(10);
             vodGetIllegalListResponse = new VodListServiceImpl().getIllegalList(vodGetIllegalListRequest);
             Assert.assertNotNull(vodGetIllegalListResponse);
             if (vodGetIllegalListResponse != null) {

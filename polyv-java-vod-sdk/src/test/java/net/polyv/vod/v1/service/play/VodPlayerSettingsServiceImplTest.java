@@ -15,7 +15,6 @@ import net.polyv.vod.v1.entity.play.payersettings.VodGetPlayerListRequest;
 import net.polyv.vod.v1.entity.play.payersettings.VodGetPlayerListResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.play.impl.VodPlayerSettingsServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 播放器设置
@@ -24,7 +23,7 @@ import net.polyv.vod.v1.util.VodSignUtil;
 @Slf4j
 public class VodPlayerSettingsServiceImplTest extends BaseTest {
     /**
-     * 测试获取用户下所有播放器列表接口
+     * 测试获取用户下所有播放器列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -33,11 +32,10 @@ public class VodPlayerSettingsServiceImplTest extends BaseTest {
         VodGetPlayerListRequest vodGetPlayerListRequest = new VodGetPlayerListRequest();
         List<VodGetPlayerListResponse> vodGetPlayerListResponseList = null;
         try {
-            vodGetPlayerListRequest.setRequestId(VodSignUtil.generateUUID());
             vodGetPlayerListResponseList = new VodPlayerSettingsServiceImpl().getPlayerList(vodGetPlayerListRequest);
             Assert.assertNotNull(vodGetPlayerListResponseList);
             if (vodGetPlayerListResponseList != null) {
-                log.debug("测试获取用户下所有播放器列表接口成功,{}", JSON.toJSONString(vodGetPlayerListResponseList));
+                log.debug("测试获取用户下所有播放器列表成功,{}", JSON.toJSONString(vodGetPlayerListResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

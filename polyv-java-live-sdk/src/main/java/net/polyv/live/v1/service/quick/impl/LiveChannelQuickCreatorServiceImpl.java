@@ -74,8 +74,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
         liveChannelRequest.setName(quickCreateChannelRequest.getName())
                 .setChannelPasswd(quickCreateChannelRequest.getChannelPasswd())
                 .setPureRtcEnabled(quickCreateChannelRequest.getPureRtcEnabled())
-                .setScene(scene)
-                .setRequestId(quickCreateChannelRequest.getRequestId());
+                .setScene(scene);
         LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         if (liveChannelResponse == null) {
             throw new PloyvSdkException(Constant.ERROR_CODE, "创建频道失败");
@@ -104,8 +103,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                 .setPublisher(quickCreateChannelRequest.getPublisher())
                 .setLinkMicLimit(quickCreateChannelRequest.getLinkMicLimit());
         liveChannelSettingRequest.setChannelId(channelId)
-                .setBasicSetting(basicSetting)
-                .setRequestId(quickCreateChannelRequest.getRequestId());
+                .setBasicSetting(basicSetting);
         Boolean liveChannelSettingResponse = new LiveChannelOperateServiceImpl().updateChannelSetting(
                 liveChannelSettingRequest);
         if (!liveChannelSettingResponse) {
@@ -118,8 +116,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
             LiveSetPlayerImgRequest liveSetChatAdminDataRequest = new LiveSetPlayerImgRequest();
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setCoverImage(quickCreateChannelRequest.getCoverImage())
-                    .setCoverHref(quickCreateChannelRequest.getCoverHref())
-                    .setRequestId(quickCreateChannelRequest.getRequestId());
+                    .setCoverHref(quickCreateChannelRequest.getCoverHref());
             Boolean result = new LivePlayerServiceImpl().setPlayerImg(liveSetChatAdminDataRequest);
             if (result == null || !result) {
                 throw new PloyvSdkException(Constant.ERROR_CODE, "暖场图片设置失败");
@@ -129,8 +126,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
         if (StringUtils.isNotBlank(quickCreateChannelRequest.getWarmUpFlv())) {
             LiveSetWarmupVedioRequest liveSetWarmupVedioRequest = new LiveSetWarmupVedioRequest();
             liveSetWarmupVedioRequest.setChannelId(channelId)
-                    .setWarmUpFlv(quickCreateChannelRequest.getWarmUpFlv())
-                    .setRequestId(quickCreateChannelRequest.getRequestId());
+                    .setWarmUpFlv(quickCreateChannelRequest.getWarmUpFlv());
             Boolean result = new LivePlayerServiceImpl().setPlayerWarmUpVedio(liveSetWarmupVedioRequest);
             if (result == null || !result) {
                 throw new PloyvSdkException(Constant.ERROR_CODE, "暖场视频设置失败");
@@ -145,8 +141,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                     .setNickname(quickCreateChannelRequest.getNickname())
                     .setActor(quickCreateChannelRequest.getActor())
                     .setPasswd(quickCreateChannelRequest.getChannelPasswd())
-                    .setAvatar(quickCreateChannelRequest.getAvatar())
-                    .setRequestId(quickCreateChannelRequest.getRequestId());
+                    .setAvatar(quickCreateChannelRequest.getAvatar());
             result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
             if (result == null || !result) {
                 throw new PloyvSdkException(Constant.ERROR_CODE, "设置讲师信息失败");
@@ -166,8 +161,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                     .setType(quickCreateChannelRequest.getType())
                     .setFile(quickCreateChannelRequest.getFile())
                     .setDocName(quickCreateChannelRequest.getDocName())
-                    .setCallbackUrl(quickCreateChannelRequest.getCallbackUrl())
-                    .setRequestId(quickCreateChannelRequest.getRequestId());
+                    .setCallbackUrl(quickCreateChannelRequest.getCallbackUrl());
             liveCreateChannelDocResponse = new LiveChannelDocServiceImpl().createChannelDoc(
                     liveCreateChannelDocRequest);
             if (liveCreateChannelDocResponse == null) {
@@ -217,8 +211,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
         liveChannelRequest.setName(quickCreateVideoChannelRequest.getName())
                 .setChannelPasswd(quickCreateVideoChannelRequest.getChannelPasswd())
                 .setPureRtcEnabled(quickCreateVideoChannelRequest.getPureRtcEnabled())
-                .setScene(scene)
-                .setRequestId(quickCreateVideoChannelRequest.getRequestId());
+                .setScene(scene);
         LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         if (liveChannelResponse == null) {
             throw new PloyvSdkException(Constant.ERROR_CODE, "创建频道失败");
@@ -247,8 +240,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                 .setPublisher(quickCreateVideoChannelRequest.getPublisher())
                 .setLinkMicLimit(quickCreateVideoChannelRequest.getLinkMicLimit());
         liveChannelSettingRequest.setChannelId(channelId)
-                .setBasicSetting(basicSetting)
-                .setRequestId(quickCreateVideoChannelRequest.getRequestId());
+                .setBasicSetting(basicSetting);
         Boolean liveChannelSettingResponse = new LiveChannelOperateServiceImpl().updateChannelSetting(
                 liveChannelSettingRequest);
         if (!liveChannelSettingResponse) {
@@ -265,8 +257,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
             LiveSetPlayerImgRequest liveSetChatAdminDataRequest = new LiveSetPlayerImgRequest();
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setCoverImage(quickCreateVideoChannelRequest.getCoverImage())
-                    .setCoverHref(quickCreateVideoChannelRequest.getCoverHref())
-                    .setRequestId(quickCreateVideoChannelRequest.getRequestId());
+                    .setCoverHref(quickCreateVideoChannelRequest.getCoverHref());
             Boolean result = new LivePlayerServiceImpl().setPlayerImg(liveSetChatAdminDataRequest);
             if (result == null || !result) {
                 throw new PloyvSdkException(Constant.ERROR_CODE, "暖场图片设置失败");
@@ -276,8 +267,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
         if (StringUtils.isNotBlank(quickCreateVideoChannelRequest.getWarmUpFlv())) {
             LiveSetWarmupVedioRequest liveSetWarmupVedioRequest = new LiveSetWarmupVedioRequest();
             liveSetWarmupVedioRequest.setChannelId(channelId)
-                    .setWarmUpFlv(quickCreateVideoChannelRequest.getWarmUpFlv())
-                    .setRequestId(quickCreateVideoChannelRequest.getRequestId());
+                    .setWarmUpFlv(quickCreateVideoChannelRequest.getWarmUpFlv());
             Boolean result = new LivePlayerServiceImpl().setPlayerWarmUpVedio(liveSetWarmupVedioRequest);
             if (result == null || !result) {
                 throw new PloyvSdkException(Constant.ERROR_CODE, "暖场视频设置失败");
@@ -291,8 +281,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
                     .setNickname(quickCreateVideoChannelRequest.getNickname())
                     .setActor(quickCreateVideoChannelRequest.getActor())
                     .setPasswd(quickCreateVideoChannelRequest.getChannelPasswd())
-                    .setAvatar(quickCreateVideoChannelRequest.getAvatar())
-                    .setRequestId(quickCreateVideoChannelRequest.getRequestId());
+                    .setAvatar(quickCreateVideoChannelRequest.getAvatar());
             result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
             if (result == null || !result) {
                 throw new PloyvSdkException(Constant.ERROR_CODE, "设置讲师信息失败");
@@ -315,7 +304,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
             throws IOException, NoSuchAlgorithmException {
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;
         LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
-        liveChannelBasicInfoRequest.setChannelId(channelId).setRequestId(requestId);
+        liveChannelBasicInfoRequest.setChannelId(channelId);
         liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().getChannelBasicInfo(
                 liveChannelBasicInfoRequest);
         if (liveChannelBasicInfoResponse == null) {
@@ -335,7 +324,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
             throws IOException, NoSuchAlgorithmException {
         LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
         LiveSonChannelInfoListResponse liveSonChannelInfoResponse;
-        liveSonChannelInfoListRequest.setChannelId(channelId).setRequestId(requestId);
+        liveSonChannelInfoListRequest.setChannelId(channelId);
         liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfoList(
                 liveSonChannelInfoListRequest);
         if (liveSonChannelInfoResponse == null) {
@@ -353,7 +342,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
      */
     private void createSonChannelList(String channelId, LiveCreateSonChannelListRequest liveCreateSonChannelListRequest,
             String requestId) throws IOException, NoSuchAlgorithmException {
-        liveCreateSonChannelListRequest.setChannelId(channelId).setRequestId(requestId);
+        liveCreateSonChannelListRequest.setChannelId(channelId);
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse =
                 new LiveChannelOperateServiceImpl().createSonChannelList(
                 liveCreateSonChannelListRequest);

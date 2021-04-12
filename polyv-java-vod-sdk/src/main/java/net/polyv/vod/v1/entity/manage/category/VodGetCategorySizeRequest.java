@@ -11,13 +11,13 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * 通过cataid获取视频目录空间请求实体
+ * 通过categoryId获取视频目录空间请求实体
  * @author: fangyan
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("通过cataid获取视频目录空间请求实体")
+@ApiModel("通过categoryId获取视频目录空间请求实体")
 public class VodGetCategorySizeRequest extends VodCommonRequest {
     
     /**

@@ -47,7 +47,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         LiveQuestionnaireListResponse liveQuestionnaireListResponse = null;
         try {
             String channelId = super.createChannel();
-            liveQuestionnaireListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionnaireListRequest.setChannelId(channelId);
             liveQuestionnaireListResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireListInfo(
                     liveQuestionnaireListRequest);
             Assert.assertNotNull(liveQuestionnaireListResponse);
@@ -82,8 +82,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
             String channelId = super.createChannel();
             //获取详情
             liveQuestionnaireDetailRequest.setChannelId(channelId)
-                    .setQuestionnaireId("fs9skpv22f")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setQuestionnaireId("fs9skpv22f");
             liveQuestionnaireDetailResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireDetailInfo(
                     liveQuestionnaireDetailRequest);
             Assert.assertNotNull(liveQuestionnaireDetailResponse);
@@ -115,7 +114,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
         List<LiveQuestionnaireResultResponse> liveQuestionnaireResultResponse = null;
         try {
             String channelId = super.createChannel();
-            liveQuestionnaireResultRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveQuestionnaireResultRequest.setChannelId(channelId);
             liveQuestionnaireResultRequest.setStartDate(getDate(2020, 10, 01)).setEndDate(getDate(2099, 12, 12));
 //        liveQuestionnaireResultRequest.setQuestionnaireId("fs9skpv22f");
             liveQuestionnaireResultResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultInfo(
@@ -154,8 +153,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
                     .setStartDate(getDate(2020, 10, 01))
                     .setEndDate(getDate(2099, 12, 12))
                     .setPageSize(20)
-                    .setCurrentPage(1)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setCurrentPage(1);
             liveQuestionnaireResultPageResponse = new LiveQuestionnaireServiceImpl().getQuestionnaireResultPageInfo(
                     liveQuestionnaireResultPageRequest);
             Assert.assertNotNull(liveQuestionnaireResultPageRequest);
@@ -191,8 +189,7 @@ public class LiveQuestionnaireServiceImplTest extends BaseTest {
             liveQuestionnaireDetailSetRequest.setChannelId(channelId)
                     .setCustomQuestionnaireId(LiveSignUtil.generateUUID())
 //                .setQuestionnaireId("fs9skpv22f")
-                    .setQuestionnaireTitle("测试试卷，明天会更好调查2")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setQuestionnaireTitle("测试试卷，明天会更好调查2");
             
             //封装问卷题目
             LiveQuestionnaireDetailSetRequest.QuestionDetail questionDetail =

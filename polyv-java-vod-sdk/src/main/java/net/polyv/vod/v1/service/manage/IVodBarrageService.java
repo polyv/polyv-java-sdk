@@ -27,9 +27,9 @@ public interface IVodBarrageService {
             throws IOException, NoSuchAlgorithmException;
     
     /**
-     * 上传点播弹幕文件接口
+     * 上传点播弹幕文件
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-vmanage/danmu/upload-danmu/
-     * @param vodUploadBarrageRequest 上传点播弹幕文件接口请求实体
+     * @param vodUploadBarrageRequest 上传点播弹幕文件请求实体
      * @return Boolean
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -37,10 +37,10 @@ public interface IVodBarrageService {
     Boolean uploadBarrage(VodUploadBarrageRequest vodUploadBarrageRequest) throws IOException, NoSuchAlgorithmException;
     
     /**
-     * 创建视频弹幕接口
+     * 创建视频弹幕
      * API地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-vmanage/danmu/danmu-add/
-     * @param vodCreateBarrageRequest 上传点播弹幕文件接口请求实体
-     * @return 上传点播弹幕文件接口返回实体
+     * @param vodCreateBarrageRequest 上传点播弹幕文件请求实体
+     * @return 上传点播弹幕文件返回实体
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -50,7 +50,7 @@ public interface IVodBarrageService {
     /**
      * 批量删除弹幕信息
      * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/danmu/danmu-delete/
-     * @param vodDeleteBarrageRequest 上传点播弹幕文件接口请求实体
+     * @param vodDeleteBarrageRequest 上传点播弹幕文件请求实体
      * @return Boolean
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常

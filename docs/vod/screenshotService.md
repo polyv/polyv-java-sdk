@@ -6,7 +6,9 @@
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
+
 2、接口用于添加时间点截图任务，每个任务允许截图20张
+
 3、禁播的视频不允许截图操作
 ### 单元测试
 ```java
@@ -17,8 +19,7 @@
         try {
             vodCreateScreenshotTaskRequest.setUploadTime(new Date())
                     .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setOffsetTimes("8")
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setOffsetTimes("8");
             vodCreateScreenshotTaskResponse = new VodScreenshotServiceImpl().createScreenshotTask(
                     vodCreateScreenshotTaskRequest);
             Assert.assertNotNull(vodCreateScreenshotTaskResponse);
@@ -39,9 +40,9 @@
 ### 单元测试说明
 1、请求正确，返回Integer对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -78,7 +79,7 @@
         VodGetScreenshotTaskStatusRequest vodGetScreenshotTaskStatusRequest = new VodGetScreenshotTaskStatusRequest();
         VodGetScreenshotTaskStatusResponse vodGetScreenshotTaskStatusResponse = null;
         try {
-            vodGetScreenshotTaskStatusRequest.setTaskId(1146).setRequestId(VodSignUtil.generateUUID());
+            vodGetScreenshotTaskStatusRequest.setTaskId(1146);
             vodGetScreenshotTaskStatusResponse = new VodScreenshotServiceImpl().getScreenshotTaskStatus(
                     vodGetScreenshotTaskStatusRequest);
             Assert.assertNotNull(vodGetScreenshotTaskStatusResponse);
@@ -99,9 +100,9 @@
 ### 单元测试说明
 1、请求正确，返回VodGetScreenshotTaskStatusResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -112,22 +113,22 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| taskId | false | Integer | 任务id | 
-| vid | false | String | 视频vid | 
-| status | false | String | 任务状态，waiting-等待截图,processing-截图处理中,success-任务成功,fail-任务失败 | 
-| createTime | false | Date | 任务创建时间,时间格式 yyyy-MM-dd HH:mm:ss | 
-| beginProcessTime | false | Date | 开始截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
-| finishProcessTime | false | Date | 完成截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
-| screenshots | false | Array | 截图信息组，失败或未开始时为空【详见[Screenshot参数描述](screenshotService.md?id=polyv28)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| taskId | Integer | 任务id | 
+| vid | String | 视频vid | 
+| status | String | 任务状态，waiting-等待截图,processing-截图处理中,success-任务成功,fail-任务失败 | 
+| createTime | Date | 任务创建时间,时间格式 yyyy-MM-dd HH:mm:ss | 
+| beginProcessTime | Date | 开始截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
+| finishProcessTime | Date | 完成截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
+| screenshots | Array | 截图信息组，失败或未开始时为空【详见[Screenshot参数描述](screenshotService.md?id=polyv28)】 | 
 
 <h6 id="polyv28"><a href="#/screenshotService.md?id=polyv28"data-id="Screenshot参数描述"class="anchor"><span>Screenshot参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| offsetTime | false | Integer | 截图时间点，单位：秒 | 
-| imageUrl | false | String | 截图访问的url | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| offsetTime | Integer | 截图时间点，单位：秒 | 
+| imageUrl | String | 截图访问的url | 
 
 <br /><br />
 

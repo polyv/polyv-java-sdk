@@ -20,11 +20,11 @@
 <dependency>
     <groupId>net.polyv</groupId>
     <artifactId>polyv-java-vod-sdk</artifactId>
-    <version>1.0.20</version>
+    <version>1.0.23</version>
 </dependency> 
 ```
 
-> 注意：<font color=#FF0000 >为了消除Java的冗长代码  ,SDK使用了jdk1.8的最新特性lombok，请在IntelliJ或者Eclipse 中配置对lombok的支持 </font>
+> 注意：<font color=#FF0000 >为了消除Java的冗长代码，SDK使用了Lombok框架，请在IntelliJ或者Eclipse 中配置对Lombok的支持</font>
 
 ```xml
 <dependency>
@@ -97,7 +97,7 @@ public class StartupListener implements ApplicationContextAware {
 
 ## 3.执行测试代码
 
-&emsp;&emsp;测试创建一个直播频道，单元测试代码如下：
+&emsp;&emsp;测试获取用户空间及流量情况，单元测试代码如下：
 
 ```java
 package net.polyv.vod.v1.service;
@@ -142,7 +142,7 @@ public class VodVideoDemo {
       instance.set(2020, 10, 13);
       VodAccountSpaceDataRequest vodAccountSpaceDataRequest = new VodAccountSpaceDataRequest();
       VodAccountSpaceDataResponse vodAccountSpaceDataResponse;
-      vodAccountSpaceDataRequest.setDate(instance.getTime()).setRequestId(VodSignUtil.generateUUID());
+      vodAccountSpaceDataRequest.setDate(instance.getTime());
       vodAccountSpaceDataResponse = new VodAccountServiceImpl().getAccountSpaceFlow(vodAccountSpaceDataRequest);
       Assert.assertNotNull(vodAccountSpaceDataResponse);
       if (vodAccountSpaceDataResponse != null) {

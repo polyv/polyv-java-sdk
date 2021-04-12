@@ -5,14 +5,15 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodCreateCategoryResponse;
 import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategoryResponse;
 import net.polyv.vod.v1.entity.manage.category.VodGetCategorySizeRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveVideoRequest;
-import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryNameRequest;
+import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryProfileRequest;
 
 /**
  * 视频分类
@@ -21,9 +22,9 @@ import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryNameRequest;
 public interface IVodCategoryService {
     
     /**
-     * 移动视频分类接口
+     * 移动视频分类
      * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/change/
-     * @param vodMoveCategoryRequest 移动视频分类接口请求实体
+     * @param vodMoveCategoryRequest 移动视频分类请求实体
      * @return Boolean
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -50,7 +51,7 @@ public interface IVodCategoryService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
-    String createCategory(VodCreateCategoryRequest vodCreateCategoryRequest)
+    VodCreateCategoryResponse createCategory(VodCreateCategoryRequest vodCreateCategoryRequest)
             throws IOException, NoSuchAlgorithmException;
     
     /**
@@ -97,9 +98,9 @@ public interface IVodCategoryService {
     Boolean moveVideo(VodMoveVideoRequest vodMoveVideoRequest) throws IOException, NoSuchAlgorithmException;
     
     /**
-     * 通过cataid获取视频目录空间
+     * 通过categoryId获取视频目录空间
      * API地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-taxonomy/getsize/
-     * @param vodGetCategorySizeRequest 通过cataid获取视频目录空间请求实体
+     * @param vodGetCategorySizeRequest 通过categoryId获取视频目录空间请求实体
      * @return Long
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常

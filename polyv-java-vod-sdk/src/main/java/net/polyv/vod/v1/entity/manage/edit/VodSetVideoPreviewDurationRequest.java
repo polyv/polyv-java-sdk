@@ -11,13 +11,13 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * 设置视频的播放预览时长请求实体
+ * 修改视频的播放预览时长请求实体
  * @author: sadboy
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("设置视频的播放预览时长请求实体")
+@ApiModel("修改视频的播放预览时长请求实体")
 public class VodSetVideoPreviewDurationRequest extends VodCommonRequest {
     
     /**

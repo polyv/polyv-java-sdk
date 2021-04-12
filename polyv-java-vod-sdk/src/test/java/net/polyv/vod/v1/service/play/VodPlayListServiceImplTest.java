@@ -33,7 +33,7 @@ public class VodPlayListServiceImplTest extends BaseTest {
         VodGetOnePlayListRequest vodGetOnePlayListRequest = new VodGetOnePlayListRequest();
         List<VodGetOnePlayListResponse> vodGetOnePlayListResponseList = null;
         try {
-            vodGetOnePlayListRequest.setId("1616396785347").setRequestId(VodSignUtil.generateUUID());
+            vodGetOnePlayListRequest.setId("1616396785347");
             vodGetOnePlayListResponseList = new VodPlayListServiceImpl().getOnePlayList(vodGetOnePlayListRequest);
             Assert.assertNotNull(vodGetOnePlayListResponseList);
             if (vodGetOnePlayListResponseList != null) {

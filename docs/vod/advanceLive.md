@@ -60,12 +60,10 @@
                 .setChannelPasswd(password)
                 //是否无延迟开关
                 .setPureRtcEnabled(LiveConstant.Flag.YES.getFlag() )
-                //直播教学场景
-                .setScene(LiveConstant.SceneType.PPT.getDesc())
 //                //纯视频直播场景
 //                .setScene(LiveConstant.SceneType.ALONE.getDesc())
-                //请求流水号
-                .setRequestId(requestId );
+                //直播教学场景
+                .setScene(LiveConstant.SceneType.PPT.getDesc());
         LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         if (liveChannelResponse == null) {
             throw new PloyvSdkException(LiveConstant.ERROR_CODE, "创建频道失败");
@@ -96,8 +94,7 @@
                 .setPublisher("thomas教授")
                 .setLinkMicLimit(6);
         liveChannelSettingRequest.setChannelId(channelId)
-                .setBasicSetting(basicSetting)
-                .setRequestId(requestId);
+                .setBasicSetting(basicSetting);
         Boolean liveChannelSettingResponse = new LiveChannelOperateServiceImpl().updateChannelSetting(
                 liveChannelSettingRequest);
         if (!liveChannelSettingResponse) {
@@ -113,8 +110,7 @@
                     //暖场图片
                     .setCoverImage(converImage)
                     //点击暖场图片跳转的地址
-                    .setCoverHref("http://www.baidu.com")
-                    .setRequestId(requestId);
+                    .setCoverHref("http://www.baidu.com");
             Boolean result = new LivePlayerServiceImpl().setPlayerImg(liveSetChatAdminDataRequest);
             if (result == null || !result) {
                 throw new PloyvSdkException(LiveConstant.ERROR_CODE, "暖场图片设置失败");
@@ -126,8 +122,7 @@
         if (StringUtils.isNotBlank(warmUpFlv )) {
             LiveSetWarmupVedioRequest liveSetWarmupVedioRequest = new LiveSetWarmupVedioRequest();
             liveSetWarmupVedioRequest.setChannelId(channelId)
-                    .setWarmUpFlv(warmUpFlv)
-                    .setRequestId(requestId);
+                    .setWarmUpFlv(warmUpFlv);
             Boolean result = new LivePlayerServiceImpl().setPlayerWarmUpVedio(liveSetWarmupVedioRequest);
             if (result == null || !result) {
                 throw new PloyvSdkException(LiveConstant.ERROR_CODE, "暖场视频设置失败");
@@ -149,8 +144,7 @@
                             "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
                                     ".jpg")
                     //讲师登录密码
-                    .setPasswd(password)
-                    .setRequestId(requestId);
+                    .setPasswd(password);
             result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
             if (result == null || !result) {
                 throw new PloyvSdkException(LiveConstant.ERROR_CODE, "设置讲师信息失败");
@@ -165,7 +159,7 @@
         sonChannels.add(setSonChannelsInfo2());
         liveCreateSonChannelListRequest.setSonChannels(sonChannels);
         
-        liveCreateSonChannelListRequest.setChannelId(channelId).setRequestId(requestId);
+        liveCreateSonChannelListRequest.setChannelId(channelId);
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse =
                 new LiveChannelOperateServiceImpl().createSonChannelList(
                         liveCreateSonChannelListRequest);
@@ -182,11 +176,10 @@
                     .setType("common")
                     //教学课件或者直播PPT
                     .setFile(new File(path))
-                    //文档名称
-                    .setDocName("直播教学课件")
                     //PPT需要转换处理，转换完成时间的回调通知地址
 //                    .setCallbackUrl("http://www.baidu.com/callback")
-                    .setRequestId(requestId);
+                    //文档名称
+                    .setDocName("直播教学课件");
             liveCreateChannelDocResponse = new LiveChannelDocServiceImpl().createChannelDoc(
                     liveCreateChannelDocRequest);
             if (liveCreateChannelDocResponse == null) {
@@ -266,7 +259,7 @@
             throws IOException, NoSuchAlgorithmException {
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;
         LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
-        liveChannelBasicInfoRequest.setChannelId(channelId).setRequestId(requestId);
+        liveChannelBasicInfoRequest.setChannelId(channelId);
         liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().getChannelBasicInfo(
                 liveChannelBasicInfoRequest);
         if (liveChannelBasicInfoResponse == null) {
@@ -286,7 +279,7 @@
             throws IOException, NoSuchAlgorithmException {
         LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
         LiveSonChannelInfoListResponse liveSonChannelInfoResponse;
-        liveSonChannelInfoListRequest.setChannelId(channelId).setRequestId(requestId);
+        liveSonChannelInfoListRequest.setChannelId(channelId);
         liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfoList(
                 liveSonChannelInfoListRequest);
         if (liveSonChannelInfoResponse == null) {
@@ -304,7 +297,7 @@
      */
     private void createSonChannelList(String channelId, LiveCreateSonChannelListRequest liveCreateSonChannelListRequest,
             String requestId) throws IOException, NoSuchAlgorithmException {
-        liveCreateSonChannelListRequest.setChannelId(channelId).setRequestId(requestId);
+        liveCreateSonChannelListRequest.setChannelId(channelId);
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse =
                 new LiveChannelOperateServiceImpl().createSonChannelList(
                         liveCreateSonChannelListRequest);
@@ -328,8 +321,7 @@
         //依据频道号和起止时间查询观看日志
         liveListChannelViewlogRequest.setChannelId(channelId)
                 .setStartTime(new Date())
-                .setEndTime(instance.getTime())
-                .setRequestId(requestId);
+                .setEndTime(instance.getTime());
         liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                 liveListChannelViewlogRequest);
         Assert.assertNotNull(liveListChannelViewlogResponse);

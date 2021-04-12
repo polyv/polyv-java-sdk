@@ -41,8 +41,7 @@ public class VodCoursewareServiceImplTest extends BaseTest {
         try {
             String coursewareFile = getClass().getResource("/courseware/Courseware.ppt").getPath();
             vodUploadCoursewareRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
-                    .setCourseware(new File(coursewareFile))
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setCourseware(new File(coursewareFile));
             vodUploadCoursewareResponse = new VodCoursewareServiceImpl().uploadCourseware(vodUploadCoursewareRequest);
             Assert.assertTrue(vodUploadCoursewareResponse);
             if (vodUploadCoursewareResponse) {
@@ -73,8 +72,7 @@ public class VodCoursewareServiceImplTest extends BaseTest {
             //准备测试数据
             uploadCourseware();
             
-            vodDeleteCoursewareRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodDeleteCoursewareRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1");
             vodDeleteCoursewareResponse = new VodCoursewareServiceImpl().deleteCourseware(vodDeleteCoursewareRequest);
             Assert.assertTrue(vodDeleteCoursewareResponse);
             if (vodDeleteCoursewareResponse) {
@@ -101,8 +99,7 @@ public class VodCoursewareServiceImplTest extends BaseTest {
         VodQueryCoursewareRequest vodQueryCoursewareRequest = new VodQueryCoursewareRequest();
         List<VodQueryCoursewareResponse> vodQueryCoursewareResponseList = null;
         try {
-            vodQueryCoursewareRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1")
-                    .setRequestId(VodSignUtil.generateUUID());
+            vodQueryCoursewareRequest.setVideoId("1b448be3239c2ef0cb3ab9fd105f7fb2_1");
             vodQueryCoursewareResponseList = new VodCoursewareServiceImpl().queryCourseware(vodQueryCoursewareRequest);
             Assert.assertNotNull(vodQueryCoursewareResponseList);
             if (vodQueryCoursewareResponseList != null) {

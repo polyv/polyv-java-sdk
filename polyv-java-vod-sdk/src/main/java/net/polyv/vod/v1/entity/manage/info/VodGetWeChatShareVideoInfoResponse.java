@@ -6,12 +6,12 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 获取微信分享页的视频相关信息接口返回实体
+ * 获取微信分享页的视频相关信息返回实体
  * @author: fangyan
  */
 @Data
 @Accessors(chain = true)
-@ApiModel("获取微信分享页的视频相关信息接口返回实体")
+@ApiModel("获取微信分享页的视频相关信息返回实体")
 public class VodGetWeChatShareVideoInfoResponse {
     
     /**

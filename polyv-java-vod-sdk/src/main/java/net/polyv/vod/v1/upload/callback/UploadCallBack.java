@@ -1,7 +1,7 @@
-package net.polyv.vod.v1.upload2.callback;
+package net.polyv.vod.v1.upload.callback;
 
 
-import net.polyv.vod.v1.upload2.enumeration.UploadErrorMsg;
+import net.polyv.vod.v1.upload.enumeration.UploadErrorMsg;
 
 /**
  * 分片上传回调接口

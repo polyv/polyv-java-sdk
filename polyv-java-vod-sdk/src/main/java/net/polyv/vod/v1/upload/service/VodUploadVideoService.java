@@ -1,4 +1,4 @@
-package net.polyv.vod.v1.upload2.service;
+package net.polyv.vod.v1.upload.service;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;

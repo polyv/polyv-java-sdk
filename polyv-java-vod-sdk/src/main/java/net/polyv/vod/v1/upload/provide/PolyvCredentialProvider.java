@@ -1,4 +1,4 @@
-package net.polyv.vod.v1.upload2.provide;
+package net.polyv.vod.v1.upload.provide;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ import com.aliyun.oss.common.auth.InvalidCredentialsException;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.vod.v1.entity.upload.vo.VodUploadVideoConfigResponse;
-import net.polyv.vod.v1.upload2.service.VodUploadVideoService;
+import net.polyv.vod.v1.upload.service.VodUploadVideoService;
 
 /**
  * 自定义认证提供服务

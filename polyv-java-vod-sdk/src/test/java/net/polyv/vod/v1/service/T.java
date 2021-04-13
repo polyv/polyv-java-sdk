@@ -5,9 +5,9 @@ import java.io.File;
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.vod.v1.entity.upload.VodUploadVideoPartsRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadVideoRequest;
-import net.polyv.vod.v1.upload2.callback.UploadCallBack;
-import net.polyv.vod.v1.upload2.client.PolyvUploadClient;
-import net.polyv.vod.v1.upload2.enumeration.UploadErrorMsg;
+import net.polyv.vod.v1.upload.callback.UploadCallBack;
+import net.polyv.vod.v1.upload.client.PolyvUploadClient;
+import net.polyv.vod.v1.upload.enumeration.UploadErrorMsg;
 
 /**
  * @author: sadboy

@@ -1,4 +1,4 @@
-package net.polyv.vod.v1.upload2.enumeration;
+package net.polyv.vod.v1.upload.enumeration;
 
 public enum UploadErrorMsg {
     

@@ -38,17 +38,32 @@ public class VodUploadVideoPartsTest extends BaseTest {
              */
             PolyvUploadClient client = new PolyvUploadClient();
             String videoId = client.uploadVideo(vodUploadVideoRequest, new UploadCallBack() {
+    
+                /**
+                 * 开始上传回调
+                 * @param videoPoolId 视频id
+                 */
                 @Override
                 public void start(String videoPoolId) {
                     log.debug("开始分片上传视频，videoId：{}", videoPoolId);
                 }
-                
+    
+                /**
+                 * 上传过程回调
+                 * @param videoPoolId 视频id
+                 * @param hasUploadBytes 已经上传的字节数
+                 * @param totalFileBytes 视频总字节数
+                 */
                 @Override
                 public void process(String videoPoolId, long hasUploadBytes, long totalFileBytes) {
                     log.debug("==================process=" + videoPoolId + "---" + hasUploadBytes + "---" +
                             totalFileBytes);
                 }
-                
+    
+                /**
+                 * 完成所有分片文件的上传（还没处理完毕）
+                 * @param videoPoolId 视频id
+                 */
                 @Override
                 public void complete(String videoPoolId) {
                     log.debug("==================complete=" + videoPoolId);
@@ -97,17 +112,32 @@ public class VodUploadVideoPartsTest extends BaseTest {
         try {
             PolyvUploadClient client = new PolyvUploadClient();
             String videoPoolId = client.uploadVideo(vodUploadVideoPartsRequest, new UploadCallBack() {
+                
+                /**
+                 * 开始上传回调
+                 * @param videoPoolId 视频id
+                 */
                 @Override
                 public void start(String videoPoolId) {
                     log.debug("开始分片上传视频，videoId：{}", videoPoolId);
                 }
-                
+    
+                /**
+                 * 上传过程回调
+                 * @param videoPoolId 视频id
+                 * @param hasUploadBytes 已经上传的字节数
+                 * @param totalFileBytes 视频总字节数
+                 */
                 @Override
                 public void process(String videoPoolId, long hasUploadBytes, long totalFileBytes) {
                     log.debug("==================process=" + videoPoolId + "---" + hasUploadBytes + "---" +
                             totalFileBytes);
                 }
-                
+    
+                /**
+                 * 完成所有分片文件的上传（还没处理完毕）
+                 * @param videoPoolId 视频id
+                 */
                 @Override
                 public void complete(String videoPoolId) {
                     log.debug("==================complete=" + videoPoolId);
@@ -132,6 +162,7 @@ public class VodUploadVideoPartsTest extends BaseTest {
                     log.debug("==================error=" + videoPoolId);
                 }
             }, false);
+            log.debug("测试续传视频成功，videoId:{}", videoPoolId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);

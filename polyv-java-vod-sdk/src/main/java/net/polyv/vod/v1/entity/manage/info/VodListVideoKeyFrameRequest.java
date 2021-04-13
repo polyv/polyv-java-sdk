@@ -24,7 +24,7 @@ public class VodListVideoKeyFrameRequest extends VodCommonRequest {
      * 视频ID
      */
     @ApiModelProperty(name = "videoId", value = "视频ID", required = true)
-    @NotNull(message = "属性vid不能为空")
+    @NotNull(message = "属性videoId不能为空")
     @JSONField(name = "vid")
     private String videoId;
     

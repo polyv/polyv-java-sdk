@@ -212,8 +212,8 @@ public class LiveWebInfoImplTest extends BaseTest {
         try {
             String path = getClass().getResource("/img/elephant.png").getPath();
             liveUpdateChannelSplashRequest.setChannelId(createChannel())
-                    .setSplashEnabled("N")
-                    .setImgfile(new File(path))
+                    .setSplashEnabled("Y")
+//                    .setImgfile(new File(path))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
                     liveUpdateChannelSplashRequest);

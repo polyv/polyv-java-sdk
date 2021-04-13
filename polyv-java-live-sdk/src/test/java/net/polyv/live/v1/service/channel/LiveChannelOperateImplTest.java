@@ -421,7 +421,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             String channelId = super.createChannel();
             
             liveChannelPasswordSettingRequest.setChannelId(channelId)
-                    .setPasswd("987654")
+                    .setPasswd(getRandomString(6))
                     .setRequestId(LiveSignUtil.generateUUID());
             liveChannelPasswordSettingResponse = new LiveChannelOperateServiceImpl().updateChannelPassword(
                     liveChannelPasswordSettingRequest);

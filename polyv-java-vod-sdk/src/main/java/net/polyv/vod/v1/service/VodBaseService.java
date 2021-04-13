@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,14 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.constant.VodConstant;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 import net.polyv.vod.v1.entity.VodCommonResponse;
+import net.polyv.vod.v1.entity.VodSubCommonRequest;
+import net.polyv.vod.v1.entity.VodSubPageCommonRequest;
+import net.polyv.vod.v1.entity.datastatistics.VodQueryViewLogByDayRequest;
+import net.polyv.vod.v1.entity.manage.category.VodDeleteCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
+import net.polyv.vod.v1.entity.manage.category.VodMoveVideoRequest;
+import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryNameRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
@@ -81,9 +90,9 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> VodCommonResponse baseGet(String url, E e)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-        String response = HttpUtil.get(url, paramMap);
-        return responseConversion(response,e.getRequestId());
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        String response = HttpUtil.get(url, paramMap, getHttpHeadMap());
+        return responseConversion(response, e.getRequestId());
     }
     
     /**
@@ -97,9 +106,9 @@ public class VodBaseService {
      */
     protected <E extends VodCommonRequest> byte[] getReturnBinary(String url, E e)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
+        Map<String, String> paramMap = commonRequestLogic(null, e);
         
-        byte[] response = HttpUtil.getBinary(url, paramMap, null);
+        byte[] response = HttpUtil.getBinary(url, paramMap, getHttpHeadMap(), null);
         if (response == null) {
             String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
             PloyvSdkException exception = new PloyvSdkException(VodConstant.ERROR_CODE, message);
@@ -160,9 +169,9 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> VodCommonResponse basePostFormBody(String url, E e)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-        String response = HttpUtil.postFormBody(url, paramMap);
-        return responseConversion(response,e.getRequestId());
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        String response = HttpUtil.postFormBody(url, paramMap, getHttpHeadMap());
+        return responseConversion(response, e.getRequestId());
     }
     
     /**
@@ -226,16 +235,16 @@ public class VodBaseService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    private <E extends VodCommonRequest> VodCommonResponse basePostJsonBody(String url, Map<String, String> signMap, E e,
-            String json) throws IOException, NoSuchAlgorithmException {
-        signMap = commonRequestLogic(signMap,e);
+    private <E extends VodCommonRequest> VodCommonResponse basePostJsonBody(String url, Map<String, String> signMap,
+            E e, String json) throws IOException, NoSuchAlgorithmException {
+        signMap = commonRequestLogic(signMap, e);
         validateBean(e);
-        url = net.polyv.common.v1.util.MapUtil.appendUrl(url,signMap);
+        url = net.polyv.common.v1.util.MapUtil.appendUrl(url, signMap);
         if (StringUtils.isBlank(json)) {
             json = JSON.toJSONString(e);
         }
-        String response = HttpUtil.postJsonBody(url, json, null);
-        return responseConversion(response,e.getRequestId());
+        String response = HttpUtil.postJsonBody(url, getHttpHeadMap(), json, null);
+        return responseConversion(response, e.getRequestId());
     }
     
     /**
@@ -262,6 +271,7 @@ public class VodBaseService {
             Class<T> tClass) throws IOException, NoSuchAlgorithmException {
         return this.uploadOneFile(url, e, fileMap).parseData(tClass);
     }
+    
     /**
      * HTTP POST 上传文件公共请求
      * @param url 请求URL
@@ -274,10 +284,11 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> VodCommonResponse uploadOneFile(String url, E e, Map<String, File> fileMap)
             throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-        String response = HttpUtil.postFile(url, paramMap, fileMap, null);
-        return responseConversion(response,e.getRequestId());
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        String response = HttpUtil.postFile(url, paramMap, fileMap, getHttpHeadMap(), null);
+        return responseConversion(response, e.getRequestId());
     }
+    
     /**
      * HTTP POST 上传文件公共请求
      * @param url 请求URL
@@ -307,9 +318,9 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> VodCommonResponse uploadMultipartFile(String url, E e,
             Map<String, List<File>> fileMap) throws IOException, NoSuchAlgorithmException {
-        Map<String, String> paramMap = commonRequestLogic(null,e);
-        String response = HttpUtil.postMultipleFile(url, paramMap, fileMap, null);
-        return responseConversion(response,e.getRequestId());
+        Map<String, String> paramMap = commonRequestLogic(null, e);
+        String response = HttpUtil.postMultipleFile(url, paramMap, fileMap, getHttpHeadMap(), null);
+        return responseConversion(response, e.getRequestId());
     }
     
     /**
@@ -328,18 +339,101 @@ public class VodBaseService {
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    private <E extends VodCommonRequest> Map<String, String> commonRequestLogic(Map<String, String> signMap,E e)
+    private <E extends VodCommonRequest> Map<String, String> commonRequestLogic(Map<String, String> signMap, E e)
             throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        if (StringUtils.isBlank(e.getTimestamp())) {
-            e.setTimestamp(String.valueOf(System.currentTimeMillis()));
+        if (StringUtils.isBlank(e.getPtime())) {
+            e.setPtime(String.valueOf(System.currentTimeMillis()));
         }
-        if(signMap==null){
+        String secretKey, sign;
+        if (e instanceof VodSubCommonRequest) {//子账号相关
+            VodSubCommonRequest vodSubCommonRequest = (VodSubCommonRequest) e;
+            secretKey = vodSubCommonRequest.getSecretKey();
+            vodSubCommonRequest.setTimestamp(String.valueOf(System.currentTimeMillis()));
+            signMap = getNotNullMap(signMap, e);
+            sign = VodSignUtil.setVodMd5Sign(signMap, secretKey);
+        } else if (e instanceof VodSubPageCommonRequest) {//子账号分页相关
+            VodSubPageCommonRequest subPageCommonRequest = (VodSubPageCommonRequest) e;
+            secretKey = subPageCommonRequest.getSecretKey();
+            subPageCommonRequest.setTimestamp(String.valueOf(System.currentTimeMillis()));
+            signMap = getNotNullMap(signMap, e);
+            sign = VodSignUtil.setVodMd5Sign(signMap, secretKey);
+        } else if (e instanceof VodQueryViewLogByDayRequest) {//个性化签名（为了兼容后端特殊签名算法）
+            signMap = MapUtil.objectToMap(e);
+            Map<String, String> innerMap = new HashMap<String, String>();
+            innerMap.put("userid", VodGlobalConfig.getUserId());
+            innerMap.put("day", signMap.get("day"));
+            innerMap.put("ptime", signMap.get("ptime"));
+            secretKey = VodGlobalConfig.getSecretKey();
+            sign = VodSignUtil.setVodSign(innerMap, secretKey);
+            signMap.put("sign", sign);
+        } else if (e instanceof VodDeleteCategoryRequest) {//个性化签名（为了兼容后端特殊签名算法）
+            signMap = MapUtil.objectToMap(e);
+            Map<String, String> innerMap = new HashMap<String, String>();
+            innerMap.put("userid", VodGlobalConfig.getUserId());
+            innerMap.put("cataid", signMap.get("cataid"));
+            innerMap.put("ptime", signMap.get("ptime"));
+            secretKey = VodGlobalConfig.getSecretKey();
+            sign = VodSignUtil.setVodSign(innerMap, secretKey);
+            signMap.put("sign", sign);
+        } else if (e instanceof VodGetCategoryRequest) {//个性化签名（为了兼容后端特殊签名算法）
+            signMap = MapUtil.objectToMap(e);
+            Map<String, String> innerMap = new HashMap<String, String>();
+            innerMap.put("userid", VodGlobalConfig.getUserId());
+            innerMap.put("ptime", signMap.get("ptime"));
+            secretKey = VodGlobalConfig.getSecretKey();
+            sign = VodSignUtil.setVodSign(innerMap, secretKey);
+            signMap.put("sign", sign);
+        } else if (e instanceof VodMoveVideoRequest) {//个性化签名（为了兼容后端特殊签名算法）
+            signMap = MapUtil.objectToMap(e);
+            Map<String, String> innerMap = new HashMap<String, String>();
+            innerMap.put("userid", VodGlobalConfig.getUserId());
+            innerMap.put("vids", signMap.get("vids"));
+            innerMap.put("cataid", signMap.get("cataid"));
+            innerMap.put("ptime", signMap.get("ptime"));
+            secretKey = VodGlobalConfig.getSecretKey();
+            sign = VodSignUtil.setVodSign(innerMap, secretKey);
+            signMap.put("sign", sign);
+        } else if (e instanceof VodUpdateCategoryNameRequest) {//个性化签名（为了兼容后端特殊签名算法）
+            signMap = MapUtil.objectToMap(e);
+            Map<String, String> innerMap = new HashMap<String, String>();
+            innerMap.put("userid", VodGlobalConfig.getUserId());
+            innerMap.put("cataname", signMap.get("cataname"));
+            innerMap.put("cataid", signMap.get("cataid"));
+            innerMap.put("ptime", signMap.get("ptime"));
+            secretKey = VodGlobalConfig.getSecretKey();
+            sign = VodSignUtil.setVodSign(innerMap, secretKey);
+            signMap.put("sign", sign);
+        } else if (e instanceof VodSaveVideoKeyFrameRequest) {//个性化签名（为了兼容后端特殊签名算法）
+            signMap = MapUtil.objectToMap(e);
+            Map<String, String> innerMap = new HashMap<String, String>();
+            innerMap.put("userid", VodGlobalConfig.getUserId());
+            innerMap.put("vid", signMap.get("vid"));
+            innerMap.put("ptime", signMap.get("ptime"));
+            secretKey = VodGlobalConfig.getSecretKey();
+            sign = VodSignUtil.setVodSign(innerMap, secretKey);
+            signMap.put("sign", sign);
+        } else {
+            signMap = getNotNullMap(signMap, e);
+            secretKey = VodGlobalConfig.getSecretKey();
+            sign = VodSignUtil.setVodSign(signMap, secretKey);
+        }
+        e.setSign(sign);
+        validateBean(e);
+        return signMap;
+    }
+    
+    /**
+     * 当signMap为空时，将e非空属性转换为map返回
+     * @param signMap 签名的map
+     * @param e 请求对象
+     * @param <E> VodCommonRequest
+     * @return 签名map
+     */
+    private <E extends VodCommonRequest> Map<String, String> getNotNullMap(Map<String, String> signMap, E e) {
+        if (signMap == null) {
             signMap = MapUtil.objectToMap(e);
         }
         signMap = MapUtil.filterNullValue(signMap);
-        String secretKey = VodGlobalConfig.getSecretKey();
-        String sign = VodSignUtil.setVodSign(signMap, secretKey);
-        e.setSign(sign);
         return signMap;
     }
     
@@ -351,7 +445,7 @@ public class VodBaseService {
      */
     private <E extends VodCommonRequest> void validateBean(E e) {
         List<ViolationMsg> violationMsgList = SDKValidateUtil.validateBean(e);
-        if(!violationMsgList.isEmpty()){
+        if (!violationMsgList.isEmpty()) {
             String errors = SDKValidateUtil.getViolationMsgStr(violationMsgList);
             errors = errors.substring(0, errors.length() - 3);
             errors = "输入参数 [" + e.getClass().getName() + "]对象校验失败 ,失败字段 [" + errors + "]";
@@ -368,7 +462,8 @@ public class VodBaseService {
      * @throws IOException 客户端和服务器读写异常
      * @throws NoSuchAlgorithmException 签名异常
      */
-    private VodCommonResponse responseConversion(String response,String requestId) throws IOException, NoSuchAlgorithmException {
+    private VodCommonResponse responseConversion(String response, String requestId)
+            throws IOException, NoSuchAlgorithmException {
         VodCommonResponse vodCommonResponse;
         if (StringUtils.isNotBlank(response)) {
             vodCommonResponse = JSON.parseObject(response, VodCommonResponse.class);
@@ -387,7 +482,14 @@ public class VodBaseService {
         return vodCommonResponse;
     }
     
-    
+    private Map<String, String> getHttpHeadMap() {
+        Map<String, String> headMap = new HashMap<String, String>();
+        headMap.put(HttpUtil.SOURCE, VodGlobalConfig.SDK_NAME);
+        headMap.put(HttpUtil.USER_AGENT, VodGlobalConfig.SDK_NAME);
+        headMap.put(HttpUtil.VERSION, HttpUtil.CURRENT_VERSION);
+        headMap.put(HttpUtil.USER_ID_NAME, VodGlobalConfig.getUserId());
+        return headMap;
+    }
     
     /**
      * 公共方法结束

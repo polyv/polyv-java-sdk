@@ -99,9 +99,9 @@ public class VodGetDelListResponse extends VodPageCommonResponse {
         private String categoryId;
         
         /**
-         * 返回flash连接
+         * 返回flash链接
          */
-        @ApiModelProperty(name = "swfLink", value = "返回flash连接", required = false)
+        @ApiModelProperty(name = "swfLink", value = "返回flash链接", required = false)
         @JSONField(name = "swf_link")
         private String swfLink;
         

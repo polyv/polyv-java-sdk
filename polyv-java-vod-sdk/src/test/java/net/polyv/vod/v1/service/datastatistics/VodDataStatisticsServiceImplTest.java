@@ -528,9 +528,9 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
      * 约束：2、高级分析功能介绍详见：http://dev.polyv.net/2019/videoproduct/v-manual/v-manual-statistic/advance-analysis/
      * 约束：3、由于数据量和计算量大，数据分析结果次日才可查询。
      * 约束：4、查询的时间跨度不超过31天；
-     * 约束：5、当start有值而end为空时，返回开始日期后31天后的数据；
-     * 约束：6、当start为空而end不为空时，返回结束日期前31天内的数据；
-     * 约束：7、当start、end参数均为空时，返回最近31天的数据。
+     * 约束：5、当请求入参startTime（开始时间）有值而endTime（结束时间）为空时，返回开始日期后31天后的数据；
+     * 约束：6、当请求入参startTime（开始时间）为空而endTime（结束时间）不为空时，返回结束日期前31天内的数据；
+     * 约束：7、当请求入参startTime（开始时间）、endTime（结束时间）均为空时，返回最近31天的数据。
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

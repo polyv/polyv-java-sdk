@@ -16,12 +16,6 @@ import net.polyv.vod.v1.entity.upload.VodUploadPPTRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadWatermarkRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.upload.impl.VodUploadServiceImpl;
-import net.polyv.vod.v1.upload.bean.vo.VodUploadPartsVideoRequest;
-import net.polyv.vod.v1.upload.bean.vo.VodUploadVideoRequest;
-import net.polyv.vod.v1.upload.callback.UploadCallBack;
-import net.polyv.vod.v1.upload.entry.PolyvUploadClient;
-import net.polyv.vod.v1.upload.enumeration.UploadErrorMsg;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 上传视频
@@ -190,122 +184,6 @@ public class VodUploadServiceImplTest extends BaseTest {
                 //to do something ......
                 log.debug("测试上传视频水印成功");
             }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 测试分片上传视频
-     * 描述：分片上传视频，start回调会返回视频id，若上传中断，可调用分片恢复上传接口上传
-     * 约束：2、调用分片恢复上传和该接口的checkpoint参数要一致
-     * 返回：成功返回视频id，start回调也会返回视频id，可以作为恢复分片上传视频的videoPoolId，具体进度和是否成功以callback为准
-     */
-//    @Test
-    public void testUploadVideo() {
-        VodUploadVideoRequest vodUploadVideoRequest = new VodUploadVideoRequest();
-        String videoPoolId = null;
-        try {
-            String videoFile = getClass().getResource("/file/video.mp4").getPath();
-            vodUploadVideoRequest.setFile(new File(videoFile))
-                    .setCategoryId("1")
-                    .setTitle("test（需删除）")
-                    .setDescribe("描述213")
-                    .setRequestId(VodSignUtil.generateUUID());
-            /**
-             * 传入 分片大小（默认为1MB,大小限定为100KB~5GB，100*1024代表100KB），checkpoint文件夹路径（默认：checkpoint_location），上传线程数（默认为5个）
-             */
-            PolyvUploadClient client = new PolyvUploadClient();
-            videoPoolId = client.uploadVideoParts(vodUploadVideoRequest.convert(), new UploadCallBack() {
-                @Override
-                public void start(String videoPoolId) {
-                    log.debug("开始分片上传视频，videoId：{}", videoPoolId);
-                }
-                
-                @Override
-                public void process(String videoPoolId, long hasUploadBytes, long totalFileBytes) {
-                    System.out.println("==================process=" + videoPoolId + "---" + hasUploadBytes + "---" +
-                            totalFileBytes);
-                }
-                
-                @Override
-                public void complete(String videoPoolId) {
-                    System.out.println("==================complete=" + videoPoolId);
-                }
-                
-                @Override
-                public void success(String videoPoolId) {
-                    log.debug("测试分片上传视频成功，videoId：{}", videoPoolId);
-                }
-                
-                @Override
-                public void error(String videoPoolId, UploadErrorMsg errorMsg) {
-                    System.out.println("==================error=" + videoPoolId + "--" + errorMsg.getMessage());
-                }
-            }, false);
-            log.debug("测试上传视频，videoId：{}", videoPoolId);
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 测试恢复分片上传视频
-     * 返回：视频id，具体进度和是否成功以callback为准
-     */
-//    @Test
-    public void testRecoveryUploadVideo() {
-        VodUploadPartsVideoRequest vodUploadPartsVideoRequest = new VodUploadPartsVideoRequest();
-        String videoPoolId = null;
-        try {
-            String videoFile = getClass().getResource("/file/video.mp4").getPath();
-            vodUploadPartsVideoRequest.setVideoPoolId("1b448be32362145e32166cc7d9edf552_1")
-                    .setFile(new File(videoFile))
-                    .setRequestId(VodSignUtil.generateUUID());
-            /**
-             * 传入 分片大小（默认为1MB,大小限定为100KB~5GB，100*1024代表100KB），checkpoint文件夹路径（默认：checkpoint_location），上传线程数（默认为5个）
-             */
-            PolyvUploadClient client = new PolyvUploadClient();
-            videoPoolId = client.uploadVideoParts(vodUploadPartsVideoRequest.convert(), new UploadCallBack() {
-                @Override
-                public void start(String videoPoolId) {
-                    log.debug("开始恢复分片上传视频，videoId：{}", videoPoolId);
-                }
-                
-                @Override
-                public void process(String videoPoolId, long hasUploadBytes, long totalFileBytes) {
-                    System.out.println("==================process=" + videoPoolId + "---" + hasUploadBytes + "---" +
-                            totalFileBytes);
-                }
-                
-                @Override
-                public void complete(String videoPoolId) {
-                    System.out.println("==================complete=" + videoPoolId);
-                }
-                
-                @Override
-                public void success(String videoPoolId) {
-                    log.debug("测试恢复分片上传视频成功，videoId：{}", videoPoolId);
-                }
-                
-                @Override
-                public void error(String videoPoolId, UploadErrorMsg errorMsg) {
-                    System.out.println("==================error=" + videoPoolId + "--" + errorMsg.getMessage());
-                }
-            }, false);
-            log.debug("测试恢复分片上传视频，videoId：{}", videoPoolId);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);

@@ -187,7 +187,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
+| channelId | true | String | 频道号 | 
 | currentDay | false | Date | 查询日期，格式：yyyy-MM-dd | 
 | startTime | false | Date | 查询开始时间 | 
 | endTime | false | Date | 查询结束时间 | 

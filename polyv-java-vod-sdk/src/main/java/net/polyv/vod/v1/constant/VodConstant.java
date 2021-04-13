@@ -7,6 +7,7 @@ import java.util.Map;
  * @author: thomas
  **/
 public class VodConstant {
+    public  static  final Integer ERROR_CODE = 400;
     
     private static  final Map<String,String> ERROR_CODE_MAP = new HashMap();
     

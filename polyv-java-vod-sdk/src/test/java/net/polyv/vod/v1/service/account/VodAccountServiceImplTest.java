@@ -31,7 +31,7 @@ public class VodAccountServiceImplTest extends BaseTest {
         VodAccountSpaceDataRequest vodAccountSpaceDataRequest = new VodAccountSpaceDataRequest();
         VodAccountSpaceDataResponse vodAccountSpaceDataResponse;
         try {
-            vodAccountSpaceDataRequest.setDate(super.getDate(2020, 10, 13));
+            vodAccountSpaceDataRequest.setDate(super.getDate(2020, 10, 13)).setRequestId(VodSignUtil.generateUUID());
             vodAccountSpaceDataResponse = new VodAccountServiceImpl().getAccountSpaceFlow(vodAccountSpaceDataRequest);
             Assert.assertNotNull(vodAccountSpaceDataResponse);
             if (vodAccountSpaceDataResponse != null) {

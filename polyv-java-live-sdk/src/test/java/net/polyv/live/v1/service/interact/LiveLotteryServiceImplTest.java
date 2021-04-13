@@ -46,8 +46,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
             liveListLotteryRequest.setChannelId(super.createChannel())
                     .setStartTime(super.getDate(1601481600000l))
                     .setEndTime(super.getDate(2021,1,21))
-                    .setPageSize(1)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setPageSize(1);
             liveListLotteryResponse = new LiveLotteryServiceImpl().listLottery(liveListLotteryRequest);
             Assert.assertNotNull(liveListLotteryResponse);
             if (liveListLotteryResponse != null) {
@@ -77,8 +76,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
         LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
         try {
             liveLotteryWinnerDetailRequest.setChannelId(super.createChannel())
-                    .setLotteryId("fv3mao43u6")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setLotteryId("fv3mao43u6");
             liveLotteryWinnerDetailResponse = new LiveLotteryServiceImpl().getLotteryWinnerDetail(
                     liveLotteryWinnerDetailRequest);
             Assert.assertNotNull(liveLotteryWinnerDetailResponse);
@@ -118,8 +116,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
                     .setViewerId("asdadsdas")
                     .setName("sadboy")
                     .setTelephone("18974718689")
-                    .setReceiveInfo("[{\"field\":\"姓名\",\"value\":\"测试\"},{\"field\":\"手机\",\"value\":\"13412345678\"}]")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setReceiveInfo("[{\"field\":\"姓名\",\"value\":\"测试\"},{\"field\":\"手机\",\"value\":\"13412345678\"}]");
             liveSetLotteryWinnerInfoResponse = new LiveLotteryServiceImpl().setLotteryWinnerInfo(
                     liveSetLotteryWinnerInfoRequest);
             Assert.assertNotNull(liveSetLotteryWinnerInfoResponse);
@@ -154,8 +151,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
             //path设置为下载文件路径
             String path = getClass().getResource("/file/").getPath() + "downLoadLotteryWinner.xlsx";
             liveDownloadLotteryDetailRequest.setChannelId(createChannel())
-                    .setLotteryId("fv3hogjmh3")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setLotteryId("fv3hogjmh3");
             liveDownloadLotteryDetailResponse = new LiveLotteryServiceImpl().downloadLotteryDetail(
                     liveDownloadLotteryDetailRequest);
             Assert.assertNotNull(liveDownloadLotteryDetailResponse);
@@ -193,8 +189,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
         try {
             liveSendChannelLikeRequest.setChannelId(createChannel())
                     .setViewerId(getRandomString(16))
-                    .setTimes(13)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setTimes(13);
             liveSendChannelLikeResponse = new LiveLotteryServiceImpl().sendChannelLike(liveSendChannelLikeRequest);
             Assert.assertNotNull(liveSendChannelLikeResponse);
             if (liveSendChannelLikeResponse != null) {
@@ -236,8 +231,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
                     .setSessionId(null)
                     .setGoodNum("1")
                     .setNeedUserImage("N")
-                    .setViewerId(getRandomString(16))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setViewerId(getRandomString(16));
             liveSendChannelRewardMsgResponse = new LiveLotteryServiceImpl().sendChannelRewardMsg(
                     liveSendChannelRewardMsgRequest);
             Assert.assertTrue(liveSendChannelRewardMsgResponse);

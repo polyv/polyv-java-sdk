@@ -4,6 +4,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.v1.constant.Constant;
+import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.validator.constraints.NotBlank;
 
 /**
@@ -27,7 +29,7 @@ public class NotBlankValidator extends Validator {
                 return data.toString().trim().length() > 0 ? null : cast.message();
             } else {
                 //  根据需求继续添加其他类型的验证
-                throw new RuntimeException(field.getName() + " NotBlank validation exception");
+                throw new PloyvSdkException(Constant.ERROR_CODE, field.getName() + " NotBlank validation exception");
             }
         } else {
             return null;

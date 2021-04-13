@@ -163,9 +163,6 @@ public class LiveSignUtil {
      * @return map
      */
     public static <T extends LiveCommonRequest> Map<String, String> getSignMap(T t) {
-        if (StringUtils.isBlank(t.getRequestId())) {
-            t.setRequestId(LiveSignUtil.generateUUID());
-        }
         t.setAppId(LiveGlobalConfig.getAppId());
         if (StringUtils.isBlank(t.getTimestamp())) {
             t.setTimestamp(String.valueOf(System.currentTimeMillis()));

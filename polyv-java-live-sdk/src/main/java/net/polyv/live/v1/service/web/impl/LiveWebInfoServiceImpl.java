@@ -41,7 +41,8 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public Boolean updateChannelName(LiveUpdateChannelNameRequest liveUpdateChannelNameRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_NAME_SET_URL, liveUpdateChannelNameRequest.getChannelId());
-        String liveUpdateChannelNameResponse = this.postFormBodyReturnOne(url, liveUpdateChannelNameRequest, String.class);
+        String liveUpdateChannelNameResponse = this.postFormBodyReturnOne(url, liveUpdateChannelNameRequest,
+                String.class);
         return "true".equals(liveUpdateChannelNameResponse);
     }
     
@@ -59,7 +60,8 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
         liveUpdateChannelPublisherRequest.setUserId(LiveGlobalConfig.getUserId());
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_PUBLISHER_SET_URL,
                 liveUpdateChannelPublisherRequest.getUserId());
-        String liveUpdateChannelPublisherResponse = this.postFormBodyReturnOne(url, liveUpdateChannelPublisherRequest, String.class);
+        String liveUpdateChannelPublisherResponse = this.postFormBodyReturnOne(url, liveUpdateChannelPublisherRequest,
+                String.class);
         return "true".equals(liveUpdateChannelPublisherResponse);
     }
     
@@ -75,8 +77,7 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public LiveChannelSplashResponse getChannelSplash(LiveChannelSplashRequest liveChannelSplashRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SPLASH_GET_URL, liveChannelSplashRequest.getChannelId());
-        return this.postFormBodyReturnOne(url, liveChannelSplashRequest,
-                LiveChannelSplashResponse.class);
+        return this.postFormBodyReturnOne(url, liveChannelSplashRequest, LiveChannelSplashResponse.class);
         
     }
     
@@ -92,7 +93,8 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public Boolean updateChannelLikes(LiveUpdateChannelLikesRequest liveUpdateChannelLikesRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_LIKES_UPDATE_URL, liveUpdateChannelLikesRequest.getChannelId());
-        String liveUpdateChannelLikesResponse = this.postFormBodyReturnOne(url, liveUpdateChannelLikesRequest, String.class);
+        String liveUpdateChannelLikesResponse = this.postFormBodyReturnOne(url, liveUpdateChannelLikesRequest,
+                String.class);
         return "success".equals(liveUpdateChannelLikesResponse);
     }
     
@@ -128,7 +130,8 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_UPDATE_COUNT_DOWN_URL,
                 liveUpdateChannelCountDownRequest.getChannelId());
-        String liveUpdateChannelCountDownResponse = this.postFormBodyReturnOne(url, liveUpdateChannelCountDownRequest, String.class);
+        String liveUpdateChannelCountDownResponse = this.postFormBodyReturnOne(url, liveUpdateChannelCountDownRequest,
+                String.class);
         return "success".equals(liveUpdateChannelCountDownResponse);
     }
     
@@ -144,8 +147,8 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public LiveChannelCountDownResponse getChannelCountDown(LiveChannelCountDownRequest liveChannelCountDownRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_COUNT_DOWN_URL, liveChannelCountDownRequest.getChannelId());
-        LiveChannelCountDownResponse liveChannelCountDownResponse = this.postFormBodyReturnOne(url, liveChannelCountDownRequest,
-                LiveChannelCountDownResponse.class);
+        LiveChannelCountDownResponse liveChannelCountDownResponse = this.postFormBodyReturnOne(url,
+                liveChannelCountDownRequest, LiveChannelCountDownResponse.class);
         return liveChannelCountDownResponse;
     }
     
@@ -180,12 +183,19 @@ public class LiveWebInfoServiceImpl extends LiveBaseService implements ILiveWebI
     public String updateChannelSplash(LiveUpdateChannelSplashRequest liveUpdateChannelSplashRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = LiveURL.getRealUrl(LiveURL.CHANNEL_SPLASH_SET_URL, liveUpdateChannelSplashRequest.getChannelId());
-        Map<String, File> fileMap = new HashMap<String, File>();
-        fileMap.put("imgfile", liveUpdateChannelSplashRequest.getImgfile());
-        String liveUpdateChannelSplashResponse = this.uploadOneFile(url, liveUpdateChannelSplashRequest, fileMap,
-                String.class);
+        String liveUpdateChannelSplashResponse;
+        File imgFile = liveUpdateChannelSplashRequest.getImgfile();
+        if (imgFile == null) {
+            liveUpdateChannelSplashResponse = this.postFormBodyReturnOne(url, liveUpdateChannelSplashRequest,
+                    String.class);
+        } else {
+            Map<String, File> fileMap = new HashMap<String, File>();
+            fileMap.put("imgfile", imgFile);
+            liveUpdateChannelSplashResponse = this.uploadOneFile(url, liveUpdateChannelSplashRequest, fileMap,
+                    String.class);
+        }
         return liveUpdateChannelSplashResponse;
     }
-
+    
     
 }

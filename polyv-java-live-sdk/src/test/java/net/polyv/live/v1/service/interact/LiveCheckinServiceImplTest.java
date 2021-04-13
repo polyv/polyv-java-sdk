@@ -42,7 +42,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
         try {
             String channelId = super.createChannel();
             
-            liveCheckinListRequest.setChannelId(channelId).setRequestId(LiveSignUtil.generateUUID());
+            liveCheckinListRequest.setChannelId(channelId);
             liveCheckinListRequest.setDate(getDate(2020,10,20)).setSessionId("fs9v9y4nxf");
             liveCheckinListResponse = new LiveCheckinServiceImpl().getCheckinListInfo(liveCheckinListRequest);
             Assert.assertNotNull(liveCheckinListResponse);
@@ -75,8 +75,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
         try {
             String channelId = super.createChannel();
             liveCheckinRequest.setChannelId(channelId)
-                    .setCheckinId("d91a7c60-1299-11eb-8c65-c70c1c")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setCheckinId("d91a7c60-1299-11eb-8c65-c70c1c");
             liveCheckinResponse = new LiveCheckinServiceImpl().getCheckinInfoById(liveCheckinRequest);
             Assert.assertNotNull(liveCheckinResponse);
             if (liveCheckinResponse != null) {
@@ -110,8 +109,7 @@ public class LiveCheckinServiceImplTest extends BaseTest {
             String channelId = super.createChannel();
             
             liveCheckinMetadataBySessionIdRequest.setChannelId(channelId)
-                    .setSessionId("fs9v9y4nxf")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setSessionId("fs9v9y4nxf");
             liveCheckinResponse = new LiveCheckinServiceImpl().getCheckinMetadataBySessionId(
                     liveCheckinMetadataBySessionIdRequest);
             Assert.assertNotNull(liveCheckinResponse);

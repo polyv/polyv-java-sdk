@@ -63,11 +63,11 @@ public class VodListServiceImplTest extends BaseTest {
     
     /**
      * 测试获取最新视频/全部视频列表
-     * 描述：1、时间范围参数中startTime和endTime的优先级最高
-     * 描述：2、startTime和endTime都不为空，则startTime＜＝时间区间<=endTime
-     * 描述：3、startTime为空，endTime不为空，则时间区间为<=endTime
-     * 描述：4、startTime不为空，endTime为空，则时间区间为>=startTime
-     * 描述：5、startTime和endTime都为空，则时间区间以startDate和endDate为准
+     * 描述：1、请求入参startTime（开始时间）和endTime（结束时间）的优先级最高
+     * 描述：2、当请求入参startTime和endTime都不为空，则startTime＜＝时间区间<=endTime
+     * 描述：3、当请求入参startTime为空，endTime不为空，则时间区间为<=endTime
+     * 描述：4、当请求入参startTime不为空，endTime为空，则时间区间为>=startTime
+     * 描述：5、当请求入参startTime和endTime都为空，则时间区间以startDate（开始日期）和endDate（结束日期）为准
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

@@ -39,7 +39,6 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | categoryName | true | String | 频道分类名称 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -94,9 +93,7 @@
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+**此方法采用系统全局配置，不需要显式传递参数**
 
 ### 返回对象描述
 
@@ -163,7 +160,6 @@
 | -- | -- | -- | -- | 
 | categoryId | true | Integer | 分类id | 
 | categoryName | true | String | 分类名称 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -218,7 +214,6 @@ true为修改成功，false为修改失败
 | -- | -- | -- | -- | 
 | categoryId | true | Integer | 分类id | 
 | afterCategoryId | true | Integer | 移动到该id对应的分类之后 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -270,7 +265,6 @@ true为修改排序成功，false为修改排序失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | categoryId | true | Integer | 分类id | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -318,9 +312,7 @@ true为删除成功，false为删除失败
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+**此方法采用系统全局配置，不需要显式传递参数**
 
 ### 返回对象描述
 
@@ -388,7 +380,6 @@ true为删除成功，false为删除失败
 | keyword | false | String | 频道名称，模糊查询 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -499,7 +490,6 @@ true为删除成功，false为删除失败
 | -- | -- | -- | -- | 
 | categoryId | false | Integer | 所属分类id；new LiveAccountServiceImpl().listCategory()获取 | 
 | keyword | false | String | 频道名称，模糊查询 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -554,9 +544,7 @@ true为删除成功，false为删除失败
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+**此方法采用系统全局配置，不需要显式传递参数**
 
 ### 返回对象描述
 
@@ -618,7 +606,6 @@ true为删除成功，false为删除失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | token | true | String | 唯一的字符串,请勿过于简单，建议使用16位随机字符串 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -675,7 +662,6 @@ true为设置成功，false为设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | url | false | String | 回调地址url，不提交表示关闭回调功能，如果提交，必须以http://或者https://开头 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -746,7 +732,6 @@ true为设置回调成功，false为设置回调失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | url | false | String | 回调地址url，不提交表示关闭回调功能，如果提交，必须以http://或者https://开头 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -823,7 +808,6 @@ true为设置回调成功，false为设置回调失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | url | false | String | 回调地址url，不提交表示关闭回调功能，如果提交，必须以http://或者https://开头 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -898,7 +882,6 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 | channelId | false | String | 频道号，不传该参数则表示修改全局设置 | 
 | type | true | String | 开关类型(isClosePreview:是否关闭系统观看页，Y时表示关闭;mobileWatch:是否开启移动端音视频切换;autoPlay:是否开启播放器自动播放功能;booking:是否开启预约功能;redPack:是否开启红包功能;shareBtnEnabled:是否开启分享功能;chat:是否开启聊天室;closeChaterList:是否关闭在线列表，Y时表示关闭;consultingMenu:是否开启咨询提问;closeDanmu:是否关闭弹幕功能，Y时表示关闭;praise:是否开启点赞语功能;welcome:是否开启欢迎语功能;viewerSendImgEnabled:是否开启观众发送图片) | 
 | enabled | true | String | 开关值，Y或N | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -955,7 +938,6 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，不传该参数为获取全局设置 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1031,7 +1013,6 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 | keyword | false | String | 频道名称，模糊查询 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1104,9 +1085,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+**此方法采用系统全局配置，不需要显式传递参数**
 
 ### 返回对象描述
 
@@ -1176,7 +1155,6 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 | endDate | true | Date | 查询的结束日期 格式为yyyy-MM-dd | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

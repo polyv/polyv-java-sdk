@@ -47,7 +47,6 @@
 | channelId | true | String | 频道号 | 
 | content | true | String | 直播介绍的内容（此处可以填html页面的相关内容，如增加图片、增加文字样式等） | 
 | menuType | true | String | 菜单类型，目前仅支持取值为desc | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -102,7 +101,6 @@ true为设置成功，false为设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号，不传为获取全局设置 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -180,7 +178,6 @@ true为设置成功，false为设置失败
 | type | true | String | 菜单类型。desc：直播介绍；chat：互动聊天；quiz：咨询提问；text：图文菜单；iframe：推广外链； | 
 | content | true | String | 菜单内容。当菜单类型为直播介绍、图文菜单时，该值为菜单的内容。当菜单类型为外链推广时，该值为外链链接地址。 | 
 | lang | false | String | 菜单语言类型。默认zh_CN中文、EN英文。 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -254,7 +251,6 @@ true为设置成功，false为设置失败
 | channelId | true | String | 频道号 | 
 | menuIds | true | String | 频道菜单ID列表，必须是完整的列表（不能多也不能少），表示按该顺序排列菜单 | 
 | lang | false | String | 菜单语言类型 默认zh_CN中文、EN英文 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -315,7 +311,6 @@ null
 | menuId | true | String | 菜单id（互动聊天或咨询提问的菜单ID不允许设置） | 
 | content | true | String | 菜单的内容 | 
 | lang | false | String | 菜单语言类型 默认zh_CN中文、EN英文 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -371,7 +366,6 @@ null
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | menuIds | true | String | 菜单id，指定多个以英文逗号,分隔 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -429,7 +423,6 @@ true为删除成功，false为删除失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | enabled | true | String | 咨询提问开关 Y:开启，N：关闭 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -489,7 +482,6 @@ null
 | channelId | true | String | 频道号 | 
 | id | false | Integer | 图文内容的序列号：为空表示获取第一页数据，且同时会返回置顶数据。非空表示获取id比该值小的记录（也就是更早发布的内容），此时不返回置顶列表。 | 
 | imageMode | false | String | 是否为图片模式，Y表示为图片模式，N表示文字加图片的模式，默认为N | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

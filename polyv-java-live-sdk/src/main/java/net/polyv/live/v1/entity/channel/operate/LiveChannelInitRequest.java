@@ -23,6 +23,7 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 public class LiveChannelInitRequest extends LiveCommonRequest {
     
     @ApiModelProperty(name = "basicSetting", value = "基础设置", required = true)
+    @NotNull(message = "属性basicSetting不能为空")
     private BasicSetting basicSetting;
     
     @ApiModelProperty(name = "authSettings", value = "观看条件设置", required = false)
@@ -137,6 +138,7 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
          * 通用参数：主要观看条件为1，次要观看条件为2
          */
         @ApiModelProperty(name = "rank", value = "通用参数：主要观看条件为1，次要观看条件为2", required = true)
+        @NotNull(message = "属性rank不能为空")
         private Integer rank;
         
         /**

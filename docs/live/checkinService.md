@@ -48,7 +48,6 @@
 | sessionId | false | String | 场次sessionId,sessionId优先级高于date，如传sessionId，date参数无效 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -130,8 +129,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| checkinId | false | String | 签到ID | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+| checkinId | true | String | 签到ID | 
 
 ### 返回对象描述
 返回对象是List&lt;LiveCheckinResponse&gt;，**LiveCheckinResponse**具体元素内容如下：
@@ -205,7 +203,6 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | sessionId | true | String | 场次ID | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;LiveCheckinMetadataBySessionIdResponse&gt;，**LiveCheckinMetadataBySessionIdResponse**具体元素内容如下：

@@ -49,7 +49,6 @@
 | channelId | true | String | 频道号 | 
 | videoId | true | String | 要添加为回放的的点播视频 | 
 | listType | false | String | playback-回放列表，vod-点播列表; | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -134,7 +133,6 @@
 | fileName | false | String | 转存后的文件名，目前暂不支持传多个文件名 | 
 | cataId | false | Long | 转存到点播的目录ID, | 
 | callbackUrl | false | String | 转存成功时候回调通知的url，通知的相关参数见附录 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -200,7 +198,6 @@ true为提交成功，false为提交失败，具体转存是否成功以回调�
 | callbackUrl | false | String | 合并成功或失败回调的url，可以带上自定义参数 | 
 | autoConvert | false | String | 传入Y，自动转存到对应点播分类下(直播回放-频道号-场次) | 
 | mergeMp4 | false | String | 传Y合并MP4文件，传N或者不传合并m3u8文件 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -275,7 +272,6 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | startDate | false | Date | 开始日期（录制生成的日期），格式为：yyyy-MM-dd | 
 | endDate | false | Date | 结束日期，格式为：yyyy-MM-dd | 
 | sessionId | false | String | 直播的场次ID | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -356,7 +352,6 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | listType | false | String | playback-回放列表,vod-点播列表;默认普通直播场景为vod，三分屏为playback | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -452,7 +447,6 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | endDate | false | Date | 结束日期，格式yyyy-MM-dd | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -526,7 +520,6 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -586,7 +579,6 @@ Y为开启，N为关闭
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | fileId | true | String | 文件ID | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -672,7 +664,6 @@ Y为开启，N为关闭
 | type | false | String | 回放方式，single-单个回放，list-列表回放 | 
 | origin | false | String | 回放来源，record-暂存，playback-回放列表，vod-点播列表 | 
 | videoId | true | String | 单个回放的视频id | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -731,7 +722,6 @@ true为设置成功，false为设置失败
 | -- | -- | -- | -- | 
 | playBackEnabled | true | String | 回放开关是开/关的状态，值为Y/N，必填 | 
 | channelId | false | String | 频道号，非必填，不填添加该用户的所有频道号的回放开关都设置为开/关 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -793,7 +783,6 @@ true为设置成功，false为设置失败
 | channelId | true | String | 频道号 | 
 | videoIds | true | Array | 完整回放视频ID列表,存放在请求体中,请求视频ID数量必须和回放列表数量一致，且不能少或者缺或者多 | 
 | listType | false | String | playback-回放列表，vod-点播列表; | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -853,7 +842,6 @@ true为设置成功，false为设置失败
 | channelId | true | String | 频道号 | 
 | videoId | true | String | 直播系统生成的id，可在回放列表接口的返回数据获取 | 
 | listType | false | String | playback-回放列表，vod-点播列表; | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -912,7 +900,6 @@ true为设置成功，false为设置失败
 | channelId | true | String | 频道号 | 
 | sessionId | false | String | 录制视频的场次ID | 
 | startTime | false | Date | 录制视频的开始录制时间，可从 获取频道录制信息 接口中获取 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -975,7 +962,6 @@ true为删除成功，false为删除失败
 | channelId | true | String | 频道号 | 
 | videoId | true | String | 直播系统生成的id，可在回放列表接口的返回数据获取 | 
 | listType | false | String | playback-回放列表，vod-点播列表; | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1037,7 +1023,6 @@ true为删除成功，false为删除失败
 | channelId | true | String | 频道号 | 
 | videoId | true | String | 回放视频ID | 
 | title | true | String | 回放视频名称 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1105,7 +1090,6 @@ true为修改成功，false为修改失败
 | endTime | true | Date | 录制文件结束时间，与startTime最大不能超过8小时 | 
 | callbackUrl | false | String | 合并成功或失败回调的url | 
 | fileName | false | String | 合并后文件名 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

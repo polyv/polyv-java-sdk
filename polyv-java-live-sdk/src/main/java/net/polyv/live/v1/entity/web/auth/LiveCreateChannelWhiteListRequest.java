@@ -29,6 +29,7 @@ public class LiveCreateChannelWhiteListRequest extends LiveCommonRequest {
      * 主要观看条件为1,次要观看条件为2
      */
     @ApiModelProperty(name = "rank", value = "主要观看条件为1,次要观看条件为2", required = true)
+    @NotNull(message = "属性rank不能为空")
     private Integer rank;
     
     /**

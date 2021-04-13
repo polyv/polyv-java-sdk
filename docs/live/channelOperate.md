@@ -63,7 +63,6 @@
 | pureRtcEnabled | false | String | 是否为无延时直播，Y 表示开启，默认为N | 
 | receive | false | String | 是否为接收转播频道，Y表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) | 
 | receiveChannelIds | false | String | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -186,7 +185,6 @@
 | -- | -- | -- | -- | 
 | basicSetting | true | BasicSetting | 基础设置【详见[BasicSetting参数描述](channelOperate.md?id=polyv8)】 | 
 | authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelOperate.md?id=polyv9)】 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <h6 id="polyv8"><a href="#/channelOperate.md?id=polyv8"data-id="BasicSetting参数描述"class="anchor"><span>BasicSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -348,7 +346,6 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channels | true | Array | 频道列表【详见[LiveChannelBasic参数描述](channelOperate.md?id=polyv11)】 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <h6 id="polyv11"><a href="#/channelOperate.md?id=polyv11"data-id="LiveChannelBasic参数描述"class="anchor"><span>LiveChannelBasic参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -463,7 +460,6 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -568,7 +564,6 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -685,7 +680,6 @@
 | channelId | true | String | 频道号 | 
 | role | true | String | 角色，值有：teacher admin guest assistant viewer等 | 
 | origin | false | String | 观看来源,可以有web,client,app等 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -775,7 +769,6 @@
 | channelId | true | String | 需要设置频道详情的频道号，例如：1938028 | 
 | basicSetting | true | BasicSetting | 基础设置【详见[BasicSetting参数描述](channelOperate.md?id=polyv15)】 | 
 | authSettings | false | Array | 观看条件设置【详见[AuthSetting参数描述](channelOperate.md?id=polyv16)】 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <h6 id="polyv15"><a href="#/channelOperate.md?id=polyv15"data-id="BasicSetting参数描述"class="anchor"><span>BasicSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -893,7 +886,6 @@ true为设置成功，false为设置失败
 | channelId | true | String | 需要设置频道详情的频道号，例如：1938028 | 
 | field | true | String | 要更新的字段名称：password-频道密码；scene-直播场景；maxViewer-最大同时观看人数； | 
 | value | false | String | 要更新的字段值，除设置无限制最大观看人数时可不提交，其他情况都为必填；field字段为password时，value长度为1-16位，必填，必须同时带英文和数字；field字段为scene时，value取值为(alone:活动拍摄；ppt:三分屏；topclass:大班课)，必填；field字段为maxViewer时，value取值为(0-2147483647),其中0和不传为不限制同时观看人数，非必填 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -953,7 +945,6 @@ true为修改成功，false为修改失败
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，请留意，如果该参数为空，会对该用户所有的频道进行修改 | 
 | passwd | true | String | 修改的密码,必须同时包含字母和数字 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1013,7 +1004,6 @@ true为设置密码成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | token | true | String | 唯一的字符串 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1069,8 +1059,7 @@ true为设置token成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+| channelId | true | String | 频道号 | 
 
 ### 返回对象描述
 
@@ -1128,7 +1117,6 @@ true为删除成功，false为删除失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelIds | true | String[] | 频道号列表，每次最多删除100个频道，必须放在请求体中 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1198,7 +1186,6 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 | nickname | false | String | 创建的助教或嘉宾昵称 | 
 | actor | false | String | 创建的助教或嘉宾头衔 | 
 | avatar | false | String | 创建的助教或嘉宾头像 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1287,7 +1274,6 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 | nickname | false | String | 创建的助教或嘉宾昵称 | 
 | actor | false | String | 创建的助教或嘉宾头衔 | 
 | avatar | false | String | 创建的助教或嘉宾头像 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1367,7 +1353,6 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | account | true | String | 子频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1445,7 +1430,6 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1544,7 +1528,6 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 | actor | false | String | 子频道头衔 | 
 | pageTurnEnabled | false | String | 子频道翻页权限,值为Y或N，Y为开启，N为关闭 | 
 | notifyEnabled | false | String | 子频道公告权限,值为Y或N，Y为开启，N为关闭 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1605,7 +1588,6 @@ true为设置成功，false为设置失败
 | -- | -- | -- | -- | 
 | account | true | String | 子频道号(不能以数字类型提交，否则可能去掉ID前的00) | 
 | token | true | String | 唯一的字符串 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1666,7 +1648,6 @@ true为设置子频道token成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | account | true | String | 子频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1726,7 +1707,6 @@ true为删除成功，false为删除失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | videoId | true | String | 回放视频id,从查询视频库列表获取 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1793,7 +1773,6 @@ true为创建成功，false为创建失败
 | endTime | false | Date | 直播开始时间结束区间 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1872,7 +1851,6 @@ true为创建成功，false为创建失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1950,7 +1928,6 @@ true为创建成功，false为创建失败
 | pptRecordCallbackUrl | false | String | 课件重制成功回调http(s)地址，需要url编码，如果要清空设置传入空串 | 
 | liveScanCallbackUrl | false | String | 直播内容鉴别回调http(s)地址，需要url编码，如果要清空设置传入空串 | 
 | playbackCacheCallbackUrl | false | String | 回放转存回调http(s)地址，需要url编码，如果要清空设置传入空串 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -2029,7 +2006,6 @@ null
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | sonChannels | true | Array | 子频道信息【详见[SonChannel参数描述](channelOperate.md?id=polyv20)】 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <h6 id="polyv20"><a href="#/channelOperate.md?id=polyv20"data-id="SonChannel参数描述"class="anchor"><span>SonChannel参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -2123,7 +2099,6 @@ null
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，如果不传，则查询appId对应的账号下所有转播频道关联关系 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -2194,7 +2169,6 @@ null
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | maxViewer | true | Integer | 最大观看在线人数，等于0时表示关闭在线人数观看限制，最大为2147483647 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -2253,7 +2227,6 @@ true为设置成功，false为设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -2324,7 +2297,6 @@ true为设置成功，false为设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -2385,7 +2357,6 @@ true为设置成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 直播频道号 | 
 | streamType | true | String | 直播方式，client:客户端推流;disk:硬盘推流;audio:音频直播;pull:拉流直播 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -2446,7 +2417,6 @@ true为修改推流方式成功，false为修改失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | videoIds | true | String | 要删除的硬盘推流视频id,可使用new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary()获取 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

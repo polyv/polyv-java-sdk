@@ -55,7 +55,6 @@
 | channelId | false | String | 频道号，不传为全局设置 | 
 | enabled | false | String | 请求体参数，道具打赏开关，不传默认开启，值为 Y/N , Y为开启 | 
 | goods | false | Array | 道具打赏【详见[ChannelGood参数描述](webInteract.md?id=polyv64)】 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <h6 id="polyv64"><a href="#/webInteract.md?id=polyv64"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -129,7 +128,6 @@ true代表设置成功，false代表设置失败
 | cashes | true | Array | 请求体参数，现金打赏数额数组，数组的长度必须为6 | 
 | cashMin | true | Double | 请求体参数，现金打赏自定义最小金额 | 
 | enabled | false | String | 请求体参数，现金打赏开关，不传默认开启，值为 Y/N , Y为开启 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -184,7 +182,6 @@ true表示设置成功，false表示设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，不传为获取全局设置 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -263,7 +260,6 @@ true表示设置成功，false表示设置失败
 | channelId | true | String | 频道号 | 
 | wxShareTitle | false | String | 微信分享的标题（30字符内） | 
 | wxShareDesc | false | String | 微信分享的描述（120字符内） | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -319,7 +315,6 @@ true为设置成功，false为设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

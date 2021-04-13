@@ -65,6 +65,7 @@ public class LiveUpdateChannelGoodRequest extends LiveCommonRequest {
          * 道具打赏价格
          */
         @ApiModelProperty(name = "goodPrice", value = "道具打赏价格", required = true)
+        @NotNull(message = "属性goodPrice不能为空")
         private Double goodPrice;
         
         /**

@@ -48,7 +48,6 @@
 | rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
 | code | true | String | 会员码（最多为50个字符） | 
 | name | true | String | 昵称（最多为50个字符） | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -111,7 +110,6 @@ true为添加成功，false为添加失败
 | keyword | false | String | 关键词，可根据会员码和名称查询 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -181,7 +179,6 @@ true为添加成功，false为添加失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号,不填获取全局观看条件 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -285,7 +282,6 @@ true为添加成功，false为添加失败
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，不传为全局设置 | 
 | authSettings | true | Array | 观看条件设置【详见[AuthSetting参数描述](webAuth.md?id=polyv57)】 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <h6 id="polyv57"><a href="#/webAuth.md?id=polyv57"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -376,7 +372,6 @@ true为设置观看条件成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，提交后对某频道号设置，不提交则对账号下所有频道号进行设置 | 
 | externalUri | true | String | 获取用户信息接口地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -445,7 +440,6 @@ true为设置观看条件成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，提交后对某频道号设置，不提交则对账号下所有频道号进行设置 | 
 | customUri | true | String | 自定义授权地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -514,7 +508,6 @@ true为设置观看条件成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，无该参数为全局设置 | 
 | url | false | String | 授权认证url，为空时清除设置 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -572,7 +565,6 @@ true为设置成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | authType | true | String | 观看条件类型,默认取值为none(关闭观看条件) | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -636,7 +628,6 @@ true为授权成功，false为授权失败
 | oldCode | true | String | 旧会员码 | 
 | code | true | String | 会员码（最多为50个字符） | 
 | name | true | String | 昵称（最多为50个字符） | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -698,7 +689,6 @@ true为更新成功，false为失败
 | rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
 | isClear | true | String | 是否一键清空白名单（Y ：清空白名单；N：根据code请求白名单，code） | 
 | code | false | String | 会员码（isClear 为N时为必传参数） | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -756,7 +746,6 @@ true为删除成功，false为失败
 | -- | -- | -- | -- | 
 | rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
 | channelId | false | String | 频道号，不填为获取全局 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -826,7 +815,6 @@ true为删除成功，false为失败
 | channelId | true | String | 频道号 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -903,7 +891,6 @@ true为删除成功，false为失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | rank | true | Integer | 1为首要条件，2为次要条件。影响导出的表格表头 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -964,7 +951,6 @@ true为删除成功，false为失败
 | channelId | false | String | 频道号，无该参数为全局设置 | 
 | rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
 | file | true | File | 白名单文件（[白名单模板](http://dev.polyv.net/wp-content/uploads/2018/06/WhiteListTemplate.xls)） | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1025,7 +1011,6 @@ true为删除成功，false为失败
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，要下载的频道号，不传为全局设置 | 
 | rank | true | Integer | 1为首要条件，2为次要条件 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

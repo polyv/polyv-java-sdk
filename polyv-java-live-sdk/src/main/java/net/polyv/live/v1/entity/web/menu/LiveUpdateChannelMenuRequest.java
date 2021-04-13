@@ -22,7 +22,7 @@ public class LiveUpdateChannelMenuRequest extends LiveCommonRequest {
     /**
      * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
      */
-    @ApiModelProperty(hidden = true)
+    @ApiModelProperty(hidden = true, required = true)
     @NotNull(message = "属性userId不能为空")
     private String userId;
     
@@ -46,5 +46,5 @@ public class LiveUpdateChannelMenuRequest extends LiveCommonRequest {
     @ApiModelProperty(name = "menuType", value = "菜单类型，目前仅支持取值为desc", required = true)
     @NotNull(message = "属性menuType不能为空")
     private String menuType;
-
+    
 }

@@ -45,7 +45,6 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | warmUpEnabled | true | String | 开关值，Y或N，Y表示开启，N表示关闭 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -107,7 +106,6 @@ true 设置成功 ， false 设置失败
 | channelId | true | String | 频道号 | 
 | coverImage | true | String | 暖场图片地址，图片大小建议：800x450，支持PNG、JPEG、GIF格式 | 
 | coverHref | false | String | 点击暖场图片后浏览器跳转地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -167,7 +165,6 @@ true 设置成功 ， false 设置失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | warmUpFlv | true | String | 暖场视频地址(http地址)，移动端不支持FLV视频文件，建议使用MP4视频文件 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -232,7 +229,6 @@ true 设置成功，false 设置失败
 | logoOpacity | true | Float | logo透明度，取值范围为(0,1]，即大于0，并且小于等于1 | 
 | logoPosition | true | String | logo位置，取值为为左上角(tl)、右上角(tr)、左下角(bl)、右下角(br) | 
 | logoHref | false | String | logo图片点击跳转链接 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -305,7 +301,6 @@ true 设置成功， fales 设置失败
 | headAdvertDuration | false | Integer | 广告时长，单位：秒 | 
 | headAdvertWidth | false | Integer | 广告宽度 | 
 | headAdvertHeight | false | Integer | 广告高度 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -369,7 +364,6 @@ true 设置成功，false 设置失败
 | enabled | false | String | 设置播放器暂停广告开关：Y-打开，N-关闭 | 
 | stopAdvertImage | false | String | 图片地址，不填代表删除 | 
 | stopAdvertHref | false | String | 点击图片跳转Url | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -429,7 +423,6 @@ true 设置成功，false 设置失败
 | channelId | true | String | 频道号 | 
 | marqueeRestrict | true | String | 自定义url防录屏跑马灯开关,Y或N | 
 | url | false | String | 自定义url， 在开关为关时可为空，开启开关时为必填 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

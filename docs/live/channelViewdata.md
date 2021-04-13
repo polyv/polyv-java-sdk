@@ -50,7 +50,6 @@
 | channelId | true | String | 频道号 | 
 | startTime | true | Date | 开始时间 | 
 | endTime | true | Date | 结束时间 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -111,7 +110,6 @@
 | endDay | false | Date | 结束时间，格式：yyyy-MM-dd | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -193,7 +191,6 @@
 | logType | false | String | 观看日志类型，取值 vod 表示观看回放，取值live 表示直播 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -291,7 +288,6 @@
 | startDate | true | Date | 查询的开始日期,格式为yyyy-MM-dd | 
 | endDate | true | Date | 查询的结束日期,格式为yyyy-MM-dd | 
 | channelIds | false | String | 要查询的频道号，不提交默认为查询所有频道，多个频道号以英文逗号“,”分开，如：105420,104400 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -372,7 +368,6 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelIds | true | String | 频道号，使用英文逗号分开，如：100000,100001 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -445,7 +440,6 @@
 | channelId | true | String | 频道号 | 
 | startDate | true | Date | 开始日期格式，yyyy-MM-dd,开始日期和结束日期的时间跨度：最多查两个月内的数据 | 
 | endDate | true | Date | 结束日期格式，yyyy-MM-dd，开始日期和结束日期的时间跨度：最多查两个月内的数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

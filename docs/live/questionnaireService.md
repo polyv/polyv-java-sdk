@@ -48,7 +48,6 @@
 | endTime | false | Date | 查询的记录的结束时间 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -131,7 +130,6 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | questionnaireId | true | String | 问卷id | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -229,7 +227,6 @@
 | startDate | false | Date | 开始时间，格式：yyyy-MM-dd 如 2018-12-10 | 
 | endDate | false | Date | 结束时间，格式：yyyy-MM-dd 如 2018-12-10  | 
 | questionnaireId | false | String | 问卷ID，和 startDate / endDate 同时提交时，startDate / endDate 无效，优先以questionnaireId为查询条件 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;LiveQuestionnaireResultResponse&gt;，**LiveQuestionnaireResultResponse**具体元素内容如下：
@@ -354,7 +351,6 @@
 | endDate | false | Date | 结束时间，格式：yyyy-MM-dd 如 2018-12-10 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -520,7 +516,6 @@
 | customQuestionnaireId | false | String | 客户自定义问卷id，用于关联自己系统的主键id | 
 | questionnaireTitle | true | String | 问卷标题 | 
 | questions | true | Array | 问卷的单个题目详情列表【详见[QuestionDetail参数描述](questionnaireService.md?id=polyv53)】 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <h6 id="polyv53"><a href="#/questionnaireService.md?id=polyv53"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 

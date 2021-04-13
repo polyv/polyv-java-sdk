@@ -106,12 +106,14 @@ public class QuickCreateVideoChannelRequest extends LiveCommonRequest {
      * 讲师昵称
      */
     @ApiModelProperty(name = "nickname", value = "讲师昵称", required = true)
+    @NotNull(message = "属性nickname不能为空")
     private String nickname;
     
     /**
      * 讲师头衔
      */
     @ApiModelProperty(name = "actor", value = "讲师头衔", required = true)
+    @NotNull(message = "属性actor不能为空")
     private String actor;
     
     /**

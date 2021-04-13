@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 
 /**
@@ -29,6 +30,7 @@ public class LiveUpdateChannelCashRequest extends LiveCommonRequest {
      * 请求体参数，现金打赏数额数组，数组的长度必须为6
      */
     @ApiModelProperty(name = "cashes", value = "请求体参数，现金打赏数额数组，数组的长度必须为6", required = true)
+    @NotNull(message = "属性cashes不能为空")
     private List<Double> cashes;
     
     /**
@@ -36,6 +38,7 @@ public class LiveUpdateChannelCashRequest extends LiveCommonRequest {
      * 请求体参数，现金打赏自定义最小金额
      */
     @ApiModelProperty(name = "cashMin", value = "请求体参数，现金打赏自定义最小金额", required = true)
+    @NotNull(message = "属性cashMin不能为空")
     private Double cashMin;
     
     /**

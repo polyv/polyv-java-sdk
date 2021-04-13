@@ -44,7 +44,7 @@ public class LiveListLotteryRequest extends LivePageCommonRequest {
     /**
      * 查询的结束日期
      */
-    @ApiModelProperty(name = "endTime", value = "查询的结束日期", required = false)
+    @ApiModelProperty(name = "endTime", value = "查询的结束日期", required = true)
     @NotNull(message = "属性endTime不允许为空")
     private Date endTime;
     

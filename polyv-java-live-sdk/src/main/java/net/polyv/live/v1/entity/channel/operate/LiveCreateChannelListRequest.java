@@ -9,6 +9,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import net.polyv.common.v1.validator.constraints.Length;
 import net.polyv.common.v1.validator.constraints.NotBlank;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.constant.LiveConstant;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 
@@ -26,6 +27,7 @@ public class LiveCreateChannelListRequest extends LiveCommonRequest {
      * 频道列表
      */
     @ApiModelProperty(name = "channels", value = "频道列表", required = true)
+    @NotNull(message = "属性channels不能为空")
     private List<LiveChannelBasic> channels;
     
     @Data
@@ -37,6 +39,7 @@ public class LiveCreateChannelListRequest extends LiveCommonRequest {
          * 频道名称
          */
         @ApiModelProperty(name = "name", value = "频道名称", required = true, example = "Spring 知识精讲")
+        @NotNull(message = "属性name不能为空")
         private String name;
         
         /**

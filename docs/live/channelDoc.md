@@ -52,7 +52,6 @@
 | file | true | File | 上传的文件不超过50M，格式限制为（ppt， pdf，pptx，doc，docx，wps, xls，xlsx） | 
 | docName | false | String | 文档名称（不传默认使用ppt上传的文件获取到的文件名作为文档名称，文档名称不得超过100个字符） | 
 | callbackUrl | false | String | 文档上传转换成功回调地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -119,7 +118,6 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | fileId | true | String | 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串)，调用new LiveChannelDocServiceImpl().listChannelDoc()获取 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -198,7 +196,6 @@
 | isShowUrl | false | String | 是否展示PPT原文件地址，Y：是；N：否；默认为N | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -284,7 +281,6 @@
 | channelId | true | String | 频道号 | 
 | fileId | true | String | 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串) | 
 | type | true | String | 新旧版文件类型，old：旧版，new：新版【这个值可以从文档列表接口返回数据的type（类型）中获得】【多个文件需要删除，请按照fileId顺序对应ppt新旧类型，用英文逗号隔开拼接成字符串)，type中的类型数量必须跟fileId中的包含的ID数量一致】 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

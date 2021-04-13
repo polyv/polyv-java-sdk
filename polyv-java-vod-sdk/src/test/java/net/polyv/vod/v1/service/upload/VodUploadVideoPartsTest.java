@@ -4,15 +4,13 @@ import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.exception.PloyvSdkException;
-import net.polyv.vod.v1.entity.upload.VodUploadPPTRequest;
+import net.polyv.vod.v1.entity.upload.VodUploadVideoPartsRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadVideoRequest;
 import net.polyv.vod.v1.service.BaseTest;
-import net.polyv.vod.v1.service.upload.impl.VodUploadServiceImpl;
 import net.polyv.vod.v1.upload.callback.UploadCallBack;
 import net.polyv.vod.v1.upload.client.PolyvUploadClient;
 import net.polyv.vod.v1.upload.enumeration.UploadErrorMsg;
@@ -92,20 +90,48 @@ public class VodUploadVideoPartsTest extends BaseTest {
      */
     @Test
     public void testUploadVideoPartSequel() throws IOException, NoSuchAlgorithmException {
-        VodUploadPPTRequest vodUploadPPTRequest = new VodUploadPPTRequest();
-        Boolean vodUploadPPTResponse = null;
+        String videoFile = getClass().getResource("/file/apass.mp4").getPath();
+        String videoId = "1b448be323ee722d75bbe7fc25343a06_1";
+        VodUploadVideoPartsRequest vodUploadVideoPartsRequest = new VodUploadVideoPartsRequest();
+        vodUploadVideoPartsRequest.setFile(new File(videoFile)).setVideoId(videoId);
         try {
-            String pptFile = getClass().getResource("/file/PPT.pptx").getPath();
-            String controlFile = getClass().getResource("/file/controlFile.txt").getPath();
-            vodUploadPPTRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setPpt(new File(pptFile))
-                    .setControlFile(new File(controlFile));
-            vodUploadPPTResponse = new VodUploadServiceImpl().uploadPPT(vodUploadPPTRequest);
-            Assert.assertTrue(vodUploadPPTResponse);
-            if (vodUploadPPTResponse) {
-                //to do something ......
-                log.debug("测试上传视频水印成功");
-            }
+            PolyvUploadClient client = new PolyvUploadClient();
+            String videoPoolId = client.uploadVideo(vodUploadVideoPartsRequest, new UploadCallBack() {
+                @Override
+                public void start(String videoPoolId) {
+                    log.debug("开始分片上传视频，videoId：{}", videoPoolId);
+                }
+                
+                @Override
+                public void process(String videoPoolId, long hasUploadBytes, long totalFileBytes) {
+                    log.debug("==================process=" + videoPoolId + "---" + hasUploadBytes + "---" +
+                            totalFileBytes);
+                }
+                
+                @Override
+                public void complete(String videoPoolId) {
+                    log.debug("==================complete=" + videoPoolId);
+                }
+                
+                /**
+                 * 上传成功（已经处理完毕）
+                 * @param videoPoolId 视频id
+                 */
+                @Override
+                public void success(String videoPoolId) {
+                    log.debug("==================success=" + videoPoolId);
+                }
+                
+                /**
+                 * 上传失败
+                 * @param videoPoolId 视频id
+                 * @param errorMsg 错误信息
+                 */
+                @Override
+                public void error(String videoPoolId, UploadErrorMsg errorMsg) {
+                    log.debug("==================error=" + videoPoolId);
+                }
+            }, false);
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
             log.error(e.getMessage(), e);

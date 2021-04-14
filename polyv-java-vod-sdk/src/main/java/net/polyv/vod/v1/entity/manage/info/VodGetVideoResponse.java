@@ -19,9 +19,9 @@ import lombok.experimental.Accessors;
 @ApiModel("获取单个视频信息返回实体")
 public class VodGetVideoResponse {
     /**
-     * 返回flash连接
+     * 返回flash链接
      */
-    @ApiModelProperty(name = "swfLink", value = "返回flash连接", required = false)
+    @ApiModelProperty(name = "swfLink", value = "返回flash链接", required = false)
     @JSONField(name = "swf_link")
     private String swfLink;
     

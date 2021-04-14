@@ -613,7 +613,7 @@
 | authCode | String | 验证码观看方式的验证码 | 
 | qcodeTips | String | 验证码观看方式的二维码提示 | 
 | qcodeImg | String | 验证码观看方式的二维码图片 | 
-| price | Integer | 付费观看的价格 | 
+| price | Float | 付费观看的价格 | 
 | watchEndTime | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
 | validTimePeriod | Integer | 付费观看的截止时长（天） | 
 | customKey | String | 自定义授权观看的key | 

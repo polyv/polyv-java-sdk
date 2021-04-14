@@ -228,7 +228,7 @@ public class LiveChannelBasicInfoResponse {
          * 付费观看的价格
          */
         @ApiModelProperty(name = "price", value = "付费观看的价格", required = false)
-        private Integer price;
+        private Float price;
         
         /**
          * 付费观看，截止时间，为null表示：一次付费，永久有效

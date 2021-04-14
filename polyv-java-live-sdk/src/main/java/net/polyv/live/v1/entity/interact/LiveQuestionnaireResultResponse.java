@@ -228,7 +228,7 @@ public class LiveQuestionnaireResultResponse {
              * 用户答题的得分
              */
             @ApiModelProperty(name = "score", value = "用户答题的得分", required = false)
-            private String score;
+            private Integer score;
             
             /**
              * 题目的类型，R 单选题 ,C 多项题 ,Q 问答题

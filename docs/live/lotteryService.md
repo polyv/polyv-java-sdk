@@ -76,7 +76,7 @@
 | preset | Integer | 预设中奖观众ID，多个ID 用英文逗号分开 | 
 | createdTime | Date | 抽奖时间 | 
 | winnerCount | Integer | 实际中奖人数 | 
-| ext | String | 表示抽奖的额外拓展信息 | 
+| ext | String | 表示抽奖的额外拓展信息，例：{"collectInfo":[{"field":"姓名：","tips":"请输入您的真实姓名"}]}，field表示要填写的字段名，tips表示要填写的字段提示 | 
 
 <br /><br />
 
@@ -158,20 +158,7 @@
 | winnerCode | String | 中奖码 | 
 | prize | String | 奖品名称 | 
 | createdTime | Date | 中奖时间 | 
-| ext | CollectInfo | json 格式的字符串,表示中奖记录的额外拓展信息，对应模型类：WinnerRecordModelExt【详见[CollectInfo参数描述](lotteryService.md?id=polyv40)】 | 
-
-<h6 id="polyv40"><a href="#/lotteryService.md?id=polyv40"data-id="CollectInfo参数描述"class="anchor"><span>CollectInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
-
-| 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
-| collectInfo | Array | 领奖人需要填写的领奖信息【详见[CollectInfoFieldModel参数描述](lotteryService.md?id=polyv41)】 | 
-
-<h6 id="polyv41"><a href="#/lotteryService.md?id=polyv41"data-id="CollectInfoFieldModel参数描述"class="anchor"><span>CollectInfoFieldModel参数描述</span></a></h6> <!-- {docsify-ignore} -->
-
-| 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
-| field | String | 填写的字段名 | 
-| tips | String | 填写的字段提示 | 
+| ext | String | 表示抽奖的额外拓展信息，例：{"collectInfo":[{"field":"姓名：","value":"钻石王老五"}]}，field表示要填写的字段名，value表示要填写的字段提示 | 
 
 <br /><br />
 

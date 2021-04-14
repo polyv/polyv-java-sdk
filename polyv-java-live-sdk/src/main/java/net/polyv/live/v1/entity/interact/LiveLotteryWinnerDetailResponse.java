@@ -83,21 +83,12 @@ public class LiveLotteryWinnerDetailResponse extends LivePageCommonResponse {
         private Date createdTime;
         
         /**
-         * json 格式的字符串,表示中奖记录的额外拓展信息，对应模型类：WinnerRecordModelExt
+         * 表示抽奖的额外拓展信息
          */
-        @ApiModelProperty(name = "ext", value = "json 格式的字符串,表示中奖记录的额外拓展信息，对应模型类：WinnerRecordModelExt", required =
+        @ApiModelProperty(name = "ext", value = "表示抽奖的额外拓展信息，例：{\"collectInfo\":[{\"field\":\"姓名：\"," +
+                "\"value\":\"钻石王老五\"}]}，field表示要填写的字段名，value表示要填写的字段提示", required =
                 false)
-        private CollectInfo ext;
-        
-    }
-    
-    @Data
-    @Accessors(chain = true)
-    @ApiModel("抽奖记录的拓展信息")
-    public static class CollectInfo {
-        
-        @ApiModelProperty(name = "collectInfo", value = "领奖人需要填写的领奖信息", required = false)
-        private List<LiveListLotteryResponse.CollectInfoFieldModel> collectInfo;
+        private String ext;
         
     }
     

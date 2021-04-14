@@ -22,12 +22,10 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 public class LiveBadWordRequest extends LiveCommonRequest {
     
     /**
-     * 频道号
+     * 频道号，不填则设置为通用设置内的严禁词
      */
-    @ApiModelProperty(name = "channelId", value = "频道号", required = true)
+    @ApiModelProperty(name = "channelId", value = "频道号，不填则设置为通用设置内的严禁词", required = false)
     private String channelId;
-    
- 
     
     /**
      * 严禁词列表

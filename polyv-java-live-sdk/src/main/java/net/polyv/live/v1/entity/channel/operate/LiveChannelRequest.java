@@ -26,7 +26,7 @@ public class LiveChannelRequest extends LiveCommonRequest {
     /**
      * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
      */
-    @ApiModelProperty(hidden = true)
+    @ApiModelProperty(hidden = true, required = true)
     @NotNull(message = "属性userId不能为空")
     private String userId;
     
@@ -41,8 +41,8 @@ public class LiveChannelRequest extends LiveCommonRequest {
     /**
      * 自定义频道密码，B端讲师通过该密码进入直播间开播，长度不能超过16位,必须同时包含字母和数字
      */
-    @ApiModelProperty(name = "channelPasswd", value = "自定义频道密码，B端讲师通过该密码进入直播间开播，长度不能超过16位,必须同时包含字母和数字", required = true, example =
-            "666888")
+    @ApiModelProperty(name = "channelPasswd", value = "自定义频道密码，B端讲师通过该密码进入直播间开播，长度不能超过16位,必须同时包含字母和数字", required =
+            true, example = "666888")
     @NotBlank(message = "属性channelPasswd不能为空")
     @Length(max = 16, message = "频道密码不能超过16位")
     private String channelPasswd;

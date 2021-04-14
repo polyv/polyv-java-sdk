@@ -45,7 +45,6 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | name | true | String | 修改后的频道名称 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -103,7 +102,6 @@ true为设置成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | publisher | true | String | 主持人姓名，不超过20个字符 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -158,7 +156,6 @@ true为设置成功，false为设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -223,7 +220,6 @@ true为设置成功，false为设置失败
 | channelId | true | String | 频道号 | 
 | likes | false | Integer | 点赞数,likes跟viewers可以同时传，也可以只传其中一个，不能都不传 | 
 | viewers | false | Integer | 观看热度，likes跟viewers可以同时传，也可以只传其中一个，不能都不传 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -282,7 +278,6 @@ true为设置成功，false为设置失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | imgfile | true | File | 图片为大小为2MB的JPG、JPEG、PNG图片 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -342,7 +337,6 @@ true为设置成功，false为设置失败
 | channelId | true | String | 频道号 | 
 | splashEnabled | true | String | 设置开启或关闭引导页Y或N | 
 | imgfile | false | File | 支持jpg、jpeg、png三种格式，大小不能超过4Mb | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -398,7 +392,6 @@ true为设置成功，false为设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelIds | true | String | 用逗号隔开的频道号，如：10000,100001最多20个 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -470,7 +463,6 @@ true为设置成功，false为设置失败
 | channelId | true | String | 频道号 | 
 | bookingEnabled | false | String | 预约观看开关Y或N | 
 | startTime | false | Date | 直播开始时间，如果不传该值，表示不显示直播时间和倒计时（yyyy-MM-dd HH:mm:ss） | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -526,7 +518,6 @@ true为设置成功，false为设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

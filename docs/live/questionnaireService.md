@@ -46,9 +46,8 @@
 | channelId | true | String | 频道号 | 
 | startTime | false | Date | 查询的记录的开始时间 | 
 | endTime | false | Date | 查询的记录的结束时间 | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -57,9 +56,9 @@
 | -- | -- | -- | 
 | contents | Array | 问卷数据列表【详见[QuestionDetail参数描述](questionnaireService.md?id=polyv42)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv42"><a href="#/questionnaireService.md?id=polyv42"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -68,7 +67,7 @@
 | questionnaireId | String | 问卷ID | 
 | channelId | String | 频道号 | 
 | userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| questionnaireTitle | String | 问卷标题 | 
+| questionnaireTitle | String | 问卷标题【对应api文档的**name**字段】 | 
 | status | String | 问卷状态，取值：saved(已保存)，published （已发布），forbidden （问卷已完成填写） | 
 | createdTime | Date | 问卷创建时间 | 
 | lastModified | Date | 问卷最后修改时间 | 
@@ -131,7 +130,6 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | questionnaireId | true | String | 问卷id | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -142,7 +140,7 @@
 | customQuestionnaireId | String | 用户自定义问卷ID | 
 | channelId | String | 频道号 | 
 | userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| questionnaireTitle | String | 问卷标题 | 
+| questionnaireTitle | String | 问卷标题【对应api文档的**name**字段】 | 
 | status | String | 问卷状态，draft：草稿，send：已发送，delete：已删除 | 
 | createdTime | Date | 问卷创建时间 | 
 | endTime | Date | 停止问卷时间 | 
@@ -229,7 +227,6 @@
 | startDate | false | Date | 开始时间，格式：yyyy-MM-dd 如 2018-12-10 | 
 | endDate | false | Date | 结束时间，格式：yyyy-MM-dd 如 2018-12-10  | 
 | questionnaireId | false | String | 问卷ID，和 startDate / endDate 同时提交时，startDate / endDate 无效，优先以questionnaireId为查询条件 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;LiveQuestionnaireResultResponse&gt;，**LiveQuestionnaireResultResponse**具体元素内容如下：
@@ -352,9 +349,8 @@
 | channelId | true | String | 频道号 | 
 | startDate | false | Date | 开始时间，格式：yyyy-MM-dd 如 2018-12-10 | 
 | endDate | false | Date | 结束时间，格式：yyyy-MM-dd 如 2018-12-10 | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -363,9 +359,9 @@
 | -- | -- | -- | 
 | contents | Array | 频道的问卷信息和统计结果列表【详见[LiveQuestionnaireResultResponse参数描述](questionnaireService.md?id=polyv48)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv48"><a href="#/questionnaireService.md?id=polyv48"data-id="LiveQuestionnaireResultResponse参数描述"class="anchor"><span>LiveQuestionnaireResultResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -520,7 +516,6 @@
 | customQuestionnaireId | false | String | 客户自定义问卷id，用于关联自己系统的主键id | 
 | questionnaireTitle | true | String | 问卷标题 | 
 | questions | true | Array | 问卷的单个题目详情列表【详见[QuestionDetail参数描述](questionnaireService.md?id=polyv53)】 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <h6 id="polyv53"><a href="#/questionnaireService.md?id=polyv53"data-id="QuestionDetail参数描述"class="anchor"><span>QuestionDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 

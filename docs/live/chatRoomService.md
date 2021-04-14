@@ -45,7 +45,6 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | words | true | Array | 严禁词列表 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -117,7 +116,6 @@
 | nickName | true | String | 昵称，最大为8个字符，超出会被截断 | 
 | actor | false | String | 头衔，最大为4个字符，超出会被截断，不传参数则表示无头衔 | 
 | freeReview | false | String | 当频道开启审核后消息是否需要经过审核，Y表示不需要，N表示需要，默认为N | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -183,19 +181,18 @@
 | channelId | true | String | 频道号 | 
 | startDay | true | Date | 聊天记录的开始时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
 | endDay | true | Date | 聊天记录的结束时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
-| currentPage | false | Integer | 获取第几页聊天记录，默认为1 | 
+| currentPage | false | Integer | 获取第几页聊天记录，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页记录数，默认为1000 | 
 | userType | false | String | 用户类型，可以选择多个类型，用英文逗号隔开,目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
 | status | false | String | 聊天记录状态， 审核状态，pass:已审核，censor：审核中，delete：删除 ， 默认 pass | 
 | source | false | String | 消息来源，public：群聊，extend：管理员私聊 ，默认：public | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;LiveGetHistoryChatMsgResponse&gt;，**LiveGetHistoryChatMsgResponse**具体元素内容如下：
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| userId | String | 直播账号userId | 
+| userId | String | 直播账号userId【对应api文档的**acountId**字段】 | 
 | clientIP | String | 用户IP | 
 | content | String | 聊天内容 | 
 | id | String | 聊天消息id | 
@@ -204,7 +201,7 @@
 | channelId | String | 聊天记录所在的频道号 | 
 | sessionId | String | 场次号 | 
 | time | Date | 发送消息的时间 | 
-| source | String | 消息来源，目前有public(群聊)、extend（管理员私聊） | 
+| source | String | 消息来源，目前有public(群聊)、extend（管理员私聊）【对应api文档的**sourceType**字段】 | 
 | msgType | String | 消息类型，目前取值：redpaper: 红包消息；get_redpaper：领取红包消息；chatImg：图片消息；custom：自定义消息（通过socket发送的自定义消息）；reward：打赏消息；customerMessage：自定义消息（通过http接口发送的自定义消息） 为空（msgType=""）时表示普通聊天消息； | 
 | status | String | 审核状态，pass:已审核，censor：审核中，delete：删除 | 
 | user | User | 发送消息的观众【详见[User参数描述](chatRoomService.md?id=polyv33)】 | 
@@ -277,7 +274,6 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -287,7 +283,6 @@
 | nickname | String | 讲师昵称 | 
 | actor | String | 讲师头衔 | 
 | avatar | String | 头像图片地址 | 
-| requestId | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 <br /><br />
 
@@ -343,7 +338,6 @@
 | channelId | true | String | 频道号 | 
 | type | true | String | 查询禁言类型,ip ： 聊天室用户用户的机器ip ， userId ： 聊天室用户用户的userId | 
 | toGetSubRooms | false | Integer | 是否获取子频道，0：不获取，1：获取，默认为 0  | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;String&gt;，**String**具体元素内容如下：
@@ -399,7 +393,6 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;LiveKickedListResponse&gt;，**LiveKickedListResponse**具体元素内容如下：
@@ -410,7 +403,7 @@
 | channelId | String | 频道号 | 
 | clientIp | String | C端观众ip | 
 | kickRefer | String | 踢人方式，userId : 用户userId, ip : 用户登录IP | 
-| nickname | String | 昵称 | 
+| nickname | String | 昵称【对应api文档的**nick**字段】 | 
 | pic | String | 头像图片地址 | 
 | roomId | Integer | 房间号 | 
 | uid | String | 聊天室socketid | 
@@ -470,7 +463,6 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | type | false | String | 查询类型： ip=禁言ip，badword=严禁词，默认为badword | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;String&gt;，**String**具体元素内容如下：
@@ -521,9 +513,7 @@
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+**此方法采用系统全局配置，不需要显式传递参数**
 
 ### 返回对象描述
 返回对象是List&lt;String&gt;，**String**具体元素内容如下：
@@ -583,7 +573,6 @@
 | channelId | true | String | 频道号 | 
 | begin | false | Integer | 起始下标，从0开始 | 
 | end | false | Integer | 结束下标，-1表示不分页 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;LiveGetConsultingRecordResponse&gt;，**LiveGetConsultingRecordResponse**具体元素内容如下：
@@ -595,7 +584,7 @@
 | time | Date | 发言时间 | 
 | user | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv34)】 | 
 | event | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
-| userId | String | 提问者ID | 
+| userId | String | 提问者ID【对应api文档的**s_userId**字段】 | 
 
 <h6 id="polyv34"><a href="#/chatRoomService.md?id=polyv34"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -669,7 +658,6 @@
 | actor | true | String | 讲师头衔 | 
 | passwd | true | String | 频道密码，长度<=16，必须同时包含字母和数字 | 
 | avatar | false | String | 头像图片地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -727,7 +715,6 @@ true 设置讲师信息成功，false 设置讲师信息失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | ip | true | String | 禁言IP,如 234.22.3.34 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;String&gt;，**String**具体元素内容如下：
@@ -790,7 +777,6 @@ true 设置讲师信息成功，false 设置讲师信息失败
 | nickname | true | String | 管理员昵称，长度不能超过8个字符 | 
 | actor | true | String | 管理员头衔，长度不能超过4个字符 | 
 | avatar | true | File | 管理员头像，支持jpg、jpeg、png三种格式，大小不能超过2Mb | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -853,7 +839,6 @@ true 设置成功，false 设置失败
 | channelId | true | String | 频道号 | 
 | type | true | String | 传输内容类型：ip: 属性content内容为IP，badword 属性content内容为严禁词 | 
 | content | true | String | 要取消的ip或者严禁词,支持传入多个ip或者严禁词，通过","区分 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -913,7 +898,6 @@ true 删除成功 ，false 删除失败
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | id | true | String | 聊天记录对应的id | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -969,7 +953,6 @@ true 删除成功， false 删除失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1029,7 +1012,6 @@ true 删除成功， false 删除失败
 | channelId | true | String | 频道号 | 
 | content | true | String | 聊天信息内容 | 
 | role | true | String | 发送人角色（目前为只提供管理员角色，值为'ADMIN'） | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1088,7 +1070,6 @@ true 发送成功， false 发送失败
 | channelId | true | String | 频道号 | 
 | content | false | String | 需要发送的文字, 需要进行base64编码，content、imgUrl不能同时为空，可以同时提交 | 
 | imgUrl | false | String | 需要发送的图片，content、imgUrl不能同时为空，可以同时提交 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

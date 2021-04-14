@@ -21,7 +21,7 @@ public class LiveAccountPlaybackCallbackRequest extends LiveCommonRequest {
     /**
      * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
      */
-    @ApiModelProperty(hidden = true)
+    @ApiModelProperty(hidden = true, required = true)
     @NotNull(message = "属性userId不能为空")
     private String userId;
     
@@ -113,7 +113,7 @@ public class LiveAccountPlaybackCallbackRequest extends LiveCommonRequest {
         private String sessionId;
         
         /**
-          *  {@code POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）}
+         * {@code POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）}
          */
         @ApiModelProperty(name = "userId", value = "POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置）", required = false)
         private String userId;

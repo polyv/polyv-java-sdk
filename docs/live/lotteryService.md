@@ -47,10 +47,9 @@
 | channelId | true | String | 频道号 | 
 | sessionId | false | String | 要查询的直播场次ID | 
 | startTime | true | Date | 查询的开始日期 | 
-| endTime | false | Date | 查询的结束日期 | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| endTime | true | Date | 查询的结束日期 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -59,9 +58,9 @@
 | -- | -- | -- | 
 | contents | Array | 抽奖记录列表【详见[LotteryListModel参数描述](lotteryService.md?id=polyv38)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv38"><a href="#/lotteryService.md?id=polyv38"data-id="LotteryListModel参数描述"class="anchor"><span>LotteryListModel参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -132,9 +131,8 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | lotteryId | true | String | 抽奖ID | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -143,9 +141,9 @@
 | -- | -- | -- | 
 | contents | Array | 中奖记录表【详见[LotteryWinnerDetail参数描述](lotteryService.md?id=polyv39)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv39"><a href="#/lotteryService.md?id=polyv39"data-id="LotteryWinnerDetail参数描述"class="anchor"><span>LotteryWinnerDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -240,7 +238,6 @@
 | name | false | String | 中奖者姓名，如果传姓名，必须传中奖者手机号码，receiveInfo字段不需要传（无效） | 
 | telephone | false | String | 中奖者手机号码，如果传手机号，必须传中奖者姓名，receiveInfo字段不需要传（无效） | 
 | receiveInfo | false | String | 自定义字段数据，数据类型为数组JSON[{"field":"姓名","value":"测试"},{"field":"手机","value":"13412345678"}] field：字段名称，value：字段值，如果传这个参数，name和telephone字段不需要传（无效） | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -301,7 +298,6 @@ null
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | lotteryId | true | String | 抽奖ID | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -363,7 +359,6 @@ null
 | channelId | true | String | 频道号 | 
 | viewerId | true | String | 点赞观众的ID，由调用方自行创建、区分 | 
 | times | false | Integer | 点赞的数目，不能超过30，提交后在(times-1)秒后才能再点赞 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

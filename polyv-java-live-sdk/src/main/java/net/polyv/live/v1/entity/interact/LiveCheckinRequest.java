@@ -29,7 +29,7 @@ public class LiveCheckinRequest extends LiveCommonRequest {
     /**
      * 签到ID
      */
-    @ApiModelProperty(name = "checkinId", value = "签到ID", required = false)
+    @ApiModelProperty(name = "checkinId", value = "签到ID", required = true)
     @NotNull(message = "属性checkinId不能为空")
     private String checkinId;
     

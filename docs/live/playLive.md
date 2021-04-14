@@ -88,10 +88,12 @@
                 .setFile(new File(path))
                 //讲课PPT设置-转换类型（‘common’：转普通图片， ‘animate’：转动画效果）
                 .setType("common")
+                //讲课PPT设置-文档名称
+                .setDocName("直播教学课件")
 //                //讲课PPT设置-文档转换完成后的回调地址，不需要不传
 //                .setCallbackUrl("http://www.baidu.com/callback")
-                //讲课PPT设置-文档名称
-                .setDocName("直播教学课件");
+                
+                .setRequestId(requestId);
         
         quickCreateChannelResponse = new LiveChannelQuickCreatorServiceImpl().quickCreatePPTSence(quickCreatePPTChannelRequest);
         Assert.assertNotNull(quickCreateChannelResponse);
@@ -131,7 +133,8 @@
         //依据频道号和起止时间查询观看日志
         liveListChannelViewlogRequest.setChannelId(channelId)
                 .setStartTime(new Date())
-                .setEndTime(instance.getTime());
+                .setEndTime(instance.getTime())
+                .setRequestId(requestId);
         liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                 liveListChannelViewlogRequest);
         Assert.assertNotNull(liveListChannelViewlogResponse);
@@ -167,7 +170,6 @@
 | type | false | String | 转换类型（‘common’：转普通图片， ‘animate’：转动画效果）默认不传转普通，因为只有ppt，pptx可以转动画，其他类型文件会自动转成普通；文件转动画转失败会直接把类型转为普通 | 
 | docName | false | String | 文档名称（不传默认使用ppt上传的文件获取到的文件名作为文档名称，文档名称不得超过100个字符） | 
 | callbackUrl | false | String | 文档上传转换成功回调地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 
 #### 返回描述
@@ -349,10 +351,12 @@
                 .setFile(new File(path))
                 //讲课PPT设置-转换类型（‘common’：转普通图片， ‘animate’：转动画效果）
                 .setType("common")
+                //讲课PPT设置-文档名称
+                .setDocName("直播教学课件")
 //                //讲课PPT设置-文档转换完成后的回调地址，不需要不传
 //                .setCallbackUrl("http://www.baidu.com/callback")
-                //讲课PPT设置-文档名称
-                .setDocName("直播教学课件");
+                
+                .setRequestId(requestId);
         
         LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
         List<LiveCreateSonChannelListRequest.SonChannel> sonChannels = new ArrayList<LiveCreateSonChannelListRequest.SonChannel>();
@@ -438,7 +442,8 @@
         //依据频道号和起止时间查询观看日志
         liveListChannelViewlogRequest.setChannelId(channelId)
                 .setStartTime(new Date())
-                .setEndTime(instance.getTime());
+                .setEndTime(instance.getTime())
+                .setRequestId(requestId);
         liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                 liveListChannelViewlogRequest);
         Assert.assertNotNull(liveListChannelViewlogResponse);
@@ -474,7 +479,6 @@
 | type | false | String | 转换类型（‘common’：转普通图片， ‘animate’：转动画效果）默认不传转普通，因为只有ppt，pptx可以转动画，其他类型文件会自动转成普通；文件转动画转失败会直接把类型转为普通 | 
 | docName | false | String | 文档名称（不传默认使用ppt上传的文件获取到的文件名作为文档名称，文档名称不得超过100个字符） | 
 | callbackUrl | false | String | 文档上传转换成功回调地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 
 #### 返回描述
@@ -649,7 +653,7 @@
                 //聊天室讲师信息-讲师头像
                 .setAvatar(
                         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
-                                ".jpg");
+                                ".jpg").setRequestId(requestId);
         
         quickCreateChannelResponse = new LiveChannelQuickCreatorServiceImpl().quickCreateVideoSence(quickCreateVideoChannelRequest);
         Assert.assertNotNull(quickCreateChannelResponse);
@@ -687,7 +691,8 @@
         //依据频道号和起止时间查询观看日志
         liveListChannelViewlogRequest.setChannelId(channelId)
                 .setStartTime(new Date())
-                .setEndTime(instance.getTime());
+                .setEndTime(instance.getTime())
+                .setRequestId(requestId);
         liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                 liveListChannelViewlogRequest);
         Assert.assertNotNull(liveListChannelViewlogResponse);
@@ -719,7 +724,6 @@
 | nickname | true | String | 讲师昵称 | 
 | actor | true | String | 讲师头衔 | 
 | avatar | false | String | 头像图片地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 
 #### 返回描述
@@ -893,7 +897,7 @@
                 //聊天室讲师信息-讲师头像
                 .setAvatar(
                         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
-                                ".jpg");
+                                ".jpg").setRequestId(requestId);
         
         LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
         List<LiveCreateSonChannelListRequest.SonChannel> sonChannels = new ArrayList<>();
@@ -975,7 +979,8 @@
         //依据频道号和起止时间查询观看日志
         liveListChannelViewlogRequest.setChannelId(channelId)
                 .setStartTime(new Date())
-                .setEndTime(instance.getTime());
+                .setEndTime(instance.getTime())
+                .setRequestId(requestId);
         liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                 liveListChannelViewlogRequest);
         Assert.assertNotNull(liveListChannelViewlogResponse);
@@ -1006,7 +1011,6 @@
 | nickname | true | String | 讲师昵称 | 
 | actor | true | String | 讲师头衔 | 
 | avatar | false | String | 头像图片地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 
 #### 返回描述

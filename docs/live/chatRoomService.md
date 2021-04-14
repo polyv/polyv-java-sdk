@@ -181,7 +181,7 @@
 | channelId | true | String | 频道号 | 
 | startDay | true | Date | 聊天记录的开始时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
 | endDay | true | Date | 聊天记录的结束时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
-| currentPage | false | Integer | 获取第几页聊天记录，默认为1 | 
+| currentPage | false | Integer | 获取第几页聊天记录，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页记录数，默认为1000 | 
 | userType | false | String | 用户类型，可以选择多个类型，用英文逗号隔开,目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员） | 
 | status | false | String | 聊天记录状态， 审核状态，pass:已审核，censor：审核中，delete：删除 ， 默认 pass | 
@@ -192,7 +192,7 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| userId | String | 直播账号userId | 
+| userId | String | 直播账号userId【对应api文档的**acountId**字段】 | 
 | clientIP | String | 用户IP | 
 | content | String | 聊天内容 | 
 | id | String | 聊天消息id | 
@@ -201,7 +201,7 @@
 | channelId | String | 聊天记录所在的频道号 | 
 | sessionId | String | 场次号 | 
 | time | Date | 发送消息的时间 | 
-| source | String | 消息来源，目前有public(群聊)、extend（管理员私聊） | 
+| source | String | 消息来源，目前有public(群聊)、extend（管理员私聊）【对应api文档的**sourceType**字段】 | 
 | msgType | String | 消息类型，目前取值：redpaper: 红包消息；get_redpaper：领取红包消息；chatImg：图片消息；custom：自定义消息（通过socket发送的自定义消息）；reward：打赏消息；customerMessage：自定义消息（通过http接口发送的自定义消息） 为空（msgType=""）时表示普通聊天消息； | 
 | status | String | 审核状态，pass:已审核，censor：审核中，delete：删除 | 
 | user | User | 发送消息的观众【详见[User参数描述](chatRoomService.md?id=polyv33)】 | 
@@ -403,7 +403,7 @@
 | channelId | String | 频道号 | 
 | clientIp | String | C端观众ip | 
 | kickRefer | String | 踢人方式，userId : 用户userId, ip : 用户登录IP | 
-| nickname | String | 昵称 | 
+| nickname | String | 昵称【对应api文档的**nick**字段】 | 
 | pic | String | 头像图片地址 | 
 | roomId | Integer | 房间号 | 
 | uid | String | 聊天室socketid | 
@@ -584,7 +584,7 @@
 | time | Date | 发言时间 | 
 | user | User | 发言人信息【详见[User参数描述](chatRoomService.md?id=polyv34)】 | 
 | event | String | 消息类型，讲师回答：T_ANSWER，学生提问：S_QUESTION | 
-| userId | String | 提问者ID | 
+| userId | String | 提问者ID【对应api文档的**s_userId**字段】 | 
 
 <h6 id="polyv34"><a href="#/chatRoomService.md?id=polyv34"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 

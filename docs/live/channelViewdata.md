@@ -108,7 +108,7 @@
 | channelIds | false | String | 频道号，使用英文逗号分开，如：100000,100001 | 
 | startDay | false | Date | 开始时间，格式：yyyy-MM-dd | 
 | endDay | false | Date | 结束时间，格式：yyyy-MM-dd | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -118,9 +118,9 @@
 | -- | -- | -- | 
 | contents | Array | 列表信息【详见[ChannelMic参数描述](channelViewdata.md?id=polyv28)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv28"><a href="#/channelViewdata.md?id=polyv28"data-id="ChannelMic参数描述"class="anchor"><span>ChannelMic参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -186,10 +186,10 @@
 | currentDay | false | Date | 查询日期，格式：yyyy-MM-dd | 
 | startTime | false | Date | 查询开始时间 | 
 | endTime | false | Date | 查询结束时间 | 
-| viewerId | false | String | 观看用户ID | 
-| viewerName | false | String | 观看用户名称 | 
-| logType | false | String | 观看日志类型，取值 vod 表示观看回放，取值live 表示直播 | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| viewerId | false | String | 观看用户ID【对应api文档的**param1**字段】 | 
+| viewerName | false | String | 观看用户名称【对应api文档的**param2**字段】 | 
+| logType | false | String | 观看日志类型，取值 vod 表示观看回放，取值live 表示直播【对应api文档的**param3**字段】 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -199,9 +199,9 @@
 | -- | -- | -- | 
 | contents | Array | 频道观看日志【详见[LiveChannelViewlog参数描述](channelViewdata.md?id=polyv29)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv29"><a href="#/channelViewdata.md?id=polyv29"data-id="LiveChannelViewlog参数描述"class="anchor"><span>LiveChannelViewlog参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -214,9 +214,9 @@
 | stayDuration | Integer | 停留时长，单位：秒 | 
 | flowSize | Long | 流量大小 | 
 | sessionId | String | 直播的场次ID | 
-| viewerId | String | 观众id | 
-| viewerName | String | 观众名称 | 
-| logType | String | 观看类型：取值vod 表示观看回放，取值live 表示直播 | 
+| viewerId | String | 观众id【对应api文档的**param1**字段】 | 
+| viewerName | String | 观众名称【对应api文档的**param2**字段】 | 
+| logType | String | 观看类型：取值vod 表示观看回放，取值live 表示直播【对应api文档的**param3**字段】 | 
 | param4 | String | POLYV系统参数 | 
 | param5 | String | POLYV系统参数 | 
 | ipAddress | String | IP地址 | 

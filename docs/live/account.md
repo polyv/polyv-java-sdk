@@ -375,10 +375,10 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | false | Integer | 所属分类id;new LiveAccountServiceImpl().listCategory()获取 | 
+| categoryId | false | Integer | 所属分类id | 
 | watchStatus | false | String | 观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始 | 
 | keyword | false | String | 频道名称，模糊查询 | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -388,9 +388,9 @@ true为删除成功，false为删除失败
 | -- | -- | -- | 
 | contents | Array | 频道详细信息列表【详见[LiveChannelDetail参数描述](account.md?id=polyv1)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv1"><a href="#/account.md?id=polyv1"data-id="LiveChannelDetail参数描述"class="anchor"><span>LiveChannelDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -488,7 +488,7 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | false | Integer | 所属分类id；new LiveAccountServiceImpl().listCategory()获取 | 
+| categoryId | false | Integer | 所属分类id | 
 | keyword | false | String | 频道名称，模糊查询 | 
 
 ### 返回对象描述
@@ -1011,7 +1011,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 | categoryId | false | Integer | 所属分类id | 
 | watchStatus | false | String | 观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始 | 
 | keyword | false | String | 频道名称，模糊查询 | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -1021,9 +1021,9 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 | -- | -- | -- | 
 | contents | Array | 频道基础信息【详见[ChannelBasicInfo参数描述](account.md?id=polyv4)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv4"><a href="#/account.md?id=polyv4"data-id="ChannelBasicInfo参数描述"class="anchor"><span>ChannelBasicInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -1153,7 +1153,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 | channelId | false | String | 要查询的频道号，不提交默认为查询所有频道 | 
 | startDate | true | Date | 查询的开始日期 格式为yyyy-MM-dd | 
 | endDate | true | Date | 查询的结束日期 格式为yyyy-MM-dd | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -1163,9 +1163,9 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 | -- | -- | -- | 
 | contents | Array | 收入详情【详见[ChannelIncomeDetail参数描述](account.md?id=polyv5)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv5"><a href="#/account.md?id=polyv5"data-id="ChannelIncomeDetail参数描述"class="anchor"><span>ChannelIncomeDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 

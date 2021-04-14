@@ -258,8 +258,8 @@ true表示设置成功，false表示设置失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| wxShareTitle | false | String | 微信分享的标题（30字符内） | 
-| wxShareDesc | false | String | 微信分享的描述（120字符内） | 
+| wxShareTitle | false | String | 微信分享的标题（30字符内）【对应api文档的**weixinShareTitle**字段】 | 
+| wxShareDesc | false | String | 微信分享的描述（120字符内）【对应api文档的**weixinShareDesc**字段】 | 
 
 ### 返回对象描述
 
@@ -324,8 +324,8 @@ true为设置成功，false为设置失败
 | channelId | String | 频道号 | 
 | channelName | String | 频道名称 | 
 | coverImg | String | 微信分享图标，即频道的直播图标 | 
-| wxShareTitle | String | 微信分享的标题 | 
-| wxShareDesc | String | 微信分享的描述 | 
+| wxShareTitle | String | 微信分享的标题【对应api文档的**weixinShareTitle**字段】 | 
+| wxShareDesc | String | 微信分享的描述【对应api文档的**weixinShareDesc**字段】 | 
 
 <br /><br />
 

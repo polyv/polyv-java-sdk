@@ -1,7 +1,5 @@
 package net.polyv.live.v1.entity.channel.operate;
 
-import net.polyv.common.v1.validator.constraints.NotNull;
-
 import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
@@ -9,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 
 /**
@@ -29,10 +28,9 @@ public class LiveDeleteDiskVideosStreamRequest extends LiveCommonRequest {
     private String channelId;
     
     /**
-     * 要删除的硬盘推流视频id,可使用new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary()获取
+     * 要删除的硬盘推流视频id
      */
-    @ApiModelProperty(name = "videoIds", value = "要删除的硬盘推流视频id,可使用new LiveChannelPlaybackServiceImpl()" +
-            ".listChannelVideoLibrary()获取", required = true)
+    @ApiModelProperty(name = "videoIds", value = "要删除的硬盘推流视频id", required = true)
     @NotNull(message = "属性videoIds不能为空")
     @JSONField(name = "vids")
     private String videoIds;

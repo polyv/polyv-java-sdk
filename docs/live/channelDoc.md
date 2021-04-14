@@ -117,7 +117,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| fileId | true | String | 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串)，调用new LiveChannelDocServiceImpl().listChannelDoc()获取 | 
+| fileId | true | String | 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串) | 
 
 ### 返回对象描述
 
@@ -194,7 +194,7 @@
 | channelId | true | String | 频道号 | 
 | status | false | String | 文档状态，不传查询所有（“normal”：正常，“waitUpload”：等待上传,failUpload：上传失败，waitConvert:转换PPT中,failConvert:转换PPT失败） | 
 | isShowUrl | false | String | 是否展示PPT原文件地址，Y：是；N：否；默认为N | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -204,9 +204,9 @@
 | -- | -- | -- | 
 | contents | Array | 频道文档【详见[ChannelDoc参数描述](channelDoc.md?id=polyv7)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv7"><a href="#/channelDoc.md?id=polyv7"data-id="ChannelDoc参数描述"class="anchor"><span>ChannelDoc参数描述</span></a></h6> <!-- {docsify-ignore} -->
 

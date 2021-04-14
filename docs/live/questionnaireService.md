@@ -288,7 +288,7 @@
 | questionName | String | 题目名称 | 
 | answer | String | 提交的题目答案 | 
 | score | String | 用户答题的得分 | 
-| type | String | 题目的类型，R | 
+| type | String | 题目的类型<br/>R：单选题<br/>C：多项题<br/>Q：问答题 | 
 
 <br /><br />
 
@@ -422,7 +422,7 @@
 | questionName | String | 题目名称 | 
 | answer | String | 提交的题目答案 | 
 | score | String | 用户答题的得分 | 
-| type | String | 题目的类型，R | 
+| type | String | 题目的类型<br/>R：单选题<br/>C：多项题<br/>Q：问答题 | 
 
 <br /><br />
 

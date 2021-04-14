@@ -177,7 +177,7 @@ true为设置成功，false为设置失败
 | name | true | String | 菜单名称 | 
 | type | true | String | 菜单类型。desc：直播介绍；chat：互动聊天；quiz：咨询提问；text：图文菜单；iframe：推广外链； | 
 | content | true | String | 菜单内容。当菜单类型为直播介绍、图文菜单时，该值为菜单的内容。当菜单类型为外链推广时，该值为外链链接地址。 | 
-| lang | false | String | 菜单语言类型。默认zh_CN中文、EN英文。 | 
+| lang | false | String | 菜单语言类型，默认zh_CN<br/>zh_CN：中文<br/>EN：英文 | 
 
 ### 返回对象描述
 
@@ -189,7 +189,7 @@ true为设置成功，false为设置失败
 | name | String | 菜单名称 | 
 | ordered | String | 菜单顺序，值越小，越靠前。新添加的菜单默认位于最后。 | 
 | content | String | 菜单内容。当菜单类型为直播介绍、图文菜单时，该值为菜单的内容。当菜单类型为外链推广时，该值为外链链接地址。 | 
-| lang | String | 菜单语言类型 zh_CN中文、EN英文 | 
+| lang | String | 菜单语言类型<br/>zh_CN：中文<br/>EN：英文 | 
 
 <br /><br />
 
@@ -436,7 +436,7 @@ null
 ## 8、查询频道图文内容列表
 ### 描述
 ```
-可以开启或关闭咨询提问功能菜单
+获取频道图文内容列表
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)

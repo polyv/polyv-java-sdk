@@ -100,7 +100,7 @@
         LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
         try {
             liveLotteryWinnerDetailRequest.setChannelId(super.createChannel())
-                    .setLotteryId("fv3mao43u6");
+                    .setLotteryId("fv3hogjmh3");
             liveLotteryWinnerDetailResponse = new LiveLotteryServiceImpl().getLotteryWinnerDetail(
                     liveLotteryWinnerDetailRequest);
             Assert.assertNotNull(liveLotteryWinnerDetailResponse);

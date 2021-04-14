@@ -66,12 +66,12 @@
 | -- | -- | -- | 
 | indate | Date | 查询的签到日期，yyyy-MM-dd格式 | 
 | nickname | String | 昵称 | 
-| userId | String | C端观众ID【对应api文档的**userid**字段】 | 
+| userId | String | C端观众id【对应api文档的**userid**字段】 | 
 | channelId | String | 频道号 | 
 | time | Date | 签到时间 | 
 | timeFormat | Date | 签到的格式化详细日期，yyyy-MM-dd HH:mm 格式 | 
 | sessionId | String | 场次sessionId | 
-| checkinid | String | 签到ID | 
+| checkinid | String | 签到id，一场签到一个id | 
 | id | String | 签到记录主键 | 
 | startTime | Date | 该场次直播开始时间，只有请求参数传sessionId,该字段才有值 | 
 | param4 | String | 在外部授权、直接（独立）授权情况下传过来的自定义参数 | 

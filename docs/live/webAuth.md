@@ -453,7 +453,7 @@ true为设置观看条件成功，false为设置失败
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | channelId | String | 设置的频道号 | 
-| secretKey | String | 频道号对应外部授权的secretKey | 
+| secretKey | String | 频道号对应自定义授权的secretKey | 
 
 <br /><br />
 
@@ -687,7 +687,7 @@ true为更新成功，false为失败
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号（传频道号则修改频道观看白名单，不传频道号则修改全局观看白名单） | 
 | rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
-| isClear | true | String | 是否一键清空白名单（Y ：清空白名单；N：根据code请求白名单，code） | 
+| isClear | true | String | 是否一键清空白名单<br/>Y：清空白名单<br/>N：根据请求参数code删除白名单 | 
 | code | false | String | 会员码（isClear 为N时为必传参数） | 
 
 ### 返回对象描述

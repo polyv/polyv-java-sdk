@@ -28,7 +28,7 @@ public class LiveDelBannedDataRequest extends LiveCommonRequest {
     /**
      * 传输内容类型：ip: 属性content内容为IP，badword 属性content内容为严禁词
      */
-    @ApiModelProperty(name = "type", value = "传输内容类型：ip: 属性content内容为IP，badword 属性content内容为严禁词", required = true  , example = "ip" )
+    @ApiModelProperty(name = "type", value = "传输内容类型<br/>ip：属性content内容为IP<br/>badword 属性content内容为严禁词", required = true  , example = "ip" )
     @NotNull(message="属性type属性不能为空")
     private String type;
     

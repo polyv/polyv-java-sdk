@@ -6,7 +6,6 @@
   * [10分钟玩转一场直播](/playLive)
   * [使用进阶](/advanceLive)
   * [功能索引](/function_index)
-  * [升级日志](/versionNoteSDK)
 * 频道管理
 
   * [账户管理](account)

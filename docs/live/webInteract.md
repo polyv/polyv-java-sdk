@@ -54,7 +54,7 @@
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，不传为全局设置 | 
 | enabled | false | String | 请求体参数，道具打赏开关，不传默认开启，值为 Y/N , Y为开启 | 
-| goods | false | Array | 道具打赏【详见[ChannelGood参数描述](webInteract.md?id=polyv64)】 | 
+| goods | true | Array | 道具打赏，道具对象数量必须大于0小于10【详见[ChannelGood参数描述](webInteract.md?id=polyv64)】 | 
 
 <h6 id="polyv64"><a href="#/webInteract.md?id=polyv64"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
 

@@ -36,8 +36,8 @@ public class LiveUploadImageRequest extends LiveCommonRequest {
             " x 140 大小的图标，文件大小不超过2M。<br/>authCodeImage：授权观看二维码图片, 最大不超过 200K。<br/>warmImage：暖场图片, 建议1280 x " +
             "720，图片大小不超过 2M。<br/>adImage：广告栏图片，建议750 x 120，最大不超过2 M。<br/>startAdImage：片头广告图片，建议 1280 x 720 大小的图片 " +
             "，文件大小不超过 4 M。<br/>stopAdImage：暂停广告图片，建议 1280 x 720 大小的图片 ，文件大小不超过 4 M。<br/>goodImage：打赏图标，建议 180 x 180 " +
-            "大小的图标，文件大小不超过 300 k。<br/>invitationImage:邀请卡图片，建议 750 x 1334 大小的图片，大小不超过 4 M。<br/>menuImage:频道菜单图片, " +
-            "最大不能超过为 2M。)", required = true)
+            "大小的图标，文件大小不超过 300 k。<br/>invitationImage：邀请卡图片，建议 750 x 1334 大小的图片，大小不超过 4 M。<br/>menuImage：频道菜单图片, " +
+            "最大不能超过为 2M。", required = true)
     @NotNull(message = "属性type不能为空")
     private String type;
     

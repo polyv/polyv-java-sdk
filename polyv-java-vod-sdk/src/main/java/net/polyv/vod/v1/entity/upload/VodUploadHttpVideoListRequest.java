@@ -21,9 +21,9 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 public class VodUploadHttpVideoListRequest extends VodCommonRequest {
     
     /**
-     * 远程文件的http连接(带http://)，多个地址间使用英文逗号隔开
+     * 远程文件的http链接(带http://)，多个地址间使用英文逗号隔开
      */
-    @ApiModelProperty(name = "fileUrl", value = "远程文件的http连接(带http://)，多个地址间使用英文逗号隔开", required = true)
+    @ApiModelProperty(name = "fileUrl", value = "远程文件的http链接(带http://)，多个地址间使用英文逗号隔开", required = true)
     @NotNull(message = "属性fileUrl不能为空")
     private String fileUrl;
     

@@ -3,7 +3,7 @@
   * [简介](/)
   * [全局约束](/limit)
   * [快速接入](/quick_start)
-  * [10分钟玩转一场点播](/playLive)
+  * [10分钟玩转一场点播](/playVod)
   * [功能索引](/function_index)
 * 视频管理
 

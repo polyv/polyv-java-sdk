@@ -4,6 +4,49 @@
 
 > 注意：每创建一个频道，会默认创建4个助教子频道，子频道用于协助主讲老师教学或者和用户互动，当然也可以创建自己的子频道，例如客服、班主任、嘉宾等，具体见下面带子频道直播教学场景和带子频道纯视频场景
 
+## 直播业务流程
+<div id="player"></div>
+
+<script>
+  new Vue({
+    el: '#player',
+    data() {
+    return {
+      vodPlayerJs: 'https://player.polyv.net/script/player.js',
+      vid:'88083abbf5b42072ec029201d9fee095_8',
+    };
+  },
+  mounted(){
+      this.loadPlayerScript(this.loadPlayer);
+  },
+  methods: {
+    loadPlayerScript(callback) {
+      if (!window.polyvPlayer) {
+        const myScript = document.createElement('script');
+        myScript.setAttribute('src', this.vodPlayerJs);
+        myScript.onload = callback;
+        document.body.appendChild(myScript);
+      } else {
+        callback();
+      }
+    },
+    loadPlayer() {
+      const polyvPlayer = window.polyvPlayer;
+      this.player = polyvPlayer({
+        wrap: '#player',
+        vid: this.vid ,
+        autoplay:false
+      });
+    }
+  },
+  destroyed() {
+    if (this.player) {
+        this.player.destroy();
+    }
+  }
+  })
+</script>
+
 ## 直播教学场景
 
 &emsp;&emsp;此场景适合于通用的线上教学场景，相当于一个虚拟的教室，包括频道创建、频道初始化、暖场图片/视频、引导图片、讲师信息、直播文档上传等设置，相关代码可以参考下面代码，直接拷贝后修改成为适合自己的课程信息就可以。

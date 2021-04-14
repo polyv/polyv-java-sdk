@@ -30,10 +30,9 @@ public class LiveCreateDiskVideosStreamRequest extends LiveCommonRequest {
     private String channelId;
     
     /**
-     * 要设置硬盘推流的点播视频ID,可使用new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary()获取
+     * 要设置硬盘推流的点播视频ID
      */
-    @ApiModelProperty(name = "videoIds", value = "要设置硬盘推流的点播视频ID,可使用new LiveChannelPlaybackServiceImpl()" +
-            ".listChannelVideoLibrary()获取", required = true)
+    @ApiModelProperty(name = "videoIds", value = "要设置硬盘推流的点播视频ID", required = true)
     @NotNull(message = "属性videoIds不能为空")
     @JSONField(name = "vids")
     private String videoIds;

@@ -39,7 +39,7 @@ public class LiveMergeMp4RecordRequest extends LiveCommonRequest {
      * 录制文件结束时间，与startTime最大不能超过8小时
      */
     @ApiModelProperty(name = "endTime", value = "录制文件结束时间，与startTime最大不能超过8小时", required = true)
-    @NotNull(message = "属性true不能为空")
+    @NotNull(message = "属性endTime不能为空")
     private Date endTime;
     
     /**

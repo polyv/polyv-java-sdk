@@ -48,7 +48,7 @@
 | sessionId | false | String | 要查询的直播场次ID | 
 | startTime | true | Date | 查询的开始日期 | 
 | endTime | true | Date | 查询的结束日期 | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -58,9 +58,9 @@
 | -- | -- | -- | 
 | contents | Array | 抽奖记录列表【详见[LotteryListModel参数描述](lotteryService.md?id=polyv38)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv38"><a href="#/lotteryService.md?id=polyv38"data-id="LotteryListModel参数描述"class="anchor"><span>LotteryListModel参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -131,7 +131,7 @@
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | lotteryId | true | String | 抽奖ID | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -141,9 +141,9 @@
 | -- | -- | -- | 
 | contents | Array | 中奖记录表【详见[LotteryWinnerDetail参数描述](lotteryService.md?id=polyv39)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv39"><a href="#/lotteryService.md?id=polyv39"data-id="LotteryWinnerDetail参数描述"class="anchor"><span>LotteryWinnerDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 

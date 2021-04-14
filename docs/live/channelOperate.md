@@ -1771,7 +1771,7 @@ true为创建成功，false为创建失败
 | status | false | String | 课件重置状态值，waiting-等待处理；process-处理中；success-重制成功；fail-重制失败；uploaded-上传点播成功；uploadFailed-上传点播失败； | 
 | startTime | false | Date | 直播开始时间开始区间 | 
 | endTime | false | Date | 直播开始时间结束区间 | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -1781,9 +1781,9 @@ true为创建成功，false为创建失败
 | -- | -- | -- | 
 | contents | Array | 课件重制任务列表【详见[LivePPTRecord参数描述](channelOperate.md?id=polyv19)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv19"><a href="#/channelOperate.md?id=polyv19"data-id="LivePPTRecord参数描述"class="anchor"><span>LivePPTRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -2416,7 +2416,7 @@ true为修改推流方式成功，false为修改失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| videoIds | true | String | 要删除的硬盘推流视频id,可使用new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary()获取 | 
+| videoIds | true | String | 要删除的硬盘推流视频id【对应api文档的**vids**字段】 | 
 
 ### 返回对象描述
 

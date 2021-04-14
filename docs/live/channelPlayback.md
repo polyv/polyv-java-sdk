@@ -47,7 +47,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| videoId | true | String | 要添加为回放的的点播视频 | 
+| videoId | true | String | 要添加为回放的的点播视频【对应api文档的**vid**字段】 | 
 | listType | false | String | playback-回放列表，vod-点播列表; | 
 
 ### 返回对象描述
@@ -350,7 +350,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | listType | false | String | playback-回放列表,vod-点播列表;默认普通直播场景为vod，三分屏为playback | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -360,9 +360,9 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | -- | -- | -- | 
 | contents | Array | 视频库视频信息【详见[ChannelVideoLibrary参数描述](channelPlayback.md?id=polyv25)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv25"><a href="#/channelPlayback.md?id=polyv25"data-id="ChannelVideoLibrary参数描述"class="anchor"><span>ChannelVideoLibrary参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -445,7 +445,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | channelId | true | String | 频道号 | 
 | startDate | false | Date | 开始日期，格式yyyy-MM-dd | 
 | endDate | false | Date | 结束日期，格式yyyy-MM-dd | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -455,9 +455,9 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | -- | -- | -- | 
 | contents | Array | 频道直播场次信息【详见[ChannelSessionInfo参数描述](channelPlayback.md?id=polyv26)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv26"><a href="#/channelPlayback.md?id=polyv26"data-id="ChannelSessionInfo参数描述"class="anchor"><span>ChannelSessionInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 

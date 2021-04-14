@@ -108,7 +108,7 @@ true为添加成功，false为添加失败
 | channelId | false | String | 频道号，不传为获取全局设置 | 
 | rank | true | Integer | 1为首要条件，2为次要条件 | 
 | keyword | false | String | 关键词，可根据会员码和名称查询 | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -118,9 +118,9 @@ true为添加成功，false为添加失败
 | -- | -- | -- | 
 | contents | Array | 白名单列表【详见[ChannelWhiteList参数描述](webAuth.md?id=polyv54)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv54"><a href="#/webAuth.md?id=polyv54"data-id="ChannelWhiteList参数描述"class="anchor"><span>ChannelWhiteList参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -813,7 +813,7 @@ true为删除成功，false为失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -823,9 +823,9 @@ true为删除成功，false为失败
 | -- | -- | -- | 
 | contents | Array | 页面登记记录【详见[ChannelAuthInfo参数描述](webAuth.md?id=polyv62)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv62"><a href="#/webAuth.md?id=polyv62"data-id="ChannelAuthInfo参数描述"class="anchor"><span>ChannelAuthInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 

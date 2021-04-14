@@ -47,7 +47,7 @@ public class LiveGetConsultingRecordResponse {
     @Accessors(chain = true)
     @ApiModel("查询咨询提问记录响应实体-消息对应用户消息")
     public static class User {
-     
+        
         /**
          * 观众昵称
          */
@@ -60,7 +60,7 @@ public class LiveGetConsultingRecordResponse {
         @ApiModelProperty(name = "pic", value = "观众头像", required = false)
         private String pic;
         
-       
+        
         /**
          * 用户唯一标示
          */
@@ -82,7 +82,7 @@ public class LiveGetConsultingRecordResponse {
         /**
          * 是否禁言
          */
-        @ApiModelProperty(name = "banned", value = "是否禁言", required = false)
+        @ApiModelProperty(name = "banned", value = "是否禁言<br/>true：禁言<br/>false：不禁言", required = false)
         private Boolean banned;
         
         
@@ -105,7 +105,7 @@ public class LiveGetConsultingRecordResponse {
      * 提问者ID
      */
     @ApiModelProperty(name = "userId", value = "提问者ID", required = false)
-    @JSONField(name="s_userId")
+    @JSONField(name = "s_userId")
     private String userId;
     
     

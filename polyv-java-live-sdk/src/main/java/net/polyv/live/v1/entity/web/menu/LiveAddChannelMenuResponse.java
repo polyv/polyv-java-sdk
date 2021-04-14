@@ -47,7 +47,7 @@ public class LiveAddChannelMenuResponse {
     /**
      * 菜单语言类型 zh_CN中文、EN英文
      */
-    @ApiModelProperty(name = "lang", value = "菜单语言类型 zh_CN中文、EN英文", required = false)
+    @ApiModelProperty(name = "lang", value = "菜单语言类型<br/>zh_CN：中文<br/>EN：英文", required = false)
     private String lang;
     
     

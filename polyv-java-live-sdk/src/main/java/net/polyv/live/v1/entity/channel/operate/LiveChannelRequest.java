@@ -84,9 +84,9 @@ public class LiveChannelRequest extends LiveCommonRequest {
     private String watchLayout;
     
     /**
-     * 连麦人数 ，-1=<取值范围<=账号级的连麦人数，-1：表示使用账号默认的连麦人数，最大16人（注：账号级连麦人数需通知平台管理员设置才生效）
+     * 连麦人数，取值应大于等于-1小于等于账号级的连麦人数，最大16人（注：账号级连麦人数需通知平台管理员设置才生效）
      */
-    @ApiModelProperty(name = "linkMicLimit", value = "连麦人数，-1=<取值范围<=账号级的连麦人数，-1：表示使用账号默认的连麦人数，最大16" +
+    @ApiModelProperty(name = "linkMicLimit", value = "连麦人数，取值应大于等于-1小于等于账号级的连麦人数，-1：表示使用账号默认的连麦人数，最大16" +
             "人（注：账号级连麦人数需通知平台管理员设置才生效）")
     @Max(value = 16, message = "属性linkMicLimit连麦人数不能大于16人")
     @Min(value = -1, message = "属性linkMicLimit连麦人数不能小于-1人")

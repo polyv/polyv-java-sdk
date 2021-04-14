@@ -94,7 +94,7 @@ public class LiveCreateSonChannelListResponse {
         /**
          * 助教翻页权限（只能一个助教有）
          */
-        @ApiModelProperty(name = "pageTurnEnabled", value = "助教翻页权限（只能一个助教有）", required = false)
+        @ApiModelProperty(name = "pageTurnEnabled", value = "助教翻页权限（只能一个助教有）<br/>Y：开启<br/>N：关闭", required = false)
         private String pageTurnEnabled;
         
         /**
@@ -116,9 +116,9 @@ public class LiveCreateSonChannelListResponse {
         private String voteEnabled;
         
         /**
-         * 子频道角色,guest等
+         * 子频道角色，guest等
          */
-        @ApiModelProperty(name = "role", value = "子频道角色,guest等", required = false)
+        @ApiModelProperty(name = "role", value = "子频道角色，guest等", required = false)
         private String role;
         
         /**

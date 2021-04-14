@@ -231,9 +231,9 @@ public class LiveQuestionnaireResultResponse {
             private String score;
             
             /**
-             * 题目的类型，R
+             * 题目的类型，R 单选题 ,C 多项题 ,Q 问答题
              */
-            @ApiModelProperty(name = "type", value = "题目的类型，R", required = false)
+            @ApiModelProperty(name = "type", value = "题目的类型<br/>R：单选题<br/>C：多项题<br/>Q：问答题", required = false)
             private String type;
             
            

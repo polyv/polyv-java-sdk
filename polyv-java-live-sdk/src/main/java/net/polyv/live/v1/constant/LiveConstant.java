@@ -430,7 +430,11 @@ public class LiveConstant {
         /**
          * 回调设置;
          */
-        , CALLBACK("callback");
+        , CALLBACK("callback")
+        /**
+         * 播放器设置;
+         */
+        , PLAYER("player");
         
         private String desc;
         

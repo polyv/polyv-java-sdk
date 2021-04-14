@@ -84,9 +84,9 @@ public class LiveChannelVideoListResponse {
         private String resolution;
         
         /**
-         * 直播的场次ID
+         * 直播的场次id
          */
-        @ApiModelProperty(name = "channelSessionId", value = "直播的场次ID", required = false)
+        @ApiModelProperty(name = "channelSessionId", value = "直播的场次id", required = false)
         private String channelSessionId;
         
         /**

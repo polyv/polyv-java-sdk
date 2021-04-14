@@ -45,9 +45,9 @@ public class LiveCheckinListResponse extends LivePageCommonResponse {
         private String nickname;
         
         /**
-         * C端观众ID
+         * C端观众id
          */
-        @ApiModelProperty(name = "userId", value = "C端观众ID", required = false)
+        @ApiModelProperty(name = "userId", value = "C端观众id", required = false)
         @JSONField(name = "userid")
         private String userId;
         
@@ -76,9 +76,9 @@ public class LiveCheckinListResponse extends LivePageCommonResponse {
         private String sessionId;
         
         /**
-         * 签到ID，一场签到一个id
+         * 签到id，一场签到一个id
          */
-        @ApiModelProperty(name = "checkinid", value = "签到ID", required = false)
+        @ApiModelProperty(name = "checkinid", value = "签到id，一场签到一个id", required = false)
         private String checkinid;
     
         /**

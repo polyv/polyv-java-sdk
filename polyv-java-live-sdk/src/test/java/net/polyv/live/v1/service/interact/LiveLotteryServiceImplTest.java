@@ -21,7 +21,6 @@ import net.polyv.live.v1.entity.interact.LiveSendChannelRewardMsgRequest;
 import net.polyv.live.v1.entity.interact.LiveSetLotteryWinnerInfoRequest;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.interact.impl.LiveLotteryServiceImpl;
-import net.polyv.live.v1.util.LiveSignUtil;
 
 /**
  * 抽奖管理
@@ -76,7 +75,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
         LiveLotteryWinnerDetailResponse liveLotteryWinnerDetailResponse;
         try {
             liveLotteryWinnerDetailRequest.setChannelId(super.createChannel())
-                    .setLotteryId("fv3mao43u6");
+                    .setLotteryId("fv3hogjmh3");
             liveLotteryWinnerDetailResponse = new LiveLotteryServiceImpl().getLotteryWinnerDetail(
                     liveLotteryWinnerDetailRequest);
             Assert.assertNotNull(liveLotteryWinnerDetailResponse);

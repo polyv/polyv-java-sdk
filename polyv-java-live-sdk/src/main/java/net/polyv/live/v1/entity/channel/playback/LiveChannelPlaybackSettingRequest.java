@@ -1,7 +1,5 @@
 package net.polyv.live.v1.entity.channel.playback;
 
-import net.polyv.common.v1.validator.constraints.NotEmpty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -48,8 +46,7 @@ public class LiveChannelPlaybackSettingRequest extends LiveCommonRequest {
     /**
      * 单个回放的视频id
      */
-    @ApiModelProperty(name = "videoId", value = "单个回放的视频id", required = true)
-    @NotEmpty(message = "属性videoId不能为空")
+    @ApiModelProperty(name = "videoId", value = "单个回放的视频id", required = false)
     private String videoId;
     
 }

@@ -29,9 +29,9 @@ public class LiveCreateChannelVideoPlaybackResponse {
     private String videoPoolId;
     
     /**
-     * 点播后台用户ID
+     * 点播后台用户id
      */
-    @ApiModelProperty(name = "userId", value = "点播后台用户ID", required = false)
+    @ApiModelProperty(name = "userId", value = "点播后台用户id", required = false)
     private String userId;
     
     /**

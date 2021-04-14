@@ -63,9 +63,9 @@ public class LiveChannelResponse {
     protected Float logoOpacity;
     
     /**
-     * LOGO位置
+     * LOGO位置 tr1：左上，tr：右上，b1：左下，br：右下
      */
-    @ApiModelProperty(name = "logoPosition", value = "Logo位置")
+    @ApiModelProperty(name = "logoPosition", value = "Logo位置<br/>tr1：左上<br/>tr：右上<br/>b1：左下<br/>br：右下")
     protected String logoPosition;
     
     /**

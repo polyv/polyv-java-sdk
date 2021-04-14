@@ -33,7 +33,8 @@ public class LiveUpdateChannelGoodRequest extends LiveCommonRequest {
     @ApiModelProperty(name = "enabled", value = "请求体参数，道具打赏开关，不传默认开启，值为 Y/N , Y为开启", required = false)
     private String enabled;
     
-    @ApiModelProperty(name = "goods", value = "道具打赏", required = false)
+    @ApiModelProperty(name = "goods", value = "道具打赏，道具对象数量必须大于0小于10", required = true)
+    @NotNull(message = "属性goods不能为空")
     private List<ChannelGood> goods;
     
     @Data

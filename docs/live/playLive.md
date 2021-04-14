@@ -170,94 +170,93 @@
 | type | false | String | 转换类型（‘common’：转普通图片， ‘animate’：转动画效果）默认不传转普通，因为只有ppt，pptx可以转动画，其他类型文件会自动转成普通；文件转动画转失败会直接把类型转为普通 | 
 | docName | false | String | 文档名称（不传默认使用ppt上传的文件获取到的文件名作为文档名称，文档名称不得超过100个字符） | 
 | callbackUrl | false | String | 文档上传转换成功回调地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 
 #### 返回描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| liveChannelBasicInfoResponse | false | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv71)】 | 
-| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv72)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| liveChannelBasicInfoResponse | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv71)】 | 
+| sonChannelInfos | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv72)】 | 
 
 <h6 id="polyv71"><a href="#/playLive.md?id=polyv71"data-id="LiveChannelBasicInfoResponse参数描述"class="anchor"><span>LiveChannelBasicInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| name | false | String | 频道名称 | 
-| channelPasswd | false | String | 频道密码 | 
-| publisher | false | String | 主持人名称 | 
-| startTime | false | Date | 直播开始时间，关闭时为null | 
-| pageView | false | Integer | 页面累计观看数 | 
-| likes | false | Integer | 观看页点赞数 | 
-| coverImg | false | String | 频道图标url | 
-| splashImg | false | String | 频道引导图url | 
-| splashEnabled | false | String | 引导页开关（取值为Y/N） | 
-| desc | false | String | 直播介绍 | 
-| consultingMenuEnabled | false | String | 咨询提问开关（取值为Y/N） | 
-| maxViewerRestrict | false | String | 限制最大在线观看人数开关（取值为Y/N） | 
-| maxViewer | false | Integer | 最大在线观看人数 | 
-| watchStatus | false | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
-| watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
-| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv73)】 | 
-| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv74)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| name | String | 频道名称 | 
+| channelPasswd | String | 频道密码 | 
+| publisher | String | 主持人名称 | 
+| startTime | Date | 直播开始时间，关闭时为null | 
+| pageView | Integer | 页面累计观看数 | 
+| likes | Integer | 观看页点赞数 | 
+| coverImg | String | 频道图标url | 
+| splashImg | String | 频道引导图url | 
+| splashEnabled | String | 引导页开关（取值为Y/N） | 
+| desc | String | 直播介绍 | 
+| consultingMenuEnabled | String | 咨询提问开关（取值为Y/N） | 
+| maxViewerRestrict | String | 限制最大在线观看人数开关（取值为Y/N） | 
+| maxViewer | Integer | 最大在线观看人数 | 
+| watchStatus | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
+| watchStatusText | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
+| userCategory | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv73)】 | 
+| authSettings | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv74)】 | 
 
 <h6 id="polyv72"><a href="#/playLive.md?id=polyv72"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| account | false | String | 子频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| channelId | false | String | 频道号 | 
-| passwd | false | String | 子频道密码 | 
-| nickname | false | String | 子频道名称 | 
-| stream | false | String | 子频道流名（单独使用无效） | 
-| status | false | String | 子频道状态 | 
-| createdTime | false | Date | 创建子频道时间 | 
-| lastModified | false | Date | 子频道最后修改时间 | 
-| sort | false | Integer | 频道中所有子频道序号 | 
-| avatar | false | String | 子频道头像 | 
-| pageTurnEnabled | false | String | 子频道翻页权限（只能一个子频道有） | 
-| notifyEnabled | false | String | 发布公告权限(Y/N) | 
-| checkinEnabled | false | String | 开启签到权限(Y/N) | 
-| voteEnabled | false | String | 发起投票(Y/N) | 
-| role | false | String | 子频道角色 | 
-| pushUrl | false | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| account | String | 子频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| channelId | String | 频道号 | 
+| passwd | String | 子频道密码 | 
+| nickname | String | 子频道名称 | 
+| stream | String | 子频道流名（单独使用无效） | 
+| status | String | 子频道状态 | 
+| createdTime | Date | 创建子频道时间 | 
+| lastModified | Date | 子频道最后修改时间 | 
+| sort | Integer | 频道中所有子频道序号 | 
+| avatar | String | 子频道头像 | 
+| pageTurnEnabled | String | 子频道翻页权限（只能一个子频道有） | 
+| notifyEnabled | String | 发布公告权限(Y/N) | 
+| checkinEnabled | String | 开启签到权限(Y/N) | 
+| voteEnabled | String | 发起投票(Y/N) | 
+| role | String | 子频道角色 | 
+| pushUrl | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
 
 <h6 id="polyv73"><a href="#/playLive.md?id=polyv73"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| categoryId | false | Integer | 分类ID | 
-| categoryName | false | String | 分类名称 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| rank | false | Integer | 分类的排序值 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| categoryId | Integer | 分类ID | 
+| categoryName | String | 分类名称 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| rank | Integer | 分类的排序值 | 
 
 <h6 id="polyv74"><a href="#/playLive.md?id=polyv74"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| rank | false | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
-| globalSettingEnabled | false | String | 是否开启全局设置（Y/N） | 
-| enabled | false | String | 是否开启观看条件(Y/N) | 
-| authType | false | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
-| authTips | false | String | 白名单观看提示信息 | 
-| payAuthTips | false | String | 付费观看提示信息 | 
-| authCode | false | String | 验证码观看方式的验证码 | 
-| qcodeTips | false | String | 验证码观看方式的二维码提示 | 
-| qcodeImg | false | String | 验证码观看方式的二维码图片 | 
-| price | false | Integer | 付费观看的价格 | 
-| watchEndTime | false | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
-| validTimePeriod | false | Integer | 付费观看的截止时长（天） | 
-| customKey | false | String | 自定义授权观看的key | 
-| customUri | false | String | 自定义授权观看的接口地址 | 
-| externalKey | false | String | 外部授权观看的key | 
-| externalUri | false | String | 外部授权观看的接口地址 | 
-| externalRedirectUri | false | String | 外部授权观看，用户直接访问观看页时的跳转地址 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| rank | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
+| globalSettingEnabled | String | 是否开启全局设置（Y/N） | 
+| enabled | String | 是否开启观看条件(Y/N) | 
+| authType | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
+| authTips | String | 白名单观看提示信息 | 
+| payAuthTips | String | 付费观看提示信息 | 
+| authCode | String | 验证码观看方式的验证码 | 
+| qcodeTips | String | 验证码观看方式的二维码提示 | 
+| qcodeImg | String | 验证码观看方式的二维码图片 | 
+| price | Integer | 付费观看的价格 | 
+| watchEndTime | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
+| validTimePeriod | Integer | 付费观看的截止时长（天） | 
+| customKey | String | 自定义授权观看的key | 
+| customUri | String | 自定义授权观看的接口地址 | 
+| externalKey | String | 外部授权观看的key | 
+| externalUri | String | 外部授权观看的接口地址 | 
+| externalRedirectUri | String | 外部授权观看，用户直接访问观看页时的跳转地址 | 
 
 
 
@@ -480,94 +479,93 @@
 | type | false | String | 转换类型（‘common’：转普通图片， ‘animate’：转动画效果）默认不传转普通，因为只有ppt，pptx可以转动画，其他类型文件会自动转成普通；文件转动画转失败会直接把类型转为普通 | 
 | docName | false | String | 文档名称（不传默认使用ppt上传的文件获取到的文件名作为文档名称，文档名称不得超过100个字符） | 
 | callbackUrl | false | String | 文档上传转换成功回调地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 
 #### 返回描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| liveChannelBasicInfoResponse | false | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv76)】 | 
-| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv77)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| liveChannelBasicInfoResponse | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv76)】 | 
+| sonChannelInfos | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv77)】 | 
 
 <h6 id="polyv76"><a href="#/playLive.md?id=polyv76"data-id="LiveChannelBasicInfoResponse参数描述"class="anchor"><span>LiveChannelBasicInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| name | false | String | 频道名称 | 
-| channelPasswd | false | String | 频道密码 | 
-| publisher | false | String | 主持人名称 | 
-| startTime | false | Date | 直播开始时间，关闭时为null | 
-| pageView | false | Integer | 页面累计观看数 | 
-| likes | false | Integer | 观看页点赞数 | 
-| coverImg | false | String | 频道图标url | 
-| splashImg | false | String | 频道引导图url | 
-| splashEnabled | false | String | 引导页开关（取值为Y/N） | 
-| desc | false | String | 直播介绍 | 
-| consultingMenuEnabled | false | String | 咨询提问开关（取值为Y/N） | 
-| maxViewerRestrict | false | String | 限制最大在线观看人数开关（取值为Y/N） | 
-| maxViewer | false | Integer | 最大在线观看人数 | 
-| watchStatus | false | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
-| watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
-| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv78)】 | 
-| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv79)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| name | String | 频道名称 | 
+| channelPasswd | String | 频道密码 | 
+| publisher | String | 主持人名称 | 
+| startTime | Date | 直播开始时间，关闭时为null | 
+| pageView | Integer | 页面累计观看数 | 
+| likes | Integer | 观看页点赞数 | 
+| coverImg | String | 频道图标url | 
+| splashImg | String | 频道引导图url | 
+| splashEnabled | String | 引导页开关（取值为Y/N） | 
+| desc | String | 直播介绍 | 
+| consultingMenuEnabled | String | 咨询提问开关（取值为Y/N） | 
+| maxViewerRestrict | String | 限制最大在线观看人数开关（取值为Y/N） | 
+| maxViewer | Integer | 最大在线观看人数 | 
+| watchStatus | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
+| watchStatusText | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
+| userCategory | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv78)】 | 
+| authSettings | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv79)】 | 
 
 <h6 id="polyv77"><a href="#/playLive.md?id=polyv77"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| account | false | String | 子频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| channelId | false | String | 频道号 | 
-| passwd | false | String | 子频道密码 | 
-| nickname | false | String | 子频道名称 | 
-| stream | false | String | 子频道流名（单独使用无效） | 
-| status | false | String | 子频道状态 | 
-| createdTime | false | Date | 创建子频道时间 | 
-| lastModified | false | Date | 子频道最后修改时间 | 
-| sort | false | Integer | 频道中所有子频道序号 | 
-| avatar | false | String | 子频道头像 | 
-| pageTurnEnabled | false | String | 子频道翻页权限（只能一个子频道有） | 
-| notifyEnabled | false | String | 发布公告权限(Y/N) | 
-| checkinEnabled | false | String | 开启签到权限(Y/N) | 
-| voteEnabled | false | String | 发起投票(Y/N) | 
-| role | false | String | 子频道角色 | 
-| pushUrl | false | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| account | String | 子频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| channelId | String | 频道号 | 
+| passwd | String | 子频道密码 | 
+| nickname | String | 子频道名称 | 
+| stream | String | 子频道流名（单独使用无效） | 
+| status | String | 子频道状态 | 
+| createdTime | Date | 创建子频道时间 | 
+| lastModified | Date | 子频道最后修改时间 | 
+| sort | Integer | 频道中所有子频道序号 | 
+| avatar | String | 子频道头像 | 
+| pageTurnEnabled | String | 子频道翻页权限（只能一个子频道有） | 
+| notifyEnabled | String | 发布公告权限(Y/N) | 
+| checkinEnabled | String | 开启签到权限(Y/N) | 
+| voteEnabled | String | 发起投票(Y/N) | 
+| role | String | 子频道角色 | 
+| pushUrl | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
 
 <h6 id="polyv78"><a href="#/playLive.md?id=polyv78"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| categoryId | false | Integer | 分类ID | 
-| categoryName | false | String | 分类名称 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| rank | false | Integer | 分类的排序值 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| categoryId | Integer | 分类ID | 
+| categoryName | String | 分类名称 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| rank | Integer | 分类的排序值 | 
 
 <h6 id="polyv79"><a href="#/playLive.md?id=polyv79"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| rank | false | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
-| globalSettingEnabled | false | String | 是否开启全局设置（Y/N） | 
-| enabled | false | String | 是否开启观看条件(Y/N) | 
-| authType | false | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
-| authTips | false | String | 白名单观看提示信息 | 
-| payAuthTips | false | String | 付费观看提示信息 | 
-| authCode | false | String | 验证码观看方式的验证码 | 
-| qcodeTips | false | String | 验证码观看方式的二维码提示 | 
-| qcodeImg | false | String | 验证码观看方式的二维码图片 | 
-| price | false | Integer | 付费观看的价格 | 
-| watchEndTime | false | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
-| validTimePeriod | false | Integer | 付费观看的截止时长（天） | 
-| customKey | false | String | 自定义授权观看的key | 
-| customUri | false | String | 自定义授权观看的接口地址 | 
-| externalKey | false | String | 外部授权观看的key | 
-| externalUri | false | String | 外部授权观看的接口地址 | 
-| externalRedirectUri | false | String | 外部授权观看，用户直接访问观看页时的跳转地址 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| rank | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
+| globalSettingEnabled | String | 是否开启全局设置（Y/N） | 
+| enabled | String | 是否开启观看条件(Y/N) | 
+| authType | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
+| authTips | String | 白名单观看提示信息 | 
+| payAuthTips | String | 付费观看提示信息 | 
+| authCode | String | 验证码观看方式的验证码 | 
+| qcodeTips | String | 验证码观看方式的二维码提示 | 
+| qcodeImg | String | 验证码观看方式的二维码图片 | 
+| price | Integer | 付费观看的价格 | 
+| watchEndTime | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
+| validTimePeriod | Integer | 付费观看的截止时长（天） | 
+| customKey | String | 自定义授权观看的key | 
+| customUri | String | 自定义授权观看的接口地址 | 
+| externalKey | String | 外部授权观看的key | 
+| externalUri | String | 外部授权观看的接口地址 | 
+| externalRedirectUri | String | 外部授权观看，用户直接访问观看页时的跳转地址 | 
 
 
 
@@ -726,94 +724,93 @@
 | nickname | true | String | 讲师昵称 | 
 | actor | true | String | 讲师头衔 | 
 | avatar | false | String | 头像图片地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 
 #### 返回描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| liveChannelBasicInfoResponse | false | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv81)】 | 
-| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv82)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| liveChannelBasicInfoResponse | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv81)】 | 
+| sonChannelInfos | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv82)】 | 
 
 <h6 id="polyv81"><a href="#/playLive.md?id=polyv81"data-id="LiveChannelBasicInfoResponse参数描述"class="anchor"><span>LiveChannelBasicInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| name | false | String | 频道名称 | 
-| channelPasswd | false | String | 频道密码 | 
-| publisher | false | String | 主持人名称 | 
-| startTime | false | Date | 直播开始时间，关闭时为null | 
-| pageView | false | Integer | 页面累计观看数 | 
-| likes | false | Integer | 观看页点赞数 | 
-| coverImg | false | String | 频道图标url | 
-| splashImg | false | String | 频道引导图url | 
-| splashEnabled | false | String | 引导页开关（取值为Y/N） | 
-| desc | false | String | 直播介绍 | 
-| consultingMenuEnabled | false | String | 咨询提问开关（取值为Y/N） | 
-| maxViewerRestrict | false | String | 限制最大在线观看人数开关（取值为Y/N） | 
-| maxViewer | false | Integer | 最大在线观看人数 | 
-| watchStatus | false | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
-| watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
-| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv83)】 | 
-| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv84)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| name | String | 频道名称 | 
+| channelPasswd | String | 频道密码 | 
+| publisher | String | 主持人名称 | 
+| startTime | Date | 直播开始时间，关闭时为null | 
+| pageView | Integer | 页面累计观看数 | 
+| likes | Integer | 观看页点赞数 | 
+| coverImg | String | 频道图标url | 
+| splashImg | String | 频道引导图url | 
+| splashEnabled | String | 引导页开关（取值为Y/N） | 
+| desc | String | 直播介绍 | 
+| consultingMenuEnabled | String | 咨询提问开关（取值为Y/N） | 
+| maxViewerRestrict | String | 限制最大在线观看人数开关（取值为Y/N） | 
+| maxViewer | Integer | 最大在线观看人数 | 
+| watchStatus | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
+| watchStatusText | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
+| userCategory | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv83)】 | 
+| authSettings | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv84)】 | 
 
 <h6 id="polyv82"><a href="#/playLive.md?id=polyv82"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| account | false | String | 子频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| channelId | false | String | 频道号 | 
-| passwd | false | String | 子频道密码 | 
-| nickname | false | String | 子频道名称 | 
-| stream | false | String | 子频道流名（单独使用无效） | 
-| status | false | String | 子频道状态 | 
-| createdTime | false | Date | 创建子频道时间 | 
-| lastModified | false | Date | 子频道最后修改时间 | 
-| sort | false | Integer | 频道中所有子频道序号 | 
-| avatar | false | String | 子频道头像 | 
-| pageTurnEnabled | false | String | 子频道翻页权限（只能一个子频道有） | 
-| notifyEnabled | false | String | 发布公告权限(Y/N) | 
-| checkinEnabled | false | String | 开启签到权限(Y/N) | 
-| voteEnabled | false | String | 发起投票(Y/N) | 
-| role | false | String | 子频道角色 | 
-| pushUrl | false | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| account | String | 子频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| channelId | String | 频道号 | 
+| passwd | String | 子频道密码 | 
+| nickname | String | 子频道名称 | 
+| stream | String | 子频道流名（单独使用无效） | 
+| status | String | 子频道状态 | 
+| createdTime | Date | 创建子频道时间 | 
+| lastModified | Date | 子频道最后修改时间 | 
+| sort | Integer | 频道中所有子频道序号 | 
+| avatar | String | 子频道头像 | 
+| pageTurnEnabled | String | 子频道翻页权限（只能一个子频道有） | 
+| notifyEnabled | String | 发布公告权限(Y/N) | 
+| checkinEnabled | String | 开启签到权限(Y/N) | 
+| voteEnabled | String | 发起投票(Y/N) | 
+| role | String | 子频道角色 | 
+| pushUrl | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
 
 <h6 id="polyv83"><a href="#/playLive.md?id=polyv83"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| categoryId | false | Integer | 分类ID | 
-| categoryName | false | String | 分类名称 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| rank | false | Integer | 分类的排序值 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| categoryId | Integer | 分类ID | 
+| categoryName | String | 分类名称 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| rank | Integer | 分类的排序值 | 
 
 <h6 id="polyv84"><a href="#/playLive.md?id=polyv84"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| rank | false | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
-| globalSettingEnabled | false | String | 是否开启全局设置（Y/N） | 
-| enabled | false | String | 是否开启观看条件(Y/N) | 
-| authType | false | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
-| authTips | false | String | 白名单观看提示信息 | 
-| payAuthTips | false | String | 付费观看提示信息 | 
-| authCode | false | String | 验证码观看方式的验证码 | 
-| qcodeTips | false | String | 验证码观看方式的二维码提示 | 
-| qcodeImg | false | String | 验证码观看方式的二维码图片 | 
-| price | false | Integer | 付费观看的价格 | 
-| watchEndTime | false | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
-| validTimePeriod | false | Integer | 付费观看的截止时长（天） | 
-| customKey | false | String | 自定义授权观看的key | 
-| customUri | false | String | 自定义授权观看的接口地址 | 
-| externalKey | false | String | 外部授权观看的key | 
-| externalUri | false | String | 外部授权观看的接口地址 | 
-| externalRedirectUri | false | String | 外部授权观看，用户直接访问观看页时的跳转地址 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| rank | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
+| globalSettingEnabled | String | 是否开启全局设置（Y/N） | 
+| enabled | String | 是否开启观看条件(Y/N) | 
+| authType | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
+| authTips | String | 白名单观看提示信息 | 
+| payAuthTips | String | 付费观看提示信息 | 
+| authCode | String | 验证码观看方式的验证码 | 
+| qcodeTips | String | 验证码观看方式的二维码提示 | 
+| qcodeImg | String | 验证码观看方式的二维码图片 | 
+| price | Integer | 付费观看的价格 | 
+| watchEndTime | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
+| validTimePeriod | Integer | 付费观看的截止时长（天） | 
+| customKey | String | 自定义授权观看的key | 
+| customUri | String | 自定义授权观看的接口地址 | 
+| externalKey | String | 外部授权观看的key | 
+| externalUri | String | 外部授权观看的接口地址 | 
+| externalRedirectUri | String | 外部授权观看，用户直接访问观看页时的跳转地址 | 
 
 
 
@@ -1014,94 +1011,93 @@
 | nickname | true | String | 讲师昵称 | 
 | actor | true | String | 讲师头衔 | 
 | avatar | false | String | 头像图片地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 
 #### 返回描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| liveChannelBasicInfoResponse | false | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv86)】 | 
-| sonChannelInfos | false | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv87)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| liveChannelBasicInfoResponse | LiveChannelBasicInfoResponse | 频道信息【详见[LiveChannelBasicInfoResponse参数描述](playLive.md?id=polyv86)】 | 
+| sonChannelInfos | Array | 子频道信息【详见[LiveSonChannelInfoResponse参数描述](playLive.md?id=polyv87)】 | 
 
 <h6 id="polyv86"><a href="#/playLive.md?id=polyv86"data-id="LiveChannelBasicInfoResponse参数描述"class="anchor"><span>LiveChannelBasicInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| name | false | String | 频道名称 | 
-| channelPasswd | false | String | 频道密码 | 
-| publisher | false | String | 主持人名称 | 
-| startTime | false | Date | 直播开始时间，关闭时为null | 
-| pageView | false | Integer | 页面累计观看数 | 
-| likes | false | Integer | 观看页点赞数 | 
-| coverImg | false | String | 频道图标url | 
-| splashImg | false | String | 频道引导图url | 
-| splashEnabled | false | String | 引导页开关（取值为Y/N） | 
-| desc | false | String | 直播介绍 | 
-| consultingMenuEnabled | false | String | 咨询提问开关（取值为Y/N） | 
-| maxViewerRestrict | false | String | 限制最大在线观看人数开关（取值为Y/N） | 
-| maxViewer | false | Integer | 最大在线观看人数 | 
-| watchStatus | false | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
-| watchStatusText | false | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
-| userCategory | false | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv88)】 | 
-| authSettings | false | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv89)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| name | String | 频道名称 | 
+| channelPasswd | String | 频道密码 | 
+| publisher | String | 主持人名称 | 
+| startTime | Date | 直播开始时间，关闭时为null | 
+| pageView | Integer | 页面累计观看数 | 
+| likes | Integer | 观看页点赞数 | 
+| coverImg | String | 频道图标url | 
+| splashImg | String | 频道引导图url | 
+| splashEnabled | String | 引导页开关（取值为Y/N） | 
+| desc | String | 直播介绍 | 
+| consultingMenuEnabled | String | 咨询提问开关（取值为Y/N） | 
+| maxViewerRestrict | String | 限制最大在线观看人数开关（取值为Y/N） | 
+| maxViewer | Integer | 最大在线观看人数 | 
+| watchStatus | String | 频道的观看页状态，取值为：live（直播中）、end（直播结束）、playback（回放中）、waiting（等待直播） | 
+| watchStatusText | String | 观看页状态描述，直播中，回放中，已结束，未开始 | 
+| userCategory | UserCategory | 频道所属分类的信息【详见[UserCategory参数描述](playLive.md?id=polyv88)】 | 
+| authSettings | Array | 直播观看条件列表【详见[AuthSetting参数描述](playLive.md?id=polyv89)】 | 
 
 <h6 id="polyv87"><a href="#/playLive.md?id=polyv87"data-id="LiveSonChannelInfoResponse参数描述"class="anchor"><span>LiveSonChannelInfoResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| account | false | String | 子频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| channelId | false | String | 频道号 | 
-| passwd | false | String | 子频道密码 | 
-| nickname | false | String | 子频道名称 | 
-| stream | false | String | 子频道流名（单独使用无效） | 
-| status | false | String | 子频道状态 | 
-| createdTime | false | Date | 创建子频道时间 | 
-| lastModified | false | Date | 子频道最后修改时间 | 
-| sort | false | Integer | 频道中所有子频道序号 | 
-| avatar | false | String | 子频道头像 | 
-| pageTurnEnabled | false | String | 子频道翻页权限（只能一个子频道有） | 
-| notifyEnabled | false | String | 发布公告权限(Y/N) | 
-| checkinEnabled | false | String | 开启签到权限(Y/N) | 
-| voteEnabled | false | String | 发起投票(Y/N) | 
-| role | false | String | 子频道角色 | 
-| pushUrl | false | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| account | String | 子频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| channelId | String | 频道号 | 
+| passwd | String | 子频道密码 | 
+| nickname | String | 子频道名称 | 
+| stream | String | 子频道流名（单独使用无效） | 
+| status | String | 子频道状态 | 
+| createdTime | Date | 创建子频道时间 | 
+| lastModified | Date | 子频道最后修改时间 | 
+| sort | Integer | 频道中所有子频道序号 | 
+| avatar | String | 子频道头像 | 
+| pageTurnEnabled | String | 子频道翻页权限（只能一个子频道有） | 
+| notifyEnabled | String | 发布公告权限(Y/N) | 
+| checkinEnabled | String | 开启签到权限(Y/N) | 
+| voteEnabled | String | 发起投票(Y/N) | 
+| role | String | 子频道角色 | 
+| pushUrl | String | 子频道推流地址（子频道推流请参考后台导播台使用） | 
 
 <h6 id="polyv88"><a href="#/playLive.md?id=polyv88"data-id="UserCategory参数描述"class="anchor"><span>UserCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| categoryId | false | Integer | 分类ID | 
-| categoryName | false | String | 分类名称 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| rank | false | Integer | 分类的排序值 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| categoryId | Integer | 分类ID | 
+| categoryName | String | 分类名称 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| rank | Integer | 分类的排序值 | 
 
 <h6 id="polyv89"><a href="#/playLive.md?id=polyv89"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| userId | false | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
-| rank | false | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
-| globalSettingEnabled | false | String | 是否开启全局设置（Y/N） | 
-| enabled | false | String | 是否开启观看条件(Y/N) | 
-| authType | false | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
-| authTips | false | String | 白名单观看提示信息 | 
-| payAuthTips | false | String | 付费观看提示信息 | 
-| authCode | false | String | 验证码观看方式的验证码 | 
-| qcodeTips | false | String | 验证码观看方式的二维码提示 | 
-| qcodeImg | false | String | 验证码观看方式的二维码图片 | 
-| price | false | Integer | 付费观看的价格 | 
-| watchEndTime | false | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
-| validTimePeriod | false | Integer | 付费观看的截止时长（天） | 
-| customKey | false | String | 自定义授权观看的key | 
-| customUri | false | String | 自定义授权观看的接口地址 | 
-| externalKey | false | String | 外部授权观看的key | 
-| externalUri | false | String | 外部授权观看的接口地址 | 
-| externalRedirectUri | false | String | 外部授权观看，用户直接访问观看页时的跳转地址 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
+| rank | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
+| globalSettingEnabled | String | 是否开启全局设置（Y/N） | 
+| enabled | String | 是否开启观看条件(Y/N) | 
+| authType | String | 观看条件类型(1. 无限制 none 2. 验证码观看 code 3. 付费观看 pay 4. 白名单观看 phone 5. 登记观看 info 6. 分享观看 wxshare 7. 自定义授权观看 custom 8. 外部授权观看 external) | 
+| authTips | String | 白名单观看提示信息 | 
+| payAuthTips | String | 付费观看提示信息 | 
+| authCode | String | 验证码观看方式的验证码 | 
+| qcodeTips | String | 验证码观看方式的二维码提示 | 
+| qcodeImg | String | 验证码观看方式的二维码图片 | 
+| price | Integer | 付费观看的价格 | 
+| watchEndTime | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
+| validTimePeriod | Integer | 付费观看的截止时长（天） | 
+| customKey | String | 自定义授权观看的key | 
+| customUri | String | 自定义授权观看的接口地址 | 
+| externalKey | String | 外部授权观看的key | 
+| externalUri | String | 外部授权观看的接口地址 | 
+| externalRedirectUri | String | 外部授权观看，用户直接访问观看页时的跳转地址 | 
 
 
 

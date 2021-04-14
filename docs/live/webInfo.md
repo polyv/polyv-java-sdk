@@ -14,8 +14,7 @@
         Boolean liveUpdateChannelNameResponse;
         try {
             liveUpdateChannelNameRequest.setChannelId(createChannel())
-                    .setName("Junit测试(勿删)")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setName("Junit测试(勿删)");
             liveUpdateChannelNameResponse = new LiveWebInfoServiceImpl().updateChannelName(
                     liveUpdateChannelNameRequest);
             Assert.assertNotNull(liveUpdateChannelNameResponse);
@@ -37,16 +36,15 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | name | true | String | 修改后的频道名称 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -73,8 +71,7 @@ true为设置成功，false为设置失败
         Boolean liveUpdateChannelPublisherResponse;
         try {
             liveUpdateChannelPublisherRequest.setChannelId(createChannel())
-                    .setPublisher("主讲人sadboy")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setPublisher("主讲人sadboy");
             liveUpdateChannelPublisherResponse = new LiveWebInfoServiceImpl().updateChannelPublisher(
                     liveUpdateChannelPublisherRequest);
             Assert.assertNotNull(liveUpdateChannelPublisherResponse);
@@ -96,16 +93,15 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | publisher | true | String | 主持人姓名，不超过20个字符 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -131,7 +127,7 @@ true为设置成功，false为设置失败
         LiveChannelSplashRequest liveChannelSplashRequest = new LiveChannelSplashRequest();
         LiveChannelSplashResponse liveChannelSplashResponse;
         try {
-            liveChannelSplashRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelSplashRequest.setChannelId(createChannel());
             liveChannelSplashResponse = new LiveWebInfoServiceImpl().getChannelSplash(liveChannelSplashRequest);
             Assert.assertNotNull(liveChannelSplashResponse);
             if (liveChannelSplashResponse != null) {
@@ -152,23 +148,22 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回LiveChannelSplashResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| splashImg | false | String | 引导图片url | 
-| splashEnabled | false | String | 引导功能开关,Y/N | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| splashImg | String | 引导图片url | 
+| splashEnabled | String | 引导功能开关,Y/N | 
 
 <br /><br />
 
@@ -193,8 +188,7 @@ true为设置成功，false为设置失败
         try {
             liveUpdateChannelLikesRequest.setChannelId(createChannel())
                     .setLikes(9999)
-                    .setViewers(9999)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setViewers(9999);
             liveUpdateChannelLikesResponse = new LiveWebInfoServiceImpl().updateChannelLikes(
                     liveUpdateChannelLikesRequest);
             Assert.assertNotNull(liveUpdateChannelLikesResponse);
@@ -216,9 +210,9 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -226,7 +220,6 @@ true为设置成功，false为设置失败
 | channelId | true | String | 频道号 | 
 | likes | false | Integer | 点赞数,likes跟viewers可以同时传，也可以只传其中一个，不能都不传 | 
 | viewers | false | Integer | 观看热度，likes跟viewers可以同时传，也可以只传其中一个，不能都不传 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -254,8 +247,7 @@ true为设置成功，false为设置失败
         try {
             String path = getClass().getResource("/img/elephant.png").getPath();
             liveUpdateChannelLogoRequest.setChannelId(createChannel())
-                    .setImgfile(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setImgfile(new File(path));
             liveUpdateChannelLogoResponse = new LiveWebInfoServiceImpl().updateChannelLogo(
                     liveUpdateChannelLogoRequest);
             Assert.assertNotNull(liveUpdateChannelLogoResponse);
@@ -277,16 +269,15 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | imgfile | true | File | 图片为大小为2MB的JPG、JPEG、PNG图片 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -314,9 +305,8 @@ true为设置成功，false为设置失败
         try {
             String path = getClass().getResource("/img/elephant.png").getPath();
             liveUpdateChannelSplashRequest.setChannelId(createChannel())
-                    .setSplashEnabled("N")
-                    .setImgfile(new File(path))
-                    .setRequestId(LiveSignUtil.generateUUID());
+//                    .setImgfile(new File(path))
+                    .setSplashEnabled("Y");
             liveUpdateChannelSplashResponse = new LiveWebInfoServiceImpl().updateChannelSplash(
                     liveUpdateChannelSplashRequest);
             Assert.assertNotNull(liveUpdateChannelSplashResponse);
@@ -337,17 +327,16 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | splashEnabled | true | String | 设置开启或关闭引导页Y或N | 
-| imgfile | true | File | 支持jpg、jpeg、png三种格式，大小不能超过4Mb | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
+| imgfile | false | File | 支持jpg、jpeg、png三种格式，大小不能超过4Mb | 
 
 ### 返回对象描述
 
@@ -374,7 +363,7 @@ true为设置成功，false为设置失败
         LiveChannelLikesRequest liveChannelLikesRequest = new LiveChannelLikesRequest();
         LiveChannelLikesResponse liveChannelLikesResponse;
         try {
-            liveChannelLikesRequest.setChannelIds("1965681").setRequestId(LiveSignUtil.generateUUID());
+            liveChannelLikesRequest.setChannelIds("1965681");
             liveChannelLikesResponse = new LiveWebInfoServiceImpl().getChannelLikes(liveChannelLikesRequest);
             Assert.assertNotNull(liveChannelLikesResponse);
             if (liveChannelLikesResponse != null) {
@@ -395,30 +384,29 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回LiveChannelLikesResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelIds | true | String | 用逗号隔开的频道号，如：10000,100001最多20个 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelLikes | false | Array | 频道点赞数和观众热度值【详见[ChannelLikes参数描述](webInfo.md?id=polyv63)】 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelLikes | Array | 频道点赞数和观众热度值【详见[ChannelLikes参数描述](webInfo.md?id=polyv63)】 | 
 
 <h6 id="polyv63"><a href="#/webInfo.md?id=polyv63"data-id="ChannelLikes参数描述"class="anchor"><span>ChannelLikes参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| channelId | false | String | 频道号 | 
-| likes | false | Integer | 频道点赞数 | 
-| viewers | false | Integer | 频道观看热度 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| channelId | String | 频道号 | 
+| likes | Integer | 频道点赞数 | 
+| viewers | Integer | 频道观看热度 | 
 
 <br /><br />
 
@@ -443,8 +431,7 @@ true为设置成功，false为设置失败
         try {
             liveUpdateChannelCountDownRequest.setChannelId(createChannel())
                     .setBookingEnabled("Y")
-                    .setStartTime(getDate(2020, 11, 11, 11, 11, 11))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setStartTime(getDate(2020, 11, 11, 11, 11, 11));
             liveUpdateChannelCountDownResponse = new LiveWebInfoServiceImpl().updateChannelCountDown(
                     liveUpdateChannelCountDownRequest);
             Assert.assertTrue(liveUpdateChannelCountDownResponse);
@@ -466,9 +453,9 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -476,7 +463,6 @@ true为设置成功，false为设置失败
 | channelId | true | String | 频道号 | 
 | bookingEnabled | false | String | 预约观看开关Y或N | 
 | startTime | false | Date | 直播开始时间，如果不传该值，表示不显示直播时间和倒计时（yyyy-MM-dd HH:mm:ss） | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -502,7 +488,7 @@ true为设置成功，false为设置失败
         LiveChannelCountDownRequest liveChannelCountDownRequest = new LiveChannelCountDownRequest();
         LiveChannelCountDownResponse liveChannelCountDownResponse;
         try {
-            liveChannelCountDownRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveChannelCountDownRequest.setChannelId(createChannel());
             liveChannelCountDownResponse = new LiveWebInfoServiceImpl().getChannelCountDown(
                     liveChannelCountDownRequest);
             Assert.assertNotNull(liveChannelCountDownResponse);
@@ -524,23 +510,22 @@ true为设置成功，false为设置失败
 ### 单元测试说明
 1、请求正确，返回LiveChannelCountDownResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| bookingEnabled | false | String | 预约观看开关Y或N | 
-| startTime | false | Date | 直播开始时间,为空则没有直播开始时间 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| bookingEnabled | String | 预约观看开关Y或N | 
+| startTime | Date | 直播开始时间,为空则没有直播开始时间 | 
 
 <br /><br />
 

@@ -26,7 +26,6 @@ import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuRequest;
 import net.polyv.live.v1.entity.web.menu.LiveUpdateChannelMenuSortRequest;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.web.impl.LiveWebMenuServiceImpl;
-import net.polyv.live.v1.util.LiveSignUtil;
 
 /**
  * 页面菜单
@@ -50,8 +49,7 @@ public class LiveWebMenuImplTest extends BaseTest {
         try {
             liveUpdateChannelMenuRequest.setChannelId(createChannel())
                     .setMenuType("desc")
-                    .setContent("<html><body><h1>hello world</h1></body></html>")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setContent("<html><body><h1>hello world</h1></body></html>");
             liveUpdateChannelMenuResponse = new LiveWebMenuServiceImpl().updateChannelMenu(
                     liveUpdateChannelMenuRequest);
             Assert.assertNotNull(liveUpdateChannelMenuResponse);
@@ -82,7 +80,7 @@ public class LiveWebMenuImplTest extends BaseTest {
         LiveListChannelMenuRequest liveListChannelMenuRequest = new LiveListChannelMenuRequest();
         LiveListChannelMenuResponse liveListChannelMenuResponse;
         try {
-            liveListChannelMenuRequest.setChannelId(createChannel()).setRequestId(LiveSignUtil.generateUUID());
+            liveListChannelMenuRequest.setChannelId(createChannel());
             liveListChannelMenuResponse = new LiveWebMenuServiceImpl().listChannelMenu(liveListChannelMenuRequest);
             Assert.assertNotNull(liveListChannelMenuResponse);
             if (liveListChannelMenuResponse != null) {
@@ -117,8 +115,7 @@ public class LiveWebMenuImplTest extends BaseTest {
                     .setName("推广2")
                     .setType("iframe")
                     .setContent("http://live.polyv.net")
-                    .setLang("zh_CN")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setLang("zh_CN");
             liveAddChannelMenuResponse = new LiveWebMenuServiceImpl().addChannelMenu(liveAddChannelMenuRequest);
             Assert.assertNotNull(liveAddChannelMenuResponse);
             if (liveAddChannelMenuResponse != null) {
@@ -155,8 +152,7 @@ public class LiveWebMenuImplTest extends BaseTest {
             String menuIdsStr = StringUtils.join(menuIds.toArray(), ",");
             liveUpdateChannelMenuSortRequest.setChannelId(channelId)
                     .setMenuIds(menuIdsStr)
-                    .setLang("zh_CN")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setLang("zh_CN");
             liveUpdateChannelMenuSortResponse = new LiveWebMenuServiceImpl().updateChannelMenuSort(
                     liveUpdateChannelMenuSortRequest);
             Assert.assertNotNull(liveUpdateChannelMenuSortResponse);
@@ -189,8 +185,7 @@ public class LiveWebMenuImplTest extends BaseTest {
         try {
             liveUpdateChannelMenuInfoRequest.setMenuId("3e687a3575")
                     .setContent("XXX生财之道(Junit勿删)")
-                    .setLang("zh_CN")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setLang("zh_CN");
             liveUpdateChannelMenuInfoResponse = new LiveWebMenuServiceImpl().updateChannelMenuInfo(
                     liveUpdateChannelMenuInfoRequest);
             Assert.assertNotNull(liveUpdateChannelMenuInfoResponse);
@@ -222,7 +217,7 @@ public class LiveWebMenuImplTest extends BaseTest {
         LiveDeleteChannelMenuRequest liveDeleteChannelMenuRequest = new LiveDeleteChannelMenuRequest();
         Boolean liveDeleteChannelMenuResponse;
         try {
-            liveDeleteChannelMenuRequest.setMenuIds("db1663823d,d9ba333cdc").setRequestId(LiveSignUtil.generateUUID());
+            liveDeleteChannelMenuRequest.setMenuIds("db1663823d,d9ba333cdc");
             liveDeleteChannelMenuResponse = new LiveWebMenuServiceImpl().deleteChannelMenu(
                     liveDeleteChannelMenuRequest);
             Assert.assertTrue(liveDeleteChannelMenuResponse);
@@ -254,8 +249,7 @@ public class LiveWebMenuImplTest extends BaseTest {
         Boolean liveSetConsultingEnabledResponse;
         try {
             liveSetConsultingEnabledRequest.setChannelId(createChannel())
-                    .setEnabled("N")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setEnabled("N");
             liveSetConsultingEnabledResponse = new LiveWebMenuServiceImpl().setConsultingEnabled(
                     liveSetConsultingEnabledRequest);
             Assert.assertTrue(liveSetConsultingEnabledResponse);
@@ -288,8 +282,7 @@ public class LiveWebMenuImplTest extends BaseTest {
         try {
             liveGetChannelImageTextRequest.setChannelId(createChannel())
                     .setId(null)
-                    .setImageMode("N")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setImageMode("N");
             liveGetChannelImageTextResponse = new LiveWebMenuServiceImpl().getChannelImageText(
                     liveGetChannelImageTextRequest);
             Assert.assertNotNull(liveGetChannelImageTextResponse);

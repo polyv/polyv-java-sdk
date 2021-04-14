@@ -50,8 +50,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
             long startTime = nowTime - 30 * 24 * 60 * 60 * 1000l;
             liveChannelMaxHistoryConcurrentRequest.setChannelId(createChannel())
                     .setStartTime(super.getDate(startTime))
-                    .setEndTime(super.getDate(nowTime))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setEndTime(super.getDate(nowTime));
             liveChannelMaxHistoryConcurrentResponse = new LiveChannelViewdataServiceImpl().getMaxChannelHistoryConcurrent(
                     liveChannelMaxHistoryConcurrentRequest);
             Assert.assertNotNull(liveChannelMaxHistoryConcurrentResponse);
@@ -83,8 +82,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
         try {
             liveListChannelMicRequest.setChannelIds("1951952,1958888")
                     .setStartDay(getDate(2020, 1, 1))
-                    .setEndDay(getDate(2020, 11, 11))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setEndDay(getDate(2020, 11, 11));
             liveListChannelMicResponse = new LiveChannelViewdataServiceImpl().listChannelMic(liveListChannelMicRequest);
             Assert.assertNotNull(liveListChannelMicResponse);
             if (liveListChannelMicResponse != null) {
@@ -114,8 +112,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
         LiveListChannelViewlogResponse liveListChannelViewlogResponse;
         try {
             liveListChannelViewlogRequest.setChannelId(createChannel())
-                    .setCurrentDay(getDate(2020, 11, 3))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setCurrentDay(getDate(2020, 11, 3));
             liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                     liveListChannelViewlogRequest);
             Assert.assertNotNull(liveListChannelViewlogResponse);
@@ -147,8 +144,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
         try {
             liveListChannelSummaryRequest.setStartDate(getDate(2020, 01, 01))
                     .setEndDate(getDate(2020, 11, 11))
-                    .setChannelIds("1951952,1958888")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setChannelIds("1951952,1958888");
             liveListChannelSummaryResponse = new LiveChannelViewdataServiceImpl().listChannelSummary(
                     liveListChannelSummaryRequest);
             Assert.assertNotNull(liveListChannelSummaryResponse);
@@ -178,8 +174,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
         LiveListChannelViewerCountRequest liveListChannelViewerCountRequest = new LiveListChannelViewerCountRequest();
         LiveListChannelViewerCountResponse liveListChannelViewerCountResponse;
         try {
-            liveListChannelViewerCountRequest.setChannelIds("1951952,1958888")
-                    .setRequestId(LiveSignUtil.generateUUID());
+            liveListChannelViewerCountRequest.setChannelIds("1951952,1958888");
             liveListChannelViewerCountResponse = new LiveChannelViewdataServiceImpl().listChannelViewerCount(
                     liveListChannelViewerCountRequest);
             Assert.assertNotNull(liveListChannelViewerCountResponse);
@@ -212,8 +207,7 @@ public class LiveChannelViewdataImplTest extends BaseTest {
         try {
             liveChannelViewerConcurrenceRequest.setChannelId(createChannel())
                     .setStartDate(getDate(2020, 10, 01))
-                    .setEndDate(getDate(2020,11,11))
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setEndDate(getDate(2020,11,11));
             liveChannelViewerConcurrenceResponse = new LiveChannelViewdataServiceImpl().getChannelViewerConcurrence(
                     liveChannelViewerConcurrenceRequest);
             Assert.assertNotNull(liveChannelViewerConcurrenceResponse);

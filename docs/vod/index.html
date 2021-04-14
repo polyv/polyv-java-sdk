@@ -191,6 +191,7 @@
     });
 </script>
 
+<script src="//cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
@@ -325,9 +326,9 @@
     var payload = JSON.stringify(action);
     zc("config", {
         transfer_action: payload,
+        custom:true, //设置自定义生效 第二步
     })
 </script>
 <!--智齿 html标签-->
-
 </body>
 </html>

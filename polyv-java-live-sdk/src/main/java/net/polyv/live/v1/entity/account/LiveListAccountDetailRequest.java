@@ -18,9 +18,9 @@ import net.polyv.live.v1.entity.LivePageCommonRequest;
 public class LiveListAccountDetailRequest extends LivePageCommonRequest {
     
     /**
-     * 所属分类id;new LiveAccountServiceImpl().listCategory()获取
+     * 所属分类id
      */
-    @ApiModelProperty(name = "categoryId", value = "所属分类id;new LiveAccountServiceImpl().listCategory()获取", dataType = "Integer", example = "340182")
+    @ApiModelProperty(name = "categoryId", value = "所属分类id", dataType = "Integer", example = "340182")
     private Integer categoryId;
     
     /**

@@ -45,6 +45,7 @@ public class LiveSetChatAdminDataRequest extends LiveCommonRequest {
      * 管理员头像，支持jpg、jpeg、png三种格式，大小不能超过2Mb
      */
     @ApiModelProperty(name = "avatar", value = "管理员头像，支持jpg、jpeg、png三种格式，大小不能超过2Mb", required = true)
+    @NotNull(message = "属性avatar不能为空")
     private File avatar;
     
 }

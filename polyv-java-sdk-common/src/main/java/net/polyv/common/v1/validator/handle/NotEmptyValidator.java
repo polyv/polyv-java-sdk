@@ -4,6 +4,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.v1.constant.Constant;
+import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.validator.constraints.NotEmpty;
 
 /**
@@ -27,7 +29,7 @@ public class NotEmptyValidator extends Validator {
                 return ((CharSequence) data).length() <= 0 ? cast.message() : null;
             } else {
                 // 此处不一定完善，需要根据其他类型进行自定义处理
-                return null;
+                throw new PloyvSdkException(Constant.ERROR_CODE, field.getName() + " NotEmpty validation exception");
             }
         } else {
             return null;

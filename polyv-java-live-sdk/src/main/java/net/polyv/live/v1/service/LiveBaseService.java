@@ -12,13 +12,13 @@ import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
 import net.polyv.common.v1.base.HttpUtil;
-import net.polyv.common.v1.util.MapUtil;
+import net.polyv.common.v1.constant.Constant;
 import net.polyv.common.v1.exception.PloyvSdkException;
+import net.polyv.common.v1.util.MapUtil;
 import net.polyv.common.v1.util.SDKValidateUtil;
 import net.polyv.common.v1.util.StringUtils;
 import net.polyv.common.v1.validator.ViolationMsg;
 import net.polyv.live.v1.config.LiveGlobalConfig;
-import net.polyv.live.v1.constant.LiveConstant;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 import net.polyv.live.v1.entity.LiveCommonResponse;
 import net.polyv.live.v1.util.LiveSignUtil;
@@ -102,7 +102,7 @@ public class LiveBaseService {
         byte[] response = HttpUtil.getBinary(url, paramMap, getHttpHeadMap(), null);
         if (response == null) {
             String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
-            PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
+            PloyvSdkException exception = new PloyvSdkException(Constant.ERROR_CODE, message);
             log.error(message, exception);
             throw exception;
         }
@@ -229,7 +229,6 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse basePostJsonBody(String url, Map<String, String> signMap,
             E e, String json) throws IOException, NoSuchAlgorithmException {
         signMap = commonRequestLogic(signMap, e);
-        validateBean(e);
         url = MapUtil.appendUrl(url, signMap);
         if (StringUtils.isBlank(json)) {
             json = JSON.toJSONString(e);
@@ -336,6 +335,9 @@ public class LiveBaseService {
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
+        if (StringUtils.isBlank(e.getRequestId())) {
+            e.setRequestId(LiveSignUtil.generateUUID());
+        }
         if (signMap == null) {
             signMap = MapUtil.objectToMap(e);
         }
@@ -359,7 +361,7 @@ public class LiveBaseService {
             errors = errors.substring(0, errors.length() - 3);
             errors = "输入参数 [" + e.getClass().getName() + "]对象校验失败 ,失败字段 [" + errors + "]";
             log.error(errors);
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, errors);
+            throw new PloyvSdkException(Constant.ERROR_CODE, errors);
         }
     }
     
@@ -384,7 +386,7 @@ public class LiveBaseService {
             }
         } else {
             String message = ERROR_PREFIX + requestId + ERROR_SUFFIX;
-            PloyvSdkException exception = new PloyvSdkException(LiveConstant.ERROR_CODE, message);
+            PloyvSdkException exception = new PloyvSdkException(Constant.ERROR_CODE, message);
             log.error(message, exception);
             throw exception;
         }

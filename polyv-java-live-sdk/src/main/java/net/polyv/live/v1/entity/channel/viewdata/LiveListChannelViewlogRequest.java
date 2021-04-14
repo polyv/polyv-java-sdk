@@ -25,7 +25,7 @@ public class LiveListChannelViewlogRequest extends LivePageCommonRequest {
     /**
      * 频道号
      */
-    @ApiModelProperty(name = "channelId", value = "频道号", required = false)
+    @ApiModelProperty(name = "channelId", value = "频道号", required = true)
     @NotNull(message = "属性channelId不能为空")
     private String channelId;
     

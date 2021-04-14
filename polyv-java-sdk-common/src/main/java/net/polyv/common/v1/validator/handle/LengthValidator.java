@@ -5,6 +5,8 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.v1.constant.Constant;
+import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.validator.constraints.Length;
 
 @Slf4j
@@ -30,7 +32,7 @@ public class LengthValidator extends Validator {
                 length = ((Object[]) data).length;
             } else {
                 //  根据需求继续添加其他类型的验证
-                throw new RuntimeException(field.getName() + " Length validation exception");
+                throw new PloyvSdkException(Constant.ERROR_CODE, field.getName() + " Length validation exception");
             }
             return getValidMsg(cast, length);
         } else {

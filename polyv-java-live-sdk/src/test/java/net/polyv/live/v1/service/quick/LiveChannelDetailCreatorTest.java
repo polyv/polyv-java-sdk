@@ -13,10 +13,10 @@ import org.junit.Assert;
 import com.alibaba.fastjson.JSON;
 
 import lombok.extern.slf4j.Slf4j;
+import net.polyv.common.v1.constant.Constant;
 import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.common.v1.util.StringUtils;
 import net.polyv.live.v1.constant.LiveConstant;
-import net.polyv.live.v1.entity.quick.QuickCreateChannelResponse;
 import net.polyv.live.v1.entity.channel.doc.LiveCreateChannelDocRequest;
 import net.polyv.live.v1.entity.channel.doc.LiveCreateChannelDocResponse;
 import net.polyv.live.v1.entity.channel.operate.LiveChannelBasicInfoRequest;
@@ -34,6 +34,7 @@ import net.polyv.live.v1.entity.channel.viewdata.LiveListChannelViewlogResponse;
 import net.polyv.live.v1.entity.chat.LiveSetTeacherDataRequest;
 import net.polyv.live.v1.entity.player.LiveSetPlayerImgRequest;
 import net.polyv.live.v1.entity.player.LiveSetWarmupVedioRequest;
+import net.polyv.live.v1.entity.quick.QuickCreateChannelResponse;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.channel.impl.LiveChannelDocServiceImpl;
 import net.polyv.live.v1.service.channel.impl.LiveChannelOperateServiceImpl;
@@ -76,12 +77,10 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
                 //直播教学场景
                 .setScene(LiveConstant.SceneType.PPT.getDesc())
                 //纯视频直播场景
-                .setScene(LiveConstant.SceneType.ALONE.getDesc())
-                //请求流水号
-                .setRequestId(requestId );
+                .setScene(LiveConstant.SceneType.ALONE.getDesc());
         LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         if (liveChannelResponse == null) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "创建频道失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "创建频道失败");
         }
        
         String channelId = liveChannelResponse.getChannelId();
@@ -109,12 +108,11 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
                 .setPublisher("thomas教授")
                 .setLinkMicLimit(6);
         liveChannelSettingRequest.setChannelId(channelId)
-                .setBasicSetting(basicSetting)
-                .setRequestId(requestId);
+                .setBasicSetting(basicSetting);
         Boolean liveChannelSettingResponse = new LiveChannelOperateServiceImpl().updateChannelSetting(
                 liveChannelSettingRequest);
         if (!liveChannelSettingResponse) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "修改频道的相关设置失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "修改频道的相关设置失败");
         }
         log.info("修改频道相关设置成功");
         String converImage = "https://s1.videocc.net/live-watch/assets/img/default-splash-img.07657078.jpg";
@@ -126,24 +124,22 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
                     //暖场图片
                     .setCoverImage(converImage)
                     //点击暖场图片跳转的地址
-                    .setCoverHref("http://www.baidu.com")
-                    .setRequestId(requestId);
+                    .setCoverHref("http://www.baidu.com");
             Boolean result = new LivePlayerServiceImpl().setPlayerImg(liveSetChatAdminDataRequest);
             if (result == null || !result) {
-                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "暖场图片设置失败");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "暖场图片设置失败");
             }
         }
         String warmUpFlv = null;//"http://www.w3school.com.cn/example/html5/mov_bbb.mp4";
         
         //4、修改暖场视频
-        if (StringUtils.isNotBlank(warmUpFlv )) {
+        if (StringUtils.isNotBlank(warmUpFlv)) {
             LiveSetWarmupVedioRequest liveSetWarmupVedioRequest = new LiveSetWarmupVedioRequest();
             liveSetWarmupVedioRequest.setChannelId(channelId)
-                    .setWarmUpFlv(warmUpFlv)
-                    .setRequestId(requestId);
+                    .setWarmUpFlv(warmUpFlv);
             Boolean result = new LivePlayerServiceImpl().setPlayerWarmUpVedio(liveSetWarmupVedioRequest);
             if (result == null || !result) {
-                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "暖场视频设置失败");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "暖场视频设置失败");
             }
         }
         String nickName = "thomas-gogo";
@@ -162,11 +158,10 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
                             "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
                                     ".jpg")
                     //讲师登录密码
-                    .setPasswd(password)
-                    .setRequestId(requestId);
+                    .setPasswd(password);
             result = new LiveChatRoomServiceImpl().setChannelTeacherMsg(liveSetTeacherDataRequest);
             if (result == null || !result) {
-                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "设置讲师信息失败");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "设置讲师信息失败");
             }
             log.info("设置讲师信息成功");
         }
@@ -178,12 +173,12 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
         sonChannels.add(setSonChannelsInfo2());
         liveCreateSonChannelListRequest.setSonChannels(sonChannels);
         
-        liveCreateSonChannelListRequest.setChannelId(channelId).setRequestId(requestId);
+        liveCreateSonChannelListRequest.setChannelId(channelId);
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse =
                 new LiveChannelOperateServiceImpl().createSonChannelList(
                         liveCreateSonChannelListRequest);
         if (liveCreateSonChannelListResponse == null) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "批量创建子频道失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "批量创建子频道失败");
         }
         
         //7、上传直播文档
@@ -195,15 +190,14 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
                     .setType("common")
                     //教学课件或者直播PPT
                     .setFile(new File(path))
-                    //文档名称
-                    .setDocName("直播教学课件")
                     //PPT需要转换处理，转换完成时间的回调通知地址
 //                    .setCallbackUrl("http://www.baidu.com/callback")
-                    .setRequestId(requestId);
+                    //文档名称
+                    .setDocName("直播教学课件");
             liveCreateChannelDocResponse = new LiveChannelDocServiceImpl().createChannelDoc(
                     liveCreateChannelDocRequest);
             if (liveCreateChannelDocResponse == null) {
-                throw new PloyvSdkException(LiveConstant.ERROR_CODE, "上传频道文档失败");
+                throw new PloyvSdkException(Constant.ERROR_CODE, "上传频道文档失败");
             }
         }
         
@@ -279,11 +273,11 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
             throws IOException, NoSuchAlgorithmException {
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;
         LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
-        liveChannelBasicInfoRequest.setChannelId(channelId).setRequestId(requestId);
+        liveChannelBasicInfoRequest.setChannelId(channelId);
         liveChannelBasicInfoResponse = new LiveChannelOperateServiceImpl().getChannelBasicInfo(
                 liveChannelBasicInfoRequest);
         if (liveChannelBasicInfoResponse == null) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "查询频道基本信息失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "查询频道基本信息失败");
         }
         return liveChannelBasicInfoResponse;
     }
@@ -299,11 +293,11 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
             throws IOException, NoSuchAlgorithmException {
         LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
         LiveSonChannelInfoListResponse liveSonChannelInfoResponse;
-        liveSonChannelInfoListRequest.setChannelId(channelId).setRequestId(requestId);
+        liveSonChannelInfoListRequest.setChannelId(channelId);
         liveSonChannelInfoResponse = new LiveChannelOperateServiceImpl().getSonChannelInfoList(
                 liveSonChannelInfoListRequest);
         if (liveSonChannelInfoResponse == null) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "查询子频道信息失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "查询子频道信息失败");
         }
         return liveSonChannelInfoResponse.getSonChannelInfos();
     }
@@ -317,12 +311,12 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
      */
     private void createSonChannelList(String channelId, LiveCreateSonChannelListRequest liveCreateSonChannelListRequest,
             String requestId) throws IOException, NoSuchAlgorithmException {
-        liveCreateSonChannelListRequest.setChannelId(channelId).setRequestId(requestId);
+        liveCreateSonChannelListRequest.setChannelId(channelId);
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse =
                 new LiveChannelOperateServiceImpl().createSonChannelList(
                         liveCreateSonChannelListRequest);
         if (liveCreateSonChannelListResponse == null) {
-            throw new PloyvSdkException(LiveConstant.ERROR_CODE, "批量创建子频道失败");
+            throw new PloyvSdkException(Constant.ERROR_CODE, "批量创建子频道失败");
         }
     }
     
@@ -341,8 +335,7 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
         //依据频道号和起止时间查询观看日志
         liveListChannelViewlogRequest.setChannelId(channelId)
                 .setStartTime(new Date())
-                .setEndTime(instance.getTime())
-                .setRequestId(requestId);
+                .setEndTime(instance.getTime());
         liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                 liveListChannelViewlogRequest);
         Assert.assertNotNull(liveListChannelViewlogResponse);

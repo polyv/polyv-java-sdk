@@ -34,6 +34,7 @@ public class LiveChannelSettingRequest extends LiveCommonRequest {
      * 基础设置
      */
     @ApiModelProperty(name = "basicSetting", value = "基础设置", required = true)
+    @NotNull(message = "属性basicSetting不能为空")
     private BasicSetting basicSetting;
     
     /**

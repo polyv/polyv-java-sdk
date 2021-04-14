@@ -131,8 +131,7 @@ public class Demo {
                 .setScene(LiveConstant.SceneType.ALONE.getDesc())
                 .setMaxViewer(300)
                 .setWatchLayout(LiveConstant.WatchLayout.PPT.getFlag())
-                .setReceive(LiveConstant.Flag.NO.getFlag())
-                .setRequestId(LiveSignUtil.generateUUID());
+                .setReceive(LiveConstant.Flag.NO.getFlag());
         liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(liveChannelRequest);
         if (liveChannelResponse == null) {
             throw new RuntimeException("创建频道失败");
@@ -152,8 +151,7 @@ public class Demo {
         //设置同时最大观看人数为52人
         liveChannelDetailRequest.setChannelId(channelId)
                 .setField("maxViewer")
-                .setValue("52")
-                .setRequestId(LiveSignUtil.generateUUID());
+                .setValue("52");
         liveChannelDetailResponse = new LiveChannelOperateServiceImpl().updateChannelDetail(liveChannelDetailRequest);
         if (!liveChannelDetailResponse) {
             throw new RuntimeException("设置频道详情失败");
@@ -220,8 +218,7 @@ public class Demo {
         authSettings.add(authSetting);
         liveChannelSettingRequest.setChannelId(channelId)
                 .setBasicSetting(basicSetting)
-                .setAuthSettings(authSettings)
-                .setRequestId(LiveSignUtil.generateUUID());
+                .setAuthSettings(authSettings);
         liveChannelSettingResponse = new LiveChannelOperateServiceImpl().updateChannelSetting(
                 liveChannelSettingRequest);
         if (!liveChannelSettingResponse) {
@@ -244,8 +241,7 @@ public class Demo {
                 .setType("common")
                 .setFile(new File(path))
                 .setDocName("葵花宝典")
-                .setCallbackUrl("http://www.baidu.com/callback")
-                .setRequestId(LiveSignUtil.generateUUID());
+                .setCallbackUrl("http://www.baidu.com/callback");
         liveCreateChannelDocResponse = new LiveChannelDocServiceImpl().createChannelDoc(liveCreateChannelDocRequest);
         if (liveCreateChannelDocResponse == null) {
             throw new RuntimeException("上传频道文档失败");

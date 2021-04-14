@@ -15,8 +15,7 @@
         try {
             String channelId = super.createChannel();
             liveSetWarmupEnableRequest.setChannelId(channelId)
-                    .setWarmUpEnabled(LiveConstant.Flag.YES.getFlag())
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setWarmUpEnabled(LiveConstant.Flag.YES.getFlag());
             liveSetWarmupEnableResponse = new LivePlayerServiceImpl().setPlayerWarmupEnable(liveSetWarmupEnableRequest);
             Assert.assertNotNull(liveSetWarmupEnableResponse);
             if (liveSetWarmupEnableResponse != null) {
@@ -37,16 +36,15 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | warmUpEnabled | true | String | 开关值，Y或N，Y表示开启，N表示关闭 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -77,8 +75,7 @@ true 设置成功 ， false 设置失败
             liveSetChatAdminDataRequest.setChannelId(channelId)
                     .setCoverImage("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57" +
                             "/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
-                    .setCoverHref("http://www.baidu.com")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setCoverHref("http://www.baidu.com");
             liveSetChatAdminDataResponse = new LivePlayerServiceImpl().setPlayerImg(liveSetChatAdminDataRequest);
             Assert.assertNotNull(liveSetChatAdminDataResponse);
             if (liveSetChatAdminDataResponse) {
@@ -99,9 +96,9 @@ true 设置成功 ， false 设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -109,7 +106,6 @@ true 设置成功 ， false 设置失败
 | channelId | true | String | 频道号 | 
 | coverImage | true | String | 暖场图片地址，图片大小建议：800x450，支持PNG、JPEG、GIF格式 | 
 | coverHref | false | String | 点击暖场图片后浏览器跳转地址 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -138,9 +134,8 @@ true 设置成功 ， false 设置失败
         try {
             String channelId = super.createChannel();
             liveSetWarmupVedioRequest.setChannelId(channelId)
-                    .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4")
+                    .setWarmUpFlv("http://www.w3school.com.cn/example/html5/mov_bbb.mp4");
 //                    .setWarmUpFlv("http://")//删除视频
-                    .setRequestId(LiveSignUtil.generateUUID());
             liveSetWarmupVedioResponse = new LivePlayerServiceImpl().setPlayerWarmUpVedio(liveSetWarmupVedioRequest);
             Assert.assertNotNull(liveSetWarmupVedioResponse);
             if (liveSetWarmupVedioResponse != null) {
@@ -161,16 +156,15 @@ true 设置成功 ， false 设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
 | warmUpFlv | true | String | 暖场视频地址(http地址)，移动端不支持FLV视频文件，建议使用MP4视频文件 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -202,8 +196,7 @@ true 设置成功，false 设置失败
                     .setLogoPosition(LiveConstant.LogoPosition.BL.getPosition())
                     .setLogoImage(
                             "https://c-ssl.duitang.com/uploads/blog/202009/01/20200901155255_e8037.thumb.1000_0.jpg")
-                    .setLogoOpacity(0.32f)
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setLogoOpacity(0.32f);
             liveSetPlayerLogoResponse = new LivePlayerServiceImpl().setPlayerLogo(liveSetPlayerLogoRequest);
             Assert.assertNotNull(liveSetPlayerLogoResponse);
             if (liveSetPlayerLogoResponse != null) {
@@ -224,9 +217,9 @@ true 设置成功，false 设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -236,7 +229,6 @@ true 设置成功，false 设置失败
 | logoOpacity | true | Float | logo透明度，取值范围为(0,1]，即大于0，并且小于等于1 | 
 | logoPosition | true | String | logo位置，取值为为左上角(tl)、右上角(tr)、左下角(bl)、右下角(br) | 
 | logoHref | false | String | logo图片点击跳转链接 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -273,8 +265,7 @@ true 设置成功， fales 设置失败
                     .setHeadAdvertHref("http://www.baidu.com")
                     .setHeadAdvertMediaUrl(
                             "https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57" +
-                                    "/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                                    "/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg");
             liveSetPlayerHeaderAdvertResponse = new LivePlayerServiceImpl().setPlayerHeaderAdvert(liveSetPlayerHeaderAdvertRequest);
             Assert.assertNotNull(liveSetPlayerHeaderAdvertResponse);
             if (liveSetPlayerHeaderAdvertResponse != null) {
@@ -295,9 +286,9 @@ true 设置成功， fales 设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -310,7 +301,6 @@ true 设置成功， fales 设置失败
 | headAdvertDuration | false | Integer | 广告时长，单位：秒 | 
 | headAdvertWidth | false | Integer | 广告宽度 | 
 | headAdvertHeight | false | Integer | 广告高度 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -342,8 +332,7 @@ true 设置成功，false 设置失败
                     .setEnabled(LiveConstant.Flag.YES.getFlag())
                     .setStopAdvertHref("http://www.baidu.com")
                     .setStopAdvertImage("https://car3.autoimg.cn/cardfs/product/g25/M08/C7/57" +
-                            "/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                            "/1024x0_1_q95_autohomecar__ChsEmF8EOK-AB5uaAAfsj_iwPdE906.jpg");
             liveSetPlayerPauseAdvertResponse = new LivePlayerServiceImpl().setPlayerPauseAdvert(liveSetPlayerPauseAdvertRequest);
             Assert.assertNotNull(liveSetPlayerPauseAdvertResponse);
             if (liveSetPlayerPauseAdvertResponse != null) {
@@ -364,9 +353,9 @@ true 设置成功，false 设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -375,7 +364,6 @@ true 设置成功，false 设置失败
 | enabled | false | String | 设置播放器暂停广告开关：Y-打开，N-关闭 | 
 | stopAdvertImage | false | String | 图片地址，不填代表删除 | 
 | stopAdvertHref | false | String | 点击图片跳转Url | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -403,8 +391,7 @@ true 设置成功，false 设置失败
         try {
             String channelId = super.createChannel();
             liveSetPlayerUrlMarqueeRequest.setChannelId(channelId)
-                    .setMarqueeRestrict("N")
-                    .setRequestId(LiveSignUtil.generateUUID());
+                    .setMarqueeRestrict("N");
             liveSetPlayerUrlMarqueeResponse = new LivePlayerServiceImpl().setPlayerUrlMarquee(
                     liveSetPlayerUrlMarqueeRequest);
             Assert.assertTrue(liveSetPlayerUrlMarqueeResponse);
@@ -426,9 +413,9 @@ true 设置成功，false 设置失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -436,7 +423,6 @@ true 设置成功，false 设置失败
 | channelId | true | String | 频道号 | 
 | marqueeRestrict | true | String | 自定义url防录屏跑马灯开关,Y或N | 
 | url | false | String | 自定义url， 在开关为关时可为空，开启开关时为必填 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

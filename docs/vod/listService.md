@@ -17,8 +17,7 @@
                     .setOrderType(1)
                     .setCategoryId("1615536384688")
                     .setContainSubCategory(0)
-                    .setPublished(0)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setPublished(0);
             vodGetByUploaderResponse = new VodListServiceImpl().getByUploader(vodGetByUploaderRequest);
             Assert.assertNotNull(vodGetByUploaderResponse);
             if (vodGetByUploaderResponse != null) {
@@ -38,9 +37,9 @@
 ### 单元测试说明
 1、请求正确，返回VodGetByUploaderResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -57,29 +56,29 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 视频列表【详见[VideoInfo参数描述](listService.md?id=polyv16)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 视频列表【详见[VideoInfo参数描述](listService.md?id=polyv16)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv16"><a href="#/listService.md?id=polyv16"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | false | String | 视频vid | 
-| categoryId | false | String | 分类id | 
-| title | false | String | 视频标题 | 
-| context | false | String | 视频简介 | 
-| times | false | Integer | 播放次数 | 
-| firstImage | false | String | 视频首图，封面 | 
-| tag | false | String | 标签，以英文逗号(,)分割，没有标签时返回空串 | 
-| aacLink | false | String | 音频地址 | 
-| status | false | Integer | 视频状态码（60/61：已发布；10：等待编码；20：正在编码；50：等待审核；51：审核不通过，-1：已删除；） | 
-| uploaderEmail | false | String | 子账号邮箱 | 
-| uploadTime | false | Date | 上传时间，格式 yyyy-MM-dd HH:mm | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| videoId | String | 视频vid | 
+| categoryId | String | 分类id | 
+| title | String | 视频标题 | 
+| context | String | 视频简介 | 
+| times | Integer | 播放次数 | 
+| firstImage | String | 视频首图，封面 | 
+| tag | String | 标签，以英文逗号(,)分割，没有标签时返回空串 | 
+| aacLink | String | 音频地址 | 
+| status | Integer | 视频状态码（60/61：已发布；10：等待编码；20：正在编码；50：等待审核；51：审核不通过，-1：已删除；） | 
+| uploaderEmail | String | 子账号邮箱 | 
+| uploadTime | Date | 上传时间，格式 yyyy-MM-dd HH:mm | 
 
 <br /><br />
 
@@ -113,8 +112,7 @@
                     .setCategoryTree("1")
                     .setPublished(0)
                     .setCurrentPage(1)
-                    .setPageSize(10)
-                    .setRequestId(VodSignUtil.generateUUID());
+                    .setPageSize(10);
             vodGetNewListResponse = new VodListServiceImpl().getNewList(vodGetNewListRequest);
             Assert.assertNotNull(vodGetNewListResponse);
             if (vodGetNewListResponse != null) {
@@ -134,9 +132,9 @@
 ### 单元测试说明
 1、请求正确，返回VodGetNewListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -154,53 +152,53 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 返回的结果集【详见[VideoInfo参数描述](listService.md?id=polyv17)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 返回的结果集【详见[VideoInfo参数描述](listService.md?id=polyv17)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv17"><a href="#/listService.md?id=polyv17"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| tag | false | String | 视频标签 | 
-| mp4 | false | String | MP4源文件 | 
-| title | false | String | 视频标题 | 
-| df | false | Integer | 视频码率数 | 
-| times | false | Integer | 播放次数 | 
-| videoId | false | String | 视频id | 
-| SDMp4 | false | String | 流畅码率mp4格式视频地址 | 
-| HDmp4 | false | String | 高清码率mp4格式视频地址 | 
-| FHDmp4 | false | String | 超清码率mp4格式视频地址 | 
-| categoryId | false | String | 分类id， 如1为根目录 | 
-| swfLink | false | String | 返回flash连接 | 
-| status | false | Integer | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
-| seed | false | Integer | 加密视频为1，非加密为0 | 
-| playerWidth | false | Integer | 视频宽度 | 
-| duration | false | String | 视频时长,如：00:00:48 | 
-| firstImage | false | String | 视频首图 | 
-| originalDefinition | false | String | 最佳分辨率，如：1280x720 | 
-| context | false | String | 视频描述 | 
-| playerHeight | false | Integer | 视频高度 | 
-| uploadTime | false | Date | 上传时间，格式：yyyy-MM-dd HH:mm:ss | 
-| sourceFileSize | false | String | 源视频文件大小，单位为：byte | 
-| md5CheckSum | false | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整 | 
-| hls | false | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
-| keepSource | false | Integer | 是否为源文件，否：0,是：1 | 
-| uploader | false | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv18)】 | 
-| hlsLevel | false | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
-| categoryName | false | String | 分类名称 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| tag | String | 视频标签 | 
+| mp4 | String | MP4源文件 | 
+| title | String | 视频标题 | 
+| df | Integer | 视频码率数 | 
+| times | Integer | 播放次数 | 
+| videoId | String | 视频id | 
+| SDMp4 | String | 流畅码率mp4格式视频地址 | 
+| HDmp4 | String | 高清码率mp4格式视频地址 | 
+| FHDmp4 | String | 超清码率mp4格式视频地址 | 
+| categoryId | String | 分类id， 如1为根目录 | 
+| swfLink | String | 返回flash连接 | 
+| status | Integer | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
+| seed | Integer | 加密视频为1，非加密为0 | 
+| playerWidth | Integer | 视频宽度 | 
+| duration | String | 视频时长,如：00:00:48 | 
+| firstImage | String | 视频首图 | 
+| originalDefinition | String | 最佳分辨率，如：1280x720 | 
+| context | String | 视频描述 | 
+| playerHeight | Integer | 视频高度 | 
+| uploadTime | Date | 上传时间，格式：yyyy-MM-dd HH:mm:ss | 
+| sourceFileSize | String | 源视频文件大小，单位为：byte | 
+| md5CheckSum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整 | 
+| hls | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
+| keepSource | Integer | 是否为源文件，否：0,是：1 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv18)】 | 
+| hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
+| categoryName | String | 分类名称 | 
 
 <h6 id="polyv18"><a href="#/listService.md?id=polyv18"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| email | false | String | 上传者邮箱 | 
-| name | false | String | 上传者名称 | 
-| role | false | String | 上传者角色,如管理员,上传者,主账号 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| email | String | 上传者邮箱 | 
+| name | String | 上传者名称 | 
+| role | String | 上传者角色,如管理员,上传者,主账号 | 
 
 <br /><br />
 
@@ -223,7 +221,7 @@
         VodGetHotListRequest vodGetHotListRequest = new VodGetHotListRequest();
         VodGetHotListResponse vodGetHotListResponse = null;
         try {
-            vodGetHotListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
+            vodGetHotListRequest.setCurrentPage(1).setPageSize(10);
             vodGetHotListResponse = new VodListServiceImpl().getHotList(vodGetHotListRequest);
             Assert.assertNotNull(vodGetHotListResponse);
             if (vodGetHotListResponse != null) {
@@ -243,9 +241,9 @@
 ### 单元测试说明
 1、请求正确，返回VodGetHotListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -257,53 +255,53 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 返回的结果集【详见[HotVideoInfo参数描述](listService.md?id=polyv19)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 返回的结果集【详见[HotVideoInfo参数描述](listService.md?id=polyv19)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv19"><a href="#/listService.md?id=polyv19"data-id="HotVideoInfo参数描述"class="anchor"><span>HotVideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| tag | false | String | 视频标签 | 
-| mp4 | false | String | MP4源文件 | 
-| title | false | String | 视频标题 | 
-| df | false | Integer | 视频码率数 | 
-| times | false | Integer | 播放次数 | 
-| videoId | false | String | 视频id | 
-| SDMp4 | false | String | 流畅码率mp4格式视频地址 | 
-| HDmp4 | false | String | 高清码率mp4格式视频地址 | 
-| FHDmp4 | false | String | 超清码率mp4格式视频地址 | 
-| categoryId | false | String | 分类id， 如1为根目录 | 
-| swfLink | false | String | 返回flash连接 | 
-| status | false | Integer | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
-| seed | false | Integer | 加密视频为1，非加密为0 | 
-| playerWidth | false | Integer | 视频宽度 | 
-| duration | false | String | 视频时长,如：00:00:48 | 
-| firstImage | false | String | 视频首图 | 
-| originalDefinition | false | String | 最佳分辨率，如：1280x720 | 
-| context | false | String | 视频描述 | 
-| playerHeight | false | Integer | 视频高度 | 
-| uploadTime | false | Date | 上传时间，格式：yyyy-MM-dd HH:mm:ss | 
-| sourceFileSize | false | String | 源视频文件大小，单位为：byte | 
-| md5CheckSum | false | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整 | 
-| hls | false | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
-| keepSource | false | Integer | 是否为源文件，否：0,是：1 | 
-| uploader | false | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv20)】 | 
-| hlsLevel | false | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
-| categoryName | false | String | 分类名称 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| tag | String | 视频标签 | 
+| mp4 | String | MP4源文件 | 
+| title | String | 视频标题 | 
+| df | Integer | 视频码率数 | 
+| times | Integer | 播放次数 | 
+| videoId | String | 视频id | 
+| SDMp4 | String | 流畅码率mp4格式视频地址 | 
+| HDmp4 | String | 高清码率mp4格式视频地址 | 
+| FHDmp4 | String | 超清码率mp4格式视频地址 | 
+| categoryId | String | 分类id， 如1为根目录 | 
+| swfLink | String | 返回flash连接 | 
+| status | Integer | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
+| seed | Integer | 加密视频为1，非加密为0 | 
+| playerWidth | Integer | 视频宽度 | 
+| duration | String | 视频时长,如：00:00:48 | 
+| firstImage | String | 视频首图 | 
+| originalDefinition | String | 最佳分辨率，如：1280x720 | 
+| context | String | 视频描述 | 
+| playerHeight | Integer | 视频高度 | 
+| uploadTime | Date | 上传时间，格式：yyyy-MM-dd HH:mm:ss | 
+| sourceFileSize | String | 源视频文件大小，单位为：byte | 
+| md5CheckSum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整 | 
+| hls | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
+| keepSource | Integer | 是否为源文件，否：0,是：1 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv20)】 | 
+| hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
+| categoryName | String | 分类名称 | 
 
 <h6 id="polyv20"><a href="#/listService.md?id=polyv20"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| email | false | String | 上传者邮箱 | 
-| name | false | String | 上传者名称 | 
-| role | false | String | 上传者角色,如管理员,上传者,主账号 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| email | String | 上传者邮箱 | 
+| name | String | 上传者名称 | 
+| role | String | 上传者角色,如管理员,上传者,主账号 | 
 
 <br /><br />
 
@@ -326,7 +324,7 @@
         VodGetDelListRequest vodGetDelListRequest = new VodGetDelListRequest();
         VodGetDelListResponse vodGetDelListResponse = null;
         try {
-            vodGetDelListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
+            vodGetDelListRequest.setCurrentPage(1).setPageSize(10);
             vodGetDelListResponse = new VodListServiceImpl().getDelList(vodGetDelListRequest);
             Assert.assertNotNull(vodGetDelListResponse);
             if (vodGetDelListResponse != null) {
@@ -346,9 +344,9 @@
 ### 单元测试说明
 1、请求正确，返回VodGetDelListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -360,53 +358,53 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 返回的结果集【详见[VideoInfo参数描述](listService.md?id=polyv21)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 返回的结果集【详见[VideoInfo参数描述](listService.md?id=polyv21)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv21"><a href="#/listService.md?id=polyv21"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| tag | false | String | 视频标签 | 
-| mp4 | false | String | MP4源文件 | 
-| title | false | String | 视频标题 | 
-| df | false | Integer | 视频码率数 | 
-| times | false | Integer | 播放次数 | 
-| videoId | false | String | 视频id | 
-| SDMp4 | false | String | 流畅码率mp4格式视频地址 | 
-| HDmp4 | false | String | 高清码率mp4格式视频地址 | 
-| FHDmp4 | false | String | 超清码率mp4格式视频地址 | 
-| categoryId | false | String | 分类id， 如1为根目录 | 
-| swfLink | false | String | 返回flash连接 | 
-| status | false | Integer | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
-| seed | false | Integer | 加密视频为1，非加密为0 | 
-| playerWidth | false | Integer | 视频宽度 | 
-| duration | false | String | 视频时长,如：00:00:48 | 
-| firstImage | false | String | 视频首图 | 
-| originalDefinition | false | String | 最佳分辨率，如：1280x720 | 
-| context | false | String | 视频描述 | 
-| playerHeight | false | Integer | 视频高度 | 
-| uploadTime | false | Date | 上传时间，格式：yyyy-MM-dd HH:mm:ss | 
-| sourceFileSize | false | String | 源视频文件大小，单位为：byte | 
-| md5CheckSum | false | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整 | 
-| hls | false | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
-| keepSource | false | Integer | 是否为源文件，否：0,是：1 | 
-| uploader | false | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv22)】 | 
-| hlsLevel | false | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
-| categoryName | false | String | 分类名称 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| tag | String | 视频标签 | 
+| mp4 | String | MP4源文件 | 
+| title | String | 视频标题 | 
+| df | Integer | 视频码率数 | 
+| times | Integer | 播放次数 | 
+| videoId | String | 视频id | 
+| SDMp4 | String | 流畅码率mp4格式视频地址 | 
+| HDmp4 | String | 高清码率mp4格式视频地址 | 
+| FHDmp4 | String | 超清码率mp4格式视频地址 | 
+| categoryId | String | 分类id， 如1为根目录 | 
+| swfLink | String | 返回flash连接 | 
+| status | Integer | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
+| seed | Integer | 加密视频为1，非加密为0 | 
+| playerWidth | Integer | 视频宽度 | 
+| duration | String | 视频时长,如：00:00:48 | 
+| firstImage | String | 视频首图 | 
+| originalDefinition | String | 最佳分辨率，如：1280x720 | 
+| context | String | 视频描述 | 
+| playerHeight | Integer | 视频高度 | 
+| uploadTime | Date | 上传时间，格式：yyyy-MM-dd HH:mm:ss | 
+| sourceFileSize | String | 源视频文件大小，单位为：byte | 
+| md5CheckSum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整 | 
+| hls | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
+| keepSource | Integer | 是否为源文件，否：0,是：1 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv22)】 | 
+| hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
+| categoryName | String | 分类名称 | 
 
 <h6 id="polyv22"><a href="#/listService.md?id=polyv22"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| email | false | String | 上传者邮箱 | 
-| name | false | String | 上传者名称 | 
-| role | false | String | 上传者角色,如管理员,上传者,主账号 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| email | String | 上传者邮箱 | 
+| name | String | 上传者名称 | 
+| role | String | 上传者角色,如管理员,上传者,主账号 | 
 
 <br /><br />
 
@@ -429,7 +427,7 @@
         VodGetIllegalListRequest vodGetIllegalListRequest = new VodGetIllegalListRequest();
         VodGetIllegalListResponse vodGetIllegalListResponse = null;
         try {
-            vodGetIllegalListRequest.setCurrentPage(1).setPageSize(10).setRequestId(VodSignUtil.generateUUID());
+            vodGetIllegalListRequest.setCurrentPage(1).setPageSize(10);
             vodGetIllegalListResponse = new VodListServiceImpl().getIllegalList(vodGetIllegalListRequest);
             Assert.assertNotNull(vodGetIllegalListResponse);
             if (vodGetIllegalListResponse != null) {
@@ -445,14 +443,13 @@
             throw e;
         }
     }
-}
 ```
 ### 单元测试说明
 1、请求正确，返回VodGetIllegalListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
-3、服务器处理异常，返回PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
@@ -464,53 +461,53 @@
 ### 返回对象描述
 
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| contents | false | Array | 返回的结果集【详见[IllegalVideoInfo参数描述](listService.md?id=polyv23)】 | 
-| pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | false | Integer | 当前页 | 
-| totalItems | false | Integer | 记录总条数 | 
-| totalPage | false | Integer | 总页数 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| contents | Array | 返回的结果集【详见[IllegalVideoInfo参数描述](listService.md?id=polyv23)】 | 
+| pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
+| currentPage | Integer | 当前页 | 
+| totalItems | Integer | 记录总条数 | 
+| totalPage | Integer | 总页数 | 
 
 <h6 id="polyv23"><a href="#/listService.md?id=polyv23"data-id="IllegalVideoInfo参数描述"class="anchor"><span>IllegalVideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| tag | false | String | 视频标签 | 
-| mp4 | false | String | MP4源文件 | 
-| title | false | String | 视频标题 | 
-| df | false | Integer | 视频码率数 | 
-| times | false | Integer | 播放次数 | 
-| videoId | false | String | 视频id | 
-| SDMp4 | false | String | 流畅码率mp4格式视频地址 | 
-| HDmp4 | false | String | 高清码率mp4格式视频地址 | 
-| FHDmp4 | false | String | 超清码率mp4格式视频地址 | 
-| categoryId | false | String | 分类id， 如1为根目录 | 
-| swfLink | false | String | 返回flash连接 | 
-| status | false | Integer | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
-| seed | false | Integer | 加密视频为1，非加密为0 | 
-| playerWidth | false | Integer | 视频宽度 | 
-| duration | false | String | 视频时长,如：00:00:48 | 
-| firstImage | false | String | 视频首图 | 
-| originalDefinition | false | String | 最佳分辨率，如：1280x720 | 
-| context | false | String | 视频描述 | 
-| playerHeight | false | Integer | 视频高度 | 
-| uploadTime | false | Date | 上传时间，格式：yyyy-MM-dd HH:mm:ss | 
-| sourceFileSize | false | String | 源视频文件大小，单位为：byte | 
-| md5CheckSum | false | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整 | 
-| hls | false | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
-| keepSource | false | Integer | 是否为源文件，否：0,是：1 | 
-| uploader | false | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv24)】 | 
-| hlsLevel | false | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
-| categoryName | false | String | 分类名称 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| tag | String | 视频标签 | 
+| mp4 | String | MP4源文件 | 
+| title | String | 视频标题 | 
+| df | Integer | 视频码率数 | 
+| times | Integer | 播放次数 | 
+| videoId | String | 视频id | 
+| SDMp4 | String | 流畅码率mp4格式视频地址 | 
+| HDmp4 | String | 高清码率mp4格式视频地址 | 
+| FHDmp4 | String | 超清码率mp4格式视频地址 | 
+| categoryId | String | 分类id， 如1为根目录 | 
+| swfLink | String | 返回flash连接 | 
+| status | Integer | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
+| seed | Integer | 加密视频为1，非加密为0 | 
+| playerWidth | Integer | 视频宽度 | 
+| duration | String | 视频时长,如：00:00:48 | 
+| firstImage | String | 视频首图 | 
+| originalDefinition | String | 最佳分辨率，如：1280x720 | 
+| context | String | 视频描述 | 
+| playerHeight | Integer | 视频高度 | 
+| uploadTime | Date | 上传时间，格式：yyyy-MM-dd HH:mm:ss | 
+| sourceFileSize | String | 源视频文件大小，单位为：byte | 
+| md5CheckSum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整 | 
+| hls | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
+| keepSource | Integer | 是否为源文件，否：0,是：1 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv24)】 | 
+| hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
+| categoryName | String | 分类名称 | 
 
 <h6 id="polyv24"><a href="#/listService.md?id=polyv24"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| email | false | String | 上传者邮箱 | 
-| name | false | String | 上传者名称 | 
-| role | false | String | 上传者角色,如管理员,上传者,主账号 | 
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| email | String | 上传者邮箱 | 
+| name | String | 上传者名称 | 
+| role | String | 上传者角色,如管理员,上传者,主账号 | 
 
 <br /><br />
 

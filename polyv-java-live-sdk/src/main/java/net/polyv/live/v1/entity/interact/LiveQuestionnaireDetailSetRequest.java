@@ -50,6 +50,7 @@ public class LiveQuestionnaireDetailSetRequest extends LiveCommonRequest {
      * 题目数组
      */
     @ApiModelProperty(name = "questions", value = "问卷的单个题目详情列表", required = true)
+    @NotNull(message = "属性questions不能为空")
     private List<QuestionDetail> questions;
     
     

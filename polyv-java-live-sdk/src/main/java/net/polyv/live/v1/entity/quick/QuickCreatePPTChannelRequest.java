@@ -91,13 +91,13 @@ public class QuickCreatePPTChannelRequest extends LiveCommonRequest {
     /**
      * 讲师昵称
      */
-    @ApiModelProperty(name = "nickname", value = "讲师昵称", required = true)
+    @ApiModelProperty(name = "nickname", value = "讲师昵称", required = false)
     private String nickname;
     
     /**
-     * 讲师头衔
+     * 讲师头衔，讲师昵称不为空时该参数必填
      */
-    @ApiModelProperty(name = "actor", value = "讲师头衔", required = true)
+    @ApiModelProperty(name = "actor", value = "讲师头衔，讲师昵称不为空时该参数必填", required = false)
     private String actor;
     
     /**
@@ -127,7 +127,7 @@ public class QuickCreatePPTChannelRequest extends LiveCommonRequest {
     /**
      * 上传的文件不超过50M，格式限制为（ppt， pdf，pptx，doc，docx，wps, xls，xlsx）
      */
-    @ApiModelProperty(name = "file", value = "上传的文件不超过50M，格式限制为（ppt， pdf，pptx，doc，docx，wps, xls，xlsx）", required = true)
+    @ApiModelProperty(name = "file", value = "上传的文件不超过50M，格式限制为（ppt， pdf，pptx，doc，docx，wps, xls，xlsx）", required = false)
     private File file;
     
     /**

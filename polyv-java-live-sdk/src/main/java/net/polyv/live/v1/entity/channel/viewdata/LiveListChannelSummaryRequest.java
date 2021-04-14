@@ -2,8 +2,6 @@ package net.polyv.live.v1.entity.channel.viewdata;
 
 import java.util.Date;
 
-import net.polyv.common.v1.validator.constraints.NotNull;
-
 import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
@@ -11,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 
 /**
@@ -26,7 +25,7 @@ public class LiveListChannelSummaryRequest extends LiveCommonRequest {
     /**
      * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
      */
-    @ApiModelProperty(hidden = true)
+    @ApiModelProperty(hidden = true, required = true)
     @NotNull(message = "属性userId不能为空")
     private String userId;
     
@@ -49,7 +48,8 @@ public class LiveListChannelSummaryRequest extends LiveCommonRequest {
     /**
      * 要查询的频道号，不提交默认为查询所有频道，多个频道号以英文逗号“,”分开，如：105420,104400
      */
-    @ApiModelProperty(name = "channelIds", value = "要查询的频道号，不提交默认为查询所有频道，多个频道号以英文逗号“,”分开，如：105420,104400", required = false)
+    @ApiModelProperty(name = "channelIds", value = "要查询的频道号，不提交默认为查询所有频道，多个频道号以英文逗号“,”分开，如：105420,104400", required =
+            false)
     private String channelIds;
-
+    
 }

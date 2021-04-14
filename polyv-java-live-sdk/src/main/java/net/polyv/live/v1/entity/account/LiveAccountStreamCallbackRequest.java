@@ -24,7 +24,7 @@ public class LiveAccountStreamCallbackRequest extends LiveCommonRequest {
     /**
      * POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置）
      */
-    @ApiModelProperty(hidden = true)
+    @ApiModelProperty(hidden = true, required = true)
     @NotNull(message = "属性userId不能为空")
     private String userId;
     
@@ -37,7 +37,7 @@ public class LiveAccountStreamCallbackRequest extends LiveCommonRequest {
     @Data
     @Accessors(chain = true)
     @ApiModel("直播状态改变回调返回实体")
-    public static class LiveStateChangeCallback{
+    public static class LiveStateChangeCallback {
         
         /**
          * 频道号
@@ -60,7 +60,8 @@ public class LiveAccountStreamCallbackRequest extends LiveCommonRequest {
         /**
          * 校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙
          */
-        @ApiModelProperty(name = "sign", value = "校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙", required = false)
+        @ApiModelProperty(name = "sign", value = "校验的加密字符串，生成的规则md5(AppSecret+timestamp)，AppSecret是直播系统的用密匙",
+                required = false)
         private String sign;
         
         /**

@@ -20,7 +20,7 @@ public class LiveChannelAuthResponse {
     /**
      * 观看条件，最多2个观看条件，由rank字段进行区分，其中 主要观看条件为1，次要观看条件为2
      */
-    @ApiModelProperty(name = "authSettings", value = "观看条件", required = true)
+    @ApiModelProperty(name = "authSettings", value = "观看条件", required = false)
     private List<LiveChannelSettingRequest.AuthSetting> authSettings;
 
 }

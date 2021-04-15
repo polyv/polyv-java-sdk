@@ -48,9 +48,9 @@ public class LiveAddChannelMenuRequest extends LiveCommonRequest {
     private String content;
     
     /**
-     * 菜单语言类型。默认zh_CN中文、EN英文。
+     * 菜单语言类型。默认zh_CN中文、EN英文
      */
-    @ApiModelProperty(name = "lang", value = "菜单语言类型。默认zh_CN中文、EN英文。", required = false)
+    @ApiModelProperty(name = "lang", value = "菜单语言类型，默认zh_CN<br/>zh_CN：中文<br/>EN：英文", required = false)
     private String lang;
     
 }

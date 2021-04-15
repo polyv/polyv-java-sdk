@@ -28,7 +28,7 @@ public class LiveGetBannedListRequest extends LiveCommonRequest {
     /**
      * 禁言类型,ip/userId
      */
-    @ApiModelProperty(name = "type", value = "查询禁言类型,ip ： 聊天室用户用户的机器ip ， userId ： 聊天室用户用户的userId", required = true)
+    @ApiModelProperty(name = "type", value = "查询禁言类型,ip ： 聊天室用户的机器ip ， userId ： 聊天室用户的userId", required = true)
     @NotNull(message = "属性type不能为空")
     private String type;
     

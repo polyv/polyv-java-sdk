@@ -107,9 +107,9 @@ true为设置成功，false为设置失败
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| channelMenus | Array | 频道的菜单信息【详见[ChannelMenu参数描述](webMenu.md?id=polyv66)】 | 
+| channelMenus | Array | 频道的菜单信息【详见[ChannelMenu参数描述](webMenu.md?id=polyv64)】 | 
 
-<h6 id="polyv66"><a href="#/webMenu.md?id=polyv66"data-id="ChannelMenu参数描述"class="anchor"><span>ChannelMenu参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv64"><a href="#/webMenu.md?id=polyv64"data-id="ChannelMenu参数描述"class="anchor"><span>ChannelMenu参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -177,7 +177,7 @@ true为设置成功，false为设置失败
 | name | true | String | 菜单名称 | 
 | type | true | String | 菜单类型。desc：直播介绍；chat：互动聊天；quiz：咨询提问；text：图文菜单；iframe：推广外链； | 
 | content | true | String | 菜单内容。当菜单类型为直播介绍、图文菜单时，该值为菜单的内容。当菜单类型为外链推广时，该值为外链链接地址。 | 
-| lang | false | String | 菜单语言类型。默认zh_CN中文、EN英文。 | 
+| lang | false | String | 菜单语言类型，默认zh_CN<br/>zh_CN：中文<br/>EN：英文 | 
 
 ### 返回对象描述
 
@@ -189,7 +189,7 @@ true为设置成功，false为设置失败
 | name | String | 菜单名称 | 
 | ordered | String | 菜单顺序，值越小，越靠前。新添加的菜单默认位于最后。 | 
 | content | String | 菜单内容。当菜单类型为直播介绍、图文菜单时，该值为菜单的内容。当菜单类型为外链推广时，该值为外链链接地址。 | 
-| lang | String | 菜单语言类型 zh_CN中文、EN英文 | 
+| lang | String | 菜单语言类型<br/>zh_CN：中文<br/>EN：英文 | 
 
 <br /><br />
 
@@ -436,7 +436,7 @@ null
 ## 8、查询频道图文内容列表
 ### 描述
 ```
-可以开启或关闭咨询提问功能菜单
+获取频道图文内容列表
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -489,11 +489,11 @@ null
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | total | Integer | 总的返回结果条数 | 
-| contents | ImageTextMsg[] | 图文消息列表【详见[ImageTextMsg[]参数描述](webMenu.md?id=polyv67)】 | 
-| topContents | ImageTextMsg[] | 置顶图文消息列表【详见[ImageTextMsg[]参数描述](webMenu.md?id=polyv67)】 | 
-| setting | Setting | 设置【详见[Setting参数描述](webMenu.md?id=polyv68)】 | 
+| contents | ImageTextMsg[] | 图文消息列表【详见[ImageTextMsg[]参数描述](webMenu.md?id=polyv65)】 | 
+| topContents | ImageTextMsg[] | 置顶图文消息列表【详见[ImageTextMsg[]参数描述](webMenu.md?id=polyv65)】 | 
+| setting | Setting | 设置【详见[Setting参数描述](webMenu.md?id=polyv66)】 | 
 
-<h6 id="polyv67"><a href="#/webMenu.md?id=polyv67"data-id="ImageTextMsg参数描述"class="anchor"><span>ImageTextMsg参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv65"><a href="#/webMenu.md?id=polyv65"data-id="ImageTextMsg参数描述"class="anchor"><span>ImageTextMsg参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -504,7 +504,7 @@ null
 | top | String | 是否置顶，Y表示是，N表示否 | 
 | createdTime | Date | 内容发送的时间 | 
 
-<h6 id="polyv68"><a href="#/webMenu.md?id=polyv68"data-id="Setting参数描述"class="anchor"><span>Setting参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv66"><a href="#/webMenu.md?id=polyv66"data-id="Setting参数描述"class="anchor"><span>Setting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 

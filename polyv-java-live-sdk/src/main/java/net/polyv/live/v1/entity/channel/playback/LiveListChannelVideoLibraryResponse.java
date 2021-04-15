@@ -42,9 +42,9 @@ public class LiveListChannelVideoLibraryResponse extends LivePageCommonResponse 
         private String videoPoolId;
         
         /**
-         * 点播后台用户ID
+         * 点播后台用户id
          */
-        @ApiModelProperty(name = "userId", value = "点播后台用户ID", required = false)
+        @ApiModelProperty(name = "userId", value = "点播后台用户id", required = false)
         private String userId;
         
         /**
@@ -74,7 +74,7 @@ public class LiveListChannelVideoLibraryResponse extends LivePageCommonResponse 
         /**
          * 默认视频的播放清晰度，1为流畅，2为高清，3为超清
          */
-        @ApiModelProperty(name = "myBr", value = "默认视频的播放清晰度，1为流畅，2为高清，3为超清", required = false)
+        @ApiModelProperty(name = "myBr", value = "默认视频的播放清晰度<br/>1：流畅<br/>2：高清<br/>3：超清", required = false)
         private Integer myBr;
         
         /**

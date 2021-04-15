@@ -2,8 +2,6 @@ package net.polyv.live.v1.entity.chat;
 
 import java.util.Date;
 
-import net.polyv.common.v1.validator.constraints.NotNull;
-
 import com.alibaba.fastjson.annotation.JSONField;
 
 import io.swagger.annotations.ApiModel;
@@ -11,6 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 
 /**
@@ -32,7 +31,8 @@ public class LiveGetHistoryChatMsgRequest extends LiveCommonRequest {
     /**
      * 聊天记录的开始时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12）
      */
-    @ApiModelProperty(name = "startDay", value = "聊天记录的开始时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12）", required = true)
+    @ApiModelProperty(name = "startDay", value = "聊天记录的开始时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss " +
+            "（如：2017-08-01 16:30:12）", required = true)
     @NotNull(message = "属性startDay不能为空")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date startDay;
@@ -40,12 +40,13 @@ public class LiveGetHistoryChatMsgRequest extends LiveCommonRequest {
     /**
      * 聊天记录的结束时间，要求同上
      */
-    @ApiModelProperty(name = "endDay", value = "聊天记录的结束时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12）", required = true)
+    @ApiModelProperty(name = "endDay", value = "聊天记录的结束时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss " +
+            "（如：2017-08-01 16:30:12）", required = true)
     @NotNull(message = "属性endDay不能为空")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date endDay;
     
- 
+    
     /**
      * 获取第几页聊天记录，默认为1
      */
@@ -60,12 +61,14 @@ public class LiveGetHistoryChatMsgRequest extends LiveCommonRequest {
 //    @JSONField(name = "limit")
     private Integer pageSize;
     
- 
     
     /**
-     * 用户类型，可以选择多个类型，用英文逗号隔开
+     * 用户类型，可以选择多个类型，用英文逗号隔开；slice：云课堂学员；teacher：讲师；guest：嘉宾；manager：管理员；assistant：助教；viewer：特邀观众；monitor：场监；attendee
+     * ：研讨会参与者；student：普通直播观众
      */
-    @ApiModelProperty(name = "userType", value = "用户类型，可以选择多个类型，用英文逗号隔开,目前有teacher(老师)、assistant（助教）、manager（管理员）、slice（云课堂学员）", required = false)
+    @ApiModelProperty(name = "userType", value = "用户类型，可以选择多个类型，用英文逗号隔开<br/>slice：云课堂学员<br/>teacher：讲师<br/>guest" +
+            "：嘉宾<br/>manager：管理员<br/>assistant：助教<br/>viewer：特邀观众<br/>monitor：场监<br/>attendee：研讨会参与者<br/>student" +
+            "：普通直播观众<br/>", required = false)
     private String userType;
     
     /**

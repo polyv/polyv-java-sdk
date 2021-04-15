@@ -54,9 +54,9 @@
 | -- | -- | -- | -- | 
 | channelId | false | String | 频道号，不传为全局设置 | 
 | enabled | false | String | 请求体参数，道具打赏开关，不传默认开启，值为 Y/N , Y为开启 | 
-| goods | false | Array | 道具打赏【详见[ChannelGood参数描述](webInteract.md?id=polyv64)】 | 
+| goods | true | Array | 道具打赏，道具对象数量必须大于0小于10【详见[ChannelGood参数描述](webInteract.md?id=polyv62)】 | 
 
-<h6 id="polyv64"><a href="#/webInteract.md?id=polyv64"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv62"><a href="#/webInteract.md?id=polyv62"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -194,9 +194,9 @@ true表示设置成功，false表示设置失败
 | donateTips | String | 打赏提示 | 
 | cashes | Array | 请求体参数，现金打赏数额数组，数组的长度必须为6 | 
 | cashMin | Double | 请求体参数，现金打赏自定义最小金额 | 
-| goods | Array | 道具打赏【详见[ChannelGood参数描述](webInteract.md?id=polyv65)】 | 
+| goods | Array | 道具打赏【详见[ChannelGood参数描述](webInteract.md?id=polyv63)】 | 
 
-<h6 id="polyv65"><a href="#/webInteract.md?id=polyv65"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv63"><a href="#/webInteract.md?id=polyv63"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 

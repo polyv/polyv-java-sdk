@@ -31,16 +31,18 @@ public class LiveChannelGlobalSwitchRequest extends LiveCommonRequest {
      * 功能类型
      * {@link LiveConstant.GlobalEnabledType}
      */
-    @ApiModelProperty(name = "globalEnabledType", value = "功能类型，auth-(观看条件设置;观看页管理-观看条件);switch-(功能开关设置;直播间管理-功能开关)" +
-            "；marquee-(跑马灯设置;播放器管理-防录屏跑马灯)；restrict-(播放限制设置;播放器管理-播放限制)；donate-(打赏设置;观看页管理-打赏设置)；advert-(广告设置;" +
-            "观看也管理-营销设置-广告);callback-(回调设置;)；", required = true)
+    @ApiModelProperty(name = "globalEnabledType", value =
+            "功能类型<br/>auth：观看条件设置；观看页管理-观看条件<br/>switch：功能开关设置；直播间管理-功能开关<br/>" +
+                    "marquee：跑马灯设置；播放器管理-防录屏跑马灯<br/>restrict：播放限制设置;播放器管理-播放限制<br/>donate：打赏设置;" +
+                    "观看页管理-打赏设置<br/>advert：广告设置;" +
+                    "观看也管理-营销设置-广告<br/>callback：回调设置;<br/>player：播放器设置", required = true)
     @NotNull(message = "属性globalEnabledType不能为空")
     private String globalEnabledType;
     
     /**
      * Y或N，Y开启，N关闭
      */
-    @ApiModelProperty(name = "enabled", value = "Y或N，Y开启，N关闭", required = true)
+    @ApiModelProperty(name = "enabled", value = "功能开关<br/>Y：开启<br/>N：关闭", required = true)
     @NotNull(message = "属性enabled不能为空")
     private String enabled;
     

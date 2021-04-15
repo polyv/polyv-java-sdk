@@ -33,9 +33,9 @@ public class LiveDeleteChannelWhiteListRequest extends LiveCommonRequest {
     private Integer rank;
     
     /**
-     * 是否一键清空白名单（Y ：清空白名单；N：根据code请求白名单，code）
+     * 是否一键清空白名单（Y ：清空白名单；N：根据请求参数code删除白名单）
      */
-    @ApiModelProperty(name = "isClear", value = "是否一键清空白名单（Y ：清空白名单；N：根据code请求白名单，code）", required = true)
+    @ApiModelProperty(name = "isClear", value = "是否一键清空白名单<br/>Y：清空白名单<br/>N：根据请求参数code删除白名单", required = true)
     @NotNull(message = "属性isClear不能为空")
     private String isClear;
     

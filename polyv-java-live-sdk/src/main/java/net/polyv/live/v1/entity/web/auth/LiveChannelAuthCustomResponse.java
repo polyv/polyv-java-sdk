@@ -32,9 +32,9 @@ public class LiveChannelAuthCustomResponse {
         private String channelId;
         
         /**
-         * 频道号对应外部授权的secretKey
+         * 频道号对应自定义授权的secretKey
          */
-        @ApiModelProperty(name = "secretKey", value = "频道号对应外部授权的secretKey", required = false)
+        @ApiModelProperty(name = "secretKey", value = "频道号对应自定义授权的secretKey", required = false)
         private String secretKey;
         
     }

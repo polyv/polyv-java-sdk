@@ -56,7 +56,7 @@ public class LiveKickedListResponse {
      * 房间号
      */
     @ApiModelProperty(name = "roomId", value = "房间号", required = false)
-    private Integer roomId;
+    private String roomId;
     
     /**
      * 聊天室socketid

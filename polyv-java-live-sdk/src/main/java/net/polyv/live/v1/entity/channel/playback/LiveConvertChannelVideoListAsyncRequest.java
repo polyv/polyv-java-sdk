@@ -27,9 +27,9 @@ public class LiveConvertChannelVideoListAsyncRequest extends LiveCommonRequest {
     private String channelId;
     
     /**
-     * 要转存的录制视频文件ID，多个id用英文逗号,分隔
+     * 要转存的录制视频文件id，多个id用英文逗号,分隔
      */
-    @ApiModelProperty(name = "fileIds", value = "要转存的录制视频文件ID，多个id用英文逗号,分隔", required = true)
+    @ApiModelProperty(name = "fileIds", value = "要转存的录制视频文件id，多个id用英文逗号,分隔", required = true)
     @NotNull(message = "属性fileIds不能为空")
     private String fileIds;
     
@@ -40,9 +40,9 @@ public class LiveConvertChannelVideoListAsyncRequest extends LiveCommonRequest {
     private String fileName;
     
     /**
-     * 转存到点播的目录ID,
+     * 转存到点播的目录id，默认为点播的根目录id
      */
-    @ApiModelProperty(name = "cataId", value = "转存到点播的目录ID,", required = false)
+    @ApiModelProperty(name = "cataId", value = "转存到点播的目录id，默认为点播的根目录id", required = false)
     private Long cataId;
     
     /**

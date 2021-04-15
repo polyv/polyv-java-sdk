@@ -3,6 +3,8 @@
 :: 请确认请求域名已经替换回  【api.polyv.net】
 :: # 部署到中央版本库
 :: mvn clean install deploy -Dmaven.test.skip=true -P release
+:: sdk 升级日志更新
+
 
 :: @echo off
 chcp 65001

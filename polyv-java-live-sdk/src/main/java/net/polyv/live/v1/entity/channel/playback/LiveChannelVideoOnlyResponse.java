@@ -57,9 +57,9 @@ public class LiveChannelVideoOnlyResponse {
     private Date endTime;
     
     /**
-     * 文件ID
+     * 文件id
      */
-    @ApiModelProperty(name = "fileId", value = "文件ID", required = false)
+    @ApiModelProperty(name = "fileId", value = "文件id", required = false)
     private String fileId;
     
     /**

@@ -53,7 +53,7 @@ public class LiveGetHistoryChatMsgResponse {
      * 房间号
      */
     @ApiModelProperty(name = "roomId", value = "聊天记录所在的房间号", required = false)
-    private Integer roomId;
+    private String roomId;
     
     /**
      * 频道号

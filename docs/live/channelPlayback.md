@@ -57,7 +57,7 @@
 | -- | -- | -- | 
 | videoId | String | 直播系统生成的id | 
 | videoPoolId | String | 点播视频vid | 
-| userId | String | 点播后台用户ID | 
+| userId | String | 点播后台用户id | 
 | channelId | String | 回放视频对应的直播频道号 | 
 | title | String | 视频标题 | 
 | firstImage | String | 视频首图 | 
@@ -129,9 +129,9 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | channelId | true | String | 频道号 | 
-| fileIds | true | String | 要转存的录制视频文件ID，多个id用英文逗号,分隔 | 
+| fileIds | true | String | 要转存的录制视频文件id，多个id用英文逗号,分隔 | 
 | fileName | false | String | 转存后的文件名，目前暂不支持传多个文件名 | 
-| cataId | false | Long | 转存到点播的目录ID, | 
+| cataId | false | Long | 转存到点播的目录id，默认为点播的根目录id | 
 | callbackUrl | false | String | 转存成功时候回调通知的url，通知的相关参数见附录 | 
 
 ### 返回对象描述
@@ -293,7 +293,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | duration | Integer | 时长（单位：秒） | 
 | bitrate | Integer | 录制文件码率（单位：字节） | 
 | resolution | String | 分辨率 | 
-| channelSessionId | String | 直播的场次ID | 
+| channelSessionId | String | 直播的场次id | 
 | fileName | String | 录制文件名称 | 
 
 <br /><br />
@@ -370,12 +370,12 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | -- | -- | -- | 
 | videoId | String | 直播系统生成的id | 
 | videoPoolId | String | 点播视频vid | 
-| userId | String | 点播后台用户ID | 
+| userId | String | 点播后台用户id | 
 | channelId | String | 回放视频对应的直播频道号 | 
 | title | String | 视频标题 | 
 | firstImage | String | 视频首图 | 
 | duration | String | 视频长度，如：00:27:10 | 
-| myBr | Integer | 默认视频的播放清晰度，1为流畅，2为高清，3为超清 | 
+| myBr | Integer | 默认视频的播放清晰度<br/>1：流畅<br/>2：高清<br/>3：超清 | 
 | qid | String | 访客信息收集id | 
 | seed | Integer | 视频加密状态，1表示为加密状态，0为非加密 | 
 | createdTime | Date | 添加为回放视频的日期 | 
@@ -464,7 +464,7 @@ true为提交成功，false为提交失败，具体合并是否成功以回调�
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | channelId | String | 频道号 | 
-| sessionId | String | 场次ID | 
+| sessionId | String | 场次id | 
 | startTime | Date | 直播开始时间 | 
 | endTime | Date | 直播结束时间 | 
 
@@ -591,7 +591,7 @@ Y为开启，N为关闭
 | createdTime | Date | 创建时间 | 
 | duration | Integer | 时长 | 
 | endTime | Date | 结束时间 | 
-| fileId | String | 文件ID | 
+| fileId | String | 文件id | 
 | filename | String | 文件名 | 
 | filesize | Long | 文件大小 | 
 | height | Integer | 高 | 
@@ -663,7 +663,7 @@ Y为开启，N为关闭
 | playbackEnabled | false | String | 回放开关，Y-开启，N-关闭 | 
 | type | false | String | 回放方式，single-单个回放，list-列表回放 | 
 | origin | false | String | 回放来源，record-暂存，playback-回放列表，vod-点播列表 | 
-| videoId | true | String | 单个回放的视频id | 
+| videoId | false | String | 单个回放的视频id | 
 
 ### 返回对象描述
 

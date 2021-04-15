@@ -5,13 +5,13 @@
     <parent>
         <artifactId>polyv-java-sdk</artifactId>
         <groupId>net.polyv</groupId>
-        <version>1.0.24</version>
+        <version>1.0.25</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>polyv-java-vod-sdk</artifactId>
     <properties>
-        <polyv.version>1.0.24</polyv.version>
+        <polyv.version>1.0.25</polyv.version>
     </properties>
     <dependencies>
         <dependency>

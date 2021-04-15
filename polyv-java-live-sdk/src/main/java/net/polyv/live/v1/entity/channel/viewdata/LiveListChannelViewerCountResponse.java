@@ -31,9 +31,9 @@ public class LiveListChannelViewerCountResponse {
         private String channelId;
         
         /**
-         * 统计的时间点（时间格式：12H），例：10:58:29
+         * 统计的时间点（时间格式：24H），例：15:39:10
          */
-        @ApiModelProperty(name = "time", value = "统计的时间点（时间格式：12H），例：10:58:29", required = false)
+        @ApiModelProperty(name = "time", value = "统计的时间点（时间格式：24H），例：15:39:10", required = false)
         private String time;
         
         /**

@@ -270,7 +270,7 @@ public class LiveWebMenuImplTest extends BaseTest {
     
     /**
      * 测试查询频道图文内容列表
-     * 描述：可以开启或关闭咨询提问功能菜单
+     * 描述：获取频道图文内容列表
      * API地址：GET_CHANNEL_IMAGE_TEXT_URL
      * @throws IOException
      * @throws NoSuchAlgorithmException

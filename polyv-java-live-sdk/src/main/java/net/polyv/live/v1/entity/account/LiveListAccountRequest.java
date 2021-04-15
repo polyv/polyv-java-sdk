@@ -18,9 +18,9 @@ import net.polyv.live.v1.entity.LiveCommonRequest;
 public class LiveListAccountRequest extends LiveCommonRequest {
     
     /**
-     * 所属分类id
+     * 所属分类id，不传则查询所有分类下的频道号
      */
-    @ApiModelProperty(name = "categoryId", value = "所属分类id", dataType =
+    @ApiModelProperty(name = "categoryId", value = "所属分类id，不传则查询所有分类下的频道号", dataType =
             "Integer", example = "340182")
     private Integer categoryId;
     

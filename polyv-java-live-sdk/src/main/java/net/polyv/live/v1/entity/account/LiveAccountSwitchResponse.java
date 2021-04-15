@@ -29,10 +29,11 @@ public class LiveAccountSwitchResponse {
          * 开关类型
          * {@link LiveConstant.ChannelSwitch}
          */
-        @ApiModelProperty(name = "type", value = "开关类型(isClosePreview:是否关闭系统观看页，Y时表示关闭;mobileWatch:是否开启移动端音视频切换;" +
-                "autoPlay:是否开启播放器自动播放功能;booking:是否开启预约功能;redPack:是否开启红包功能;shareBtnEnabled:是否开启分享功能;chat:是否开启聊天室;" +
-                "closeChaterList:是否关闭在线列表，Y时表示关闭;consultingMenu:是否开启咨询提问;closeDanmu:是否关闭弹幕功能，Y时表示关闭;praise:是否开启点赞语功能;" +
-                "welcome:是否开启欢迎语功能;viewerSendImgEnabled:是否开启观众发送图片)", required = false)
+        @ApiModelProperty(name = "type", value = "开关类型<br/>isClosePreview：是否关闭系统观看页，Y时表示关闭<br/>mobileWatch" +
+                "：是否开启移动端系统观看页<br/>mobileAudio：是否开启移动端音视频切换<br/>autoPlay：是否开启播放器自动播放功能<br/>booking：是否开启预约功能<br" +
+                "/>redPack：是否开启红包功能<br/>shareBtnEnabled：是否开启分享功能<br/>chat：是否开启聊天室<br/>closeChaterList：是否关闭在线列表，Y" +
+                "时表示关闭<br/>consultingMenu：是否开启咨询提问<br/>closeDanmu：是否关闭弹幕功能，Y时表示关闭<br/>praise：是否开启点赞语功能<br/>welcome" +
+                "：是否开启欢迎语功能<br/>viewerSendImgEnabled：是否开启观众发送图片", required = false)
         private String type;
         
         /**

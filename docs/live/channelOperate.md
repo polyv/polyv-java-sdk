@@ -59,7 +59,7 @@
 | categoryId | false | Integer | 分类ID ,新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） | 
 | maxViewer | false | Integer | 频道的最大在线人数观看限制的人数 | 
 | watchLayout | false | String | 三分屏频道的观看布局，ppt：文档为主；video：视频为主；不设置会使用账号的通用设置 | 
-| linkMicLimit | false | Integer | 连麦人数，-1=<取值范围<=账号级的连麦人数，-1：表示使用账号默认的连麦人数，最大16人（注：账号级连麦人数需通知平台管理员设置才生效） | 
+| linkMicLimit | false | Integer | 连麦人数，取值应大于等于-1小于等于账号级的连麦人数，-1：表示使用账号默认的连麦人数，最大16人（注：账号级连麦人数需通知平台管理员设置才生效） | 
 | pureRtcEnabled | false | String | 是否为无延时直播，Y 表示开启，默认为N | 
 | receive | false | String | 是否为接收转播频道，Y表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) | 
 | receiveChannelIds | false | String | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) | 
@@ -77,7 +77,7 @@
 | stream | String | 直播流名称 | 
 | logoImage | String | 播放器logo | 
 | logoOpacity | Float | Logo不透明度，1表示完全不透明 | 
-| logoPosition | String | Logo位置 | 
+| logoPosition | String | Logo位置<br/>tr1：左上<br/>tr：右上<br/>b1：左下<br/>br：右下 | 
 | logoHref | String | Logo的跳转链接 | 
 | coverImage | String | 播放前显示的封面图 | 
 | coverHref | String | 封面图的跳转链接 | 
@@ -200,7 +200,7 @@
 | startTime | Date | 直播开始时间 | 
 | desc | String | 直播介绍的内容 | 
 | publisher | String | 主持人 | 
-| linkMicLimit | Integer | 连麦人数(范围大于等于-1，小于等于账号的连麦人数),-1：使用账号的连麦人数，最大16人 | 
+| linkMicLimit | Integer | 连麦人数，取值应大于等于-1小于等于账号级的连麦人数，最大16人（注：账号级连麦人数需通知平台管理员设置才生效） | 
 | pureRtcEnabled | String | 是否为无延时直播，Y 表示开启，默认为N | 
 | receive | String | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) | 
 | receiveChannelIds | String | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) | 
@@ -252,7 +252,7 @@
 | stream | String | 直播流名称 | 
 | logoImage | String | 播放器logo | 
 | logoOpacity | Float | Logo不透明度，1表示完全不透明 | 
-| logoPosition | String | Logo位置 | 
+| logoPosition | String | Logo位置<br/>tr1：左上<br/>tr：右上<br/>b1：左下<br/>br：右下 | 
 | logoHref | String | Logo的跳转链接 | 
 | coverImage | String | 播放前显示的封面图 | 
 | coverHref | String | 封面图的跳转链接 | 
@@ -378,7 +378,7 @@
 | stream | String | 直播流名称 | 
 | logoImage | String | 播放器logo | 
 | logoOpacity | Float | Logo不透明度，1表示完全不透明 | 
-| logoPosition | String | Logo位置 | 
+| logoPosition | String | Logo位置<br/>tr1：左上<br/>tr：右上<br/>b1：左下<br/>br：右下 | 
 | logoHref | String | Logo的跳转链接 | 
 | coverImage | String | 播放前显示的封面图 | 
 | coverHref | String | 封面图的跳转链接 | 
@@ -613,7 +613,7 @@
 | authCode | String | 验证码观看方式的验证码 | 
 | qcodeTips | String | 验证码观看方式的二维码提示 | 
 | qcodeImg | String | 验证码观看方式的二维码图片 | 
-| price | Integer | 付费观看的价格 | 
+| price | Float | 付费观看的价格 | 
 | watchEndTime | Date | 付费观看，截止时间，为null表示：一次付费，永久有效 | 
 | validTimePeriod | Integer | 付费观看的截止时长（天） | 
 | customKey | String | 自定义授权观看的key | 
@@ -2039,11 +2039,11 @@ null
 | lastModified | Date | 助教最后修改时间 | 
 | sort | Integer | 频道中所有助教序号 | 
 | avatar | String | 助教头像 | 
-| pageTurnEnabled | String | 助教翻页权限（只能一个助教有） | 
+| pageTurnEnabled | String | 助教翻页权限（只能一个助教有）<br/>Y：开启<br/>N：关闭 | 
 | notifyEnabled | String | 发布公告权限(Y/N) | 
 | checkinEnabled | String | 开启签到权限(Y/N) | 
 | voteEnabled | String | 发起投票(Y/N) | 
-| role | String | 子频道角色,guest等 | 
+| role | String | 子频道角色，guest等 | 
 | loginUrl | String | 子账号（嘉宾）登陆地址 | 
 
 <br /><br />

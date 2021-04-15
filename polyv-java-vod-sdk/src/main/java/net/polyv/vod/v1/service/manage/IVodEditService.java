@@ -10,6 +10,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoAllKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodRecoverDelListRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
@@ -163,6 +164,17 @@ public interface IVodEditService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean updateVideoHlsLevelList(VodUpdateVideoHlsLevelListRequest vodUpdateVideoHlsLevelListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 恢复回收站视频API接口
+     * URL地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/recover-videos/
+     * @param vodRecoverDelListRequest 恢复回收站视频API接口请求实体
+     * @return 恢复回收站视频API接口返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean recoverDelList(VodRecoverDelListRequest vodRecoverDelListRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

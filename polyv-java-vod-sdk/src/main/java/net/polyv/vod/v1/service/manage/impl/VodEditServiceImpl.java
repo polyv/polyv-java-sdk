@@ -15,6 +15,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoAllKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodRecoverDelListRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoForbiddenRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSetVideoPreviewDurationRequest;
@@ -171,7 +172,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
         String url = VodURL.getRealUrl(VodURL.UPDATE_VIDEO_INFO_URL);
         List<VodUpdateVideoInfoResponse> vodUpdateVideoInfoResponses = super.postFormBodyReturnList(url,
                 vodUpdateVideoInfoRequest, VodUpdateVideoInfoResponse.class);
-        if(vodUpdateVideoInfoResponses.isEmpty()){
+        if (vodUpdateVideoInfoResponses.isEmpty()) {
             throw new PloyvSdkException(Constant.ERROR_CODE, "修改单个视频的信息失败");
         }
         return vodUpdateVideoInfoResponses.get(0);
@@ -205,7 +206,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
     public Boolean updateVideoSetting(VodUpdateVideoSettingRequest vodUpdateVideoSettingRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPDATE_VIDEO_SETTING);
-        super.postFormBodyReturnOne(url,vodUpdateVideoSettingRequest,String.class);
+        super.postFormBodyReturnOne(url, vodUpdateVideoSettingRequest, String.class);
         return Boolean.TRUE;
     }
     
@@ -221,7 +222,7 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
     public Boolean deleteVideoAllKeyFrame(VodDeleteVideoAllKeyFrameRequest vodDeleteVideoAllKeyFrameRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.DELETE_VIDEO_ALL_KEY_FRAME);
-        super.postFormBodyReturnOne(url,vodDeleteVideoAllKeyFrameRequest,String.class);
+        super.postFormBodyReturnOne(url, vodDeleteVideoAllKeyFrameRequest, String.class);
         return Boolean.TRUE;
     }
     
@@ -237,7 +238,23 @@ public class VodEditServiceImpl extends VodBaseService implements IVodEditServic
     public Boolean updateVideoHlsLevelList(VodUpdateVideoHlsLevelListRequest vodUpdateVideoHlsLevelListRequest)
             throws IOException, NoSuchAlgorithmException {
         String url = VodURL.getRealUrl(VodURL.UPDATE_VIDEO_HLS_LEVEL_URL);
-        super.postFormBodyReturnOne(url,vodUpdateVideoHlsLevelListRequest,String.class);
+        super.postFormBodyReturnOne(url, vodUpdateVideoHlsLevelListRequest, String.class);
+        return Boolean.TRUE;
+    }
+    
+    /**
+     * 恢复回收站视频API接口
+     * URL地址：https://dev.polyv.net/2020/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/recover-videos/
+     * @param vodRecoverDelListRequest 恢复回收站视频API接口请求实体
+     * @return 恢复回收站视频API接口返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public Boolean recoverDelList(VodRecoverDelListRequest vodRecoverDelListRequest)
+            throws IOException, NoSuchAlgorithmException {
+        String url = VodURL.getRealUrl(VodURL.RECOVER_DEL_VIDEO_LIST_URL);
+        super.postFormBodyReturnOne(url, vodRecoverDelListRequest, String.class);
         return Boolean.TRUE;
     }
     

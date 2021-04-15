@@ -212,6 +212,12 @@ public class VodURL {
             BASE_URI + "v2/video/wechat-share/" + PARAM_REPLACE_CHAR + "/video-info";
     
     /**
+     * 恢复回收站视频API接口
+     */
+    public static final String RECOVER_DEL_VIDEO_LIST_URL =
+            BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/recover-videos";
+    
+    /**
      * 获取视频播放预览时长
      */
     public static final String GET_VIDEO_PREVIEW_DURATION_URL =

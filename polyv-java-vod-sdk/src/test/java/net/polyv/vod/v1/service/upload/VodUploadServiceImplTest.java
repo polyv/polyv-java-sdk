@@ -16,7 +16,6 @@ import net.polyv.vod.v1.entity.upload.VodUploadPPTRequest;
 import net.polyv.vod.v1.entity.upload.VodUploadWatermarkRequest;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.upload.impl.VodUploadServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 上传视频

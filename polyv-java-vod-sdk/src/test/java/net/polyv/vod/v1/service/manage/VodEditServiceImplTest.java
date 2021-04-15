@@ -14,6 +14,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoAllKeyFrameRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoExamRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoRequest;
@@ -473,6 +474,35 @@ public class VodEditServiceImplTest extends BaseTest {
             Assert.assertTrue(vodRecoverDelListResponse);
             if (vodRecoverDelListResponse) {
                 log.debug("测试恢复回收站视频成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试删除单个视频的问答题目
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testDeleteVideoExam() throws IOException, NoSuchAlgorithmException {
+        VodDeleteVideoExamRequest vodDeleteVideoExamRequest = new VodDeleteVideoExamRequest();
+        Boolean vodDeleteVideoExamResponse = null;
+        try {
+            vodDeleteVideoExamRequest
+                    //可通过 new VodListServiceImpl().getDelList()获取
+                    .setVideoId("1b448be323ee722d75bbe7fc25343a06_1");
+            vodDeleteVideoExamResponse = new VodEditServiceImpl().deleteVideoExam(vodDeleteVideoExamRequest);
+            Assert.assertTrue(vodDeleteVideoExamResponse);
+            if (vodDeleteVideoExamResponse) {
+                log.debug("测试删除单个视频的问答题目成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

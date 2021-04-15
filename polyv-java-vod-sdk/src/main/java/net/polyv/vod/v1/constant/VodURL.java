@@ -39,6 +39,11 @@ public class VodURL {
             BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/watermarkSetting";
     
     /**
+     * 删除单个视频的问答题目
+     */
+    public static final String DELETE_VIDEO_EXAM_URL = BASE_URI + "v2/video/" + PARAM_REPLACE_CHAR + "/deleteExam";
+    
+    /**
      * 远程批量上传视频
      */
     public static final String UPLOAD_HTTP_VIDEO_LIST_URL =

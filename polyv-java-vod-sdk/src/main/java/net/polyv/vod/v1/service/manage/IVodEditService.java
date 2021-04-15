@@ -7,6 +7,7 @@ import net.polyv.vod.v1.entity.manage.edit.VodClipVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodConcatVideoResponse;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoAllKeyFrameRequest;
+import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoExamRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoKeyFrameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoListRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodDeleteVideoRequest;
@@ -175,6 +176,17 @@ public interface IVodEditService {
      * @throws NoSuchAlgorithmException 异常
      */
     Boolean recoverDelList(VodRecoverDelListRequest vodRecoverDelListRequest)
+            throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 删除单个视频的问答题目
+     * URL地址：https://dev.polyv.net/2017/videoproduct/v-api/v-api-vmanage/v-api-vmanage-edit/deleteexam/
+     * @param vodDeleteVideoExamRequest 删除单个视频的问答题目请求实体
+     * @return 删除单个视频的问答题目返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    Boolean deleteVideoExam(VodDeleteVideoExamRequest vodDeleteVideoExamRequest)
             throws IOException, NoSuchAlgorithmException;
     
 }

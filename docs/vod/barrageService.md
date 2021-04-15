@@ -6,6 +6,8 @@
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
+
+2、弹幕功能请联系客服开通
 ### 单元测试
 ```java
 	@Test
@@ -33,7 +35,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryBarrageListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -43,7 +45,6 @@
 | videoId | false | String | 视频vid,传入则查具体视频弹幕，不传查用户所有弹幕 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -86,6 +87,8 @@
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
+
+2、弹幕功能请联系客服开通
 ### 单元测试
 ```java
 	@Test
@@ -115,7 +118,7 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -124,7 +127,6 @@
 | -- | -- | -- | -- | 
 | videoId | true | String | 视频ID | 
 | file | true | File | 弹幕文件，文件格式为srt，支持utf-8编码 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -143,6 +145,8 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
+
+2、弹幕功能请联系客服开通
 ### 单元测试
 ```java
 	@Test
@@ -177,7 +181,7 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
 ### 单元测试说明
 1、请求正确，返回VodCreateBarrageResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -192,7 +196,6 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
 | fontSize | false | Integer | 字体大小，默认：18 | 
 | fontMode | false | String | 出现位置，顶部：top，底部：bottom，滚动：roll(默认) | 
 | fontColor | false | String | 字体颜色，格式0xFFFFFF, 默认：0xFFFFFF | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -215,6 +218,8 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
+
+2、弹幕功能请联系客服开通
 ### 单元测试
 ```java
 	@Test
@@ -244,7 +249,7 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -252,7 +257,6 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | barrageIds | true | String | 多个弹幕信息ID，用逗号隔开(英文逗号分割 状态为半角)，例如 123,456 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

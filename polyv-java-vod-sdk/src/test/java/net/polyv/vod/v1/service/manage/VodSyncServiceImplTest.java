@@ -17,7 +17,6 @@ import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListRequest;
 import net.polyv.vod.v1.entity.manage.sync.VodGetTaskListResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.manage.impl.VodSyncServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 视频同步
@@ -26,7 +25,7 @@ import net.polyv.vod.v1.util.VodSignUtil;
 @Slf4j
 public class VodSyncServiceImplTest extends BaseTest {
     /**
-     * 测试分页获取视频同步列表
+     * 测试分页查询视频同步列表
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -39,7 +38,7 @@ public class VodSyncServiceImplTest extends BaseTest {
             vodGetTaskListResponse = new VodSyncServiceImpl().getTaskList(vodGetTaskListRequest);
             Assert.assertNotNull(vodGetTaskListResponse);
             if (vodGetTaskListResponse != null) {
-                log.debug("测试分页获取视频同步列表成功，{}", JSON.toJSONString(vodGetTaskListResponse));
+                log.debug("测试分页查询视频同步列表成功，{}", JSON.toJSONString(vodGetTaskListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -1,7 +1,7 @@
-## 1、获取视频字幕
+## 1、查询视频字幕
 ### 描述
 ```
-获取视频字幕
+查询视频字幕
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -17,7 +17,7 @@
             vodGetSubtitleListResponse = new VodSubtitleServiceImpl().getSubtitleList(vodGetSubtitleListRequest);
             Assert.assertNotNull(vodGetSubtitleListResponse);
             if (vodGetSubtitleListResponse != null) {
-                log.debug("测试获取视频字幕成功,{}", JSON.toJSONString(vodGetSubtitleListResponse));
+                log.debug("测试查询视频字幕成功,{}", JSON.toJSONString(vodGetSubtitleListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -33,7 +33,7 @@
 ### 单元测试说明
 1、请求正确，返回VodGetSubtitleListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -41,16 +41,15 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | videoId | true | String | 视频ID | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| subtitles | Array | 查询的结果列表【详见[Subtitle参数描述](subtitleService.md?id=polyv29)】 | 
+| subtitles | Array | 查询的结果列表【详见[Subtitle参数描述](subtitleService.md?id=polyv27)】 | 
 
-<h6 id="polyv29"><a href="#/subtitleService.md?id=polyv29"data-id="Subtitle参数描述"class="anchor"><span>Subtitle参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv27"><a href="#/subtitleService.md?id=polyv27"data-id="Subtitle参数描述"class="anchor"><span>Subtitle参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -103,7 +102,7 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -115,7 +114,6 @@
 | file | true | File | 字幕文件，支持utf-8编码 | 
 | asDefault | false | String | 是否作为默认字幕，Y：是，N:否。默认为N:否。首次上传字幕为Y：是 | 
 | language | false | String | 语言，默认自动检测，支持语言：中文、繁体中文 、英语、日语、韩语、法语、德语、俄语、西班牙语、阿拉伯语、葡萄牙语、其他 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -165,7 +163,7 @@ true为上传成功，false为上传失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -174,7 +172,6 @@ true为上传成功，false为上传失败
 | -- | -- | -- | -- | 
 | videoId | true | String | 视频ID | 
 | ranks | true | String | 字幕序号列表，序号从1开始，多个以英文逗号分隔，例如 2,3 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -226,7 +223,7 @@ true为删除字幕成功，false为删除字幕失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -237,7 +234,6 @@ true为删除字幕成功，false为删除字幕失败
 | sourceSubtitleNames | true | String | 原始字幕名称，必须传两个值。以英文逗号分隔，合并后第一个字幕的内容在上方显示。 | 
 | mergedSubtitleName | false | String | 合并字幕的名称，默认：双语。不超过5个中文字符。 | 
 | setAsDefault | false | Boolean | 是否设置为默认显示的字幕。默认值：true。 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

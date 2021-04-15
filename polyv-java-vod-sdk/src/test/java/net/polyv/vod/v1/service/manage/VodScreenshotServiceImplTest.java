@@ -16,7 +16,6 @@ import net.polyv.vod.v1.entity.manage.screenshot.VodGetScreenshotTaskStatusReque
 import net.polyv.vod.v1.entity.manage.screenshot.VodGetScreenshotTaskStatusResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.manage.impl.VodScreenshotServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 视频截图
@@ -63,7 +62,7 @@ public class VodScreenshotServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试获取截图任务状态
+     * 测试查询截图任务状态
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -77,7 +76,7 @@ public class VodScreenshotServiceImplTest extends BaseTest {
                     vodGetScreenshotTaskStatusRequest);
             Assert.assertNotNull(vodGetScreenshotTaskStatusResponse);
             if (vodGetScreenshotTaskStatusResponse != null) {
-                log.debug("测试获取截图任务状态成功,{}", JSON.toJSONString(vodGetScreenshotTaskStatusResponse));
+                log.debug("测试查询截图任务状态成功,{}", JSON.toJSONString(vodGetScreenshotTaskStatusResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

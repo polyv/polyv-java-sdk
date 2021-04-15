@@ -23,7 +23,7 @@ public class VodDeleteVideoListRequest extends VodCommonRequest {
     /**
      * 用户ID
      */
-    @ApiModelProperty(hidden = true)
+    @ApiModelProperty(hidden = true, required = true)
     @NotNull(message = "属性userId不能为空")
     private String userId;
     
@@ -40,5 +40,5 @@ public class VodDeleteVideoListRequest extends VodCommonRequest {
      */
     @ApiModelProperty(name = "deleteType", value = "删除方式，1：删除到回收站，2：彻底删除，默认为：1", required = false)
     private Integer deleteType;
-
+    
 }

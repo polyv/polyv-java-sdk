@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
@@ -37,6 +38,7 @@ public class VodUploadCoverImageUrlRequest extends VodCommonRequest {
      * 视频预览图片http地址
      */
     @ApiModelProperty(name = "imageUrl", value = "视频预览图片http地址", required = true)
+    @NotNull(message = "属性imageUrl不能为空")
     @JSONField(name = "fileUrl")
     private String imageUrl;
 

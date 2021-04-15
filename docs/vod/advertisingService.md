@@ -48,7 +48,7 @@
 ### 单元测试说明
 1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -71,7 +71,6 @@
 | skipAd | false | String | Y表示开启跳过广告，N表示关闭跳过广告。仅片头广告有效，默认为N：关闭跳过广告 | 
 | skipOffset | false | Integer | 多少秒后允许跳过，当skipAd为Y时，该字段为必要参数 | 
 | skipButtonLabel | false | String | 跳过按钮标签，默认为跳过 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -120,7 +119,7 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -128,7 +127,6 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | advertisingId | true | String | 广告信息ID | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -139,10 +137,10 @@ true为删除成功，false为删除失败
 
 <br /><br />
 
-## 3、获取视频广告列表
+## 3、查询视频广告列表
 ### 描述
 ```
-获取视频广告列表
+查询视频广告列表
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -159,7 +157,7 @@ true为删除成功，false为删除失败
                     vodGetAdvertisingListRequest);
             Assert.assertNotNull(vodGetAdvertisingListResponse);
             if (vodGetAdvertisingListResponse != null) {
-                log.debug("测试获取视频广告列表成功,{}", JSON.toJSONString(vodGetAdvertisingListResponse));
+                log.debug("测试查询视频广告列表成功,{}", JSON.toJSONString(vodGetAdvertisingListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -175,7 +173,7 @@ true为删除成功，false为删除失败
 ### 单元测试说明
 1、请求正确，返回VodGetAdvertisingListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -184,7 +182,6 @@ true为删除成功，false为删除失败
 | -- | -- | -- | -- | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -279,7 +276,7 @@ true为删除成功，false为删除失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -303,7 +300,6 @@ true为删除成功，false为删除失败
 | skipAd | false | String | Y表示开启跳过广告，N表示关闭跳过广告。仅片头广告有效，默认为N：关闭跳过广告 | 
 | skipOffset | false | Integer | 多少秒后允许跳过，当skipAd为Y时，该字段为必要参数 | 
 | skipButtonLabel | false | String | 跳过按钮标签，默认为跳过 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

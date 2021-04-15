@@ -55,10 +55,10 @@ import net.polyv.vod.v1.service.datastatistics.impl.VodDataStatisticsServiceImpl
 public class VodDataStatisticsServiceImplTest extends BaseTest {
     
     /**
-     * 测试获取某一天视频观看日志
+     * 测试查询某一天视频观看日志
      * 约束：2、从播放行为产生到数据可查询的间隔时间为1~2小时。但是每条观看记录所消耗的流量计算（flowSize字段）依赖于CDN日志，为了保证数据完整性，流量数据需要间隔一个自然日才会生成。例如1号产生的流量消耗，会在2
      * 约束：号晚上汇总计算，在3号才可查询到流量数据。
-     * 约束：3、注意视频ID和分类ID为空时，获取账号当天所有视频日志；当视频ID为空、分类ID不为空时，查询对应分类ID下的日志；当视频ID不为空时查询对应视频ID的日志
+     * 约束：3、注意视频ID和分类ID为空时，查询账号当天所有视频日志；当视频ID为空、分类ID不为空时，查询对应分类ID下的日志；当视频ID不为空时查询对应视频ID的日志
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -76,7 +76,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     vodQueryViewLogByDayRequest);
             Assert.assertNotNull(vodQueryViewLogByDayResponseList);
             if (vodQueryViewLogByDayResponseList != null) {
-                log.debug("测试获取某一天视频观看日志成功,{}", JSON.toJSONString(vodQueryViewLogByDayResponseList));
+                log.debug("测试查询某一天视频观看日志成功,{}", JSON.toJSONString(vodQueryViewLogByDayResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -90,7 +90,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试批量获取视频观看日志
+     * 测试批量查询视频观看日志
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -109,7 +109,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
             vodGetVideoPlayLogResponse = new VodDataStatisticsServiceImpl().getVideoPlayLog(vodGetVideoPlayLogRequest);
             Assert.assertNotNull(vodGetVideoPlayLogResponse);
             if (vodGetVideoPlayLogResponse != null) {
-                log.debug("测试批量获取视频观看日志成功,{}", JSON.toJSONString(vodGetVideoPlayLogResponse));
+                log.debug("测试批量查询视频观看日志成功,{}", JSON.toJSONString(vodGetVideoPlayLogResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -285,7 +285,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试查询视频某个时段的播放流量统计数据
+     * 测试查询视频播放流量统计数据
      * 约束：2、自2018年7月10日起，才可以统计到单个视频的移动端流量数据，在此之前没有移动端流量数据
      * 约束：3、流量消耗的计算依赖于CDN日志，为了保证数据完整性，流量数据需要间隔一个自然日才会生成。例如1号产生的流量消耗，会在2号晚上汇总计算，在3号才可查询到流量数据
      * @throws IOException 异常
@@ -307,7 +307,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                             vodQueryVideoPlaybackFlowSizeStatisticsRequest);
             Assert.assertNotNull(vodQueryVideoPlaybackFlowSizeStatisticsResponseList);
             if (vodQueryVideoPlaybackFlowSizeStatisticsResponseList != null) {
-                log.debug("测试查询视频某个时段的播放流量统计数据成功,{}",
+                log.debug("测试查询视频播放流量统计数据成功,{}",
                         JSON.toJSONString(vodQueryVideoPlaybackFlowSizeStatisticsResponseList));
             }
         } catch (PloyvSdkException e) {
@@ -488,7 +488,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试获取视频观看完成度
+     * 测试查询视频观看完成度
      * 约束：2、该接口可查看某一观众累计观看某一视频的完成度情况。无论观众使用哪种终端、分多少次观看，接口返回的是最终的汇总的完成度。比如，视频A时长为50分钟，观众使用PC
      * 约束：H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又使用APP观看了第40&sim;50分钟，累计观看时长为20+20+10=50分钟，但观看的视频内容是 0&sim;30 和 40&sim;50
      * 约束：的部分。虽然累计观看时长与视频时长相同，但完成度为 (30+10)/50=80%。
@@ -510,7 +510,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     vodGetVideoViewingCompletionRequest);
             Assert.assertNotNull(vodGetVideoViewingCompletionResponse);
             if (vodGetVideoViewingCompletionResponse != null) {
-                log.debug("测试获取视频观看完成度成功,已完成进度比例{}", vodGetVideoViewingCompletionResponse);
+                log.debug("测试查询视频观看完成度成功,已完成进度比例{}", vodGetVideoViewingCompletionResponse);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -524,13 +524,14 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试高级分析-分页查询观看行为列表
+     * 测试分页查询观看行为列表
      * 约束：2、高级分析功能介绍详见：http://dev.polyv.net/2019/videoproduct/v-manual/v-manual-statistic/advance-analysis/
      * 约束：3、由于数据量和计算量大，数据分析结果次日才可查询。
      * 约束：4、查询的时间跨度不超过31天；
      * 约束：5、当请求入参startTime（开始时间）有值而endTime（结束时间）为空时，返回开始日期后31天后的数据；
      * 约束：6、当请求入参startTime（开始时间）为空而endTime（结束时间）不为空时，返回结束日期前31天内的数据；
      * 约束：7、当请求入参startTime（开始时间）、endTime（结束时间）均为空时，返回最近31天的数据。
+     * 约束：8、该接口需联系客服开通后才能使用
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -549,7 +550,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     vodQueryViewingBehaviorListRequest);
             Assert.assertNotNull(vodQueryViewingBehaviorListResponse);
             if (vodQueryViewingBehaviorListResponse != null) {
-                log.debug("测试高级分析-分页查询观看行为列表成功{}", JSON.toJSONString(vodQueryViewingBehaviorListResponse));
+                log.debug("测试分页查询观看行为列表成功{}", JSON.toJSONString(vodQueryViewingBehaviorListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -563,9 +564,10 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试高级分析–根据视频id查询视频分析数据
-     * 说明：2、高级分析功能介绍详见：http://dev.polyv.net/2019/videoproduct/v-manual/v-manual-statistic/advance-analysis/
-     * 说明：3、由于数据量和计算量大，数据分析结果次日才可查询。
+     * 测试根据视频id查询视频分析数据
+     * 约束：2、高级分析功能介绍详见：http://dev.polyv.net/2019/videoproduct/v-manual/v-manual-statistic/advance-analysis/
+     * 约束：3、由于数据量和计算量大，数据分析结果次日才可查询。
+     * 约束：4、该接口需联系客服开通后才能使用
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -579,7 +581,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     vodQueryVideoAnalysisDataRequest);
             Assert.assertNotNull(vodQueryVideoAnalysisDataResponse);
             if (vodQueryVideoAnalysisDataResponse != null) {
-                log.debug("测试高级分析–根据视频id查询视频分析数据成功{}", JSON.toJSONString(vodQueryVideoAnalysisDataResponse));
+                log.debug("测试根据视频id查询视频分析数据成功{}", JSON.toJSONString(vodQueryVideoAnalysisDataResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -593,9 +595,11 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试高级分析–根据观众id查询观众分析结果
-     * 说明：2、高级分析功能介绍详见：http://dev.polyv.net/2019/videoproduct/v-manual/v-manual-statistic/advance-analysis/
-     * 说明：3、由于数据量和计算量大，数据分析结果次日才可查询。
+     * 测试根据观众id查询观众分析结果
+     * 约束：2、该接口需联系客服开通后才能使用
+     * 约束：2、高级分析功能介绍详见：http://dev.polyv.net/2019/videoproduct/v-manual/v-manual-statistic/advance-analysis/
+     * 约束：3、由于数据量和计算量大，数据分析结果次日才可查询。
+     * 约束：4、该接口需联系客服开通后才能使用
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -610,7 +614,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
                     vodQueryAudienceAnalysisResultsRequest);
             Assert.assertNotNull(vodQueryAudienceAnalysisResultsResponse);
             if (vodQueryAudienceAnalysisResultsResponse != null) {
-                log.debug("测试高级分析–根据观众id查询观众分析结果成功{}", JSON.toJSONString(vodQueryAudienceAnalysisResultsResponse));
+                log.debug("测试根据观众id查询观众分析结果成功{}", JSON.toJSONString(vodQueryAudienceAnalysisResultsResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

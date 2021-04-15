@@ -197,7 +197,7 @@
 | content | String | 聊天内容 | 
 | id | String | 聊天消息id | 
 | image | String | 图片消息的图片地址 | 
-| roomId | Integer | 聊天记录所在的房间号 | 
+| roomId | String | 聊天记录所在的房间号 | 
 | channelId | String | 聊天记录所在的频道号 | 
 | sessionId | String | 场次号 | 
 | time | Date | 发送消息的时间 | 
@@ -405,7 +405,7 @@
 | kickRefer | String | 踢人方式，userId : 用户userId, ip : 用户登录IP | 
 | nickname | String | 昵称【对应api文档的**nick**字段】 | 
 | pic | String | 头像图片地址 | 
-| roomId | Integer | 房间号 | 
+| roomId | String | 房间号 | 
 | uid | String | 聊天室socketid | 
 | userId | String | C端观众ID | 
 | userType | String |  用户身份：管理员 manager，讲师 teacher， 助教 assistant， 嘉宾 guest，参与者 viewer，观看者 slice/student | 

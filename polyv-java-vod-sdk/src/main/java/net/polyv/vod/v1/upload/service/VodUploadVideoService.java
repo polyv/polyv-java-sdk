@@ -47,6 +47,7 @@ public class VodUploadVideoService extends VodBaseService {
                 throw new PloyvSdkException(Constant.ERROR_CODE, "上传视频基础信息失败");
             }
         }
+        log.debug("上传视频基础信息成功，文件路径：{}", uploadConfigRequest.getFile().getPath());
         vodUploadVideoConfigResponse.setStartTime(System.currentTimeMillis());
         return vodUploadVideoConfigResponse;
     }

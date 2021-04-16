@@ -40,7 +40,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -50,24 +50,24 @@
 | -- | -- | -- | 
 | contents | Array | 查询的结果列表【详见[Task参数描述](syncService.md?id=polyv28)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv28"><a href="#/syncService.md?id=polyv28"data-id="Task参数描述"class="anchor"><span>Task参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| taskId | String | 抓取任务对应的ID | 
-| userId | String | 点播用户的ID | 
-| originalName | String | 上传的抓取任务csv文件的标题 | 
-| fileUrl | String | 抓取任务的csv文件地址 | 
-| successCount | Integer | 抓取成功的数量 | 
-| totalCount | Integer | 此任务内总抓取数 | 
-| failCount | Integer | 抓取失败的数量 | 
+| taskId | String | 抓取任务对应的ID【对应api文档的**taskid**字段】 | 
+| userId | String | 点播用户的ID【对应api文档的**userid**字段】 | 
+| originalName | String | 上传的抓取任务csv文件的标题【对应api文档的**originalname**字段】 | 
+| fileUrl | String | 抓取任务的csv文件地址【对应api文档的**fileurl**字段】 | 
+| successCount | Integer | 抓取成功的数量【对应api文档的**seccesscount**字段】 | 
+| totalCount | Integer | 此任务内总抓取数【对应api文档的**totalcount**字段】 | 
+| failCount | Integer | 抓取失败的数量【对应api文档的**failcount**字段】 | 
 | status | String | 抓取任务完成状态 | 
-| endTime | Date | 任务完成时间，格式：yyyy-MM-dd HH:mm:ss | 
-| createTime | Date | 任务创建时间，格式：yyyy-MM-dd HH:mm:ss | 
+| endTime | Date | 任务完成时间，格式：yyyy-MM-dd HH:mm:ss【对应api文档的**endtime**字段】 | 
+| createTime | Date | 任务创建时间，格式：yyyy-MM-dd HH:mm:ss【对应api文档的**createtime**字段】 | 
 
 <br /><br />
 

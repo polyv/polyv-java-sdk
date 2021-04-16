@@ -60,7 +60,7 @@
 | title | true | String | 广告标题 | 
 | file | true | File | 广告素材，片头、片尾广告素材支持：JPEG,GIF,PNG,FLV,MP4;暂停广告支持：SWF,PNG,JPEG,GIF;弹窗广告支持PNG,JPEG,GIF. | 
 | size | true | Integer | 广告时长，除暂停广告外，都为必填参数。单位：秒 | 
-| categoryIds | false | String | 分类id，关联多分类时，以英文逗号分隔，默认值为默认分类1 | 
+| categoryIds | false | String | 分类id，关联多分类时，以英文逗号分隔，默认值为默认分类1【对应api文档的**cataids**字段】 | 
 | location | false | Integer | 广告类型，片头1，暂停2，片尾3，弹窗4;默认为1:片头 | 
 | popLocation | false | Integer | 广告弹窗位置，广告类型为弹窗时必填，右下角1,右上角2,左下角3,左上角4 | 
 | popUpTime | false | Integer | 弹窗出现的时间,单位秒，广告类型为弹窗时必填 | 
@@ -124,7 +124,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -134,33 +134,33 @@
 | -- | -- | -- | 
 | contents | Array | 返回的结果集【详见[AdvertisingInfo参数描述](advertisingService.md?id=polyv0)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv0"><a href="#/advertisingService.md?id=polyv0"data-id="AdvertisingInfo参数描述"class="anchor"><span>AdvertisingInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| advertisingId | String | 广告ID | 
+| advertisingId | String | 广告ID【对应api文档的**adid**字段】 | 
 | title | String | 广告标题 | 
 | note | String | 广告描述 | 
-| userId | String | 用户ID | 
+| userId | String | 用户ID【对应api文档的**userid**字段】 | 
 | location | Integer | 广告类型（片头1， 暂停2，片尾3，弹窗4） | 
-| matterUrl | String | 广告素材地址 | 
+| matterUrl | String | 广告素材地址【对应api文档的**matterurl**字段】 | 
 | size | Integer | 广告时长(s) | 
-| playNum | Integer | 播放次数 | 
-| addrUrl | String | 链接地址 | 
-| stasis | Integer | 广告是否悬浮（是为1，不是为2），默认为2：否 | 
-| upTime | Date | 投放开始时间，格式 HH:mm:ss | 
-| offTime | Date | 投放结束时间，格式 HH:mm:ss | 
-| startDate | Date | 投放开始日期，格式为：yyyy-MM-dd | 
-| endDate | Date | 投放结束日期，格式为：yyyy-MM-dd | 
-| lastModified | Date | 修改时间 | 
+| playNum | Integer | 播放次数【对应api文档的**playnum**字段】 | 
+| addrUrl | String | 链接地址【对应api文档的**addrurl**字段】 | 
+| stasis | Integer | 广告是否悬浮（是为1，不是为2），默认为2：否【对应api文档的**isstatis**字段】 | 
+| upTime | Date | 投放开始时间，格式 HH:mm:ss【对应api文档的**uptime**字段】 | 
+| offTime | Date | 投放结束时间，格式 HH:mm:ss【对应api文档的**offtime**字段】 | 
+| startDate | Date | 投放开始日期，格式为：yyyy-MM-dd【对应api文档的**startdate**字段】 | 
+| endDate | Date | 投放结束日期，格式为：yyyy-MM-dd【对应api文档的**enddate**字段】 | 
+| lastModified | Date | 修改时间【对应api文档的**ptime**字段】 | 
 | status | Integer | 投放状态（已上线10，待下线1，已下线0），默认为10：已上线 | 
-| popUptime | Integer | 弹窗出现的时间,单位秒 | 
-| categoryIds | String | 内容分类，关联多分类时，以英文逗号分隔，默认值为默认分类1 | 
-| popLocation | Integer | 弹窗位置（右下角1，右上角2，左下角3，左上角4） | 
+| popUptime | Integer | 弹窗出现的时间,单位秒【对应api文档的**popuptime**字段】 | 
+| categoryIds | String | 内容分类，关联多分类时，以英文逗号分隔，默认值为默认分类1【对应api文档的**cataids**字段】 | 
+| popLocation | Integer | 弹窗位置（右下角1，右上角2，左下角3，左上角4）【对应api文档的**poplocation**字段】 | 
 
 <br /><br />
 
@@ -227,13 +227,13 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| advertisingId | true | String | 广告信息ID | 
+| advertisingId | true | String | 广告信息ID【对应api文档的**adid**字段】 | 
 | startDate | false | Date | 广告开始日期,格式为yyyy-MM-dd | 
 | endDate | false | Date | 广告结束日期,格式为yyyy-MM-dd | 
 | title | false | String | 广告标题 | 
 | file | false | File | 广告素材，片头、片尾广告素材支持：JPEG,GIF,PNG,FLV,MP4;暂停广告支持：SWF,PNG,JPEG,GIF;弹窗广告支持PNG,JPEG,GIF. | 
 | size | false | Integer | 广告时长，除暂停广告外，都为必填参数。单位：秒 | 
-| categoryIds | false | String | 分类id，关联多分类时，以英文逗号分隔，默认值为默认分类1 | 
+| categoryIds | false | String | 分类id，关联多分类时，以英文逗号分隔，默认值为默认分类1【对应api文档的**cataids**字段】 | 
 | location | false | Integer | 广告类型，片头1，暂停2，片尾3，弹窗4;默认为1:片头 | 
 | popLocation | false | Integer | 广告弹窗位置，广告类型为弹窗时必填，右下角1,右上角2,左下角3,左上角4 | 
 | popUpTime | false | Integer | 弹窗出现的时间,单位秒，广告类型为弹窗时必填 | 
@@ -299,7 +299,7 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| advertisingId | true | String | 广告信息ID | 
+| advertisingId | true | String | 广告信息ID【对应api文档的**adid**字段】 | 
 
 ### 返回对象描述
 

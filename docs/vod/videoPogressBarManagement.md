@@ -51,12 +51,12 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频的ID | 
+| videoId | true | String | 视频的ID【对应api文档的**vid**字段】 | 
 | desc | true | String | 打点描述，如果上传多个打点用英文逗号隔开 | 
 | seconds | true | String | 打点秒数【第seconds秒】，如果上传多个打点用英文逗号隔开 | 
-| btnSettingSwitch | false | String | 按钮设置开关，Y:开启;N:为关闭;默认关闭 | 
-| btnDesc | false | String | 按钮描述，按钮开关开启时必填，关闭时btnDesc不设置 | 
-| btnHref | false | String | 按钮跳转地址，按钮开关开启时必填，关闭时btnDesc不设置 | 
+| btnSettingSwitch | false | String | 按钮设置开关，Y:开启;N:为关闭;默认关闭【对应api文档的**btnsettingswitch**字段】 | 
+| btnDesc | false | String | 按钮描述，按钮开关开启时必填，关闭时btnDesc不设置【对应api文档的**btndesc**字段】 | 
+| btnHref | false | String | 按钮跳转地址，按钮开关开启时必填，关闭时btnDesc不设置【对应api文档的**btnhref**字段】 | 
 
 ### 返回对象描述
 
@@ -111,7 +111,7 @@ true为打点成功，false为打点失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 
 ### 返回对象描述
 
@@ -119,7 +119,7 @@ true为打点成功，false为打点失败
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | duration | String | 返回时长,例：00:00:15 | 
-| keyFrameList | Array | 打点信息列表【详见[KeyFrame参数描述](videoPogressBarManagement.md?id=polyv29)】 | 
+| keyFrameList | Array | 打点信息列表【对应api文档的**keyframeList**字段】【详见[KeyFrame参数描述](videoPogressBarManagement.md?id=polyv29)】 | 
 
 <h6 id="polyv29"><a href="#/videoPogressBarManagement.md?id=polyv29"data-id="KeyFrame参数描述"class="anchor"><span>KeyFrame参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -179,7 +179,7 @@ true为打点成功，false为打点失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | times | true | String | 时间点（单位是秒），可以多个。多个的话用逗号隔开，例如：20,30,50 | 
 
 ### 返回对象描述
@@ -237,7 +237,7 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 
 ### 返回对象描述
 

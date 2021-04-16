@@ -44,7 +44,7 @@
 | -- | -- | -- | 
 | playerName | String | 播放器名称 | 
 | playerId | String | 播放器id | 
-| createTime | Date | 创建时间，格式：yyyy-MM-dd HH:mm:ss | 
+| createTime | Date | 创建时间，格式：yyyy-MM-dd HH:mm:ss【对应api文档的**date**字段】 | 
 | isDefault | Integer | 是否是默认播放器，是：1， 否：0 | 
 
 <br /><br />

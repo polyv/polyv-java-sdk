@@ -52,8 +52,8 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | day | true | Date | 查询某天的日志时间，格式：yyyy-MM-dd | 
-| videoId | false | String | 视频ID | 
-| categoryId | false | String | 分类ID | 
+| videoId | false | String | 视频ID【对应api文档的**vid**字段】 | 
+| categoryId | false | String | 分类ID【对应api文档的**cataid**字段】 | 
 | sessionId | false | String | 用户自定义ID，自定义值（比如，表示学员信息的学员ID），最长不能超过50个英文字符。 | 
 | viewerId | false | String | 用户自定义ID，当和sessionId同时传递时，会以viewerId为准 | 
 
@@ -147,12 +147,12 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | month | true | Date | 查询月份，格式为yyyyMM | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
-| videoId | false | String | 所查询视频vid，当vid为空时，查询该用户所有视频的日志 | 
+| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd【对应api文档的**start**字段】 | 
+| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd【对应api文档的**end**字段】 | 
+| videoId | false | String | 所查询视频vid，当vid为空时，查询该用户所有视频的日志【对应api文档的**vid**字段】 | 
 | sessionId | false | String | 用户自定义ID，自定义值 | 
 | currentDay | false | Date | 月内某一天的数据，格式为yyyy-MM-dd | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -162,9 +162,9 @@
 | -- | -- | -- | 
 | contents | Array | 返回的结果集【详见[VideoPlayLog参数描述](dataStatisticsService.md?id=polyv1)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv1"><a href="#/dataStatisticsService.md?id=polyv1"data-id="VideoPlayLog参数描述"class="anchor"><span>VideoPlayLog参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -253,8 +253,8 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），7days（最近7天），30days（最近30天），默认值为7days：最近7天，当start和end都不为空时，dr失效，当start和end其中一个为空，查询最近7天数据，当start和end都为空，以dr为准 | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
+| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd【对应api文档的**start**字段】 | 
+| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd【对应api文档的**end**字段】 | 
 
 ### 返回对象描述
 
@@ -263,8 +263,8 @@
 | -- | -- | -- | 
 | totalPcVideoView | Integer | pc端总播放量 | 
 | totalMoVideoView | Integer | 移动端总播放量 | 
-| pcVideoDaily | Array | pc端播放量排行列表【详见[VideoDaily参数描述](dataStatisticsService.md?id=polyv2)】 | 
-| moVideoDaily | Array | 移动端播放量排行列表【详见[VideoDaily参数描述](dataStatisticsService.md?id=polyv3)】 | 
+| pcVideoDaily | Array | pc端播放量排行列表【对应api文档的**pcVideoDailys**字段】【详见[VideoDaily参数描述](dataStatisticsService.md?id=polyv2)】 | 
+| moVideoDaily | Array | 移动端播放量排行列表【对应api文档的**moVideoDailys**字段】【详见[VideoDaily参数描述](dataStatisticsService.md?id=polyv3)】 | 
 
 <h6 id="polyv3"><a href="#/dataStatisticsService.md?id=polyv3"data-id="VideoDaily参数描述"class="anchor"><span>VideoDaily参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -330,7 +330,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | false | String | 视频videoId，不填vid会查所有视频的播放量统计数据 | 
+| videoId | false | String | 视频videoId，不填vid会查所有视频的播放量统计数据【对应api文档的**vid**字段】 | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
 | period | false | String | 显示周期，具体为以下几个值：daily（按日显示），weekly（按周显示），monthly（按月显示）。默认值为daily：按日显示。period的值受限于dr的值，当dr的值为today，yesterday，this_week，last_week，7days时，period只能为daily，当dr的值为this_month，last_month时，period只能为daily或者weekly | 
 
@@ -403,8 +403,8 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
+| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd【对应api文档的**start**字段】 | 
+| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd【对应api文档的**end**字段】 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryPlayDomainNameStatisticsResponse&gt;，**VodQueryPlayDomainNameStatisticsResponse**具体元素内容如下：
@@ -475,8 +475,8 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
+| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd【对应api文档的**start**字段】 | 
+| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd【对应api文档的**end**字段】 | 
 
 ### 返回对象描述
 
@@ -581,8 +581,8 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
+| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd【对应api文档的**start**字段】 | 
+| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd【对应api文档的**end**字段】 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoPlaybackHourlyStatisticsResponse&gt;，**VodQueryVideoPlaybackHourlyStatisticsResponse**具体元素内容如下：
@@ -661,10 +661,10 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
+| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd【对应api文档的**start**字段】 | 
+| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd【对应api文档的**end**字段】 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoPlaybackFlowSizeStatisticsResponse&gt;，**VodQueryVideoPlaybackFlowSizeStatisticsResponse**具体元素内容如下：
@@ -734,8 +734,8 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
+| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd【对应api文档的**start**字段】 | 
+| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd【对应api文档的**end**字段】 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoGeographicStatisticsResponse&gt;，**VodQueryVideoGeographicStatisticsResponse**具体元素内容如下：
@@ -809,10 +809,10 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | false | String | 视频ID | 
+| videoId | false | String | 视频ID【对应api文档的**vid**字段】 | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
+| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd【对应api文档的**start**字段】 | 
+| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd【对应api文档的**end**字段】 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoViewershipResponse&gt;，**VodQueryVideoViewershipResponse**具体元素内容如下：
@@ -880,10 +880,10 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | false | String | 视频ID，不传为查询用户级别统计 | 
+| videoId | false | String | 视频ID，不传为查询用户级别统计【对应api文档的**vid**字段】 | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
+| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd【对应api文档的**start**字段】 | 
+| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd【对应api文档的**end**字段】 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoPlayTimeStatisticsResponse&gt;，**VodQueryVideoPlayTimeStatisticsResponse**具体元素内容如下：
@@ -961,10 +961,10 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
+| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd【对应api文档的**start**字段】 | 
+| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd【对应api文档的**end**字段】 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoViewingHotspotStatisticsResponse&gt;，**VodQueryVideoViewingHotspotStatisticsResponse**具体元素内容如下：
@@ -972,7 +972,7 @@
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | second | Integer | 视频时长（单位：秒） | 
-| viewCount | Integer | 播放量 | 
+| viewCount | Integer | 播放量【对应api文档的**viewcount**字段】 | 
 
 <br /><br />
 
@@ -1027,10 +1027,10 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | false | String | 视频ID，不填为查询用户维度 | 
+| videoId | false | String | 视频ID，不填为查询用户维度【对应api文档的**vid**字段】 | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
+| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd【对应api文档的**start**字段】 | 
+| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd【对应api文档的**end**字段】 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoViewingRatioStatisticsResponse&gt;，**VodQueryVideoViewingRatioStatisticsResponse**具体元素内容如下：
@@ -1101,7 +1101,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | viewerId | true | String | 自定义观众id，例如 1555313336634 | 
 
 ### 返回对象描述
@@ -1175,13 +1175,13 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | false | String | 视频ID | 
-| startTime | false | Date | 开始时间，格式为yyyy-MM-dd或者yyyy-MM-dd HH:mm:ss，查询范围不超过31天 | 
-| endTime | false | Date | 结束时间，格式为yyyy-MM-dd或者yyyy-MM-dd HH:mm:ss，查询范围不超过31天 | 
+| videoId | false | String | 视频ID【对应api文档的**vid**字段】 | 
+| startTime | false | Date | 开始时间，格式为yyyy-MM-dd或者yyyy-MM-dd HH:mm:ss，查询范围不超过31天【对应api文档的**start**字段】 | 
+| endTime | false | Date | 结束时间，格式为yyyy-MM-dd或者yyyy-MM-dd HH:mm:ss，查询范围不超过31天【对应api文档的**end**字段】 | 
 | viewerId | false | String | 观众id，例如 1555313336634 | 
 | viewerName | false | String | 观众昵称 | 
 | token | false | String | 下一页的凭证，从当前页的返回数据里获取，第一页不需要传 | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -1192,9 +1192,9 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 | contents | Array | 返回的结果集【详见[ViewingBehaviorInfo参数描述](dataStatisticsService.md?id=polyv7)】 | 
 | token | String | 查询下一页时传的凭证 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv7"><a href="#/dataStatisticsService.md?id=polyv7"data-id="ViewingBehaviorInfo参数描述"class="anchor"><span>ViewingBehaviorInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -1278,7 +1278,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 
 ### 返回对象描述
 
@@ -1362,7 +1362,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 | userId | String | 用户id | 
 | viewerId | String | 观众id | 
 | viewerNickName | String | 观众昵称 | 
-| viewerAvatar | String | 观众头像 | 
+| viewerAvatar | String | 观众头像【对应api文档的**viewerAatar**字段】 | 
 | ip | String | ip地址 | 
 | firstWatchTime | Date | 首次观看时间，格式 yyyy-MM-dd HH:mm:ss | 
 | lastWatchTime | Date | 最后观看时间，格式 yyyy-MM-dd HH:mm:ss | 

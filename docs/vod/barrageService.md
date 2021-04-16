@@ -49,7 +49,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | msg | true | String | 弹幕信息 | 
 | time | true | String | 弹幕出现的时间，格式 HH:mm:ss，例如 00:03:11 | 
 | sessionId | false | String | 场次号 | 
@@ -63,7 +63,7 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| id | String | 弹幕ID | 
+| id | String | 弹幕ID【对应api文档的**Id**字段】 | 
 
 <br /><br />
 
@@ -117,7 +117,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | file | true | File | 弹幕文件，文件格式为srt，支持utf-8编码 | 
 
 ### 返回对象描述
@@ -173,8 +173,8 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | false | String | 视频vid,传入则查具体视频弹幕，不传查用户所有弹幕 | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| videoId | false | String | 视频vid,传入则查具体视频弹幕，不传查用户所有弹幕【对应api文档的**vid**字段】 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -184,24 +184,24 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
 | -- | -- | -- | 
 | contents | Array | 返回的结果集【详见[BarrageInfo参数描述](barrageService.md?id=polyv8)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv8"><a href="#/barrageService.md?id=polyv8"data-id="BarrageInfo参数描述"class="anchor"><span>BarrageInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | id | Integer | 弹幕信息的唯一标识 | 
-| videoId | String | 视频ID | 
-| userId | String | 用户ID | 
+| videoId | String | 视频ID【对应api文档的**vid**字段】 | 
+| userId | String | 用户ID【对应api文档的**userid**字段】 | 
 | msg | String | 弹幕信息内容 | 
 | time | String | 弹幕出现的时间点，格式 时：分：秒 ，例如00：03：05 | 
-| fontSize | String | 弹幕内容的字体大小，例如 18 | 
-| fontMode | String | 弹幕内容滚动方式，顶部：top，底部：bottom，滚动：roll(默认) | 
+| fontSize | String | 弹幕内容的字体大小，例如 18【对应api文档的**fontsize**字段】 | 
+| fontMode | String | 弹幕内容滚动方式，顶部：top，底部：bottom，滚动：roll(默认)【对应api文档的**fontmode**字段】 | 
 | fontcolor | String | 弹幕内容字体颜色 | 
-| createTime | Date | 弹幕内容出现的完整时间，格式为：yyyy-MM-dd HH:mm:ss | 
-| sessionId | String | 自定义参数（不能超过64位的字符串），添加弹幕传入的自定义参数（例如客户自己的用户ID资料等） | 
+| createTime | Date | 弹幕内容出现的完整时间，格式为：yyyy-MM-dd HH:mm:ss【对应api文档的**timestamp**字段】 | 
+| sessionId | String | 自定义参数（不能超过64位的字符串），添加弹幕传入的自定义参数（例如客户自己的用户ID资料等）【对应api文档的**sessionid**字段】 | 
 | param2 | String | 自定义参数（不能超过64位的字符串），添加弹幕传入的自定义参数（例如客户自己的用户ID资料等） | 
 
 <br /><br />
@@ -256,7 +256,7 @@ true为上传弹幕文件成功，false为上传弹幕文件失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| barrageIds | true | String | 多个弹幕信息ID，用逗号隔开(英文逗号分割 状态为半角)，例如 123,456 | 
+| barrageIds | true | String | 多个弹幕信息ID，用逗号隔开(英文逗号分割 状态为半角)，例如 123,456【对应api文档的**danmuIds**字段】 | 
 
 ### 返回对象描述
 

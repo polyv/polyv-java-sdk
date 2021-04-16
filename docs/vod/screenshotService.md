@@ -55,8 +55,8 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| uploadTime | true | Date | 上传时间，格式：yyyy-MM-dd HH:mm:ss | 
-| videoId | true | String | 视频ID | 
+| uploadTime | true | Date | 上传时间，格式：yyyy-MM-dd HH:mm:ss【对应api文档的**ptime**字段】 | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | offsetTimes | true | String | 截图时间点，多个时间点以英文逗号分隔，单位：秒 | 
 | width | false | Integer | 截图的宽度，默认为原视频宽 | 
 | height | false | Integer | 截图的高度，默认为原视频高 | 
@@ -127,7 +127,7 @@
 | createTime | Date | 任务创建时间,时间格式 yyyy-MM-dd HH:mm:ss | 
 | beginProcessTime | Date | 开始截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
 | finishProcessTime | Date | 完成截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
-| screenshots | Array | 截图信息组，失败或未开始时为空【详见[Screenshot参数描述](screenshotService.md?id=polyv26)】 | 
+| screenshots | Array | 截图信息组，失败或未开始时为空【对应api文档的**snapshots**字段】【详见[Screenshot参数描述](screenshotService.md?id=polyv26)】 | 
 
 <h6 id="polyv26"><a href="#/screenshotService.md?id=polyv26"data-id="Screenshot参数描述"class="anchor"><span>Screenshot参数描述</span></a></h6> <!-- {docsify-ignore} -->
 

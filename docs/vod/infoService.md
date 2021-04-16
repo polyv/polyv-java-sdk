@@ -40,52 +40,52 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| swfLink | String | 返回flash链接 | 
+| swfLink | String | 返回flash链接【对应api文档的**swf_link**字段】 | 
 | tag | String | 视频标签 | 
 | mp4 | String | MP4源文件 | 
-| playerWidth | Integer | 视频宽度 | 
+| playerWidth | Integer | 视频宽度【对应api文档的**playerwidth**字段】 | 
 | title | String | 视频标题 | 
 | duration | String | 视频时长,如：00:00:48 | 
 | filesize | Long[] | 编码后各个清晰度视频的文件大小，类型为array【详见[Long[]参数描述](infoService.md?id=polyv11)】 | 
-| firstImage | String | 视频首图 | 
+| firstImage | String | 视频首图【对应api文档的**first_image**字段】 | 
 | times | Integer | 播放次数 | 
 | context | String | 视频描述 | 
-| originalDefinition | String | 最佳分辨率，如：1280x720 | 
+| originalDefinition | String | 最佳分辨率，如：1280x720【对应api文档的**original_definition**字段】 | 
 | images | String[] | 视频截图 | 
-| playerHeight | Integer | 视频高度 | 
-| uploadTime | Date | 上传时间，格式：yyyy-MM-dd HH:mm:ss | 
-| videoId | String | 视频id | 
-| previewVideoId | String | 预览视频id | 
-| categoryId | String | 分类id， 如1为根目录 | 
-| defaultVideo | String | 用户默认播放视频 | 
+| playerHeight | Integer | 视频高度【对应api文档的**playerheight**字段】 | 
+| uploadTime | Date | 上传时间，格式：yyyy-MM-dd HH:mm:ss【对应api文档的**ptime**字段】 | 
+| videoId | String | 视频id【对应api文档的**vid**字段】 | 
+| previewVideoId | String | 预览视频id【对应api文档的**previewVid**字段】 | 
+| categoryId | String | 分类id， 如1为根目录【对应api文档的**cataid**字段】 | 
+| defaultVideo | String | 用户默认播放视频【对应api文档的**default_video**字段】 | 
 | df | Integer | 视频码率数 | 
-| SDFlv | String | 流畅码率flv格式视频地址 | 
-| HDFlv | String | 高清码率flv格式视频地址 | 
-| FHDFlv | String | 超清码率flv格式视频地址 | 
-| SDMp4 | String | 流畅码率mp4格式视频地址 | 
-| HDmp4 | String | 高清码率mp4格式视频地址 | 
-| FHDmp4 | String | 超清码率mp4格式视频地址 | 
+| SDFlv | String | 流畅码率flv格式视频地址【对应api文档的**flv1**字段】 | 
+| HDFlv | String | 高清码率flv格式视频地址【对应api文档的**flv2**字段】 | 
+| FHDFlv | String | 超清码率flv格式视频地址【对应api文档的**flv3**字段】 | 
+| SDMp4 | String | 流畅码率mp4格式视频地址【对应api文档的**mp4_1**字段】 | 
+| HDmp4 | String | 高清码率mp4格式视频地址【对应api文档的**mp4_2**字段】 | 
+| FHDmp4 | String | 超清码率mp4格式视频地址【对应api文档的**mp4_3**字段】 | 
 | hls | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
-| SDHls | String | 流畅清晰度的m3u8 | 
-| HDHls | String | 高清清晰度的m3u8 | 
-| FHDHls | String | 超清清晰度的m3u8 | 
-| imagesBig | String[] | 视频截图大图地址 | 
+| SDHls | String | 流畅清晰度的m3u8【对应api文档的**hls_1**字段】 | 
+| HDHls | String | 高清清晰度的m3u8【对应api文档的**hls_2**字段】 | 
+| FHDHls | String | 超清清晰度的m3u8【对应api文档的**hls_3**字段】 | 
+| imagesBig | String[] | 视频截图大图地址【对应api文档的**images_b**字段】 | 
 | seed | Integer | 加密视频为1，非加密为0 | 
 | status | Integer | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
-| keepSource | Integer | 是否为源文件，否：0,是：1 | 
+| keepSource | Integer | 是否为源文件，否：0,是：1【对应api文档的**keepsource**字段】 | 
 | uploader | Uploader | 上传者信息【详见[Uploader参数描述](infoService.md?id=polyv12)】 | 
 | hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
-| categoryName | String | 分类名称 | 
+| categoryName | String | 分类名称【对应api文档的**cataname**字段】 | 
 | imageUrls | Array | 视频截图小图url | 
-| sourceFileSize | String | 源视频文件大小，单位为：byte | 
-| md5CheckSum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整 | 
+| sourceFileSize | String | 源视频文件大小，单位为：byte【对应api文档的**source_filesize**字段】 | 
+| md5CheckSum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整【对应api文档的**md5checksum**字段】 | 
 
 <h6 id="polyv12"><a href="#/infoService.md?id=polyv12"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -145,7 +145,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 
 ### 返回对象描述
 
@@ -201,22 +201,22 @@ true为开关开启，false为开关关闭
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 多个视频ID(英文逗号分割 状态为半角)，例如 1b8be3,239c2e | 
-| categoryIds | false | String | 多个分类ID(逗号分割)，当传了vids时，按照vids查询；当仅传cataid时，按照cataid查询；vids和cataid不能同时为空 | 
+| videoIds | true | String | 多个视频ID(英文逗号分割 状态为半角)，例如 1b8be3,239c2e【对应api文档的**vids**字段】 | 
+| categoryIds | false | String | 多个分类ID(逗号分割)，当传了vids时，按照vids查询；当仅传cataid时，按照cataid查询；vids和cataid不能同时为空【对应api文档的**cataid**字段】 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodGetVideoSizeResponse&gt;，**VodGetVideoSizeResponse**具体元素内容如下：
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| categoryId | String | 分类ID | 
+| categoryId | String | 分类ID【对应api文档的**cataid**字段】 | 
 | videos | Array | 视频结果列表【详见[Video参数描述](infoService.md?id=polyv13)】 | 
 
 <h6 id="polyv13"><a href="#/infoService.md?id=polyv13"data-id="Video参数描述"class="anchor"><span>Video参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| videoId | String | 视频ID | 
+| videoId | String | 视频ID【对应api文档的**vid**字段】 | 
 | duration | String | 时长，格式为hh:mm:ss。例如 00:03:11 | 
 | filesize1 | Long | 编码后码率1FLV的大小，单位为Bytes：字节 | 
 | filesize2 | Long | 编码后码率2FLV的大小，单位为Bytes：字节 | 
@@ -271,7 +271,7 @@ true为开关开启，false为开关关闭
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 
 ### 返回对象描述
 
@@ -334,7 +334,7 @@ true为开关开启，false为开关关闭
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 
 ### 返回对象描述
 
@@ -388,8 +388,8 @@ true为开关开启，false为开关关闭
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
-| thumbnail | false | Integer | 是否为视频首图的缩略图，值为1：是；值为0：否。默认为0：非视频首图的缩略图 | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
+| thumbnail | false | Integer | 是否为视频首图的缩略图，值为1：是；值为0：否。默认为0：非视频首图的缩略图【对应api文档的**t**字段】 | 
 
 ### 返回对象描述
 
@@ -442,7 +442,7 @@ true为开关开启，false为开关关闭
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vids**字段】 | 
 
 ### 返回对象描述
 
@@ -505,7 +505,7 @@ true为开关开启，false为开关关闭
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 多个视频ID(英文逗号分割 状态为半角)，例如 1b8be3,239c2e | 
+| videoIds | true | String | 多个视频ID(英文逗号分割 状态为半角)，例如 1b8be3,239c2e【对应api文档的**vids**字段】 | 
 | realTime | false | Integer | 是否实时,1表示实时，0表示非实时，默认为0：非实时 | 
 
 ### 返回对象描述
@@ -513,7 +513,7 @@ true为开关开启，false为开关关闭
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| videoId | String | 视频ID | 
+| videoId | String | 视频ID【对应api文档的**vid**字段】 | 
 | times | Integer | 播放次数 | 
 
 <br /><br />

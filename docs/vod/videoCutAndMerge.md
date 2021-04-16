@@ -44,7 +44,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | title | true | String | 裁剪后的视频名称 | 
 | timeFrame | true | String | json格式的特定时间段，格式为[{"start":1,"end":6},{"start":10,"end":16}]. 时间段数量不能超过5个，每个片段开始时间不能大于结束时间，开始与结束时间间隔需要超过或者等于5秒，结束时间不能超过视频的播放时长 | 
 
@@ -105,17 +105,17 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 视频id，用逗号隔开，只支持合并2个或者3个 | 
+| videoIds | true | String | 视频id，用逗号隔开，只支持合并2个或者3个【对应api文档的**vids**字段】 | 
 | title | false | String | 视频标题，默认为“合并-”+第一个视频的标题。标题长度超过128会被截取 | 
-| categoryId | false | String | 分类id，默认为默认分类 | 
-| screenCap | false | Integer | 是否开启录屏优化，1表示开启，0表示关闭，默认为关闭 | 
+| categoryId | false | String | 分类id，默认为默认分类【对应api文档的**cataId**字段】 | 
+| screenCap | false | Integer | 是否开启录屏优化，1表示开启，0表示关闭，默认为关闭【对应api文档的**luping**字段】 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| concatVideoId | String | 合并后的视频videoId | 
+| concatVideoId | String | 合并后的视频videoId【对应api文档的**concatVid**字段】 | 
 
 <br /><br />
 

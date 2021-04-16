@@ -206,83 +206,7 @@
 
 <br /><br />
 
-## 3、查询视频播放量排行
-### 描述
-```
-通过时间范围查询视频播放量排行
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
-### 单元测试
-```java
-	@Test
-	public void testQueryVideoPlaybackRanking() throws IOException, NoSuchAlgorithmException {
-        VodQueryVideoPlaybackRankingRequest vodQueryVideoPlaybackRankingRequest =
-                new VodQueryVideoPlaybackRankingRequest();
-        VodQueryVideoPlaybackRankingResponse vodQueryVideoPlaybackRankingResponse = null;
-        try {
-            vodQueryVideoPlaybackRankingRequest.setDr("7days")
-                    .setStartTime(super.getDate(2021, 2, 18))
-                    .setEndTime(super.getDate(2021, 2, 24));
-            vodQueryVideoPlaybackRankingResponse = new VodDataStatisticsServiceImpl().queryVideoPlaybackRanking(
-                    vodQueryVideoPlaybackRankingRequest);
-            Assert.assertNotNull(vodQueryVideoPlaybackRankingResponse);
-            if (vodQueryVideoPlaybackRankingResponse != null) {
-                log.debug("测试查询视频播放量排行成功,{}", JSON.toJSONString(vodQueryVideoPlaybackRankingResponse));
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回VodQueryVideoPlaybackRankingResponse对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），7days（最近7天），30days（最近30天），默认值为7days：最近7天，当start和end都不为空时，dr失效，当start和end其中一个为空，查询最近7天数据，当start和end都为空，以dr为准 | 
-| startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd【对应api文档的**start**字段】 | 
-| endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd【对应api文档的**end**字段】 | 
-
-### 返回对象描述
-
-
-| 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
-| totalPcVideoView | Integer | pc端总播放量 | 
-| totalMoVideoView | Integer | 移动端总播放量 | 
-| pcVideoDaily | Array | pc端播放量排行列表【对应api文档的**pcVideoDailys**字段】【详见[VideoDaily参数描述](dataStatisticsService.md?id=polyv2)】 | 
-| moVideoDaily | Array | 移动端播放量排行列表【对应api文档的**moVideoDailys**字段】【详见[VideoDaily参数描述](dataStatisticsService.md?id=polyv3)】 | 
-
-<h6 id="polyv3"><a href="#/dataStatisticsService.md?id=polyv3"data-id="VideoDaily参数描述"class="anchor"><span>VideoDaily参数描述</span></a></h6> <!-- {docsify-ignore} -->
-
-| 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
-| videoId | String | 视频videoId | 
-| title | String | 视频标题 | 
-| duration | String | 播放时长，格式 hh:mm:ss 例如 00:03:11 | 
-| pcVideoView | Integer | pc端播放量 | 
-| mobileVideoView | Integer | 移动端播放量 | 
-
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 4、查询视频播放量统计数据
+## 3、查询视频播放量统计数据
 ### 描述
 ```
 通过视频id或时间范围查询视频播放量统计数据
@@ -349,7 +273,7 @@
 
 <br /><br />
 
-## 5、查询播放域名统计数据
+## 4、查询播放域名统计数据
 ### 描述
 ```
 通过时间范围查询播放域名统计数据
@@ -426,7 +350,7 @@
 
 <br /><br />
 
-## 6、查询视频终端环境统计数据
+## 5、查询视频终端环境统计数据
 ### 描述
 ```
 通过时间范围查询视频终端环境统计数据
@@ -483,11 +407,11 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| device | Array | 终端环境统计数据【详见[Device参数描述](dataStatisticsService.md?id=polyv4)】 | 
-| operatingSystem | Array | 操作系统环境统计数据【详见[OperatingSystem参数描述](dataStatisticsService.md?id=polyv5)】 | 
-| browser | Array | 浏览器环境统计数据【详见[Browser参数描述](dataStatisticsService.md?id=polyv6)】 | 
+| device | Array | 终端环境统计数据【详见[Device参数描述](dataStatisticsService.md?id=polyv2)】 | 
+| operatingSystem | Array | 操作系统环境统计数据【详见[OperatingSystem参数描述](dataStatisticsService.md?id=polyv3)】 | 
+| browser | Array | 浏览器环境统计数据【详见[Browser参数描述](dataStatisticsService.md?id=polyv4)】 | 
 
-<h6 id="polyv4"><a href="#/dataStatisticsService.md?id=polyv4"data-id="Device参数描述"class="anchor"><span>Device参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv2"><a href="#/dataStatisticsService.md?id=polyv2"data-id="Device参数描述"class="anchor"><span>Device参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -498,7 +422,7 @@
 | uniqueViewer | Integer | 视频总观众数 | 
 | percentage | Float | 总占比 | 
 
-<h6 id="polyv5"><a href="#/dataStatisticsService.md?id=polyv5"data-id="OperatingSystem参数描述"class="anchor"><span>OperatingSystem参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv3"><a href="#/dataStatisticsService.md?id=polyv3"data-id="OperatingSystem参数描述"class="anchor"><span>OperatingSystem参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -509,7 +433,7 @@
 | uniqueViewer | Integer | 视频总观众数 | 
 | percentage | Float | 总占比 | 
 
-<h6 id="polyv6"><a href="#/dataStatisticsService.md?id=polyv6"data-id="Browser参数描述"class="anchor"><span>Browser参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv4"><a href="#/dataStatisticsService.md?id=polyv4"data-id="Browser参数描述"class="anchor"><span>Browser参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -531,7 +455,7 @@
 
 <br /><br />
 
-## 7、查询视频播放时段统计数据
+## 6、查询视频播放时段统计数据
 ### 描述
 ```
 通过时间范围查询视频播放时段统计数据
@@ -607,7 +531,7 @@
 
 <br /><br />
 
-## 8、查询视频播放流量统计数据
+## 7、查询视频播放流量统计数据
 ### 描述
 ```
 通过时间范围查询视频播放流量统计数据
@@ -682,7 +606,7 @@
 
 <br /><br />
 
-## 9、查询视频播放地理位置统计数据
+## 8、查询视频播放地理位置统计数据
 ### 描述
 ```
 通过时间范围查询视频播放地理位置统计数据
@@ -760,7 +684,7 @@
 
 <br /><br />
 
-## 10、查询视频观众量统计数据
+## 9、查询视频观众量统计数据
 ### 描述
 ```
 通过视频id或时间范围查询视频观众量统计数据
@@ -830,7 +754,7 @@
 
 <br /><br />
 
-## 11、查询视频的播放时长统计数据
+## 10、查询视频的播放时长统计数据
 ### 描述
 ```
 描述：通过视频id或时间范围查询视频的播放时长统计数据
@@ -910,7 +834,7 @@
 
 <br /><br />
 
-## 12、查询单个视频的观看热点统计数据
+## 11、查询单个视频的观看热点统计数据
 ### 描述
 ```
 通过视频id查询单个视频的观看热点统计数据
@@ -980,7 +904,7 @@
 
 <br /><br />
 
-## 13、查询视频的观看比例统计数据
+## 12、查询视频的观看比例统计数据
 ### 描述
 ```
 通过视频id或时间范围查询视频的观看比例统计数据
@@ -1046,7 +970,7 @@
 
 <br /><br />
 
-## 14、查询视频观看完成度
+## 13、查询视频观看完成度
 ### 描述
 ```
 通过视频id和观众id查询视频观看完成度
@@ -1113,7 +1037,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 
 <br /><br />
 
-## 15、查询观看行为列表
+## 14、查询观看行为列表
 ### 描述
 ```
 通过视频id或时间范围分页查询观看行为列表
@@ -1189,14 +1113,14 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| contents | Array | 返回的结果集【详见[ViewingBehaviorInfo参数描述](dataStatisticsService.md?id=polyv7)】 | 
+| contents | Array | 返回的结果集【详见[ViewingBehaviorInfo参数描述](dataStatisticsService.md?id=polyv5)】 | 
 | token | String | 查询下一页时传的凭证 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
 | totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
-<h6 id="polyv7"><a href="#/dataStatisticsService.md?id=polyv7"data-id="ViewingBehaviorInfo参数描述"class="anchor"><span>ViewingBehaviorInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv5"><a href="#/dataStatisticsService.md?id=polyv5"data-id="ViewingBehaviorInfo参数描述"class="anchor"><span>ViewingBehaviorInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -1229,7 +1153,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 
 <br /><br />
 
-## 16、查询视频分析数据
+## 15、查询视频分析数据
 ### 描述
 ```
 通过视频id查询视频分析数据
@@ -1300,7 +1224,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 
 <br /><br />
 
-## 17、查询观众分析结果
+## 16、查询观众分析结果
 ### 描述
 ```
 通过观众id查询观众分析结果

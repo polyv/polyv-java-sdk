@@ -54,13 +54,13 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| contents | Array | 视频信息【详见[VodSearchVideoList参数描述](listService.md?id=polyv14)】 | 
+| contents | Array | 视频信息【详见[VodSearchVideoList参数描述](listService.md?id=polyv12)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
 | totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
-<h6 id="polyv14"><a href="#/listService.md?id=polyv14"data-id="VodSearchVideoList参数描述"class="anchor"><span>VodSearchVideoList参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv12"><a href="#/listService.md?id=polyv12"data-id="VodSearchVideoList参数描述"class="anchor"><span>VodSearchVideoList参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -88,11 +88,11 @@
 | filesize | Integer[] | 编码后各个码率的视频文件大小，按顺序依次为流畅、高清、超清的视频文件大小，单位为byte | 
 | md5Checksum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整【对应api文档的**md5checksum**字段】 | 
 | hls | String[] | 流畅、高清、超清清晰度的m3u8地址 | 
-| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv15)】 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv13)】 | 
 | keepSource | Integer | 是否为源文件，否：0,是：1【对应api文档的**keepsource**字段】 | 
 | categoryName | String | 分类名称【对应api文档的**cataname**字段】 | 
 
-<h6 id="polyv15"><a href="#/listService.md?id=polyv15"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv13"><a href="#/listService.md?id=polyv13"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -157,13 +157,13 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| contents | Array | 视频信息【详见[VodQueryVideoList参数描述](listService.md?id=polyv16)】 | 
+| contents | Array | 视频信息【详见[VodQueryVideoList参数描述](listService.md?id=polyv14)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
 | totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
-<h6 id="polyv16"><a href="#/listService.md?id=polyv16"data-id="VodQueryVideoList参数描述"class="anchor"><span>VodQueryVideoList参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv14"><a href="#/listService.md?id=polyv14"data-id="VodQueryVideoList参数描述"class="anchor"><span>VodQueryVideoList参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -243,13 +243,13 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| contents | Array | 视频列表【详见[VideoInfo参数描述](listService.md?id=polyv17)】 | 
+| contents | Array | 视频列表【详见[VideoInfo参数描述](listService.md?id=polyv15)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
 | totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
-<h6 id="polyv17"><a href="#/listService.md?id=polyv17"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv15"><a href="#/listService.md?id=polyv15"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -339,13 +339,13 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| contents | Array | 返回的结果集【详见[VideoInfo参数描述](listService.md?id=polyv18)】 | 
+| contents | Array | 返回的结果集【详见[VideoInfo参数描述](listService.md?id=polyv16)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
 | totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
-<h6 id="polyv18"><a href="#/listService.md?id=polyv18"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv16"><a href="#/listService.md?id=polyv16"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -373,11 +373,11 @@
 | md5CheckSum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整【对应api文档的**md5checksum**字段】 | 
 | hls | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
 | keepSource | Integer | 是否为源文件，否：0,是：1【对应api文档的**keepsource**字段】 | 
-| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv19)】 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv17)】 | 
 | hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
 | categoryName | String | 分类名称【对应api文档的**cataname**字段】 | 
 
-<h6 id="polyv19"><a href="#/listService.md?id=polyv19"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv17"><a href="#/listService.md?id=polyv17"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -441,13 +441,13 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| contents | Array | 返回的结果集【详见[HotVideoInfo参数描述](listService.md?id=polyv20)】 | 
+| contents | Array | 返回的结果集【详见[HotVideoInfo参数描述](listService.md?id=polyv18)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
 | totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
-<h6 id="polyv20"><a href="#/listService.md?id=polyv20"data-id="HotVideoInfo参数描述"class="anchor"><span>HotVideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv18"><a href="#/listService.md?id=polyv18"data-id="HotVideoInfo参数描述"class="anchor"><span>HotVideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -475,11 +475,11 @@
 | md5CheckSum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整【对应api文档的**md5checksum**字段】 | 
 | hls | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
 | keepSource | Integer | 是否为源文件，否：0,是：1【对应api文档的**keepsource**字段】 | 
-| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv21)】 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv19)】 | 
 | hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
 | categoryName | String | 分类名称【对应api文档的**cataname**字段】 | 
 
-<h6 id="polyv21"><a href="#/listService.md?id=polyv21"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv19"><a href="#/listService.md?id=polyv19"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -543,13 +543,13 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| contents | Array | 返回的结果集【详见[VideoInfo参数描述](listService.md?id=polyv22)】 | 
+| contents | Array | 返回的结果集【详见[VideoInfo参数描述](listService.md?id=polyv20)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
 | totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
-<h6 id="polyv22"><a href="#/listService.md?id=polyv22"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv20"><a href="#/listService.md?id=polyv20"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -577,11 +577,11 @@
 | md5CheckSum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整【对应api文档的**md5checksum**字段】 | 
 | hls | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
 | keepSource | Integer | 是否为源文件，否：0,是：1【对应api文档的**keepsource**字段】 | 
-| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv23)】 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv21)】 | 
 | hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
 | categoryName | String | 分类名称【对应api文档的**cataname**字段】 | 
 
-<h6 id="polyv23"><a href="#/listService.md?id=polyv23"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv21"><a href="#/listService.md?id=polyv21"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -645,13 +645,13 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| contents | Array | 返回的结果集【详见[IllegalVideoInfo参数描述](listService.md?id=polyv24)】 | 
+| contents | Array | 返回的结果集【详见[IllegalVideoInfo参数描述](listService.md?id=polyv22)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
 | totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
-<h6 id="polyv24"><a href="#/listService.md?id=polyv24"data-id="IllegalVideoInfo参数描述"class="anchor"><span>IllegalVideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv22"><a href="#/listService.md?id=polyv22"data-id="IllegalVideoInfo参数描述"class="anchor"><span>IllegalVideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -679,11 +679,11 @@
 | md5CheckSum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整【对应api文档的**md5checksum**字段】 | 
 | hls | String[] | 索引文件，记录每个清晰度的m3u8的链接 | 
 | keepSource | Integer | 是否为源文件，否：0,是：1【对应api文档的**keepsource**字段】 | 
-| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv25)】 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](listService.md?id=polyv23)】 | 
 | hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
 | categoryName | String | 分类名称【对应api文档的**cataname**字段】 | 
 
-<h6 id="polyv25"><a href="#/listService.md?id=polyv25"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv23"><a href="#/listService.md?id=polyv23"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 

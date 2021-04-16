@@ -1,4 +1,4 @@
-## 1、上传多个视频的预览图
+## 1、上传本地视频预览图
 ### 描述
 ```
 上传一张本地图片作为多个视频或多个分类的预览图
@@ -22,7 +22,7 @@
             Assert.assertTrue(vodUploadCoverImageResponse);
             if (vodUploadCoverImageResponse) {
                 //to do something ......
-                log.debug("测试上传多个视频的预览图成功");
+                log.debug("测试上传本地视频预览图成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -58,7 +58,7 @@ true：上传成功；false：上传失败
 
 <br /><br />
 
-## 2、上传多个视频的预览图URL
+## 2、上传远程视频预览图
 ### 描述
 ```
 通过图片http地址上传视频预览图
@@ -87,7 +87,7 @@ true：上传成功；false：上传失败
             Assert.assertTrue(vodUploadCoverImageUrlResponse);
             if (vodUploadCoverImageUrlResponse) {
                 //to do something ......
-                log.debug("测试上传多个视频的预览图URL成功");
+                log.debug("测试上传远程视频预览图成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -181,10 +181,10 @@ true：上传成功；false：上传失败
 
 <br /><br />
 
-## 4、远程批量上传视频
+## 4、上传远程视频
 ### 描述
 ```
-批量上传远程视频（异步上传），具体上传情况可调用“分页查询视频同步列表”查看
+上传远程视频（异步上传），具体上传情况可调用“分页查询视频同步列表”查看
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -209,7 +209,7 @@ true：上传成功；false：上传失败
             Assert.assertTrue(vodUploadHttpVideoListResponse);
             if (vodUploadHttpVideoListResponse) {
                 //to do something ......
-                log.debug("测试远程批量上传视频成功");
+                log.debug("测试上传远程视频成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

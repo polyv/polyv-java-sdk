@@ -119,9 +119,9 @@ true为打点成功，false为打点失败
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | duration | String | 返回时长,例：00:00:15 | 
-| keyFrameList | Array | 打点信息列表【对应api文档的**keyframeList**字段】【详见[KeyFrame参数描述](videoPogressBarManagement.md?id=polyv29)】 | 
+| keyFrameList | Array | 打点信息列表【对应api文档的**keyframeList**字段】【详见[KeyFrame参数描述](videoPogressBarManagement.md?id=polyv27)】 | 
 
-<h6 id="polyv29"><a href="#/videoPogressBarManagement.md?id=polyv29"data-id="KeyFrame参数描述"class="anchor"><span>KeyFrame参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv27"><a href="#/videoPogressBarManagement.md?id=polyv27"data-id="KeyFrame参数描述"class="anchor"><span>KeyFrame参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 

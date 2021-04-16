@@ -9,6 +9,7 @@
 * 视频管理
 
   * [账户管理](accountService)
+  * [分片上传本地视频](/uploadVideoParts)
   * [上传视频](uploadService)
   * 视频管理
     * [查找视频](queryService)

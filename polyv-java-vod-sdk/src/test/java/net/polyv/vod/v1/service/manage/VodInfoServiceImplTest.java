@@ -76,7 +76,7 @@ public class VodInfoServiceImplTest extends BaseTest {
         try {
             vodGetVideoPlayStatusRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
-                    .setVideoId("1b448be32302cab82e0189d115beedd8_1");
+                    .setVideoId("1b448be3235dc575fa8f9e7f380be9cc_1");
             vodGetVideoPlayStatusResponse = new VodInfoServiceImpl().getVideoPlayStatus(vodGetVideoPlayStatusRequest);
             Assert.assertTrue(vodGetVideoPlayStatusResponse);
             if (vodGetVideoPlayStatusResponse) {

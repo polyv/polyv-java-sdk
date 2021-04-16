@@ -131,7 +131,7 @@ public class VodDataStatisticsServiceImplTest extends BaseTest {
      * @throws NoSuchAlgorithmException 异常
      */
 //    @Test
-    public void testQueryVideoPlaybackRanking() throws IOException, NoSuchAlgorithmException {
+    public void testSkipQueryVideoPlaybackRanking() throws IOException, NoSuchAlgorithmException {
         VodQueryVideoPlaybackRankingRequest vodQueryVideoPlaybackRankingRequest =
                 new VodQueryVideoPlaybackRankingRequest();
         VodQueryVideoPlaybackRankingResponse vodQueryVideoPlaybackRankingResponse = null;

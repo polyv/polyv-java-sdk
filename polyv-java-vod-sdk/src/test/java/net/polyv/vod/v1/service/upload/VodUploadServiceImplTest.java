@@ -24,7 +24,7 @@ import net.polyv.vod.v1.service.upload.impl.VodUploadServiceImpl;
 public class VodUploadServiceImplTest extends BaseTest {
     
     /**
-     * 上传多个视频的预览图
+     * 上传本地视频预览图
      * 描述：上传一张本地图片作为多个视频或多个分类的预览图
      * 约束：2、当传了videoIds参数，以videoIds为准，当videoIds不传，以categoryIds为准，两个参数不能同时为空。
      * 返回：true：上传成功；false：上传失败
@@ -42,7 +42,7 @@ public class VodUploadServiceImplTest extends BaseTest {
             Assert.assertTrue(vodUploadCoverImageResponse);
             if (vodUploadCoverImageResponse) {
                 //to do something ......
-                log.debug("测试上传多个视频的预览图成功");
+                log.debug("测试上传本地视频预览图成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -56,7 +56,7 @@ public class VodUploadServiceImplTest extends BaseTest {
     }
     
     /**
-     * 上传多个视频的预览图URL
+     * 上传远程视频预览图
      * 描述：通过图片http地址上传视频预览图
      * 约束：2、图片资源不支持https的协议
      * 约束：3、当传了videoIds参数，以videoIds为准，当videoIds不传，以categoryIds为准，两个参数不能同时为空。
@@ -79,7 +79,7 @@ public class VodUploadServiceImplTest extends BaseTest {
             Assert.assertTrue(vodUploadCoverImageUrlResponse);
             if (vodUploadCoverImageUrlResponse) {
                 //to do something ......
-                log.debug("测试上传多个视频的预览图URL成功");
+                log.debug("测试上传远程视频预览图成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -125,8 +125,8 @@ public class VodUploadServiceImplTest extends BaseTest {
     }
     
     /**
-     * 远程批量上传视频
-     * 描述：批量上传远程视频（异步上传），具体上传情况可调用“分页查询视频同步列表”查看
+     * 上传远程视频
+     * 描述：上传远程视频（异步上传），具体上传情况可调用“分页查询视频同步列表”查看
      * 约束：2、水印链接必须png格式
      * 返回：true提交异步上传成功，false提交异步上传失败
      * @throws IOException
@@ -148,7 +148,7 @@ public class VodUploadServiceImplTest extends BaseTest {
             Assert.assertTrue(vodUploadHttpVideoListResponse);
             if (vodUploadHttpVideoListResponse) {
                 //to do something ......
-                log.debug("测试远程批量上传视频成功");
+                log.debug("测试上传远程视频成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

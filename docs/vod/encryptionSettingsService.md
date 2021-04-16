@@ -44,7 +44,7 @@
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | encrypt | Integer | 是否开启加密，1为开启，0为关闭 | 
-| hlsLevel | String | 加密授权参数，值为open/web/app/wxa_app之一，open为开放授权，web为WEB授权，app为APP授权，wxa_app为小程序授权 | 
+| hlsLevel | String | 加密授权参数，值为open/web/app/wxa_app之一，open为开放授权，web为WEB授权，app为APP授权，wxa_app为小程序授权【对应api文档的**hlslevel**字段】 | 
 
 <br /><br />
 
@@ -98,7 +98,7 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | encrypt | true | Integer | 是否开启加密，1为开启，0为关闭 | 
-| hlsLevel | true | String | 加密授权参数，值为open/web/app/wxa_app之一，open为开放授权，web为WEB授权，app为APP授权，wxa_app为小程序授权 | 
+| hlsLevel | true | String | 加密授权参数，值为open/web/app/wxa_app之一，open为开放授权，web为WEB授权，app为APP授权，wxa_app为小程序授权【对应api文档的**hlslevel**字段】 | 
 
 ### 返回对象描述
 
@@ -106,7 +106,7 @@
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | encrypt | Integer | 是否开启加密，1为开启，0为关闭 | 
-| hlsLevel | String | 加密授权参数，值为open/web/app/wxa_app之一，open为开放授权，web为WEB授权，app为APP授权，wxa_app为小程序授权 | 
+| hlsLevel | String | 加密授权参数，值为open/web/app/wxa_app之一，open为开放授权，web为WEB授权，app为APP授权，wxa_app为小程序授权【对应api文档的**hlslevel**字段】 | 
 
 <br /><br />
 

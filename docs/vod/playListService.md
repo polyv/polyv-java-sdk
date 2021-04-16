@@ -47,25 +47,25 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| desc | String | 详细介绍 | 
+| desc | String | 详细介绍【对应api文档的**describ**字段】 | 
 | tag | String | 标签 | 
 | title | String | 播放列表标题 | 
-| lastModify | Date | 最后修改时间，时间格式 yyyy-MM-dd HH:mm:ss | 
-| videoCount | Integer | 视频数量 | 
-| videoId | String | 视频列表ID | 
-| createTime | Date | 创建时间，时间格式 yyyy-MM-dd HH:mm:ss | 
-| videoList | Array | 视频集合【详见[VideoInfo参数描述](playListService.md?id=polyv31)】 | 
+| lastModify | Date | 最后修改时间，时间格式 yyyy-MM-dd HH:mm:ss【对应api文档的**lmodify**字段】 | 
+| videoCount | Integer | 视频数量【对应api文档的**video_count**字段】 | 
+| videoId | String | 视频列表ID【对应api文档的**videoid**字段】 | 
+| createTime | Date | 创建时间，时间格式 yyyy-MM-dd HH:mm:ss【对应api文档的**ptime**字段】 | 
+| videoList | Array | 视频集合【对应api文档的**videolist**字段】【详见[VideoInfo参数描述](playListService.md?id=polyv31)】 | 
 
 <h6 id="polyv31"><a href="#/playListService.md?id=polyv31"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| videoId | String | 视频id | 
+| videoId | String | 视频id【对应api文档的**vid**字段】 | 
 | title | String | 视频标题 | 
 | duration | String | 视频时长，格式 HH:mm:ss。例如 00:03:11 | 
-| publishUrl | String | 外链地址 | 
-| firstImage | String | 视频首图 | 
-| defaultVideoLink | String | 默认视频链接地址 | 
+| publishUrl | String | 外链地址【对应api文档的**publish_url**字段】 | 
+| firstImage | String | 视频首图【对应api文档的**first_image**字段】 | 
+| defaultVideoLink | String | 默认视频链接地址【对应api文档的**default_videolink**字段】 | 
 
 <br /><br />
 

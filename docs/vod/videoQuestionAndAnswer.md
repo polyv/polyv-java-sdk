@@ -40,7 +40,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodGetVideoExamResponse&gt;，**VodGetVideoExamResponse**具体元素内容如下：
@@ -48,8 +48,8 @@
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | examId | String | 问答题目的id | 
-| userId | String | 用户Id | 
-| videoId | String | 视频的id | 
+| userId | String | 用户Id【对应api文档的**userid**字段】 | 
+| videoId | String | 视频的id【对应api文档的**videoPoolId**字段】 | 
 | showTime | String | 问答题目开始显示的时间，格式 hh:mm:ss 例如 00:03:11 | 
 | hours | Integer | 时 | 
 | minute | Integer | 分 | 
@@ -119,10 +119,10 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 对应视频的videoId，如果是多个视频，将每个videoId用英文逗号隔开 | 
+| videoIds | true | String | 对应视频的videoId，如果是多个视频，将每个videoId用英文逗号隔开【对应api文档的**vids**字段】 | 
 | start | false | Date | 查询的开始日期，格式：yyyy-MM-dd | 
 | end | false | Date | 查询的结束日期，格式：yyyy-MM-dd | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -132,18 +132,18 @@
 | -- | -- | -- | 
 | contents | Array | 答题日志列表【详见[ExamLog参数描述](videoQuestionAndAnswer.md?id=polyv30)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv30"><a href="#/videoQuestionAndAnswer.md?id=polyv30"data-id="ExamLog参数描述"class="anchor"><span>ExamLog参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| logId | Integer | 此条日志的ID | 
+| logId | Integer | 此条日志的ID【对应api文档的**logid**字段】 | 
 | examId | String | 日志所属的问答的ID | 
 | userId | String | 观众ID | 
-| videoId | String | 问答所属的视频ID | 
+| videoId | String | 问答所属的视频ID【对应api文档的**videoPoolId**字段】 | 
 | question | String | 问答标题 | 
 | answer | String | 观众回答的答案 | 
 | isCorrect | Integer | 是否回答正确，1：回答正确；0：回答错误 | 
@@ -154,7 +154,7 @@
 | operatingSystem | String | 观众的操作系统 | 
 | browser | String | 观众使用的浏览器 | 
 | dateAdded | Date | 回答该问题的日期，格式：yyyy-MM-dd HH:mm:ss | 
-| viewerId | String | 自定义观众id | 
+| viewerId | String | 自定义观众id【对应api文档的**viewerid**字段】 | 
 
 <br /><br />
 
@@ -207,7 +207,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 
 ### 返回对象描述
 

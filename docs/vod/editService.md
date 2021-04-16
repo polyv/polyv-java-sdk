@@ -45,8 +45,8 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
-| desc | false | String | 视频描述 | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
+| desc | false | String | 视频描述【对应api文档的**describ**字段】 | 
 | publishUrl | false | String | 视频首发外链地址 | 
 | tag | false | String | 视频标签 | 
 | title | false | String | 视频标题 | 
@@ -56,40 +56,40 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| imagesBig | String[] | 视频截图大图地址 | 
+| imagesBig | String[] | 视频截图大图地址【对应api文档的**images_b**字段】 | 
 | images | String[] | 视频截图小图地址 | 
 | tag | String | 视频标签 | 
 | title | String | 视频标题 | 
 | df | Integer | 视频码率数 | 
 | times | String | 播放次数 | 
-| videoId | String | 视频id | 
-| SDMp4 | String | 流畅码率mp4格式视频地址 | 
-| HDmp4 | String | 高清码率mp4格式视频地址 | 
-| FHDmp4 | String | 超清码率mp4格式视频地址 | 
-| categoryId | String | 分类id， 如1为根目录 | 
-| swfLink | String | 返回flash链接 | 
+| videoId | String | 视频id【对应api文档的**vid**字段】 | 
+| SDMp4 | String | 流畅码率mp4格式视频地址【对应api文档的**mp4_1**字段】 | 
+| HDmp4 | String | 高清码率mp4格式视频地址【对应api文档的**mp4_2**字段】 | 
+| FHDmp4 | String | 超清码率mp4格式视频地址【对应api文档的**mp4_3**字段】 | 
+| categoryId | String | 分类id， 如1为根目录【对应api文档的**cataid**字段】 | 
+| swfLink | String | 返回flash链接【对应api文档的**swf_link**字段】 | 
 | status | String | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
 | seed | Integer | 加密视频为1，非加密为0 | 
-| SDFlv | String | 流畅码率flv格式视频地址 | 
-| HDFlv | String | 高清码率flv格式视频地址 | 
-| FHDFlv | String | 超清码率flv格式视频地址 | 
-| sourceFile | String | 源文件 | 
-| playerWidth | String | 视频宽度 | 
-| defaultVideo | String | 用户默认播放视频 | 
+| SDFlv | String | 流畅码率flv格式视频地址【对应api文档的**flv1**字段】 | 
+| HDFlv | String | 高清码率flv格式视频地址【对应api文档的**flv2**字段】 | 
+| FHDFlv | String | 超清码率flv格式视频地址【对应api文档的**flv3**字段】 | 
+| sourceFile | String | 源文件【对应api文档的**sourcefile**字段】 | 
+| playerWidth | String | 视频宽度【对应api文档的**playerwidth**字段】 | 
+| defaultVideo | String | 用户默认播放视频【对应api文档的**default_video**字段】 | 
 | duration | String | 视频时长,如：00:00:48 | 
-| firstImage | String | 视频首图 | 
-| originalDefinition | String | 最佳分辨率 | 
+| firstImage | String | 视频首图【对应api文档的**first_image**字段】 | 
+| originalDefinition | String | 最佳分辨率【对应api文档的**original_definition**字段】 | 
 | context | String | 视频描述 | 
-| playerHeight | String | 视频高度 | 
-| uploadTime | String | 上传时间 | 
-| sourceFilesize | String | 源文件大小 | 
+| playerHeight | String | 视频高度【对应api文档的**playerheight**字段】 | 
+| uploadTime | String | 上传时间【对应api文档的**ptime**字段】 | 
+| sourceFilesize | String | 源文件大小【对应api文档的**source_filesize**字段】 | 
 | filesize | String[] | 编码后各个清晰度视频的文件大小，类型为array | 
-| md5Checksum | String | md5校验值 | 
+| md5Checksum | String | md5校验值【对应api文档的**md5checksum**字段】 | 
 | hls | String[] | 编码后各个清晰度视频的m3u8地址，类型为array | 
-| keepSource | String | 是否为源文件，否：0,是：1 | 
+| keepSource | String | 是否为源文件，否：0,是：1【对应api文档的**keepsource**字段】 | 
 | uploader | Uploader | 上传者信息【详见[Uploader参数描述](editService.md?id=polyv10)】 | 
 | hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
-| categoryName | String | 分类名称 | 
+| categoryName | String | 分类名称【对应api文档的**cataname**字段】 | 
 
 <h6 id="polyv10"><a href="#/editService.md?id=polyv10"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -150,8 +150,8 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 多个视频id，用英文逗号隔开(状态为半角)，例如 1b8be3,239c2e | 
-| playAuth | false | Integer | 是否开启，0：关闭，1：开启，默认为开启 | 
+| videoIds | true | String | 多个视频id，用英文逗号隔开(状态为半角)，例如 1b8be3,239c2e【对应api文档的**vids**字段】 | 
+| playAuth | false | Integer | 是否开启，0：关闭，1：开启，默认为开启【对应api文档的**playauth**字段】 | 
 
 ### 返回对象描述
 
@@ -207,8 +207,8 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| hlsLevel | true | String | 加密授权参数，值为open/web/app/wxa_app之一，open为开放授权，web为WEB授权，app为APP授权，wxa_app为小程序授权 | 
-| videoIds | true | String | 多个视频的vid，用英文逗号隔开 | 
+| hlsLevel | true | String | 加密授权参数，值为open/web/app/wxa_app之一，open为开放授权，web为WEB授权，app为APP授权，wxa_app为小程序授权【对应api文档的**hlslevel**字段】 | 
+| videoIds | true | String | 多个视频的vid，用英文逗号隔开【对应api文档的**vids**字段】 | 
 
 ### 返回对象描述
 
@@ -265,7 +265,7 @@ true为修改视频授权方式成功，false为修改授权方式失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | duration | true | Integer | 预览的时长（单位是秒），例如：20 | 
 
 ### 返回对象描述
@@ -327,7 +327,7 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 视频vid，多个视频以英文逗号分隔 | 
+| videoIds | true | String | 视频vid，多个视频以英文逗号分隔【对应api文档的**vids**字段】 | 
 | forbidden | true | Integer | 1：禁播，0：解禁 | 
 
 ### 返回对象描述
@@ -387,8 +387,8 @@ true为设置成功，false为设置失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 视频ID,多个使用英文逗号分隔 | 
-| desc | false | String | 视频描述 | 
+| videoIds | true | String | 视频ID,多个使用英文逗号分隔【对应api文档的**vids**字段】 | 
+| desc | false | String | 视频描述【对应api文档的**describ**字段】 | 
 | password | false | String | 视频密码 | 
 | publishUrl | false | String | 首发外链 | 
 | tag | false | String | 视频标签 | 
@@ -445,8 +445,8 @@ true为修改成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 视频的ID,可以选择多个视频，逗号分割，例如 e2e85038_e,e2e85039_e | 
-| categoryId | true | String | 视频将要移动到的目标分类ID | 
+| videoIds | true | String | 视频的ID,可以选择多个视频，逗号分割，例如 e2e85038_e,e2e85039_e【对应api文档的**vids**字段】 | 
+| categoryId | true | String | 视频将要移动到的目标分类ID【对应api文档的**cataid**字段】 | 
 
 ### 返回对象描述
 
@@ -503,7 +503,7 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 点播视频videoId，多个使用英文逗号分隔 | 
+| videoIds | true | String | 点播视频videoId，多个使用英文逗号分隔【对应api文档的**vids**字段】 | 
 
 ### 返回对象描述
 
@@ -562,7 +562,7 @@ null
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 视频ID，多个视频以英文逗号(,)隔开，一次最多提交500个 | 
+| videoIds | true | String | 视频ID，多个视频以英文逗号(,)隔开，一次最多提交500个【对应api文档的**vids**字段】 | 
 | deleteType | false | Integer | 删除方式，1：删除到回收站，2：彻底删除，默认为：1 | 
 
 ### 返回对象描述

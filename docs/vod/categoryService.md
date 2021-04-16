@@ -41,16 +41,16 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryName | true | String | 分类名称 ,不超过40个字符 | 
-| parentId | true | String | 新建的分类目录的上一级目录，值为1时表示根目录 | 
+| categoryName | true | String | 分类名称 ,不超过40个字符【对应api文档的**cataname**字段】 | 
+| parentId | true | String | 新建的分类目录的上一级目录，值为1时表示根目录【对应api文档的**parentid**字段】 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| categoryId | String | 新建的分类目录ID | 
-| categoryTree | String | 新建的分类目录树，逗号分割(状态为半角)，例如 1b8be3,239c2e | 
+| categoryId | String | 新建的分类目录ID【对应api文档的**cataid**字段】 | 
+| categoryTree | String | 新建的分类目录树，逗号分割(状态为半角)，例如 1b8be3,239c2e【对应api文档的**catatree**字段】 | 
 
 <br /><br />
 
@@ -100,7 +100,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | false | String | 分类id，默认为根目录，获取该分类下的树结构 | 
+| categoryId | false | String | 分类id，默认为根目录，获取该分类下的树结构【对应api文档的**cataid**字段】 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodGetCategoryResponse&gt;，**VodGetCategoryResponse**具体元素内容如下：
@@ -108,11 +108,11 @@
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | text | String | 分类名和该分类下视频总数的组合，例如 测试分类 (4)  | 
-| categoryName | String | 分类名称 | 
-| categoryTree | String | 分类树，显示从根目录到该目录每一层的分类id,例如 1,1474873756622 | 
-| categoryId | String | 分类id，如果为1则是根目录 | 
-| parentId | String | 上一级分类id，根目录的上一级分类为0 | 
-| videoNums | Integer | 此分类及其子分类视频总数 | 
+| categoryName | String | 分类名称【对应api文档的**cataname**字段】 | 
+| categoryTree | String | 分类树，显示从根目录到该目录每一层的分类id,例如 1,1474873756622【对应api文档的**catatree**字段】 | 
+| categoryId | String | 分类id，如果为1则是根目录【对应api文档的**cataid**字段】 | 
+| parentId | String | 上一级分类id，根目录的上一级分类为0【对应api文档的**parentid**字段】 | 
+| videoNums | Integer | 此分类及其子分类视频总数【对应api文档的**videos**字段】 | 
 | nodes | Array | 该分类的子分类【详见[VodGetCategoryResponse参数描述](categoryService.md?id=polyv9)】 | 
 
 <br /><br />
@@ -163,7 +163,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | true | String | 目录分类id, (id=1，表示默认分类) | 
+| categoryId | true | String | 目录分类id, (id=1，表示默认分类)【对应api文档的**cataid**字段】 | 
 
 ### 返回对象描述
 
@@ -218,8 +218,8 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | true | String | 分类id | 
-| categoryName | true | String | 修改后的分类名称 | 
+| categoryId | true | String | 分类id【对应api文档的**cataid**字段】 | 
+| categoryName | true | String | 修改后的分类名称【对应api文档的**cataname**字段】 | 
 
 ### 返回对象描述
 
@@ -279,13 +279,13 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | true | String | 分类ID，仅能设置一级分类的属性 | 
+| categoryId | true | String | 分类ID，仅能设置一级分类的属性【对应api文档的**cataid**字段】 | 
 | isSettings | false | String | 是否启用分类设置 Y:启用, N:关闭，默认值为Y:启用 | 
 | keepSource | false | Integer | 源文件播放，1为开启，0为关闭；开启时不对视频进行转码（仅对新上传视频有效），默认值为0:非源文件播放 | 
 | encrypt | true | Integer | 视频加密设置开关（仅对新上传视频有效）,1：打开，0：关闭，默认值为0:关闭 | 
-| hlsLevel | false | String | 移动端加密设置，有效取值为 open: 非加密授权；web: WEB授权；app: APP授权；wxa_app：小程序授权；默认值为open：非加密授权 | 
+| hlsLevel | false | String | 移动端加密设置，有效取值为 open: 非加密授权；web: WEB授权；app: APP授权；wxa_app：小程序授权；默认值为open：非加密授权【对应api文档的**hlslevel**字段】 | 
 | isEdu | false | Integer | 视频优化，1为开启，0为关闭（仅对新上传视频生效）;默认值为0:关闭 | 
-| encodeAAC | false | Integer | 生成音频文件，1为开启，0为关闭（该功能只对部分有权限用户开放，且只对新上传视频生效），默认为0:不生成 | 
+| encodeAAC | false | Integer | 生成音频文件，1为开启，0为关闭（该功能只对部分有权限用户开放，且只对新上传视频生效），默认为0:不生成【对应api文档的**encode_aac**字段】 | 
 
 ### 返回对象描述
 
@@ -339,8 +339,8 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | true | String | 需要移动的目录分类id, (id=1，表示默认分类) | 
-| destCategoryId | true | String | 移动到的目录分类id, (id=1，表示默认分类) | 
+| categoryId | true | String | 需要移动的目录分类id, (id=1，表示默认分类)【对应api文档的**cataid**字段】 | 
+| destCategoryId | true | String | 移动到的目录分类id, (id=1，表示默认分类)【对应api文档的**destCataid**字段】 | 
 
 ### 返回对象描述
 
@@ -395,7 +395,7 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | true | String | 视频分类ID | 
+| categoryId | true | String | 视频分类ID【对应api文档的**cataid**字段】 | 
 
 ### 返回对象描述
 

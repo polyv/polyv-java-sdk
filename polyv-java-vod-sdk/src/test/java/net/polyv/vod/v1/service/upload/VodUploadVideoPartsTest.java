@@ -27,6 +27,9 @@ public class VodUploadVideoPartsTest extends BaseTest {
      */
     @Test
     public void testUploadVideoPart() {
+        //构建视频上传客户端，可传入分片大小（默认为1MB,大小限定为100KB~5GB），分片文件夹路径（默认为checkpoint_location），上传线程数（默认为5个），此对象全局唯一
+        PolyvUploadClient client = new PolyvUploadClient(1024 * 1024, "checkpoint_location", 5);
+        
         String videoFile = getClass().getResource("/file/polyv.mp4").getPath();
         VodUploadVideoRequest vodUploadVideoRequest = new VodUploadVideoRequest();
         vodUploadVideoRequest.setFile(new File(videoFile))
@@ -38,10 +41,6 @@ public class VodUploadVideoPartsTest extends BaseTest {
                 .setKeepSource(0)
                 .setState("junitTest");
         try {
-            /**
-             * 构建视频上传客户端，可传入分片大小（默认为1MB,大小限定为100KB~5GB），分片文件夹路径（默认为checkpoint_location），上传线程数（默认为5个）
-             */
-            PolyvUploadClient client = new PolyvUploadClient(1024 * 1024, "checkpoint_location", 5);
             String videoId = client.uploadVideo(vodUploadVideoRequest, new UploadCallBack() {
                 
                 /**

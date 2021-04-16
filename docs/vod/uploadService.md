@@ -45,8 +45,8 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | false | String | 多个视频id用逗号隔开(状态为半角)，例如 1b8be3,239c2e | 
-| categoryIds | false | String | 多个分类id用逗号隔开(状态为半角)，例如 1b8be3,239c2e | 
+| videoIds | false | String | 多个视频id用逗号隔开(状态为半角)，例如 1b8be3,239c2e【对应api文档的**vids**字段】 | 
+| categoryIds | false | String | 多个分类id用逗号隔开(状态为半角)，例如 1b8be3,239c2e【对应api文档的**cataids**字段】 | 
 | image | true | File | 视频预览图片 | 
 
 ### 返回对象描述
@@ -110,9 +110,9 @@ true：上传成功；false：上传失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | false | String | 多个视频id用英文逗号隔开(状态为半角)，例如 1b8be3,239c2e | 
-| categoryIds | false | String | 多个分类id用英文逗号隔开(状态为半角)，例如 1b8be3,239c2e | 
-| imageUrl | true | String | 视频预览图片http地址 | 
+| videoIds | false | String | 多个视频id用英文逗号隔开(状态为半角)，例如 1b8be3,239c2e【对应api文档的**vids**字段】 | 
+| categoryIds | false | String | 多个分类id用英文逗号隔开(状态为半角)，例如 1b8be3,239c2e【对应api文档的**cataids**字段】 | 
+| imageUrl | true | String | 视频预览图片http地址【对应api文档的**fileUrl**字段】 | 
 
 ### 返回对象描述
 
@@ -169,7 +169,7 @@ true：上传成功；false：上传失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | image | true | File | 上传的水印图片 | 
-| categoryId | false | String | 分类ID,仅一级分类能设置水印。不传为设置用户级别的水印 | 
+| categoryId | false | String | 分类ID,仅一级分类能设置水印。不传为设置用户级别的水印【对应api文档的**cataid**字段】 | 
 | watermarkLocation | false | String | 水印显示的位置：1：左上角；2：右上角；3：左下角；4：右下角；0：不显示水印 | 
 
 ### 返回对象描述
@@ -234,8 +234,8 @@ true：上传成功；false：上传失败
 | -- | -- | -- | -- | 
 | fileUrl | true | String | 远程文件的http链接(带http://)，多个地址间使用英文逗号隔开 | 
 | title | true | String | 标题，多个标题使用逗号隔开(标题数量必须和文件地址数量一致) | 
-| categoryId | false | String | 设定上传视频的分类，当categoryId值为1时，表示用户上传空间的根目录。 | 
-| screenCap | false | Integer | 是否录屏优化。当值为1时，上传的视频不再采取默认的压缩编码机制，视频尺寸不再压缩，保证视频的清晰度。默认值为0 | 
+| categoryId | false | String | 设定上传视频的分类，当categoryId值为1时，表示用户上传空间的根目录。【对应api文档的**cataid**字段】 | 
+| screenCap | false | Integer | 是否录屏优化。当值为1时，上传的视频不再采取默认的压缩编码机制，视频尺寸不再压缩，保证视频的清晰度。默认值为0【对应api文档的**luping**字段】 | 
 | watermark | false | String | 自定义水印图片地址,图片格式必须是png格式，支持http、https。 | 
 | watermarkLocation | false | String | 自定义水印图片位置，如没该参数，则自定义水印的显示情况跟随分类或账号设置。1：左上角；2：右上角；3：左下角；4：右下角 | 
 

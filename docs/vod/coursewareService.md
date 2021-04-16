@@ -44,7 +44,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | courseware | true | File | 上传课件 | 
 
 ### 返回对象描述
@@ -104,7 +104,7 @@ true为上传课件成功，false为上传课件失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | ppt | true | File | ppt文件 | 
 | controlFile | true | File | ppt控制文件，文件后缀为txt，文本格式见约束 | 
 
@@ -159,7 +159,7 @@ true为上传成功，false为上传失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryCoursewareResponse&gt;，**VodQueryCoursewareResponse**具体元素内容如下：
@@ -222,7 +222,7 @@ true为上传成功，false为上传失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 
 ### 返回对象描述
 

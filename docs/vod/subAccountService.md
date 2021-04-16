@@ -52,7 +52,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | false | String | 视频分类ID | 
+| categoryId | false | String | 视频分类ID【对应api文档的**cataId**字段】 | 
 | title | false | String | 按标题搜索 | 
 | uploader | false | String | 上传者 | 
 | status | false | String | 视频状态码;60/61:已发布;10:等待编码;20:正在编码;50:等待审核;51:审核不通过;-1:已删除; | 
@@ -62,7 +62,7 @@
 | sort | false | String | 排序creationTimeDesc或creationTimeAsc | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -72,15 +72,15 @@
 | -- | -- | -- | 
 | contents | Array | 查询的结果列表【详见[VodSearchVideoList参数描述](subAccountService.md?id=polyv32)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| currentPage | Integer | 当前页 | 
+| currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
-| totalPage | Integer | 总页数 | 
+| totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
 <h6 id="polyv32"><a href="#/subAccountService.md?id=polyv32"data-id="VodSearchVideoList参数描述"class="anchor"><span>VodSearchVideoList参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| videoId | String | 视频id | 
+| videoId | String | 视频id【对应api文档的**vid**字段】 | 
 | basicInfo | BasicInfo | 查询的视频基本信息【详见[BasicInfo参数描述](subAccountService.md?id=polyv33)】 | 
 
 <h6 id="polyv33"><a href="#/subAccountService.md?id=polyv33"data-id="BasicInfo参数描述"class="anchor"><span>BasicInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
@@ -95,8 +95,8 @@
 | updateTime | Date | 更新时间 | 
 | size | Long | 源文件大小，单位：Bytes | 
 | status | Integer | 视频状态码;60/61:已发布;10:等待编码;20:正在编码;50:等待审核;51:审核不通过;-1:已删除; | 
-| categoryId | String | 分类id, 如1为根目录 | 
-| categoryName | String | 分类名称 | 
+| categoryId | String | 分类id, 如1为根目录【对应api文档的**cateId**字段】 | 
+| categoryName | String | 分类名称【对应api文档的**cateName**字段】 | 
 | tags | String | 标签 | 
 | uploader | String | 上传者 | 
 
@@ -155,8 +155,8 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 视频ID，多个视频ID用英文逗号分隔(状态为半角)，例如 1b8be3,239c2e | 
-| filters | false | String | 选择需要返回的视频信息，多个以英文逗号分隔(状态为半角,例如 basicInfo,metaData)，取值：basicInfo,metaData,transcodeInfo,snapshotInfo, 分别代表基础信息、元数据、转码信息、截图信息，为空则返回基础信息 | 
+| videoIds | true | String | 视频ID，多个视频ID用英文逗号分隔(状态为半角)，例如 1b8be3,239c2e【对应api文档的**vids**字段】 | 
+| filters | false | String | 选择需要返回的视频信息，多个以英文逗号分隔(状态为半角,例如 basicInfo,metaData)，取值：basicInfo,metaData,transcodeInfo,snapshotInfo, 分别代表基础信息、元数据、转码信息、截图信息，为空则返回基础信息【对应api文档的**filter**字段】 | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
 
@@ -165,7 +165,7 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| videoId | String | 视频id | 
+| videoId | String | 视频id【对应api文档的**vid**字段】 | 
 | basicInfo | BasicInfo | 查询的视频基本信息【详见[BasicInfo参数描述](subAccountService.md?id=polyv34)】 | 
 | transcodeInfos | Array | 查询的视频转码信息【详见[TranscodeInfos参数描述](subAccountService.md?id=polyv35)】 | 
 | metaData | MetaData | 查询的视频元数据【详见[MetaData参数描述](subAccountService.md?id=polyv36)】 | 
@@ -183,8 +183,8 @@
 | updateTime | Date | 更新时间 | 
 | size | Long | 源文件大小，单位：Bytes | 
 | status | Integer | 视频状态码;60/61:已发布;10:等待编码;20:正在编码;50:等待审核;51:审核不通过;-1:已删除; | 
-| categoryId | String | 分类id, 如1为根目录 | 
-| categoryName | String | 分类名称 | 
+| categoryId | String | 分类id, 如1为根目录【对应api文档的**cateId**字段】 | 
+| categoryName | String | 分类名称【对应api文档的**cateName**字段】 | 
 | tags | String | 标签 | 
 | uploader | String | 上传者 | 
 
@@ -279,9 +279,9 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | title | false | String | 视频标题 | 
-| desc | false | String | 视频描述 | 
+| desc | false | String | 视频描述【对应api文档的**describ**字段】 | 
 | tag | false | String | 视频标签信息 | 
 | publishUrl | false | String | 外链地址 | 
 | appId | true | String | 子账号appId | 
@@ -341,7 +341,7 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
 
@@ -462,10 +462,10 @@ true为删除视频成功，false为删除视频失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | true | String | 分类id | 
+| categoryId | true | String | 分类id【对应api文档的**cateId**字段】 | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
-| currentPage | false | Integer | 页数，默认为1 | 
+| currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 
 ### 返回对象描述
@@ -481,8 +481,8 @@ true为删除视频成功，false为删除视频失败
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| categoryId | String | 分类id | 
-| categoryName | String | 分类名称 | 
+| categoryId | String | 分类id【对应api文档的**cateId**字段】 | 
+| categoryName | String | 分类名称【对应api文档的**cateName**字段】 | 
 | parentId | String | 父分类id | 
 
 <br /><br />
@@ -539,8 +539,8 @@ true为删除视频成功，false为删除视频失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | true | String | 分类id | 
-| categoryName | true | String | 分类名称 | 
+| categoryId | true | String | 分类id【对应api文档的**cateId**字段】 | 
+| categoryName | true | String | 分类名称【对应api文档的**cateName**字段】 | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
 
@@ -602,7 +602,7 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | true | String | 分类id | 
+| categoryId | true | String | 分类id【对应api文档的**cateId**字段】 | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
 
@@ -664,8 +664,8 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 视频ID串，多个视频ID之间用英文逗号分隔(状态为半角)，例如 1b8be3,239c2e | 
-| categoryId | false | String | 视频分类ID | 
+| videoIds | true | String | 视频ID串，多个视频ID之间用英文逗号分隔(状态为半角)，例如 1b8be3,239c2e【对应api文档的**vids**字段】 | 
+| categoryId | false | String | 视频分类ID【对应api文档的**cateId**字段】 | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
 
@@ -731,7 +731,7 @@ true为修改成功，false为修改失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| categoryId | true | String | 分类id | 
+| categoryId | true | String | 分类id【对应api文档的**cateId**字段】 | 
 | enabled | false | String | 是否启用分类设置 Y:启用, N:关闭，默认值为N:关闭 | 
 | keepSource | false | Integer | 1:源文件播放;0:非源文件播放，如果为源文件播放，encrypt、encryptLevel、isEdu、encodeAAC参数不生效，默认值为0:非源文件播放 | 
 | encrypt | false | Integer | 1:开启视频加密,0:不加密，默认值为0:不加密 | 

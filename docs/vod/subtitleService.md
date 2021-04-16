@@ -45,7 +45,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | title | true | String | 字幕名称 | 
 | file | true | File | 字幕文件，支持utf-8编码 | 
 | asDefault | false | String | 是否作为默认字幕，Y：是，N:否。默认为N:否。首次上传字幕为Y：是 | 
@@ -102,14 +102,14 @@ true为上传成功，false为上传失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| subtitles | Array | 查询的结果列表【详见[Subtitle参数描述](subtitleService.md?id=polyv27)】 | 
+| subtitles | Array | 查询的结果列表【对应api文档的**srts**字段】【详见[Subtitle参数描述](subtitleService.md?id=polyv27)】 | 
 
 <h6 id="polyv27"><a href="#/subtitleService.md?id=polyv27"data-id="Subtitle参数描述"class="anchor"><span>Subtitle参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
@@ -172,9 +172,9 @@ true为上传成功，false为上传失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
-| sourceSubtitleNames | true | String | 原始字幕名称，必须传两个值。以英文逗号分隔，合并后第一个字幕的内容在上方显示。 | 
-| mergedSubtitleName | false | String | 合并字幕的名称，默认：双语。不超过5个中文字符。 | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
+| sourceSubtitleNames | true | String | 原始字幕名称，必须传两个值。以英文逗号分隔，合并后第一个字幕的内容在上方显示。【对应api文档的**sourceSrtNames**字段】 | 
+| mergedSubtitleName | false | String | 合并字幕的名称，默认：双语。不超过5个中文字符。【对应api文档的**mergedSrtName**字段】 | 
 | setAsDefault | false | Boolean | 是否设置为默认显示的字幕。默认值：true。 | 
 
 ### 返回对象描述
@@ -232,7 +232,7 @@ true为合并字幕文件成功，false为合并字幕文件失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
+| videoId | true | String | 视频ID【对应api文档的**vid**字段】 | 
 | ranks | true | String | 字幕序号列表，序号从1开始，多个以英文逗号分隔，例如 2,3 | 
 
 ### 返回对象描述

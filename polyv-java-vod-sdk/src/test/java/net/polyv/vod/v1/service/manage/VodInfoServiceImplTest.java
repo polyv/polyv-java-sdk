@@ -105,8 +105,7 @@ public class VodInfoServiceImplTest extends BaseTest {
         VodGetVideoSizeRequest vodGetVideoSizeRequest = new VodGetVideoSizeRequest();
         List<VodGetVideoSizeResponse> vodGetVideoSizeResponseList = null;
         try {
-            vodGetVideoSizeRequest.setVideoIds("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setCategoryIds("1602300731843");
+            vodGetVideoSizeRequest.setVideoIds("1b448be323a146649ad0cc89d0faed9c_1").setCategoryIds("1602300731843");
             vodGetVideoSizeResponseList = new VodInfoServiceImpl().getVideoSize(vodGetVideoSizeRequest);
             Assert.assertNotNull(vodGetVideoSizeResponseList);
             if (vodGetVideoSizeResponseList != null) {
@@ -194,8 +193,7 @@ public class VodInfoServiceImplTest extends BaseTest {
         VodGetVideoFirstImageRequest vodGetVideoFirstImageRequest = new VodGetVideoFirstImageRequest();
         String vodGetVideoFirstImageResponse = null;
         try {
-            vodGetVideoFirstImageRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
-                    .setThumbnail(1);
+            vodGetVideoFirstImageRequest.setVideoId("1b448be323a146649ad0cc89d0faed9c_1").setThumbnail(1);
             vodGetVideoFirstImageResponse = new VodInfoServiceImpl().getVideoFirstImage(vodGetVideoFirstImageRequest);
             Assert.assertNotNull(vodGetVideoFirstImageResponse);
             if (vodGetVideoFirstImageResponse != null) {
@@ -252,8 +250,7 @@ public class VodInfoServiceImplTest extends BaseTest {
         List<VodGetVideosPlayTimesResponse> vodGetVideosPlayTimesResponseList = null;
         try {
             vodGetVideosPlayTimesRequest.setVideoIds(
-                    "1b448be3230a0194d959426ae005645f_1,1b448be323a146649ad0cc89d0faed9c_1")
-                    .setRealTime(0);
+                    "1b448be3230a0194d959426ae005645f_1,1b448be323a146649ad0cc89d0faed9c_1").setRealTime(0);
             vodGetVideosPlayTimesResponseList = new VodInfoServiceImpl().getVideosPlayTimes(
                     vodGetVideosPlayTimesRequest);
             Assert.assertNotNull(vodGetVideosPlayTimesResponseList);

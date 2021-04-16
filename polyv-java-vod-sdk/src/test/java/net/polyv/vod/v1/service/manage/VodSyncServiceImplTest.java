@@ -25,7 +25,8 @@ import net.polyv.vod.v1.service.manage.impl.VodSyncServiceImpl;
 @Slf4j
 public class VodSyncServiceImplTest extends BaseTest {
     /**
-     * 测试分页查询视频同步列表
+     * 测试查询视频同步列表
+     * 描述：分页查询视频同步列表
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -53,6 +54,7 @@ public class VodSyncServiceImplTest extends BaseTest {
     
     /**
      * 测试删除抓取视频任务
+     * 描述：通过视频同步任务id删除抓取视频任务
      * 返回：true为删除成功，false为删除失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -84,6 +86,7 @@ public class VodSyncServiceImplTest extends BaseTest {
     
     /**
      * 测试导出视频同步任务
+     * 描述：通过视频同步任务id导出视频同步任务
      * 返回：返回的byte[]可以按照单元测试示例进行保存，也可以自行处理。
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常

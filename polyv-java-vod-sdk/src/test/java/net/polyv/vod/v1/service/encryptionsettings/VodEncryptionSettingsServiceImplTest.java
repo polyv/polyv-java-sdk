@@ -16,7 +16,6 @@ import net.polyv.vod.v1.entity.encryptionsettings.VodUpdateEncryptionSettingsReq
 import net.polyv.vod.v1.entity.encryptionsettings.VodUpdateEncryptionSettingsResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.encryptionsettings.impl.VodEncryptionSettingsServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 加密设置
@@ -26,6 +25,7 @@ import net.polyv.vod.v1.util.VodSignUtil;
 public class VodEncryptionSettingsServiceImplTest extends BaseTest {
     /**
      * 测试查询账号加密设置
+     * 描述：查询账号加密设置的相关参数
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -53,6 +53,7 @@ public class VodEncryptionSettingsServiceImplTest extends BaseTest {
     
     /**
      * 测试修改账号加密设置
+     * 描述：通过加密授权相关的参数修改账号加密设置
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

@@ -22,8 +22,10 @@ import net.polyv.vod.v1.service.play.impl.VodPlayListServiceImpl;
  */
 @Slf4j
 public class VodPlayListServiceImplTest extends BaseTest {
+    
     /**
      * 测试查询单个播放列表
+     * 描述：通过播放列表id查询单个播放列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

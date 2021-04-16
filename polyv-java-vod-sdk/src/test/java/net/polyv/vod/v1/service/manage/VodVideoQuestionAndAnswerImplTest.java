@@ -29,6 +29,7 @@ public class VodVideoQuestionAndAnswerImplTest extends BaseTest {
     
     /**
      * 测试查询单个视频的问答题目
+     * 描述：通过视频id查询单个视频的问答题目
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -56,6 +57,7 @@ public class VodVideoQuestionAndAnswerImplTest extends BaseTest {
     
     /**
      * 测试批量查询答题日志
+     * 描述：通过视频id批量查询答题日志
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -87,6 +89,7 @@ public class VodVideoQuestionAndAnswerImplTest extends BaseTest {
     
     /**
      * 测试删除单个视频的问答题目
+     * 描述：通过视频id删除单个视频的问答题目
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

@@ -29,6 +29,7 @@ public class VodBarrageServiceImplTest extends BaseTest {
     
     /**
      * 测试创建视频弹幕
+     * 描述：通过视频id与弹幕信息创建视频弹幕
      * 约束：2、弹幕功能请联系客服开通
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -64,6 +65,7 @@ public class VodBarrageServiceImplTest extends BaseTest {
     
     /**
      * 测试上传点播弹幕文件
+     * 描述：通过视频id上传点播弹幕文件
      * 约束：2、弹幕功能请联系客服开通
      * 返回：true为上传弹幕文件成功，false为上传弹幕文件失败
      * @throws IOException
@@ -94,7 +96,8 @@ public class VodBarrageServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试分页查询用户下所有弹幕信息
+     * 测试查询用户下所有弹幕信息
+     * 描述：通过视频id或分页参数查询用户下所有弹幕信息
      * 约束：2、弹幕功能请联系客服开通
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -123,6 +126,7 @@ public class VodBarrageServiceImplTest extends BaseTest {
     
     /**
      * 测试批量删除弹幕信息
+     * 描述：通过弹幕id批量删除弹幕信息
      * 约束：2、弹幕功能请联系客服开通
      * 返回：true为批量删除弹幕成功，false为批量删除弹幕失败
      * @throws IOException

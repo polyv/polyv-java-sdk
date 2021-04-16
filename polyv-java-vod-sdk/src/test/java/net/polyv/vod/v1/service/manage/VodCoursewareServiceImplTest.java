@@ -30,13 +30,13 @@ public class VodCoursewareServiceImplTest extends BaseTest {
     
     /**
      * 测试异步上传课件
-     * 描述：1、上传课件，支持ppt、pptx及pdf文件
+     * 描述：通过视频id上传课件，支持ppt、pptx及pdf文件
      * 约束：2、接口只返回上传结果，课件转换结果需通过事件回调获取，详见：[回调通知说明](callBack?id=九、课件转换完成).
      * 返回：true为上传课件成功，false为上传课件失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    @Test
+//    @Test
     public void testUploadCourseware() throws IOException, NoSuchAlgorithmException {
         VodUploadCoursewareRequest vodUploadCoursewareRequest = new VodUploadCoursewareRequest();
         Boolean vodUploadCoursewareResponse = null;
@@ -62,6 +62,7 @@ public class VodCoursewareServiceImplTest extends BaseTest {
     
     /**
      * 测试同步上传课件
+     * 描述：通过视频id与ppt控制文件上传ppt课件
      * 约束：2、ppt控制文件格式示例如下，每一行为：“秒数”+“:”+“标题”（注：ppt控制文件必须是UTF-8的编码格式，否则课件的章节标题会显示为乱码）
      * 返回：true为上传成功，false为上传失败
      * @throws IOException
@@ -95,6 +96,7 @@ public class VodCoursewareServiceImplTest extends BaseTest {
     
     /**
      * 测试查询课件
+     * 描述：通过视频id查询课件
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -122,6 +124,7 @@ public class VodCoursewareServiceImplTest extends BaseTest {
     
     /**
      * 测试删除课件
+     * 描述：通过视频id删除课件
      * 返回：true为删除成功，false为删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException

@@ -28,6 +28,7 @@ public class VodVideoPogressBarManagementImplTest extends BaseTest {
     
     /**
      * 测试设置视频打点
+     * 描述：通过视频id设置视频的打点信息
      * 约束：2、请求入参seconds(打点秒数【第seconds秒】)必须要小于视频长度;
      * 约束：3、请求入参desc(打点描述)的个数必须要和seconds的个数相同。
      * 返回：true为打点成功，false为打点失败
@@ -65,6 +66,7 @@ public class VodVideoPogressBarManagementImplTest extends BaseTest {
     
     /**
      * 测试查询单个视频的打点信息
+     * 描述：通过视频id查询单个视频的打点信息
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -94,6 +96,7 @@ public class VodVideoPogressBarManagementImplTest extends BaseTest {
     
     /**
      * 测试删除视频指定时间点的打点信息
+     * 描述：通过视频id与时间点删除视频指定时间点的打点信息
      * 返回：true为删除成功，false为删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -125,6 +128,7 @@ public class VodVideoPogressBarManagementImplTest extends BaseTest {
     
     /**
      * 删除视频的全部打点信息
+     * 描述：通过视频id删除视频的全部打点信息
      * 返回：true为删除全部打点信息成功，false为删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException

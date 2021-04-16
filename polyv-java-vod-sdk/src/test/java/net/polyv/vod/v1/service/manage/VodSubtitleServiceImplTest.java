@@ -28,6 +28,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
     
     /**
      * 测试上传点播视频字幕文件
+     * 描述：通过视频id上传点播视频字幕文件
      * 返回：true为上传成功，false为上传失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -61,6 +62,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
     
     /**
      * 测试查询视频字幕
+     * 描述：通过视频id查询视频字幕
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -88,6 +90,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
     
     /**
      * 测试合并字幕文件
+     * 描述：通过视频id与字幕信息合并字幕文件
      * 返回：true为合并字幕文件成功，false为合并字幕文件失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -123,6 +126,7 @@ public class VodSubtitleServiceImplTest extends BaseTest {
     
     /**
      * 测试删除视频字幕
+     * 描述：通过视频id与字幕序号列表删除视频字幕
      * 返回：true为删除字幕成功，false为删除字幕失败
      * @throws IOException
      * @throws NoSuchAlgorithmException

@@ -27,6 +27,7 @@ import net.polyv.vod.v1.service.advertising.impl.VodAdvertisingServiceImpl;
 public class VodAdvertisingServiceImplTest extends BaseTest {
     /**
      * 测试创建视频广告
+     * 描述：通过上传广告文件及时间范围等参数创建视频广告
      * 返回：创建成功返回视频广告ID
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -70,6 +71,7 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
     
     /**
      * 测试查询视频广告列表
+     * 描述：分页查询视频广告列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -98,6 +100,7 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
     
     /**
      * 测试修改视频广告
+     * 描述：通过广告id修改视频广告信息
      * 返回：true为修改成功，false为修改失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -143,6 +146,7 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
     
     /**
      * 测试删除视频广告
+     * 描述：通过广告id删除视频广告
      * 返回：true为删除成功，false为删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException

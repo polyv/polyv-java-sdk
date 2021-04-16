@@ -32,6 +32,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
     
     /**
      * 测试新建视频分类
+     * 描述：通过分类名称与上级分类目录id新建视频分类
      * 返回：新建视频分类ID
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -61,7 +62,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
     
     /**
      * 测试查询视频分类
-     * 描述：通过分类ID查询分类下的树结构信息，含父子节点信息
+     * 描述：通过分类id查询分类下的树结构信息，含父子节点信息
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -88,7 +89,8 @@ public class VodCategoryServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试通过分类ID查询目录使用空间
+     * 测试查询分类使用空间
+     * 描述：通过分类id查询分类目录的使用空间
      * 返回：分类下的视频大小，单位为byte
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -117,6 +119,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
     
     /**
      * 测试修改分类名称
+     * 描述：通过分类id修改分类名称
      * 返回：true为修改成功，false为修改失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -147,6 +150,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
     
     /**
      * 测试修改分类属性
+     * 描述：通过分类id修改分类属性
      * 返回：true为修改成功，false为修改失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -182,6 +186,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
     
     /**
      * 测试移动视频分类
+     * 描述：通过分类id移动视频分类
      * 返回：true为修改成功，false为修改失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -211,6 +216,7 @@ public class VodCategoryServiceImplTest extends BaseTest {
     
     /**
      * 测试删除分类
+     * 描述：通过分类id删除分类
      * 返回：true为删除成功，false为删除失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常

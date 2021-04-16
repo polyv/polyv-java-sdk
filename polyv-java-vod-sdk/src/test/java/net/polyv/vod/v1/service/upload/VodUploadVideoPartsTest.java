@@ -27,8 +27,11 @@ public class VodUploadVideoPartsTest extends BaseTest {
      * 描述：采用分片并发上传的方式，支持断点续传，续传请查看当前文档下一个方法。
      * 描述：PolyvUploadClient.uploadVideo()方法三个参数分别为 分片上传本地视频请求实体、上传回调、是否打印日志
      */
-    @Test
+//    @Test
     public void testUploadVideoPart() {
+        //构建视频上传客户端，可传入分片大小（默认为1MB,大小限定为100KB~5GB），分片文件夹路径（默认为checkpoint_location），上传线程数（默认为5个），此对象全局唯一
+        PolyvUploadClient client = new PolyvUploadClient(1024 * 1024, "checkpoint_location", 5);
+        
         String videoFile = getClass().getResource("/file/polyv.mp4").getPath();
         VodUploadVideoRequest vodUploadVideoRequest = new VodUploadVideoRequest();
         vodUploadVideoRequest.setFile(new File(videoFile))
@@ -40,10 +43,6 @@ public class VodUploadVideoPartsTest extends BaseTest {
                 .setKeepSource(0)
                 .setState("junitTest");
         try {
-            /**
-             * 构建视频上传客户端，可传入分片大小（默认为1MB,大小限定为100KB~5GB），分片文件夹路径（默认为checkpoint_location），上传线程数（默认为5个）
-             */
-            PolyvUploadClient client = new PolyvUploadClient(1024 * 1024, "checkpoint_location", 5);
             String videoId = client.uploadVideo(vodUploadVideoRequest, new UploadCallBack() {
                 
                 /**
@@ -112,7 +111,7 @@ public class VodUploadVideoPartsTest extends BaseTest {
      * 描述：断点续传未上传成功的本地视频文件
      * 描述：PolyvUploadClient.uploadVideo()方法三个参数分别为 分片上传本地视频请求实体、上传回调、是否打印日志
      */
-    @Test
+//    @Test
     public void testUploadVideoPartSequel() {
         String videoFile = getClass().getResource("/file/polyv.mp4").getPath();
         String videoId = "1b448be323ee722d75bbe7fc25343a06_1";

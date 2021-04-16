@@ -35,16 +35,15 @@ public class VodUploadVideoService extends VodBaseService {
             vodUploadVideoConfigResponse = super.postFormBodyReturnOne(getFormatterUrl(INIT_UPLOAD_TASK_URI),
                     uploadConfigRequest, VodUploadVideoConfigResponse.class);
         } catch (IOException e) {
-            log.info("上传视频基础信息失败", e);
-            throw new PloyvSdkException(Constant.ERROR_CODE, "上传视频基础信息失败");
+            log.error("上传视频基础信息失败，文件路径：{}，当前retry：{}", uploadConfigRequest.getFile().getPath(), retry, e);
         } catch (NoSuchAlgorithmException e) {
-            log.info("上传视频基础信息失败", e);
-            throw new PloyvSdkException(Constant.ERROR_CODE, "上传视频基础信息失败");
+            log.error("上传视频基础信息失败，文件路径：{}，当前retry：{}", uploadConfigRequest.getFile().getPath(), retry, e);
         }
         if (vodUploadVideoConfigResponse == null) {
-            if(retry > 0){
+            if (retry > 0) {
                 return initUploadQueue(uploadConfigRequest, --retry);
-            }else{
+            } else {
+                log.error("上传视频基础信息失败，文件路径：{}，当前retry：{}", uploadConfigRequest.getFile().getPath(), retry);
                 throw new PloyvSdkException(Constant.ERROR_CODE, "上传视频基础信息失败");
             }
         }
@@ -73,16 +72,16 @@ public class VodUploadVideoService extends VodBaseService {
             throw new PloyvSdkException(Constant.ERROR_CODE, "重新获取token失败");
         }
         if (vodUploadVideoConfigResponse == null) {
-            if(retry > 0){
+            if (retry > 0) {
                 return getUploadToken(--retry);
-            }else{
+            } else {
                 throw new PloyvSdkException(Constant.ERROR_CODE, "重新获取token失败");
             }
         }
         return vodUploadVideoConfigResponse;
     }
     
-    private String getFormatterUrl(String url){
+    private String getFormatterUrl(String url) {
         return String.format(url, VodGlobalConfig.getUserId());
     }
 }

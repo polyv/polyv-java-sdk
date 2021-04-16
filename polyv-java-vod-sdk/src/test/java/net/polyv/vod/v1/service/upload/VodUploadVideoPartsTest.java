@@ -1,8 +1,6 @@
 package net.polyv.vod.v1.service.upload;
 
 import java.io.File;
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 
 import org.junit.Test;
 
@@ -29,16 +27,23 @@ public class VodUploadVideoPartsTest extends BaseTest {
      */
     @Test
     public void testUploadVideoPart() {
-        String videoFile = getClass().getResource("/file/apass.mp4").getPath();
+        String videoFile = getClass().getResource("/file/polyv.mp4").getPath();
         VodUploadVideoRequest vodUploadVideoRequest = new VodUploadVideoRequest();
-        vodUploadVideoRequest.setFile(new File(videoFile)).setTitle("GGGGG");
+        vodUploadVideoRequest.setFile(new File(videoFile))
+                .setTitle("保利威宣传视频")
+                .setDescribe("保利威是全球领先的企业直播服务商，隶属于广州易方信息科技股份有限公司，致力于通过可集成、可定制的视频直播技术，为企业搭建自主私域直播系统，并提供直播全流程运营与现场执行服务。")
+                .setTag("宣传视频")
+                .setCategoryId("1")
+                .setScreenCap(0)
+                .setKeepSource(0)
+                .setState("junitTest");
         try {
             /**
              * 构建视频上传客户端，可传入分片大小（默认为1MB,大小限定为100KB~5GB），分片文件夹路径（默认为checkpoint_location），上传线程数（默认为5个）
              */
-            PolyvUploadClient client = new PolyvUploadClient();
+            PolyvUploadClient client = new PolyvUploadClient(1024 * 1024, "checkpoint_location", 5);
             String videoId = client.uploadVideo(vodUploadVideoRequest, new UploadCallBack() {
-    
+                
                 /**
                  * 开始上传回调
                  * @param videoPoolId 视频id
@@ -47,7 +52,7 @@ public class VodUploadVideoPartsTest extends BaseTest {
                 public void start(String videoPoolId) {
                     log.debug("开始分片上传视频，videoId：{}", videoPoolId);
                 }
-    
+                
                 /**
                  * 上传过程回调
                  * @param videoPoolId 视频id
@@ -56,17 +61,16 @@ public class VodUploadVideoPartsTest extends BaseTest {
                  */
                 @Override
                 public void process(String videoPoolId, long hasUploadBytes, long totalFileBytes) {
-                    log.debug("==================process=" + videoPoolId + "---" + hasUploadBytes + "---" +
-                            totalFileBytes);
+                    log.debug("分片上传成功，videoId：{}，已上传分片大小：{}，总视频大小{}", videoPoolId, hasUploadBytes, totalFileBytes);
                 }
-    
+                
                 /**
                  * 完成所有分片文件的上传（还没处理完毕）
                  * @param videoPoolId 视频id
                  */
                 @Override
                 public void complete(String videoPoolId) {
-                    log.debug("==================complete=" + videoPoolId);
+                    log.debug("所有分片上传成功，videoId：{}", videoPoolId);
                 }
                 
                 /**
@@ -75,7 +79,7 @@ public class VodUploadVideoPartsTest extends BaseTest {
                  */
                 @Override
                 public void success(String videoPoolId) {
-                    log.debug("==================success=" + videoPoolId);
+                    log.debug("所有分片上传成功并处理完成，请等待后台审核，videoId：{}", videoPoolId);
                 }
                 
                 /**
@@ -85,8 +89,9 @@ public class VodUploadVideoPartsTest extends BaseTest {
                  */
                 @Override
                 public void error(String videoPoolId, UploadErrorMsg errorMsg) {
-                    log.debug("==================error=" + videoPoolId);
+                    log.error("上传视频失败，videoId：{}，错误信息：{}", videoPoolId, errorMsg);
                 }
+                
             }, false);
             log.debug("测试分片上传视频成功，videoId:{}", videoId);
         } catch (PloyvSdkException e) {
@@ -104,13 +109,13 @@ public class VodUploadVideoPartsTest extends BaseTest {
      * 测试分片上传视频-续传
      */
     @Test
-    public void testUploadVideoPartSequel() throws IOException, NoSuchAlgorithmException {
-        String videoFile = getClass().getResource("/file/apass.mp4").getPath();
+    public void testUploadVideoPartSequel() {
+        String videoFile = getClass().getResource("/file/polyv.mp4").getPath();
         String videoId = "1b448be323ee722d75bbe7fc25343a06_1";
         VodUploadVideoPartsRequest vodUploadVideoPartsRequest = new VodUploadVideoPartsRequest();
         vodUploadVideoPartsRequest.setFile(new File(videoFile)).setVideoId(videoId);
         try {
-            PolyvUploadClient client = new PolyvUploadClient();
+            PolyvUploadClient client = new PolyvUploadClient(1024 * 1024, "checkpoint_location", 5);
             String videoPoolId = client.uploadVideo(vodUploadVideoPartsRequest, new UploadCallBack() {
                 
                 /**
@@ -121,7 +126,7 @@ public class VodUploadVideoPartsTest extends BaseTest {
                 public void start(String videoPoolId) {
                     log.debug("开始分片上传视频，videoId：{}", videoPoolId);
                 }
-    
+                
                 /**
                  * 上传过程回调
                  * @param videoPoolId 视频id
@@ -130,17 +135,16 @@ public class VodUploadVideoPartsTest extends BaseTest {
                  */
                 @Override
                 public void process(String videoPoolId, long hasUploadBytes, long totalFileBytes) {
-                    log.debug("==================process=" + videoPoolId + "---" + hasUploadBytes + "---" +
-                            totalFileBytes);
+                    log.debug("分片上传成功，videoId：{}，已上传分片大小：{}，总视频大小{}", videoPoolId, hasUploadBytes, totalFileBytes);
                 }
-    
+                
                 /**
                  * 完成所有分片文件的上传（还没处理完毕）
                  * @param videoPoolId 视频id
                  */
                 @Override
                 public void complete(String videoPoolId) {
-                    log.debug("==================complete=" + videoPoolId);
+                    log.debug("所有分片上传成功，videoId：{}", videoPoolId);
                 }
                 
                 /**
@@ -149,7 +153,7 @@ public class VodUploadVideoPartsTest extends BaseTest {
                  */
                 @Override
                 public void success(String videoPoolId) {
-                    log.debug("==================success=" + videoPoolId);
+                    log.debug("所有分片上传成功并处理完成，请等待后台审核，videoId：{}", videoPoolId);
                 }
                 
                 /**
@@ -159,8 +163,9 @@ public class VodUploadVideoPartsTest extends BaseTest {
                  */
                 @Override
                 public void error(String videoPoolId, UploadErrorMsg errorMsg) {
-                    log.debug("==================error=" + videoPoolId);
+                    log.error("上传视频失败，videoId：{}，错误信息：{}", videoPoolId, errorMsg);
                 }
+                
             }, false);
             log.debug("测试续传视频成功，videoId:{}", videoPoolId);
         } catch (PloyvSdkException e) {

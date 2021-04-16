@@ -96,7 +96,7 @@ public class VodBarrageServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试查询用户下所有弹幕信息
+     * 测试查询弹幕信息
      * 描述：通过视频id或分页参数查询用户下所有弹幕信息
      * 约束：2、弹幕功能请联系客服开通
      * @throws IOException
@@ -111,7 +111,7 @@ public class VodBarrageServiceImplTest extends BaseTest {
             vodQueryBarrageListResponse = new VodBarrageServiceImpl().queryBarrageList(vodQueryBarrageListRequest);
             Assert.assertNotNull(vodQueryBarrageListResponse);
             if (vodQueryBarrageListResponse != null) {
-                log.debug("测试分页查询用户下所有弹幕信息成功,{}", JSON.toJSONString(vodQueryBarrageListResponse));
+                log.debug("测试查询弹幕信息成功,{}", JSON.toJSONString(vodQueryBarrageListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

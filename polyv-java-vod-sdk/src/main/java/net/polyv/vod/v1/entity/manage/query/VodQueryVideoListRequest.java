@@ -21,9 +21,9 @@ import net.polyv.vod.v1.entity.VodPageCommonRequest;
 public class VodQueryVideoListRequest extends VodPageCommonRequest {
     
     /**
-     * 是否开启(开启为1，没开启为0)
+     * 授权播放开关状态，开启为1，未开启为0
      */
-    @ApiModelProperty(name = "playAuth", value = "是否开启(开启为1，没开启为0)", required = true)
+    @ApiModelProperty(name = "playAuth", value = "授权播放开关状态，开启为1，未开启为0", required = true)
     @NotNull(message = "属性playAuth不能为空")
     @JSONField(name = "playauth")
     private Integer playAuth;

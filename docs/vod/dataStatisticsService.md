@@ -1,7 +1,7 @@
-## 1、获取某一天视频观看日志
+## 1、查询某一天视频观看日志
 ### 描述
 ```
-获取某一天视频观看日志
+通过日志时间查询某一天的视频观看日志
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -11,7 +11,7 @@
 
 号晚上汇总计算，在3号才可查询到流量数据。
 
-3、注意视频ID和分类ID为空时，获取账号当天所有视频日志；当视频ID为空、分类ID不为空时，查询对应分类ID下的日志；当视频ID不为空时查询对应视频ID的日志
+3、注意视频ID和分类ID为空时，查询账号当天所有视频日志；当视频ID为空、分类ID不为空时，查询对应分类ID下的日志；当视频ID不为空时查询对应视频ID的日志
 ### 单元测试
 ```java
 	@Test
@@ -28,7 +28,7 @@
                     vodQueryViewLogByDayRequest);
             Assert.assertNotNull(vodQueryViewLogByDayResponseList);
             if (vodQueryViewLogByDayResponseList != null) {
-                log.debug("测试获取某一天视频观看日志成功,{}", JSON.toJSONString(vodQueryViewLogByDayResponseList));
+                log.debug("测试查询某一天视频观看日志成功,{}", JSON.toJSONString(vodQueryViewLogByDayResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -44,7 +44,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryViewLogByDayResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -56,7 +56,6 @@
 | categoryId | false | String | 分类ID | 
 | sessionId | false | String | 用户自定义ID，自定义值（比如，表示学员信息的学员ID），最长不能超过50个英文字符。 | 
 | viewerId | false | String | 用户自定义ID，当和sessionId同时传递时，会以viewerId为准 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryViewLogByDayResponse&gt;，**VodQueryViewLogByDayResponse**具体元素内容如下：
@@ -99,10 +98,10 @@
 
 <br /><br />
 
-## 2、批量获取视频观看日志
+## 2、批量查询视频观看日志
 ### 描述
 ```
-批量获取视频观看日志
+通过日志月份批量查询视频观看日志信息
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -124,7 +123,7 @@
             vodGetVideoPlayLogResponse = new VodDataStatisticsServiceImpl().getVideoPlayLog(vodGetVideoPlayLogRequest);
             Assert.assertNotNull(vodGetVideoPlayLogResponse);
             if (vodGetVideoPlayLogResponse != null) {
-                log.debug("测试批量获取视频观看日志成功,{}", JSON.toJSONString(vodGetVideoPlayLogResponse));
+                log.debug("测试批量查询视频观看日志成功,{}", JSON.toJSONString(vodGetVideoPlayLogResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -140,7 +139,7 @@
 ### 单元测试说明
 1、请求正确，返回VodGetVideoPlayLogResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -151,11 +150,10 @@
 | startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
 | endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
 | videoId | false | String | 所查询视频vid，当vid为空时，查询该用户所有视频的日志 | 
-| sessionId | false | String | 用户自定义ID，自定义值（比如，表示学员信息的学员ID） | 
+| sessionId | false | String | 用户自定义ID，自定义值 | 
 | currentDay | false | Date | 月内某一天的数据，格式为yyyy-MM-dd | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -211,7 +209,7 @@
 ## 3、查询视频播放量排行
 ### 描述
 ```
-查询视频播放量排行
+通过时间范围查询视频播放量排行
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -247,7 +245,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryVideoPlaybackRankingResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -257,7 +255,6 @@
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），7days（最近7天），30days（最近30天），默认值为7days：最近7天，当start和end都不为空时，dr失效，当start和end其中一个为空，查询最近7天数据，当start和end都为空，以dr为准 | 
 | startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
 | endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -288,7 +285,7 @@
 ## 4、查询视频播放量统计数据
 ### 描述
 ```
-查询视频播放量统计数据
+通过视频id或时间范围查询视频播放量统计数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -326,7 +323,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryVideoPlaybackStatisticsResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -336,7 +333,6 @@
 | videoId | false | String | 视频videoId，不填vid会查所有视频的播放量统计数据 | 
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
 | period | false | String | 显示周期，具体为以下几个值：daily（按日显示），weekly（按周显示），monthly（按月显示）。默认值为daily：按日显示。period的值受限于dr的值，当dr的值为today，yesterday，this_week，last_week，7days时，period只能为daily，当dr的值为this_month，last_month时，period只能为daily或者weekly | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoPlaybackStatisticsResponse&gt;，**VodQueryVideoPlaybackStatisticsResponse**具体元素内容如下：
@@ -356,7 +352,7 @@
 ## 5、查询播放域名统计数据
 ### 描述
 ```
-查询播放域名统计数据
+通过时间范围查询播放域名统计数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -399,7 +395,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryPlayDomainNameStatisticsResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -409,7 +405,6 @@
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
 | startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
 | endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryPlayDomainNameStatisticsResponse&gt;，**VodQueryPlayDomainNameStatisticsResponse**具体元素内容如下：
@@ -434,7 +429,7 @@
 ## 6、查询视频终端环境统计数据
 ### 描述
 ```
-查询视频终端环境统计数据
+通过时间范围查询视频终端环境统计数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -472,7 +467,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryVideoDeviceStatisticsResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -482,7 +477,6 @@
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
 | startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
 | endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -540,7 +534,7 @@
 ## 7、查询视频播放时段统计数据
 ### 描述
 ```
-查询视频播放时段统计数据
+通过时间范围查询视频播放时段统计数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -579,7 +573,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryVideoPlaybackHourlyStatisticsResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -589,7 +583,6 @@
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
 | startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
 | endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoPlaybackHourlyStatisticsResponse&gt;，**VodQueryVideoPlaybackHourlyStatisticsResponse**具体元素内容如下：
@@ -614,10 +607,10 @@
 
 <br /><br />
 
-## 8、查询视频某个时段的播放流量统计数据
+## 8、查询视频播放流量统计数据
 ### 描述
 ```
-查询视频某个时段的播放流量统计数据
+通过时间范围查询视频播放流量统计数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -644,7 +637,7 @@
                             vodQueryVideoPlaybackFlowSizeStatisticsRequest);
             Assert.assertNotNull(vodQueryVideoPlaybackFlowSizeStatisticsResponseList);
             if (vodQueryVideoPlaybackFlowSizeStatisticsResponseList != null) {
-                log.debug("测试查询视频某个时段的播放流量统计数据成功,{}",
+                log.debug("测试查询视频播放流量统计数据成功,{}",
                         JSON.toJSONString(vodQueryVideoPlaybackFlowSizeStatisticsResponseList));
             }
         } catch (PloyvSdkException e) {
@@ -661,7 +654,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryVideoPlaybackFlowSizeStatisticsResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -672,7 +665,6 @@
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
 | startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
 | endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoPlaybackFlowSizeStatisticsResponse&gt;，**VodQueryVideoPlaybackFlowSizeStatisticsResponse**具体元素内容如下：
@@ -693,7 +685,7 @@
 ## 9、查询视频播放地理位置统计数据
 ### 描述
 ```
-查询视频播放地理位置统计数据
+通过时间范围查询视频播放地理位置统计数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -734,7 +726,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryVideoGeographicStatisticsResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -744,7 +736,6 @@
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
 | startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
 | endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoGeographicStatisticsResponse&gt;，**VodQueryVideoGeographicStatisticsResponse**具体元素内容如下：
@@ -772,7 +763,7 @@
 ## 10、查询视频观众量统计数据
 ### 描述
 ```
-查询视频观众量统计数据
+通过视频id或时间范围查询视频观众量统计数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -811,7 +802,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryVideoViewershipResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -822,7 +813,6 @@
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
 | startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
 | endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoViewershipResponse&gt;，**VodQueryVideoViewershipResponse**具体元素内容如下：
@@ -843,7 +833,7 @@
 ## 11、查询视频的播放时长统计数据
 ### 描述
 ```
-查询视频的播放时长统计数据
+描述：通过视频id或时间范围查询视频的播放时长统计数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -883,7 +873,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryVideoPlayTimeStatisticsResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -894,7 +884,6 @@
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
 | startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
 | endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoPlayTimeStatisticsResponse&gt;，**VodQueryVideoPlayTimeStatisticsResponse**具体元素内容如下：
@@ -924,7 +913,7 @@
 ## 12、查询单个视频的观看热点统计数据
 ### 描述
 ```
-查询单个视频的观看热点统计数据
+通过视频id查询单个视频的观看热点统计数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -965,7 +954,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryVideoViewingHotspotStatisticsResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -976,7 +965,6 @@
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
 | startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
 | endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoViewingHotspotStatisticsResponse&gt;，**VodQueryVideoViewingHotspotStatisticsResponse**具体元素内容如下：
@@ -995,7 +983,7 @@
 ## 13、查询视频的观看比例统计数据
 ### 描述
 ```
-查询视频的观看比例统计数据
+通过视频id或时间范围查询视频的观看比例统计数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -1032,7 +1020,7 @@
 ### 单元测试说明
 1、请求正确，返回VodQueryVideoViewingRatioStatisticsResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -1043,7 +1031,6 @@
 | dr | false | String | 时间段，具体值为以下几个：today（今天），yesterday（昨天），this_week（本周），last_week（上周），7days（最近7天），this_month（本月），last_month（上个月），this_year（今年），last_year（去年），默认值为7days:最近7天 | 
 | startTime | false | Date | 查询开始日期，格式为yyyy-MM-dd | 
 | endTime | false | Date | 查询结束日期，格式为yyyy-MM-dd | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodQueryVideoViewingRatioStatisticsResponse&gt;，**VodQueryVideoViewingRatioStatisticsResponse**具体元素内容如下：
@@ -1059,10 +1046,10 @@
 
 <br /><br />
 
-## 14、获取视频观看完成度
+## 14、查询视频观看完成度
 ### 描述
 ```
-获取视频观看完成度
+通过视频id和观众id查询视频观看完成度
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -1091,7 +1078,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
                     vodGetVideoViewingCompletionRequest);
             Assert.assertNotNull(vodGetVideoViewingCompletionResponse);
             if (vodGetVideoViewingCompletionResponse != null) {
-                log.debug("测试获取视频观看完成度成功,已完成进度比例{}", vodGetVideoViewingCompletionResponse);
+                log.debug("测试查询视频观看完成度成功,已完成进度比例{}", vodGetVideoViewingCompletionResponse);
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -1107,7 +1094,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 ### 单元测试说明
 1、请求正确，返回Float对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -1116,7 +1103,6 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 | -- | -- | -- | -- | 
 | videoId | true | String | 视频ID | 
 | viewerId | true | String | 自定义观众id，例如 1555313336634 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1127,10 +1113,10 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 
 <br /><br />
 
-## 15、高级分析-分页查询观看行为列表
+## 15、查询观看行为列表
 ### 描述
 ```
-高级分析-分页查询观看行为列表
+通过视频id或时间范围分页查询观看行为列表
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -1142,11 +1128,13 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 
 4、查询的时间跨度不超过31天；
 
-5、当start有值而end为空时，返回开始日期后31天后的数据；
+5、当请求入参startTime（开始时间）有值而endTime（结束时间）为空时，返回开始日期后31天后的数据；
 
-6、当start为空而end不为空时，返回结束日期前31天内的数据；
+6、当请求入参startTime（开始时间）为空而endTime（结束时间）不为空时，返回结束日期前31天内的数据；
 
-7、当start、end参数均为空时，返回最近31天的数据。
+7、当请求入参startTime（开始时间）、endTime（结束时间）均为空时，返回最近31天的数据。
+
+8、该接口需联系客服开通后才能使用
 ### 单元测试
 ```java
 	@Test
@@ -1164,7 +1152,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
                     vodQueryViewingBehaviorListRequest);
             Assert.assertNotNull(vodQueryViewingBehaviorListResponse);
             if (vodQueryViewingBehaviorListResponse != null) {
-                log.debug("测试高级分析-分页查询观看行为列表成功{}", JSON.toJSONString(vodQueryViewingBehaviorListResponse));
+                log.debug("测试分页查询观看行为列表成功{}", JSON.toJSONString(vodQueryViewingBehaviorListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -1180,7 +1168,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 ### 单元测试说明
 1、请求正确，返回VodQueryViewingBehaviorListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -1195,7 +1183,6 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 | token | false | String | 下一页的凭证，从当前页的返回数据里获取，第一页不需要传 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1242,14 +1229,20 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 
 <br /><br />
 
-## 16、高级分析–根据视频id查询视频分析数据
+## 16、查询视频分析数据
 ### 描述
 ```
-高级分析–根据视频id查询视频分析数据
+通过视频id查询视频分析数据
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
+
+2、高级分析功能介绍详见：http://dev.polyv.net/2019/videoproduct/v-manual/v-manual-statistic/advance-analysis/
+
+3、由于数据量和计算量大，数据分析结果次日才可查询。
+
+4、该接口需联系客服开通后才能使用
 ### 单元测试
 ```java
 	@Test
@@ -1262,7 +1255,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
                     vodQueryVideoAnalysisDataRequest);
             Assert.assertNotNull(vodQueryVideoAnalysisDataResponse);
             if (vodQueryVideoAnalysisDataResponse != null) {
-                log.debug("测试高级分析–根据视频id查询视频分析数据成功{}", JSON.toJSONString(vodQueryVideoAnalysisDataResponse));
+                log.debug("测试根据视频id查询视频分析数据成功{}", JSON.toJSONString(vodQueryVideoAnalysisDataResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -1278,7 +1271,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 ### 单元测试说明
 1、请求正确，返回VodQueryVideoAnalysisDataResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -1286,7 +1279,6 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | videoId | true | String | 视频ID | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -1308,14 +1300,22 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 
 <br /><br />
 
-## 17、高级分析–根据观众id查询观众分析结果
+## 17、查询观众分析结果
 ### 描述
 ```
-高级分析–根据观众id查询观众分析结果
+通过观众id查询观众分析结果
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
+
+2、该接口需联系客服开通后才能使用
+
+2、高级分析功能介绍详见：http://dev.polyv.net/2019/videoproduct/v-manual/v-manual-statistic/advance-analysis/
+
+3、由于数据量和计算量大，数据分析结果次日才可查询。
+
+4、该接口需联系客服开通后才能使用
 ### 单元测试
 ```java
 	@Test
@@ -1329,7 +1329,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
                     vodQueryAudienceAnalysisResultsRequest);
             Assert.assertNotNull(vodQueryAudienceAnalysisResultsResponse);
             if (vodQueryAudienceAnalysisResultsResponse != null) {
-                log.debug("测试高级分析–根据观众id查询观众分析结果成功{}", JSON.toJSONString(vodQueryAudienceAnalysisResultsResponse));
+                log.debug("测试根据观众id查询观众分析结果成功{}", JSON.toJSONString(vodQueryAudienceAnalysisResultsResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -1345,7 +1345,7 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 ### 单元测试说明
 1、请求正确，返回VodQueryAudienceAnalysisResultsResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -1353,7 +1353,6 @@ H5观看了第0&sim;20分钟，使用手机H5观看了第10&sim;30分钟，又�
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | viewerId | true | String | 观众id，例如 1555313336634 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

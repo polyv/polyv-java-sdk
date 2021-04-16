@@ -32,7 +32,7 @@ public class VodSubPageCommonRequest extends VodPageCommonRequest {
     /**
      * 请求发送当时的时间戳（ms)，系统自动生成
      */
-    @ApiModelProperty(hidden = true)
+    @ApiModelProperty(hidden = true, required = true)
     @NotNull(message = "属性timestamp不能为空")
     private String timestamp;
     

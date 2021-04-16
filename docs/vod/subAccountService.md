@@ -1,7 +1,7 @@
 ## 1、搜索视频
 ### 描述
 ```
-按视频标题、分类、标签等条件查找视频
+通过视频标题、分类、标签等条件查找视频
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -45,7 +45,7 @@
 ### 单元测试说明
 1、请求正确，返回VodSubAccountSearchVideoListResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -64,7 +64,6 @@
 | secretKey | true | String | 子账号secretKey | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -110,7 +109,7 @@
 ## 2、查询视频信息
 ### 描述
 ```
-按视频ID查询视频信息
+通过视频id查询视频信息
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -149,7 +148,7 @@
 ### 单元测试说明
 1、请求正确，返回VodSubAccountQueryVideoInfoResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -160,7 +159,6 @@
 | filters | false | String | 选择需要返回的视频信息，多个以英文逗号分隔(状态为半角,例如 basicInfo,metaData)，取值：basicInfo,metaData,transcodeInfo,snapshotInfo, 分别代表基础信息、元数据、转码信息、截图信息，为空则返回基础信息 | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 返回对象是List&lt;VodSubAccountQueryVideoInfoResponse&gt;，**VodSubAccountQueryVideoInfoResponse**具体元素内容如下：
@@ -233,7 +231,7 @@
 ## 3、修改视频信息
 ### 描述
 ```
-根据视频ID修改视频信息
+通过视频id修改视频信息
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -274,7 +272,7 @@
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -288,7 +286,6 @@
 | publishUrl | false | String | 外链地址 | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -302,7 +299,7 @@ true为修改成功，false为修改失败
 ## 4、删除视频
 ### 描述
 ```
-根据视频ID删除视频
+通过视频id删除视频
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -337,7 +334,7 @@ true为修改成功，false为修改失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -347,7 +344,6 @@ true为修改成功，false为修改失败
 | videoId | true | String | 视频ID | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -358,10 +354,10 @@ true为删除视频成功，false为删除视频失败
 
 <br /><br />
 
-## 5、批量修改视频所属分类
+## 5、新增视频分类
 ### 描述
 ```
-根据视频ID批量修改视频所属分类
+通过分类名等参数新增视频分类
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -369,22 +365,19 @@ true为删除视频成功，false为删除视频失败
 ### 单元测试
 ```java
 	@Test
-	public void testUpdateVideoCategory() throws IOException, NoSuchAlgorithmException {
-        VodSubAccountUpdateVideoCategoryRequest vodSubAccountUpdateVideoCategoryRequest =
-                new VodSubAccountUpdateVideoCategoryRequest();
-        Boolean vodUpdateVideoCategoryResponse = null;
+	public void testAddCategory() throws IOException, NoSuchAlgorithmException {
+        VodSubAccountAddCategoryRequest vodSubAccountAddCategoryRequest = new VodSubAccountAddCategoryRequest();
+        String vodDeleteVideoResponse = null;
         try {
-            vodSubAccountUpdateVideoCategoryRequest.setVideoIds(
-                    "1b448be323a146649ad0cc89d0faed9c_1,1b448be32389b93ea8be08bf0d257043_1")
-                    .setCategoryId("1602300731843")
+            vodSubAccountAddCategoryRequest.setName("junit测试新增分类20210309")
+                    .setParentId(null)
                     //设置子账号相关
                     .setAppId(APP_ID)
                     .setSecretKey(SECRET_KEY);
-            vodUpdateVideoCategoryResponse = new VodSubAccountServiceImpl().updateVideoCategory(
-                    vodSubAccountUpdateVideoCategoryRequest);
-            Assert.assertTrue(vodUpdateVideoCategoryResponse);
-            if (vodUpdateVideoCategoryResponse) {
-                log.debug("批量修改视频所属分类成功");
+            vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodSubAccountAddCategoryRequest);
+            Assert.assertNotNull(vodDeleteVideoResponse);
+            if (vodDeleteVideoResponse != null) {
+                log.debug("新增视频分类成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -398,24 +391,23 @@ true为删除视频成功，false为删除视频失败
     }
 ```
 ### 单元测试说明
-1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoIds | true | String | 视频ID串，多个视频ID之间用英文逗号分隔(状态为半角)，例如 1b8be3,239c2e | 
-| categoryId | false | String | 视频分类ID | 
+| name | true | String | 分类名 | 
+| parentId | false | String | 父分类id, 默认位1, 放在根目录下 | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
-true为修改成功，false为修改失败
+新增成功返回新增的分类id
 <br /><br />
 
 ------------------
@@ -425,7 +417,7 @@ true为修改成功，false为修改失败
 ## 6、查询视频分类
 ### 描述
 ```
-根据分类ID查询视频分类
+通过分类id查询视频分类
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -463,7 +455,7 @@ true为修改成功，false为修改失败
 ### 单元测试说明
 1、请求正确，返回VodSubAccountQueryCategoryResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -475,7 +467,6 @@ true为修改成功，false为修改失败
 | secretKey | true | String | 子账号secretKey | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -500,71 +491,10 @@ true为修改成功，false为修改失败
 
 <br /><br />
 
-## 7、新增视频分类
+## 7、修改视频分类
 ### 描述
 ```
-新增视频分类
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
-### 单元测试
-```java
-	@Test
-	public void testAddCategory() throws IOException, NoSuchAlgorithmException {
-        VodSubAccountAddCategoryRequest vodSubAccountAddCategoryRequest = new VodSubAccountAddCategoryRequest();
-        String vodDeleteVideoResponse = null;
-        try {
-            vodSubAccountAddCategoryRequest.setName("junit测试新增分类20210309")
-                    .setParentId(null)
-                    //设置子账号相关
-                    .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY);
-            vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodSubAccountAddCategoryRequest);
-            Assert.assertNotNull(vodDeleteVideoResponse);
-            if (vodDeleteVideoResponse != null) {
-                log.debug("新增视频分类成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回String对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| name | true | String | 分类名 | 
-| parentId | false | String | 父分类id, 默认位1, 放在根目录下 | 
-| appId | true | String | 子账号appId | 
-| secretKey | true | String | 子账号secretKey | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
-
-### 返回对象描述
-
-新增成功返回新增的分类id
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 8、修改视频分类信息
-### 描述
-```
-修改视频分类信息
+修改视频分类
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -586,7 +516,7 @@ true为修改成功，false为修改失败
                     vodSubAccountUpdateCategoryRequest);
             Assert.assertTrue(vodUpdateCategoryResponse);
             if (vodUpdateCategoryResponse) {
-                log.debug("修改视频分类信息成功");
+                log.debug("修改视频分类成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -602,7 +532,7 @@ true为修改成功，false为修改失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -613,7 +543,6 @@ true为修改成功，false为修改失败
 | categoryName | true | String | 分类名称 | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -624,10 +553,10 @@ true为修改成功，false为修改失败
 
 <br /><br />
 
-## 9、删除视频分类
+## 8、删除视频分类
 ### 描述
 ```
-删除视频分类
+通过视频分类id删除视频分类
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -666,7 +595,7 @@ true为修改成功，false为修改失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -676,7 +605,6 @@ true为修改成功，false为修改失败
 | categoryId | true | String | 分类id | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -687,10 +615,73 @@ true为删除成功，false为删除失败
 
 <br /><br />
 
+## 9、批量修改视频所属分类
+### 描述
+```
+通过视频id批量修改视频所属分类
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testUpdateVideoCategory() throws IOException, NoSuchAlgorithmException {
+        VodSubAccountUpdateVideoCategoryRequest vodSubAccountUpdateVideoCategoryRequest =
+                new VodSubAccountUpdateVideoCategoryRequest();
+        Boolean vodUpdateVideoCategoryResponse = null;
+        try {
+            vodSubAccountUpdateVideoCategoryRequest.setVideoIds(
+                    "1b448be323a146649ad0cc89d0faed9c_1,1b448be32389b93ea8be08bf0d257043_1")
+                    .setCategoryId("1602300731843")
+                    //设置子账号相关
+                    .setAppId(APP_ID)
+                    .setSecretKey(SECRET_KEY);
+            vodUpdateVideoCategoryResponse = new VodSubAccountServiceImpl().updateVideoCategory(
+                    vodSubAccountUpdateVideoCategoryRequest);
+            Assert.assertTrue(vodUpdateVideoCategoryResponse);
+            if (vodUpdateVideoCategoryResponse) {
+                log.debug("批量修改视频所属分类成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| videoIds | true | String | 视频ID串，多个视频ID之间用英文逗号分隔(状态为半角)，例如 1b8be3,239c2e | 
+| categoryId | false | String | 视频分类ID | 
+| appId | true | String | 子账号appId | 
+| secretKey | true | String | 子账号secretKey | 
+
+### 返回对象描述
+
+true为修改成功，false为修改失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
 ## 10、修改视频分类属性设置
 ### 描述
 ```
-修改视频分类属性设置
+通过分类id修改视频分类属性设置
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -733,7 +724,7 @@ true为删除成功，false为删除失败
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -749,7 +740,6 @@ true为删除成功，false为删除失败
 | encodeAAC | false | Integer | 1:生成aac, 0:不生成，默认为0:不生成 | 
 | appId | true | String | 子账号appId | 
 | secretKey | true | String | 子账号secretKey | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 

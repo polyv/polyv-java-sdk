@@ -21,13 +21,13 @@ public class VodListVideoKeyFrameResponse {
     /**
      * 返回时长,例：00:00:15
      */
-    @ApiModelProperty(name = "duration", value = "返回时长,例：00:00:15", required = true)
+    @ApiModelProperty(name = "duration", value = "返回时长,例：00:00:15")
     private String duration;
     
     /**
      * 打点信息列表
      */
-    @ApiModelProperty(name = "keyFrameList", value = "打点信息列表", required = true)
+    @ApiModelProperty(name = "keyFrameList", value = "打点信息列表")
     @JSONField(name = "keyframeList")
     private List<KeyFrame> keyFrameList;
     
@@ -39,13 +39,13 @@ public class VodListVideoKeyFrameResponse {
         /**
          * 打点时间点，单位秒
          */
-        @ApiModelProperty(name = "seconds", value = "打点时间点，单位秒", required = true)
+        @ApiModelProperty(name = "seconds", value = "打点时间点，单位秒")
         private Integer seconds;
     
         /**
          * 打点详情
          */
-        @ApiModelProperty(name = "keyContent", value = "打点详情", required = true)
+        @ApiModelProperty(name = "keyContent", value = "打点详情")
         private String keyContent;
         
     }

@@ -21,9 +21,11 @@ import net.polyv.vod.v1.upload.enumeration.UploadErrorMsg;
 public class VodUploadVideoPartsTest extends BaseTest {
     
     /**
-     * 测试分片上传视频
-     * 描述：分片上传视频
-     * 描述：具体上传视频是否加密，需要通过“设置账号加密设置”进行设置
+     * 上传本地视频
+     * 描述：快捷上传多种格式的媒体文件。
+     * 描述：支持上传时的各种设置，如文件标题、描述、标签、上传目录、是否开启课件优化处理等。
+     * 描述：采用分片并发上传的方式，支持断点续传，续传请查看当前文档下一个方法。
+     * 描述：PolyvUploadClient.uploadVideo()方法三个参数分别为 分片上传本地视频请求实体、上传回调、是否打印日志
      */
 //    @Test
     public void testUploadVideoPart() {
@@ -105,7 +107,9 @@ public class VodUploadVideoPartsTest extends BaseTest {
     }
     
     /**
-     * 测试分片上传视频-续传
+     * 断点续传本地视频
+     * 描述：断点续传未上传成功的本地视频文件
+     * 描述：PolyvUploadClient.uploadVideo()方法三个参数分别为 分片上传本地视频请求实体、上传回调、是否打印日志
      */
 //    @Test
     public void testUploadVideoPartSequel() {

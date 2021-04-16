@@ -26,6 +26,7 @@ public class VodScreenshotServiceImplTest extends BaseTest {
     
     /**
      * 测试添加指定时间点截图任务
+     * 描述：通过视频id、截图等相关参数添加视频指定时间点截图任务
      * 约束：2、接口用于添加时间点截图任务，每个任务允许截图20张
      * 约束：3、禁播的视频不允许截图操作
      * 约束：4、如设置了callbackUrl，值为http://example.polyv.net/snapshot-callback.do 那么截图任务完成后，polyv会回调该接口，
@@ -63,6 +64,7 @@ public class VodScreenshotServiceImplTest extends BaseTest {
     
     /**
      * 测试查询截图任务状态
+     * 描述：通过截图任务id查询截图任务状态
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

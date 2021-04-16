@@ -46,7 +46,7 @@
 |           | ▼视频分类      |                                            |      |
 |             |             | [新建视频分类](categoryService?id=_1、新建视频分类) |             | 
 |             |             | [查询视频分类](categoryService?id=_2、查询视频分类) |             | 
-|             |             | [通过分类ID查询目录使用空间](categoryService?id=_3、通过分类ID查询目录使用空间) |             | 
+|             |             | [查询分类使用空间](categoryService?id=_3、查询分类使用空间) |             | 
 |             |             | [修改分类名称](categoryService?id=_4、修改分类名称) |             | 
 |             |             | [修改分类属性](categoryService?id=_5、修改分类属性) |             | 
 |             |             | [移动视频分类](categoryService?id=_6、移动视频分类) |             | 
@@ -56,7 +56,7 @@
 |             |             | [批量查询答题日志](videoQuestionAndAnswer?id=_2、批量查询答题日志) |             | 
 |             |             | [删除单个视频的问答题目](videoQuestionAndAnswer?id=_3、删除单个视频的问答题目) |             | 
 |           | ▼视频同步      |                                            |      |
-|             |             | [分页查询视频同步列表](syncService?id=_1、分页查询视频同步列表) |             | 
+|             |             | [查询视频同步列表](syncService?id=_1、查询视频同步列表) |             | 
 |             |             | [删除抓取视频任务](syncService?id=_2、删除抓取视频任务) |             | 
 |             |             | [导出视频同步任务](syncService?id=_3、导出视频同步任务) |             | 
 |           | ▼视频字幕      |                                            |      |
@@ -67,7 +67,7 @@
 |           | ▼视频弹幕      |                                            |      |
 |             |             | [创建视频弹幕](barrageService?id=_1、创建视频弹幕) |             | 
 |             |             | [上传点播弹幕文件](barrageService?id=_2、上传点播弹幕文件) |             | 
-|             |             | [分页查询用户下所有弹幕信息](barrageService?id=_3、分页查询用户下所有弹幕信息) |             | 
+|             |             | [查询用户下所有弹幕信息](barrageService?id=_3、查询用户下所有弹幕信息) |             | 
 |             |             | [批量删除弹幕信息](barrageService?id=_4、批量删除弹幕信息) |             | 
 |           | ▼视频截图      |                                            |      |
 |             |             | [添加指定时间点截图任务](screenshotService?id=_1、添加指定时间点截图任务) |             | 
@@ -105,9 +105,9 @@
 |             |             | [查询单个视频的观看热点统计数据](dataStatisticsService?id=_12、查询单个视频的观看热点统计数据) |             | 
 |             |             | [查询视频的观看比例统计数据](dataStatisticsService?id=_13、查询视频的观看比例统计数据) |             | 
 |             |             | [查询视频观看完成度](dataStatisticsService?id=_14、查询视频观看完成度) |             | 
-|             |             | [分页查询观看行为列表](dataStatisticsService?id=_15、分页查询观看行为列表) |             | 
-|             |             | [根据视频id查询视频分析数据](dataStatisticsService?id=_16、根据视频id查询视频分析数据) |             | 
-|             |             | [根据观众id查询观众分析结果](dataStatisticsService?id=_17、根据观众id查询观众分析结果) |             | 
+|             |             | [查询观看行为列表](dataStatisticsService?id=_15、查询观看行为列表) |             | 
+|             |             | [查询视频分析数据](dataStatisticsService?id=_16、查询视频分析数据) |             | 
+|             |             | [查询观众分析结果](dataStatisticsService?id=_17、查询观众分析结果) |             | 
 | ▼子账号相关 |               |                                            |      |
 |             |             | [搜索视频](subAccountService?id=_1、搜索视频) |             | 
 |             |             | [查询视频信息](subAccountService?id=_2、查询视频信息) |             | 

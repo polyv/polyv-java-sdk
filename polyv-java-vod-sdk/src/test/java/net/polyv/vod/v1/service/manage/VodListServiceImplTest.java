@@ -37,8 +37,7 @@ public class VodListServiceImplTest extends BaseTest {
     
     /**
      * 测试查询视频列表
-     * 描述：通过视频信息查询视频列表
-     * 描述：按视频标题、分类、标签等条件分页查询视频列表
+     * 描述：通过视频标题、分类、标签等条件分页查询视频列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

@@ -23,7 +23,7 @@ import net.polyv.vod.v1.service.play.impl.VodPlayerSettingsServiceImpl;
 @Slf4j
 public class VodPlayerSettingsServiceImplTest extends BaseTest {
     /**
-     * 测试获取用户下所有播放器列表
+     * 测试查询用户下所有播放器列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -35,7 +35,7 @@ public class VodPlayerSettingsServiceImplTest extends BaseTest {
             vodGetPlayerListResponseList = new VodPlayerSettingsServiceImpl().getPlayerList(vodGetPlayerListRequest);
             Assert.assertNotNull(vodGetPlayerListResponseList);
             if (vodGetPlayerListResponseList != null) {
-                log.debug("测试获取用户下所有播放器列表成功,{}", JSON.toJSONString(vodGetPlayerListResponseList));
+                log.debug("测试查询用户下所有播放器列表成功,{}", JSON.toJSONString(vodGetPlayerListResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

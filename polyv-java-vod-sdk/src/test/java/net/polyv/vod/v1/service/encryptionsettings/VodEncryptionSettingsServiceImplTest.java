@@ -16,7 +16,6 @@ import net.polyv.vod.v1.entity.encryptionsettings.VodUpdateEncryptionSettingsReq
 import net.polyv.vod.v1.entity.encryptionsettings.VodUpdateEncryptionSettingsResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.encryptionsettings.impl.VodEncryptionSettingsServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 加密设置
@@ -25,7 +24,8 @@ import net.polyv.vod.v1.util.VodSignUtil;
 @Slf4j
 public class VodEncryptionSettingsServiceImplTest extends BaseTest {
     /**
-     * 测试获取账号加密设置
+     * 测试查询账号加密设置
+     * 描述：查询账号加密设置的相关参数
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -38,7 +38,7 @@ public class VodEncryptionSettingsServiceImplTest extends BaseTest {
                     vodGetEncryptionSettingsRequest);
             Assert.assertNotNull(vodGetEncryptionSettingsResponse);
             if (vodGetEncryptionSettingsResponse != null) {
-                log.debug("测试获取账号加密设置成功,{}", JSON.toJSONString(vodGetEncryptionSettingsResponse));
+                log.debug("测试查询账号加密设置成功,{}", JSON.toJSONString(vodGetEncryptionSettingsResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -53,6 +53,7 @@ public class VodEncryptionSettingsServiceImplTest extends BaseTest {
     
     /**
      * 测试修改账号加密设置
+     * 描述：通过加密授权相关的参数修改账号加密设置
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

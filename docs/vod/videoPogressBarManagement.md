@@ -1,28 +1,34 @@
-## 1、上传点播视频字幕文件
+## 1、设置视频打点
 ### 描述
 ```
-通过视频id上传点播视频字幕文件
+通过视频id设置视频的打点信息
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
+
+2、请求入参seconds(打点秒数【第seconds秒】)必须要小于视频长度;
+
+3、请求入参desc(打点描述)的个数必须要和seconds的个数相同。
 ### 单元测试
 ```java
 	@Test
-	public void testUploadSubtitle() throws IOException, NoSuchAlgorithmException {
-        VodUploadSubtitleRequest vodUploadSubtitleRequest = new VodUploadSubtitleRequest();
-        Boolean vodUploadSubtitleResponse = null;
+	public void testSaveVideoKeyFrame() throws IOException, NoSuchAlgorithmException {
+        VodSaveVideoKeyFrameRequest vodSaveVideoKeyFrameRequest = new VodSaveVideoKeyFrameRequest();
+        Boolean vodSaveVideoKeyFrameResponse = null;
         try {
-            String srtCN = getClass().getResource("/subtitle/srt(zh_CN).srt").getPath();
-            vodUploadSubtitleRequest.setVideoId("1b448be32399ac90f523f76c7430c9a5_1")
-                    .setFile(new File(srtCN))
-                    .setAsDefault("N")
-                    .setTitle("subtitle")
-                    .setLanguage(null);
-            vodUploadSubtitleResponse = new VodSubtitleServiceImpl().uploadSubtitle(vodUploadSubtitleRequest);
-            Assert.assertTrue(vodUploadSubtitleResponse);
-            if (vodUploadSubtitleResponse) {
-                log.debug("测试上传点播视频字幕文件成功");
+            vodSaveVideoKeyFrameRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1")
+                    .setDesc("junit测试打点1,junit测试打点2,junit测试打点3")
+                    .setSeconds("24,60,120")
+                    .setBtnSettingSwitch("Y")
+                    .setBtnDesc("保利威")
+                    .setBtnHref("http://www.polyv.net");
+            vodSaveVideoKeyFrameResponse = new VodEditServiceImpl().saveVideoKeyFrame(vodSaveVideoKeyFrameRequest);
+            Assert.assertTrue(vodSaveVideoKeyFrameResponse);
+            if (vodSaveVideoKeyFrameResponse) {
+                log.debug("测试设置视频打点成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -45,25 +51,26 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
-| title | true | String | 字幕名称 | 
-| file | true | File | 字幕文件，支持utf-8编码 | 
-| asDefault | false | String | 是否作为默认字幕，Y：是，N:否。默认为N:否。首次上传字幕为Y：是 | 
-| language | false | String | 语言，默认自动检测，支持语言：中文、繁体中文 、英语、日语、韩语、法语、德语、俄语、西班牙语、阿拉伯语、葡萄牙语、其他 | 
+| videoId | true | String | 视频的ID | 
+| desc | true | String | 打点描述，如果上传多个打点用英文逗号隔开 | 
+| seconds | true | String | 打点秒数【第seconds秒】，如果上传多个打点用英文逗号隔开 | 
+| btnSettingSwitch | false | String | 按钮设置开关，Y:开启;N:为关闭;默认关闭 | 
+| btnDesc | false | String | 按钮描述，按钮开关开启时必填，关闭时btnDesc不设置 | 
+| btnHref | false | String | 按钮跳转地址，按钮开关开启时必填，关闭时btnDesc不设置 | 
 
 ### 返回对象描述
 
-true为上传成功，false为上传失败
+true为打点成功，false为打点失败
 <br /><br />
 
 ------------------
 
 <br /><br />
 
-## 2、查询视频字幕
+## 2、查询单个视频的打点信息
 ### 描述
 ```
-通过视频id查询视频字幕
+通过视频id查询单个视频的打点信息
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -71,15 +78,17 @@ true为上传成功，false为上传失败
 ### 单元测试
 ```java
 	@Test
-	public void testGetSubtitleList() throws IOException, NoSuchAlgorithmException {
-        VodGetSubtitleListRequest vodGetSubtitleListRequest = new VodGetSubtitleListRequest();
-        VodGetSubtitleListResponse vodGetSubtitleListResponse = null;
+	public void testListVideoKeyFrame() throws IOException, NoSuchAlgorithmException {
+        VodListVideoKeyFrameRequest vodListVideoKeyFrameRequest = new VodListVideoKeyFrameRequest();
+        VodListVideoKeyFrameResponse vodListVideoKeyFrameResponse = null;
         try {
-            vodGetSubtitleListRequest.setVideoId("1b448be32399ac90f523f76c7430c9a5_1");
-            vodGetSubtitleListResponse = new VodSubtitleServiceImpl().getSubtitleList(vodGetSubtitleListRequest);
-            Assert.assertNotNull(vodGetSubtitleListResponse);
-            if (vodGetSubtitleListResponse != null) {
-                log.debug("测试查询视频字幕成功,{}", JSON.toJSONString(vodGetSubtitleListResponse));
+            vodListVideoKeyFrameRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoId("1b448be32343357d5c4784d9ffd1bf5c_1");
+            vodListVideoKeyFrameResponse = new VodInfoServiceImpl().listVideoKeyFrame(vodListVideoKeyFrameRequest);
+            Assert.assertNotNull(vodListVideoKeyFrameResponse);
+            if (vodListVideoKeyFrameResponse != null) {
+                log.debug("测试查询单个视频的打点信息成功,{}", JSON.toJSONString(vodListVideoKeyFrameResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -93,7 +102,7 @@ true为上传成功，false为上传失败
     }
 ```
 ### 单元测试说明
-1、请求正确，返回VodGetSubtitleListResponse对象，B端依据此对象处理业务逻辑；
+1、请求正确，返回VodListVideoKeyFrameResponse对象，B端依据此对象处理业务逻辑；
 
 2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
@@ -109,14 +118,15 @@ true为上传成功，false为上传失败
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| subtitles | Array | 查询的结果列表【详见[Subtitle参数描述](subtitleService.md?id=polyv27)】 | 
+| duration | String | 返回时长,例：00:00:15 | 
+| keyFrameList | Array | 打点信息列表【详见[KeyFrame参数描述](videoPogressBarManagement.md?id=polyv29)】 | 
 
-<h6 id="polyv27"><a href="#/subtitleService.md?id=polyv27"data-id="Subtitle参数描述"class="anchor"><span>Subtitle参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv29"><a href="#/videoPogressBarManagement.md?id=polyv29"data-id="KeyFrame参数描述"class="anchor"><span>KeyFrame参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| rank | Integer | 序号，从1开始 | 
-| name | String | 字幕名称 | 
+| seconds | Integer | 打点时间点，单位秒 | 
+| keyContent | String | 打点详情 | 
 
 <br /><br />
 
@@ -124,10 +134,10 @@ true为上传成功，false为上传失败
 
 <br /><br />
 
-## 3、合并字幕文件
+## 3、删除视频指定时间点的打点信息
 ### 描述
 ```
-通过视频id与字幕信息合并字幕文件
+通过视频id与时间点删除视频指定时间点的打点信息
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -135,21 +145,18 @@ true为上传成功，false为上传失败
 ### 单元测试
 ```java
 	@Test
-	public void testMergeSubtitle() throws IOException, NoSuchAlgorithmException {
-        VodMergeSubtitleRequest vodMergeSubtitleRequest = new VodMergeSubtitleRequest();
-        Boolean vodMergeSubtitleResponse = null;
+	public void testDeleteVideoKeyFrame() throws IOException, NoSuchAlgorithmException {
+        VodDeleteVideoKeyFrameRequest vodDeleteVideoKeyFrameRequest = new VodDeleteVideoKeyFrameRequest();
+        Boolean vodDeleteVideoKeyFrameResponse = null;
         try {
-            String videoId = "1b448be3235dc575fa8f9e7f380be9cc_1";
-            //准备测试数据
-            String sourceSubtitleNames = super.getSourceSubtitleNames(videoId);
-            vodMergeSubtitleRequest.setVideoId(videoId)
-                    .setSourceSubtitleNames(sourceSubtitleNames)
-                    .setMergedSubtitleName("双语")
-                    .setSetAsDefault(Boolean.TRUE);
-            vodMergeSubtitleResponse = new VodSubtitleServiceImpl().mergeSubtitle(vodMergeSubtitleRequest);
-            Assert.assertTrue(vodMergeSubtitleResponse);
-            if (vodMergeSubtitleResponse) {
-                log.debug("测试合并字幕文件成功");
+            vodDeleteVideoKeyFrameRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1").setTimes("24,120");
+            vodDeleteVideoKeyFrameResponse = new VodEditServiceImpl().deleteVideoKeyFrame(
+                    vodDeleteVideoKeyFrameRequest);
+            Assert.assertTrue(vodDeleteVideoKeyFrameResponse);
+            if (vodDeleteVideoKeyFrameResponse) {
+                log.debug("测试删除视频指定时间点的打点信息成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -173,23 +180,21 @@ true为上传成功，false为上传失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | videoId | true | String | 视频ID | 
-| sourceSubtitleNames | true | String | 原始字幕名称，必须传两个值。以英文逗号分隔，合并后第一个字幕的内容在上方显示。 | 
-| mergedSubtitleName | false | String | 合并字幕的名称，默认：双语。不超过5个中文字符。 | 
-| setAsDefault | false | Boolean | 是否设置为默认显示的字幕。默认值：true。 | 
+| times | true | String | 时间点（单位是秒），可以多个。多个的话用逗号隔开，例如：20,30,50 | 
 
 ### 返回对象描述
 
-true为合并字幕文件成功，false为合并字幕文件失败
+true为删除成功，false为删除失败
 <br /><br />
 
 ------------------
 
 <br /><br />
 
-## 4、删除视频字幕
+## 4、删除视频的全部打点信息
 ### 描述
 ```
-通过视频id与字幕序号列表删除视频字幕
+通过视频id删除视频的全部打点信息
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -197,19 +202,18 @@ true为合并字幕文件成功，false为合并字幕文件失败
 ### 单元测试
 ```java
 	@Test
-	public void testDeleteSubtitle() throws IOException, NoSuchAlgorithmException {
-        VodDeleteSubtitleRequest vodDeleteSubtitleRequest = new VodDeleteSubtitleRequest();
-        Boolean vodDeleteSubtitleResponse = null;
+	public void testDeleteVideoAllKeyFrame() throws IOException, NoSuchAlgorithmException {
+        VodDeleteVideoAllKeyFrameRequest vodDeleteVideoAllKeyFrameRequest = new VodDeleteVideoAllKeyFrameRequest();
+        Boolean vodDeleteVideoAllKeyFrameResponse = null;
         try {
-            //准备测试数据
-            String videoId = "1b448be32399ac90f523f76c7430c9a5_1";
-            uploadSubtitle(videoId, false);
-            String ranks = getRanks(videoId);
-            vodDeleteSubtitleRequest.setVideoId(videoId).setRanks(ranks);
-            vodDeleteSubtitleResponse = new VodSubtitleServiceImpl().deleteSubtitle(vodDeleteSubtitleRequest);
-            Assert.assertTrue(vodDeleteSubtitleResponse);
-            if (vodDeleteSubtitleResponse) {
-                log.debug("测试删除视频字幕成功");
+            vodDeleteVideoAllKeyFrameRequest
+                    //可通过 new VodQueryServiceImpl().queryVideoList()获取
+                    .setVideoId("1b448be323a146649ad0cc89d0faed9c_1");
+            vodDeleteVideoAllKeyFrameResponse = new VodEditServiceImpl().deleteVideoAllKeyFrame(
+                    vodDeleteVideoAllKeyFrameRequest);
+            Assert.assertTrue(vodDeleteVideoAllKeyFrameResponse);
+            if (vodDeleteVideoAllKeyFrameResponse) {
+                log.debug("测试删除视频的全部打点信息成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -221,6 +225,7 @@ true为合并字幕文件成功，false为合并字幕文件失败
             throw e;
         }
     }
+}
 ```
 ### 单元测试说明
 1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
@@ -233,11 +238,10 @@ true为合并字幕文件成功，false为合并字幕文件失败
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | videoId | true | String | 视频ID | 
-| ranks | true | String | 字幕序号列表，序号从1开始，多个以英文逗号分隔，例如 2,3 | 
 
 ### 返回对象描述
 
-true为删除字幕成功，false为删除字幕失败
+true为删除全部打点信息成功，false为删除失败
 <br /><br />
 
 ------------------

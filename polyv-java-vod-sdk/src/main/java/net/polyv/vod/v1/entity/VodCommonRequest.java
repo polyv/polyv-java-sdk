@@ -10,7 +10,6 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 /**
  * 直播公共请求实体
  * @author: thomas
- 
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -26,21 +25,21 @@ public class VodCommonRequest extends CommonReqeust {
     /**
      * 请求发送当时的时间戳（ms)，系统自动生成
      */
-    @ApiModelProperty(hidden = true )
+    @ApiModelProperty(hidden = true, required = true)
     @NotNull(message = "属性ptime不能为空")
     private String ptime;
     
     /**
      * 数据MD5签名，系统自动生成
      */
-    @ApiModelProperty(hidden = true )
+    @ApiModelProperty(hidden = true, required = true)
     @NotNull(message = "属性sign不能为空")
     private String sign;
     
     /**
      * 每次请求的业务流水号，便于客户端/服务器端排查问题
      */
-    @ApiModelProperty(name="requestId",value  ="每次请求的业务流水号，便于客户端/服务器端排查问题",dataType = "String" ,required = true,example = "1234567" )
+    @ApiModelProperty(hidden = true, required = true, example = "1234567")
     @NotNull(message = "属性requestId不能为空")
     private String requestId;
     

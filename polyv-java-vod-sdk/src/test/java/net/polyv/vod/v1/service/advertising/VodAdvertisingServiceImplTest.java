@@ -27,6 +27,7 @@ import net.polyv.vod.v1.service.advertising.impl.VodAdvertisingServiceImpl;
 public class VodAdvertisingServiceImplTest extends BaseTest {
     /**
      * 测试创建视频广告
+     * 描述：通过上传广告文件及时间范围等参数创建视频广告
      * 返回：创建成功返回视频广告ID
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -69,39 +70,8 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试删除视频广告
-     * 返回：true为删除成功，false为删除失败
-     * @throws IOException
-     * @throws NoSuchAlgorithmException
-     */
-    @Test
-    public void testDeleteAdvertising() throws IOException, NoSuchAlgorithmException {
-        VodDeleteAdvertisingRequest vodDeleteAdvertisingRequest = new VodDeleteAdvertisingRequest();
-        Boolean vodDeleteAdvertisingResponse = null;
-        try {
-            //准备测试数据
-            String advertisingId = super.createAdvertising();
-            
-            vodDeleteAdvertisingRequest.setAdvertisingId(advertisingId);
-            vodDeleteAdvertisingResponse = new VodAdvertisingServiceImpl().deleteAdvertising(
-                    vodDeleteAdvertisingRequest);
-            Assert.assertTrue(vodDeleteAdvertisingResponse);
-            if (vodDeleteAdvertisingResponse) {
-                log.debug("测试删除视频广告成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-    
-    /**
-     * 测试获取视频广告列表
+     * 测试查询视频广告列表
+     * 描述：分页查询视频广告列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -115,7 +85,7 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
                     vodGetAdvertisingListRequest);
             Assert.assertNotNull(vodGetAdvertisingListResponse);
             if (vodGetAdvertisingListResponse != null) {
-                log.debug("测试获取视频广告列表成功,{}", JSON.toJSONString(vodGetAdvertisingListResponse));
+                log.debug("测试查询视频广告列表成功,{}", JSON.toJSONString(vodGetAdvertisingListResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -130,6 +100,7 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
     
     /**
      * 测试修改视频广告
+     * 描述：通过广告id修改视频广告信息
      * 返回：true为修改成功，false为修改失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -173,6 +144,38 @@ public class VodAdvertisingServiceImplTest extends BaseTest {
         }
     }
     
+    /**
+     * 测试删除视频广告
+     * 描述：通过广告id删除视频广告
+     * 返回：true为删除成功，false为删除失败
+     * @throws IOException
+     * @throws NoSuchAlgorithmException
+     */
+    @Test
+    public void testDeleteAdvertising() throws IOException, NoSuchAlgorithmException {
+        VodDeleteAdvertisingRequest vodDeleteAdvertisingRequest = new VodDeleteAdvertisingRequest();
+        Boolean vodDeleteAdvertisingResponse = null;
+        try {
+            //准备测试数据
+            String advertisingId = super.createAdvertising();
+            
+            vodDeleteAdvertisingRequest.setAdvertisingId(advertisingId);
+            vodDeleteAdvertisingResponse = new VodAdvertisingServiceImpl().deleteAdvertising(
+                    vodDeleteAdvertisingRequest);
+            Assert.assertTrue(vodDeleteAdvertisingResponse);
+            if (vodDeleteAdvertisingResponse) {
+                log.debug("测试删除视频广告成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
     /**
      * 测试用例结束
      */

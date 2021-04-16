@@ -1,7 +1,7 @@
 ## 1、添加指定时间点截图任务
 ### 描述
 ```
-添加指定时间点截图任务
+通过视频id、截图等相关参数添加视频指定时间点截图任务
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -10,6 +10,14 @@
 2、接口用于添加时间点截图任务，每个任务允许截图20张
 
 3、禁播的视频不允许截图操作
+
+4、如设置了callbackUrl，值为http://example.polyv.net/snapshot-callback.do 那么截图任务完成后，polyv会回调该接口，
+
+并带上签名信息，开发者可以通过签名信息来校验调用是否为polyv的合法调用，具体的签名规则：md5("snapshot" + vid + secretKey)。
+
+如vid="e6b23c6f51350f106556806a576b1942_e"，secretKey="testKey"，那么sign="3adb60893894d422d00ed2efae8c41f3"
+
+(小写md5)。最终回调的url为http://example.polyv.net/snapshot-callback.do?sign=3adb60893894d422d00ed2efae8c41f3
 ### 单元测试
 ```java
 	@Test
@@ -40,7 +48,7 @@
 ### 单元测试说明
 1、请求正确，返回Integer对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -53,7 +61,6 @@
 | width | false | Integer | 截图的宽度，默认为原视频宽 | 
 | height | false | Integer | 截图的高度，默认为原视频高 | 
 | callbackUrl | false | String | 截图完成后的回调地址，截图任务完成会post结果信息和签名到回调的地址，若地址返回的Http状态码为200，则会视为回调成功。例如 http://example.polyv.net/snapshot-callback.do | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -64,10 +71,10 @@
 
 <br /><br />
 
-## 2、获取截图任务状态
+## 2、查询截图任务状态
 ### 描述
 ```
-获取截图任务状态
+通过截图任务id查询截图任务状态
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -84,7 +91,7 @@
                     vodGetScreenshotTaskStatusRequest);
             Assert.assertNotNull(vodGetScreenshotTaskStatusResponse);
             if (vodGetScreenshotTaskStatusResponse != null) {
-                log.debug("测试获取截图任务状态成功,{}", JSON.toJSONString(vodGetScreenshotTaskStatusResponse));
+                log.debug("测试查询截图任务状态成功,{}", JSON.toJSONString(vodGetScreenshotTaskStatusResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -100,7 +107,7 @@
 ### 单元测试说明
 1、请求正确，返回VodGetScreenshotTaskStatusResponse对象，B端依据此对象处理业务逻辑；
 
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
 
 3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
 ### 请求入参描述
@@ -108,7 +115,6 @@
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
 | taskId | true | Integer | 任务ID | 
-| requestId | true | String | 每次请求的业务流水号，便于客户端/服务器端排查问题 | 
 
 ### 返回对象描述
 
@@ -121,9 +127,9 @@
 | createTime | Date | 任务创建时间,时间格式 yyyy-MM-dd HH:mm:ss | 
 | beginProcessTime | Date | 开始截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
 | finishProcessTime | Date | 完成截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
-| screenshots | Array | 截图信息组，失败或未开始时为空【详见[Screenshot参数描述](screenshotService.md?id=polyv28)】 | 
+| screenshots | Array | 截图信息组，失败或未开始时为空【详见[Screenshot参数描述](screenshotService.md?id=polyv26)】 | 
 
-<h6 id="polyv28"><a href="#/screenshotService.md?id=polyv28"data-id="Screenshot参数描述"class="anchor"><span>Screenshot参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv26"><a href="#/screenshotService.md?id=polyv26"data-id="Screenshot参数描述"class="anchor"><span>Screenshot参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 

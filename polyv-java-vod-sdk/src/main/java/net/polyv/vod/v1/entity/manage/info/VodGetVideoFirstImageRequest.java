@@ -29,9 +29,9 @@ public class VodGetVideoFirstImageRequest extends VodCommonRequest {
     private String videoId;
     
     /**
-     * 值为1时，表示获取视频首图的缩略图
+     * 是否为视频首图的缩略图，值为1：是；值为0：否。默认为0：非视频首图的缩略图
      */
-    @ApiModelProperty(name = "thumbnail", value = "值为1时，表示获取视频首图的缩略图", required = false)
+    @ApiModelProperty(name = "thumbnail", value = "是否为视频首图的缩略图，值为1：是；值为0：否。默认为0：非视频首图的缩略图", required = false)
     @JSONField(name = "t")
     private Integer thumbnail;
     

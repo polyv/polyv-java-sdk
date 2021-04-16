@@ -15,7 +15,6 @@ import net.polyv.vod.v1.entity.play.list.VodGetOnePlayListRequest;
 import net.polyv.vod.v1.entity.play.list.VodGetOnePlayListResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.play.impl.VodPlayListServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 播放列表
@@ -23,8 +22,10 @@ import net.polyv.vod.v1.util.VodSignUtil;
  */
 @Slf4j
 public class VodPlayListServiceImplTest extends BaseTest {
+    
     /**
-     * 测试获取单个播放列表
+     * 测试查询单个播放列表
+     * 描述：通过播放列表id查询单个播放列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -37,7 +38,7 @@ public class VodPlayListServiceImplTest extends BaseTest {
             vodGetOnePlayListResponseList = new VodPlayListServiceImpl().getOnePlayList(vodGetOnePlayListRequest);
             Assert.assertNotNull(vodGetOnePlayListResponseList);
             if (vodGetOnePlayListResponseList != null) {
-                log.debug("测试获取单个播放列表成功,{}", JSON.toJSONString(vodGetOnePlayListResponseList));
+                log.debug("测试查询单个播放列表成功,{}", JSON.toJSONString(vodGetOnePlayListResponseList));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

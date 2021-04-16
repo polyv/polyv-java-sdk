@@ -13,7 +13,6 @@ import net.polyv.vod.v1.entity.account.VodAccountSpaceDataRequest;
 import net.polyv.vod.v1.entity.account.VodAccountSpaceDataResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.account.impl.VodAccountServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 账户管理
@@ -23,7 +22,8 @@ import net.polyv.vod.v1.util.VodSignUtil;
 public class VodAccountServiceImplTest extends BaseTest {
     
     /**
-     * 获取用户空间及流量情况
+     * 查询用户空间及流量情况
+     * 描述：通过日期查询用户账号的空间及流量使用情况
      * API地址：ACCOUNT_SPACE_FLOW_URL
      */
     @Test
@@ -35,7 +35,7 @@ public class VodAccountServiceImplTest extends BaseTest {
             vodAccountSpaceDataResponse = new VodAccountServiceImpl().getAccountSpaceFlow(vodAccountSpaceDataRequest);
             Assert.assertNotNull(vodAccountSpaceDataResponse);
             if (vodAccountSpaceDataResponse != null) {
-                log.debug("测试获取用户空间及流量情况成功,{}", JSON.toJSONString(vodAccountSpaceDataResponse));
+                log.debug("测试查询用户空间及流量情况成功,{}", JSON.toJSONString(vodAccountSpaceDataResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

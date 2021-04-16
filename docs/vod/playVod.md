@@ -64,12 +64,28 @@
 
 ##  代码示例
 
-[视频上传]()
+[视频上传](/uploadVideoParts)
 
-[视频管理]()
+[视频管理](/editService)
 
-[发布管理-通过微信观看]()
+[发布管理-通过微信观看](http://go.plvideo.cn/front/video/view?vid=88083abbf5d3d0d1bb3d7f04e231b8d8_8)
 
-[发布管理-HTML代码]()
+发布管理-HTML代码
 
-[获取日志]() 
+```html
+<script src='//player.polyv.net/script/player.js'></script>
+<div id='plv_88083abbf5d3d0d1bb3d7f04e231b8d8_8'></div><!-- “plv_”之后为视频id-->
+<script>
+var player = polyvPlayer({
+  'wrap':'#plv_88083abbf5d3d0d1bb3d7f04e231b8d8_8', // ”#plv_“之后为视频id
+  'width':'600',
+  'height':'338',
+  'vid': '88083abbf5d3d0d1bb3d7f04e231b8d8_8', // 视频id
+  'playsafe': '' // 播放加密视频的凭证, 取值参考文档: http://dev.polyv.net/?p=16673 
+});
+</script>
+```
+
+视频id为[视频上传接口](/uploadVideoParts)返回的视频id，将此html代码片段置入用户html文件中即可播放视频
+
+[获取日志](/dataStatisticsService?id=_1、查询某一天视频观看日志) 

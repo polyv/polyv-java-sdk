@@ -25,7 +25,7 @@ public class VodUploadVideoPartsTest extends BaseTest {
      * 描述：分片上传视频
      * 描述：具体上传视频是否加密，需要通过“设置账号加密设置”进行设置
      */
-    @Test
+//    @Test
     public void testUploadVideoPart() {
         //构建视频上传客户端，可传入分片大小（默认为1MB,大小限定为100KB~5GB），分片文件夹路径（默认为checkpoint_location），上传线程数（默认为5个），此对象全局唯一
         PolyvUploadClient client = new PolyvUploadClient(1024 * 1024, "checkpoint_location", 5);
@@ -107,7 +107,7 @@ public class VodUploadVideoPartsTest extends BaseTest {
     /**
      * 测试分片上传视频-续传
      */
-    @Test
+//    @Test
     public void testUploadVideoPartSequel() {
         String videoFile = getClass().getResource("/file/polyv.mp4").getPath();
         String videoId = "1b448be323ee722d75bbe7fc25343a06_1";

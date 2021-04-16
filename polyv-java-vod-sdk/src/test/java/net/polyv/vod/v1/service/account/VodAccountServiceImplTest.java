@@ -13,7 +13,6 @@ import net.polyv.vod.v1.entity.account.VodAccountSpaceDataRequest;
 import net.polyv.vod.v1.entity.account.VodAccountSpaceDataResponse;
 import net.polyv.vod.v1.service.BaseTest;
 import net.polyv.vod.v1.service.account.impl.VodAccountServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * 账户管理
@@ -24,6 +23,7 @@ public class VodAccountServiceImplTest extends BaseTest {
     
     /**
      * 查询用户空间及流量情况
+     * 描述：通过日期查询用户账号的空间及流量使用情况
      * API地址：ACCOUNT_SPACE_FLOW_URL
      */
     @Test

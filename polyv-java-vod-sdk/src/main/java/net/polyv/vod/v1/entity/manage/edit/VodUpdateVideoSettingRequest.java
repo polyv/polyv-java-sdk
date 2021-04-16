@@ -21,6 +21,14 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 public class VodUpdateVideoSettingRequest extends VodCommonRequest {
     
     /**
+     * 视频ID,多个使用英文逗号分隔
+     */
+    @ApiModelProperty(name = "videoIds", value = "视频ID,多个使用英文逗号分隔", required = true)
+    @NotNull(message = "属性videoIds不能为空")
+    @JSONField(name = "vids")
+    private String videoIds;
+    
+    /**
      * 视频描述
      */
     @ApiModelProperty(name = "desc", value = "视频描述", required = false)
@@ -50,13 +58,4 @@ public class VodUpdateVideoSettingRequest extends VodCommonRequest {
      */
     @ApiModelProperty(name = "title", value = "视频标题", required = false)
     private String title;
-    
-    /**
-     * 视频ID,多个使用英文逗号分隔
-     */
-    @ApiModelProperty(name = "videoIds", value = "视频ID,多个使用英文逗号分隔", required = true)
-    @NotNull(message = "属性videoIds不能为空")
-    @JSONField(name = "vids")
-    private String videoIds;
-
 }

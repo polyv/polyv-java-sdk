@@ -36,6 +36,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     
     /**
      * 测试查询单个视频信息
+     * 描述：通过视频id查询单个视频的信息
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -63,6 +64,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     
     /**
      * 测试查询视频授权播放开关
+     * 描述：通过视频id查询视频授权播放开关状态
      * 返回：true为开关开启，false为开关关闭
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -74,7 +76,7 @@ public class VodInfoServiceImplTest extends BaseTest {
         try {
             vodGetVideoPlayStatusRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
-                    .setVideoId("1b448be32343357d5c4784d9ffd1bf5c_1");
+                    .setVideoId("1b448be32302cab82e0189d115beedd8_1");
             vodGetVideoPlayStatusResponse = new VodInfoServiceImpl().getVideoPlayStatus(vodGetVideoPlayStatusRequest);
             Assert.assertTrue(vodGetVideoPlayStatusResponse);
             if (vodGetVideoPlayStatusResponse) {
@@ -93,6 +95,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     
     /**
      * 测试查询视频时长和大小
+     * 描述：通过视频id或分类id查询视频的时长和大小
      * 约束：2、当传了videoIds时，按照videoIds查询；当仅传categoryIds时，按照categoryIds查询；videoIds和categoryIds不能同时为空；同时传以videoIds为准
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -122,6 +125,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     
     /**
      * 测试查询微信分享页的视频信息
+     * 描述：通过视频id查询微信分享页的视频信息
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -150,6 +154,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     
     /**
      * 测试查询视频播放预览时长
+     * 描述：通过视频id查询视频播放预览时长
      * 返回：视频播放预览时长，单位：秒
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -179,6 +184,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     
     /**
      * 测试查询单个视频的首图
+     * 描述：通过视频id查询单个视频的首图
      * 返回：首图地址
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -208,6 +214,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     
     /**
      * 测试查询视频密码
+     * 描述：通过视频id查询视频密码
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -235,6 +242,7 @@ public class VodInfoServiceImplTest extends BaseTest {
     
     /**
      * 批量查询视频播放次数
+     * 描述：通过视频id批量查询视频播放次数
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

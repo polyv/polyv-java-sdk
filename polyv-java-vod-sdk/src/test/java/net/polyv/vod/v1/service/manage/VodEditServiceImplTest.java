@@ -33,6 +33,7 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试修改单个视频信息
+     * 描述：通过视频id等参数修改单个视频信息
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -65,8 +66,7 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试修改视频的授权播放开关
-     * 描述：1、根据videoIds设置单个视频/多个视频的授权播放开关状态
-     * 描述：2、删除分为逻辑删除与物理删除，逻辑删除可通过恢复回收站视频接口恢复被删除的视频，而物理删除则不可恢复
+     * 描述：通过视频id修改单个视频或多个视频的授权播放开关状态
      * 返回：true为修改成功，false为修改失败
      */
     @Test
@@ -96,7 +96,7 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试批量修改视频的授权方式
-     * 描述：通过videoIds批量修改视频的授权方式
+     * 描述：通过视频id与加密授权参数批量修改视频的授权方式
      * 返回：true为修改视频授权方式成功，false为修改授权方式失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -128,7 +128,8 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试修改视频的播放预览时长
-     * 描述：设置视频预览时长，使用点播后台视频列表，选择视频，复制右侧预览代码即可播放预览视频
+     * 描述：1、通过视频id修改视频的预览时长。
+     * 描述：2、使用点播后台视频列表，选择视频，复制右侧预览代码即可播放预览视频
      * 返回：true为设置成功，false为设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -160,9 +161,10 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试修改视频禁播与解禁
+     * 描述：通过视频id修改视频禁播与解禁状态
      * 约束：2、禁播后会将视频状态（status）设置成53，一次最多只能操作500个vid
-     * 约束：3、只能修改“已发布”状态的视频为禁播状态，只能修改“已禁播”状态的视频为已发布状态
-     * 约束：4、当请求中的vid包含多种状态时，只对符合条件的vid进行状态修改操作，并返回成功；若没有符合条件的vid则返回错误。
+     * 约束：3、只能修改”已发布”状态的视频为禁播状态，只能修改“已禁播”状态的视频为已发布状态
+     * 约束：4、当请求中的视频包含多种状态时，只对符合条件的视频进行状态修改操作，并返回成功；若没有符合条件的vid则返回错误。
      * 返回：true为设置成功，false为设置失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -193,6 +195,7 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试修改视频密码
+     * 描述：通过视频id批量修改视频密码
      * 返回：true为修改成功，false为删除失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -227,6 +230,7 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试移动视频到指定分类
+     * 描述：通过视频id与分类id移动视频到指定分类
      * 返回：true为修改成功，false为修改失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -236,8 +240,7 @@ public class VodEditServiceImplTest extends BaseTest {
         VodMoveVideoRequest vodMoveVideoRequest = new VodMoveVideoRequest();
         Boolean vodMoveVideoResponse = null;
         try {
-            vodMoveVideoRequest.setCategoryId("1602300731843")
-                    .setVideoIds("1b448be3230a0194d959426ae005645f_1");
+            vodMoveVideoRequest.setCategoryId("1602300731843").setVideoIds("1b448be3230a0194d959426ae005645f_1");
             vodMoveVideoResponse = new VodCategoryServiceImpl().moveVideo(vodMoveVideoRequest);
             Assert.assertTrue(vodMoveVideoResponse);
             if (vodMoveVideoResponse) {
@@ -256,7 +259,7 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试恢复回收站视频
-     * 描述：恢复点播回收站中的视频
+     * 描述：通过视频id批量恢复回收站中的视频
      * 约束：2、接口支持批量恢复，一次性最多支持恢复100个视频。
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -287,6 +290,8 @@ public class VodEditServiceImplTest extends BaseTest {
     
     /**
      * 测试批量删除视频
+     * 描述：1、通过视频id批量删除视频
+     * 描述：2、删除分为逻辑删除与物理删除，逻辑删除可通过恢复回收站视频接口恢复被删除的视频，而物理删除则不可恢复
      * 约束：2、视频id一次最多提交500个；
      * 返回：true为批量删除成功，false为批量删除失败
      * @throws IOException

@@ -104,7 +104,7 @@
 ## 2、查询视频授权播放开关
 ### 描述
 ```
-查询视频授权播放开关
+通过视频id查询视频授权播放开关状态
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -118,7 +118,7 @@
         try {
             vodGetVideoPlayStatusRequest
                     //可通过 new VodQueryServiceImpl().queryVideoList()获取
-                    .setVideoId("1b448be32343357d5c4784d9ffd1bf5c_1");
+                    .setVideoId("1b448be32302cab82e0189d115beedd8_1");
             vodGetVideoPlayStatusResponse = new VodInfoServiceImpl().getVideoPlayStatus(vodGetVideoPlayStatusRequest);
             Assert.assertTrue(vodGetVideoPlayStatusResponse);
             if (vodGetVideoPlayStatusResponse) {

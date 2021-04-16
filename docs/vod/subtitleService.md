@@ -1,4 +1,66 @@
-## 1、查询视频字幕
+## 1、上传点播视频字幕文件
+### 描述
+```
+上传点播视频字幕文件
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testUploadSubtitle() throws IOException, NoSuchAlgorithmException {
+        VodUploadSubtitleRequest vodUploadSubtitleRequest = new VodUploadSubtitleRequest();
+        Boolean vodUploadSubtitleResponse = null;
+        try {
+            String srtCN = getClass().getResource("/subtitle/srt(zh_CN).srt").getPath();
+            vodUploadSubtitleRequest.setVideoId("1b448be32399ac90f523f76c7430c9a5_1")
+                    .setFile(new File(srtCN))
+                    .setAsDefault("N")
+                    .setTitle("subtitle")
+                    .setLanguage(null);
+            vodUploadSubtitleResponse = new VodSubtitleServiceImpl().uploadSubtitle(vodUploadSubtitleRequest);
+            Assert.assertTrue(vodUploadSubtitleResponse);
+            if (vodUploadSubtitleResponse) {
+                log.debug("测试上传点播视频字幕文件成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| videoId | true | String | 视频ID | 
+| title | true | String | 字幕名称 | 
+| file | true | File | 字幕文件，支持utf-8编码 | 
+| asDefault | false | String | 是否作为默认字幕，Y：是，N:否。默认为N:否。首次上传字幕为Y：是 | 
+| language | false | String | 语言，默认自动检测，支持语言：中文、繁体中文 、英语、日语、韩语、法语、德语、俄语、西班牙语、阿拉伯语、葡萄牙语、其他 | 
+
+### 返回对象描述
+
+true为上传成功，false为上传失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 2、查询视频字幕
 ### 描述
 ```
 查询视频字幕
@@ -62,127 +124,7 @@
 
 <br /><br />
 
-## 2、上传点播视频字幕文件
-### 描述
-```
-上传点播视频字幕文件
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
-### 单元测试
-```java
-	@Test
-	public void testUploadSubtitle() throws IOException, NoSuchAlgorithmException {
-        VodUploadSubtitleRequest vodUploadSubtitleRequest = new VodUploadSubtitleRequest();
-        Boolean vodUploadSubtitleResponse = null;
-        try {
-            String srtCN = getClass().getResource("/subtitle/srt(zh_CN).srt").getPath();
-            vodUploadSubtitleRequest.setVideoId("1b448be32399ac90f523f76c7430c9a5_1")
-                    .setFile(new File(srtCN))
-                    .setAsDefault("N")
-                    .setTitle("subtitle")
-                    .setLanguage(null);
-            vodUploadSubtitleResponse = new VodSubtitleServiceImpl().uploadSubtitle(vodUploadSubtitleRequest);
-            Assert.assertTrue(vodUploadSubtitleResponse);
-            if (vodUploadSubtitleResponse) {
-                log.debug("测试上传点播视频字幕文件成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
-| title | true | String | 字幕名称 | 
-| file | true | File | 字幕文件，支持utf-8编码 | 
-| asDefault | false | String | 是否作为默认字幕，Y：是，N:否。默认为N:否。首次上传字幕为Y：是 | 
-| language | false | String | 语言，默认自动检测，支持语言：中文、繁体中文 、英语、日语、韩语、法语、德语、俄语、西班牙语、阿拉伯语、葡萄牙语、其他 | 
-
-### 返回对象描述
-
-true为上传成功，false为上传失败
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 3、删除视频字幕
-### 描述
-```
-删除视频字幕
-```
-### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
-### 单元测试
-```java
-	@Test
-	public void testDeleteSubtitle() throws IOException, NoSuchAlgorithmException {
-        VodDeleteSubtitleRequest vodDeleteSubtitleRequest = new VodDeleteSubtitleRequest();
-        Boolean vodDeleteSubtitleResponse = null;
-        try {
-            //准备测试数据
-            String videoId = "1b448be32399ac90f523f76c7430c9a5_1";
-            uploadSubtitle(videoId, false);
-            String ranks = getRanks(videoId);
-            vodDeleteSubtitleRequest.setVideoId(videoId).setRanks(ranks);
-            vodDeleteSubtitleResponse = new VodSubtitleServiceImpl().deleteSubtitle(vodDeleteSubtitleRequest);
-            Assert.assertTrue(vodDeleteSubtitleResponse);
-            if (vodDeleteSubtitleResponse) {
-                log.debug("测试删除视频字幕成功");
-            }
-        } catch (PloyvSdkException e) {
-            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
-            log.error(e.getMessage(), e);
-            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
-            throw e;
-        } catch (Exception e) {
-            log.error("SDK调用异常", e);
-            throw e;
-        }
-    }
-```
-### 单元测试说明
-1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
-
-2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
-
-3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
-### 请求入参描述
-
-| 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
-| videoId | true | String | 视频ID | 
-| ranks | true | String | 字幕序号列表，序号从1开始，多个以英文逗号分隔，例如 2,3 | 
-
-### 返回对象描述
-
-true为删除字幕成功，false为删除字幕失败
-<br /><br />
-
-------------------
-
-<br /><br />
-
-## 4、合并字幕文件
+## 3、合并字幕文件
 ### 描述
 ```
 合并字幕文件
@@ -238,6 +180,64 @@ true为删除字幕成功，false为删除字幕失败
 ### 返回对象描述
 
 true为合并字幕文件成功，false为合并字幕文件失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 4、删除视频字幕
+### 描述
+```
+删除视频字幕
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+### 单元测试
+```java
+	@Test
+	public void testDeleteSubtitle() throws IOException, NoSuchAlgorithmException {
+        VodDeleteSubtitleRequest vodDeleteSubtitleRequest = new VodDeleteSubtitleRequest();
+        Boolean vodDeleteSubtitleResponse = null;
+        try {
+            //准备测试数据
+            String videoId = "1b448be32399ac90f523f76c7430c9a5_1";
+            uploadSubtitle(videoId, false);
+            String ranks = getRanks(videoId);
+            vodDeleteSubtitleRequest.setVideoId(videoId).setRanks(ranks);
+            vodDeleteSubtitleResponse = new VodSubtitleServiceImpl().deleteSubtitle(vodDeleteSubtitleRequest);
+            Assert.assertTrue(vodDeleteSubtitleResponse);
+            if (vodDeleteSubtitleResponse) {
+                log.debug("测试删除视频字幕成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| videoId | true | String | 视频ID | 
+| ranks | true | String | 字幕序号列表，序号从1开始，多个以英文逗号分隔，例如 2,3 | 
+
+### 返回对象描述
+
+true为删除字幕成功，false为删除字幕失败
 <br /><br />
 
 ------------------

@@ -148,7 +148,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| playAuth | true | Integer | 是否开启(开启为1，没开启为0) | 
+| playAuth | true | Integer | 授权播放开关状态，开启为1，未开启为0 | 
 | currentPage | false | Integer | 页数，默认为1 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 

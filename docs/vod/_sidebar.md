@@ -26,7 +26,6 @@
   * 视频播放
     * [播放列表](playListService)
     * [播放器设置](playerSettingsService)
-    * [播放域名限制]()
   * [加密设置](encryptionSettingsService)
   * [广告管理](advertisingService)
   * [数据统计](dataStatisticsService)

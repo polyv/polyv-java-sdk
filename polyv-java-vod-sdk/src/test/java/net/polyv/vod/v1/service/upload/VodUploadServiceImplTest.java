@@ -57,6 +57,7 @@ public class VodUploadServiceImplTest extends BaseTest {
     
     /**
      * 上传多个视频的预览图URL
+     * 描述：通过图片http地址上传视频预览图
      * 约束：2、图片资源不支持https的协议
      * 约束：3、当传了videoIds参数，以videoIds为准，当videoIds不传，以categoryIds为准，两个参数不能同时为空。
      * 返回：true：上传成功；false：上传失败

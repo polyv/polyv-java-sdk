@@ -24,6 +24,7 @@ public class VodVideoCutAndMergeImplTest extends BaseTest {
     
     /**
      * 测试提交视频裁剪任务
+     * 描述：通过视频id、时间范围裁剪视频并生成新的视频
      * 返回：接口请求成功会返回裁剪后新视频的videoId
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -56,6 +57,7 @@ public class VodVideoCutAndMergeImplTest extends BaseTest {
     
     /**
      * 测试合并视频
+     * 描述：通过视频id合并视频并生成新的视频
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

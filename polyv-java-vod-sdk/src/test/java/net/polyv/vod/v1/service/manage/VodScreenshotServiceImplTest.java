@@ -26,12 +26,12 @@ public class VodScreenshotServiceImplTest extends BaseTest {
     
     /**
      * 测试添加指定时间点截图任务
-     * 回调说明：如设置了callbackUrl，值为http://example.polyv.net/snapshot-callback.do
-     * 回调说明：那么截图任务完成后，polyv会回调该接口，并带上签名信息，开发者可以通过签名信息来校验调用是否为polyv的合法调用，具体的签名规则：md5("snapshot" + vid + secretKey)
-     * 回调说明：。如vid="e6b23c6f51350f106556806a576b1942_e"，secretKey="testKey"，那么sign="3adb60893894d422d00ed2efae8c41f3"
-     * 回调说明：(小写md5)。最终回调的url为http://example.polyv.net/snapshot-callback.do?sign=3adb60893894d422d00ed2efae8c41f3
      * 约束：2、接口用于添加时间点截图任务，每个任务允许截图20张
      * 约束：3、禁播的视频不允许截图操作
+     * 约束：4、如设置了callbackUrl，值为http://example.polyv.net/snapshot-callback.do 那么截图任务完成后，polyv会回调该接口，
+     * 约束：并带上签名信息，开发者可以通过签名信息来校验调用是否为polyv的合法调用，具体的签名规则：md5("snapshot" + vid + secretKey)。
+     * 约束：如vid="e6b23c6f51350f106556806a576b1942_e"，secretKey="testKey"，那么sign="3adb60893894d422d00ed2efae8c41f3"
+     * 约束：(小写md5)。最终回调的url为http://example.polyv.net/snapshot-callback.do?sign=3adb60893894d422d00ed2efae8c41f3
      * 返回：添加成功返回截图任务id
      * @throws IOException
      * @throws NoSuchAlgorithmException

@@ -37,6 +37,7 @@ public class VodListServiceImplTest extends BaseTest {
     
     /**
      * 测试查询视频列表
+     * 描述：通过视频信息查询视频列表
      * 描述：按视频标题、分类、标签等条件分页查询视频列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
@@ -65,6 +66,7 @@ public class VodListServiceImplTest extends BaseTest {
     
     /**
      * 测试通过授权播放查询视频列表
+     * 描述：通过授权播放开关状态查询视频列表
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
@@ -92,6 +94,7 @@ public class VodListServiceImplTest extends BaseTest {
     
     /**
      * 测试查询子账号的视频列表
+     * 描述：通过子账号邮箱查询子账号的视频列表
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -123,11 +126,12 @@ public class VodListServiceImplTest extends BaseTest {
     
     /**
      * 测试查询最新视频/全部视频列表
-     * 描述：1、请求入参startTime（开始时间）和endTime（结束时间）的优先级最高
-     * 描述：2、当请求入参startTime和endTime都不为空，则startTime＜＝时间区间<=endTime
-     * 描述：3、当请求入参startTime为空，endTime不为空，则时间区间为<=endTime
-     * 描述：4、当请求入参startTime不为空，endTime为空，则时间区间为>=startTime
-     * 描述：5、当请求入参startTime和endTime都为空，则时间区间以startDate（开始日期）和endDate（结束日期）为准
+     * 描述：1、通过时间范围或视频状态等信息查询视频列表
+     * 描述：2、请求入参startTime（开始时间）和endTime（结束时间）的优先级最高
+     * 描述：3、当请求入参startTime和endTime都不为空，则startTime＜＝时间区间<=endTime
+     * 描述：4、当请求入参startTime为空，endTime不为空，则时间区间为<=endTime
+     * 描述：5、当请求入参startTime不为空，endTime为空，则时间区间为>=startTime
+     * 描述：6、当请求入参startTime和endTime都为空，则时间区间以startDate（开始日期）和endDate（结束日期）为准
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -162,6 +166,7 @@ public class VodListServiceImplTest extends BaseTest {
     
     /**
      * 测试查询最热视频列表
+     * 描述：分页查询最热视频列表
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -189,6 +194,7 @@ public class VodListServiceImplTest extends BaseTest {
     
     /**
      * 测试查询视频回收站列表
+     * 描述：分页查询视频回收站列表
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */
@@ -216,6 +222,7 @@ public class VodListServiceImplTest extends BaseTest {
     
     /**
      * 测试查询审核不通过视频列表
+     * 描述：分页查询审核不通过视频列表
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
      */

@@ -30,13 +30,13 @@
 <dependency>
     <groupId>org.projectlombok</groupId>
     <artifactId>lombok</artifactId>
-    <version>1.18.10</version>
+    <version>1.18.16</version>
 </dependency>
 ```
 
 ## 2.初始化系统
 
-&emsp;&emsp;在执行测试代码之前，需要B端先初始化系统配置，包括userId \ secretKey , 如没有以上信息，请参考本文[前提条件](/quick_start?id=前提条件)部分获取，初始化示例代码如下，任选一种：
+&emsp;&emsp;在执行测试代码之前，需要B端先初始化系统配置，包括userId、secretKey , 如没有以上信息，请参考本文[前提条件](/quick_start?id=前提条件)部分获取，初始化示例代码如下，任选一种：
 
 ````java
    /**

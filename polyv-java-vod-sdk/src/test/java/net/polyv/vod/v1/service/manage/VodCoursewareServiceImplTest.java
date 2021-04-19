@@ -36,7 +36,7 @@ public class VodCoursewareServiceImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-//    @Test
+    @Test
     public void testUploadCourseware() throws IOException, NoSuchAlgorithmException {
         VodUploadCoursewareRequest vodUploadCoursewareRequest = new VodUploadCoursewareRequest();
         Boolean vodUploadCoursewareResponse = null;

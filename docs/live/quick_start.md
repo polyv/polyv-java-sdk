@@ -141,8 +141,7 @@ public class LiveChannelDemo {
             //封装API请求对象
             LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
             liveChannelRequest.setName("Spring 知识精讲") //设置频道主题信息
-                    .setChannelPasswd("666888")   //设置频道密码
-                    .setRequestId("2860257a405447e1bbbe9161da2dee72"); // 设置请求流水号
+                    .setChannelPasswd("666888");   //设置频道密码
             //调用SDK请求保利威服务器
             LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(
                     liveChannelRequest);

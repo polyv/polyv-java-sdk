@@ -64,7 +64,7 @@
 
 ##  代码示例
 
-[视频上传](/uploadVideoParts)
+[视频上传](/uploadService)
 
 [视频管理](/editService)
 

@@ -18,9 +18,9 @@ import net.polyv.vod.v1.entity.VodCommonRequest;
 @ApiModel("导出视频同步任务请求实体")
 public class VodExportTaskRequest extends VodCommonRequest {
     /**
-     * 抓取任务ID
+     * 同步任务ID
      */
-    @ApiModelProperty(name = "taskId", value = "抓取任务ID", required = true)
+    @ApiModelProperty(name = "taskId", value = "同步任务ID", required = true)
     @NotNull(message = "属性taskId不能为空")
     private String taskId;
 }

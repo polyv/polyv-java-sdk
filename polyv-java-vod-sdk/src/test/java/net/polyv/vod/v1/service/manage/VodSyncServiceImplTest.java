@@ -53,8 +53,8 @@ public class VodSyncServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试删除抓取视频任务
-     * 描述：通过视频同步任务id删除抓取视频任务
+     * 测试删除同步视频任务
+     * 描述：通过视频同步任务id删除同步视频任务
      * 返回：true为删除成功，false为删除失败
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常
@@ -71,7 +71,7 @@ public class VodSyncServiceImplTest extends BaseTest {
             vodDeleteTaskResponse = new VodSyncServiceImpl().deleteTask(vodDeleteTaskRequest);
             Assert.assertTrue(vodDeleteTaskResponse);
             if (vodDeleteTaskResponse) {
-                log.debug("测试删除抓取视频任务成功");
+                log.debug("测试删除同步视频任务成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

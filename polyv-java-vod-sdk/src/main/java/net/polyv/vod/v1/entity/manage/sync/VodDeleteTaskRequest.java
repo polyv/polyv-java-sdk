@@ -9,18 +9,18 @@ import net.polyv.common.v1.validator.constraints.NotNull;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 
 /**
- * 删除抓取视频任务请求实体
+ * 删除同步视频任务请求实体
  * @author: fangyan
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@ApiModel("删除抓取视频任务请求实体")
+@ApiModel("删除同步视频任务请求实体")
 public class VodDeleteTaskRequest extends VodCommonRequest {
     /**
-     * 抓取任务ID
+     * 同步任务ID
      */
-    @ApiModelProperty(name = "taskId", value = "抓取任务ID", required = true)
+    @ApiModelProperty(name = "taskId", value = "同步任务ID", required = true)
     @NotNull(message = "属性taskId不能为空")
     private String taskId;
 }

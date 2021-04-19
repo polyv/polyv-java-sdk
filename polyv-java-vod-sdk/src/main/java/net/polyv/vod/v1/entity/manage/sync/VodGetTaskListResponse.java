@@ -34,9 +34,9 @@ public class VodGetTaskListResponse extends VodPageCommonResponse {
     public static class Task {
         
         /**
-         * 抓取任务对应的ID
+         * 同步任务对应的ID
          */
-        @ApiModelProperty(name = "taskId", value = "抓取任务对应的ID", required = false)
+        @ApiModelProperty(name = "taskId", value = "同步任务对应的ID", required = false)
         @JSONField(name = "taskid")
         private String taskId;
         
@@ -48,44 +48,44 @@ public class VodGetTaskListResponse extends VodPageCommonResponse {
         private String userId;
         
         /**
-         * 上传的抓取任务csv文件的标题
+         * 上传的同步任务csv文件的标题
          */
-        @ApiModelProperty(name = "originalName", value = "上传的抓取任务csv文件的标题", required = false)
+        @ApiModelProperty(name = "originalName", value = "上传的同步任务csv文件的标题", required = false)
         @JSONField(name = "originalname")
         private String originalName;
         
         /**
-         * 抓取任务的csv文件地址
+         * 同步任务的csv文件地址
          */
-        @ApiModelProperty(name = "fileUrl", value = "抓取任务的csv文件地址", required = false)
+        @ApiModelProperty(name = "fileUrl", value = "同步任务的csv文件地址", required = false)
         @JSONField(name = "fileurl")
         private String fileUrl;
         
         /**
-         * 抓取成功的数量
+         * 同步成功的数量
          */
-        @ApiModelProperty(name = "successCount", value = "抓取成功的数量", required = false)
+        @ApiModelProperty(name = "successCount", value = "同步成功的数量", required = false)
         @JSONField(name = "seccesscount")
         private Integer successCount;
         
         /**
-         * 此任务内总抓取数
+         * 此任务内总同步数
          */
-        @ApiModelProperty(name = "totalCount", value = "此任务内总抓取数", required = false)
+        @ApiModelProperty(name = "totalCount", value = "此任务内总同步数", required = false)
         @JSONField(name = "totalcount")
         private Integer totalCount;
         
         /**
-         * 抓取失败的数量
+         * 同步失败的数量
          */
-        @ApiModelProperty(name = "failCount", value = "抓取失败的数量", required = false)
+        @ApiModelProperty(name = "failCount", value = "同步失败的数量", required = false)
         @JSONField(name = "failcount")
         private Integer failCount;
         
         /**
-         * 抓取任务完成状态，Y：完成，N：未完成
+         * 同步任务完成状态，Y：完成，N：未完成
          */
-        @ApiModelProperty(name = "status", value = "抓取任务完成状态", required = false)
+        @ApiModelProperty(name = "status", value = "同步任务完成状态", required = false)
         private String status;
         
         /**

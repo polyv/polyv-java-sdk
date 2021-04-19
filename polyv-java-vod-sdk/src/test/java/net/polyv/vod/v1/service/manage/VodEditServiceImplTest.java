@@ -261,6 +261,7 @@ public class VodEditServiceImplTest extends BaseTest {
      * 测试恢复回收站视频
      * 描述：通过视频id批量恢复回收站中的视频
      * 约束：2、接口支持批量恢复，一次性最多支持恢复100个视频。
+     * 返回：true为恢复成功，false为恢复失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

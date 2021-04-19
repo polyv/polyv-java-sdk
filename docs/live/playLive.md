@@ -46,7 +46,6 @@
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
-        String requestId = LiveSignUtil.generateUUID();
         //频道相关基础设置-频道名
         quickCreatePPTChannelRequest.setName("直播教学场景演示")
                 //频道相关基础设置-频道密码
@@ -89,12 +88,10 @@
                 //讲课PPT设置-转换类型（‘common’：转普通图片， ‘animate’：转动画效果）
                 .setType("common")
                 //讲课PPT设置-文档名称
-                .setDocName("直播教学课件")
+                .setDocName("直播教学课件");
 //                //讲课PPT设置-文档转换完成后的回调地址，不需要不传
 //                .setCallbackUrl("http://www.baidu.com/callback")
                 
-                .setRequestId(requestId);
-        
         quickCreateChannelResponse = new LiveChannelQuickCreatorServiceImpl().quickCreatePPTSence(quickCreatePPTChannelRequest);
         Assert.assertNotNull(quickCreateChannelResponse);
         log.debug("快速创建三分屏频道成功，{}", JSON.toJSONString(quickCreateChannelResponse));
@@ -113,7 +110,7 @@
          * todo : 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
-        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
+        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId());
     }
 
   
@@ -121,11 +118,10 @@
     /**
      * 打印频道观看日志
      * @param channelId
-     * @param requestId
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    private void printViewLog(String channelId, String requestId) throws IOException, NoSuchAlgorithmException {
+    private void printViewLog(String channelId) throws IOException, NoSuchAlgorithmException {
         LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
         LiveListChannelViewlogResponse liveListChannelViewlogResponse;
         Calendar instance = Calendar.getInstance();
@@ -133,8 +129,7 @@
         //依据频道号和起止时间查询观看日志
         liveListChannelViewlogRequest.setChannelId(channelId)
                 .setStartTime(new Date())
-                .setEndTime(instance.getTime())
-                .setRequestId(requestId);
+                .setEndTime(instance.getTime());
         liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                 liveListChannelViewlogRequest);
         Assert.assertNotNull(liveListChannelViewlogResponse);
@@ -309,7 +304,6 @@
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
-        String requestId = LiveSignUtil.generateUUID();
         //频道相关基础设置-频道名
         quickCreatePPTChannelRequest.setName("带子频道的直播教学场景")
                 //频道相关基础设置-频道密码
@@ -352,11 +346,10 @@
                 //讲课PPT设置-转换类型（‘common’：转普通图片， ‘animate’：转动画效果）
                 .setType("common")
                 //讲课PPT设置-文档名称
-                .setDocName("直播教学课件")
+                .setDocName("直播教学课件");
 //                //讲课PPT设置-文档转换完成后的回调地址，不需要不传
 //                .setCallbackUrl("http://www.baidu.com/callback")
                 
-                .setRequestId(requestId);
         
         LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
         List<LiveCreateSonChannelListRequest.SonChannel> sonChannels = new ArrayList<LiveCreateSonChannelListRequest.SonChannel>();
@@ -387,7 +380,7 @@
          * todo : 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
-        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
+        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId());
     }
 
  /**
@@ -430,11 +423,10 @@
     /**
      * 打印频道观看日志
      * @param channelId
-     * @param requestId
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    private void printViewLog(String channelId, String requestId) throws IOException, NoSuchAlgorithmException {
+    private void printViewLog(String channelId) throws IOException, NoSuchAlgorithmException {
         LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
         LiveListChannelViewlogResponse liveListChannelViewlogResponse;
         Calendar instance = Calendar.getInstance();
@@ -442,8 +434,7 @@
         //依据频道号和起止时间查询观看日志
         liveListChannelViewlogRequest.setChannelId(channelId)
                 .setStartTime(new Date())
-                .setEndTime(instance.getTime())
-                .setRequestId(requestId);
+                .setEndTime(instance.getTime());
         liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                 liveListChannelViewlogRequest);
         Assert.assertNotNull(liveListChannelViewlogResponse);
@@ -616,7 +607,6 @@
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
-        String requestId = LiveSignUtil.generateUUID();
         
         //频道相关基础设置-频道名
         quickCreateVideoChannelRequest.setName("纯视频直播场景演示")
@@ -653,7 +643,7 @@
                 //聊天室讲师信息-讲师头像
                 .setAvatar(
                         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
-                                ".jpg").setRequestId(requestId);
+                                ".jpg");
         
         quickCreateChannelResponse = new LiveChannelQuickCreatorServiceImpl().quickCreateVideoSence(quickCreateVideoChannelRequest);
         Assert.assertNotNull(quickCreateChannelResponse);
@@ -671,7 +661,7 @@
          * todo : 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
-        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
+        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId());
     }
 
  
@@ -679,11 +669,10 @@
     /**
      * 打印频道观看日志
      * @param channelId
-     * @param requestId
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    private void printViewLog(String channelId, String requestId) throws IOException, NoSuchAlgorithmException {
+    private void printViewLog(String channelId) throws IOException, NoSuchAlgorithmException {
         LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
         LiveListChannelViewlogResponse liveListChannelViewlogResponse;
         Calendar instance = Calendar.getInstance();
@@ -691,8 +680,7 @@
         //依据频道号和起止时间查询观看日志
         liveListChannelViewlogRequest.setChannelId(channelId)
                 .setStartTime(new Date())
-                .setEndTime(instance.getTime())
-                .setRequestId(requestId);
+                .setEndTime(instance.getTime());
         liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                 liveListChannelViewlogRequest);
         Assert.assertNotNull(liveListChannelViewlogResponse);
@@ -860,7 +848,6 @@
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
-        String requestId = LiveSignUtil.generateUUID();
         
         //频道相关基础设置-频道名
         quickCreateVideoChannelRequest.setName("带子频道的纯视频直播场景")
@@ -897,7 +884,7 @@
                 //聊天室讲师信息-讲师头像
                 .setAvatar(
                         "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2069606413,3553249962&fm=26&gp=0" +
-                                ".jpg").setRequestId(requestId);
+                                ".jpg");
         
         LiveCreateSonChannelListRequest liveCreateSonChannelListRequest = new LiveCreateSonChannelListRequest();
         List<LiveCreateSonChannelListRequest.SonChannel> sonChannels = new ArrayList<>();
@@ -943,7 +930,7 @@
          * todo : 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
-        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
+        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId());
     }
 
 
@@ -967,11 +954,10 @@
     /**
      * 打印频道观看日志
      * @param channelId
-     * @param requestId
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    private void printViewLog(String channelId, String requestId) throws IOException, NoSuchAlgorithmException {
+    private void printViewLog(String channelId) throws IOException, NoSuchAlgorithmException {
         LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
         LiveListChannelViewlogResponse liveListChannelViewlogResponse;
         Calendar instance = Calendar.getInstance();
@@ -979,8 +965,7 @@
         //依据频道号和起止时间查询观看日志
         liveListChannelViewlogRequest.setChannelId(channelId)
                 .setStartTime(new Date())
-                .setEndTime(instance.getTime())
-                .setRequestId(requestId);
+                .setEndTime(instance.getTime());
         liveListChannelViewlogResponse = new LiveChannelViewdataServiceImpl().listChannelViewlog(
                 liveListChannelViewlogRequest);
         Assert.assertNotNull(liveListChannelViewlogResponse);

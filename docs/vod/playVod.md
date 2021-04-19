@@ -70,7 +70,7 @@
 
 [发布管理-通过微信观看](http://go.plvideo.cn/front/video/view?vid=88083abbf5d3d0d1bb3d7f04e231b8d8_8)
 
-发布管理-HTML代码
+发布管理-通过内嵌播放器HTML代码观看
 
 ```html
 <script src='//player.polyv.net/script/player.js'></script>
@@ -86,6 +86,6 @@ var player = polyvPlayer({
 </script>
 ```
 
-视频id为[视频上传接口](/uploadVideoParts)返回的视频id，将此html代码片段置入用户html文件中即可播放视频
+视频id为[视频上传接口](/uploadVideoParts)返回的视频id，将此html代码片段置入用户网站html文件中即可播放视频
 
 [获取日志](/dataStatisticsService?id=_1、查询某一天视频观看日志) 

@@ -160,7 +160,7 @@ public class VodEditServiceImplTest extends BaseTest {
     }
     
     /**
-     * 测试修改视频禁播与解禁
+     * 测试修改视频禁播与解禁开关
      * 描述：通过视频id修改视频禁播与解禁状态
      * 约束：2、禁播后会将视频状态（status）设置成53，一次最多只能操作500个vid
      * 约束：3、只能修改”已发布”状态的视频为禁播状态，只能修改“已禁播”状态的视频为已发布状态
@@ -180,7 +180,7 @@ public class VodEditServiceImplTest extends BaseTest {
             vodSetVideoForbiddenResponse = new VodEditServiceImpl().setVideoForbidden(vodSetVideoForbiddenRequest);
             Assert.assertTrue(vodSetVideoForbiddenResponse);
             if (vodSetVideoForbiddenResponse) {
-                log.debug("测试修改视频禁播与解禁成功");
+                log.debug("测试修改视频禁播与解禁开关成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -261,6 +261,7 @@ public class VodEditServiceImplTest extends BaseTest {
      * 测试恢复回收站视频
      * 描述：通过视频id批量恢复回收站中的视频
      * 约束：2、接口支持批量恢复，一次性最多支持恢复100个视频。
+     * 返回：true为恢复成功，false为恢复失败
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */

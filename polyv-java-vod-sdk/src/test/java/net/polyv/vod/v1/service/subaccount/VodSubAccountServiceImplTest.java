@@ -331,7 +331,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
         Boolean vodUpdateVideoCategoryResponse = null;
         try {
             vodSubAccountUpdateVideoCategoryRequest.setVideoIds(
-                    "1b448be323a146649ad0cc89d0faed9c_1,1b448be32389b93ea8be08bf0d257043_1")
+                    "1b448be323a146649ad0cc89d0faed9c_1,1b448be3235dc575fa8f9e7f380be9cc_1")
                     .setCategoryId("1602300731843")
                     //设置子账号相关
                     .setAppId(APP_ID)

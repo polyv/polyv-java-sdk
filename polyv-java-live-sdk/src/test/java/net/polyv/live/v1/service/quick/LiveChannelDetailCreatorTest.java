@@ -60,7 +60,6 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
             throws IOException, NoSuchAlgorithmException {
         QuickCreateChannelResponse quickCreateChannelResponse = new QuickCreateChannelResponse();
         
-        String requestId = LiveSignUtil.generateUUID();
         String password = getRandomString(6);
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
@@ -202,13 +201,11 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
         }
         
         //8、查询频道信息
-        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = getLiveChannelBasicInfoResponse(channelId,
-                requestId);
+        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = getLiveChannelBasicInfoResponse(channelId);
         quickCreateChannelResponse.setLiveChannelBasicInfoResponse(liveChannelBasicInfoResponse);
         
         //9、查询子频道信息
-        List<LiveSonChannelInfoResponse> sonChannelInfoList = getSonChannelInfoList(channelId,
-                requestId);
+        List<LiveSonChannelInfoResponse> sonChannelInfoList = getSonChannelInfoList(channelId);
         quickCreateChannelResponse.setSonChannelInfos(sonChannelInfoList);
         log.debug("创建频道成功,频道和子频道信息：{}",quickCreateChannelResponse);
     
@@ -221,7 +218,7 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
          */
     
         //打印观看日志
-        printViewLog(channelId , requestId);
+        printViewLog(channelId);
         
     }
     /**
@@ -264,12 +261,11 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
     /**
      * 查询频道基本信息
      * @param channelId 频道号
-     * @param requestId 请求序列号
      * @return  频道基本信息
      * @throws IOException io异常
      * @throws NoSuchAlgorithmException  签名异常
      */
-    private LiveChannelBasicInfoResponse getLiveChannelBasicInfoResponse(String channelId, String requestId)
+    private LiveChannelBasicInfoResponse getLiveChannelBasicInfoResponse(String channelId)
             throws IOException, NoSuchAlgorithmException {
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;
         LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
@@ -289,7 +285,7 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    private List<LiveSonChannelInfoResponse> getSonChannelInfoList(String channelId, String requestId)
+    private List<LiveSonChannelInfoResponse> getSonChannelInfoList(String channelId)
             throws IOException, NoSuchAlgorithmException {
         LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
         LiveSonChannelInfoListResponse liveSonChannelInfoResponse;
@@ -309,8 +305,7 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    private void createSonChannelList(String channelId, LiveCreateSonChannelListRequest liveCreateSonChannelListRequest,
-            String requestId) throws IOException, NoSuchAlgorithmException {
+    private void createSonChannelList(String channelId, LiveCreateSonChannelListRequest liveCreateSonChannelListRequest) throws IOException, NoSuchAlgorithmException {
         liveCreateSonChannelListRequest.setChannelId(channelId);
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse =
                 new LiveChannelOperateServiceImpl().createSonChannelList(
@@ -323,11 +318,10 @@ public class LiveChannelDetailCreatorTest extends BaseTest {
     /**
      * 打印频道观看日志
      * @param channelId
-     * @param requestId
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    private void printViewLog(String channelId, String requestId) throws IOException, NoSuchAlgorithmException {
+    private void printViewLog(String channelId) throws IOException, NoSuchAlgorithmException {
         LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
         LiveListChannelViewlogResponse liveListChannelViewlogResponse;
         Calendar instance = Calendar.getInstance();

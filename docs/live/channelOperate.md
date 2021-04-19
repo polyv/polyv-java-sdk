@@ -59,7 +59,7 @@
 | categoryId | false | Integer | 分类ID ,新建频道的所属分类，如果不提交，则为默认分类（分类ID可通过“获取直播分类”接口得到） | 
 | maxViewer | false | Integer | 频道的最大在线人数观看限制的人数 | 
 | watchLayout | false | String | 三分屏频道的观看布局，ppt：文档为主；video：视频为主；不设置会使用账号的通用设置 | 
-| linkMicLimit | false | Integer | 连麦人数，取值应大于等于-1小于等于账号级的连麦人数，-1：表示使用账号默认的连麦人数，最大16人（注：账号级连麦人数需通知平台管理员设置才生效） | 
+| linkMicLimit | false | Integer | 连麦人数，-1=<取值范围<=账号级的连麦人数，-1：表示使用账号默认的连麦人数，最大16人（注：账号级连麦人数需通知平台管理员设置才生效） | 
 | pureRtcEnabled | false | String | 是否为无延时直播，Y 表示开启，默认为N | 
 | receive | false | String | 是否为接收转播频道，Y表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) | 
 | receiveChannelIds | false | String | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) | 
@@ -200,7 +200,7 @@
 | startTime | Date | 直播开始时间 | 
 | desc | String | 直播介绍的内容 | 
 | publisher | String | 主持人 | 
-| linkMicLimit | Integer | 连麦人数，取值应大于等于-1小于等于账号级的连麦人数，最大16人（注：账号级连麦人数需通知平台管理员设置才生效） | 
+| linkMicLimit | Integer | 连麦人数，-1=<取值范围<=账号级的连麦人数，-1：表示使用账号默认的连麦人数，最大16人（注：账号级连麦人数需通知平台管理员设置才生效） | 
 | pureRtcEnabled | String | 是否为无延时直播，Y 表示开启，默认为N | 
 | receive | String | 是否为接收转播频道，Y 表示是，不填或者填其他值为发起转播频道(注：需要开启频道转播功能该参数才生效) | 
 | receiveChannelIds | String | 接收转播频道号，多个频道号用半角逗号,隔开，如果receive参数值为Y时，此参数无效(注：需要开启频道转播功能该参数才生效) | 

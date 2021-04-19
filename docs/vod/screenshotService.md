@@ -127,9 +127,9 @@
 | createTime | Date | 任务创建时间,时间格式 yyyy-MM-dd HH:mm:ss | 
 | beginProcessTime | Date | 开始截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
 | finishProcessTime | Date | 完成截图的时间，时间格式 yyyy-MM-dd HH:mm:ss | 
-| screenshots | Array | 截图信息组，失败或未开始时为空【对应api文档的**snapshots**字段】【详见[Screenshot参数描述](screenshotService.md?id=polyv26)】 | 
+| screenshots | Array | 截图信息组，失败或未开始时为空【对应api文档的**snapshots**字段】【详见[Screenshot参数描述](screenshotService.md?id=polyv24)】 | 
 
-<h6 id="polyv26"><a href="#/screenshotService.md?id=polyv26"data-id="Screenshot参数描述"class="anchor"><span>Screenshot参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv24"><a href="#/screenshotService.md?id=polyv24"data-id="Screenshot参数描述"class="anchor"><span>Screenshot参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 

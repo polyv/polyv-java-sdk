@@ -87,11 +87,11 @@
 | md5Checksum | String | md5校验值【对应api文档的**md5checksum**字段】 | 
 | hls | String[] | 编码后各个清晰度视频的m3u8地址，类型为array | 
 | keepSource | String | 是否为源文件，否：0,是：1【对应api文档的**keepsource**字段】 | 
-| uploader | Uploader | 上传者信息【详见[Uploader参数描述](editService.md?id=polyv10)】 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](editService.md?id=polyv8)】 | 
 | hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
 | categoryName | String | 分类名称【对应api文档的**cataname**字段】 | 
 
-<h6 id="polyv10"><a href="#/editService.md?id=polyv10"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv8"><a href="#/editService.md?id=polyv8"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -277,7 +277,7 @@ true为设置成功，false为设置失败
 
 <br /><br />
 
-## 5、修改视频禁播与解禁
+## 5、修改视频禁播与解禁开关
 ### 描述
 ```
 通过视频id修改视频禁播与解禁状态
@@ -304,7 +304,7 @@ true为设置成功，false为设置失败
             vodSetVideoForbiddenResponse = new VodEditServiceImpl().setVideoForbidden(vodSetVideoForbiddenRequest);
             Assert.assertTrue(vodSetVideoForbiddenResponse);
             if (vodSetVideoForbiddenResponse) {
-                log.debug("测试修改视频禁播与解禁成功");
+                log.debug("测试修改视频禁播与解禁开关成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

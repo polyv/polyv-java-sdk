@@ -109,9 +109,9 @@ true为上传成功，false为上传失败
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| subtitles | Array | 查询的结果列表【对应api文档的**srts**字段】【详见[Subtitle参数描述](subtitleService.md?id=polyv27)】 | 
+| subtitles | Array | 查询的结果列表【对应api文档的**srts**字段】【详见[Subtitle参数描述](subtitleService.md?id=polyv25)】 | 
 
-<h6 id="polyv27"><a href="#/subtitleService.md?id=polyv27"data-id="Subtitle参数描述"class="anchor"><span>Subtitle参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv25"><a href="#/subtitleService.md?id=polyv25"data-id="Subtitle参数描述"class="anchor"><span>Subtitle参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 

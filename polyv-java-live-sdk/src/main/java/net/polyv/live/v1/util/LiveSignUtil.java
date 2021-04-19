@@ -139,24 +139,6 @@ public class LiveSignUtil {
     }
     
     /**
-     * 获取签名字段，appId，timestamp，sign，requestId的 map 集合
-     * @param map map
-     * @return map
-     */
-    public static Map<String, String> getSignMap(Map<String, String> map) {
-        Map<String, String> tempMap = new HashMap<String, String>();
-        String appId = "appId";
-        tempMap.put(appId, map.get(appId));
-        String timestamp = "timestamp";
-        tempMap.put(timestamp, map.get(timestamp));
-        String sign = "sign";
-        tempMap.put(sign, map.get(sign));
-        String requestId = "requestId";
-        tempMap.put(requestId, map.get(requestId));
-        return tempMap;
-    }
-    
-    /**
      * 获取签名字段，appId，timestamp，requestId的 map 集合,本方法不参与具体签名方法和sign字段设置
      * @param t 请求体
      * @param <T> LiveCommonRequest

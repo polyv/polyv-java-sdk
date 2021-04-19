@@ -113,7 +113,7 @@
 | categoryId | String | 分类id，如果为1则是根目录【对应api文档的**cataid**字段】 | 
 | parentId | String | 上一级分类id，根目录的上一级分类为0【对应api文档的**parentid**字段】 | 
 | videoNums | Integer | 此分类及其子分类视频总数【对应api文档的**videos**字段】 | 
-| nodes | Array | 该分类的子分类【详见[VodGetCategoryResponse参数描述](categoryService.md?id=polyv9)】 | 
+| nodes | Array | 该分类的子分类【详见[VodGetCategoryResponse参数描述](categoryService.md?id=polyv7)】 | 
 
 <br /><br />
 

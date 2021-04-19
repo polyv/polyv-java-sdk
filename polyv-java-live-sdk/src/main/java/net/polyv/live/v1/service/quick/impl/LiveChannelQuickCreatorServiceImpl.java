@@ -151,7 +151,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
         
         //6、批量创建子频道
         if (liveCreateSonChannelListRequest != null) {
-            createSonChannelList(channelId, liveCreateSonChannelListRequest, quickCreateChannelRequest.getRequestId());
+            createSonChannelList(channelId, liveCreateSonChannelListRequest);
         }
         //7、上传直播文档
         if (quickCreateChannelRequest.getFile() != null) {
@@ -169,12 +169,10 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
             }
         }
         //8、查询频道信息
-        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = getLiveChannelBasicInfoResponse(channelId,
-                quickCreateChannelRequest.getRequestId());
+        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = getLiveChannelBasicInfoResponse(channelId);
         quickCreateChannelResponse.setLiveChannelBasicInfoResponse(liveChannelBasicInfoResponse);
         //9、查询子频道信息
-        List<LiveSonChannelInfoResponse> sonChannelInfoList = getSonChannelInfoList(channelId,
-                quickCreateChannelRequest.getRequestId());
+        List<LiveSonChannelInfoResponse> sonChannelInfoList = getSonChannelInfoList(channelId);
         quickCreateChannelResponse.setSonChannelInfos(sonChannelInfoList);
         return quickCreateChannelResponse;
     }
@@ -249,8 +247,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
         log.info("修改频道相关设置成功");
         //3、批量创建子频道
         if (liveCreateSonChannelListRequest != null) {
-            createSonChannelList(channelId, liveCreateSonChannelListRequest,
-                    quickCreateVideoChannelRequest.getRequestId());
+            createSonChannelList(channelId, liveCreateSonChannelListRequest);
         }
         //4、修改暖场图片
         if (StringUtils.isNotBlank(quickCreateVideoChannelRequest.getCoverImage())) {
@@ -290,17 +287,15 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
         }
         
         //7、查询频道信息
-        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = getLiveChannelBasicInfoResponse(channelId,
-                quickCreateVideoChannelRequest.getRequestId());
+        LiveChannelBasicInfoResponse liveChannelBasicInfoResponse = getLiveChannelBasicInfoResponse(channelId);
         quickCreateChannelResponse.setLiveChannelBasicInfoResponse(liveChannelBasicInfoResponse);
         //8、查询子频道信息
-        List<LiveSonChannelInfoResponse> sonChannelInfoList = getSonChannelInfoList(channelId,
-                quickCreateVideoChannelRequest.getRequestId());
+        List<LiveSonChannelInfoResponse> sonChannelInfoList = getSonChannelInfoList(channelId);
         quickCreateChannelResponse.setSonChannelInfos(sonChannelInfoList);
         return quickCreateChannelResponse;
     }
     
-    private LiveChannelBasicInfoResponse getLiveChannelBasicInfoResponse(String channelId, String requestId)
+    private LiveChannelBasicInfoResponse getLiveChannelBasicInfoResponse(String channelId)
             throws IOException, NoSuchAlgorithmException {
         LiveChannelBasicInfoResponse liveChannelBasicInfoResponse;
         LiveChannelBasicInfoRequest liveChannelBasicInfoRequest = new LiveChannelBasicInfoRequest();
@@ -320,7 +315,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    private List<LiveSonChannelInfoResponse> getSonChannelInfoList(String channelId, String requestId)
+    private List<LiveSonChannelInfoResponse> getSonChannelInfoList(String channelId)
             throws IOException, NoSuchAlgorithmException {
         LiveSonChannelInfoListRequest liveSonChannelInfoListRequest = new LiveSonChannelInfoListRequest();
         LiveSonChannelInfoListResponse liveSonChannelInfoResponse;
@@ -340,8 +335,7 @@ public class LiveChannelQuickCreatorServiceImpl implements ILiveChannelQuickCrea
      * @throws IOException IO异常
      * @throws NoSuchAlgorithmException 系统异常
      */
-    private void createSonChannelList(String channelId, LiveCreateSonChannelListRequest liveCreateSonChannelListRequest,
-            String requestId) throws IOException, NoSuchAlgorithmException {
+    private void createSonChannelList(String channelId, LiveCreateSonChannelListRequest liveCreateSonChannelListRequest) throws IOException, NoSuchAlgorithmException {
         liveCreateSonChannelListRequest.setChannelId(channelId);
         LiveCreateSonChannelListResponse liveCreateSonChannelListResponse =
                 new LiveChannelOperateServiceImpl().createSonChannelList(

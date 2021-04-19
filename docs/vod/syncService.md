@@ -58,14 +58,14 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| taskId | String | 抓取任务对应的ID【对应api文档的**taskid**字段】 | 
+| taskId | String | 同步任务对应的ID【对应api文档的**taskid**字段】 | 
 | userId | String | 点播用户的ID【对应api文档的**userid**字段】 | 
-| originalName | String | 上传的抓取任务csv文件的标题【对应api文档的**originalname**字段】 | 
-| fileUrl | String | 抓取任务的csv文件地址【对应api文档的**fileurl**字段】 | 
-| successCount | Integer | 抓取成功的数量【对应api文档的**seccesscount**字段】 | 
-| totalCount | Integer | 此任务内总抓取数【对应api文档的**totalcount**字段】 | 
-| failCount | Integer | 抓取失败的数量【对应api文档的**failcount**字段】 | 
-| status | String | 抓取任务完成状态 | 
+| originalName | String | 上传的同步任务csv文件的标题【对应api文档的**originalname**字段】 | 
+| fileUrl | String | 同步任务的csv文件地址【对应api文档的**fileurl**字段】 | 
+| successCount | Integer | 同步成功的数量【对应api文档的**seccesscount**字段】 | 
+| totalCount | Integer | 此任务内总同步数【对应api文档的**totalcount**字段】 | 
+| failCount | Integer | 同步失败的数量【对应api文档的**failcount**字段】 | 
+| status | String | 同步任务完成状态 | 
 | endTime | Date | 任务完成时间，格式：yyyy-MM-dd HH:mm:ss【对应api文档的**endtime**字段】 | 
 | createTime | Date | 任务创建时间，格式：yyyy-MM-dd HH:mm:ss【对应api文档的**createtime**字段】 | 
 
@@ -75,10 +75,10 @@
 
 <br /><br />
 
-## 2、删除抓取视频任务
+## 2、删除同步视频任务
 ### 描述
 ```
-通过视频同步任务id删除抓取视频任务
+通过视频同步任务id删除同步视频任务
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
@@ -96,7 +96,7 @@
             vodDeleteTaskResponse = new VodSyncServiceImpl().deleteTask(vodDeleteTaskRequest);
             Assert.assertTrue(vodDeleteTaskResponse);
             if (vodDeleteTaskResponse) {
-                log.debug("测试删除抓取视频任务成功");
+                log.debug("测试删除同步视频任务成功");
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
@@ -119,7 +119,7 @@
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| taskId | true | String | 抓取任务ID | 
+| taskId | true | String | 同步任务ID | 
 
 ### 返回对象描述
 
@@ -177,7 +177,7 @@ true为删除成功，false为删除失败
 
 | 参数名 | 必选 | 类型 | 说明 | 
 | -- | -- | -- | -- | 
-| taskId | true | String | 抓取任务ID | 
+| taskId | true | String | 同步任务ID | 
 
 ### 返回对象描述
 

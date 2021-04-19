@@ -12,7 +12,6 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
 import net.polyv.vod.v1.entity.account.VodAccountSpaceDataRequest;
 import net.polyv.vod.v1.entity.account.VodAccountSpaceDataResponse;
 import net.polyv.vod.v1.service.account.impl.VodAccountServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * @author: sadboy
@@ -36,13 +35,16 @@ public class VodVideoDemo {
         VodGlobalConfig.init(userId, secretKey);
         log.debug("--初始化完成--");
         try {
+            //封装API请求对象
             Calendar instance = Calendar.getInstance();
             instance.set(2020, 10, 13);
             VodAccountSpaceDataRequest vodAccountSpaceDataRequest = new VodAccountSpaceDataRequest();
             VodAccountSpaceDataResponse vodAccountSpaceDataResponse;
             vodAccountSpaceDataRequest.setDate(instance.getTime());
+            //调用SDK请求保利威服务器
             vodAccountSpaceDataResponse = new VodAccountServiceImpl().getAccountSpaceFlow(vodAccountSpaceDataRequest);
             Assert.assertNotNull(vodAccountSpaceDataResponse);
+            //正常返回做B端正常的业务逻辑
             if (vodAccountSpaceDataResponse != null) {
                 log.debug("测试获取用户空间及流量情况成功,{}", JSON.toJSONString(vodAccountSpaceDataResponse));
             }

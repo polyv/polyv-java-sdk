@@ -37,9 +37,9 @@ public class VodSyncServiceImpl extends VodBaseService implements IVodSyncServic
     }
     
     /**
-     * 删除抓取视频任务
+     * 删除同步视频任务
      * API地址：https://dev.polyv.net/2018/videoproduct/v-api/v-api-vmanage/v-api-vmanage-grab/delete-grab-task/
-     * @param vodDeleteTaskRequest 删除抓取视频任务请求实体
+     * @param vodDeleteTaskRequest 删除同步视频任务请求实体
      * @return Boolean
      * @throws IOException 异常
      * @throws NoSuchAlgorithmException 异常

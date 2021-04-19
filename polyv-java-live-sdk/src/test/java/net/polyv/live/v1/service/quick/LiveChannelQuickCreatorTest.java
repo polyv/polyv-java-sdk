@@ -17,13 +17,12 @@ import net.polyv.live.v1.constant.LiveConstant;
 import net.polyv.live.v1.entity.channel.operate.LiveCreateSonChannelListRequest;
 import net.polyv.live.v1.entity.channel.viewdata.LiveListChannelViewlogRequest;
 import net.polyv.live.v1.entity.channel.viewdata.LiveListChannelViewlogResponse;
+import net.polyv.live.v1.entity.quick.QuickCreateChannelResponse;
 import net.polyv.live.v1.entity.quick.QuickCreatePPTChannelRequest;
 import net.polyv.live.v1.entity.quick.QuickCreateVideoChannelRequest;
-import net.polyv.live.v1.service.quick.impl.LiveChannelQuickCreatorServiceImpl;
-import net.polyv.live.v1.entity.quick.QuickCreateChannelResponse;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.channel.impl.LiveChannelViewdataServiceImpl;
-import net.polyv.live.v1.util.LiveSignUtil;
+import net.polyv.live.v1.service.quick.impl.LiveChannelQuickCreatorServiceImpl;
 
 /**
  * 频道快速操作
@@ -45,7 +44,6 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
-        String requestId = LiveSignUtil.generateUUID();
         //频道相关基础设置-频道名
         quickCreatePPTChannelRequest.setName("直播教学场景演示")
                 //频道相关基础设置-频道密码
@@ -110,7 +108,7 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
          * todo : 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
-        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
+        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId());
     }
     
     /**
@@ -126,7 +124,6 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
-        String requestId = LiveSignUtil.generateUUID();
         //频道相关基础设置-频道名
         quickCreatePPTChannelRequest.setName("带子频道的直播教学场景")
                 //频道相关基础设置-频道密码
@@ -202,7 +199,7 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
          * todo : 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
-        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
+        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId());
     }
     
     /**
@@ -218,7 +215,6 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
-        String requestId = LiveSignUtil.generateUUID();
         
         //频道相关基础设置-频道名
         quickCreateVideoChannelRequest.setName("纯视频直播场景演示")
@@ -273,7 +269,7 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
          * todo : 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
-        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
+        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId());
     }
     
     /**
@@ -289,7 +285,6 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, instance.get(Calendar.DAY_OF_MONTH) + 1);
         //创建频道
-        String requestId = LiveSignUtil.generateUUID();
         
         //频道相关基础设置-频道名
         quickCreateVideoChannelRequest.setName("带子频道的纯视频直播场景")
@@ -372,7 +367,7 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
          * todo : 采用网页开播或者客户端开播，直播结束后 ，可以拉取用户观看直播的观看数据，对观看效果做进一步的分析，改进直播流程和细节
          */
         //打印观看日志
-        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId(), requestId);
+        printViewLog(quickCreateChannelResponse.getLiveChannelBasicInfoResponse().getChannelId());
     }
     
     /**
@@ -415,11 +410,10 @@ public class LiveChannelQuickCreatorTest extends BaseTest {
     /**
      * 打印频道观看日志
      * @param channelId
-     * @param requestId
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    private void printViewLog(String channelId, String requestId) throws IOException, NoSuchAlgorithmException {
+    private void printViewLog(String channelId) throws IOException, NoSuchAlgorithmException {
         LiveListChannelViewlogRequest liveListChannelViewlogRequest = new LiveListChannelViewlogRequest();
         LiveListChannelViewlogResponse liveListChannelViewlogResponse;
         Calendar instance = Calendar.getInstance();

@@ -59,7 +59,7 @@
 |             |             | [删除单个视频的问答题目](videoQuestionAndAnswer?id=_3、删除单个视频的问答题目) |             | 
 |           | ▼视频同步      |                                            |      |
 |             |             | [查询视频同步列表](syncService?id=_1、查询视频同步列表) |             | 
-|             |             | [删除抓取视频任务](syncService?id=_2、删除抓取视频任务) |             | 
+|             |             | [删除同步视频任务](syncService?id=_2、删除同步视频任务) |             | 
 |             |             | [导出视频同步任务](syncService?id=_3、导出视频同步任务) |             | 
 |           | ▼视频字幕      |                                            |      |
 |             |             | [上传点播视频字幕文件](subtitleService?id=_1、上传点播视频字幕文件) |             | 
@@ -120,4 +120,4 @@
 |             |             | [删除视频分类](subAccountService?id=_8、删除视频分类) |             | 
 |             |             | [批量修改视频所属分类](subAccountService?id=_9、批量修改视频所属分类) |             | 
 |             |             | [修改视频分类属性设置](subAccountService?id=_10、修改视频分类属性设置) |             | 
-
+12121

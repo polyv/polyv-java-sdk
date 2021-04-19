@@ -141,8 +141,7 @@ public class LiveChannelDemo {
             //封装API请求对象
             LiveChannelRequest liveChannelRequest = new LiveChannelRequest();
             liveChannelRequest.setName("Spring 知识精讲") //设置频道主题信息
-                    .setChannelPasswd("666888")   //设置频道密码
-                    .setRequestId("2860257a405447e1bbbe9161da2dee72"); // 设置请求流水号
+                    .setChannelPasswd("666888");   //设置频道密码
             //调用SDK请求保利威服务器
             LiveChannelResponse liveChannelResponse = new LiveChannelOperateServiceImpl().createChannel(
                     liveChannelRequest);
@@ -179,7 +178,7 @@ public class LiveChannelDemo {
 
 
 
-&emsp;&emsp;至此，B端已经完成**保利威直播Java SDK**安装配置，可以使用直播SDK进行其他功能开发和测试，如B端接入过程有任何问题，直接使用右下角**在线客服**找到售后技术支持提问 ，请将问题的运行环境、操作步骤、错误反馈信息、联系方式同步反馈，便于问题的快速定位和解决； 
+&emsp;&emsp;至此，B端已经完成**保利威直播Java SDK**安装配置，可以使用直播SDK进行其他功能开发和测试，如B端接入过程有任何问题，直接使用右下角**在线客服**找到售后技术支持提问 ，请将问题的运行环境、操作步骤、错误反馈信息、联系方式同步反馈，便于问题的快速定位和解决。
 
 
 

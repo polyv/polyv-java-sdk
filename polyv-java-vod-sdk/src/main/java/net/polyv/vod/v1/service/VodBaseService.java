@@ -474,7 +474,7 @@ public class VodBaseService {
             if (vodCommonResponse.getCode() != 200) {
                 //兼容子账号错误信息处理
                 String msg = StringUtils.isBlank( vodCommonResponse.getMessage())? (StringUtils.isBlank(vodCommonResponse.getError().getDesc())?"服务器处理错误":vodCommonResponse.getError().getDesc()):vodCommonResponse.getMessage();
-                String message = ERROR_PREFIX1 + requestId + ERROR_INFO + vodCommonResponse.getMessage();
+                String message = ERROR_PREFIX1 + requestId + ERROR_INFO + msg;
                 PloyvSdkException exception = new PloyvSdkException(vodCommonResponse.getCode(), message);
                 log.error(message, exception);
                 throw exception;

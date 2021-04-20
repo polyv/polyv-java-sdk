@@ -335,8 +335,10 @@ public class LiveBaseService {
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
-        if (StringUtils.isBlank(e.getRequestId())) {
-            e.setRequestId(LiveSignUtil.generateUUID());
+        if (StringUtils.isBlank(e.getRequestId()) || !e.getRequestId().matches(Constant.REQUEST_ID_REG)) {
+            String requestId = LiveSignUtil.generateUUID();
+            log.info("requestId为空或者不满足正则要求，重新设置为：{}", requestId);
+            e.setRequestId(requestId);
         }
         if (signMap == null) {
             signMap = MapUtil.objectToMap(e);

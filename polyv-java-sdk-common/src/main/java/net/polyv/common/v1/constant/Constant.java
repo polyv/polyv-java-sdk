@@ -10,6 +10,11 @@ public class Constant {
     
     public static  final String APPLICATION_FORM_URLENCODED = "application/x-www-form-urlencoded; charset=UTF-8";
     
+    /**
+     * requestId需要满足的正则
+     */
+    public static final String REQUEST_ID_REG = "^[a-zA-Z0-9-_]{8,50}$";
+    
     public static  final String CONTENT_TYPE = "Content-type";
     
     public static  final String APPLICATION_JSON = "application/json; charset=UTF-8";

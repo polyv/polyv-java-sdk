@@ -130,7 +130,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setPublisher("sadboy主讲")
                     .setLinkMicLimit(-1)
                     .setPureRtcEnabled("N")
-                    .setReceiveChannelIds("213")
+                    .setReceiveChannelIds(null)
                     .setOnlyOneLiveEnabled("N");
             liveChannelInitRequest.setBasicSetting(basicSetting);
             //验证码观看
@@ -331,7 +331,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setDesc("这是一个描述")
                     .setPublisher("sadboy主讲")
                     .setLinkMicLimit(-1)
-                    .setReceiveChannelIds("213");
+                    .setReceiveChannelIds(null);
             LiveChannelSettingRequest.AuthSetting authSetting = new LiveChannelSettingRequest.AuthSetting().setAuthType(
                     LiveConstant.AuthType.CODE.getDesc())
                     .setRank(1)

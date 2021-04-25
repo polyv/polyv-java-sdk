@@ -417,7 +417,6 @@ public class VodBaseService {
             secretKey = VodGlobalConfig.getSecretKey();
             sign = VodSignUtil.setVodSign(innerMap, secretKey);
             signMap.put("sign", sign);
-            signMap.put("sign", sign);
         } else if (e instanceof VodGetPlaySafeTokenRequest) {//个性化签名（为了兼容后端特殊签名算法）
             VodGetPlaySafeTokenRequest vodGetPlaySafeTokenRequest = (VodGetPlaySafeTokenRequest) e;
             secretKey = VodGlobalConfig.getSecretKey();

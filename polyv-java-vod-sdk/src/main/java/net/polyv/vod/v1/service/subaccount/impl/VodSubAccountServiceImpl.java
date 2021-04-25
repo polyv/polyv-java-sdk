@@ -9,6 +9,8 @@ import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountAddCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountDeleteVideoRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountGetPlaySafeTokenRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountGetPlaySafeTokenResponse;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateCategoryProfileRequest;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateVideoCategoryRequest;
@@ -182,6 +184,23 @@ public class VodSubAccountServiceImpl extends VodBaseService implements IVodSubA
         super.postFormBodyReturnOne(VodURL.UPDATE_CATEGORY_PROFILE_URL, vodSubAccountUpdateCategoryProfileRequest,
                 String.class);
         return Boolean.TRUE;
+    }
+    
+    /**
+     * 获取PlaySafeToken
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-subaccount/create-playsafe-token-v2/
+     * @param vodSubAccountGetPlaySafeTokenRequest 获取PlaySafeToken请求实体
+     * @return 获取PlaySafeToken返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Override
+    public VodSubAccountGetPlaySafeTokenResponse getPlaySafeToken(
+            VodSubAccountGetPlaySafeTokenRequest vodSubAccountGetPlaySafeTokenRequest)
+            throws IOException, NoSuchAlgorithmException {
+        vodSubAccountGetPlaySafeTokenRequest.setTs(System.currentTimeMillis());
+        return super.postFormBodyReturnOne(VodURL.VOD_SUB_ACCOUNT_GET_PLAY_SAFE_TOKEN_URL,
+                vodSubAccountGetPlaySafeTokenRequest, VodSubAccountGetPlaySafeTokenResponse.class);
     }
     
 }

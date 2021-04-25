@@ -202,6 +202,12 @@ public class VodURL {
     public static final String UPDATE_CATEGORY_PROFILE_URL = BASE_URI + "/v3/category/update-profile";
     
     /**
+     * 子账号获取PlaySafeToken
+     */
+    public static final String VOD_SUB_ACCOUNT_GET_PLAY_SAFE_TOKEN_URL =
+            BASE_HLS_URI + "/service/v2/token/create-child";
+    
+    /**
      * 获取某一天视频观看日志
      */
     public static final String QUERY_VIEW_LOG_BY_DAY_URL = BASE_URI + "v2/data/" + PARAM_REPLACE_CHAR + "/viewlog";

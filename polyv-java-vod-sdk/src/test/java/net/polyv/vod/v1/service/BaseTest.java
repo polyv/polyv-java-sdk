@@ -39,7 +39,6 @@ import net.polyv.vod.v1.service.manage.impl.VodCoursewareServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodSubtitleServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodSyncServiceImpl;
 import net.polyv.vod.v1.service.upload.impl.VodUploadServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * @author: thomas

@@ -39,7 +39,6 @@ import net.polyv.vod.v1.service.manage.impl.VodCoursewareServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodSubtitleServiceImpl;
 import net.polyv.vod.v1.service.manage.impl.VodSyncServiceImpl;
 import net.polyv.vod.v1.service.upload.impl.VodUploadServiceImpl;
-import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
  * @author: thomas
@@ -71,6 +70,7 @@ public class BaseTest {
         if (time.length > 1) {
             instance.set(Calendar.MINUTE, time[1]);
         }
+        
         if (time.length > 2) {
             instance.set(Calendar.SECOND, time[2]);
         }

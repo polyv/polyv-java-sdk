@@ -30,6 +30,7 @@ import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveVideoRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryNameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
+import net.polyv.vod.v1.entity.play.payersettings.VodGetPlaySafeTokenRequest;
 import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
@@ -415,6 +416,14 @@ public class VodBaseService {
             innerMap.put("ptime", signMap.get("ptime"));
             secretKey = VodGlobalConfig.getSecretKey();
             sign = VodSignUtil.setVodSign(innerMap, secretKey);
+            signMap.put("sign", sign);
+            signMap.put("sign", sign);
+        } else if (e instanceof VodGetPlaySafeTokenRequest) {//个性化签名（为了兼容后端特殊签名算法）
+            VodGetPlaySafeTokenRequest vodGetPlaySafeTokenRequest = (VodGetPlaySafeTokenRequest) e;
+            secretKey = VodGlobalConfig.getSecretKey();
+            vodGetPlaySafeTokenRequest.setTs(System.currentTimeMillis());
+            signMap = getNotNullMap(signMap, e);
+            sign = VodSignUtil.setVodMd5Sign(signMap, secretKey);
             signMap.put("sign", sign);
         } else {
             signMap = getNotNullMap(signMap, e);

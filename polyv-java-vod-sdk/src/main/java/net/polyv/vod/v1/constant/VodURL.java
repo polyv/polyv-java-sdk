@@ -7,6 +7,7 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
  **/
 public class VodURL {
     public static final String BASE_URI = "https://api.polyv.net/";
+    public static final String BASE_HLS_URI = "https://hls.videocc.net/";
 //    public static final String BASE_URI = "http://a.polyv.net:8080/vod/";
 //    public static final String BASE_URI_V = "https://v.polyv.net/";
     
@@ -422,6 +423,11 @@ public class VodURL {
      * 获取用户下所有播放器列表
      */
     public static final String VOD_GET_PLAYER_LIST_URL = BASE_URI + "v2/play/" + PARAM_REPLACE_CHAR + "/player-list";
+    
+    /**
+     * 获取PlaySafeToken
+     */
+    public static final String VOD_GET_PLAY_SAFE_TOKEN_URL = BASE_HLS_URI + "/service/v1/token";
     
     /**
      * 获取账号加密设置

@@ -112,7 +112,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * API地址：CHANNEL_BASIC_CREATE_URL
      * @throws Exception
      */
-    @Test
+//    @Test
     public void testCreateChannelInit() throws Exception, NoSuchAlgorithmException {
         LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
         LiveChannelInitResponse liveChannelInitResponse = null;

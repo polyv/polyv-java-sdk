@@ -420,7 +420,6 @@ public class VodBaseService {
         } else if (e instanceof VodGetPlaySafeTokenRequest) {//个性化签名（为了兼容后端特殊签名算法）
             VodGetPlaySafeTokenRequest vodGetPlaySafeTokenRequest = (VodGetPlaySafeTokenRequest) e;
             secretKey = VodGlobalConfig.getSecretKey();
-            vodGetPlaySafeTokenRequest.setTs(System.currentTimeMillis());
             signMap = getNotNullMap(signMap, e);
             sign = VodSignUtil.setVodMd5Sign(signMap, secretKey);
             signMap.put("sign", sign);

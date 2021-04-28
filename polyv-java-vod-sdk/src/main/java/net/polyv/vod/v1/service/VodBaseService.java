@@ -30,6 +30,7 @@ import net.polyv.vod.v1.entity.manage.category.VodGetCategoryRequest;
 import net.polyv.vod.v1.entity.manage.category.VodMoveVideoRequest;
 import net.polyv.vod.v1.entity.manage.category.VodUpdateCategoryNameRequest;
 import net.polyv.vod.v1.entity.manage.edit.VodSaveVideoKeyFrameRequest;
+import net.polyv.vod.v1.entity.play.payersettings.VodGetPlaySafeTokenRequest;
 import net.polyv.vod.v1.util.VodSignUtil;
 
 /**
@@ -416,6 +417,12 @@ public class VodBaseService {
             secretKey = VodGlobalConfig.getSecretKey();
             sign = VodSignUtil.setVodSign(innerMap, secretKey);
             signMap.put("sign", sign);
+        } else if (e instanceof VodGetPlaySafeTokenRequest) {//个性化签名（为了兼容后端特殊签名算法）
+            VodGetPlaySafeTokenRequest vodGetPlaySafeTokenRequest = (VodGetPlaySafeTokenRequest) e;
+            secretKey = VodGlobalConfig.getSecretKey();
+            signMap = getNotNullMap(signMap, e);
+            sign = VodSignUtil.setVodMd5Sign(signMap, secretKey);
+            signMap.put("sign", sign);
         } else {
             signMap = getNotNullMap(signMap, e);
             secretKey = VodGlobalConfig.getSecretKey();
@@ -472,7 +479,9 @@ public class VodBaseService {
         if (StringUtils.isNotBlank(response)) {
             vodCommonResponse = JSON.parseObject(response, VodCommonResponse.class);
             if (vodCommonResponse.getCode() != 200) {
-                String message = ERROR_PREFIX1 + requestId + ERROR_INFO + vodCommonResponse.getMessage();
+                //兼容子账号错误信息处理
+                String msg = StringUtils.isBlank( vodCommonResponse.getMessage())? (StringUtils.isBlank(vodCommonResponse.getError().getDesc())?"服务器处理错误":vodCommonResponse.getError().getDesc()):vodCommonResponse.getMessage();
+                String message = ERROR_PREFIX1 + requestId + ERROR_INFO + msg;
                 PloyvSdkException exception = new PloyvSdkException(vodCommonResponse.getCode(), message);
                 log.error(message, exception);
                 throw exception;

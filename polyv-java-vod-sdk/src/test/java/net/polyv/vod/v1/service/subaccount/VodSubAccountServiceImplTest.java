@@ -14,6 +14,8 @@ import net.polyv.common.v1.exception.PloyvSdkException;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountAddCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountDeleteVideoRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountGetPlaySafeTokenRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountGetPlaySafeTokenResponse;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryCategoryResponse;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryVideoInfoRequest;
@@ -162,8 +164,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
         try {
             vodSubAccountDeleteVideoRequest.setVideoId("1b448be3238415eee2fa40753737255b_1")
                     //设置子账号相关
-                    .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY);
+                    .setAppId(APP_ID).setSecretKey(SECRET_KEY);
             vodDeleteVideoResponse = new VodSubAccountServiceImpl().deleteVideo(vodSubAccountDeleteVideoRequest);
             Assert.assertTrue(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse) {
@@ -192,11 +193,9 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
         VodSubAccountAddCategoryRequest vodSubAccountAddCategoryRequest = new VodSubAccountAddCategoryRequest();
         String vodDeleteVideoResponse = null;
         try {
-            vodSubAccountAddCategoryRequest.setName("junit测试新增分类20210309")
-                    .setParentId(null)
+            vodSubAccountAddCategoryRequest.setName("junit测试新增分类20210309").setParentId(null)
                     //设置子账号相关
-                    .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY);
+                    .setAppId(APP_ID).setSecretKey(SECRET_KEY);
             vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodSubAccountAddCategoryRequest);
             Assert.assertNotNull(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse != null) {
@@ -226,10 +225,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
         try {
             vodSubAccountQueryCategoryRequest.setCategoryId("1608891483165")
                     //设置子账号相关
-                    .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setCurrentPage(1)
-                    .setPageSize(20);
+                    .setAppId(APP_ID).setSecretKey(SECRET_KEY).setCurrentPage(1).setPageSize(20);
             vodSubAccountQueryCategoryResponse = new VodSubAccountServiceImpl().queryCategory(
                     vodSubAccountQueryCategoryRequest);
             Assert.assertNotNull(vodSubAccountQueryCategoryResponse);
@@ -259,11 +255,9 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
                 new VodSubAccountUpdateCategoryRequest();
         Boolean vodUpdateCategoryResponse = null;
         try {
-            vodSubAccountUpdateCategoryRequest.setCategoryId("1602671097888")
-                    .setCategoryName("Junit测试(勿删)_1")
+            vodSubAccountUpdateCategoryRequest.setCategoryId("1602671097888").setCategoryName("Junit测试(勿删)_1")
                     //设置子账号相关
-                    .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY);
+                    .setAppId(APP_ID).setSecretKey(SECRET_KEY);
             vodUpdateCategoryResponse = new VodSubAccountServiceImpl().updateCategory(
                     vodSubAccountUpdateCategoryRequest);
             Assert.assertTrue(vodUpdateCategoryResponse);
@@ -298,8 +292,7 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
             String categoryId = super.addCategory();
             vodSubAccountDeleteCategoryRequest.setCategoryId(categoryId)
                     //设置子账号相关
-                    .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY);
+                    .setAppId(APP_ID).setSecretKey(SECRET_KEY);
             vodDeleteCategoryResponse = new VodSubAccountServiceImpl().deleteCategory(
                     vodSubAccountDeleteCategoryRequest);
             Assert.assertTrue(vodDeleteCategoryResponse);
@@ -381,6 +374,46 @@ public class VodSubAccountServiceImplTest extends SubBaseTest {
             Assert.assertTrue(vodUpdateCategoryProfileResponse);
             if (vodUpdateCategoryProfileResponse) {
                 log.debug("修改视频分类属性设置成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+    
+    /**
+     * 测试获取Playsafe Token
+     * 描述：通过子账号appId与视频id获取播放凭证，用于播放加密视频
+     * 约束：2、如果一个token（播放凭证）尚未过期，此时使用相同的 videoId、viewerId、viewerIp、isWxa 参数值请求该接口，则会复用原来的token，并延长原token的有效期。
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    @Test
+    public void testGetPlaySafeToken() throws IOException, NoSuchAlgorithmException {
+        VodSubAccountGetPlaySafeTokenRequest vodSubAccountGetPlaySafeTokenRequest =
+                new VodSubAccountGetPlaySafeTokenRequest();
+        VodSubAccountGetPlaySafeTokenResponse vodSubAccountGetPlaySafeTokenResponse = null;
+        try {
+            vodSubAccountGetPlaySafeTokenRequest.setVideoId("1b448be32370f4822ac40fd926112a66_1")
+                    .setViewerId("ovtl9t_RxnrTdqkXqkT5Q5lnxp2A")
+                    .setViewerIp("192.168.0.8")
+                    .setViewerName("TestViewerName")
+                    .setExpires(Long.parseLong("60"))
+                    .setDisposable(Boolean.TRUE)
+                    .setIsWxa(0)
+                    //设置子账号相关
+                    .setAppId(APP_ID)
+                    .setSecretKey(SECRET_KEY);
+            vodSubAccountGetPlaySafeTokenResponse = new VodSubAccountServiceImpl().getPlaySafeToken(
+                    vodSubAccountGetPlaySafeTokenRequest);
+            Assert.assertNotNull(vodSubAccountGetPlaySafeTokenResponse);
+            if (vodSubAccountGetPlaySafeTokenResponse != null) {
+                log.debug("测试获取Playsafe Token成功,{}", JSON.toJSONString(vodSubAccountGetPlaySafeTokenResponse));
             }
         } catch (PloyvSdkException e) {
             //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()

@@ -200,7 +200,7 @@ public class MapUtil {
         for (Map.Entry<String, String> entry : sourceMap.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
-            if (StringUtils.isBlank(value)) {
+            if (StringUtils.isBlank(value) && !"password".equals(key)) {
                 continue;
             }
             destMap.put(key, value);

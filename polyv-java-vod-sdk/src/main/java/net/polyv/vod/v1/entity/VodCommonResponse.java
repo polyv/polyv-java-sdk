@@ -36,6 +36,21 @@ public class VodCommonResponse {
     protected String message;
     
     /**
+     * 兼容子账号错误信息
+     */
+    protected ErrorInfo error;
+    
+    
+    @Data
+    @Accessors(chain = true)
+    public static class ErrorInfo{
+        private String code;
+        private  String desc;
+        
+    }
+    
+    
+    /**
      * 实际返回数据
      */
     protected String data;

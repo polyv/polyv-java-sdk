@@ -198,7 +198,7 @@ public class VodSubAccountServiceImpl extends VodBaseService implements IVodSubA
     public VodSubAccountGetPlaySafeTokenResponse getPlaySafeToken(
             VodSubAccountGetPlaySafeTokenRequest vodSubAccountGetPlaySafeTokenRequest)
             throws IOException, NoSuchAlgorithmException {
-        vodSubAccountGetPlaySafeTokenRequest.setTs(System.currentTimeMillis());
+        vodSubAccountGetPlaySafeTokenRequest.setTimeStamp(System.currentTimeMillis());
         return super.postFormBodyReturnOne(VodURL.VOD_SUB_ACCOUNT_GET_PLAY_SAFE_TOKEN_URL,
                 vodSubAccountGetPlaySafeTokenRequest, VodSubAccountGetPlaySafeTokenResponse.class);
     }

@@ -18,7 +18,7 @@ import net.polyv.vod.v1.entity.VodSubCommonRequest;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @ApiModel("获取PlaySafeToken请求实体")
-public class VodSubAccountGetPlaySafeTokenRequest  extends VodSubCommonRequest {
+public class VodSubAccountGetPlaySafeTokenRequest extends VodSubCommonRequest {
     
     /**
      * 视频ID，例如 e6b23c6f519c5906e54a13b8200d7bb0_e
@@ -31,8 +31,9 @@ public class VodSubAccountGetPlaySafeTokenRequest  extends VodSubCommonRequest {
      * 请求发送当时的时间戳（ms)，系统自动生成
      */
     @ApiModelProperty(hidden = true, required = true)
-    @NotNull(message = "属性ts不能为空")
-    private Long ts;
+    @NotNull(message = "属性timestamp不能为空")
+    @JSONField(name = "ts")
+    private Long timeStamp;
     
     /**
      * 观看者ID，要求不同的观看者使用不同的ID

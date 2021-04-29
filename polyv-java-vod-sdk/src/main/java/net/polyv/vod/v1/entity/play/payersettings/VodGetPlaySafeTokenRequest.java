@@ -38,8 +38,9 @@ public class VodGetPlaySafeTokenRequest extends VodCommonRequest {
      * 请求发送当时的时间戳（ms)，系统自动生成
      */
     @ApiModelProperty(hidden = true, required = true)
-    @NotNull(message = "属性ts不能为空")
-    private Long ts;
+    @NotNull(message = "属性timestamp不能为空")
+    @JSONField(name = "ts")
+    private Long timestamp;
     
     /**
      * 观看者ID，要求不同的观看者使用不同的ID

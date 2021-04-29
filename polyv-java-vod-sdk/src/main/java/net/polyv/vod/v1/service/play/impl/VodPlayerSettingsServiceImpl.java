@@ -46,6 +46,7 @@ public class VodPlayerSettingsServiceImpl extends VodBaseService implements IVod
     public VodGetPlaySafeTokenResponse getPlaySafeToken(VodGetPlaySafeTokenRequest vodGetPlaySafeTokenRequest)
             throws IOException, NoSuchAlgorithmException {
         vodGetPlaySafeTokenRequest.setUserId(VodGlobalConfig.getUserId());
+        vodGetPlaySafeTokenRequest.setTimestamp(System.currentTimeMillis());
         return super.postFormBodyReturnOne(VodURL.VOD_GET_PLAY_SAFE_TOKEN_URL, vodGetPlaySafeTokenRequest,
                 VodGetPlaySafeTokenResponse.class);
     }

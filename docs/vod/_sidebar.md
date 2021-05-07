@@ -1,4 +1,5 @@
-* 产品介绍
+
+* **产品介绍**
 
   * [简介](/)
   * [全局约束](/limit)
@@ -7,11 +8,11 @@
   * [功能索引](/function_index)
   * [升级日志](/versionNoteSDK)
   * [回调通知使用说明](/callBack)
-* 视频管理
+* **视频管理**
 
   * [账户管理](accountService)
   * [上传视频](uploadService)
-  * 视频管理
+  * **视频管理**
     * [查询单个视频信息](infoService)
     * [查询视频列表](listService)
     * [修改视频信息](editService)
@@ -24,16 +25,16 @@
     * [视频弹幕](barrageService)
     * [视频截图](screenshotService)
     * [课件管理](coursewareService)
-  * 视频播放
+  * **视频播放**
     * [播放列表](playListService)
     * [播放器设置](playerSettingsService)
   * [加密设置](encryptionSettingsService)
   * [广告管理](advertisingService)
   * [数据统计](dataStatisticsService)
   * [子账号相关](subAccountService)
-* 使用帮助
+* **使用帮助**
 
-  * [常见程序异常](exceptionDoc)
-  * [温馨提示](tips)
+  * [常见程序异常](/exceptionDoc)
+  * [温馨提示](/tips)
   * []()
 

@@ -53,7 +53,7 @@
 | playerWidth | Integer | 视频宽度【对应api文档的**playerwidth**字段】 | 
 | title | String | 视频标题 | 
 | duration | String | 视频时长,如：00:00:48 | 
-| filesize | Long[] | 编码后各个清晰度视频的文件大小，类型为array【详见[Long[]参数描述](infoService.md?id=polyv9)】 | 
+| filesize | Long[] | 编码后各个清晰度视频的文件大小，类型为array | 
 | firstImage | String | 视频首图【对应api文档的**first_image**字段】 | 
 | times | Integer | 播放次数 | 
 | context | String | 视频描述 | 
@@ -80,14 +80,14 @@
 | seed | Integer | 加密视频为1，非加密为0 | 
 | status | Integer | 视频状态：60/61已发布；10等待编码；20正在编码；50等待审核；51审核不通过；-1已删除； | 
 | keepSource | Integer | 是否为源文件，否：0,是：1【对应api文档的**keepsource**字段】 | 
-| uploader | Uploader | 上传者信息【详见[Uploader参数描述](infoService.md?id=polyv10)】 | 
+| uploader | Uploader | 上传者信息【详见[Uploader参数描述](infoService.md?id=polyv9)】 | 
 | hlsLevel | String | 加密等级 open:非授权加密 web：web授权 app：app授权 wxa_app：小程序授权 | 
 | categoryName | String | 分类名称【对应api文档的**cataname**字段】 | 
 | imageUrls | Array | 视频截图小图url | 
 | sourceFileSize | String | 源视频文件大小，单位为：byte【对应api文档的**source_filesize**字段】 | 
 | md5CheckSum | String | 上传到POLYV云平台的视频源文件的MD5值，可以用来校验是否上传错误或完整【对应api文档的**md5checksum**字段】 | 
 
-<h6 id="polyv10"><a href="#/infoService.md?id=polyv10"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv9"><a href="#/infoService.md?id=polyv9"data-id="Uploader参数描述"class="anchor"><span>Uploader参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -209,9 +209,9 @@ true为开关开启，false为开关关闭
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | categoryId | String | 分类ID【对应api文档的**cataid**字段】 | 
-| videos | Array | 视频结果列表【详见[Video参数描述](infoService.md?id=polyv11)】 | 
+| videos | Array | 视频结果列表【详见[Video参数描述](infoService.md?id=polyv10)】 | 
 
-<h6 id="polyv11"><a href="#/infoService.md?id=polyv11"data-id="Video参数描述"class="anchor"><span>Video参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv10"><a href="#/infoService.md?id=polyv10"data-id="Video参数描述"class="anchor"><span>Video参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 

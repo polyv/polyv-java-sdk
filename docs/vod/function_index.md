@@ -84,6 +84,7 @@
 |             |             | [查询单个播放列表](playListService?id=_1、查询单个播放列表) |             | 
 |           | ▼播放器设置      |                                            |      |
 |             |             | [查询用户下所有播放器列表](playerSettingsService?id=_1、查询用户下所有播放器列表) |             | 
+|             |             | [获取Playsafe Token](playerSettingsService?id=_2、获取Playsafe Token) |             | 
 | ▼加密设置   |               |                                            |      |
 |             |             | [查询账号加密设置](encryptionSettingsService?id=_1、查询账号加密设置) |             | 
 |             |             | [修改账号加密设置](encryptionSettingsService?id=_2、修改账号加密设置) |             | 
@@ -120,4 +121,5 @@
 |             |             | [删除视频分类](subAccountService?id=_8、删除视频分类) |             | 
 |             |             | [批量修改视频所属分类](subAccountService?id=_9、批量修改视频所属分类) |             | 
 |             |             | [修改视频分类属性设置](subAccountService?id=_10、修改视频分类属性设置) |             | 
-12121
+|             |             | [获取Playsafe Token](subAccountService?id=_11、获取Playsafe Token) |             | 
+

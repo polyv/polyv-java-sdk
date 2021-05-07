@@ -16,7 +16,7 @@ public class SDKUtilTest {
         Assert.assertTrue(SDKUtil.compareVersion("1.0.0", "1.0.1") == -1);
         Assert.assertTrue(SDKUtil.compareVersion("1.0.0", "1.0.0.1") == -1);
         Assert.assertTrue(SDKUtil.compareVersion("1.0.0", "1.0.0.0") == -1);
-        Assert.assertTrue(SDKUtil.compareVersion("1.0.0", "1.1.0") == -1);
+        Assert.assertTrue(SDKUtil.compareVersion("1.0.0", "1.1.1") == -1);
         Assert.assertTrue(SDKUtil.compareVersion("1.10.1", "2.0.0") == -1);
         Assert.assertTrue(SDKUtil.compareVersion("1.0.0", "2.1.1") == -1);
         Assert.assertTrue(SDKUtil.compareVersion("1.35.26", "2.1.1") == -1);
@@ -27,7 +27,7 @@ public class SDKUtilTest {
         Assert.assertTrue(SDKUtil.compareVersion("1.0.1", "1.0.0") == 1);
         Assert.assertTrue(SDKUtil.compareVersion("1.0.0.1", "1.0.0") == 1);
         Assert.assertTrue(SDKUtil.compareVersion("1.0.0.0", "1.0.0") == 1);
-        Assert.assertTrue(SDKUtil.compareVersion("1.1.0", "1.0.0") == 1);
+        Assert.assertTrue(SDKUtil.compareVersion("1.1.1", "1.0.0") == 1);
         Assert.assertTrue(SDKUtil.compareVersion("2.0.0", "1.10.1") == 1);
         Assert.assertTrue(SDKUtil.compareVersion("2.1.1", "1.0.0") == 1);
         Assert.assertTrue(SDKUtil.compareVersion("2.1.1", "1.35.26") == 1);

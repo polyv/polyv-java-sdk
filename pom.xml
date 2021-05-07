@@ -6,7 +6,7 @@
 
     <groupId>net.polyv</groupId>
     <artifactId>polyv-java-sdk</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <modules>
         <module>polyv-java-vod-sdk</module>
         <module>polyv-java-live-sdk</module>

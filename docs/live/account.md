@@ -5,7 +5,6 @@
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -63,7 +62,6 @@
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -124,7 +122,6 @@
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -177,7 +174,6 @@ true为修改成功，false为修改失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -231,7 +227,6 @@ true为修改排序成功，false为修改排序失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -282,7 +277,6 @@ true为删除成功，false为删除失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -338,7 +332,6 @@ true为删除成功，false为删除失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -452,7 +445,6 @@ true为删除成功，false为删除失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -511,7 +503,6 @@ true为删除成功，false为删除失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -840,8 +831,7 @@ true为设置回调成功，false为设置回调失败
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
-2、isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;
-closeChaterList当enabled值为Y时，表示的是关闭在线列表
+2、isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试
 ```java
 	@Test
@@ -900,8 +890,7 @@ true为设置成功，false为设置失败
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
 
-2、isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;
-closeChaterList当enabled值为Y时，表示的是关闭在线列表
+2、isClosePreview当enabled值为Y时，表示的是关闭系统观看页;closeDanmu当enabled值为Y时，表示的是关闭弹幕;closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ### 单元测试
 ```java
 	@Test
@@ -966,7 +955,6 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1051,7 +1039,6 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1108,9 +1095,7 @@ closeChaterList当enabled值为Y时，表示的是关闭在线列表
 查询账号下所有/某个频道号收入详情
 ```
 ### 调用约束
-1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
-根据是否提交channelId来获取全部频道/某个频道的收入详情数据
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)根据是否提交channelId来获取全部频道/某个频道的收入详情数据
 ### 单元测试
 ```java
 	@Test

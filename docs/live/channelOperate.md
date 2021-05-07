@@ -5,7 +5,6 @@
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -131,7 +130,7 @@
         try {
             LiveChannelInitRequest.BasicSetting basicSetting = new LiveChannelInitRequest.BasicSetting().setName(
                     "创建并初始化频道-验证码观看1")
-                    .setChannelPasswd("123321")
+                    .setChannelPasswd(getRandomString(6))
                     .setAutoPlay(1)
                     .setPlayerColor("#666666")
                     .setScene(LiveConstant.SceneType.ALONE.getDesc())
@@ -142,7 +141,7 @@
                     .setPublisher("sadboy主讲")
                     .setLinkMicLimit(-1)
                     .setPureRtcEnabled("N")
-                    .setReceiveChannelIds("213")
+                    .setReceiveChannelIds(null)
                     .setOnlyOneLiveEnabled("N");
             liveChannelInitRequest.setBasicSetting(basicSetting);
             //验证码观看
@@ -294,7 +293,6 @@
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -421,7 +419,6 @@
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -524,7 +521,6 @@
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -635,7 +631,6 @@
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -702,7 +697,6 @@
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -714,7 +708,7 @@
             String channelId = getAloneChannelId();
             LiveChannelSettingRequest.BasicSetting basicSetting = new LiveChannelSettingRequest.BasicSetting().setName(
                     "Junit测试(勿删)888")
-                    .setChannelPasswd("123321")
+                    .setChannelPasswd(getRandomString(7))
                     .setCategoryId(340019)
                     .setMaxViewer(0)
                     .setPageView(1000)
@@ -724,7 +718,7 @@
                     .setDesc("这是一个描述")
                     .setPublisher("sadboy主讲")
                     .setLinkMicLimit(-1)
-                    .setReceiveChannelIds("213");
+                    .setReceiveChannelIds(null);
             LiveChannelSettingRequest.AuthSetting authSetting = new LiveChannelSettingRequest.AuthSetting().setAuthType(
                     LiveConstant.AuthType.CODE.getDesc())
                     .setRank(1)
@@ -841,7 +835,6 @@ true为设置成功，false为设置失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -903,7 +896,6 @@ true为修改成功，false为修改失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -962,7 +954,6 @@ true为设置密码成功，false为设置失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1021,7 +1012,6 @@ true为设置token成功，false为设置失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1077,7 +1067,6 @@ true为删除成功，false为删除失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1134,7 +1123,6 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1222,7 +1210,6 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1310,7 +1297,6 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1390,7 +1376,6 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1473,7 +1458,6 @@ true为批量删除成功，false为批量删除失败，不存在部分成功
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1545,7 +1529,6 @@ true为设置成功，false为设置失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1605,7 +1588,6 @@ true为设置子频道token成功，false为设置失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1665,7 +1647,6 @@ true为删除成功，false为删除失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1724,7 +1705,6 @@ true为创建成功，false为创建失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -1811,7 +1791,6 @@ true为创建成功，false为创建失败
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -2059,7 +2038,6 @@ null
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test
@@ -2127,7 +2105,6 @@ null
 ```
 ### 调用约束
 1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
-
 ### 单元测试
 ```java
 	@Test

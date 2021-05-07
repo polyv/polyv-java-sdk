@@ -275,6 +275,9 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse uploadOneFile(String url, E e, Map<String, File> fileMap)
             throws IOException, NoSuchAlgorithmException {
         Map<String, String> paramMap = commonRequestLogic(null, e);
+        Map<String, String> reqMap = new HashMap<>();
+        reqMap.put("requestId",e.getRequestId());
+        url = MapUtil.appendUrl(url, reqMap);
         String response = HttpUtil.postFile(url, paramMap, fileMap, getHttpHeadMap(), null);
         return responseConversion(response, e.getRequestId());
     }
@@ -309,6 +312,9 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse uploadMultipartFile(String url, E e,
             Map<String, List<File>> fileMap) throws IOException, NoSuchAlgorithmException {
         Map<String, String> paramMap = commonRequestLogic(null, e);
+        Map<String,String> reqMap = new HashMap<>();
+        reqMap.put("requestId",e.getRequestId());
+        url = MapUtil.appendUrl(url, reqMap);
         String response = HttpUtil.postMultipleFile(url, paramMap, fileMap, getHttpHeadMap(), null);
         return responseConversion(response, e.getRequestId());
     }
@@ -335,11 +341,15 @@ public class LiveBaseService {
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
-        if (StringUtils.isBlank(e.getRequestId())) {
-            e.setRequestId(LiveSignUtil.generateUUID());
+        if (StringUtils.isBlank(e.getRequestId()) || !e.getRequestId().matches(Constant.REQUEST_ID_REG)) {
+            String requestId = LiveSignUtil.generateUUID();
+            log.info("requestId为空或者不满足正则要求，重新设置为：{}", requestId);
+            e.setRequestId(requestId);
         }
         if (signMap == null) {
             signMap = MapUtil.objectToMap(e);
+        }else{
+            signMap.put("requestId",e.getRequestId());
         }
         signMap = MapUtil.filterNullValue(signMap);
         String sign = LiveSignUtil.setLiveSign(signMap, LiveGlobalConfig.getAppSecret());

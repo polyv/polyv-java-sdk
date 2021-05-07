@@ -151,9 +151,9 @@ public class VodQueryVideoDeviceStatisticsResponse {
         @ApiModelProperty(name = "mobileVideoView", value = "移动端播放量", required = false)
         private Integer mobileVideoView;
         /**
-         * 移动端播放量
+         * 移动端唯一观众数
          */
-        @ApiModelProperty(name = "mobileUniqueViewer", value = "移动端播放量", required = false)
+        @ApiModelProperty(name = "mobileUniqueViewer", value = "移动端唯一观众数", required = false)
         private Integer mobileUniqueViewer;
         /**
          * PC端数据占比

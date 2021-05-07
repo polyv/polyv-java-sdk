@@ -112,14 +112,14 @@ public class LiveChannelOperateImplTest extends BaseTest {
      * API地址：CHANNEL_BASIC_CREATE_URL
      * @throws Exception
      */
-    @Test
+//    @Test
     public void testCreateChannelInit() throws Exception, NoSuchAlgorithmException {
         LiveChannelInitRequest liveChannelInitRequest = new LiveChannelInitRequest();
         LiveChannelInitResponse liveChannelInitResponse = null;
         try {
             LiveChannelInitRequest.BasicSetting basicSetting = new LiveChannelInitRequest.BasicSetting().setName(
                     "创建并初始化频道-验证码观看1")
-                    .setChannelPasswd("123321")
+                    .setChannelPasswd(getRandomString(6))
                     .setAutoPlay(1)
                     .setPlayerColor("#666666")
                     .setScene(LiveConstant.SceneType.ALONE.getDesc())
@@ -130,7 +130,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setPublisher("sadboy主讲")
                     .setLinkMicLimit(-1)
                     .setPureRtcEnabled("N")
-                    .setReceiveChannelIds("213")
+                    .setReceiveChannelIds(null)
                     .setOnlyOneLiveEnabled("N");
             liveChannelInitRequest.setBasicSetting(basicSetting);
             //验证码观看
@@ -321,7 +321,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             
             LiveChannelSettingRequest.BasicSetting basicSetting = new LiveChannelSettingRequest.BasicSetting().setName(
                     "Junit测试(勿删)888")
-                    .setChannelPasswd("123321")
+                    .setChannelPasswd(getRandomString(7))
                     .setCategoryId(340019)
                     .setMaxViewer(0)
                     .setPageView(1000)
@@ -331,7 +331,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setDesc("这是一个描述")
                     .setPublisher("sadboy主讲")
                     .setLinkMicLimit(-1)
-                    .setReceiveChannelIds("213");
+                    .setReceiveChannelIds(null);
             LiveChannelSettingRequest.AuthSetting authSetting = new LiveChannelSettingRequest.AuthSetting().setAuthType(
                     LiveConstant.AuthType.CODE.getDesc())
                     .setRank(1)

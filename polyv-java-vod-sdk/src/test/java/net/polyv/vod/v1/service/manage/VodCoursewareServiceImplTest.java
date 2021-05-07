@@ -129,7 +129,7 @@ public class VodCoursewareServiceImplTest extends BaseTest {
      * @throws IOException
      * @throws NoSuchAlgorithmException
      */
-    @Test
+//    @Test
     public void testDeleteCourseware() throws IOException, NoSuchAlgorithmException {
         VodDeleteCoursewareRequest vodDeleteCoursewareRequest = new VodDeleteCoursewareRequest();
         Boolean vodDeleteCoursewareResponse = null;

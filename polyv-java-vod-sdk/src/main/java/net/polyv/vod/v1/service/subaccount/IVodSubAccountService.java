@@ -7,16 +7,18 @@ import java.util.List;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountAddCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountDeleteCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountDeleteVideoRequest;
-import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateCategoryProfileRequest;
-import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateCategoryRequest;
-import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateVideoCategoryRequest;
-import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateVideoInfoRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountGetPlaySafeTokenRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountGetPlaySafeTokenResponse;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryCategoryRequest;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryCategoryResponse;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryVideoInfoRequest;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountQueryVideoInfoResponse;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountSearchVideoListRequest;
 import net.polyv.vod.v1.entity.subaccount.VodSubAccountSearchVideoListResponse;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateCategoryProfileRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateVideoCategoryRequest;
+import net.polyv.vod.v1.entity.subaccount.VodSubAccountUpdateVideoInfoRequest;
 
 /**
  * 子账号相关
@@ -131,4 +133,15 @@ public interface IVodSubAccountService {
      */
     Boolean updateCategoryProfile(VodSubAccountUpdateCategoryProfileRequest vodSubAccountUpdateCategoryProfileRequest)
             throws IOException, NoSuchAlgorithmException;
+    
+    /**
+     * 获取PlaySafeToken
+     * API地址：https://dev.polyv.net/2019/videoproduct/v-api/v-api-subaccount/create-playsafe-token-v2/
+     * @param vodSubAccountGetPlaySafeTokenRequest 获取PlaySafeToken请求实体
+     * @return 获取PlaySafeToken返回实体
+     * @throws IOException 异常
+     * @throws NoSuchAlgorithmException 异常
+     */
+    VodSubAccountGetPlaySafeTokenResponse getPlaySafeToken(VodSubAccountGetPlaySafeTokenRequest vodSubAccountGetPlaySafeTokenRequest)
+            throws IOException, NoSuchAlgorithmException ;
 }

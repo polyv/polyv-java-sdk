@@ -137,9 +137,9 @@ public class VodSubAccountQueryVideoInfoResponse {
         private Integer duration;
         
         /**
-         * 加密视频为1，非加密为0
+         * 加密视频为true，非加密为false
          */
-        @ApiModelProperty(name = "encrypt", value = "加密视频为1，非加密为0", required = false)
+        @ApiModelProperty(name = "encrypt", value = "加密视频为true，非加密为false", required = false)
         private Boolean encrypt;
         
         /**

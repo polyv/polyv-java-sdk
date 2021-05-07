@@ -20,7 +20,7 @@
 <dependency>
     <groupId>net.polyv</groupId>
     <artifactId>polyv-java-vod-sdk</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
 </dependency> 
 ```
 
@@ -164,7 +164,7 @@ public class VodVideoDemo {
 
 ```json
 2021-04-02 11:31:46:670 +0800 [main] DEBUG net.polyv.common.v1.base.HttpUtil - http 请求 url: https://api.polyv.net/v2/user/1b448be323/main , 请求参数: {"date":"2020-11-13","requestId":"f8a5283094714cb58d9aeefa5e00b1b0","sign":"216C1386579861008123892F76C83E28A8D7564E","ptime":"1617334306444"}
-2021-04-02 11:31:47:320 +0800 [main] DEBUG net.polyv.common.v1.base.HttpUtil - HTTP请求耗时分析，请求URL: https://api.polyv.net/v2/user/1b448be323/main ， 请求头信息：[{"elements":[{"name":"application/x-www-form-urlencoded","parameterCount":1,"parameters":[{"name":"charset","value":"UTF-8"}]}],"name":"Content-type","value":"application/x-www-form-urlencoded; charset=UTF-8"},{"elements":[{"name":"1b448be323","parameterCount":0,"parameters":[]}],"name":"java-sdk-user-id","value":"1b448be323"},{"elements":[{"name":"JAVA_VOD_SDK","parameterCount":0,"parameters":[]}],"name":"User-Agent","value":"JAVA_VOD_SDK"},{"elements":[{"name":"JAVA_VOD_SDK","parameterCount":0,"parameters":[]}],"name":"source","value":"JAVA_VOD_SDK"},{"elements":[{"name":"1.1.0","parameterCount":0,"parameters":[]}],"name":"version","value":"1.1.0"}] ，   耗时: 556 ms
+2021-04-02 11:31:47:320 +0800 [main] DEBUG net.polyv.common.v1.base.HttpUtil - HTTP请求耗时分析，请求URL: https://api.polyv.net/v2/user/1b448be323/main ， 请求头信息：[{"elements":[{"name":"application/x-www-form-urlencoded","parameterCount":1,"parameters":[{"name":"charset","value":"UTF-8"}]}],"name":"Content-type","value":"application/x-www-form-urlencoded; charset=UTF-8"},{"elements":[{"name":"1b448be323","parameterCount":0,"parameters":[]}],"name":"java-sdk-user-id","value":"1b448be323"},{"elements":[{"name":"JAVA_VOD_SDK","parameterCount":0,"parameters":[]}],"name":"User-Agent","value":"JAVA_VOD_SDK"},{"elements":[{"name":"JAVA_VOD_SDK","parameterCount":0,"parameters":[]}],"name":"source","value":"JAVA_VOD_SDK"},{"elements":[{"name":"1.1.1","parameterCount":0,"parameters":[]}],"name":"version","value":"1.1.1"}] ，   耗时: 556 ms
 2021-04-02 11:31:47:322 +0800 [main] DEBUG net.polyv.common.v1.base.HttpUtil - http 请求结果: {"code":200,"status":"success","message":"success","data":{"videoCount":43,"totalFlow":21474836480,"usedSpace":0,"usedFlow":0,"totalSpace":21474836480,"userId":"1b448be323","email":"sdk-demo@polyv.net"}}
 2021-04-02 11:31:47:367 +0800 [main] DEBUG net.polyv.vod.v1.service.VodVideoDemo - 测试获取用户空间及流量情况成功,{"email":"sdk-demo@polyv.net","totalFlow":21474836480,"totalSpace":21474836480,"usedFlow":0,"usedSpace":0,"userId":"1b448be323"}
 ```

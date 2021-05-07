@@ -1,4 +1,3 @@
-<h2 class="doc-title">点播JAVA SDK</h2>
 
 * **产品介绍**
 

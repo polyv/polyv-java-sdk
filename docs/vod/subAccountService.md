@@ -70,20 +70,20 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| contents | Array | 查询的结果列表【详见[VodSearchVideoList参数描述](subAccountService.md?id=polyv30)】 | 
+| contents | Array | 查询的结果列表【详见[VodSearchVideoList参数描述](subAccountService.md?id=polyv29)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
 | totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
-<h6 id="polyv30"><a href="#/subAccountService.md?id=polyv30"data-id="VodSearchVideoList参数描述"class="anchor"><span>VodSearchVideoList参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv29"><a href="#/subAccountService.md?id=polyv29"data-id="VodSearchVideoList参数描述"class="anchor"><span>VodSearchVideoList参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | videoId | String | 视频id【对应api文档的**vid**字段】 | 
-| basicInfo | BasicInfo | 查询的视频基本信息【详见[BasicInfo参数描述](subAccountService.md?id=polyv31)】 | 
+| basicInfo | BasicInfo | 查询的视频基本信息【详见[BasicInfo参数描述](subAccountService.md?id=polyv30)】 | 
 
-<h6 id="polyv31"><a href="#/subAccountService.md?id=polyv31"data-id="BasicInfo参数描述"class="anchor"><span>BasicInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv30"><a href="#/subAccountService.md?id=polyv30"data-id="BasicInfo参数描述"class="anchor"><span>BasicInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -166,12 +166,12 @@
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | videoId | String | 视频id【对应api文档的**vid**字段】 | 
-| basicInfo | BasicInfo | 查询的视频基本信息【详见[BasicInfo参数描述](subAccountService.md?id=polyv32)】 | 
-| transcodeInfos | Array | 查询的视频转码信息【详见[TranscodeInfos参数描述](subAccountService.md?id=polyv33)】 | 
-| metaData | MetaData | 查询的视频元数据【详见[MetaData参数描述](subAccountService.md?id=polyv34)】 | 
-| snapshotInfo | SnapshotInfo | 查询的视频截图【详见[SnapshotInfo参数描述](subAccountService.md?id=polyv35)】 | 
+| basicInfo | BasicInfo | 查询的视频基本信息【详见[BasicInfo参数描述](subAccountService.md?id=polyv31)】 | 
+| transcodeInfos | Array | 查询的视频转码信息【详见[TranscodeInfos参数描述](subAccountService.md?id=polyv32)】 | 
+| metaData | MetaData | 查询的视频元数据【详见[MetaData参数描述](subAccountService.md?id=polyv33)】 | 
+| snapshotInfo | SnapshotInfo | 查询的视频截图【详见[SnapshotInfo参数描述](subAccountService.md?id=polyv34)】 | 
 
-<h6 id="polyv32"><a href="#/subAccountService.md?id=polyv32"data-id="BasicInfo参数描述"class="anchor"><span>BasicInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv31"><a href="#/subAccountService.md?id=polyv31"data-id="BasicInfo参数描述"class="anchor"><span>BasicInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -188,14 +188,14 @@
 | tags | String | 标签 | 
 | uploader | String | 上传者 | 
 
-<h6 id="polyv33"><a href="#/subAccountService.md?id=polyv33"data-id="TranscodeInfos参数描述"class="anchor"><span>TranscodeInfos参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv32"><a href="#/subAccountService.md?id=polyv32"data-id="TranscodeInfos参数描述"class="anchor"><span>TranscodeInfos参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
 | playUrl | String | 播放地址 | 
 | definition | String | 清晰度，SOURCE:原清晰度,LD:普清,SD:标清,HD:高清 | 
 | duration | Integer | 时长，秒 | 
-| encrypt | Boolean | 加密视频为1，非加密为0 | 
+| encrypt | Boolean | 加密视频为true，非加密为false | 
 | format | String | 转码格式，如mp4、flv、pdx、hls | 
 | fps | Integer | 视频帧率 | 
 | bitrate | Integer | 码率kbps | 
@@ -203,7 +203,7 @@
 | width | Integer | 分辨率宽，单位：px | 
 | status | String | 视频状态, normal:可以正常播放,unavailable:不能正常播放 | 
 
-<h6 id="polyv34"><a href="#/subAccountService.md?id=polyv34"data-id="MetaData参数描述"class="anchor"><span>MetaData参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv33"><a href="#/subAccountService.md?id=polyv33"data-id="MetaData参数描述"class="anchor"><span>MetaData参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -216,7 +216,7 @@
 | width | Integer | 分辨率宽，单位：px | 
 | codec | String | 编码格式，如h264、h265等 | 
 
-<h6 id="polyv35"><a href="#/subAccountService.md?id=polyv35"data-id="SnapshotInfo参数描述"class="anchor"><span>SnapshotInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv34"><a href="#/subAccountService.md?id=polyv34"data-id="SnapshotInfo参数描述"class="anchor"><span>SnapshotInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -313,8 +313,7 @@ true为修改成功，false为修改失败
         try {
             vodSubAccountDeleteVideoRequest.setVideoId("1b448be3238415eee2fa40753737255b_1")
                     //设置子账号相关
-                    .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY);
+                    .setAppId(APP_ID).setSecretKey(SECRET_KEY);
             vodDeleteVideoResponse = new VodSubAccountServiceImpl().deleteVideo(vodSubAccountDeleteVideoRequest);
             Assert.assertTrue(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse) {
@@ -369,11 +368,9 @@ true为删除视频成功，false为删除视频失败
         VodSubAccountAddCategoryRequest vodSubAccountAddCategoryRequest = new VodSubAccountAddCategoryRequest();
         String vodDeleteVideoResponse = null;
         try {
-            vodSubAccountAddCategoryRequest.setName("junit测试新增分类20210309")
-                    .setParentId(null)
+            vodSubAccountAddCategoryRequest.setName("junit测试新增分类20210309").setParentId(null)
                     //设置子账号相关
-                    .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY);
+                    .setAppId(APP_ID).setSecretKey(SECRET_KEY);
             vodDeleteVideoResponse = new VodSubAccountServiceImpl().addCategory(vodSubAccountAddCategoryRequest);
             Assert.assertNotNull(vodDeleteVideoResponse);
             if (vodDeleteVideoResponse != null) {
@@ -431,10 +428,7 @@ true为删除视频成功，false为删除视频失败
         try {
             vodSubAccountQueryCategoryRequest.setCategoryId("1608891483165")
                     //设置子账号相关
-                    .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY)
-                    .setCurrentPage(1)
-                    .setPageSize(20);
+                    .setAppId(APP_ID).setSecretKey(SECRET_KEY).setCurrentPage(1).setPageSize(20);
             vodSubAccountQueryCategoryResponse = new VodSubAccountServiceImpl().queryCategory(
                     vodSubAccountQueryCategoryRequest);
             Assert.assertNotNull(vodSubAccountQueryCategoryResponse);
@@ -473,11 +467,11 @@ true为删除视频成功，false为删除视频失败
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| category | Category | 当前分类【详见[Category参数描述](subAccountService.md?id=polyv36)】 | 
+| category | Category | 当前分类【详见[Category参数描述](subAccountService.md?id=polyv35)】 | 
 | subCategoryTotal | Integer | 下一级子分类个数 | 
-| subCategories | Array | 下一级子分类列表【详见[Category参数描述](subAccountService.md?id=polyv37)】 | 
+| subCategories | Array | 下一级子分类列表【详见[Category参数描述](subAccountService.md?id=polyv36)】 | 
 
-<h6 id="polyv37"><a href="#/subAccountService.md?id=polyv37"data-id="Category参数描述"class="anchor"><span>Category参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv36"><a href="#/subAccountService.md?id=polyv36"data-id="Category参数描述"class="anchor"><span>Category参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
@@ -507,11 +501,9 @@ true为删除视频成功，false为删除视频失败
                 new VodSubAccountUpdateCategoryRequest();
         Boolean vodUpdateCategoryResponse = null;
         try {
-            vodSubAccountUpdateCategoryRequest.setCategoryId("1602671097888")
-                    .setCategoryName("Junit测试(勿删)_1")
+            vodSubAccountUpdateCategoryRequest.setCategoryId("1602671097888").setCategoryName("Junit测试(勿删)_1")
                     //设置子账号相关
-                    .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY);
+                    .setAppId(APP_ID).setSecretKey(SECRET_KEY);
             vodUpdateCategoryResponse = new VodSubAccountServiceImpl().updateCategory(
                     vodSubAccountUpdateCategoryRequest);
             Assert.assertTrue(vodUpdateCategoryResponse);
@@ -573,8 +565,7 @@ true为修改成功，false为修改失败
             String categoryId = super.addCategory();
             vodSubAccountDeleteCategoryRequest.setCategoryId(categoryId)
                     //设置子账号相关
-                    .setAppId(APP_ID)
-                    .setSecretKey(SECRET_KEY);
+                    .setAppId(APP_ID).setSecretKey(SECRET_KEY);
             vodDeleteCategoryResponse = new VodSubAccountServiceImpl().deleteCategory(
                     vodSubAccountDeleteCategoryRequest);
             Assert.assertTrue(vodDeleteCategoryResponse);
@@ -744,6 +735,96 @@ true为修改成功，false为修改失败
 ### 返回对象描述
 
 true为修改成功，false为修改失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 11、获取Playsafe Token
+### 描述
+```
+通过子账号appId与视频id获取播放凭证，用于播放加密视频
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+
+2、如果一个token（播放凭证）尚未过期，此时使用相同的 videoId、viewerId、viewerIp、isWxa 参数值请求该接口，则会复用原来的token，并延长原token的有效期。
+### 单元测试
+```java
+	@Test
+	public void testGetPlaySafeToken() throws IOException, NoSuchAlgorithmException {
+        VodSubAccountGetPlaySafeTokenRequest vodSubAccountGetPlaySafeTokenRequest =
+                new VodSubAccountGetPlaySafeTokenRequest();
+        VodSubAccountGetPlaySafeTokenResponse vodSubAccountGetPlaySafeTokenResponse = null;
+        try {
+            vodSubAccountGetPlaySafeTokenRequest.setVideoId("1b448be32370f4822ac40fd926112a66_1")
+                    .setViewerId("ovtl9t_RxnrTdqkXqkT5Q5lnxp2A")
+                    .setViewerIp("192.168.0.8")
+                    .setViewerName("TestViewerName")
+                    .setExpires(Long.parseLong("60"))
+                    .setDisposable(Boolean.TRUE)
+                    .setIsWxa(0)
+                    //设置子账号相关
+                    .setAppId(APP_ID)
+                    .setSecretKey(SECRET_KEY);
+            vodSubAccountGetPlaySafeTokenResponse = new VodSubAccountServiceImpl().getPlaySafeToken(
+                    vodSubAccountGetPlaySafeTokenRequest);
+            Assert.assertNotNull(vodSubAccountGetPlaySafeTokenResponse);
+            if (vodSubAccountGetPlaySafeTokenResponse != null) {
+                log.debug("测试获取Playsafe Token成功,{}", JSON.toJSONString(vodSubAccountGetPlaySafeTokenResponse));
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回VodSubAccountGetPlaySafeTokenResponse对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.VodxxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| -- | -- | -- | -- | 
+| videoId | true | String | 视频ID，例如 e6b23c6f519c5906e54a13b8200d7bb0_e | 
+| viewerId | true | String | 观看者ID，要求不同的观看者使用不同的ID | 
+| viewerIp | false | String | 观看者IP，如果为空，会自动获取调用该接口时的IP | 
+| viewerName | false | String | 观看者名称 | 
+| expires | false | Long | token 有效时长，单位为秒。为空时默认为10分钟 | 
+| disposable | false | Boolean | token有效期，true表示token仅一次有效（验证一次后，token就失效了），false表示在有效期内可以进行多次验证。默认为false | 
+| isWxa | false | Integer | 是否微信小程序播放，1为是，0为否。默认为0【对应api文档的**iswxa**字段】 | 
+| extraParams | false | String | 自定义的其它参数 | 
+| appId | true | String | 子账号appId | 
+| secretKey | true | String | 子账号secretKey | 
+
+### 返回对象描述
+
+
+| 参数名 | 类型 | 说明 | 
+| -- | -- | -- | 
+| token | String | token（播放凭证） | 
+| userId | String | 用户ID | 
+| videoId | String | 视频ID，例如 e6b23c6f519c5906e54a13b8200d7bb0_e | 
+| viewerIp | String | 观看者IP，如果为空，或自动获取调用该接口时的IP | 
+| viewerId | String | 观看者ID，要求不同的观看者使用不同的ID | 
+| viewerName | String | 观看者名称 | 
+| extraParams | String | 自定义的其它参数 | 
+| ttl | Long | token 有效时长，单位为毫秒 | 
+| createdTime | Date | token 创建时间 | 
+| expiredTime | Date | token 过期时间 | 
+| isWxa | Integer | 是否微信小程序播放，1为是，0为否【对应api文档的**iswxa**字段】 | 
+| disposable | Boolean | token有效期，true表示token仅一次有效（验证一次后，token就失效了），false表示在有效期内可以进行多次验证 | 
+
 <br /><br />
 
 ------------------

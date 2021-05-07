@@ -445,7 +445,7 @@
 | formatMobilePlayDuration | String | 格式化的移动端播放时长，格式 hh:mm:ss 例如00:00:00 | 
 | mobilePlayDuration | Integer | 移动端播放时长，单位秒 | 
 | mobileVideoView | Integer | 移动端播放量 | 
-| mobileUniqueViewer | Integer | 移动端播放量 | 
+| mobileUniqueViewer | Integer | 移动端唯一观众数 | 
 | pcPercentage | Float | PC端数据占比 | 
 | mobilePercentage | Float | 移动端数据占比 | 
 

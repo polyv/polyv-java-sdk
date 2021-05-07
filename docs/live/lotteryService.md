@@ -42,7 +42,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | sessionId | false | String | 要查询的直播场次ID | 
 | startTime | true | Date | 查询的开始日期 | 
@@ -54,7 +54,7 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | contents | Array | 抽奖记录列表【详见[LotteryListModel参数描述](lotteryService.md?id=polyv38)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
@@ -64,7 +64,7 @@
 <h6 id="polyv38"><a href="#/lotteryService.md?id=polyv38"data-id="LotteryListModel参数描述"class="anchor"><span>LotteryListModel参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | lotteryId | String | 抽奖场次ID | 
 | channelId | String | 频道号 | 
 | sessionId | String | 抽奖时的直播场次ID | 
@@ -126,7 +126,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | lotteryId | true | String | 抽奖ID | 
 | currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
@@ -136,7 +136,7 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | contents | Array | 中奖记录表【详见[LotteryWinnerDetail参数描述](lotteryService.md?id=polyv39)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
@@ -146,7 +146,7 @@
 <h6 id="polyv39"><a href="#/lotteryService.md?id=polyv39"data-id="LotteryWinnerDetail参数描述"class="anchor"><span>LotteryWinnerDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | recordId | String | 中奖记录ID | 
 | channelId | String | 频道号 | 
 | sessionId | String | 抽奖时的直播场次ID | 
@@ -212,7 +212,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | lotteryId | true | String | 抽奖场次ID | 
 | winnerCode | true | String | 中奖码 | 
@@ -276,7 +276,7 @@ null
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | lotteryId | true | String | 抽奖ID | 
 
@@ -338,7 +338,7 @@ null
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | viewerId | true | String | 点赞观众的ID，由调用方自行创建、区分 | 
 | times | false | Integer | 点赞的数目，不能超过30，提交后在(times-1)秒后才能再点赞 | 

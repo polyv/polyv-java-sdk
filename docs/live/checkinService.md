@@ -41,7 +41,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | date | false | Date | 查询的指定日期，格式为yyyy-MM-dd，默认查询当天签到记录 | 
 | sessionId | false | String | 场次sessionId,sessionId优先级高于date，如传sessionId，date参数无效 | 
@@ -52,7 +52,7 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | contents | Array | 签到记录数据数组【详见[CheckinRecord参数描述](checkinService.md?id=polyv37)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
@@ -62,7 +62,7 @@
 <h6 id="polyv37"><a href="#/checkinService.md?id=polyv37"data-id="CheckinRecord参数描述"class="anchor"><span>CheckinRecord参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | indate | Date | 查询的签到日期，yyyy-MM-dd格式 | 
 | nickname | String | 昵称 | 
 | userId | String | C端观众id【对应api文档的**userid**字段】 | 
@@ -125,7 +125,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | checkinId | true | String | 签到ID | 
 
@@ -133,7 +133,7 @@
 返回对象是List&lt;LiveCheckinResponse&gt;，**LiveCheckinResponse**具体元素内容如下：
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | checkinid | String | 签到id | 
 | nickname | String | 签到学员名称 | 
 | checked | String | 签到Y,未签到N | 
@@ -197,7 +197,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | sessionId | true | String | 场次ID | 
 
@@ -205,7 +205,7 @@
 返回对象是List&lt;LiveCheckinMetadataBySessionIdResponse&gt;，**LiveCheckinMetadataBySessionIdResponse**具体元素内容如下：
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | createtime | Date | 签到时间 | 
 | checkinid | String | 签到ID | 
 | sessionId | String | 场次号 | 

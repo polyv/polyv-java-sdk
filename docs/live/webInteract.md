@@ -50,19 +50,19 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，不传为全局设置 | 
 | enabled | false | String | 请求体参数，道具打赏开关，不传默认开启，值为 Y/N , Y为开启 | 
 | goods | true | Array | 道具打赏，道具对象数量必须大于0小于10【详见[ChannelGood参数描述](webInteract.md?id=polyv62)】 | 
 
 <h6 id="polyv62"><a href="#/webInteract.md?id=polyv62"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
-| goodName | String | 道具名称，不能超过5个字符 | 
-| goodImg | String | 道具图片，不能超过120个字符（通过上传图片接口上传获取图片地址，或者使用默认地址;鲜花：01-flower.png;咖啡:02-coffee.png;点赞:03-good.png;掌声:04-applaud.png;666:05-666.png;小星星:06-star.png;钻石:07-diamond.png;跑车:08-car.png;火箭:09-rocket.png;前缀统一为：//livestatic.videocc.net/uploaded/images/webapp/channel/donate/） | 
-| goodPrice | Double | 道具打赏价格 | 
-| goodEnabled | String | 道具开关，值为 Y/N , Y为开启 | 
+| 参数名 | 必选 | 类型 | 说明 | 
+| --- | --- | --- | --- | 
+| goodName | true | String | 道具名称，不能超过5个字符 | 
+| goodImg | true | String | 道具图片，不能超过120个字符（通过上传图片接口上传获取图片地址，或者使用默认地址;鲜花：01-flower.png;咖啡:02-coffee.png;点赞:03-good.png;掌声:04-applaud.png;666:05-666.png;小星星:06-star.png;钻石:07-diamond.png;跑车:08-car.png;火箭:09-rocket.png;前缀统一为：//livestatic.videocc.net/uploaded/images/webapp/channel/donate/） | 
+| goodPrice | true | Double | 道具打赏价格 | 
+| goodEnabled | true | String | 道具开关，值为 Y/N , Y为开启 | 
 
 ### 返回对象描述
 
@@ -120,7 +120,7 @@ true代表设置成功，false代表设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，不传为全局设置 | 
 | cashes | true | Array | 请求体参数，现金打赏数额数组，数组的长度必须为6 | 
 | cashMin | true | Double | 请求体参数，现金打赏自定义最小金额 | 
@@ -176,14 +176,14 @@ true表示设置成功，false表示设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，不传为获取全局设置 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | globalSettingEnabled | String | 是否应用全局设置，获取全局设置时，该值为null | 
 | donateCashEnabled | String | 现金打赏开关 | 
 | donateGoodEnabled | String | 道具打赏开关 | 
@@ -195,7 +195,7 @@ true表示设置成功，false表示设置失败
 <h6 id="polyv63"><a href="#/webInteract.md?id=polyv63"data-id="ChannelGood参数描述"class="anchor"><span>ChannelGood参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | goodName | String | 道具名称，不能超过5个字符 | 
 | goodImg | String | 道具图片，不能超过120个字符（通过上传图片接口上传获取图片地址，或者使用默认地址;鲜花：01-flower.png;咖啡:02-coffee.png;点赞:03-good.png;掌声:04-applaud.png;666:05-666.png;小星星:06-star.png;钻石:07-diamond.png;跑车:08-car.png;火箭:09-rocket.png;前缀统一为：//livestatic.videocc.net/uploaded/images/webapp/channel/donate/） | 
 | goodPrice | Double | 道具打赏价格 | 
@@ -251,7 +251,7 @@ true表示设置成功，false表示设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | wxShareTitle | false | String | 微信分享的标题（30字符内）【对应api文档的**weixinShareTitle**字段】 | 
 | wxShareDesc | false | String | 微信分享的描述（120字符内）【对应api文档的**weixinShareDesc**字段】 | 
@@ -307,14 +307,14 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 频道号 | 
 | channelName | String | 频道名称 | 
 | coverImg | String | 微信分享图标，即频道的直播图标 | 

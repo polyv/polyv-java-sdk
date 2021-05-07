@@ -42,7 +42,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | globalEnabledType | true | String | 功能类型<br/>auth：观看条件设置；观看页管理-观看条件<br/>switch：功能开关设置；直播间管理-功能开关<br/>marquee：跑马灯设置；播放器管理-防录屏跑马灯<br/>restrict：播放限制设置;播放器管理-播放限制<br/>donate：打赏设置;观看页管理-打赏设置<br/>advert：广告设置;观看也管理-营销设置-广告<br/>callback：回调设置;<br/>player：播放器设置 | 
 | enabled | true | String | 功能开关<br/>Y：开启<br/>N：关闭 | 
@@ -102,7 +102,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | type | true | String | 上传图片类型<br/>coverImage：频道图标，建议140 x 140 大小的图标，文件大小不超过 2M。<br/>splashImage：直播引导图，建议 750 x 1334 大小的图片，大小不超过 2M。<br/>logoImage：播放器logo，建议不大于 140 x 50 大小的图片，文件大小不超过 2M。<br/>adminAvatar：聊天室管理员头像，建议 140 x 140 大小的图标，文件大小不超过2M。<br/>assistantAvatar：助教头像，建议 140 x 140 大小的图标，文件大小不超过2M。<br/>authCodeImage：授权观看二维码图片, 最大不超过 200K。<br/>warmImage：暖场图片, 建议1280 x 720，图片大小不超过 2M。<br/>adImage：广告栏图片，建议750 x 120，最大不超过2 M。<br/>startAdImage：片头广告图片，建议 1280 x 720 大小的图片 ，文件大小不超过 4 M。<br/>stopAdImage：暂停广告图片，建议 1280 x 720 大小的图片 ，文件大小不超过 4 M。<br/>goodImage：打赏图标，建议 180 x 180 大小的图标，文件大小不超过 300 k。<br/>invitationImage：邀请卡图片，建议 750 x 1334 大小的图片，大小不超过 4 M。<br/>menuImage：频道菜单图片, 最大不能超过为 2M。 | 
 | file | true | Array | 图片文件列表，支持同时上传不超过6个 | 
 
@@ -110,7 +110,7 @@ true为设置成功，false为设置失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | imgUrls | Array | 图片链接地址列表 | 
 
 <br /><br />

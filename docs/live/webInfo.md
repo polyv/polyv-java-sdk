@@ -41,7 +41,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | name | true | String | 修改后的频道名称 | 
 
@@ -97,7 +97,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | publisher | true | String | 主持人姓名，不超过20个字符 | 
 
@@ -151,14 +151,14 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | splashImg | String | 引导图片url | 
 | splashEnabled | String | 引导功能开关,Y/N | 
 
@@ -212,7 +212,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | likes | false | Integer | 点赞数,likes跟viewers可以同时传，也可以只传其中一个，不能都不传 | 
 | viewers | false | Integer | 观看热度，likes跟viewers可以同时传，也可以只传其中一个，不能都不传 | 
@@ -270,7 +270,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | imgfile | true | File | 图片为大小为2MB的JPG、JPEG、PNG图片 | 
 
@@ -327,7 +327,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | splashEnabled | true | String | 设置开启或关闭引导页Y或N | 
 | imgfile | false | File | 支持jpg、jpeg、png三种格式，大小不能超过4Mb | 
@@ -383,20 +383,20 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelIds | true | String | 用逗号隔开的频道号，如：10000,100001最多20个 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelLikes | Array | 频道点赞数和观众热度值【详见[ChannelLikes参数描述](webInfo.md?id=polyv61)】 | 
 
 <h6 id="polyv61"><a href="#/webInfo.md?id=polyv61"data-id="ChannelLikes参数描述"class="anchor"><span>ChannelLikes参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 频道号 | 
 | likes | Integer | 频道点赞数 | 
 | viewers | Integer | 频道观看热度 | 
@@ -451,7 +451,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | bookingEnabled | false | String | 预约观看开关Y或N | 
 | startTime | false | Date | 直播开始时间，如果不传该值，表示不显示直播时间和倒计时（yyyy-MM-dd HH:mm:ss） | 
@@ -507,14 +507,14 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | bookingEnabled | String | 预约观看开关Y或N | 
 | startTime | Date | 直播开始时间,为空则没有直播开始时间 | 
 

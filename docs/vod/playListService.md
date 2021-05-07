@@ -54,9 +54,9 @@
 | videoCount | Integer | 视频数量【对应api文档的**video_count**字段】 | 
 | videoId | String | 视频列表ID【对应api文档的**videoid**字段】 | 
 | createTime | Date | 创建时间，时间格式 yyyy-MM-dd HH:mm:ss【对应api文档的**ptime**字段】 | 
-| videoList | Array | 视频集合【对应api文档的**videolist**字段】【详见[VideoInfo参数描述](playListService.md?id=polyv29)】 | 
+| videoList | Array | 视频集合【对应api文档的**videolist**字段】【详见[VideoInfo参数描述](playListService.md?id=polyv28)】 | 
 
-<h6 id="polyv29"><a href="#/playListService.md?id=polyv29"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv28"><a href="#/playListService.md?id=polyv28"data-id="VideoInfo参数描述"class="anchor"><span>VideoInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 

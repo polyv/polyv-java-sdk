@@ -130,13 +130,13 @@
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 
-| contents | Array | 答题日志列表【详见[ExamLog参数描述](videoQuestionAndAnswer.md?id=polyv28)】 | 
+| contents | Array | 答题日志列表【详见[ExamLog参数描述](videoQuestionAndAnswer.md?id=polyv27)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
 | totalItems | Integer | 记录总条数 | 
 | totalPage | Integer | 总页数【对应api文档的**totalPages**字段】 | 
 
-<h6 id="polyv28"><a href="#/videoQuestionAndAnswer.md?id=polyv28"data-id="ExamLog参数描述"class="anchor"><span>ExamLog参数描述</span></a></h6> <!-- {docsify-ignore} -->
+<h6 id="polyv27"><a href="#/videoQuestionAndAnswer.md?id=polyv27"data-id="ExamLog参数描述"class="anchor"><span>ExamLog参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
 | -- | -- | -- | 

@@ -119,7 +119,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
         try {
             LiveChannelInitRequest.BasicSetting basicSetting = new LiveChannelInitRequest.BasicSetting().setName(
                     "创建并初始化频道-验证码观看1")
-                    .setChannelPasswd("123321")
+                    .setChannelPasswd(getRandomString(6))
                     .setAutoPlay(1)
                     .setPlayerColor("#666666")
                     .setScene(LiveConstant.SceneType.ALONE.getDesc())
@@ -321,7 +321,7 @@ public class LiveChannelOperateImplTest extends BaseTest {
             
             LiveChannelSettingRequest.BasicSetting basicSetting = new LiveChannelSettingRequest.BasicSetting().setName(
                     "Junit测试(勿删)888")
-                    .setChannelPasswd("123321")
+                    .setChannelPasswd(getRandomString(7))
                     .setCategoryId(340019)
                     .setMaxViewer(0)
                     .setPageView(1000)

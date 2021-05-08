@@ -42,7 +42,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | content | true | String | 直播介绍的内容（此处可以填html页面的相关内容，如增加图片、增加文字样式等） | 
 | menuType | true | String | 菜单类型，目前仅支持取值为desc | 
@@ -97,20 +97,20 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号，不传为获取全局设置 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelMenus | Array | 频道的菜单信息【详见[ChannelMenu参数描述](webMenu.md?id=polyv64)】 | 
 
 <h6 id="polyv64"><a href="#/webMenu.md?id=polyv64"data-id="ChannelMenu参数描述"class="anchor"><span>ChannelMenu参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | menuId | String | 菜单Id | 
 | menuType | String | 菜单类型, desc为直播介绍，chat为聊天室，quiz为咨询提问，iframe为推广外链，text为自定义图文菜单 | 
 | name | String | 菜单名称 | 
@@ -170,7 +170,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | name | true | String | 菜单名称 | 
 | type | true | String | 菜单类型。desc：直播介绍；chat：互动聊天；quiz：咨询提问；text：图文菜单；iframe：推广外链； | 
@@ -181,7 +181,7 @@ true为设置成功，false为设置失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | menuId | String | 菜单ID | 
 | menuType | String | 菜单类型。desc：直播介绍；chat：互动聊天；quiz：咨询提问；text：图文菜单；iframe：推广外链； | 
 | name | String | 菜单名称 | 
@@ -245,7 +245,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | menuIds | true | String | 频道菜单ID列表，必须是完整的列表（不能多也不能少），表示按该顺序排列菜单 | 
 | lang | false | String | 菜单语言类型 默认zh_CN中文、EN英文 | 
@@ -305,7 +305,7 @@ null
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | menuId | true | String | 菜单id（互动聊天或咨询提问的菜单ID不允许设置） | 
 | content | true | String | 菜单的内容 | 
 | lang | false | String | 菜单语言类型 默认zh_CN中文、EN英文 | 
@@ -361,7 +361,7 @@ null
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | menuIds | true | String | 菜单id，指定多个以英文逗号,分隔 | 
 
 ### 返回对象描述
@@ -416,7 +416,7 @@ true为删除成功，false为删除失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | enabled | true | String | 咨询提问开关 Y:开启，N：关闭 | 
 
@@ -473,7 +473,7 @@ null
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | id | false | Integer | 图文内容的序列号：为空表示获取第一页数据，且同时会返回置顶数据。非空表示获取id比该值小的记录（也就是更早发布的内容），此时不返回置顶列表。 | 
 | imageMode | false | String | 是否为图片模式，Y表示为图片模式，N表示文字加图片的模式，默认为N | 
@@ -482,7 +482,7 @@ null
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | total | Integer | 总的返回结果条数 | 
 | contents | ImageTextMsg[] | 图文消息列表【详见[ImageTextMsg[]参数描述](webMenu.md?id=polyv65)】 | 
 | topContents | ImageTextMsg[] | 置顶图文消息列表【详见[ImageTextMsg[]参数描述](webMenu.md?id=polyv65)】 | 
@@ -491,7 +491,7 @@ null
 <h6 id="polyv65"><a href="#/webMenu.md?id=polyv65"data-id="ImageTextMsg参数描述"class="anchor"><span>ImageTextMsg参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | id | Integer | 图文内容序列号,可用于查询条件参数id | 
 | channelId | String | 频道号 | 
 | text | String | 文本内容 | 
@@ -502,7 +502,7 @@ null
 <h6 id="polyv66"><a href="#/webMenu.md?id=polyv66"data-id="Setting参数描述"class="anchor"><span>Setting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | id | Integer | 设置的序列号 | 
 | nickname | String | 操作人的昵称 | 
 | actor | String | 操作人的头衔 | 

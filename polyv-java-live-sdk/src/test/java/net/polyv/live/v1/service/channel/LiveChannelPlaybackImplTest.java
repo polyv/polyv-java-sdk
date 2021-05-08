@@ -38,7 +38,6 @@ import net.polyv.live.v1.entity.channel.playback.LiveMergeMp4RecordResponse;
 import net.polyv.live.v1.entity.channel.playback.LiveUpdatePlaybackTitleRequest;
 import net.polyv.live.v1.service.BaseTest;
 import net.polyv.live.v1.service.channel.impl.LiveChannelPlaybackServiceImpl;
-import net.polyv.live.v1.util.LiveSignUtil;
 
 /**
  * 录制回放
@@ -333,6 +332,7 @@ public class LiveChannelPlaybackImplTest extends BaseTest {
         Boolean liveChannelPlaybackSettingResponse;
         try {
             String channelId = super.createChannel();
+            //videoId可通过new LiveChannelPlaybackServiceImpl().listChannelVideoLibrary()获取
             List<String> videoIds = listChannelVideoIds(channelId);
             liveChannelPlaybackSettingRequest = new LiveChannelPlaybackSettingRequest();
             liveChannelPlaybackSettingRequest.setChannelId(channelId)

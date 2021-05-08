@@ -42,14 +42,14 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | deployAddress | String | 推送的CDN节点IP，可能会为null | 
 | inAddress | String | 推流出口ip，可能会为null | 
 | streamName | String | 流名 | 
@@ -109,20 +109,20 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelIds | true | String | 用逗号隔开的频道号，如：10000,100001 最多20个 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelInfo | Array | 频道信息【详见[LiveChannelStreamStatusResponse参数描述](channelState.md?id=polyv27)】 | 
 
 <h6 id="polyv27"><a href="#/channelState.md?id=polyv27"data-id="LiveChannelStreamStatusResponse参数描述"class="anchor"><span>LiveChannelStreamStatusResponse参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 频道号 | 
 | status | String | 频道的直播状态，字符串，值包括：live end | 
 
@@ -176,7 +176,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 
 ### 返回对象描述
@@ -232,7 +232,7 @@ true为禁止推流成功，false为失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 
 ### 返回对象描述
@@ -288,7 +288,7 @@ true为恢复成功，false为恢复失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 
 ### 返回对象描述
@@ -344,7 +344,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 
 ### 返回对象描述

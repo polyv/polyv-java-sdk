@@ -36,14 +36,14 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | categoryName | true | String | 频道分类名称 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | categoryId | Integer | 分类id | 
 | categoryName | String | 分类名称 | 
 | userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
@@ -97,13 +97,13 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | liveCategories | Array | 频道分类列表【详见[LiveCategory参数描述](account.md?id=polyv0)】 | 
 
 <h6 id="polyv0"><a href="#/account.md?id=polyv0"data-id="LiveCategory参数描述"class="anchor"><span>LiveCategory参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | categoryId | Integer | 分类ID | 
 | categoryName | String | 分类名称 | 
 | userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
@@ -154,7 +154,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | categoryId | true | Integer | 分类id | 
 | categoryName | true | String | 分类名称 | 
 
@@ -207,7 +207,7 @@ true为修改成功，false为修改失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | categoryId | true | Integer | 分类id | 
 | afterCategoryId | true | Integer | 移动到该id对应的分类之后 | 
 
@@ -258,7 +258,7 @@ true为修改排序成功，false为修改排序失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | categoryId | true | Integer | 分类id | 
 
 ### 返回对象描述
@@ -312,7 +312,7 @@ true为删除成功，false为删除失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | email | String | 邮箱账号 | 
 | maxChannels | Integer | 最大可创建频道数 | 
@@ -367,7 +367,7 @@ true为删除成功，false为删除失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | categoryId | false | Integer | 所属分类id | 
 | watchStatus | false | String | 观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始 | 
 | keyword | false | String | 频道名称，模糊查询 | 
@@ -378,7 +378,7 @@ true为删除成功，false为删除失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | contents | Array | 频道详细信息列表【详见[LiveChannelDetail参数描述](account.md?id=polyv1)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
@@ -388,7 +388,7 @@ true为删除成功，false为删除失败
 <h6 id="polyv1"><a href="#/account.md?id=polyv1"data-id="LiveChannelDetail参数描述"class="anchor"><span>LiveChannelDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 频道号 | 
 | name | String | 频道名称 | 
 | channelPasswd | String | 频道密码 | 
@@ -405,7 +405,7 @@ true为删除成功，false为删除失败
 <h6 id="polyv2"><a href="#/account.md?id=polyv2"data-id="LiveAuthSetting参数描述"class="anchor"><span>LiveAuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 频道号 | 
 | rank | Integer | 用于实现一个频道设置两个观看条件，为1或2（1为主要条件，2为次要条件） | 
 | userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
@@ -479,7 +479,7 @@ true为删除成功，false为删除失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | categoryId | false | Integer | 所属分类id，不传则查询所有分类下的频道号 | 
 | keyword | false | String | 频道名称，模糊查询 | 
 
@@ -487,7 +487,7 @@ true为删除成功，false为删除失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channels | Array | 频道号列表 | 
 
 <br /><br />
@@ -541,7 +541,7 @@ true为删除成功，false为删除失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | available | Integer | 可用连麦分钟数，单位分钟 | 
 | history | Integer | 历史已使用连麦分钟数，单位分钟 | 
 
@@ -595,7 +595,7 @@ true为删除成功，false为删除失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | token | true | String | 唯一的字符串,请勿过于简单，建议使用16位随机字符串 | 
 
 ### 返回对象描述
@@ -651,7 +651,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | url | false | String | 回调地址url，不提交表示关闭回调功能，如果提交，必须以http://或者https://开头 | 
 
 ### 返回对象描述
@@ -661,7 +661,7 @@ true为设置回调成功，false为设置回调失败
 &emsp;&emsp;设置接口地址后，如果账号下频道有进行推流、断流操作导致频道直播状态改变，直播系统会将以下参数channelId（频道号）和status（直播状态：live表示开始直播，end表示直播结束）以GET方式提交到给用户自定义的回调接口进行通知，如：http://abc.com/test.do?channelId=123456&status=live&timestamp=1557976774000&sign=xxdxxxxx&sessionId=xxxxxddd&startTime=1557976777111&endTime=1557976777111
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 频道号 | 
 | status | String | 直播频道的状态：live正在直播，end直播结束 | 
 | timestamp | Long | 13位的时间戳 | 
@@ -721,7 +721,7 @@ true为设置回调成功，false为设置回调失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | url | false | String | 回调地址url，不提交表示关闭回调功能，如果提交，必须以http://或者https://开头 | 
 
 ### 返回对象描述
@@ -731,7 +731,7 @@ true为设置回调成功，false为设置回调失败
 &emsp;&emsp;设置接口地址后，如果账号有进行暂存视频转存，即将直播生成的录制文件转存到点播中，如果转存视频处理完毕为已完成状态，直播系统会将以下参数channelId(频道号)、vid(转存成功的视频ID)、title(视频标题)、duration(视频时长)和fileSize（视频文件大小）以GET方式提交到给用户自定义的回调接口进行通知，如：http://abc.com/test.do?channelId=123456&vid=e6b23c6f5134943a015bc117e2854eae_e&title=视频标题&duration=01:23:45&fileSize=123400&timestamp=1557976774000&sign=xxxxxxxxxx&fileId=359a81ed8fd8cb83d88ddcd97d9e8a2b&videoId=b1c6f3ad2c&origin=auto&sessionIds=["20190703145126,4,fdqbopvtnv","20190703145126,8,fdqbopvtnv"]
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 频道号 | 
 | vid | String | 转存成功的视频ID | 
 | title | String | 视频标题 | 
@@ -797,7 +797,7 @@ true为设置回调成功，false为设置回调失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | url | false | String | 回调地址url，不提交表示关闭回调功能，如果提交，必须以http://或者https://开头 | 
 
 ### 返回对象描述
@@ -807,7 +807,7 @@ true为设置回调成功，false为设置回调失败
 &emsp;&emsp;设置接口地址后，如果账号有开通录制功能，账号下各频道在推流结束，生成m3u8录制视频后，直播系统会将参数channelId（频道号）和fileUrl（录制文件地址）以GET方式提交到给用户自定义的回调接口进行通知，如：http://abc.com/test.do?channelId=104400&fileUrl=http://rflive.videocc.net/i6ro0hxj0020150529112242035/recordf.i6ro0hxj0020150529112242035_20170120184803.m3u8&origin=auto&fileId=072c36138cfbd3e546cda227dc273951&timestamp=1557976774000&sign=xxxxxxxxxx
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 频道号 | 
 | fileUrl | String | 录制文件地址 | 
 | format | String | 文件类型，m3u8或者mp4 | 
@@ -868,7 +868,7 @@ true为设置回调成功，false为设置回调失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，不传该参数则表示修改全局设置 | 
 | type | true | String | 开关类型<br/>isClosePreview：是否关闭系统观看页，Y时表示关闭<br/>mobileWatch：是否开启移动端系统观看页<br/>mobileAudio：是否开启移动端音视频切换<br/>autoPlay：是否开启播放器自动播放功能<br/>booking：是否开启预约功能<br/>redPack：是否开启红包功能<br/>shareBtnEnabled：是否开启分享功能<br/>chat：是否开启聊天室<br/>closeChaterList：是否关闭在线列表，Y时表示关闭<br/>consultingMenu：是否开启咨询提问<br/>closeDanmu：是否关闭弹幕功能，Y时表示关闭<br/>praise：是否开启点赞语功能<br/>welcome：是否开启欢迎语功能<br/>viewerSendImgEnabled：是否开启观众发送图片 | 
 | enabled | true | String | 开关值，Y或N | 
@@ -925,20 +925,20 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，不传该参数为获取全局设置 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelSwitches | Array | 频道开关【详见[ChannelSwitch参数描述](account.md?id=polyv3)】 | 
 
 <h6 id="polyv3"><a href="#/account.md?id=polyv3"data-id="ChannelSwitch参数描述"class="anchor"><span>ChannelSwitch参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | type | String | 开关类型<br/>isClosePreview：是否关闭系统观看页，Y时表示关闭<br/>mobileWatch：是否开启移动端系统观看页<br/>mobileAudio：是否开启移动端音视频切换<br/>autoPlay：是否开启播放器自动播放功能<br/>booking：是否开启预约功能<br/>redPack：是否开启红包功能<br/>shareBtnEnabled：是否开启分享功能<br/>chat：是否开启聊天室<br/>closeChaterList：是否关闭在线列表，Y时表示关闭<br/>consultingMenu：是否开启咨询提问<br/>closeDanmu：是否关闭弹幕功能，Y时表示关闭<br/>praise：是否开启点赞语功能<br/>welcome：是否开启欢迎语功能<br/>viewerSendImgEnabled：是否开启观众发送图片 | 
 | enabled | String | 是否已打开开关 | 
 
@@ -995,7 +995,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | categoryId | false | Integer | 所属分类id | 
 | watchStatus | false | String | 观看页状态筛选，live-直播中，playback-回放中，end-已结束，waiting-未开始 | 
 | keyword | false | String | 频道名称，模糊查询 | 
@@ -1006,7 +1006,7 @@ true为设置成功，false为设置失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | contents | Array | 频道基础信息【详见[ChannelBasicInfo参数描述](account.md?id=polyv4)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
@@ -1016,7 +1016,7 @@ true为设置成功，false为设置失败
 <h6 id="polyv4"><a href="#/account.md?id=polyv4"data-id="ChannelBasicInfo参数描述"class="anchor"><span>ChannelBasicInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 频道号 | 
 | name | String | 频道名称 | 
 | channelPasswd | String | 频道密码 | 
@@ -1078,7 +1078,7 @@ true为设置成功，false为设置失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | userId | String | POLYV用户ID，和保利威官网一致，获取路径：官网->登录->直播（开发设置） | 
 | available | Long | 当前可用的分钟数 | 
 | used | Long | 历史已经使用的分钟数 | 
@@ -1134,7 +1134,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 要查询的频道号，不提交默认为查询所有频道 | 
 | startDate | true | Date | 查询的开始日期 格式为yyyy-MM-dd | 
 | endDate | true | Date | 查询的结束日期 格式为yyyy-MM-dd | 
@@ -1145,7 +1145,7 @@ true为设置成功，false为设置失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | contents | Array | 收入详情【详见[ChannelIncomeDetail参数描述](account.md?id=polyv5)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
@@ -1155,7 +1155,7 @@ true为设置成功，false为设置失败
 <h6 id="polyv5"><a href="#/account.md?id=polyv5"data-id="ChannelIncomeDetail参数描述"class="anchor"><span>ChannelIncomeDetail参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | amount | Float | 金额 | 
 | payType | String | 收入类型：good、cash、pay | 
 | payTypeName | String | 收入类型的名称：道具打赏、现金打赏、付费观看 | 

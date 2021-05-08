@@ -42,7 +42,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号（传频道号则添加频道观看白名单，不传频道号则添加全局观看白名单） | 
 | rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
 | code | true | String | 会员码（最多为50个字符） | 
@@ -102,7 +102,7 @@ true为添加成功，false为添加失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，不传为获取全局设置 | 
 | rank | true | Integer | 1为首要条件，2为次要条件 | 
 | keyword | false | String | 关键词，可根据会员码和名称查询 | 
@@ -113,7 +113,7 @@ true为添加成功，false为添加失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | contents | Array | 白名单列表【详见[ChannelWhiteList参数描述](webAuth.md?id=polyv52)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
@@ -123,7 +123,7 @@ true为添加成功，false为添加失败
 <h6 id="polyv52"><a href="#/webAuth.md?id=polyv52"data-id="ChannelWhiteList参数描述"class="anchor"><span>ChannelWhiteList参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | name | String | 昵称(或备注) | 
 | phone | String | 会员码 | 
 
@@ -174,20 +174,20 @@ true为添加成功，false为添加失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号,不填获取全局观看条件 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | authSettings | Array | 观看条件【详见[AuthSetting参数描述](webAuth.md?id=polyv53)】 | 
 
 <h6 id="polyv53"><a href="#/webAuth.md?id=polyv53"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | rank | Integer | 通用参数：主要观看条件为1，次要观看条件为2 | 
 | enabled | String | 通用参数：是否开启，Y为开启，N为关闭 | 
 | authType | String | 通用参数：付费观看-pay，验证码观看-code，白名单观看-phone，登记观看-info，自定义授权观看-custom，外部授权-external,直接授权-direct | 
@@ -210,7 +210,7 @@ true为添加成功，false为添加失败
 <h6 id="polyv54"><a href="#/webAuth.md?id=polyv54"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | name | String | 登记信息名，最多为8字符 | 
 | type | String | 登记类型，姓名-name，文本-text，手机号码-mobile，数字-number，下拉选项-option | 
 | options | String | 下拉选项时，下拉的选项值，以英文逗号分割。选项个数上限为8个；选项内容最多为8字符 | 
@@ -275,42 +275,42 @@ true为添加成功，false为添加失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，不传为全局设置 | 
 | authSettings | true | Array | 观看条件设置【详见[AuthSetting参数描述](webAuth.md?id=polyv55)】 | 
 
 <h6 id="polyv55"><a href="#/webAuth.md?id=polyv55"data-id="AuthSetting参数描述"class="anchor"><span>AuthSetting参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
-| rank | Integer | 通用参数：主要观看条件为1，次要观看条件为2 | 
-| enabled | String | 通用参数：是否开启，Y为开启，N为关闭 | 
-| authType | String | 通用参数：付费观看-pay，验证码观看-code，白名单观看-phone，登记观看-info，自定义授权观看-custom，外部授权-external,直接授权-direct | 
-| payAuthTips | String | 付费观看参数：欢迎语标题 | 
-| price | Float | 付费观看参数：价格，单位为元 | 
-| watchEndTime | Date | 付费观看参数：付费有效截止日期。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
-| validTimePeriod | Integer | 付费观看参数：付费有效时长，单位天。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
-| authCode | String | 验证码观看参数：验证码 | 
-| qcodeTips | String | 验证码观看参数：提示文案 | 
-| qcodeImg | String | 验证码观看参数：公众号二维码地址 | 
-| authTips | String | 白名单观看参数：提示文案 | 
-| infoFields | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv56)】 | 
-| externalKey | String | 外部授权参数：SecretKey | 
-| externalUri | String | 外部授权参数：自定义url | 
-| externalRedirectUri | String | 外部授权参数：跳转地址 | 
-| customKey | String | 自定义授权参数：SecretKey | 
-| customUri | String | 自定义授权参数：自定义url | 
-| directKey | String | 直接授权参数：直接授权SecretKey | 
+| 参数名 | 必选 | 类型 | 说明 | 
+| --- | --- | --- | --- | 
+| rank | true | Integer | 通用参数：主要观看条件为1，次要观看条件为2 | 
+| enabled | true | String | 通用参数：是否开启，Y为开启，N为关闭 | 
+| authType | false | String | 通用参数：付费观看-pay，验证码观看-code，白名单观看-phone，登记观看-info，自定义授权观看-custom，外部授权-external,直接授权-direct | 
+| payAuthTips | false | String | 付费观看参数：欢迎语标题 | 
+| price | false | Float | 付费观看参数：价格，单位为元 | 
+| watchEndTime | false | Date | 付费观看参数：付费有效截止日期。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
+| validTimePeriod | false | Integer | 付费观看参数：付费有效时长，单位天。当watchEndTime和validTimePeriod都为空时，表示付费永久有效 | 
+| authCode | false | String | 验证码观看参数：验证码 | 
+| qcodeTips | false | String | 验证码观看参数：提示文案 | 
+| qcodeImg | false | String | 验证码观看参数：公众号二维码地址 | 
+| authTips | false | String | 白名单观看参数：提示文案 | 
+| infoFields | false | Array | 登记观看参数,上限为5个【详见[InfoField参数描述](webAuth.md?id=polyv56)】 | 
+| externalKey | false | String | 外部授权参数：SecretKey | 
+| externalUri | false | String | 外部授权参数：自定义url | 
+| externalRedirectUri | false | String | 外部授权参数：跳转地址 | 
+| customKey | false | String | 自定义授权参数：SecretKey | 
+| customUri | false | String | 自定义授权参数：自定义url | 
+| directKey | false | String | 直接授权参数：直接授权SecretKey | 
 
 <h6 id="polyv56"><a href="#/webAuth.md?id=polyv56"data-id="InfoField参数描述"class="anchor"><span>InfoField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
-| 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
-| name | String | 登记信息名，最多为8字符 | 
-| type | String | 登记类型，姓名-name，文本-text，手机号码-mobile，数字-number，下拉选项-option | 
-| options | String | 下拉选项时，下拉的选项值，以英文逗号分割。选项个数上限为8个；选项内容最多为8字符 | 
-| placeholder | String | 文本框输入提示，最多为8字符 | 
-| sms | String | 短信验证开关，Y 开启，N 关闭 | 
+| 参数名 | 必选 | 类型 | 说明 | 
+| --- | --- | --- | --- | 
+| name | false | String | 登记信息名，最多为8字符 | 
+| type | true | String | 登记类型，姓名-name，文本-text，手机号码-mobile，数字-number，下拉选项-option | 
+| options | false | String | 下拉选项时，下拉的选项值，以英文逗号分割。选项个数上限为8个；选项内容最多为8字符 | 
+| placeholder | false | String | 文本框输入提示，最多为8字符 | 
+| sms | false | String | 短信验证开关，Y 开启，N 关闭 | 
 
 ### 返回对象描述
 
@@ -364,7 +364,7 @@ true为设置观看条件成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，提交后对某频道号设置，不提交则对账号下所有频道号进行设置 | 
 | externalUri | true | String | 获取用户信息接口地址 | 
 
@@ -372,13 +372,13 @@ true为设置观看条件成功，false为设置失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelAuthExternals | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv57)】 | 
 
 <h6 id="polyv57"><a href="#/webAuth.md?id=polyv57"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 设置的频道号 | 
 | secretKey | String | 频道号对应外部授权的secretKey | 
 
@@ -431,7 +431,7 @@ true为设置观看条件成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，提交后对某频道号设置，不提交则对账号下所有频道号进行设置 | 
 | customUri | true | String | 自定义授权地址 | 
 
@@ -439,13 +439,13 @@ true为设置观看条件成功，false为设置失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelAuthExternals | Array | 外部授权【详见[ChannelAuthExternal参数描述](webAuth.md?id=polyv58)】 | 
 
 <h6 id="polyv58"><a href="#/webAuth.md?id=polyv58"data-id="ChannelAuthExternal参数描述"class="anchor"><span>ChannelAuthExternal参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 设置的频道号 | 
 | secretKey | String | 频道号对应自定义授权的secretKey | 
 
@@ -498,7 +498,7 @@ true为设置观看条件成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，无该参数为全局设置 | 
 | url | false | String | 授权认证url，为空时清除设置 | 
 
@@ -554,7 +554,7 @@ true为设置成功，false为设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | authType | true | String | 观看条件类型,默认取值为none(关闭观看条件) | 
 
@@ -613,7 +613,7 @@ true为授权成功，false为授权失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号（传频道号则修改频道观看白名单，不传频道号则修改全局观看白名单） | 
 | rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
 | oldCode | true | String | 旧会员码 | 
@@ -674,7 +674,7 @@ true为更新成功，false为失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号（传频道号则修改频道观看白名单，不传频道号则修改全局观看白名单） | 
 | rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
 | isClear | true | String | 是否一键清空白名单<br/>Y：清空白名单<br/>N：根据请求参数code删除白名单 | 
@@ -732,7 +732,7 @@ true为删除成功，false为失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
 | channelId | false | String | 频道号，不填为获取全局 | 
 
@@ -740,13 +740,13 @@ true为删除成功，false为失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelAuthFields | Array | 登记观看字段【详见[ChannelAuthField参数描述](webAuth.md?id=polyv59)】 | 
 
 <h6 id="polyv59"><a href="#/webAuth.md?id=polyv59"data-id="ChannelAuthField参数描述"class="anchor"><span>ChannelAuthField参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | type | String | 登记观看类型。name-姓名；mobile-手机号码；number-数字；option-下拉选择；text-文本 | 
 | name | String | 登记观看信息标题 | 
 | placeholder | String | 登记观看信息描述 | 
@@ -799,7 +799,7 @@ true为删除成功，false为失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | currentPage | false | Integer | 页数，默认为1【对应api文档的**page**字段】 | 
 | pageSize | false | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
@@ -808,7 +808,7 @@ true为删除成功，false为失败
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | contents | Array | 页面登记记录【详见[ChannelAuthInfo参数描述](webAuth.md?id=polyv60)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
@@ -818,7 +818,7 @@ true为删除成功，false为失败
 <h6 id="polyv60"><a href="#/webAuth.md?id=polyv60"data-id="ChannelAuthInfo参数描述"class="anchor"><span>ChannelAuthInfo参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | createdTime | Date | 登记时间 | 
 | params | Array | 登记的内容数据 | 
 
@@ -875,7 +875,7 @@ true为删除成功，false为失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | rank | true | Integer | 1为首要条件，2为次要条件。影响导出的表格表头 | 
 
@@ -933,7 +933,7 @@ true为删除成功，false为失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，无该参数为全局设置 | 
 | rank | true | Integer | 主要观看条件为1,次要观看条件为2 | 
 | file | true | File | 白名单文件（[白名单模板](http://dev.polyv.net/wp-content/uploads/2018/06/WhiteListTemplate.xls)） | 
@@ -993,7 +993,7 @@ true为删除成功，false为失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，要下载的频道号，不传为全局设置 | 
 | rank | true | Integer | 1为首要条件，2为次要条件 | 
 

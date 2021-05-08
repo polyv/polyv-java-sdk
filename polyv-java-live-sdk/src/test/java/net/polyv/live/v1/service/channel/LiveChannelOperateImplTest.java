@@ -109,6 +109,8 @@ public class LiveChannelOperateImplTest extends BaseTest {
     /**
      * 测试创建并初始化频道
      * 约束：2、AuthSetting中AuthType不能直接设置白名单观看，需要先创建频道后再设置观看条件
+     * 约束：3、AuthSetting中最多只能设置两个观看条件(即一个主要观看条件，一个次要观看条件)，次要条件必须有主要条件才生效
+     * 约束：4、AuthSetting不能设置两个AuthType一致的
      * API地址：CHANNEL_BASIC_CREATE_URL
      * @throws Exception
      */
@@ -140,8 +142,17 @@ public class LiveChannelOperateImplTest extends BaseTest {
                     .setAuthCode("123456")
                     .setQcodeTips("提示文案")
                     .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
+            //收费观看
+            LiveChannelInitRequest.AuthSetting moneyAuthSettings = new LiveChannelInitRequest.AuthSetting().setRank(2)
+                    .setAuthType(LiveConstant.AuthType.PAY.getDesc())
+                    .setEnabled("Y")
+                    .setPayAuthTips("付费观看")
+                    .setPrice(0.01f)
+                    .setQcodeTips("提示文案")
+                    .setQcodeImg("https://live.polyv.net/static/images/live-header-logo.png");
             List<LiveChannelInitRequest.AuthSetting> authSettings = new ArrayList<LiveChannelInitRequest.AuthSetting>();
             authSettings.add(codeAuthSettings);
+            authSettings.add(moneyAuthSettings);
             liveChannelInitRequest.setAuthSettings(authSettings);
             liveChannelInitResponse = new LiveChannelOperateServiceImpl().createChannelInit(liveChannelInitRequest);
             Assert.assertNotNull(liveChannelInitResponse);

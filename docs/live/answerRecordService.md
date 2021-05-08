@@ -41,7 +41,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | startDate | false | Date | 查询的开始时间，格式要求：yyyy-MM-dd | 
 | endDate | false | Date | 查询的结束时间，格式要求：yyyy-MM-dd | 
@@ -50,7 +50,7 @@
 返回对象是List&lt;LiveQuestionAnswerRecordResponse&gt;，**LiveQuestionAnswerRecordResponse**具体元素内容如下：
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | questionId | String | 题目ID | 
 | questionTitle | String | 题目标题 | 
 | times | Integer | 第几次发送题目，用于区分相同题目重复发送的情况 | 
@@ -64,7 +64,7 @@
 <h6 id="polyv35"><a href="#/answerRecordService.md?id=polyv35"data-id="Option参数描述"class="anchor"><span>Option参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | title | String | 选项标题 | 
 | count | Integer | 选择该选项的人数 | 
 | percent | String | 选择该选项的人数百分比，如：100.00% | 
@@ -72,7 +72,7 @@
 <h6 id="polyv36"><a href="#/answerRecordService.md?id=polyv36"data-id="Record参数描述"class="anchor"><span>Record参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | viewerId | String | 答题的用户ID | 
 | nickname | String | 答题的用户昵称 | 
 | answer | String | 答题的用户提交的答案 | 

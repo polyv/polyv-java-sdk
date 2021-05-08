@@ -45,7 +45,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | startTime | true | Date | 开始时间 | 
 | endTime | true | Date | 结束时间 | 
@@ -102,7 +102,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelIds | false | String | 频道号，使用英文逗号分开，如：100000,100001 | 
 | startDay | false | Date | 开始时间，格式：yyyy-MM-dd | 
 | endDay | false | Date | 结束时间，格式：yyyy-MM-dd | 
@@ -113,7 +113,7 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | contents | Array | 列表信息【详见[ChannelMic参数描述](channelViewdata.md?id=polyv28)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
@@ -123,7 +123,7 @@
 <h6 id="polyv28"><a href="#/channelViewdata.md?id=polyv28"data-id="ChannelMic参数描述"class="anchor"><span>ChannelMic参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | userId | String | 用户userId | 
 | channelId | String | 频道号 | 
 | currentDay | Date | 当天，如：2019-10-25 | 
@@ -178,7 +178,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | currentDay | false | Date | 查询日期，格式：yyyy-MM-dd | 
 | startTime | false | Date | 查询开始时间 | 
@@ -193,7 +193,7 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | contents | Array | 频道观看日志【详见[LiveChannelViewlog参数描述](channelViewdata.md?id=polyv29)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
@@ -203,7 +203,7 @@
 <h6 id="polyv29"><a href="#/channelViewdata.md?id=polyv29"data-id="LiveChannelViewlog参数描述"class="anchor"><span>LiveChannelViewlog参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | playId | String | 表示此次播放动作的ID | 
 | userId | String | 用户ID | 
 | channelId | String | 频道号 | 
@@ -280,7 +280,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | startDate | true | Date | 查询的开始日期,格式为yyyy-MM-dd | 
 | endDate | true | Date | 查询的结束日期,格式为yyyy-MM-dd | 
 | channelIds | false | String | 要查询的频道号，不提交默认为查询所有频道，多个频道号以英文逗号“,”分开，如：105420,104400 | 
@@ -289,13 +289,13 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelSummarys | Array | 统计数据【详见[ChannelSummary参数描述](channelViewdata.md?id=polyv30)】 | 
 
 <h6 id="polyv30"><a href="#/channelViewdata.md?id=polyv30"data-id="ChannelSummary参数描述"class="anchor"><span>ChannelSummary参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 频道号 | 
 | name | String | 频道名称 | 
 | pcPlayDuration | Integer | pc端播放时长，单位：分钟 | 
@@ -361,20 +361,20 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelIds | true | String | 频道号，使用英文逗号分开，如：100000,100001 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelViewerCounts | Array | 频道实时在线人数【详见[ChannelViewerCount参数描述](channelViewdata.md?id=polyv31)】 | 
 
 <h6 id="polyv31"><a href="#/channelViewdata.md?id=polyv31"data-id="ChannelViewerCount参数描述"class="anchor"><span>ChannelViewerCount参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelId | String | 频道号 | 
 | time | String | 统计的时间点（时间格式：24H），例：15:39:10 | 
 | count | String | 某个时间点实时观看人数 | 
@@ -430,7 +430,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | startDate | true | Date | 开始日期格式，yyyy-MM-dd,开始日期和结束日期的时间跨度：最多查两个月内的数据 | 
 | endDate | true | Date | 结束日期格式，yyyy-MM-dd，开始日期和结束日期的时间跨度：最多查两个月内的数据 | 
@@ -439,13 +439,13 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelViewerConcurrences | Array | 频道并发在线人数【详见[ChannelViewerConcurrence参数描述](channelViewdata.md?id=polyv32)】 | 
 
 <h6 id="polyv32"><a href="#/channelViewdata.md?id=polyv32"data-id="ChannelViewerConcurrence参数描述"class="anchor"><span>ChannelViewerConcurrence参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | day | Date | 统计的日期（时间格式：yyyy-MM-dd,例：2019-04-10） | 
 | minute | String | 统计的时间点（时间格式：12H，例：10:30） | 
 | viewers | String | 某个时间点实时观看人数 | 

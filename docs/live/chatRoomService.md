@@ -41,7 +41,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | false | String | 频道号，不填则设置为通用设置内的严禁词 | 
 | words | true | Array | 严禁词列表 | 
 
@@ -49,7 +49,7 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | count | Integer | 请求参设设置了频道号，count则为该频道严禁词的数量，如果没有设置频道号，count为该该账户严禁词的数量 | 
 | userId | String | POLYV用户ID，通过注册保利威官网获取，路径：官网->登录->直播（开发设置） | 
 
@@ -106,7 +106,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | adminIndex | false | Integer | 管理员索引，可以指定多个管理员发送消息，默认只有一个管理员 | 
 | msg | true | String | 发送的文本消息 | 
@@ -119,7 +119,7 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | msgId | String | 发送消息ID | 
 
 <br /><br />
@@ -174,7 +174,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | startDay | true | Date | 聊天记录的开始时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
 | endDay | true | Date | 聊天记录的结束时间，格式要求为yyyy-MM-dd(如：2017-08-01)或者 yyyy-MM-dd HH:mm:ss （如：2017-08-01 16:30:12） | 
@@ -188,7 +188,7 @@
 返回对象是List&lt;LiveGetHistoryChatMsgResponse&gt;，**LiveGetHistoryChatMsgResponse**具体元素内容如下：
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | userId | String | 直播账号userId【对应api文档的**acountId**字段】 | 
 | clientIP | String | 用户IP | 
 | content | String | 聊天内容 | 
@@ -207,7 +207,7 @@
 <h6 id="polyv33"><a href="#/chatRoomService.md?id=polyv33"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | clientIp | String | 用户IP | 
 | nickname | String | 观众昵称 | 
 | pic | String | 观众头像 | 
@@ -268,14 +268,14 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 
 ### 返回对象描述
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | nickname | String | 讲师昵称 | 
 | actor | String | 讲师头衔 | 
 | avatar | String | 头像图片地址 | 
@@ -329,7 +329,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | type | true | String | 查询禁言类型,ip ： 聊天室用户的机器ip ， userId ： 聊天室用户的userId | 
 | toGetSubRooms | false | Integer | 是否获取子频道，0：不获取，1：获取，默认为 0  | 
@@ -385,14 +385,14 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 
 ### 返回对象描述
 返回对象是List&lt;LiveKickedListResponse&gt;，**LiveKickedListResponse**具体元素内容如下：
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | banned | Boolean | 是否禁言 | 
 | channelId | String | 频道号 | 
 | clientIp | String | C端观众ip | 
@@ -453,7 +453,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | type | false | String | 查询类型： ip=禁言ip，badword=严禁词，默认为badword | 
 
@@ -560,7 +560,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | begin | false | Integer | 起始下标，从0开始 | 
 | end | false | Integer | 结束下标，-1表示不分页 | 
@@ -569,7 +569,7 @@
 返回对象是List&lt;LiveGetConsultingRecordResponse&gt;，**LiveGetConsultingRecordResponse**具体元素内容如下：
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | id | String | 信息id | 
 | content | String | 内容 | 
 | time | Date | 发言时间 | 
@@ -580,7 +580,7 @@
 <h6 id="polyv34"><a href="#/chatRoomService.md?id=polyv34"data-id="User参数描述"class="anchor"><span>User参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | nick | String | 观众昵称 | 
 | pic | String | 观众头像 | 
 | userId | String | 用户唯一标示 | 
@@ -642,7 +642,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | nickname | true | String | 讲师昵称 | 
 | actor | true | String | 讲师头衔 | 
@@ -701,7 +701,7 @@ true 设置讲师信息成功，false 设置讲师信息失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | ip | true | String | 禁言IP,如 234.22.3.34 | 
 
@@ -760,7 +760,7 @@ true 设置讲师信息成功，false 设置讲师信息失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | nickname | true | String | 管理员昵称，长度不能超过8个字符 | 
 | actor | true | String | 管理员头衔，长度不能超过4个字符 | 
@@ -822,7 +822,7 @@ true 设置成功，false 设置失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | type | true | String | 传输内容类型<br/>ip：属性content内容为IP<br/>badword 属性content内容为严禁词 | 
 | content | true | String | 要取消的ip或者严禁词,支持传入多个ip或者严禁词，通过","区分 | 
@@ -881,7 +881,7 @@ true 删除成功 ，false 删除失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | id | true | String | 聊天记录对应的id | 
 
@@ -936,7 +936,7 @@ true 删除成功， false 删除失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 
 ### 返回对象描述
@@ -992,7 +992,7 @@ true 删除成功， false 删除失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | content | true | String | 聊天信息内容 | 
 | role | true | String | 发送人角色（目前为只提供管理员角色，值为'ADMIN'） | 
@@ -1049,7 +1049,7 @@ true 发送成功， false 发送失败
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | content | false | String | 需要发送的文字, 需要进行base64编码，content、imgUrl不能同时为空，可以同时提交 | 
 | imgUrl | false | String | 需要发送的图片，content、imgUrl不能同时为空，可以同时提交 | 

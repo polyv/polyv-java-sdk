@@ -45,7 +45,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | type | false | String | 转换类型（‘common’：转普通图片， ‘animate’：转动画效果）默认不传转普通，因为只有ppt，pptx可以转动画，其他类型文件会自动转成普通；文件转动画转失败会直接把类型转为普通 | 
 | file | true | File | 上传的文件不超过50M，格式限制为（ppt， pdf，pptx，doc，docx，wps, xls，xlsx） | 
@@ -56,7 +56,7 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | fileId | String | 成功时返回文件ID | 
 | autoId | Integer | 成功时返回文件记录自增标识id | 
 | type | String | 转换类型（common：转普通图片，animate：转动画效果）只有ppt，pptx会转动画，其中会自动转成普通，转动画转失败也会直接把类型转为普通 | 
@@ -113,7 +113,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | fileId | true | String | 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串) | 
 
@@ -121,13 +121,13 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | channelDocStatuses | Array | 频道文档列表转换信息【详见[ChannelDocStatus参数描述](channelDoc.md?id=polyv6)】 | 
 
 <h6 id="polyv6"><a href="#/channelDoc.md?id=polyv6"data-id="ChannelDocStatus参数描述"class="anchor"><span>ChannelDocStatus参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | convertStatus | String | 转换状态. (“normal”：正常。”failUpload“： 上传失败。“waitConvert”： 转换PPT中。“failConvert”： 转换失败，失败原因会返回在data[0].errorMsg字段中展示） | 
 | errorMsg | String | 错误信息（转换失败原因，convertStatus=“failConvert” 返回） | 
 | totalPage | Integer | 总页数（convertStatus=“normal” 返回） | 
@@ -187,7 +187,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | status | false | String | 文档状态，不传查询所有（“normal”：正常，“waitUpload”：等待上传,failUpload：上传失败，waitConvert:转换PPT中,failConvert:转换PPT失败） | 
 | isShowUrl | false | String | 是否展示PPT原文件地址，Y：是；N：否；默认为N | 
@@ -198,7 +198,7 @@
 
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | contents | Array | 频道文档【详见[ChannelDoc参数描述](channelDoc.md?id=polyv7)】 | 
 | pageSize | Integer | 每页显示的数据条数，默认每页显示20条数据 | 
 | currentPage | Integer | 当前页【对应api文档的**pageNumber**字段】 | 
@@ -208,7 +208,7 @@
 <h6 id="polyv7"><a href="#/channelDoc.md?id=polyv7"data-id="ChannelDoc参数描述"class="anchor"><span>ChannelDoc参数描述</span></a></h6> <!-- {docsify-ignore} -->
 
 | 参数名 | 类型 | 说明 | 
-| -- | -- | -- | 
+| --- | --- | --- | 
 | autoId | Integer | 文档ID | 
 | fileId | String | 文件ID | 
 | fileName | String | 文件名 | 
@@ -273,7 +273,7 @@
 ### 请求入参描述
 
 | 参数名 | 必选 | 类型 | 说明 | 
-| -- | -- | -- | -- | 
+| --- | --- | --- | --- | 
 | channelId | true | String | 频道号 | 
 | fileId | true | String | 文件ID，(如果有多个，可以用英文逗号隔开拼接成字符串) | 
 | type | true | String | 新旧版文件类型，old：旧版，new：新版【这个值可以从文档列表接口返回数据的type（类型）中获得】【多个文件需要删除，请按照fileId顺序对应ppt新旧类型，用英文逗号隔开拼接成字符串)，type中的类型数量必须跟fileId中的包含的ID数量一致】 | 

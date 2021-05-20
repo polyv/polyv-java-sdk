@@ -41,9 +41,9 @@ public class LiveSendChannelRewardMsgRequest extends LiveCommonRequest {
     private String avatar;
     
     /**
-     * 打赏者ID
+     * 打赏者ID，通过外部授权等观看方式对接，由B端系统产生，通过百名单进入的，此处可使用会员码
      */
-    @ApiModelProperty(name = "viewerId", value = "打赏者ID", required = true)
+    @ApiModelProperty(name = "viewerId", value = "打赏者ID，通过外部授权等观看方式对接，由B端系统产生，通过百名单进入的，此处可使用会员码", required = true)
     @NotNull(message = "属性viewerId不能为空")
     private String viewerId;
     

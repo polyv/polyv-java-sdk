@@ -341,9 +341,12 @@ public class LiveBaseService {
         if (StringUtils.isBlank(e.getTimestamp())) {
             e.setTimestamp(String.valueOf(System.currentTimeMillis()));
         }
-        if (StringUtils.isBlank(e.getRequestId()) || !e.getRequestId().matches(Constant.REQUEST_ID_REG)) {
+        if (StringUtils.isBlank(e.getRequestId())) {
             String requestId = LiveSignUtil.generateUUID();
-            log.info("requestId为空或者不满足正则要求，重新设置为：{}", requestId);
+            e.setRequestId(requestId);
+        } else if(!e.getRequestId().matches(Constant.REQUEST_ID_REG)){
+            String requestId = LiveSignUtil.generateUUID();
+            log.info("requestId必须由字母数字下划线组成，长度为8-50位，现重新设置为：{}", requestId);
             e.setRequestId(requestId);
         }
         if (signMap == null) {

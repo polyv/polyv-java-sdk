@@ -50,7 +50,8 @@
 |             |             | [查询频道广告列表](channelOperate?id=_27、查询频道广告列表) |             | 
 |             |             | [查询频道直播截图](channelOperate?id=_28、查询频道直播截图) |             | 
 |             |             | [修改直播推流方式](channelOperate?id=_29、修改直播推流方式) |             | 
-|             |             | [删除硬盘推流的视频](channelOperate?id=_30、删除硬盘推流的视频) |             | 
+|             |             | [设置硬盘推流直播](channelOperate?id=_30、设置硬盘推流直播) |             | 
+|             |             | [删除硬盘推流的视频](channelOperate?id=_31、删除硬盘推流的视频) |             | 
 |           | ▼直播状态      |                                            |      |
 |             |             | [查询频道实时推流信息](channelState?id=_1、查询频道实时推流信息) |             | 
 |             |             | [批量查询频道直播流状态](channelState?id=_2、批量查询频道直播流状态) |             | 
@@ -151,6 +152,7 @@
 |             |             | [设置抽奖中奖者信息](lotteryService?id=_3、设置抽奖中奖者信息) |             | 
 |             |             | [导出频道单场抽奖的中奖记录](lotteryService?id=_4、导出频道单场抽奖的中奖记录) |             | 
 |             |             | [发送点赞](lotteryService?id=_5、发送点赞) |             | 
+|             |             | [发送打赏消息](lotteryService?id=_6、发送打赏消息) |             | 
 | ▼聊天室    |               |                                            |      |
 |             |             | [批量导入频道严禁词](chatRoomService?id=_1、批量导入频道严禁词) |             | 
 |             |             | [通过HTTP接口发送聊天消息](chatRoomService?id=_2、通过HTTP接口发送聊天消息) |             | 

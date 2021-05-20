@@ -229,7 +229,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
                     .setSessionId(null)
                     .setGoodNum("1")
                     .setNeedUserImage("N")
-                    //通过外部授权等观看方式对接，由B端系统产生，通过百名单进入的，此处可使用会员码
+                    //通过外部授权等观看方式对接，由B端系统产生，通过白名单进入的，此处可使用会员码
                     .setViewerId(getRandomString(16));
             liveSendChannelRewardMsgResponse = new LiveLotteryServiceImpl().sendChannelRewardMsg(
                     liveSendChannelRewardMsgRequest);

@@ -41,6 +41,7 @@ public class LiveCreateDiskVideosStreamRequest extends LiveCommonRequest {
      * 硬盘推流开始时间
      */
     @ApiModelProperty(name = "startTimes", value = "硬盘推流开始时间", required = true)
+    @NotNull(message = "属性startTimes不能为空")
     private Date startTimes;
     
 }

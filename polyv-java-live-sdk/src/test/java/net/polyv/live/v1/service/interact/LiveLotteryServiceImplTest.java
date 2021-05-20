@@ -211,13 +211,12 @@ public class LiveLotteryServiceImplTest extends BaseTest {
      * 描述：用于发送打赏消息,请求成功后，服务器会向聊天室的用户广播打赏消息
      * 约束：viewerId需要是在线的viewerId
      * 返回：true为发送成功，false为发送失败
-     * TODO 未测试通过，等后台回复如何获取在线viewerId
      * API地址：SEND_REWARD_MSG_URL
      * @throws Exception
      * @throws NoSuchAlgorithmException
      */
 //    @Test
-    public void testSkipSendChannelRewardMsg() throws Exception, NoSuchAlgorithmException {
+    public void testSendChannelRewardMsg() throws Exception, NoSuchAlgorithmException {
         LiveSendChannelRewardMsgRequest liveSendChannelRewardMsgRequest = new LiveSendChannelRewardMsgRequest();
         Boolean liveSendChannelRewardMsgResponse;
         try {
@@ -230,6 +229,7 @@ public class LiveLotteryServiceImplTest extends BaseTest {
                     .setSessionId(null)
                     .setGoodNum("1")
                     .setNeedUserImage("N")
+                    //通过外部授权等观看方式对接，由B端系统产生，通过百名单进入的，此处可使用会员码
                     .setViewerId(getRandomString(16));
             liveSendChannelRewardMsgResponse = new LiveLotteryServiceImpl().sendChannelRewardMsg(
                     liveSendChannelRewardMsgRequest);

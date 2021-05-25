@@ -19,6 +19,7 @@ import net.polyv.common.v1.util.SDKValidateUtil;
 import net.polyv.common.v1.util.StringUtils;
 import net.polyv.common.v1.validator.ViolationMsg;
 import net.polyv.live.v1.config.LiveGlobalConfig;
+import net.polyv.live.v1.constant.LiveURL;
 import net.polyv.live.v1.entity.LiveCommonRequest;
 import net.polyv.live.v1.entity.LiveCommonResponse;
 import net.polyv.live.v1.util.LiveSignUtil;
@@ -82,6 +83,7 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse baseGet(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         Map<String, String> paramMap = commonRequestLogic(null, e);
+        url = appendProtocol(url);
         String response = HttpUtil.get(url, paramMap, getHttpHeadMap());
         return responseConversion(response, e.getRequestId());
     }
@@ -98,7 +100,7 @@ public class LiveBaseService {
     protected <E extends LiveCommonRequest> byte[] getReturnBinary(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         Map<String, String> paramMap = commonRequestLogic(null, e);
-        
+        url = appendProtocol(url);
         byte[] response = HttpUtil.getBinary(url, paramMap, getHttpHeadMap(), null);
         if (response == null) {
             String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
@@ -161,6 +163,7 @@ public class LiveBaseService {
     private <E extends LiveCommonRequest> LiveCommonResponse basePostFormBody(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         Map<String, String> paramMap = commonRequestLogic(null, e);
+        url = appendProtocol(url);
         String response = HttpUtil.postFormBody(url, paramMap, getHttpHeadMap());
         return responseConversion(response, e.getRequestId());
     }
@@ -233,6 +236,7 @@ public class LiveBaseService {
         if (StringUtils.isBlank(json)) {
             json = JSON.toJSONString(e);
         }
+        url = appendProtocol(url);
         String response = HttpUtil.postJsonBody(url, getHttpHeadMap(), json, null);
         return responseConversion(response, e.getRequestId());
     }
@@ -278,6 +282,7 @@ public class LiveBaseService {
         Map<String, String> reqMap = new HashMap<>();
         reqMap.put("requestId",e.getRequestId());
         url = MapUtil.appendUrl(url, reqMap);
+        url = appendProtocol(url);
         String response = HttpUtil.postFile(url, paramMap, fileMap, getHttpHeadMap(), null);
         return responseConversion(response, e.getRequestId());
     }
@@ -315,6 +320,7 @@ public class LiveBaseService {
         Map<String,String> reqMap = new HashMap<>();
         reqMap.put("requestId",e.getRequestId());
         url = MapUtil.appendUrl(url, reqMap);
+        url = appendProtocol(url);
         String response = HttpUtil.postMultipleFile(url, paramMap, fileMap, getHttpHeadMap(), null);
         return responseConversion(response, e.getRequestId());
     }
@@ -414,6 +420,20 @@ public class LiveBaseService {
         headMap.put(HttpUtil.APP_ID_NAME, LiveGlobalConfig.getAppId());
         headMap.put(HttpUtil.USER_ID_NAME, LiveGlobalConfig.getUserId());
         return headMap;
+    }
+    
+    /**
+     * 增加直播http协议头
+     * @param url 需要添加协议头的url
+     * @return 添加协议头之后的url
+     */
+    private String appendProtocol(String url){
+        if(LiveURL.getIsHttps()){
+            url = Constant.PROTOCOL_HTTPS + url;
+        }else{
+            url = Constant.PROTOCOL_HTTP + url;
+        }
+        return url;
     }
     
     /**

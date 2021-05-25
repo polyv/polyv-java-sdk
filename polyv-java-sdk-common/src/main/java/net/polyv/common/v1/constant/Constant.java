@@ -38,4 +38,14 @@ public class Constant {
     
     public static  final String UTF8 = "UTF-8";
     
+    /**
+     * http协议头
+     */
+    public static final String PROTOCOL_HTTP = "http://";
+    
+    /**
+     * https协议头
+     */
+    public static final String PROTOCOL_HTTPS = "https://";
+    
 }

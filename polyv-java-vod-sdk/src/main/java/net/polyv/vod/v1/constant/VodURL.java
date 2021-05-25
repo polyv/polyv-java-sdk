@@ -6,8 +6,11 @@ import net.polyv.vod.v1.config.VodGlobalConfig;
  * @author: thomas
  **/
 public class VodURL {
-    public static final String BASE_URI = "https://api.polyv.net/";
-    public static final String BASE_HLS_URI = "https://hls.videocc.net/";
+    
+    private static boolean isHttps = true;
+    
+    public static final String BASE_URI = "api.polyv.net/";
+    public static final String BASE_HLS_URI = "hls.videocc.net/";
 //    public static final String BASE_URI = "http://a.polyv.net:8080/vod/";
 //    public static final String BASE_URI_V = "https://v.polyv.net/";
     
@@ -577,5 +580,23 @@ public class VodURL {
      */
     public static String getRealUrl(String format) {
         return String.format(format, VodGlobalConfig.getUserId());
+    }
+    
+    public static boolean getIsHttps(){
+        return isHttps;
+    }
+    
+    /**
+     * 设置点播API协议为http
+     */
+    public static void setVodHttpProtocol(){
+        isHttps = false;
+    }
+    
+    /**
+     * 设置点播API协议为https
+     */
+    public static void setVodHttpsProtocol(){
+        isHttps = true;
     }
 }

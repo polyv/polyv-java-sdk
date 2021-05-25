@@ -6,12 +6,13 @@ package net.polyv.live.v1.constant;
  **/
 public class LiveURL {
     
+    private static boolean isHttps = true;
     
     /**
      * POLYV live api base uri
      */
 //    private static final String BASE_URI = "http://api.testsdk.polyv.net/live/";
-    private static final String BASE_URI = "https://api.polyv.net/live/";
+    private static final String BASE_URI = "api.polyv.net/live/";
     
     /**
      * url 替换通配符
@@ -936,6 +937,24 @@ public class LiveURL {
      */
     public static String getRealUrl(String format, Object... param) {
         return String.format(format, param);
+    }
+    
+    public static boolean getIsHttps(){
+        return isHttps;
+    }
+    
+    /**
+     * 设置直播API协议为http
+     */
+    public static void setLiveHttpProtocol(){
+        isHttps = false;
+    }
+    
+    /**
+     * 设置直播API协议为https
+     */
+    public static void setLiveHttpsProtocol(){
+        isHttps = true;
     }
 }
 

@@ -20,6 +20,7 @@ import net.polyv.common.v1.util.SDKValidateUtil;
 import net.polyv.common.v1.util.StringUtils;
 import net.polyv.common.v1.validator.ViolationMsg;
 import net.polyv.vod.v1.config.VodGlobalConfig;
+import net.polyv.vod.v1.constant.VodURL;
 import net.polyv.vod.v1.entity.VodCommonRequest;
 import net.polyv.vod.v1.entity.VodCommonResponse;
 import net.polyv.vod.v1.entity.VodSubCommonRequest;
@@ -93,6 +94,7 @@ public class VodBaseService {
     private <E extends VodCommonRequest> VodCommonResponse baseGet(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         Map<String, String> paramMap = commonRequestLogic(null, e);
+        url = appendProtocol(url);
         String response = HttpUtil.get(url, paramMap, getHttpHeadMap());
         return responseConversion(response, e.getRequestId());
     }
@@ -109,7 +111,7 @@ public class VodBaseService {
     protected <E extends VodCommonRequest> byte[] getReturnBinary(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         Map<String, String> paramMap = commonRequestLogic(null, e);
-        
+        url = appendProtocol(url);
         byte[] response = HttpUtil.getBinary(url, paramMap, getHttpHeadMap(), null);
         if (response == null) {
             String message = ERROR_PREFIX + e.getRequestId() + ERROR_SUFFIX;
@@ -172,6 +174,7 @@ public class VodBaseService {
     private <E extends VodCommonRequest> VodCommonResponse basePostFormBody(String url, E e)
             throws IOException, NoSuchAlgorithmException {
         Map<String, String> paramMap = commonRequestLogic(null, e);
+        url = appendProtocol(url);
         String response = HttpUtil.postFormBody(url, paramMap, getHttpHeadMap());
         return responseConversion(response, e.getRequestId());
     }
@@ -245,6 +248,7 @@ public class VodBaseService {
         if (StringUtils.isBlank(json)) {
             json = JSON.toJSONString(e);
         }
+        url = appendProtocol(url);
         String response = HttpUtil.postJsonBody(url, getHttpHeadMap(), json, null);
         return responseConversion(response, e.getRequestId());
     }
@@ -287,6 +291,7 @@ public class VodBaseService {
     private <E extends VodCommonRequest> VodCommonResponse uploadOneFile(String url, E e, Map<String, File> fileMap)
             throws IOException, NoSuchAlgorithmException {
         Map<String, String> paramMap = commonRequestLogic(null, e);
+        url = appendProtocol(url);
         String response = HttpUtil.postFile(url, paramMap, fileMap, getHttpHeadMap(), null);
         return responseConversion(response, e.getRequestId());
     }
@@ -321,6 +326,7 @@ public class VodBaseService {
     private <E extends VodCommonRequest> VodCommonResponse uploadMultipartFile(String url, E e,
             Map<String, List<File>> fileMap) throws IOException, NoSuchAlgorithmException {
         Map<String, String> paramMap = commonRequestLogic(null, e);
+        url = appendProtocol(url);
         String response = HttpUtil.postMultipleFile(url, paramMap, fileMap, getHttpHeadMap(), null);
         return responseConversion(response, e.getRequestId());
     }
@@ -502,6 +508,20 @@ public class VodBaseService {
         headMap.put(HttpUtil.VERSION, HttpUtil.CURRENT_VERSION);
         headMap.put(HttpUtil.USER_ID_NAME, VodGlobalConfig.getUserId());
         return headMap;
+    }
+    
+    /**
+     * 增加点播http协议头
+     * @param url 需要添加协议头的url
+     * @return 添加协议头之后的url
+     */
+    private String appendProtocol(String url){
+        if(VodURL.getIsHttps()){
+            url = Constant.PROTOCOL_HTTPS + url;
+        }else{
+            url = Constant.PROTOCOL_HTTP + url;
+        }
+        return url;
     }
     
     /**

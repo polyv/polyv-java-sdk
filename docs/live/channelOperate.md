@@ -2357,7 +2357,77 @@ true为修改推流方式成功，false为修改失败
 
 <br /><br />
 
-## 30、删除硬盘推流的视频
+## 30、设置硬盘推流直播
+### 描述
+```
+设置硬盘推流直播
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)
+
+2、调用接口后，如果当前频道未在直播中，会自动设置直播方式为“硬盘推流”。如果当前使用其他直播推流方式直播中，则需要在直播结束后，调用《修改直播推流方式》修改为硬盘推流，才会在所设置的开始时间进行直播
+
+3、无延迟频道不可修改为硬盘推流
+
+4、仅纯视频模式支持硬盘推流
+
+5、不支持设置加密视频为硬盘推流
+### 单元测试
+```java
+	@Test
+	public void testCreateDiskVideosStream() throws Exception {
+        LiveCreateDiskVideosStreamRequest liveCreateDiskVideosStreamRequest = new LiveCreateDiskVideosStreamRequest();
+        Boolean liveCreateDiskVideosStreamResponse;
+        try {
+            //准备测试数据
+            String channelId = super.getAloneChannelId();
+            //保利威云点播视频列表的VID，需导入保利威点播SDK，调用new VodQueryServiceImpl().searchVideoList()获取VideoId
+            String videoId = "1b448be323d7eaee38dcead42f053911_1";
+            liveCreateDiskVideosStreamRequest.setVideoIds(videoId)
+                    .setStartTimes(super.getDate(System.currentTimeMillis() + 60*1000))
+                    .setChannelId(channelId);
+            liveCreateDiskVideosStreamResponse = new LiveChannelOperateServiceImpl().createDiskVideosStream(
+                    liveCreateDiskVideosStreamRequest);
+            Assert.assertTrue(liveCreateDiskVideosStreamResponse);
+            if (liveCreateDiskVideosStreamResponse) {
+                //to do something ......
+                log.debug("测试设置硬盘推流直播成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage(),B
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| --- | --- | --- | --- | 
+| channelId | true | String | 频道号 | 
+| videoIds | true | String | 要设置硬盘推流的点播视频ID【对应api文档的**vids**字段】 | 
+| startTimes | true | Date | 硬盘推流开始时间 | 
+
+### 返回对象描述
+
+true为设置硬盘推流直播成功，false为修改失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
+## 31、删除硬盘推流的视频
 ### 描述
 ```
 删除硬盘推流的视频

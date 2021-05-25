@@ -352,4 +352,76 @@ null
 
 <br /><br />
 
+## 6、发送打赏消息
+### 描述
+```
+用于发送打赏消息，请求成功后，服务器会向聊天室的用户广播打赏消息
+```
+### 调用约束
+1、接口调用有频率限制，[详细请查看](/limit.md)，调用常见异常，[详细请查看](/exceptionDoc)viewerId需要是在线的viewerId
+### 单元测试
+```java
+	@Test
+	public void testSendChannelRewardMsg() throws Exception, NoSuchAlgorithmException {
+        LiveSendChannelRewardMsgRequest liveSendChannelRewardMsgRequest = new LiveSendChannelRewardMsgRequest();
+        Boolean liveSendChannelRewardMsgResponse;
+        try {
+            liveSendChannelRewardMsgRequest.setChannelId("2275495")
+                    .setNickname("张三")
+                    .setAvatar("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3002379740,3965499425&fm=26&gp=0.jpg")
+                    .setDonateType("cash")
+                    .setContent("1999")
+                    .setGoodImage("https://s1.videocc.net/live-admin/img/icon-redpack-new.ae299535.png")
+                    .setSessionId(null)
+                    .setGoodNum("1")
+                    .setNeedUserImage("N")
+                    .setViewerId("1234");
+            liveSendChannelRewardMsgResponse = new LiveLotteryServiceImpl().sendChannelRewardMsg(
+                    liveSendChannelRewardMsgRequest);
+            Assert.assertTrue(liveSendChannelRewardMsgResponse);
+            if (liveSendChannelRewardMsgResponse) {
+                //to do something ......
+                log.debug("测试发送打赏消息成功");
+            }
+        } catch (PloyvSdkException e) {
+            //参数校验不合格 或者 请求服务器端500错误，错误信息见PloyvSdkException.getMessage()
+            log.error(e.getMessage(), e);
+            // 异常返回做B端异常的业务逻辑，记录log 或者 上报到ETL 或者回滚事务
+            throw e;
+        } catch (Exception e) {
+            log.error("SDK调用异常", e);
+            throw e;
+        }
+    }
+```
+### 单元测试说明
+1、请求正确，返回Boolean对象，B端依据此对象处理业务逻辑；
+
+2、请求参数校验不合格，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 输入参数 [xxx.chat.LivexxxRequest]对象校验失败，失败字段 [pic不能为空 / msg不能为空] ]
+
+3、服务器处理异常，抛出PloyvSdkException，错误信息见PloyvSdkException.getMessage()，如 [ 保利威请求返回数据错误，请求流水号：66e7ad29fd04425a84c2b2b562d2025b，错误原因： invalid signature. ]
+### 请求入参描述
+
+| 参数名 | 必选 | 类型 | 说明 | 
+| --- | --- | --- | --- | 
+| channelId | true | String | 频道号 | 
+| nickname | true | String | 打赏者昵称 | 
+| avatar | true | String | 打赏者头像 | 
+| viewerId | true | String | 打赏者ID，通过外部授权等观看方式对接，由B端系统产生，通过百名单进入的，此处可使用会员码 | 
+| donateType | true | String | 打赏类型，(cash:现金打赏;good:道具打赏) | 
+| content | true | String | 打赏内容：礼物打赏为礼物名称，现金打赏为金额 | 
+| goodImage | false | String | 礼物打赏时为礼物图片，现金打赏时为空 | 
+| sessionId | false | String | 直播场次ID | 
+| goodNum | false | String | 打赏数量，不传默认为1 | 
+| needUserImage | false | String | 是否socket消息需要用户图片（是：Y，否：N。不传默认为N） | 
+
+### 返回对象描述
+
+true为发送成功，false为发送失败
+<br /><br />
+
+------------------
+
+<br /><br />
+
 

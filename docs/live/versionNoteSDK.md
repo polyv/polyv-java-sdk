@@ -2,6 +2,7 @@
 
 | 版本号 | 更新日期 | 更新历史 | 升级注意事项 |
 | -- | -- | -- |  -- |
+| 1.1.4 | 2021-05-26 | 1、优化部分代码； |  |
 | 1.1.3 | 2021-05-07 | 1、修复**十分钟玩转一场直播**抛出异常还会创建频道的bug；<br /> 2、手动设置的requestId添加正则判断；<br /> 3、优化根据requestId快速定位问题；<br /> 4、去除junit示例代码存在的弱密码问题； | 手动设置的requestId需满足正则^[a-zA-Z0-9-_]{8,50}$，否则SDK将重新设置，建议不手动设置。 |
 | 1.1.0 | 2021-04-19 | 1、优化部分代码； | 无 |
 | 1.0.25 | 2021-04-15 | 1、修复部分字段类型与api不一致的问题；<br /> 2、优化直播文档； | [查询频道基本信息](/channelOperate?id=_5、查询频道基本信息)返回对象AuthSetting参数price字段类型修改为Float<br/>[查询频道问卷结果](/questionnaireService?id=_3、查询频道问卷结果)返回对象Answer参数score字段类型修改为Integer<br/>[分页查询问卷结果](/questionnaireService?id=_4、分页查询问卷结果)返回对象Answer参数score字段类型修改为Integer<br/>[获取频道单场抽奖的中奖记录](/lotteryService?id=_2、获取频道单场抽奖的中奖记录)返回对象LotteryWinnerDetail参数ext字段类型修改为String<br/>[查询历史聊天信息](/chatRoomService?id=_3、查询历史聊天信息)roomId字段类型修改为String<br/>[查询频道踢人列表](/chatRoomService?id=_6、查询频道踢人列表)roomId字段类型修改为String |

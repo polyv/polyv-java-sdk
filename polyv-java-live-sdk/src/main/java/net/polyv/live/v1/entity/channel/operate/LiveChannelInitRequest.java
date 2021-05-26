@@ -244,7 +244,7 @@ public class LiveChannelInitRequest extends LiveCommonRequest {
         /**
          * 直接授权参数：直接授权SecretKey
          */
-        @ApiModelProperty(name = "directKey", value = "直接授权参数：直接授权SecretKey", required = false)
+        @ApiModelProperty(name = "directKey", value = "直接授权参数：直接授权签名使用SecretKey", required = false)
         private String directKey;
     }
     
